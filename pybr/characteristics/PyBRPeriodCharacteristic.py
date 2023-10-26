@@ -5,10 +5,9 @@ from pybr.characteristics import PyBRICharacteristic
 
 class PyBRPeriodCharacteristic(PyBRICharacteristic):
     """
-    Class for representing an XBRL period.
-    An XBRL period can be either instant or duration.
-    If it is instant, it has an instant date.
-    If it is duration, it has a start date and an end date.
+    Class for representing an XBRL period characteristic.
+    Associates the aspect PyBRAspect.PERIOD with a value.
+    The value can be an instant or a duration.
     """
 
     def __init__(self) -> None:
@@ -21,6 +20,8 @@ class PyBRPeriodCharacteristic(PyBRICharacteristic):
     def instant(cls, instant_date: str) -> "PyBRPeriodCharacteristic":
         """
         Create an instant PyBRPeriod.
+        @param instant_date: the date of the instant
+        @returns PyBRPeriodCharacteristic: the instant PyBRPeriodCharacteristic
         """
         period_instance = cls()
         period_instance.instant_date = instant_date
@@ -32,6 +33,9 @@ class PyBRPeriodCharacteristic(PyBRICharacteristic):
     def duration(cls, start_date: str, end_date: str) -> "PyBRPeriodCharacteristic":
         """
         Create a duration PyBRPeriod.
+        @param start_date: the start date of the duration
+        @param end_date: the end date of the duration
+        @returns PyBRPeriodCharacteristic: the duration PyBRPeriodCharacteristic
         """
         period_instance = cls()
         period_instance.start_date = start_date
