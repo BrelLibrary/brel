@@ -1,0 +1,6 @@
+from pybr.characteristics.PyBRICharacteristic import PyBRICharacteristic
+from pybr.characteristics.PyBRConceptCharacteristic import PyBRConceptCharacteristic
+from pybr.characteristics.PyBREntityCharacteristic import PyBREntityCharacteristic
+from pybr.characteristics.PyBRPeriodCharacteristic import PyBRPeriodCharacteristic
+from pybr.characteristics.PyBRUnitCharacteristic import PyBRUnitCharacteristic
+from pybr.characteristics.PyBRDimensionCharacteristic import PyBRExplicitDimensionCharacteristic

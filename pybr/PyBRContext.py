@@ -1,6 +1,9 @@
 import lxml
 import lxml.etree
-from pybr import PyBRPeriod, PyBREntity, PyBRDimension, PyBRAspect
+from pybr import PyBRPeriodCharacteristic, PyBREntityCharacteristic, PyBRExplicitDimensionCharacteristic, PyBRAspect, QName
+from pybr.characteristics import PyBRICharacteristic
+from pybr.reportelements import IReportElement, PyBRDimension, PyBRMember
+from typing import cast
 
 class PyBRContext:
     """
@@ -37,7 +40,7 @@ class PyBRContext:
         """
         return self.__aspects
 
-    def add_aspect_value(self, aspect, value) -> None:
+    def add_characteristic(self, aspect: PyBRAspect, value: PyBRICharacteristic) -> None:
         """
         Add an aspect to the context.
         """
@@ -49,16 +52,17 @@ class PyBRContext:
 
             self.__aspects.sort(key=lambda aspect: aspect.get_name())
         else:
-            print("asdfasdf")
-        
+            pass
     
-    def get_value_as_object(self, aspect: PyBRAspect) -> object:
+    def get_characteristic(self, aspect: PyBRAspect) -> PyBRICharacteristic | None:
+        """
+        Get the value of an aspect.
+        """
         if aspect not in self.__characteristics:
             # print("Warning: aspect not in context")
             pass
             return None
         return self.__characteristics[aspect]
-
     
     def __str__(self) -> str:
         output = ""
@@ -67,9 +71,11 @@ class PyBRContext:
         return output
     
     @classmethod
-    def from_xml(cls, xml_element: lxml.etree._Element) -> "PyBRContext":
+    def from_xml(cls, xml_element: lxml.etree._Element, report_elements: dict[QName, IReportElement]) -> "PyBRContext":
         """
         Creates a PyBRContext from an lxml.etree._Element.
+        @param xml_element: lxml.etree._Element. The lxml.etree._Element to create the PyBRContext from.
+        @param report_elements: list[IReportElement]. The report elements to use for the context. If the context contains a dimension, then both the dimension and the member must be in the report elements.
         """
         context_id = xml_element.attrib["id"]
 
@@ -78,13 +84,27 @@ class PyBRContext:
 
         context = cls(context_id, [])
 
-        context.add_aspect_value(PyBRAspect.PERIOD, PyBRPeriod.from_xml(context_period))
-        context.add_aspect_value(PyBRAspect.ENTITY, PyBREntity.from_xml(context_entity))
+        context.add_characteristic(PyBRAspect.PERIOD, PyBRPeriodCharacteristic.from_xml(context_period))
+        context.add_characteristic(PyBRAspect.ENTITY, PyBREntityCharacteristic.from_xml(context_entity))
 
         # add the dimensions. the dimensions are the children of context/entity/segment
         if context_entity.find("{*}segment") is not None:
             for xml_dimension in context_entity.find("{*}segment").getchildren():
-                dimension = PyBRDimension.from_xml(xml_dimension)
-                context.add_aspect_value(dimension.get_aspect(), dimension)
+                dimension_axis = QName.from_string(xml_dimension.get("dimension"))
+                dimension_value = QName.from_string(xml_dimension.text)
+
+                dimension = cast(PyBRDimension, report_elements.get(dimension_axis))
+                member = cast(PyBRMember, report_elements.get(dimension_value)) 
+
+                # make sure the member and dimension are in the report elements
+                if dimension is None or member is None:
+                    raise ValueError("Dimension or member not found in report elements. Please make sure that the dimension and member are in the report elements.")
+                
+                # also make sure that they are PyBRDimension and PyBRMember instances
+                if not isinstance(dimension, PyBRDimension) or not isinstance(member, PyBRMember):
+                    raise ValueError("Dimension or member not found in report elements. Please make sure that the dimension and member are in the report elements.")
+
+                dimension_characteristic = PyBRExplicitDimensionCharacteristic.from_xml(xml_dimension, dimension, member)
+                context.add_characteristic(dimension_characteristic.get_aspect(), dimension_characteristic)
         
         return context

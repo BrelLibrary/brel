@@ -1,0 +1,60 @@
+import lxml
+import lxml.etree
+from pybr import PyBRAspect, QName
+from pybr.characteristics import PyBRICharacteristic
+
+class PyBREntityCharacteristic(PyBRICharacteristic):
+    """
+    Class for representing an XBRL entity.
+    An entity in XBRL is a company. It consists of an identifier. Usually the identifier is the company's CIK.
+    Additional information about the company can be found in the entity's segment.
+    """
+    # TODO: Add docstrings
+
+    __entity_cache = {}
+
+    def __init__(self, qname: QName) -> None:
+        self.__qname = qname
+
+        self.__entity_cache[qname] = self
+    
+    def get_aspect(self) -> PyBRAspect:
+        return PyBRAspect.ENTITY
+    
+    def get_value(self) -> QName:
+        return self.__qname
+    
+    def get_schema(self) -> str:
+        """
+        returns the schema of the entity.
+        The scheme is the url of the entity qname
+        """
+        return self.__qname.get_URL()
+
+    @classmethod
+    def from_xml(cls, xml_element: lxml.etree._Element) -> "PyBREntityCharacteristic":
+        """
+        Create a PyBREntity from an lxml.etree._Element.
+        """
+        entity_id = xml_element.find("{*}identifier", namespaces=None).text
+
+        # get the scheme of the entity. its an attribute of the xml element.
+        entity_url = xml_element.find("{*}identifier", namespaces=None).get("scheme")
+        
+        entity_prefix = QName.try_get_prefix_from_url(entity_url)
+
+        if entity_prefix is None:
+            raise ValueError(f"Could not find prefix for entity URL: {entity_url}")
+        
+        # the QNAME is "scheme:identifier_nr". So it is a bit unusual.
+        entity_qname = QName(entity_url, entity_prefix, entity_id)
+
+        if entity_id in cls.__entity_cache:
+            return cls.__entity_cache[entity_id]
+
+        return cls(entity_qname)
+    
+    def __str__(self) -> str:
+        # TODO: Improve the __str__ method.
+        # return self.identifier
+        return self.__qname.__str__()

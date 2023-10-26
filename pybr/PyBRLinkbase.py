@@ -1,7 +1,7 @@
 import lxml
 import lxml.etree
 from typing import TypeVar, Generic
-from pybr import QName, PyBRConcept
+from pybr import QName, PyBRConceptCharacteristic
 
 class PyBRLinkbase:
     """
@@ -9,8 +9,8 @@ class PyBRLinkbase:
     """
 
     def __init__(self) -> None:
-        self.__children: list[PyBRConcept] = []
-        self.__parents: list[PyBRConcept] = []
+        self.__children: list[PyBRConceptCharacteristic] = []
+        self.__parents: list[PyBRConceptCharacteristic] = []
     
     def add_child(self, child: "PyBRLinkbase"):
         """
@@ -41,13 +41,11 @@ class PyBRLinkbase:
         Creates a presentation network from an XML tree
         A presentation network is just a list of PyBRLinkbase objects
         """
-
-        # TODO: un-hardcode this
-        xlink_namespace = "{http://www.w3.org/1999/xlink}"
-
+        nsmap = QName.get_nsmap()
 
         # first iterate over all presentationLink elements
-        presentation_links = xml_xtree.findall(".//{*}presentationLink")
+        # presentation_links = xml_xtree.findall(".//{*}presentationLink")
+        presentation_links = xml_xtree.findall(".//link:presentationLink", namespaces=nsmap)
         presentation_network = []
         print("computing presentation network")
         for presentation_link in presentation_links:
@@ -55,14 +53,14 @@ class PyBRLinkbase:
             # iterate over all presentationArc elements
             # add the PyBRLinkbase to the presentation network
             edges = []
-            presentation_arcs = presentation_link.findall(".//{*}presentationArc")
+            presentation_arcs = presentation_link.findall(".//{*}presentationArc", )
             for arc in presentation_arcs:
                 # print(arc.attrib)
                 # edges.append((arc.get("{*}from"), arc.get("{*}to")))
                 # get the from attribute from the arc
-                from_attr = arc.get(f"{xlink_namespace}from")
+                from_attr = arc.get(f"link:from")
                 # get the to attribute from the arc
-                to_attr = arc.get(f"{xlink_namespace}to")
+                to_attr = arc.get(f"link:to")
                 edges.append((from_attr, to_attr))
                             
             print(edges)

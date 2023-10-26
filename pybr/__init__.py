@@ -3,13 +3,16 @@ from .PyBRLabel import PyBRLabel
 
 from .PyBRAspect import PyBRAspect
 
-from .PyBRPeriod import PyBRPeriod
-from .PyBREntity import PyBREntity
-from .PyBRConcept import PyBRConcept
-from .PyBRUnit import PyBRUnit
-from .PyBRDimension import PyBRDimension
+from .characteristics import *
+
+from .reportelements import *
 
 from .PyBRContext import PyBRContext
 
 from .PyBRFact import PyBRFact
+
+from .PyBRFilingFilter import PyBRFilingFilter
+
+from .PyBRComponent import PyBRComponent
+
 from .PyBRFiling import PyBRFiling

@@ -1,0 +1,1 @@
+from pybr.parsers.dts.XMLSchemaManager import XMLSchemaManager

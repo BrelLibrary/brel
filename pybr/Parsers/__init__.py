@@ -1,1 +1,0 @@
-from pybr.Parsers.XMLFilingParser import IFilingParser, XMLFilingParser

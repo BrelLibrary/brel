@@ -1,15 +1,21 @@
+import validators
+
 class QName:
-    __namespace_url_map : dict[str, str] = {}
-    __url_namespace_map : dict[str, str] = {}
+    __url_to_namespace : dict[str, str] = {}
+    __namespace_to_url : dict[str, str] = {}
 
     def __init__(self, uri : str, prefix : str, local_name : str):
         self.__uri : str = uri
         self.__prefix : str = prefix
         self.__local_name : str = local_name
 
-        if uri not in QName.__namespace_url_map and prefix not in QName.__url_namespace_map:
-            QName.__namespace_url_map[uri] = prefix
-            QName.__url_namespace_map[prefix] = uri
+        if uri not in QName.__url_to_namespace and prefix not in QName.__namespace_to_url:
+            QName.__url_to_namespace[uri] = prefix
+            QName.__namespace_to_url[prefix] = uri
+        
+        self.__uri : str = uri
+        self.__prefix : str = prefix
+        self.__local_name : str = local_name
     
     def get_URL(self):
         return self.__uri
@@ -56,19 +62,95 @@ class QName:
         """
         Creates a QName from a string representation of a QName
         """
+        # TODO: This constructor is UNSAFE. There might be a case where the namespace map is not complete. So QName.__url_namespace_map[prefix] and QName.__namespace_url_map[uri] might raise KeyErrors    
         # check if the string contains an URL or a prefix
-        if "{" in qname_string:
+        if "{" in qname_string and "}" in qname_string and qname_string.index("{") == 0 and qname_string.index("}") > 0:
             # the string contains an URL
             # extract the URL and the local name
             url, local_name = qname_string[1:].split("}")
             # get the prefix from the namespace map
-            prefix = cls.__namespace_url_map[url]
-        else:
+            if url not in cls.__url_to_namespace:
+                raise ValueError(f"Invalid QName string: {qname_string}. URL not found in namespace map")
+            prefix = cls.__url_to_namespace[url]
+        elif ":" in qname_string:
             # the string contains a prefix
             # extract the prefix and the local name
             prefix, local_name = qname_string.split(":")
             # get the URL from the prefix map
-            url = cls.__url_namespace_map[prefix]
+            if prefix not in cls.__namespace_to_url:
+                raise ValueError(f"Invalid QName string: {qname_string}. Prefix not found in namespace map")
+            url = cls.__namespace_to_url[prefix]
+        else:
+            raise ValueError(f"Invalid QName string: {qname_string}")
         
         # create the QName object
         return cls(url, prefix, local_name)
+    
+    @classmethod
+    def is_str_qname(cls, qname_string : str) -> bool:
+        """
+        Checks if a string is a valid QName
+        """
+        if isinstance(qname_string, QName):
+            return True
+        if not isinstance(qname_string, str):
+            return False
+        try:
+            cls.from_string(qname_string)
+            return True
+        except ValueError:
+            return False
+    
+    @staticmethod
+    def try_get_prefix_from_url(url : str) -> str | None:
+        """
+        Tries to generate a prefix from an URL
+        @param url: The URL
+        @return: A string representing the prefix or None if no prefix could be generated
+        """
+
+        # check if the URL is valid
+        if not validators.url(url):
+            print(f"[QName.try_get_prefix_from_url()] Invalid URL: {url}")
+            return None
+        
+        # see if the URL is already in the namespace map
+        if url in QName.__url_to_namespace:
+            return QName.__url_to_namespace[url]
+        
+        # split the URL into parts using "/" as the separator
+        url_parts = url.split("/")
+        # the last part of the url that is not a number is the prefix
+        prefix = None
+        for part in url_parts[::-1]:
+            if not part.isnumeric():
+                prefix = part
+                break
+        
+        # if the prefix is an URL, then it is not a valid prefix
+        if validators.url(prefix):
+            return None
+        
+        # if the prefix is an empty string, then it is not a valid prefix
+        if prefix == "":
+            return None
+        
+        return prefix
+    
+    @classmethod
+    def get_nsmap(cls) -> dict[str, str]:
+        """
+        Returns the namespace map
+        """
+        return cls.__namespace_to_url
+    
+    @classmethod
+    def add_to_nsmap(cls, url : str, namespace : str):
+        """
+        Adds a prefix to the namespace map
+        """
+        if not validators.url(url):
+            raise ValueError(f"Invalid URL: {url}. Maybe you switched the URL and the namespace?")
+
+        cls.__url_to_namespace[url] = namespace
+        cls.__namespace_to_url[namespace] = url
