@@ -1,8 +1,9 @@
-from pybr import PyBRFiling
+from pybr import PyBRFiling, QName
+from random import sample
 
 def example1():
     """
-    Example of how to use pybr to open a filing and get all the concepts. 
+    Example of how to use pybr to open a filing and get all reported the report elements and print some of their labels 
     """
 
     # open the filing
@@ -10,9 +11,18 @@ def example1():
     # currently only supports local paths pointing towards a directory
     filing = PyBRFiling.open("reports/coca_cola/")
 
-    # get the first 100 concepts
-    some_concepts = filing.get_all_concepts()[:20]
+    # get all reported report elements and take a sample of 10 
+    all_elements = filing.get_all_reported_concepts()
+    some_elements = sample(all_elements, 10)
 
-    # print them
-    for concept in some_concepts:
+    # print the names of the concepts
+    for concept in some_elements:
+        print("-"*20)
         print(concept)
+
+        # print the labels of the concepts
+        labels = concept.get_labels()
+
+        for label in labels:
+            print(f"{label.get_language()} : {label.get_role().value:20} : {label}")
+    

@@ -10,5 +10,5 @@ def example4():
 
     for component in components[:components_slice_size]:
         print()
-        print(component.get_id())
+        print(component.get_URI())
         print(component.get_info())

@@ -77,6 +77,8 @@ class PyBRContext:
         @param xml_element: lxml.etree._Element. The lxml.etree._Element to create the PyBRContext from.
         @param report_elements: list[IReportElement]. The report elements to use for the context. If the context contains a dimension, then both the dimension and the member must be in the report elements.
         """
+        nsmap = QName.get_nsmap()
+
         context_id = xml_element.attrib["id"]
 
         context_period = xml_element.find("{*}period", namespaces=None)
@@ -90,21 +92,35 @@ class PyBRContext:
         # add the dimensions. the dimensions are the children of context/entity/segment
         if context_entity.find("{*}segment") is not None:
             for xml_dimension in context_entity.find("{*}segment").getchildren():
-                dimension_axis = QName.from_string(xml_dimension.get("dimension"))
-                dimension_value = QName.from_string(xml_dimension.text)
+                # if it is an explicit dimension, the tag is xbrli:explicitMember
+                # if it is a typed dimension, the tag is xbrli:typedMember
+                if "explicitMember" in xml_dimension.tag: # TODO: make this more robust
+                    dimension_axis = QName.from_string(xml_dimension.get("dimension"))
+                    dimension_value = QName.from_string(xml_dimension.text)
 
-                dimension = cast(PyBRDimension, report_elements.get(dimension_axis))
-                member = cast(PyBRMember, report_elements.get(dimension_value)) 
+                    dimension = cast(PyBRDimension, report_elements.get(dimension_axis))
+                    member = cast(PyBRMember, report_elements.get(dimension_value)) 
 
-                # make sure the member and dimension are in the report elements
-                if dimension is None or member is None:
-                    raise ValueError("Dimension or member not found in report elements. Please make sure that the dimension and member are in the report elements.")
-                
-                # also make sure that they are PyBRDimension and PyBRMember instances
-                if not isinstance(dimension, PyBRDimension) or not isinstance(member, PyBRMember):
-                    raise ValueError("Dimension or member not found in report elements. Please make sure that the dimension and member are in the report elements.")
+                    # make sure the member and dimension are in the report elements
+                    if dimension is None or member is None:
+                        raise ValueError("Dimension or member not found in report elements. Please make sure that the dimension and member are in the report elements.")
+                    
+                    # also make sure that they are PyBRDimension and PyBRMember instances
+                    if not isinstance(dimension, PyBRDimension) or not isinstance(member, PyBRMember):
+                        raise ValueError("Dimension or member not found in report elements. Please make sure that the dimension and member are in the report elements.")
 
-                dimension_characteristic = PyBRExplicitDimensionCharacteristic.from_xml(xml_dimension, dimension, member)
-                context.add_characteristic(dimension_characteristic.get_aspect(), dimension_characteristic)
+                    dimension_characteristic = PyBRExplicitDimensionCharacteristic.from_xml(xml_dimension, dimension, member)
+                    context.add_characteristic(dimension_characteristic.get_aspect(), dimension_characteristic)
+                elif "typedMember" in xml_dimension.tag: # TODO: make this more robust
+                    dimension_axis = QName.from_string(xml_dimension.get("dimension"))
+
+                    dimension = cast(PyBRDimension, report_elements.get(dimension_axis))
+                    print(dimension)
+                    # get the child xml element of xml_dimension
+                    xml_child = xml_dimension.getchildren()[0]
+                    dimension_value = xml_child.text
+
+                    # print(xml_child)
+                    print(dimension_value)
         
         return context

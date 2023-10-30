@@ -43,6 +43,12 @@ def main():  # pragma: no cover
         print("[RUNNING EXAMPLE 4]")
         example4()
         print()
+
+    if "5" in sys.argv:
+        # execute example 5
+        print("[RUNNING EXAMPLE 5]")
+        example5()
+        print()
     
     if "s" in sys.argv:
         # execute sandbox

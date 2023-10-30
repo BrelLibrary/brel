@@ -46,7 +46,28 @@ class XMLSchemaManager:
         @param url: The url to convert.
         @return: The filename.
         """
+        # TODO: This is not good enough
         return url.split("/")[-1]
+
+        # # first strip the protocol
+        # url = url.split("://")[-1]
+
+        # # then strip the file extension
+        # url = url.replace(".xsd", "")
+
+        # # then replace all slashes with underscores
+        # url = url.replace("/", "_")
+
+        # # then replace all colons with underscores
+        # url = url.replace(":", "_")
+
+        # # then replace all dots with underscores
+        # url = url.replace(".", "_")
+
+        # # add back the file extension
+        # url = url + ".xsd"
+
+        # return url
     
     def get_schema(self, schema_uri: str) -> lxml.etree._ElementTree:
         """

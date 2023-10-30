@@ -1,38 +1,18 @@
 import os
-import lxml
-import lxml.etree
-from lxml.etree import _Element as lxmlElement
-from pybr import PyBRFact, PyBRConceptCharacteristic, PyBRContext, PyBRAspect, PyBRFilingFilter, PyBRComponent
-from pybr import QName
-from pybr.PyBRLinkbase import PyBRLinkbase
+from pybr import PyBRFact, PyBRAspect, PyBRFilingFilter, PyBRComponent, QName
+from pybr.reportelements import *
 from pybr.parsers import IFilingParser, XMLFilingParser
+from typing import cast
 
 class PyBRFiling:
     """A wrapper class for loading and manipulating a filing"""
-
-    """
-    The methods of this class are the following:
-    - 1st class methods
-    --> static open(FilePath | URL file_path): PyBRFiling
-    --> get_all_facts(): list[PyBRFact]
-    --> get_all_concepts(): list[PyBRConcept]
-    - 2nd class methods
-    --> get_concept_by_name(concept_name: QName): PyBRConcept
-    --> get_all_reported_concepts(): list[PyBRConcept]
-    --> get_facts_by_concept_name(concept_name: QName): PyBRFact
-    --> get_all_labels(): list[PyBRLabel]
-    --> pd.DataFrame get_all_facts_as_dataframe(): pd.DataFrame
-    - built-in methods
-    --> __init__(self, xbrl_schema: lxmlElement, xbrl_instance: lxmlElement) (will take more parameters later)
-    --> __str__(self): str
-    """
+    # TODO: update docstrings
+    
     def __init__(self, parser: IFilingParser) -> None:
-        self.__parser = parser
-
         parser_result = parser.parse()
 
-        self.__facts = parser_result["facts"]
-        self.__reportelems = parser_result["report elements"]
+        self.__facts: list[PyBRFact] = parser_result["facts"]
+        self.__reportelems: list[IReportElement] = parser_result["report elements"]
         self.__components = parser_result["components"]
     
     # first class citizens
@@ -42,9 +22,9 @@ class PyBRFiling:
         """
         return self.__facts
     
-    def get_all_concepts(self) -> list[PyBRConceptCharacteristic]:
+    def get_all_report_elements(self) -> list[IReportElement]:
         """
-        Get all concepts in the filing
+        Get all report elements in the filing
         """
         return self.__reportelems
     
@@ -76,25 +56,62 @@ class PyBRFiling:
         return new_filing
     
     # second class citizens
-    def get_concept_by_name(self, concept_name: QName) -> PyBRConceptCharacteristic:
-        """Get a concept by its name"""
-        concept: PyBRConceptCharacteristic | None = None
-        for c in self.__reportelems:
-            if c.get_value() == concept_name:
-                concept = c
-                break
+    def get_all_concepts(self) -> list[PyBRConcept]:
+        """
+        Get all Concepts in the filing
+        """
         
-        if concept is None:
+        return cast(list[PyBRConcept], list(filter(lambda x: isinstance(x, PyBRConcept), self.__reportelems)))
+    
+    # TODO: implement
+    def get_all_abstracts(self) -> list[PyBRAbstract]:
+        """
+        Get all Abstracts in the filing
+        """
+        return cast(list[PyBRAbstract], list(filter(lambda x: isinstance(x, PyBRAbstract), self.__reportelems)))
+    
+    def get_all_line_items(self) -> list[PyBRLineItems]:
+        """
+        Get all LineItems in the filing
+        """
+        return cast(list[PyBRLineItems], list(filter(lambda x: isinstance(x, PyBRLineItems), self.__reportelems)))
+    
+    def get_all_hypercubes(self) -> list[PyBRHypercube]:
+        """
+        Get all Hypercubes in the filing
+        """
+        return cast(list[PyBRHypercube], list(filter(lambda x: isinstance(x, PyBRHypercube), self.__reportelems)))
+        
+    def get_all_dimensions(self) -> list[PyBRDimension]:
+       """
+        Get all Dimensions in the filing
+        """
+       return cast(list[PyBRDimension], list(filter(lambda x: isinstance(x, PyBRDimension), self.__reportelems)))
+        
+    def get_all_members(self) -> list[PyBRMember]:
+       """
+        Get all Member in the filing
+        """
+       return cast(list[PyBRMember], list(filter(lambda x: isinstance(x, PyBRMember), self.__reportelems)))
+    
+    def get_report_element_by_name(self, concept_name: QName) -> IReportElement:
+        """Get a concept by its name"""
+        name_matches = lambda x: x.get_name() == concept_name
+
+        re: IReportElement = filter(name_matches, self.__reportelems).__next__()
+        
+        if re is None:
             raise ValueError(f"Concept {concept_name} not found")
         
-        return concept
+        return re
     
-    def get_all_reported_concepts(self) -> list[PyBRConceptCharacteristic]:
+    def get_all_reported_concepts(self) -> list[PyBRConcept]:
         """Get all concepts that are reported in the filing"""
         reported_concepts = []
         for fact in self.__facts:
-            if fact.get_concept() not in reported_concepts:
-                reported_concepts.append(fact.get_concept())
+            concept = fact.get_concept().get_value()
+            if concept not in reported_concepts:
+                reported_concepts.append(concept)
         
         return reported_concepts
     
@@ -102,16 +119,16 @@ class PyBRFiling:
         """Get all facts that are associated with a concept"""
         filtered_facts = []
         for fact in self.__facts:
-            concept = fact.get_concept()
+            concept = fact.get_concept().get_value()
 
-            if concept.get_value() == concept_name:
+            if concept.get_name() == concept_name:
                 filtered_facts.append(fact)
         
         return filtered_facts
     
-    def get_facts_by_concept(self, concept: PyBRConceptCharacteristic) -> list[PyBRFact]:
+    def get_facts_by_concept(self, concept: PyBRConcept) -> list[PyBRFact]:
         """Get all facts that are associated with a concept"""
-        return self.get_facts_by_concept_name(concept.get_value())
+        return self.get_facts_by_concept_name(concept.get_name())
     
     def __getitem__(self, key: str | QName | PyBRAspect | PyBRFilingFilter | bool) -> list[PyBRFact] | PyBRFilingFilter:
         # TODO: make this typecheck

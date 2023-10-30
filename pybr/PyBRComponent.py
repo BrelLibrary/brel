@@ -1,10 +1,9 @@
 from __future__ import annotations
 import lxml
 import lxml.etree
-from pybr import PyBRLabel, QName
+from pybr import QName
+from pybr.networks import PresentationNetwork
 
-class PyBRPresentationGraph:
-    pass
 
 class PyBRCalculationGraph:
     pass
@@ -15,36 +14,32 @@ class PyBRDefinitionGraph:
 class PyBRComponent:
     """
     Implements XBRL components (also called roles)
-    A role has a definition (essentially a name) associated labels, an ID, and maybe a presentation- calculation- and definition-graph  
+    A role has a definition (essentially a name), an ID, and maybe a presentation- calculation- and definition-graph
+    TODO: update docstring
     """
 
     def __init__(
-            self, id: str, info: str, labels: list[PyBRLabel], 
-            presentation_graph: None|"PyBRPresentationGraph" = None, 
+            self, uri: str, info: str, 
+            presentation_graph: None|PresentationNetwork = None, 
             calculation_graph: None|"PyBRCalculationGraph" = None, 
             definition_graph: None|"PyBRDefinitionGraph" = None
             ) -> None:
-        self.__id = id
+        self.__uri = uri
         self.__info = info
-        self.__labels = labels
         self.__presentation_graph = presentation_graph
         self.__calculation_graph = calculation_graph
         self.__definition_graph = definition_graph
     
     # first class citizens
-    def get_id(self) -> str:
+    def get_URI(self) -> str:
         """Get the ID of the component"""
-        return self.__id
+        return self.__uri
 
     def get_info(self) -> str:
         """Get the definition of the component"""
         return self.__info
 
-    def get_labels(self) -> list[PyBRLabel]:
-        """Get the labels of the component"""
-        return self.__labels
-
-    def get_presentation(self) -> "PyBRPresentationGraph" | None:
+    def get_presentation(self) -> PresentationNetwork | None:
         """Get the presentation graph of the component"""
         return self.__presentation_graph
 
@@ -71,7 +66,7 @@ class PyBRComponent:
 
     def __str__(self) -> str:
         """Get a string representation of the component"""
-        return f"PyBRComponent(id='{self.__id}', definition='{self.__info}', labels={self.__labels}, presentation_graph={self.__presentation_graph}, calculation_graph={self.__calculation_graph}, definition_graph={self.__definition_graph})"
+        return f"PyBRComponent(id='{self.__uri}', definition='{self.__info}', presentation_graph={self.__presentation_graph}, calculation_graph={self.__calculation_graph}, definition_graph={self.__definition_graph})"
 
 
     # internal methods
@@ -79,8 +74,7 @@ class PyBRComponent:
     def from_xml(
         cls, 
         xml_element: lxml.etree._Element, 
-        labels: list[PyBRLabel],
-        presentation_graph: None|"PyBRPresentationGraph" = None, 
+        presentation_graph: None|PresentationNetwork = None, 
         calculation_graph: None|"PyBRCalculationGraph" = None, 
         definition_graph: None|"PyBRDefinitionGraph" = None
     ) -> PyBRComponent:
@@ -88,8 +82,11 @@ class PyBRComponent:
         Create a PyBRComponent from an lxml.etree._Element.
         """
         
-        id = xml_element.attrib["id"]
+        uri = xml_element.get("roleURI", None)
         nsmap = QName.get_nsmap()
+
+        if uri is None:
+            raise ValueError("The roleURI attribute is missing from the link:roleType element")
 
         # the info is in a child element of the xml_element called "definition"
         try:
@@ -98,4 +95,4 @@ class PyBRComponent:
             info = ""
         # info = xml_element.find("link:definition", namespaces=nsmap).text
 
-        return cls(id, info, labels, presentation_graph, calculation_graph, definition_graph)
+        return cls(uri, info, presentation_graph, calculation_graph, definition_graph)

@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from pybr import IReportElement, PyBRFact, PyBRLabel, PyBRComponent
+from pybr import IReportElement, PyBRFact, PyBRLabel, PyBRComponent, QName
 
 # Implemented as an abstract class
 class IFilingParser(ABC):
@@ -27,16 +27,16 @@ class IFilingParser(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def parse_facts(self) -> list[PyBRFact]:
-        """
-        Parse the facts.
-        """
-        raise NotImplementedError
-
-    @abstractmethod
     def parse_report_elements(self) -> list[IReportElement]:
         """
         Parse the concepts.
+        """
+        raise NotImplementedError
+    
+    @abstractmethod
+    def parse_facts(self, report_elements: dict[QName, IReportElement]) -> list[PyBRFact]:
+        """
+        Parse the facts.
         """
         raise NotImplementedError
     

@@ -5,9 +5,9 @@ import lxml.etree
 from pybr.parsers.IFilingParser import IFilingParser
 from pybr.parsers.dts import XMLSchemaManager
 from pybr import PyBRContext, PyBRConceptCharacteristic, PyBRUnitCharacteristic, PyBRAspect, PyBRFact, QName, PyBRLabel, PyBRComponent
+from pybr.networks import PresentationNetwork
 from pybr.parsers.XMLReportElementFactory import XMLReportElementFactory
 from pybr import IReportElement
-import editdistance
 
 class XMLFilingParser(IFilingParser):
     def __init__(self, filing_path: str, encoding="UTF-8") -> None:
@@ -131,8 +131,8 @@ class XMLFilingParser(IFilingParser):
         result = {
             "filing type": self.get_filing_type(),
             "report elements": self.parse_report_elements(),
-            "facts": self.parse_facts(),
-            "labels": self.parse_labels(),
+            "facts": self.parse_facts(self.__report_elements),
+            "labels": self.parse_labels(self.__report_elements),
             "components": self.parse_components()
         }
 
@@ -184,7 +184,7 @@ class XMLFilingParser(IFilingParser):
         return report_elems
     
 
-    def parse_facts(self) -> list[PyBRFact]:
+    def parse_facts(self, report_elements: dict[QName, IReportElement]) -> list[PyBRFact]:
         """
         Parse the facts.
         """
@@ -248,7 +248,7 @@ class XMLFilingParser(IFilingParser):
         return facts
     
 
-    def parse_labels(self) -> list[PyBRLabel]:
+    def parse_labels(self, report_elements: dict[QName, IReportElement]) -> list[PyBRLabel]:
         """
         Parse the labels
         @return: A list of all the labels in the filing
@@ -265,8 +265,40 @@ class XMLFilingParser(IFilingParser):
         for label_xml in labels_xml:
             label = PyBRLabel.from_xml(label_xml)
             labels.append(label)
-        
-        # TODO: utilize label locators/arcs the labels to the concepts, etc
+
+            # get the xlink:label attribute
+            # this attribute contains the label id
+            label_id = label_xml.get("{" + nsmap["xlink"] + "}label")
+
+            # get the corresponding labelarc xml element
+            # this element has the tag link:labelArc and the xlink:to attribute is the label id
+            labelarc_xml = self.xbrl_labels.find(f".//link:labelArc[@xlink:to='{label_id}']", namespaces=nsmap)
+
+            # get the locator id from the xlink:from attribute
+            locator_id = labelarc_xml.get("{" + nsmap["xlink"] + "}from")
+
+            # get the matching locator
+            # the locator has the tag link:loc and the xlink:label attribute is the locator id
+            locator_xml = self.xbrl_labels.find(f".//link:loc[@xlink:label='{locator_id}']", namespaces=nsmap)
+
+            # the xlink:href attribute of the locator contains the report element name
+            # split the href into an url and the filename
+            _, report_element_name = locator_xml.get("{" + nsmap["xlink"] + "}href").split("#")
+
+            # turn the report element name into a QName
+            # TODO: improve the segment that alters the report_element_name into a valid qname
+            # this is a temporary fix
+            # replace the last "_" with ":"
+            report_element_name = report_element_name.rsplit("_", 1)[0] + ":" + report_element_name.rsplit("_", 1)[1]
+
+            report_element_qname = QName.from_string(report_element_name)
+
+            # get the report element
+            report_element = report_elements[report_element_qname]
+
+            # add the label to the report element
+            report_element.add_label(label)
+
 
         return labels
 
@@ -298,13 +330,22 @@ class XMLFilingParser(IFilingParser):
 
             # TODO: actually parse the labels, presentation, calculation and definition graphs
             # right now it's just a mock
-            labels = []
-            presentation_graph = None
-            calculation_graph = None
-            definition_graph = None
+            
+            # parse the presentation_network
+            # first, get the roleuRI attr of the roleref
+            role_uri = presentation_roleref.get("roleURI")
+            # then get the link:presentationLink element with the xlink:role attribute equal to the role_uri
+            # this element is the presentation network
+            presentation_link_xml = self.xbrl_presentation_graph.find(f".//link:presentationLink[@xlink:role='{role_uri}']", namespaces=nsmap)
+            # TODO: make report elements an arg of parse_components instead of getting it via self.__report_elements
+            presentation_network = PresentationNetwork.from_xml(presentation_link_xml, self.__report_elements)
+
+
+            calculation_network = None
+            definition_network = None
 
             # parse the component
-            component = PyBRComponent.from_xml(component_xml, labels, presentation_graph, calculation_graph, definition_graph)
+            component = PyBRComponent.from_xml(component_xml, presentation_network, calculation_network, definition_network)
             components.append(component)
 
         return components

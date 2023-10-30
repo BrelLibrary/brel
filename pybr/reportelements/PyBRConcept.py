@@ -17,6 +17,10 @@ class PyBRConcept(IReportElement):
         # TODO: write docstrig
         return self.__labels
     
+    def add_label(self, label: PyBRLabel):
+        # TODO: write docstring
+        self.__labels.append(label)
+    
     def get_period_type(self):
         # TODO: implement
         raise NotImplementedError
@@ -35,12 +39,6 @@ class PyBRConcept(IReportElement):
         Create a PyBRConcept from an lxml.etree._Element.
         """
         # TODO: test this
-
-        # extract the metadata attributes from the xml element
-        other_attributes = {key: value for key, value in xml_element.attrib.items() if key not in ["id", "name"]}
-
-        # instantiate the PyBRConcept object
-        # TODO: add labels
         return cls(concept_qname, [])
     
     def __str__(self) -> str:

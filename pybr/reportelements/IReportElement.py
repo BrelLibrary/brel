@@ -11,3 +11,7 @@ class IReportElement(ABC):
     @abstractmethod
     def get_labels() -> list[PyBRLabel]:
         raise NotImplementedError
+    
+    @abstractmethod
+    def add_label(self, label: PyBRLabel):
+        raise NotImplementedError

@@ -15,6 +15,10 @@ class PyBRDimension(IReportElement):
         # TODO: write docstring
         return self.__labels
     
+    def add_label(self, label: PyBRLabel):
+        # TODO: write docstring
+        self.__labels.append(label)
+    
     def is_explicit(self) -> bool:
         # TODO: implement
         raise NotImplementedError

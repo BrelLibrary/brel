@@ -1,5 +1,6 @@
 from .QName import QName
 from .PyBRLabel import PyBRLabel
+from .PyBRLabel import PyBRLabelRole
 
 from .PyBRAspect import PyBRAspect
 

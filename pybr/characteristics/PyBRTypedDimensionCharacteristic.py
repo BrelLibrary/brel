@@ -4,16 +4,17 @@ from pybr import PyBRAspect, QName
 from pybr.characteristics import PyBRICharacteristic
 from pybr.reportelements import PyBRDimension, PyBRMember
 
-class PyBRExplicitDimensionCharacteristic(PyBRICharacteristic):
+class PyBRTypedDimensionCharacteristic(PyBRICharacteristic):
     """
     Class for representing an explicit dimension characteristic.
     An explicit dimension characteristic assigns a member-value to a dimension-aspect.
     """
 
-    def __init__(self, dimension: PyBRDimension, member : PyBRMember, aspect: PyBRAspect) -> None:
+    def __init__(self, dimension: PyBRDimension, value, aspect: PyBRAspect) -> None:
         self.__dimension = dimension
-        self.__member = member
+        self.__value = value
         self.__aspect = aspect
+        self.__type = type(value)
     
     def get_aspect(self) -> PyBRAspect:
         """
@@ -29,7 +30,7 @@ class PyBRExplicitDimensionCharacteristic(PyBRICharacteristic):
         Values of explicit dimension characteristics are members.
         @returns PyBRMember: the member of the explicit dimension characteristic.
         """
-        return self.__member
+        return self.__value
     
     def get_name(self) -> PyBRDimension:
         """
@@ -39,16 +40,23 @@ class PyBRExplicitDimensionCharacteristic(PyBRICharacteristic):
         """
         return self.__dimension
     
+    def get_type(self) -> type:
+        """
+        returns the type of the explicit dimension characteristic.
+        @returns type: the type of the explicit dimension characteristic.
+        """
+        return self.__type
+    
     def __str__(self) -> str:
         """
         returns a string representation of the explicit dimension characteristic.
         This representation is the QName of the member.
         @returns str: member's QName
         """
-        return self.__member.__str__()
+        return self.__value.__str__()
     
     @classmethod
-    def from_xml(cls, xml_element: lxml.etree._Element, dimension: PyBRDimension, member: PyBRMember) -> "PyBRExplicitDimensionCharacteristic":
+    def from_xml(cls, xml_element: lxml.etree._Element, dimension: PyBRDimension, value) -> "PyBRTypedDimensionCharacteristic":
         """
         Create a PyBRDimension from an lxml.etree._Element.
         @param xml_element: the xml subtree from which the PyBRDimension is created
@@ -65,4 +73,4 @@ class PyBRExplicitDimensionCharacteristic(PyBRICharacteristic):
         dimension_axis = xml_element.attrib["dimension"]
         dimension_aspect = PyBRAspect.from_QName(QName.from_string(dimension_axis))
 
-        return cls(dimension, member, dimension_aspect)   
+        return cls(dimension, value, dimension_aspect)
