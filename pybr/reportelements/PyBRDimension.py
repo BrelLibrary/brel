@@ -6,28 +6,51 @@ class PyBRDimension(IReportElement):
     def __init__(self, name: QName, labels: list[PyBRLabel]) -> None:
         self.__name = name
         self.__labels = labels
+        self.__is_explicit = True
+        self.__type = None
     
     def get_name(self) -> QName:
-        # TODO: write docstring
+        """
+        Get the name of the dimension.
+        @return: QName containing the name of the dimension
+        """
         return self.__name
     
     def get_labels(self) -> list[PyBRLabel]:
-        # TODO: write docstring
+        """
+        Get the labels of the dimension.
+        @return: list[PyBRLabel] containing the labels of the dimension
+        """        
         return self.__labels
     
     def add_label(self, label: PyBRLabel):
-        # TODO: write docstring
+        """
+        Add a label to the dimension.
+        @param label: the label to add to the dimension
+        """
         self.__labels.append(label)
     
     def is_explicit(self) -> bool:
-        # TODO: implement
-        raise NotImplementedError
+        """
+        Check if the dimension is explicit.
+        @return: True 'IFF' the dimension is explicit, False otherwise
+        """
+        return self.__is_explicit
     
     def get_type(self):
-        # TODO: implement
-        # this method only works if it is a typed dimension
-        # in that case, it returns the QName of the type or some other representation of the type
-        raise NotImplementedError
+        """
+        Get the type of the dimension.
+        @return: type of the dimension
+        """
+        # TODO: currently returns a string, should return a type
+        if self.__is_explicit:
+            raise Exception("Cannot get type of explicit dimension")
+        
+        return self.__type
+    
+    def make_typed(self, dim_type: type):
+        self.__is_explicit = False
+        self.__type = dim_type
     
     def __str__(self) -> str:
         return self.__name.__str__()

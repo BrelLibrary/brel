@@ -8,15 +8,24 @@ class PyBRAbstract(IReportElement):
         self.__labels = labels
     
     def get_name(self) -> QName:
-        # TODO: write docstring
+        """
+        Get the name of the abstract element.
+        @return: QName containing the name of the abstract element
+        """        
         return self.__qname
     
     def get_labels(self) -> list[PyBRLabel]:
-        # TODO: write docstring
+        """
+        Get the labels of the abstract element.
+        @return: list[PyBRLabel] containing the labels of the abstract element
+        """
         return self.__labels
     
     def add_label(self, label: PyBRLabel):
-        # TODO: write docstring
+        """
+        Add a label to the abstract element.
+        @param label: the label to add to the abstract element
+        """
         self.__labels.append(label)
     
     def __str__(self) -> str:

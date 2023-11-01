@@ -2,9 +2,10 @@ import lxml
 import lxml.etree
 from pybr import QName
 from pybr.reportelements import *
+from pybr.parsers.dts import ISchemaManager
 
 class XMLReportElementFactory():
-    def create(self, xml_element: lxml.etree._Element, report_element_name: QName) -> IReportElement:
+    def create(self, xml_element: lxml.etree._Element, report_element_name: QName) -> IReportElement | None:
         """
         Creates a report element from an lxml.etree._Element.
         The kind of report element created depends on the structure of the lxml.etree._Element.
@@ -18,18 +19,29 @@ class XMLReportElementFactory():
         # if there is an "abstract" attribute and the type attribute is "dtr-types1:domainItemType", then it is a Member
         # else it is an Abstract
         # TODO: Think about how to differentiate between LineItems and Abstracts. For now, we just return an Abstract.
-        # TODO: Implement Labels
-        has_abstract = xml_element.get("abstract", None) is not None
+        # TODO: check prefixes, not just local_names
+        nsmap = QName.get_nsmap()
+
+        is_abstract = xml_element.get("abstract", "false") == "true"
+
+        is_item = "item" in xml_element.get("substitutionGroup", "")
+        is_hypercube_item = "hypercubeItem" in xml_element.get("substitutionGroup", "")
+        is_dimension_item = "dimensionItem" in xml_element.get("substitutionGroup", "")
+        is_domain_item_type = "domainItemType" in xml_element.get("type", "")
+        is_item = "item" in xml_element.get("substitutionGroup", "")
+
 
         # TODO: think if this is robust enough. maybe I cannot just toss the namespace away
-        if not has_abstract:
+        if not is_abstract and is_item:
             return PyBRConcept.from_xml(xml_element, report_element_name)
-        elif "hypercubeItem" in xml_element.get("substitutionGroup", ""):
+        elif is_abstract and is_hypercube_item:
             return PyBRHypercube(report_element_name, [])
-        elif "dimensionItem" in xml_element.get("substitutionGroup", ""):
+        elif is_abstract and is_dimension_item:
             return PyBRDimension(report_element_name, [])
-        elif "domainItemType" in xml_element.get("type", ""):
+        elif is_abstract and is_domain_item_type and is_item:
             return PyBRMember(report_element_name, [])
-        else:
+        elif is_abstract:
             # print(report_element_name, "is an abstract")
             return PyBRAbstract(report_element_name, [])
+        else:
+            return None

@@ -4,7 +4,11 @@ from pybr.reportelements import IReportElement
 from pybr import PyBRLabelRole, QName
 
 class NetworkNode():
-    # TODO: implement
+    """
+    Class for representing a node in a network.
+    Since a node can have children, nodes can also be viewed as trees.
+    """
+    # TODO: docstrings
 
     def __init__(
             self, 
@@ -90,7 +94,6 @@ class NetworkNode():
 
         # get the arc role
         # TODO: ask ghislain if I should create an arcrole enum instead of a str
-        # TODO get this from component.getURI()
         arc_role = xml_arc.attrib.get("{" + nsmap["xlink"] + "}arcrole")
 
         # get the order and parse it to an int

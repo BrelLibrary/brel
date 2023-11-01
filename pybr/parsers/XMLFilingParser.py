@@ -4,10 +4,12 @@ import lxml
 import lxml.etree
 from pybr.parsers.IFilingParser import IFilingParser
 from pybr.parsers.dts import XMLSchemaManager
-from pybr import PyBRContext, PyBRConceptCharacteristic, PyBRUnitCharacteristic, PyBRAspect, PyBRFact, QName, PyBRLabel, PyBRComponent
+from pybr import PyBRContext, PyBRConceptCharacteristic, PyBRUnitCharacteristic, PyBRAspect, PyBRFact, QName, PyBRLabel, PyBRComponent, PyBRTypedDimensionCharacteristic
 from pybr.networks import PresentationNetwork
+from pybr.reportelements import PyBRDimension, PyBRMember, PyBRConcept
 from pybr.parsers.XMLReportElementFactory import XMLReportElementFactory
 from pybr import IReportElement
+from typing import cast
 
 class XMLFilingParser(IFilingParser):
     def __init__(self, filing_path: str, encoding="UTF-8") -> None:
@@ -43,7 +45,6 @@ class XMLFilingParser(IFilingParser):
             elif filename.endswith("_def.xml"):
                 definition_filename = filename
         
-        # TODO: Afaik not all of these files are required. e.g. the presentation graph is not required. So make this more permissive.
         # if the filenames are not found, raise an error
         if instance_filename is None:
             raise ValueError("No instance file found")
@@ -107,10 +108,6 @@ class XMLFilingParser(IFilingParser):
         for prefix, url in nsmap.items():
             QName.add_to_nsmap(url, prefix)
         
-        # also add the xml namespace
-        # TODO: find a nicer fix
-        QName.add_to_nsmap("http://www.w3.org/XML/1998/namespace", "xml")
-
     
     def __print(self, output: str):
         """
@@ -128,24 +125,23 @@ class XMLFilingParser(IFilingParser):
         - facts: list[PyBRFact]. The facts in the filing.
         - concepts: list[PyBRConcept]. The concepts in the filing, even those that are not reported.
         """
+        report_elements = self.parse_report_elements()
+
         result = {
             "filing type": self.get_filing_type(),
-            "report elements": self.parse_report_elements(),
-            "facts": self.parse_facts(self.__report_elements),
-            "labels": self.parse_labels(self.__report_elements),
+            "report elements": report_elements,
+            "facts": self.parse_facts(report_elements),
+            "labels": self.parse_labels(report_elements),
             "components": self.parse_components()
         }
 
         return result
     
-    def parse_report_elements(self) -> list[IReportElement]:
+    def parse_report_elements(self) -> dict[QName, IReportElement]:
         """
         Parse the concepts.
         @return: A list of all the concepts in the filing, even those that are not reported.
         """
-        # TODO: currently parses all report elements as concepts. This is not correct.
-        # add support for abstract, lineitem, dimension, hypercube and member
-        report_elems = []
 
         # get all files in the cache
         filenames = os.listdir(self.__cache_location)
@@ -174,14 +170,45 @@ class XMLFilingParser(IFilingParser):
                 if reportelem_qname in self.__report_elements:
                     reportelem = self.__report_elements[reportelem_qname]
                 else:
-                    # reportelem = PyBRConcept.from_xml(re_xml, reportelem_qname)
-                    # self.__report_elements[reportelem_qname] = reportelem
                     reportelem = self.__report_element_factory.create(re_xml, reportelem_qname)
-                    self.__report_elements[reportelem_qname] = reportelem
 
-                report_elems.append(reportelem)
+                    if reportelem is not None:
+                        self.__report_elements[reportelem_qname] = reportelem
+
+                    # if the report element is a dimension, then check if there is a typedDomainRef
+                    if isinstance(reportelem, PyBRDimension):
+                        # get the prefix binding for the xbrldt namespace in the context of the schema
+                        # Note: I cannot get this via QName.get_nsmap() because there might be multiple schemas with different prefix bindings for the xbrldt namespace
+                        xbrldt_prefix = schema_xml.getroot().nsmap["xbrldt"]
+                        typed_domain_ref = f"{{{xbrldt_prefix}}}typedDomainRef"
+
+                        # check if the xml element has a xbrldt:typedDomainRef attributeq
+                        if typed_domain_ref in re_xml.attrib:
+                            # get the prefix binding for the xbrldt namespace in the context of the schema
+
+                            ref_full = re_xml.get(typed_domain_ref)
+
+                            # get the schema and the element id
+                            ref_schema_name, ref_id = ref_full.split("#")
+
+                            # get the right schema
+                            if ref_schema_name == "":
+                                refschema = schema_xml
+                            else:
+                                refschema = self.__schema_manager.get_schema(ref_schema_name)
+                            
+                            # get the element the ref is pointing to
+                            # it is an xs:element with the id attr being the ref
+                            ref_xml = refschema.find(f".//*[@id='{ref_id}']", namespaces=None)
+
+                            # get the type of ref_xml
+                            ref_type = ref_xml.get("type")
+
+                            # set the type of the dimension
+                            # TODO: ref_type is a str. It should be a QName or type
+                            reportelem.make_typed(ref_type)
         
-        return report_elems
+        return self.__report_elements
     
 
     def parse_facts(self, report_elements: dict[QName, IReportElement]) -> list[PyBRFact]:
@@ -191,7 +218,6 @@ class XMLFilingParser(IFilingParser):
         # get all xml elements in the instance that have a contextRef attribute
         xml_facts = self.xbrl_instance.findall(".//*[@contextRef]", namespaces=None)
 
-        nsmap = QName.get_nsmap()
 
         facts = []
         for xml_fact in xml_facts:
@@ -202,25 +228,27 @@ class XMLFilingParser(IFilingParser):
             # the context xml element has the tag {{*}}context and the id is the context_id
             xml_context = self.xbrl_instance.find(f"{{*}}context[@id='{context_id}']")
 
-            # then parse the context
-            # TODO: instead of passing all report elements, only pass the ones that are actually used in the context
-            # this can potentially save a lot of time
-            context = PyBRContext.from_xml(xml_context, self.__report_elements)
- 
+
             # get the unit id
             unit_id = xml_fact.get("unitRef")
 
-            # if there is a unit id, then find the unit xml element, parse it and add it to the context
+            # get the unit and concept characteristics
+            # Not all of the characteristics of a context are part of the "syntactic context" xml element
+            # These characteristics need to be searched for in the xbrl instance, parsed separately and added to the context
+            # These characteristics are the concept (mandatory) and the unit (optional)
+            characteristics = []
+
+            # if there is a unit id, then find the unit xml element, parse it and add it to the characteristics list
             if unit_id:
                 # check cache
                 if unit_id in self.__unit_c_cache:
-                    unit = self.__unit_c_cache[unit_id]
+                    unit_characteristic = self.__unit_c_cache[unit_id]
                 else:
                     xml_unit = self.xbrl_instance.find(f"{{*}}unit[@id='{unit_id}']")
-                    unit = PyBRUnitCharacteristic.from_xml(xml_unit)
-                    self.__unit_c_cache[unit_id] = unit
+                    unit_characteristic = PyBRUnitCharacteristic.from_xml(xml_unit)
+                    self.__unit_c_cache[unit_id] = unit_characteristic
                 
-                context.add_characteristic(PyBRAspect.UNIT, unit)
+                characteristics.append(unit_characteristic)
 
             # get the concept name              
             concept_name = xml_fact.tag                
@@ -230,15 +258,25 @@ class XMLFilingParser(IFilingParser):
                 concept_characteristic = self.__concept_c_cache[concept_qname]
             else:
                 # the concept has to be in the report elements cache. otherwise it does not exist
-                if concept_qname not in self.__report_elements.keys():
+                if concept_qname not in report_elements.keys():
                     raise ValueError(f"Concept {concept_qname} not found in report elements")
                 
                 # wrap the concept in a characteristic
-                concept = self.__report_elements[concept_qname]
+                concept = cast(PyBRConcept, report_elements[concept_qname])
+
+                if concept is None:
+                    raise ValueError(f"Concept {concept_qname} not found in report elements")
+                
+                if not isinstance(concept, PyBRConcept):
+                    raise ValueError(f"Concept {concept_qname} is not a concept")
+
                 concept_characteristic = PyBRConceptCharacteristic(concept)
 
-            # add the concept to the context
-            context.add_characteristic(PyBRAspect.CONCEPT, concept_characteristic)
+            # add the concept to the characteristic list
+            characteristics.append(concept_characteristic)
+
+            # then parse the context
+            context = PyBRContext.from_xml(xml_context, characteristics, report_elements)
 
             # create the fact
             fact = PyBRFact.from_xml(xml_fact, context)
@@ -317,8 +355,7 @@ class XMLFilingParser(IFilingParser):
         presentation_rolerefs = self.xbrl_presentation_graph.findall(".//{*}roleRef", namespaces=None)
         for presentation_roleref in presentation_rolerefs:
             # get the href attribute
-            # TODO: remove the url part
-            href = presentation_roleref.get("{http://www.w3.org/1999/xlink}href")
+            href = presentation_roleref.get("{" + nsmap["xlink"] + "}href")
             # split the href into an url and the filename
             url, component_name = href.split("#")
             
@@ -328,7 +365,6 @@ class XMLFilingParser(IFilingParser):
             # find the component xml element
             component_xml = schema_xml.find(f".//link:roleType[@id='{component_name}']", namespaces=nsmap)
 
-            # TODO: actually parse the labels, presentation, calculation and definition graphs
             # right now it's just a mock
             
             # parse the presentation_network
@@ -337,10 +373,9 @@ class XMLFilingParser(IFilingParser):
             # then get the link:presentationLink element with the xlink:role attribute equal to the role_uri
             # this element is the presentation network
             presentation_link_xml = self.xbrl_presentation_graph.find(f".//link:presentationLink[@xlink:role='{role_uri}']", namespaces=nsmap)
-            # TODO: make report elements an arg of parse_components instead of getting it via self.__report_elements
             presentation_network = PresentationNetwork.from_xml(presentation_link_xml, self.__report_elements)
 
-
+            # TODO: actually parse the calculation and definition graphs
             calculation_network = None
             definition_network = None
 

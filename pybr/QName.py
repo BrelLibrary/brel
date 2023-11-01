@@ -10,8 +10,7 @@ class QName:
         self.__local_name : str = local_name
 
         if uri not in QName.__url_to_namespace and prefix not in QName.__namespace_to_url:
-            QName.__url_to_namespace[uri] = prefix
-            QName.__namespace_to_url[prefix] = uri
+            self.add_to_nsmap(uri, prefix)
         
         self.__uri : str = uri
         self.__prefix : str = prefix
@@ -42,7 +41,12 @@ class QName:
     
     def __eq__(self, __value: object) -> bool:
         if isinstance(__value, QName):
-            return self.__uri == __value.get_URL() and self.__local_name == __value.get_local_name()
+            result = self.__uri == __value.get_URL() and self.__local_name == __value.get_local_name()
+            if not result and self.__prefix == __value.get_prefix() and self.__local_name == __value.get_local_name():
+                print(f"WARNING: The two QNames {self} and {__value} are not equal, but they have the same prefix and local name")
+                print(f"The first QName has the URL {self.__uri} and the second QName has the URL {__value.get_URL()}")
+            return result 
+
         else:
             return False
     
@@ -151,6 +155,19 @@ class QName:
         """
         if not validators.url(url):
             raise ValueError(f"Invalid URL: {url}. Maybe you switched the URL and the namespace?")
+        
+        if namespace is None:
+            return
+        
+        # TODO: This method is UNSAFE. There might be a case where the namespace map is not complete. So QName.__url_namespace_map[prefix] and QName.__namespace_url_map[uri] might raise KeyErrors
+        # Ask Ghislain about this
+        if url in cls.__url_to_namespace or namespace in cls.__namespace_to_url:
+            if namespace in cls.__namespace_to_url and cls.__namespace_to_url[namespace] != url:
+                print(f"WARNING: The namespace {namespace} is already in the namespace map, but it is mapped to a different URL")
+                print(f"Old URL: {cls.__namespace_to_url[namespace]}")
+                print(f"New URL: {url}")
+                print(f"The namespace {namespace} will be mapped to the old URL")
+            return
 
         cls.__url_to_namespace[url] = namespace
         cls.__namespace_to_url[namespace] = url

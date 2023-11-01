@@ -98,8 +98,21 @@ class PyBRLabel():
         # get the text
         text = xml_element.text
 
+        # get the binding to the xml schema instance namespace
+        # there is a xmlns:xml attribute that binds the 'xml' prefix to the xml schema instance namespace
+        # so get the namespaces that are bound to the 'xml' prefix in the children of the current element
+
         # get the language
-        language = xml_element.attrib.get(f"{{{nsmap['xml']}}}lang")
+        # language = xml_element.attrib.get(f"{{{nsmap['xml']}}}lang")
+        # filter through all attributes and get the one ending with 'lang'
+        language = None
+        for attribute in xml_element.attrib:
+            if attribute.endswith("lang"):
+                language = xml_element.attrib[attribute]
+                break
+        
+        if language is None:
+            raise ValueError(f"Could not find the language for the label {text}")
 
         # get the role
         role = PyBRLabelRole.from_url(xml_element.attrib.get(f"{{{nsmap['xlink']}}}role"))

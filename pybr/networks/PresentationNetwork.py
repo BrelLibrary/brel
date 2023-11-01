@@ -4,8 +4,12 @@ from pybr import PyBRComponent, QName
 from pybr.reportelements import IReportElement
 
 class PresentationNetwork:
+    """
+    Class for representing a presentation network.
+    A presentation network is a network of nodes that represent the presentation of a PyBRComponent.
+    """
     # TODO: write docstrings
-    def __init__(self, root: NetworkNode, link_role: str, link_name: QName) -> None:
+    def __init__(self, root: NetworkNode | None, link_role: str, link_name: QName) -> None:
         self.__root = root
         self.__link_role = link_role
         self.__link_name = link_name
@@ -79,7 +83,6 @@ class PresentationNetwork:
         xml_arcs = xml_element.findall(f".//link:presentationArc", namespaces=nsmap)
         for xml_arc in xml_arcs:
             # find the xlink:to and to attributes
-            # TODO: implement
             xml_to = xml_arc.get(f"{{{nsmap['xlink']}}}to")
             
             # find the link:loc xml element, where the xlink:label attribute is the xlink:to attribute

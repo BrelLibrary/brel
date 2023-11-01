@@ -6,8 +6,9 @@ import requests
 import validators
 from io import BytesIO
 from pybr import QName
+from pybr.parsers.dts import ISchemaManager
 
-class XMLSchemaManager:
+class XMLSchemaManager(ISchemaManager):
     """
     Class for downloading and caching XBRL taxonomies
     """
@@ -40,6 +41,12 @@ class XMLSchemaManager:
 
         self.__download_dts(schema_filename)
 
+        # iterate over all files in the cache and add them to the schema names
+        self.__schema_names = []
+        for filename in os.listdir(self.__cache_location):
+            if filename.endswith(".xsd"):
+                self.__schema_names.append(filename)
+
     def __url_to_filename(self, url: str) -> str:
         """
         Convert a url to a filename.
@@ -47,29 +54,11 @@ class XMLSchemaManager:
         @return: The filename.
         """
         # TODO: This is not good enough
-        return url.split("/")[-1]
-
-        # # first strip the protocol
-        # url = url.split("://")[-1]
-
-        # # then strip the file extension
-        # url = url.replace(".xsd", "")
-
-        # # then replace all slashes with underscores
-        # url = url.replace("/", "_")
-
-        # # then replace all colons with underscores
-        # url = url.replace(":", "_")
-
-        # # then replace all dots with underscores
-        # url = url.replace(".", "_")
-
-        # # add back the file extension
-        # url = url + ".xsd"
-
-        # return url
+        result = url.split("/")[-2:]
+        result = "_".join(result)
+        return result
     
-    def get_schema(self, schema_uri: str) -> lxml.etree._ElementTree:
+    def get_schema(self, schema_uri: str) -> lxml.etree._Element:
         """
         Load a schema, potentially from the cache.
         @param schema_filename: The filename of the schema.
@@ -77,6 +66,9 @@ class XMLSchemaManager:
         """
         if validators.url(schema_uri):
             schema_uri = self.__url_to_filename(schema_uri)
+        
+        if schema_uri not in self.__schema_names:
+            raise ValueError(f"The schema {schema_uri} is not in the dts")
 
         # check schema cache
         if schema_uri in self.__xbrl_schema_cache:
@@ -86,6 +78,13 @@ class XMLSchemaManager:
             self.__xbrl_schema_cache[schema_uri] = schema_xml
         
         return schema_xml
+    
+    def get_all_schemas(self) -> list[lxml.etree._Element]:
+        """
+        Returns all the schemas in the dts
+        @return: A list of lxml.etree._ElementTree representing all the schemas in the dts
+        """
+        return [self.get_schema(schema_name) for schema_name in self.__schema_names]
 
     def __download_dts(self, xsd_url, referencing_schema_url="."):
     

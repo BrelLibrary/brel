@@ -8,8 +8,7 @@ class PyBRUnitCharacteristic(PyBRICharacteristic):
     Class for representing an XBRL unit.
     It consists of and some stuff that I have not implemented yet
     """
-    # TODO: Units can be more complex than just a measure. Implement that.
-    __unit_cache = {}
+    __unit_cache: dict[QName, 'PyBRUnitCharacteristic'] = {}
 
     def __init__(self, name: QName, numerators: list[QName], denominators: list[QName]) -> None:
         """
@@ -58,8 +57,7 @@ class PyBRUnitCharacteristic(PyBRICharacteristic):
         """
         # return self.__name.__str__()
         # it's probably better to just return the localname of the unit
-        # TODO: think about this once more
-        return self.__name.get_local_name()
+        return self.__name.__str__()
     
     def is_simple(self) -> bool:
         """
@@ -108,7 +106,7 @@ class PyBRUnitCharacteristic(PyBRICharacteristic):
         unit_qname = QName(unit_url, unit_prefix, unit_id)
 
         if unit_qname in cls.__unit_cache:
-            return cls.__unit_cache[unit_id]
+            return cls.__unit_cache[unit_qname]
 
         return cls(unit_qname, numerators, denominators)
     

@@ -9,6 +9,8 @@ class PyBRPeriodCharacteristic(PyBRICharacteristic):
     Associates the aspect PyBRAspect.PERIOD with a value.
     The value can be an instant or a duration.
     """
+    # TODO: currently the value is a string, but it should be a datetime or at least check if the string is a valid date/datetime
+    # TODO: docstrings
 
     def __init__(self) -> None:
         self.__is_instant: bool = False
@@ -88,7 +90,6 @@ class PyBRPeriodCharacteristic(PyBRICharacteristic):
             return ""
     
     def get_value(self) -> 'PyBRPeriodCharacteristic':
-        # TODO: maybe change this to a datetime
         return self
     
     def get_aspect(self) -> PyBRAspect:

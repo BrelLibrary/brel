@@ -1,4 +1,4 @@
-from pybr import PyBRFiling
+from pybr import PyBRFiling, PyBRAspect
 from pybr.utils import pprint_facts
 
 def example3():
@@ -18,5 +18,3 @@ def example3():
     
     # pretty print them
     pprint_facts(facts)
-
-

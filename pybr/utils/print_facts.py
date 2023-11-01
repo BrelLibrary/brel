@@ -48,7 +48,7 @@ def pprint_facts(facts: list[PyBRFact]):
     rows = []
     for fact in facts:
         context = fact.get_context()
-        row = [fact.get_id()] + [context.get_characteristic(dimension) for dimension in dimensions] + [fact.get_value_as_str()]
+        row = [fact._get_id()] + [context.get_characteristic(dimension) for dimension in dimensions] + [fact.get_value_as_str()]
         
         rows.append(row)
     

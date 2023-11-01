@@ -23,7 +23,7 @@ class PyBRFact:
         self.__fact_cache[id] = self
     
     # first class citizens
-    def get_id(self) -> str:
+    def _get_id(self) -> str:
         """Get the ID of the fact"""
         return self.__id
     
@@ -123,8 +123,8 @@ class PyBRFact:
         fact_unit_ref = fact_xml_element.get("unitRef", default=None)
 
         # check if the fact has the correct context
-        if fact_context_ref != context.get_id():
-            raise ValueError(f"Fact {fact_id} has context {fact_context_ref} but should have context {context.get_id()}")
+        if fact_context_ref != context._get_id():
+            raise ValueError(f"Fact {fact_id} has context {fact_context_ref} but should have context {context._get_id()}")
     
         # check if the fact has the correct unit
         context_unit:PyBRUnitCharacteristic = cast(PyBRUnitCharacteristic, context.get_characteristic(PyBRAspect.UNIT))

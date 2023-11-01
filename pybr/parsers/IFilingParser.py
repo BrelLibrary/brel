@@ -27,7 +27,7 @@ class IFilingParser(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def parse_report_elements(self) -> list[IReportElement]:
+    def parse_report_elements(self) -> dict[QName, IReportElement]:
         """
         Parse the concepts.
         """
