@@ -1,14 +1,15 @@
 import os
-import requests
 import lxml
 import lxml.etree
-from pybr.parsers.IFilingParser import IFilingParser
+
+from pybr.reportelements import IReportElement, PyBRDimension, PyBRConcept
+from pybr.characteristics import PyBRConceptCharacteristic, PyBRUnitCharacteristic
+from pybr import QName, PyBRLabel, PyBRContext, PyBRFact, PyBRComponent
+from pybr.parsers import IFilingParser, XMLReportElementFactory
 from pybr.parsers.dts import XMLSchemaManager
-from pybr import PyBRContext, PyBRConceptCharacteristic, PyBRUnitCharacteristic, PyBRAspect, PyBRFact, QName, PyBRLabel, PyBRComponent, PyBRTypedDimensionCharacteristic
 from pybr.networks import PresentationNetwork
-from pybr.reportelements import PyBRDimension, PyBRMember, PyBRConcept
-from pybr.parsers.XMLReportElementFactory import XMLReportElementFactory
-from pybr import IReportElement
+
+
 from typing import cast
 
 class XMLFilingParser(IFilingParser):
@@ -21,9 +22,6 @@ class XMLFilingParser(IFilingParser):
         self.__cache_location = "pybr/dts_cache/"
         self.__filing_location = filing_path
         self.__print_prefix = f"{'[XMLFilingParser]':<20}"
-        self.__report_elements = {}
-        self.__unit_c_cache = {}
-        self.__concept_c_cache = {}
 
         instance_filename = None
         labels_filename = None
@@ -114,30 +112,8 @@ class XMLFilingParser(IFilingParser):
         Print a message with the prefix [XMLFilingParser].
         """
         print(self.__print_prefix, output)
-
     
-    def parse(self) -> dict:
-        """
-        Parse the filing.
-        @return: the different components of the filing as a dictionary.
-        Currently returns the following:
-        - filing_type: str. The type of the filing. Currently "XML".
-        - facts: list[PyBRFact]. The facts in the filing.
-        - concepts: list[PyBRConcept]. The concepts in the filing, even those that are not reported.
-        """
-        report_elements = self.parse_report_elements()
-
-        result = {
-            "filing type": self.get_filing_type(),
-            "report elements": report_elements,
-            "facts": self.parse_facts(report_elements),
-            "labels": self.parse_labels(report_elements),
-            "components": self.parse_components()
-        }
-
-        return result
-    
-    def parse_report_elements(self) -> dict[QName, IReportElement]:
+    def parse_report_elements(self, labels: dict[QName, list[PyBRLabel]]) -> dict[QName, IReportElement]:
         """
         Parse the concepts.
         @return: A list of all the concepts in the filing, even those that are not reported.
@@ -145,6 +121,8 @@ class XMLFilingParser(IFilingParser):
 
         # get all files in the cache
         filenames = os.listdir(self.__cache_location)
+
+        report_elements: dict[QName, IReportElement] = {}
 
         for filename in filenames:
             if not filename.endswith(".xsd"):
@@ -167,13 +145,13 @@ class XMLFilingParser(IFilingParser):
                 reportelem_qname = QName(reportelem_url, reportelem_prefix, reportelem_name)
 
                 # check cache
-                if reportelem_qname in self.__report_elements:
-                    reportelem = self.__report_elements[reportelem_qname]
-                else:
-                    reportelem = self.__report_element_factory.create(re_xml, reportelem_qname)
+                if reportelem_qname not in report_elements.keys():
+                    # TODO: update
+                    re_labels = labels.get(reportelem_qname, [])
+                    reportelem = self.__report_element_factory.create(re_xml, reportelem_qname, re_labels)
 
                     if reportelem is not None:
-                        self.__report_elements[reportelem_qname] = reportelem
+                        report_elements[reportelem_qname] = reportelem
 
                     # if the report element is a dimension, then check if there is a typedDomainRef
                     if isinstance(reportelem, PyBRDimension):
@@ -208,7 +186,7 @@ class XMLFilingParser(IFilingParser):
                             # TODO: ref_type is a str. It should be a QName or type
                             reportelem.make_typed(ref_type)
         
-        return self.__report_elements
+        return report_elements
     
 
     def parse_facts(self, report_elements: dict[QName, IReportElement]) -> list[PyBRFact]:
@@ -217,6 +195,9 @@ class XMLFilingParser(IFilingParser):
         """
         # get all xml elements in the instance that have a contextRef attribute
         xml_facts = self.xbrl_instance.findall(".//*[@contextRef]", namespaces=None)
+
+        unit_cache: dict[str, PyBRUnitCharacteristic] = {}
+        concept_cache: dict[QName, PyBRConceptCharacteristic] = {}
 
 
         facts = []
@@ -241,12 +222,12 @@ class XMLFilingParser(IFilingParser):
             # if there is a unit id, then find the unit xml element, parse it and add it to the characteristics list
             if unit_id:
                 # check cache
-                if unit_id in self.__unit_c_cache:
-                    unit_characteristic = self.__unit_c_cache[unit_id]
+                if unit_id in unit_cache:
+                    unit_characteristic = unit_cache[unit_id]
                 else:
                     xml_unit = self.xbrl_instance.find(f"{{*}}unit[@id='{unit_id}']")
                     unit_characteristic = PyBRUnitCharacteristic.from_xml(xml_unit)
-                    self.__unit_c_cache[unit_id] = unit_characteristic
+                    unit_cache[unit_id] = unit_characteristic
                 
                 characteristics.append(unit_characteristic)
 
@@ -254,8 +235,8 @@ class XMLFilingParser(IFilingParser):
             concept_name = xml_fact.tag                
             concept_qname = QName.from_string(concept_name)
 
-            if concept_qname in self.__concept_c_cache:
-                concept_characteristic = self.__concept_c_cache[concept_qname]
+            if concept_qname in concept_cache:
+                concept_characteristic = concept_cache[concept_qname]
             else:
                 # the concept has to be in the report elements cache. otherwise it does not exist
                 if concept_qname not in report_elements.keys():
@@ -272,6 +253,9 @@ class XMLFilingParser(IFilingParser):
 
                 concept_characteristic = PyBRConceptCharacteristic(concept)
 
+                # add the concept to the cache
+                concept_cache[concept_qname] = concept_characteristic
+
             # add the concept to the characteristic list
             characteristics.append(concept_characteristic)
 
@@ -286,13 +270,13 @@ class XMLFilingParser(IFilingParser):
         return facts
     
 
-    def parse_labels(self, report_elements: dict[QName, IReportElement]) -> list[PyBRLabel]:
+    def parse_labels(self) -> dict[QName, list[PyBRLabel]]:
         """
         Parse the labels
         @return: A list of all the labels in the filing
         """
 
-        labels = []
+        labels: dict[QName, list[PyBRLabel]] = {}
 
         nsmap = QName.get_nsmap()
 
@@ -302,7 +286,6 @@ class XMLFilingParser(IFilingParser):
 
         for label_xml in labels_xml:
             label = PyBRLabel.from_xml(label_xml)
-            labels.append(label)
 
             # get the xlink:label attribute
             # this attribute contains the label id
@@ -331,19 +314,19 @@ class XMLFilingParser(IFilingParser):
 
             report_element_qname = QName.from_string(report_element_name)
 
-            # get the report element
-            report_element = report_elements[report_element_qname]
-
-            # add the label to the report element
-            report_element.add_label(label)
+            re_labels = labels.get(report_element_qname, [])
+            re_labels.append(label)
+            labels[report_element_qname] = re_labels
 
 
         return labels
 
-    def parse_components(self) -> list[PyBRComponent]:
+    def parse_components(self, report_elements: dict[QName, IReportElement]) -> tuple[list[PyBRComponent], dict[QName, IReportElement]]:
         """
         Parse the components.
-        @return: A list of all the components in the filing.
+        @return: 
+         - A list of all the components in the filing.
+         - A dictionary of all the report elements in the filing. These might have been altered by the components.
         """
 
         # TODO: for now the implementation assumes that only the roles. either do it calculation/definition as well or even for all roles in all schemas
@@ -373,7 +356,7 @@ class XMLFilingParser(IFilingParser):
             # then get the link:presentationLink element with the xlink:role attribute equal to the role_uri
             # this element is the presentation network
             presentation_link_xml = self.xbrl_presentation_graph.find(f".//link:presentationLink[@xlink:role='{role_uri}']", namespaces=nsmap)
-            presentation_network = PresentationNetwork.from_xml(presentation_link_xml, self.__report_elements)
+            presentation_network, report_elements = PresentationNetwork.from_xml(presentation_link_xml, report_elements)
 
             # TODO: actually parse the calculation and definition graphs
             calculation_network = None
@@ -383,7 +366,7 @@ class XMLFilingParser(IFilingParser):
             component = PyBRComponent.from_xml(component_xml, presentation_network, calculation_network, definition_network)
             components.append(component)
 
-        return components
+        return components, report_elements
         
     def get_filing_type(self) -> str:
         """

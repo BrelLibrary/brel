@@ -1,8 +1,8 @@
 from __future__ import annotations
 import lxml
 import lxml.etree
-from pybr import QName
-from pybr.networks import PresentationNetwork
+from .qname import QName
+from .networks import PresentationNetwork
 
 
 class PyBRCalculationGraph:

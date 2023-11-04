@@ -1,11 +1,11 @@
 import lxml
 import lxml.etree
-from pybr import QName
+
+from pybr import QName, PyBRLabel
 from pybr.reportelements import *
-from pybr.parsers.dts import ISchemaManager
 
 class XMLReportElementFactory():
-    def create(self, xml_element: lxml.etree._Element, report_element_name: QName) -> IReportElement | None:
+    def create(self, xml_element: lxml.etree._Element, report_element_name: QName, labels: list[PyBRLabel]) -> IReportElement | None:
         """
         Creates a report element from an lxml.etree._Element.
         The kind of report element created depends on the structure of the lxml.etree._Element.
@@ -20,8 +20,6 @@ class XMLReportElementFactory():
         # else it is an Abstract
         # TODO: Think about how to differentiate between LineItems and Abstracts. For now, we just return an Abstract.
         # TODO: check prefixes, not just local_names
-        nsmap = QName.get_nsmap()
-
         is_abstract = xml_element.get("abstract", "false") == "true"
 
         is_item = "item" in xml_element.get("substitutionGroup", "")
@@ -33,15 +31,15 @@ class XMLReportElementFactory():
 
         # TODO: think if this is robust enough. maybe I cannot just toss the namespace away
         if not is_abstract and is_item:
-            return PyBRConcept.from_xml(xml_element, report_element_name)
+            return PyBRConcept.from_xml(xml_element, report_element_name, labels)
         elif is_abstract and is_hypercube_item:
-            return PyBRHypercube(report_element_name, [])
+            return PyBRHypercube(report_element_name, labels)
         elif is_abstract and is_dimension_item:
-            return PyBRDimension(report_element_name, [])
+            return PyBRDimension(report_element_name, labels)
         elif is_abstract and is_domain_item_type and is_item:
-            return PyBRMember(report_element_name, [])
+            return PyBRMember(report_element_name, labels)
         elif is_abstract:
             # print(report_element_name, "is an abstract")
-            return PyBRAbstract(report_element_name, [])
+            return PyBRAbstract(report_element_name, labels)
         else:
             return None

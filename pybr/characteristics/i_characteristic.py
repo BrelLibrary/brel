@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from pybr import PyBRAspect
+from pybr.characteristics import PyBRAspect
 
 class PyBRICharacteristic(ABC):
     """
@@ -8,9 +8,9 @@ class PyBRICharacteristic(ABC):
     """
 
     @abstractmethod
-    def get_value():
+    def get_value(self):
         raise NotImplementedError
     
     @abstractmethod
-    def get_aspect() -> PyBRAspect:
+    def get_aspect(self) -> PyBRAspect:
         raise NotImplementedError

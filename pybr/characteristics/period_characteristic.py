@@ -1,7 +1,8 @@
 import lxml
 import lxml.etree
-from pybr import QName, PyBRAspect
-from pybr.characteristics import PyBRICharacteristic
+
+from pybr import QName
+from pybr.characteristics import PyBRAspect, PyBRICharacteristic
 
 class PyBRPeriodCharacteristic(PyBRICharacteristic):
     """

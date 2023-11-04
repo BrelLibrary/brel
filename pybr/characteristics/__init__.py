@@ -1,7 +1,10 @@
-from pybr.characteristics.PyBRICharacteristic import PyBRICharacteristic
-from pybr.characteristics.PyBRConceptCharacteristic import PyBRConceptCharacteristic
-from pybr.characteristics.PyBREntityCharacteristic import PyBREntityCharacteristic
-from pybr.characteristics.PyBRPeriodCharacteristic import PyBRPeriodCharacteristic
-from pybr.characteristics.PyBRUnitCharacteristic import PyBRUnitCharacteristic
-from pybr.characteristics.PyBRExplicitDimensionCharacteristic import PyBRExplicitDimensionCharacteristic
-from pybr.characteristics.PyBRTypedDimensionCharacteristic import PyBRTypedDimensionCharacteristic
+from .pybr_aspect import PyBRAspect
+
+from .i_characteristic import PyBRICharacteristic
+
+from .concept_characteristic import PyBRConceptCharacteristic
+from .entity_characteristic import PyBREntityCharacteristic
+from .explicit_dimension_characteristic import PyBRExplicitDimensionCharacteristic
+from .period_characteristic import PyBRPeriodCharacteristic
+from .typed_dimension_characteristic import PyBRTypedDimensionCharacteristic
+from .unit_characteristic import PyBRUnitCharacteristic

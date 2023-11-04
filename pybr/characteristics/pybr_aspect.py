@@ -1,3 +1,4 @@
+# from pybr import pybr_label, qname
 from pybr import PyBRLabel, QName
 
 class PyBRAspect:

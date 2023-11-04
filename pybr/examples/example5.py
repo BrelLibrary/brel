@@ -1,5 +1,5 @@
-from pybr import PyBRFiling, PyBRComponent
-from pybr.utils import pprint_network
+from pybr import PyBRFiling, PyBRLabelRole
+from pybr.utils import pprint_network, pprint_network_node
 from random import sample
 from editdistance import eval as edit_distance
 
@@ -14,7 +14,7 @@ def get_closest_match(target: str, candidates: list[str]) -> str:
     return min(candidates, key=lambda candidate: edit_distance(target.upper(), candidate.split("/")[-1].upper()))
 
 def example5():
-    filing = PyBRFiling.open("reports/coca_cola/")
+    filing = PyBRFiling.open("reports/aapl/")
 
     # get all components
     components = filing.get_all_components()
@@ -30,6 +30,7 @@ def example5():
         print(f"[SIZE: {len(pre_network.get_all_nodes()):3}] {component.get_URI()}")
 
     # read the user input
+    print()
     user_input = input("Enter a component name: \n")
 
     component_names = [component.get_URI() for component in components]
@@ -39,5 +40,11 @@ def example5():
     selected_component = filter(lambda component: component.get_URI() == selected_component_name, components).__next__()
 
     # print the selected component's presentation network
-    pprint_network(selected_component.get_presentation())
+
+    # short version for printing the network
+    # maybe needs a preferred lang arg as well
+    # pprint_network(selected_component.get_presentation())
+
+    # long version where you specify the preferred label role and whether or not to print the report element type
+    pprint_network(selected_component.get_presentation(), label_role=PyBRLabelRole.STANDARD_LABEL, print_report_element_type=True)
 

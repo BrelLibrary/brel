@@ -1,2 +1,2 @@
-from pybr.networks.NetworkNode import NetworkNode
-from pybr.networks.PresentationNetwork import PresentationNetwork
+from .network_node import NetworkNode
+from .presentation_network import PresentationNetwork

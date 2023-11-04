@@ -5,7 +5,7 @@ import lxml.etree
 import requests
 import validators
 from io import BytesIO
-from pybr import QName
+
 from pybr.parsers.dts import ISchemaManager
 
 class XMLSchemaManager(ISchemaManager):
@@ -27,7 +27,7 @@ class XMLSchemaManager(ISchemaManager):
             encoding="utf-8",
         )
 
-        self.__xbrl_schema_cache = {}
+        self.__xbrl_schema_cache: dict[str, lxml.etree._ElementTree] = {}
 
         filenames = os.listdir(filing_location)
         schema_filename = None

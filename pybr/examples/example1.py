@@ -1,4 +1,4 @@
-from pybr import PyBRFiling, QName
+from pybr import PyBRFiling
 from random import sample
 
 def example1():

@@ -1,7 +1,10 @@
 import lxml.etree
 
-from pybr.reportelements import IReportElement
-from pybr import PyBRLabelRole, QName
+# from pybr.reportelements import i_report_element
+# from pybr import PyBRLabelRole, QName
+from ..reportelements.i_report_element import IReportElement
+from ..pybr_label import PyBRLabelRole
+from ..qname import QName
 
 class NetworkNode():
     """
@@ -41,7 +44,7 @@ class NetworkNode():
         """
         return self.__children
 
-    def preferred_label_role(self) -> PyBRLabelRole:
+    def get_preferred_label_role(self) -> PyBRLabelRole:
         """
         Returns the preferred label role of this node
         @return: str containing the preferred label role of this node
@@ -60,10 +63,10 @@ class NetworkNode():
         raise NotImplementedError
     
     def get_arc_role(self) -> str:
-        raise NotImplementedError
+        return self.__arc_role
     
-    def get_arc_name(self) -> str:
-        raise NotImplementedError
+    def get_arc_name(self) -> QName:
+        return self.__arc_name
     
     def __str__(self) -> str:
         """
@@ -80,6 +83,13 @@ class NetworkNode():
         @param child: NetworkNode to be added as a child
         """
         self.__children.append(child)
+    
+    def _set_report_element(self, report_element: IReportElement):
+        """
+        Set the report element of this node
+        @param report_element: IReportElement to be set as the report element
+        """
+        self.__report_element = report_element
 
     @classmethod
     def from_xml(cls, xml_arc: lxml.etree._Element, report_element: IReportElement) -> 'NetworkNode':

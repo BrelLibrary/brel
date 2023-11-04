@@ -1,6 +1,5 @@
-from pybr import QName, PyBRLabel
+from pybr import PyBRLabel, QName
 from pybr.reportelements import IReportElement
-
 
 class PyBRDimension(IReportElement):
     def __init__(self, name: QName, labels: list[PyBRLabel]) -> None:

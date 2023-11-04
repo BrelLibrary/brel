@@ -1,8 +1,8 @@
 import lxml
 import lxml.etree
 
+from pybr import QName, PyBRLabel
 from pybr.reportelements import IReportElement
-from pybr import PyBRLabel, QName
 
 class PyBRConcept(IReportElement):
     # TODO: docstrings
@@ -66,7 +66,7 @@ class PyBRConcept(IReportElement):
         return self.__nillable        
     
     @classmethod
-    def from_xml(cls, xml_element: lxml.etree._Element, concept_qname: QName) -> "PyBRConcept":
+    def from_xml(cls, xml_element: lxml.etree._Element, concept_qname: QName, labels: list[PyBRLabel]) -> "PyBRConcept":
         """
         Create a PyBRConcept from an lxml.etree._Element.
         @param xml_element: lxml.etree._Element. The lxml.etree._Element to create the PyBRConcept from.
@@ -105,7 +105,7 @@ class PyBRConcept(IReportElement):
             raise Exception(f"Concept {concept_qname}:No data type found for concept. every (non-abstract) concept must have a data type")
         
 
-        return cls(concept_qname, [], period_type, balance_type, nillable, data_type)
+        return cls(concept_qname, labels, period_type, balance_type, nillable, data_type)
     
     def __str__(self) -> str:
         return self.__name.__str__()

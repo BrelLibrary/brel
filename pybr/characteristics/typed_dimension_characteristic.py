@@ -1,8 +1,14 @@
 import lxml
 import lxml.etree
-from pybr import PyBRAspect, QName
-from pybr.characteristics import PyBRICharacteristic
+# from pybr import PyBRAspect, qname
+# from pybr.characteristics import i_characteristic
+# from pybr.reportelements import PyBRDimension, PyBRMember
+
+# TODO: comes after report elements. so this can import report elements vanilla
+from pybr import QName
+from pybr.characteristics import PyBRAspect, PyBRICharacteristic
 from pybr.reportelements import PyBRDimension, PyBRMember
+
 
 class PyBRTypedDimensionCharacteristic(PyBRICharacteristic):
     """

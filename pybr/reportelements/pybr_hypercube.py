@@ -1,4 +1,4 @@
-from pybr import QName, PyBRLabel
+from pybr import PyBRLabel, QName
 from pybr.reportelements import IReportElement
 
 

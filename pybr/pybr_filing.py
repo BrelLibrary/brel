@@ -1,7 +1,20 @@
 import os
-from pybr import PyBRFact, PyBRAspect, PyBRFilingFilter, PyBRComponent, QName
-from pybr.reportelements import *
-from pybr.parsers import IFilingParser, XMLFilingParser
+# from . import PyBRFact, PyBRAspect, PyBRFilingFilter, PyBRComponent, QName
+from .pybr_fact import PyBRFact
+from .characteristics.pybr_aspect import PyBRAspect
+from .pybr_filing_filter import PyBRFilingFilter
+from .pybr_component import PyBRComponent
+from .qname import QName
+from .reportelements.i_report_element import IReportElement
+from .reportelements.pybr_abstract import PyBRAbstract
+from .reportelements.pybr_concept import PyBRConcept
+from .reportelements.pybr_dimension import PyBRDimension
+from .reportelements.pybr_hypercube import PyBRHypercube
+from .reportelements.pybr_lineitems import PyBRLineItems
+from .reportelements.pybr_member import PyBRMember
+# from .parsers import IFilingParser, XMLFilingParser
+from .parsers.i_filing_parser import IFilingParser
+from .parsers.xml_filing_parser import XMLFilingParser
 from typing import cast
 
 class PyBRFiling:

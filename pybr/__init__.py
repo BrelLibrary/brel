@@ -1,19 +1,14 @@
-from .QName import QName
-from .PyBRLabel import PyBRLabel
-from .PyBRLabel import PyBRLabelRole
-
-from .PyBRAspect import PyBRAspect
-
-from .characteristics import *
+from .qname import QName
+from .pybr_label import PyBRLabel, PyBRLabelRole
 
 from .reportelements import *
 
-from .PyBRContext import PyBRContext
+from .characteristics import *
 
-from .PyBRFact import PyBRFact
+from .pybr_context import PyBRContext
 
-from .PyBRFilingFilter import PyBRFilingFilter
 
-from .PyBRComponent import PyBRComponent
+from .pybr_fact import PyBRFact
+from .pybr_component import PyBRComponent
 
-from .PyBRFiling import PyBRFiling
+from .pybr_filing import PyBRFiling

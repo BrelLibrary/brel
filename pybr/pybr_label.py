@@ -1,7 +1,7 @@
 import lxml
 import lxml.etree
 from enum import Enum
-from pybr import QName
+from .qname import QName
 
 class PyBRLabelRole(Enum):
     # TODO: test if the labels beside the standard label and terse label actually work

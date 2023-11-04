@@ -1,4 +1,4 @@
-from pybr import PyBRFact, PyBRAspect, PyBRConceptCharacteristic, PyBRContext, PyBRExplicitDimensionCharacteristic, PyBREntityCharacteristic, PyBRFiling, PyBRLabel, PyBRPeriodCharacteristic, PyBRUnitCharacteristic, QName
+from pybr import PyBRFact, PyBRAspect, PyBRContext, PyBRFiling, PyBRLabel, QName
 from prettytable import PrettyTable
 
 def pprint_facts(facts: list[PyBRFact]):

@@ -1,8 +1,9 @@
 import lxml
 import lxml.etree
-from pybr import PyBRAspect, QName
-from pybr.characteristics import PyBRICharacteristic
-from pybr.reportelements import PyBRDimension, PyBRMember
+
+from pybr import QName
+from pybr.characteristics import PyBRAspect, PyBRICharacteristic
+from pybr.reportelements import PyBRDimension, PyBRMember   
 
 class PyBRExplicitDimensionCharacteristic(PyBRICharacteristic):
     """

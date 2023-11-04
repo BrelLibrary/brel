@@ -1,8 +1,18 @@
 import lxml
 import lxml.etree
-from pybr import PyBRPeriodCharacteristic, PyBREntityCharacteristic, PyBRExplicitDimensionCharacteristic, PyBRTypedDimensionCharacteristic, PyBRAspect, QName
-from pybr.characteristics import PyBRICharacteristic, PyBRConceptCharacteristic, PyBRUnitCharacteristic
-from pybr.reportelements import IReportElement, PyBRDimension, PyBRMember
+# from pybr import PyBRPeriodCharacteristic, PyBREntityCharacteristic, PyBRExplicitDimensionCharacteristic, PyBRTypedDimensionCharacteristic, PyBRAspect, QName
+from .characteristics.pybr_aspect import PyBRAspect
+from .qname import QName
+# from .characteristics import concept_characteristic, entity_characteristic, i_characteristic, period_characteristic, unit_characteristic
+# from .characteristics import 
+from .characteristics.concept_characteristic import PyBRConceptCharacteristic
+from .characteristics.i_characteristic import PyBRICharacteristic
+from .characteristics.entity_characteristic import PyBREntityCharacteristic
+from .characteristics.period_characteristic import PyBRPeriodCharacteristic
+from .characteristics.unit_characteristic import PyBRUnitCharacteristic
+from .characteristics.typed_dimension_characteristic import PyBRTypedDimensionCharacteristic
+from .characteristics.explicit_dimension_characteristic import PyBRExplicitDimensionCharacteristic
+from .reportelements import PyBRDimension, PyBRMember, IReportElement
 from typing import cast
 
 class PyBRContext:
@@ -12,6 +22,7 @@ class PyBRContext:
     There are 5 types of aspects: concept, period, entity, unit and additional dimensions.
     The only required aspect is the concept
     """
+    # TODO: implement second class citizens
 
     def __init__(self, context_id, aspects: list[PyBRAspect]) -> None:
         self.__id : str = context_id
@@ -21,21 +32,55 @@ class PyBRContext:
         self.__characteristics = {}
 
         self.__aspects.sort(key=lambda aspect: aspect.get_name())
-
-    def _get_id(self) -> str:
-        """
-        Get the id of the context.
-        This is an implementation detail of the underlying XBRL library.
-        It serves as a good sanity check 
-        """
-        return self.__id
     
+    # First class citizens
     def get_aspects(self) -> list[PyBRAspect]:
         """
         Get the aspects of the context.
         """
         return self.__aspects
+    
+    def get_characteristic(self, aspect: PyBRAspect) -> PyBRICharacteristic | None:
+        """
+        Get the value of an aspect.
+        """
+        if aspect not in self.__characteristics:
+            pass
+            return None
+        return self.__characteristics[aspect]
+    
+    # Second class citizens
+    def has_characteristic(self, aspect: PyBRAspect) -> bool:
+        raise NotImplementedError()
+    
+    def get_characteristic_as_str(self, aspect: PyBRAspect) -> str:
+        raise NotImplementedError()
+    
+    def get_characteristic_as_qname(self, aspect: PyBRAspect) -> QName:
+        raise NotImplementedError()
+    
+    def get_characteristic_as_int(self, aspect: PyBRAspect) -> int:
+        raise NotImplementedError()
+    
+    def get_characteristic_as_float(self, aspect: PyBRAspect) -> float:
+        raise NotImplementedError()
+    
+    def get_characteristic_as_bool(self, aspect: PyBRAspect) -> bool:
+        raise NotImplementedError()
+    
+    def get_concept(self) -> PyBRConceptCharacteristic:
+        raise NotImplementedError()
+    
+    def get_period(self) -> PyBRPeriodCharacteristic | None:
+        raise NotImplementedError()
+    
+    def get_entity(self) -> PyBREntityCharacteristic | None:
+        raise NotImplementedError()
+    
+    def get_unit(self) -> PyBRUnitCharacteristic | None:
+        raise NotImplementedError()
 
+    # Internal methods
     def __add_characteristic(self, characteristic: PyBRICharacteristic) -> None:
         """
         Add an aspect to the context.
@@ -51,14 +96,13 @@ class PyBRContext:
         else:
             pass
     
-    def get_characteristic(self, aspect: PyBRAspect) -> PyBRICharacteristic | None:
+    def _get_id(self) -> str:
         """
-        Get the value of an aspect.
+        Get the id of the context.
+        This is an implementation detail of the underlying XBRL library.
+        It serves as a good sanity check 
         """
-        if aspect not in self.__characteristics:
-            pass
-            return None
-        return self.__characteristics[aspect]
+        return self.__id
     
     def __str__(self) -> str:
         output = ""
