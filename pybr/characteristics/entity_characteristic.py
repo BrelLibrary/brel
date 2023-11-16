@@ -18,7 +18,8 @@ class PyBREntityCharacteristic(PyBRICharacteristic):
         self.__qname = qname
 
         self.__entity_cache[qname] = self
-    
+
+    # first class citizens    
     def get_aspect(self) -> PyBRAspect:
         """
         returns the aspect of the entity characteristic, which is PyBRAspect.ENTITY
@@ -40,7 +41,19 @@ class PyBREntityCharacteristic(PyBRICharacteristic):
         The scheme is the url of the entity qname
         """
         return self.__qname.get_URL()
-
+    
+    def __eq__(self, __value: object) -> bool:
+        """
+        compares the entity characteristic to another entity characteristic
+        @param __value: the entity characteristic to compare to
+        @returns bool: True if the entity characteristics are equal, False otherwise
+        """
+        if not isinstance(__value, PyBREntityCharacteristic):
+            return False
+        else:
+            return self.__qname == __value.__qname
+    
+    # internal methods
     @classmethod
     def from_xml(cls, xml_element: lxml.etree._Element) -> "PyBREntityCharacteristic":
         """
@@ -71,7 +84,10 @@ class PyBREntityCharacteristic(PyBRICharacteristic):
         if entity_prefix is None:
             raise ValueError(f"Could not find prefix for entity URL: {entity_url}")
         
-        entity_qname = QName(entity_url, entity_prefix, entity_id)
+        # TODO: move this and make it dynamic
+        QName.add_to_nsmap(entity_url, "CIK")
+        
+        entity_qname = QName.from_string(f"{entity_prefix}:{entity_id}")
 
         if entity_id in cls.__entity_cache:
             return cls.__entity_cache[entity_id]

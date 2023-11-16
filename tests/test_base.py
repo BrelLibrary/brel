@@ -1,5 +1,6 @@
-from pyfiling.base import NAME
+from pybr.base import NAME
 
 
 def test_base():
-    assert NAME == "pyfiling"
+    assert NAME == "pybr"
+    

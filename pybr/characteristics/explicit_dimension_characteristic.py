@@ -16,6 +16,7 @@ class PyBRExplicitDimensionCharacteristic(PyBRICharacteristic):
         self.__member = member
         self.__aspect = aspect
     
+    # first class citizens
     def get_aspect(self) -> PyBRAspect:
         """
         returns the aspect of the explicit dimension characteristic.
@@ -32,13 +33,21 @@ class PyBRExplicitDimensionCharacteristic(PyBRICharacteristic):
         """
         return self.__member
     
-    def get_name(self) -> PyBRDimension:
+    def get_dimension(self) -> PyBRDimension:
         """
         returns the name/dimension/axis of the explicit dimension characteristic.
         Names of explicit dimension characteristics are dimensions.
         @returns PyBRDimension: the dimension of the explicit dimension characteristic.
         """
         return self.__dimension
+    
+    # second class citizens
+    def get_member(self) -> PyBRMember:
+        """
+        returns the member of the explicit dimension characteristic.
+        @returns PyBRMember: the member of the explicit dimension characteristic.
+        """
+        return self.get_value()
     
     def __str__(self) -> str:
         """
@@ -48,6 +57,17 @@ class PyBRExplicitDimensionCharacteristic(PyBRICharacteristic):
         """
         return self.__member.__str__()
     
+    def __eq__(self, __value: object) -> bool:
+        """
+        returns whether the explicit dimension characteristic is equal to another object.
+        @param __value: the object to compare the explicit dimension characteristic to
+        @returns bool: whether the explicit dimension characteristic is equal to another object
+        """
+        if not isinstance(__value, PyBRExplicitDimensionCharacteristic):
+            return False
+        return self.__member == __value.__member and self.__aspect == __value.__aspect
+
+    # internal methods    
     @classmethod
     def from_xml(cls, xml_element: lxml.etree._Element, dimension: PyBRDimension, member: PyBRMember) -> "PyBRExplicitDimensionCharacteristic":
         """

@@ -11,4 +11,6 @@ from .pybr_context import PyBRContext
 from .pybr_fact import PyBRFact
 from .pybr_component import PyBRComponent
 
+from .pybr_filing_filter import PyBRFilingFilter
+
 from .pybr_filing import PyBRFiling

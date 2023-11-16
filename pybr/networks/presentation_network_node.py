@@ -1,12 +1,12 @@
 import lxml.etree
 
-# from pybr.reportelements import i_report_element
-# from pybr import PyBRLabelRole, QName
-from ..reportelements.i_report_element import IReportElement
-from ..pybr_label import PyBRLabelRole
-from ..qname import QName
+from pybr.networks import INetworkNode
+from pybr.reportelements import IReportElement
+from pybr import PyBRLabelRole, QName
 
-class NetworkNode():
+from typing import cast
+
+class PresentationNetworkNode(INetworkNode):
     """
     Class for representing a node in a network.
     Since a node can have children, nodes can also be viewed as trees.
@@ -16,11 +16,11 @@ class NetworkNode():
     def __init__(
             self, 
             report_element: IReportElement, 
-            children: list['NetworkNode'],
+            children: list['PresentationNetworkNode'],
             arc_role: str,
             arc_name: QName,
             preferred_label_role: PyBRLabelRole = PyBRLabelRole.STANDARD_LABEL,
-            order: int = 0
+            order: int = 1
             ):
         self.__report_element = report_element
         self.__children = children
@@ -37,12 +37,14 @@ class NetworkNode():
         """
         return self.__report_element
     
-    def get_children(self) -> list['NetworkNode']:
+    def get_children(self) -> list['INetworkNode']:
         """
         Returns the children of this node
         @return: list[NetworkNode] containing the children of this node
         """
-        return self.__children
+        # return lsitself.__children
+
+        return cast(list['INetworkNode'], self.__children)
 
     def get_preferred_label_role(self) -> PyBRLabelRole:
         """
@@ -59,9 +61,6 @@ class NetworkNode():
         return self.__order
 
     # Second class citizens
-    def get_all_decendents(self) -> list['NetworkNode']:
-        raise NotImplementedError
-    
     def get_arc_role(self) -> str:
         return self.__arc_role
     
@@ -77,12 +76,16 @@ class NetworkNode():
         return f"NetworkNode(report_element={self.__report_element}, no. children={len(self.__children)}"
     
     # Internal methods
-    def add_child(self, child: 'NetworkNode'):
+    def add_child(self, child: INetworkNode):
         """
         Add a child to this node
         @param child: NetworkNode to be added as a child
         """
+        if not isinstance(child, PresentationNetworkNode):
+            raise TypeError("child must be of type PresentationNetworkNode")
+
         self.__children.append(child)
+        self.__children.sort(key=lambda node: node.get_order())
     
     def _set_report_element(self, report_element: IReportElement):
         """
@@ -90,32 +93,3 @@ class NetworkNode():
         @param report_element: IReportElement to be set as the report element
         """
         self.__report_element = report_element
-
-    @classmethod
-    def from_xml(cls, xml_arc: lxml.etree._Element, report_element: IReportElement) -> 'NetworkNode':
-        """
-        Create a NetworkNode from an lxml.etree._Element.
-        """
-
-        nsmap = QName.get_nsmap()
-        
-        # get the preferred label role
-        preferred_label_role = PyBRLabelRole.from_url(xml_arc.attrib.get("preferredLabel"))
-
-        # get the arc role
-        # TODO: ask ghislain if I should create an arcrole enum instead of a str
-        arc_role = xml_arc.attrib.get("{" + nsmap["xlink"] + "}arcrole")
-
-        # get the order and parse it to an int
-        order = int(xml_arc.attrib.get("order"))
-
-        # the arcname is "link:presentationLink" as a QName for all presentation networks
-        # TODO: make this work for calculation networks and definition networks as well
-        arc_name = QName.from_string("link:presentationLink")
-
-        # create the node
-        return cls(report_element, [], arc_role, arc_name, preferred_label_role, order)
-
-
-
-

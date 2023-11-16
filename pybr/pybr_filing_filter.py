@@ -1,9 +1,8 @@
 from __future__ import annotations
 from enum import Enum
-from .pybr_fact import PyBRFact
-from .characteristics.pybr_aspect import PyBRAspect
-from .qname import QName
 
+from pybr import PyBRFact, QName
+from pybr.characteristics import PyBRAspect
 
 class PyBRFilingFilterType(Enum):
     """Enum for the different types of filters"""

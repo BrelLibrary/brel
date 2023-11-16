@@ -6,7 +6,7 @@ class PyBRDimension(IReportElement):
         self.__name = name
         self.__labels = labels
         self.__is_explicit = True
-        self.__type = None
+        self.__type: QName | None = None
     
     def get_name(self) -> QName:
         """
@@ -41,13 +41,12 @@ class PyBRDimension(IReportElement):
         Get the type of the dimension.
         @return: type of the dimension
         """
-        # TODO: currently returns a string, should return a type
         if self.__is_explicit:
             raise Exception("Cannot get type of explicit dimension")
         
         return self.__type
     
-    def make_typed(self, dim_type: type):
+    def make_typed(self, dim_type: QName):
         self.__is_explicit = False
         self.__type = dim_type
     

@@ -18,7 +18,48 @@ class PyBRPeriodCharacteristic(PyBRICharacteristic):
         self.instant_date: str|None = None
         self.start_date: str|None = None
         self.end_date: str|None = None
+    
+    # first class citizens
+    def is_instant(self) -> bool:
+        return self.__is_instant
+    
+    def get_start_period(self) -> str:
+        if self.start_date:
+            return self.start_date
+        else:
+            return ""
+    
+    def get_end_period(self) -> str:
+        if self.end_date:
+            return self.end_date
+        else:
+            return ""
+    
+    def get_instant_period(self) -> str:
+        if self.instant_date:
+            return self.instant_date
+        else:
+            return ""
+    
+    def get_value(self) -> 'PyBRPeriodCharacteristic':
+        return self
+    
+    def get_aspect(self) -> PyBRAspect:
+        return PyBRAspect.PERIOD
 
+    def __str__(self) -> str:
+        if self.__is_instant:
+            return f"on {self.instant_date}"
+        else:
+            return f"from {self.start_date} to {self.end_date}"
+    
+    def __eq__(self, __value: object) -> bool:
+        if not isinstance(__value, PyBRPeriodCharacteristic):
+            return False
+        else:
+            return str(self) == str(__value)
+    
+    # Internal methods
     @classmethod
     def instant(cls, instant_date: str) -> "PyBRPeriodCharacteristic":
         """
@@ -63,35 +104,3 @@ class PyBRPeriodCharacteristic(PyBRICharacteristic):
             end_date = xml_element.find("{*}endDate", nsmap).text
             return cls.duration(start_date, end_date)
     
-    def __str__(self) -> str:
-        if self.__is_instant:
-            return f"on {self.instant_date}"
-        else:
-            return f"from {self.start_date} to {self.end_date}"
-    
-    def is_instant(self) -> bool:
-        return self.__is_instant
-    
-    def get_start_period(self) -> str:
-        if self.start_date:
-            return self.start_date
-        else:
-            return ""
-    
-    def get_end_period(self) -> str:
-        if self.end_date:
-            return self.end_date
-        else:
-            return ""
-    
-    def get_instant_period(self) -> str:
-        if self.instant_date:
-            return self.instant_date
-        else:
-            return ""
-    
-    def get_value(self) -> 'PyBRPeriodCharacteristic':
-        return self
-    
-    def get_aspect(self) -> PyBRAspect:
-        return PyBRAspect.PERIOD

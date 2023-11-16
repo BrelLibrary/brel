@@ -8,9 +8,13 @@ class ISchemaManager(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def get_schema(self, schema_uri: str) -> lxml.etree._Element:
+    def get_schema(self, schema_uri: str) -> lxml.etree._ElementTree:
         raise NotImplementedError
     
     @abstractmethod
-    def get_all_schemas(self) -> list[lxml.etree._Element]:
+    def get_all_schemas(self) -> list[lxml.etree._ElementTree]:
+        raise NotImplementedError
+    
+    @abstractmethod
+    def get_schema_names(self) -> list[str]:
         raise NotImplementedError

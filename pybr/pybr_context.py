@@ -29,7 +29,7 @@ class PyBRContext:
 
         # aspects are the axis, characteristics are the values per axis
         self.__aspects : list[PyBRAspect] = aspects
-        self.__characteristics = {}
+        self.__characteristics: dict[PyBRAspect, PyBRICharacteristic] = {}
 
         self.__aspects.sort(key=lambda aspect: aspect.get_name())
     
@@ -44,15 +44,16 @@ class PyBRContext:
         """
         Get the value of an aspect.
         """
-        if aspect not in self.__characteristics:
-            pass
-            return None
-        return self.__characteristics[aspect]
+        return next((c for a, c in self.__characteristics.items() if a == aspect), None)
     
     # Second class citizens
     def has_characteristic(self, aspect: PyBRAspect) -> bool:
-        raise NotImplementedError()
+        """
+        Check if the context has a certain aspect.
+        """
+        return any(aspect == aspect for aspect in self.__aspects)
     
+    # TODO: implement
     def get_characteristic_as_str(self, aspect: PyBRAspect) -> str:
         raise NotImplementedError()
     
@@ -69,16 +70,28 @@ class PyBRContext:
         raise NotImplementedError()
     
     def get_concept(self) -> PyBRConceptCharacteristic:
-        raise NotImplementedError()
+        """
+        Get the concept of the context.
+        """
+        return cast(PyBRConceptCharacteristic, self.get_characteristic(PyBRAspect.CONCEPT))
     
     def get_period(self) -> PyBRPeriodCharacteristic | None:
-        raise NotImplementedError()
+        """
+        Get the period of the context.
+        """
+        return cast(PyBRPeriodCharacteristic, self.get_characteristic(PyBRAspect.PERIOD))
     
     def get_entity(self) -> PyBREntityCharacteristic | None:
-        raise NotImplementedError()
+        """
+        Get the entity of the context.
+        """
+        return cast(PyBREntityCharacteristic, self.get_characteristic(PyBRAspect.ENTITY))
     
     def get_unit(self) -> PyBRUnitCharacteristic | None:
-        raise NotImplementedError()
+        """
+        Get the unit of the context.
+        """
+        return cast(PyBRUnitCharacteristic, self.get_characteristic(PyBRAspect.UNIT))
 
     # Internal methods
     def __add_characteristic(self, characteristic: PyBRICharacteristic) -> None:
@@ -109,6 +122,13 @@ class PyBRContext:
         for aspect in self.__aspects:
             output += f"{aspect} "
         return output
+    
+    def __eq__(self, __value: object) -> bool:
+        if not isinstance(__value, PyBRContext):
+            return False
+        
+        # TODO: dont use the _id, compare the aspects instead
+        return self._get_id() == __value._get_id()
     
     @classmethod
     def from_xml(cls, xml_element: lxml.etree._Element, characteristics: list[PyBRUnitCharacteristic | PyBRConceptCharacteristic], report_elements: dict[QName, IReportElement]) -> "PyBRContext":
@@ -162,7 +182,7 @@ class PyBRContext:
                         raise ValueError("Dimension or member not found in report elements. Please make sure that the dimension and member are in the report elements.")
                     
                     # create and add the characteristic
-                    dimension_characteristic = PyBRExplicitDimensionCharacteristic.from_xml(xml_dimension, dimension, member)
+                    dimension_characteristic: PyBRICharacteristic = PyBRExplicitDimensionCharacteristic.from_xml(xml_dimension, dimension, member)
                     context.__add_characteristic(dimension_characteristic)
                 # if it is a typed dimension, the tag is xbrli:typedMember
                 elif "typedMember" in xml_dimension.tag: # TODO: make this more robust
@@ -184,7 +204,7 @@ class PyBRContext:
                         raise ValueError("Dimension not found in report elements. Please make sure that the dimension is in the report elements.")
                     
                     # create and add the characteristic
-                    dimension_characteristic = PyBRTypedDimensionCharacteristic.from_xml(xml_dimension, dimension, dimension_value)
+                    dimension_characteristic: PyBRICharacteristic = PyBRTypedDimensionCharacteristic.from_xml(xml_dimension, dimension, dimension_value)
                     context.__add_characteristic(dimension_characteristic)
                 else:
                     raise ValueError("Unknown dimension type. Please make sure that the dimension is either an explicitMember or a typedMember.")

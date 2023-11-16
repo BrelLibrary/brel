@@ -3,12 +3,15 @@ import lxml
 import lxml.etree
 from prettytable import PrettyTable
 # from pybr import PyBRContext, PyBRConceptCharacteristic, PyBRUnitCharacteristic, PyBRAspect, PyBRPeriodCharacteristic, QName
-from .pybr_context import PyBRContext
-from .characteristics.pybr_aspect import PyBRAspect
-from .characteristics import concept_characteristic
-from .characteristics import unit_characteristic
-from .characteristics import period_characteristic
-from .qname import QName
+# from .pybr_context import PyBRContext
+# from .characteristics.pybr_aspect import PyBRAspect
+# from .characteristics import concept_characteristic
+# from .characteristics import unit_characteristic
+# from .characteristics import period_characteristic
+# from .qname import QName
+
+from pybr import PyBRContext, QName
+from pybr.characteristics import PyBRConceptCharacteristic, PyBRUnitCharacteristic, PyBRPeriodCharacteristic, PyBRAspect
 from typing import cast
 
 class PyBRFact:
@@ -86,22 +89,22 @@ class PyBRFact:
         return output
 
     # 2nd class citizens
-    def get_concept(self) -> concept_characteristic:
-        concept: concept_characteristic = cast(concept_characteristic, self.__context.get_characteristic(PyBRAspect.CONCEPT))
+    def get_concept(self) -> PyBRConceptCharacteristic:
+        concept: PyBRConceptCharacteristic = cast(PyBRConceptCharacteristic, self.__context.get_characteristic(PyBRAspect.CONCEPT))
         if not concept:
             raise ValueError(f"Fact {self.__id} does not have a concept")
 
         return concept
 
-    def get_unit(self) -> unit_characteristic:
-        unit: unit_characteristic = cast(unit_characteristic, self.__context.get_characteristic(PyBRAspect.UNIT))
+    def get_unit(self) -> PyBRUnitCharacteristic:
+        unit: PyBRUnitCharacteristic = cast(PyBRUnitCharacteristic, self.__context.get_characteristic(PyBRAspect.UNIT))
         if not unit:
             raise ValueError(f"Fact {self.__id} does not have a unit")
 
         return unit
 
-    def get_period(self) -> period_characteristic:
-        period: period_characteristic = cast(period_characteristic, self.__context.get_characteristic(PyBRAspect.PERIOD))
+    def get_period(self) -> PyBRPeriodCharacteristic:
+        period: PyBRPeriodCharacteristic = cast(PyBRPeriodCharacteristic, self.__context.get_characteristic(PyBRAspect.PERIOD))
         if not period:
             raise ValueError(f"Fact {self.__id} does not have a period")
 
@@ -133,14 +136,14 @@ class PyBRFact:
             raise ValueError(f"Fact {fact_id} has context {fact_context_ref} but should have context {context._get_id()}")
     
         # check if the fact has the correct unit
-        context_unit:unit_characteristic = cast(unit_characteristic, context.get_characteristic(PyBRAspect.UNIT))
+        context_unit: PyBRUnitCharacteristic = cast(PyBRUnitCharacteristic, context.get_characteristic(PyBRAspect.UNIT))
         # TODO: the unit_ref is only the local name of the unit whilst the context_unit is the full QName. 
         # find a better fix for this
         if context_unit and fact_unit_ref and context_unit and fact_unit_ref != context_unit.get_value().get_local_name():
             raise ValueError(f"Fact {fact_id} has unit {fact_unit_ref} but should have unit {context_unit.get_value()}")
         
         # check if the fact has the correct concept
-        context_concept:concept_characteristic = cast(concept_characteristic, context.get_characteristic(PyBRAspect.CONCEPT))
+        context_concept: PyBRConceptCharacteristic = cast(PyBRConceptCharacteristic, context.get_characteristic(PyBRAspect.CONCEPT))
         if fact_concept_name != context_concept.get_value().get_name().resolve():
             raise ValueError(f"Fact {fact_id} has concept {fact_concept_name} but should have concept {context_concept.get_value().get_name().resolve()}")
 

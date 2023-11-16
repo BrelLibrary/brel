@@ -17,11 +17,11 @@ class PyBRTypedDimensionCharacteristic(PyBRICharacteristic):
     """
 
     def __init__(self, dimension: PyBRDimension, value, aspect: PyBRAspect) -> None:
-        self.__dimension = dimension
+        self.__dimension: PyBRDimension = dimension
         self.__value = value
-        self.__aspect = aspect
-        self.__type = type(value)
+        self.__aspect: PyBRAspect = aspect
     
+    # first class citizens
     def get_aspect(self) -> PyBRAspect:
         """
         returns the aspect of the explicit dimension characteristic.
@@ -38,7 +38,7 @@ class PyBRTypedDimensionCharacteristic(PyBRICharacteristic):
         """
         return self.__value
     
-    def get_name(self) -> PyBRDimension:
+    def get_dimension(self) -> PyBRDimension:
         """
         returns the name/dimension/axis of the explicit dimension characteristic.
         Names of explicit dimension characteristics are dimensions.
@@ -46,13 +46,7 @@ class PyBRTypedDimensionCharacteristic(PyBRICharacteristic):
         """
         return self.__dimension
     
-    def get_type(self) -> type:
-        """
-        returns the type of the explicit dimension characteristic.
-        @returns type: the type of the explicit dimension characteristic.
-        """
-        return self.__type
-    
+    # second class citizens
     def __str__(self) -> str:
         """
         returns a string representation of the explicit dimension characteristic.
@@ -61,6 +55,18 @@ class PyBRTypedDimensionCharacteristic(PyBRICharacteristic):
         """
         return self.__value.__str__()
     
+    def __eq__(self, __value: object) -> bool:
+        """
+        returns whether the explicit dimension characteristics are equal.
+        Explicit dimension characteristics are equal if their dimension, member and aspect are equal.
+        @returns bool: whether the explicit dimension characteristics are equal.
+        """
+        if isinstance(__value, PyBRTypedDimensionCharacteristic):
+            return self.__dimension == __value.__dimension and self.__aspect == __value.__aspect and self.__value == __value.__value
+        else:
+            return False
+    
+    # internal methods
     @classmethod
     def from_xml(cls, xml_element: lxml.etree._Element, dimension: PyBRDimension, value) -> "PyBRTypedDimensionCharacteristic":
         """

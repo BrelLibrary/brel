@@ -13,7 +13,6 @@ class PyBRConceptCharacteristic(PyBRICharacteristic):
     Class for representing a concept characteristic.
     This class links a fact to a concept report element.
     """
-    # TODO: ask ghislain if get_id() is an implementation detail or not
 
     __concept_cache: dict[QName, "PyBRConceptCharacteristic"] = {}
 
@@ -53,10 +52,4 @@ class PyBRConceptCharacteristic(PyBRICharacteristic):
 
         return PyBRAspect.CONCEPT
     
-    def get_id(self) -> str:
-        """
-        Returns the concept's id.
-        @returns str: the concept's id
-        """
-        raise NotImplementedError
     

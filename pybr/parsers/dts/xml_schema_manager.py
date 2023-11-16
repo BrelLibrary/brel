@@ -42,10 +42,12 @@ class XMLSchemaManager(ISchemaManager):
         self.__download_dts(schema_filename)
 
         # iterate over all files in the cache and add them to the schema names
-        self.__schema_names = []
-        for filename in os.listdir(self.__cache_location):
-            if filename.endswith(".xsd"):
-                self.__schema_names.append(filename)
+        # self.__schema_names = []
+        # for filename in os.listdir(self.__cache_location):
+        #     if filename.endswith(".xsd"):
+        #         self.__schema_names.append(filename)
+        self.__schema_names: list[str] = []
+        self.__compute_schema_names_closure(schema_filename)
 
     def __url_to_filename(self, url: str) -> str:
         """
@@ -55,10 +57,10 @@ class XMLSchemaManager(ISchemaManager):
         """
         # TODO: This is not good enough
         result = url.split("/")[-2:]
-        result = "_".join(result)
-        return result
+        result_str = "_".join(result)
+        return result_str
     
-    def get_schema(self, schema_uri: str) -> lxml.etree._Element:
+    def get_schema(self, schema_uri: str, populate_namelist: bool = False) -> lxml.etree._ElementTree:
         """
         Load a schema, potentially from the cache.
         @param schema_filename: The filename of the schema.
@@ -67,7 +69,10 @@ class XMLSchemaManager(ISchemaManager):
         if validators.url(schema_uri):
             schema_uri = self.__url_to_filename(schema_uri)
         
-        if schema_uri not in self.__schema_names:
+        if populate_namelist and schema_uri not in self.__schema_names:
+            self.__schema_names.append(schema_uri)
+
+        if  schema_uri not in self.__schema_names:
             raise ValueError(f"The schema {schema_uri} is not in the dts")
 
         # check schema cache
@@ -79,12 +84,34 @@ class XMLSchemaManager(ISchemaManager):
         
         return schema_xml
     
-    def get_all_schemas(self) -> list[lxml.etree._Element]:
+    def get_all_schemas(self) -> list[lxml.etree._ElementTree]:
         """
         Returns all the schemas in the dts
         @return: A list of lxml.etree._ElementTree representing all the schemas in the dts
         """
         return [self.get_schema(schema_name) for schema_name in self.__schema_names]
+    
+    def get_schema_names(self) -> list[str]:
+        """
+        Returns all the schema names in the dts
+        @return: A list of str containing the schema names in the dts
+        """
+        return self.__schema_names
+        
+    def __compute_schema_names_closure(self, schema_name) -> None:
+        """
+        Computes the closure of schema names starting from a schema name
+        @param schema_name: The name of the schema to start from
+        @return: A list of str containing the schema names in the dts
+        """
+        working_set = [schema_name]
+        while len(working_set) > 0:
+            schema_name = working_set.pop()
+            schema = self.get_schema(schema_name, populate_namelist=True)
+            imports = schema.findall("{http://www.w3.org/2001/XMLSchema}import")
+            for xsd_import in imports:
+                schema_location = xsd_import.attrib["schemaLocation"]
+                working_set.append(schema_location)            
 
     def __download_dts(self, xsd_url, referencing_schema_url="."):
     
@@ -128,9 +155,12 @@ class XMLSchemaManager(ISchemaManager):
         
         if not is_cached:
             parser = self.__parser
+
+            # TODO: load this into the schema cache
             xsd_tree = lxml.etree.parse(BytesIO(xsd_content), parser=parser)
 
             # check all the imports in the schema
+            # TODO: dont amke this static
             imports = xsd_tree.findall("{http://www.w3.org/2001/XMLSchema}import")
             for xsd_import in imports:
                 # for all imports, load the schema recursively

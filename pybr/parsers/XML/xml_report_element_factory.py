@@ -5,7 +5,8 @@ from pybr import QName, PyBRLabel
 from pybr.reportelements import *
 
 class XMLReportElementFactory():
-    def create(self, xml_element: lxml.etree._Element, report_element_name: QName, labels: list[PyBRLabel]) -> IReportElement | None:
+    @staticmethod
+    def create(xml_element: lxml.etree._Element, report_element_name: QName, labels: list[PyBRLabel]) -> IReportElement | None:
         """
         Creates a report element from an lxml.etree._Element.
         The kind of report element created depends on the structure of the lxml.etree._Element.

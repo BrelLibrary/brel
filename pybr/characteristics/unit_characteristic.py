@@ -62,6 +62,15 @@ class PyBRUnitCharacteristic(PyBRICharacteristic):
         # it's probably better to just return the localname of the unit
         return self.__name.__str__()
     
+    def __eq__(self, __value: object) -> bool:
+        """
+        @returns bool: True 'IFF' the unit is equal to the given value
+        """
+        if not isinstance(__value, PyBRUnitCharacteristic):
+            return False
+        
+        return self.__name == __value.__name
+    
     def is_simple(self) -> bool:
         """
         A unit is simple if it has exactly one numerator and no denominators
@@ -100,13 +109,13 @@ class PyBRUnitCharacteristic(PyBRICharacteristic):
         else:
             unit_prefix = "xbrli"
             unit_id = unit_id_str
-            unit_url = nsmap.get(None)
+            unit_url = nsmap.get(unit_prefix)
         
         # TODO: Implement parsing numerators and denominators
         numerators = []
         denominators = []
-        
-        unit_qname = QName(unit_url, unit_prefix, unit_id)
+
+        unit_qname = QName.from_string(f"{unit_prefix}:{unit_id}")
 
         if unit_qname in cls.__unit_cache:
             return cls.__unit_cache[unit_qname]
