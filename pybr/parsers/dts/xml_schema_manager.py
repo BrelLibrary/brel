@@ -13,19 +13,20 @@ class XMLSchemaManager(ISchemaManager):
     Class for downloading and caching XBRL taxonomies
     """
 
-    def __init__(self, cache_location: str, filing_location: str) -> None:
-        self.__cache_location = cache_location
+    def __init__(self, cache_location: str, filing_location: str, parser: lxml.etree.XMLParser) -> None:
+        self.cache_location = cache_location
         self.__filing_location = filing_location
 
-        self.__parser = lxml.etree.XMLParser(
-            remove_blank_text=True,
-            remove_comments=True,
-            remove_pis=True,
-            resolve_entities=False,
-            recover=True,
-            huge_tree=True,
-            encoding="utf-8",
-        )
+        # self.__parser = lxml.etree.XMLParser(
+        #     remove_blank_text=True,
+        #     remove_comments=True,
+        #     remove_pis=True,
+        #     resolve_entities=False,
+        #     recover=True,
+        #     huge_tree=True,
+        #     encoding="utf-8",
+        # )
+        self.__parser = parser
 
         self.__xbrl_schema_cache: dict[str, lxml.etree._ElementTree] = {}
 
@@ -49,16 +50,17 @@ class XMLSchemaManager(ISchemaManager):
         self.__schema_names: list[str] = []
         self.__compute_schema_names_closure(schema_filename)
 
-    def __url_to_filename(self, url: str) -> str:
+    def url_to_filename(self, url: str) -> str:
         """
         Convert a url to a filename.
         @param url: The url to convert.
         @return: The filename.
         """
         # TODO: This is not good enough
-        result = url.split("/")[-2:]
-        result_str = "_".join(result)
-        return result_str
+        # result = url.split("/")[-2:]
+        # result_str = "_".join(result)
+        # return result_str
+        return url.replace("/", "_").replace(":", "")
     
     def get_schema(self, schema_uri: str, populate_namelist: bool = False) -> lxml.etree._ElementTree:
         """
@@ -67,7 +69,7 @@ class XMLSchemaManager(ISchemaManager):
         @return: The schema as an lxml.etree._ElementTree.
         """
         if validators.url(schema_uri):
-            schema_uri = self.__url_to_filename(schema_uri)
+            schema_uri = self.url_to_filename(schema_uri)
         
         if populate_namelist and schema_uri not in self.__schema_names:
             self.__schema_names.append(schema_uri)
@@ -79,7 +81,7 @@ class XMLSchemaManager(ISchemaManager):
         if schema_uri in self.__xbrl_schema_cache:
             schema_xml = self.__xbrl_schema_cache[schema_uri]
         else:
-            schema_xml = lxml.etree.parse(self.__cache_location + schema_uri, self.__parser)
+            schema_xml = lxml.etree.parse(self.cache_location + schema_uri, self.__parser)
             self.__xbrl_schema_cache[schema_uri] = schema_xml
         
         return schema_xml
@@ -120,11 +122,11 @@ class XMLSchemaManager(ISchemaManager):
         Stores them in the cache
         """
 
-        file_name = self.__url_to_filename(xsd_url)
+        file_name = self.url_to_filename(xsd_url)
 
         is_url_remote = xsd_url.startswith("http")
         is_in_filing = file_name in os.listdir(self.__filing_location)
-        is_cached = file_name in os.listdir(self.__cache_location)
+        is_cached = file_name in os.listdir(self.cache_location)
 
         if is_cached:
             # if the file is cached, load it from the cache
@@ -160,7 +162,7 @@ class XMLSchemaManager(ISchemaManager):
             xsd_tree = lxml.etree.parse(BytesIO(xsd_content), parser=parser)
 
             # check all the imports in the schema
-            # TODO: dont amke this static
+            # TODO: dont make this static
             imports = xsd_tree.findall("{http://www.w3.org/2001/XMLSchema}import")
             for xsd_import in imports:
                 # for all imports, load the schema recursively
@@ -169,6 +171,6 @@ class XMLSchemaManager(ISchemaManager):
                 self.__download_dts(schema_location, xsd_url)
             
             # write the schema to the cache with the updated imports
-            with open(self.__cache_location + file_name, "wb") as f:
+            with open(self.cache_location + file_name, "wb") as f:
                 f.write(lxml.etree.tostring(xsd_tree))
             print(f"Loaded schema {xsd_url} into cache")

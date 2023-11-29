@@ -1,7 +1,9 @@
 from abc import ABC, abstractmethod
+from time import time
 
 from pybr import QName, PyBRLabel, PyBRFact, PyBRComponent
 from pybr.reportelements import IReportElement
+from pybr.networks import INetwork
 
 from typing import final
 
@@ -15,20 +17,51 @@ class IFilingParser(ABC):
     - parse_facts() -> Iterator[PyBRFact]
     - parse_concepts() -> Iterator[PyBRConcept]
     """
+    def __print(self, output: str):
+        """
+        Print a message with the prefix [IFilingParser].
+        """
+        print_prefix = "[Parser]"
+        print(print_prefix, output)
 
     @final
     def parse(self) -> dict:
         """
         Parse the filing.
         """
+        self.__print("Parsing Labels")
+        parser_start_time = time()
         labels = self.parse_labels()
+        self.__print(f"took {time() - parser_start_time:.2f} sec")
+
+        self.__print("Parsing Report Elements")
+        start_time = time()
         report_elements = self.parse_report_elements(labels)
-        components, report_elements = self.parse_components(report_elements)
+        self.__print(f"took {time() - start_time:.2f} sec")
+
+        self.__print("Parsing Networks")
+        start_time = time()
+        networks = self.parse_networks(report_elements)
+        self.__print(f"took {time() - start_time:.2f} sec")
+        
+        self.__print("Parsing Components")
+        start_time = time()
+        components, report_elements = self.parse_components(report_elements, networks)
+        self.__print(f"took {time() - start_time:.2f} sec")
+        
+        self.__print("Parsing Facts")
+        start_time = time()
         facts = self.parse_facts(report_elements)
+        self.__print(f"took {time() - start_time:.2f} sec")
+        
+        self.__print(f"Done Parsing (took {time() - parser_start_time:.2f} sec)")
         filing_type = self.get_filing_type()
 
+        networks_flattened = [network for networks_list in networks.values() for network in networks_list]
+
         parser_result = {
-            "report elements": report_elements,
+            "report elements": report_elements.values(),
+            "networks": networks_flattened,
             "components": components,
             "labels": labels,
             "facts": facts,
@@ -64,7 +97,16 @@ class IFilingParser(ABC):
         raise NotImplementedError
     
     @abstractmethod
-    def parse_components(self, report_elements: dict[QName, IReportElement]) -> tuple[list[PyBRComponent], dict[QName, IReportElement]]:
+    def parse_networks(self, report_elements: dict[QName, IReportElement]) -> dict[str, list[INetwork]]:
+        """
+        Parse the networks.
+        @param report_elements: A dictionary containing ALL report elements that the networks report against.
+        @return: A dictionary that associates the component name with a list of networks.
+        """
+        raise NotImplementedError
+    
+    @abstractmethod
+    def parse_components(self, report_elements: dict[QName, IReportElement], networks: dict[str, list[INetwork]]) -> tuple[list[PyBRComponent], dict[QName, IReportElement]]:
         """
         Parse the components. Update the report elements accordingly.
         @param report_elements: A dictionary containing ALL report elements that the components report against.

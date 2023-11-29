@@ -1,0 +1,238 @@
+\section{QNames}
+
+Although the motivation behind this XBRL processor is to shield its user from the complexity of XML, 
+we keep one key aspect of XML in our API: QNames.
+
+QNames are a way to uniquely identify an XML element or attribute. 
+They consist of a local name a namespace, which in turn consists of a namespace prefix and a namespace URI. 
+The namespace URI is a URI that uniquely identifies the namespace and namespace prefix acts as a shorthand for the namespace.
+
+For example the QName \texttt{us-gaap:Assets} identifies the element \texttt{Assets} in the namespace \texttt{us-gaap}.
+
+In this example, the namespace prefix \texttt{us-gaap} is a shorthand for the namespace URI \texttt{https://xbrl.fasb.org/us-gaap/2022/elts/us-gaap-2022.xsd}, 
+and together they form the namespace \texttt{us-gaap}.
+
+QNames are used in the XBRL taxonomy to identify concepts, facts and other elements. Since they provide a robust and easy way to identify elements,
+we decided to use them in our API as well. However, there is one important difference between our QNames and the QNames used in the XBRL taxonomy:
+In the XBRL taxonomy, the mapping from namespace prefixes to namespace URIs depends on where the QName is used. 
+In our API, there is a fixed, global mapping from namespace prefixes to namespace URIs.
+
+% Example of us-gaap and how it points to 2021 at one point and to 2022 at another point
+
+% \hrule
+
+% \textbf{Example 1:} The following XML document contains two \texttt{us-gaap:Assets} elements, each with a different namespace URI.
+
+% \begin{lstlisting}
+%     <?xml version="1.0" encoding="UTF-8"?>
+%     <root xmlns:us-gaap="https://xbrl.fasb.org/us-gaap/2022/elts/us-gaap-2022.xsd">
+    
+%       <us-gaap:Assets>
+%         <!-- Content for the first us-gaap:Assets element with XSD 2022 -->
+%         <us-gaap:AssetValue>1000000</us-gaap:AssetValue>
+%       </us-gaap:Assets>
+    
+%       <!-- Overwrite the namespace URI for the following element -->
+%       <us-gaap:Assets xmlns:us-gaap="https://xbrl.fasb.org/us-gaap/2022/elts/us-gaap-2021.xsd">
+%         <!-- Content for the second us-gaap:Assets element with XSD 2021 -->
+%         <us-gaap:AssetValue>750000</us-gaap:AssetValue>
+%       </us-gaap:Assets>
+    
+%     </root>
+% \end{lstlisting}
+
+% In this example, the first \texttt{us-gaap:Assets} element maps to the 2022 version of the US-GAAP taxonomy, while the second \texttt{us-gaap:Assets} element maps to the 2021 version of the US-GAAP taxonomy.
+% This is possible because the namespace prefix \texttt{us-gaap} is redefined in the second \texttt{us-gaap:Assets} element.
+
+% \hrule
+
+% \textbf{Example 2:} Example that defines the same concept twice, once with 2021 and once with 2022.
+
+Assume that the two followint XML schemas are referenced somewhere in the XBRL taxonomy. During the discovery phase of the DTS (Discoverable Taxonomy Set),
+the processor will download these two schemas and add them to the DTS. It will give both of them the same namespace prefix \texttt{us-gaap}, but different namespace URIs.
+
+\begin{lstlisting}
+    <?xml version="1.0" encoding="UTF-8"?>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                xmlns:us-gaap="https://xbrl.fasb.org/us-gaap/2021"
+                targetNamespace="https://xbrl.fasb.org/us-gaap/2021"
+                elementFormDefault="qualified">
+    
+      <xsd:import namespace="https://xbrl.fasb.org/us-gaap/2021" schemaLocation="us-gaap-2021.xsd"/>
+    
+      <!-- Component and concept definitions... -->
+    
+    </xsd:schema>
+    
+
+\end{lstlisting}
+
+\begin{lstlisting}
+    <?xml version="1.0" encoding="UTF-8"?>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                xmlns:us-gaap="https://xbrl.fasb.org/us-gaap/2022"
+                targetNamespace="https://xbrl.fasb.org/us-gaap/2022"
+                elementFormDefault="qualified">
+    
+      <xsd:import namespace="https://xbrl.fasb.org/us-gaap/2022" schemaLocation="us-gaap-2022.xsd"/>
+    
+      <!-- Component and concept definitions... -->
+    
+    </xsd:schema>
+    
+
+\end{lstlisting}
+
+Assume now that the user of the processor wants to access the concept \texttt{us-gaap:Assets}. 
+How does the processor know which version of the US-GAAP taxonomy to use?
+
+There are two possible solutions to this problem:
+
+\begin{enumerate}
+    \item The user has to specify not only the namespace prefix, but also the namespace URI. 
+    
+    The problem with this solution is that the user has to know the namespace URI of the concept.
+    \item The processor completely ignores the namespace URI and always uses the namespace prefix to identify the concept. 
+    
+    The problem with this solution is that within the same document, different namespace prefixes can map to the same namespace URI.
+
+    This is the solution we chose for our processor. 
+\end{enumerate}
+
+To illustrate the problem with the second solution, consider the following XML document:
+
+\begin{lstlisting}
+    <?xml version="1.0" encoding="UTF-8"?>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                xmlns:us-gaap="https://xbrl.fasb.org/us-gaap/2021"
+                xmlns:us-gaap1="https://xbrl.fasb.org/us-gaap/2021"
+                targetNamespace="https://xbrl.fasb.org/us-gaap/2021"
+                elementFormDefault="qualified">
+
+        <xsd:import namespace="https://xbrl.fasb.org/us-gaap/2021" schemaLocation="us-gaap-2021.xsd"/>
+
+        <!-- Component and concept definitions... -->
+
+    </xsd:schema>
+
+\end{lstlisting}
+
+In this example, the namespace URI \texttt{https://xbrl.fasb.org/us-gaap/2021} is associated with two different namespace prefixes.
+Once with the prefix \texttt{us-gaap} and once with the prefix \texttt{us-gaap1}.
+
+When processing the XBRL instance, it is possible for the processor to associate a fact value with the concept \texttt{us-gaap1:Assets}.
+So if the user were to access the concept \texttt{us-gaap:Assets}, the processor would not find any facts associated with this concept.
+
+This problem arises because the processor only compares the namespace prefixes and the local names, but ignores the namespace URIs.
+
+\subsection{Namespace normalization}
+
+Therefore our processor does a pre-processing step before processing the XBRL filing. We call this process \textit{namespace normalization}.
+The purpose of namespace normalization is to ensure that the same namespace URI does not map to different prefixes.
+
+The namespace normalization process works as follows:
+
+The processor goes through both the instance and the DTS and finds all the prefix to namespace URI mappings. 
+These mappings can be interpreted as a graph, where the nodes are the namespace prefixes/URIs and the edges are the mappings.
+
+\textbf{TODO:} Make a picture of a nice bipartite graph with namespace prefixes and namespace URIs as nodes and mappings as edges.
+
+The processor then finds all the connected components in this graph. 
+Each connected component represents a set of namespace prefixes that map to the same namespace URI. 
+Note that the prefixes might map to different versions of the same taxonomy.
+
+For each connected component, the processor chooses one namespace prefix as the representative of the component.
+This prefix is the shortest prefix in the component.
+It then replaces all the other namespace prefixes in the component with the representative namespace prefix.
+
+Furthermore, the processor finds one representative namespace URI for each connected component.
+This URI is the namespace URI of the representative namespace prefix. 
+This representative namespace URI is the URI with the latest version of the taxonomy within the component.
+Whenever the user creates a QName e.g. \texttt{us-gaap:Assets}, the processor associates \texttt{us-gaap} with the representative namespace URI.
+
+The biggest advantage of namespace normalization is that it creates a flat prefix URI mapping that is consistent throughout the whole document. 
+Whereas the namespace mapping in XML is hierarchical, the namespace mapping in our processor is flat. 
+Therefore, the user does not have to worry about the namespace hierarchy.
+
+\subsection{Limitations of namespace normalization}
+
+Namespace normalization has some limitations. Not every namespace can be properly normalized. 
+
+The two problems that can arise are:
+
+\begin{enumerate}
+    \item namespace normalization maps two namespaces into two, even though they should be merged into one.
+    \item namespace normalization maps two different namespaces into one, even though they should be kept separate.
+\end{enumerate}
+
+For the first problem, consider the following XML document:
+
+\begin{lstlisting}
+    <?xml version="1.0" encoding="UTF-8"?>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                xmlns:us-gaap="https://xbrl.fasb.org/us-gaap/2021"
+                xmlns:us-gaap1="https://xbrl.fasb.org/us-gaap/2022"
+                targetNamespace="https://xbrl.fasb.org/us-gaap/2021"
+                elementFormDefault="qualified">
+
+        <xsd:import namespace="https://xbrl.fasb.org/us-gaap/2021" schemaLocation="us-gaap-2021.xsd"/>
+        <xsd:import namespace="https://xbrl.fasb.org/us-gaap/2022" schemaLocation="us-gaap-2022.xsd"/>
+
+        <!-- Component and concept definitions... -->
+
+    </xsd:schema>
+
+\end{lstlisting}
+
+This example defines two different namespace prefixes, \texttt{us-gaap} and \texttt{us-gaap1}, that map to two different namespace URIs, \texttt{https://xbrl.fasb.org/us-gaap/2021} and \texttt{https://xbrl.fasb.org/us-gaap/2022}.
+When representing this mapping as a graph, we get the following graph:
+
+\textbf{TODO:} Make a picture of a graph with two connected components.
+
+This graph has two connected components, each with one namespace prefix and one namespace URI.
+A smart processor would realize that these two components are actually the same and would merge them into one component.
+Our processor, however, is will keep the two components separate and will not merge them.
+
+For the second problem, consider the following schemas in a DTS:
+
+\begin{lstlisting}
+    <?xml version="1.0" encoding="UTF-8"?>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                xmlns:types="http://fasb.org/us-types/2023"
+                targetNamespace="http://fasb.org/us-types/2023"
+                elementFormDefault="qualified">
+    
+    <xsd:import namespace="http://fasb.org/us-types/2023" schemaLocation="us-types-2023.xsd"/>
+
+    <!-- Component and concept definitions... -->
+
+    </xsd:schema>
+\end{lstlisting}
+
+\begin{lstlisting}
+    <?xml version="1.0" encoding="UTF-8"?>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                xmlns:types="http://www.xbrl.org/dtr/type/2020-01-21"
+                targetNamespace="http://www.xbrl.org/dtr/type/2020-01-21"
+                elementFormDefault="qualified">
+    
+    <xsd:import namespace="http://www.xbrl.org/dtr/type/2020-01-21" schemaLocation="xbrldt-2020.xsd"/>
+
+    <!-- Component and concept definitions... -->
+
+    </xsd:schema>
+\end{lstlisting}
+
+The first schema defines the namespace prefix \texttt{types} and maps it to the namespace URI \texttt{http://fasb.org/us-types/2023}.
+The second schema defines the namespace prefix \texttt{types} and maps it to the namespace URI \texttt{http://www.xbrl.org/dtr/type/2020-01-21}.
+
+When representing this mapping as a graph, we get the following graph:
+
+\textbf{TODO:} Make a picture of a graph with two connected components.
+
+This graph has one connected component with one prefix and two namespace URIs.
+
+A smart processor would realize that the two namespaces should be kept separate and would not merge them, 
+since they associate the prefix \texttt{types} with two completely different namespaces.
+
+Our processor, however, will merge the two namespaces into one, since they have the same prefix.

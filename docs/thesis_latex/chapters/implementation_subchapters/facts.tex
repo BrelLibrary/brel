@@ -1,0 +1,36 @@
+\section{Facts}
+
+A fact is the smallest unit of information in an XBRL report. 
+The word "Fact" is a term used to describe an individual piiece of financial of business information within an XBRL instance document. 
+
+Lets consider a simplified example involving a financial report for a company. 
+Suppose the report contains information about the company's revenue for the fixcal year ending on December 31, 2022.
+
+In XBRL, a corresponding fact would be represented as follows:
+
+\begin{itemize}
+    \item \textbf{Concept:} Revenue
+    \item \textbf{Entity:} Microsoft Coorporation
+    \item \textbf{Period:} from 2022-04-01 to 2023-03-31 \footnote[0]{Refers to the fiscal year 2022, which starts on April 1, 2022 and ends on March 31, 2023}
+    \item \textbf{Unit:} USD
+    \item \textbf{Value:} 198'000'000 \footnote[1]{https://www.microsoft.com/investor/reports/ar22/index.html}
+\end{itemize}
+
+In this example:
+
+\begin{itemize}
+    \item The \textbf{concept} refers \textit{what} is being reported. 
+    In this case, "Revenue" indicates that the fact is reporting information about the company's revenue.
+    \item The \textbf{entity} refers to \textit{who} is reporting. 
+    In the case of our example, the entity is "Microsoft Coorporation".
+    \item The \textbf{period} refers to \textit{when} the information is being reported.
+    The period is defined as the fiscal year 2022.
+    \item The \textbf{unit} refers to \textit{how} the information is being reported.
+    In this example, the unit is "USD", which indicates that the information is being reported in US dollars.
+    \item The \textbf{value} refers to \textit{how much} is being reported.
+    According to Microsoft's 2022 annual report, the company's revenue for the fiscal year 2022 was around 198 billion US dollars.
+\end{itemize}
+
+\subsection{Facts in the XBRL Taxonomy}
+
+In the context of XBRL, facts are represented as XML elements in an XBRL instance document. 

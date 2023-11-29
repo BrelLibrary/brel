@@ -1,2 +1,2 @@
 from pybr.utils.print_facts import pprint_facts, pprint_fact
-from pybr.utils.print_networks import pprint_presentation_network_node, pprint_presentation_network, pprint_calculation_network, pprint_calculation_network_node, pprint_definition_network, pprint_definition_network_node
+from pybr.utils.print_networks import pprint_presentation_network_node, pprint_presentation_network, pprint_calculation_network, pprint_calculation_network_node, pprint_definition_network, pprint_definition_network_node, pprint_network

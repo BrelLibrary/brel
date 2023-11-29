@@ -4,6 +4,7 @@ from typing import cast
 from pybr import PyBRFact, PyBRFilingFilter, PyBRComponent, QName
 from pybr.characteristics import PyBRAspect
 from pybr.reportelements import IReportElement, PyBRAbstract, PyBRConcept, PyBRDimension, PyBRHypercube, PyBRLineItems, PyBRMember
+from pybr.networks import INetwork
 from pybr.parsers import IFilingParser, XMLFilingParser
 
 class PyBRFiling:
@@ -13,11 +14,18 @@ class PyBRFiling:
     def __init__(self, parser: IFilingParser) -> None:
         parser_result = parser.parse()
 
+        self.__networks: list[INetwork] = parser_result["networks"]
         self.__facts: list[PyBRFact] = parser_result["facts"]
         self.__reportelems: list[IReportElement] = parser_result["report elements"]
         self.__components = parser_result["components"]
     
     # first class citizens
+    def get_all_pyhsical_networks(self) -> list[INetwork]:
+        """
+        Get all physical networks in the filing
+        """
+        return self.__networks
+    
     def get_all_facts(self) -> list[PyBRFact]:
         """
         Get all facts in the filing
@@ -62,7 +70,6 @@ class PyBRFiling:
         """
         Get all Concepts in the filing
         """
-        
         return cast(list[PyBRConcept], list(filter(lambda x: isinstance(x, PyBRConcept), self.__reportelems)))
     
     # TODO: implement

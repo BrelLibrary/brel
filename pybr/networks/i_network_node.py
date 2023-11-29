@@ -32,6 +32,10 @@ class INetworkNode(ABC):
     @abstractmethod
     def get_arc_name(self) -> QName:
         raise NotImplementedError
+    
+    @abstractmethod
+    def get_order(self) -> int:
+        raise NotImplementedError
 
 
     # Second class citizens
