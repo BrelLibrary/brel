@@ -15,12 +15,16 @@ class ReferenceNetworkNode(INetworkNode):
             children: list['ReferenceNetworkNode'],
             arc_role: str,
             arc_name: QName,
+            link_role: str,
+            link_name: QName,
             order: int = 1
                   ) -> None:
         self.__report_element = report_element
         self.__children = children
         self.__arc_role = arc_role
         self.__arc_name = arc_name
+        self.__link_role = link_role
+        self.__link_name = link_name
         self.__order = order
     
     # First class citizens
@@ -38,6 +42,12 @@ class ReferenceNetworkNode(INetworkNode):
     
     def get_arc_name(self) -> QName:
         return self.__arc_name
+    
+    def get_link_role(self) -> str:
+        return self.__link_role
+    
+    def get_link_name(self) -> QName:
+        return self.__link_name
     
     # Internal methods
     def add_child(self, child: INetworkNode):

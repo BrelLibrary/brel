@@ -85,19 +85,19 @@ def networks_from_xmls(
 
         for xml_link in xml_links:
             # parse the network and update the report elements
-            network, report_elements = network_from_xml(xml_link, report_elements)
+            link_networks, report_elements = networks_from_xml_links(xml_link, report_elements)
 
-            if network is not None:
+            if link_networks is not None:
                 # get the component name
                 component_name = link_to_component_name(xml_link)
 
                 # add the presentation network to the networks dict
-                networks[component_name].append(network)
+                networks[component_name].extend(link_networks)
     
     return networks
     
 
-def network_from_xml(xml_link_element: lxml.etree._Element, report_elements: dict[QName, IReportElement]) -> tuple[INetwork, dict[QName, IReportElement]] | tuple[None, dict[QName, IReportElement]]:
+def networks_from_xml_links(xml_link_element: lxml.etree._Element, report_elements: dict[QName, IReportElement]) -> tuple[list[INetwork], dict[QName, IReportElement]]: 
     """
     Create a Network from an lxml.etree._Element. Note that this method also returns a dict containing all report elements.
     This is because networks may change the internal representation of the report elements. More specifically, it may promote
@@ -107,6 +107,8 @@ def network_from_xml(xml_link_element: lxml.etree._Element, report_elements: dic
     @return: An instance of INetwork. can be either a PresentationNetwork, CalculationNetwork, or any other kind of network.
     """
     nsmap = QName.get_nsmap()
+
+    networks = []
 
     if xml_link_element.tag == f"{{{nsmap['link']}}}presentationLink":
         network_factory: IXMLNetworkFactory = PresentationNetworkFactory()
@@ -121,7 +123,7 @@ def network_from_xml(xml_link_element: lxml.etree._Element, report_elements: dic
     else:
         # raise ValueError(f"xml_link_element must be either a link:presentationLink or a link:calculationLink, not {xml_link_element.tag}")
         print(f"Warning: xml_link_element must be either a link:presentationLink or a link:calculationLink, not {xml_link_element.tag}")
-        return None, report_elements
+        return networks, report_elements
         
     
     def get_report_element_from_locator(locator_xml: lxml.etree._Element) -> IReportElement:
@@ -140,7 +142,7 @@ def network_from_xml(xml_link_element: lxml.etree._Element, report_elements: dic
         return report_elements[report_element_qname]
         
 
-    nodes_map : dict[str, INetworkNode] = {}
+    nodes_lookup : dict[str, INetworkNode] = {}
     edges: list[tuple[str, str]] = []
 
     # first get all link:presentationArc elements
@@ -152,13 +154,14 @@ def network_from_xml(xml_link_element: lxml.etree._Element, report_elements: dic
         arc_from = xml_arc.get(f"{{{nsmap['xlink']}}}from")
         arc_to = xml_arc.get(f"{{{nsmap['xlink']}}}to")
 
-        if arc_from is None or arc_to is None:
-            raise ValueError("xlink:from and xlink:to must be present on all xlink:type='arc' elements")
+        # If the file has been validated, the xlink:from and xlink:to attributes must be present on all xlink:type='arc' elements. 
+        # The cast is to make mypy happy 
+        arc_from = cast(str, arc_from)
+        arc_to = cast(str, arc_to)
         
+        # Get the xml element that the arc_to attribute references
         referenced_element = xml_link_element.find(f".//*[@{{{nsmap['xlink']}}}label='{arc_to}']", namespaces=nsmap)
-
-        if referenced_element is None:
-            raise ValueError(f"the element with xlink:label='{arc_to}' could not be found")
+        referenced_element = cast(lxml.etree._Element, referenced_element)
         
         referenced_element_type = referenced_element.get(f"{{{nsmap['xlink']}}}type", "")
 
@@ -175,36 +178,38 @@ def network_from_xml(xml_link_element: lxml.etree._Element, report_elements: dic
         # create the nodes
         # node_to = internal_node_factory(xml_arc, report_element)
         if to_element is not None:
-            node_to = network_factory.create_internal_node(xml_arc, to_element)
-
-            # add the node to the nodemap and the edge to the edges list
-            # this will is used to link the nodes into a tree in the next pass
-            nodes_map[arc_to] = node_to
+            # create a node for each arc. The type of node depends on the type of arc
+            node_to = network_factory.create_internal_node(xml_link_element, xml_arc, to_element)
+            # add the node to the nodes lookup table 
+            nodes_lookup[arc_to] = node_to
+        
+        # add the edge to the edges list. This will be used to link the nodes into a tree in the next pass
         edges.append((arc_from, arc_to))
     
-    # second pass over all nodes to link them together. Also find the root node
-    roots = []
+    roots = defaultdict(list)
     for arc_from, arc_to in edges:
-
-        from_node = nodes_map.get(arc_from, None)
-        to_node = nodes_map.get(arc_to, None)
+        from_node = nodes_lookup.get(arc_from, None)
+        to_node = nodes_lookup.get(arc_to, None)
 
         if from_node is None:
             xml_arc = xml_link_element.find(f".//*[@{{{nsmap['xlink']}}}from='{arc_from}']", namespaces=nsmap)
             referenced_element = xml_link_element.find(f".//*[@{{{nsmap['xlink']}}}label='{arc_from}']", namespaces=nsmap)
             report_element = get_report_element_from_locator(referenced_element)
-            from_node = network_factory.create_root_node(xml_arc, report_element)
-            nodes_map[arc_from] = from_node
-            roots.append(from_node)
+            from_node = network_factory.create_root_node(xml_link_element, xml_arc, report_element)
+            nodes_lookup[arc_from] = from_node
+            roots[from_node.get_arc_role()].append(from_node)
         
         if to_node is not None:
-            from_node.add_child(to_node)
-        
-    if len(roots) > 0: 
+            if from_node.get_arc_role() == to_node.get_arc_role():
+                from_node.add_child(to_node)
+            else:
+                roots[to_node.get_arc_role()].append(to_node)
+    
+    # third pass. Create a network for each list of roots
+    for _, roots in roots.items():
         network = network_factory.create_network(xml_link_element, roots)
         report_elements = network_factory.update_report_elements(report_elements, network)
+        networks.append(network)
     
-        return network, report_elements
-    
-    else:
-        return None, report_elements
+    return networks, report_elements
+        

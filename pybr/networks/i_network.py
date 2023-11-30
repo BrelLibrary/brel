@@ -27,16 +27,35 @@ class INetwork(ABC):
         Note: This returns the same as get_URL() on the PyBRComponent
         """
         raise NotImplementedError
-    
+        
     @abstractmethod
     def get_link_name(self) -> QName:
         """
         Get the link name of the network
         @return: QName containing the link name of the network. e.g. for presentation networks this is usually "link:presentationLink"
         """
-        raise NotImplementedError
+        raise NotImplementedError 
 
     # Second class citizens
+    def get_arc_roles(self) -> list[str]:
+        """
+        Get all the arc roles that are used by nodes in the network
+        @return: list[str] containing all arc roles that are used by nodes in the network
+        """
+        arc_role_set = set([node.get_arc_role() for node in self.get_all_nodes()])
+        return list(arc_role_set)
+    
+    def get_arc_name(self) -> QName | None:
+        """
+        Get the arc name of all the arcs in the network. All arcs in the network have the same arc name.
+        @return: QName containing the arc name of all the arcs in the network. Returns None if the network is empty.
+        """
+        roots = self.get_roots()
+        if len(roots) == 0:
+            return None
+        else:
+            return roots[0].get_arc_name()   
+
     def get_root(self) -> INetworkNode:
         """
         Get the root node of the presentation network

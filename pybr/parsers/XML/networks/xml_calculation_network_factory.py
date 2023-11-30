@@ -17,7 +17,7 @@ class CalculationNetworkFactory(IXMLNetworkFactory):
 
         return CalculationNetwork(roots, link_role, link_qname)
     
-    def create_internal_node(self, xml_arc: lxml.etree._Element, report_element: IReportElement) -> INetworkNode:
+    def create_internal_node(self, xml_link: lxml.etree._Element, xml_arc: lxml.etree._Element, report_element: IReportElement) -> INetworkNode:
         nsmap = QName.get_nsmap()
 
         weight = float(xml_arc.attrib.get("weight"))
@@ -25,9 +25,12 @@ class CalculationNetworkFactory(IXMLNetworkFactory):
         order = int(xml_arc.attrib.get("order"))
         arc_qname = QName.from_string(xml_arc.tag)
 
-        return CalculationNetworkNode(report_element, [], arc_role, arc_qname, weight, order)
+        link_role = xml_link.attrib.get("{" + nsmap["xlink"] + "}role")
+        link_name = QName.from_string(xml_link.tag)
+
+        return CalculationNetworkNode(report_element, [], arc_role, arc_qname, link_role, link_name, weight, order)
     
-    def create_root_node(self, xml_arc: lxml.etree._Element, report_element: IReportElement) -> INetworkNode:
+    def create_root_node(self, xml_link: lxml.etree._Element, xml_arc: lxml.etree._Element, report_element: IReportElement) -> INetworkNode:
         nsmap = QName.get_nsmap()
 
         weight = 0.0
@@ -35,7 +38,10 @@ class CalculationNetworkFactory(IXMLNetworkFactory):
         order = 1
         arc_qname = QName.from_string(xml_arc.tag)
 
-        return CalculationNetworkNode(report_element, [], arc_role, arc_qname, weight, order)
+        link_role = xml_link.attrib.get("{" + nsmap["xlink"] + "}role")
+        link_name = QName.from_string(xml_link.tag)
+
+        return CalculationNetworkNode(report_element, [], arc_role, arc_qname, link_role, link_name, weight, order)
     
     def update_report_elements(self, report_elements: dict[QName, IReportElement], _: INetwork) -> dict[QName, IReportElement]:
         """

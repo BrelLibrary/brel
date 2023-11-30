@@ -8,7 +8,6 @@ from pybr.networks import PresentationNetwork, CalculationNetwork, DefinitionNet
 from collections import defaultdict
 
 # change this
-from .networks.xml_network_parser import network_from_xml
 
 def parse_components_xml(
         schemas: list[lxml.etree._ElementTree],

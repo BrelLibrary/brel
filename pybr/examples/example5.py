@@ -1,5 +1,5 @@
 from pybr import PyBRFiling, PyBRLabelRole
-from pybr.utils import pprint_presentation_network, pprint_calculation_network, pprint_definition_network
+from pybr.utils import pprint_network
 from random import sample
 from editdistance import eval as edit_distance
 
@@ -67,9 +67,9 @@ def example5():
     # pprint_network(selected_component.get_presentation())
 
     # long version where you specify the preferred label role and whether or not to print the report element type
-    pprint_presentation_network(selected_component.get_presentation(), label_role=PyBRLabelRole.STANDARD_LABEL, print_report_element_type=True)
+    # pprint_network(selected_component.get_presentation())
 
     # print("is valid?", selected_component.get_calculation().validate(filing))
-    pprint_calculation_network(selected_component.get_calculation())
+    # pprint_network(selected_component.get_calculation())
 
-    pprint_definition_network(selected_component.get_definition(), label_role=PyBRLabelRole.STANDARD_LABEL, print_report_element_type=True)
+    pprint_network(selected_component.get_definition())

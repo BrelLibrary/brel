@@ -34,11 +34,14 @@ class INetworkNode(ABC):
         raise NotImplementedError
     
     @abstractmethod
-    def get_order(self) -> int:
+    def get_link_role(self) -> str:
         raise NotImplementedError
-
-
-    # Second class citizens
+    
+    @abstractmethod
+    def get_link_name(self) -> QName:
+        raise NotImplementedError
+    
+    # second class citizens
     def get_all_descendents(self) -> list['INetworkNode']:
         """
         Returns a list containing all decendents of this node
@@ -60,6 +63,7 @@ class INetworkNode(ABC):
         """
 
         return f"NetworkNode(report_element={self.get_report_element()}, no. children={len(self.get_children())}"
+        
     
     # Internal methods
     def add_child(self, child: 'INetworkNode'):

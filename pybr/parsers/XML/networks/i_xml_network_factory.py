@@ -11,11 +11,11 @@ class IXMLNetworkFactory(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def create_internal_node(self, xml_arc: lxml.etree._Element, report_element: IReportElement) -> INetworkNode:
+    def create_internal_node(self, xml_link: lxml.etree._Element, xml_arc: lxml.etree._Element, report_element: IReportElement) -> INetworkNode:
         raise NotImplementedError
 
     @abstractmethod
-    def create_root_node(self, xml_arc: lxml.etree._Element, report_element: IReportElement) -> INetworkNode:
+    def create_root_node(self, xml_link: lxml.etree._Element, xml_arc: lxml.etree._Element, report_element: IReportElement) -> INetworkNode:
         raise NotImplementedError
     
     @abstractmethod

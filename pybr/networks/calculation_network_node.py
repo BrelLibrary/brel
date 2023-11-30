@@ -19,6 +19,8 @@ class CalculationNetworkNode(INetworkNode):
             children: list['CalculationNetworkNode'],
             arc_role: str,
             arc_name: QName,
+            link_role: str,
+            link_name: QName,
             weight: float = 1.0,
             order: int = 1
             ):
@@ -26,6 +28,8 @@ class CalculationNetworkNode(INetworkNode):
         self.__children = children
         self.__arc_role = arc_role
         self.__arc_name = arc_name
+        self.__link_role = link_role
+        self.__link_name = link_name
         self.__order = order
         self.__weight = weight
     
@@ -65,6 +69,12 @@ class CalculationNetworkNode(INetworkNode):
     
     def get_arc_name(self) -> QName:
         return self.__arc_name
+    
+    def get_link_role(self) -> str:
+        return self.__link_role
+    
+    def get_link_name(self) -> QName:
+        return self.__link_name
     
     def __str__(self) -> str:
         """

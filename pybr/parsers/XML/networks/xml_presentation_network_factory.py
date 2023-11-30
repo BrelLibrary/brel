@@ -18,7 +18,7 @@ class PresentationNetworkFactory(IXMLNetworkFactory):
         link_name = QName.from_string(xml_link_element.tag)
         return PresentationNetwork(root, link_role, link_name)
     
-    def create_internal_node(self, xml_arc: lxml.etree._Element, report_element: IReportElement) -> INetworkNode:
+    def create_internal_node(self, xml_link: lxml.etree._Element, xml_arc: lxml.etree._Element, report_element: IReportElement) -> INetworkNode:
         nsmap = QName.get_nsmap()
 
         preferred_label_role = PyBRLabelRole.from_url(xml_arc.attrib.get("preferredLabel"))
@@ -26,9 +26,12 @@ class PresentationNetworkFactory(IXMLNetworkFactory):
         order = int(xml_arc.attrib.get("order"))
         arc_qname = QName.from_string(xml_arc.tag)
 
-        return PresentationNetworkNode(report_element, [], arc_role, arc_qname, preferred_label_role, order)
+        link_role = xml_link.attrib.get("{" + nsmap["xlink"] + "}role")
+        link_name = QName.from_string(xml_link.tag)
+
+        return PresentationNetworkNode(report_element, [], arc_role, arc_qname, link_role, link_name, preferred_label_role, order)
     
-    def create_root_node(self, xml_arc: lxml.etree._Element, report_element: IReportElement) -> INetworkNode:
+    def create_root_node(self, xml_link: lxml.etree._Element, xml_arc: lxml.etree._Element, report_element: IReportElement) -> INetworkNode:
         nsmap = QName.get_nsmap()
 
         preferred_label_role = PyBRLabelRole.STANDARD_LABEL
@@ -36,7 +39,10 @@ class PresentationNetworkFactory(IXMLNetworkFactory):
         order = 1
         arc_qname = QName.from_string(xml_arc.tag)
 
-        return PresentationNetworkNode(report_element, [], arc_role, arc_qname, preferred_label_role, order)
+        link_role = xml_link.attrib.get("{" + nsmap["xlink"] + "}role")
+        link_name = QName.from_string(xml_link.tag)
+
+        return PresentationNetworkNode(report_element, [], arc_role, arc_qname, link_role, link_name, preferred_label_role, order)
     
     def update_report_elements(self, report_elements: dict[QName, IReportElement], network: INetwork) -> dict[QName, IReportElement]:
         """

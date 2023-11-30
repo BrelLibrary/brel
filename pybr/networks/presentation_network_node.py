@@ -19,6 +19,8 @@ class PresentationNetworkNode(INetworkNode):
             children: list['PresentationNetworkNode'],
             arc_role: str,
             arc_name: QName,
+            link_role: str,
+            link_name: QName,
             preferred_label_role: PyBRLabelRole = PyBRLabelRole.STANDARD_LABEL,
             order: int = 1
             ):
@@ -26,6 +28,8 @@ class PresentationNetworkNode(INetworkNode):
         self.__children = children
         self.__arc_role = arc_role
         self.__arc_name = arc_name
+        self.__link_role = link_role
+        self.__link_name = link_name
         self.__preferred_label_role = preferred_label_role
         self.__order = order
     
@@ -59,6 +63,13 @@ class PresentationNetworkNode(INetworkNode):
         @return: int containing the order of this node
         """
         return self.__order
+    
+    def get_link_role(self) -> str:
+        return self.__link_role
+    
+    def get_link_name(self) -> QName:
+        return self.__link_name
+
 
     # Second class citizens
     def get_arc_role(self) -> str:

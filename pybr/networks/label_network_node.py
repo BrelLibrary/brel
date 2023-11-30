@@ -16,10 +16,14 @@ class LabelNetworkNode(INetworkNode):
             report_element: IReportElement,
             arc_role: str,
             arc_name: QName,
+            link_role: str,
+            link_name: QName,
                   ) -> None:
         self.__report_element = report_element
         self.__arc_role = arc_role
         self.__arc_name = arc_name
+        self.__link_role = link_role
+        self.__link_name = link_name
         self.__children: list[INetworkNode] = []
     
     # First class citizens
@@ -37,6 +41,12 @@ class LabelNetworkNode(INetworkNode):
     
     def get_arc_name(self) -> QName:
         return self.__arc_name
+    
+    def get_link_role(self) -> str:
+        return self.__link_role
+    
+    def get_link_name(self) -> QName:
+        return self.__link_name
     
     # Internal methods
     def add_child(self, child: INetworkNode):
