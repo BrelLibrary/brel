@@ -21,3 +21,7 @@ class IXMLNetworkFactory(ABC):
     @abstractmethod
     def update_report_elements(self, report_elements: dict[QName, IReportElement], network: INetwork) -> dict[QName, IReportElement]:
         raise NotImplementedError
+    
+    @abstractmethod
+    def is_physical(self) -> bool:
+        raise NotImplementedError

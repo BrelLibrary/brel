@@ -42,19 +42,19 @@ class INetworkNode(ABC):
         raise NotImplementedError
     
     # second class citizens
-    def get_all_descendents(self) -> list['INetworkNode']:
+    def get_all_descendants(self) -> list['INetworkNode']:
         """
-        Returns a list containing all decendents of this node
-        @return: list[NetworkNode] containing all decendents of this node
+        Returns a list containing all descendants of this node
+        @return: list[NetworkNode] containing all descendants of this node
         """
-        decentents = set()
+        descendants = set()
         worklist = [self]
         while len(worklist) > 0:
             node = worklist.pop()
-            decentents.add(node)
+            descendants.add(node)
             worklist.extend(node.get_children())
         
-        return list(decentents)
+        return list(descendants)
     
     def __str__(self) -> str:
         """
@@ -63,6 +63,14 @@ class INetworkNode(ABC):
         """
 
         return f"NetworkNode(report_element={self.get_report_element()}, no. children={len(self.get_children())}"
+    
+    @abstractmethod
+    def get_order(self) -> int:
+        """
+        Returns the order of this node in the network
+        @return: int containing the order of this node in the network
+        """
+        raise NotImplementedError
         
     
     # Internal methods

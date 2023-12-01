@@ -53,7 +53,11 @@ def parse_components_xml(
             # Find the networks that belong to the component
             presentation_network = next((x for x in networks[roleID] if isinstance(x, PresentationNetwork)), None)
             calculation_network = next((x for x in networks[roleID] if isinstance(x, CalculationNetwork)), None)
-            definition_network = next((x for x in networks[roleID] if isinstance(x, DefinitionNetwork)), None)
+            # definition_network = next((x for x in networks[roleID] if isinstance(x, DefinitionNetwork)), None)
+
+            # reconstruct the definition network from the physical definition networks
+            # get the physical definition networks
+            definition_network = next((x for x in networks[roleID] if isinstance(x, DefinitionNetwork) and not x.is_physical()), None)
 
             component = PyBRComponent.from_xml(roletype, presentation_network, calculation_network, definition_network)
             components.append(component)

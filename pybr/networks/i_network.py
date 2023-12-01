@@ -9,32 +9,42 @@ class INetwork(ABC):
     Class for representing a presentation network.
     A presentation network is a network of nodes that represent the presentation of a PyBRComponent.
     """
+    def __init__(self, roots: list[INetworkNode], link_role: str, link_name: QName, is_physical: bool) -> None:
+        self.__roots = roots
+        self.__link_role = link_role
+        self.__link_name = link_name
+        self.__is_physical = is_physical
+
     
     # First class citizens
-    @abstractmethod
     def get_roots(self) -> list[INetworkNode]:
         """
         Get the root nodes of the presentation network
         @return: list[NetworkNode] representing the root nodes of the network.
         """
-        raise NotImplementedError
+        return self.__roots
     
-    @abstractmethod
     def get_link_role(self) -> str:
         """
         Get the link role of the presentation network
         @return: str containing the link role of the network. 
         Note: This returns the same as get_URL() on the PyBRComponent
         """
-        raise NotImplementedError
+        return self.__link_role
         
-    @abstractmethod
     def get_link_name(self) -> QName:
         """
         Get the link name of the network
         @return: QName containing the link name of the network. e.g. for presentation networks this is usually "link:presentationLink"
         """
-        raise NotImplementedError 
+        return self.__link_name
+    
+    def is_physical(self) -> bool:
+        """
+        Check if the network is a physical network
+        @return: bool indicating if the network is a physical network
+        """
+        return self.__is_physical
 
     # Second class citizens
     def get_arc_roles(self) -> list[str]:

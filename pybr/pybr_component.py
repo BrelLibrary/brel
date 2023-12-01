@@ -37,7 +37,7 @@ class PyBRComponent:
         """Get the presentation graph of the component"""
         return self.__presentation_network
 
-    def get_calculation(self) -> CalculationNetwork|None:
+    def get_calculation(self) -> CalculationNetwork | None:
         """Get the calculation graph of the component"""
         return self.__calculation_network
 

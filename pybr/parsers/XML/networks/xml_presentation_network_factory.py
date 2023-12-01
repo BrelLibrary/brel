@@ -83,3 +83,6 @@ class PresentationNetworkFactory(IXMLNetworkFactory):
             node._set_report_element(line_items)
         
         return report_elements
+    
+    def is_physical(self) -> bool:
+        return True

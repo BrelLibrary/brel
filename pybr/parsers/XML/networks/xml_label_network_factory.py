@@ -39,3 +39,6 @@ class LabelNetworkFactory(IXMLNetworkFactory):
         @return: dict[QName, IReportElement] containing all report elements. same as the report_elements parameter
         """
         return report_elements
+    
+    def is_physical(self) -> bool:
+        return True

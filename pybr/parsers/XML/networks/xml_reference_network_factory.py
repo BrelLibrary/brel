@@ -48,4 +48,7 @@ class ReferenceNetworkFactory(IXMLNetworkFactory):
         @return: dict[QName, IReportElement] containing all report elements. Some report elements might differ in type from the report_elements parameter
         """
         return report_elements
+    
+    def is_physical(self) -> bool:
+        return True
 

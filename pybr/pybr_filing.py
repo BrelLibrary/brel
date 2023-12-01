@@ -24,7 +24,8 @@ class PyBRFiling:
         """
         Get all physical networks in the filing
         """
-        return self.__networks
+        physical_networks = [network for network in self.__networks if network.is_physical()]
+        return physical_networks
     
     def get_all_facts(self) -> list[PyBRFact]:
         """

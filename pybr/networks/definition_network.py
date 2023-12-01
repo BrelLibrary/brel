@@ -1,6 +1,7 @@
 from pybr import QName
-from pybr.networks import INetwork, INetworkNode, PresentationNetworkNode
+from pybr.networks import INetwork, INetworkNode, DefinitionNetworkNode
 from pybr.reportelements import *
+from collections import defaultdict
 
 from typing import cast
 
@@ -10,26 +11,6 @@ class DefinitionNetwork(INetwork):
     A definition network is a network of nodes that represent the definition of a PyBRComponent.
     """
 
-    def __init__(self, roots: list[PresentationNetworkNode], link_role: str, link_name: QName) -> None:
-        self.__roots = roots
-        self.__link_role = link_role
-        self.__link_name = link_name
-    
-    # First class citizens
-    def get_roots(self) -> list[INetworkNode]:
-        """
-        Get the root node of the presentation network
-        @return: NetworkNode representing the root node of the network. Returns None if the network is empty.
-        """
-        return cast(list[INetworkNode], self.__roots)
-    
-    def get_link_role(self) -> str:
-        """
-        Get the link role of the presentation network
-        @return: str containing the link role of the network. 
-        Note: This returns the same as get_URL() on the PyBRComponent
-        """
-        return self.__link_role
-    
-    def get_link_name(self) -> QName:
-        return self.__link_name
+    def __init__(self, roots: list[DefinitionNetworkNode], link_role: str, link_name: QName, is_physical: bool) -> None:
+        roots_copy: list[INetworkNode] = [cast(INetworkNode, root) for root in roots]
+        super().__init__(roots_copy, link_role, link_name, is_physical)
