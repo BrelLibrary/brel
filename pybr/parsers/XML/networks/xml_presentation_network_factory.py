@@ -1,7 +1,7 @@
 import lxml
 import lxml.etree
 from typing import cast
-from pybr import QName, PyBRLabelRole
+from pybr import QName, BrelLabelRole
 from pybr.reportelements import IReportElement, PyBRAbstract, PyBRHypercube, PyBRLineItems
 from pybr.networks import INetwork, INetworkNode, PresentationNetwork, PresentationNetworkNode
 
@@ -21,7 +21,7 @@ class PresentationNetworkFactory(IXMLNetworkFactory):
     def create_internal_node(self, xml_link: lxml.etree._Element, xml_arc: lxml.etree._Element, report_element: IReportElement) -> INetworkNode:
         nsmap = QName.get_nsmap()
 
-        preferred_label_role = PyBRLabelRole.from_url(xml_arc.attrib.get("preferredLabel"))
+        preferred_label_role = BrelLabelRole.from_url(xml_arc.attrib.get("preferredLabel"))
         arc_role = xml_arc.attrib.get("{" + nsmap["xlink"] + "}arcrole")
         order = int(xml_arc.attrib.get("order"))
         arc_qname = QName.from_string(xml_arc.tag)
@@ -34,7 +34,7 @@ class PresentationNetworkFactory(IXMLNetworkFactory):
     def create_root_node(self, xml_link: lxml.etree._Element, xml_arc: lxml.etree._Element, report_element: IReportElement) -> INetworkNode:
         nsmap = QName.get_nsmap()
 
-        preferred_label_role = PyBRLabelRole.STANDARD_LABEL
+        preferred_label_role = BrelLabelRole.STANDARD_LABEL
         arc_role = xml_arc.attrib.get("{" + nsmap["xlink"] + "}arcrole")
         order = 1
         arc_qname = QName.from_string(xml_arc.tag)

@@ -1,12 +1,10 @@
 import lxml
 import lxml.etree
 
-from ..pybr_label import PyBRLabel
-from ..qname import QName
+from pybr import QName
 
-from .pybr_aspect import PyBRAspect
-from .i_characteristic import PyBRICharacteristic
-from ..reportelements.pybr_concept import PyBRConcept
+from pybr.characteristics import PyBRAspect, PyBRICharacteristic
+from pybr.reportelements import PyBRConcept
 
 class PyBRConceptCharacteristic(PyBRICharacteristic):
     """

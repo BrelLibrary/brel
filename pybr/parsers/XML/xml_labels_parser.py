@@ -1,18 +1,18 @@
 import lxml
 import lxml.etree
 
-from pybr import QName, PyBRLabel
+from pybr import QName, BrelLabel
 
 
 def parse_labels_xml(
         xbrl_labels: lxml.etree._ElementTree
-        ) -> dict[QName, list[PyBRLabel]]:
+        ) -> dict[QName, list[BrelLabel]]:
     """
     Parse the labels
     @return: A list of all the labels in the filing
     """
 
-    labels: dict[QName, list[PyBRLabel]] = {}
+    labels: dict[QName, list[BrelLabel]] = {}
 
     nsmap = QName.get_nsmap()
 
@@ -21,7 +21,7 @@ def parse_labels_xml(
     labels_xml = xbrl_labels.findall(".//link:label", namespaces=nsmap)
 
     for label_xml in labels_xml:
-        label = PyBRLabel.from_xml(label_xml)
+        label = BrelLabel.from_xml(label_xml)
 
         # get the xlink:label attribute
         # this attribute contains the label id

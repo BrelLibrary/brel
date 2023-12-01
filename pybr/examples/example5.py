@@ -1,4 +1,4 @@
-from pybr import PyBRFiling, PyBRLabelRole
+from pybr import PyBRFiling, BrelLabelRole
 from pybr.utils import pprint_network
 from random import sample
 from editdistance import eval as edit_distance

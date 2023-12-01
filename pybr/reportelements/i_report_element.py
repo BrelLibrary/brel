@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from pybr import QName, PyBRLabel
+from pybr import QName, BrelLabel
 
 class IReportElement(ABC):
 
@@ -8,9 +8,9 @@ class IReportElement(ABC):
         raise NotImplementedError
     
     @abstractmethod
-    def get_labels(self) -> list[PyBRLabel]:
+    def get_labels(self) -> list[BrelLabel]:
         raise NotImplementedError
     
     @abstractmethod
-    def add_label(self, label: PyBRLabel):
+    def add_label(self, label: BrelLabel):
         raise NotImplementedError

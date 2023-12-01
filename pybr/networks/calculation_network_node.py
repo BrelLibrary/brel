@@ -2,7 +2,7 @@ import lxml.etree
 
 from pybr.networks import INetworkNode
 from pybr.reportelements import IReportElement, PyBRConcept
-from pybr import PyBRLabelRole, QName
+from pybr import BrelLabelRole, QName
 
 from typing import cast
 

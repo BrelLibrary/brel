@@ -3,13 +3,13 @@ import lxml.etree
 
 from ..dts import ISchemaManager
 from pybr.reportelements import IReportElement, PyBRDimension
-from pybr import QName, PyBRLabel
+from pybr import QName, BrelLabel
 
 from .xml_report_element_factory import XMLReportElementFactory
 
 def parse_report_elements_xml(
         schema_manager: ISchemaManager,
-        labels: dict[QName, list[PyBRLabel]]) -> dict[QName, IReportElement]:
+        labels: dict[QName, list[BrelLabel]]) -> dict[QName, IReportElement]:
     """
     Parse the concepts.
     @return: A list of all the concepts in the filing, even those that are not reported.

@@ -2,7 +2,7 @@ import lxml.etree
 
 from pybr.networks import INetworkNode
 from pybr.reportelements import IReportElement
-from pybr import PyBRLabelRole, QName
+from pybr import BrelLabelRole, QName
 
 from typing import cast
 
@@ -21,7 +21,7 @@ class PresentationNetworkNode(INetworkNode):
             arc_name: QName,
             link_role: str,
             link_name: QName,
-            preferred_label_role: PyBRLabelRole = PyBRLabelRole.STANDARD_LABEL,
+            preferred_label_role: BrelLabelRole = BrelLabelRole.STANDARD_LABEL,
             order: int = 1
             ):
         self.__report_element = report_element
@@ -50,7 +50,7 @@ class PresentationNetworkNode(INetworkNode):
 
         return cast(list['INetworkNode'], self.__children)
 
-    def get_preferred_label_role(self) -> PyBRLabelRole:
+    def get_preferred_label_role(self) -> BrelLabelRole:
         """
         Returns the preferred label role of this node
         @return: str containing the preferred label role of this node

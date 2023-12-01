@@ -1,8 +1,8 @@
-from pybr import QName, PyBRLabel
+from pybr import QName, BrelLabel
 from pybr.reportelements import IReportElement
 
 class PyBRAbstract(IReportElement):
-    def __init__(self, qname: QName, labels: list[PyBRLabel]) -> None:
+    def __init__(self, qname: QName, labels: list[BrelLabel]) -> None:
         self.__qname = qname
         self.__labels = labels
     
@@ -13,14 +13,14 @@ class PyBRAbstract(IReportElement):
         """        
         return self.__qname
     
-    def get_labels(self) -> list[PyBRLabel]:
+    def get_labels(self) -> list[BrelLabel]:
         """
         Get the labels of the abstract element.
         @return: list[PyBRLabel] containing the labels of the abstract element
         """
         return self.__labels
     
-    def add_label(self, label: PyBRLabel):
+    def add_label(self, label: BrelLabel):
         """
         Add a label to the abstract element.
         @param label: the label to add to the abstract element

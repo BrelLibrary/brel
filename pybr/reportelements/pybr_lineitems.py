@@ -1,8 +1,8 @@
-from pybr import PyBRLabel, QName
+from pybr import BrelLabel, QName
 from pybr.reportelements import IReportElement
 
 class PyBRLineItems(IReportElement):
-    def __init__(self, name: QName, labels: list[PyBRLabel]):
+    def __init__(self, name: QName, labels: list[BrelLabel]):
         self.__name = name
         self.__labels = labels 
 
@@ -10,11 +10,11 @@ class PyBRLineItems(IReportElement):
         # TODO: write docstring
         return self.__name
 
-    def get_labels(self) -> list[PyBRLabel]:
+    def get_labels(self) -> list[BrelLabel]:
         # TODO: write docstring
         return self.__labels
     
-    def add_label(self, label: PyBRLabel):
+    def add_label(self, label: BrelLabel):
         # TODO: write docstring
         self.__labels.append(label)
     

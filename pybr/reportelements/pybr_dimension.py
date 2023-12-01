@@ -1,8 +1,8 @@
-from pybr import PyBRLabel, QName
+from pybr import BrelLabel, QName
 from pybr.reportelements import IReportElement
 
 class PyBRDimension(IReportElement):
-    def __init__(self, name: QName, labels: list[PyBRLabel]) -> None:
+    def __init__(self, name: QName, labels: list[BrelLabel]) -> None:
         self.__name = name
         self.__labels = labels
         self.__is_explicit = True
@@ -15,14 +15,14 @@ class PyBRDimension(IReportElement):
         """
         return self.__name
     
-    def get_labels(self) -> list[PyBRLabel]:
+    def get_labels(self) -> list[BrelLabel]:
         """
         Get the labels of the dimension.
         @return: list[PyBRLabel] containing the labels of the dimension
         """        
         return self.__labels
     
-    def add_label(self, label: PyBRLabel):
+    def add_label(self, label: BrelLabel):
         """
         Add a label to the dimension.
         @param label: the label to add to the dimension

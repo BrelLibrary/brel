@@ -1,15 +1,15 @@
 import lxml
 import lxml.etree
 
-from pybr import QName, PyBRLabel
+from pybr import QName, BrelLabel
 from pybr.reportelements import IReportElement
 
 class PyBRConcept(IReportElement):
     # TODO: docstrings
     # TODO: check if the balance type, period type and balance type can be strings
-    def __init__(self, name: QName, labels: list[PyBRLabel], period_type: str, balance_type: str | None, nillable: bool, data_type: str) -> None:
+    def __init__(self, name: QName, labels: list[BrelLabel], period_type: str, balance_type: str | None, nillable: bool, data_type: str) -> None:
         self.__name: QName = name
-        self.__labels: list[PyBRLabel] = labels
+        self.__labels: list[BrelLabel] = labels
         self.__period_type: str = period_type
         self.__balance_type: str | None = balance_type
         self.__nillable: bool = nillable
@@ -22,14 +22,14 @@ class PyBRConcept(IReportElement):
         """
         return self.__name
 
-    def get_labels(self) -> list[PyBRLabel]:
+    def get_labels(self) -> list[BrelLabel]:
         """
         Get the labels of the concept.
         @return: list[PyBRLabel] containing the labels of the concept
         """
         return self.__labels
     
-    def add_label(self, label: PyBRLabel) -> None:
+    def add_label(self, label: BrelLabel) -> None:
         """
         Add a label to the concept.
         @param label: the label to add to the concept
@@ -66,7 +66,7 @@ class PyBRConcept(IReportElement):
         return self.__nillable        
     
     @classmethod
-    def from_xml(cls, xml_element: lxml.etree._Element, concept_qname: QName, labels: list[PyBRLabel]) -> "PyBRConcept":
+    def from_xml(cls, xml_element: lxml.etree._Element, concept_qname: QName, labels: list[BrelLabel]) -> "PyBRConcept":
         """
         Create a PyBRConcept from an lxml.etree._Element.
         @param xml_element: lxml.etree._Element. The lxml.etree._Element to create the PyBRConcept from.

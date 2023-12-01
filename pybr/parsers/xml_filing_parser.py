@@ -7,7 +7,7 @@ from io import BytesIO
 
 from pybr.reportelements import IReportElement, PyBRDimension, PyBRConcept
 from pybr.characteristics import PyBRConceptCharacteristic, PyBRUnitCharacteristic
-from pybr import QName, PyBRLabel, PyBRContext, PyBRFact, PyBRComponent
+from pybr import QName, BrelLabel, PyBRContext, PyBRFact, PyBRComponent
 from pybr.parsers import IFilingParser
 from pybr.parsers.dts import XMLSchemaManager, ISchemaManager
 from pybr.networks import INetwork
@@ -193,7 +193,7 @@ class XMLFilingParser(IFilingParser):
         """
         print(self.__print_prefix, output)
     
-    def parse_report_elements(self, labels: dict[QName, list[PyBRLabel]]) -> dict[QName, IReportElement]:
+    def parse_report_elements(self, labels: dict[QName, list[BrelLabel]]) -> dict[QName, IReportElement]:
         """
         Parse the concepts.
         @return: A list of all the concepts in the filing, even those that are not reported.
@@ -214,7 +214,7 @@ class XMLFilingParser(IFilingParser):
         )
     
 
-    def parse_labels(self) -> dict[QName, list[PyBRLabel]]:
+    def parse_labels(self) -> dict[QName, list[BrelLabel]]:
         """
         Parse the labels
         @return: A list of all the labels in the filing

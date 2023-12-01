@@ -1,5 +1,5 @@
 # from pybr import pybr_label, qname
-from pybr import PyBRLabel, QName
+from pybr import BrelLabel, QName
 
 class PyBRAspect:
     """
@@ -16,7 +16,7 @@ class PyBRAspect:
     UNIT: 'PyBRAspect'
     LANGUAGE: 'PyBRAspect' 
 
-    def __init__(self, name: str, labels: list[PyBRLabel]) -> None:
+    def __init__(self, name: str, labels: list[BrelLabel]) -> None:
         self.__name = name
         self.__labels = labels
     
@@ -33,7 +33,7 @@ class PyBRAspect:
         """
         return False
     
-    def get_labels(self) -> list[PyBRLabel]:
+    def get_labels(self) -> list[BrelLabel]:
         """
         Get the labels of the aspect.
         """
@@ -58,33 +58,33 @@ class PyBRAspect:
 
 # initialize the core aspects
 concept_labels = [
-    PyBRLabel("Concept [Axis]", "en-US"),
-    PyBRLabel("Konzept [Achse]", "de-DE"),
-    PyBRLabel("Concepto [Eje]", "es-ES")
+    BrelLabel("Concept [Axis]", "concept", "en-US"),
+    BrelLabel("Konzept [Achse]", "concept", "de-DE"),
+    BrelLabel("Concepto [Eje]", "concept", "es-ES")
 ]
 
 period_labels = [
-    PyBRLabel("Period [Axis]", "en-US"),
-    PyBRLabel("Periode [Achse]", "de-DE"),
-    PyBRLabel("Periodo [Eje]", "es-ES")
+    BrelLabel("Period [Axis]", "period", "en-US"),
+    BrelLabel("Periode [Achse]", "period", "de-DE"),
+    BrelLabel("Periodo [Eje]", "period", "es-ES")
 ]
 
 entity_labels = [
-    PyBRLabel("Entity [Axis]", "en-US"),
-    PyBRLabel("Organisation [Achse]", "de-DE"),
-    PyBRLabel("Entidad [Eje]", "es-ES")
+    BrelLabel("Entity [Axis]", "entity", "en-US"),
+    BrelLabel("Organisation [Achse]", "entity", "de-DE"),
+    BrelLabel("Entidad [Eje]", "entity", "es-ES")
 ]
 
 unit_labels = [
-    PyBRLabel("Unit [Axis]", "en-US"),
-    PyBRLabel("Einheit [Achse]", "de-DE"),
-    PyBRLabel("Unidad [Eje]", "es-ES")
+    BrelLabel("Unit [Axis]", "unit", "en-US"),
+    BrelLabel("Einheit [Achse]", "unit", "de-DE"),
+    BrelLabel("Unidad [Eje]", "unit", "es-ES")
 ]
 
 language_labels = [
-    PyBRLabel("Language [Axis]", "en-US"),
-    PyBRLabel("Sprache [Achse]", "de-DE"),
-    PyBRLabel("Lengua [Eje]", "es-ES")
+    BrelLabel("Language [Axis]", "language", "en-US"),
+    BrelLabel("Sprache [Achse]", "language", "de-DE"),
+    BrelLabel("Lengua [Eje]", "language", "es-ES")
 ]
 
 PyBRAspect.CONCEPT = PyBRAspect("concept", concept_labels)

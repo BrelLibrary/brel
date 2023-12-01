@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from time import time
 
-from pybr import QName, PyBRLabel, PyBRFact, PyBRComponent
+from pybr import QName, BrelLabel, PyBRFact, PyBRComponent
 from pybr.reportelements import IReportElement
 from pybr.networks import INetwork
 
@@ -78,7 +78,7 @@ class IFilingParser(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def parse_report_elements(self, labels: dict[QName, list[PyBRLabel]]) -> dict[QName, IReportElement]:
+    def parse_report_elements(self, labels: dict[QName, list[BrelLabel]]) -> dict[QName, IReportElement]:
         """
         Parse the report elements.
         @param labels: A dictionary that associates SOME report element QNames with a list of labels.
@@ -116,7 +116,7 @@ class IFilingParser(ABC):
         raise NotImplementedError
     
     @abstractmethod
-    def parse_labels(self) -> dict[QName, list[PyBRLabel]]:
+    def parse_labels(self) -> dict[QName, list[BrelLabel]]:
         """
         Parse the labels.
         @return: A dictionary that associates report element QNames with a list of labels.

@@ -1,5 +1,5 @@
 from .qname import QName
-from .pybr_label import PyBRLabel, PyBRLabelRole
+from .resource import BrelLabel, BrelLabelRole
 
 from .reportelements import *
 

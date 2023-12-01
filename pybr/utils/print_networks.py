@@ -1,6 +1,6 @@
 from pybr.networks import *
 from pybr.reportelements import *
-from pybr import PyBRLabelRole
+from pybr import BrelLabelRole
 
 ELBOW = "└──"
 PIPE  = "│  "
@@ -14,9 +14,9 @@ def __print_subnetwork(node: INetworkNode, last=True, header='') -> None:
     if hasattr(report_element, "get_preferred_label_role"):
         label_role = getattr(report_element, "get_preferred_label_role")()
     else:
-        label_role = PyBRLabelRole.STANDARD_LABEL
+        label_role = BrelLabelRole.STANDARD_LABEL
     
-    node_preferred_label = next(filter(lambda label: label.get_role() == label_role, node_labels), str(report_element.get_name()))
+    node_preferred_label = next(filter(lambda label: label.get_label_role() == label_role, node_labels), str(report_element.get_name()))
     node_as_str = str(node_preferred_label)
 
     type_str = ""

@@ -24,5 +24,5 @@ def example1():
         labels = concept.get_labels()
 
         for label in labels:
-            print(f"{label.get_language()} : {label.get_role().value:20} : {label}")
+            print(f"{label.get_language()} : {label.get_label_role().value:20} : {label}")
     
