@@ -1,8 +1,11 @@
+from pybr.resource import BrelLabel
 from pybr.networks import INetworkNode
 from pybr.reportelements import IReportElement
 from pybr import QName
 
 from typing import cast
+
+from pybr.resource import IResource
 
 DEBUG = False
 
@@ -13,13 +16,14 @@ class LabelNetworkNode(INetworkNode):
     """
     def  __init__(
             self,
-            report_element: IReportElement,
+            points_to: IReportElement|BrelLabel,
             arc_role: str,
             arc_name: QName,
             link_role: str,
             link_name: QName,
                   ) -> None:
-        self.__report_element = report_element
+
+        self.__points_to = points_to
         self.__arc_role = arc_role
         self.__arc_name = arc_name
         self.__link_role = link_role
@@ -28,7 +32,22 @@ class LabelNetworkNode(INetworkNode):
     
     # First class citizens
     def get_report_element(self) -> IReportElement:
-        return self.__report_element
+        if not isinstance(self.__points_to, IReportElement):
+            raise ValueError("LabelNetworkNodes do not point to report elements")
+        return self.__points_to
+    
+    def get_resource(self) -> BrelLabel:
+        if not isinstance(self.__points_to, BrelLabel):
+            raise ValueError("LabelNetworkNodes do not point to resources")
+        return self.__points_to
+    
+    def is_a(self) -> str:
+        if isinstance(self.__points_to, IReportElement):
+            return 'report element'
+        elif isinstance(self.__points_to, BrelLabel):
+            return 'resource'
+        else:
+            raise ValueError("LabelNetworkNodes do not point to report elements or resources")
     
     def get_children(self) -> list[INetworkNode]:
         return self.__children
@@ -50,14 +69,6 @@ class LabelNetworkNode(INetworkNode):
     
     # Internal methods
     def add_child(self, child: INetworkNode):
-        if DEBUG:  # pragma: no cover
-            print("Warning: LabelNetworkNodes should not have children")
-        
+        self.__children.append(child)
     
-    def _set_report_element(self, report_element: IReportElement):
-        """
-        Set the report element of this node
-        @param report_element: IReportElement to be set as the report element
-        """
-        self.__report_element = report_element
         

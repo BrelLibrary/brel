@@ -13,18 +13,37 @@ class PhysicalDefinitionNetworkFactory(IXMLNetworkFactory):
 
         link_role = xml_link.get(f"{{{nsmap['xlink']}}}role", None)
         link_qname = QName.from_string(xml_link.tag)
+
+        if len(roots) == 0:
+            raise ValueError("roots must not be empty")
+        if not all(isinstance(root, DefinitionNetworkNode) for root in roots):
+            raise TypeError("roots must all be of type DefinitionNetworkNode")
+        if link_role is None:
+            raise ValueError(f"linkrole attribute not found on link element {xml_link}")
         
-        return DefinitionNetwork(roots, link_role, link_qname, True)
+        roots_cast = cast(list[DefinitionNetworkNode], roots)
+        
+        return DefinitionNetwork(roots_cast, link_role, link_qname, True)
     
     def create_internal_node(self, xml_link: lxml.etree._Element, xml_arc: lxml.etree._Element, report_element: IReportElement) -> INetworkNode:
         nsmap = QName.get_nsmap()
 
         arc_role = xml_arc.attrib.get("{" + nsmap["xlink"] + "}arcrole")
-        order = float(xml_arc.attrib.get("order")).__round__()
+        order = float(xml_arc.attrib.get("order") or 0.0).__round__()
         arc_qname = QName.from_string(xml_arc.tag)
 
         link_role = xml_link.attrib.get("{" + nsmap["xlink"] + "}role")
         link_name = QName.from_string(xml_link.tag)
+
+        if arc_role is None:
+            raise ValueError(f"arcrole attribute not found on arc element {xml_arc}")
+        if not isinstance(arc_role, str):
+            raise TypeError(f"arcrole attribute on arc element {xml_arc} is not a string")
+        
+        if link_role is None:
+            raise ValueError(f"role attribute not found on link element {xml_link}")
+        if not isinstance(link_role, str):
+            raise TypeError(f"role attribute on link element {xml_link} is not a string")
 
         return DefinitionNetworkNode(report_element, [], arc_role, arc_qname, link_role, link_name, order)
     
@@ -37,6 +56,16 @@ class PhysicalDefinitionNetworkFactory(IXMLNetworkFactory):
 
         link_role = xml_link.attrib.get("{" + nsmap["xlink"] + "}role")
         link_name = QName.from_string(xml_link.tag)
+
+        if arc_role is None:
+            raise ValueError(f"arcrole attribute not found on arc element {xml_arc}")
+        if not isinstance(arc_role, str):
+            raise TypeError(f"arcrole attribute on arc element {xml_arc} is not a string")
+        
+        if link_role is None:
+            raise ValueError(f"role attribute not found on link element {xml_link}")
+        if not isinstance(link_role, str):
+            raise TypeError(f"role attribute on link element {xml_link} is not a string")
 
         return DefinitionNetworkNode(report_element, [], arc_role, arc_qname, link_role, link_name, order)
     
@@ -59,18 +88,37 @@ class LogicalDefinitionNetworkFactory(IXMLNetworkFactory):
 
         link_role = xml_link.get(f"{{{nsmap['xlink']}}}role", None)
         link_qname = QName.from_string(xml_link.tag)
+
+        if len(roots) == 0:
+            raise ValueError("roots must not be empty")
+        if not all(isinstance(root, DefinitionNetworkNode) for root in roots):
+            raise TypeError("roots must all be of type DefinitionNetworkNode")
+        if link_role is None:
+            raise ValueError(f"linkrole attribute not found on link element {xml_link}")
         
-        return DefinitionNetwork(roots, link_role, link_qname, False)
+        roots_cast = cast(list[DefinitionNetworkNode], roots)
+        
+        return DefinitionNetwork(roots_cast, link_role, link_qname, False)
     
     def create_internal_node(self, xml_link: lxml.etree._Element, xml_arc: lxml.etree._Element, report_element: IReportElement) -> INetworkNode:
         nsmap = QName.get_nsmap()
 
         arc_role = xml_arc.attrib.get("{" + nsmap["xlink"] + "}arcrole")
-        order = float(xml_arc.attrib.get("order")).__round__()
+        order = float(xml_arc.attrib.get("order") or 0.0).__round__()
         arc_qname = QName.from_string(xml_arc.tag)
 
         link_role = xml_link.attrib.get("{" + nsmap["xlink"] + "}role")
         link_name = QName.from_string(xml_link.tag)
+
+        if arc_role is None:
+            raise ValueError(f"arcrole attribute not found on arc element {xml_arc}")
+        if not isinstance(arc_role, str):
+            raise TypeError(f"arcrole attribute on arc element {xml_arc} is not a string")
+        
+        if link_role is None:
+            raise ValueError(f"role attribute not found on link element {xml_link}")
+        if not isinstance(link_role, str):
+            raise TypeError(f"role attribute on link element {xml_link} is not a string")
 
         return DefinitionNetworkNode(report_element, [], arc_role, arc_qname, link_role, link_name, order)
     
@@ -83,6 +131,16 @@ class LogicalDefinitionNetworkFactory(IXMLNetworkFactory):
 
         link_role = xml_link.attrib.get("{" + nsmap["xlink"] + "}role")
         link_name = QName.from_string(xml_link.tag)
+
+        if arc_role is None:
+            raise ValueError(f"arcrole attribute not found on arc element {xml_arc}")
+        if not isinstance(arc_role, str):
+            raise TypeError(f"arcrole attribute on arc element {xml_arc} is not a string")
+        
+        if link_role is None:
+            raise ValueError(f"role attribute not found on link element {xml_link}")
+        if not isinstance(link_role, str):
+            raise TypeError(f"role attribute on link element {xml_link} is not a string")
 
         return DefinitionNetworkNode(report_element, [], arc_role, arc_qname, link_role, link_name, order)
     

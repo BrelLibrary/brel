@@ -1,5 +1,5 @@
 from pybr import PyBRFiling
-from pybr.networks import DefinitionNetwork
+from pybr.networks import DefinitionNetwork, ReferenceNetwork, LabelNetwork 
 from pybr.utils import pprint_network
 
 def example7():
@@ -28,3 +28,20 @@ def example7():
         pprint_network(component.get_definition())
     else:
         print("Component not found")
+    
+    # get the physical label networks
+    physical_label_networks = filter(lambda network: isinstance(network, LabelNetwork), physical_networks)
+
+    # print the label networks
+    print("-" * 10, "PHYSICAL LABEL NETWORKS", "-" * 10)
+    for label_network in physical_label_networks:
+        pprint_network(label_network)
+
+
+    # get the physical reference networks
+    physical_reference_networks = filter(lambda network: isinstance(network, ReferenceNetwork), physical_networks)
+
+    # print the reference networks
+    print("-" * 10, "PHYSICAL REFERENCE NETWORKS", "-" * 10)
+    for reference_network in physical_reference_networks:
+        pprint_network(reference_network)

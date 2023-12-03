@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 from pybr.reportelements import IReportElement
 from pybr import QName
+from pybr.resource import IResource
 
 class INetworkNode(ABC):
     """
@@ -12,10 +13,33 @@ class INetworkNode(ABC):
     @abstractmethod
     def get_report_element(self) -> IReportElement:
         """
-        Returns the report element associated with this node
-        @return: IReportElement associated with this node
+        Returns the report element associated with this node.
+        @return: IReportElement associated with this node.
+        @raises ValueError: if this node does not point to a report element.
+        Use the points_to method to check if this node points to a report element.
         """
         raise NotImplementedError
+    
+    @abstractmethod
+    def get_resource(self) -> IResource:
+        """
+        Returns the resource associated with this node.
+        @return: IResource associated with this node.
+        @raises ValueError: if this node does not point to a resource.
+        Use the points_to method to check if this node points to a resource.
+        """
+        raise NotImplementedError
+    
+    @abstractmethod
+    def is_a(self) -> str:
+        """
+        Returns 
+        - 'resource' if this node points to a resource
+        - 'report element' if this node points to a report element
+        @return: str containing 'resource' or 'report element'
+        """
+        raise NotImplementedError
+    
     
     @abstractmethod
     def get_children(self) -> list['INetworkNode']:

@@ -13,21 +13,47 @@ class PresentationNetworkFactory(IXMLNetworkFactory):
         # TODO: make assertions
         nsmap = QName.get_nsmap()
 
+        if len(roots) != 1:
+            raise ValueError("roots must have exactly one element")
+        if not isinstance(roots[0], PresentationNetworkNode):
+            raise TypeError("roots must be of type PresentationNetworkNode")
+
         root = roots[0]
         link_role = xml_link_element.get(f"{{{nsmap['xlink']}}}role", None)
         link_name = QName.from_string(xml_link_element.tag)
+
+
+        if link_role is None:
+            raise ValueError("link_role must not be None")
+
         return PresentationNetwork(root, link_role, link_name)
     
     def create_internal_node(self, xml_link: lxml.etree._Element, xml_arc: lxml.etree._Element, report_element: IReportElement) -> INetworkNode:
         nsmap = QName.get_nsmap()
 
-        preferred_label_role = BrelLabelRole.from_url(xml_arc.attrib.get("preferredLabel"))
+        preferred_label = xml_arc.attrib.get("preferredLabel")
+        if preferred_label is None:
+            # The preferredLabel attribute is optional. If it is not present, the preferred label role is the standard label
+            preferred_label_role = BrelLabelRole.STANDARD_LABEL
+        if not isinstance(preferred_label, str):
+            raise TypeError("preferred_label must be a string")
+        
+        preferred_label_role = BrelLabelRole.from_url(preferred_label)
         arc_role = xml_arc.attrib.get("{" + nsmap["xlink"] + "}arcrole")
-        order = int(xml_arc.attrib.get("order"))
+        order = int(xml_arc.attrib.get("order") or 1)
         arc_qname = QName.from_string(xml_arc.tag)
 
         link_role = xml_link.attrib.get("{" + nsmap["xlink"] + "}role")
         link_name = QName.from_string(xml_link.tag)
+
+        if arc_role is None:
+            raise ValueError(f"arcrole attribute not found on arc element {xml_arc}")
+        if not isinstance(arc_role, str):
+            raise TypeError(f"arcrole attribute on arc element {xml_arc} is not a string")
+        if link_role is None:
+            raise ValueError(f"role attribute not found on link element {xml_link}")
+        if not isinstance(link_role, str):
+            raise TypeError(f"role attribute on link element {xml_link} is not a string")
 
         return PresentationNetworkNode(report_element, [], arc_role, arc_qname, link_role, link_name, preferred_label_role, order)
     
@@ -41,6 +67,15 @@ class PresentationNetworkFactory(IXMLNetworkFactory):
 
         link_role = xml_link.attrib.get("{" + nsmap["xlink"] + "}role")
         link_name = QName.from_string(xml_link.tag)
+
+        if arc_role is None:
+            raise ValueError(f"arcrole attribute not found on arc element {xml_arc}")
+        if not isinstance(arc_role, str):
+            raise TypeError(f"arcrole attribute on arc element {xml_arc} is not a string")
+        if link_role is None:
+            raise ValueError(f"role attribute not found on link element {xml_link}")
+        if not isinstance(link_role, str):
+            raise TypeError(f"role attribute on link element {xml_link} is not a string")
 
         return PresentationNetworkNode(report_element, [], arc_role, arc_qname, link_role, link_name, preferred_label_role, order)
     

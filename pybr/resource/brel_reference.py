@@ -23,10 +23,12 @@ class BrelReference(IResource):
     
     def get_label(self) -> str:
         return self.__label
-
     
     def get_title(self) -> str | None:
         return None
+    
+    def get_content(self) -> dict:
+        return self.__content
     
     # internal methods
     @classmethod
@@ -51,9 +53,12 @@ class BrelReference(IResource):
             raise ValueError(f"The role of the resource {xml_element} is not a string")
 
         # get the content
+        # TODO: make more robust
         content = {}
         for child in xml_element:
-            content[child.tag] = child.text
+            tag = child.tag
+            tag = tag[tag.find("}") + 1:]
+            content[tag] = child.text
 
         return cls(label, role, content)
 

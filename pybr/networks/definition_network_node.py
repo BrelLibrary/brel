@@ -4,6 +4,8 @@ from pybr import QName
 
 from typing import cast
 
+from pybr.resource import IResource
+
 class DefinitionNetworkNode(INetworkNode):
     """
     Class for representing a definition network node in a definition network.
@@ -30,6 +32,12 @@ class DefinitionNetworkNode(INetworkNode):
     # First class citizens
     def get_report_element(self) -> IReportElement:
         return self.__report_element
+    
+    def get_resource(self) -> IResource:
+        raise ValueError("DefinitionNetworkNode does not point to a resource")
+    
+    def is_a(self) -> str:
+        return 'report element'
     
     def get_children(self) -> list[INetworkNode]:
         return cast(list[INetworkNode], self.__children)

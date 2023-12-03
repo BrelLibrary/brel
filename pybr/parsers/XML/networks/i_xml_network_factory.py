@@ -3,6 +3,7 @@ import lxml.etree
 from abc import ABC, abstractmethod
 from pybr import QName
 from pybr.reportelements import IReportElement
+from pybr.resource import IResource
 from pybr.networks import INetwork, INetworkNode
 
 class IXMLNetworkFactory(ABC):
@@ -11,11 +12,11 @@ class IXMLNetworkFactory(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def create_internal_node(self, xml_link: lxml.etree._Element, xml_arc: lxml.etree._Element, report_element: IReportElement) -> INetworkNode:
+    def create_internal_node(self, xml_link: lxml.etree._Element, xml_arc: lxml.etree._Element, points_to: IReportElement|IResource) -> INetworkNode:
         raise NotImplementedError
 
     @abstractmethod
-    def create_root_node(self, xml_link: lxml.etree._Element, xml_arc: lxml.etree._Element, report_element: IReportElement) -> INetworkNode:
+    def create_root_node(self, xml_link: lxml.etree._Element, xml_arc: lxml.etree._Element, points_to: IReportElement|IResource) -> INetworkNode:
         raise NotImplementedError
     
     @abstractmethod

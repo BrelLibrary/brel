@@ -121,11 +121,14 @@ class BrelLabel(IResource):
         # get the language
         # language = xml_element.attrib.get(f"{{{nsmap['xml']}}}lang")
         # filter through all attributes and get the one ending with 'lang'
-        language = None
-        for attribute in xml_element.attrib:
-            if attribute.endswith("lang"):
-                language = xml_element.attrib[attribute]
-                break
+        # language = None
+        # for attribute in xml_element.attrib:
+        #     if attribute.endswith("lang"):
+        #         language = xml_element.attrib[attribute]
+        #         break
+        
+        # language = next(filter(lambda attribute: attribute.endswith("lang"), xml_element.attrib), None)
+        language = xml_element.attrib.get(f"{{{nsmap['xml']}}}lang")
         
         if language is None:
             raise ValueError(f"Could not find the language for the label {text}")
@@ -136,6 +139,6 @@ class BrelLabel(IResource):
         # get the label
         label = xml_element.attrib.get(f"{{{nsmap['xlink']}}}label")
 
-        return cls(text, language, label, role)
+        return cls(text, label, language, role)
     
 

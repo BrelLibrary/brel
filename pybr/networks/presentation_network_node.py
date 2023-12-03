@@ -6,6 +6,8 @@ from pybr import BrelLabelRole, QName
 
 from typing import cast
 
+from pybr.resource import IResource
+
 class PresentationNetworkNode(INetworkNode):
     """
     Class for representing a node in a network.
@@ -40,6 +42,19 @@ class PresentationNetworkNode(INetworkNode):
         @return: IReportElement associated with this node
         """
         return self.__report_element
+    
+    def get_resource(self) -> IResource:
+        """
+        @raises ValueError: if this node does not point to a resource.
+        Use the points_to method to check if this node points to a resource.
+        """
+        raise ValueError("PresentationNetworkNode does not point to a resource")
+    
+    def is_a(self) -> str:
+        """
+        @return: str containing 'report element'
+        """
+        return 'report element'
     
     def get_children(self) -> list['INetworkNode']:
         """

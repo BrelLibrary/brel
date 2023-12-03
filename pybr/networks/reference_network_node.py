@@ -1,3 +1,4 @@
+from pybr.resource import BrelReference, IResource
 from pybr.networks import INetworkNode
 from pybr.reportelements import IReportElement
 from pybr import QName
@@ -11,7 +12,7 @@ class ReferenceNetworkNode(INetworkNode):
     """
     def  __init__(
             self,
-            report_element: IReportElement,
+            points_to: BrelReference | IReportElement,
             children: list['ReferenceNetworkNode'],
             arc_role: str,
             arc_name: QName,
@@ -19,7 +20,8 @@ class ReferenceNetworkNode(INetworkNode):
             link_name: QName,
             order: int = 1
                   ) -> None:
-        self.__report_element = report_element
+
+        self.__points_to = points_to
         self.__children = children
         self.__arc_role = arc_role
         self.__arc_name = arc_name
@@ -29,7 +31,22 @@ class ReferenceNetworkNode(INetworkNode):
     
     # First class citizens
     def get_report_element(self) -> IReportElement:
-        return self.__report_element
+        if not isinstance(self.__points_to, IReportElement):
+            raise ValueError("ReferenceNetworkNodes do not point to report elements")
+        return self.__points_to
+    
+    def get_resource(self) -> IResource:
+        if not isinstance(self.__points_to, IResource):
+            raise ValueError("ReferenceNetworkNodes do not point to resources")
+        return self.__points_to
+    
+    def is_a(self) -> str:
+        if isinstance(self.__points_to, IReportElement):
+            return 'report element'
+        elif isinstance(self.__points_to, IResource):
+            return 'resource'
+        else:
+            raise ValueError("ReferenceNetworkNodes do not point to report elements or resources")
     
     def get_children(self) -> list[INetworkNode]:
         return cast(list[INetworkNode], self.__children)
@@ -62,4 +79,4 @@ class ReferenceNetworkNode(INetworkNode):
         Set the report element of this node
         @param report_element: IReportElement to be set as the report element
         """
-        self.__report_element = report_element
+        self.__points_to = report_element

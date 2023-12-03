@@ -15,18 +15,39 @@ class CalculationNetworkFactory(IXMLNetworkFactory):
         link_role = xml_link_element.get(f"{{{nsmap['xlink']}}}role", None)
         link_qname = QName.from_string(xml_link_element.tag)
 
-        return CalculationNetwork(roots, link_role, link_qname)
+        if len(roots) == 0:
+            raise ValueError("roots must not be empty")
+        
+        if not all(isinstance(root, CalculationNetworkNode) for root in roots):
+            raise TypeError("roots must all be of type CalculationNetworkNode")
+        
+        if link_role is None:
+            raise ValueError("link_role must not be None")
+
+        roots_cast = cast(list[CalculationNetworkNode], roots)
+
+        return CalculationNetwork(roots_cast, link_role, link_qname)
     
     def create_internal_node(self, xml_link: lxml.etree._Element, xml_arc: lxml.etree._Element, report_element: IReportElement) -> INetworkNode:
         nsmap = QName.get_nsmap()
 
-        weight = float(xml_arc.attrib.get("weight"))
+        weight = float(xml_arc.attrib.get("weight") or 0.0)
         arc_role = xml_arc.attrib.get("{" + nsmap["xlink"] + "}arcrole")
-        order = int(xml_arc.attrib.get("order"))
+        order = int(xml_arc.attrib.get("order") or 1)
         arc_qname = QName.from_string(xml_arc.tag)
 
         link_role = xml_link.attrib.get("{" + nsmap["xlink"] + "}role")
         link_name = QName.from_string(xml_link.tag)
+
+        if arc_role is None:
+            raise ValueError(f"arcrole attribute not found on arc element {xml_arc}")
+        if not isinstance(arc_role, str):
+            raise TypeError(f"arcrole attribute on arc element {xml_arc} is not a string")
+        
+        if link_role is None:
+            raise ValueError(f"role attribute not found on link element {xml_link}")
+        if not isinstance(link_role, str):
+            raise TypeError(f"role attribute on link element {xml_link} is not a string")
 
         return CalculationNetworkNode(report_element, [], arc_role, arc_qname, link_role, link_name, weight, order)
     
@@ -40,6 +61,16 @@ class CalculationNetworkFactory(IXMLNetworkFactory):
 
         link_role = xml_link.attrib.get("{" + nsmap["xlink"] + "}role")
         link_name = QName.from_string(xml_link.tag)
+
+        if arc_role is None:
+            raise ValueError(f"arcrole attribute not found on arc element {xml_arc}")
+        if not isinstance(arc_role, str):
+            raise TypeError(f"arcrole attribute on arc element {xml_arc} is not a string")
+        
+        if link_role is None:
+            raise ValueError(f"role attribute not found on link element {xml_link}")
+        if not isinstance(link_role, str):
+            raise TypeError(f"role attribute on link element {xml_link} is not a string")
 
         return CalculationNetworkNode(report_element, [], arc_role, arc_qname, link_role, link_name, weight, order)
     
