@@ -1,0 +1,47 @@
+[default]
+DEBUG = false
+FLASK_ADMIN_TEMPLATE_MODE = "bootstrap3"
+FLASK_ADMIN_SWATCH = 'cerulean'
+SQLALCHEMY_DATABASE_URI = 'sqlite:///development.db'
+TITLE = "pyfiling"
+SECRET_KEY = "Pl3453Ch4ng3"
+PASSWORD_SCHEMES = ['pbkdf2_sha512', 'md5_crypt']
+EXTENSIONS = [
+    "flask_bootstrap:Bootstrap",
+    "pyfiling.ext.database:init_app",
+    "pyfiling.ext.auth:init_app",
+    "pyfiling.ext.admin:init_app",
+    "pyfiling.ext.commands:init_app",
+    "pyfiling.ext.webui:init_app",
+    "pyfiling.ext.restapi:init_app",
+]
+
+[development]
+EXTENSIONS = [
+    "flask_debugtoolbar:DebugToolbarExtension",
+    "dynaconf_merge_unique"  # to reuse extensions list from [default]
+]
+TEMPLATES_AUTO_RELOAD = true
+DEBUG = true
+DEBUG_TOOLBAR_ENABLED = true
+DEBUG_TB_INTERCEPT_REDIRECTS = false
+DEBUG_TB_PROFILER_ENABLED = true
+DEBUG_TB_TEMPLATE_EDITOR_ENABLED = true
+DEBUG_TB_PANELS = [
+    "flask_debugtoolbar.panels.versions.VersionDebugPanel",
+    "flask_debugtoolbar.panels.sqlalchemy.SQLAlchemyDebugPanel",
+    "flask_debugtoolbar.panels.timer.TimerDebugPanel",
+    "flask_debugtoolbar.panels.headers.HeaderDebugPanel",
+    "flask_debugtoolbar.panels.request_vars.RequestVarsDebugPanel",
+    "flask_debugtoolbar.panels.template.TemplateDebugPanel",
+    "flask_debugtoolbar.panels.route_list.RouteListDebugPanel",
+    "flask_debugtoolbar.panels.logger.LoggingPanel",
+    "flask_debugtoolbar.panels.profiler.ProfilerDebugPanel",
+    "flask_debugtoolbar.panels.config_vars.ConfigVarsDebugPanel"
+]
+
+[testing]
+SQLALCHEMY_DATABASE_URI = 'sqlite:///testing.db'
+
+[production]
+SQLALCHEMY_DATABASE_URI = 'sqlite:///production.db'
