@@ -1,4 +1,4 @@
-from brel import Filing, Aspect
+from brel import Filing, BrelAspect
 from brel.utils import pprint_facts
 
 def example3():

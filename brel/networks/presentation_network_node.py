@@ -13,7 +13,6 @@ class PresentationNetworkNode(INetworkNode):
     Class for representing a node in a network.
     Since a node can have children, nodes can also be viewed as trees.
     """
-    # TODO: docstrings
 
     def __init__(
             self, 

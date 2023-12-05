@@ -1,12 +1,8 @@
 import lxml
 import lxml.etree
-# from pybr import Aspect, qname
-# from pybr.characteristics import i_characteristic
-# from pybr.reportelements import Dimension, Member
 
-# TODO: comes after report elements. so this can import report elements vanilla
 from brel import QName
-from brel.characteristics import Aspect, ICharacteristic
+from brel.characteristics import BrelAspect, ICharacteristic
 from brel.reportelements import Dimension, Member
 
 
@@ -16,13 +12,13 @@ class TypedDimensionCharacteristic(ICharacteristic):
     An explicit dimension characteristic assigns a member-value to a dimension-aspect.
     """
 
-    def __init__(self, dimension: Dimension, value, aspect: Aspect) -> None:
+    def __init__(self, dimension: Dimension, value, aspect: BrelAspect) -> None:
         self.__dimension: Dimension = dimension
         self.__value = value
-        self.__aspect: Aspect = aspect
+        self.__aspect: BrelAspect = aspect
     
     # first class citizens
-    def get_aspect(self) -> Aspect:
+    def get_aspect(self) -> BrelAspect:
         """
         returns the aspect of the explicit dimension characteristic.
         @info: Both typed and explicit dimension characteristics are not statically bound to an aspect.
@@ -77,12 +73,12 @@ class TypedDimensionCharacteristic(ICharacteristic):
         @returns ExplicitDimensionCharacteristic: the explicit dimension characteristic created from the lxml.etree._Element
         @raises ValueError: if the XML element is malformed
         """
-        # first check if there is a dimension attribute
-        if "dimension" not in xml_element.attrib:
-            raise ValueError("Could not find dimension attribute in explicit dimension characteristic")
         
-        # then parse and create the dimension aspect
-        dimension_axis = xml_element.attrib["dimension"]
-        dimension_aspect = Aspect.from_QName(QName.from_string(dimension_axis))
+        # Get the dimension attribute from the xml element
+        dimension_axis = xml_element.get("dimension")
+        if dimension_axis is None:
+            raise ValueError("Could not find dimension attribute in explicit dimension characteristic")
+
+        dimension_aspect = BrelAspect.from_QName(QName.from_string(dimension_axis))
 
         return cls(dimension, value, dimension_aspect)

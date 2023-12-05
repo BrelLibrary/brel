@@ -1,4 +1,5 @@
 import validators
+import re
 
 class QName:
     __url_to_prefix : dict[str, str] = {}
@@ -67,8 +68,14 @@ class QName:
     def from_string(cls, qname_string : str) -> "QName":
         """
         Creates a QName from a string representation of a QName
+        The string representation must be in one of the following formats:
+        - {URL}local_name
+        - prefix:local_name
+        Furthermore, The prefix and the URL must be known. So there must be an entry in the namespace map for the prefix and the URL.
+        @param qname_string: str containing the string representation of the QName
+        @returns QName: the QName created from the string representation
+        @raises ValueError: if the string representation is not valid or if the prefix or the URL is not known
         """
-        # TODO: This constructor is UNSAFE. There might be a case where the namespace map is not complete. So QName.__url_namespace_map[prefix] and QName.__namespace_url_map[uri] might raise KeyErrors    
         # check if the string contains an URL or a prefix
         if "}" in qname_string and "{" not in qname_string:
             raise ValueError(f"Invalid QName string: {qname_string}." + "The string contains a '}' but no '{'")
@@ -121,35 +128,28 @@ class QName:
             return False
     
     @staticmethod
-    def try_get_prefix_from_url(url : str) -> str | None:
-        """
-        Tries to generate a prefix from an URL
-        @param url: The URL
-        @return: A string representing the prefix or None if no prefix could be generated
-        """
+    def get_version_from_url(url: str) -> str | None:
 
-        # check if the URL is valid
-        if not validators.url(url):
-            print(f"[QName.try_get_prefix_from_url()] Invalid URL: {url}")
-            return None
+        version = ""
+        sections = url.split("/")
+        for section in sections:
+            section = re.sub(r'[^0-9]', '', section)
+            if section.isnumeric():
+                version = section
         
-        # see if the URL is already in the namespace map
-        if url in QName.__url_to_prefix:
-            return QName.__url_to_prefix[url]
-        
-        # split the URL into parts using "/" as the separator
-        url_parts = url.split("/")
-        # the last part of the url that is not a number is the prefix
-        prefix = None
-        for part in url_parts[::-1]:
-            if not part.isnumeric():
-                prefix = part
-                break
-        
-        # if the prefix is an URL, then it is not a valid prefix
-        if prefix is not None and validators.url("https://" + prefix):
-            return None
-        
+        return version
+    
+    @staticmethod
+    def get_prefix_from_url(url: str):
+        prefix = ""
+        sections = url.split("/")
+        for section in sections:
+            section = re.sub(r'[^a-zA-Z]', '', section)
+            section = section.replace("xsd", "")             
+
+            if len(section) > 0 and "www" not in section:
+                prefix = section
+                
         return prefix
     
     @classmethod
@@ -163,6 +163,9 @@ class QName:
     def add_to_nsmap(cls, url : str, prefix : str):
         """
         Adds a prefix to the namespace map
+        @param url: str containing the URL
+        @param prefix: str containing the prefix
+        @raises ValueError: if the URL or the prefix is already in the namespace map, but mapped to a different prefix or URL
         """
         if not validators.url(url):
             raise ValueError(f"Invalid URL: {url}. Maybe you switched the URL and the namespace?")
@@ -170,22 +173,18 @@ class QName:
         if prefix is None:
             raise ValueError("The namespace cannot be None")
         
-        # TODO: This method is UNSAFE. There might be a case where the namespace map is not complete. So QName.__url_namespace_map[prefix] and QName.__namespace_url_map[uri] might raise KeyErrors
         # Ask Ghislain about this
         if url in cls.__url_to_prefix or prefix in cls.__prefix_to_url:
             if prefix in cls.__prefix_to_url and cls.__prefix_to_url[prefix] != url:
-                # print(f"WARNING: The namespace {namespace} is already in the namespace map, but it is mapped to a different URL")
-                # print(f"Old URL: {cls.__namespace_to_url[namespace]}")
-                # print(f"New URL: {url}")
-                # print(f"The namespace {namespace} will be mapped to the old URL")
+                # the prefix is already in the namespace map, but it is mapped to a different URL
                 raise ValueError(f"The prefix {prefix} is already in the namespace map, but it is mapped to a different URL")
-                pass
             elif url in cls.__url_to_prefix and cls.__url_to_prefix[url] != prefix:
+                # the URL is already in the namespace map, but it is mapped to a different prefix
                 raise ValueError(f"The URL {url} is already in the namespace map, but it is mapped to a different namespace.\nOld namespace: {cls.__url_to_prefix[url]}\nNew namespace: {prefix}")
             else:
-                # there is no conflict
+                # there is no conflict, but the prefix or the URL is already in the namespace map
+                # so just return
                 return
-            # return
 
         cls.__url_to_prefix[url] = prefix
         cls.__prefix_to_url[prefix] = url
@@ -193,7 +192,10 @@ class QName:
     @classmethod
     def set_redirect(cls, redirect_from: str, redirect_to: str):
         """
-        Sets the prefix redirects
+        Sets the prefix redirects. This means that if a QName is created with the prefix redirect as prefix, the prefix will be replaced with the redirect destination.
+        @param redirect_from: str containing the prefix that should be redirected
+        @param redirect_to: str containing the prefix that should be redirected to
+        @raises ValueError: if the redirect destination does not exist in the namespace map or if the redirect source already exists in the namespace map
         """
         if redirect_to not in cls.__prefix_to_url:
             raise ValueError(f"Invalid prefix redirect: {redirect_to}. The redirect destination does not exist in the namespace map")

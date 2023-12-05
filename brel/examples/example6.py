@@ -19,7 +19,6 @@ class SchemaResolver(lxml.etree.Resolver):
         @param url: The url to convert.
         @return: The filename.
         """
-        # TODO: This is not good enough
         result = url.split("/")[-2:]
         result_str = "_".join(result)
         return result_str

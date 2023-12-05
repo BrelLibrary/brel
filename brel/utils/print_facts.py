@@ -1,4 +1,4 @@
-from brel import Fact, Aspect, Context, Filing, BrelLabel, QName
+from brel import Fact, BrelAspect, Context, Filing, BrelLabel, QName
 from prettytable import PrettyTable
 
 def pprint_facts(facts: list[Fact]):
@@ -22,14 +22,14 @@ def pprint_facts(facts: list[Fact]):
     # 3. entity
     # 4. unit
     # 5. additional dimensions in alphabetical order
-    def sort_dimensions(dimension: Aspect) -> str:
-        if dimension == Aspect.CONCEPT:
+    def sort_dimensions(dimension: BrelAspect) -> str:
+        if dimension == BrelAspect.CONCEPT:
             return "1"
-        elif dimension == Aspect.PERIOD:
+        elif dimension == BrelAspect.PERIOD:
             return "2"
-        elif dimension == Aspect.ENTITY:
+        elif dimension == BrelAspect.ENTITY:
             return "3"
-        elif dimension == Aspect.UNIT:
+        elif dimension == BrelAspect.UNIT:
             return "4"
         else:
             return "5" + dimension.get_name()

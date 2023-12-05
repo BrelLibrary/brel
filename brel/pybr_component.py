@@ -6,9 +6,9 @@ from .networks import PresentationNetwork, CalculationNetwork, DefinitionNetwork
 
 class Component:
     """
-    Implements XBRL components (also called roles)
-    A role has a definition (essentially a name), an ID, and maybe a presentation- calculation- and definition-network
-    TODO: update docstring
+    Implements XBRL components, which are sometimes also called roles.
+    Components are used to define the presentation, calculation and definition networks of a filing.
+    Intuitively, they function as the chapters of a report or filing.
     """
 
     def __init__(
@@ -26,41 +26,59 @@ class Component:
     
     # first class citizens
     def get_URI(self) -> str:
-        """Get the ID of the component"""
+        """
+        @returns str: the URI of the component
+        """
         return self.__uri
 
     def get_info(self) -> str:
-        """Get the definition of the component"""
+        """
+        @returns str: the info/definition of the component.
+        """
         return self.__info
 
     def get_presentation(self) -> PresentationNetwork | None:
-        """Get the presentation graph of the component"""
+        """
+        @returns PresentationNetwork: the presentation network of the component. None if the component has no presentation network or if the network is empty.
+        """
         return self.__presentation_network
 
     def get_calculation(self) -> CalculationNetwork | None:
-        """Get the calculation graph of the component"""
+        """
+        @returns CalculationNetwork: the calculation network of the component. None if the component has no calculation network or if the network is empty.
+        """
         return self.__calculation_network
 
     def get_definition(self) -> DefinitionNetwork | None:
-        """Get the definition graph of the component"""
+        """
+        @returns DefinitionNetwork: the definition network of the component. None if the component has no definition network or if the network is empty.
+        """
         return self.__definition_network
     
     # second class citizens
     def has_presentation(self) -> bool:
-        """Check if the component has a presentation graph"""
+        """
+        @returns bool: True if the component has a presentation network, False otherwise
+        """
         return self.__presentation_network != None
     
     def has_calculation(self) -> bool:
-        """Check if the component has a calculation graph"""
+        """
+        @returns bool: True if the component has a calculation network, False otherwise
+        """
         return self.__calculation_network != None
 
     def has_definition(self) -> bool:
-        """Check if the component has a definition graph"""
+        """
+        @returns bool: True if the component has a definition network, False otherwise
+        """
         return self.__info != ""
 
     def __str__(self) -> str:
-        """Get a string representation of the component"""
-        return f"Component(id='{self.__uri}', definition='{self.__info}', presentation_graph={self.__presentation_network}, calculation_graph={self.__calculation_network}, definition_graph={self.__definition_network})"
+        """
+        @returns str: a string representation of the component
+        """
+        return f"Component(id='{self.__uri}', definition='{self.__info}', presentation_network={self.__presentation_network}, calculation_network={self.__calculation_network}, definition_network={self.__definition_network})"
 
 
     # internal methods
@@ -70,13 +88,11 @@ class Component:
         xml_element: lxml.etree._Element, 
         presentation_network: None|PresentationNetwork = None, 
         calculation_network: None|CalculationNetwork = None, 
-        definition_graph: None|DefinitionNetwork = None
+        definition_network: None|DefinitionNetwork = None
     ) -> Component:
         """
         Create a Component from an lxml.etree._Element.
         """
-
-        # TODO: use the "usedOn" information in the xml to check if the correct networks are being passed
         
         uri = xml_element.get("roleURI", None)
         nsmap = QName.get_nsmap()
@@ -86,22 +102,21 @@ class Component:
 
         # the info is in a child element of the xml_element called "definition"
         try:
-            info = xml_element.find("link:definition", namespaces=nsmap).text
+            info_element = xml_element.find("link:definition", namespaces=nsmap)
+            if info_element is None:
+                info = ""
+            else:
+                info = info_element.text or ""
         except AttributeError:
             info = ""
 
-        # # check the usedOn elements
-        # for used_on in xml_element.findall("link:usedOn", namespaces=nsmap):
-        #     # get the text of the element
-        #     # if there is a presentationLink text, make sure that a presentation network is passed
-        #     if used_on.text == "link:presentationLink" and presentation_network is None:
-        #         raise ValueError(f"A presentation network is required for the component with id '{uri}'")
-        #     elif used_on.text == "link:calculationsLink" and len(calculation_networks) == 0:
-        #         raise ValueError(f"A calculation network is required for the component with id '{uri}'")
-        #     elif used_on.text == "link:definitionLink" and definition_graph is None:
-        #         # TODO: uncomment this as soon as the definition graph is implemented
-        #         # raise ValueError("A definition graph is required for this component")
-        #         pass
-                
-
-        return cls(uri, info, presentation_network, calculation_network, definition_graph)
+        # check the usedOn elements
+        used_ons = [used_on.text for used_on in xml_element.findall("link:usedOn", namespaces=nsmap)]
+        if presentation_network is not None and "link:presentationLink" not in used_ons:
+            raise ValueError(f"A presentation network is not allowed for the component with id '{uri}', but one was passed.")
+        if calculation_network is not None and "link:calculationLink" not in used_ons:
+            raise ValueError(f"A calculation network is not allowed for the component with id '{uri}', but one was passed.")
+        if definition_network is not None and "link:definitionLink" not in used_ons:
+            raise ValueError(f"A definition network is not allowed for the component with id '{uri}', but one was passed.")
+        
+        return cls(uri, info, presentation_network, calculation_network, definition_network)

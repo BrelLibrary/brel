@@ -8,6 +8,19 @@ PIPE  = "│  "
 TEE   = "├──"
 SPACE = "   "
 
+tag_lookup: dict[type, str] = {
+    BrelLabel: "[LABEL]",
+    BrelReference: "[REFERENCE]",
+    Dimension: "[DIMENSION]",
+    Member: "[MEMBER]",
+    LineItems: "[LINE ITEMS]",
+    Hypercube: "[HYPERCUBE]",
+    Concept: "[CONCEPT]",
+    Abstract: "[ABSTRACT]"
+}
+
+PADDING = max(map(lambda x: len(x), tag_lookup.values()))
+
 def __print_subnetwork(node: INetworkNode, last=True, header='') -> None:
     output_string = ""
 
@@ -63,9 +76,8 @@ def __print_subnetwork(node: INetworkNode, last=True, header='') -> None:
         weight_str = ""
 
     # this adds some padding to the type header so that the node name is aligned
-    padding = 14  # TODO: maybe not hardcode this
     if len(weight_str) != 0:
-        padding_str = " " * (padding - len(weight_str))
+        padding_str = " " * (PADDING - len(weight_str))
     else:
         padding_str = ""
 

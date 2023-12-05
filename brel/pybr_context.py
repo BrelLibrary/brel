@@ -1,6 +1,6 @@
 import lxml
 import lxml.etree
-from .characteristics.pybr_aspect import Aspect
+from .characteristics.pybr_aspect import BrelAspect
 from .qname import QName
 from .characteristics.concept_characteristic import ConceptCharacteristic
 from .characteristics.i_characteristic import ICharacteristic
@@ -19,76 +19,75 @@ class Context:
     There are 5 types of aspects: concept, period, entity, unit and additional dimensions.
     The only required aspect is the concept
     """
-    # TODO: implement second class citizens
 
-    def __init__(self, context_id, aspects: list[Aspect]) -> None:
+    def __init__(self, context_id, aspects: list[BrelAspect]) -> None:
         self.__id : str = context_id
 
         # aspects are the axis, characteristics are the values per axis
-        self.__aspects : list[Aspect] = aspects
-        self.__characteristics: dict[Aspect, ICharacteristic] = {}
+        self.__aspects : list[BrelAspect] = aspects
+        self.__characteristics: dict[BrelAspect, ICharacteristic] = {}
 
         self.__aspects.sort(key=lambda aspect: aspect.get_name())
     
     # First class citizens
-    def get_aspects(self) -> list[Aspect]:
+    def get_aspects(self) -> list[BrelAspect]:
         """
         Get the aspects of the context.
         """
         return self.__aspects
     
-    def get_characteristic(self, aspect: Aspect) -> ICharacteristic | None:
+    def get_characteristic(self, aspect: BrelAspect) -> ICharacteristic | None:
         """
         Get the value of an aspect.
         """
         return next((c for a, c in self.__characteristics.items() if a == aspect), None)
     
     # Second class citizens
-    def has_characteristic(self, aspect: Aspect) -> bool:
+    def has_characteristic(self, aspect: BrelAspect) -> bool:
         """
         Check if the context has a certain aspect.
         """
         return any(aspect == aspect for aspect in self.__aspects)
     
     # TODO: implement
-    def get_characteristic_as_str(self, aspect: Aspect) -> str:
+    def get_characteristic_as_str(self, aspect: BrelAspect) -> str:
         raise NotImplementedError()
     
-    def get_characteristic_as_qname(self, aspect: Aspect) -> QName:
+    def get_characteristic_as_qname(self, aspect: BrelAspect) -> QName:
         raise NotImplementedError()
     
-    def get_characteristic_as_int(self, aspect: Aspect) -> int:
+    def get_characteristic_as_int(self, aspect: BrelAspect) -> int:
         raise NotImplementedError()
     
-    def get_characteristic_as_float(self, aspect: Aspect) -> float:
+    def get_characteristic_as_float(self, aspect: BrelAspect) -> float:
         raise NotImplementedError()
     
-    def get_characteristic_as_bool(self, aspect: Aspect) -> bool:
+    def get_characteristic_as_bool(self, aspect: BrelAspect) -> bool:
         raise NotImplementedError()
     
     def get_concept(self) -> ConceptCharacteristic:
         """
         Get the concept of the context.
         """
-        return cast(ConceptCharacteristic, self.get_characteristic(Aspect.CONCEPT))
+        return cast(ConceptCharacteristic, self.get_characteristic(BrelAspect.CONCEPT))
     
     def get_period(self) -> PeriodCharacteristic | None:
         """
         Get the period of the context.
         """
-        return cast(PeriodCharacteristic, self.get_characteristic(Aspect.PERIOD))
+        return cast(PeriodCharacteristic, self.get_characteristic(BrelAspect.PERIOD))
     
     def get_entity(self) -> EntityCharacteristic | None:
         """
         Get the entity of the context.
         """
-        return cast(EntityCharacteristic, self.get_characteristic(Aspect.ENTITY))
+        return cast(EntityCharacteristic, self.get_characteristic(BrelAspect.ENTITY))
     
     def get_unit(self) -> UnitCharacteristic | None:
         """
         Get the unit of the context.
         """
-        return cast(UnitCharacteristic, self.get_characteristic(Aspect.UNIT))
+        return cast(UnitCharacteristic, self.get_characteristic(BrelAspect.UNIT))
 
     # Internal methods
     def __add_characteristic(self, characteristic: ICharacteristic) -> None:
@@ -182,7 +181,7 @@ class Context:
                     dimension_characteristic: ICharacteristic = ExplicitDimensionCharacteristic.from_xml(xml_dimension, dimension, member)
                     context.__add_characteristic(dimension_characteristic)
                 # if it is a typed dimension, the tag is xbrli:typedMember
-                elif "typedMember" in xml_dimension.tag: # TODO: make this more robust
+                elif "typedMember" in xml_dimension.tag:
 
                     # get the dimension
                     dimension_axis = QName.from_string(xml_dimension.get("dimension"))
@@ -204,6 +203,7 @@ class Context:
                     dimension_characteristic: ICharacteristic = TypedDimensionCharacteristic.from_xml(xml_dimension, dimension, dimension_value)
                     context.__add_characteristic(dimension_characteristic)
                 else:
+                    raise ValueError(f"Unknown dimension type. Please make sure that the dimension is either an explicitMember or a typedMember. {xml_dimension.tag}")
                     raise ValueError("Unknown dimension type. Please make sure that the dimension is either an explicitMember or a typedMember.")
         
         return context

@@ -3,8 +3,9 @@ import lxml.etree
 # from pybr import Aspect, QName
 # from pybr.characteristics import ICharacteristic
 from ..qname import QName
-from .pybr_aspect import Aspect
+from .pybr_aspect import BrelAspect
 from .i_characteristic import ICharacteristic
+from typing import cast
 
 class EntityCharacteristic(ICharacteristic):
     """
@@ -12,7 +13,7 @@ class EntityCharacteristic(ICharacteristic):
     An entity in XBRL is a company. It consists of an identifier. Usually the identifier is the company's CIK.
     Additional information about the company can be found in the entity's segment.
     """
-    __entity_cache = {}
+    __entity_cache: dict[QName, 'EntityCharacteristic'] = {}
 
     def __init__(self, qname: QName) -> None:
         self.__qname = qname
@@ -20,12 +21,12 @@ class EntityCharacteristic(ICharacteristic):
         self.__entity_cache[qname] = self
 
     # first class citizens    
-    def get_aspect(self) -> Aspect:
+    def get_aspect(self) -> BrelAspect:
         """
         returns the aspect of the entity characteristic, which is Aspect.ENTITY
         @returns Aspect: Aspect.ENTITY
         """
-        return Aspect.ENTITY
+        return BrelAspect.ENTITY
     
     def get_value(self) -> QName:
         """
@@ -74,23 +75,28 @@ class EntityCharacteristic(ICharacteristic):
             raise ValueError("Could not find scheme attribute in identifier element")
         
 
-        entity_id = xml_element.find("{*}identifier", namespaces=None).text
+        entity_id_elem = xml_element.find("{*}identifier", namespaces=None)
+        # The identifier element is guaranteed according to the XBRL 2.1 specification to have a text element
+        entity_id_elem = cast(lxml.etree._Element, entity_id_elem)
+        entity_id = entity_id_elem.text
+        # The text is guaranteed to have at least length 1 according to the XBRL 2.1 spec
+        entity_id = cast(str, entity_id)
 
-        # get the scheme of the entity. its an attribute of the xml element.
-        entity_url = xml_element.find("{*}identifier", namespaces=None).get("scheme")
+        entity_url = entity_id_elem.get("scheme")
+        # The scheme is required by the XBRL 2.1 spec
+        entity_url = cast(str, entity_url) 
         
-        entity_prefix = QName.try_get_prefix_from_url(entity_url)
+        entity_prefix = QName.get_prefix_from_url(entity_url)
 
         if entity_prefix is None:
             raise ValueError(f"Could not find prefix for entity URL: {entity_url}")
         
-        # TODO: move this and make it dynamic
-        QName.add_to_nsmap(entity_url, "CIK")
+        QName.add_to_nsmap(entity_url, entity_prefix)
         
         entity_qname = QName.from_string(f"{entity_prefix}:{entity_id}")
 
         if entity_id in cls.__entity_cache:
-            return cls.__entity_cache[entity_id]
+            return cls.__entity_cache[entity_qname]
 
         return cls(entity_qname)
     

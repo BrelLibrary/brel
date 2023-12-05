@@ -1,25 +1,26 @@
 # from pybr import pybr_label, qname
 from brel import BrelLabel, QName
 
-class Aspect:
+class BrelAspect:
     """
     Base class for all aspects.
     An aspect contains a type and a value.
     The 5 base types of aspects are: concept, period, entity, unit and additional dimensions.
     Additional dimensions are not a type, but basically allow for defining additional types
     """
-    # TODO: add an aspect cache
 
-    CONCEPT: 'Aspect'
-    PERIOD: 'Aspect' 
-    ENTITY: 'Aspect' 
-    UNIT: 'Aspect'
-    LANGUAGE: 'Aspect' 
+    CONCEPT: 'BrelAspect'
+    PERIOD: 'BrelAspect' 
+    ENTITY: 'BrelAspect' 
+    UNIT: 'BrelAspect'
+    LANGUAGE: 'BrelAspect' 
+
+    __aspect_cache: dict[str, 'BrelAspect'] = {}
 
     def __init__(self, name: str, labels: list[BrelLabel]) -> None:
         self.__name = name
         self.__labels = labels
-    
+
     # first class citizens
     def get_name(self) -> str:
         """
@@ -43,7 +44,7 @@ class Aspect:
         return hash(self.__name)
 
     def __eq__(self, __value: object) -> bool:
-        if isinstance(__value, Aspect):
+        if isinstance(__value, BrelAspect):
             return self.__name == __value.get_name()
         return False
     
@@ -53,8 +54,29 @@ class Aspect:
     
     # internal methods
     @classmethod
-    def from_QName(cls, qname: QName) -> "Aspect":
-        return cls(qname.get(), [])
+    def from_QName(cls, qname: QName, labels: list[BrelLabel] | None = None) -> "BrelAspect":
+        """
+        Creates a new aspect from a QName.
+        @param qname: the QName to create the aspect from
+        @param labels: A list of labels for the aspect. If None, an empty list is used.
+        """
+        qname_str = qname.get()
+        return cls.from_str(qname_str, labels)
+    
+    @classmethod
+    def from_str(cls, name: str, labels: list[BrelLabel] | None = None) -> "BrelAspect":
+        """
+        Creates a new aspect from a string.
+        @param name: the string to create the aspect from
+        @param labels: A list of labels for the aspect. If None, an empty list is used.
+        """
+        if name in cls.__aspect_cache:
+            return cls.__aspect_cache[name]
+        
+        if labels is None:
+            labels = []
+
+        return cls(name, labels)
 
 # initialize the core aspects
 concept_labels = [
@@ -87,16 +109,16 @@ language_labels = [
     BrelLabel("Lengua [Eje]", "language", "es-ES")
 ]
 
-Aspect.CONCEPT = Aspect("concept", concept_labels)
-Aspect.PERIOD = Aspect("period", period_labels)
-Aspect.ENTITY = Aspect("entity", entity_labels)
-Aspect.UNIT = Aspect("unit", unit_labels)
-Aspect.LANGUAGE = Aspect("language", language_labels)
+BrelAspect.CONCEPT = BrelAspect("concept", concept_labels)
+BrelAspect.PERIOD = BrelAspect("period", period_labels)
+BrelAspect.ENTITY = BrelAspect("entity", entity_labels)
+BrelAspect.UNIT = BrelAspect("unit", unit_labels)
+BrelAspect.LANGUAGE = BrelAspect("language", language_labels)
 
 true_func = lambda: True
 
-Aspect.CONCEPT.is_core = true_func
-Aspect.PERIOD.is_core = true_func
-Aspect.ENTITY.is_core = true_func
-Aspect.UNIT.is_core = true_func
-Aspect.LANGUAGE.is_core = true_func
+BrelAspect.CONCEPT.is_core = true_func
+BrelAspect.PERIOD.is_core = true_func
+BrelAspect.ENTITY.is_core = true_func
+BrelAspect.UNIT.is_core = true_func
+BrelAspect.LANGUAGE.is_core = true_func

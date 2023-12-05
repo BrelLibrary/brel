@@ -9,14 +9,7 @@ from brel.resource import *
 from typing import cast
 from collections import defaultdict
 
-# TODO: change this
-from .i_xml_network_factory import IXMLNetworkFactory
-from .xml_presentation_network_factory import PresentationNetworkFactory    
-from .xml_calculation_network_factory import CalculationNetworkFactory    
-from .xml_definition_network_factory import PhysicalDefinitionNetworkFactory
-from .xml_definition_network_factory import LogicalDefinitionNetworkFactory
-from .xml_label_network_factory import LabelNetworkFactory
-from .xml_reference_network_factory import ReferenceNetworkFactory
+from brel.parsers.XML.networks import IXMLNetworkFactory, PresentationNetworkFactory, CalculationNetworkFactory, PhysicalDefinitionNetworkFactory, LogicalDefinitionNetworkFactory, LabelNetworkFactory, ReferenceNetworkFactory
 
 def get_object_from_reference(referenced_element: lxml.etree._Element, report_elements: dict[QName, IReportElement]) -> IResource|IReportElement:
     """
@@ -190,10 +183,13 @@ def parse_xml_link(xml_link_element: lxml.etree._Element, report_elements: dict[
                     # in this case, the 'from' node is a root node, since it has a different arcrole than the 'to' node
                     # Note that is only true for physical networks. Logical networks don't care if the arcroles are different
                     # first, we try to find a root node in roots that has the same arcrole as the 'to' node
-                    def filter_func(root: tuple[str, INetworkNode]) -> bool:
+                    def filter_func(root: tuple[str, INetworkNode]):
                         return root[1].get_arc_role() == to_node.get_arc_role() and root[0] == arc_from
 
-                    root_name_node_pair: tuple[str, INetworkNode]|None = next(filter(filter_func, roots), None)
+                    # for some reason this does not typecheck, even though it should.
+                    # Seems to be an open issue with mypy (https://github.com/python/mypy/issues/12682)
+                    root_name_node_pair: tuple[str, INetworkNode]|None = next(filter(filter_func, roots), None)  # type: ignore
+
                     # if not found, we create a new root node
                     if root_name_node_pair is None:
                         # query an arc with the same arcrole as the 'to' node.
@@ -242,8 +238,8 @@ def parse_xml_link(xml_link_element: lxml.etree._Element, report_elements: dict[
             for arc_role in present_arc_roles:
                 # filter the roots by arcrole
 
-                # Note: maybe use lambdas instead?
-                def filter_func(root: tuple[str, INetworkNode]) -> bool:
+                # Note: could be done with lambas, but my typechecker is acting up, so I write everything out and typecheck by hand.
+                def filter_func(root: tuple[str, INetworkNode]) -> bool:  # type: ignore
                     return root[1].get_arc_role() == arc_role
                 
                 def map_func(root: tuple[str, INetworkNode]) -> INetworkNode:

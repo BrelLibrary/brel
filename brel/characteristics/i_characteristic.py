@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from brel.characteristics import Aspect
+from brel.characteristics import BrelAspect
 
 class ICharacteristic(ABC):
     """
@@ -12,5 +12,5 @@ class ICharacteristic(ABC):
         raise NotImplementedError
     
     @abstractmethod
-    def get_aspect(self) -> Aspect:
+    def get_aspect(self) -> BrelAspect:
         raise NotImplementedError

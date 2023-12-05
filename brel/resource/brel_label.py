@@ -5,7 +5,6 @@ from brel import QName
 from brel.resource import IResource
 
 class BrelLabelRole(Enum):
-    # TODO: test if the labels beside the standard label and terse label actually work
     STANDARD_LABEL = "label"
 
     DOCUMENTATION = "documentation"

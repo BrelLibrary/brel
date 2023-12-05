@@ -3,7 +3,7 @@ import lxml.etree
 
 from brel import QName
 
-from brel.characteristics import Aspect, ICharacteristic
+from brel.characteristics import BrelAspect, ICharacteristic
 from brel.reportelements import Concept
 
 class ConceptCharacteristic(ICharacteristic):
@@ -42,12 +42,12 @@ class ConceptCharacteristic(ICharacteristic):
         """
         return self.__concept
     
-    def get_aspect(self) -> Aspect:
+    def get_aspect(self) -> BrelAspect:
         """
         Returns the aspect of the characteristic. This is always Aspect.CONCEPT.
         @returns Aspect: the aspect of the characteristic
         """
 
-        return Aspect.CONCEPT
+        return BrelAspect.CONCEPT
     
     

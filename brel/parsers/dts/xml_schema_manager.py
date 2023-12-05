@@ -7,6 +7,7 @@ import validators
 from io import BytesIO
 
 from brel.parsers.dts import ISchemaManager
+from brel import QName
 
 class XMLSchemaManager(ISchemaManager):
     """
@@ -39,7 +40,7 @@ class XMLSchemaManager(ISchemaManager):
         
         if not schema_filename:
             raise Exception("No schema found in filing")
-
+        
         self.__download_dts(schema_filename)
 
         # iterate over all files in the cache and add them to the schema names
@@ -56,11 +57,15 @@ class XMLSchemaManager(ISchemaManager):
         @param url: The url to convert.
         @return: The filename.
         """
-        # TODO: This is not good enough
-        # result = url.split("/")[-2:]
-        # result_str = "_".join(result)
-        # return result_str
-        return url.replace("/", "_").replace(":", "")
+        prefix = QName.get_prefix_from_url(url)
+        version = QName.get_version_from_url(url)
+
+        if version is not None:
+            filename = f"{prefix}_{version}.xsd"
+        else:
+            filename = f"{prefix}.xsd"
+        
+        return filename
     
     def get_schema(self, schema_uri: str, populate_namelist: bool = False) -> lxml.etree._ElementTree:
         """
@@ -68,9 +73,11 @@ class XMLSchemaManager(ISchemaManager):
         @param schema_filename: The filename of the schema.
         @return: The schema as an lxml.etree._ElementTree.
         """
-        if validators.url(schema_uri):
-            schema_uri = self.url_to_filename(schema_uri)
-        
+
+        # if validators.url(schema_uri):
+            # schema_uri = self.url_to_filename(schema_uri)
+        schema_uri = self.url_to_filename(schema_uri)
+
         if populate_namelist and schema_uri not in self.__schema_names:
             self.__schema_names.append(schema_uri)
 
@@ -125,7 +132,7 @@ class XMLSchemaManager(ISchemaManager):
         file_name = self.url_to_filename(xsd_url)
 
         is_url_remote = xsd_url.startswith("http")
-        is_in_filing = file_name in os.listdir(self.__filing_location)
+        is_in_filing = xsd_url in os.listdir(self.__filing_location)
         is_cached = file_name in os.listdir(self.cache_location)
 
         if is_cached:

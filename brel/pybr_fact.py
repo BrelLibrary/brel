@@ -3,7 +3,7 @@ import lxml
 import lxml.etree
 
 from brel import Context, QName
-from brel.characteristics import ConceptCharacteristic, UnitCharacteristic, PeriodCharacteristic, Aspect
+from brel.characteristics import ConceptCharacteristic, UnitCharacteristic, PeriodCharacteristic, BrelAspect
 from typing import cast
 
 class Fact:
@@ -102,7 +102,7 @@ class Fact:
         @returns: The concept of the fact as a ConceptCharacteristic object.
         @raises: ValueError if the fact does not have a concept.
         """
-        concept: ConceptCharacteristic = cast(ConceptCharacteristic, self.__context.get_characteristic(Aspect.CONCEPT))
+        concept: ConceptCharacteristic = cast(ConceptCharacteristic, self.__context.get_characteristic(BrelAspect.CONCEPT))
         if not concept:
             raise ValueError(f"Fact {self.__id} does not have a concept")
 
@@ -113,7 +113,7 @@ class Fact:
         @returns: The unit of the fact as a UnitCharacteristic object.
         @raises: ValueError if the fact does not have a unit.
         """
-        unit: UnitCharacteristic = cast(UnitCharacteristic, self.__context.get_characteristic(Aspect.UNIT))
+        unit: UnitCharacteristic = cast(UnitCharacteristic, self.__context.get_characteristic(BrelAspect.UNIT))
         if not unit:
             raise ValueError(f"Fact {self.__id} does not have a unit")
 
@@ -124,7 +124,7 @@ class Fact:
         @returns: The period of the fact as a PeriodCharacteristic object.
         @raises: ValueError if the fact does not have a period.
         """
-        period: PeriodCharacteristic = cast(PeriodCharacteristic, self.__context.get_characteristic(Aspect.PERIOD))
+        period: PeriodCharacteristic = cast(PeriodCharacteristic, self.__context.get_characteristic(BrelAspect.PERIOD))
         if not period:
             raise ValueError(f"Fact {self.__id} does not have a period")
 
@@ -159,12 +159,12 @@ class Fact:
     
         # check if the fact has the correct unit
         # Note that the unit_ref is only the local name of the unit whilst the context_unit is the full QName. 
-        context_unit: UnitCharacteristic = cast(UnitCharacteristic, context.get_characteristic(Aspect.UNIT))
+        context_unit: UnitCharacteristic = cast(UnitCharacteristic, context.get_characteristic(BrelAspect.UNIT))
         if context_unit and fact_unit_ref and context_unit and fact_unit_ref != context_unit.get_value().get_local_name():
             raise ValueError(f"Fact {fact_id} has unit {fact_unit_ref} but should have unit {context_unit.get_value()}")
         
         # check if the fact has the correct concept
-        context_concept: ConceptCharacteristic = cast(ConceptCharacteristic, context.get_characteristic(Aspect.CONCEPT))
+        context_concept: ConceptCharacteristic = cast(ConceptCharacteristic, context.get_characteristic(BrelAspect.CONCEPT))
         if fact_concept_name != context_concept.get_value().get_name().resolve():
             raise ValueError(f"Fact {fact_id} has concept {fact_concept_name} but should have concept {context_concept.get_value().get_name().resolve()}")
 

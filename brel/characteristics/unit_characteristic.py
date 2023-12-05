@@ -1,10 +1,8 @@
 import lxml
 import lxml.etree
-# from pybr import Aspect, qname
-# from pybr.characteristics import i_characteristic
-from .pybr_aspect import Aspect
-from ..qname import QName
-from .i_characteristic import ICharacteristic
+
+from brel import QName
+from brel.characteristics import BrelAspect, ICharacteristic
 
 class UnitCharacteristic(ICharacteristic):
     """
@@ -28,11 +26,11 @@ class UnitCharacteristic(ICharacteristic):
         self.__unit_cache[name] = self
     
     # first class citizens
-    def get_aspect(self) -> Aspect:
+    def get_aspect(self) -> BrelAspect:
         """
         @returns Aspect: returns Aspect.UNIT
         """
-        return Aspect.UNIT
+        return BrelAspect.UNIT
     
     def get_numerators(self) -> list[QName]:
         """

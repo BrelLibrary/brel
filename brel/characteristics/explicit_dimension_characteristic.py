@@ -2,7 +2,7 @@ import lxml
 import lxml.etree
 
 from brel import QName
-from brel.characteristics import Aspect, ICharacteristic
+from brel.characteristics import BrelAspect, ICharacteristic
 from brel.reportelements import Dimension, Member   
 
 class ExplicitDimensionCharacteristic(ICharacteristic):
@@ -11,13 +11,13 @@ class ExplicitDimensionCharacteristic(ICharacteristic):
     An explicit dimension characteristic assigns a member-value to a dimension-aspect.
     """
 
-    def __init__(self, dimension: Dimension, member : Member, aspect: Aspect) -> None:
+    def __init__(self, dimension: Dimension, member : Member, aspect: BrelAspect) -> None:
         self.__dimension = dimension
         self.__member = member
         self.__aspect = aspect
     
     # first class citizens
-    def get_aspect(self) -> Aspect:
+    def get_aspect(self) -> BrelAspect:
         """
         returns the aspect of the explicit dimension characteristic.
         @info: Both typed and explicit dimension characteristics are not statically bound to an aspect.
@@ -84,6 +84,6 @@ class ExplicitDimensionCharacteristic(ICharacteristic):
         
         # then parse and create the dimension aspect
         dimension_axis = xml_element.attrib["dimension"]
-        dimension_aspect = Aspect.from_QName(QName.from_string(dimension_axis))
+        dimension_aspect = BrelAspect.from_QName(QName.from_string(dimension_axis))
 
         return cls(dimension, member, dimension_aspect)

@@ -13,7 +13,6 @@ class CalculationNetworkNode(INetworkNode):
     Class for representing a node in a network.
     Since a node can have children, nodes can also be viewed as trees.
     """
-    # TODO: docstrings
 
     def __init__(
             self, 
@@ -44,6 +43,10 @@ class CalculationNetworkNode(INetworkNode):
         return self.__report_element
     
     def get_resource(self) -> IResource:
+        """
+        Would return the resource associated with this node, but calculation network nodes do not point to resources
+        @raises ValueError: CalculationNetworkNode does not point to a resource
+        """
         raise ValueError("CalculationNetworkNode does not point to a resource")
     
     def is_a(self) -> str:

@@ -2,7 +2,7 @@ import os
 from typing import cast
 
 from brel import Fact, FilingFilter, Component, QName
-from brel.characteristics import Aspect
+from brel.characteristics import BrelAspect
 from brel.reportelements import IReportElement, Abstract, Concept, Dimension, Hypercube, LineItems, Member
 from brel.networks import INetwork
 from brel.parsers import IFilingParser, XMLFilingParser
@@ -140,7 +140,7 @@ class Filing:
         """Get all facts that are associated with a concept"""
         return self.get_facts_by_concept_name(concept.get_name())
     
-    def __getitem__(self, key: str | QName | Aspect | FilingFilter | bool) -> list[Fact] | FilingFilter:
+    def __getitem__(self, key: str | QName | BrelAspect | FilingFilter | bool) -> list[Fact] | FilingFilter:
         # TODO: make this typecheck
 
         # if the key is a filter, filter the facts
@@ -148,7 +148,7 @@ class Filing:
             return key.filter(self.__facts)
         
         # if the key is an aspect, make a filter of that aspect and return the unappied filter
-        if isinstance(key, Aspect):
+        if isinstance(key, BrelAspect):
             return FilingFilter.make_aspect_filter(self.__facts, key)
         
         # if the key is a str, but looks like a QName, then turn it into a QName
@@ -158,16 +158,16 @@ class Filing:
         # if the key is a qname, then it is an additional dimension
         # make a filter of that aspect and return it unapplied
         if isinstance(key, QName):
-            aspect = Aspect.from_QName(key)
+            aspect = BrelAspect.from_QName(key)
             return FilingFilter.make_aspect_filter(self.__facts, aspect)
         
         # finally, if the key is one of the core aspects, then make a filter of that aspect and return it unapplied
         # TODO: add custom aspects as well
         aspect_names = {
-            "entity": Aspect.ENTITY, 
-            "period": Aspect.PERIOD, 
-            "unit": Aspect.UNIT, 
-            "concept": Aspect.CONCEPT
+            "entity": BrelAspect.ENTITY, 
+            "period": BrelAspect.PERIOD, 
+            "unit": BrelAspect.UNIT, 
+            "concept": BrelAspect.CONCEPT
              }
         
         if key in aspect_names:

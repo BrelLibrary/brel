@@ -52,12 +52,17 @@ class BrelReference(IResource):
         if not isinstance(role, str):
             raise ValueError(f"The role of the resource {xml_element} is not a string")
 
-        # get the content
-        # TODO: make more robust
+        # get the content. Parse it as a dict
         content = {}
         for child in xml_element:
             tag = child.tag
-            tag = tag[tag.find("}") + 1:]
+
+            # This part removes the url from the tag
+            # this is theoretically safe since
+            # - lxml translates all qname prefixes to their full url. In clark notation, that's {url}local_name
+            # - valid urls cannot contain the character "}". So by finding the first "}" we can find the beginning of the local name
+            if "}" in tag:
+                tag = tag[tag.find("}") + 1:]
             content[tag] = child.text
 
         return cls(label, role, content)
