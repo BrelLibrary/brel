@@ -1,4 +1,3 @@
-# from pybr import pybr_label, qname
 from brel import BrelLabel, QName
 
 class BrelAspect:

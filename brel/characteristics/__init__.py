@@ -1,4 +1,4 @@
-from .pybr_aspect import BrelAspect
+from .aspect import BrelAspect
 
 from .i_characteristic import ICharacteristic
 

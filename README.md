@@ -36,7 +36,7 @@ See also
 - ✅ Code linting using [flake8](https://flake8.pycqa.org/en/latest/)
 - 📊 Code coverage reports using [codecov](https://about.codecov.io/sign-up/)
 - 🛳️ Automatic release to [PyPI](https://pypi.org) using [twine](https://twine.readthedocs.io/en/latest/) and github actions.
-- 🎯 Entry points to execute your program using `python -m <pyfiling>` or `$ pyfiling` with basic CLI argument parsing.
+- 🎯 Entry points to execute your program using `python -m <brel>` or `$ brel` with basic CLI argument parsing.
 - 🔄 Continuous integration using [Github Actions](.github/workflows/) with jobs to lint, test and release your project on Linux, Mac and Windows environments.
 
 > Curious about architectural decisions on this template? read [ABOUT_THIS_TEMPLATE.md](ABOUT_THIS_TEMPLATE.md)  
@@ -45,24 +45,24 @@ See also
 <!--  DELETE THE LINES ABOVE THIS AND WRITE YOUR PROJECT README BELOW -->
 
 ---
-# pyfiling Flask Application
+# brel Flask Application
 
-Awesome pyfiling created by 
+Awesome brel created by 
 
 ## Installation
 
 From source:
 
 ```bash
-git clone https://github.com//PyFiling pyfiling
-cd pyfiling
+git clone https://github.com//brel brel
+cd brel
 make install
 ```
 
 From pypi:
 
 ```bash
-pip install pyfiling
+pip install brel
 ```
 
 ## Executing
@@ -72,13 +72,13 @@ This application has a CLI interface that extends the Flask CLI.
 Just run:
 
 ```bash
-$ pyfiling
+$ brel
 ```
 
 or
 
 ```bash
-$ python -m pyfiling
+$ python -m brel
 ```
 
 To see the help message and usage instructions.
@@ -86,10 +86,10 @@ To see the help message and usage instructions.
 ## First run
 
 ```bash
-pyfiling create-db   # run once
-pyfiling populate-db  # run once (optional)
-pyfiling add-user -u admin -p 1234  # ads a user
-pyfiling run
+brel create-db   # run once
+brel populate-db  # run once (optional)
+brel add-user -u admin -p 1234  # ads a user
+brel run
 ```
 
 Go to:

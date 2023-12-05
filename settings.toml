@@ -3,17 +3,17 @@ DEBUG = false
 FLASK_ADMIN_TEMPLATE_MODE = "bootstrap3"
 FLASK_ADMIN_SWATCH = 'cerulean'
 SQLALCHEMY_DATABASE_URI = 'sqlite:///development.db'
-TITLE = "pyfiling"
+TITLE = "brel"
 SECRET_KEY = "Pl3453Ch4ng3"
 PASSWORD_SCHEMES = ['pbkdf2_sha512', 'md5_crypt']
 EXTENSIONS = [
     "flask_bootstrap:Bootstrap",
-    "pyfiling.ext.database:init_app",
-    "pyfiling.ext.auth:init_app",
-    "pyfiling.ext.admin:init_app",
-    "pyfiling.ext.commands:init_app",
-    "pyfiling.ext.webui:init_app",
-    "pyfiling.ext.restapi:init_app",
+    "brel.ext.database:init_app",
+    "brel.ext.auth:init_app",
+    "brel.ext.admin:init_app",
+    "brel.ext.commands:init_app",
+    "brel.ext.webui:init_app",
+    "brel.ext.restapi:init_app",
 ]
 
 [development]

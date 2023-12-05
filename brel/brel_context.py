@@ -1,15 +1,9 @@
 import lxml
 import lxml.etree
-from .characteristics.pybr_aspect import BrelAspect
-from .qname import QName
-from .characteristics.concept_characteristic import ConceptCharacteristic
-from .characteristics.i_characteristic import ICharacteristic
-from .characteristics.entity_characteristic import EntityCharacteristic
-from .characteristics.period_characteristic import PeriodCharacteristic
-from .characteristics.unit_characteristic import UnitCharacteristic
-from .characteristics.typed_dimension_characteristic import TypedDimensionCharacteristic
-from .characteristics.explicit_dimension_characteristic import ExplicitDimensionCharacteristic
-from .reportelements import Dimension, Member, IReportElement
+from brel.characteristics import BrelAspect
+from brel import QName
+from brel.characteristics import *
+from brel.reportelements import Dimension, Member, IReportElement
 from typing import cast
 
 class Context:

@@ -1,9 +1,9 @@
 import sys
 import pytest
 
-from pyfiling import create_app
-from pyfiling.ext.commands import populate_db
-from pyfiling.ext.database import db
+from brel import create_app
+from brel.ext.commands import populate_db
+from brel.ext.database import db
 
 
 @pytest.fixture(scope="session")

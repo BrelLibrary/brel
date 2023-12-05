@@ -3,7 +3,7 @@ from random import sample
 
 def example1():
     """
-    Example of how to use pybr to open a filing and get all reported the report elements and print some of their labels 
+    Example of how to use brel to open a filing and get all reported the report elements and print some of their labels 
     """
 
     # open the filing

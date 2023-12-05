@@ -64,7 +64,7 @@ class XMLSchemaManager(ISchemaManager):
             filename = f"{prefix}_{version}.xsd"
         else:
             filename = f"{prefix}.xsd"
-        
+        # TODO: add collisionchecker if two urls have the same filename and are not versions
         return filename
     
     def get_schema(self, schema_uri: str, populate_namelist: bool = False) -> lxml.etree._ElementTree:
@@ -144,7 +144,10 @@ class XMLSchemaManager(ISchemaManager):
 
         elif is_url_remote:
             # if the file is online, load it from the url
-            response = requests.get(xsd_url)
+            try:
+                response = requests.get(xsd_url)
+            except ConnectionError:
+                raise Exception(f"Could not connect to {xsd_url}. Are you connected to the internet?")
             xsd_content = response.content
 
         elif is_in_filing:
@@ -159,7 +162,10 @@ class XMLSchemaManager(ISchemaManager):
 
             xsd_url = referencing_schema_url.rsplit("/", 1)[0] + "/" + xsd_url
 
-            response = requests.get(xsd_url)
+            try:
+                response = requests.get(xsd_url)
+            except ConnectionError:
+                raise Exception(f"Could not connect to {xsd_url}. Are you connected to the internet?")
             xsd_content = response.content
         
         if not is_cached:

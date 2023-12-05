@@ -1,4 +1,4 @@
-"""Python setup.py for pyfiling package"""
+"""Python setup.py for brel package"""
 import io
 import os
 from setuptools import find_packages, setup
@@ -6,7 +6,7 @@ from setuptools import find_packages, setup
 
 def read(*paths, **kwargs):
     """Read the contents of a text file safely.
-    >>> read("pyfiling", "VERSION")
+    >>> read("brel", "VERSION")
     '0.1.0'
     >>> read("README.md")
     ...
@@ -30,17 +30,17 @@ def read_requirements(path):
 
 
 setup(
-    name="pyfiling",
-    version=read("pyfiling", "VERSION"),
-    description="Awesome pyfiling created by PapediPoo",
-    url="https://github.com/PapediPoo/PyFiling/",
+    name="brel",
+    version=read("brel", "VERSION"),
+    description="Awesome brel created by PapediPoo",
+    url="https://github.com/PapediPoo/brel/",
     long_description=read("README.md"),
     long_description_content_type="text/markdown",
     author="PapediPoo",
     packages=find_packages(exclude=["tests", ".github"]),
     install_requires=read_requirements("requirements.txt"),
     entry_points={
-        "console_scripts": ["pyfiling = pyfiling.__main__:main"]
+        "console_scripts": ["brel = brel.__main__:main"]
     },
     extras_require={"test": read_requirements("requirements-test.txt")},
 )

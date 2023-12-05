@@ -1,10 +1,7 @@
 import lxml
 import lxml.etree
-# from pybr import Aspect, QName
-# from pybr.characteristics import ICharacteristic
-from ..qname import QName
-from .pybr_aspect import BrelAspect
-from .i_characteristic import ICharacteristic
+from brel import QName
+from brel.characteristics import BrelAspect, ICharacteristic
 from typing import cast
 
 class EntityCharacteristic(ICharacteristic):
