@@ -1,0 +1,886 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<link:linkbase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <link:roleRef roleURI="http://xbrl.sec.gov/rr/role/RiskReturnDetailData" xlink:type="simple" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#RiskReturnDetailData"/>
+  <link:roleRef roleURI="http://xbrl.sec.gov/rr/role/BarChartData" xlink:type="simple" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#BarChartData"/>
+  <link:roleRef roleURI="http://xbrl.sec.gov/rr/role/Class" xlink:type="simple" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#ClassOnly"/>
+  <link:roleRef roleURI="http://xbrl.sec.gov/rr/role/Coregistrant" xlink:type="simple" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#CoregistrantOnly"/>
+  <link:roleRef roleURI="http://xbrl.sec.gov/rr/role/ExpenseExample" xlink:type="simple" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#ExpenseExample"/>
+  <link:roleRef roleURI="http://xbrl.sec.gov/rr/role/ExpenseExampleNoRedemption" xlink:type="simple" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#ExpenseExampleNoRedemption"/>
+  <link:roleRef roleURI="http://xbrl.sec.gov/rr/role/OperatingExpensesData" xlink:type="simple" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#OperatingExpensesData"/>
+  <link:roleRef roleURI="http://xbrl.sec.gov/rr/role/PerformanceMeasure" xlink:type="simple" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#PerformanceMeasureOnly"/>
+  <link:roleRef roleURI="http://xbrl.sec.gov/rr/role/PerformanceTableData" xlink:type="simple" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#PerformanceTableData"/>
+  <link:roleRef roleURI="http://xbrl.sec.gov/rr/role/Prospectus" xlink:type="simple" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#ProspectusOnly"/>
+  <link:roleRef roleURI="http://xbrl.sec.gov/rr/role/RiskReturn" xlink:type="simple" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#RiskReturn"/>
+  <link:roleRef roleURI="http://xbrl.sec.gov/rr/role/RiskReturnDetail" xlink:type="simple" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#RiskReturnDetail"/>
+  <link:roleRef roleURI="http://xbrl.sec.gov/rr/role/Series" xlink:type="simple" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#SeriesOnly"/>
+  <link:roleRef roleURI="http://xbrl.sec.gov/rr/role/ShareholderFeesData" xlink:type="simple" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#ShareholderFeesData"/>
+  <link:presentationLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/rr/role/RiskReturnDetailData">
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ProspectusLineItems" xlink:label="ProspectusLineItems"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityShellCompany" xlink:label="EntityShellCompany"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="EntityShellCompany" order="190.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityEmergingGrowthCompany" xlink:label="EntityEmergingGrowthCompany"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="EntityEmergingGrowthCompany" order="191.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntitySmallBusiness" xlink:label="EntitySmallBusiness"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="EntitySmallBusiness" order="192.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityInvCompanyType" xlink:label="EntityInvCompanyType"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="EntityInvCompanyType" order="193.0"/>
+  </link:presentationLink>
+  <link:presentationLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/rr/role/RiskReturn">
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_RiskReturnAbstract" xlink:label="RiskReturnAbstract"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ProspectusTable" xlink:label="ProspectusTable"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="RiskReturnAbstract" xlink:to="ProspectusTable" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentInformationDocumentAxis" xlink:label="DocumentInformationDocumentAxis"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusTable" xlink:to="DocumentInformationDocumentAxis" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentDomain" xlink:label="DocumentDomain"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationDocumentAxis" xlink:to="DocumentDomain" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_CoregistrantAxis" xlink:label="CoregistrantAxis"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusTable" xlink:to="CoregistrantAxis" order="2.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_CoregistrantDomain" xlink:label="CoregistrantDomain"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="CoregistrantAxis" xlink:to="CoregistrantDomain" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_LegalEntityAxis" xlink:label="LegalEntityAxis"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusTable" xlink:to="LegalEntityAxis" order="3.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityDomain" xlink:label="EntityDomain"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="LegalEntityAxis" xlink:to="EntityDomain" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ProspectusLineItems" xlink:label="ProspectusLineItems"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusTable" xlink:to="ProspectusLineItems" order="6.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_RiskReturnHeading" xlink:label="RiskReturnHeading"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="RiskReturnHeading" use="optional" priority="9" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ObjectiveHeading" xlink:label="ObjectiveHeading"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ObjectiveHeading" use="optional" priority="9" order="2.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ObjectivePrimaryTextBlock" xlink:label="ObjectivePrimaryTextBlock"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ObjectivePrimaryTextBlock" use="optional" priority="9" order="3.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ObjectiveSecondaryTextBlock" xlink:label="ObjectiveSecondaryTextBlock"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ObjectiveSecondaryTextBlock" use="optional" priority="9" order="4.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpenseHeading" xlink:label="ExpenseHeading"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ExpenseHeading" use="optional" priority="9" order="5.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpenseNarrativeTextBlock" xlink:label="ExpenseNarrativeTextBlock"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ExpenseNarrativeTextBlock" use="optional" priority="9" order="6.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ShareholderFeesCaption" xlink:label="ShareholderFeesCaption"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ShareholderFeesCaption" use="optional" priority="9" order="7.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ShareholderFeesTableTextBlock" xlink:label="ShareholderFeesTableTextBlock"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ShareholderFeesTableTextBlock" use="optional" priority="9" order="8.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_OperatingExpensesCaption" xlink:label="OperatingExpensesCaption"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="OperatingExpensesCaption" use="optional" priority="9" order="9.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualFundOperatingExpensesTableTextBlock" xlink:label="AnnualFundOperatingExpensesTableTextBlock"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AnnualFundOperatingExpensesTableTextBlock" use="optional" priority="9" order="10.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpenseFootnotesTextBlock" xlink:label="ExpenseFootnotesTextBlock"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ExpenseFootnotesTextBlock" use="optional" priority="9" order="11.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpensesDeferredChargesTextBlock" xlink:label="ExpensesDeferredChargesTextBlock"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ExpensesDeferredChargesTextBlock" use="optional" priority="9" order="12.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpensesRangeOfExchangeFeesTextBlock" xlink:label="ExpensesRangeOfExchangeFeesTextBlock"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ExpensesRangeOfExchangeFeesTextBlock" use="optional" priority="9" order="13.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpenseExampleHeading" xlink:label="ExpenseExampleHeading"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ExpenseExampleHeading" use="optional" priority="9" order="14.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpenseExampleByYearHeading" xlink:label="ExpenseExampleByYearHeading"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ExpenseExampleByYearHeading" use="optional" priority="9" order="15.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpenseExampleNarrativeTextBlock" xlink:label="ExpenseExampleNarrativeTextBlock"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ExpenseExampleNarrativeTextBlock" use="optional" priority="9" order="16.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpenseExampleByYearCaption" xlink:label="ExpenseExampleByYearCaption"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ExpenseExampleByYearCaption" use="optional" priority="9" order="17.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpenseExampleWithRedemptionTableTextBlock" xlink:label="ExpenseExampleWithRedemptionTableTextBlock"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ExpenseExampleWithRedemptionTableTextBlock" use="optional" priority="9" order="18.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpenseExampleNoRedemptionNarrativeTextBlock" xlink:label="ExpenseExampleNoRedemptionNarrativeTextBlock"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ExpenseExampleNoRedemptionNarrativeTextBlock" use="optional" priority="9" order="19.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpenseExampleNoRedemptionByYearCaption" xlink:label="ExpenseExampleNoRedemptionByYearCaption"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ExpenseExampleNoRedemptionByYearCaption" use="optional" priority="9" order="20.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpenseExampleNoRedemptionTableTextBlock" xlink:label="ExpenseExampleNoRedemptionTableTextBlock"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ExpenseExampleNoRedemptionTableTextBlock" use="optional" priority="9" order="21.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpenseExampleFootnotesTextBlock" xlink:label="ExpenseExampleFootnotesTextBlock"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ExpenseExampleFootnotesTextBlock" use="optional" priority="9" order="22.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpenseExampleClosingTextBlock" xlink:label="ExpenseExampleClosingTextBlock"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ExpenseExampleClosingTextBlock" use="optional" priority="9" order="23.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_PortfolioTurnoverHeading" xlink:label="PortfolioTurnoverHeading"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="PortfolioTurnoverHeading" use="optional" priority="9" order="24.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_PortfolioTurnoverTextBlock" xlink:label="PortfolioTurnoverTextBlock"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="PortfolioTurnoverTextBlock" use="optional" priority="9" order="25.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_StrategyHeading" xlink:label="StrategyHeading"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="StrategyHeading" use="optional" priority="9" order="26.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_StrategyNarrativeTextBlock" xlink:label="StrategyNarrativeTextBlock"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="StrategyNarrativeTextBlock" use="optional" priority="9" order="27.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_RiskHeading" xlink:label="RiskHeading"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="RiskHeading" use="optional" priority="9" order="28.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_RiskNarrativeTextBlock" xlink:label="RiskNarrativeTextBlock"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="RiskNarrativeTextBlock" use="optional" priority="9" order="29.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_RiskFootnotesTextBlock" xlink:label="RiskFootnotesTextBlock"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="RiskFootnotesTextBlock" use="optional" priority="9" order="30.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_RiskClosingTextBlock" xlink:label="RiskClosingTextBlock"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="RiskClosingTextBlock" use="optional" priority="9" order="31.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_BarChartAndPerformanceTableHeading" xlink:label="BarChartAndPerformanceTableHeading"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="BarChartAndPerformanceTableHeading" use="optional" priority="9" order="32.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_PerformanceNarrativeTextBlock" xlink:label="PerformanceNarrativeTextBlock"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="PerformanceNarrativeTextBlock" use="optional" priority="9" order="33.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_BarChartNarrativeTextBlock" xlink:label="BarChartNarrativeTextBlock"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="BarChartNarrativeTextBlock" use="optional" priority="9" order="34.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_BarChartHeading" xlink:label="BarChartHeading"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="BarChartHeading" use="optional" priority="9" order="35.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_BarChartTableTextBlock" xlink:label="BarChartTableTextBlock"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="BarChartTableTextBlock" use="optional" priority="9" order="36.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_BarChartFootnotesTextBlock" xlink:label="BarChartFootnotesTextBlock"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="BarChartFootnotesTextBlock" use="optional" priority="9" order="37.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_BarChartClosingTextBlock" xlink:label="BarChartClosingTextBlock"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="BarChartClosingTextBlock" use="optional" priority="9" order="38.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_PerformanceTableHeading" xlink:label="PerformanceTableHeading"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="PerformanceTableHeading" use="optional" priority="9" order="39.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_PerformanceTableNarrativeTextBlock" xlink:label="PerformanceTableNarrativeTextBlock"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="PerformanceTableNarrativeTextBlock" use="optional" priority="9" order="40.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_PerformanceTableTextBlock" xlink:label="PerformanceTableTextBlock"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="PerformanceTableTextBlock" use="optional" priority="9" order="41.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_MarketIndexPerformanceTableTextBlock" xlink:label="MarketIndexPerformanceTableTextBlock"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="MarketIndexPerformanceTableTextBlock" use="optional" priority="9" order="42.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_PerformanceTableFootnotesTextBlock" xlink:label="PerformanceTableFootnotesTextBlock"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="PerformanceTableFootnotesTextBlock" use="optional" priority="9" order="43.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_PerformanceTableClosingTextBlock" xlink:label="PerformanceTableClosingTextBlock"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="PerformanceTableClosingTextBlock" use="optional" priority="9" order="44.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_SupplementToProspectusTextBlock" xlink:label="SupplementToProspectusTextBlock"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="SupplementToProspectusTextBlock" order="45.0"/>
+  </link:presentationLink>
+  <link:presentationLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/rr/role/ShareholderFeesData">
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_RiskReturnAbstract" xlink:label="RiskReturnAbstract"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ProspectusTable" xlink:label="ProspectusTable"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="RiskReturnAbstract" xlink:to="ProspectusTable" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentInformationDocumentAxis" xlink:label="DocumentInformationDocumentAxis"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusTable" xlink:to="DocumentInformationDocumentAxis" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentDomain" xlink:label="DocumentDomain"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationDocumentAxis" xlink:to="DocumentDomain" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_CoregistrantAxis" xlink:label="CoregistrantAxis"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusTable" xlink:to="CoregistrantAxis" order="2.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_CoregistrantDomain" xlink:label="CoregistrantDomain"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="CoregistrantAxis" xlink:to="CoregistrantDomain" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_LegalEntityAxis" xlink:label="LegalEntityAxis"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusTable" xlink:to="LegalEntityAxis" order="3.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityDomain" xlink:label="EntityDomain"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="LegalEntityAxis" xlink:to="EntityDomain" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ProspectusShareClassAxis" xlink:label="ProspectusShareClassAxis"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusTable" xlink:to="ProspectusShareClassAxis" order="4.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ShareClassDomain" xlink:label="ShareClassDomain"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusShareClassAxis" xlink:to="ShareClassDomain" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ShareholderFeesAbstract" xlink:label="ShareholderFeesAbstract"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusTable" xlink:to="ShareholderFeesAbstract" order="6.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ShareholderFeesColumnName" xlink:label="ShareholderFeesColumnName"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ShareholderFeesAbstract" xlink:to="ShareholderFeesColumnName" use="optional" priority="9" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_MaximumCumulativeSalesChargeOverOfferingPrice" xlink:label="MaximumCumulativeSalesChargeOverOfferingPrice"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ShareholderFeesAbstract" xlink:to="MaximumCumulativeSalesChargeOverOfferingPrice" use="optional" priority="9" order="2.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_MaximumCumulativeSalesChargeOverOther" xlink:label="MaximumCumulativeSalesChargeOverOther"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ShareholderFeesAbstract" xlink:to="MaximumCumulativeSalesChargeOverOther" use="optional" priority="9" order="3.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_MaximumSalesChargeImposedOnPurchasesOverOfferingPrice" xlink:label="MaximumSalesChargeImposedOnPurchasesOverOfferingPrice"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ShareholderFeesAbstract" xlink:to="MaximumSalesChargeImposedOnPurchasesOverOfferingPrice" use="optional" priority="9" order="4.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_MaximumDeferredSalesChargeOverOfferingPrice" xlink:label="MaximumDeferredSalesChargeOverOfferingPrice"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ShareholderFeesAbstract" xlink:to="MaximumDeferredSalesChargeOverOfferingPrice" use="optional" priority="9" order="5.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_MaximumDeferredSalesChargeOverOther" xlink:label="MaximumDeferredSalesChargeOverOther"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ShareholderFeesAbstract" xlink:to="MaximumDeferredSalesChargeOverOther" use="optional" priority="9" order="6.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_MaximumSalesChargeOnReinvestedDividendsAndDistributionsOverOther" xlink:label="MaximumSalesChargeOnReinvestedDividendsAndDistributionsOverOther"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ShareholderFeesAbstract" xlink:to="MaximumSalesChargeOnReinvestedDividendsAndDistributionsOverOther" use="optional" priority="9" order="7.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_RedemptionFeeOverRedemption" xlink:label="RedemptionFeeOverRedemption"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ShareholderFeesAbstract" xlink:to="RedemptionFeeOverRedemption" use="optional" priority="0" order="8.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_RedemptionFee" xlink:label="RedemptionFee"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ShareholderFeesAbstract" xlink:to="RedemptionFee" use="optional" priority="0" order="9.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExchangeFeeOverRedemption" xlink:label="ExchangeFeeOverRedemption"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ShareholderFeesAbstract" xlink:to="ExchangeFeeOverRedemption" use="optional" priority="9" order="10.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExchangeFee" xlink:label="ExchangeFee"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ShareholderFeesAbstract" xlink:to="ExchangeFee" use="optional" priority="9" order="11.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_MaximumAccountFeeOverAssets" xlink:label="MaximumAccountFeeOverAssets"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ShareholderFeesAbstract" xlink:to="MaximumAccountFeeOverAssets" use="optional" priority="9" order="12.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_MaximumAccountFee" xlink:label="MaximumAccountFee"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ShareholderFeesAbstract" xlink:to="MaximumAccountFee" use="optional" priority="9" order="13.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ShareholderFeeOther" xlink:label="ShareholderFeeOther"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ShareholderFeesAbstract" xlink:to="ShareholderFeeOther" use="optional" priority="9" order="14.0"/>
+  </link:presentationLink>
+  <link:presentationLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/rr/role/OperatingExpensesData">
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_RiskReturnAbstract" xlink:label="RiskReturnAbstract"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ProspectusTable" xlink:label="ProspectusTable"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="RiskReturnAbstract" xlink:to="ProspectusTable" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentInformationDocumentAxis" xlink:label="DocumentInformationDocumentAxis"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusTable" xlink:to="DocumentInformationDocumentAxis" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentDomain" xlink:label="DocumentDomain"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationDocumentAxis" xlink:to="DocumentDomain" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_CoregistrantAxis" xlink:label="CoregistrantAxis"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusTable" xlink:to="CoregistrantAxis" order="2.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_CoregistrantDomain" xlink:label="CoregistrantDomain"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="CoregistrantAxis" xlink:to="CoregistrantDomain" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_LegalEntityAxis" xlink:label="LegalEntityAxis"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusTable" xlink:to="LegalEntityAxis" order="3.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityDomain" xlink:label="EntityDomain"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="LegalEntityAxis" xlink:to="EntityDomain" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_OperatingExpensesAbstract" xlink:label="OperatingExpensesAbstract"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusTable" xlink:to="OperatingExpensesAbstract" order="6.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_OperatingExpensesColumnName" xlink:label="OperatingExpensesColumnName"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="OperatingExpensesAbstract" xlink:to="OperatingExpensesColumnName" use="optional" priority="9" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ManagementFeesOverAssets" xlink:label="ManagementFeesOverAssets"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="OperatingExpensesAbstract" xlink:to="ManagementFeesOverAssets" use="optional" priority="9" order="2.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_DistributionAndService12b1FeesOverAssets" xlink:label="DistributionAndService12b1FeesOverAssets"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="OperatingExpensesAbstract" xlink:to="DistributionAndService12b1FeesOverAssets" use="optional" priority="9" order="3.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_DistributionOrSimilarNon12b1FeesOverAssets" xlink:label="DistributionOrSimilarNon12b1FeesOverAssets"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="OperatingExpensesAbstract" xlink:to="DistributionOrSimilarNon12b1FeesOverAssets" use="optional" priority="9" order="4.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_Component1OtherExpensesOverAssets" xlink:label="Component1OtherExpensesOverAssets"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="OperatingExpensesAbstract" xlink:to="Component1OtherExpensesOverAssets" use="optional" priority="9" order="5.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_Component2OtherExpensesOverAssets" xlink:label="Component2OtherExpensesOverAssets"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="OperatingExpensesAbstract" xlink:to="Component2OtherExpensesOverAssets" use="optional" priority="9" order="6.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_Component3OtherExpensesOverAssets" xlink:label="Component3OtherExpensesOverAssets"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="OperatingExpensesAbstract" xlink:to="Component3OtherExpensesOverAssets" use="optional" priority="9" order="7.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_OtherExpensesOverAssets" xlink:label="OtherExpensesOverAssets"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="OperatingExpensesAbstract" xlink:to="OtherExpensesOverAssets" use="optional" priority="9" order="8.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AcquiredFundFeesAndExpensesOverAssets" xlink:label="AcquiredFundFeesAndExpensesOverAssets"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="OperatingExpensesAbstract" xlink:to="AcquiredFundFeesAndExpensesOverAssets" use="optional" priority="9" order="9.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpensesOverAssets" xlink:label="ExpensesOverAssets"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="OperatingExpensesAbstract" xlink:to="ExpensesOverAssets" use="optional" priority="9" order="10.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_FeeWaiverOrReimbursementOverAssets" xlink:label="FeeWaiverOrReimbursementOverAssets"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="OperatingExpensesAbstract" xlink:to="FeeWaiverOrReimbursementOverAssets" use="optional" priority="0" order="11.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_NetExpensesOverAssets" xlink:label="NetExpensesOverAssets"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="OperatingExpensesAbstract" xlink:to="NetExpensesOverAssets" use="optional" priority="9" order="12.0"/>
+  </link:presentationLink>
+  <link:presentationLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/rr/role/ExpenseExample">
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_RiskReturnAbstract" xlink:label="RiskReturnAbstract"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ProspectusTable" xlink:label="ProspectusTable"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="RiskReturnAbstract" xlink:to="ProspectusTable" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentInformationDocumentAxis" xlink:label="DocumentInformationDocumentAxis"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusTable" xlink:to="DocumentInformationDocumentAxis" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentDomain" xlink:label="DocumentDomain"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationDocumentAxis" xlink:to="DocumentDomain" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_CoregistrantAxis" xlink:label="CoregistrantAxis"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusTable" xlink:to="CoregistrantAxis" order="2.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_CoregistrantDomain" xlink:label="CoregistrantDomain"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="CoregistrantAxis" xlink:to="CoregistrantDomain" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_LegalEntityAxis" xlink:label="LegalEntityAxis"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusTable" xlink:to="LegalEntityAxis" order="3.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityDomain" xlink:label="EntityDomain"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="LegalEntityAxis" xlink:to="EntityDomain" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ProspectusShareClassAxis" xlink:label="ProspectusShareClassAxis"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusTable" xlink:to="ProspectusShareClassAxis" order="4.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ShareClassDomain" xlink:label="ShareClassDomain"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusShareClassAxis" xlink:to="ShareClassDomain" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpenseExampleAbstract" xlink:label="ExpenseExampleAbstract"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusTable" xlink:to="ExpenseExampleAbstract" order="6.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpenseExampleByYearColumnName" xlink:label="ExpenseExampleByYearColumnName"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ExpenseExampleAbstract" xlink:to="ExpenseExampleByYearColumnName" use="optional" priority="0" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpenseExampleYear01" xlink:label="ExpenseExampleYear01"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ExpenseExampleAbstract" xlink:to="ExpenseExampleYear01" use="optional" priority="0" order="2.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpenseExampleYear03" xlink:label="ExpenseExampleYear03"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ExpenseExampleAbstract" xlink:to="ExpenseExampleYear03" use="optional" priority="0" order="3.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpenseExampleYear05" xlink:label="ExpenseExampleYear05"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ExpenseExampleAbstract" xlink:to="ExpenseExampleYear05" use="optional" priority="0" order="4.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpenseExampleYear10" xlink:label="ExpenseExampleYear10"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ExpenseExampleAbstract" xlink:to="ExpenseExampleYear10" use="optional" priority="0" order="5.0"/>
+  </link:presentationLink>
+  <link:presentationLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/rr/role/ExpenseExampleNoRedemption">
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_RiskReturnAbstract" xlink:label="RiskReturnAbstract"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ProspectusTable" xlink:label="ProspectusTable"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="RiskReturnAbstract" xlink:to="ProspectusTable" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentInformationDocumentAxis" xlink:label="DocumentInformationDocumentAxis"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusTable" xlink:to="DocumentInformationDocumentAxis" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentDomain" xlink:label="DocumentDomain"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationDocumentAxis" xlink:to="DocumentDomain" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_CoregistrantAxis" xlink:label="CoregistrantAxis"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusTable" xlink:to="CoregistrantAxis" order="2.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_CoregistrantDomain" xlink:label="CoregistrantDomain"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="CoregistrantAxis" xlink:to="CoregistrantDomain" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_LegalEntityAxis" xlink:label="LegalEntityAxis"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusTable" xlink:to="LegalEntityAxis" order="3.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityDomain" xlink:label="EntityDomain"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="LegalEntityAxis" xlink:to="EntityDomain" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ProspectusShareClassAxis" xlink:label="ProspectusShareClassAxis"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusTable" xlink:to="ProspectusShareClassAxis" order="4.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ShareClassDomain" xlink:label="ShareClassDomain"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusShareClassAxis" xlink:to="ShareClassDomain" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpenseExampleNoRedemptionAbstract" xlink:label="ExpenseExampleNoRedemptionAbstract"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusTable" xlink:to="ExpenseExampleNoRedemptionAbstract" order="6.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpenseExampleNoRedemptionByYearColumnName" xlink:label="ExpenseExampleNoRedemptionByYearColumnName"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ExpenseExampleNoRedemptionAbstract" xlink:to="ExpenseExampleNoRedemptionByYearColumnName" use="optional" priority="0" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpenseExampleNoRedemptionYear01" xlink:label="ExpenseExampleNoRedemptionYear01"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ExpenseExampleNoRedemptionAbstract" xlink:to="ExpenseExampleNoRedemptionYear01" use="optional" priority="0" order="2.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpenseExampleNoRedemptionYear03" xlink:label="ExpenseExampleNoRedemptionYear03"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ExpenseExampleNoRedemptionAbstract" xlink:to="ExpenseExampleNoRedemptionYear03" use="optional" priority="0" order="3.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpenseExampleNoRedemptionYear05" xlink:label="ExpenseExampleNoRedemptionYear05"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ExpenseExampleNoRedemptionAbstract" xlink:to="ExpenseExampleNoRedemptionYear05" use="optional" priority="0" order="4.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpenseExampleNoRedemptionYear10" xlink:label="ExpenseExampleNoRedemptionYear10"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ExpenseExampleNoRedemptionAbstract" xlink:to="ExpenseExampleNoRedemptionYear10" use="optional" priority="0" order="5.0"/>
+  </link:presentationLink>
+  <link:presentationLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/rr/role/BarChartData">
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_RiskReturnAbstract" xlink:label="RiskReturnAbstract"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ProspectusTable" xlink:label="ProspectusTable"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="RiskReturnAbstract" xlink:to="ProspectusTable" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentInformationDocumentAxis" xlink:label="DocumentInformationDocumentAxis"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusTable" xlink:to="DocumentInformationDocumentAxis" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentDomain" xlink:label="DocumentDomain"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationDocumentAxis" xlink:to="DocumentDomain" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_CoregistrantAxis" xlink:label="CoregistrantAxis"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusTable" xlink:to="CoregistrantAxis" order="2.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_CoregistrantDomain" xlink:label="CoregistrantDomain"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="CoregistrantAxis" xlink:to="CoregistrantDomain" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_LegalEntityAxis" xlink:label="LegalEntityAxis"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusTable" xlink:to="LegalEntityAxis" order="3.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityDomain" xlink:label="EntityDomain"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="LegalEntityAxis" xlink:to="EntityDomain" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ProspectusShareClassAxis" xlink:label="ProspectusShareClassAxis"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusTable" xlink:to="ProspectusShareClassAxis" order="4.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ShareClassDomain" xlink:label="ShareClassDomain"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusShareClassAxis" xlink:to="ShareClassDomain" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_BarChartTableAbstract" xlink:label="BarChartTableAbstract"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusTable" xlink:to="BarChartTableAbstract" order="6.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturnCaption" xlink:label="AnnualReturnCaption"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="BarChartTableAbstract" xlink:to="AnnualReturnCaption" use="optional" priority="9" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturnColumnName" xlink:label="AnnualReturnColumnName"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="BarChartTableAbstract" xlink:to="AnnualReturnColumnName" use="optional" priority="9" order="2.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturnInceptionDate" xlink:label="AnnualReturnInceptionDate"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="BarChartTableAbstract" xlink:to="AnnualReturnInceptionDate" use="optional" priority="9" order="3.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn1990" xlink:label="AnnualReturn1990"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="BarChartTableAbstract" xlink:to="AnnualReturn1990" use="optional" priority="9" order="4.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn1991" xlink:label="AnnualReturn1991"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="BarChartTableAbstract" xlink:to="AnnualReturn1991" use="optional" priority="9" order="5.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn1992" xlink:label="AnnualReturn1992"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="BarChartTableAbstract" xlink:to="AnnualReturn1992" use="optional" priority="9" order="6.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn1993" xlink:label="AnnualReturn1993"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="BarChartTableAbstract" xlink:to="AnnualReturn1993" use="optional" priority="9" order="7.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn1994" xlink:label="AnnualReturn1994"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="BarChartTableAbstract" xlink:to="AnnualReturn1994" use="optional" priority="9" order="8.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn1995" xlink:label="AnnualReturn1995"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="BarChartTableAbstract" xlink:to="AnnualReturn1995" use="optional" priority="9" order="9.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn1996" xlink:label="AnnualReturn1996"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="BarChartTableAbstract" xlink:to="AnnualReturn1996" use="optional" priority="9" order="10.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn1997" xlink:label="AnnualReturn1997"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="BarChartTableAbstract" xlink:to="AnnualReturn1997" use="optional" priority="9" order="11.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn1998" xlink:label="AnnualReturn1998"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="BarChartTableAbstract" xlink:to="AnnualReturn1998" use="optional" priority="9" order="12.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn1999" xlink:label="AnnualReturn1999"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="BarChartTableAbstract" xlink:to="AnnualReturn1999" use="optional" priority="9" order="13.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn2000" xlink:label="AnnualReturn2000"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="BarChartTableAbstract" xlink:to="AnnualReturn2000" use="optional" priority="9" order="14.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn2001" xlink:label="AnnualReturn2001"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="BarChartTableAbstract" xlink:to="AnnualReturn2001" use="optional" priority="9" order="15.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn2002" xlink:label="AnnualReturn2002"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="BarChartTableAbstract" xlink:to="AnnualReturn2002" use="optional" priority="9" order="16.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn2003" xlink:label="AnnualReturn2003"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="BarChartTableAbstract" xlink:to="AnnualReturn2003" use="optional" priority="9" order="17.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn2004" xlink:label="AnnualReturn2004"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="BarChartTableAbstract" xlink:to="AnnualReturn2004" use="optional" priority="9" order="18.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn2005" xlink:label="AnnualReturn2005"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="BarChartTableAbstract" xlink:to="AnnualReturn2005" use="optional" priority="9" order="19.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn2006" xlink:label="AnnualReturn2006"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="BarChartTableAbstract" xlink:to="AnnualReturn2006" use="optional" priority="9" order="20.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn2007" xlink:label="AnnualReturn2007"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="BarChartTableAbstract" xlink:to="AnnualReturn2007" use="optional" priority="9" order="21.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn2008" xlink:label="AnnualReturn2008"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="BarChartTableAbstract" xlink:to="AnnualReturn2008" use="optional" priority="9" order="22.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn2009" xlink:label="AnnualReturn2009"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="BarChartTableAbstract" xlink:to="AnnualReturn2009" use="optional" priority="9" order="23.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn2010" xlink:label="AnnualReturn2010"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="BarChartTableAbstract" xlink:to="AnnualReturn2010" use="optional" priority="9" order="24.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn2011" xlink:label="AnnualReturn2011"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="BarChartTableAbstract" xlink:to="AnnualReturn2011" use="optional" priority="9" order="25.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn2012" xlink:label="AnnualReturn2012"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="BarChartTableAbstract" xlink:to="AnnualReturn2012" use="optional" priority="9" order="26.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn2013" xlink:label="AnnualReturn2013"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="BarChartTableAbstract" xlink:to="AnnualReturn2013" use="optional" priority="9" order="27.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn2014" xlink:label="AnnualReturn2014"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="BarChartTableAbstract" xlink:to="AnnualReturn2014" use="optional" priority="9" order="28.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn2015" xlink:label="AnnualReturn2015"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="BarChartTableAbstract" xlink:to="AnnualReturn2015" order="29.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn2016" xlink:label="AnnualReturn2016"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="BarChartTableAbstract" xlink:to="AnnualReturn2016" order="30.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn2017" xlink:label="AnnualReturn2017"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="BarChartTableAbstract" xlink:to="AnnualReturn2017" order="31.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn2018" xlink:label="AnnualReturn2018"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="BarChartTableAbstract" xlink:to="AnnualReturn2018" order="32.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn2019" xlink:label="AnnualReturn2019"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="BarChartTableAbstract" xlink:to="AnnualReturn2019" order="33.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn2020" xlink:label="AnnualReturn2020"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="BarChartTableAbstract" xlink:to="AnnualReturn2020" order="34.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn2021" xlink:label="AnnualReturn2021"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="BarChartTableAbstract" xlink:to="AnnualReturn2021" order="35.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn2022" xlink:label="AnnualReturn2022"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="BarChartTableAbstract" xlink:to="AnnualReturn2022" order="36.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn2023" xlink:label="AnnualReturn2023"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="BarChartTableAbstract" xlink:to="AnnualReturn2023" order="37.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn2024" xlink:label="AnnualReturn2024"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="BarChartTableAbstract" xlink:to="AnnualReturn2024" order="38.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn2025" xlink:label="AnnualReturn2025"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="BarChartTableAbstract" xlink:to="AnnualReturn2025" order="39.0"/>
+  </link:presentationLink>
+  <link:presentationLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/rr/role/PerformanceTableData">
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_RiskReturnAbstract" xlink:label="RiskReturnAbstract"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ProspectusTable" xlink:label="ProspectusTable"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="RiskReturnAbstract" xlink:to="ProspectusTable" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentInformationDocumentAxis" xlink:label="DocumentInformationDocumentAxis"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusTable" xlink:to="DocumentInformationDocumentAxis" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentDomain" xlink:label="DocumentDomain"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationDocumentAxis" xlink:to="DocumentDomain" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_CoregistrantAxis" xlink:label="CoregistrantAxis"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusTable" xlink:to="CoregistrantAxis" order="2.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_CoregistrantDomain" xlink:label="CoregistrantDomain"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="CoregistrantAxis" xlink:to="CoregistrantDomain" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_LegalEntityAxis" xlink:label="LegalEntityAxis"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusTable" xlink:to="LegalEntityAxis" order="3.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityDomain" xlink:label="EntityDomain"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="LegalEntityAxis" xlink:to="EntityDomain" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ProspectusShareClassAxis" xlink:label="ProspectusShareClassAxis"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusTable" xlink:to="ProspectusShareClassAxis" order="4.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ShareClassDomain" xlink:label="ShareClassDomain"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusShareClassAxis" xlink:to="ShareClassDomain" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_PerformanceMeasureAxis" xlink:label="PerformanceMeasureAxis"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusTable" xlink:to="PerformanceMeasureAxis" order="5.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_PerformanceMeasureDomain" xlink:label="PerformanceMeasureDomain"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PerformanceMeasureAxis" xlink:to="PerformanceMeasureDomain" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AfterTaxesOnDistributionsMember" xlink:label="AfterTaxesOnDistributionsMember"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PerformanceMeasureAxis" xlink:to="AfterTaxesOnDistributionsMember" order="2.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AfterTaxesOnDistributionsAndSalesMember" xlink:label="AfterTaxesOnDistributionsAndSalesMember"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PerformanceMeasureAxis" xlink:to="AfterTaxesOnDistributionsAndSalesMember" order="3.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AverageAnnualReturnAbstract" xlink:label="AverageAnnualReturnAbstract"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusTable" xlink:to="AverageAnnualReturnAbstract" order="6.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AverageAnnualReturnLabel" xlink:label="AverageAnnualReturnLabel"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AverageAnnualReturnAbstract" xlink:to="AverageAnnualReturnLabel" use="optional" priority="9" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AverageAnnualReturnYear01" xlink:label="AverageAnnualReturnYear01"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AverageAnnualReturnAbstract" xlink:to="AverageAnnualReturnYear01" use="optional" priority="9" order="2.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AverageAnnualReturnYear05" xlink:label="AverageAnnualReturnYear05"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AverageAnnualReturnAbstract" xlink:to="AverageAnnualReturnYear05" use="optional" priority="9" order="3.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AverageAnnualReturnYear10" xlink:label="AverageAnnualReturnYear10"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AverageAnnualReturnAbstract" xlink:to="AverageAnnualReturnYear10" use="optional" priority="9" order="4.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AverageAnnualReturnSinceInception" xlink:label="AverageAnnualReturnSinceInception"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AverageAnnualReturnAbstract" xlink:to="AverageAnnualReturnSinceInception" use="optional" priority="9" order="5.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AverageAnnualReturnInceptionDate" xlink:label="AverageAnnualReturnInceptionDate"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AverageAnnualReturnAbstract" xlink:to="AverageAnnualReturnInceptionDate" use="optional" priority="0" order="6.0"/>
+  </link:presentationLink>
+  <link:presentationLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/rr/role/RiskReturnDetail">
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_RiskReturnAbstract" xlink:label="RiskReturnAbstract"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ProspectusTable" xlink:label="ProspectusTable"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="RiskReturnAbstract" xlink:to="ProspectusTable" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentInformationDocumentAxis" xlink:label="DocumentInformationDocumentAxis"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusTable" xlink:to="DocumentInformationDocumentAxis" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentDomain" xlink:label="DocumentDomain"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationDocumentAxis" xlink:to="DocumentDomain" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_CoregistrantAxis" xlink:label="CoregistrantAxis"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusTable" xlink:to="CoregistrantAxis" order="2.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_CoregistrantDomain" xlink:label="CoregistrantDomain"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="CoregistrantAxis" xlink:to="CoregistrantDomain" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_LegalEntityAxis" xlink:label="LegalEntityAxis"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusTable" xlink:to="LegalEntityAxis" order="3.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityDomain" xlink:label="EntityDomain"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="LegalEntityAxis" xlink:to="EntityDomain" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ProspectusLineItems" xlink:label="ProspectusLineItems"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusTable" xlink:to="ProspectusLineItems" order="6.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_RiskReturnDetailTableTextBlock" xlink:label="RiskReturnDetailTableTextBlock"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="RiskReturnDetailTableTextBlock" use="optional" priority="9" order="1.0"/>
+  </link:presentationLink>
+  <link:presentationLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/rr/role/RiskReturnDetailData">
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_RiskReturnAbstract" xlink:label="RiskReturnAbstract"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ProspectusTable" xlink:label="ProspectusTable"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="RiskReturnAbstract" xlink:to="ProspectusTable" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentInformationDocumentAxis" xlink:label="DocumentInformationDocumentAxis"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusTable" xlink:to="DocumentInformationDocumentAxis" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentDomain" xlink:label="DocumentDomain"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationDocumentAxis" xlink:to="DocumentDomain" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_CoregistrantAxis" xlink:label="CoregistrantAxis"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusTable" xlink:to="CoregistrantAxis" order="2.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_CoregistrantDomain" xlink:label="CoregistrantDomain"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="CoregistrantAxis" xlink:to="CoregistrantDomain" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_LegalEntityAxis" xlink:label="LegalEntityAxis"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusTable" xlink:to="LegalEntityAxis" order="3.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityDomain" xlink:label="EntityDomain"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="LegalEntityAxis" xlink:to="EntityDomain" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ProspectusLineItems" xlink:label="ProspectusLineItems"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusTable" xlink:to="ProspectusLineItems" order="6.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_RiskReturnHeading" xlink:label="RiskReturnHeading"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="RiskReturnHeading" use="optional" priority="9" order="11.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ObjectiveHeading" xlink:label="ObjectiveHeading"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ObjectiveHeading" use="optional" priority="9" order="12.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ObjectivePrimaryTextBlock" xlink:label="ObjectivePrimaryTextBlock"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ObjectivePrimaryTextBlock" use="optional" priority="9" order="13.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ObjectiveSecondaryTextBlock" xlink:label="ObjectiveSecondaryTextBlock"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ObjectiveSecondaryTextBlock" use="optional" priority="9" order="14.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpenseHeading" xlink:label="ExpenseHeading"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ExpenseHeading" use="optional" priority="9" order="15.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpenseNarrativeTextBlock" xlink:label="ExpenseNarrativeTextBlock"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ExpenseNarrativeTextBlock" use="optional" priority="9" order="16.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ShareholderFeesCaption" xlink:label="ShareholderFeesCaption"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ShareholderFeesCaption" use="optional" priority="9" order="17.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_OperatingExpensesCaption" xlink:label="OperatingExpensesCaption"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="OperatingExpensesCaption" use="optional" priority="9" order="32.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpenseFootnotesTextBlock" xlink:label="ExpenseFootnotesTextBlock"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ExpenseFootnotesTextBlock" use="optional" priority="9" order="49.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpensesDeferredChargesTextBlock" xlink:label="ExpensesDeferredChargesTextBlock"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ExpensesDeferredChargesTextBlock" use="optional" priority="9" order="50.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpensesRangeOfExchangeFeesTextBlock" xlink:label="ExpensesRangeOfExchangeFeesTextBlock"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ExpensesRangeOfExchangeFeesTextBlock" use="optional" priority="9" order="51.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpenseExampleHeading" xlink:label="ExpenseExampleHeading"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ExpenseExampleHeading" use="optional" priority="9" order="62.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpenseExampleByYearHeading" xlink:label="ExpenseExampleByYearHeading"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ExpenseExampleByYearHeading" use="optional" priority="9" order="63.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpenseExampleNarrativeTextBlock" xlink:label="ExpenseExampleNarrativeTextBlock"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ExpenseExampleNarrativeTextBlock" use="optional" priority="9" order="64.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpenseExampleByYearCaption" xlink:label="ExpenseExampleByYearCaption"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ExpenseExampleByYearCaption" use="optional" priority="9" order="65.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpenseExampleNoRedemptionNarrativeTextBlock" xlink:label="ExpenseExampleNoRedemptionNarrativeTextBlock"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ExpenseExampleNoRedemptionNarrativeTextBlock" use="optional" priority="9" order="70.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpenseExampleNoRedemptionByYearCaption" xlink:label="ExpenseExampleNoRedemptionByYearCaption"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ExpenseExampleNoRedemptionByYearCaption" use="optional" priority="9" order="71.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpenseExampleFootnotesTextBlock" xlink:label="ExpenseExampleFootnotesTextBlock"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ExpenseExampleFootnotesTextBlock" use="optional" priority="9" order="76.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpenseExampleClosingTextBlock" xlink:label="ExpenseExampleClosingTextBlock"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ExpenseExampleClosingTextBlock" use="optional" priority="9" order="77.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_PortfolioTurnoverHeading" xlink:label="PortfolioTurnoverHeading"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="PortfolioTurnoverHeading" use="optional" priority="9" order="46.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_PortfolioTurnoverTextBlock" xlink:label="PortfolioTurnoverTextBlock"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="PortfolioTurnoverTextBlock" use="optional" priority="9" order="47.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_StrategyHeading" xlink:label="StrategyHeading"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="StrategyHeading" use="optional" priority="9" order="78.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_StrategyNarrativeTextBlock" xlink:label="StrategyNarrativeTextBlock"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="StrategyNarrativeTextBlock" use="optional" priority="9" order="79.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_RiskHeading" xlink:label="RiskHeading"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="RiskHeading" use="optional" priority="9" order="81.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_RiskNarrativeTextBlock" xlink:label="RiskNarrativeTextBlock"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="RiskNarrativeTextBlock" use="optional" priority="9" order="82.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_RiskFootnotesTextBlock" xlink:label="RiskFootnotesTextBlock"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="RiskFootnotesTextBlock" use="optional" priority="9" order="83.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_RiskClosingTextBlock" xlink:label="RiskClosingTextBlock"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="RiskClosingTextBlock" use="optional" priority="9" order="84.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_BarChartAndPerformanceTableHeading" xlink:label="BarChartAndPerformanceTableHeading"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="BarChartAndPerformanceTableHeading" use="optional" priority="9" order="96.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_PerformanceNarrativeTextBlock" xlink:label="PerformanceNarrativeTextBlock"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="PerformanceNarrativeTextBlock" use="optional" priority="9" order="97.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_BarChartNarrativeTextBlock" xlink:label="BarChartNarrativeTextBlock"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="BarChartNarrativeTextBlock" use="optional" priority="9" order="105.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_BarChartHeading" xlink:label="BarChartHeading"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="BarChartHeading" use="optional" priority="9" order="104.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_BarChartFootnotesTextBlock" xlink:label="BarChartFootnotesTextBlock"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="BarChartFootnotesTextBlock" use="optional" priority="9" order="146.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_BarChartClosingTextBlock" xlink:label="BarChartClosingTextBlock"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="BarChartClosingTextBlock" use="optional" priority="9" order="147.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_PerformanceTableHeading" xlink:label="PerformanceTableHeading"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="PerformanceTableHeading" use="optional" priority="9" order="159.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_PerformanceTableNarrativeTextBlock" xlink:label="PerformanceTableNarrativeTextBlock"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="PerformanceTableNarrativeTextBlock" use="optional" priority="9" order="167.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_PerformanceTableFootnotesTextBlock" xlink:label="PerformanceTableFootnotesTextBlock"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="PerformanceTableFootnotesTextBlock" use="optional" priority="9" order="169.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_PerformanceTableClosingTextBlock" xlink:label="PerformanceTableClosingTextBlock"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="PerformanceTableClosingTextBlock" use="optional" priority="9" order="170.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_SupplementToProspectusTextBlock" xlink:label="SupplementToProspectusTextBlock"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="SupplementToProspectusTextBlock" order="189.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentType" xlink:label="DocumentType"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="DocumentType" use="optional" priority="9" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentPeriodEndDate" xlink:label="DocumentPeriodEndDate"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="DocumentPeriodEndDate" use="optional" priority="9" order="2.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityRegistrantName" xlink:label="EntityRegistrantName"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="EntityRegistrantName" use="optional" priority="9" order="3.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityCentralIndexKey" xlink:label="EntityCentralIndexKey"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="EntityCentralIndexKey" use="optional" priority="9" order="4.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_AmendmentFlag" xlink:label="AmendmentFlag"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AmendmentFlag" use="optional" priority="9" order="5.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_AmendmentDescription" xlink:label="AmendmentDescription"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AmendmentDescription" use="optional" priority="9" order="6.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_TradingSymbol" xlink:label="TradingSymbol"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="TradingSymbol" use="optional" priority="9" order="7.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentCreationDate" xlink:label="DocumentCreationDate"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="DocumentCreationDate" use="optional" priority="9" order="8.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentEffectiveDate" xlink:label="DocumentEffectiveDate"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="DocumentEffectiveDate" use="optional" priority="9" order="9.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ProspectusDate" xlink:label="ProspectusDate"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ProspectusDate" use="optional" priority="9" order="10.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ShareholderFeesColumnName" xlink:label="ShareholderFeesColumnName"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ShareholderFeesColumnName" use="optional" priority="9" order="18.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_MaximumCumulativeSalesChargeOverOfferingPrice" xlink:label="MaximumCumulativeSalesChargeOverOfferingPrice"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="MaximumCumulativeSalesChargeOverOfferingPrice" use="optional" priority="9" order="19.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_MaximumCumulativeSalesChargeOverOther" xlink:label="MaximumCumulativeSalesChargeOverOther"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="MaximumCumulativeSalesChargeOverOther" use="optional" priority="9" order="20.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_MaximumSalesChargeImposedOnPurchasesOverOfferingPrice" xlink:label="MaximumSalesChargeImposedOnPurchasesOverOfferingPrice"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="MaximumSalesChargeImposedOnPurchasesOverOfferingPrice" use="optional" priority="9" order="21.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_MaximumDeferredSalesChargeOverOfferingPrice" xlink:label="MaximumDeferredSalesChargeOverOfferingPrice"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="MaximumDeferredSalesChargeOverOfferingPrice" use="optional" priority="9" order="22.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_MaximumDeferredSalesChargeOverOther" xlink:label="MaximumDeferredSalesChargeOverOther"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="MaximumDeferredSalesChargeOverOther" use="optional" priority="9" order="23.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_MaximumSalesChargeOnReinvestedDividendsAndDistributionsOverOther" xlink:label="MaximumSalesChargeOnReinvestedDividendsAndDistributionsOverOther"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="MaximumSalesChargeOnReinvestedDividendsAndDistributionsOverOther" use="optional" priority="9" order="24.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_RedemptionFeeOverRedemption" xlink:label="RedemptionFeeOverRedemption"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="RedemptionFeeOverRedemption" use="optional" priority="9" order="25.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_RedemptionFee" xlink:label="RedemptionFee"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="RedemptionFee" use="optional" priority="9" order="26.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExchangeFeeOverRedemption" xlink:label="ExchangeFeeOverRedemption"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ExchangeFeeOverRedemption" use="optional" priority="9" order="27.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExchangeFee" xlink:label="ExchangeFee"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ExchangeFee" use="optional" priority="9" order="28.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_MaximumAccountFeeOverAssets" xlink:label="MaximumAccountFeeOverAssets"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="MaximumAccountFeeOverAssets" use="optional" priority="9" order="29.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_MaximumAccountFee" xlink:label="MaximumAccountFee"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="MaximumAccountFee" use="optional" priority="9" order="30.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ShareholderFeeOther" xlink:label="ShareholderFeeOther"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ShareholderFeeOther" use="optional" priority="9" order="31.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_OperatingExpensesColumnName" xlink:label="OperatingExpensesColumnName"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="OperatingExpensesColumnName" use="optional" priority="9" order="33.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ManagementFeesOverAssets" xlink:label="ManagementFeesOverAssets"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ManagementFeesOverAssets" use="optional" priority="9" order="34.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_DistributionAndService12b1FeesOverAssets" xlink:label="DistributionAndService12b1FeesOverAssets"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="DistributionAndService12b1FeesOverAssets" use="optional" priority="9" order="35.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_DistributionOrSimilarNon12b1FeesOverAssets" xlink:label="DistributionOrSimilarNon12b1FeesOverAssets"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="DistributionOrSimilarNon12b1FeesOverAssets" use="optional" priority="9" order="36.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_Component1OtherExpensesOverAssets" xlink:label="Component1OtherExpensesOverAssets"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="Component1OtherExpensesOverAssets" use="optional" priority="9" order="37.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_Component2OtherExpensesOverAssets" xlink:label="Component2OtherExpensesOverAssets"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="Component2OtherExpensesOverAssets" use="optional" priority="9" order="38.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_Component3OtherExpensesOverAssets" xlink:label="Component3OtherExpensesOverAssets"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="Component3OtherExpensesOverAssets" use="optional" priority="9" order="39.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_OtherExpensesOverAssets" xlink:label="OtherExpensesOverAssets"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="OtherExpensesOverAssets" use="optional" priority="9" order="40.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AcquiredFundFeesAndExpensesOverAssets" xlink:label="AcquiredFundFeesAndExpensesOverAssets"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AcquiredFundFeesAndExpensesOverAssets" use="optional" priority="9" order="41.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpensesOverAssets" xlink:label="ExpensesOverAssets"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ExpensesOverAssets" use="optional" priority="9" order="42.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_FeeWaiverOrReimbursementOverAssets" xlink:label="FeeWaiverOrReimbursementOverAssets"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="FeeWaiverOrReimbursementOverAssets" use="optional" priority="9" order="43.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_NetExpensesOverAssets" xlink:label="NetExpensesOverAssets"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="NetExpensesOverAssets" use="optional" priority="9" order="44.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_FeeWaiverOrReimbursementOverAssetsDateOfTermination" xlink:label="FeeWaiverOrReimbursementOverAssetsDateOfTermination"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="FeeWaiverOrReimbursementOverAssetsDateOfTermination" use="optional" priority="9" order="45.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_PortfolioTurnoverRate" xlink:label="PortfolioTurnoverRate"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="PortfolioTurnoverRate" use="optional" priority="9" order="48.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpenseBreakpointDiscounts" xlink:label="ExpenseBreakpointDiscounts"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ExpenseBreakpointDiscounts" use="optional" priority="9" order="52.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpenseBreakpointMinimumInvestmentRequiredAmount" xlink:label="ExpenseBreakpointMinimumInvestmentRequiredAmount"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ExpenseBreakpointMinimumInvestmentRequiredAmount" use="optional" priority="9" order="53.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpensesRepresentBothMasterAndFeeder" xlink:label="ExpensesRepresentBothMasterAndFeeder"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ExpensesRepresentBothMasterAndFeeder" use="optional" priority="9" order="55.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpensesExplanationOfNonrecurringAccountFee" xlink:label="ExpensesExplanationOfNonrecurringAccountFee"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ExpensesExplanationOfNonrecurringAccountFee" use="optional" priority="9" order="56.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_OtherExpensesNewFundBasedOnEstimates" xlink:label="OtherExpensesNewFundBasedOnEstimates"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="OtherExpensesNewFundBasedOnEstimates" use="optional" priority="9" order="57.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AcquiredFundFeesAndExpensesBasedOnEstimates" xlink:label="AcquiredFundFeesAndExpensesBasedOnEstimates"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AcquiredFundFeesAndExpensesBasedOnEstimates" use="optional" priority="9" order="58.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpensesOtherExpensesHadExtraordinaryExpensesBeenIncluded" xlink:label="ExpensesOtherExpensesHadExtraordinaryExpensesBeenIncluded"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ExpensesOtherExpensesHadExtraordinaryExpensesBeenIncluded" use="optional" priority="9" order="59.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpensesRestatedToReflectCurrent" xlink:label="ExpensesRestatedToReflectCurrent"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ExpensesRestatedToReflectCurrent" use="optional" priority="9" order="60.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpensesNotCorrelatedToRatioDueToAcquiredFundFees" xlink:label="ExpensesNotCorrelatedToRatioDueToAcquiredFundFees"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ExpensesNotCorrelatedToRatioDueToAcquiredFundFees" use="optional" priority="9" order="61.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpenseExampleYear01" xlink:label="ExpenseExampleYear01"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ExpenseExampleYear01" use="optional" priority="9" order="66.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpenseExampleYear03" xlink:label="ExpenseExampleYear03"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ExpenseExampleYear03" use="optional" priority="9" order="67.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpenseExampleYear05" xlink:label="ExpenseExampleYear05"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ExpenseExampleYear05" use="optional" priority="9" order="68.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpenseExampleYear10" xlink:label="ExpenseExampleYear10"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ExpenseExampleYear10" use="optional" priority="9" order="69.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpenseExampleNoRedemptionYear01" xlink:label="ExpenseExampleNoRedemptionYear01"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ExpenseExampleNoRedemptionYear01" use="optional" priority="9" order="72.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpenseExampleNoRedemptionYear03" xlink:label="ExpenseExampleNoRedemptionYear03"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ExpenseExampleNoRedemptionYear03" use="optional" priority="9" order="73.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpenseExampleNoRedemptionYear05" xlink:label="ExpenseExampleNoRedemptionYear05"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ExpenseExampleNoRedemptionYear05" use="optional" priority="9" order="74.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpenseExampleNoRedemptionYear10" xlink:label="ExpenseExampleNoRedemptionYear10"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ExpenseExampleNoRedemptionYear10" use="optional" priority="9" order="75.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_StrategyPortfolioConcentration" xlink:label="StrategyPortfolioConcentration"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="StrategyPortfolioConcentration" use="optional" priority="9" order="80.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_RiskLoseMoney" xlink:label="RiskLoseMoney"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="RiskLoseMoney" use="optional" priority="9" order="85.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_RiskNondiversifiedStatus" xlink:label="RiskNondiversifiedStatus"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="RiskNondiversifiedStatus" use="optional" priority="9" order="92.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_RiskNotInsuredDepositoryInstitution" xlink:label="RiskNotInsuredDepositoryInstitution"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="RiskNotInsuredDepositoryInstitution" use="optional" priority="9" order="89.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_RiskCaption" xlink:label="RiskCaption"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="RiskCaption" use="optional" priority="9" order="93.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_RiskColumnName" xlink:label="RiskColumnName"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="RiskColumnName" use="optional" priority="9" order="94.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_Risk" xlink:label="Risk"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="Risk" use="optional" priority="9" order="95.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_PerformanceInformationIllustratesVariabilityOfReturns" xlink:label="PerformanceInformationIllustratesVariabilityOfReturns"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="PerformanceInformationIllustratesVariabilityOfReturns" use="optional" priority="9" order="98.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_PerformanceOneYearOrLess" xlink:label="PerformanceOneYearOrLess"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="PerformanceOneYearOrLess" use="optional" priority="9" order="99.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_PerformanceAdditionalMarketIndex" xlink:label="PerformanceAdditionalMarketIndex"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="PerformanceAdditionalMarketIndex" use="optional" priority="9" order="100.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_PerformanceAvailabilityPhone" xlink:label="PerformanceAvailabilityPhone"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="PerformanceAvailabilityPhone" use="optional" priority="9" order="101.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_PerformanceAvailabilityWebSiteAddress" xlink:label="PerformanceAvailabilityWebSiteAddress"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="PerformanceAvailabilityWebSiteAddress" use="optional" priority="9" order="102.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_PerformancePastDoesNotIndicateFuture" xlink:label="PerformancePastDoesNotIndicateFuture"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="PerformancePastDoesNotIndicateFuture" use="optional" priority="9" order="103.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_BarChartDoesNotReflectSalesLoads" xlink:label="BarChartDoesNotReflectSalesLoads"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="BarChartDoesNotReflectSalesLoads" use="optional" priority="9" order="106.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturnCaption" xlink:label="AnnualReturnCaption"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AnnualReturnCaption" use="optional" priority="9" order="107.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturnColumnName" xlink:label="AnnualReturnColumnName"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AnnualReturnColumnName" use="optional" priority="9" order="108.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturnInceptionDate" xlink:label="AnnualReturnInceptionDate"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AnnualReturnInceptionDate" use="optional" priority="9" order="109.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn1990" xlink:label="AnnualReturn1990"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AnnualReturn1990" use="optional" priority="9" order="110.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn1991" xlink:label="AnnualReturn1991"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AnnualReturn1991" use="optional" priority="9" order="111.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn1992" xlink:label="AnnualReturn1992"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AnnualReturn1992" use="optional" priority="9" order="112.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn1993" xlink:label="AnnualReturn1993"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AnnualReturn1993" use="optional" priority="9" order="113.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn1994" xlink:label="AnnualReturn1994"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AnnualReturn1994" use="optional" priority="9" order="114.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn1995" xlink:label="AnnualReturn1995"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AnnualReturn1995" use="optional" priority="9" order="115.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn1996" xlink:label="AnnualReturn1996"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AnnualReturn1996" use="optional" priority="9" order="116.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn1997" xlink:label="AnnualReturn1997"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AnnualReturn1997" use="optional" priority="9" order="117.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn1998" xlink:label="AnnualReturn1998"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AnnualReturn1998" use="optional" priority="9" order="118.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn1999" xlink:label="AnnualReturn1999"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AnnualReturn1999" use="optional" priority="9" order="119.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn2000" xlink:label="AnnualReturn2000"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AnnualReturn2000" use="optional" priority="9" order="120.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn2001" xlink:label="AnnualReturn2001"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AnnualReturn2001" use="optional" priority="9" order="121.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn2002" xlink:label="AnnualReturn2002"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AnnualReturn2002" use="optional" priority="9" order="122.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn2003" xlink:label="AnnualReturn2003"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AnnualReturn2003" use="optional" priority="9" order="123.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn2004" xlink:label="AnnualReturn2004"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AnnualReturn2004" use="optional" priority="9" order="124.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn2005" xlink:label="AnnualReturn2005"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AnnualReturn2005" use="optional" priority="9" order="125.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn2006" xlink:label="AnnualReturn2006"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AnnualReturn2006" use="optional" priority="9" order="126.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn2007" xlink:label="AnnualReturn2007"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AnnualReturn2007" use="optional" priority="9" order="127.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn2008" xlink:label="AnnualReturn2008"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AnnualReturn2008" use="optional" priority="9" order="128.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn2009" xlink:label="AnnualReturn2009"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AnnualReturn2009" use="optional" priority="9" order="129.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn2010" xlink:label="AnnualReturn2010"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AnnualReturn2010" use="optional" priority="9" order="130.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn2011" xlink:label="AnnualReturn2011"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AnnualReturn2011" use="optional" priority="9" order="131.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn2012" xlink:label="AnnualReturn2012"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AnnualReturn2012" use="optional" priority="9" order="132.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn2013" xlink:label="AnnualReturn2013"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AnnualReturn2013" use="optional" priority="9" order="133.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn2014" xlink:label="AnnualReturn2014"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AnnualReturn2014" use="optional" priority="9" order="134.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_BarChartReasonSelectedClassDifferentFromImmediatelyPrecedingPeriod" xlink:label="BarChartReasonSelectedClassDifferentFromImmediatelyPrecedingPeriod"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="BarChartReasonSelectedClassDifferentFromImmediatelyPrecedingPeriod" use="optional" priority="9" order="148.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_BarChartReturnsForClassNotOfferedInProspectus" xlink:label="BarChartReturnsForClassNotOfferedInProspectus"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="BarChartReturnsForClassNotOfferedInProspectus" use="optional" priority="9" order="149.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_YearToDateReturnLabel" xlink:label="YearToDateReturnLabel"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="YearToDateReturnLabel" use="optional" priority="9" order="150.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_BarChartYearToDateReturn" xlink:label="BarChartYearToDateReturn"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="BarChartYearToDateReturn" use="optional" priority="9" order="152.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_BarChartYearToDateReturnDate" xlink:label="BarChartYearToDateReturnDate"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="BarChartYearToDateReturnDate" use="optional" priority="9" order="151.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_HighestQuarterlyReturnLabel" xlink:label="HighestQuarterlyReturnLabel"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="HighestQuarterlyReturnLabel" use="optional" priority="9" order="153.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_BarChartHighestQuarterlyReturn" xlink:label="BarChartHighestQuarterlyReturn"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="BarChartHighestQuarterlyReturn" use="optional" priority="9" order="155.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_BarChartHighestQuarterlyReturnDate" xlink:label="BarChartHighestQuarterlyReturnDate"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="BarChartHighestQuarterlyReturnDate" use="optional" priority="9" order="154.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_LowestQuarterlyReturnLabel" xlink:label="LowestQuarterlyReturnLabel"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="LowestQuarterlyReturnLabel" use="optional" priority="9" order="156.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_BarChartLowestQuarterlyReturn" xlink:label="BarChartLowestQuarterlyReturn"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="BarChartLowestQuarterlyReturn" use="optional" priority="9" order="158.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_BarChartLowestQuarterlyReturnDate" xlink:label="BarChartLowestQuarterlyReturnDate"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="BarChartLowestQuarterlyReturnDate" use="optional" priority="9" order="157.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_PerformanceTableDoesReflectSalesLoads" xlink:label="PerformanceTableDoesReflectSalesLoads"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="PerformanceTableDoesReflectSalesLoads" use="optional" priority="9" order="160.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_PerformanceTableMarketIndexChanged" xlink:label="PerformanceTableMarketIndexChanged"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="PerformanceTableMarketIndexChanged" use="optional" priority="9" order="161.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_IndexNoDeductionForFeesExpensesTaxes" xlink:label="IndexNoDeductionForFeesExpensesTaxes"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="IndexNoDeductionForFeesExpensesTaxes" use="optional" priority="9" order="162.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_PerformanceTableUsesHighestFederalRate" xlink:label="PerformanceTableUsesHighestFederalRate"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="PerformanceTableUsesHighestFederalRate" use="optional" priority="9" order="163.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_PerformanceTableNotRelevantToTaxDeferred" xlink:label="PerformanceTableNotRelevantToTaxDeferred"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="PerformanceTableNotRelevantToTaxDeferred" use="optional" priority="9" order="164.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_PerformanceTableOneClassOfAfterTaxShown" xlink:label="PerformanceTableOneClassOfAfterTaxShown"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="PerformanceTableOneClassOfAfterTaxShown" use="optional" priority="9" order="165.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_PerformanceTableExplanationAfterTaxHigher" xlink:label="PerformanceTableExplanationAfterTaxHigher"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="PerformanceTableExplanationAfterTaxHigher" use="optional" priority="9" order="166.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_PerformanceTableFootnotesReasonPerformanceInformationForClassDifferentFromImmediatelyPrecedingPeriod" xlink:label="PerformanceTableFootnotesReasonPerformanceInformationForClassDifferentFromImmediatelyPrecedingPeriod"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="PerformanceTableFootnotesReasonPerformanceInformationForClassDifferentFromImmediatelyPrecedingPeriod" use="optional" priority="9" order="168.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AverageAnnualReturnCaption" xlink:label="AverageAnnualReturnCaption"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AverageAnnualReturnCaption" use="optional" priority="9" order="171.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AverageAnnualReturnColumnName" xlink:label="AverageAnnualReturnColumnName"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AverageAnnualReturnColumnName" use="optional" priority="9" order="172.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AverageAnnualReturnLabel" xlink:label="AverageAnnualReturnLabel"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AverageAnnualReturnLabel" use="optional" priority="9" order="173.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AverageAnnualReturnYear01" xlink:label="AverageAnnualReturnYear01"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AverageAnnualReturnYear01" use="optional" priority="9" order="174.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AverageAnnualReturnYear05" xlink:label="AverageAnnualReturnYear05"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AverageAnnualReturnYear05" use="optional" priority="9" order="175.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AverageAnnualReturnYear10" xlink:label="AverageAnnualReturnYear10"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AverageAnnualReturnYear10" use="optional" priority="9" order="176.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AverageAnnualReturnSinceInception" xlink:label="AverageAnnualReturnSinceInception"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AverageAnnualReturnSinceInception" use="optional" priority="9" order="177.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AverageAnnualReturnInceptionDate" xlink:label="AverageAnnualReturnInceptionDate"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AverageAnnualReturnInceptionDate" use="optional" priority="9" order="178.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_MoneyMarketSevenDayYieldCaption" xlink:label="MoneyMarketSevenDayYieldCaption"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="MoneyMarketSevenDayYieldCaption" use="optional" priority="9" order="179.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_MoneyMarketSevenDayYieldColumnName" xlink:label="MoneyMarketSevenDayYieldColumnName"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="MoneyMarketSevenDayYieldColumnName" use="optional" priority="9" order="180.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_MoneyMarketSevenDayYieldPhone" xlink:label="MoneyMarketSevenDayYieldPhone"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="MoneyMarketSevenDayYieldPhone" use="optional" priority="9" order="181.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_MoneyMarketSevenDayYield" xlink:label="MoneyMarketSevenDayYield"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="MoneyMarketSevenDayYield" use="optional" priority="9" order="182.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_MoneyMarketSevenDayTaxEquivalentYield" xlink:label="MoneyMarketSevenDayTaxEquivalentYield"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="MoneyMarketSevenDayTaxEquivalentYield" use="optional" priority="9" order="183.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ThirtyDayYieldCaption" xlink:label="ThirtyDayYieldCaption"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ThirtyDayYieldCaption" use="optional" priority="9" order="184.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ThirtyDayYieldColumnName" xlink:label="ThirtyDayYieldColumnName"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ThirtyDayYieldColumnName" use="optional" priority="9" order="185.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ThirtyDayYieldPhone" xlink:label="ThirtyDayYieldPhone"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ThirtyDayYieldPhone" use="optional" priority="9" order="186.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ThirtyDayYield" xlink:label="ThirtyDayYield"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ThirtyDayYield" use="optional" priority="9" order="187.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ThirtyDayTaxEquivalentYield" xlink:label="ThirtyDayTaxEquivalentYield"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ThirtyDayTaxEquivalentYield" use="optional" priority="9" order="188.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn2015" xlink:label="AnnualReturn2015"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AnnualReturn2015" use="optional" order="135.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn2016" xlink:label="AnnualReturn2016"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AnnualReturn2016" use="optional" order="136.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn2017" xlink:label="AnnualReturn2017"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AnnualReturn2017" use="optional" order="137.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn2018" xlink:label="AnnualReturn2018"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AnnualReturn2018" use="optional" order="138.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn2020" xlink:label="AnnualReturn2020"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AnnualReturn2020" use="optional" order="140.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn2019" xlink:label="AnnualReturn2019"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AnnualReturn2019" use="optional" order="139.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_RiskMoneyMarketFundPriceFluctuates" xlink:label="RiskMoneyMarketFundPriceFluctuates"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="RiskMoneyMarketFundPriceFluctuates" order="86.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_RiskMoneyMarketFundMayImposeFeesOrSuspendSales" xlink:label="RiskMoneyMarketFundMayImposeFeesOrSuspendSales"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="RiskMoneyMarketFundMayImposeFeesOrSuspendSales" order="88.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_RiskMoneyMarketFundSponsorMayNotProvideSupport" xlink:label="RiskMoneyMarketFundSponsorMayNotProvideSupport"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="RiskMoneyMarketFundSponsorMayNotProvideSupport" order="91.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn2021" xlink:label="AnnualReturn2021"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AnnualReturn2021" order="141.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn2022" xlink:label="AnnualReturn2022"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AnnualReturn2022" order="142.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn2023" xlink:label="AnnualReturn2023"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AnnualReturn2023" order="143.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn2024" xlink:label="AnnualReturn2024"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AnnualReturn2024" order="144.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AnnualReturn2025" xlink:label="AnnualReturn2025"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AnnualReturn2025" order="145.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_RiskMoneyMarketFundMayNotPreserveDollar" xlink:label="RiskMoneyMarketFundMayNotPreserveDollar"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="RiskMoneyMarketFundMayNotPreserveDollar" order="87.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_RiskNotInsured" xlink:label="RiskNotInsured"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="RiskNotInsured" order="90.0"/>
+  </link:presentationLink>
+  <link:presentationLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/rr/role/Prospectus">
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentInformationDocumentAxis" xlink:label="DocumentInformationDocumentAxis"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentDomain" xlink:label="DocumentDomain"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationDocumentAxis" xlink:to="DocumentDomain" use="optional" priority="9" order="1.0"/>
+  </link:presentationLink>
+  <link:presentationLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/rr/role/Series">
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_LegalEntityAxis" xlink:label="LegalEntityAxis"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityDomain" xlink:label="EntityDomain"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="LegalEntityAxis" xlink:to="EntityDomain" use="optional" priority="9" order="1.0"/>
+  </link:presentationLink>
+  <link:presentationLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/rr/role/Class">
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ProspectusShareClassAxis" xlink:label="ProspectusShareClassAxis"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ShareClassDomain" xlink:label="ShareClassDomain"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusShareClassAxis" xlink:to="ShareClassDomain" use="optional" priority="9" order="1.0"/>
+  </link:presentationLink>
+  <link:presentationLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/rr/role/PerformanceMeasure">
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_PerformanceMeasureAxis" xlink:label="PerformanceMeasureAxis"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_PerformanceMeasureDomain" xlink:label="PerformanceMeasureDomain"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PerformanceMeasureAxis" xlink:to="PerformanceMeasureDomain" use="optional" priority="9" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AfterTaxesOnDistributionsMember" xlink:label="AfterTaxesOnDistributionsMember"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PerformanceMeasureAxis" xlink:to="AfterTaxesOnDistributionsMember" use="optional" priority="9" order="2.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_AfterTaxesOnDistributionsAndSalesMember" xlink:label="AfterTaxesOnDistributionsAndSalesMember"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PerformanceMeasureAxis" xlink:to="AfterTaxesOnDistributionsAndSalesMember" use="optional" priority="9" order="3.0"/>
+  </link:presentationLink>
+  <link:presentationLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/rr/role/Coregistrant">
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_CoregistrantAxis" xlink:label="CoregistrantAxis"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_CoregistrantDomain" xlink:label="CoregistrantDomain"/>
+    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="CoregistrantAxis" xlink:to="CoregistrantDomain" order="1.0"/>
+  </link:presentationLink>
+</link:linkbase>

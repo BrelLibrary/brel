@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<?xml-stylesheet type="text/xsl" href="../../../../lib/test.xsl"?>
+<testcase
+xmlns="http://edgar/2009/conformance"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../../lib/test.xsd">
+<creator>
+<name>SEC Office of Structured Disclosure</name>
+<email>StructuredData@sec.gov</email>
+</creator>
+<number>525-00</number>
+<name>EDGAR Filer Manual  v66d 5.2.5.11 page 5-33</name>
+<description>
+<h4>5.2.5.11 Inline XBRL 1.1 features that are not supported by EDGAR</h4>
+<p>There are restrictions on certain features of Inline XBRL 1.1 in EDGAR.</p>
+<ul>
+<li>The ix:tuple element is not allowed.</li>
+<li>The ix:fraction element is not allowed.</li>
+<li>The target attribute is not allowed on any Inline XBRL element.</li>
+<li>The xml:base attribute is not allowed on any Inline XBRL element.</li>
+</ul>
+</description>
+<variation id="_304ng">
+<name>primary (8-K) inline, xbrl exhibit, and htm exhibit, NOGOOD</name>
+<description>primary inline, xbrl exhibit, and htm exhibit, NOGOOD</description>
+<data>
+<conf:parameter name="ELOparams" value="{ &quot;periodOfReport&quot; : &quot;12-31-2008&quot;, &quot;emergingGrowthCompanyFlag&quot; : false, &quot;submissionType&quot; : &quot;8-K&quot; }"
+xmlns=""
+xmlns:conf="http://edgar/2009/conformance" />
+<instance readMeFirst="true">i19304ng/i19304ng-20081231.htm</instance>
+<instance readMeFirst="true" exhibitType="EX-13">i19304ng/exhibit13-20081231.xml</instance>
+<linkbase>i19304ng/i19304ng-20081231_pre.xml</linkbase>
+<linkbase>i19304ng/i19304ng-20081231_lab.xml</linkbase>
+<schema>i19304ng/i19304ng-20081231.xsd</schema>
+<exhibit docType="EX-99">i19304ng/exhibit99htm-20081231.htm</exhibit>
+</data>
+<result/>
+</variation>
+<variation id="_305ng">
+<name>Multi - primary (8-K) inline, inline exhibits, and XBRL exhibits</name>
+<description>Multi - primary (8-K) inline, inline exhibits and XBRL exhibits</description>
+<data>
+<conf:parameter name="ELOparams" value="{ &quot;periodOfReport&quot; : &quot;12-31-2008&quot;, &quot;emergingGrowthCompanyFlag&quot; : false, &quot;submissionType&quot; : &quot;8-K&quot; }"
+xmlns=""
+xmlns:conf="http://edgar/2009/conformance" />
+<instance readMeFirst="true">i19305ng/i19305ng1-20081231.htm</instance>
+<instance readMeFirst="true" exhibitType="EX-3">i19305ng/i19305ng2-20081231.htm</instance>
+<instance readMeFirst="true" exhibitType="EX-4">i19305ng/i19305ng3-20081231.htm</instance>
+<instance readMeFirst="true" exhibitType="EX-13">i19305ng/exhibit13a-20081231.htm</instance>
+<instance readMeFirst="true" exhibitType="EX-13">i19305ng/exhibit13b-20081231.htm</instance>
+<instance readMeFirst="true" exhibitType="EX-1">i19305ng/exhibit99-20081231.xml</instance>
+<linkbase>i19305ng/i19305ng-20081231_pre.xml</linkbase>
+<linkbase>i19305ng/i19305ng-20081231_lab.xml</linkbase>
+<schema>i19305ng/i19305ng-20081231.xsd</schema>
+</data>
+<result/>
+</variation>
+<variation id="_306ng">
+<name>Disallowed inline primary document type (SDR) with inline exhibits</name>
+<description>Disallowed inline primary document (SDR) with inline exhibits</description>
+<data>
+<conf:parameter name="ELOparams" value="{ &quot;submissionType&quot; : &quot;SDR&quot; }"
+xmlns=""
+xmlns:conf="http://edgar/2009/conformance" />
+<primary docType="10-Q">i19306ng/plain.htm</primary>
+<instance readMeFirst="true" exhibitType="EX-99">i19306ng/i19306ng-20081231.htm</instance>
+<instance readMeFirst="true" exhibitType="EX-99">i19306ng/exhibit13-20081231.htm</instance>
+<linkbase>i19306ng/i19306ng-20081231_pre.xml</linkbase>
+<linkbase>i19306ng/i19306ng-20081231_lab.xml</linkbase>
+<schema>i19306ng/i19306ng-20081231.xsd</schema>
+</data>
+<result>
+<assert severity="err" num="62203" name="Incompatible-Inline-Document-Type" frd="cp" />
+</result>
+</variation>
+</testcase>

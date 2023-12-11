@@ -1,10 +1,17 @@
 import validators
 import re
+from editdistance import eval as editdistance
+
+# This is how much the SEC can fuck up until everything goes up in flames
+# Whoever works there should probably not work there anymore
+
+ERROR_THRESHOLD = 3
 
 class QName:
     __url_to_prefix : dict[str, str] = {}
     __prefix_to_url : dict[str, str] = {}
     __prefix_redirects : dict[str, str] = {}
+    __prefix_renames : dict[str, str] = {}
 
     def __init__(self, uri : str, prefix : str, local_name : str):
         if prefix in QName.__prefix_redirects:
@@ -86,13 +93,15 @@ class QName:
             # extract the URL and the local name
             url, local_name = qname_string[1:].split("}")
 
-            if not validators.url(url):
-                raise ValueError(f"Invalid QName string: {qname_string}. URL is not valid")
+            # Note: according to the SEC, the URL must not necessarily be a valid URL
+            # if not validators.url(url):
+            #     raise ValueError(f"Invalid QName string: {qname_string}. URL is not valid")
             # get the prefix from the namespace map
             if url not in cls.__url_to_prefix:
                 raise ValueError(f"Invalid QName string: {qname_string}. URL not found in namespace map")
             prefix = cls.__url_to_prefix[url]
         elif ":" in qname_string:
+            # raise DeprecationWarning("QName string contains a ':' but no '{' or '}'. This is deprecated. Use the format {URL}local_name instead")
             # the string contains a prefix
             # extract the prefix and the local name
             prefix, local_name = qname_string.split(":", 1)
@@ -167,8 +176,8 @@ class QName:
         @param prefix: str containing the prefix
         @raises ValueError: if the URL or the prefix is already in the namespace map, but mapped to a different prefix or URL
         """
-        if not validators.url(url):
-            raise ValueError(f"Invalid URL: {url}. Maybe you switched the URL and the namespace?")
+        # if not validators.url(url):
+        #     print (f"WARNING: Invalid URL: {url}. Maybe you switched the URL and the namespace?")
         
         if prefix is None:
             raise ValueError("The namespace cannot be None")
@@ -177,10 +186,13 @@ class QName:
         if url in cls.__url_to_prefix or prefix in cls.__prefix_to_url:
             if prefix in cls.__prefix_to_url and cls.__prefix_to_url[prefix] != url:
                 # the prefix is already in the namespace map, but it is mapped to a different URL
-                raise ValueError(f"The prefix {prefix} is already in the namespace map, but it is mapped to a different URL")
+                print(f"original url: {cls.__prefix_to_url[prefix]}")
+                print(f"new url: {url}")
+                # raise ValueError(f"The prefix {prefix} is already in the namespace map, but it is mapped to a different URL")
             elif url in cls.__url_to_prefix and cls.__url_to_prefix[url] != prefix:
                 # the URL is already in the namespace map, but it is mapped to a different prefix
-                raise ValueError(f"The URL {url} is already in the namespace map, but it is mapped to a different namespace.\nOld namespace: {cls.__url_to_prefix[url]}\nNew namespace: {prefix}")
+                # raise ValueError(f"The URL {url} is already in the namespace map, but it is mapped to a different namespace.\nOld namespace: {cls.__url_to_prefix[url]}\nNew namespace: {prefix}")
+                pass
             else:
                 # there is no conflict, but the prefix or the URL is already in the namespace map
                 # so just return
@@ -201,3 +213,61 @@ class QName:
             raise ValueError(f"Invalid prefix redirect: {redirect_to}. The redirect destination does not exist in the namespace map")
         if redirect_from in cls.__prefix_to_url:
             raise ValueError(f"Invalid prefix redirect: {redirect_from}. The redirect source already exists in the namespace map")
+        cls.__prefix_redirects[redirect_from] = redirect_to
+    
+    @classmethod
+    def set_renames(cls, rename_from: str, rename_to: str):
+        """
+        Sets the prefix renames. This means that if a QName is created with the prefix rename as prefix, the prefix will be replaced with the rename destination.
+        @param rename_from: str containing the prefix that should be renamed
+        @param rename_to: str containing the prefix that should be renamed to
+        @raises ValueError: if the rename destination does not exist in the namespace map or if the rename source already exists in the namespace map
+        """
+        if rename_to not in cls.__prefix_to_url:
+            raise ValueError(f"Invalid prefix rename: {rename_to}. The rename destination does not exist in the namespace map")
+        if rename_from in cls.__prefix_to_url:
+            raise ValueError(f"Invalid prefix rename: {rename_from}. The rename source already exists in the namespace map")
+        cls.__prefix_renames[rename_to] = rename_from
+    
+    @classmethod
+    def from_xpointer(cls, xpointer: str) -> 'QName':
+        """
+        Creates a QName from an xpointer string. It must be given in xpointer shorthand notation.
+        @param xpointer: str containing the xpointer
+        @return: QName created from the xpointer
+        """
+        if "#" not in xpointer:
+            raise ValueError(f"Invalid xpointer: {xpointer}. The xpointer does not contain a '#'")
+        
+        if "_" not in xpointer:
+            raise ValueError(f"Invalid xpointer: {xpointer}. The xpointer does not contain a '_'")
+
+        qname_uri = None
+
+        uri, fragment_identifier = xpointer.split("#", 1)
+        prefix, local_name = fragment_identifier.split("_", 1)
+
+        if uri.startswith("http://") or uri.startswith("https://"):
+            suggested_uri = uri.rsplit("/", 1)[0]
+            potential_uris = QName.get_nsmap().values()
+            qname_uri = min(potential_uris, key=lambda potential_uri: editdistance(potential_uri, suggested_uri))
+        else:
+            # This should not happen except if whoever made the filing is an absolute idiot
+            # it means that in the QName namespace map, there is a prefix that maps to the local file system.
+            # The local file system is then associated with a prefix
+            nsmap = QName.get_nsmap()
+
+            possible_prefixes = [prefix]
+            for rename_to, rename_from in QName.__prefix_renames.items():
+                if rename_from == prefix:
+                    possible_prefixes.append(rename_to)
+
+            for possible_prefix in possible_prefixes:
+                if not possible_prefix.startswith("http://") and not possible_prefix.startswith("https://"):
+                    qname_uri = nsmap[possible_prefix]
+                    break
+
+        if qname_uri is None:
+            raise ValueError(f"Invalid xpointer: {xpointer}. The xpointer does not contain a valid URL")
+        
+        return QName.from_string(f"{{{qname_uri}}}{local_name}")

@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<link:linkbase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xbrldt="http://xbrl.org/2005/xbrldt" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd">
+    <link:roleRef roleURI="http://edgar/role/OtherInformation" xlink:href="edgar-20081231.xsd#OtherInformation" xlink:type="simple"></link:roleRef>
+    <link:roleRef roleURI="http://edgar/role/EntityInformation" xlink:href="edgar-20081231.xsd#EntityInformation" xlink:type="simple"></link:roleRef>
+    <link:arcroleRef xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#domain-member" xlink:type="simple" arcroleURI="http://xbrl.org/int/dim/arcrole/domain-member"></link:arcroleRef>
+    <link:arcroleRef xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#hypercube-dimension" xlink:type="simple" arcroleURI="http://xbrl.org/int/dim/arcrole/hypercube-dimension"></link:arcroleRef>
+    <link:arcroleRef xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#notAll" xlink:type="simple" arcroleURI="http://xbrl.org/int/dim/arcrole/notAll"></link:arcroleRef>
+    <link:definitionLink xlink:type="extended" xlink:role="http://edgar/role/EntityInformation">
+        <link:loc xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityTaxIdentificationNumber" xlink:label="EntityTaxIdentificationNumber" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="e61606001ng-20081231.xsd#e6160600_TaxIDExclusionTable" xlink:label="TaxIDExclusionTable" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_LegalEntityAxis" xlink:label="LegalEntityAxis" xlink:type="locator"></link:loc>
+        <link:definitionArc xlink:type="arc" order="1.0" xbrldt:closed="true" xbrldt:contextElement="segment" xlink:arcrole="http://xbrl.org/int/dim/arcrole/notAll" xlink:from="EntityTaxIdentificationNumber" xlink:to="TaxIDExclusionTable"></link:definitionArc>
+        <link:definitionArc xlink:type="arc" order="1.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="TaxIDExclusionTable" xlink:to="LegalEntityAxis"></link:definitionArc>
+    </link:definitionLink>
+</link:linkbase>

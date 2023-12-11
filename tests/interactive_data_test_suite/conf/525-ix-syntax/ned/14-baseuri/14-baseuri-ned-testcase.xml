@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>525-14</number>
+    <name>Inline XBRL Test Suite v68d : BaseURI tests, Not EDGAR Dependent</name>
+    <description>
+        <h2>Various "good" (gd) and "not good" (ng) test files that demonstrate specific Baseuri usage</h2>
+    </description>
+    <variation id="_100ng">
+        <name>Invalid usage of xml:base on ix:header, NOGOOD</name>
+        <description>FAIL-baseURI-on-ix-header</description>
+        <reference xiitest="FAIL-baseURI-on-ix-header"></reference>
+        <reference xiispec="8.1.1"></reference>
+        <reference specification="Element ix:header does not allow any attributes."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i14100ng/i14100ng-20081231.htm</instance>
+            <linkbase>i14100ng/i14100ng-20081231_pre.xml</linkbase>
+            <linkbase>i14100ng/i14100ng-20081231_lab.xml</linkbase>
+            <schema>i14100ng/i14100ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70114" txt="Attribute {attribute} is not allowed to appear in element {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_101ng">
+        <name>Invalid usage of xml:base in the XHTML body tag, NOGOOD</name>
+        <description>FAIL-baseURI-on-xhtml</description>
+        <reference xiitest="FAIL-baseURI-on-xhtml"></reference>
+        <reference specification="The html:body element does not allow attribute xml:base."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i14101ng/i14101ng-20081231.htm</instance>
+            <linkbase>i14101ng/i14101ng-20081231_pre.xml</linkbase>
+            <linkbase>i14101ng/i14101ng-20081231_lab.xml</linkbase>
+            <schema>i14101ng/i14101ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70114" txt="Attribute {attribute} is not allowed to appear in element {element}"></assert>
+        </result>
+    </variation>
+</testcase>

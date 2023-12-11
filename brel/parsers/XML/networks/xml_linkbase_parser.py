@@ -34,9 +34,21 @@ def get_object_from_reference(referenced_element: lxml.etree._Element, report_el
         # turn the href into a QName
         # TODO: make more robust
         href = cast(str, referenced_element.get(f"{{{nsmap['xlink']}}}href", ""))
-        href = href.split("#")[1]
-        href = href.replace("_", ":")
-        report_element_qname = QName.from_string(href)
+        report_element_qname = QName.from_xpointer(href)
+        # print(href)
+        # url, postfix = href.split("#")
+        # url = url.rsplit("/", 1)[0]
+        # prefix, local_name = postfix.split("_", 1)
+        
+        # # href = href.split("#")[1]
+        # # href = href.replace("_", ":")
+        # # report_element_qname = QName.from_string(href)
+        # if url.endswith(".xsd"):
+        #     report_element_qname = QName.from_string(f"{prefix}:{local_name}")
+        # else:
+        #     report_element_qname = QName.from_string(f"{{{url}}}{local_name}")
+        if report_element_qname not in report_elements:
+            raise ValueError(f"the referenced element {report_element_qname.__str__()} could not be found")
         to_element = report_elements[report_element_qname]
         
     elif referenced_element_type == "resource":

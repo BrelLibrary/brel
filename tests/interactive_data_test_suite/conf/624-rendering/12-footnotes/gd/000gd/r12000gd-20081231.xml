@@ -1,0 +1,188 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xbrli:xbrl xmlns="http://www.w3.org/1999/xhtml" xmlns:dei="http://xbrl.sec.gov/dei/2023" xmlns:iso4217="http://www.xbrl.org/2003/iso4217" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:dtr-types="http://www.xbrl.org/dtr/type/2022-03-31" xmlns:xbrldi="http://xbrl.org/2006/xbrldi" xmlns:xbrldt="http://xbrl.org/2005/xbrldt" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:r12000gd="http://r12000gd/20081231" xmlns:us-gaap="http://fasb.org/us-gaap/2023" xmlns:us-roles="http://fasb.org/us-roles/2023" xmlns:us-types="http://fasb.org/us-types/2023">
+    <link:schemaRef xlink:href="r12000gd-20081231.xsd" xlink:type="simple"></link:schemaRef>
+    <xbrli:context id="d2013">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2013-01-01</xbrli:startDate>
+            <xbrli:endDate>2013-12-31</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="e2012">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:instant>2012-12-31</xbrli:instant>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="e2012_ABC">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+            <xbrli:segment>
+                <xbrldi:explicitMember dimension="dei:LegalEntityAxis">r12000gd:ABCMember</xbrldi:explicitMember>
+            </xbrli:segment>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:instant>2012-12-31</xbrli:instant>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="d2013_ABC">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+            <xbrli:segment>
+                <xbrldi:explicitMember dimension="dei:LegalEntityAxis">r12000gd:ABCMember</xbrldi:explicitMember>
+            </xbrli:segment>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2013-01-01</xbrli:startDate>
+            <xbrli:endDate>2013-12-31</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="d2013_DEF">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+            <xbrli:segment>
+                <xbrldi:explicitMember dimension="dei:LegalEntityAxis">r12000gd:DEFMember</xbrldi:explicitMember>
+            </xbrli:segment>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2013-01-01</xbrli:startDate>
+            <xbrli:endDate>2013-12-31</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="e2012_DEF">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+            <xbrli:segment>
+                <xbrldi:explicitMember dimension="dei:LegalEntityAxis">r12000gd:DEFMember</xbrldi:explicitMember>
+            </xbrli:segment>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:instant>2012-12-31</xbrli:instant>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="d">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2011-01-01</xbrli:startDate>
+            <xbrli:endDate>2011-12-31</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="d2011_ABC">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+            <xbrli:segment>
+                <xbrldi:explicitMember dimension="dei:LegalEntityAxis">r12000gd:ABCMember</xbrldi:explicitMember>
+            </xbrli:segment>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2011-01-01</xbrli:startDate>
+            <xbrli:endDate>2011-12-31</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="d2011_DEF">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+            <xbrli:segment>
+                <xbrldi:explicitMember dimension="dei:LegalEntityAxis">r12000gd:DEFMember</xbrldi:explicitMember>
+            </xbrli:segment>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2011-01-01</xbrli:startDate>
+            <xbrli:endDate>2011-12-31</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="e2010">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:instant>2010-12-31</xbrli:instant>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="e2010_ABC">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+            <xbrli:segment>
+                <xbrldi:explicitMember dimension="dei:LegalEntityAxis">r12000gd:ABCMember</xbrldi:explicitMember>
+            </xbrli:segment>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:instant>2010-12-31</xbrli:instant>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="e2010_DEF">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+            <xbrli:segment>
+                <xbrldi:explicitMember dimension="dei:LegalEntityAxis">r12000gd:DEFMember</xbrldi:explicitMember>
+            </xbrli:segment>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:instant>2010-12-31</xbrli:instant>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:unit id="USD">
+        <xbrli:measure>iso4217:USD</xbrli:measure>
+    </xbrli:unit>
+    <dei:DocumentType contextRef="d2013">8-K</dei:DocumentType>
+    <dei:AmendmentFlag contextRef="d2013">false</dei:AmendmentFlag>
+    <dei:EntityCentralIndexKey contextRef="d2013">9876543210</dei:EntityCentralIndexKey>
+    <dei:EntityRegistrantName contextRef="d2013">OID TEST CO #1 r12000gd</dei:EntityRegistrantName>
+    <dei:DocumentPeriodEndDate contextRef="d2013">2013-12-31</dei:DocumentPeriodEndDate>
+    <us-gaap:ProfitLoss id="id_footnote_elem_1910414187" contextRef="d2013" unitRef="USD" decimals="0">20000</us-gaap:ProfitLoss>
+    <us-gaap:Assets id="id_footnote_elem_1303234612" contextRef="e2012" unitRef="USD" decimals="0">8000</us-gaap:Assets>
+    <us-gaap:ProfitLoss contextRef="d2013_ABC" unitRef="USD" decimals="0">4000</us-gaap:ProfitLoss>
+    <us-gaap:Assets id="id_footnote_elem_1278408131" contextRef="e2012_ABC" unitRef="USD" decimals="0">5000</us-gaap:Assets>
+    <us-gaap:ProfitLoss contextRef="d2011_ABC" unitRef="USD" decimals="0">2000</us-gaap:ProfitLoss>
+    <us-gaap:ProfitLoss contextRef="d2013_DEF" unitRef="USD" decimals="0">16000</us-gaap:ProfitLoss>
+    <us-gaap:ProfitLoss id="id_footnote_elem_1333868861" contextRef="d" unitRef="USD" decimals="0">14000</us-gaap:ProfitLoss>
+    <us-gaap:ProfitLoss id="id_footnote_elem_1393683516" contextRef="d2011_DEF" unitRef="USD" decimals="0">12000</us-gaap:ProfitLoss>
+    <us-gaap:Assets contextRef="e2010_ABC" unitRef="USD" decimals="0">3000</us-gaap:Assets>
+    <us-gaap:Assets id="id_footnote_elem_511368534" contextRef="e2012_DEF" unitRef="USD" decimals="0">3000</us-gaap:Assets>
+    <us-gaap:Assets id="id_footnote_elem_311571414" contextRef="e2010" unitRef="USD" decimals="0">7000</us-gaap:Assets>
+    <us-gaap:Assets id="id_footnote_elem_1527992178" contextRef="e2010_DEF" unitRef="USD" xsi:nil="true"></us-gaap:Assets>
+    <link:footnoteLink xlink:type="extended" xlink:role="http://www.xbrl.org/2003/role/link">
+        <link:loc xlink:href="#id_footnote_elem_1910414187" xlink:label="ProfitLoss_1910414187" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="#id_footnote_elem_1333868861" xlink:label="ProfitLoss_1333868861" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="#id_footnote_elem_1303234612" xlink:label="Assets_1303234612" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="#id_footnote_elem_311571414" xlink:label="Assets_311571414" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="#id_footnote_elem_1278408131" xlink:label="Assets_1278408131" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="#id_footnote_elem_511368534" xlink:label="Assets_511368534" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="#id_footnote_elem_1393683516" xlink:label="ProfitLoss_1393683516" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="#id_footnote_elem_1527992178" xlink:label="Assets_1527992178" xlink:type="locator"></link:loc>
+        <link:footnote xml:lang="en-US" xlink:label="footnote_1298226720" xlink:type="resource" xlink:role="http://www.xbrl.org/2003/role/footnote">This is about Net Income for the Consolidated Entity and should appear in the Labels column to the left.</link:footnote>
+        <link:footnote xml:lang="en-US" xlink:label="footnote_1760559825" xlink:type="resource" xlink:role="http://www.xbrl.org/2003/role/footnote">This is about Assets for the Consolidated Entity and should appear in the left column, but with different numbering on R1 versus R2.</link:footnote>
+        <link:footnote xml:lang="en-US" xlink:label="footnote_809517986" xlink:type="resource" xlink:role="http://www.xbrl.org/2003/role/footnote">This is about Assets as of 12/31/2012 and should appear at the top of the column.</link:footnote>
+        <link:footnote xml:lang="en-US" xlink:label="footnote_55864163" xlink:type="resource" xlink:role="http://www.xbrl.org/2003/role/footnote">This is a footnote on a number and on a nil value, so it sgoes over to the left.</link:footnote>
+        <link:footnote xml:lang="en-US" xlink:label="footnote_1455766919" xlink:type="resource" xlink:role="http://www.xbrl.org/2003/role/footnote">
+
+This is about Net Income for DEF in 2011 only and should appear only in this cell. Although there is not a great deal to say about that, here's a long text: 
+
+Footnotes of a report are displayed at the bottom of a report, sequentially numbered, and the footnote marks are numbers that appear as a superscript to the right of each fact to which they refer.
+
+Every report's footnote numbering is local to that report, so that if a fact with a footnote is displayed in two different reports, it will be displayed with the same footnote text at the bottom of the report, but a different superscript number.
+
+If all of the facts on a row have the same footnote mark, then that footnote mark is removed from the facts and "merged" to a position just to the right of the row labels and removed from the cells.
+
+If all of the facts on a column have the same footnote mark, then that footnote mark is "merged" into the heading of the column and removed from the cells.
+
+</link:footnote>
+        <link:footnoteArc xlink:type="arc" order="1.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote" xlink:from="ProfitLoss_1910414187" xlink:to="footnote_1298226720"></link:footnoteArc>
+        <link:footnoteArc xlink:type="arc" order="1.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote" xlink:from="ProfitLoss_1333868861" xlink:to="footnote_1298226720"></link:footnoteArc>
+        <link:footnoteArc xlink:type="arc" order="1.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote" xlink:from="Assets_1303234612" xlink:to="footnote_1760559825"></link:footnoteArc>
+        <link:footnoteArc xlink:type="arc" order="2.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote" xlink:from="Assets_1303234612" xlink:to="footnote_809517986"></link:footnoteArc>
+        <link:footnoteArc xlink:type="arc" order="1.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote" xlink:from="Assets_311571414" xlink:to="footnote_1760559825"></link:footnoteArc>
+        <link:footnoteArc xlink:type="arc" order="1.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote" xlink:from="Assets_1278408131" xlink:to="footnote_809517986"></link:footnoteArc>
+        <link:footnoteArc xlink:type="arc" order="1.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote" xlink:from="Assets_511368534" xlink:to="footnote_809517986"></link:footnoteArc>
+        <link:footnoteArc xlink:type="arc" order="2.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote" xlink:from="Assets_511368534" xlink:to="footnote_55864163"></link:footnoteArc>
+        <link:footnoteArc xlink:type="arc" order="1.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote" xlink:from="ProfitLoss_1393683516" xlink:to="footnote_1455766919"></link:footnoteArc>
+        <link:footnoteArc xlink:type="arc" order="1.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote" xlink:from="Assets_1527992178" xlink:to="footnote_55864163"></link:footnoteArc>
+    </link:footnoteLink>
+    <EntityEmergingGrowthCompany xmlns="http://xbrl.sec.gov/dei/2023" contextRef="d2013">false</EntityEmergingGrowthCompany>
+</xbrli:xbrl>

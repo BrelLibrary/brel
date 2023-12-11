@@ -72,7 +72,6 @@ class LabelNetworkFactory(IXMLNetworkFactory):
         @param network: INetwork containing the network. Must be a CalculationNetwork
         @return: dict[QName, IReportElement] containing all report elements. same as the report_elements parameter
         """
-        assert isinstance(label_network, LabelNetwork)
 
         # label networks tend to be nearly flat. The roots are the report element nodes and their children are label nodes
         for root in label_network.get_roots():

@@ -1,0 +1,282 @@
+<html xmlns:case="http://edgar/2009/conformance">
+  <head>
+    <title>626-05
+        :
+        EDGAR Filer Manual v68d 6.26.5</title>
+    <style type="text/css">
+        table, td, th {border: solid black 1pt; border-collapse: collapse;} td {vertical-align: top;}
+      </style>
+  </head>
+  <body>
+    <h1>626-05
+        :
+        EDGAR Filer Manual v68d 6.26.5</h1>
+    <p>
+        Created by: 
+        <a href="mailto:StructuredData@sec.gov">SEC Office of Structured Disclosure</a></p>
+    <p>
+      <description xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.26.5  Restrictions on rows and columns of embedding commands.">Refer to EFM: 6.26.5  Restrictions on rows and columns of embedding commands.</a>
+    </description>
+    </p>
+    <h3>References</h3>
+    <ul>18153</ul>
+    <h2>
+        Variations
+      </h2>
+    <table border="solid">
+      <thead>
+        <tr>
+          <th>Number</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>References</th>
+          <th>Data Inputs</th>
+          <th>Result Outputs</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>_000gd</td>
+          <td>6.26.5 All embedding iterators that can be defaulted are defaulted, GOOD</td>
+          <td>All iterators that can be defaulted are defaulted, GOOD</td>
+          <td>18153 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"rptSeriesClassInfo.seriesIds":["S013456789"], "invCompanyType":"N-1A", "submissionType": "485BPOS"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e62605000gd-20081231.xml">e62605000gd-20081231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_pre.xml">edgar-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_def.xml">edgar-20081231_def.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_lab.xml">edgar-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20081231.xsd">edgar-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_001ng</td>
+          <td>6.26.5 Untransposed embedding with no row commands, NOGOOD</td>
+          <td>Shareholder Fees embedding with no row commands, NOGOOD</td>
+          <td>18153 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"rptSeriesClassInfo.seriesIds":["S013456789"], "invCompanyType":"N-1A", "submissionType": "485BPOS"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e62605001ng-20081231.xml">e62605001ng-20081231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_pre.xml">edgar-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_def.xml">edgar-20081231_def.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_lab.xml">edgar-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20081231.xsd">edgar-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 62605, <a href="../../../../lib/xbrlerrors.htm#rq-2605-Embedding-Command-Missing-Iterator">Embedding-Command-Missing-Iterator</a></td></tr><tr><td>FRD:</td><td>rq</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_002ng</td>
+          <td>6.26.5 Transposed embedding with no row commands, NOGOOD</td>
+          <td>Expense Example No Redemption (transposed) embedding with no row commands, NOGOOD</td>
+          <td>18153 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"rptSeriesClassInfo.seriesIds":["S013456789"], "invCompanyType":"N-1A", "submissionType": "485BPOS"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e62605002ng-20081231.xml">e62605002ng-20081231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_pre.xml">edgar-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_def.xml">edgar-20081231_def.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_lab.xml">edgar-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20081231.xsd">edgar-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 62605, <a href="../../../../lib/xbrlerrors.htm#rq-2605-Embedding-Command-Missing-Iterator">Embedding-Command-Missing-Iterator</a></td></tr><tr><td>FRD:</td><td>rq</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_003ng</td>
+          <td>6.26.5 Untransposed embedding with no column commands, NOGOOD</td>
+          <td>Shareholder Fees embedding with no column commands, NOGOOD</td>
+          <td>18153 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"rptSeriesClassInfo.seriesIds":["S013456789"], "invCompanyType":"N-1A", "submissionType": "485BPOS"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e62605003ng-20081231.xml">e62605003ng-20081231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_pre.xml">edgar-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_def.xml">edgar-20081231_def.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_lab.xml">edgar-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20081231.xsd">edgar-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 62605, <a href="../../../../lib/xbrlerrors.htm#rq-2605-Embedding-Command-Missing-Iterator">Embedding-Command-Missing-Iterator</a></td></tr><tr><td>FRD:</td><td>rq</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_004ng</td>
+          <td>6.26.5 Transposed embedding with no column commands, NOGOOD</td>
+          <td>Expense Example No Redemption (transposed) embedding with no column commands, NOGOOD</td>
+          <td>18153 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"rptSeriesClassInfo.seriesIds":["S013456789"], "invCompanyType":"N-1A", "submissionType": "485BPOS"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e62605004ng-20081231.xml">e62605004ng-20081231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_pre.xml">edgar-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_def.xml">edgar-20081231_def.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_lab.xml">edgar-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20081231.xsd">edgar-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 62605, <a href="../../../../lib/xbrlerrors.htm#rq-2605-Embedding-Command-Missing-Iterator">Embedding-Command-Missing-Iterator</a></td></tr><tr><td>FRD:</td><td>rq</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,326 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xbrli:xbrl xmlns="http://www.w3.org/1999/xhtml" xmlns:dei="http://xbrl.sec.gov/dei/2023" xmlns:iso4217="http://www.xbrl.org/2003/iso4217" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xbrldi="http://xbrl.org/2006/xbrldi" xmlns:xbrldt="http://xbrl.org/2005/xbrldt" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:e60541203gw="http://e60541203gw/20090501" xmlns:rr="http://xbrl.sec.gov/rr/2023">
+    <link:schemaRef xlink:href="e60541203gw-20081231.xsd" xlink:type="simple"></link:schemaRef>
+    <xbrli:context id="_">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">2345678901</xbrli:identifier>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2009-05-01</xbrli:startDate>
+            <xbrli:endDate>2009-05-01</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="KoreaFocusMember">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">2345678901</xbrli:identifier>
+            <xbrli:segment>
+                <xbrldi:explicitMember dimension="dei:LegalEntityAxis">e60541203gw:S234567890Member</xbrldi:explicitMember>
+            </xbrli:segment>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2009-05-01</xbrli:startDate>
+            <xbrli:endDate>2009-05-01</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="KoreaFocusMember_C234567817Member">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">2345678901</xbrli:identifier>
+            <xbrli:segment>
+                <xbrldi:explicitMember dimension="rr:ProspectusShareClassAxis">e60541203gw:C234567817Member</xbrldi:explicitMember>
+                <xbrldi:explicitMember dimension="dei:LegalEntityAxis">e60541203gw:S234567890Member</xbrldi:explicitMember>
+            </xbrli:segment>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2009-05-01</xbrli:startDate>
+            <xbrli:endDate>2009-05-01</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="KoreaFocusMember_AfterTaxesOnDistributionsMember_C234567817Member">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">2345678901</xbrli:identifier>
+            <xbrli:segment>
+                <xbrldi:explicitMember dimension="dei:LegalEntityAxis">e60541203gw:S234567890Member</xbrldi:explicitMember>
+                <xbrldi:explicitMember dimension="rr:ProspectusShareClassAxis">e60541203gw:C234567817Member</xbrldi:explicitMember>
+                <xbrldi:explicitMember dimension="rr:PerformanceMeasureAxis">rr:AfterTaxesOnDistributionsMember</xbrldi:explicitMember>
+            </xbrli:segment>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2009-05-01</xbrli:startDate>
+            <xbrli:endDate>2009-05-01</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="KoreaFocusMember_AfterTaxesOnDistributionsAndSalesMember_C234567817Member">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">2345678901</xbrli:identifier>
+            <xbrli:segment>
+                <xbrldi:explicitMember dimension="dei:LegalEntityAxis">e60541203gw:S234567890Member</xbrldi:explicitMember>
+                <xbrldi:explicitMember dimension="rr:ProspectusShareClassAxis">e60541203gw:C234567817Member</xbrldi:explicitMember>
+                <xbrldi:explicitMember dimension="rr:PerformanceMeasureAxis">rr:AfterTaxesOnDistributionsAndSalesMember</xbrldi:explicitMember>
+            </xbrli:segment>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2009-05-01</xbrli:startDate>
+            <xbrli:endDate>2009-05-01</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="KoreaFocusMember_SandP500IndexMember">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">2345678901</xbrli:identifier>
+            <xbrli:segment>
+                <xbrldi:explicitMember dimension="dei:LegalEntityAxis">e60541203gw:S234567890Member</xbrldi:explicitMember>
+                <xbrldi:explicitMember dimension="rr:PerformanceMeasureAxis">e60541203gw:SandP500IndexMember</xbrldi:explicitMember>
+            </xbrli:segment>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2009-05-01</xbrli:startDate>
+            <xbrli:endDate>2009-05-01</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="KoreaFocusMember_MsciAcFarEastFreeExJapanIndexMember">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">2345678901</xbrli:identifier>
+            <xbrli:segment>
+                <xbrldi:explicitMember dimension="dei:LegalEntityAxis">e60541203gw:S234567890Member</xbrldi:explicitMember>
+                <xbrldi:explicitMember dimension="rr:PerformanceMeasureAxis">e60541203gw:MsciAcFarEastFreeExJapanIndexMember</xbrldi:explicitMember>
+            </xbrli:segment>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2009-05-01</xbrli:startDate>
+            <xbrli:endDate>2009-05-01</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:unit id="USD">
+        <xbrli:measure>iso4217:USD</xbrli:measure>
+    </xbrli:unit>
+    <xbrli:unit id="Ratio">
+        <xbrli:measure>xbrli:pure</xbrli:measure>
+    </xbrli:unit>
+    <dei:DocumentType contextRef="_">497</dei:DocumentType>
+    <dei:EntityInvCompanyType contextRef="_">N-1A</dei:EntityInvCompanyType>
+    <dei:DocumentPeriodEndDate contextRef="_">2009-05-01</dei:DocumentPeriodEndDate>
+    <dei:EntityRegistrantName contextRef="_">e60541203gw</dei:EntityRegistrantName>
+    <dei:EntityCentralIndexKey contextRef="_">2345678901</dei:EntityCentralIndexKey>
+    <dei:AmendmentFlag contextRef="_">false</dei:AmendmentFlag>
+    <rr:ProspectusDate contextRef="_">2009-05-01</rr:ProspectusDate>
+    <rr:RiskReturnHeading contextRef="KoreaFocusMember"></rr:RiskReturnHeading>
+    <rr:ObjectiveHeading contextRef="KoreaFocusMember">Investment Objective </rr:ObjectiveHeading>
+    <rr:ExpenseHeading contextRef="KoreaFocusMember">Fees and Expenses of the Fund</rr:ExpenseHeading>
+    <rr:ExpenseExampleHeading contextRef="KoreaFocusMember">Example</rr:ExpenseExampleHeading>
+    <rr:PortfolioTurnoverHeading contextRef="KoreaFocusMember">Portfolio Turnover</rr:PortfolioTurnoverHeading>
+    <rr:StrategyHeading contextRef="KoreaFocusMember">Principal Investment Strategies</rr:StrategyHeading>
+    <rr:RiskHeading contextRef="KoreaFocusMember">Principal Risks</rr:RiskHeading>
+    <rr:BarChartAndPerformanceTableHeading contextRef="KoreaFocusMember">Performance</rr:BarChartAndPerformanceTableHeading>
+    <rr:ObjectivePrimaryTextBlock contextRef="KoreaFocusMember">&lt;div
+
+style="text-align:left;margin-top:0pt;margin-bottom:0pt;font-family:'Times New Roman';font-size:10.0pt;color:black"&gt;*** ***** *****
+
+****** ********** ********* ** ********* ******* *************&lt;/div&gt;</rr:ObjectivePrimaryTextBlock>
+    <rr:ExpenseNarrativeTextBlock contextRef="KoreaFocusMember">&lt;div&gt; &lt;div
+
+style="text-align:left;margin-top:0pt;margin-bottom:0pt;font-family:'Times New Roman'"&gt; &lt;div
+
+style="font-size:10.0pt;color:black"&gt;**** ***** ********* *** **** *** ******** **** *** *** *** ** *** **** *** **** ****** ** ***
+
+***** ***** *****&lt;/div&gt; &lt;/div&gt; &lt;/div&gt;</rr:ExpenseNarrativeTextBlock>
+    <rr:ExpenseExampleNarrativeTextBlock contextRef="KoreaFocusMember">&lt;div
+
+style="text-align:left;margin-top:0pt;margin-bottom:0pt;font-family:'Times New Roman'"&gt; &lt;div
+
+style="font-size:10.0pt;color:black"&gt;**** ******* ** ******** ** **** *** ******* *** **** ** ********* *** *** ******* * *** ***
+
+*************** **** ****** ***** *** ** ****** ** ****** ***** ****** ************ **** ***** ***** ***&lt;/div&gt;
+
+&lt;/div&gt;</rr:ExpenseExampleNarrativeTextBlock>
+    <rr:PortfolioTurnoverTextBlock contextRef="KoreaFocusMember">&lt;div&gt; &lt;div
+
+style="text-align:left;margin-top:0pt;margin-bottom:0pt;font-family:'Times New Roman'"&gt; &lt;div
+
+style="font-size:10.0pt;color:black"&gt;*** **** **** *********** ****** **** ** ************ **** ** **** **** ***** ********** ***
+
+** *** **********&lt;/div&gt; &lt;/div&gt; &lt;/div&gt;</rr:PortfolioTurnoverTextBlock>
+    <rr:StrategyNarrativeTextBlock contextRef="KoreaFocusMember">&lt;div&gt; &lt;div
+
+style="text-align:left;margin-top:0pt;margin-bottom:0pt;font-family:'Times New Roman'"&gt; &lt;div
+
+style="font-size:10.0pt;color:black"&gt;*** ***** ***** **** ******* ** ***** *** ** *** *** ****** ***** **** ********** *** **********
+
+*********** ********** *** ***** ** *** ********* ** ********** ************ &lt;/div&gt;
+
+&lt;/div&gt; &lt;/div&gt;</rr:StrategyNarrativeTextBlock>
+    <rr:PerformanceNarrativeTextBlock contextRef="KoreaFocusMember">&lt;div&gt; &lt;div
+
+style="text-align:left;margin-top:0pt;margin-bottom:0pt;font-family:'Times New Roman'"&gt; &lt;div
+
+style="font-size:10.0pt;color:black"&gt;*** ****** ******* *** ***** ************ *** ***** ** ********* ** **** ******* *** *** **** **
+
+************* &lt;small style="font-size:10.0pt;color:black"&gt;** *** **************** ************ ****** ** ***** ****** ** ***
+
+*********** ** ****** ********************* *********** *********** ** ********* ** *** ******* ******* &lt;small
+
+style="text-decoration: underline;font-size:10.0pt;color:blue"&gt;***.***********.***&lt;/small&gt; &lt;small
+
+style="font-size:10.0pt;color:black"&gt;.&lt;/small&gt; &lt;/small&gt; &lt;/div&gt; &lt;/div&gt;
+
+&lt;/div&gt;</rr:PerformanceNarrativeTextBlock>
+    <rr:BarChartClosingTextBlock contextRef="KoreaFocusMember">&lt;div
+
+style="text-align:left;margin-top:0pt;margin-bottom:0pt;font-family:'Times New Roman'"&gt; &lt;div
+
+style="font-size:10.0pt;color:black"&gt;****** *** ****** ***** ** *** *** ****** *** **** *********** *** ** ******* *** ****** ****
+
+*** ******* ***** ******** *********** ***** *********** **** ******* **** *** ******* ***** ********* *** ******&lt;/div&gt;
+
+&lt;/div&gt;</rr:BarChartClosingTextBlock>
+    <rr:ShareholderFeesTableTextBlock contextRef="KoreaFocusMember">&lt;div style="display: none;"&gt; ~
+
+http://xbrl.sec.gov/rr/role/ShareholderFeesData 
+
+column dei_LegalEntityAxis compact e60541203gw_S234567890Member
+
+~&lt;/div&gt;</rr:ShareholderFeesTableTextBlock>
+    <rr:AnnualFundOperatingExpensesTableTextBlock contextRef="KoreaFocusMember">&lt;div style="display: none;"&gt; ~
+
+http://xbrl.sec.gov/rr/role/OperatingExpensesData 
+
+column dei_LegalEntityAxis compact e60541203gw_S234567890Member
+
+~&lt;/div&gt;</rr:AnnualFundOperatingExpensesTableTextBlock>
+    <rr:ExpenseExampleWithRedemptionTableTextBlock contextRef="KoreaFocusMember">&lt;div style="display: none;"&gt; ~
+
+http://xbrl.sec.gov/rr/role/ExpenseExample 
+
+column dei_LegalEntityAxis compact e60541203gw_S234567890Member
+
+~&lt;/div&gt;</rr:ExpenseExampleWithRedemptionTableTextBlock>
+    <rr:AnnualReturn2007 contextRef="KoreaFocusMember_C234567817Member" unitRef="Ratio" decimals="4">0.4140</rr:AnnualReturn2007>
+    <rr:AnnualReturn2008 contextRef="KoreaFocusMember_C234567817Member" unitRef="Ratio" decimals="4">-0.5164</rr:AnnualReturn2008>
+    <rr:AnnualReturn2006 contextRef="KoreaFocusMember_C234567817Member" unitRef="Ratio" decimals="4">0.4880</rr:AnnualReturn2006>
+    <rr:AnnualReturn2005 contextRef="KoreaFocusMember_C234567817Member" unitRef="Ratio" decimals="4">0.2812</rr:AnnualReturn2005>
+    <rr:AnnualReturn2004 contextRef="KoreaFocusMember_C234567817Member" unitRef="Ratio" decimals="4">0.1351</rr:AnnualReturn2004>
+    <rr:AnnualReturn2003 contextRef="KoreaFocusMember_C234567817Member" unitRef="Ratio" decimals="4">0.8636</rr:AnnualReturn2003>
+    <rr:AnnualReturn2002 contextRef="KoreaFocusMember_C234567817Member" unitRef="Ratio" decimals="4">-0.083</rr:AnnualReturn2002>
+    <rr:AnnualReturn2001 contextRef="KoreaFocusMember_C234567817Member" unitRef="Ratio" decimals="4">0.2669</rr:AnnualReturn2001>
+    <rr:AnnualReturn2000 contextRef="KoreaFocusMember_C234567817Member" unitRef="Ratio" decimals="4">-0.6175</rr:AnnualReturn2000>
+    <rr:AnnualReturn1999 contextRef="KoreaFocusMember_C234567817Member" unitRef="Ratio" decimals="4">0.5728</rr:AnnualReturn1999>
+    <rr:ExpenseExampleYear01 contextRef="KoreaFocusMember_C234567817Member" unitRef="USD" decimals="0">378</rr:ExpenseExampleYear01>
+    <rr:ExpenseExampleYear03 contextRef="KoreaFocusMember_C234567817Member" unitRef="USD" decimals="0">750</rr:ExpenseExampleYear03>
+    <rr:ExpenseExampleYear05 contextRef="KoreaFocusMember_C234567817Member" unitRef="USD" decimals="0">1148</rr:ExpenseExampleYear05>
+    <rr:ExpenseExampleYear10 contextRef="KoreaFocusMember_C234567817Member" unitRef="USD" decimals="0">2260</rr:ExpenseExampleYear10>
+    <rr:ManagementFeesOverAssets contextRef="KoreaFocusMember_C234567817Member" unitRef="Ratio" decimals="INF">0.01</rr:ManagementFeesOverAssets>
+    <rr:DistributionAndService12b1FeesOverAssets contextRef="KoreaFocusMember_C234567817Member" unitRef="Ratio" decimals="INF">0</rr:DistributionAndService12b1FeesOverAssets>
+    <rr:ExpensesOverAssets contextRef="KoreaFocusMember_C234567817Member" unitRef="Ratio" decimals="INF">.0168</rr:ExpensesOverAssets>
+    <rr:Component1OtherExpensesOverAssets contextRef="KoreaFocusMember_C234567817Member" unitRef="Ratio" decimals="INF">0.0068</rr:Component1OtherExpensesOverAssets>
+    <rr:RedemptionFeeOverRedemption id="id_footnote_elem_33216766" contextRef="KoreaFocusMember_C234567817Member" unitRef="Ratio" decimals="INF">-0.02</rr:RedemptionFeeOverRedemption>
+    <rr:PortfolioTurnoverRate contextRef="KoreaFocusMember" unitRef="Ratio" decimals="4">0.2889</rr:PortfolioTurnoverRate>
+    <rr:StrategyPortfolioConcentration contextRef="KoreaFocusMember">*** ***** ***** **** ******* ** ***** *** ** *** *** ****** ***** ***
+
+********** *** ********** ********* ** ****** ********** ** ***** ********** </rr:StrategyPortfolioConcentration>
+    <rr:PerformanceInformationIllustratesVariabilityOfReturns contextRef="KoreaFocusMember">*** ****** ******* *** ***** ************ ***
+
+***** ** ********* ** *** *********** **** **** ** ******* *** *** ****** *********** *** ****** **** **** ** ***** </rr:PerformanceInformationIllustratesVariabilityOfReturns>
+    <rr:PerformanceAdditionalMarketIndex contextRef="KoreaFocusMember">*** ***** **** ************ ***** ***** ** ******* *** *** ******
+
+******* ****** ******* ******* **** ***** ** *** *********** ********** ****** *******</rr:PerformanceAdditionalMarketIndex>
+    <rr:PerformanceAvailabilityWebSiteAddress contextRef="KoreaFocusMember">******* *********** *********** ** ********* ** *** ****** *******
+
+******************** *</rr:PerformanceAvailabilityWebSiteAddress>
+    <rr:PerformancePastDoesNotIndicateFuture contextRef="KoreaFocusMember">**** ************ ****** ** ***** ****** ** *** ********** **
+
+****** ************</rr:PerformancePastDoesNotIndicateFuture>
+    <rr:PerformanceTableDoesReflectSalesLoads contextRef="KoreaFocusMember">****** *** ****** ******** *** ***** ******* ** *** ******* ***
+
+********** *** ***** ******** ** ******</rr:PerformanceTableDoesReflectSalesLoads>
+    <rr:IndexNoDeductionForFeesExpensesTaxes contextRef="KoreaFocusMember">****** *** ****** ******** *** ***** ******* ** *** ******* ***
+
+********** *** ***** ******** ** ******</rr:IndexNoDeductionForFeesExpensesTaxes>
+    <rr:PerformanceTableUsesHighestFederalRate contextRef="KoreaFocusMember">********* ******* *** ********** ***** *** ********** *******
+
+******</rr:PerformanceTableUsesHighestFederalRate>
+    <rr:PerformanceTableNotRelevantToTaxDeferred contextRef="KoreaFocusMember">****** ********* ******* ****** ** ** ********** *** *********
+
+************ ************* **** ** ****** ***** ** ********** ********** *********</rr:PerformanceTableNotRelevantToTaxDeferred>
+    <rr:PerformanceTableExplanationAfterTaxHigher contextRef="KoreaFocusMember">** ******* ****** *** ****** ************ ******* ***** *****
+
+*********</rr:PerformanceTableExplanationAfterTaxHigher>
+    <rr:BarChartHighestQuarterlyReturn contextRef="KoreaFocusMember" unitRef="Ratio" decimals="4">0.4059</rr:BarChartHighestQuarterlyReturn>
+    <rr:HighestQuarterlyReturnLabel contextRef="KoreaFocusMember">**** *** ******* ***** **** *** *****</rr:HighestQuarterlyReturnLabel>
+    <rr:BarChartLowestQuarterlyReturn contextRef="KoreaFocusMember" unitRef="Ratio" decimals="4">-0.3327</rr:BarChartLowestQuarterlyReturn>
+    <rr:LowestQuarterlyReturnLabel contextRef="KoreaFocusMember">**** *** ******* ***** ********* *** *****</rr:LowestQuarterlyReturnLabel>
+    <rr:BarChartLowestQuarterlyReturnDate contextRef="KoreaFocusMember">2008-09-30</rr:BarChartLowestQuarterlyReturnDate>
+    <rr:BarChartHighestQuarterlyReturnDate contextRef="KoreaFocusMember">1999-06-30</rr:BarChartHighestQuarterlyReturnDate>
+    <rr:BarChartTableTextBlock contextRef="KoreaFocusMember">&lt;div style="display: none;"&gt; ~ http://xbrl.sec.gov/rr/role/BarChartData
+
+column dei_LegalEntityAxis compact e60541203gw_S234567890Member
+
+column rr_ProspectusShareClassAxis compact *
+
+~&lt;/div&gt;</rr:BarChartTableTextBlock>
+    <rr:PerformanceTableTextBlock contextRef="KoreaFocusMember">&lt;div style="display: none;"&gt; ~
+
+http://xbrl.sec.gov/rr/role/PerformanceTableData 
+
+row primary compact * 
+
+column dei_LegalEntityAxis compact e60541203gw_S234567890Member 
+
+column rr_ProspectusShareClassAxis compact * 
+
+column rr_PerformanceMeasureAxis compact * 
+
+~&lt;/div&gt;</rr:PerformanceTableTextBlock>
+    <rr:RiskReturnDetailTableTextBlock contextRef="_">&lt;div style="display: none;"&gt;
+
+~ http://xbrl.sec.gov/rr/role/RiskReturnDetailData 
+
+column period compact * 
+
+row dei_LegalEntityAxis compact * 
+
+row rr_ProspectusShareClassAxis compact * 
+
+row rr_PerformanceMeasureAxis compact *
+
+row primary compact * ~
+
+&lt;/div&gt;
+
+</rr:RiskReturnDetailTableTextBlock>
+    <rr:AverageAnnualReturnYear01 contextRef="KoreaFocusMember_C234567817Member" unitRef="Ratio" decimals="4">-0.5164</rr:AverageAnnualReturnYear01>
+    <rr:AverageAnnualReturnYear05 contextRef="KoreaFocusMember_C234567817Member" unitRef="Ratio" decimals="4">0.0205</rr:AverageAnnualReturnYear05>
+    <rr:AverageAnnualReturnYear10 contextRef="KoreaFocusMember_C234567817Member" unitRef="Ratio" decimals="4">0.0411</rr:AverageAnnualReturnYear10>
+    <rr:AverageAnnualReturnYear01 id="id_footnote_elem_23795505" contextRef="KoreaFocusMember_AfterTaxesOnDistributionsMember_C234567817Member" unitRef="Ratio" decimals="4">-0.4937</rr:AverageAnnualReturnYear01>
+    <rr:AverageAnnualReturnYear05 id="id_footnote_elem_23921956" contextRef="KoreaFocusMember_AfterTaxesOnDistributionsMember_C234567817Member" unitRef="Ratio" decimals="4">0.0177</rr:AverageAnnualReturnYear05>
+    <rr:AverageAnnualReturnYear10 id="id_footnote_elem_29264539" contextRef="KoreaFocusMember_AfterTaxesOnDistributionsMember_C234567817Member" unitRef="Ratio" decimals="4">0.0394</rr:AverageAnnualReturnYear10>
+    <rr:AverageAnnualReturnYear01 id="id_footnote_elem_23297571" contextRef="KoreaFocusMember_AfterTaxesOnDistributionsAndSalesMember_C234567817Member" unitRef="Ratio" decimals="4">-0.3145</rr:AverageAnnualReturnYear01>
+    <rr:AverageAnnualReturnYear05 id="id_footnote_elem_2188836" contextRef="KoreaFocusMember_AfterTaxesOnDistributionsAndSalesMember_C234567817Member" unitRef="Ratio" decimals="4">0.0184</rr:AverageAnnualReturnYear05>
+    <rr:AverageAnnualReturnYear10 id="id_footnote_elem_12353960" contextRef="KoreaFocusMember_AfterTaxesOnDistributionsAndSalesMember_C234567817Member" unitRef="Ratio" decimals="4">0.0363</rr:AverageAnnualReturnYear10>
+    <rr:AverageAnnualReturnYear01 id="id_footnote_elem_16824833" contextRef="KoreaFocusMember_SandP500IndexMember" unitRef="Ratio" decimals="4">-0.3144</rr:AverageAnnualReturnYear01>
+    <rr:AverageAnnualReturnYear05 contextRef="KoreaFocusMember_SandP500IndexMember" unitRef="Ratio" decimals="4">-0.0186</rr:AverageAnnualReturnYear05>
+    <rr:AverageAnnualReturnYear10 contextRef="KoreaFocusMember_SandP500IndexMember" unitRef="Ratio" decimals="4">-0.0117</rr:AverageAnnualReturnYear10>
+    <rr:AverageAnnualReturnYear01 contextRef="KoreaFocusMember_MsciAcFarEastFreeExJapanIndexMember" unitRef="Ratio" decimals="4">-0.4283</rr:AverageAnnualReturnYear01>
+    <rr:AverageAnnualReturnYear05 contextRef="KoreaFocusMember_MsciAcFarEastFreeExJapanIndexMember" unitRef="Ratio" decimals="4">0.0439</rr:AverageAnnualReturnYear05>
+    <rr:AverageAnnualReturnYear10 contextRef="KoreaFocusMember_MsciAcFarEastFreeExJapanIndexMember" unitRef="Ratio" decimals="4">0.0462</rr:AverageAnnualReturnYear10>
+    <rr:ShareholderFeesCaption contextRef="KoreaFocusMember">Shareholder Fees (paid directly from your investment)</rr:ShareholderFeesCaption>
+    <rr:OperatingExpensesCaption contextRef="KoreaFocusMember">Annual Fund Operating Expenses (Expenses that you pay each year as a percentage
+
+of the value of your investment)</rr:OperatingExpensesCaption>
+    <link:footnoteLink xlink:type="extended" xlink:role="http://www.xbrl.org/2003/role/link">
+        <link:loc xlink:href="#id_footnote_elem_23795505" xlink:label="AverageAnnualReturnYear01_14702605" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="#id_footnote_elem_23921956" xlink:label="AverageAnnualReturnYear05_23921956" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="#id_footnote_elem_29264539" xlink:label="AverageAnnualReturnYear10_29264539" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="#id_footnote_elem_23297571" xlink:label="AverageAnnualReturnYear01_23297571" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="#id_footnote_elem_2188836" xlink:label="AverageAnnualReturnYear05_2188836" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="#id_footnote_elem_12353960" xlink:label="AverageAnnualReturnYear10_12353960" xlink:type="locator"></link:loc>
+        <link:footnote xml:lang="en-US" xlink:label="footnote_21991088" xlink:type="resource" xlink:role="http://www.xbrl.org/2003/role/footnote">
+            <p style="text-align:left;margin-top:0pt;margin-bottom:0pt;font-family:'Times New Roman';font-size:10.0pt;color:black">*********
+
+****** **** ********** *** ******** ** ******* *** ********* **** ******** *** *********</p>
+        </link:footnote>
+        <link:footnoteArc xlink:type="arc" order="1.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote" xlink:from="AverageAnnualReturnYear01_14702605" xlink:to="footnote_21991088"></link:footnoteArc>
+        <link:footnoteArc xlink:type="arc" order="1.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote" xlink:from="AverageAnnualReturnYear05_23921956" xlink:to="footnote_21991088"></link:footnoteArc>
+        <link:footnoteArc xlink:type="arc" order="1.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote" xlink:from="AverageAnnualReturnYear10_29264539" xlink:to="footnote_21991088"></link:footnoteArc>
+        <link:footnoteArc xlink:type="arc" order="1.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote" xlink:from="AverageAnnualReturnYear01_23297571" xlink:to="footnote_21991088"></link:footnoteArc>
+        <link:footnoteArc xlink:type="arc" order="1.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote" xlink:from="AverageAnnualReturnYear05_2188836" xlink:to="footnote_21991088"></link:footnoteArc>
+        <link:footnoteArc xlink:type="arc" order="1.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote" xlink:from="AverageAnnualReturnYear10_12353960" xlink:to="footnote_21991088"></link:footnoteArc>
+    </link:footnoteLink>
+</xbrli:xbrl>

@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<link:linkbase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd">
+    <link:roleRef roleURI="http://edgar/role/OtherInformation" xlink:href="edgar-20081231.xsd#OtherInformation" xlink:type="simple"></link:roleRef>
+    <link:roleRef roleURI="http://edgar/role/EntityInformation" xlink:href="edgar-20081231.xsd#EntityInformation" xlink:type="simple"></link:roleRef>
+    <link:presentationLink xlink:type="extended" xlink:role="http://edgar/role/OtherInformation">
+        <link:loc xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityListingsLineItems" xlink:label="EntityListingsLineItems" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="e61205000gd-20081231.xsd#e6120500_Statistics" xlink:label="Statistics" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="e61205000gd-20081231.xsd#e6120500_Statistics" xlink:label="Statistics_2" xlink:type="locator"></link:loc>
+        <link:presentationArc xlink:type="arc" order="4.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityListingsLineItems" xlink:to="Statistics"></link:presentationArc>
+        <link:presentationArc xlink:type="arc" order="0.0" preferredLabel="http://www.xbrl.org/2003/role/periodStartLabel" priority="1" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityListingsLineItems" xlink:to="Statistics_2"></link:presentationArc>
+    </link:presentationLink>
+    <link:presentationLink xlink:type="extended" xlink:role="http://edgar/role/EntityInformation"></link:presentationLink>
+</link:linkbase>

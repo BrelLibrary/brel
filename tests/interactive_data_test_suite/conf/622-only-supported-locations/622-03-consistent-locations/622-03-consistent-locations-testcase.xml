@@ -1,0 +1,543 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet      type="text/xsl" href="../../../lib/test.xsl"?>
+<conf:testcase xmlns:conf="http://edgar/2009/conformance" xmlns:iso4217="http://www.xbrl.org/2003/iso4217" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xbrldt="http://xbrl.org/2005/xbrldt" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <conf:creator>
+        <conf:name>SEC Office of Structured Disclosure</conf:name>
+        <conf:email>StructuredData@sec.gov</conf:email>
+    </conf:creator>
+    <conf:number>622-03</conf:number>
+    <conf:name>EDGAR Filer Manual v68d 6.22</conf:name>
+    <conf:description xmlns="http://www.w3c.org/1999/xhtml">
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.22 Supported Versions of XBRL Standard Taxonomies">Refer to EFM: 6.22 Supported Versions of XBRL Standard Taxonomies</a>
+    </conf:description>
+    <conf:reference specification="10872.4"></conf:reference>
+    <conf:reference specification="11334.11"></conf:reference>
+    <conf:variation id="_001gd">
+        <conf:name>country/2022, currency/2022, dei/2022, exch/2022, naics/2022, sic/2022, srt/2022, stpr/2022, us-gaap/2022, GOOD</conf:name>
+        <conf:description>country/2022, currency/2022, dei/2022, exch/2022, naics/2022, sic/2022, srt/2022, stpr/2022, us-gaap/2022, GOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"datetimeForTesting":"2022-06-30", "periodOfReport" : "12-31-2018" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62203001gd/e62203001gd-20081231.htm</conf:instance>
+            <conf:schema>e62203001gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_002gd">
+        <conf:name>cef/2022, dei/2022, GOOD</conf:name>
+        <conf:description>cef/2022, dei/2022, GOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "N-2"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62203002gd/e62203002gd-20210601.htm</conf:instance>
+            <conf:schema>e62203002gd/iil-20210601.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_003gd">
+        <conf:name>dei/2022, rr/2022, GOOD</conf:name>
+        <conf:description>dei/2022, rr/2022, GOOD</conf:description>
+        <conf:reference specification="EMR-183"></conf:reference>
+        <conf:data>
+            <conf:parameter name="submissionType" value="485BPOS"></conf:parameter>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType":"485BPOS","rptSeriesClassInfo.seriesIds":["S010101010"]}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62203003gd/e62203003gd-20081231.htm</conf:instance>
+            <conf:schema>e62203003gd/edgar-20180131.xsd</conf:schema>
+            <conf:schema>e62203003gd/e62203008gd-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_004gd">
+        <conf:name>shr/2023 with stx/2023, srt/2023, us-gaap/2023, cef/2023 and ifrs/2023 GD</conf:name>
+        <conf:description>shr/2023 with stx/2023, srt/2023, us-gaap/2023, cef/2023 and ifrs/2023 GD</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "10-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62203004gd/e62203004gd-20331231.htm</conf:instance>
+            <conf:schema>e62203004gd/e62203004gd-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+    </conf:result>
+    </conf:variation>
+    <conf:variation id="_005ng">
+        <conf:name>shr/2023 not compatible with cef/2022,  NOGOOD</conf:name>
+        <conf:description>shr/2023 not compatible with cef/2022, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "10-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62203005ng/e62203005ng-20331231.htm</conf:instance>
+            <conf:schema>e62203005ng/e62203005ng-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="62203" name="incompatibleSchemas" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_006ng">
+        <conf:name>shr/2023 not compatible with ifrs/2022,  NOGOOD</conf:name>
+        <conf:description>shr/2023 not compatible with ifrs/2022, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "10-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62203006ng/e62203006ng-20331231.htm</conf:instance>
+            <conf:schema>e62203006ng/e62203006ng-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="62203" name="incompatibleSchemas" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_007ng">
+        <conf:name>shr/2023 not compatible with dei/2022,  NOGOOD</conf:name>
+        <conf:description>shr/2023 not compatible with dei/2022, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "10-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62203007ng/e62203007ng-20331231.htm</conf:instance>
+            <conf:schema>e62203007ng/e62203007ng-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="62203" name="incompatibleSchemas" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_008ng">
+        <conf:name>shr/2023 not compatible with us-gaap/2022,  NOGOOD</conf:name>
+        <conf:description>shr/2023 not compatible with us-gaap/2022, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "10-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62203008ng/e62203008ng-20331231.htm</conf:instance>
+            <conf:schema>e62203008ng/e62203008ng-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="62203" name="incompatibleSchemas" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_009ng">
+        <conf:name>shr/2023 not compatible with srt/2022,  NOGOOD</conf:name>
+        <conf:description>shr/2023 not compatible with srt/2022, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "10-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62203009ng/e62203009ng-20331231.htm</conf:instance>
+            <conf:schema>e62203009ng/e62203009ng-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="62203" name="incompatibleSchemas" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_010ng">
+        <conf:name>fnd/2022 with incompatible taxonomy versions dei/2023, NG</conf:name>
+        <conf:description>fnd/2022 with incompatible taxonomy versions dei/2023, NG</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "S-6"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62203010ng/e62203010ng-20230930.htm</conf:instance>
+            <conf:schema>e62203010ng/e62203010ng-20230930.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="62203" name="incompatibleSchemas" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_011ng">
+        <conf:name>fnd-rr/2022 with incompatible taxonomy versions dei/2023, NG</conf:name>
+        <conf:description>fnd-rr/2022 with incompatible taxonomy versions dei/2023, NG</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "N-1A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62203011ng/e62203011ng-20230930.htm</conf:instance>
+            <conf:schema>e62203011ng/e62203011ng-20230930.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="62203" name="incompatibleSchemas" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_012ng">
+        <conf:name>fnd/2023 with incompatible taxonomy versions dei/2022, NG</conf:name>
+        <conf:description>fnd/2023 with incompatible taxonomy versions dei/2022, NG</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "S-6"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62203012ng/e62203012ng-20230930.htm</conf:instance>
+            <conf:schema>e62203012ng/e62203012ng-20230930.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="62203" name="incompatibleSchemas" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_013ng">
+        <conf:name>fnd-oef/2023 with incompatible taxonomy versions dei/2022, NG</conf:name>
+        <conf:description>fnd-oef/2023 with incompatible taxonomy versions dei/2022, NG</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "N-1A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62203013ng/e62203013ng-20230930.htm</conf:instance>
+            <conf:schema>e62203013ng/e62203013ng-20230930.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="62203" name="incompatibleSchemas" frd="tbd"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_014ng">
+        <conf:name>fnd-cef/2023 with incompatible taxonomy versions dei/2022, NG</conf:name>
+        <conf:description>fnd-cef/2023 with incompatible taxonomy versions dei/2022, NG</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "N-2"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62203014ng/e62203014ng-20230930.htm</conf:instance>
+            <conf:schema>e62203014ng/e62203014ng-20230930.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="62203" name="incompatibleSchemas" frd="tbd"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_016ng">
+        <conf:name>rr/2022 not compatible with dei/2021,  NG</conf:name>
+        <conf:description>rr/2022 not compatible with dei/2021, NG</conf:description>
+        <conf:reference specification="EMR-183"></conf:reference>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType":"485BPOS","rptSeriesClassInfo.seriesIds":["S010101010"]}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62203016ng/e62203016ng-20081231.htm</conf:instance>
+            <conf:schema>e62203016ng/edgar-20180131.xsd</conf:schema>
+            <conf:schema>e62203016ng/e62203008gd-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="62203" name="incompatibleSchemas" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_025gd">
+        <conf:name>ifrs/2022 with all compatible country/2022, currency/2022, dei/2022, exch/2022, naics/2022, sic/2022, srt/2022, stpr/2022, GOOD</conf:name>
+        <conf:description>ifrs/2022 with all compatible country/2022, currency/2022, dei/2022, exch/2022, naics/2022, sic/2022, srt/2022, stpr/2022, GOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "8-K" ,"periodOfReport" : "12-31-2008" ,"emergingGrowthCompanyFlag" : false ,"items" : "8.01" }'></conf:parameter>
+            <conf:instance readMeFirst="true">e62203025gd/e62203025gd-20081231.htm</conf:instance>
+            <conf:schema>e62203025gd/e62203027gd-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_036gd">
+        <conf:name>country/2022, currency/2022, dei/2022, exch/2022, ifrs/2022, naics/2022, sic/2022, srt/2022, srt/2022q3, stpr/2022, us-gaap/2022, us-gaap/2022q3, GOOD</conf:name>
+        <conf:description>country/2022, currency/2022, dei/2022, exch/2022, ifrs/2022, naics/2022, sic/2022, srt/2022, srt/2022q3, stpr/2022, us-gaap/2022, us-gaap/2022q3, GOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"datetimeForTesting":"2022-06-30", "periodOfReport" : "12-31-2018" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62203036gd/e62203036gd-20081231.htm</conf:instance>
+            <conf:schema>e62203036gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_040gd">
+        <conf:name>ecd/2022q4, with compatible dei/2022q4, us-gaap/2022</conf:name>
+        <conf:description>ecd/2022q4, with compatible dei/2022q4, us-gaap/2022</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62203040gd/e62203040gd-20081231.htm</conf:instance>
+            <conf:schema>e62203040gd/e62201016gd-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_041gd">
+        <conf:name>ecd/2022q4, with compatible dei/2022, cef/2022, GOOD</conf:name>
+        <conf:description>ecd/2022q4, with compatible dei/2022, cef/2022, GOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62203041gd/e62203041gd-20081231.htm</conf:instance>
+            <conf:schema>e62203041gd/e62201016gd-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+      </conf:result>
+    </conf:variation>
+    <conf:variation id="_047gd">
+        <conf:name>ecd/2022q4, with compatible dei/2022, GOOD</conf:name>
+        <conf:description>ecd/2022q4, with compatible dei/2022, GOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62203047gd/e62203047gd-20081231.htm</conf:instance>
+            <conf:schema>e62203047gd/e62201016gd-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+      </conf:result>
+    </conf:variation>
+    <conf:variation id="_052ng">
+        <conf:name>ecd/2022q4, with incompatible rr/2022, NO GOOD</conf:name>
+        <conf:description>ecd/2022q4, with incompatible rr/2022, NO GOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62203052ng/e62203052ng-20081231.htm</conf:instance>
+            <conf:schema>e62203052ng/e62201016gd-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="62203" name="Incompatible-Schemas" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_057ng">
+        <conf:name>ecd/2022q4, with incompatible vip/2022, NO GOOD</conf:name>
+        <conf:description>ecd/2022q4, with incompatible vip/2022, NO GOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62203057ng/e62203057ng-20081231.htm</conf:instance>
+            <conf:schema>e62203057ng/e62201016gd-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="62203" name="Incompatible-Schemas" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_058ng">
+        <conf:name>ecd/2022q4, with incompatible vip/2022q2, NO GOOD</conf:name>
+        <conf:description>ecd/2022q4, with incompatible vip/2022q2, NO GOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62203058ng/e62203058ng-20081231.htm</conf:instance>
+            <conf:schema>e62203058ng/e62201016gd-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="62203" name="Incompatible-Schemas" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_100gd">
+        <conf:name>us-gaap/2023, ecd/2023, cef/2023 and stx/2023(stx is dei along with country, currency, exch, naics, sic and stpr), GOOD</conf:name>
+        <conf:description>us-gaap/2023, ecd/2023, cef/2023 and stx/2023(stx is dei along with country, currency, exch, naics, sic and stpr), GOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62203100gd/e62203100gd-20081231.htm</conf:instance>
+            <conf:schema>e62203100gd/e62201016gd-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_101gd">
+        <conf:name>dei/2023, rr/2023, GOOD</conf:name>
+        <conf:description>dei/2023, rr/2023,  GOOD</conf:description>
+        <conf:reference specification="EMR-183"></conf:reference>
+        <conf:data>
+            <conf:parameter name="submissionType" value="485BPOS"></conf:parameter>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType":"485BPOS","rptSeriesClassInfo.seriesIds":["S010101010"]}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62203101gd/e62203101gd-20081231.htm</conf:instance>
+            <conf:schema>e62203101gd/e62201018gd-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_102gd">
+        <conf:name>vip/2023, dei/2023, GOOD</conf:name>
+        <conf:description>vip/2023, dei/2023, Form N-4 with all three entry points, GOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "N-4"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62203102gd/e62203102gd-20211231.htm</conf:instance>
+            <conf:schema>e62203102gd/e62201019gd-20211231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_105ng">
+        <conf:name>{rr/2023} not compatible with: ecd/2023, NOGOOD</conf:name>
+        <conf:description>{rr/2023} not compatible with: ecd/2023, NOGOOD</conf:description>
+        <conf:reference specification="EMR-183"></conf:reference>
+        <conf:data>
+            <conf:parameter name="submissionType" value="485BPOS"></conf:parameter>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType":"485BPOS","rptSeriesClassInfo.seriesIds":["S010101010"]}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62203105ng/e62203105ng-20081231.htm</conf:instance>
+            <conf:schema>e62203105ng/e62201018gd-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="62203" name="Incompatible-Schemas" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_106ng">
+        <conf:name>{rr/2023} not compatible with: us-gaap/2023, NOGOOD</conf:name>
+        <conf:description>{rr/2023} not compatible with: us-gaap/2023, NOGOOD</conf:description>
+        <conf:reference specification="EMR-183"></conf:reference>
+        <conf:data>
+            <conf:parameter name="submissionType" value="485BPOS"></conf:parameter>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType":"485BPOS","rptSeriesClassInfo.seriesIds":["S010101010"]}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62203106ng/e62203106ng-20081231.htm</conf:instance>
+            <conf:schema>e62203106ng/e62201018gd-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="62203" name="Incompatible-Schemas" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_107ng">
+        <conf:name>{rr/2023} not compatible with: vip/2023, NOGOOD</conf:name>
+        <conf:description>{rr/2023} not compatible with: vip/2023, NOGOOD</conf:description>
+        <conf:reference specification="EMR-183"></conf:reference>
+        <conf:data>
+            <conf:parameter name="submissionType" value="485BPOS"></conf:parameter>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType":"485BPOS","rptSeriesClassInfo.seriesIds":["S010101010"]}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62203107ng/e62203107ng-20081231.htm</conf:instance>
+            <conf:schema>e62203107ng/e62201018gd-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="62203" name="Incompatible-Schemas" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_108ng">
+        <conf:name>{rr/2023} not compatible with: stx/2022, NOGOOD</conf:name>
+        <conf:description>{rr/2023} not compatible with: stx/2022, NOGOOD</conf:description>
+        <conf:reference specification="EMR-183"></conf:reference>
+        <conf:data>
+            <conf:parameter name="submissionType" value="485BPOS"></conf:parameter>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType":"485BPOS","rptSeriesClassInfo.seriesIds":["S010101010"]}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62203108ng/e62203108ng-20081231.htm</conf:instance>
+            <conf:schema>e62203108ng/e62201018gd-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="62203" name="Incompatible-Schemas" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_109ng">
+        <conf:name>{rr/2023} not compatible with: ifrs/2022, NOGOOD</conf:name>
+        <conf:description>{rr/2023} not compatible with: ifrs/2022, NOGOOD</conf:description>
+        <conf:reference specification="EMR-183"></conf:reference>
+        <conf:data>
+            <conf:parameter name="submissionType" value="485BPOS"></conf:parameter>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType":"485BPOS","rptSeriesClassInfo.seriesIds":["S010101010"]}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62203109ng/e62203109ng-20081231.htm</conf:instance>
+            <conf:schema>e62203109ng/e62201018gd-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="62203" name="Incompatible-Schemas" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_110ng">
+        <conf:name>{rr/2023} not compatible with: cef/2023, NOGOOD</conf:name>
+        <conf:description>{rr/2023} not compatible with: cef/2023, NOGOOD</conf:description>
+        <conf:reference specification="EMR-183"></conf:reference>
+        <conf:data>
+            <conf:parameter name="submissionType" value="485BPOS"></conf:parameter>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType":"485BPOS","rptSeriesClassInfo.seriesIds":["S010101010"]}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62203110ng/e62203110ng-20081231.htm</conf:instance>
+            <conf:schema>e62203110ng/e62201018gd-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="62203" name="Incompatible-Schemas" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_111ng">
+        <conf:name>{vip/2023} not compatible with: rr/2023, NOGOOD</conf:name>
+        <conf:description>{vip/2023} not compatible with: rr/2023, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "N-4"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62203111ng/e62203111ng-20211231.htm</conf:instance>
+            <conf:schema>e62203111ng/e62201019gd-20211231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="62203" name="Incompatible-Schemas" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_112ng">
+        <conf:name>{vip/2023} not compatible with: ecd/2023, NOGOOD</conf:name>
+        <conf:description>{vip/2023} not compatible with: ecd/2023, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "N-4"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62203112ng/e62203112ng-20211231.htm</conf:instance>
+            <conf:schema>e62203112ng/e62201019gd-20211231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="62203" name="Incompatible-Schemas" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_113ng">
+        <conf:name>{vip/2023} not compatible with: us-gaap/2023, NOGOOD</conf:name>
+        <conf:description>{vip/2023} not compatible with: us-gaap/2023, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "N-4"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62203113ng/e62203113ng-20211231.htm</conf:instance>
+            <conf:schema>e62203113ng/e62201019gd-20211231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="62203" name="Incompatible-Schemas" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_114ng">
+        <conf:name>{vip/2023} not compatible with: stx/2022, NOGOOD</conf:name>
+        <conf:description>{vip/2023} not compatible with: stx/2022, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "N-4"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62203114ng/e62203114ng-20211231.htm</conf:instance>
+            <conf:schema>e62203114ng/e62201019gd-20211231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="62203" name="Incompatible-Schemas" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_115ng">
+        <conf:name>{vip/2023} not compatible with: ifrs/2022, NOGOOD</conf:name>
+        <conf:description>{vip/2023} not compatible with: ifrs/2022, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "N-4"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62203115ng/e62203115ng-20211231.htm</conf:instance>
+            <conf:schema>e62203115ng/e62201019gd-20211231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="62203" name="Incompatible-Schemas" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_116ng">
+        <conf:name>{vip/2023} not compatible with: cef/2023, NOGOOD</conf:name>
+        <conf:description>{vip/2023} not compatible with: cef/2023, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "N-4"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62203116ng/e62203116ng-20211231.htm</conf:instance>
+            <conf:schema>e62203116ng/e62201019gd-20211231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="62203" name="Incompatible-Schemas" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_117ng">
+        <conf:name>{ecd/2023, us-gaap/2023, cef/2023} not compatible with: rr/2023, NOGOOD</conf:name>
+        <conf:description>{ecd/2023, us-gaap/2023, cef/2023} not compatible with: rr/2023, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62203117ng/e62203117ng-20081231.htm</conf:instance>
+            <conf:schema>e62203117ng/e62201016gd-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="62203" name="Incompatible-Schemas" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_118ng">
+        <conf:name>{ecd/2023, us-gaap/2023, cef/2023} not compatible with: vip/2023, NOGOOD</conf:name>
+        <conf:description>{ecd/2023, us-gaap/2023, cef/2023} not compatible with: vip/2023, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62203118ng/e62203118ng-20081231.htm</conf:instance>
+            <conf:schema>e62203118ng/e62201016gd-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="62203" name="Incompatible-Schemas" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_119ng">
+        <conf:name>{ecd/2023, us-gaap/2023, cef/2023} not compatible with: stx/2022, NOGOOD</conf:name>
+        <conf:description>{ecd/2023, us-gaap/2023, cef/2023} not compatible with: stx/2022, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62203119ng/e62203119ng-20081231.htm</conf:instance>
+            <conf:schema>e62203119ng/e62201016gd-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="62203" name="Incompatible-Schemas" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_120ng">
+        <conf:name>ifrs/2023, dei/2023, with not allowed version stpr/2022 NOGOOD</conf:name>
+        <conf:description>ifrs/2023, dei/2023, with not allowed version stpr/2022 NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "6-K" ,"periodOfReport" : "12-31-2008" ,"items" : "8.01" }'></conf:parameter>
+            <conf:instance readMeFirst="true">e62203120ng/e62203120ng-20081231.htm</conf:instance>
+            <conf:schema>e62203120ng/e62203120ng-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="62203" name="incompatibleSchemas" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_121ng">
+        <conf:name>rxp/2023, snj/2023, with  not allowed version us-gaap/2022, NOGOOD</conf:name>
+        <conf:description>rxp/2023, snj/2023, with not allowed version us-gaap/2022, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "SD"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62203121ng/e62203121ng-20301231.xml</conf:instance>
+            <conf:schema>e62203121ng/e62203121ng-20301231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="62203" name="incompatibleSchemas" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_122ng">
+        <conf:name>oef/2023, with now allowed version country/2022, NOGOOD</conf:name>
+        <conf:description>oef/2023, with not allowed version country/2022, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "N-CSR/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62203122ng/e62203122ng-20321031.htm</conf:instance>
+            <conf:schema>e62203122ng/e62203122ng-20321031.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="62203" name="incompatibleSchemas" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+</conf:testcase>

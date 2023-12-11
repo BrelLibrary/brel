@@ -1,0 +1,359 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl" ?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>607-32</number>
+    <name>EDGAR Filer Manual v68d 6.7.32</name>
+    <description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.7.32 Declarations requiring period type 'duration'.">Refer to EFM: 6.7.32 Declarations requiring period type 'duration'.</a>
+    </description>
+    <reference specification="15006"></reference>
+    <!-- TBD begins wrt recent EFM 21q2 change 
+    <variation id="_000ng">
+        <name>6.7.32 Nonnumeric type (anyURIItemType) with periodType instant, NOGOOD.</name>
+        <description>Nonnumeric type (anyURIItemType) with periodType instant, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60732000ng/e60732000ng-20081231.xml</instance>
+            <linkbase>e60732000ng/edgar-20081231_lab.xml</linkbase>
+            <linkbase>e60732000ng/edgar-20081231_pre.xml</linkbase>
+            <schema>e60732000ng/edgar-20081231.xsd</schema>
+            <schema>e60732000ng/e60732000ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60732" name="Nonnumeric-Has-Instant-Period-Type" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_001ng">
+        <name>6.7.32 Nonnumeric type (base64BinaryItemType) with periodType instant, NOGOOD.</name>
+        <description>Nonnumeric type (base64BinaryItemType) with periodType instant, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60732001ng/e60732001ng-20081231.xml</instance>
+            <linkbase>e60732001ng/edgar-20081231_lab.xml</linkbase>
+            <linkbase>e60732001ng/edgar-20081231_pre.xml</linkbase>
+            <schema>e60732001ng/edgar-20081231.xsd</schema>
+            <schema>e60732001ng/e60732001ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60732" name="Nonnumeric-Has-Instant-Period-Type" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_002ng">
+        <name>6.7.32 Nonnumeric type (booleanItemType) with periodType instant, NOGOOD.</name>
+        <description>Nonnumeric type (booleanItemType) with periodType instant, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60732002ng/e60732002ng-20081231.xml</instance>
+            <linkbase>e60732002ng/edgar-20081231_lab.xml</linkbase>
+            <linkbase>e60732002ng/edgar-20081231_pre.xml</linkbase>
+            <schema>e60732002ng/edgar-20081231.xsd</schema>
+            <schema>e60732002ng/e60732002ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60732" name="Nonnumeric-Has-Instant-Period-Type" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_003ng">
+        <name>6.7.32 Nonnumeric type (dateItemType) with periodType instant, NOGOOD.</name>
+        <description>Nonnumeric type (dateItemType) with periodType instant, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60732003ng/e60732003ng-20081231.xml</instance>
+            <linkbase>e60732003ng/edgar-20081231_lab.xml</linkbase>
+            <linkbase>e60732003ng/edgar-20081231_pre.xml</linkbase>
+            <schema>e60732003ng/edgar-20081231.xsd</schema>
+            <schema>e60732003ng/e60732003ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60732" name="Nonnumeric-Has-Instant-Period-Type" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_004ng">
+        <name>6.7.32 Nonnumeric type (dateTimeItemType) with periodType instant, NOGOOD.</name>
+        <description>Nonnumeric type (dateTimeItemType) with periodType instant, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60732004ng/e60732004ng-20081231.xml</instance>
+            <linkbase>e60732004ng/edgar-20081231_lab.xml</linkbase>
+            <linkbase>e60732004ng/edgar-20081231_pre.xml</linkbase>
+            <schema>e60732004ng/edgar-20081231.xsd</schema>
+            <schema>e60732004ng/e60732004ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60732" name="Nonnumeric-Has-Instant-Period-Type" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_005ng">
+        <name>6.7.32 Nonnumeric type (durationItemType) with periodType instant, NOGOOD.</name>
+        <description>Nonnumeric type (durationItemType) with periodType instant, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60732005ng/e60732005ng-20081231.xml</instance>
+            <linkbase>e60732005ng/edgar-20081231_lab.xml</linkbase>
+            <linkbase>e60732005ng/edgar-20081231_pre.xml</linkbase>
+            <schema>e60732005ng/edgar-20081231.xsd</schema>
+            <schema>e60732005ng/e60732005ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60732" name="Nonnumeric-Has-Instant-Period-Type" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_006ng">
+        <name>6.7.32 Nonnumeric type (gDayItemType) with periodType instant, NOGOOD.</name>
+        <description>Nonnumeric type (gDayItemType) with periodType instant, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60732006ng/e60732006ng-20081231.xml</instance>
+            <linkbase>e60732006ng/edgar-20081231_lab.xml</linkbase>
+            <linkbase>e60732006ng/edgar-20081231_pre.xml</linkbase>
+            <schema>e60732006ng/edgar-20081231.xsd</schema>
+            <schema>e60732006ng/e60732006ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60732" name="Nonnumeric-Has-Instant-Period-Type" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_007ng">
+        <name>6.7.32 Nonnumeric type (gMonthDayItemType) with periodType instant, NOGOOD.</name>
+        <description>Nonnumeric type (gMonthDayItemType) with periodType instant, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60732007ng/e60732007ng-20081231.xml</instance>
+            <linkbase>e60732007ng/edgar-20081231_lab.xml</linkbase>
+            <linkbase>e60732007ng/edgar-20081231_pre.xml</linkbase>
+            <schema>e60732007ng/edgar-20081231.xsd</schema>
+            <schema>e60732007ng/e60732007ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60732" name="Nonnumeric-Has-Instant-Period-Type" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_008ng">
+        <name>6.7.32 Nonnumeric type (gMonthItemType) with periodType instant, NOGOOD.</name>
+        <description>Nonnumeric type (gMonthItemType) with periodType instant, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60732008ng/e60732008ng-20081231.xml</instance>
+            <linkbase>e60732008ng/edgar-20081231_lab.xml</linkbase>
+            <linkbase>e60732008ng/edgar-20081231_pre.xml</linkbase>
+            <schema>e60732008ng/edgar-20081231.xsd</schema>
+            <schema>e60732008ng/e60732008ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60732" name="Nonnumeric-Has-Instant-Period-Type" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_009ng">
+        <name>6.7.32 Nonnumeric type (gYearItemType) with periodType instant, NOGOOD.</name>
+        <description>Nonnumeric type (gYearItemType) with periodType instant, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60732009ng/e60732009ng-20081231.xml</instance>
+            <linkbase>e60732009ng/edgar-20081231_lab.xml</linkbase>
+            <linkbase>e60732009ng/edgar-20081231_pre.xml</linkbase>
+            <schema>e60732009ng/edgar-20081231.xsd</schema>
+            <schema>e60732009ng/e60732009ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60732" name="Nonnumeric-Has-Instant-Period-Type" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_010ng">
+        <name>6.7.32 Nonnumeric type (gYearMonthItemType) with periodType instant, NOGOOD.</name>
+        <description>Nonnumeric type (gYearMonthItemType) with periodType instant, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60732010ng/e60732010ng-20081231.xml</instance>
+            <linkbase>e60732010ng/edgar-20081231_lab.xml</linkbase>
+            <linkbase>e60732010ng/edgar-20081231_pre.xml</linkbase>
+            <schema>e60732010ng/edgar-20081231.xsd</schema>
+            <schema>e60732010ng/e60732010ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60732" name="Nonnumeric-Has-Instant-Period-Type" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_011ng">
+        <name>6.7.32 Nonnumeric type (hexBinaryItemType) with periodType instant, NOGOOD.</name>
+        <description>Nonnumeric type (hexBinaryItemType) with periodType instant, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60732011ng/e60732011ng-20081231.xml</instance>
+            <linkbase>e60732011ng/edgar-20081231_lab.xml</linkbase>
+            <linkbase>e60732011ng/edgar-20081231_pre.xml</linkbase>
+            <schema>e60732011ng/edgar-20081231.xsd</schema>
+            <schema>e60732011ng/e60732011ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60732" name="Nonnumeric-Has-Instant-Period-Type" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_012ng">
+        <name>6.7.32 Nonnumeric type (languageItemType) with periodType instant, NOGOOD.</name>
+        <description>Nonnumeric type (languageItemType) with periodType instant, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60732012ng/e60732012ng-20081231.xml</instance>
+            <linkbase>e60732012ng/edgar-20081231_lab.xml</linkbase>
+            <linkbase>e60732012ng/edgar-20081231_pre.xml</linkbase>
+            <schema>e60732012ng/edgar-20081231.xsd</schema>
+            <schema>e60732012ng/e60732012ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60732" name="Nonnumeric-Has-Instant-Period-Type" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_013ng">
+        <name>6.7.32 Nonnumeric type (NameItemType) with periodType instant, NOGOOD.</name>
+        <description>Nonnumeric type (NameItemType) with periodType instant, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60732013ng/e60732013ng-20081231.xml</instance>
+            <linkbase>e60732013ng/edgar-20081231_lab.xml</linkbase>
+            <linkbase>e60732013ng/edgar-20081231_pre.xml</linkbase>
+            <schema>e60732013ng/edgar-20081231.xsd</schema>
+            <schema>e60732013ng/e60732013ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60732" name="Nonnumeric-Has-Instant-Period-Type" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_014ng">
+        <name>6.7.32 Nonnumeric type (NCNameItemType) with periodType instant, NOGOOD.</name>
+        <description>Nonnumeric type (NCNameItemType) with periodType instant, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60732014ng/e60732014ng-20081231.xml</instance>
+            <linkbase>e60732014ng/edgar-20081231_lab.xml</linkbase>
+            <linkbase>e60732014ng/edgar-20081231_pre.xml</linkbase>
+            <schema>e60732014ng/edgar-20081231.xsd</schema>
+            <schema>e60732014ng/e60732014ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60732" name="Nonnumeric-Has-Instant-Period-Type" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_015ng">
+        <name>6.7.32 Nonnumeric type (normalizedStringItemType) with periodType instant, NOGOOD.</name>
+        <description>Nonnumeric type (normalizedStringItemType) with periodType instant, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60732015ng/e60732015ng-20081231.xml</instance>
+            <linkbase>e60732015ng/edgar-20081231_lab.xml</linkbase>
+            <linkbase>e60732015ng/edgar-20081231_pre.xml</linkbase>
+            <schema>e60732015ng/edgar-20081231.xsd</schema>
+            <schema>e60732015ng/e60732015ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60732" name="Nonnumeric-Has-Instant-Period-Type" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_016ng">
+        <name>6.7.32 Nonnumeric type (QNameItemType) with periodType instant, NOGOOD.</name>
+        <description>Nonnumeric type (QNameItemType) with periodType instant, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60732016ng/e60732016ng-20081231.xml</instance>
+            <linkbase>e60732016ng/edgar-20081231_lab.xml</linkbase>
+            <linkbase>e60732016ng/edgar-20081231_pre.xml</linkbase>
+            <schema>e60732016ng/edgar-20081231.xsd</schema>
+            <schema>e60732016ng/e60732016ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60732" name="Nonnumeric-Has-Instant-Period-Type" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_017ng">
+        <name>6.7.32 Nonnumeric type (stringItemType) with periodType instant, NOGOOD.</name>
+        <description>Nonnumeric type (stringItemType) with periodType instant, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60732017ng/e60732017ng-20081231.xml</instance>
+            <linkbase>e60732017ng/edgar-20081231_lab.xml</linkbase>
+            <linkbase>e60732017ng/edgar-20081231_pre.xml</linkbase>
+            <schema>e60732017ng/edgar-20081231.xsd</schema>
+            <schema>e60732017ng/e60732017ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60732" name="Nonnumeric-Has-Instant-Period-Type" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_018ng">
+        <name>6.7.32 Nonnumeric type (timeItemType) with periodType instant, NOGOOD.</name>
+        <description>Nonnumeric type (timeItemType) with periodType instant, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60732018ng/e60732018ng-20081231.xml</instance>
+            <linkbase>e60732018ng/edgar-20081231_lab.xml</linkbase>
+            <linkbase>e60732018ng/edgar-20081231_pre.xml</linkbase>
+            <schema>e60732018ng/edgar-20081231.xsd</schema>
+            <schema>e60732018ng/e60732018ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60732" name="Nonnumeric-Has-Instant-Period-Type" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_020ng">
+        <name>6.7.32 Nonnumeric type (yesNoItemType) with periodType instant, NOGOOD.</name>
+        <description>Nonnumeric type (yesNoItemType) with periodType instant, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60732020ng/e60732020ng-20081231.xml</instance>
+            <linkbase>e60732020ng/edgar-20081231_lab.xml</linkbase>
+            <linkbase>e60732020ng/edgar-20081231_pre.xml</linkbase>
+            <schema>e60732020ng/edgar-20081231.xsd</schema>
+            <schema>e60732020ng/e60732020ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60732" name="Nonnumeric-Has-Instant-Period-Type" frd="du"></assert>
+        </result>
+    </variation>
+    TBD ends wrt recent EFM 21q2 change -->
+    <variation id="_019ng">
+        <name>6.7.32 Nonnumeric type (escapedItemType) with periodType instant, NOGOOD.</name>
+        <description>Nonnumeric type (escapedItemType) with periodType instant, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60732019ng/e60732019ng-20081231.xml</instance>
+            <linkbase>e60732019ng/edgar-20081231_lab.xml</linkbase>
+            <linkbase>e60732019ng/edgar-20081231_pre.xml</linkbase>
+            <schema>e60732019ng/edgar-20081231.xsd</schema>
+            <schema>e60732019ng/e60732019ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60732" name="Nonnumeric-Has-Instant-Period-Type" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_021gd">
+        <name>6.7.32 Nonnumeric type (string) with periodType instant, GOOD.</name>
+        <description>Nonnumeric type (string) with periodType instant, GOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60732021gd/e60732021gd-20081231.xml</instance>
+            <linkbase>e60732021gd/edgar-20081231_lab.xml</linkbase>
+            <linkbase>e60732021gd/edgar-20081231_pre.xml</linkbase>
+            <schema>e60732021gd/edgar-20081231.xsd</schema>
+            <schema>e60732021gd/e60732021gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_030ng">
+        <name>6.7.32 TextBlock type with periodType instant, NOGOOD.</name>
+        <description>TextBlock type with periodType instant, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60732030ng/e60732030ng-20081231.xml</instance>
+            <linkbase>e60732030ng/edgar-20081231_lab.xml</linkbase>
+            <linkbase>e60732030ng/edgar-20081231_pre.xml</linkbase>
+            <schema>e60732030ng/edgar-20081231.xsd</schema>
+            <schema>e60732030ng/e60732000ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60732" name="TextBlock-Has-Instant-Period-Type" frd="du"></assert>
+        </result>
+    </variation>
+</testcase>

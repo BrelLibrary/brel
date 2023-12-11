@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>609-09</number>
+    <name>EDGAR Filer Manual v68d 6.9.9</name>
+    <description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.9.9 The value of the priority attribute must be strictly less than 10.">Refer to EFM: 6.9.9 The value of the priority attribute must be strictly less than 10.</a>
+    </description>
+    <reference specification="10937"></reference>
+    <variation id="_000gd">
+        <name>6.9.9, Arc with priority 10 in RR Taxonomy, GOOD.</name>
+        <description>Arc with priority 10 in RR Taxonomy, GOOD.</description>
+        <reference specification="10937"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"submissionType": "485BPOS"}'></parameter>
+            <instance readMeFirst="true">e60909000gd-20091231.xml</instance>
+            <linkbase>e60909000gd-20091231_pre.xml</linkbase>
+            <linkbase>e60909000gd-20091231_lab.xml</linkbase>
+            <linkbase>e60909000gd-20091231_def.xml</linkbase>
+            <schema>e60909000gd-20091231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_001ng">
+        <name>6.9.9, arc with priority 10 in presentation, NOGOOD. </name>
+        <description> arc with priority 10 in presentation, NOGOOD. </description>
+        <reference specification="10937"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60909001ng-20081231.xml</instance>
+            <linkbase>e60909001ng-20081231_lab.xml</linkbase>
+            <linkbase>e60909001ng-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+            <schema>e60909001ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60909" name="Relationship-Priority-Not-Less-Than-Ten" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_005ng">
+        <name>pre6-valid-cef-override-but-priority-10-issue-not-really-ok, NG</name>
+        <description>pre6-valid-cef-override-but-priority-10-issue-not-really-ok, NG</description>
+        <data>
+            <parameter name="ELOparams" value='{"submissionType": "N-2"}'></parameter>
+            <instance readMeFirst="true">e60909005ng/e60909005ng-20210601.htm</instance>
+            <schema>e60909005ng/iil-20210601.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60909" name="relationshipNotPermitted" frd="du"></assert>
+        </result>
+    </variation>
+</testcase>

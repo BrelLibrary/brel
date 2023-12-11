@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl"?>
+<conf:testcase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:conf="http://edgar/2009/conformance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <conf:creator>
+        <conf:name>SEC Office of Structured Disclosure</conf:name>
+        <conf:email>StructuredData@sec.gov</conf:email>
+    </conf:creator>
+    <conf:number>614-06</conf:number>
+    <conf:name>EDGAR Filer Manual v68d 6.14.5</conf:name>
+    <conf:description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.14.5  Facts in a calculation must appear together in at least one presentation group.">Refer to EFM: 6.14.5  Facts in a calculation must appear together in at least one presentation group.</a>
+    </conf:description>
+    <conf:variation id="_001gd">
+        <conf:name>Calculation relationship example, GD</conf:name>
+        <conf:description>Calculation relationship example, GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "N-2/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e61406000gd/e61406000gd-20210601.htm</conf:instance>
+            <conf:schema>e61406000gd/iil-20210601.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_010ng">
+        <conf:name>Calculation2 relationship not permitted example, NG</conf:name>
+        <conf:description>Calculation2 relationship not permitted example, NG</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "N-2/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e61406010ng/e61406010ng-20210601.htm</conf:instance>
+            <conf:schema>e61406010ng/iil-20210601.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="61406" name="relationshipNotPermitted" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+</conf:testcase>

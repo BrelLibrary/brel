@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xbrl
+  xmlns="http://www.xbrl.org/2003/instance"
+  xmlns:dei="http://xbrl.sec.gov/dei/2018-01-31"
+  xmlns:i21301ng="http://i21301ng/20081231"
+  xmlns:iso4217="http://www.xbrl.org/2003/iso4217"
+  xmlns:link="http://www.xbrl.org/2003/linkbase"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <link:schemaRef xlink:href="i21301ng-20081231.xsd" xlink:type="simple"/>
+    <context id="FY07">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+        </entity>
+        <period>
+            <startDate>2007-04-01</startDate>
+            <endDate>2007-12-31</endDate>
+        </period>
+    </context>
+    <context id="FY05">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+        </entity>
+        <period>
+            <startDate>2005-01-01</startDate>
+            <endDate>2005-12-31</endDate>
+        </period>
+    </context>
+    <context id="FY08">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+        </entity>
+        <period>
+            <startDate>2008-04-01</startDate>
+            <endDate>2008-12-31</endDate>
+        </period>
+    </context>
+    <context id="FY08e">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+        </entity>
+        <period>
+            <instant>2008-12-31</instant>
+        </period>
+    </context>
+    <unit id="employee">
+        <measure>i21301ng:employee</measure>
+    </unit>
+    <unit id="shares">
+        <measure>shares</measure>
+    </unit>
+    <unit id="USD">
+        <measure>iso4217:USD</measure>
+    </unit>
+    <unit id="GBP">
+        <measure>iso4217:GBP</measure>
+    </unit>
+    <unit id="CNY">
+        <measure>iso4217:CNY</measure>
+    </unit>
+    <unit id="EUR">
+        <measure>iso4217:EUR</measure>
+    </unit>
+    <dei:AmendmentFlag contextRef="FY08">false</dei:AmendmentFlag>
+    <dei:DocumentPeriodEndDate contextRef="FY08">2008-12-31</dei:DocumentPeriodEndDate>
+    <dei:DocumentFiscalPeriodFocus contextRef="FY08">Q3</dei:DocumentFiscalPeriodFocus>
+    <dei:EntityCentralIndexKey contextRef="FY08">9876543210</dei:EntityCentralIndexKey>
+    <dei:CurrentFiscalYearEndDate contextRef="FY08">--03-31</dei:CurrentFiscalYearEndDate>
+    <dei:EntityFilerCategory contextRef="FY08">Accelerated Filer</dei:EntityFilerCategory>
+    <dei:EntityPublicFloat contextRef="FY08e" decimals="INF" unitRef="USD">2000.9944</dei:EntityPublicFloat>
+    <dei:EntityPublicFloat contextRef="FY08e" decimals="2" unitRef="USD">2000.99</dei:EntityPublicFloat>
+    <dei:EntityPublicFloat contextRef="FY08e" decimals="2" unitRef="GBP">1234.56</dei:EntityPublicFloat>
+    <dei:EntityPublicFloat contextRef="FY08e" decimals="0" unitRef="GBP">1235</dei:EntityPublicFloat>
+    <dei:EntityPublicFloat contextRef="FY08e" decimals="0" unitRef="EUR">1234</dei:EntityPublicFloat>
+    <dei:EntityPublicFloat contextRef="FY08e" decimals="-3" unitRef="EUR">1000</dei:EntityPublicFloat>
+    <dei:EntityPublicFloat contextRef="FY08e" decimals="INF" unitRef="CNY">1716500</dei:EntityPublicFloat>
+    <dei:EntityPublicFloat contextRef="FY08e" decimals="-3" unitRef="CNY">1716000</dei:EntityPublicFloat>
+    <dei:EntityEmergingGrowthCompany contextRef="FY08">false</dei:EntityEmergingGrowthCompany>
+    <dei:DocumentType contextRef="FY08">8-K</dei:DocumentType>
+    <dei:DocumentFiscalYearFocus contextRef="FY08">2008</dei:DocumentFiscalYearFocus>
+    <dei:EntityRegistrantName contextRef="FY08">OSD TEST CO #1 i21301ng</dei:EntityRegistrantName>
+    <dei:EntityCommonStockSharesOutstanding contextRef="FY08e" decimals="INF" unitRef="shares">154357198</dei:EntityCommonStockSharesOutstanding>
+    <i21301ng:Content4 contextRef="FY05" unitRef="USD" xsi:nil="true"/>
+    <i21301ng:QnameItem contextRef="FY08">i21301ng:QnameItem</i21301ng:QnameItem>
+    <i21301ng:QnameItem contextRef="FY08">i21301ng:QnameItem</i21301ng:QnameItem>
+    <i21301ng:DurationItem contextRef="FY08">P1D</i21301ng:DurationItem>
+    <i21301ng:TimeItem contextRef="FY08">24:00:00</i21301ng:TimeItem>
+    <i21301ng:DateItem contextRef="FY08">2000-01-01</i21301ng:DateItem>
+    <i21301ng:NormalizedStringItem contextRef="FY08"> This too is a normalized string. </i21301ng:NormalizedStringItem>
+    <i21301ng:NormalizedStringItem contextRef="FY07">Hello World</i21301ng:NormalizedStringItem>
+    <i21301ng:DateTimeItem contextRef="FY08">1999-12-31T00:00:00</i21301ng:DateTimeItem>
+    <i21301ng:QnameItem contextRef="FY08">i21301ng:QnameItem</i21301ng:QnameItem>
+    <i21301ng:DurationItem contextRef="FY08">P1D</i21301ng:DurationItem>
+    <i21301ng:TimeItem contextRef="FY08">24:00:00</i21301ng:TimeItem>
+    <i21301ng:DateItem contextRef="FY08">2000-01-01</i21301ng:DateItem>
+    <i21301ng:NormalizedStringItem contextRef="FY08"> This too is a normalized string. </i21301ng:NormalizedStringItem>
+    <i21301ng:NormalizedStringItem contextRef="FY07">Hello World</i21301ng:NormalizedStringItem>
+    <i21301ng:DateTimeItem contextRef="FY08">1999-12-31T00:00:00</i21301ng:DateTimeItem>
+    <dei:EntityNumberOfEmployees contextRef="FY08e" decimals="INF" unitRef="employee">0</dei:EntityNumberOfEmployees>
+    <dei:EntityNumberOfEmployees contextRef="FY08e" unitRef="employee" xsi:nil="true"/>
+</xbrl>

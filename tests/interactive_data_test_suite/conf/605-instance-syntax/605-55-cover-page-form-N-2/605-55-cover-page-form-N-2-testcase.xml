@@ -1,0 +1,427 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl"?>
+<conf:testcase xmlns:conf="http://edgar/2009/conformance" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <conf:creator>
+        <conf:name>SEC Office of Structured Disclosure</conf:name>
+        <conf:email>StructuredData@sec.gov</conf:email>
+    </conf:creator>
+    <conf:number>605-55</conf:number>
+    <conf:name>EDGAR Filer Manual v68d 6.5.55</conf:name>
+    <conf:description xmlns="">
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.5.55 Cover Page &#239;&#191;&#189; Form N-2">Refer to EFM: 6.5.55 Cover Page &#239;&#191;&#189; Form N-2</a>
+    </conf:description>
+    <conf:variation id="_100gd">
+        <conf:name>N-2 GD</conf:name>
+        <conf:description>N-2, GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "N-2"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60555100gd/covern2_ixbrl-20210601.htm</conf:instance>
+            <conf:schema>e60555100gd/iil-20210601.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_101gd">
+        <conf:name>N-2/A GD</conf:name>
+        <conf:description>N-2/A, GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "N-2/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60555101gd/covern2a_ixbrl-20210601.htm</conf:instance>
+            <conf:schema>e60555101gd/iil-20210601.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_102gd">
+        <conf:name>486BPOS GD</conf:name>
+        <conf:description>486BPOS, GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "486BPOS"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60555102gd/cover486bpos_ixbrl-20210601.htm</conf:instance>
+            <conf:schema>e60555102gd/iil-20210601.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_103gd">
+        <conf:name>N-2MEF, GD</conf:name>
+        <conf:description>N-2MEF, GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "N-2MEF"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60555103gd/e60555103gd-20210601.htm</conf:instance>
+            <conf:schema>e60555103gd/iil-20210601.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_104gd">
+        <conf:name>N-2ASR, GD</conf:name>
+        <conf:description>N-2ASR, GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "N-2ASR"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60555104gd/e60555104gd-20210601.htm</conf:instance>
+            <conf:schema>e60555104gd/iil-20210601.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_105gd">
+        <conf:name>N-2 POSASR, GD</conf:name>
+        <conf:description>N-2 POSASR, GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "N-2 POSASR"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60555105gd/e60555105gd-20210601.htm</conf:instance>
+            <conf:schema>e60555105gd/iil-20210601.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_106gd">
+        <conf:name>486APOS, GD</conf:name>
+        <conf:description>486APOS, GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "486APOS"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60555106gd/e60555106gd-20210601.htm</conf:instance>
+            <conf:schema>e60555106gd/iil-20210601.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_107gd">
+        <conf:name>486BXT, GD</conf:name>
+        <conf:description>486BXT, GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "486BXT"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60555107gd/e60555107gd-20210601.htm</conf:instance>
+            <conf:schema>e60555107gd/iil-20210601.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_108gd">
+        <conf:name>POS 8C, GD</conf:name>
+        <conf:description>POS 8C, GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "POS 8C"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60555108gd/e60555108gd-20210601.htm</conf:instance>
+            <conf:schema>e60555108gd/iil-20210601.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_109gd">
+        <conf:name>POS AMI, GD</conf:name>
+        <conf:description>POS AMI, GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "POS AMI"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60555109gd/e60555109gd-20210601.htm</conf:instance>
+            <conf:schema>e60555109gd/iil-20210601.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_110gd">
+        <conf:name>POS EX, GD</conf:name>
+        <conf:description>POS EX, GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "POS EX"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60555110gd/e60555110gd-20210601.htm</conf:instance>
+            <conf:schema>e60555110gd/iil-20210601.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_111gd">
+        <conf:name>POS462B, GD</conf:name>
+        <conf:description>POS462B, GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "POS462B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60555111gd/e60555111gd-20210601.htm</conf:instance>
+            <conf:schema>e60555111gd/iil-20210601.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_112gd">
+        <conf:name>POS462C, GD</conf:name>
+        <conf:description>POS462C, GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "POS462C"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60555112gd/e60555112gd-20210601.htm</conf:instance>
+            <conf:schema>e60555112gd/iil-20210601.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_201gd">
+        <conf:name>N-2/A GD</conf:name>
+        <conf:description>N-2/A, GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "N-2/A", "eligibleFundFlag": false, "pursuantGeneralInstructionFlag": false , "wellKnownSeasonedIssuerFlag": false, "filerNewRegistrantFlag": true}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60555201gd/e60555201gd-20210601.htm</conf:instance>
+            <conf:schema>e60555201gd/iil-20210601.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_210ng">
+        <conf:name>N-2/A, IntervalFundFlagValue mismatch, GD</conf:name>
+        <conf:description>N-2/A, IntervalFundFlagValue mismatch, GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "N-2/A", "eligibleFundFlag": true, "pursuantGeneralInstructionFlag": false , "wellKnownSeasonedIssuerFlag": false, "filerNewRegistrantFlag": true}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60555210ng/e60555210ng-20210601.htm</conf:instance>
+            <conf:schema>e60555210ng/iil-20210601.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60540" name="IntervalFundFlagValue" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_211ng">
+        <conf:name>N-2/A, PrimaryShelfQualifiedFlagValue mismatch,  NG</conf:name>
+        <conf:description>N-2/A, PrimaryShelfQualifiedFlagValue mismatch,  NG</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "N-2/A", "eligibleFundFlag": false, "pursuantGeneralInstructionFlag": true , "wellKnownSeasonedIssuerFlag": false, "filerNewRegistrantFlag": true}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60555211ng/e60555211ng-20210601.htm</conf:instance>
+            <conf:schema>e60555211ng/iil-20210601.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60540" name="PrimaryShelfQualifiedFlagValue" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_212ng">
+        <conf:name>N-2/A, entityWellKnownSeasonedIssuerValue mismatch,  NG</conf:name>
+        <conf:description>N-2/A, entityWellKnownSeasonedIssuerValue mismatch,  NG</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "N-2/A", "eligibleFundFlag": false, "pursuantGeneralInstructionFlag": false , "wellKnownSeasonedIssuerFlag": true, "filerNewRegistrantFlag": true}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60555212ng/e60555212ng-20210601.htm</conf:instance>
+            <conf:schema>e60555212ng/iil-20210601.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60540" name="entityWellKnownSeasonedIssuerValue" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_213ng">
+        <conf:name>N-2/A, NewCefOrBdcRegistrantFlagValue mismatch,  NG</conf:name>
+        <conf:description>N-2/A, NewCefOrBdcRegistrantFlagValue mismatch,  NG</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "N-2/A", "eligibleFundFlag": false, "pursuantGeneralInstructionFlag": false , "wellKnownSeasonedIssuerFlag": false, "filerNewRegistrantFlag": false}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60555213ng/e60555213ng-20210601.htm</conf:instance>
+            <conf:schema>e60555213ng/iil-20210601.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60540" name="NewCefOrBdcRegistrantFlagValue" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_310gd">
+        <conf:name>N-2/A GD</conf:name>
+        <conf:description>N-2/A, GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "N-2/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60555310gd/e60555310gd-20210601.htm</conf:instance>
+            <conf:schema>e60555310gd/iil-20210601.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_311ng">
+        <conf:name>N-2/A, documentTypeValue missing, NG</conf:name>
+        <conf:description>N-2/A, documentTypeValue missing (X*-A non-null fact must exist.), NG</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "N-2/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60555311ng/e60555311ng-20210601.htm</conf:instance>
+            <conf:schema>e60555311ng/iil-20210601.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60520" name="documentTypeValue" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_312gw">
+        <conf:name>N-2/A, AmendmentDescription, A - A non-null fact should exist if and only if AmendmentFlag is true., GW</conf:name>
+        <conf:description>N-2/A, AmendmentDescription, A - A non-null fact should exist if and only if AmendmentFlag is true., GW</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "N-2/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60555312gw/e60555312gw-20210601.htm</conf:instance>
+            <conf:schema>e60555312gw/iil-20210601.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60520" name="amendmentDescriptionAmendmentFlagDependentValue" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_313gw">
+        <conf:name>N-2/A, amendmentFlagMissing (R* - A non-null fact should exist.), GW</conf:name>
+        <conf:description>N-2/A, amendmentFlagMissing (R* - A non-null fact should exist.), GW</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "N-2/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60555313gw/e60555313gw-20210601.htm</conf:instance>
+            <conf:schema>e60555313gw/iil-20210601.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60520" name="amendmentFlagMissing" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_314ng">
+        <conf:name>N-2/A, entityRegistrantNameMissing (X* - A non-null fact must exist.), NG</conf:name>
+        <conf:description>N-2/A, entityRegistrantNameMissing (X* - A non-null fact must exist.), NG</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "N-2/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60555314ng/e60555314ng-20210601.htm</conf:instance>
+            <conf:schema>e60555314ng/iil-20210601.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60521" name="entityRegistrantNameMissing" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_315ng">
+        <conf:name>N-2/A, entityCentralIndexKeyMissing (X* - A non-null fact must exist.), NG</conf:name>
+        <conf:description>N-2/A, entityCentralIndexKeyMissing (X* - A non-null fact must exist.), NG</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "N-2/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60555315ng/e60555315ng-20210601.htm</conf:instance>
+            <conf:schema>e60555315ng/iil-20210601.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60521" name="entityCentralIndexKeyMissing" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_316gw">
+        <conf:name>N-2/A, entityWellKnownSeasonedIssuerMissing (R - A non-null fact should exist (and in an inline doc, be visible), GW</conf:name>
+        <conf:description>N-2/A, entityWellKnownSeasonedIssuerMissing (R - A non-null fact should exist (and in an inline doc, be visible), GW</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "N-2/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60555316gw/e60555316gw-20210601.htm</conf:instance>
+            <conf:schema>e60555316gw/iil-20210601.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60521" name="entityWellKnownSeasonedIssuerMissing" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_317gw">
+        <conf:name>N-2/A, entityEmergingGrowthCompanyMissing (R - A non-null fact should exist (and in an inline doc, be visible)), GW</conf:name>
+        <conf:description>N-2/A, entityEmergingGrowthCompanyMissing (R - A non-null fact should exist (and in an inline doc, be visible)), GW</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "N-2/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60555317gw/e60555317gw-20210601.htm</conf:instance>
+            <conf:schema>e60555317gw/iil-20210601.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60540" name="entityEmergingGrowthCompanyMissing" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_318ng">
+        <conf:name>N-2/A, ET - If EntityEmergingGrowthCompany is "true", then a non-null EntityExTransitionPeriod fact must exist (and in an inline doc, be visible), else EntityExTransitionPeriod should not exist., NG</conf:name>
+        <conf:description>N-2/A, ET - If EntityEmergingGrowthCompany is "true", then a non-null EntityExTransitionPeriod fact must exist (and in an inline doc, be visible), else EntityExTransitionPeriod should not exist., NG</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "N-2/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60555318ng/e60555318ng-20210601.htm</conf:instance>
+            <conf:schema>e60555318ng/iil-20210601.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60540" name="entityExTransitionPeriodEntityEmergingGrowthCompanyDependency" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_319gw">
+        <conf:name>N-2/A, entityInvCompanyTypeMissing (R* - A non-null fact should exist.), GW</conf:name>
+        <conf:description>N-2/A, entityInvCompanyTypeMissing (R* - A non-null fact should exist.), GW</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "N-2/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60555319gw/e60555319gw-20210601.htm</conf:instance>
+            <conf:schema>e60555319gw/iil-20210601.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60540" name="entityInvCompanyTypeMissing" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_320ng">
+        <conf:name>N-2/A, entityFileNumberMissing (Neither or both dei:DocumentRegistrationStatement = true and dei:EntityFileNumber must exist; also, if dei:DocumentRegistrationStatement  = true, then both must be visible.), NG</conf:name>
+        <conf:description>N-2/A, entityFileNumberMissing (Neither or both dei:DocumentRegistrationStatement = true and dei:EntityFileNumber must exist; also, if dei:DocumentRegistrationStatement  = true, then both must be visible.), NG</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "N-2/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60555320ng/e60555320ng-20210601.htm</conf:instance>
+            <conf:schema>e60555320ng/iil-20210601.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60555" name="entityFileNumberDocumentRegistrationStatementDependentValue" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_321ng">
+        <conf:name>N-2/A, Neither or both dei:InvestmentCompanyActRegistration = true and dei:InvestmentCompanyActFileNumber must exist; also, if dei:InvestmentCompanyActRegistration  = true, then both must be visible. , NG</conf:name>
+        <conf:description>N-2/A, Neither or both dei:InvestmentCompanyActRegistration = true and dei:InvestmentCompanyActFileNumber must exist; also, if dei:InvestmentCompanyActRegistration  = true, then both must be visible. , NG</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "N-2/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60555321ng/e60555321ng-20210601.htm</conf:instance>
+            <conf:schema>e60555321ng/iil-20210601.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60555" name="investmentCompanyActFileNumberInvestmentCompanyActRegistrationDependentValue" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_322ng">
+        <conf:name>N-2/A, At most one of cef:BdcFileNumber and dei:InvestmentCompanyActFileNumber must exist; if present, then one must be visible; also, if cef:BdcFileNumber exists, it must match 814-*., both are present, NG</conf:name>
+        <conf:description>N-2/A, At most one of cef:BdcFileNumber and dei:InvestmentCompanyActFileNumber must exist; if present, then one must be visible; also, if cef:BdcFileNumber exists, it must match 814-*., both are present,  NG</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "N-2/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60555322ng/e60555322ng-20210601.htm</conf:instance>
+            <conf:schema>e60555322ng/iil-20210601.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60555" name="____" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_323gw">
+        <conf:name>N-2/A, entityAddressAddressLine1Missing, GW</conf:name>
+        <conf:description>N-2/A, entityAddressAddressLine1Missing, GW</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "N-2/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60555323gw/e60555323gw-20210601.htm</conf:instance>
+            <conf:schema>e60555323gw/iil-20210601.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60548" name="entityAddressAddressLine1Missing" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_324gw">
+        <conf:name>N-2/A, entityAddressCityOrTownMissing, GW</conf:name>
+        <conf:description>N-2/A, entityAddressCityOrTownMissing, GW</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "N-2/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60555324gw/e60555324gw-20210601.htm</conf:instance>
+            <conf:schema>e60555324gw/iil-20210601.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60548" name="entityAddressCityOrTownMissing" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_325gw">
+        <conf:name>N-2/A, entityAddressStateOrProvinceEntityAddressCountryInclusive, GW</conf:name>
+        <conf:description>N-2/A, entityAddressStateOrProvinceEntityAddressCountryInclusive, GW</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "N-2/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60555325gw/e60555325gw-20210601.htm</conf:instance>
+            <conf:schema>e60555325gw/iil-20210601.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60548" name="entityAddressStateOrProvinceEntityAddressCountryInclusive" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_401gd">
+        <conf:name>10-Q, GD</conf:name>
+        <conf:description>10-Q, GD</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "10-Q"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60555401gd/e60555401gd-20220630.htm</conf:instance>
+            <conf:schema>e60555401gd/cef05-20220630.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+    </conf:result>
+    </conf:variation>
+    <conf:variation id="_402gd">
+        <conf:name>8-K, using CEF, GOOD</conf:name>
+        <conf:description>8-K, using CEF, GOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="string" value='{"datetimeForTesting":"2022-06-30",  "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60555402gd/e60555402gd-20081231.htm</conf:instance>
+            <conf:schema>e60555402gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+</conf:testcase>

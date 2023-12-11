@@ -16,15 +16,16 @@ class Fact:
 
     __fact_cache: dict[str, 'Fact'] = {}
     
-    def __init__(self, id: str, context: Context, value: str) -> None:
+    def __init__(self, context: Context, value: str, id: str | None) -> None:
         self.__id = id
         self.__context : Context = context
         self.__value : str = value
 
-        self.__fact_cache[id] = self
+        if id is not None:
+            self.__fact_cache[id] = self
     
     # first class citizens
-    def _get_id(self) -> str:
+    def _get_id(self) -> str | None:
         """
         @returns: The ID of the fact as a string.
         """
@@ -142,9 +143,9 @@ class Fact:
         @param context: The context of the fact. Note that new characteristics will be added to the context.
         @returns: The Fact.
         """
-        fact_id = fact_xml_element.attrib["id"]
+        fact_id = fact_xml_element.get("id")
 
-        if fact_id in cls.__fact_cache:
+        if fact_id is not None and fact_id in cls.__fact_cache:
             return cls.__fact_cache[fact_id]
 
         fact_concept_name = fact_xml_element.tag
@@ -168,5 +169,5 @@ class Fact:
         if fact_concept_name != context_concept.get_value().get_name().resolve():
             raise ValueError(f"Fact {fact_id} has concept {fact_concept_name} but should have concept {context_concept.get_value().get_name().resolve()}")
 
-        return cls(fact_id, context, fact_value)
+        return cls(context, fact_value, fact_id)
     

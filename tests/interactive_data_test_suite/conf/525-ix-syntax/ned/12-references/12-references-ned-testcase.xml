@@ -1,0 +1,285 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>525-13</number>
+    <name>Inline XBRL Test Suite v68d : References tests, Not EDGAR Dependent</name>
+    <description>
+        <h2>Various "good" (gd) and "not good" (ng) test files that demonstrate specific References usage</h2>
+        <p>
+            <a href="http://www.xbrl.org/specification/inlinexbrl-part1/rec-2013-11-18/inlinexbrl-part1-rec-2013-11-18.html#sec-references">12 The references element</a>
+        </p>
+    </description>
+    <variation id="_001gd">
+        <name>Valid references, GOOD</name>
+        <description>The ix:references element is used to contain reference elements</description>
+        <reference xiitest="PASS-ix-references-attribute"></reference>
+        <reference xiitest="PASS-ix-references-schemaRef"></reference>
+        <reference xiitest="PASS-ix-references-linkBaseRef-label"></reference>
+        <reference xiitest="PASS-ix-references-linkBaseRef-presentation"></reference>
+        <reference xiispec="12.1"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i12001gd/i12001gd-20081231.htm</instance>
+            <linkbase>i12001gd/i12001gd-20081231_pre.xml</linkbase>
+            <linkbase>i12001gd/i12001gd-20081231_lab.xml</linkbase>
+            <schema>i12001gd/i12001gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_002gd">
+        <name>References with non ix attributes, GOOD</name>
+        <description>References may contain any attribute with a namespace name which has a value other than http://www.xbrl.org/2013/inlineXBRL</description>
+        <reference xiitest="PASS-references-copy-non-ix-attrs"></reference>
+        <reference specification="12.1"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i12002gd/i12002gd-20081231.htm</instance>
+            <linkbase>i12002gd/i12002gd-20081231_pre.xml</linkbase>
+            <linkbase>i12002gd/i12002gd-20081231_lab.xml</linkbase>
+            <schema>i12002gd/i12002gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_100ng">
+        <name>references element is present but has no children, NOGOOD</name>
+        <description>FAIL-empty-references</description>
+        <reference specification="There MUST be at least one (nonempty) ix:references element in the Inline XBRL Document Set for each Target Document."></reference>
+        <reference xiitest="FAIL-empty-references"></reference>
+        <reference xiispec="12.1.2"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i12100ng/i12100ng-20081231.htm</instance>
+            <linkbase>i12100ng/i12100ng-20081231_pre.xml</linkbase>
+            <linkbase>i12100ng/i12100ng-20081231_lab.xml</linkbase>
+            <schema>i12100ng/i12100ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.12.1.2:missingReferences" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="701-12" txt="The content of element {element} is not complete"></assert>
+        </result>
+    </variation>
+    <variation id="_101ng">
+        <name>References with xbrl instance namespace on attribute, NOGOOD</name>
+        <description>FAIL-ix-references-03</description>
+        <reference xiitest="FAIL-ix-references-03"></reference>
+        <reference xiispec="12.1.1"></reference>
+        <reference specification="The ix:references element MUST NOT have any attributes with a namespace name which has a value of http://www.xbrl.org/2003/instance."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i12101ng/i12101ng-20081231.htm</instance>
+            <linkbase>i12101ng/i12101ng-20081231_pre.xml</linkbase>
+            <linkbase>i12101ng/i12101ng-20081231_lab.xml</linkbase>
+            <schema>i12101ng/i12101ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.12.1.1:qualifiedAttributeDisallowed" frd="ix" fj="IXBRL_REFERENCE_ELEMENT_HAS_XBRL_NS_ATTRIBUTES" nnum="701-12" txt="Inline XBRL element ix:references has disallowed attribute :  $"></assert>
+        </result>
+    </variation>
+    <variation id="_102ng">
+        <name>Duplicate ID for references, NOGOOD</name>
+        <description>FAIL-ix-references-09</description>
+        <reference specification="ID values MUST uniquely identify the elements which bear them."></reference>
+        <reference xiispec="12.1.2"></reference>
+        <reference xiitest="&gt;FAIL-ix-references-09"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i12102ng/i12102ng-20081231.htm</instance>
+            <linkbase>i12102ng/i12102ng-20081231_pre.xml</linkbase>
+            <linkbase>i12102ng/i12102ng-20081231_lab.xml</linkbase>
+            <schema>i12102ng/i12102ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="xml.3.3.1:idMustBeUnique" frd="ix" fj="IXBRL_DUPLICATE_ELEMENT_ID_FOUND" nnum="701-12" txt="Element $ id * is duplicated"></assert>
+        </result>
+    </variation>
+    <variation id="_103ng">
+        <name>Missing References element, NOGOOD</name>
+        <description>FAIL-missing-references</description>
+        <reference specification="There MUST be at least one ix:references element in the Inline XBRL Document Set for each Target Document."></reference>
+        <reference xiispec="12.1.2"></reference>
+        <reference xiitest="FAIL-missing-references"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i12103ng/i12103ng-20081231.htm</instance>
+            <linkbase>i12103ng/i12103ng-20081231_pre.xml</linkbase>
+            <linkbase>i12103ng/i12103ng-20081231_lab.xml</linkbase>
+            <schema>i12103ng/i12103ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.12.1.2:missingReferences" frd="ix" fj="IXBRL_REFERENCE_ELEMENT_MISSING_FOR_TARGET(S)" nnum="701-12" txt="Instance fact missing schema definition: $ of Inline Element *"></assert>
+        </result>
+    </variation>
+    <variation id="_104ng">
+        <name>Inconsistent default namespace bindings, NOGOOD</name>
+        <description>FAIL-ix-references-namespace-bindings-02</description>
+        <reference specification="Each ix:references element in the Inline XBRL Document Set with a given value for the {target} property MUST have the same default namespace or have no default namespace in scope. "></reference>
+        <reference xiispec="12.1.2"></reference>
+        <reference xiitest="FAIL-ix-references-namespace-bindings-02"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i12104ng/i12104ng-20081231.htm</instance>
+            <linkbase>i12104ng/i12104ng-20081231_pre.xml</linkbase>
+            <linkbase>i12104ng/i12104ng-20081231_lab.xml</linkbase>
+            <schema>i12104ng/i12104ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.12.1.2:referencesNamespacePrefixConflict" frd="ix" fj="IXBRL_REFERENCE_ELEMENTS_SOME_HAS_DEFAULT_NAMESPACE_SOME_DONT" nnum="701-12" txt="Inline XBRL ix:references prefix $ has multiple namespaces * in target #"></assert>
+        </result>
+    </variation>
+    <variation id="_105ng">
+        <name>Invalid element link:roleRef in references, NOGOOD</name>
+        <description>FAIL-references-illegal-content</description>
+        <reference xiitest="FAIL-references-illegal-content"></reference>
+        <reference xiispec="12.1.1"></reference>
+        <reference specification="Element ix:references allows only children link:schemaRef or link:linkbaseRef."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i12105ng/i12105ng-20081231.htm</instance>
+            <linkbase>i12105ng/i12105ng-20081231_pre.xml</linkbase>
+            <linkbase>i12105ng/i12105ng-20081231_lab.xml</linkbase>
+            <schema>i12105ng/i12105ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="701-12" txt="Invalid content was found starting with element {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_106ng">
+        <name>Illegal order for references, NOGOOD</name>
+        <description>FAIL-references-illegal-order-in-header</description>
+        <reference xiitest="FAIL-references-illegal-order-in-header"></reference>
+        <reference xiispec="8.1.1"></reference>
+        <reference specification="The ix:references element must have children ix:hidden, ix:references, and/or ix:resources in that order."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i12106ng/i12106ng-20081231.htm</instance>
+            <linkbase>i12106ng/i12106ng-20081231_pre.xml</linkbase>
+            <linkbase>i12106ng/i12106ng-20081231_lab.xml</linkbase>
+            <schema>i12106ng/i12106ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="701-12" txt=" Invalid content was found starting with element {element}. No child element is expected at this point"></assert>
+        </result>
+    </variation>
+    <variation id="_107ng">
+        <name>Illegal location for references, NOGOOD</name>
+        <description>FAIL-references-illegal-location</description>
+        <reference xiitest="FAIL-references-illegal-location"></reference>
+        <reference xiispec="12.1.1"></reference>
+        <reference specification="The ix:references element MUST be a child of the ix:header element."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i12107ng/i12107ng-20081231.htm</instance>
+            <linkbase>i12107ng/i12107ng-20081231_pre.xml</linkbase>
+            <linkbase>i12107ng/i12107ng-20081231_lab.xml</linkbase>
+            <schema>i12107ng/i12107ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="701-12" txt=" Invalid content was found starting with element {element}."></assert>
+        </result>
+    </variation>
+    <variation id="_108ng">
+        <name>Multiple references attribute have same values, NOGOOD</name>
+        <description>FAIL-ix-references-rule-multiple-attributes-sameValue</description>
+        <reference specification="Each attribute in {other attributes} MUST NOT occur in more than one ix:references element in the Inline XBRL Document Set with a given value for the {target} property."></reference>
+        <reference xiitest="FAIL-ix-references-rule-multiple-attributes-sameValue"></reference>
+        <reference xiispec="12.1.2"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i12108ng/i12108ng-20081231.htm</instance>
+            <linkbase>i12108ng/i12108ng-20081231_pre.xml</linkbase>
+            <linkbase>i12108ng/i12108ng-20081231_lab.xml</linkbase>
+            <schema>i12108ng/i12108ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.12.1.2:referencesAttributeDuplication" frd="ix" fj="IXBRL_REFERENCE_ELEMENT_ATTRIBUTE_DEFINED_IN_MULTIPLE_REFERENCE_ELEMENTS" nnum="701-12" txt="Inline XBRL ix:references attribute $ duplicated in target *"></assert>
+        </result>
+    </variation>
+    <variation id="_109ng">
+        <name>Multiple references elements have IDs, NOGOOD</name>
+        <description>FAIL-ix-references-rule-multiple-id</description>
+        <reference specification="There MUST NOT be more than one ix:references element in the Inline XBRL Document Set with a given value for the {target} property which has an id attribute. "></reference>
+        <reference xiitest="FAIL-ix-references-rule-multiple-id"></reference>
+        <reference xiispec="12.1.2"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i12109ng/i12109ng-20081231.htm</instance>
+            <linkbase>i12109ng/i12109ng-20081231_pre.xml</linkbase>
+            <linkbase>i12109ng/i12109ng-20081231_lab.xml</linkbase>
+            <schema>i12109ng/i12109ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.12.1.2:referencesTargetId" frd="ix" fj="IXBRL_REFERENCE_ELEMENT_REFERENCED_FOR_MULTIPLE_TARGETS" nnum="701-12" txt="Inline XBRL has multiple ix:references with id in target $"></assert>
+        </result>
+    </variation>
+    <variation id="_110ng">
+        <name>Inconsistent bindings for namespace prefix pf, NOGOOD</name>
+        <description>FAIL-ix-references-namespace-bindings-03</description>
+        <reference specification="The set of (namespace prefix, URI reference) pairs formed by the namespace declarations in scope on ix:references elements with a given value for the {target} property MUST NOT contain multiple pairs for the same namespace prefix with different URI references."></reference>
+        <reference xiispec="12.1.2"></reference>
+        <reference xiitest="FAIL-ix-references-namespace-bindings-03"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i12110ng/i12110ng-20081231.htm</instance>
+            <linkbase>i12110ng/i12110ng-20081231_pre.xml</linkbase>
+            <linkbase>i12110ng/i12110ng-20081231_lab.xml</linkbase>
+            <schema>i12110ng/i12110ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.12.1.2:referencesNamespacePrefixConflict" frd="ix" fj="IXBRL_REFERENCE_ELEMENT_NAMESPACE_WITH_SAME_PREFIX_AND_MULTIPLE_URIS" nnum="701-12" txt="Inline XBRL ix:references prefix $ has multiple namespaces * in target #"></assert>
+        </result>
+    </variation>
+    <variation id="_111ng">
+        <name>Inconsistent xml:lang bindings on references, NOGOOD</name>
+        <description>FAIL-ix-references-08</description>
+        <reference specification="Each attribute in {other attributes} MUST NOT occur in more than one ix:references element in the Inline XBRL Document Set with a given value for the {target} property."></reference>
+        <reference xiispec="12.1.2"></reference>
+        <reference xiitest="FAIL-ix-references-08"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i12111ng/i12111ng-20081231.htm</instance>
+            <linkbase>i12111ng/i12111ng-20081231_pre.xml</linkbase>
+            <linkbase>i12111ng/i12111ng-20081231_lab.xml</linkbase>
+            <schema>i12111ng/i12111ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.12.1.2:referencesAttributeDuplication" frd="ix" fj="IXBRL_REFERENCE_ELEMENT_ATTRIBUTE_DEFINED_IN_MULTIPLE_REFERENCE_ELEMENTS" nnum="701-12" txt="Inline XBRL ix:references attribute $ duplicated in target *"></assert>
+        </result>
+    </variation>
+    <variation id="_112ng">
+        <name>Inconsistent default namespace bindings, NOGOOD</name>
+        <description>FAIL-ix-references-namespace-bindings-01</description>
+        <reference specification="Each ix:references element in the Inline XBRL Document Set with a given value for the {target} property MUST have the same default namespace or have no default namespace in scope. "></reference>
+        <reference xiispec="12.1.2"></reference>
+        <reference xiitest="FAIL-ix-references-namespace-bindings-01"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i12112ng/i12112ng-20081231.htm</instance>
+            <linkbase>i12112ng/i12112ng-20081231_pre.xml</linkbase>
+            <linkbase>i12112ng/i12112ng-20081231_lab.xml</linkbase>
+            <schema>i12112ng/i12112ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.12.1.2:referencesNamespacePrefixConflict" frd="ix" fj="IXBRL_REFERENCE_ELEMENTS_SOME_HAS_DEFAULT_NAMESPACE_SOME_DONT" nnum="701-12" txt="Inline XBRL ix:references prefix $ has multiple namespaces * in target #"></assert>
+        </result>
+    </variation>
+    <variation id="_113ng">
+        <name>Inconsistent pf namespace bindings and a third default, NOGOOD</name>
+        <description>FAIL-ix-references-namespace-bindings-04</description>
+        <reference specification="Each ix:references element in the Inline XBRL Document Set with a given value for the {target} property MUST have the same default namespace or have no default namespace in scope. "></reference>
+        <reference xiispec="12.1.2"></reference>
+        <reference xiitest="FAIL-ix-references-namespace-bindings-04"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i12113ng/i12113ng-20081231.htm</instance>
+            <linkbase>i12113ng/i12113ng-20081231_pre.xml</linkbase>
+            <linkbase>i12113ng/i12113ng-20081231_lab.xml</linkbase>
+            <schema>i12113ng/i12113ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.12.1.2:referencesNamespacePrefixConflict" frd="ix" fj="IXBRL_REFERENCE_ELEMENTS_SOME_HAS_DEFAULT_NAMESPACE_SOME_DONT" nnum="701-12" txt="Inline XBRL ix:references prefix $ has multiple namespaces * in target #"></assert>
+        </result>
+    </variation>
+</testcase>

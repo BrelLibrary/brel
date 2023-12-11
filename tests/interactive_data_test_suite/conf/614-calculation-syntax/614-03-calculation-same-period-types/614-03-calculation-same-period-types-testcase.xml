@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>614-03</number>
+    <name>EDGAR Filer Manual v68d 6.14.3</name>
+    <description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.14.3  The source and target of a calculation relationship must have the same period type.">Refer to EFM: 6.14.3  The source and target of a calculation relationship must have the same period type.</a>
+    </description>
+    <reference specification="10933"></reference>
+    <variation id="_001ng">
+        <name>6.14.3, effective calculation arc has different period types for parent and child, NOGOOD.</name>
+        <description>effective calculation arc has different period types for parent and child, NOGOOD.</description>
+        <reference specification="10933"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e61403001ng-20081231.xml</instance>
+            <linkbase>e61403001ng-20081231_lab.xml</linkbase>
+            <linkbase>e61403001ng-20081231_pre.xml</linkbase>
+            <linkbase>e61403001ng-20081231_cal.xml</linkbase>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+            <schema>e61403001ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="61403" name="Calculation-Relationship-Has-Different-Period-Types" frd="fs"></assert>
+        </result>
+    </variation>
+</testcase>

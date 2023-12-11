@@ -1,0 +1,628 @@
+<html xmlns:case="http://edgar/2009/conformance">
+  <head>
+    <title>525-09
+        :
+        Inline XBRL Test Suite v68d : Footnote tests, Not EDGAR Dependent</title>
+    <style type="text/css">
+        table, td, th {border: solid black 1pt; border-collapse: collapse;} td {vertical-align: top;}
+      </style>
+  </head>
+  <body>
+    <h1>525-09
+        :
+        Inline XBRL Test Suite v68d : Footnote tests, Not EDGAR Dependent</h1>
+    <p>
+        Created by: 
+        <a href="mailto:StructuredData@sec.gov">SEC Office of Structured Disclosure</a></p>
+    <p>
+      <description xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <h2>Various "good" (gd) and "not good" (ng) test files that demonstrate specific Footnote usage</h2>
+    </description>
+    </p>
+    <h2>
+        Variations
+      </h2>
+    <table border="solid">
+      <thead>
+        <tr>
+          <th>Number</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>References</th>
+          <th>Data Inputs</th>
+          <th>Result Outputs</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>_001gd</td>
+          <td>GOOD</td>
+          <td>Various footnote good tests, set 1 </td>
+          <td>6 The footnote element 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i09001gd/i09001gd-20081231.htm">i09001gd/i09001gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+      Image
+      <a href="i09001gd/i09001gd-20081231.jpg">i09001gd/i09001gd-20081231.jpg</a></li>
+              <li>
+    Linkbase
+    <a href="i09001gd/i09001gd-20081231_pre.xml">i09001gd/i09001gd-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i09001gd/i09001gd-20081231_lab.xml">i09001gd/i09001gd-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i09001gd/i09001gd-20081231.xsd">i09001gd/i09001gd-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_002gd</td>
+          <td>GOOD</td>
+          <td>Various footnote related good tests, set 2.</td>
+          <td>6 The footnote element 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i09002gd/i09002gd-20081231.htm">i09002gd/i09002gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i09002gd/i09002gd-20081231_pre.xml">i09002gd/i09002gd-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i09002gd/i09002gd-20081231_lab.xml">i09002gd/i09002gd-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i09002gd/i09002gd-20081231.xsd">i09002gd/i09002gd-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_003gd</td>
+          <td>ix:footnotes without xml:lang, but with xml:lang in scope, GOOD</td>
+          <td>footnotes with lang in scope</td>
+          <td>The ix:footnote element MUST have an xml:lang attribute in scope. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i09003gd/i09003gd-20081231.htm">i09003gd/i09003gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i09003gd/i09003gd-20081231_pre.xml">i09003gd/i09003gd-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i09003gd/i09003gd-20081231_lab.xml">i09003gd/i09003gd-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i09003gd/i09003gd-20081231.xsd">i09003gd/i09003gd-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_100ng</td>
+          <td>Spurious attributes on ix:footnote, NOGOOD</td>
+          <td>FAIL-footnote-any-attribute</td>
+          <td>ix:footnote can have any attribute with a namespace name which has the value http://www.w3.org/XML/1998/namespace 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i09100ng/i09100ng-20081231.htm">i09100ng/i09100ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i09100ng/i09100ng-20081231_pre.xml">i09100ng/i09100ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i09100ng/i09100ng-20081231_lab.xml">i09100ng/i09100ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i09100ng/i09100ng-20081231.xsd">i09100ng/i09100ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-html:syntaxError">html:syntaxError</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_101ng</td>
+          <td>Missing id attribute on ix:footnote, NOGOOD</td>
+          <td>FAIL-footnote-missing-footnoteID</td>
+          <td>The ix:footnote element MUST have an id attribute. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i09101ng/i09101ng-20081231.htm">i09101ng/i09101ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i09101ng/i09101ng-20081231_pre.xml">i09101ng/i09101ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i09101ng/i09101ng-20081231_lab.xml">i09101ng/i09101ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i09101ng/i09101ng-20081231.xsd">i09101ng/i09101ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-html:syntaxError">html:syntaxError</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_102ng</td>
+          <td>duplicate footnote ids, NOGOOD</td>
+          <td>FAIL-footnote-duplicate-footnoteIDs</td>
+          <td>ID values MUST uniquely identify the elements which bear them. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i09102ng/i09102ng-20081231.htm">i09102ng/i09102ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i09102ng/i09102ng-20081231_pre.xml">i09102ng/i09102ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i09102ng/i09102ng-20081231_lab.xml">i09102ng/i09102ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i09102ng/i09102ng-20081231.xsd">i09102ng/i09102ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-xml.3.3.1:idMustBeUnique">xml.3.3.1:idMustBeUnique</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_103ng</td>
+          <td>id of footnote is shared with a unit, NOGOOD</td>
+          <td>FAIL-element-ix-footnote-04</td>
+          <td>ID values MUST uniquely identify the elements which bear them. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i09103ng/i09103ng-20081231.htm">i09103ng/i09103ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i09103ng/i09103ng-20081231_pre.xml">i09103ng/i09103ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i09103ng/i09103ng-20081231_lab.xml">i09103ng/i09103ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i09103ng/i09103ng-20081231.xsd">i09103ng/i09103ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-xml.3.3.1:idMustBeUnique">xml.3.3.1:idMustBeUnique</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_104ng</td>
+          <td>, NOGOOD</td>
+          <td>FAIL-footnote-dangling-continuation</td>
+          <td>If the continuedAt attribute is present, there MUST exist an ix:continuation element in the Inline XBRL Document Set with an {id} property which has a value matching the {continuation reference} property. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i09104ng/i09104ng-20081231.htm">i09104ng/i09104ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i09104ng/i09104ng-20081231_pre.xml">i09104ng/i09104ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i09104ng/i09104ng-20081231_lab.xml">i09104ng/i09104ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i09104ng/i09104ng-20081231.xsd">i09104ng/i09104ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.6.1.2:continuationMissing">ix11.6.1.2:continuationMissing</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_105gd</td>
+          <td>Footnote content model disallows empty footnote, NOGOOD</td>
+          <td>FAIL-footnote-invalid-element-content</td>
+          <td>Content: ( any element | any text node ) + 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i09105gd/i09105gd-20081231.htm">i09105gd/i09105gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i09105gd/i09105ng-20081231_pre.xml">i09105gd/i09105ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i09105gd/i09105ng-20081231_lab.xml">i09105gd/i09105ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i09105gd/i09105ng-20081231.xsd">i09105gd/i09105ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_106ng</td>
+          <td>, NOGOOD</td>
+          <td>FAIL-footnote-dangling-fromRef</td>
+          <td>For each token in the {from} property there MUST exist an ix:fraction, ix:nonFraction, ix:nonNumeric or ix:tuple  element in the Inline XBRL Document Set with an {id} property which has a matching value. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i09106ng/i09106ng-20081231.htm">i09106ng/i09106ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i09106ng/i09106ng-20081231_pre.xml">i09106ng/i09106ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i09106ng/i09106ng-20081231_lab.xml">i09106ng/i09106ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i09106ng/i09106ng-20081231.xsd">i09106ng/i09106ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.13.1.2:relationshipFromRef">ix11.13.1.2:relationshipFromRef</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_107ng</td>
+          <td>, NOGOOD</td>
+          <td>FAIL-footnote-dangling-toRef</td>
+          <td>For each token in the {to} property there MUST exist an ix:footnote, ix:fraction, ix:nonFraction, ix:nonNumeric or ix:tuple  element in the Inline XBRL Document Set with an {id} property which has a matching value. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i09107ng/i09107ng-20081231.htm">i09107ng/i09107ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i09107ng/i09107ng-20081231_pre.xml">i09107ng/i09107ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i09107ng/i09107ng-20081231_lab.xml">i09107ng/i09107ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i09107ng/i09107ng-20081231.xsd">i09107ng/i09107ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.13.1.2:relationshipToRef">ix11.13.1.2:relationshipToRef</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_108ng</td>
+          <td>ix:footnote without xml:lang, and no xml:lang in scope, NOGOOD</td>
+          <td>footnote with no lang in scope</td>
+          <td>The ix:footnote element MUST have an xml:lang attribute in scope. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i09108ng/i09108ng-20081231.htm">i09108ng/i09108ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i09108ng/i09108ng-20081231_pre.xml">i09108ng/i09108ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i09108ng/i09108ng-20081231_lab.xml">i09108ng/i09108ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i09108ng/i09108ng-20081231.xsd">i09108ng/i09108ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.6.1.2:footnoteLang">ix11.6.1.2:footnoteLang</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_109ng</td>
+          <td>ix:footnote without xml:lang, and no xml:lang in scope, NOGOOD</td>
+          <td>footnote with no lang in scope</td>
+          <td>The ix:footnote element MUST have an xml:lang attribute in scope. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i09109ng/i09001gd-20081231.htm">i09109ng/i09001gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i09109ng/i09001gd-20081231_pre.xml">i09109ng/i09001gd-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i09109ng/i09001gd-20081231_lab.xml">i09109ng/i09001gd-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i09109ng/i09001gd-20081231.xsd">i09109ng/i09001gd-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.13.1.2:relationshipFromRef">ix11.13.1.2:relationshipFromRef</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xbrli:xbrl xmlns="http://www.w3.org/1999/xhtml" xmlns:dei="http://xbrl.sec.gov/dei/2023" xmlns:edgar="http://edgar/20081231" xmlns:iso4217="http://www.xbrl.org/2003/iso4217" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xbrldt="http://xbrl.org/2005/xbrldt" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <link:schemaRef xlink:href="edgar-20091231.xsd" xlink:type="simple"></link:schemaRef>
+    <xbrli:context id="FY09">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2009-01-01</xbrli:startDate>
+            <xbrli:endDate>2009-12-31</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="FY09e">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:instant>2008-12-31</xbrli:instant>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="FY10">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2010-01-01</xbrli:startDate>
+            <xbrli:endDate>2010-12-31</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="Startup">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2001-10-01</xbrli:startDate>
+            <xbrli:endDate>2008-12-31</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:unit id="USD">
+        <xbrli:measure>iso4217:USD</xbrli:measure>
+    </xbrli:unit>
+    <xbrli:unit id="shares">
+        <xbrli:measure>xbrli:shares</xbrli:measure>
+    </xbrli:unit>
+    <dei:DocumentType contextRef="FY09">10-K</dei:DocumentType>
+    <dei:DocumentPeriodEndDate contextRef="FY09">2008-12-31</dei:DocumentPeriodEndDate>
+    <dei:EntityInteractiveDataCurrent contextRef="FY09">Yes</dei:EntityInteractiveDataCurrent>
+    <dei:EntityCentralIndexKey contextRef="FY09">9876543210</dei:EntityCentralIndexKey>
+    <dei:EntityRegistrantName contextRef="FY09">e60519005gd</dei:EntityRegistrantName>
+    <dei:CurrentFiscalYearEndDate contextRef="FY09">--12-31</dei:CurrentFiscalYearEndDate>
+    <dei:EntityWellKnownSeasonedIssuer contextRef="FY09">No</dei:EntityWellKnownSeasonedIssuer>
+    <dei:EntityVoluntaryFilers contextRef="FY09">Yes</dei:EntityVoluntaryFilers>
+    <dei:EntityCurrentReportingStatus contextRef="FY09">Yes</dei:EntityCurrentReportingStatus>
+    <dei:EntityFilerCategory contextRef="FY09">Non-accelerated Filer</dei:EntityFilerCategory>
+    <dei:EntityPublicFloat contextRef="FY09e" unitRef="USD" decimals="-6">0</dei:EntityPublicFloat>
+    <dei:EntityCommonStockSharesOutstanding contextRef="FY09e" unitRef="shares" decimals="INF">0</dei:EntityCommonStockSharesOutstanding>
+    <dei:AmendmentFlag contextRef="FY09">false</dei:AmendmentFlag>
+    <dei:DocumentFiscalYearFocus contextRef="FY09">2009</dei:DocumentFiscalYearFocus>
+    <dei:DocumentFiscalPeriodFocus contextRef="FY09">FY</dei:DocumentFiscalPeriodFocus>
+    <dei:EntityRegistrantName contextRef="Startup">OPTIGRAB</dei:EntityRegistrantName>
+    <dei:DocumentPeriodEndDate contextRef="Startup">2008-12-31</dei:DocumentPeriodEndDate>
+    <edgar:MonetaryItem contextRef="FY10" unitRef="USD" decimals="-6">2010000000</edgar:MonetaryItem>
+    <edgar:MonetaryItem contextRef="FY09" unitRef="USD" decimals="-6">2009000000</edgar:MonetaryItem>
+    <edgar:MonetaryItem contextRef="Startup" unitRef="USD" decimals="-6">2007000000</edgar:MonetaryItem>
+    <dei:EntityEmergingGrowthCompany contextRef="FY09">false</dei:EntityEmergingGrowthCompany>
+    <dei:EntitySmallBusiness contextRef="FY09">false</dei:EntitySmallBusiness>
+    <dei:EntityShellCompany contextRef="FY09" id="ent-shell">false</dei:EntityShellCompany>
+</xbrli:xbrl>

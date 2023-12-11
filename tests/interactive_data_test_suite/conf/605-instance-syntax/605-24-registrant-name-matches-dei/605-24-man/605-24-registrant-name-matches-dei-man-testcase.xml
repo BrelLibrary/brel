@@ -1,0 +1,257 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../../lib/test.xsl" ?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>605-24</number>
+    <name>EDGAR Filer Manual v68d 6.5.24</name>
+    <description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.5.24 The Registrant Name in the required context.">Refer to EFM: 6.5.24 The Registrant Name in the required context.</a>
+    </description>
+    <reference specification="11171"></reference>
+    <reference specification="11154.28.1"></reference>
+    <variation id="_000gd">
+        <name>6.5.24 case-insensitive prefix match to Official Registrant Name, GOOD</name>
+        <description>Alpha Beta Chi Company match to Official Registrant Name, GOOD</description>
+        <reference specification="11171"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "submissionType": "8-K", "cikNameList":"ALPHA BETA CHI", "cikList":"9876543210"}'></parameter>
+            <instance readMeFirst="true">e60524000gd-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_001gd">
+        <name>6.5.24 case-insensitive prefix match to Official Registrant Name, GOOD</name>
+        <description>Alpha Beta Chicago match to Official Registrant Name, GOOD</description>
+        <reference specification="11171"></reference>
+        <reference specification="11154.28.1"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "submissionType": "8-K", "cikNameList":"ALPHA BETA CHI", "cikList":"9876543210"}'></parameter>
+            <instance readMeFirst="true">e60524001gd-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_002ng">
+        <name>6.5.24 mismatch to Official Registrant Name, NOGOOD</name>
+        <description>AlphaBeta Chi mismatch to Official Registrant Name, NOGOOD</description>
+        <reference specification="11171"></reference>
+        <reference specification="11154.28.1"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "submissionType": "8-K", "cikNameList":"ALPHA BETA CHI", "cikList":"9876543210"}'></parameter>
+            <instance readMeFirst="true">e60524002ng-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60524" name="Registrant-Name-Mismatch" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_003gd">
+        <name>6.5.24 match to Official Registrant Name, GOOD</name>
+        <description>AlPhA bEtA cHi match to Official Registrant Name, GOOD</description>
+        <reference specification="11171"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "submissionType": "8-K", "cikNameList":"ALPHA BETA CHI", "cikList":"9876543210"}'></parameter>
+            <instance readMeFirst="true">e60524003gd-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_004gd">
+        <name>6.5.24 Official Registrant Name has backslashes, GOOD</name>
+        <description>Official Registrant Name has backslashes, GOOD</description>
+        <reference specification="11171"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "submissionType": "8-K", "cikNameList":"ALPHA BETA CHI \\WA\\", "cikList":"9876543210"}'></parameter>
+            <instance readMeFirst="true">e60524004gd-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_005gd">
+        <name>6.5.24 case-insensitive prefix match to Official Registrant Name, ignores preceding name in French, GOOD</name>
+        <description>Alpha Beta Chi Company match to Official Registrant Name, GOOD</description>
+        <reference specification="11171"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "submissionType": "8-K", "cikNameList":"ALPHA BETA CHI", "cikList":"9876543210"}'></parameter>
+            <instance readMeFirst="true">e60524005gd-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_006gd">
+        <name>6.5.24 case-insensitive prefix match to Official Registrant Name, ignores subsequent name in French, GOOD</name>
+        <description>Alpha Beta Chi Company match to Official Registrant Name, GOOD</description>
+        <reference specification="11171"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "submissionType": "8-K", "cikNameList":"ALPHA BETA CHI", "cikList":"9876543210"}'></parameter>
+            <instance readMeFirst="true">e60524006gd-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_007gd">
+        <name>6.5.24 case-insensitive prefix match to Official Registrant Name, english xml:lang is canonical value en-us, ignores subsequent name in French, GOOD</name>
+        <description>Alpha Beta Chi Company match to Official Registrant Name, shows that canonical xml:lang (lowercased) is accepted, GOOD</description>
+        <reference specification="11171"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "submissionType": "8-K", "cikNameList":"ALPHA BETA CHI", "cikList":"9876543210"}'></parameter>
+            <instance readMeFirst="true">e60524007gd-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_200gd">
+        <name>6.5.24 match to Official Registrant Name with an Ampersand, GOOD</name>
+        <description>match to Official Registrant Name with an Ampersand, GOOD</description>
+        <reference specification="11171"></reference>
+        <reference specification="11154.28.1"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "submissionType": "8-K", "cikList":"9876543210", "cikNameList":"ABC &amp; DEF LLC"}'></parameter>
+            <instance readMeFirst="true">e60524200gd-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_300gd">
+        <name>6.5.24 match to Official Registrant Name with strange 7-Bit ASCII characters, GOOD</name>
+        <description>match to Official Registrant Name with strange 7-Bit ASCII characters, GOOD</description>
+        <reference specification="11171"></reference>
+        <reference specification="11154.28.1"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "submissionType": "8-K", "cikList":"3333333333", "cikNameList":"THI!S $TR@NGE N#ME=:;."}'></parameter>
+            <instance readMeFirst="true">e60524300gd-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_500gd">
+        <name>6.5.24 CIK+Name matches the primary of two Registrant Names, GOOD</name>
+        <description>CIK+Name matches the primary of two Registrant Names, GOOD</description>
+        <reference specification="11171"></reference>
+        <reference specification="11154.28.1"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "submissionType": "8-K", "cikList":"9876543210,3333333333", "cikNameList":"ABC &amp; DEF LLC|Edgar|THI!S $TR@NGE N#ME=:;."}'></parameter>
+            <instance readMeFirst="true">e60524500gd-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_501gd">
+        <name>6.5.24 CIK+Name matches the secondary of two Registrant Names, GOOD</name>
+        <description>CIK+Name matches the secondary of two Registrant Names, GOOD</description>
+        <reference specification="11171"></reference>
+        <reference specification="11154.28.1"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "submissionType": "8-K", "cikList":"9876543210,3333333333", "cikNameList":"ABC &amp; DEF LLC|Edgar|TH!S $TR@NGE N#M=:;."}'></parameter>
+            <instance readMeFirst="true">e60524501gd-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_502ng">
+        <name>6.5.24 CIK+Name in instance mismatches the first of two Registrant Names, NOGOOD</name>
+        <description>CIK+Name in instance mismatches the first of two Registrant Names, NOGOOD</description>
+        <reference specification="11171"></reference>
+        <reference specification="11154.28.1"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "submissionType": "8-K", "cikList":"9876543210,3333333333", "cikNameList":"ABC &amp; DEF LLC|Edgar|THI!S $TR@NGE N#ME=:;."}'></parameter>
+            <instance readMeFirst="true">e60524502ng-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60524" name="Registrant-Name-Mismatch" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_503ng">
+        <name>6.5.24 CIK+Name in instance mismatches the second of two Registrant Names, NOGOOD</name>
+        <description>CIK+Name in instance mismatches the second of two Registrant Names, NOGOOD</description>
+        <reference specification="11171"></reference>
+        <reference specification="11154.28.1"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "submissionType": "8-K", "cikList":"9876543210,3333333333", "cikNameList":"ABC &amp; DEF LLC|Edgar|THI!S\\$TR@NGE N#ME=:;."}'></parameter>
+            <instance readMeFirst="true">e60524503ng-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60524" name="Registrant-Name-Mismatch" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_504gd">
+        <name>6.5.24 CIK+Name matches the last of multiple Registrant Names, GOOD</name>
+        <description>CIK+Name matches the last of multiple Registrant Names, GOOD</description>
+        <reference specification="11171"></reference>
+        <reference specification="11154.28.1"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "submissionType": "8-K", "cikList":"3333333333,2222222222,9876543210", "cikNameList":"THI!S $TR@NGE N#ME=:;.|Edgar|Fi fo fum LLC|Edgar|ANONYMOUS"}'></parameter>
+            <instance readMeFirst="true">e60524504gd-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_506ng">
+        <name>6.5.24 CIK+Name matches inconsistent array of multiple Registrant Names, NOGOOD</name>
+        <description>CIK+Name matches second and Name matches the last of multiple Registrant Names but lengths of name and CIK arrays differ, NOGOOD</description>
+        <reference specification="11171"></reference>
+        <reference specification="11154.28.1"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "submissionType": "8-K", "cikList":"3333333333,2222222222,9876543210,1111111111", "cikNameList":"THI!S $TR@NGE N#ME=:;.|Edgar|Fi fo fum LLC|Edgar|ABC &amp; DEF LLC"}'></parameter>
+            <instance readMeFirst="true">e60524506ng-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60524" name="Registrant-Name-Mismatch" frd="du"></assert>
+        </result>
+    </variation>
+</testcase>

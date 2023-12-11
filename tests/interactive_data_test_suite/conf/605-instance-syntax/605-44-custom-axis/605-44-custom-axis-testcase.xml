@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl"?>
+<conf:testcase xmlns:conf="http://edgar/2009/conformance" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <conf:creator>
+        <conf:name>SEC Office of Structured Disclosure</conf:name>
+        <conf:email>StructuredData@sec.gov</conf:email>
+    </conf:creator>
+    <conf:number>605-44</conf:number>
+    <conf:name>EDGAR Filer Manual v68d 6.5.44</conf:name>
+    <conf:description xmlns="">
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.5.44 Reserved">Refer to EFM: 6.5.44 Reserved</a>
+    </conf:description>
+    <conf:reference specification="12907"></conf:reference>
+    <conf:variation id="_001gd">
+        <conf:name>6.5.44 Basic 8-K - CurrencyAxis GW</conf:name>
+        <conf:description>
+            <div xmlns="">Basic 8-K - CurrencyAxis GW</div>
+        </conf:description>
+        <conf:reference specification="eer-120"></conf:reference>
+        <conf:data>
+            <conf:parameter xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ELOparams" datatype="xs:string" value='{ "submissionType" : "8-K", "periodOfReport" : "12-31-2008" ,"emergingGrowthCompanyFlag" : true }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60544001gd-20081231.xml</conf:instance>
+            <conf:schema>e60544001gd-20081231.xsd</conf:schema>
+            <conf:linkbase>e60544001gd-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60544001gd-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60544001gd-20081231_def.xml</conf:linkbase>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_002gw">
+        <conf:name>6.5.44 Basic 8-K - AllCurrenciesType1Axis GW</conf:name>
+        <conf:description>
+            <div xmlns="">Basic 8-K - AllCurrenciesType1Axis GW</div>
+        </conf:description>
+        <conf:reference specification="eer-121"></conf:reference>
+        <conf:data>
+            <conf:parameter xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ELOparams" datatype="xs:string" value='{ "submissionType" : "8-K", "periodOfReport" : "12-31-2008" ,"emergingGrowthCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60544002gw-20081231.xml</conf:instance>
+            <conf:schema>e60544002gw-20081231.xsd</conf:schema>
+            <conf:linkbase>e60544002gw-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60544002gw-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60544002gw-20081231_def.xml</conf:linkbase>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60544" name="Custom-Axis" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_003gw">
+        <conf:name>6.5.44 Basic 8-K - ForeignCurrencyAxis GW</conf:name>
+        <conf:description>
+            <div xmlns="">Basic 8-K - ForeignCurrencyAxis GW</div>
+        </conf:description>
+        <conf:reference specification="eer-122"></conf:reference>
+        <conf:data>
+            <conf:parameter xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ELOparams" datatype="xs:string" value='{ "submissionType" : "8-K", "periodOfReport" : "12-31-2008" ,"emergingGrowthCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60544003gw-20081231.xml</conf:instance>
+            <conf:schema>e60544003gw-20081231.xsd</conf:schema>
+            <conf:linkbase>e60544003gw-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60544003gw-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60544003gw-20081231_def.xml</conf:linkbase>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60544" name="Custom-Axis" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_004gw">
+        <conf:name>6.5.44 Basic 8-K - ConsolidatingEntityAxis GW</conf:name>
+        <conf:description>
+            <div xmlns="">Basic 8-K - ConsolidatingEntityAxis GW</div>
+        </conf:description>
+        <conf:reference specification="eer-123"></conf:reference>
+        <conf:data>
+            <conf:parameter xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ELOparams" datatype="xs:string" value='{ "submissionType" : "8-K", "periodOfReport" : "12-31-2008" ,"emergingGrowthCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60544004gw-20081231.xml</conf:instance>
+            <conf:schema>e60544004gw-20081231.xsd</conf:schema>
+            <conf:linkbase>e60544004gw-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60544004gw-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60544004gw-20081231_def.xml</conf:linkbase>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60544" name="Custom-Axis" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_005gw">
+        <conf:name>6.5.44 Basic 8-K - ConsolidatedEntities1Axis GW</conf:name>
+        <conf:description>
+            <div xmlns="">Basic 8-K - ConsolidatedEntities1Axis GW</div>
+        </conf:description>
+        <conf:reference specification="eer-124"></conf:reference>
+        <conf:data>
+            <conf:parameter xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ELOparams" datatype="xs:string" value='{ "submissionType" : "8-K", "periodOfReport" : "12-31-2008" ,"emergingGrowthCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60544005gw-20081231.xml</conf:instance>
+            <conf:schema>e60544005gw-20081231.xsd</conf:schema>
+            <conf:linkbase>e60544005gw-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60544005gw-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60544005gw-20081231_def.xml</conf:linkbase>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60544" name="Custom-Axis" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_006gw">
+        <conf:name>6.5.44 AllCurrenciesType1Axis tagged in Nil fact, GW</conf:name>
+        <conf:description>
+            <div xmlns="">AllCurrenciesType1Axis tagged in Nil fact, GW</div>
+        </conf:description>
+        <conf:reference specification="eer-121"></conf:reference>
+        <conf:data>
+            <conf:parameter xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ELOparams" datatype="xs:string" value='{ "submissionType" : "8-K", "periodOfReport" : "12-31-2008" ,"emergingGrowthCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60544006gw-20081231.xml</conf:instance>
+            <conf:schema>e60544006gw-20081231.xsd</conf:schema>
+            <conf:linkbase>e60544006gw-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60544006gw-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60544006gw-20081231_def.xml</conf:linkbase>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60544" name="Custom-Axis" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+</conf:testcase>

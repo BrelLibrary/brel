@@ -1,0 +1,246 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xbrli:xbrl xmlns:dei="http://xbrl.sec.gov/dei/2023" xmlns:edgar="http://edgar/20081231" xmlns:iso4217="http://www.xbrl.org/2003/iso4217" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xbrldi="http://xbrl.org/2006/xbrldi" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:exch="http://xbrl.sec.gov/exch/2023" xmlns:naics="http://xbrl.sec.gov/naics/2023" xmlns:sic="http://xbrl.sec.gov/sic/2023" xmlns:stpr="http://xbrl.sec.gov/stpr/2023" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <link:schemaRef xlink:href="e60507001ng-20081231.xsd" xlink:type="simple"></link:schemaRef>
+    <xbrli:context id="FY08">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2008-01-01</xbrli:startDate>
+            <xbrli:endDate>2008-12-31</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="FY08_Form8KMember">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+            <xbrli:segment>
+                <xbrldi:explicitMember dimension="dei:DocumentInformationDocumentAxis">edgar:Form8KMember</xbrldi:explicitMember>
+            </xbrli:segment>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2008-01-01</xbrli:startDate>
+            <xbrli:endDate>2008-12-31</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="FY08_PepperoniMember">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+            <xbrli:segment>
+                <xbrldi:explicitMember dimension="dei:LegalEntityAxis">edgar:PepperoniMember</xbrldi:explicitMember>
+            </xbrli:segment>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2008-01-01</xbrli:startDate>
+            <xbrli:endDate>2008-12-31</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="FY08_MailingAddressMember">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+            <xbrli:segment>
+                <xbrldi:explicitMember dimension="dei:EntityAddressesAddressTypeAxis">dei:MailingAddressMember</xbrldi:explicitMember>
+            </xbrli:segment>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2008-01-01</xbrli:startDate>
+            <xbrli:endDate>2008-12-31</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="FY08_LegalAddressMember">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+            <xbrli:segment>
+                <xbrldi:explicitMember dimension="dei:EntityAddressesAddressTypeAxis">dei:LegalAddressMember</xbrldi:explicitMember>
+            </xbrli:segment>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2008-01-01</xbrli:startDate>
+            <xbrli:endDate>2008-12-31</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="FY08_XNYS">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+            <xbrli:segment>
+                <xbrldi:explicitMember dimension="dei:EntityListingsExchangeAxis">exch:XNYS</xbrldi:explicitMember>
+            </xbrli:segment>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2008-01-01</xbrli:startDate>
+            <xbrli:endDate>2008-12-31</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="FY08_GeneralPhoneMember">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+            <xbrli:segment>
+                <xbrldi:explicitMember dimension="dei:EntityPhoneFaxNumbersPhoneFaxNumberTypeAxis">dei:GeneralPhoneMember</xbrldi:explicitMember>
+            </xbrli:segment>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2008-01-01</xbrli:startDate>
+            <xbrli:endDate>2008-12-31</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="FY08_Z3600">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+            <xbrli:segment>
+                <xbrldi:explicitMember dimension="dei:EntitySectorIndustryClassificationsSectorAxis">sic:Z3600</xbrldi:explicitMember>
+            </xbrli:segment>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2008-01-01</xbrli:startDate>
+            <xbrli:endDate>2008-12-31</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="FY08_NY">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+            <xbrli:segment>
+                <xbrldi:explicitMember dimension="dei:EntityByLocationAxis">stpr:NY</xbrldi:explicitMember>
+            </xbrli:segment>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2008-01-01</xbrli:startDate>
+            <xbrli:endDate>2008-12-31</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="FY08_ZZ52_PepperoniMember">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+            <xbrli:segment>
+                <xbrldi:explicitMember dimension="dei:EntityNorthAmericanIndustryClassificationsIndustryAxis">naics:ZZ52</xbrldi:explicitMember>
+                <xbrldi:explicitMember dimension="dei:LegalEntityAxis">edgar:PepperoniMember</xbrldi:explicitMember>
+            </xbrli:segment>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2008-01-01</xbrli:startDate>
+            <xbrli:endDate>2008-12-31</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="FY08_ZZ31">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+            <xbrli:segment>
+                <xbrldi:explicitMember dimension="dei:EntityNorthAmericanIndustryClassificationsIndustryAxis">naics:ZZ31</xbrldi:explicitMember>
+            </xbrli:segment>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2008-01-01</xbrli:startDate>
+            <xbrli:endDate>2008-12-31</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="FY08_Z6100toZ6199_PepperoniMember">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+            <xbrli:segment>
+                <xbrldi:explicitMember dimension="dei:EntitySectorIndustryClassificationsSectorAxis">sic:Z6100toZ6199</xbrldi:explicitMember>
+                <xbrldi:explicitMember dimension="dei:LegalEntityAxis">edgar:PepperoniMember</xbrldi:explicitMember>
+            </xbrli:segment>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2008-01-01</xbrli:startDate>
+            <xbrli:endDate>2008-12-31</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="FY08_InvestorRelationsContactMember">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+            <xbrli:segment>
+                <xbrldi:explicitMember dimension="dei:EntityContactPersonnelContactPersonTypeAxis">dei:InvestorRelationsContactMember</xbrldi:explicitMember>
+            </xbrli:segment>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2008-01-01</xbrli:startDate>
+            <xbrli:endDate>2008-12-31</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="FY08_BusinessContactMember_PepperoniMember">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+            <xbrli:segment>
+                <xbrldi:explicitMember dimension="dei:EntityContactPersonnelContactPersonTypeAxis">dei:BusinessContactMember</xbrldi:explicitMember>
+                <xbrldi:explicitMember dimension="dei:LegalEntityAxis">edgar:PepperoniMember</xbrldi:explicitMember>
+            </xbrli:segment>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2008-01-01</xbrli:startDate>
+            <xbrli:endDate>2008-12-31</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="FY08_PepperoniMember_BusinessContactMember">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+            <xbrli:segment>
+                <xbrldi:explicitMember dimension="dei:LegalEntityAxis">edgar:PepperoniMember</xbrldi:explicitMember>
+                <xbrldi:explicitMember dimension="dei:EntityContactPersonnelContactPersonTypeAxis">dei:BusinessContactMember</xbrldi:explicitMember>
+            </xbrli:segment>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2008-01-01</xbrli:startDate>
+            <xbrli:endDate>2008-12-31</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:unit id="USD">
+        <xbrli:measure>iso4217:USD</xbrli:measure>
+    </xbrli:unit>
+    <xbrli:unit id="shares">
+        <xbrli:measure>xbrli:shares</xbrli:measure>
+    </xbrli:unit>
+    <dei:DocumentName contextRef="FY08_Form8KMember">ABC 8-K</dei:DocumentName>
+    <dei:DocumentDescription contextRef="FY08_Form8KMember">Annual Report Pursuant to Section 13 or 15(d) of the Securities Exchange Act of 1934</dei:DocumentDescription>
+    <dei:DocumentPeriodStartDate contextRef="FY08_Form8KMember">2007-01-01</dei:DocumentPeriodStartDate>
+    <dei:DocumentFiscalYearFocus contextRef="FY08_Form8KMember">2007</dei:DocumentFiscalYearFocus>
+    <dei:DocumentFiscalPeriodFocus contextRef="FY08_Form8KMember">FY</dei:DocumentFiscalPeriodFocus>
+    <dei:DocumentVersion contextRef="FY08_Form8KMember">1</dei:DocumentVersion>
+    <dei:ContainedFileInformationFileName contextRef="FY08_Form8KMember">frm10k.htm</dei:ContainedFileInformationFileName>
+    <dei:ContainedFileInformationFileDescription contextRef="FY08_Form8KMember">General Electronic 2007 Annual HTML</dei:ContainedFileInformationFileDescription>
+    <dei:ContainedFileInformationFileType contextRef="FY08_Form8KMember">HTML</dei:ContainedFileInformationFileType>
+    <dei:EntityAddressAddressDescription contextRef="FY08_MailingAddressMember">Mailing</dei:EntityAddressAddressDescription>
+    <dei:EntityAddressAddressLine1 contextRef="FY08_MailingAddressMember">3315 Morrison Turnpike</dei:EntityAddressAddressLine1>
+    <dei:EntityAddressCityOrTown contextRef="FY08_MailingAddressMember">Stamford</dei:EntityAddressCityOrTown>
+    <dei:EntityAddressStateOrProvince contextRef="FY08_MailingAddressMember">CT</dei:EntityAddressStateOrProvince>
+    <dei:EntityAddressCountry contextRef="FY08_MailingAddressMember">US</dei:EntityAddressCountry>
+    <dei:EntityAddressPostalZipCode contextRef="FY08_MailingAddressMember">06828-0001</dei:EntityAddressPostalZipCode>
+    <dei:EntityAddressAddressDescription contextRef="FY08_LegalAddressMember">Address of principal executive offices</dei:EntityAddressAddressDescription>
+    <dei:EntityAddressAddressLine1 contextRef="FY08_LegalAddressMember">3315 Morrison Turnpike</dei:EntityAddressAddressLine1>
+    <dei:EntityAddressCityOrTown contextRef="FY08_LegalAddressMember">Stamford</dei:EntityAddressCityOrTown>
+    <dei:EntityAddressStateOrProvince contextRef="FY08_LegalAddressMember">CT</dei:EntityAddressStateOrProvince>
+    <dei:EntityAddressCountry contextRef="FY08_LegalAddressMember">US</dei:EntityAddressCountry>
+    <dei:EntityAddressPostalZipCode contextRef="FY08_LegalAddressMember">06829-0200</dei:EntityAddressPostalZipCode>
+    <dei:EntityRegistrantName contextRef="FY08_PepperoniMember">Pepperoni</dei:EntityRegistrantName>
+    <dei:ParentEntityLegalName contextRef="FY08_PepperoniMember">ABC Financial Services</dei:ParentEntityLegalName>
+    <dei:EntityRegistrantName contextRef="FY08">e60507001ng</dei:EntityRegistrantName>
+    <dei:EntityCentralIndexKey contextRef="FY08">9876543210</dei:EntityCentralIndexKey>
+    <dei:EntityTaxIdentificationNumber contextRef="FY08">14-0689340</dei:EntityTaxIdentificationNumber>
+    <dei:EntityHomeCountryISOCode contextRef="FY08">US</dei:EntityHomeCountryISOCode>
+    <dei:EntityAccountingStandard contextRef="FY08">USGAAP</dei:EntityAccountingStandard>
+    <dei:EntityReportingCurrencyISOCode contextRef="FY08">USD</dei:EntityReportingCurrencyISOCode>
+    <dei:EntityIncorporationStateCountryCode contextRef="FY08">NY</dei:EntityIncorporationStateCountryCode>
+    <dei:TradingSymbol contextRef="FY08_XNYS">ABC</dei:TradingSymbol>
+    <dei:EntityListingPrimary contextRef="FY08_XNYS">Yes</dei:EntityListingPrimary>
+    <dei:EntityListingDescription contextRef="FY08_XNYS">Common stock, par value $0.01 per share</dei:EntityListingDescription>
+    <dei:EntityListingSecurityTradingCurrency contextRef="FY08_XNYS">USD</dei:EntityListingSecurityTradingCurrency>
+    <dei:PhoneFaxNumberDescription contextRef="FY08_GeneralPhoneMember">General Contact</dei:PhoneFaxNumberDescription>
+    <dei:CountryRegion contextRef="FY08_GeneralPhoneMember">1</dei:CountryRegion>
+    <dei:CityAreaCode contextRef="FY08_GeneralPhoneMember">203</dei:CityAreaCode>
+    <dei:LocalPhoneNumber contextRef="FY08_GeneralPhoneMember">221-3700</dei:LocalPhoneNumber>
+    <dei:EntitySectorIndustryClassificationPrimary contextRef="FY08_Z3600">Yes</dei:EntitySectorIndustryClassificationPrimary>
+    <dei:DocumentTitle contextRef="FY08_Form8KMember">Annual Report Pursuant to Section 13 or 15(d) of the Securities Exchange Act of 1934</dei:DocumentTitle>
+    <dei:EntityListingForeign contextRef="FY08_XNYS">No</dei:EntityListingForeign>
+    <dei:EntityLocationPrimary contextRef="FY08_NY">Yes</dei:EntityLocationPrimary>
+    <dei:EntityNorthAmericanIndustryClassificationPrimary contextRef="FY08_ZZ52_PepperoniMember">Yes</dei:EntityNorthAmericanIndustryClassificationPrimary>
+    <dei:EntityNorthAmericanIndustryClassificationPrimary contextRef="FY08_ZZ31">Yes</dei:EntityNorthAmericanIndustryClassificationPrimary>
+    <dei:EntitySectorIndustryClassificationPrimary contextRef="FY08_Z6100toZ6199_PepperoniMember">Yes</dei:EntitySectorIndustryClassificationPrimary>
+    <dei:ParentEntityLegalName contextRef="FY08">ABC Company</dei:ParentEntityLegalName>
+    <dei:EntityLegalForm contextRef="FY08">Corporation</dei:EntityLegalForm>
+    <dei:ContactPersonnelName contextRef="FY08_InvestorRelationsContactMember">Jane Doe</dei:ContactPersonnelName>
+    <dei:ContactPersonnelEmailAddress contextRef="FY08_InvestorRelationsContactMember">doej@sec.gov</dei:ContactPersonnelEmailAddress>
+    <dei:ContactPersonnelName contextRef="FY08_BusinessContactMember_PepperoniMember">Henry Plantagenet</dei:ContactPersonnelName>
+    <dei:ContactPersonnelEmailAddress contextRef="FY08_PepperoniMember_BusinessContactMember">plantagenethviii@sec.gov</dei:ContactPersonnelEmailAddress>
+    <dei:DocumentType contextRef="FY08">8-K</dei:DocumentType>
+    <dei:AmendmentFlag contextRef="FY08">false</dei:AmendmentFlag>
+    <dei:DocumentPeriodEndDate contextRef="FY08">2008-12-31</dei:DocumentPeriodEndDate>
+    <dei:EntityEmergingGrowthCompany contextRef="FY08">false</dei:EntityEmergingGrowthCompany>
+</xbrli:xbrl>

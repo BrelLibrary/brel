@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>624-09</number>
+    <name>EDGAR Filer Manual v68d 6.24.9</name>
+    <description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.24.9  Period Start labels">Refer to EFM: 6.24.9  Period Start labels</a>
+    </description>
+    <reference specification="18153"></reference>
+    <!--<variation id="_002gd">
+<name>Start-end- labels in a statement of equity, GOOD</name>
+<description />
+<data>
+<conf:parameter name="ELOparams" value='{"periodOfReport": "06-30-2010", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'
+xmlns=""
+xmlns:conf="http://edgar/2009/conformance" />
+<instance readMeFirst="true">002gd/r09002gd-20111231.xml</instance>
+<linkbase>002gd/r09002gd-20111231_pre.xml</linkbase>
+<linkbase>002gd/r09002gd-20111231_lab.xml</linkbase>
+<linkbase>002gd/r09002gd-20111231_def.xml</linkbase>
+<schema>002gd/r09002gd-20111231.xsd</schema>
+</data>
+<result />
+</variation>-->
+    <!-- TBD revisit for DQC 
+    <variation id="_000gd">
+        <name>Start-end- labels in a very simple cash flow statement having no flow-through suppression or dimensions, GOOD</name>
+        <description></description>
+        <data>
+            <parameter  name="ELOparams" value='{"periodOfReport": "12-31-2015", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">000gd/r09000gd-20081231.xml</instance>
+            <linkbase>000gd/r09000gd-20081231_pre.xml</linkbase>
+            <linkbase>000gd/r09000gd-20081231_lab.xml</linkbase>
+            <linkbase>000gd/r09000gd-20081231_cal.xml</linkbase>
+            <schema>000gd/r09000gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_001gd">
+        <name>Start-end- labels in a simple cash flow statement with a legal entity axis, GOOD</name>
+        <description></description>
+        <data>
+            <parameter  name="ELOparams" value='{"periodOfReport": "12-31-2015", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">001gd/r09001gd-20081231.xml</instance>
+            <linkbase>001gd/r09001gd-20081231_pre.xml</linkbase>
+            <linkbase>001gd/r09001gd-20081231_lab.xml</linkbase>
+            <linkbase>001gd/r09001gd-20081231_def.xml</linkbase>
+            <schema>001gd/r09001gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+-->
+</testcase>

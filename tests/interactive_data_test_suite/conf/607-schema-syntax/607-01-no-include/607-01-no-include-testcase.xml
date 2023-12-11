@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>607-01</number>
+    <name>EDGAR Filer Manual v68d 6.7.1</name>
+    <description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.7.1  The xsd:schema must not have an xsd:include element.">Refer to EFM: 6.7.1  The xsd:schema must not have an xsd:include element.</a>
+    </description>
+    <reference specification="10999"></reference>
+    <variation id="_000ng">
+        <name>6.7.1 Instance refers to a schema containing an include, NOGOOD</name>
+        <description>There is a direct reference to edgar-20081231.xsd just to avoid other errors. Then there is a reference to a schema with an include, NOGOOD.</description>
+        <reference specification="10999"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60701000ng-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+            <schema>e60701000ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60701" name="Schema-Include-Present" frd="du"></assert>
+        </result>
+    </variation>
+</testcase>

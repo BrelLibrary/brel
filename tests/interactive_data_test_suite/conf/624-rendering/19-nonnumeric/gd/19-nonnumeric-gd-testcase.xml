@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>624-19</number>
+    <name>EDGAR Filer Manual v68d 6.24.19</name>
+    <description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.24.19  Non-numeric Formatting">Refer to EFM: 6.24.19  Non-numeric Formatting</a>
+    </description>
+    <reference specification="18153"></reference>
+    <variation id="_001gd">
+        <name>Various special non numeric formatting cases.</name>
+        <description>Date, time, durations, near-embedding, near-html cases.</description>
+        <reference specification="18153"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2015", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">001gd/r19001gd-20081231.xml</instance>
+            <linkbase>001gd/r19001gd-20081231_pre.xml</linkbase>
+            <linkbase>001gd/r19001gd-20081231_lab.xml</linkbase>
+            <schema>001gd/r19001gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_002gd">
+        <name>Nonnumeric text block with HTML formatting and images.</name>
+        <description>A jpg and a gif image along with other HTML formatting.</description>
+        <reference specification="18153"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2014", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">002gd/r19000gd-20081231.xml</instance>
+            <image>002gd/r19000gd-20081231.jpg</image>
+            <image>002gd/r19000gd-20081231.gif</image>
+            <linkbase>002gd/r19000gd-20081231_def.xml</linkbase>
+            <linkbase>002gd/r19000gd-20081231_pre.xml</linkbase>
+            <linkbase>002gd/r19000gd-20081231_lab.xml</linkbase>
+            <schema>002gd/r19000gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_003gd">
+        <name>Qname-valued fact with a standard label for the Member.</name>
+        <description>Qname-valued fact with a standard label for the Member, GOOD.</description>
+        <reference specification="18153"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2018", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">003gd/r19003gd-20181231.htm</instance>
+            <linkbase>003gd/r19003gd-20181231_def.xml</linkbase>
+            <linkbase>003gd/r19003gd-20181231_pre.xml</linkbase>
+            <linkbase>003gd/r19003gd-20181231_lab.xml</linkbase>
+            <schema>003gd/r19003gd-20181231.xsd</schema>
+        </data>
+        <result expected="valid">
+  </result>
+    </variation>
+    <variation id="_004gd">
+        <name>Qname-valued fact with a terse label for the Member.</name>
+        <description>Qname-valued fact with a terse label for the Member, GOOD.</description>
+        <reference specification="18153"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2018", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">004gd/r19004gd-20181231.htm</instance>
+            <linkbase>004gd/r19004gd-20181231_def.xml</linkbase>
+            <linkbase>004gd/r19004gd-20181231_pre.xml</linkbase>
+            <linkbase>004gd/r19004gd-20181231_lab.xml</linkbase>
+            <schema>004gd/r19004gd-20181231.xsd</schema>
+        </data>
+        <result expected="valid">
+
+  </result>
+    </variation>
+    <variation id="_005gd">
+        <name>Qname-valued fact with no preferred label, and no actual label.</name>
+        <description>Qname-valued fact with no preferred label, and no actual label, GOOD.</description>
+        <reference specification="18153"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2018", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">005gd/r19005gd-20181231.htm</instance>
+            <linkbase>005gd/r19005gd-20181231_def.xml</linkbase>
+            <linkbase>005gd/r19005gd-20181231_pre.xml</linkbase>
+            <linkbase>005gd/r19005gd-20181231_lab.xml</linkbase>
+            <schema>005gd/r19005gd-20181231.xsd</schema>
+        </data>
+        <result expected="valid">
+  </result>
+    </variation>
+</testcase>

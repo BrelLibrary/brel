@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl"?>
+<conf:testcase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:conf="http://edgar/2009/conformance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <conf:creator>
+        <conf:name>SEC Office of Structured Disclosure</conf:name>
+        <conf:email>StructuredData@sec.gov</conf:email>
+    </conf:creator>
+    <conf:number>616-10</conf:number>
+    <conf:name>EDGAR Filer Manual v68d 6.16.10</conf:name>
+    <conf:description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.16.10  CEF definition link validations">Refer to EFM: 6.16.10  CEF definition link validations</a>
+    </conf:description>
+    <conf:variation id="_005gd">
+        <conf:name>dim1-cust-non-only-ecd-role-to-ecd-mbr, GD</conf:name>
+        <conf:description>dim1-cust-non-only-ecd-role-to-ecd-mbr, GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "10-K/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e61612005gd/e61612005gd-20331231.htm</conf:instance>
+            <conf:schema>e61612005gd/clb01-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_006gd">
+        <conf:name>dim1-cust-non-only-ecd-role-to-ecd-mbr, GD</conf:name>
+        <conf:description>dim1-cust-non-only-ecd-role-to-ecd-mbr, GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "10-K/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e61612006gd/e61612006gd-20331231.htm</conf:instance>
+            <conf:schema>e61612006gd/clb01-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_007gd">
+        <conf:name>dim2-cust-only-ecd-role-to-ecd-mbr-ok, GD</conf:name>
+        <conf:description>dim2-cust-only-ecd-role-to-ecd-mbr-ok, GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "10-K/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e61612007gd/e61612007gd-20331231.htm</conf:instance>
+            <conf:schema>e61612007gd/clb01-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_008ng">
+        <conf:name>dim2-cust-non-only-ecd-role-to-cust-mbr-ng, NG</conf:name>
+        <conf:description>dim2-cust-non-only-ecd-role-to-cust-mbr-ng, NG</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "10-K/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e61612008ng/e61612008ng-20331231.htm</conf:instance>
+            <conf:schema>e61612008ng/clb01-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="61612" name="Relationship-Not-Permitted" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_009ng">
+        <conf:name>dim2-cust-non-only-ecd-role-to-ecd-mbr-ng, NG</conf:name>
+        <conf:description>dim2-cust-non-only-ecd-role-to-ecd-mbr-ng, NG</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "10-K/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e61612009ng/e61612009ng-20331231.htm</conf:instance>
+            <conf:schema>e61612009ng/clb01-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="61612" name="Relationship-Not-Permitted" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+</conf:testcase>

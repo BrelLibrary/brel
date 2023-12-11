@@ -1,0 +1,670 @@
+<html xmlns:case="http://edgar/2009/conformance">
+  <head>
+    <title>525-04
+        :
+        Inline XBRL Test Suite v68d : NonNumeric tests, Not EDGAR Dependent</title>
+    <style type="text/css">
+        table, td, th {border: solid black 1pt; border-collapse: collapse;} td {vertical-align: top;}
+      </style>
+  </head>
+  <body>
+    <h1>525-04
+        :
+        Inline XBRL Test Suite v68d : NonNumeric tests, Not EDGAR Dependent</h1>
+    <p>
+        Created by: 
+        <a href="mailto:StructuredData@sec.gov">SEC Office of Structured Disclosure</a></p>
+    <p>
+      <description xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <h2>Good and "not good" (ng) test files that demonstrate iXBRL nonNumeric usage</h2>
+    </description>
+    </p>
+    <h2>
+        Variations
+      </h2>
+    <table border="solid">
+      <thead>
+        <tr>
+          <th>Number</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>References</th>
+          <th>Data Inputs</th>
+          <th>Result Outputs</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>_001gd</td>
+          <td>NonNumeric_testcases_Set1, GOOD</td>
+          <td>Several PASS test cases.</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i04001gd/i04001gd-20081231.htm">i04001gd/i04001gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i04001gd/i04001gd-20081231_pre.xml">i04001gd/i04001gd-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i04001gd/i04001gd-20081231_lab.xml">i04001gd/i04001gd-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i04001gd/i04001gd-20081231.xsd">i04001gd/i04001gd-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_002gd</td>
+          <td>NonNumeric_testcases_Set2, GOOD</td>
+          <td>PASS-element-ordering</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i04002gd/i04002gd-20081231.htm">i04002gd/i04002gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i04002gd/i04002gd-20081231_pre.xml">i04002gd/i04002gd-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i04002gd/i04002gd-20081231_lab.xml">i04002gd/i04002gd-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i04002gd/i04002gd-20081231.xsd">i04002gd/i04002gd-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_003gd</td>
+          <td>NonNumeric_testcases_Set3, GOOD</td>
+          <td>PASS-attribute-ix-extension-illegalPlacement-01</td>
+          <td>The ix:nonNumeric element allows attributes in ##other namespace 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i04003gd/i04003gd-20081231.htm">i04003gd/i04003gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i04003gd/i04003gd-20081231_pre.xml">i04003gd/i04003gd-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i04003gd/i04003gd-20081231_lab.xml">i04003gd/i04003gd-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i04003gd/i04003gd-20081231.xsd">i04003gd/i04003gd-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_100ng</td>
+          <td>nonNumeric with attributeInNoNamespace="Not Allowed", NOGOOD</td>
+          <td>FAIL-nonNumeric-any-ix-attribute</td>
+          <td>The ix:nonNumeric element allows attributes only in ##other namespaces 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i04100ng/i04100ng-20081231.htm">i04100ng/i04100ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i04100ng/i04100ng-20081231_pre.xml">i04100ng/i04100ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i04100ng/i04100ng-20081231_lab.xml">i04100ng/i04100ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i04100ng/i04100ng-20081231.xsd">i04100ng/i04100ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-html:syntaxError">html:syntaxError</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_101ng</td>
+          <td>nonNumeric with i:attInXbrlNamespace="Not allowed", NOGOOD</td>
+          <td>FAIL-nonNumeric-no-xbrli-attributes</td>
+          <td>The ix:nonNumeric element MUST NOT have any attributes with a namespace name which has a value of http://www.xbrl.org/2003/instance 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i04101ng/i04101ng-20081231.htm">i04101ng/i04101ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i04101ng/i04101ng-20081231_pre.xml">i04101ng/i04101ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i04101ng/i04101ng-20081231_lab.xml">i04101ng/i04101ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i04101ng/i04101ng-20081231.xsd">i04101ng/i04101ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-xmlSchema:attributesExtraneous">xmlSchema:attributesExtraneous</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_102ng</td>
+          <td>nonNumeric with attribute ix:thisInlineAttributeNotAllowed, NOGOOD</td>
+          <td>FAIL-nonNumeric-any-ix-attribute</td>
+          <td>Element ix:nonNumeric may have any attribute with a namespace name which has a value other than http://www.xbrl.org/2013/inlineXBRL. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i04102ng/i04102ng-20081231.htm">i04102ng/i04102ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i04102ng/i04102ng-20081231_pre.xml">i04102ng/i04102ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i04102ng/i04102ng-20081231_lab.xml">i04102ng/i04102ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i04102ng/i04102ng-20081231.xsd">i04102ng/i04102ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-html:syntaxError">html:syntaxError</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_103ng</td>
+          <td>nonNumeric element with escape attribute produces unparseable date, NOGOOD</td>
+          <td>FAIL-element-ix-nonNumeric-escape-01</td>
+          <td>The {value} property MUST be valid in accordance with the {format input type} property. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i04103ng/i04103ng-20081231.htm">i04103ng/i04103ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i04103ng/i04103ng-20081231_pre.xml">i04103ng/i04103ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i04103ng/i04103ng-20081231_lab.xml">i04103ng/i04103ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i04103ng/i04103ng-20081231.xsd">i04103ng/i04103ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.11.1.1:transformValueError">ix11.11.1.1:transformValueError</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_104ng</td>
+          <td>invalid format attribute on nonNumeric, NOGOOD</td>
+          <td>FAIL-nonNumeric-invalid-ix-format-attr</td>
+          <td>The {value} property MUST be valid in accordance with the {format input type} property. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i04104ng/i04104ng-20081231.htm">i04104ng/i04104ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i04104ng/i04104ng-20081231_pre.xml">i04104ng/i04104ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i04104ng/i04104ng-20081231_lab.xml">i04104ng/i04104ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i04104ng/i04104ng-20081231.xsd">i04104ng/i04104ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.11.1.1:transformValueError">ix11.11.1.1:transformValueError</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_105ng</td>
+          <td>nonNumeric element with empty text but format requires nonempty input, NOGOOD</td>
+          <td>FAIL-nonNumeric-empty-with-format</td>
+          <td>The {value} property MUST be valid in accordance with the {format input type} property. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i04105ng/i04105ng-20081231.htm">i04105ng/i04105ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i04105ng/i04105ng-20081231_pre.xml">i04105ng/i04105ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i04105ng/i04105ng-20081231_lab.xml">i04105ng/i04105ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i04105ng/i04105ng-20081231.xsd">i04105ng/i04105ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.11.1.1:transformValueError">ix11.11.1.1:transformValueError</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_106ng</td>
+          <td>nonNumeric element without name attribute, NOGOOD</td>
+          <td>FAIL-nonNumeric-missing-name-attr</td>
+          <td>The ix:nonNumeric element MUST have contextRef and name attributes 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i04106ng/i04106ng-20081231.htm">i04106ng/i04106ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i04106ng/i04106ng-20081231_pre.xml">i04106ng/i04106ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i04106ng/i04106ng-20081231_lab.xml">i04106ng/i04106ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i04106ng/i04106ng-20081231.xsd">i04106ng/i04106ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-html:syntaxError">html:syntaxError</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_107ng</td>
+          <td>nonNumeric element has no contextRef attribute, NOGOOD</td>
+          <td>FAIL-nonNumeric-missing-contextRef-attr</td>
+          <td>The ix:nonNumeric element MUST have contextRef and name attributes 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i04107ng/i04107ng-20081231.htm">i04107ng/i04107ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i04107ng/i04107ng-20081231_pre.xml">i04107ng/i04107ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i04107ng/i04107ng-20081231_lab.xml">i04107ng/i04107ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i04107ng/i04107ng-20081231.xsd">i04107ng/i04107ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-html:syntaxError">html:syntaxError</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_109ng</td>
+          <td>Extra attribute thisAttributeHasNoNamespace="bar" on nonNumeric, NOGOOD</td>
+          <td>FAIL-nonNumeric-illegal-null-namespace-attr</td>
+          <td>Element ix:nonNumeric may have any attribute with a namespace name which has a value other than http://www.xbrl.org/2013/inlineXBRL. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i04109ng/i04109ng-20081231.htm">i04109ng/i04109ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i04109ng/i04109ng-20081231_pre.xml">i04109ng/i04109ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i04109ng/i04109ng-20081231_lab.xml">i04109ng/i04109ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i04109ng/i04109ng-20081231.xsd">i04109ng/i04109ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-html:syntaxError">html:syntaxError</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_110ng</td>
+          <td>The ixt prefix is locally bound to the wrong namespace for a transformation, NOGOOD</td>
+          <td>FAIL-nonNumeric-ix-format-attr-wrong-namespace-binding</td>
+          <td>The {format} property MUST match the expanded name implied by the value of the name attribute of a signature element in the relevant Transformation Rules Registry. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i04110ng/i04110ng-20081231.htm">i04110ng/i04110ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i04110ng/i04110ng-20081231_pre.xml">i04110ng/i04110ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i04110ng/i04110ng-20081231_lab.xml">i04110ng/i04110ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i04110ng/i04110ng-20081231.xsd">i04110ng/i04110ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.11.1.2:invalidTransformation">ix11.11.1.2:invalidTransformation</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_111ng</td>
+          <td>nonNumeric with contextRef to nonexistent id, NOGOOD</td>
+          <td>FAIL-nonNumeric-unresolvable-ix-contextRef</td>
+          <td>There MUST exist an xbrli:context element in the Inline XBRL Document Set for which the actual value of the id attribute is equal to the {context reference} property. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i04111ng/i04111ng-20081231.htm">i04111ng/i04111ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i04111ng/i04111ng-20081231_pre.xml">i04111ng/i04111ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i04111ng/i04111ng-20081231_lab.xml">i04111ng/i04111ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i04111ng/i04111ng-20081231.xsd">i04111ng/i04111ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.11.1.2:contextReference">ix11.11.1.2:contextReference</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

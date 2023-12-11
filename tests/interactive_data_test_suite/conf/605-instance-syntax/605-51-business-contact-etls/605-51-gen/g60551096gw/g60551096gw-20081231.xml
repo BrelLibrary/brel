@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet type="text/xsl" hre="W:\efm\branches\efm192\xsl\x2ix.xsl"?>
+<xbrl xmlns="http://www.xbrl.org/2003/instance" xmlns:xbrldi="http://xbrl.org/2006/xbrldi" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:us-gaap="http://fasb.org/us-gaap/2023" xmlns:dei="http://xbrl.sec.gov/dei/2023" xmlns:iso4217="http://www.xbrl.org/2003/iso4217" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <link:schemaRef xlink:href="edgar-20181231.xsd" xlink:type="simple"></link:schemaRef>
+    <context id="fy18">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+        </entity>
+        <period>
+            <startDate>2018-01-01</startDate>
+            <endDate>2018-12-31</endDate>
+        </period>
+    </context>
+    <context id="fy18_BusinessContactMember">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+            <segment>
+                <xbrldi:explicitMember dimension="dei:EntityAddressesAddressTypeAxis">dei:BusinessContactMember</xbrldi:explicitMember>
+            </segment>
+        </entity>
+        <period>
+            <startDate>2018-01-01</startDate>
+            <endDate>2018-12-31</endDate>
+        </period>
+    </context>
+    <unit id="USD">
+        <measure>iso4217:USD</measure>
+    </unit>
+    <unit id="Shares">
+        <measure>shares</measure>
+    </unit>
+    <unit id="USD_per_Share">
+        <divide>
+            <unitNumerator>
+                <measure>iso4217:USD</measure>
+            </unitNumerator>
+            <unitDenominator>
+                <measure>shares</measure>
+            </unitDenominator>
+        </divide>
+    </unit>
+    <dei:AmendmentFlag contextRef="fy18" id="amend">true</dei:AmendmentFlag>
+    <dei:AmendmentDescription contextRef="fy18" id="amend-desc">sequel</dei:AmendmentDescription>
+    <dei:DocumentFiscalPeriodFocus contextRef="fy18" id="doc-fp">FY</dei:DocumentFiscalPeriodFocus>
+    <dei:DocumentFiscalYearFocus contextRef="fy18" id="doc-fy">2018</dei:DocumentFiscalYearFocus>
+    <dei:EntityCentralIndexKey contextRef="fy18" id="ent-cik">9876543210</dei:EntityCentralIndexKey>
+    <dei:DocumentType contextRef="fy18">10-12B</dei:DocumentType>
+    <dei:EntityRegistrantName contextRef="fy18">PEAK AND BOONE CORPORATION</dei:EntityRegistrantName>
+    <dei:EntityAddressAddressLine1 contextRef="fy18">500 Hills Drive, Suite 300</dei:EntityAddressAddressLine1>
+    <dei:EntityAddressAddressLine2 contextRef="fy18">1 Joan Watson Avenue</dei:EntityAddressAddressLine2>
+    <dei:EntityAddressAddressLine3 contextRef="fy18">address line 3</dei:EntityAddressAddressLine3>
+    <dei:EntityAddressCityOrTown contextRef="fy18">Bedminster</dei:EntityAddressCityOrTown>
+    <dei:EntityAddressStateOrProvince contextRef="fy18">NJ</dei:EntityAddressStateOrProvince>
+    <dei:EntityAddressCountry contextRef="fy18">US</dei:EntityAddressCountry>
+    <dei:EntityAddressPostalZipCode contextRef="fy18">07921-1538</dei:EntityAddressPostalZipCode>
+    <dei:CityAreaCode contextRef="fy18">(908)</dei:CityAreaCode>
+    <dei:LocalPhoneNumber contextRef="fy18">234-0700</dei:LocalPhoneNumber>
+    <dei:ContactPersonnelEmailAddress contextRef="fy18_BusinessContactMember">peek@boon.com</dei:ContactPersonnelEmailAddress>
+    <dei:EntitySmallBusiness contextRef="fy18" id="ent-src">true</dei:EntitySmallBusiness>
+    <dei:EntityTaxIdentificationNumber contextRef="fy18">22-3537895</dei:EntityTaxIdentificationNumber>
+    <dei:EntityEmergingGrowthCompany contextRef="fy18">true</dei:EntityEmergingGrowthCompany>
+    <dei:EntityExTransitionPeriod contextRef="fy18">false</dei:EntityExTransitionPeriod>
+    <dei:Security12bTitle contextRef="fy18">12(b)</dei:Security12bTitle>
+    <dei:TradingSymbol contextRef="fy18">PKBO</dei:TradingSymbol>
+    <dei:SecurityExchangeName contextRef="fy18">NYSE</dei:SecurityExchangeName>
+    <dei:EntityFilerCategory contextRef="fy18">Large Accelerated Filer</dei:EntityFilerCategory>
+    <dei:EntityIncorporationStateCountryCode contextRef="fy18">CO</dei:EntityIncorporationStateCountryCode>
+</xbrl>

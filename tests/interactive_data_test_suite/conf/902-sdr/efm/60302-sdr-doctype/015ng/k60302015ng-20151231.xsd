@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:k60302015ng="http://k60302015ng/20081231" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:us-roles="http://fasb.org/us-roles/2023" xmlns:ref="http://www.xbrl.org/2006/ref" xmlns:dtr-types="http://www.xbrl.org/dtr/type/2022-03-31"  xmlns:xbrldt="http://xbrl.org/2005/xbrldt" xmlns:dei="http://xbrl.sec.gov/dei/2023" xmlns:srt="http://fasb.org/srt/2023" xmlns:us-gaap="http://fasb.org/us-gaap/2023" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:us-types="http://fasb.org/us-types/2023" xmlns:xlink="http://www.w3.org/1999/xlink" targetNamespace="http://k60302015ng/20081231" elementFormDefault="qualified">
+    <xs:annotation>
+        <xs:appinfo>
+            <link:linkbaseRef xlink:type="simple" xlink:href="k60302015ng-20151231_lab.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"></link:linkbaseRef>
+            <link:roleType roleURI="http://k60302015ng/role/Information" id="information">
+                <link:definition>991 - Document - K Test Information</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:linkbase>
+                <link:roleRef roleURI="http://xbrl.sec.gov/dei/role/document/DocumentInformation" xlink:type="simple" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#di"></link:roleRef>
+                <link:presentationLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/dei/role/document/DocumentInformation">
+                    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentInformationLineItems" xlink:label="Top"></link:loc>
+                    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentType" xlink:label="DocumentType"></link:loc>
+                    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_AmendmentFlag" xlink:label="AmendmentFlag"></link:loc>
+                    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_AmendmentDescription" xlink:label="AmendmentDescription"></link:loc>
+                    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityRegistrantName" xlink:label="EntityRegistrantName"></link:loc>
+                    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityCentralIndexKey" xlink:label="EntityCentralIndexKey"></link:loc>
+                    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_CurrentFiscalYearEndDate" xlink:label="CurrentFiscalYearEndDate"></link:loc>
+                    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityWellKnownSeasonedIssuer" xlink:label="EntityWellKnownSeasonedIssuer"></link:loc>
+                    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityVoluntaryFilers" xlink:label="EntityVoluntaryFilers"></link:loc>
+                    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityCurrentReportingStatus" xlink:label="EntityCurrentReportingStatus"></link:loc>
+                    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityFilerCategory" xlink:label="EntityFilerCategory"></link:loc>
+                    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityPublicFloat" xlink:label="EntityPublicFloat"></link:loc>
+                    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityCommonStockSharesOutstanding" xlink:label="EntityCommonStockSharesOutstanding"></link:loc>
+                    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentPeriodEndDate" xlink:label="DocumentPeriodEndDate"></link:loc>
+                    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentFiscalYearFocus" xlink:label="DocumentFiscalYearFocus"></link:loc>
+                    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentFiscalPeriodFocus" xlink:label="DocumentFiscalPeriodFocus"></link:loc>
+                    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="Top" xlink:to="DocumentType" use="optional" order="1.0"></link:presentationArc>
+                    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="Top" xlink:to="AmendmentFlag" use="optional" order="2.0"></link:presentationArc>
+                    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="Top" xlink:to="AmendmentDescription" use="optional" order="3.0"></link:presentationArc>
+                    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="Top" xlink:to="EntityRegistrantName" use="optional" order="5.0"></link:presentationArc>
+                    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="Top" xlink:to="EntityCentralIndexKey" use="optional" order="6.0"></link:presentationArc>
+                    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="Top" xlink:to="CurrentFiscalYearEndDate" use="optional" order="7.0"></link:presentationArc>
+                    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="Top" xlink:to="EntityWellKnownSeasonedIssuer" use="optional" order="8.0"></link:presentationArc>
+                    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="Top" xlink:to="EntityVoluntaryFilers" use="optional" order="9.0"></link:presentationArc>
+                    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="Top" xlink:to="EntityCurrentReportingStatus" use="optional" order="10.0"></link:presentationArc>
+                    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="Top" xlink:to="EntityFilerCategory" use="optional" order="11.0"></link:presentationArc>
+                    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="Top" xlink:to="EntityPublicFloat" use="optional" order="12.0"></link:presentationArc>
+                    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="Top" xlink:to="EntityCommonStockSharesOutstanding" use="optional" order="13.0"></link:presentationArc>
+                    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="Top" xlink:to="DocumentPeriodEndDate" order="4.0"></link:presentationArc>
+                    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="Top" xlink:to="DocumentFiscalYearFocus" order="14.0"></link:presentationArc>
+                    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="Top" xlink:to="DocumentFiscalPeriodFocus" order="15.0"></link:presentationArc>
+                </link:presentationLink>
+            </link:linkbase>
+        </xs:appinfo>
+    </xs:annotation>
+    <xs:import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"></xs:import>
+    <xs:import namespace="http://xbrl.sec.gov/dei/2023" schemaLocation="https://xbrl.sec.gov/dei/2023/dei-2023.xsd"></xs:import>
+    <xs:import namespace="http://www.xbrl.org/dtr/type/2022-03-31" schemaLocation="https://www.xbrl.org/dtr/type/2022-03-31/types.xsd"></xs:import>
+    <xs:import namespace="http://xbrl.org/2005/xbrldt" schemaLocation="http://www.xbrl.org/2005/xbrldt-2005.xsd"></xs:import>
+    <xs:import namespace="http://fasb.org/us-gaap/2023" schemaLocation="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd"></xs:import>
+    <xs:element name="Cover" id="k60302015ng_Cover" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"></xs:element>
+</xs:schema>

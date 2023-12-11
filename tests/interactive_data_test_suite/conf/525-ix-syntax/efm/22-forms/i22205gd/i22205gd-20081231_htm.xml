@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xbrl
+  xmlns="http://www.xbrl.org/2003/instance"
+  xmlns:dei="http://xbrl.sec.gov/dei/2018-01-31"
+  xmlns:i22205gd="http://i22205gd/20081231"
+  xmlns:iso4217="http://www.xbrl.org/2003/iso4217"
+  xmlns:link="http://www.xbrl.org/2003/linkbase"
+  xmlns:xbrldi="http://xbrl.org/2006/xbrldi"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+    <link:schemaRef xlink:href="i22205gd-20081231.xsd" xlink:type="simple"/>
+    <context id="FY08">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">3333333333</identifier>
+        </entity>
+        <period>
+            <startDate>2008-01-01</startDate>
+            <endDate>2008-12-31</endDate>
+        </period>
+    </context>
+    <context id="FY08_S013456789">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">3333333333</identifier>
+            <segment>
+                <xbrldi:explicitMember dimension="dei:LegalEntityAxis">i22205gd:S013456789Member</xbrldi:explicitMember>
+            </segment>
+        </entity>
+        <period>
+            <startDate>2008-01-01</startDate>
+            <endDate>2008-12-31</endDate>
+        </period>
+    </context>
+    <unit id="usd">
+        <measure>iso4217:USD</measure>
+    </unit>
+    <unit id="shr">
+        <measure>shares</measure>
+    </unit>
+    <dei:AmendmentDescription contextRef="FY08" id="d1e66">An Amendment Description.</dei:AmendmentDescription>
+    <dei:AmendmentFlag contextRef="FY08" id="d1e69">true</dei:AmendmentFlag>
+    <dei:CurrentFiscalYearEndDate contextRef="FY08" id="d1e72">--12-31</dei:CurrentFiscalYearEndDate>
+    <dei:DocumentFiscalPeriodFocus contextRef="FY08" id="d1e75">FY</dei:DocumentFiscalPeriodFocus>
+    <dei:DocumentFiscalYearFocus contextRef="FY08" id="d1e79">2008</dei:DocumentFiscalYearFocus>
+    <dei:EntityCentralIndexKey contextRef="FY08" id="d1e85">3333333333</dei:EntityCentralIndexKey>
+    <dei:EntityInvCompanyType contextRef="FY08" id="d1e88">N-1A</dei:EntityInvCompanyType>
+    <dei:DocumentDescription contextRef="FY08_S013456789" id="d1e91">i22205gd</dei:DocumentDescription>
+    <dei:DocumentType contextRef="FY08" id="d1e63">N-CSR</dei:DocumentType>
+    <dei:EntityRegistrantName contextRef="FY08" id="d1e60">OSD TEST CO #1 i22205gd</dei:EntityRegistrantName>
+    <dei:DocumentPeriodEndDate contextRef="FY08" id="d1e82">2008-12-31</dei:DocumentPeriodEndDate>
+</xbrl>

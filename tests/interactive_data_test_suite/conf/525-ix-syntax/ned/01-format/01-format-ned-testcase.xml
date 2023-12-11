@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>525-01</number>
+    <name>Inline XBRL Test Suite v68d : Format Tests NED (Not EDGAR Dependent)</name>
+    <description>
+        <h2>"Good" (gd) and "not good" (ng) test files that demonstrate non-valid Inline XBRL transform (format) usage</h2>
+    </description>
+    <variation id="_001gd">
+        <name>nonFractions with common TR3 numeric formats, GOOD</name>
+        <description>nonFractions with TR3 format = ixt:numcommadecimal, ixt:numdotdecimal, ixt:zerodash</description>
+        <reference xiispec="10.1.2"></reference>
+        <reference xiitest="PASS-element-ix-nonFraction-ixt-num-nodecimals"></reference>
+        <reference xiitest="PASS-format-numdash"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i01001gd/i01001gd-20081231.htm</instance>
+            <linkbase>i01001gd/i01001gd-20081231_pre.xml</linkbase>
+            <linkbase>i01001gd/i01001gd-20081231_lab.xml</linkbase>
+            <schema>i01001gd/i01001gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid">
+            <!-- <instance>i01001gd/i01001gd-20081231_htm.xml</instance> -->
+        </result>
+    </variation>
+    <variation id="_100ng">
+        <name>ixt:zerodash with 0 (bad) instead of dash, NOGOOD</name>
+        <description>FAIL-format-numdash-badContent</description>
+        <reference specification="The {format} property MUST match the expanded name implied by the value of the name attribute of a signature element in the relevant Transformation Rules Registry."></reference>
+        <reference xiispec="10.1.2"></reference>
+        <reference xiitest="FAIL-format-numdash-badContent"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i01100ng/i01100ng-20081231.htm</instance>
+            <linkbase>i01100ng/i01100ng-20081231_pre.xml</linkbase>
+            <linkbase>i01100ng/i01100ng-20081231_lab.xml</linkbase>
+            <schema>i01100ng/i01100ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.10.1.1:transformValueError" frd="ix" fj="IXBRL_INVALID_DATA_FOR_FORMAT" nnum="70101" txt="Inline XBRL Document invalid data type, value &quot;{value}&quot; does not satisfy format type {format}."></assert>
+        </result>
+    </variation>
+    <variation id="_101ng">
+        <name>Format_testcases_Set3, NOGOOD</name>
+        <description>FAIL-ix-format-undefined</description>
+        <reference xiispec="10.1.2"></reference>
+        <reference xiitest="FAIL-ix-format-undefined"></reference>
+        <reference specification=" The {value} property MUST be valid in accordance with the {format input type} property."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i01101ng/i01101ng-20081231.htm</instance>
+            <linkbase>i01101ng/i01101ng-20081231_pre.xml</linkbase>
+            <linkbase>i01101ng/i01101ng-20081231_lab.xml</linkbase>
+            <schema>i01101ng/i01101ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.10.1.2:invalidTransformation" frd="ix" fj="IXBRL_FORMAT_UNDEFINED" nnum="70101" txt="Fact * has unrecognized transformation name #"></assert>
+        </result>
+    </variation>
+</testcase>

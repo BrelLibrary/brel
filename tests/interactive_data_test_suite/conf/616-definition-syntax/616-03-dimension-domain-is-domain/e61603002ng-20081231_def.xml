@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<link:linkbase xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xbrldt="http://xbrl.org/2005/xbrldt" xsi:schemaLocation="http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd">
+    <link:roleRef roleURI="http://edgar/role/OtherInformation" xlink:type="simple" xlink:href="edgar-20081231.xsd#OtherInformation"></link:roleRef>
+    <link:roleRef roleURI="http://edgar/role/EntityInformation" xlink:type="simple" xlink:href="edgar-20081231.xsd#EntityInformation"></link:roleRef>
+    <link:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/domain-member" xlink:type="simple" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#domain-member"></link:arcroleRef>
+    <link:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/all" xlink:type="simple" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#all"></link:arcroleRef>
+    <link:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/dimension-default" xlink:type="simple" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#dimension-default"></link:arcroleRef>
+    <link:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:type="simple" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#dimension-domain"></link:arcroleRef>
+    <link:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:type="simple" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#hypercube-dimension"></link:arcroleRef>
+    <link:definitionLink xlink:type="extended" xlink:role="http://edgar/role/EntityInformation">
+        <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityContactPersonnelContactPersonTypeAxis" xlink:label="EntityContactPersonnelContactPersonTypeAxis"></link:loc>
+        <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_ContactPersonTypeDomain" xlink:label="ContactPersonTypeDomain"></link:loc>
+        <link:loc xlink:type="locator" xlink:href="e61603002ng-20081231.xsd#e6160300_Acquisitions" xlink:label="Acquisitions_2"></link:loc>
+        <link:definitionArc order="2.0" use="optional" xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-default" xlink:from="EntityContactPersonnelContactPersonTypeAxis" xlink:to="ContactPersonTypeDomain"></link:definitionArc>
+        <link:definitionArc order="2.0" use="optional" xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="EntityContactPersonnelContactPersonTypeAxis" xlink:to="Acquisitions_2"></link:definitionArc>
+    </link:definitionLink>
+    <link:definitionLink xlink:type="extended" xlink:role="http://edgar/role/OtherInformation">
+        <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityInformationLineItems" xlink:label="EntityInformationLineItems"></link:loc>
+        <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntitiesTable" xlink:label="EntitiesTable"></link:loc>
+        <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityContactPersonnelContactPersonTypeAxis" xlink:label="EntityContactPersonnelContactPersonTypeAxis"></link:loc>
+        <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_ContactPersonTypeDomain" xlink:label="ContactPersonTypeDomain"></link:loc>
+        <link:loc xlink:type="locator" xlink:href="e61603002ng-20081231.xsd#e6160300_Acquisitions" xlink:label="Acquisitions"></link:loc>
+        <link:loc xlink:type="locator" xlink:href="e61603002ng-20081231.xsd#e6160300_Statistics" xlink:label="Statistics"></link:loc>
+        <link:definitionArc order="1.0" use="optional" xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/all" xlink:from="EntityInformationLineItems" xlink:to="EntitiesTable" xbrldt:closed="true" xbrldt:contextElement="segment"></link:definitionArc>
+        <link:definitionArc order="1.0" use="optional" xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="EntitiesTable" xlink:to="EntityContactPersonnelContactPersonTypeAxis"></link:definitionArc>
+        <link:definitionArc order="1.0" use="optional" xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="EntityContactPersonnelContactPersonTypeAxis" xlink:to="ContactPersonTypeDomain"></link:definitionArc>
+        <link:definitionArc order="2.0" use="optional" priority="1" xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="EntityContactPersonnelContactPersonTypeAxis" xlink:to="Acquisitions"></link:definitionArc>
+        <link:definitionArc order="2.0" use="optional" xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="EntityInformationLineItems" xlink:to="Statistics"></link:definitionArc>
+    </link:definitionLink>
+</link:linkbase>

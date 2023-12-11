@@ -1,0 +1,312 @@
+<html xmlns:case="http://edgar/2009/conformance">
+  <head>
+    <title>610-06
+        :
+        EDGAR Filer Manual v68d 6.10.6</title>
+    <style type="text/css">
+        table, td, th {border: solid black 1pt; border-collapse: collapse;} td {vertical-align: top;}
+      </style>
+  </head>
+  <body>
+    <h1>610-06
+        :
+        EDGAR Filer Manual v68d 6.10.6</h1>
+    <p>
+        Created by: 
+        <a href="mailto:StructuredData@sec.gov">SEC Office of Structured Disclosure</a></p>
+    <p>
+      <description xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.10.6  Restrictions on label lengths.">Refer to EFM: 6.10.6  Restrictions on label lengths.</a>
+    </description>
+    </p>
+    <h3>References</h3>
+    <ul>11200</ul>
+    <h2>
+        Variations
+      </h2>
+    <table border="solid">
+      <thead>
+        <tr>
+          <th>Number</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>References</th>
+          <th>Data Inputs</th>
+          <th>Result Outputs</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>_000gd</td>
+          <td>6.10.6, a documentation label that is over 1000 characters with the special character '&lt;', GOOD.</td>
+          <td> a documentation label that is over 1000 characters with the special character '&lt;', GOOD.</td>
+          <td>11200 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e61006000gd-20081231.xml">e61006000gd-20081231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="e61006000gd-20081231_lab.xml">e61006000gd-20081231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_pre.xml">edgar-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_def.xml">edgar-20081231_def.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_lab.xml">edgar-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20081231.xsd">edgar-20081231.xsd</a></li>
+              <li>
+    Schema
+    <a href="e61006000gd-20081231.xsd">e61006000gd-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_002ng</td>
+          <td>6.10.6, a standard label of 562 characters, NOGOOD.</td>
+          <td> a standard label of 562 characters, NOGOOD.</td>
+          <td>11200 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e61006002ng-20081231.xml">e61006002ng-20081231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="e61006002ng-20081231_lab.xml">e61006002ng-20081231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_pre.xml">edgar-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_def.xml">edgar-20081231_def.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_lab.xml">edgar-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20081231.xsd">edgar-20081231.xsd</a></li>
+              <li>
+    Schema
+    <a href="e61006002ng-20081231.xsd">e61006002ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 61006, <a href="../../../../lib/xbrlerrors.htm#rq-1006-Label-Disallowed">Label-Disallowed</a></td></tr><tr><td>FRD:</td><td>rq</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_003ng</td>
+          <td>6.10.6, a verbose label containing &lt; character, NOGOOD.</td>
+          <td> a verbose label containing &lt; character, NOGOOD.</td>
+          <td>11200 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e61006003ng-20081231.xml">e61006003ng-20081231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="e61006003ng-20081231_lab.xml">e61006003ng-20081231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_pre.xml">edgar-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_def.xml">edgar-20081231_def.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_lab.xml">edgar-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20081231.xsd">edgar-20081231.xsd</a></li>
+              <li>
+    Schema
+    <a href="e61006003ng-20081231.xsd">e61006003ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 61006, <a href="../../../../lib/xbrlerrors.htm#rq-1006-Label-Disallowed">Label-Disallowed</a></td></tr><tr><td>FRD:</td><td>rq</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_004gd</td>
+          <td>6.10.6, a standard label containing &gt; character which used to be 'special', GOOD.</td>
+          <td> a standard label containing &gt; character which used to be 'special', GOOD.</td>
+          <td>11200 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e61006004gd-20081231.xml">e61006004gd-20081231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="e61006004gd-20081231_lab.xml">e61006004gd-20081231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_pre.xml">edgar-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_def.xml">edgar-20081231_def.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_lab.xml">edgar-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20081231.xsd">edgar-20081231.xsd</a></li>
+              <li>
+    Schema
+    <a href="e61006004gd-20081231.xsd">e61006004gd-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_005ng</td>
+          <td>6.10.6, a standard label containing consecutive whitespace, NOGOOD.</td>
+          <td> a standard label containing consecutive whitespace, NOGOOD.</td>
+          <td>11200SPR 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e61006005ng-20081231.xml">e61006005ng-20081231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="e61006005ng-20081231_lab.xml">e61006005ng-20081231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_pre.xml">edgar-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_def.xml">edgar-20081231_def.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_lab.xml">edgar-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20081231.xsd">edgar-20081231.xsd</a></li>
+              <li>
+    Schema
+    <a href="e61006005ng-20081231.xsd">e61006005ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 61006, <a href="../../../../lib/xbrlerrors.htm#rq-1006-Label-Disallowed">Label-Disallowed</a></td></tr><tr><td>FRD:</td><td>rq</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

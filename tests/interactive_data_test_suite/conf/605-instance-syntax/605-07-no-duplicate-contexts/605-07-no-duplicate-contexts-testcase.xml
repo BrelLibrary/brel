@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>605-07</number>
+    <name>EDGAR Filer Manual v68d 6.5.7</name>
+    <description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.5.7  An instance must not contain duplicate xbrli:context elements.">Refer to EFM: 6.5.7  An instance must not contain duplicate xbrli:context elements.</a>
+    </description>
+    <reference specification="10992"></reference>
+    <variation id="_001ng">
+        <name>6.5.7, Duplicate contexts with differently ordered xbrldi:explicitMembers, NOGOOD</name>
+        <description>6.5.7, An instance having two contexts with differently ordered xbrldi:explicitMember elements, they are duplicates, NOGOOD</description>
+        <reference specification="10992"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">e60507001ng-20081231.xml</instance>
+            <schema>e60507001ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60507" name="Duplicate-Contexts" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_002ng">
+        <name>6.5.7, Duplicate contexts with differently ordered xbrldi:explicitMembers, NOGOOD</name>
+        <description>6.5.7, An instance having two contexts with differently ordered xbrldi:explicitMember elements, they are duplicates, NOGOOD</description>
+        <reference specification="10992"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">e60507002ng-20081231.xml</instance>
+            <schema>e60507002ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60507" name="Duplicate-Contexts" frd="du"></assert>
+        </result>
+    </variation>
+</testcase>

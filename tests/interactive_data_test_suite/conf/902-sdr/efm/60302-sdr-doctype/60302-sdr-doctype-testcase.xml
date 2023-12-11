@@ -1,0 +1,373 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../../lib/test.xsl"?>
+<conf:testcase xmlns="http://edgar/2009/conformance" xmlns:conf="http://edgar/2009/conformance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../../lib/test.xsd">
+    <conf:creator>
+        <conf:name>SEC Office of Structured Disclosure</conf:name>
+        <conf:email>StructuredData@sec.gov</conf:email>
+    </conf:creator>
+    <conf:number>902-11</conf:number>
+    <conf:name>EDGAR Filer Manual v68d 8.2.15</conf:name>
+    <conf:description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#8.2.15  File Municipal Advisor Forms">Refer to EFM: 8.2.15  File Municipal Advisor Forms</a>
+    </conf:description>
+    <conf:reference specification="19137"></conf:reference>
+    <variation id="_002gd">
+        <name>The minimal valid SDR filing, GOOD.</name>
+        <description>An SDR devoid of content with one K SDR and no L SDR (Exhibit L marked as "not applicable" in Submission Header).</description>
+        <data>
+            <parameter name="ELOparams" value='{   "submissionType" : "SDR"}'></parameter>
+            <instance readMeFirst="true" exhibitType="EX-99.K SDR">002gd/k60302002gd-20151231.xml</instance>
+            <linkbase>002gd/k60302002gd-20151231_lab.xml</linkbase>
+            <linkbase>002gd/k60302002gd-20151231_pre.xml</linkbase>
+            <schema>002gd/k60302002gd-20151231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_003gd">
+        <name>Minimal SDR filing with two L exhibits, GOOD.</name>
+        <description>An SDR devoid of content with one K SDR and two L SDR exhibits.</description>
+        <data>
+            <parameter name="ELOparams" value='{   "submissionType" : "SDR"}'></parameter>
+            <instance readMeFirst="true" exhibitType="EX-99.K SDR">003gd/k60302003gd-20151231.xml</instance>
+            <linkbase>003gd/k60302003gd-20151231_lab.xml</linkbase>
+            <linkbase>003gd/k60302003gd-20151231_pre.xml</linkbase>
+            <schema>003gd/k60302003gd-20151231.xsd</schema>
+            <instance readMeFirst="true" exhibitType="EX-99.L SDR">003gd/l60302003gd-20151231.xml</instance>
+            <linkbase>003gd/l60302003gd-20151231_lab.xml</linkbase>
+            <linkbase>003gd/l60302003gd-20151231_pre.xml</linkbase>
+            <schema>003gd/l60302003gd-20151231.xsd</schema>
+            <instance readMeFirst="true" exhibitType="EX-99.L SDR">003gd/m60302003gd-20151231.xml</instance>
+            <linkbase>003gd/m60302003gd-20151231_lab.xml</linkbase>
+            <linkbase>003gd/m60302003gd-20151231_pre.xml</linkbase>
+            <schema>003gd/m60302003gd-20151231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_004gd">
+        <name>The minimal valid SDR/A filing, GOOD.</name>
+        <description>An SDR/A with no inline with one K SDR and no L SDR (Exhibit L marked as "not applicable" in Submission Header).</description>
+        <data>
+            <parameter name="ELOparams" value='{"submissionType" : "SDR"}'></parameter>
+            <instance readMeFirst="true" exhibitType="EX-99.K SDR">004gd/k60302004gd-20151231.xml</instance>
+            <linkbase>004gd/k60302004gd-20151231_lab.xml</linkbase>
+            <linkbase>004gd/k60302004gd-20151231_pre.xml</linkbase>
+            <schema>004gd/k60302004gd-20151231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_005gd">
+        <name>The minimal valid SDR-A filing, GOOD.</name>
+        <description>An SDR-A with no inline with one K SDR and no L SDR (Exhibit L marked as "not applicable" in Submission Header).</description>
+        <data>
+            <parameter name="ELOparams" value='{"submissionType" : "SDR"}'></parameter>
+            <instance readMeFirst="true" exhibitType="EX-99.K SDR">005gd/k60302005gd-20151231.xml</instance>
+            <linkbase>005gd/k60302005gd-20151231_lab.xml</linkbase>
+            <linkbase>005gd/k60302005gd-20151231_pre.xml</linkbase>
+            <schema>005gd/k60302005gd-20151231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_006gd">
+        <name>The minimal valid SDR-W filing, GOOD.</name>
+        <description>An SDR-W devoid of content and no inline with one K SDR and no L SDR (Exhibit L marked as "not applicable" in Submission Header).</description>
+        <data>
+            <parameter name="ELOparams" value='{"submissionType" : "SDR"}'></parameter>
+            <instance readMeFirst="true" exhibitType="EX-99.K SDR">006gd/k60302006gd-20151231.xml</instance>
+            <linkbase>006gd/k60302006gd-20151231_lab.xml</linkbase>
+            <linkbase>006gd/k60302006gd-20151231_pre.xml</linkbase>
+            <schema>006gd/k60302006gd-20151231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_007ng">
+        <name>An SDR-A with an EX-101.INS and an SDR.K.INS, NOGOOD.</name>
+        <description>An SDR-A with an EX-101.INS not allowed.</description>
+        <data>
+            <parameter name="ELOparams" value='{"submissionType" : "SDR"}'></parameter>
+            <instance readMeFirst="true" exhibitType="EX-99.K SDR">007ng/k60302007ng-20151231.xml</instance>
+            <instance readMeFirst="true" exhibitType="EX-101">007ng/k60302007ng-20141231.xml</instance>
+            <linkbase>007ng/k60302007ng-20151231_lab.xml</linkbase>
+            <linkbase>007ng/k60302007ng-20151231_pre.xml</linkbase>
+            <schema>007ng/k60302007ng-20151231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60308" name="Sdr-Has-Multiple-K-Reports" frd="cp"></assert>
+        </result>
+    </variation>
+    <variation id="_008ng">
+        <name>An SDR-A whose K SDR.INS has the wrong doctype, NOGOOD.</name>
+        <description>K SDR.INS has doctype=8-K not allowed.</description>
+        <data>
+            <parameter name="ELOparams" value='{"submissionType" : "SDR"}'></parameter>
+            <instance readMeFirst="true" exhibitType="EX-99.K SDR">008ng/k60302008ng-20151231.xml</instance>
+            <linkbase>008ng/k60302008ng-20151231_lab.xml</linkbase>
+            <linkbase>008ng/k60302008ng-20151231_pre.xml</linkbase>
+            <schema>008ng/k60302008ng-20151231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60520" name="Submission-Document-Type" frd="cp"></assert>
+        </result>
+    </variation>
+    <variation id="_009ng">
+        <name>An SDR-A whose two L SDR.INS both have the wrong doctype, NOGOOD.</name>
+        <description>Two L SDR.INS have doctype=8-K, both should be reported.</description>
+        <data>
+            <parameter name="ELOparams" value='{"submissionType" : "SDR"}'></parameter>
+            <instance readMeFirst="true" exhibitType="EX-99.K SDR">009ng/k60302009ng-20151231.xml</instance>
+            <instance readMeFirst="true" exhibitType="EX-99.L SDR">009ng/l60302009ng-20151231.xml</instance>
+            <instance readMeFirst="true" exhibitType="EX-99.L SDR">009ng/m60302009ng-20151231.xml</instance>
+            <linkbase>009ng/k60302009ng-20151231_lab.xml</linkbase>
+            <linkbase>009ng/k60302009ng-20151231_pre.xml</linkbase>
+            <linkbase>009ng/l60302009ng-20151231_lab.xml</linkbase>
+            <linkbase>009ng/l60302009ng-20151231_pre.xml</linkbase>
+            <linkbase>009ng/m60302009ng-20151231_lab.xml</linkbase>
+            <linkbase>009ng/m60302009ng-20151231_pre.xml</linkbase>
+            <schema>009ng/k60302009ng-20151231.xsd</schema>
+            <schema>009ng/l60302009ng-20151231.xsd</schema>
+            <schema>009ng/m60302009ng-20151231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60520" name="Submission-Document-Type" frd="cp"></assert>
+        </result>
+    </variation>
+    <variation id="_010ng">
+        <name>An SDR-A whose K SDR has doc type L SDR, NOGOOD.</name>
+        <description>An SDR-A whose K SDR has doc type L SDR.  Can't test the symmetric case.</description>
+        <data>
+            <parameter name="ELOparams" datatype="xs:string" value='{"submissionType":"SDR","attachmentDocumentType":"K SDR"}'></parameter>
+            <instance readMeFirst="true" exhibitType="EX-99.K SDR">010ng/k60302010ng-20151231.xml</instance>
+            <linkbase>010ng/k60302010ng-20151231_lab.xml</linkbase>
+            <linkbase>010ng/k60302010ng-20151231_pre.xml</linkbase>
+            <schema>010ng/k60302010ng-20151231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60520" name="Exhibit-Document-Type" frd="cp"></assert>
+        </result>
+    </variation>
+    <variation id="_011ng">
+        <name>The K SDR exhibit does not use us-gaap, NOGOOD.</name>
+        <description>k instance does not have a us-gaap namespace in its DTS, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"submissionType" : "SDR"}'></parameter>
+            <instance readMeFirst="true" exhibitType="EX-99.K SDR">011ng/k60302011ng-20151231.xml</instance>
+            <linkbase>011ng/k60302011ng-20151231_lab.xml</linkbase>
+            <linkbase>011ng/k60302011ng-20151231_pre.xml</linkbase>
+            <schema>011ng/k60302011ng-20151231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60302" name="Sdr-Missing-Standard-Schema" frd="cp"></assert>
+        </result>
+    </variation>
+    <variation id="_012ng">
+        <name>The second L SDR exhibit does not use us-gaap, NOGOOD..</name>
+        <description>m instance does not have a us-gaap namespace in its DTS, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"submissionType" : "SDR"}'></parameter>
+            <instance readMeFirst="true" exhibitType="EX-99.K SDR">012ng/k60302012ng-20151231.xml</instance>
+            <linkbase>012ng/k60302012ng-20151231_lab.xml</linkbase>
+            <linkbase>012ng/k60302012ng-20151231_pre.xml</linkbase>
+            <schema>012ng/k60302012ng-20151231.xsd</schema>
+            <instance readMeFirst="true" exhibitType="EX-99.L SDR">012ng/l60302012ng-20151231.xml</instance>
+            <linkbase>012ng/l60302012ng-20151231_lab.xml</linkbase>
+            <linkbase>012ng/l60302012ng-20151231_pre.xml</linkbase>
+            <schema>012ng/l60302012ng-20151231.xsd</schema>
+            <instance readMeFirst="true" exhibitType="EX-99.L SDR">012ng/m60302012ng-20151231.xml</instance>
+            <linkbase>012ng/m60302012ng-20151231_lab.xml</linkbase>
+            <linkbase>012ng/m60302012ng-20151231_pre.xml</linkbase>
+            <schema>012ng/m60302012ng-20151231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60302" name="Sdr-Missing-Standard-Schema" frd="cp"></assert>
+        </result>
+    </variation>
+    <variation id="_013ng">
+        <name>SDR with K SDR that has no schema, NOGOOD.</name>
+        <description>SDR with K SDR that has no schema, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"submissionType" : "SDR"}'></parameter>
+            <instance readMeFirst="true" exhibitType="EX-99.K SDR">013ng/k60302013ng-20151231.xml</instance>
+            <linkbase>013ng/k60302013ng-20151231_lab.xml</linkbase>
+            <linkbase>013ng/k60302013ng-20151231_pre.xml</linkbase>
+        </data>
+        <result>
+            <assert severity="err" num="60302" name="Sdr-Missing-Files" frd="cp"></assert>
+        </result>
+    </variation>
+    <variation id="_014ng">
+        <name>SDR with K SDR that has no label linkbase attached, NOGOOD.</name>
+        <description>To make the test yield just two errors, the linkbase is embedded in the schema, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"submissionType" : "SDR"}'></parameter>
+            <instance readMeFirst="true" exhibitType="EX-99.K SDR">014ng/k60302014ng-20151231.xml</instance>
+            <linkbase>014ng/k60302014ng-20151231_pre.xml</linkbase>
+            <schema>014ng/k60302014ng-20151231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60302" name="Sdr-Missing-Files" frd="cp"></assert>
+            <assert severity="err" num="60708" name="No-Embedded-Linkbases" frd="cp"></assert>
+        </result>
+    </variation>
+    <variation id="_015ng">
+        <name>SDR with K SDR that has no presentation linkbase, NOGOOD.</name>
+        <description>To make this test yield just two errors, the linkbase is embedded in the schema, so ignore code EFM.6.07.08. NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"submissionType" : "SDR"}'></parameter>
+            <instance readMeFirst="true" exhibitType="EX-99.K SDR">015ng/k60302015ng-20151231.xml</instance>
+            <linkbase>015ng/k60302015ng-20151231_lab.xml</linkbase>
+            <schema>015ng/k60302015ng-20151231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60302" name="Sdr-Missing-Files" frd="cp"></assert>
+            <assert severity="err" num="60708" name="No-Embedded-Linkbases" frd="cp"></assert>
+        </result>
+    </variation>
+    <variation id="_016ng">
+        <name>SDR with L SDR that has no schema, NOGOOD.</name>
+        <description>SDR with L SDR that has no schema, which happens to be otherwise EFM valid, but here, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"submissionType" : "SDR"}'></parameter>
+            <instance readMeFirst="true" exhibitType="EX-99.K SDR">016ng/k60302016ng-20151231.xml</instance>
+            <linkbase>016ng/k60302016ng-20151231_lab.xml</linkbase>
+            <linkbase>016ng/k60302016ng-20151231_pre.xml</linkbase>
+            <schema>016ng/k60302016ng-20151231.xsd</schema>
+            <instance readMeFirst="true" exhibitType="EX-99.L SDR">016ng/l60302016ng-20151231.xml</instance>
+            <linkbase>016ng/l60302016ng-20151231_lab.xml</linkbase>
+            <linkbase>016ng/l60302016ng-20151231_pre.xml</linkbase>
+            <schema>016ng/l60302016ng-20151231.xsd</schema>
+            <instance readMeFirst="true" exhibitType="EX-99.L SDR">016ng/m60302016ng-20151231.xml</instance>
+            <linkbase>016ng/m60302016ng-20151231_lab.xml</linkbase>
+            <linkbase>016ng/m60302016ng-20151231_pre.xml</linkbase>
+        </data>
+        <result>
+            <assert severity="err" num="60302" name="Sdr-Missing-Files" frd="cp"></assert>
+        </result>
+    </variation>
+    <variation id="_017ng">
+        <name>SDR with L SDR that has no label linkbase attached, NOGOOD.</name>
+        <description>To make the test yield just two errors, the linkbase is embedded in the schema, so ignore EFM.6.07.08, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"submissionType" : "SDR"}'></parameter>
+            <instance readMeFirst="true" exhibitType="EX-99.K SDR">017ng/k60302017ng-20151231.xml</instance>
+            <linkbase>017ng/k60302017ng-20151231_lab.xml</linkbase>
+            <linkbase>017ng/k60302017ng-20151231_pre.xml</linkbase>
+            <schema>017ng/k60302017ng-20151231.xsd</schema>
+            <instance readMeFirst="true" exhibitType="EX-99.L SDR">017ng/l60302017ng-20151231.xml</instance>
+            <linkbase>017ng/l60302017ng-20151231_lab.xml</linkbase>
+            <linkbase>017ng/l60302017ng-20151231_pre.xml</linkbase>
+            <schema>017ng/l60302017ng-20151231.xsd</schema>
+            <instance readMeFirst="true" exhibitType="EX-99.L SDR">017ng/m60302017ng-20151231.xml</instance>
+            <linkbase>017ng/m60302017ng-20151231_pre.xml</linkbase>
+            <schema>017ng/m60302017ng-20151231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60302" name="Sdr-Missing-Files" frd="cp"></assert>
+            <assert severity="err" num="60708" name="No-Embedded-Linkbases" frd="cp"></assert>
+        </result>
+    </variation>
+    <variation id="_018ng">
+        <name>SDR with L SDR that has no presentation linkbase, NOGOOD.</name>
+        <description>To make this test yield just two errors, the linkbase is embedded in the schema, so ignore code EFM.6.07.08, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"submissionType" : "SDR"}'></parameter>
+            <instance readMeFirst="true" exhibitType="EX-99.K SDR">018ng/k60302018ng-20151231.xml</instance>
+            <linkbase>018ng/k60302018ng-20151231_lab.xml</linkbase>
+            <linkbase>018ng/k60302018ng-20151231_pre.xml</linkbase>
+            <schema>018ng/k60302018ng-20151231.xsd</schema>
+            <instance readMeFirst="true" exhibitType="EX-99.L SDR">018ng/l60302018ng-20151231.xml</instance>
+            <linkbase>018ng/l60302018ng-20151231_lab.xml</linkbase>
+            <linkbase>018ng/l60302018ng-20151231_pre.xml</linkbase>
+            <schema>018ng/l60302018ng-20151231.xsd</schema>
+            <instance readMeFirst="true" exhibitType="EX-99.L SDR">018ng/m60302018ng-20151231.xml</instance>
+            <linkbase>018ng/m60302018ng-20151231_lab.xml</linkbase>
+            <schema>018ng/m60302018ng-20151231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60302" name="Sdr-Missing-Files" frd="cp"></assert>
+            <assert severity="err" num="60708" name="No-Embedded-Linkbases" frd="cp"></assert>
+        </result>
+    </variation>
+    <variation id="_019ng">
+        <name>SDR with an EX-99.K SDR.CAL that is empty, NOGOOD.</name>
+        <description>SDR with an EX-99.K SDR.CAL that is empty, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"submissionType" : "SDR"}'></parameter>
+            <instance readMeFirst="true" exhibitType="EX-99.K SDR">019ng/k60302019ng-20151231.xml</instance>
+            <linkbase>019ng/k60302019ng-20151231_cal.xml</linkbase>
+            <linkbase>019ng/k60302019ng-20151231_lab.xml</linkbase>
+            <linkbase>019ng/k60302019ng-20151231_pre.xml</linkbase>
+            <schema>019ng/k60302019ng-20151231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60303" name="No-Link-Element" frd="cp"></assert>
+        </result>
+    </variation>
+    <variation id="_020ng">
+        <name>Minimal SDR filing with an EX-99.L SDR.CAL that is empty, NOGOOD.</name>
+        <description>An SDR devoid of content with one K SDR and two L SDR exhibits.</description>
+        <data>
+            <parameter name="ELOparams" value='{"submissionType" : "SDR"}'></parameter>
+            <instance readMeFirst="true" exhibitType="EX-99.K SDR">020ng/k60302020ng-20151231.xml</instance>
+            <linkbase>020ng/k60302020ng-20151231_lab.xml</linkbase>
+            <linkbase>020ng/k60302020ng-20151231_pre.xml</linkbase>
+            <schema>020ng/k60302020ng-20151231.xsd</schema>
+            <instance readMeFirst="true" exhibitType="EX-99.L SDR">020ng/l60302020ng-20151231.xml</instance>
+            <linkbase>020ng/l60302020ng-20151231_lab.xml</linkbase>
+            <linkbase>020ng/l60302020ng-20151231_pre.xml</linkbase>
+            <schema>020ng/l60302020ng-20151231.xsd</schema>
+            <instance readMeFirst="true" exhibitType="EX-99.L SDR">020ng/m60302020ng-20151231.xml</instance>
+            <linkbase>020ng/m60302020ng-20151231_cal.xml</linkbase>
+            <linkbase>020ng/m60302020ng-20151231_lab.xml</linkbase>
+            <linkbase>020ng/m60302020ng-20151231_pre.xml</linkbase>
+            <schema>020ng/m60302020ng-20151231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60303" name="No-Link-Element" frd="cp"></assert>
+        </result>
+    </variation>
+    <variation id="_021ng">
+        <name>The K SDR exhibit has IFRS, NOGOOD.</name>
+        <description>K instance has us-gaap, but also has ifrs, and ifrs is not allowed (Exhibit L is marked 'not applicable in the header), NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"submissionType" : "SDR"}'></parameter>
+            <instance readMeFirst="true" exhibitType="EX-99.K SDR">021ng/k60302021ng-20151231.xml</instance>
+            <linkbase>021ng/k60302021ng-20151231_lab.xml</linkbase>
+            <linkbase>021ng/k60302021ng-20151231_pre.xml</linkbase>
+            <schema>021ng/k60302021ng-20151231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="62203" name="Incompatible-Taxonomy-Document-Type" frd="cp"></assert>
+        </result>
+    </variation>
+    <variation id="_022ng">
+        <name>The L SDR exhibit has IFRS, NOGOOD.</name>
+        <description>L instance has us-gaap, but also has ifrs, and ifrs is not allowed, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"submissionType" : "SDR"}'></parameter>
+            <instance readMeFirst="true" exhibitType="EX-99.K SDR">022ng/k60302022ng-20151231.xml</instance>
+            <linkbase>022ng/k60302022ng-20151231_lab.xml</linkbase>
+            <linkbase>022ng/k60302022ng-20151231_pre.xml</linkbase>
+            <schema>022ng/k60302022ng-20151231.xsd</schema>
+            <instance readMeFirst="true" exhibitType="EX-99.L SDR">022ng/l60302022ng-20151231.xml</instance>
+            <linkbase>022ng/l60302022ng-20151231_lab.xml</linkbase>
+            <linkbase>022ng/l60302022ng-20151231_pre.xml</linkbase>
+            <schema>022ng/l60302022ng-20151231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="62203" name="Incompatible-Taxonomy-Document-Type" frd="cp"></assert>
+        </result>
+    </variation>
+    <variation id="_023ng">
+        <name>The K SDR exhibit has IFRS, NOGOOD.</name>
+        <description>K instance has us-gaap, but also has ifrs, and ifrs is not allowed (Exhibit L is marked 'not applicable in the header), NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"submissionType" : "SDR"}'></parameter>
+            <instance readMeFirst="true" exhibitType="EX-99.K SDR">023ng/l60302023ng-20151231.xml</instance>
+            <linkbase>023ng/l60302023ng-20151231_lab.xml</linkbase>
+            <linkbase>023ng/l60302023ng-20151231_pre.xml</linkbase>
+            <schema>023ng/l60302023ng-20151231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="62203" name="Incompatible-Taxonomy-Document-Type" frd="cp"></assert>
+        </result>
+    </variation>
+</conf:testcase>

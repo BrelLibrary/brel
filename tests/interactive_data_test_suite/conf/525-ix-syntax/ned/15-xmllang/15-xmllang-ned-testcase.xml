@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>525-15</number>
+    <name>Inline XBRL Test Suite v68d : IDs tests, Not EDGAR Dependent</name>
+    <description>
+        <h2>Various "good" (gd) and "not good" (ng) test files that demonstrate non-valid Inline XBRL xmllang usage</h2>
+    </description>
+    <!--<variation id="_002gd">
+<name>all ix:footnote elements have an ancestor with an xml:lang attribute, GOOD</name>
+<description>PASS-xml-lang-on-xhtml-not-in-hidden</description>
+<reference xiispec="6.1.2" />
+<reference specification="The ix:footnote element MUST have an xml:lang attribute in scope." />
+<reference xiitest="PASS-xml-lang-on-xhtml-not-in-hidden" />
+<data>
+<conf:parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'
+xmlns=""
+xmlns:conf="http://edgar/2009/conformance" />
+<instance readMeFirst="true">i15002gd/i15002gd-20081231.htm</instance>
+<linkbase>i15002gd/i15002gd-20081231_pre.xml</linkbase>
+<linkbase>i15002gd/i15002gd-20081231_lab.xml</linkbase>
+<schema>i15002gd/i15002gd-20081231.xsd</schema>
+</data>
+</variation>-->
+    <variation id="_001gd">
+        <name>all ix:footnote elements have their own xml:lang attribute, GOOD</name>
+        <description>PASS-direct-xml-lang-not-overidden</description>
+        <reference xiispec="6.1.2"></reference>
+        <reference specification="The ix:footnote element MUST have an xml:lang attribute in scope."></reference>
+        <reference xiitest="PASS-direct-xml-lang-not-overidden"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i15001gd/i15001gd-20081231.htm</instance>
+            <linkbase>i15001gd/i15001gd-20081231_pre.xml</linkbase>
+            <linkbase>i15001gd/i15001gd-20081231_lab.xml</linkbase>
+            <schema>i15001gd/i15001gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_100ng">
+        <name>hidden footnotes have no xml:lang attribute in scope, NOGOOD</name>
+        <description>FAIL-xml-lang-not-in-scope-for-footnote</description>
+        <reference xiispec="6.1.2"></reference>
+        <reference specification="The ix:footnote element MUST have an xml:lang attribute in scope."></reference>
+        <reference xiitest="FAIL-xml-lang-not-in-scope-for-footnote"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i15100ng/i15100ng-20081231.htm</instance>
+            <linkbase>i15100ng/i15100ng-20081231_pre.xml</linkbase>
+            <linkbase>i15100ng/i15100ng-20081231_lab.xml</linkbase>
+            <schema>i15100ng/i15100ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.6.1.2:footnoteLang" frd="ix" fj="IXBRL_FOOTNOTE_XML_LANG_ATT_UNDEFINED" nnum="70115" txt="Inline XBRL Document footnote element attribute {attribute} undefined"></assert>
+        </result>
+    </variation>
+    <variation id="_102ng">
+        <name>xml:lang cannot be used as an attribute of the ix:hidden element, NOGOOD</name>
+        <description>FAIL-xml-lang-on-ix-hidden</description>
+        <reference xiitest="FAIL-xml-lang-on-ix-hidden"></reference>
+        <reference xiispec="9.1.1"></reference>
+        <reference specification="Element ix:hidden does not allow attributes."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i15102ng/i15102ng-20081231.htm</instance>
+            <linkbase>i15102ng/i15102ng-20081231_pre.xml</linkbase>
+            <linkbase>i15102ng/i15102ng-20081231_lab.xml</linkbase>
+            <schema>i15102ng/i15102ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70115" txt="Attribute {attribute} is not allowed to appear in element {element}."></assert>
+        </result>
+    </variation>
+    <variation id="_103ng">
+        <name>xml:lang cannot be used as an attribute of the ix:hidden element despite the valid usage for ix:footnote, NOGOOD</name>
+        <description>FAIL-xml-lang-on-ix-hidden-and-on-footnote</description>
+        <reference xiitest="FAIL-xml-lang-on-ix-hidden-and-on-footnote"></reference>
+        <reference xiispec="9.1.1"></reference>
+        <reference specification="Element ix:hidden does not allow attributes."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i15103ng/i15103ng-20081231.htm</instance>
+            <linkbase>i15103ng/i15103ng-20081231_pre.xml</linkbase>
+            <linkbase>i15103ng/i15103ng-20081231_lab.xml</linkbase>
+            <schema>i15103ng/i15103ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70115" txt="Attribute {attribute} is not allowed to appear in element {element}."></assert>
+        </result>
+    </variation>
+    <variation id="_104ng">
+        <name>xml:lang on ix:header, NOGOOD</name>
+        <description>xml lang on header, NOGOOD</description>
+        <reference xiispec="8.1.1"></reference>
+        <reference specification="Element ix:header does not allow attributes."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i15104ng/i15104ng-20081231.htm</instance>
+            <linkbase>i15104ng/i15104ng-20081231_pre.xml</linkbase>
+            <linkbase>i15104ng/i15104ng-20081231_lab.xml</linkbase>
+            <schema>i15104ng/i15104ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70115" txt="Attribute {attribute} is not allowed to appear in element {element}."></assert>
+        </result>
+    </variation>
+</testcase>

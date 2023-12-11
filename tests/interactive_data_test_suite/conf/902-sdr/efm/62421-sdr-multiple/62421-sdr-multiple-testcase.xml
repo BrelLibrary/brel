@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../../lib/test.xsl"?>
+<conf:testcase xmlns:conf="http://edgar/2009/conformance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../../lib/test.xsd">
+    <conf:creator>
+        <conf:name>SEC Office of Structured Disclosure</conf:name>
+        <conf:email>StructuredData@sec.gov</conf:email>
+    </conf:creator>
+    <conf:number>902-11</conf:number>
+    <conf:name>EDGAR Filer Manual v68d 8.2.15</conf:name>
+    <conf:description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#8.2.15  File Municipal Advisor Forms">Refer to EFM: 8.2.15  File Municipal Advisor Forms</a>
+    </conf:description>
+    <conf:reference specification="17659"></conf:reference>
+    <conf:variation id="_003gd">
+        <conf:name>A minimal SDR with no confidentiality, all three render.</conf:name>
+        <conf:description>A minimal SDR with no confidentiality, all three render.</conf:description>
+        <conf:reference specification="17659"></conf:reference>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType" : "SDR"}'></conf:parameter>
+            <conf:instance readMeFirst="true" exhibitType="EX-99.K SDR">003gd/k62421003gd-20151231.xml</conf:instance>
+            <conf:linkbase>003gd/k62421003gd-20151231_lab.xml</conf:linkbase>
+            <conf:linkbase>003gd/k62421003gd-20151231_pre.xml</conf:linkbase>
+            <conf:schema>003gd/k62421003gd-20151231.xsd</conf:schema>
+            <conf:instance readMeFirst="true" exhibitType="EX-99.L SDR">003gd/l62421003gd-20151231.xml</conf:instance>
+            <conf:linkbase>003gd/l62421003gd-20151231_lab.xml</conf:linkbase>
+            <conf:linkbase>003gd/l62421003gd-20151231_pre.xml</conf:linkbase>
+            <conf:schema>003gd/l62421003gd-20151231.xsd</conf:schema>
+            <conf:instance readMeFirst="true" exhibitType="EX-99.L SDR">003gd/m62421003gd-20151231.xml</conf:instance>
+            <conf:linkbase>003gd/m62421003gd-20151231_lab.xml</conf:linkbase>
+            <conf:linkbase>003gd/m62421003gd-20151231_pre.xml</conf:linkbase>
+            <conf:schema>003gd/m62421003gd-20151231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_02gd">
+        <conf:name>A minimal SDR with no confidentiality.</conf:name>
+        <conf:description>A minimal SDR with no confidentiality, the HTML file names exactly match the instance names (HTML files are not shown in this manifest file).</conf:description>
+        <conf:reference specification="17659"></conf:reference>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType" : "SDR"}'></conf:parameter>
+            <conf:instance readMeFirst="true" exhibitType="EX-99.K SDR">003gd/k62421003gd-20151231.xml</conf:instance>
+            <conf:linkbase>003gd/k62421003gd-20151231_lab.xml</conf:linkbase>
+            <conf:linkbase>003gd/k62421003gd-20151231_pre.xml</conf:linkbase>
+            <conf:schema>003gd/k62421003gd-20151231.xsd</conf:schema>
+            <conf:instance readMeFirst="true" exhibitType="EX-99.L SDR">003gd/l62421003gd-20151231.xml</conf:instance>
+            <conf:linkbase>003gd/l62421003gd-20151231_lab.xml</conf:linkbase>
+            <conf:linkbase>003gd/l62421003gd-20151231_pre.xml</conf:linkbase>
+            <conf:schema>003gd/l62421003gd-20151231.xsd</conf:schema>
+            <conf:instance readMeFirst="true" exhibitType="EX-99.L SDR">003gd/m62421003gd-20151231.xml</conf:instance>
+            <conf:linkbase>003gd/m62421003gd-20151231_lab.xml</conf:linkbase>
+            <conf:linkbase>003gd/m62421003gd-20151231_pre.xml</conf:linkbase>
+            <conf:schema>003gd/m62421003gd-20151231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+</conf:testcase>

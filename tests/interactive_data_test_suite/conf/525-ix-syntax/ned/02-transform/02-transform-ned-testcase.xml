@@ -1,0 +1,143 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>525-02</number>
+    <name>Inline XBRL Test Suite v68d : Transformation Registry 3 (TR3) tests, Not EDGAR Dependent</name>
+    <description>
+        <h2>"Good" (gd) and "not good" (ng) test files that demonstrate non-valid Inline XBRL transform (format) usage</h2>
+    </description>
+    <variation id="_001gd">
+        <name>Sign attribute on a positive nonFraction, GOOD</name>
+        <description>PASS-sign-attribute-on-nonFraction-positive-input</description>
+        <reference specification="The {value} property MUST be valid in accordance with the {format input type} property."></reference>
+        <reference xiispec="10.1.1"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i02001gd/i02001gd-20081231.htm</instance>
+            <linkbase>i02001gd/i02001gd-20081231_pre.xml</linkbase>
+            <linkbase>i02001gd/i02001gd-20081231_lab.xml</linkbase>
+            <schema>i02001gd/i02001gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid">
+
+</result>
+    </variation>
+    <variation id="_002gd">
+        <name>Format attribute on an xsi:nil fact, GOOD</name>
+        <description>PASS-format-attribute-on-nonFraction-nil-true</description>
+        <reference specification="The {value} property MUST be valid in accordance with the {format input type} property."></reference>
+        <reference xiispec="10.1.1"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i02002gd/i02002gd-20081231.htm</instance>
+            <linkbase>i02002gd/i02002gd-20081231_pre.xml</linkbase>
+            <linkbase>i02002gd/i02002gd-20081231_lab.xml</linkbase>
+            <schema>i02002gd/i02002gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid">
+
+</result>
+    </variation>
+    <variation id="_100ng">
+        <name>Transformation input error on numunitdecimal, NOGOOD</name>
+        <description>ixt:numunitdecimal input error</description>
+        <reference specification="The {value} property MUST be valid in accordance with the {format input type} property."></reference>
+        <reference xiispec="10.1.1"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i02100ng/i02100ng-20081231.htm</instance>
+            <linkbase>i02100ng/i02100ng-20081231_pre.xml</linkbase>
+            <linkbase>i02100ng/i02100ng-20081231_lab.xml</linkbase>
+            <schema>i02100ng/i02100ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.10.1.1:transformValueError" frd="ix" fj="IXBRL_INVALID_DATA_FOR_FORMAT" nnum="70102" txt="Inline XBRL Document invalid data type, value &quot;{value}&quot; does not satisfy format type {format}."></assert>
+        </result>
+    </variation>
+    <variation id="_101ng">
+        <name>Nonfraction with the zerodash format misused, NOGOOD</name>
+        <description>FAIL-format-zerodash</description>
+        <reference specification="The {value} property MUST be valid in accordance with the {format input type} property."></reference>
+        <reference xiispec="10.1.1"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i02101ng/i02101ng-20081231.htm</instance>
+            <linkbase>i02101ng/i02101ng-20081231_pre.xml</linkbase>
+            <linkbase>i02101ng/i02101ng-20081231_lab.xml</linkbase>
+            <schema>i02101ng/i02101ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.10.1.1:transformValueError" frd="ix" fj="IXBRL_INVALID_DATA_FOR_FORMAT" nnum="70102" txt="Inline XBRL Document invalid data type, value &quot;{value}&quot; does not satisfy format type {format}."></assert>
+        </result>
+    </variation>
+    <variation id="_102ng">
+        <name>Nonnumeric with format ixt:datemonthdayyearen and misspelled month, NOGOOD</name>
+        <description>FAIL-invalid-long-month</description>
+        <reference specification="The {value} property MUST be valid in accordance with the {format input type} property."></reference>
+        <reference xiispec="10.1.1"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i02102ng/i02102ng-20081231.htm</instance>
+            <linkbase>i02102ng/i02102ng-20081231_pre.xml</linkbase>
+            <linkbase>i02102ng/i02102ng-20081231_lab.xml</linkbase>
+            <schema>i02102ng/i02102ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.11.1.1:transformValueError" frd="ix" fj="IXBRL_INVALID_DATA_FOR_FORMAT" nnum="70102" txt="Inline XBRL Document invalid data type, value &quot;{value}&quot; does not satisfy format type {format}."></assert>
+        </result>
+    </variation>
+    <variation id="_103ng">
+        <name>Format attribute on nonFraction is ixt:country, NOGOOD</name>
+        <description>FAIL-unrecognised-schema-type</description>
+        <reference xiitest="FAIL-unrecognised-schema-type"></reference>
+        <reference specification="The {format} property MUST match the expanded name implied by the value of the name attribute of a signature element in the relevant Transformation Rules Registry."></reference>
+        <reference xiispec="10.1.1"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i02103ng/i02103ng-20081231.htm</instance>
+            <linkbase>i02103ng/i02103ng-20081231_pre.xml</linkbase>
+            <linkbase>i02103ng/i02103ng-20081231_lab.xml</linkbase>
+            <schema>i02103ng/i02103ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.10.1.2:invalidTransformation" frd="ix" fj="IXBRL_FORMAT_UNDEFINED" nnum="70102" txt="Fact * has unrecognized transformation name #"></assert>
+        </result>
+    </variation>
+    <variation id="_104ng">
+        <name>ix:nonnumeric element with bad transform, NOGOOD</name>
+        <description>FAIL-invalid-short-month</description>
+        <reference xiitest="FAIL-invalid-short-month"></reference>
+        <reference xiispec="11.1.1"></reference>
+        <reference specification="The {value} property MUST be valid in accordance with the {format input type} property."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i02104ng/i02104ng-20081231.htm</instance>
+            <linkbase>i02104ng/i02104ng-20081231_pre.xml</linkbase>
+            <linkbase>i02104ng/i02104ng-20081231_lab.xml</linkbase>
+            <schema>i02104ng/i02104ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.11.1.1:transformValueError" frd="ix" fj="IXBRL_INVALID_DATA_FOR_FORMAT" nnum="70102" txt="Inline XBRL Document invalid data type, value &quot;{value}&quot; does not satisfy format type {format}."></assert>
+        </result>
+    </variation>
+    <variation id="_105ng">
+        <name>Format attribute on an xsi:nil fact with incorrect ixt transform, GOOD</name>
+        <description>PASS-format-attribute-on-nonFraction-nil-true</description>
+        <reference specification="The {value} property MUST be valid in accordance with the {format input type} property."></reference>
+        <reference xiispec="10.1.1"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i02105ng/i02105ng-20081231.htm</instance>
+            <linkbase>i02105ng/i02002gd-20081231_pre.xml</linkbase>
+            <linkbase>i02105ng/i02002gd-20081231_lab.xml</linkbase>
+            <schema>i02105ng/i02105ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.10.1.1:transformValueError" frd="ix" fj="IXBRL_INVALID_DATA_FOR_FORMAT" nnum="70102" txt="Inline XBRL Document invalid data type, value &quot;{value}&quot; does not satisfy format type {format}."></assert>
+        </result>
+    </variation>
+</testcase>

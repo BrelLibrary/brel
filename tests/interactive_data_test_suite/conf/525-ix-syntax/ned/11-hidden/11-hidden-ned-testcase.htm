@@ -1,0 +1,310 @@
+<html xmlns:case="http://edgar/2009/conformance">
+  <head>
+    <title>525-11
+        :
+        Inline XBRL Test Suite v68d : Hidden tests, Not EDGAR Dependent</title>
+    <style type="text/css">
+        table, td, th {border: solid black 1pt; border-collapse: collapse;} td {vertical-align: top;}
+      </style>
+  </head>
+  <body>
+    <h1>525-11
+        :
+        Inline XBRL Test Suite v68d : Hidden tests, Not EDGAR Dependent</h1>
+    <p>
+        Created by: 
+        <a href="mailto:StructuredData@sec.gov">SEC Office of Structured Disclosure</a></p>
+    <p>
+      <description xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <h2>Various "good" (gd) and "not good" (ng) test files that demonstrate specific ix:hidden usage</h2>
+    </description>
+    </p>
+    <h2>
+        Variations
+      </h2>
+    <table border="solid">
+      <thead>
+        <tr>
+          <th>Number</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>References</th>
+          <th>Data Inputs</th>
+          <th>Result Outputs</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>_001gd</td>
+          <td>Hidden_testcases_Set1, GOOD</td>
+          <td>PASS-hidden-nonFraction-content</td>
+          <td>9 The Hidden element 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i11001gd/i11001gd-20081231.htm">i11001gd/i11001gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i11001gd/i11001gd-20081231_pre.xml">i11001gd/i11001gd-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i11001gd/i11001gd-20081231_lab.xml">i11001gd/i11001gd-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i11001gd/i11001gd-20081231.xsd">i11001gd/i11001gd-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_100ng</td>
+          <td>ix:hidden element with no children, NOGOOD</td>
+          <td>FAIL-hidden-empty</td>
+          <td>The ix:hidden element contains (ix:footnote|ix:fraction|ix:nonFraction|ix:nonNumeric|ix:tuple)+ 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i11100ng/i11100ng-20081231.htm">i11100ng/i11100ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i11100ng/i11100ng-20081231_pre.xml">i11100ng/i11100ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i11100ng/i11100ng-20081231_lab.xml">i11100ng/i11100ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i11100ng/i11100ng-20081231.xsd">i11100ng/i11100ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-html:syntaxError">html:syntaxError</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_101ng</td>
+          <td>ix:hidden with illegal content - div element, NOGOOD</td>
+          <td>FAIL-hidden-illegal-content</td>
+          <td>The ix:hidden element contains (ix:footnote|ix:fraction|ix:nonFraction|ix:nonNumeric|ix:tuple)+ 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i11101ng/i11101ng-20081231.htm">i11101ng/i11101ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i11101ng/i11101ng-20081231_pre.xml">i11101ng/i11101ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i11101ng/i11101ng-20081231_lab.xml">i11101ng/i11101ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i11101ng/i11101ng-20081231.xsd">i11101ng/i11101ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-html:syntaxError">html:syntaxError</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_102ng</td>
+          <td>ix:hidden not child of the the header, NOGOOD</td>
+          <td>FAIL-hidden-not-header-descendant</td>
+          <td>The ix:hidden element MUST be a child of the ix:header element. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i11102ng/i11102ng-20081231.htm">i11102ng/i11102ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i11102ng/i11102ng-20081231_pre.xml">i11102ng/i11102ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i11102ng/i11102ng-20081231_lab.xml">i11102ng/i11102ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i11102ng/i11102ng-20081231.xsd">i11102ng/i11102ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-html:syntaxError">html:syntaxError</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_103ng</td>
+          <td>ix:hidden in the wrong position within ix:header, NOGOOD</td>
+          <td>FAIL-hidden-incorrect-order-in-header</td>
+          <td>The ix:references element must have children ix:hidden, ix:references, and/or ix:resources in that order. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i11103ng/i11103ng-20081231.htm">i11103ng/i11103ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i11103ng/i11103ng-20081231_pre.xml">i11103ng/i11103ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i11103ng/i11103ng-20081231_lab.xml">i11103ng/i11103ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i11103ng/i11103ng-20081231.xsd">i11103ng/i11103ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-html:syntaxError">html:syntaxError</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_104ng</td>
+          <td>ix:hidden with illegal content - text node, NOGOOD</td>
+          <td>FAIL-hidden-illegal-text-content</td>
+          <td>The ix:hidden element contains (ix:footnote|ix:fraction|ix:nonFraction|ix:nonNumeric|ix:tuple)+ 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i11104ng/i11104ng-20081231.htm">i11104ng/i11104ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i11104ng/i11104ng-20081231_pre.xml">i11104ng/i11104ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i11104ng/i11104ng-20081231_lab.xml">i11104ng/i11104ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i11104ng/i11104ng-20081231.xsd">i11104ng/i11104ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-html:syntaxError">html:syntaxError</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,400 @@
+<html xmlns:case="http://edgar/2009/conformance">
+  <head>
+    <title>525-02
+        :
+        Inline XBRL Test Suite v68d : Transformation Registry 3 (TR3) tests, Not EDGAR Dependent</title>
+    <style type="text/css">
+        table, td, th {border: solid black 1pt; border-collapse: collapse;} td {vertical-align: top;}
+      </style>
+  </head>
+  <body>
+    <h1>525-02
+        :
+        Inline XBRL Test Suite v68d : Transformation Registry 3 (TR3) tests, Not EDGAR Dependent</h1>
+    <p>
+        Created by: 
+        <a href="mailto:StructuredData@sec.gov">SEC Office of Structured Disclosure</a></p>
+    <p>
+      <description xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <h2>"Good" (gd) and "not good" (ng) test files that demonstrate non-valid Inline XBRL transform (format) usage</h2>
+    </description>
+    </p>
+    <h2>
+        Variations
+      </h2>
+    <table border="solid">
+      <thead>
+        <tr>
+          <th>Number</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>References</th>
+          <th>Data Inputs</th>
+          <th>Result Outputs</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>_001gd</td>
+          <td>Sign attribute on a positive nonFraction, GOOD</td>
+          <td>PASS-sign-attribute-on-nonFraction-positive-input</td>
+          <td>The {value} property MUST be valid in accordance with the {format input type} property. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i02001gd/i02001gd-20081231.htm">i02001gd/i02001gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i02001gd/i02001gd-20081231_pre.xml">i02001gd/i02001gd-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i02001gd/i02001gd-20081231_lab.xml">i02001gd/i02001gd-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i02001gd/i02001gd-20081231.xsd">i02001gd/i02001gd-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_002gd</td>
+          <td>Format attribute on an xsi:nil fact, GOOD</td>
+          <td>PASS-format-attribute-on-nonFraction-nil-true</td>
+          <td>The {value} property MUST be valid in accordance with the {format input type} property. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i02002gd/i02002gd-20081231.htm">i02002gd/i02002gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i02002gd/i02002gd-20081231_pre.xml">i02002gd/i02002gd-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i02002gd/i02002gd-20081231_lab.xml">i02002gd/i02002gd-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i02002gd/i02002gd-20081231.xsd">i02002gd/i02002gd-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_100ng</td>
+          <td>Transformation input error on numunitdecimal, NOGOOD</td>
+          <td>ixt:numunitdecimal input error</td>
+          <td>The {value} property MUST be valid in accordance with the {format input type} property. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i02100ng/i02100ng-20081231.htm">i02100ng/i02100ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i02100ng/i02100ng-20081231_pre.xml">i02100ng/i02100ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i02100ng/i02100ng-20081231_lab.xml">i02100ng/i02100ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i02100ng/i02100ng-20081231.xsd">i02100ng/i02100ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.10.1.1:transformValueError">ix11.10.1.1:transformValueError</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_101ng</td>
+          <td>Nonfraction with the zerodash format misused, NOGOOD</td>
+          <td>FAIL-format-zerodash</td>
+          <td>The {value} property MUST be valid in accordance with the {format input type} property. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i02101ng/i02101ng-20081231.htm">i02101ng/i02101ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i02101ng/i02101ng-20081231_pre.xml">i02101ng/i02101ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i02101ng/i02101ng-20081231_lab.xml">i02101ng/i02101ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i02101ng/i02101ng-20081231.xsd">i02101ng/i02101ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.10.1.1:transformValueError">ix11.10.1.1:transformValueError</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_102ng</td>
+          <td>Nonnumeric with format ixt:datemonthdayyearen and misspelled month, NOGOOD</td>
+          <td>FAIL-invalid-long-month</td>
+          <td>The {value} property MUST be valid in accordance with the {format input type} property. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i02102ng/i02102ng-20081231.htm">i02102ng/i02102ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i02102ng/i02102ng-20081231_pre.xml">i02102ng/i02102ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i02102ng/i02102ng-20081231_lab.xml">i02102ng/i02102ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i02102ng/i02102ng-20081231.xsd">i02102ng/i02102ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.11.1.1:transformValueError">ix11.11.1.1:transformValueError</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_103ng</td>
+          <td>Format attribute on nonFraction is ixt:country, NOGOOD</td>
+          <td>FAIL-unrecognised-schema-type</td>
+          <td>The {format} property MUST match the expanded name implied by the value of the name attribute of a signature element in the relevant Transformation Rules Registry. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i02103ng/i02103ng-20081231.htm">i02103ng/i02103ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i02103ng/i02103ng-20081231_pre.xml">i02103ng/i02103ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i02103ng/i02103ng-20081231_lab.xml">i02103ng/i02103ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i02103ng/i02103ng-20081231.xsd">i02103ng/i02103ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.10.1.2:invalidTransformation">ix11.10.1.2:invalidTransformation</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_104ng</td>
+          <td>ix:nonnumeric element with bad transform, NOGOOD</td>
+          <td>FAIL-invalid-short-month</td>
+          <td>The {value} property MUST be valid in accordance with the {format input type} property. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i02104ng/i02104ng-20081231.htm">i02104ng/i02104ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i02104ng/i02104ng-20081231_pre.xml">i02104ng/i02104ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i02104ng/i02104ng-20081231_lab.xml">i02104ng/i02104ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i02104ng/i02104ng-20081231.xsd">i02104ng/i02104ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.11.1.1:transformValueError">ix11.11.1.1:transformValueError</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_105ng</td>
+          <td>Format attribute on an xsi:nil fact with incorrect ixt transform, GOOD</td>
+          <td>PASS-format-attribute-on-nonFraction-nil-true</td>
+          <td>The {value} property MUST be valid in accordance with the {format input type} property. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i02105ng/i02105ng-20081231.htm">i02105ng/i02105ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i02105ng/i02002gd-20081231_pre.xml">i02105ng/i02002gd-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i02105ng/i02002gd-20081231_lab.xml">i02105ng/i02002gd-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i02105ng/i02105ng-20081231.xsd">i02105ng/i02105ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.10.1.1:transformValueError">ix11.10.1.1:transformValueError</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

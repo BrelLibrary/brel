@@ -3,7 +3,7 @@ import lxml.etree
 
 from ..dts import ISchemaManager
 from brel.reportelements import IReportElement, Dimension
-from brel import QName, BrelLabel
+from brel import QName
 
 from .xml_report_element_factory import XMLReportElementFactory
 
@@ -12,23 +12,21 @@ def parse_report_elements_xml(schema_manager: ISchemaManager):
     Parse the concepts.
     @return: A list of all the concepts in the filing, even those that are not reported.
     """
+    nsmap = QName.get_nsmap()
 
     report_elements: dict[QName, IReportElement] = {}
     
     for schema_xml in schema_manager.get_all_schemas():
         
         reportelem_url = schema_xml.getroot().attrib["targetNamespace"]
-        reportelem_prefix = ""
-        for prefix, url in schema_xml.getroot().nsmap.items():
-            if url == reportelem_url:
-                reportelem_prefix = prefix
-                break
+        # reportelem_prefix = next(prefix for prefix, url in schema_xml.getroot().nsmap.items() if url == reportelem_url)
+        reportelem_prefix = next(prefix for prefix, url in nsmap.items() if url == reportelem_url)
         
         # get all the concept xml elements in the schema that have an attribute name
         re_xmls = schema_xml.findall(".//{*}element[@name]", namespaces=None)
         for re_xml in re_xmls:
             reportelem_name = re_xml.attrib["name"]
-            reportelem_qname = QName.from_string(f"{reportelem_prefix}:{reportelem_name}")
+            reportelem_qname = QName.from_string(f"{{{reportelem_url}}}{reportelem_name}")
 
             # check cache
             if reportelem_qname not in report_elements.keys():

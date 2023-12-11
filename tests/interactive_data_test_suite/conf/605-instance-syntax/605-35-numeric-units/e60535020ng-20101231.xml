@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xbrl xmlns="http://www.xbrl.org/2003/instance" xmlns:dei="http://xbrl.sec.gov/dei/2023" xmlns:edgar="http://edgar/20101231" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:iso="http://www.xbrl.org/2003/iso4217" xmlns:local="local" xmlns:utr="http://www.xbrl.org/2009/utr">
+    <link:schemaRef xlink:href="edgar-20101231.xsd" xlink:type="simple"></link:schemaRef>
+    <context id="_">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+        </entity>
+        <period>
+            <startDate>2008-01-31</startDate>
+            <endDate>2008-12-31</endDate>
+        </period>
+    </context>
+    <DocumentType xmlns="http://xbrl.sec.gov/dei/2023" contextRef="_">8-K</DocumentType>
+    <AmendmentFlag xmlns="http://xbrl.sec.gov/dei/2023" contextRef="_">false</AmendmentFlag>
+    <EntityRegistrantName xmlns="http://xbrl.sec.gov/dei/2023" contextRef="_">ng_VoltageItemTypeConcept_u1</EntityRegistrantName>
+    <EntityCentralIndexKey xmlns="http://xbrl.sec.gov/dei/2023" contextRef="_">9876543210</EntityCentralIndexKey>
+    <DocumentPeriodEndDate xmlns="http://xbrl.sec.gov/dei/2023" contextRef="_">2008-12-31</DocumentPeriodEndDate>
+    <EntityEmergingGrowthCompany xmlns="http://xbrl.sec.gov/dei/2023" contextRef="_">false</EntityEmergingGrowthCompany>
+    <unit id="u1">
+        <measure>local:u1</measure>
+    </unit>
+    <edgar:VoltageItemTypeConcept contextRef="_" unitRef="u1" xsi:nil="true"></edgar:VoltageItemTypeConcept>
+</xbrl>

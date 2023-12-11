@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xbrli:xbrl xmlns:dei="http://xbrl.sec.gov/dei/2023" xmlns:iso4217="http://www.xbrl.org/2003/iso4217" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:dtr-types="http://www.xbrl.org/dtr/type/2022-03-31" xmlns:xbrldi="http://xbrl.org/2006/xbrldi" xmlns:xbrldt="http://xbrl.org/2005/xbrldt" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:r11000gd="http://r11000gd/20081231">
+    <link:schemaRef xlink:href="r11000gd-20081231.xsd" xlink:type="simple"></link:schemaRef>
+    <xbrli:context id="d2013">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2013-01-01</xbrli:startDate>
+            <xbrli:endDate>2013-12-31</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:unit id="USD">
+        <xbrli:measure>iso4217:USD</xbrli:measure>
+    </xbrli:unit>
+    <dei:DocumentPeriodEndDate contextRef="d2013" id="doc-per-end">2013-12-31</dei:DocumentPeriodEndDate>
+    <dei:DocumentType contextRef="d2013">8-K</dei:DocumentType>
+    <dei:AmendmentFlag contextRef="d2013">true</dei:AmendmentFlag>
+    <dei:EntityCentralIndexKey contextRef="d2013">9876543210</dei:EntityCentralIndexKey>
+    <dei:EntityRegistrantName contextRef="d2013">OID TEST CO #1 r62411000gd </dei:EntityRegistrantName>
+    <dei:AmendmentDescription contextRef="d2013">This presentation group uses different standard label rolee on each fact.</dei:AmendmentDescription>
+    <dei:DocumentDescription contextRef="d2013">If it looks like an 8-K, and it's declared as an 8-K, it's an 8-K.</dei:DocumentDescription>
+    <dei:DocumentEffectiveDate contextRef="d2013">2016-01-04</dei:DocumentEffectiveDate>
+    <dei:DocumentFiscalYearFocus contextRef="d2013">2015</dei:DocumentFiscalYearFocus>
+    <dei:DocumentFiscalPeriodFocus contextRef="d2013">FY</dei:DocumentFiscalPeriodFocus>
+    <dei:EntityEmergingGrowthCompany contextRef="d2013">false</dei:EntityEmergingGrowthCompany>
+    <r11000gd:CustomNonnumericItem contextRef="d2013">Documentation labels may only be added to custom elements.</r11000gd:CustomNonnumericItem>
+</xbrli:xbrl>

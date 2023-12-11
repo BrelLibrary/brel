@@ -1,0 +1,182 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl" ?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>607-29</number>
+    <name>EDGAR Filer Manual v68d 6.7.29</name>
+    <description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.7.29 Restriction on element name length.">Refer to EFM: 6.7.29 Restriction on element name length.</a>
+    </description>
+    <reference specification="12907"></reference>
+    <variation id="_000gd">
+        <name>6.7.29 Name attribute (u200onebyte) in simpleType, GOOD.</name>
+        <description>Name attribute (u200onebyte) in simpleType, GOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2011", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60729000gd-20111231.xml</instance>
+            <linkbase>edgar-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_pre.xml</linkbase>
+            <schema>edgar-20111231.xsd</schema>
+            <schema>e60729000gd-20111231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_001gd">
+        <name>6.7.29 Name attribute (u200onebyte) in complexType, GOOD.</name>
+        <description>Name attribute (u200onebyte) in complexType, GOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2011", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60729001gd-20111231.xml</instance>
+            <linkbase>edgar-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_pre.xml</linkbase>
+            <schema>edgar-20111231.xsd</schema>
+            <schema>e60729001gd-20111231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_002gd">
+        <name>6.7.29 Name attribute (u200onebyte) in element, GOOD.</name>
+        <description>Name attribute (u200onebyte) in element, GOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2011", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60729002gd-20111231.xml</instance>
+            <linkbase>edgar-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_pre.xml</linkbase>
+            <schema>edgar-20111231.xsd</schema>
+            <schema>e60729002gd-20111231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_003gd">
+        <name>6.7.29 Name attribute (u100twobyte) in simpleType, GOOD.</name>
+        <description>Name attribute (u100twobyte) in simpleType, GOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2011", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60729003gd-20111231.xml</instance>
+            <linkbase>edgar-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_pre.xml</linkbase>
+            <schema>edgar-20111231.xsd</schema>
+            <schema>e60729003gd-20111231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_004gd">
+        <name>6.7.29 Name attribute (u100twobyte) in complexType, GOOD.</name>
+        <description>Name attribute (u100twobyte) in complexType, GOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2011", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60729004gd-20111231.xml</instance>
+            <linkbase>edgar-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_pre.xml</linkbase>
+            <schema>edgar-20111231.xsd</schema>
+            <schema>e60729004gd-20111231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_005gd">
+        <name>6.7.29 Name attribute (u100twobyte) in element, GOOD.</name>
+        <description>Name attribute (u100twobyte) in element, GOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2011", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60729005gd-20111231.xml</instance>
+            <linkbase>edgar-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_pre.xml</linkbase>
+            <schema>edgar-20111231.xsd</schema>
+            <schema>e60729005gd-20111231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_006ng">
+        <name>6.7.29 Name attribute (u201onebyte) in simpleType, NOGOOD.</name>
+        <description>Name attribute (u201onebyte) in simpleType, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2011", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60729006ng-20111231.xml</instance>
+            <linkbase>edgar-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_pre.xml</linkbase>
+            <schema>edgar-20111231.xsd</schema>
+            <schema>e60729006ng-20111231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60729" name="Name-Length-Limit" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_007ng">
+        <name>6.7.29 Name attribute (u201onebyte) in complexType, NOGOOD.</name>
+        <description>Name attribute (u201onebyte) in complexType, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2011", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60729007ng-20111231.xml</instance>
+            <linkbase>edgar-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_pre.xml</linkbase>
+            <schema>edgar-20111231.xsd</schema>
+            <schema>e60729007ng-20111231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60729" name="Name-Length-Limit" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_008ng">
+        <name>6.7.29 Name attribute (u201onebyte) in element, NOGOOD.</name>
+        <description>Name attribute (u201onebyte) in element, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2011", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60729008ng-20111231.xml</instance>
+            <linkbase>edgar-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_pre.xml</linkbase>
+            <schema>edgar-20111231.xsd</schema>
+            <schema>e60729008ng-20111231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60729" name="Name-Length-Limit" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_009ng">
+        <name>6.7.29 Name attribute (u100twobyte1onebyte) in simpleType, NOGOOD.</name>
+        <description>Name attribute (u100twobyte1onebyte) in simpleType, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2011", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60729009ng-20111231.xml</instance>
+            <linkbase>edgar-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_pre.xml</linkbase>
+            <schema>edgar-20111231.xsd</schema>
+            <schema>e60729009ng-20111231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60729" name="Name-Length-Limit" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_010ng">
+        <name>6.7.29 Name attribute (u100twobyte1onebyte) in complexType, NOGOOD.</name>
+        <description>Name attribute (u100twobyte1onebyte) in complexType, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2011", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60729010ng-20111231.xml</instance>
+            <linkbase>edgar-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_pre.xml</linkbase>
+            <schema>edgar-20111231.xsd</schema>
+            <schema>e60729010ng-20111231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60729" name="Name-Length-Limit" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_011ng">
+        <name>6.7.29 Name attribute (u100twobyte1onebyte) in element, NOGOOD.</name>
+        <description>Name attribute (u100twobyte1onebyte) in element, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2011", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60729011ng-20111231.xml</instance>
+            <linkbase>edgar-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_pre.xml</linkbase>
+            <schema>edgar-20111231.xsd</schema>
+            <schema>e60729011ng-20111231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60729" name="Name-Length-Limit" frd="du"></assert>
+        </result>
+    </variation>
+</testcase>

@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xbrli:xbrl xmlns:dei="http://xbrl.sec.gov/dei/2023" xmlns:iso4217="http://www.xbrl.org/2003/iso4217" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xbrldi="http://xbrl.org/2006/xbrldi" xmlns:xbrldt="http://xbrl.org/2005/xbrldt" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:r20001gd="http://r20001gd/20110501" xmlns:rr="http://xbrl.sec.gov/rr/2023">
+    <link:schemaRef xlink:href="r20001gd-20081231.xsd" xlink:type="simple"></link:schemaRef>
+    <dei:EntityCentralIndexKey contextRef="c">9876543210</dei:EntityCentralIndexKey>
+    <dei:EntityRegistrantName contextRef="c">OID TEST CO #1 r20001gd</dei:EntityRegistrantName>
+    <dei:DocumentType contextRef="c">485BPOS</dei:DocumentType>
+    <dei:AmendmentFlag contextRef="c">false</dei:AmendmentFlag>
+    <dei:EntityInvCompanyType contextRef="c">N-1A</dei:EntityInvCompanyType>
+    <dei:DocumentPeriodEndDate contextRef="c">2011-05-01</dei:DocumentPeriodEndDate>
+    <rr:ProspectusDate contextRef="c">2011-05-01</rr:ProspectusDate>
+    <rr:BarChartHeading contextRef="c_S013456789">Calendar year total returns for Class A shares</rr:BarChartHeading>
+    <rr:BarChartNarrativeTextBlock contextRef="c_S013456789">(Results do not include a sales charge. If a sales charge had been included,  results would be lower.)</rr:BarChartNarrativeTextBlock>
+    <rr:BarChartDoesNotReflectSalesLoads contextRef="c_S013456789">Results do not include a sales charge.</rr:BarChartDoesNotReflectSalesLoads>
+    <rr:BarChartClosingTextBlock contextRef="c_S013456789">The fund's total return for the three months ended March 31, 2011 was -5.05%.  The Highest/Lowest quarterly results during this time period were: (for the quarter ended June 30, 2003) 15.62% and (for the quarter ended December 31, 2008) -22.53%.</rr:BarChartClosingTextBlock>
+    <rr:YearToDateReturnLabel contextRef="c_S013456789_C862099482">The fund's total return for the three months ended March 31, 2011:</rr:YearToDateReturnLabel>
+    <rr:BarChartYearToDateReturnDate contextRef="c_S013456789_C862099482">2011-03-31</rr:BarChartYearToDateReturnDate>
+    <rr:BarChartYearToDateReturn contextRef="c_S013456789_C862099482" unitRef="Ratio" decimals="INF">-0.0505</rr:BarChartYearToDateReturn>
+    <rr:HighestQuarterlyReturnLabel contextRef="c_S013456789_C862099482">(for the quarter ended June 30, 2003)</rr:HighestQuarterlyReturnLabel>
+    <rr:BarChartHighestQuarterlyReturnDate contextRef="c_S013456789_C862099482">2003-06-30</rr:BarChartHighestQuarterlyReturnDate>
+    <rr:BarChartHighestQuarterlyReturn contextRef="c_S013456789_C862099482" unitRef="Ratio" decimals="INF">0.1562</rr:BarChartHighestQuarterlyReturn>
+    <rr:LowestQuarterlyReturnLabel contextRef="c_S013456789_C862099482">(for the quarter ended December 31, 2008)</rr:LowestQuarterlyReturnLabel>
+    <rr:BarChartLowestQuarterlyReturnDate contextRef="c_S013456789_C862099482">2008-12-31</rr:BarChartLowestQuarterlyReturnDate>
+    <rr:BarChartLowestQuarterlyReturn contextRef="c_S013456789_C862099482" unitRef="Ratio" decimals="INF">-0.2253</rr:BarChartLowestQuarterlyReturn>
+    <rr:RiskReturnDetailTableTextBlock contextRef="c">~ http://xbrl.sec.gov/rr/role/RiskReturnDetailData column period compact * row primary compact * ~</rr:RiskReturnDetailTableTextBlock>
+    <xbrli:context id="c">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2011-05-01</xbrli:startDate>
+            <xbrli:endDate>2011-05-01</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="c_S013456789">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+            <xbrli:segment>
+                <xbrldi:explicitMember dimension="dei:LegalEntityAxis">r20001gd:S013456789Member</xbrldi:explicitMember>
+            </xbrli:segment>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2011-05-01</xbrli:startDate>
+            <xbrli:endDate>2011-05-01</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="c_S013456789_C862099482">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+            <xbrli:segment>
+                <xbrldi:explicitMember dimension="dei:LegalEntityAxis">r20001gd:S013456789Member</xbrldi:explicitMember>
+                <xbrldi:explicitMember dimension="rr:ProspectusShareClassAxis">r20001gd:C862099482Member</xbrldi:explicitMember>
+            </xbrli:segment>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2011-05-01</xbrli:startDate>
+            <xbrli:endDate>2011-05-01</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:unit id="USD">
+        <xbrli:measure>iso4217:USD</xbrli:measure>
+    </xbrli:unit>
+    <xbrli:unit id="Ratio">
+        <xbrli:measure>xbrli:pure</xbrli:measure>
+    </xbrli:unit>
+    <xbrli:unit id="Shares">
+        <xbrli:measure>xbrli:shares</xbrli:measure>
+    </xbrli:unit>
+    <xbrli:unit id="USDperShare">
+        <xbrli:divide>
+            <xbrli:unitNumerator>
+                <xbrli:measure>iso4217:USD</xbrli:measure>
+            </xbrli:unitNumerator>
+            <xbrli:unitDenominator>
+                <xbrli:measure>xbrli:shares</xbrli:measure>
+            </xbrli:unitDenominator>
+        </xbrli:divide>
+    </xbrli:unit>
+</xbrli:xbrl>

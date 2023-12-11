@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>605-22</number>
+    <name>EDGAR Filer Manual v68d 6.5.22</name>
+    <description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.5.22 Reserved.">Refer to EFM: 6.5.22 Reserved.</a>
+    </description>
+    <reference specification="10980"></reference>
+    <variation id="_000gd">
+        <name>6.5.22 10-K with Several extra DEI Elements in the Required Context, GOOD</name>
+        <description>10-K with Several extra DEI Elements in the Required Context, GOOD</description>
+        <reference specification="10980"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "submissionType" : "10-K", "emergingGrowthCompanyFlag" : false, "voluntaryFilerFlag" : true, "wellKnownSeasonedIssuerFlag" : false, "shellCompanyFlag" : false }'></parameter>
+            <instance readMeFirst="true">e60522000gd-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_001gd">
+        <name>6.5.22 10-K with Several extra Required DEI Elements appearing in Non-Required Contexts, GOOD</name>
+        <description>10-K with Several extra Required DEI Elements appearing in Non-Required Contexts, GOOD</description>
+        <reference specification="10980"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "submissionType" : "10-K", "emergingGrowthCompanyFlag" : true, "voluntaryFilerFlag" : false, "wellKnownSeasonedIssuerFlag" : false, "shellCompanyFlag" : false }'></parameter>
+            <instance readMeFirst="true">e60522001gd-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+</testcase>

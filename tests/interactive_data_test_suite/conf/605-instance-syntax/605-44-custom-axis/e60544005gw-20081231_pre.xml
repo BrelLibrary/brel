@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='utf-8'?>
+<linkbase xmlns="http://www.xbrl.org/2003/linkbase" xmlns:edgar="http://edgar/20081231" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd">
+    <roleRef roleURI="http://edgar/role/role1" xlink:href="e60544005gw-20081231.xsd#role1" xlink:type="simple"></roleRef>
+    <roleRef roleURI="http://edgar/role/role2" xlink:href="e60544005gw-20081231.xsd#role2" xlink:type="simple"></roleRef>
+    <presentationLink xlink:type="extended" xlink:role="http://edgar/role/role2">
+        <loc xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentInformationLineItems" xlink:label="DocumentInformationLineItems" xlink:type="locator"></loc>
+        <loc xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentType" xlink:label="DocumentType" xlink:type="locator"></loc>
+        <presentationArc xlink:type="arc" order="1.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="DocumentType"></presentationArc>
+        <loc xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentPeriodEndDate" xlink:label="DocumentPeriodEndDate" xlink:type="locator"></loc>
+        <presentationArc xlink:type="arc" order="3.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="DocumentPeriodEndDate"></presentationArc>
+        <loc xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityCommonStockSharesOutstanding" xlink:label="EntityCommonStockSharesOutstanding" xlink:type="locator"></loc>
+        <presentationArc xlink:type="arc" order="8.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="EntityCommonStockSharesOutstanding"></presentationArc>
+        <loc xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityRegistrantName" xlink:label="EntityRegistrantName" xlink:type="locator"></loc>
+        <presentationArc xlink:type="arc" order="5.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="EntityRegistrantName"></presentationArc>
+        <loc xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityCentralIndexKey" xlink:label="EntityCentralIndexKey" xlink:type="locator"></loc>
+        <presentationArc xlink:type="arc" order="6.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="EntityCentralIndexKey"></presentationArc>
+        <loc xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityPublicFloat" xlink:label="EntityPublicFloat" xlink:type="locator"></loc>
+        <presentationArc xlink:type="arc" order="7.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="EntityPublicFloat"></presentationArc>
+        <loc xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_AmendmentFlag" xlink:label="AmendmentFlag" xlink:type="locator"></loc>
+        <presentationArc xlink:type="arc" order="2.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="AmendmentFlag"></presentationArc>
+        <loc xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_CurrentFiscalYearEndDate" xlink:label="CurrentFiscalYearEndDate" xlink:type="locator"></loc>
+        <presentationArc xlink:type="arc" order="4.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="CurrentFiscalYearEndDate"></presentationArc>
+    </presentationLink>
+    <presentationLink xlink:type="extended" xlink:role="http://edgar/role/role1">
+        <loc xlink:href="e60544005gw-20081231.xsd#edgar_TextBlock" xlink:label="TextBlock" xlink:type="locator"></loc>
+        <loc xlink:href="e60544005gw-20081231.xsd#edgar_Table" xlink:label="Table" xlink:type="locator"></loc>
+        <presentationArc xlink:type="arc" order="1.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="TextBlock" xlink:to="Table"></presentationArc>
+        <loc xlink:href="e60544005gw-20081231.xsd#edgar_ConsolidatedEntities1Axis" xlink:label="ConsolidatedEntities1Axis" xlink:type="locator"></loc>
+        <presentationArc xlink:type="arc" order="2.0" use="optional" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="Table" xlink:to="ConsolidatedEntities1Axis"></presentationArc>
+        <loc xlink:href="e60544005gw-20081231.xsd#edgar_PepperoniMember" xlink:label="PepperoniMember" xlink:type="locator"></loc>
+        <presentationArc xlink:type="arc" order="2.0" use="optional" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ConsolidatedEntities1Axis" xlink:to="PepperoniMember"></presentationArc>
+        <loc xlink:href="e60544005gw-20081231.xsd#edgar_TotalDomain" xlink:label="TotalDomain" xlink:type="locator"></loc>
+        <presentationArc xlink:type="arc" order="3.0" use="optional" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ConsolidatedEntities1Axis" xlink:to="TotalDomain"></presentationArc>
+        <loc xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityInformationLineItems" xlink:label="EntityInformationLineItems" xlink:type="locator"></loc>
+        <presentationArc xlink:type="arc" order="4.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="Table" xlink:to="EntityInformationLineItems"></presentationArc>
+        <loc xlink:href="e60544005gw-20081231.xsd#edgar_CompanyOwnedRestaurantSalesDomestic" xlink:label="CompanyOwnedRestaurantSalesDomestic" xlink:type="locator"></loc>
+        <presentationArc xlink:type="arc" order="1.0" use="optional" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityInformationLineItems" xlink:to="CompanyOwnedRestaurantSalesDomestic"></presentationArc>
+        <loc xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityEmergingGrowthCompany" xlink:label="EntityEmergingGrowthCompany" xlink:type="locator"></loc>
+        <presentationArc xlink:type="arc" order="28.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityInformationLineItems" xlink:to="EntityEmergingGrowthCompany"></presentationArc>
+    </presentationLink>
+</linkbase>

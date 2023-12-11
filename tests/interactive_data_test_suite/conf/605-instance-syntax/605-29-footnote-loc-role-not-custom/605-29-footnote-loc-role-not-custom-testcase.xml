@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>605-29</number>
+    <name>EDGAR Filer Manual v68d 6.5.29</name>
+    <description>
+        <h2>The role attribute of a loc element must be empty, or defined in XBRL 2.1.</h2>
+    </description>
+    <reference specification="10995"></reference>
+    <variation id="_000ng">
+        <name>6.5.29 Instance footnote contains a custom footnote locator role, NOGOOD</name>
+        <description>Instance footnote contains a custom footnote locator role. NOGOOD</description>
+        <reference specification="10995"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60529000ng-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+            <schema>e60529000ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60529" name="Footnote-Custom-Loc-Role" frd="du"></assert>
+        </result>
+    </variation>
+</testcase>

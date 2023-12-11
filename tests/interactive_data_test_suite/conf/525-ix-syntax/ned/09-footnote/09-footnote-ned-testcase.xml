@@ -1,0 +1,256 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>525-09</number>
+    <name>Inline XBRL Test Suite v68d : Footnote tests, Not EDGAR Dependent</name>
+    <description>
+        <h2>Various "good" (gd) and "not good" (ng) test files that demonstrate specific Footnote usage</h2>
+    </description>
+    <!-- TODO Incorporate _109ng -->
+    <variation id="_001gd">
+        <name>GOOD</name>
+        <description>Various footnote good tests, set 1 </description>
+        <reference xiispec="6"></reference>
+        <reference specification="6 The footnote element"></reference>
+        <reference xiitest="PASS-element-ix-footnote-03"></reference>
+        <reference xiitest="PASS-footnote-valid-element-content"></reference>
+        <reference xiitest="PASS-footnote-xml-base-xhtml-base-no-interaction"></reference>
+        <reference xiitest="PASS-element-link-footnote-02"></reference>
+        <reference xiitest="PASS-element-link-footnote-complete"></reference>
+        <reference xiitest="PASS-element-link-footnote-complete-role-defs"></reference>
+        <reference xiitest="PASS-element-link-footnote-footnoteLinkRole"></reference>
+        <reference xiitest="PASS-element-link-footnote-footnoteRole"></reference>
+        <reference xiitest="PASS-element-link-footnote-nothidden"></reference>
+        <reference xiitest="PASS-element-link-footnote-resolved-uris"></reference>
+        <reference xiitest="PASS-element-link-footnote-xhtml-content"></reference>
+        <reference xiitest="PASS-element-link-footnote-xhtml-content-exclude"></reference>
+        <reference xiitest="PASS-elements-footnote-and-nonNumeric-unresolvable-uris-in-exclude"></reference>
+        <reference xiitest="PASS-footnote-relative-uris-object-tag"></reference>
+        <reference xiitest="PASS-footnote-any-attribute"></reference>
+        <reference xiitest="PASS-footnote-continuation"></reference>
+        <reference xiitest="PASS-footnote-ix-exclude-content"></reference>
+        <reference xiitest="PASS-footnote-on-nonFraction"></reference>
+        <reference xiitest="PASS-footnote-uris-with-spaces"></reference>
+        <reference xiitest="PASS-footnote-within-footnote"></reference>
+        <reference xiitest="PASS-unused-footnote"></reference>
+        <reference xiitest="PASS-footnote-footnoteRole-multiple-output"></reference>
+        <reference xiitest="PASS-many-to-one-footnote-complete"></reference>
+        <reference xiitest="PASS-two-footnotes-multiple-output"></reference>
+        <reference xiitest="PASS-many-to-one-footnotes-multiple-outputs"></reference>
+        <reference xiitest="PASS-multiple-outputs-check-dont-have-empty-footnoteLinks"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i09001gd/i09001gd-20081231.htm</instance>
+            <image>i09001gd/i09001gd-20081231.jpg</image>
+            <linkbase>i09001gd/i09001gd-20081231_pre.xml</linkbase>
+            <linkbase>i09001gd/i09001gd-20081231_lab.xml</linkbase>
+            <schema>i09001gd/i09001gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_002gd">
+        <name>GOOD</name>
+        <description>Various footnote related good tests, set 2.</description>
+        <reference xiispec="6"></reference>
+        <reference specification="6 The footnote element"></reference>
+        <reference xiitest="PASS-footnote-ix-element-content"></reference>
+        <reference xiitest="PASS-element-link-footnote-nonNumeric-escaped"></reference>
+        <reference xiitest="PASS-element-link-footnote-nonNumeric-unescaped"></reference>
+        <reference xiitest="PASS-footnote-nested-ix-element-content"></reference>
+        <reference xiitest="PASS-footnote-nested-xml-base-decls"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i09002gd/i09002gd-20081231.htm</instance>
+            <linkbase>i09002gd/i09002gd-20081231_pre.xml</linkbase>
+            <linkbase>i09002gd/i09002gd-20081231_lab.xml</linkbase>
+            <schema>i09002gd/i09002gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_003gd">
+        <name>ix:footnotes without xml:lang, but with xml:lang in scope, GOOD</name>
+        <description>footnotes with lang in scope</description>
+        <reference xiispec="6.1.2"></reference>
+        <reference specification="The ix:footnote element MUST have an xml:lang attribute in scope."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i09003gd/i09003gd-20081231.htm</instance>
+            <linkbase>i09003gd/i09003gd-20081231_pre.xml</linkbase>
+            <linkbase>i09003gd/i09003gd-20081231_lab.xml</linkbase>
+            <schema>i09003gd/i09003gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_100ng">
+        <name>Spurious attributes on ix:footnote, NOGOOD</name>
+        <description>FAIL-footnote-any-attribute</description>
+        <reference xiispec="6.1"></reference>
+        <reference specification="ix:footnote can have any attribute with a namespace name which has the value http://www.w3.org/XML/1998/namespace"></reference>
+        <reference xiitest="FAIL-footnote-any-attribute"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i09100ng/i09100ng-20081231.htm</instance>
+            <linkbase>i09100ng/i09100ng-20081231_pre.xml</linkbase>
+            <linkbase>i09100ng/i09100ng-20081231_lab.xml</linkbase>
+            <schema>i09100ng/i09100ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_FOOTNOTE_IX_NS_ATTRIBUTE_NOT_ALLOWED" nnum="70109" txt="ix:footnote can not have attribute with ix namespace."></assert>
+        </result>
+    </variation>
+    <variation id="_101ng">
+        <name>Missing id attribute on ix:footnote, NOGOOD</name>
+        <description>FAIL-footnote-missing-footnoteID</description>
+        <reference xiispec="6.1.1"></reference>
+        <reference specification="The ix:footnote element MUST have an id attribute."></reference>
+        <reference xiitest="FAIL-footnote-missing-footnoteID"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i09101ng/i09101ng-20081231.htm</instance>
+            <linkbase>i09101ng/i09101ng-20081231_pre.xml</linkbase>
+            <linkbase>i09101ng/i09101ng-20081231_lab.xml</linkbase>
+            <schema>i09101ng/i09101ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_FOOTNOTE_ID_REQUIRED" nnum="70109" txt="ix:footnote id attribute is required."></assert>
+        </result>
+    </variation>
+    <variation id="_102ng">
+        <name>duplicate footnote ids, NOGOOD</name>
+        <description>FAIL-footnote-duplicate-footnoteIDs</description>
+        <reference xiispec="6.1.1"></reference>
+        <reference specification="ID values MUST uniquely identify the elements which bear them."></reference>
+        <reference xiitest="FAIL-footnote-duplicate-footnoteIDs"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i09102ng/i09102ng-20081231.htm</instance>
+            <linkbase>i09102ng/i09102ng-20081231_pre.xml</linkbase>
+            <linkbase>i09102ng/i09102ng-20081231_lab.xml</linkbase>
+            <schema>i09102ng/i09102ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="xml.3.3.1:idMustBeUnique" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70109" txt="Element $ id * is duplicated"></assert>
+        </result>
+    </variation>
+    <variation id="_103ng">
+        <name>id of footnote is shared with a unit, NOGOOD</name>
+        <description>FAIL-element-ix-footnote-04</description>
+        <reference xiispec="6.1.1"></reference>
+        <reference specification="ID values MUST uniquely identify the elements which bear them."></reference>
+        <reference xiitest="FAIL-element-ix-footnote-04"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i09103ng/i09103ng-20081231.htm</instance>
+            <linkbase>i09103ng/i09103ng-20081231_pre.xml</linkbase>
+            <linkbase>i09103ng/i09103ng-20081231_lab.xml</linkbase>
+            <schema>i09103ng/i09103ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="xml.3.3.1:idMustBeUnique" frd="ix" fj="IXBRL_DUPLICATE_ELEMENT_ID_FOUND" nnum="70109" txt="Element $ id * is duplicated"></assert>
+        </result>
+    </variation>
+    <variation id="_104ng">
+        <name>, NOGOOD</name>
+        <description>FAIL-footnote-dangling-continuation</description>
+        <reference xiispec="6.1.2"></reference>
+        <reference xiispec="4.1.2"></reference>
+        <reference specification="If the continuedAt attribute is present, there MUST exist an ix:continuation element in the Inline XBRL Document Set with an {id} property which has a value matching the {continuation reference} property."></reference>
+        <reference xiitest="FAIL-footnote-dangling-continuation"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i09104ng/i09104ng-20081231.htm</instance>
+            <linkbase>i09104ng/i09104ng-20081231_pre.xml</linkbase>
+            <linkbase>i09104ng/i09104ng-20081231_lab.xml</linkbase>
+            <schema>i09104ng/i09104ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.6.1.2:continuationMissing" frd="ix" fj="IXBRL_FOOTNOTE_CONTINUATION_MISSING" nnum="70109" txt="ix:footnote continuation link is missing."></assert>
+        </result>
+    </variation>
+    <variation id="_105gd">
+        <name>Footnote content model disallows empty footnote, NOGOOD</name>
+        <description>FAIL-footnote-invalid-element-content</description>
+        <reference xiispec="6.1.2"></reference>
+        <reference specification="Content: ( any element | any text node ) +"></reference>
+        <reference xiitest="FAIL-footnote-invalid-element-content"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i09105gd/i09105gd-20081231.htm</instance>
+            <linkbase>i09105gd/i09105ng-20081231_pre.xml</linkbase>
+            <linkbase>i09105gd/i09105ng-20081231_lab.xml</linkbase>
+            <schema>i09105gd/i09105ng-20081231.xsd</schema>
+        </data>
+        <result expected="valid">
+            </result>
+    </variation>
+    <variation id="_106ng">
+        <name>, NOGOOD</name>
+        <description>FAIL-footnote-dangling-fromRef</description>
+        <reference xiispec="13.1.2"></reference>
+        <reference specification="For each token in the {from} property there MUST exist an ix:fraction, ix:nonFraction, ix:nonNumeric or ix:tuple  element in the Inline XBRL Document Set with an {id} property which has a matching value."></reference>
+        <reference xiitest="FAIL-footnote-dangling-fromRef"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i09106ng/i09106ng-20081231.htm</instance>
+            <linkbase>i09106ng/i09106ng-20081231_pre.xml</linkbase>
+            <linkbase>i09106ng/i09106ng-20081231_lab.xml</linkbase>
+            <schema>i09106ng/i09106ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.13.1.2:relationshipFromRef" frd="ix" fj="IXBRL_RELATIONSHIP_FROM_REFERRING_ILLEGAL_ELEMENT" nnum="70109" txt="Inline XBRL fromRef $ is not a fraction, ix:nonFraction, ix:nonNumeric or ix:tuple."></assert>
+        </result>
+    </variation>
+    <variation id="_107ng">
+        <name>, NOGOOD</name>
+        <description>FAIL-footnote-dangling-toRef</description>
+        <reference xiispec="13.1.2"></reference>
+        <reference specification="For each token in the {to} property there MUST exist an ix:footnote, ix:fraction, ix:nonFraction, ix:nonNumeric or ix:tuple  element in the Inline XBRL Document Set with an {id} property which has a matching value."></reference>
+        <reference xiitest="FAIL-footnote-dangling-toRef"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i09107ng/i09107ng-20081231.htm</instance>
+            <linkbase>i09107ng/i09107ng-20081231_pre.xml</linkbase>
+            <linkbase>i09107ng/i09107ng-20081231_lab.xml</linkbase>
+            <schema>i09107ng/i09107ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.13.1.2:relationshipToRef" frd="ix" fj="IXBRL_RELATIONSHIP_TO_REF_REFERS_UNDEFINED_ELEMENT" nnum="70109" txt="Inline relationship toRef(s) $ not found."></assert>
+        </result>
+    </variation>
+    <variation id="_108ng">
+        <name>ix:footnote without xml:lang, and no xml:lang in scope, NOGOOD</name>
+        <description>footnote with no lang in scope</description>
+        <reference xiispec="6.1.2"></reference>
+        <reference specification="The ix:footnote element MUST have an xml:lang attribute in scope."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i09108ng/i09108ng-20081231.htm</instance>
+            <linkbase>i09108ng/i09108ng-20081231_pre.xml</linkbase>
+            <linkbase>i09108ng/i09108ng-20081231_lab.xml</linkbase>
+            <schema>i09108ng/i09108ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.6.1.2:footnoteLang" frd="ix" fj="IXBRL_FOOTNOTE_XML_LANG_ATT_UNDEFINED" nnum="70109" txt="Inline XBRL footnotes require an in-scope xml:lang"></assert>
+        </result>
+    </variation>
+    <variation id="_109ng">
+        <name>ix:footnote without xml:lang, and no xml:lang in scope, NOGOOD</name>
+        <description>footnote with no lang in scope</description>
+        <reference xiispec="6.1.2"></reference>
+        <reference specification="The ix:footnote element MUST have an xml:lang attribute in scope."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i09109ng/i09001gd-20081231.htm</instance>
+            <linkbase>i09109ng/i09001gd-20081231_pre.xml</linkbase>
+            <linkbase>i09109ng/i09001gd-20081231_lab.xml</linkbase>
+            <schema>i09109ng/i09001gd-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.13.1.2:relationshipFromRef" frd="ix" fj="IXBRL_FOOTNOTE_XML_LANG_ATT_UNDEFINED" nnum="70109" txt="Inline XBRL footnotes require an in-scope xml:lang"></assert>
+        </result>
+    </variation>
+</testcase>

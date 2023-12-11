@@ -1,0 +1,1263 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../../lib/test.xsl"?>
+<conf:testcase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:conf="http://edgar/2009/conformance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../../lib/test.xsd">
+    <conf:creator>
+        <conf:name>SEC Office of Structured Disclosure</conf:name>
+        <conf:email>StructuredData@sec.gov</conf:email>
+    </conf:creator>
+    <conf:number>605-50</conf:number>
+    <conf:name>EDGAR Filer Manual v68d 6.5.50</conf:name>
+    <conf:description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.5.50 Form 20-F cover page elements">Refer to EFM: 6.5.50 Form 20-F cover page elements</a>
+    </conf:description>
+    <conf:variation id="_001gd">
+        <conf:name>8-K GOOD </conf:name>
+        <conf:description>8-K GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550001gd/g60550001gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60550001gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550001gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550001gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550001gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_002gw">
+        <conf:name>8-K-GW-Blank &#8211; a non-null fact should not exist. DocumentAccountingStandard </conf:name>
+        <conf:description>8-K-GW-Blank &#8211; a non-null fact should not exist. DocumentAccountingStandard </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550002gw/g60550002gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60550002gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550002gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550002gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550002gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="DocumentAccountingStandard" num="60550" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_003gw">
+        <conf:name>8-K-GW-Blank &#8211; a non-null fact should not exist. OtherReportingStandardItemNumber </conf:name>
+        <conf:description>8-K-GW-Blank &#8211; a non-null fact should not exist. OtherReportingStandardItemNumber </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550003gw/g60550003gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60550003gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550003gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550003gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550003gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="OtherReportingStandardItemNumber" num="60550" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_004gd">
+        <conf:name>10-K GOOD </conf:name>
+        <conf:description>10-K GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550004gd/g60550004gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60550004gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550004gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550004gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550004gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_005gw">
+        <conf:name>10-K-GW-Blank &#8211; a non-null fact should not exist. DocumentAccountingStandard </conf:name>
+        <conf:description>10-K-GW-Blank &#8211; a non-null fact should not exist. DocumentAccountingStandard </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550005gw/g60550005gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60550005gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550005gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550005gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550005gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="DocumentAccountingStandard" num="60550" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_006gw">
+        <conf:name>10-K-GW-Blank &#8211; a non-null fact should not exist. OtherReportingStandardItemNumber </conf:name>
+        <conf:description>10-K-GW-Blank &#8211; a non-null fact should not exist. OtherReportingStandardItemNumber </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550006gw/g60550006gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60550006gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550006gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550006gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550006gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="OtherReportingStandardItemNumber" num="60550" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_007gd">
+        <conf:name>10-KT GOOD </conf:name>
+        <conf:description>10-KT GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-KT"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550007gd/g60550007gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60550007gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550007gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550007gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550007gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_008gw">
+        <conf:name>10-KT-GW-Blank &#8211; a non-null fact should not exist. DocumentAccountingStandard </conf:name>
+        <conf:description>10-KT-GW-Blank &#8211; a non-null fact should not exist. DocumentAccountingStandard </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-KT"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550008gw/g60550008gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60550008gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550008gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550008gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550008gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="DocumentAccountingStandard" num="60550" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_009gw">
+        <conf:name>10-KT-GW-Blank &#8211; a non-null fact should not exist. OtherReportingStandardItemNumber </conf:name>
+        <conf:description>10-KT-GW-Blank &#8211; a non-null fact should not exist. OtherReportingStandardItemNumber </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-KT"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550009gw/g60550009gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60550009gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550009gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550009gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550009gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="OtherReportingStandardItemNumber" num="60550" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_010gd">
+        <conf:name>10-Q GOOD </conf:name>
+        <conf:description>10-Q GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-Q"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550010gd/g60550010gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60550010gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550010gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550010gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550010gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_011gw">
+        <conf:name>10-Q-GW-Blank &#8211; a non-null fact should not exist. DocumentAccountingStandard </conf:name>
+        <conf:description>10-Q-GW-Blank &#8211; a non-null fact should not exist. DocumentAccountingStandard </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-Q"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550011gw/g60550011gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60550011gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550011gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550011gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550011gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="DocumentAccountingStandard" num="60550" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_012gw">
+        <conf:name>10-Q-GW-Blank &#8211; a non-null fact should not exist. OtherReportingStandardItemNumber </conf:name>
+        <conf:description>10-Q-GW-Blank &#8211; a non-null fact should not exist. OtherReportingStandardItemNumber </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-Q"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550012gw/g60550012gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60550012gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550012gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550012gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550012gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="OtherReportingStandardItemNumber" num="60550" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_013gd">
+        <conf:name>10-QT GOOD </conf:name>
+        <conf:description>10-QT GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-QT"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550013gd/g60550013gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60550013gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550013gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550013gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550013gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_014gw">
+        <conf:name>10-QT-GW-Blank &#8211; a non-null fact should not exist. DocumentAccountingStandard </conf:name>
+        <conf:description>10-QT-GW-Blank &#8211; a non-null fact should not exist. DocumentAccountingStandard </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-QT"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550014gw/g60550014gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60550014gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550014gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550014gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550014gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="DocumentAccountingStandard" num="60550" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_015gw">
+        <conf:name>10-QT-GW-Blank &#8211; a non-null fact should not exist. OtherReportingStandardItemNumber </conf:name>
+        <conf:description>10-QT-GW-Blank &#8211; a non-null fact should not exist. OtherReportingStandardItemNumber </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-QT"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550015gw/g60550015gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60550015gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550015gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550015gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550015gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="OtherReportingStandardItemNumber" num="60550" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_016gd">
+        <conf:name>20-F GOOD </conf:name>
+        <conf:description>20-F GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "20-F"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550016gd/g60550016gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60550016gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550016gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550016gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550016gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_017gd">
+        <conf:name>20-F-GD-Ri - If an inline document, then a non-null fact should exist in the context, per the axis in the applicable context, and be visible (provide warning); else may or may not exist. DocumentAccountingStandard </conf:name>
+        <conf:description>20-F-GD-Ri - If an inline document, then a non-null fact should exist in the context, per the axis in the applicable context, and be visible (provide warning); else may or may not exist. DocumentAccountingStandard. Missing DocumentAccountingStandard</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "20-F"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550017gd/g60550017gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60550017gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550017gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550017gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550017gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_018gw">
+        <conf:name>20-F-GW-Oth &#8211; A non-null fact should be present if and only if DocumentAccountingStandard value is "Other". OtherReportingStandardItemNumber </conf:name>
+        <conf:description>20-F-GW-Oth &#8211; A non-null fact should be present if and only if DocumentAccountingStandard value is "Other". OtherReportingStandardItemNumber </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "20-F"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550018gw/g60550018gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60550018gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550018gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550018gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550018gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="OtherReportingStandardItemNumber" num="60550" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_019gd">
+        <conf:name>40-F GOOD </conf:name>
+        <conf:description>40-F GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "40-F"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550019gd/g60550019gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60550019gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550019gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550019gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550019gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_020gw">
+        <conf:name>40-F-GW-Blank &#8211; a non-null fact should not exist. DocumentAccountingStandard </conf:name>
+        <conf:description>40-F-GW-Blank &#8211; a non-null fact should not exist. DocumentAccountingStandard </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "40-F"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550020gw/g60550020gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60550020gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550020gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550020gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550020gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="DocumentAccountingStandard" num="60550" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_021gw">
+        <conf:name>40-F-GW-Blank &#8211; a non-null fact should not exist. OtherReportingStandardItemNumber </conf:name>
+        <conf:description>40-F-GW-Blank &#8211; a non-null fact should not exist. OtherReportingStandardItemNumber </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "40-F"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550021gw/g60550021gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60550021gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550021gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550021gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550021gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="OtherReportingStandardItemNumber" num="60550" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_022gd">
+        <conf:name>10-12B GOOD </conf:name>
+        <conf:description>10-12B GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "10-12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550022gd/g60550022gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60550022gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550022gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550022gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550022gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_023gw">
+        <conf:name>10-12B-GW-Blank &#8211; a non-null fact should not exist. DocumentAccountingStandard </conf:name>
+        <conf:description>10-12B-GW-Blank &#8211; a non-null fact should not exist. DocumentAccountingStandard </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "10-12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550023gw/g60550023gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60550023gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550023gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550023gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550023gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="DocumentAccountingStandard" num="60550" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_024gw">
+        <conf:name>10-12B-GW-Blank &#8211; a non-null fact should not exist. OtherReportingStandardItemNumber </conf:name>
+        <conf:description>10-12B-GW-Blank &#8211; a non-null fact should not exist. OtherReportingStandardItemNumber </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "10-12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550024gw/g60550024gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60550024gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550024gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550024gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550024gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="OtherReportingStandardItemNumber" num="60550" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_025gd">
+        <conf:name>10-12G GOOD </conf:name>
+        <conf:description>10-12G GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "10-12G"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550025gd/g60550025gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60550025gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550025gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550025gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550025gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_026gw">
+        <conf:name>10-12G-GW-Blank &#8211; a non-null fact should not exist. DocumentAccountingStandard </conf:name>
+        <conf:description>10-12G-GW-Blank &#8211; a non-null fact should not exist. DocumentAccountingStandard </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "10-12G"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550026gw/g60550026gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60550026gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550026gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550026gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550026gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="DocumentAccountingStandard" num="60550" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_027gw">
+        <conf:name>10-12G-GW-Blank &#8211; a non-null fact should not exist. OtherReportingStandardItemNumber </conf:name>
+        <conf:description>10-12G-GW-Blank &#8211; a non-null fact should not exist. OtherReportingStandardItemNumber </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "10-12G"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550027gw/g60550027gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60550027gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550027gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550027gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550027gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="OtherReportingStandardItemNumber" num="60550" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_028gd">
+        <conf:name>20FR12B GOOD </conf:name>
+        <conf:description>20FR12B GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "20FR12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550028gd/g60550028gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60550028gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550028gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550028gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550028gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_029gw">
+        <conf:name>20FR12B-GW-Oth* &#8211; A non-null fact may exist if DocumentAccountingStandard is "Other", else it should not exist. OtherReportingStandardItemNumber </conf:name>
+        <conf:description>20FR12B-GW-Oth* &#8211; A non-null fact may exist if DocumentAccountingStandard is "Other", else it should not exist. OtherReportingStandardItemNumber </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "20FR12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550029gw/g60550029gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60550029gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550029gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550029gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550029gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="OtherReportingStandardItemNumber" num="60550" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_030gd">
+        <conf:name>20FR12G GOOD </conf:name>
+        <conf:description>20FR12G GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "20FR12G"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550030gd/g60550030gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60550030gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550030gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550030gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550030gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_031gw">
+        <conf:name>20FR12G-GW-Oth* &#8211; A non-null fact may exist if DocumentAccountingStandard is "Other", else it should not exist. OtherReportingStandardItemNumber </conf:name>
+        <conf:description>20FR12G-GW-Oth* &#8211; A non-null fact may exist if DocumentAccountingStandard is "Other", else it should not exist. OtherReportingStandardItemNumber </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "20FR12G"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550031gw/g60550031gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60550031gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550031gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550031gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550031gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="OtherReportingStandardItemNumber" num="60550" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_032gd">
+        <conf:name>40FR12B GOOD </conf:name>
+        <conf:description>40FR12B GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "40FR12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550032gd/g60550032gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60550032gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550032gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550032gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550032gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_033gw">
+        <conf:name>40FR12B-GW-Blank &#8211; a non-null fact should not exist. DocumentAccountingStandard </conf:name>
+        <conf:description>40FR12B-GW-Blank &#8211; a non-null fact should not exist. DocumentAccountingStandard </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "40FR12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550033gw/g60550033gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60550033gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550033gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550033gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550033gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="DocumentAccountingStandard" num="60550" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_034gw">
+        <conf:name>40FR12B-GW-Blank &#8211; a non-null fact should not exist. OtherReportingStandardItemNumber </conf:name>
+        <conf:description>40FR12B-GW-Blank &#8211; a non-null fact should not exist. OtherReportingStandardItemNumber </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "40FR12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550034gw/g60550034gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60550034gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550034gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550034gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550034gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="OtherReportingStandardItemNumber" num="60550" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_035gd">
+        <conf:name>40FR12G GOOD </conf:name>
+        <conf:description>40FR12G GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "40FR12G"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550035gd/g60550035gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60550035gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550035gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550035gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550035gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_036gw">
+        <conf:name>40FR12G-GW-Blank &#8211; a non-null fact should not exist. DocumentAccountingStandard </conf:name>
+        <conf:description>40FR12G-GW-Blank &#8211; a non-null fact should not exist. DocumentAccountingStandard </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "40FR12G"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550036gw/g60550036gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60550036gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550036gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550036gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550036gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="DocumentAccountingStandard" num="60550" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_037gw">
+        <conf:name>40FR12G-GW-Blank &#8211; a non-null fact should not exist. OtherReportingStandardItemNumber </conf:name>
+        <conf:description>40FR12G-GW-Blank &#8211; a non-null fact should not exist. OtherReportingStandardItemNumber </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "40FR12G"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550037gw/g60550037gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60550037gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550037gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550037gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550037gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="OtherReportingStandardItemNumber" num="60550" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_038gd">
+        <conf:name>S-1 GOOD </conf:name>
+        <conf:description>S-1 GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,    "submissionType" : "S-1"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550038gd/g60550038gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60550038gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550038gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550038gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550038gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_039gw">
+        <conf:name>S-1-GW-Blank &#8211; a non-null fact should not exist. DocumentAccountingStandard </conf:name>
+        <conf:description>S-1-GW-Blank &#8211; a non-null fact should not exist. DocumentAccountingStandard </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "S-1"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550039gw/g60550039gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60550039gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550039gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550039gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550039gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="DocumentAccountingStandard" num="60550" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_040gw">
+        <conf:name>S-1-GW-Blank &#8211; a non-null fact should not exist. OtherReportingStandardItemNumber </conf:name>
+        <conf:description>S-1-GW-Blank &#8211; a non-null fact should not exist. OtherReportingStandardItemNumber </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-1"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550040gw/g60550040gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60550040gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550040gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550040gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550040gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="OtherReportingStandardItemNumber" num="60550" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_041gd">
+        <conf:name>S-3 GOOD </conf:name>
+        <conf:description>S-3 GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-3"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550041gd/g60550041gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60550041gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550041gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550041gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550041gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_042gw">
+        <conf:name>S-3-GW-Blank &#8211; a non-null fact should not exist. DocumentAccountingStandard </conf:name>
+        <conf:description>S-3-GW-Blank &#8211; a non-null fact should not exist. DocumentAccountingStandard </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-3"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550042gw/g60550042gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60550042gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550042gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550042gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550042gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="DocumentAccountingStandard" num="60550" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_043gw">
+        <conf:name>S-3-GW-Blank &#8211; a non-null fact should not exist. OtherReportingStandardItemNumber </conf:name>
+        <conf:description>S-3-GW-Blank &#8211; a non-null fact should not exist. OtherReportingStandardItemNumber </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-3"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550043gw/g60550043gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60550043gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550043gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550043gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550043gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="OtherReportingStandardItemNumber" num="60550" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_044gd">
+        <conf:name>S-4 GOOD </conf:name>
+        <conf:description>S-4 GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-4"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550044gd/g60550044gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60550044gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550044gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550044gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550044gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_045gw">
+        <conf:name>S-4-GW-Blank &#8211; a non-null fact should not exist. DocumentAccountingStandard </conf:name>
+        <conf:description>S-4-GW-Blank &#8211; a non-null fact should not exist. DocumentAccountingStandard </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-4"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550045gw/g60550045gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60550045gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550045gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550045gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550045gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="DocumentAccountingStandard" num="60550" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_046gw">
+        <conf:name>S-4-GW-Blank &#8211; a non-null fact should not exist. OtherReportingStandardItemNumber </conf:name>
+        <conf:description>S-4-GW-Blank &#8211; a non-null fact should not exist. OtherReportingStandardItemNumber </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-4"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550046gw/g60550046gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60550046gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550046gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550046gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550046gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="OtherReportingStandardItemNumber" num="60550" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_047gd">
+        <conf:name>S-11 GOOD </conf:name>
+        <conf:description>S-11 GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-11"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550047gd/g60550047gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60550047gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550047gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550047gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550047gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_048gw">
+        <conf:name>S-11-GW-Blank &#8211; a non-null fact should not exist. DocumentAccountingStandard </conf:name>
+        <conf:description>S-11-GW-Blank &#8211; a non-null fact should not exist. DocumentAccountingStandard </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-11"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550048gw/g60550048gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60550048gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550048gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550048gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550048gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="DocumentAccountingStandard" num="60550" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_049gw">
+        <conf:name>S-11-GW-Blank &#8211; a non-null fact should not exist. OtherReportingStandardItemNumber </conf:name>
+        <conf:description>S-11-GW-Blank &#8211; a non-null fact should not exist. OtherReportingStandardItemNumber </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-11"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550049gw/g60550049gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60550049gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550049gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550049gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550049gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="OtherReportingStandardItemNumber" num="60550" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_050gd">
+        <conf:name>POS EX GOOD </conf:name>
+        <conf:description>POS EX GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "POS EX"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550050gd/g60550050gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60550050gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550050gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550050gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550050gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_051gd">
+        <conf:name>POS EX-GD-Blank &#8211; a non-null fact may or may not exist. DocumentAccountingStandard </conf:name>
+        <conf:description>POS EX-GD-Blank &#8211; a non-null fact may or may not exist. DocumentAccountingStandard </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "POS EX"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550051gd/g60550051gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60550051gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550051gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550051gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550051gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_052gd">
+        <conf:name>POS EX-GD-Blank &#8211; a non-null fact may or may not exist. OtherReportingStandardItemNumber </conf:name>
+        <conf:description>POS EX-GD-Blank &#8211; a non-null fact may or may not exist. OtherReportingStandardItemNumber </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "POS EX"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550052gd/g60550052gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60550052gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550052gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550052gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550052gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_053gd">
+        <conf:name>POS AM GOOD </conf:name>
+        <conf:description>POS AM GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "periodOfReport" : "12-31-2018",  "submissionType" : "POS AM"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550053gd/g60550053gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60550053gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550053gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550053gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550053gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_054gd">
+        <conf:name>POS AM-GD-Blank &#8211; a non-null fact may or may not exist. DocumentAccountingStandard </conf:name>
+        <conf:description>POS AM-GD-Blank &#8211; a non-null fact may or may not exist. DocumentAccountingStandard </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "periodOfReport" : "12-31-2018",  "submissionType" : "POS AM"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550054gd/g60550054gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60550054gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550054gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550054gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550054gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_055gd">
+        <conf:name>POS AM-GD-Blank &#8211; a non-null fact may or may not exist. OtherReportingStandardItemNumber </conf:name>
+        <conf:description>POS AM-GD-Blank &#8211; a non-null fact may or may not exist. OtherReportingStandardItemNumber </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "periodOfReport" : "12-31-2018",  "submissionType" : "POS AM"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550055gd/g60550055gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60550055gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550055gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550055gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550055gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_056gd">
+        <conf:name>F-1 GOOD </conf:name>
+        <conf:description>F-1 GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,    "submissionType" : "F-1"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550056gd/g60550056gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60550056gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550056gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550056gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550056gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_057gw">
+        <conf:name>F-1-GW-Blank &#8211; a non-null fact should not exist. DocumentAccountingStandard </conf:name>
+        <conf:description>F-1-GW-Blank &#8211; a non-null fact should not exist. DocumentAccountingStandard </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "F-1"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550057gw/g60550057gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60550057gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550057gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550057gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550057gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="DocumentAccountingStandard" num="60550" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_058gw">
+        <conf:name>F-1-GW-Blank &#8211; a non-null fact should not exist. OtherReportingStandardItemNumber </conf:name>
+        <conf:description>F-1-GW-Blank &#8211; a non-null fact should not exist. OtherReportingStandardItemNumber </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "F-1"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550058gw/g60550058gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60550058gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550058gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550058gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550058gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="OtherReportingStandardItemNumber" num="60550" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_059gd">
+        <conf:name>F-3 GOOD </conf:name>
+        <conf:description>F-3 GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,    "submissionType" : "F-3"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550059gd/g60550059gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60550059gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550059gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550059gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550059gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_060gw">
+        <conf:name>F-3-GW-Blank &#8211; a non-null fact should not exist. DocumentAccountingStandard </conf:name>
+        <conf:description>F-3-GW-Blank &#8211; a non-null fact should not exist. DocumentAccountingStandard </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "F-3"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550060gw/g60550060gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60550060gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550060gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550060gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550060gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="DocumentAccountingStandard" num="60550" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_061gw">
+        <conf:name>F-3-GW-Blank &#8211; a non-null fact should not exist. OtherReportingStandardItemNumber </conf:name>
+        <conf:description>F-3-GW-Blank &#8211; a non-null fact should not exist. OtherReportingStandardItemNumber </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "F-3"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550061gw/g60550061gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60550061gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550061gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550061gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550061gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="OtherReportingStandardItemNumber" num="60550" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_062gd">
+        <conf:name>F-4 GOOD </conf:name>
+        <conf:description>F-4 GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,    "submissionType" : "F-4"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550062gd/g60550062gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60550062gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550062gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550062gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550062gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_063gw">
+        <conf:name>F-4-GW-Blank &#8211; a non-null fact should not exist. DocumentAccountingStandard </conf:name>
+        <conf:description>F-4-GW-Blank &#8211; a non-null fact should not exist. DocumentAccountingStandard </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "F-4"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550063gw/g60550063gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60550063gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550063gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550063gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550063gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="DocumentAccountingStandard" num="60550" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_064gw">
+        <conf:name>F-4-GW-Blank &#8211; a non-null fact should not exist. OtherReportingStandardItemNumber </conf:name>
+        <conf:description>F-4-GW-Blank &#8211; a non-null fact should not exist. OtherReportingStandardItemNumber </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "F-4"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550064gw/g60550064gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60550064gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550064gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550064gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550064gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="OtherReportingStandardItemNumber" num="60550" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_065gd">
+        <conf:name>6-K GOOD </conf:name>
+        <conf:description>6-K GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "periodOfReport" : "12-31-2018",  "submissionType" : "6-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550065gd/g60550065gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60550065gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550065gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550065gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550065gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_066gw">
+        <conf:name>6-K-GW-Blank &#8211; a non-null fact should not exist. DocumentAccountingStandard </conf:name>
+        <conf:description>6-K-GW-Blank &#8211; a non-null fact should not exist. DocumentAccountingStandard </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "periodOfReport" : "12-31-2018",  "submissionType" : "6-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550066gw/g60550066gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60550066gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550066gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550066gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550066gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="DocumentAccountingStandard" num="60550" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_067gw">
+        <conf:name>6-K-GW-Blank &#8211; a non-null fact should not exist. OtherReportingStandardItemNumber </conf:name>
+        <conf:description>6-K-GW-Blank &#8211; a non-null fact should not exist. OtherReportingStandardItemNumber </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "periodOfReport" : "12-31-2018",  "submissionType" : "6-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550067gw/g60550067gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60550067gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550067gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550067gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550067gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="OtherReportingStandardItemNumber" num="60550" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_068gd">
+        <conf:name>K-SDR GOOD </conf:name>
+        <conf:description>K-SDR GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "SDR"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550068gd/g60550068gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60550068gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550068gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550068gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550068gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_069gw">
+        <conf:name>K-SDR-GW-Blank &#8211; a non-null fact should not exist. DocumentAccountingStandard </conf:name>
+        <conf:description>K-SDR-GW-Blank &#8211; a non-null fact should not exist. DocumentAccountingStandard </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "SDR"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550069gw/g60550069gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60550069gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550069gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550069gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550069gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="DocumentAccountingStandard" num="60550" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_070gw">
+        <conf:name>K-SDR-GW-Blank &#8211; a non-null fact should not exist. OtherReportingStandardItemNumber </conf:name>
+        <conf:description>K-SDR-GW-Blank &#8211; a non-null fact should not exist. OtherReportingStandardItemNumber </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "SDR"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550070gw/g60550070gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60550070gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550070gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550070gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550070gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="OtherReportingStandardItemNumber" num="60550" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_071gd">
+        <conf:name>485APOS GOOD </conf:name>
+        <conf:description>485APOS GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "485APOS"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550071gd/g60550071gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60550071gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550071gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550071gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550071gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_072gw">
+        <conf:name>485APOS-GW-Blank &#8211; a non-null fact should not exist. DocumentAccountingStandard </conf:name>
+        <conf:description>485APOS-GW-Blank &#8211; a non-null fact should not exist. DocumentAccountingStandard </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "485APOS"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550072gw/g60550072gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60550072gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550072gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550072gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550072gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="DocumentAccountingStandard" num="60550" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_073gw">
+        <conf:name>485APOS-GW-Blank &#8211; a non-null fact should not exist. OtherReportingStandardItemNumber </conf:name>
+        <conf:description>485APOS-GW-Blank &#8211; a non-null fact should not exist. OtherReportingStandardItemNumber </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "485APOS"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550073gw/g60550073gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60550073gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550073gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550073gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550073gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="OtherReportingStandardItemNumber" num="60550" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_074gd">
+        <conf:name>485BPOS GOOD </conf:name>
+        <conf:description>485BPOS GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "invCompanyType" : "N-1A",  "periodOfReport" : "12-31-2018",  "submissionType" : "485BPOS"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550074gd/g60550074gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60550074gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550074gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550074gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550074gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_075gw">
+        <conf:name>485BPOS-GW-Blank &#8211; a non-null fact should not exist. DocumentAccountingStandard </conf:name>
+        <conf:description>485BPOS-GW-Blank &#8211; a non-null fact should not exist. DocumentAccountingStandard </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "invCompanyType" : "N-1A",  "periodOfReport" : "12-31-2018",  "submissionType" : "485BPOS"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550075gw/g60550075gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60550075gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550075gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550075gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550075gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="DocumentAccountingStandard" num="60550" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_076gw">
+        <conf:name>485BPOS-GW-Blank &#8211; a non-null fact should not exist. OtherReportingStandardItemNumber </conf:name>
+        <conf:description>485BPOS-GW-Blank &#8211; a non-null fact should not exist. OtherReportingStandardItemNumber </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "invCompanyType" : "N-1A",  "periodOfReport" : "12-31-2018",  "submissionType" : "485BPOS"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550076gw/g60550076gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60550076gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550076gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550076gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550076gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="OtherReportingStandardItemNumber" num="60550" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_077gd">
+        <conf:name>485BXT GOOD </conf:name>
+        <conf:description>485BXT GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "485BXT"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550077gd/g60550077gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60550077gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550077gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550077gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550077gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_078gw">
+        <conf:name>485BXT-GW-Blank &#8211; a non-null fact should not exist. DocumentAccountingStandard </conf:name>
+        <conf:description>485BXT-GW-Blank &#8211; a non-null fact should not exist. DocumentAccountingStandard </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "485BXT"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550078gw/g60550078gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60550078gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550078gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550078gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550078gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="DocumentAccountingStandard" num="60550" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_079gw">
+        <conf:name>485BXT-GW-Blank &#8211; a non-null fact should not exist. OtherReportingStandardItemNumber </conf:name>
+        <conf:description>485BXT-GW-Blank &#8211; a non-null fact should not exist. OtherReportingStandardItemNumber </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "485BXT"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550079gw/g60550079gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60550079gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550079gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550079gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550079gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="OtherReportingStandardItemNumber" num="60550" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_080gd">
+        <conf:name>N-1A GOOD </conf:name>
+        <conf:description>N-1A GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "N-1A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550080gd/g60550080gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60550080gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550080gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550080gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550080gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_081gw">
+        <conf:name>N-1A-GW-Blank &#8211; a non-null fact should not exist. DocumentAccountingStandard </conf:name>
+        <conf:description>N-1A-GW-Blank &#8211; a non-null fact should not exist. DocumentAccountingStandard </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "N-1A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550081gw/g60550081gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60550081gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550081gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550081gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550081gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="DocumentAccountingStandard" num="60550" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_082gw">
+        <conf:name>N-1A-GW-Blank &#8211; a non-null fact should not exist. OtherReportingStandardItemNumber </conf:name>
+        <conf:description>N-1A-GW-Blank &#8211; a non-null fact should not exist. OtherReportingStandardItemNumber </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "N-1A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550082gw/g60550082gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60550082gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550082gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550082gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550082gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="OtherReportingStandardItemNumber" num="60550" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_083gd">
+        <conf:name>SP 15D2 GOOD </conf:name>
+        <conf:description>SP 15D2 GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "SP 15D2"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550083gd/g60550083gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60550083gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550083gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550083gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550083gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_084gw">
+        <conf:name>SP 15D2-GW-Blank &#8211; a non-null fact should not exist. DocumentAccountingStandard </conf:name>
+        <conf:description>SP 15D2-GW-Blank &#8211; a non-null fact should not exist. DocumentAccountingStandard </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "SP 15D2"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550084gw/g60550084gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60550084gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550084gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550084gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550084gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="DocumentAccountingStandard" num="60550" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_085gw">
+        <conf:name>SP 15D2-GW-Blank &#8211; a non-null fact should not exist. OtherReportingStandardItemNumber </conf:name>
+        <conf:description>SP 15D2-GW-Blank &#8211; a non-null fact should not exist. OtherReportingStandardItemNumber </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "SP 15D2"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550085gw/g60550085gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60550085gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550085gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550085gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550085gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="OtherReportingStandardItemNumber" num="60550" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_086gd">
+        <conf:name>POSASR GOOD </conf:name>
+        <conf:description>POSASR GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "POSASR"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550086gd/g60550086gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60550086gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550086gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550086gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550086gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_087gw">
+        <conf:name>POSASR-GW-Blank &#8211; a non-null fact should not exist. DocumentAccountingStandard </conf:name>
+        <conf:description>POSASR-GW-Blank &#8211; a non-null fact should not exist. DocumentAccountingStandard </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "POSASR"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550087gw/g60550087gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60550087gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550087gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550087gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550087gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="DocumentAccountingStandard" num="60550" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_088gw">
+        <conf:name>POSASR-GW-Blank &#8211; a non-null fact should not exist. OtherReportingStandardItemNumber </conf:name>
+        <conf:description>POSASR-GW-Blank &#8211; a non-null fact should not exist. OtherReportingStandardItemNumber </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "POSASR"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60550088gw/g60550088gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60550088gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60550088gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60550088gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60550088gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="OtherReportingStandardItemNumber" num="60550" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+</conf:testcase>

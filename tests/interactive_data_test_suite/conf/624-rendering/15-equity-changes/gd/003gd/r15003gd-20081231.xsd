@@ -1,0 +1,527 @@
+<?xml version='1.0' encoding='utf-8'?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:dei="http://xbrl.sec.gov/dei/2023" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:dtr-types="http://www.xbrl.org/dtr/type/2022-03-31" xmlns:xbrldi="http://xbrl.org/2006/xbrldi" xmlns:xbrldt="http://xbrl.org/2005/xbrldt" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ifrs-full="https://xbrl.ifrs.org/taxonomy/2023-03-23/ifrs-full" xmlns:r15003gd="http://r15003gd/20161231" targetNamespace="http://r15003gd/20161231" elementFormDefault="qualified">
+    <annotation>
+        <appinfo>
+            <link:linkbaseRef xlink:href="r15003gd-20081231_pre.xml" xlink:type="simple" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:role="http://www.xbrl.org/2003/role/presentationLinkbaseRef"></link:linkbaseRef>
+            <link:linkbaseRef xlink:href="r15003gd-20081231_cal.xml" xlink:type="simple" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:role="http://www.xbrl.org/2003/role/calculationLinkbaseRef"></link:linkbaseRef>
+            <link:linkbaseRef xlink:href="r15003gd-20081231_def.xml" xlink:type="simple" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:role="http://www.xbrl.org/2003/role/definitionLinkbaseRef"></link:linkbaseRef>
+            <link:linkbaseRef xlink:href="r15003gd-20081231_lab.xml" xlink:type="simple" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef"></link:linkbaseRef>
+            <link:roleType id="DocumentAndEntityInformation" roleURI="http://r15003gd/role/DocumentAndEntityInformation">
+                <link:definition>00000001 - Document - Document and Entity Information</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="StatementsOfFinancialPosition" roleURI="http://r15003gd/role/StatementsOfFinancialPosition">
+                <link:definition>00000002 - Statement - Consolidated Statements of Financial Position</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="StatementsOfProfitLoss" roleURI="http://r15003gd/role/StatementsOfProfitLoss">
+                <link:definition>00000003 - Statement - Consolidated Statements of Profit &amp; Loss</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="StatementsOfOtherComprehensiveIncomeLoss" roleURI="http://r15003gd/role/StatementsOfOtherComprehensiveIncomeLoss">
+                <link:definition>00000004 - Statement - Consolidated Statements of Other Comprehensive Income (Loss)</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="StatementsOfChangesInStockholdersEquity" roleURI="http://r15003gd/role/StatementsOfChangesInStockholdersEquity">
+                <link:definition>00000005 - Statement - Consolidated Statements of Changes in Stockholders' Equity</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="StatementsOfCashFlows" roleURI="http://r15003gd/role/StatementsOfCashFlows">
+                <link:definition>00000006 - Statement - Consolidated Statements of Cash Flows</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="FinancialReportingPrinciplesAndAccountingPolicies" roleURI="http://r15003gd/role/FinancialReportingPrinciplesAndAccountingPolicies">
+                <link:definition>00000007 - Disclosure - Financial Reporting Principles and Accounting Policies</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="BasisOfPreparationOfFinancialStatements" roleURI="http://r15003gd/role/BasisOfPreparationOfFinancialStatements">
+                <link:definition>00000008 - Disclosure - Basis of Preparation of the Financial Statements</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="SignificantAccountingPolicies" roleURI="http://r15003gd/role/SignificantAccountingPolicies">
+                <link:definition>00000009 - Disclosure - Significant Accounting Policies</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="DeterminationOfFairValue" roleURI="http://r15003gd/role/DeterminationOfFairValue">
+                <link:definition>00000010 - Disclosure - Determination of Fair Value</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="CashAndCashEquivalents" roleURI="http://r15003gd/role/CashAndCashEquivalents">
+                <link:definition>00000011 - Disclosure - Cash and Cash Equivalents</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="Short-termInvestmentsAndDeposits" roleURI="http://r15003gd/role/Short-termInvestmentsAndDeposits">
+                <link:definition>00000012 - Disclosure - Short-Term investments and deposits</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="TradeReceivablesNet" roleURI="http://r15003gd/role/TradeReceivablesNet">
+                <link:definition>00000013 - Disclosure - Trade Receivables, Net</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="OtherCurrentAssets" roleURI="http://r15003gd/role/OtherCurrentAssets">
+                <link:definition>00000014 - Disclosure - Other Current Assets</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="Inventories" roleURI="http://r15003gd/role/Inventories">
+                <link:definition>00000015 - Disclosure - Inventories</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="InvestmentInAssociatedCompanies" roleURI="http://r15003gd/role/InvestmentInAssociatedCompanies">
+                <link:definition>00000016 - Disclosure - Investment in Associated Companies</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="Subsidiaries" roleURI="http://r15003gd/role/Subsidiaries">
+                <link:definition>00000017 - Disclosure - Subsidiaries</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="DepositsLoansAndOtherReceivablesIncludingDerivativeInstruments" roleURI="http://r15003gd/role/DepositsLoansAndOtherReceivablesIncludingDerivativeInstruments">
+                <link:definition>00000018 - Disclosure - Deposits, Loans and Other Receivables, including Derivative Instruments</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="PropertyPlantAndEquipmentNet" roleURI="http://r15003gd/role/PropertyPlantAndEquipmentNet">
+                <link:definition>00000019 - Disclosure - Property, Plant and Equipment, Net</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="IntangibleAssetsNet" roleURI="http://r15003gd/role/IntangibleAssetsNet">
+                <link:definition>00000020 - Disclosure - Intangible Assets, Net</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="LoansAndDebentures" roleURI="http://r15003gd/role/LoansAndDebentures">
+                <link:definition>00000021 - Disclosure - Loans and Debentures</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="TradePayables" roleURI="http://r15003gd/role/TradePayables">
+                <link:definition>00000022 - Disclosure - Trade Payables</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="OtherPayablesIncludingDerivativeInstruments" roleURI="http://r15003gd/role/OtherPayablesIncludingDerivativeInstruments">
+                <link:definition>00000023 - Disclosure - Other Payables including Derivative Instruments</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="GuaranteeDepositsFromCustomers" roleURI="http://r15003gd/role/GuaranteeDepositsFromCustomers">
+                <link:definition>00000024 - Disclosure - Guarantee Deposits from Customers</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="Provisions" roleURI="http://r15003gd/role/Provisions">
+                <link:definition>00000025 - Disclosure - Provisions</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="ContingentLiabilitiesCommitmentsAndConcessions" roleURI="http://r15003gd/role/ContingentLiabilitiesCommitmentsAndConcessions">
+                <link:definition>00000026 - Disclosure - Contingent Liabilities, Commitments and Concessions</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="ShareCapitalAndReserves" roleURI="http://r15003gd/role/ShareCapitalAndReserves">
+                <link:definition>00000027 - Disclosure - Share Capital and Reserves</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="CostOfSalesAndServices" roleURI="http://r15003gd/role/CostOfSalesAndServices">
+                <link:definition>00000028 - Disclosure - Cost of Sales and Services</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="SellingGeneralAndAdministrativeExpenses" roleURI="http://r15003gd/role/SellingGeneralAndAdministrativeExpenses">
+                <link:definition>00000029 - Disclosure - Selling, General and Administrative Expenses</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="OtherIncomeAndExpenses" roleURI="http://r15003gd/role/OtherIncomeAndExpenses">
+                <link:definition>00000030 - Disclosure - Other Income and Expenses</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="FinancingIncomeExpensesNet" roleURI="http://r15003gd/role/FinancingIncomeExpensesNet">
+                <link:definition>00000031 - Disclosure - Financing Income (Expenses), Net</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="IncomeTaxes" roleURI="http://r15003gd/role/IncomeTaxes">
+                <link:definition>00000032 - Disclosure - Income Taxes</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="EarningsPerShare" roleURI="http://r15003gd/role/EarningsPerShare">
+                <link:definition>00000033 - Disclosure - Earnings per Share</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="DiscontinuedOperations" roleURI="http://r15003gd/role/DiscontinuedOperations">
+                <link:definition>00000034 - Disclosure - Discontinued Operations</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="SegmentCustomerAndGeographicInformation" roleURI="http://r15003gd/role/SegmentCustomerAndGeographicInformation">
+                <link:definition>00000035 - Disclosure - Segment, Customer and Geographic Information</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="Related-partyInformation" roleURI="http://r15003gd/role/Related-partyInformation">
+                <link:definition>00000036 - Disclosure - Related-party Information</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="FinancialInstruments" roleURI="http://r15003gd/role/FinancialInstruments">
+                <link:definition>00000037 - Disclosure - Financial Instruments</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="SubsequentEvents" roleURI="http://r15003gd/role/SubsequentEvents">
+                <link:definition>00000038 - Disclosure - Subsequent Events</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="SignificantAccountingPoliciesPolicies" roleURI="http://r15003gd/role/SignificantAccountingPoliciesPolicies">
+                <link:definition>00000039 - Disclosure - Significant Accounting Policies (Policies)</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="SignificantAccountingPoliciesTables" roleURI="http://r15003gd/role/SignificantAccountingPoliciesTables">
+                <link:definition>00000040 - Disclosure - Significant Accounting Policies (Tables)</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="CashAndCashEquivalentsTables" roleURI="http://r15003gd/role/CashAndCashEquivalentsTables">
+                <link:definition>00000041 - Disclosure - Cash and Cash Equivalents (Tables)</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="Short-termInvestmentsAndDepositsTables" roleURI="http://r15003gd/role/Short-termInvestmentsAndDepositsTables">
+                <link:definition>00000042 - Disclosure - Short-Term investments and deposits (Tables)</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="TradeReceivablesNetTables" roleURI="http://r15003gd/role/TradeReceivablesNetTables">
+                <link:definition>00000043 - Disclosure - Trade Receivables, Net (Tables)</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="OtherCurrentAssetsTables" roleURI="http://r15003gd/role/OtherCurrentAssetsTables">
+                <link:definition>00000044 - Disclosure - Other Current Assets (Tables)</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="InventoriesTables" roleURI="http://r15003gd/role/InventoriesTables">
+                <link:definition>00000045 - Disclosure - Inventories (Tables)</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="InvestmentInAssociatedCompaniesTables" roleURI="http://r15003gd/role/InvestmentInAssociatedCompaniesTables">
+                <link:definition>00000046 - Disclosure - Investment in Associated Companies (Tables)</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="SubsidiariesTables" roleURI="http://r15003gd/role/SubsidiariesTables">
+                <link:definition>00000047 - Disclosure - Subsidiaries (Tables)</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="DepositsLoansAndOtherReceivablesIncludingDerivativeInstrumentsTables" roleURI="http://r15003gd/role/DepositsLoansAndOtherReceivablesIncludingDerivativeInstrumentsTables">
+                <link:definition>00000048 - Disclosure - Deposits, Loans and Other Receivables, including Derivative Instruments (Tables)</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="PropertyPlantAndEquipmentNetTables" roleURI="http://r15003gd/role/PropertyPlantAndEquipmentNetTables">
+                <link:definition>00000049 - Disclosure - Property, Plant and Equipment, Net (Tables)</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="IntangibleAssetsNetTables" roleURI="http://r15003gd/role/IntangibleAssetsNetTables">
+                <link:definition>00000050 - Disclosure - Intangible Assets, Net (Tables)</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="LoansAndDebenturesTables" roleURI="http://r15003gd/role/LoansAndDebenturesTables">
+                <link:definition>00000051 - Disclosure - Loans and Debentures (Tables)</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="TradePayablesTables" roleURI="http://r15003gd/role/TradePayablesTables">
+                <link:definition>00000052 - Disclosure - Trade Payables (Tables)</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="OtherPayablesIncludingDerivativeInstrumentsTables" roleURI="http://r15003gd/role/OtherPayablesIncludingDerivativeInstrumentsTables">
+                <link:definition>00000053 - Disclosure - Other Payables including Derivative Instruments (Tables)</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="ProvisionsTables" roleURI="http://r15003gd/role/ProvisionsTables">
+                <link:definition>00000054 - Disclosure - Provisions (Tables)</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="ContingentLiabilitiesCommitmentsAndConcessionsTables" roleURI="http://r15003gd/role/ContingentLiabilitiesCommitmentsAndConcessionsTables">
+                <link:definition>00000055 - Disclosure - Contingent Liabilities, Commitments and Concessions (Tables)</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="ShareCapitalAndReservesTables" roleURI="http://r15003gd/role/ShareCapitalAndReservesTables">
+                <link:definition>00000056 - Disclosure - Share Capital and Reserves (Tables)</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="CostOfSalesAndServicesTables" roleURI="http://r15003gd/role/CostOfSalesAndServicesTables">
+                <link:definition>00000057 - Disclosure - Cost of Sales and Services (Tables)</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="SellingGeneralAndAdministrativeExpensesTables" roleURI="http://r15003gd/role/SellingGeneralAndAdministrativeExpensesTables">
+                <link:definition>00000058 - Disclosure - Selling, General and Administrative Expenses (Tables)</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="OtherIncomeAndExpensesTables" roleURI="http://r15003gd/role/OtherIncomeAndExpensesTables">
+                <link:definition>00000059 - Disclosure - Other Income and Expenses (Tables)</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="FinancingIncomeExpensesNetTables" roleURI="http://r15003gd/role/FinancingIncomeExpensesNetTables">
+                <link:definition>00000060 - Disclosure - Financing Income (Expenses), Net (Tables)</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="IncomeTaxesTables" roleURI="http://r15003gd/role/IncomeTaxesTables">
+                <link:definition>00000061 - Disclosure - Income Taxes (Tables)</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="EarningsPerShareTables" roleURI="http://r15003gd/role/EarningsPerShareTables">
+                <link:definition>00000062 - Disclosure - Earnings per Share (Tables)</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="DiscontinuedOperationsTables" roleURI="http://r15003gd/role/DiscontinuedOperationsTables">
+                <link:definition>00000063 - Disclosure - Discontinued Operations (Tables)</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="SegmentCustomerAndGeographicInformationTables" roleURI="http://r15003gd/role/SegmentCustomerAndGeographicInformationTables">
+                <link:definition>00000064 - Disclosure - Segment, Customer and Geographic Information (Tables)</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="Related-partyInformationTables" roleURI="http://r15003gd/role/Related-partyInformationTables">
+                <link:definition>00000065 - Disclosure - Related-party Information (Tables)</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="FinancialInstrumentsTables" roleURI="http://r15003gd/role/FinancialInstrumentsTables">
+                <link:definition>00000066 - Disclosure - Financial Instruments (Tables)</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+        </appinfo>
+    </annotation>
+    <import schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd" namespace="http://www.xbrl.org/2003/instance"></import>
+    <import schemaLocation="http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd" namespace="http://www.xbrl.org/2003/linkbase"></import>
+    <import schemaLocation="http://www.xbrl.org/2005/xbrldt-2005.xsd" namespace="http://xbrl.org/2005/xbrldt"></import>
+    <import schemaLocation="https://xbrl.ifrs.org/taxonomy/2023-03-23/full_ifrs/full_ifrs-cor_2023-03-23.xsd" namespace="https://xbrl.ifrs.org/taxonomy/2023-03-23/ifrs-full"></import>
+    <import schemaLocation="https://www.xbrl.org/dtr/type/2022-03-31/types.xsd" namespace="http://www.xbrl.org/dtr/type/2022-03-31"></import>
+    <import schemaLocation="https://xbrl.sec.gov/currency/2023/currency-2023.xsd" namespace="http://xbrl.sec.gov/currency/2023"></import>
+    <element name="GainFromDistributionOfDividendInKind" id="r15003gd_GainFromDistributionOfDividendInKind" type="xbrli:monetaryItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item" xbrli:balance="credit"></element>
+    <element name="DilutionGainsFromReductionsInEquityInterestHeldInAssociates" id="r15003gd_DilutionGainsFromReductionsInEquityInterestHeldInAssociates" type="xbrli:monetaryItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item" xbrli:balance="credit"></element>
+    <element name="FinanceIncomeExpenseNet" id="r15003gd_FinanceIncomeExpenseNet" type="xbrli:monetaryItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item" xbrli:balance="credit"></element>
+    <element name="IncomeTaxesInRespectOfComponentOtherComprehensiveLossincome" id="r15003gd_IncomeTaxesInRespectOfComponentOtherComprehensiveLossincome" type="xbrli:monetaryItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item" xbrli:balance="credit"></element>
+    <element name="ComponentsOfNetOtherComprehensiveLossInRespectFromDiscontinuedOperations" id="r15003gd_ComponentsOfNetOtherComprehensiveLossInRespectFromDiscontinuedOperations" type="xbrli:monetaryItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item" xbrli:balance="debit"></element>
+    <element name="AdjustmentsForBadDebtExpense" id="r15003gd_AdjustmentsForBadDebtExpense" type="xbrli:monetaryItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item" xbrli:balance="debit"></element>
+    <element name="CashFlowsFromLosingControlOfSubsidiariesOrOtherBusinessesClassifiedAsInvestingActivities1" id="r15003gd_CashFlowsFromLosingControlOfSubsidiariesOrOtherBusinessesClassifiedAsInvestingActivities1" type="xbrli:monetaryItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item" xbrli:balance="debit"></element>
+    <element name="ProceedsFromSaleOfAssociateCompany" id="r15003gd_ProceedsFromSaleOfAssociateCompany" type="xbrli:monetaryItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item" xbrli:balance="debit"></element>
+    <element name="PaymentOfConsiderationRetained" id="r15003gd_PaymentOfConsiderationRetained" type="xbrli:monetaryItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item" xbrli:balance="debit"></element>
+    <element name="PaymentToReleaseFinancialGuarantee" id="r15003gd_PaymentToReleaseFinancialGuarantee" type="xbrli:monetaryItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item" xbrli:balance="debit"></element>
+    <element name="SettlementOfDerivatives" id="r15003gd_SettlementOfDerivatives" type="xbrli:monetaryItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item" xbrli:balance="debit"></element>
+    <element name="PaymentsForTransactionsInDerivativeForHedgingNet" id="r15003gd_PaymentsForTransactionsInDerivativeForHedgingNet" type="xbrli:monetaryItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item" xbrli:balance="credit"></element>
+    <element name="PaymentToFormerParentCompany" id="r15003gd_PaymentToFormerParentCompany" type="xbrli:monetaryItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item" xbrli:balance="credit"></element>
+    <element name="AcquisitionOfFixedAssetsUnderLeaseContract" id="r15003gd_AcquisitionOfFixedAssetsUnderLeaseContract" type="xbrli:monetaryItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item" xbrli:balance="debit"></element>
+    <element name="PurchaseOfFixedAssetsOnCreditAndOthers" id="r15003gd_PurchaseOfFixedAssetsOnCreditAndOthers" type="xbrli:monetaryItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item" xbrli:balance="debit"></element>
+    <element name="FinancialReportingPrinciplesAndAccountingPoliciesExplanatory" id="r15003gd_FinancialReportingPrinciplesAndAccountingPoliciesExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="ShorttermInvestmentsAndDepositsExplanatory" id="r15003gd_ShorttermInvestmentsAndDepositsExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DepositsLoansAndOtherReceivablesIncludingDerivativeInstrumentsExplanatory" id="r15003gd_DepositsLoansAndOtherReceivablesIncludingDerivativeInstrumentsExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="OtherPayablesIncludingDerivativeInstrumentsExplanatory" id="r15003gd_OtherPayablesIncludingDerivativeInstrumentsExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DescriptionOfAccountingPolicyForConsolidation" id="r15003gd_DescriptionOfAccountingPolicyForConsolidation" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DescriptionOfAccountingPolicyForDepositsReceivedFromConsumersExplanatory" id="r15003gd_DescriptionOfAccountingPolicyForDepositsReceivedFromConsumersExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DescriptionOfAccountingPolicyForTransferOfAssetsFromCustomersExplanatory" id="r15003gd_DescriptionOfAccountingPolicyForTransferOfAssetsFromCustomersExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DescriptionOfAccountingPolicyForNewStandardsAndInterpretationsNotYetAdoptedExplanatory" id="r15003gd_DescriptionOfAccountingPolicyForNewStandardsAndInterpretationsNotYetAdoptedExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DisclosureOfUsefulLifeOfPropertyPlantAndEquipmentExplanatory" id="r15003gd_DisclosureOfUsefulLifeOfPropertyPlantAndEquipmentExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DisclosureOfDetailedCashAndCashEquivalentsExplanatory" id="r15003gd_DisclosureOfDetailedCashAndCashEquivalentsExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="IncreaseDecreaseThroughSharebasedPaymentTransactionsBySubsidiary" id="r15003gd_IncreaseDecreaseThroughSharebasedPaymentTransactionsBySubsidiary" type="xbrli:monetaryItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item" xbrli:balance="credit"></element>
+    <element name="PostSpinoffAdjustment" id="r15003gd_PostSpinoffAdjustment" type="xbrli:monetaryItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item" xbrli:balance="debit"></element>
+    <element name="PaymentsToFormerParentCompany" id="r15003gd_PaymentsToFormerParentCompany" type="xbrli:monetaryItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item" xbrli:balance="debit"></element>
+    <element name="AcquisitionOfNonControllingInterestInSubsidiary" id="r15003gd_AcquisitionOfNonControllingInterestInSubsidiary" type="xbrli:monetaryItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item" xbrli:balance="debit"></element>
+    <element name="ContributionFromNoncontrollingInterest" id="r15003gd_ContributionFromNoncontrollingInterest" type="xbrli:monetaryItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item" xbrli:balance="debit"></element>
+    <element name="ReclassificationOfNetLossPreSpinoff" id="r15003gd_ReclassificationOfNetLossPreSpinoff" type="xbrli:monetaryItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item" xbrli:balance="debit"></element>
+    <element name="NoncontrollingInterestInRespectOfBusinessCombination" id="r15003gd_NoncontrollingInterestInRespectOfBusinessCombination" type="xbrli:monetaryItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item" xbrli:balance="debit"></element>
+    <element name="NoncontrollingShareholderContribution" id="r15003gd_NoncontrollingShareholderContribution" type="xbrli:monetaryItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item" xbrli:balance="debit"></element>
+    <element name="ContributionFromFormerParentCompany" id="r15003gd_ContributionFromFormerParentCompany" type="xbrli:monetaryItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item" xbrli:balance="credit"></element>
+    <element name="GainInFairValueOfShareholderLoan" id="r15003gd_GainInFairValueOfShareholderLoan" type="xbrli:monetaryItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item" xbrli:balance="credit"></element>
+    <element name="DisclosureOfDetailedShorttermInvestmentsAndDepositsExplanatory" id="r15003gd_DisclosureOfDetailedShorttermInvestmentsAndDepositsExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DisclosureOfDetailedOfTradeReceivablesNetExplanatory" id="r15003gd_DisclosureOfDetailedOfTradeReceivablesNetExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DisclosureOfDetailedOtherCurrentAssetsExplanatory" id="r15003gd_DisclosureOfDetailedOtherCurrentAssetsExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DisclosureOfDetailedInformationAboutInventoriesExplanatory" id="r15003gd_DisclosureOfDetailedInformationAboutInventoriesExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DisclosureOfDetailedCondensedFinancialInformationWithRespectToResultsOfOperationsExplanatory" id="r15003gd_DisclosureOfDetailedCondensedFinancialInformationWithRespectToResultsOfOperationsExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DisclosureOfDetailedAssociatedCompaniesThatAreIndividuallyImmaterialExplanatory" id="r15003gd_DisclosureOfDetailedAssociatedCompaniesThatAreIndividuallyImmaterialExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DisclosureOfDetailedAnsoniaLoansExplanatory" id="r15003gd_DisclosureOfDetailedAnsoniaLoansExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DisclosureOfDetailedOverviewOfGuaranteesProvidedByNavigavimusInRespectOfQorosDebtExplanatory" id="r15003gd_DisclosureOfDetailedOverviewOfGuaranteesProvidedByNavigavimusInRespectOfQorosDebtExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DisclosureOfDetailedBacktobackGuaranteesExplanatory" id="r15003gd_DisclosureOfDetailedBacktobackGuaranteesExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DisclosureOfDetailedRegardingDividendsReceivedFromAssociatedCompaniesExplanatory" id="r15003gd_DisclosureOfDetailedRegardingDividendsReceivedFromAssociatedCompaniesExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DisclosureOfDetailedFairValueOfAssetsAcquiredAndLiabilitiesAssumedAtDateOfAcquisitionExplanatory" id="r15003gd_DisclosureOfDetailedFairValueOfAssetsAcquiredAndLiabilitiesAssumedAtDateOfAcquisitionExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DisclosureOfDetailedFairValuesOfIdentifiableAssetsAcquiredAndLiabilitiesAssumedAtTheirRespectiveAcquisitionDatesExplanatory" id="r15003gd_DisclosureOfDetailedFairValuesOfIdentifiableAssetsAcquiredAndLiabilitiesAssumedAtTheirRespectiveAcquisitionDatesExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DisclosureOfDetailedRecognitionOfRevenuesAndProfitOrLossExplanatory" id="r15003gd_DisclosureOfDetailedRecognitionOfRevenuesAndProfitOrLossExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DisclosureOfDetailedInformationRelatingToEachOfGroupsSubsidiariesExplanatory" id="r15003gd_DisclosureOfDetailedInformationRelatingToEachOfGroupsSubsidiariesExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DisclosureOfDetailedCompositionOfDepositsLoansAndOtherReceivablesIncludingDerivativesExplanatory" id="r15003gd_DisclosureOfDetailedCompositionOfDepositsLoansAndOtherReceivablesIncludingDerivativesExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DisclosureOfDetailedIncomeTaxReceivableAndTaxClaimsNoncurrentDistributionExplanatory" id="r15003gd_DisclosureOfDetailedIncomeTaxReceivableAndTaxClaimsNoncurrentDistributionExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DisclosureOfDetailedInformationAboutPropertyPlantAndEquipmentNetExplanatory" id="r15003gd_DisclosureOfDetailedInformationAboutPropertyPlantAndEquipmentNetExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DisclosureOfDetailedCostAndCorrespondingAccumulatedDepreciationOfSuchAssetsExplanatory" id="r15003gd_DisclosureOfDetailedCostAndCorrespondingAccumulatedDepreciationOfSuchAssetsExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DisclosureOfDetailedCompositionOfDepreciationExpenseExplanatory" id="r15003gd_DisclosureOfDetailedCompositionOfDepreciationExpenseExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DisclosureOfDetailedDepreciationAndAmortizationExplanatory" id="r15003gd_DisclosureOfDetailedDepreciationAndAmortizationExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DisclosureOfDetailedGroupsNoncurrentAssetsOnBasisOfGeographicLocationExplanatory" id="r15003gd_DisclosureOfDetailedGroupsNoncurrentAssetsOnBasisOfGeographicLocationExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DisclosureOfDetailedExposureToCpiAndForeignCurrencyRisksExplanatory" id="r15003gd_DisclosureOfDetailedExposureToCpiAndForeignCurrencyRisksExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DisclosureOfDetailedFinancialInstrumentsMeasuredAtFairValueExplanatory" id="r15003gd_DisclosureOfDetailedFinancialInstrumentsMeasuredAtFairValueExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DisclosureOfDetailedValuationTechniquesUsedInMeasuringLevel2FairValuesExplanatory" id="r15003gd_DisclosureOfDetailedValuationTechniquesUsedInMeasuringLevel2FairValuesExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DisclosureOfComponentsOfIncomeTaxExpenseRecoveryExplanatory" id="r15003gd_DisclosureOfComponentsOfIncomeTaxExpenseRecoveryExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DisclosureOfReconciliationOfEffectiveTaxRateExplanatory" id="r15003gd_DisclosureOfReconciliationOfEffectiveTaxRateExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DisclosureOfDetailedOfBalancesWithRelatedPartiesExplanatory" id="r15003gd_DisclosureOfDetailedOfBalancesWithRelatedPartiesExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DisclosureOfDetailedMajorShareholdersExplanatory" id="r15003gd_DisclosureOfDetailedMajorShareholdersExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DisclosureOfDetailedSummaryOfMaterialRightsAndObligationThatIcTransferredToNavigavimusInRelationToSpinoffExplanatory" id="r15003gd_DisclosureOfDetailedSummaryOfMaterialRightsAndObligationThatIcTransferredToNavigavimusInRelationToSpinoffExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DisclosureOfDetailedTransactionsWithRelatedPartiesExcludingAssociatesExplanatory" id="r15003gd_DisclosureOfDetailedTransactionsWithRelatedPartiesExcludingAssociatesExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DisclosureOfDetailedLossincomeAllocatedToHoldersOfOrdinaryShareholdersExplanatory" id="r15003gd_DisclosureOfDetailedLossincomeAllocatedToHoldersOfOrdinaryShareholdersExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DisclosureOfDetailedNumberOfOrdinarySharesExplanatory" id="r15003gd_DisclosureOfDetailedNumberOfOrdinarySharesExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DisclosureOfDetailedDeferredTaxesArePresentedInStatementsOfFinancialPositionExplanatory" id="r15003gd_DisclosureOfDetailedDeferredTaxesArePresentedInStatementsOfFinancialPositionExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DisclosureOfDetailedFinancingIncomeExpensesNetExplanatory" id="r15003gd_DisclosureOfDetailedFinancingIncomeExpensesNetExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DisclosureOfDetailedOtherIncomeAndExpensesExplanatory" id="r15003gd_DisclosureOfDetailedOtherIncomeAndExpensesExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DisclosureOfDetailedSellingGeneralAndAdministrativeExpensesExplanatory" id="r15003gd_DisclosureOfDetailedSellingGeneralAndAdministrativeExpensesExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DisclosureOfDetailedCostOfSalesAndServicesExplanatory" id="r15003gd_DisclosureOfDetailedCostOfSalesAndServicesExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DisclosureOfDetailedTradePayablesExplanatory" id="r15003gd_DisclosureOfDetailedTradePayablesExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DisclosureOfDetailedTotalTaxExposureRelatedToTheseAssessmentsExplanatory" id="r15003gd_DisclosureOfDetailedTotalTaxExposureRelatedToTheseAssessmentsExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DisclosureOfDetailedGuaranteesExplanatory" id="r15003gd_DisclosureOfDetailedGuaranteesExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DisclosureOfDetailedIssuedStandardByLettersOfCreditExplanatory" id="r15003gd_DisclosureOfDetailedIssuedStandardByLettersOfCreditExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DisclosureOfDetailedGasSupplyAndTransportationExplanatory" id="r15003gd_DisclosureOfDetailedGasSupplyAndTransportationExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DisclosureOfDetailedSummaryOfNaturalGasTransportationServicesExplanatory" id="r15003gd_DisclosureOfDetailedSummaryOfNaturalGasTransportationServicesExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DisclosureOfDetailedCollectiveContractedCapacityExplanatory" id="r15003gd_DisclosureOfDetailedCollectiveContractedCapacityExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DisclosureOfDetailedPowerPurchaseAgreementsExplanatory" id="r15003gd_DisclosureOfDetailedPowerPurchaseAgreementsExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DisclosureOfDetailedCurrentLiabilitiesAndNoncurrentLiabilitiesExplanatory" id="r15003gd_DisclosureOfDetailedCurrentLiabilitiesAndNoncurrentLiabilitiesExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DisclosureOfDetailedClassificationBasedOnCurrenciesAndInterestRatesExplanatory" id="r15003gd_DisclosureOfDetailedClassificationBasedOnCurrenciesAndInterestRatesExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DisclosureOfDetailedInformationRegardingFinancingLeaseLiabilityBror15003gdDownByPaymentDatesExplanatory" id="r15003gd_DisclosureOfDetailedInformationRegardingFinancingLeaseLiabilityBror15003gdDownByPaymentDatesExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DisclosureOfDetailedLongTermLoansFromBanksAndOthersExplanatory" id="r15003gd_DisclosureOfDetailedLongTermLoansFromBanksAndOthersExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DisclosureOfDetailedMainCovenantsThatGroupAndCertainGroupEntitiesMustComplyWithDuringTermOfDebtsExplanatory" id="r15003gd_DisclosureOfDetailedMainCovenantsThatGroupAndCertainGroupEntitiesMustComplyWithDuringTermOfDebtsExplanatory" type="dtr-types:textBlockItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="GainLossFromDisposalOfInvestees" id="r15003gd_GainLossFromDisposalOfInvestees" type="xbrli:monetaryItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item" xbrli:balance="credit"></element>
+    <element name="ProceedsFromSalesOfPropertyPlantAndEquipmentAndIntangibleAssetsClassifiedAsInvestingActivities" id="r15003gd_ProceedsFromSalesOfPropertyPlantAndEquipmentAndIntangibleAssetsClassifiedAsInvestingActivities" type="xbrli:monetaryItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item" xbrli:balance="debit"></element>
+    <element name="ContributionFromFormerParentCompanyClassifiedAsFinancingActivities" id="r15003gd_ContributionFromFormerParentCompanyClassifiedAsFinancingActivities" type="xbrli:monetaryItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item" xbrli:balance="debit"></element>
+    <element name="DocumentAndEntityInformationAbstract" id="r15003gd_DocumentAndEntityInformationAbstract" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="SignificantNoncashInvestingTransactionsAbstract" id="r15003gd_SignificantNoncashInvestingTransactionsAbstract" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="FinancialReportingPrinciplesAndAccountingPoliciesAbstract" id="r15003gd_FinancialReportingPrinciplesAndAccountingPoliciesAbstract" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="BasisOfPreparationOfFinancialStatementsAbstract" id="r15003gd_BasisOfPreparationOfFinancialStatementsAbstract" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="SignificantAccountingPoliciesAbstract" id="r15003gd_SignificantAccountingPoliciesAbstract" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DeterminationOfFairValueAbstract" id="r15003gd_DeterminationOfFairValueAbstract" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="CashAndCashEquivalentAbstract" id="r15003gd_CashAndCashEquivalentAbstract" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="ShorttermInvestmentsAndDepositsAbstract" id="r15003gd_ShorttermInvestmentsAndDepositsAbstract" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="TradeReceivablesNetAbstract" id="r15003gd_TradeReceivablesNetAbstract" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="OtherCurrentAssetsAbstract" id="r15003gd_OtherCurrentAssetsAbstract" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DepositsLoansAndOtherReceivablesIncludingDerivativeInstrumentsAbstract" id="r15003gd_DepositsLoansAndOtherReceivablesIncludingDerivativeInstrumentsAbstract" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="TradePayablesAbstract" id="r15003gd_TradePayablesAbstract" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="OtherPayablesIncludingDerivativeInstrumentsAbstract" id="r15003gd_OtherPayablesIncludingDerivativeInstrumentsAbstract" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="GuaranteeDepositsFromCustomersAbstract" id="r15003gd_GuaranteeDepositsFromCustomersAbstract" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="ContingentLiabilitiesCommitmentsAndConcessionsAbstract" id="r15003gd_ContingentLiabilitiesCommitmentsAndConcessionsAbstract" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="ShareCapitalAndReservesAbstract" id="r15003gd_ShareCapitalAndReservesAbstract" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="CostOfSalesAndServicesAbstract" id="r15003gd_CostOfSalesAndServicesAbstract" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="SellingGeneralAndAdministrativeExpensesAbstract" id="r15003gd_SellingGeneralAndAdministrativeExpensesAbstract" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="OtherIncomeAndExpenseAbstract" id="r15003gd_OtherIncomeAndExpenseAbstract" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="FinancingIncomeExpensesNetAbstract" id="r15003gd_FinancingIncomeExpensesNetAbstract" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="IncomeTaxesAbstract" id="r15003gd_IncomeTaxesAbstract" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="EarningPerShareAbstract" id="r15003gd_EarningPerShareAbstract" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="DiscontinuedOperationsAbstract" id="r15003gd_DiscontinuedOperationsAbstract" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="RelatedpartyInformationAbstract" id="r15003gd_RelatedpartyInformationAbstract" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="FinancialInstrumentsAbstract" id="r15003gd_FinancialInstrumentsAbstract" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true" nillable="true" substitutionGroup="xbrli:item"></element>
+    <element name="CashPaidForBusinessesPurchasedLessCashAcquired" id="r15003gd_CashPaidForBusinessesPurchasedLessCashAcquired" type="xbrli:monetaryItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item" xbrli:balance="debit"></element>
+</schema>

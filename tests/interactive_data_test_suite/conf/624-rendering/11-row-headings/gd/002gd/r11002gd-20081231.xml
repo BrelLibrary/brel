@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<xbrli:xbrl
+xmlns:dei="http://xbrl.sec.gov/dei/2018-01-31"
+xmlns:iso4217="http://www.xbrl.org/2003/iso4217"
+xmlns:link="http://www.xbrl.org/2003/linkbase"
+xmlns:dtr-types="http://www.xbrl.org/dtr/type/2020-01-21"
+
+xmlns:xbrldi="http://xbrl.org/2006/xbrldi"
+xmlns:xbrldt="http://xbrl.org/2005/xbrldt"
+xmlns:xbrli="http://www.xbrl.org/2003/instance"
+xmlns:xlink="http://www.w3.org/1999/xlink"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:r11002gd="http://r11002gd/20081231"
+xmlns:us-gaap="http://fasb.org/us-gaap/2017-01-31"
+xmlns:us-roles="http://fasb.org/us-roles/2017-01-31"
+xmlns:us-types="http://fasb.org/us-types/2017-01-31">
+<link:schemaRef xlink:href="r11002gd-20081231.xsd" xlink:type="simple" />
+<xbrli:context id="d2013">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:startDate>2013-01-01</xbrli:startDate>
+<xbrli:endDate>2013-12-31</xbrli:endDate>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="d_TaxYear2012Member">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+<xbrli:segment>
+<xbrldi:explicitMember dimension="us-gaap:TaxPeriodAxis">us-gaap:TaxYear2012Member</xbrldi:explicitMember>
+<xbrldi:explicitMember dimension="us-gaap:StatementScenarioAxis">us-gaap:ScenarioForecastMember</xbrldi:explicitMember>
+</xbrli:segment>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:startDate>2013-01-01</xbrli:startDate>
+<xbrli:endDate>2013-12-31</xbrli:endDate>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="d_TaxYear2013Member">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+<xbrli:segment>
+<xbrldi:explicitMember dimension="us-gaap:TaxPeriodAxis">us-gaap:TaxYear2013Member</xbrldi:explicitMember>
+<xbrldi:explicitMember dimension="us-gaap:StatementScenarioAxis">us-gaap:ScenarioForecastMember</xbrldi:explicitMember>
+</xbrli:segment>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:startDate>2013-01-01</xbrli:startDate>
+<xbrli:endDate>2013-12-31</xbrli:endDate>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="d_ABCMember_TaxYear2012Member">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+<xbrli:segment>
+<xbrldi:explicitMember dimension="dei:LegalEntityAxis">r11002gd:ABCMember</xbrldi:explicitMember>
+<xbrldi:explicitMember dimension="us-gaap:TaxPeriodAxis">us-gaap:TaxYear2012Member</xbrldi:explicitMember>
+<xbrldi:explicitMember dimension="us-gaap:StatementScenarioAxis">us-gaap:ScenarioForecastMember</xbrldi:explicitMember>
+</xbrli:segment>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:startDate>2013-01-01</xbrli:startDate>
+<xbrli:endDate>2013-12-31</xbrli:endDate>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="d_ABCMember_TaxYear2013Member">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+<xbrli:segment>
+<xbrldi:explicitMember dimension="dei:LegalEntityAxis">r11002gd:ABCMember</xbrldi:explicitMember>
+<xbrldi:explicitMember dimension="us-gaap:TaxPeriodAxis">us-gaap:TaxYear2013Member</xbrldi:explicitMember>
+<xbrldi:explicitMember dimension="us-gaap:StatementScenarioAxis">us-gaap:ScenarioForecastMember</xbrldi:explicitMember>
+</xbrli:segment>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:startDate>2013-01-01</xbrli:startDate>
+<xbrli:endDate>2013-12-31</xbrli:endDate>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="d_DEFMember_TaxYear2012Member">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+<xbrli:segment>
+<xbrldi:explicitMember dimension="dei:LegalEntityAxis">r11002gd:DEFMember</xbrldi:explicitMember>
+<xbrldi:explicitMember dimension="us-gaap:TaxPeriodAxis">us-gaap:TaxYear2012Member</xbrldi:explicitMember>
+<xbrldi:explicitMember dimension="us-gaap:StatementScenarioAxis">us-gaap:ScenarioForecastMember</xbrldi:explicitMember>
+</xbrli:segment>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:startDate>2013-01-01</xbrli:startDate>
+<xbrli:endDate>2013-12-31</xbrli:endDate>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="d_DEFMember_TaxYear2013Member">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+<xbrli:segment>
+<xbrldi:explicitMember dimension="dei:LegalEntityAxis">r11002gd:DEFMember</xbrldi:explicitMember>
+<xbrldi:explicitMember dimension="us-gaap:TaxPeriodAxis">us-gaap:TaxYear2013Member</xbrldi:explicitMember>
+<xbrldi:explicitMember dimension="us-gaap:StatementScenarioAxis">us-gaap:ScenarioForecastMember</xbrldi:explicitMember>
+</xbrli:segment>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:startDate>2013-01-01</xbrli:startDate>
+<xbrli:endDate>2013-12-31</xbrli:endDate>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="i_TaxYear2012Member">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+<xbrli:segment>
+<xbrldi:explicitMember dimension="us-gaap:TaxPeriodAxis">us-gaap:TaxYear2012Member</xbrldi:explicitMember>
+<xbrldi:explicitMember dimension="us-gaap:StatementScenarioAxis">us-gaap:ScenarioForecastMember</xbrldi:explicitMember>
+</xbrli:segment>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:instant>2012-12-31</xbrli:instant>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="i_TaxYear2013Member">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+<xbrli:segment>
+<xbrldi:explicitMember dimension="us-gaap:TaxPeriodAxis">us-gaap:TaxYear2013Member</xbrldi:explicitMember>
+<xbrldi:explicitMember dimension="us-gaap:StatementScenarioAxis">us-gaap:ScenarioForecastMember</xbrldi:explicitMember>
+</xbrli:segment>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:instant>2012-12-31</xbrli:instant>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="i_ABCMember_TaxYear2012Member">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+<xbrli:segment>
+<xbrldi:explicitMember dimension="dei:LegalEntityAxis">r11002gd:ABCMember</xbrldi:explicitMember>
+<xbrldi:explicitMember dimension="us-gaap:TaxPeriodAxis">us-gaap:TaxYear2012Member</xbrldi:explicitMember>
+<xbrldi:explicitMember dimension="us-gaap:StatementScenarioAxis">us-gaap:ScenarioForecastMember</xbrldi:explicitMember>
+</xbrli:segment>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:instant>2012-12-31</xbrli:instant>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="i_ABCMember_TaxYear2013Member">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+<xbrli:segment>
+<xbrldi:explicitMember dimension="dei:LegalEntityAxis">r11002gd:ABCMember</xbrldi:explicitMember>
+<xbrldi:explicitMember dimension="us-gaap:TaxPeriodAxis">us-gaap:TaxYear2013Member</xbrldi:explicitMember>
+<xbrldi:explicitMember dimension="us-gaap:StatementScenarioAxis">us-gaap:ScenarioForecastMember</xbrldi:explicitMember>
+</xbrli:segment>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:instant>2012-12-31</xbrli:instant>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="i_DEFMember_TaxYear2012Member">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+<xbrli:segment>
+<xbrldi:explicitMember dimension="dei:LegalEntityAxis">r11002gd:DEFMember</xbrldi:explicitMember>
+<xbrldi:explicitMember dimension="us-gaap:TaxPeriodAxis">us-gaap:TaxYear2012Member</xbrldi:explicitMember>
+<xbrldi:explicitMember dimension="us-gaap:StatementScenarioAxis">us-gaap:ScenarioForecastMember</xbrldi:explicitMember>
+</xbrli:segment>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:instant>2012-12-31</xbrli:instant>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="i_DEFMember_TaxYear2013Member">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+<xbrli:segment>
+<xbrldi:explicitMember dimension="dei:LegalEntityAxis">r11002gd:DEFMember</xbrldi:explicitMember>
+<xbrldi:explicitMember dimension="us-gaap:TaxPeriodAxis">us-gaap:TaxYear2013Member</xbrldi:explicitMember>
+<xbrldi:explicitMember dimension="us-gaap:StatementScenarioAxis">us-gaap:ScenarioForecastMember</xbrldi:explicitMember>
+</xbrli:segment>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:instant>2012-12-31</xbrli:instant>
+</xbrli:period>
+</xbrli:context>
+<xbrli:unit id="USD">
+<xbrli:measure>iso4217:USD</xbrli:measure>
+</xbrli:unit>
+<dei:DocumentType contextRef="d2013">8-K</dei:DocumentType>
+<dei:AmendmentFlag contextRef="d2013">false</dei:AmendmentFlag>
+<dei:EntityCentralIndexKey contextRef="d2013">9876543210</dei:EntityCentralIndexKey>
+<dei:EntityRegistrantName contextRef="d2013">OID TEST CO #1 r62411001gd </dei:EntityRegistrantName>
+<dei:DocumentPeriodEndDate contextRef="d2013">2013-12-31</dei:DocumentPeriodEndDate>
+<dei:CurrentFiscalYearEndDate contextRef="d2013">--12-31</dei:CurrentFiscalYearEndDate>
+<us-gaap:ProfitLoss contextRef="d_ABCMember_TaxYear2012Member" unitRef="USD" decimals="0">10000</us-gaap:ProfitLoss>
+<us-gaap:ProfitLoss contextRef="d_DEFMember_TaxYear2012Member" unitRef="USD" decimals="0">20000</us-gaap:ProfitLoss>
+<us-gaap:ProfitLoss contextRef="d_TaxYear2012Member" unitRef="USD" decimals="0">30000</us-gaap:ProfitLoss>
+<us-gaap:ProfitLoss contextRef="d_ABCMember_TaxYear2013Member" unitRef="USD" decimals="0">40000</us-gaap:ProfitLoss>
+<us-gaap:ProfitLoss contextRef="d_DEFMember_TaxYear2013Member" unitRef="USD" decimals="0">50000</us-gaap:ProfitLoss>
+<us-gaap:ProfitLoss contextRef="d_TaxYear2013Member" unitRef="USD" decimals="0">90000</us-gaap:ProfitLoss>
+<us-gaap:Assets contextRef="i_ABCMember_TaxYear2012Member" unitRef="USD" decimals="0">100000</us-gaap:Assets>
+<us-gaap:Assets contextRef="i_DEFMember_TaxYear2012Member" unitRef="USD" decimals="0">200000</us-gaap:Assets>
+<us-gaap:Assets contextRef="i_TaxYear2012Member" unitRef="USD" decimals="0">300000</us-gaap:Assets>
+<us-gaap:Assets contextRef="i_ABCMember_TaxYear2013Member" unitRef="USD" decimals="0">400000</us-gaap:Assets>
+<us-gaap:Assets contextRef="i_DEFMember_TaxYear2013Member" unitRef="USD" decimals="0">500000</us-gaap:Assets>
+<us-gaap:Assets contextRef="i_TaxYear2013Member" unitRef="USD" decimals="0">90000</us-gaap:Assets>
+<EntityEmergingGrowthCompany contextRef="d2013"
+xmlns="http://xbrl.sec.gov/dei/2018-01-31">false</EntityEmergingGrowthCompany>
+</xbrli:xbrl>

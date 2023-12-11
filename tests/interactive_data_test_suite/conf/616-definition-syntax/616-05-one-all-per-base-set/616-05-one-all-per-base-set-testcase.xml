@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>616-05</number>
+    <name>EDGAR Filer Manual v68d 6.16.5</name>
+    <description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.16.5  Restriction on dimension element relationships.">Refer to EFM: 6.16.5  Restriction on dimension element relationships.</a>
+    </description>
+    <reference specification="11170"></reference>
+    <variation id="_001ng">
+        <name>6.16.5, Two all arcs with the same source in same base set, NOGOOD.</name>
+        <description>Element dei:EntityInformationLineItems is a primary element of more than one Table in relationship group 990 - Document - Other Information, ABC, to dei:EntityListingsTable in e61605001ng-20081231_def.xml, line 77, and to dei:EntitiesTable defined in e61605001ng-20081231_def.xml, line 59, NOGOOD.</description>
+        <reference specification="11170"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e61605001ng-20081231.xml</instance>
+            <linkbase>e61605001ng-20081231_lab.xml</linkbase>
+            <linkbase>e61605001ng-20081231_pre.xml</linkbase>
+            <linkbase>e61605001ng-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+            <schema>e61605001ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="61605" name="Primary-Element-Has-Redundant-Tables" frd="fs"></assert>
+        </result>
+    </variation>
+    <variation id="_002gd">
+        <name>6.16.5, A primary item has two all hypercubes, one inherited, GOOD.</name>
+        <description>Primary item 'PathologicalLineItems' has two 'all' hypercubes, one inherited from its domain-member parent, GOOD.</description>
+        <reference specification="11170"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e61605002gd-20081231.xml</instance>
+            <linkbase>e61605002gd-20081231_lab.xml</linkbase>
+            <linkbase>e61605002gd-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+            <schema>e61605002gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+</testcase>

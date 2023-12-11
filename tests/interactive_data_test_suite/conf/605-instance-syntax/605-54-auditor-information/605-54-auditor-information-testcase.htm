@@ -1,0 +1,1712 @@
+<html xmlns:case="http://edgar/2009/conformance">
+  <head>
+    <title>605-54
+        :
+        EDGAR Filer Manual v68d 6.5.54</title>
+    <style type="text/css">
+        table, td, th {border: solid black 1pt; border-collapse: collapse;} td {vertical-align: top;}
+      </style>
+  </head>
+  <body>
+    <h1>605-54
+        :
+        EDGAR Filer Manual v68d 6.5.54</h1>
+    <p>
+        Created by: 
+        <a href="mailto:StructuredData@sec.gov">SEC Office of Structured Disclosure</a></p>
+    <p>
+      <conf:description xmlns="" xmlns:conf="http://edgar/2009/conformance" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <div>
+            <h3>6.5.54 Auditor Name, Location, and Firm ID</h3>
+            <p style="color: black;">The name represents the plain text (not logo
+        nor signature) name of the auditor; the location text represents the
+        city along with either or both country, US state or Canadian province;
+        the firm ID is the auditorsâ€™ Firm ID as assigned by the US PCAOB.</p>
+            <p style="color: black;">If the dei namespace version used in the
+        filing has those three standard elements, then the absence of any of
+        the three facts will cause the filing to be suspended (see table in
+        6.5.21).</p>
+            <p style="color: black;">If the dei namespace version used in a
+        filing does not have the three standard elements, the use of that dei
+        namespace version will cause the filing to be suspended. The filer
+        will need to resubmit the filing with a dei namespace version that has
+        the three standard elements.</p>
+            <p style="color: black;">All three facts must also be visible in the
+        sense defined by 5.2.5.14, and should be tagged where they normally
+        appear, adjacent to the auditorsâ€™ opinion.</p>
+            <p style="color: black;">In addition to the primary auditor in the
+        Required Context, additional auditor names, locations and firm ids
+        should be tagged in other contexts distinguished by the relevant
+        reporting period of that audit opinion, and/or a distinct member of
+        one of the following axes in a standard namespace:</p>
+            <ol style="color: black;" type="a">
+                <li style="padding-left: 2em">ConsolidatedEntitiesAxis for
+            subsidiaries,</li>
+                <li style="padding-left: 2em">ScheduleOEquityMethodInvestmentEquityMethodInvesteeNameAxis
+            for investments,</li>
+                <li style="padding-left: 2em">LegalEntityAxis for branches,</li>
+                <li style="padding-left: 2em">OwnershipAxis for components,</li>
+                <li style="padding-left: 2em">CounterpartyNameAxis for all others.</li>
+            </ol>
+            <p style="color: black;">In those other contexts where one of the
+        three facts appear, the other two must also appear.</p>
+        </div>
+    </conf:description>
+    </p>
+    <h2>
+        Variations
+      </h2>
+    <table border="solid">
+      <thead>
+        <tr>
+          <th>Number</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>References</th>
+          <th>Data Inputs</th>
+          <th>Result Outputs</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>_105gd</td>
+          <td>20-F,  GD</td>
+          <td>20-F,  Auditor information tags required and present in default context. GD</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td>xs:string</td>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"datetimeForTesting":"2022-06-30", "submissionType" : "20-F" ,"periodOfReport" : "12-31-2021" ,"emergingGrowthCompanyFlag" : false ,"acceleratedFilerStatus" : "Large Accelerated Filer" ,"voluntaryFilerFlag" : false ,"shellCompanyFlag" : false }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60554105gd/e60554105gd-20081231.htm">e60554105gd/e60554105gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e60554105gd/eifrs-20181231.xsd">e60554105gd/eifrs-20181231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_106gd</td>
+          <td>40-F,  GD</td>
+          <td>40-F,  Auditor information tags required and present in default context. GD</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td>xs:string</td>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"datetimeForTesting":"2022-06-30", "submissionType" : "40-F" ,"periodOfReport" : "12-31-2021" ,"emergingGrowthCompanyFlag" : false }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60554106gd/e60554106gd-20081231.htm">e60554106gd/e60554106gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e60554106gd/edgar-20181231.xsd">e60554106gd/edgar-20181231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_107gd</td>
+          <td>10-KT , GD</td>
+          <td>10-KT,  Auditor information tags required and present in default context. GD</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"datetimeForTesting":"2022-06-30", "submissionType": "10-KT", "periodOfReport": "12-31-2021", "smallBusinessFlag": false, "shellCompanyFlag": false, "voluntaryFilerFlag": false, "wellKnownSeasonedIssuerFlag": true, "acceleratedFilerStatus": "Large Accelerated Filer", "emergingGrowthCompanyFlag": false, "exTransitionPeriodFlag": false}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60554107gd/e60554107gd-20081231.htm">e60554107gd/e60554107gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e60554107gd/edgar-20181231.xsd">e60554107gd/edgar-20181231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_110gd</td>
+          <td>10-K , GD</td>
+          <td>10-K,  Auditor information tags required and present in default context. GD</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"datetimeForTesting":"2022-06-30", "submissionType": "10-K", "periodOfReport": "12-31-2021", "smallBusinessFlag": false, "shellCompanyFlag": false, "voluntaryFilerFlag": false, "wellKnownSeasonedIssuerFlag": true, "acceleratedFilerStatus": "Large Accelerated Filer", "emergingGrowthCompanyFlag": false, "exTransitionPeriodFlag": false}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60554110gd/e60554110gd-20081231.htm">e60554110gd/e60554110gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e60554110gd/edgar-20181231.xsd">e60554110gd/edgar-20181231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_111gd</td>
+          <td>10-K/A , GD</td>
+          <td>10-K/A,  Auditor information tags required and present in default context. GD</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"datetimeForTesting":"2022-06-30", "submissionType": "10-K/A", "periodOfReport": "12-31-2021", "smallBusinessFlag": false, "shellCompanyFlag": false, "voluntaryFilerFlag": false, "wellKnownSeasonedIssuerFlag": true, "acceleratedFilerStatus": "Large Accelerated Filer", "emergingGrowthCompanyFlag": false, "exTransitionPeriodFlag": false}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60554111gd/e60554111gd-20081231.htm">e60554111gd/e60554111gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e60554111gd/edgar-20181231.xsd">e60554111gd/edgar-20181231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_112ng</td>
+          <td>10-K, Auditor info not in default context. NG</td>
+          <td>10-K,  Auditor information not in default context. NG</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"datetimeForTesting":"2022-06-30", "submissionType": "10-K", "periodOfReport": "12-31-2021", "smallBusinessFlag": false, "shellCompanyFlag": false, "voluntaryFilerFlag": false, "wellKnownSeasonedIssuerFlag": true, "acceleratedFilerStatus": "Large Accelerated Filer", "emergingGrowthCompanyFlag": false, "exTransitionPeriodFlag": false}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60554112ng/e60554112ng-20081231.htm">e60554112ng/e60554112ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e60554112ng/edgar-20181231.xsd">e60554112ng/edgar-20181231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 60554, <a href="../../../../lib/xbrlerrors.htm#rq-0554-auditorInformationNotInRequiredContext">auditorInformationNotInRequiredContext</a></td></tr><tr><td>FRD:</td><td>rq</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_113ng</td>
+          <td>10-K, Auditor information: auditorLocation missing. NG</td>
+          <td>10-K, Auditor information: auditorLocation missing. NG</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"datetimeForTesting":"2022-06-30", "submissionType": "10-K", "periodOfReport": "12-31-2021", "smallBusinessFlag": false, "shellCompanyFlag": false, "voluntaryFilerFlag": false, "wellKnownSeasonedIssuerFlag": true, "acceleratedFilerStatus": "Large Accelerated Filer", "emergingGrowthCompanyFlag": false, "exTransitionPeriodFlag": false, "datetimeForTesting":"2022-06-30" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60554113ng/e60554113ng-20081231.htm">e60554113ng/e60554113ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e60554113ng/edgar-20181231.xsd">e60554113ng/edgar-20181231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 60554, <a href="../../../../lib/xbrlerrors.htm#rq-0554-auditorLocationMissing">auditorLocationMissing</a></td></tr><tr><td>FRD:</td><td>rq</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_114ng</td>
+          <td>10-K, Auditor information: auditorName missing. NG</td>
+          <td>10-K, Auditor information: auditorName missing. NG</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"datetimeForTesting":"2022-06-30", "submissionType": "10-K", "periodOfReport": "12-31-2021", "smallBusinessFlag": false, "shellCompanyFlag": false, "voluntaryFilerFlag": false, "wellKnownSeasonedIssuerFlag": true, "acceleratedFilerStatus": "Large Accelerated Filer", "emergingGrowthCompanyFlag": false, "exTransitionPeriodFlag": false}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60554114ng/e60554114ng-20081231.htm">e60554114ng/e60554114ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e60554114ng/edgar-20181231.xsd">e60554114ng/edgar-20181231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 60554, <a href="../../../../lib/xbrlerrors.htm#rq-0554-auditorNameMissing">auditorNameMissing</a></td></tr><tr><td>FRD:</td><td>rq</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_115ng</td>
+          <td>10-K, Auditor information: auditorFirmId missing. NG</td>
+          <td>10-K, Auditor information: auditorFirmId missing. NG</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"datetimeForTesting":"2022-06-30", "submissionType": "10-K", "periodOfReport": "12-31-2021", "smallBusinessFlag": false, "shellCompanyFlag": false, "voluntaryFilerFlag": false, "wellKnownSeasonedIssuerFlag": true, "acceleratedFilerStatus": "Large Accelerated Filer", "emergingGrowthCompanyFlag": false, "exTransitionPeriodFlag": false}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60554115ng/e60554115ng-20081231.htm">e60554115ng/e60554115ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e60554115ng/edgar-20181231.xsd">e60554115ng/edgar-20181231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 60554, <a href="../../../../lib/xbrlerrors.htm#rq-0554-auditorFirmIdMissing">auditorFirmIdMissing</a></td></tr><tr><td>FRD:</td><td>rq</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_116ng</td>
+          <td>10-K, Auditor information missing. NG</td>
+          <td>10-K, Auditor information missing. NG</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"datetimeForTesting":"2022-06-30", "submissionType": "10-K", "periodOfReport": "12-31-2021", "smallBusinessFlag": false, "shellCompanyFlag": false, "voluntaryFilerFlag": false, "wellKnownSeasonedIssuerFlag": true, "acceleratedFilerStatus": "Large Accelerated Filer", "emergingGrowthCompanyFlag": false, "exTransitionPeriodFlag": false}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60554116ng/e60554116ng-20081231.htm">e60554116ng/e60554116ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e60554116ng/edgar-20181231.xsd">e60554116ng/edgar-20181231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 60554, <a href="../../../../lib/xbrlerrors.htm#rq-0554-auditorInformationMissing">auditorInformationMissing</a></td></tr><tr><td>FRD:</td><td>rq</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_117ng</td>
+          <td>10-K, Auditor information: auditorName and auditorLocation are empty string. NG</td>
+          <td>10-K, Auditor information: auditorName and auditorLocation are empty string. NG</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"datetimeForTesting":"2022-06-30", "submissionType": "10-K", "periodOfReport": "12-31-2021", "smallBusinessFlag": false, "shellCompanyFlag": false, "voluntaryFilerFlag": false, "wellKnownSeasonedIssuerFlag": true, "acceleratedFilerStatus": "Large Accelerated Filer", "emergingGrowthCompanyFlag": false, "exTransitionPeriodFlag": false}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60554117ng/e60554117ng-20081231.htm">e60554117ng/e60554117ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e60554117ng/edgar-20181231.xsd">e60554117ng/edgar-20181231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-xmlSchema:valueError">xmlSchema:valueError</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_118ng</td>
+          <td>10-K, Auditor information: hidden, NG</td>
+          <td>10-K, Auditor information: hidden, NG</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"datetimeForTesting":"2022-06-30", "submissionType": "10-K", "periodOfReport": "12-31-2021", "smallBusinessFlag": false, "shellCompanyFlag": false, "voluntaryFilerFlag": false, "wellKnownSeasonedIssuerFlag": true, "acceleratedFilerStatus": "Large Accelerated Filer", "emergingGrowthCompanyFlag": false, "exTransitionPeriodFlag": false}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60554118ng/e60554118ng-20081231.htm">e60554118ng/e60554118ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e60554118ng/edgar-20181231.xsd">e60554118ng/edgar-20181231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 60545, <a href="../../../../lib/xbrlerrors.htm#rq-0545-"/></td></tr><tr><td>FRD:</td><td>rq</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_119ng</td>
+          <td>10-K, Auditor Info: auditorLocation is nil. NG</td>
+          <td>10-K,  Auditor information: auditorLocation is nil. NG</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"datetimeForTesting":"2022-06-30", "submissionType": "10-K", "periodOfReport": "12-31-2021", "smallBusinessFlag": false, "shellCompanyFlag": false, "voluntaryFilerFlag": false, "wellKnownSeasonedIssuerFlag": true, "acceleratedFilerStatus": "Large Accelerated Filer", "emergingGrowthCompanyFlag": false, "exTransitionPeriodFlag": false}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60554119ng/e60554119ng-20081231.htm">e60554119ng/e60554119ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e60554119ng/edgar-20181231.xsd">e60554119ng/edgar-20181231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 60554, <a href="../../../../lib/xbrlerrors.htm#rq-0554-"/></td></tr><tr><td>FRD:</td><td>rq</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_120ng</td>
+          <td>10-K, Auditor information: auditorFirmId negative number. NG</td>
+          <td>10-K, Auditor information: auditorFirmId negative number. NG</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"datetimeForTesting":"2022-06-30", "submissionType": "10-K", "periodOfReport": "12-31-2021", "smallBusinessFlag": false, "shellCompanyFlag": false, "voluntaryFilerFlag": false, "wellKnownSeasonedIssuerFlag": true, "acceleratedFilerStatus": "Large Accelerated Filer", "emergingGrowthCompanyFlag": false, "exTransitionPeriodFlag": false}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60554120ng/e60554120ng-20081231.htm">e60554120ng/e60554120ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e60554120ng/edgar-20181231.xsd">e60554120ng/edgar-20181231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-xmlSchema:valueError">xmlSchema:valueError</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_121ng</td>
+          <td>10-K, Auditor information: auditorFirmId nil value. NG</td>
+          <td>10-K, Auditor information: auditorFirmId nil value. NG</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"datetimeForTesting":"2022-06-30", "submissionType": "10-K", "periodOfReport": "12-31-2021", "smallBusinessFlag": false, "shellCompanyFlag": false, "voluntaryFilerFlag": false, "wellKnownSeasonedIssuerFlag": true, "acceleratedFilerStatus": "Large Accelerated Filer", "emergingGrowthCompanyFlag": false, "exTransitionPeriodFlag": false}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60554121ng/e60554121ng-20081231.htm">e60554121ng/e60554121ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e60554121ng/edgar-20181231.xsd">e60554121ng/edgar-20181231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 60554, <a href="../../../../lib/xbrlerrors.htm#rq-0554-auditorFirmIdMissing">auditorFirmIdMissing</a></td></tr><tr><td>FRD:</td><td>rq</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_122ng</td>
+          <td>10-K, Auditor information: auditorFirmId string value. NG</td>
+          <td>10-K, Auditor information: auditorFirmId string value. NG</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"datetimeForTesting":"2022-06-30", "submissionType": "10-K", "periodOfReport": "12-31-2021", "smallBusinessFlag": false, "shellCompanyFlag": false, "voluntaryFilerFlag": false, "wellKnownSeasonedIssuerFlag": true, "acceleratedFilerStatus": "Large Accelerated Filer", "emergingGrowthCompanyFlag": false, "exTransitionPeriodFlag": false}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60554122ng/e60554122ng-20081231.htm">e60554122ng/e60554122ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e60554122ng/edgar-20181231.xsd">e60554122ng/edgar-20181231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-xmlSchema:valueError">xmlSchema:valueError</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_123gd</td>
+          <td>10-Q,  GD</td>
+          <td>10-Q,  GD</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td>xs:string</td>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"datetimeForTesting":"2022-06-30", "periodOfReport" : "12-31-2021" , "emergingGrowthCompanyFlag" : false , "smallBusinessFlag" : false , "submissionType" : "10-Q"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60554123gd/e60554123gd-20081231.htm">e60554123gd/e60554123gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e60554123gd/edgar-20181231.xsd">e60554123gd/edgar-20181231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_124gw</td>
+          <td>10-Q, Auditor information present, GW</td>
+          <td>10-Q, Auditor Information present, GW</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td>xs:string</td>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"datetimeForTesting":"2022-06-30", "periodOfReport" : "12-31-2021" , "emergingGrowthCompanyFlag" : false , "smallBusinessFlag" : false , "submissionType" : "10-Q"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60554124gw/e60554124gw-20081231.htm">e60554124gw/e60554124gw-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e60554124gw/edgar-20181231.xsd">e60554124gw/edgar-20181231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  wrn, 60554, <a href="../../../../lib/xbrlwarnings.htm#rq-0554-"/></td></tr><tr><td>FRD:</td><td>rq</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_125gd</td>
+          <td>10-Q,  Auditor info tags present but have nil value. GD</td>
+          <td>10-Q,  Auditor info tags present but have nil value. GD</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td>xs:string</td>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"datetimeForTesting":"2022-06-30", "periodOfReport" : "12-31-2021" , "emergingGrowthCompanyFlag" : false , "smallBusinessFlag" : false , "submissionType" : "10-Q"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60554125gd/e60554125gd-20081231.htm">e60554125gd/e60554125gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e60554125gd/edgar-20181231.xsd">e60554125gd/edgar-20181231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_126gd</td>
+          <td>10-K , Auditor information in dei:LegalEntityAxis, GD</td>
+          <td>10-K , Auditor information in dei:LegalEntityAxis, GD</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"datetimeForTesting":"2022-06-30", "submissionType": "10-K", "periodOfReport": "12-31-2021", "smallBusinessFlag": false, "shellCompanyFlag": false, "voluntaryFilerFlag": false, "wellKnownSeasonedIssuerFlag": true, "acceleratedFilerStatus": "Large Accelerated Filer", "emergingGrowthCompanyFlag": false, "exTransitionPeriodFlag": false}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60554126gd/e60554126gd-20081231.htm">e60554126gd/e60554126gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e60554126gd/edgar-20181231.xsd">e60554126gd/edgar-20181231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_127gd</td>
+          <td>10-K , Auditor information in dei:LegalEntityAxis (two entities), GD</td>
+          <td>10-K , Auditor information in dei:LegalEntityAxis, (two entities) GD</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"datetimeForTesting":"2022-06-30", "submissionType": "10-K", "periodOfReport": "12-31-2021", "smallBusinessFlag": false, "shellCompanyFlag": false, "voluntaryFilerFlag": false, "wellKnownSeasonedIssuerFlag": true, "acceleratedFilerStatus": "Large Accelerated Filer", "emergingGrowthCompanyFlag": false, "exTransitionPeriodFlag": false}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60554127gd/e60554127gd-20081231.htm">e60554127gd/e60554127gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e60554127gd/edgar-20181231.xsd">e60554127gd/edgar-20181231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_128ng</td>
+          <td>10-K , Auditor information incomplete in dei:LegalEntityAxis,  NG</td>
+          <td>10-K , Auditor information incomplete in dei:LegalEntityAxis, NG</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"datetimeForTesting":"2022-06-30", "submissionType": "10-K", "periodOfReport": "12-31-2021", "smallBusinessFlag": false, "shellCompanyFlag": false, "voluntaryFilerFlag": false, "wellKnownSeasonedIssuerFlag": true, "acceleratedFilerStatus": "Large Accelerated Filer", "emergingGrowthCompanyFlag": false, "exTransitionPeriodFlag": false}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60554128ng/e60554128ng-20081231.htm">e60554128ng/e60554128ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e60554128ng/edgar-20181231.xsd">e60554128ng/edgar-20181231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 60554, <a href="../../../../lib/xbrlerrors.htm#rq-0554-auditorFirmIdMissing">auditorFirmIdMissing</a></td></tr><tr><td>FRD:</td><td>rq</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_129gw</td>
+          <td>10-K , Auditor information in dei:LegalEntityAxis, along with not-permitted axis,  NG</td>
+          <td>10-K , Auditor information in dei:LegalEntityAxis, along with not-permitted axis, NG</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"datetimeForTesting":"2022-06-30", "submissionType": "10-K", "periodOfReport": "12-31-2021", "smallBusinessFlag": false, "shellCompanyFlag": false, "voluntaryFilerFlag": false, "wellKnownSeasonedIssuerFlag": true, "acceleratedFilerStatus": "Large Accelerated Filer", "emergingGrowthCompanyFlag": false, "exTransitionPeriodFlag": false}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60554129gw/e60554129gw-20081231.htm">e60554129gw/e60554129gw-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e60554129gw/edgar-20181231.xsd">e60554129gw/edgar-20181231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  wrn, 60554, <a href="../../../../lib/xbrlwarnings.htm#rq-0554-auditorFirmIdMissing">auditorFirmIdMissing</a></td></tr><tr><td>FRD:</td><td>rq</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_130gd</td>
+          <td>10-K , Auditor information in srt:ConsolidatedEntitiesAxis, GD</td>
+          <td>10-K , Auditor information in srt:ConsolidatedEntitiesAxis, GD</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"datetimeForTesting":"2022-06-30", "submissionType": "10-K", "periodOfReport": "12-31-2021", "smallBusinessFlag": false, "shellCompanyFlag": false, "voluntaryFilerFlag": false, "wellKnownSeasonedIssuerFlag": true, "acceleratedFilerStatus": "Large Accelerated Filer", "emergingGrowthCompanyFlag": false, "exTransitionPeriodFlag": false}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60554130gd/e60554130gd-20081231.htm">e60554130gd/e60554130gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e60554130gd/edgar-20181231.xsd">e60554130gd/edgar-20181231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_131ng</td>
+          <td>10-K , Auditor information incomplete in srt:ConsolidatedEntitiesAxis, NG</td>
+          <td>10-K , Auditor information incomplete in srt:ConsolidatedEntitiesAxis, NG</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"datetimeForTesting":"2022-06-30", "submissionType": "10-K", "periodOfReport": "12-31-2021", "smallBusinessFlag": false, "shellCompanyFlag": false, "voluntaryFilerFlag": false, "wellKnownSeasonedIssuerFlag": true, "acceleratedFilerStatus": "Large Accelerated Filer", "emergingGrowthCompanyFlag": false, "exTransitionPeriodFlag": false}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60554131ng/e60554131ng-20081231.htm">e60554131ng/e60554131ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e60554131ng/edgar-20181231.xsd">e60554131ng/edgar-20181231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 60554, <a href="../../../../lib/xbrlerrors.htm#rq-0554-auditorNameAuditorLocationAuditorFirmIdMutualDependency">auditorNameAuditorLocationAuditorFirmIdMutualDependency</a></td></tr><tr><td>FRD:</td><td>rq</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_132gd</td>
+          <td>10-K , Auditor information in srt:ScheduleOfEquityMethodInvestmentEquityMethodInvesteeNameAxis, GD</td>
+          <td>10-K , Auditor information in srt:ScheduleOfEquityMethodInvestmentEquityMethodInvesteeNameAxis, GD</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"datetimeForTesting":"2022-06-30", "submissionType": "10-K", "periodOfReport": "12-31-2021", "smallBusinessFlag": false, "shellCompanyFlag": false, "voluntaryFilerFlag": false, "wellKnownSeasonedIssuerFlag": true, "acceleratedFilerStatus": "Large Accelerated Filer", "emergingGrowthCompanyFlag": false, "exTransitionPeriodFlag": false}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60554132gd/e60554132gd-20081231.htm">e60554132gd/e60554132gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e60554132gd/edgar-20181231.xsd">e60554132gd/edgar-20181231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_134gd</td>
+          <td>10-K , Auditor information in srt:OwnershipAxis, GD</td>
+          <td>10-K , Auditor information in srt:OwnershipAxis, GD</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"datetimeForTesting":"2022-06-30", "submissionType": "10-K", "periodOfReport": "12-31-2021", "smallBusinessFlag": false, "shellCompanyFlag": false, "voluntaryFilerFlag": false, "wellKnownSeasonedIssuerFlag": true, "acceleratedFilerStatus": "Large Accelerated Filer", "emergingGrowthCompanyFlag": false, "exTransitionPeriodFlag": false}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60554134gd/e60554134gd-20081231.htm">e60554134gd/e60554134gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e60554134gd/edgar-20181231.xsd">e60554134gd/edgar-20181231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_135ng</td>
+          <td>10-K , Auditor information incomplete in srt:OwnershipAxis, NG</td>
+          <td>10-K , Auditor information incomplete in srt:OwnershipAxis, NG</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"datetimeForTesting":"2022-06-30", "submissionType": "10-K", "periodOfReport": "12-31-2021", "smallBusinessFlag": false, "shellCompanyFlag": false, "voluntaryFilerFlag": false, "wellKnownSeasonedIssuerFlag": true, "acceleratedFilerStatus": "Large Accelerated Filer", "emergingGrowthCompanyFlag": false, "exTransitionPeriodFlag": false}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60554135ng/e60554135ng-20081231.htm">e60554135ng/e60554135ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e60554135ng/edgar-20181231.xsd">e60554135ng/edgar-20181231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 60554, <a href="../../../../lib/xbrlerrors.htm#rq-0554-auditorNameAuditorLocationAuditorFirmIdMutualDependency">auditorNameAuditorLocationAuditorFirmIdMutualDependency</a></td></tr><tr><td>FRD:</td><td>rq</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_140ng</td>
+          <td>10-K, Auditor information: auditorFirmId has blank value. NG</td>
+          <td>10-K, Auditor information: auditorFirmId has blank value. NG</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"datetimeForTesting":"2022-06-30", "submissionType": "10-K", "periodOfReport": "12-31-2021", "smallBusinessFlag": false, "shellCompanyFlag": false, "voluntaryFilerFlag": false, "wellKnownSeasonedIssuerFlag": true, "acceleratedFilerStatus": "Large Accelerated Filer", "emergingGrowthCompanyFlag": false, "exTransitionPeriodFlag": false}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60554140ng/e60554140ng-20081231.htm">e60554140ng/e60554140ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e60554140ng/edgar-20181231.xsd">e60554140ng/edgar-20181231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-xmlSchema:valueError">xmlSchema:valueError</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_150gd</td>
+          <td>8-K , GD</td>
+          <td>8-K,  GD</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td>xs:string</td>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"datetimeForTesting":"2022-06-30", "periodOfReport" : "12-31-2021" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60554150gd/e60554150gd-20081231.htm">e60554150gd/e60554150gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e60554150gd/edgar-20181231.xsd">e60554150gd/edgar-20181231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_151gw</td>
+          <td>8-K , Auditor information provided, but not permitted, GW</td>
+          <td>8-K,  Auditor information provided, but not permitted, GW</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td>xs:string</td>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"datetimeForTesting":"2022-06-30", "periodOfReport" : "12-31-2021" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60554151gw/e60554151gw-20081231.htm">e60554151gw/e60554151gw-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e60554151gw/edgar-20181231.xsd">e60554151gw/edgar-20181231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  wrn, 60554, <a href="../../../../lib/xbrlwarnings.htm#rq-0554-auditorFirmIdUnexpected">auditorFirmIdUnexpected</a></td></tr><tr><td>FRD:</td><td>rq</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_160gd</td>
+          <td>20-F,  GD</td>
+          <td>20-F,  Auditor information tags required and present in default context. GD</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td>xs:string</td>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"datetimeForTesting":"2022-06-30", "submissionType" : "20-F" ,"periodOfReport" : "12-31-2021" ,"emergingGrowthCompanyFlag" : false ,"acceleratedFilerStatus" : "Large Accelerated Filer" ,"voluntaryFilerFlag" : false ,"shellCompanyFlag" : false }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60554160gd/e60554160gd-20081231.htm">e60554160gd/e60554160gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e60554160gd/eifrs-20181231.xsd">e60554160gd/eifrs-20181231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_161gd</td>
+          <td>20-F,  GD</td>
+          <td>20-F,  Auditor information tags required and present in prior-context-and-default-context. GD</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td>xs:string</td>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"datetimeForTesting":"2022-06-30", "submissionType" : "20-F" ,"periodOfReport" : "12-31-2021" ,"emergingGrowthCompanyFlag" : false ,"acceleratedFilerStatus" : "Large Accelerated Filer" ,"voluntaryFilerFlag" : false ,"shellCompanyFlag" : false }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60554161gd/e60554161gd-20081231.htm">e60554161gd/e60554161gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e60554161gd/eifrs-20181231.xsd">e60554161gd/eifrs-20181231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_162ng</td>
+          <td>20-F,  NG</td>
+          <td>20-F,  Auditor information tags required and not present in default-context-and-future-context. NG</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td>xs:string</td>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"datetimeForTesting":"2022-06-30", "submissionType" : "20-F" ,"periodOfReport" : "12-31-2021" ,"emergingGrowthCompanyFlag" : false ,"acceleratedFilerStatus" : "Large Accelerated Filer" ,"voluntaryFilerFlag" : false ,"shellCompanyFlag" : false }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60554162ng/e60554162ng-20081231.htm">e60554162ng/e60554162ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e60554162ng/eifrs-20181231.xsd">e60554162ng/eifrs-20181231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 60554, <a href="../../../../lib/xbrlerrors.htm#rq-0554-auditorFirmIdUnexpectedauditorFirmIdUnexpected">auditorFirmIdUnexpectedauditorFirmIdUnexpected</a></td></tr><tr><td>FRD:</td><td>rq</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_163ng</td>
+          <td>20-F,  NG</td>
+          <td>20-F,  Auditor information tags required and present in future-context-no-default-context. NG</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td>xs:string</td>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"datetimeForTesting":"2022-06-30", "submissionType" : "20-F" ,"periodOfReport" : "12-31-2021" ,"emergingGrowthCompanyFlag" : false ,"acceleratedFilerStatus" : "Large Accelerated Filer" ,"voluntaryFilerFlag" : false ,"shellCompanyFlag" : false }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60554163ng/e60554163ng-20081231.htm">e60554163ng/e60554163ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e60554163ng/eifrs-20181231.xsd">e60554163ng/eifrs-20181231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 60554, <a href="../../../../lib/xbrlerrors.htm#rq-0554-auditorFirmIdMissing">auditorFirmIdMissing</a></td></tr><tr><td>FRD:</td><td>rq</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_164ng</td>
+          <td>20-F,  NG</td>
+          <td>20-F,  Auditor information tags required and present in prior-context-no-default-context. NG</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td>xs:string</td>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"datetimeForTesting":"2022-06-30", "submissionType" : "20-F" ,"periodOfReport" : "12-31-2021" ,"emergingGrowthCompanyFlag" : false ,"acceleratedFilerStatus" : "Large Accelerated Filer" ,"voluntaryFilerFlag" : false ,"shellCompanyFlag" : false }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60554164ng/e60554164ng-20081231.htm">e60554164ng/e60554164ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e60554164ng/eifrs-20181231.xsd">e60554164ng/eifrs-20181231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 60554, <a href="../../../../lib/xbrlerrors.htm#rq-0554-auditorFirmIdMissing">auditorFirmIdMissing</a></td></tr><tr><td>FRD:</td><td>rq</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_170gd</td>
+          <td>20-F,  GD</td>
+          <td>20-F,  Auditor information tags not required, but present, default context, where periodOfReport before cutoff date. GD</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td>xs:string</td>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"datetimeForTesting":"2022-06-30", "submissionType" : "20-F" ,"periodOfReport" : "11-14-2021" ,"emergingGrowthCompanyFlag" : false ,"acceleratedFilerStatus" : "Large Accelerated Filer" ,"voluntaryFilerFlag" : false ,"shellCompanyFlag" : false }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60554170gd/e60554170gd-20081231.htm">e60554170gd/e60554170gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e60554170gd/eifrs-20181231.xsd">e60554170gd/eifrs-20181231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_171gd</td>
+          <td>20-F,  GD</td>
+          <td>20-F,  Auditor information tags not required and present in default context, where periodOfReport = the cutfoff date. GD</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td>xs:string</td>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"datetimeForTesting":"2022-06-30", "submissionType" : "20-F" ,"periodOfReport" : "11-15-2021" ,"emergingGrowthCompanyFlag" : false ,"acceleratedFilerStatus" : "Large Accelerated Filer" ,"voluntaryFilerFlag" : false ,"shellCompanyFlag" : false }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60554171gd/e60554171gd-20081231.htm">e60554171gd/e60554171gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e60554171gd/eifrs-20181231.xsd">e60554171gd/eifrs-20181231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_172gd</td>
+          <td>20-F,  GD</td>
+          <td>20-F,  Auditor information tags required and present in default context, periodOfReport is after the cutoff date. GD</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td>xs:string</td>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"datetimeForTesting":"2022-06-30", "submissionType" : "20-F" ,"periodOfReport" : "11-16-2021" ,"emergingGrowthCompanyFlag" : false ,"acceleratedFilerStatus" : "Large Accelerated Filer" ,"voluntaryFilerFlag" : false ,"shellCompanyFlag" : false }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60554172gd/e60554172gd-20081231.htm">e60554172gd/e60554172gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e60554172gd/eifrs-20181231.xsd">e60554172gd/eifrs-20181231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_173gd</td>
+          <td>20-F,  GD</td>
+          <td>20-F,  Auditor information tags not required, and NOT present, default context, where periodOfReport before cutoff date. GD</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td>xs:string</td>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"datetimeForTesting":"2022-06-30", "submissionType" : "20-F" ,"periodOfReport" : "11-14-2021" ,"emergingGrowthCompanyFlag" : false ,"acceleratedFilerStatus" : "Large Accelerated Filer" ,"voluntaryFilerFlag" : false ,"shellCompanyFlag" : false }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60554173gd/e60554173gd-20081231.htm">e60554173gd/e60554173gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e60554173gd/eifrs-20181231.xsd">e60554173gd/eifrs-20181231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_174gd</td>
+          <td>20-F,  GD</td>
+          <td>20-F,  Auditor information tags not required and NOT present in default context, where periodOfReport = the cutfoff date. GD</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td>xs:string</td>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"datetimeForTesting":"2022-06-30", "submissionType" : "20-F" ,"periodOfReport" : "11-15-2021" ,"emergingGrowthCompanyFlag" : false ,"acceleratedFilerStatus" : "Large Accelerated Filer" ,"voluntaryFilerFlag" : false ,"shellCompanyFlag" : false }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60554174gd/e60554174gd-20081231.htm">e60554174gd/e60554174gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e60554174gd/eifrs-20181231.xsd">e60554174gd/eifrs-20181231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_175ng</td>
+          <td>20-F,  NG</td>
+          <td>20-F,  Auditor information tags required and NOT present in default context, periodOfReport is after the cutoff date. NG</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td>xs:string</td>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"datetimeForTesting":"2022-06-30", "submissionType" : "20-F" ,"periodOfReport" : "12-31-2021" ,"emergingGrowthCompanyFlag" : false ,"acceleratedFilerStatus" : "Large Accelerated Filer" ,"voluntaryFilerFlag" : false ,"shellCompanyFlag" : false }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60554175ng/e60554175ng-20081231.htm">e60554175ng/e60554175ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e60554175ng/eifrs-20181231.xsd">e60554175ng/eifrs-20181231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  wrn, 60554, <a href="../../../../lib/xbrlwarnings.htm#rq-0554-auditorFirmIdMissing">auditorFirmIdMissing</a></td></tr><tr><td>FRD:</td><td>rq</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

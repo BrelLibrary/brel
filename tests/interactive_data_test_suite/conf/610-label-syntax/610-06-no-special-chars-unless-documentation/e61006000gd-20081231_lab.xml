@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='utf-8'?>
+<link:linkbase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd">
+    <link:labelLink xlink:type="extended" xlink:role="http://www.xbrl.org/2003/role/link">
+        <link:loc xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityListingsLineItems" xlink:label="EntityListingsLineItems" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="e61006000gd-20081231.xsd#e6100600_Statistics" xlink:label="Promises" xlink:type="locator"></link:loc>
+        <link:label id="label_EntityListingsLineItems" xml:lang="en-US" xlink:label="label_EntityListingsLineItems" xlink:type="resource" xlink:role="http://www.xbrl.org/2003/role/verboseLabel">Entity Listings, Redundant:</link:label>
+        <link:label id="label_Promises" xml:lang="en-US" xlink:label="label_Promises" xlink:type="resource" xlink:role="http://www.xbrl.org/2003/role/label">Statistics</link:label>
+        <link:label id="label_Statistics" xml:lang="en-US" xlink:label="label_Statistics" xlink:type="resource" xlink:role="http://www.xbrl.org/2003/role/documentation">Statistics (&lt;) is a mathematical science pertaining to the collection, analysis, interpretation or explanation, and presentation of data.[1] It also provides tools for prediction and forecasting based on data. It is applicable to a wide variety of academic disciplines, from the natural and social sciences to the humanities, government and business.
+
+Statistical methods can be used to summarize or describe a collection of data; this is called descriptive statistics. In addition, patterns in the data may be modeled in a way that accounts for randomness and uncertainty in the observations, and are then used to draw inferences about the process or population being studied; this is called inferential statistics. Descriptive, and inferential statistics (a.k.a predictive statistics) comprise applied statistics.[2]
+
+There is also a discipline called mathematical statistics, which is concerned with the theoretical basis of the subject. Moreover, there is a branch of statistics called exact statistics that is based on exact probability statements.</link:label>
+        <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="EntityListingsLineItems" xlink:to="label_EntityListingsLineItems"></link:labelArc>
+        <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="Promises" xlink:to="label_Promises"></link:labelArc>
+        <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="Promises" xlink:to="label_Statistics"></link:labelArc>
+    </link:labelLink>
+</link:linkbase>

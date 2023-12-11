@@ -1,0 +1,897 @@
+<html xmlns:case="http://edgar/2009/conformance">
+  <head>
+    <title>605-12
+        :
+        EDGAR Filer Manual v68d 6.5.12</title>
+    <style type="text/css">
+        table, td, th {border: solid black 1pt; border-collapse: collapse;} td {vertical-align: top;}
+      </style>
+  </head>
+  <body>
+    <h1>605-12
+        :
+        EDGAR Filer Manual v68d 6.5.12</h1>
+    <p>
+        Created by: 
+        <a href="mailto:StructuredData@sec.gov">SEC Office of Structured Disclosure</a></p>
+    <p>
+      <description xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.5.12  Fact duplication">Refer to EFM: 6.5.12  Fact duplication</a>
+    </description>
+    </p>
+    <h3>References</h3>
+    <ul>10491.4.110491.5.1110721108417105</ul>
+    <h2>
+        Variations
+      </h2>
+    <table border="solid">
+      <thead>
+        <tr>
+          <th>Number</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>References</th>
+          <th>Data Inputs</th>
+          <th>Result Outputs</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>_000gd</td>
+          <td>6.5.12 Simple instance, GOOD</td>
+          <td>Simple instance with no duplicate facts.</td>
+          <td>10491.4.110491.5.1110721108417105 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "submissionType" : "10-K", "emergingGrowthCompanyFlag" : false }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60512000gd-20081231.xml">e60512000gd-20081231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_pre.xml">edgar-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_lab.xml">edgar-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20081231.xsd">edgar-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_001gd</td>
+          <td>6.5.12 8-K w/Two non-numeric facts, different languages, GOOD.</td>
+          <td>An instance with two facts differing by xml:lang value.</td>
+          <td>110721108417105 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "submissionType" : "8-K", "emergingGrowthCompanyFlag" : false }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60512001gd-20081231.xml">e60512001gd-20081231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_pre.xml">edgar-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_lab.xml">edgar-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20081231.xsd">edgar-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_002ng</td>
+          <td>6.5.12 10-K w/Two Numeric Facts Attributes Equal not value equal, NOGOOD</td>
+          <td>An instance with two numeric facts with decimals=INF whose values are not v=.</td>
+          <td>10491.4.1110721108417105 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "submissionType" : "10-K", "emergingGrowthCompanyFlag" : false }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60512002ng-20081231.xml">e60512002ng-20081231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_pre.xml">edgar-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_lab.xml">edgar-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20081231.xsd">edgar-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 60512, <a href="../../../../lib/xbrlerrors.htm#du-0512-Duplicate-Facts">Duplicate-Facts</a></td></tr><tr><td>FRD:</td><td>du</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_003ng</td>
+          <td>6.5.12 10-K w/Three Numeric Facts with Attributes Equal but different values, NOGOOD</td>
+          <td>An instance with three numeric facts of decimals=INF whose values are different, NOGOOD.</td>
+          <td>10491.5.1110721108417105 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "submissionType" : "10-K", "emergingGrowthCompanyFlag" : false }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60512003ng-20081231.xml">e60512003ng-20081231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_pre.xml">edgar-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_lab.xml">edgar-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20081231.xsd">edgar-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 60512, <a href="../../../../lib/xbrlerrors.htm#du-0512-Duplicate-Facts">Duplicate-Facts</a></td></tr><tr><td>FRD:</td><td>du</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_005ng</td>
+          <td>6.5.12 8-K w/Five Text Blocks with different values, NOGOOD</td>
+          <td> An instance with five text blocks, all different. </td>
+          <td>10491.5.1110721108417105 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "submissionType" : "8-K", "emergingGrowthCompanyFlag" : false }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60512005ng-20081231.xml">e60512005ng-20081231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_pre.xml">edgar-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_lab.xml">edgar-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20081231.xsd">edgar-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 60512, <a href="../../../../lib/xbrlerrors.htm#du-0512-Duplicate-Facts">Duplicate-Facts</a></td></tr><tr><td>FRD:</td><td>du</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_007gd</td>
+          <td>6.5.12 10-K w/Two Numeric Facts with different Units, GOOD</td>
+          <td> Two Numeric Facts with different Units, GOOD</td>
+          <td>10491.4.110491.5.1110721108417105 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "submissionType" : "10-K", "emergingGrowthCompanyFlag" : false }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60512007gd-20081231.xml">e60512007gd-20081231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_pre.xml">edgar-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_lab.xml">edgar-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20081231.xsd">edgar-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_008ng</td>
+          <td>6.5.12 10-K w/Two Numeric Facts, one nil the other not, NOGOOD</td>
+          <td>Two Numeric Facts, one nil the other not, NOGOOD</td>
+          <td>10491.5.1110721108417105 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "submissionType" : "10-K", "emergingGrowthCompanyFlag" : false }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60512008ng-20081231.xml">e60512008ng-20081231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_pre.xml">edgar-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_lab.xml">edgar-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20081231.xsd">edgar-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 60512, <a href="../../../../lib/xbrlerrors.htm#du-0512-Duplicate-Facts">Duplicate-Facts</a></td></tr><tr><td>FRD:</td><td>du</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_009gd</td>
+          <td>6.5.12 10-K w/Numeric with different values of the decimals attribute resulting in equal effective values, GOOD</td>
+          <td> An instance with three pairs of numeric facts where the effective values are equal.</td>
+          <td>10491.5.1110721108417105 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "submissionType" : "10-K", "emergingGrowthCompanyFlag" : false }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60512009gd-20081231.xml">e60512009gd-20081231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_pre.xml">edgar-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_lab.xml">edgar-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20081231.xsd">edgar-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_010gd</td>
+          <td>6.5.12 10-K w/Six Numeric Facts with varying lexical representations, NOGOOD</td>
+          <td> An instance with six numeric facts, same element, unit and context but other attributes differ.</td>
+          <td>10491.4.110491.5.1110721108417105 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "submissionType" : "10-K", "emergingGrowthCompanyFlag" : false }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60512010gd-20081231.xml">e60512010gd-20081231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_pre.xml">edgar-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_lab.xml">edgar-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20081231.xsd">edgar-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_011gd</td>
+          <td>6.5.12 8-K w/Five duplicated lexical representations of non numeric facts that are equal, GOOD</td>
+          <td>Types are: QName duration dateTime time date normalizedString. Whether 24:00:00 = 00:00:00 is left ambiguous.</td>
+          <td>10491.4.110491.5.1110721108417105 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "submissionType" : "8-K", "emergingGrowthCompanyFlag" : false }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60512011gd-20081231.xml">e60512011gd-20081231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_pre.xml">edgar-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_lab.xml">edgar-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20081231.xsd">edgar-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_012gd</td>
+          <td>6.5.12 10-K w/Three numeric facts that are consistent when rounding half to even, GOOD</td>
+          <td>Three numeric facts that are consistent when rounding half to even, GOOD</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "submissionType" : "10-K", "emergingGrowthCompanyFlag" : false }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60512012gd-20081231.xml">e60512012gd-20081231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_pre.xml">edgar-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_lab.xml">edgar-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20081231.xsd">edgar-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_013gd</td>
+          <td>6.5.12 10-K w/Three numeric facts that are consistent when rounding half away from zero, GOOD</td>
+          <td>Three numeric facts now consistent that would have been inconsistent in previous releases, GOOD</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "submissionType" : "10-K", "emergingGrowthCompanyFlag" : false }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60512013gd-20081231.xml">e60512013gd-20081231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_pre.xml">edgar-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_lab.xml">edgar-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20081231.xsd">edgar-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_014gd</td>
+          <td>6.5.12 10-K w/Numeric facts all have same @decimals, Three numeric facts exactly same numeric value - consistent, GOOD</td>
+          <td>Numeric facts all have same @decimals, Three numeric facts exactly same numeric value - consistent, GOOD</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "submissionType" : "10-K", "emergingGrowthCompanyFlag" : false }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60512014gd-20081231.xml">e60512014gd-20081231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_pre.xml">edgar-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_lab.xml">edgar-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20081231.xsd">edgar-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_015ng</td>
+          <td>6.5.12 10-K w/Numeric facts all have same @decimals, three facts - unequal numeric value, NOGOOD</td>
+          <td>Numeric facts all have same @decimals, three facts - unequal numeric value, NOGOOD</td>
+          <td>10491.5.1110721108417105 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "submissionType" : "10-K", "emergingGrowthCompanyFlag" : false }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60512015ng-20081231.xml">e60512015ng-20081231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_pre.xml">edgar-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_lab.xml">edgar-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20081231.xsd">edgar-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 60512, <a href="../../../../lib/xbrlerrors.htm#du-0512-Duplicate-Facts">Duplicate-Facts</a></td></tr><tr><td>FRD:</td><td>du</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_016gd</td>
+          <td>6.5.12 8-K w/Numeric facts, all are nil, GOOD</td>
+          <td>Numeric facts, all are nil, GOOD</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "submissionType" : "8-K", "emergingGrowthCompanyFlag" : false }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60512016gd-20081231.xml">e60512016gd-20081231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_pre.xml">edgar-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_lab.xml">edgar-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20081231.xsd">edgar-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_017ng</td>
+          <td>6.5.12 10-K w/Numeric facts, mixture of nil and not nil, NOGOOD</td>
+          <td>Numeric facts, mixture of nil and not nil - variation on 008ng, NOGOOD</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "submissionType" : "10-K", "emergingGrowthCompanyFlag" : false }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60512017ng-20081231.xml">e60512017ng-20081231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_pre.xml">edgar-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_lab.xml">edgar-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20081231.xsd">edgar-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 60512, <a href="../../../../lib/xbrlerrors.htm#du-0512-Duplicate-Facts">Duplicate-Facts</a></td></tr><tr><td>FRD:</td><td>du</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_018ng</td>
+          <td>6.5.12 8-K w/Numeric float item type facts, both NaN, NOGOOD</td>
+          <td>Numeric float item type facts, both NaN, NOGOOD</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "submissionType" : "8-K", "emergingGrowthCompanyFlag" : false }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60512018ng-20111231.xml">e60512018ng-20111231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="e60512018ng-20111231_pre.xml">e60512018ng-20111231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="e60512018ng-20111231_lab.xml">e60512018ng-20111231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="e60512018ng-20111231.xsd">e60512018ng-20111231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 60512, <a href="../../../../lib/xbrlerrors.htm#du-0512-Duplicate-Facts">Duplicate-Facts</a></td></tr><tr><td>FRD:</td><td>du</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_019gd</td>
+          <td>6.5.12 8-K w/Numeric float item type facts, both +INF, GOOD</td>
+          <td>Numeric float item type facts, both +INF, GOOD</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "submissionType" : "8-K", "emergingGrowthCompanyFlag" : false }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60512019gd-20111231.xml">e60512019gd-20111231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="e60512019gd-20111231_pre.xml">e60512019gd-20111231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="e60512019gd-20111231_lab.xml">e60512019gd-20111231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="e60512019gd-20111231.xsd">e60512019gd-20111231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_020gd</td>
+          <td>6.5.12 8-K w/Numeric float item type facts, both -INF, GOOD</td>
+          <td>Numeric float item type facts, both -INF, GOOD</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "submissionType" : "8-K", "emergingGrowthCompanyFlag" : false }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60512020gd-20111231.xml">e60512020gd-20111231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="e60512020gd-20111231_pre.xml">e60512020gd-20111231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="e60512020gd-20111231_lab.xml">e60512020gd-20111231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="e60512020gd-20111231.xsd">e60512020gd-20111231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

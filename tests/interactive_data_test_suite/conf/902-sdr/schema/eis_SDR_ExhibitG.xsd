@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sec.gov/edgar/document/sdr/exhibitg" xmlns:mstns="http://www.sec.gov/edgar/document/sdr/exhibitg" xmlns:ns1="http://www.sec.gov/edgar/common" xmlns:ns2="http://www.sec.gov/edgar/sdrcommon" targetNamespace="http://www.sec.gov/edgar/document/sdr/exhibitg" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.sec.gov/edgar/common" schemaLocation="eis_Common.xsd"/>
+	<xs:import namespace="http://www.sec.gov/edgar/sdrcommon" schemaLocation="eis_SDR_common.xsd"/>
+	<xs:simpleType name="AFFILIATE_TYPE_CODE_TYPE">
+		<xs:annotation>
+			<xs:documentation>
+Enumerated values and descriptions: 1: Natural Person, 2: Organization</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="AFFILIATE_TYPE">
+		<xs:annotation>
+			<xs:documentation>These elements part of the repeatable AFFILIATE_TYPE group</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="affiliateTypeCode" type="AFFILIATE_TYPE_CODE_TYPE"/>
+			<xs:element name="affiliateFirstName" type="ns1:STRING_30_TYPE" minOccurs="0"/>
+			<xs:element name="affiliateMiddleName" type="ns1:STRING_30_TYPE" minOccurs="0"/>
+			<xs:element name="affiliateLastName" type="ns1:STRING_30_TYPE" minOccurs="0"/>
+			<xs:element name="affiliateNameOfOrg" type="ns1:STRING_150_TYPE" minOccurs="0"/>
+			<xs:element name="affiliateDetailDesc" type="ns2:STRING_1500_TYPE"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="affiliates">
+		<xs:annotation>
+			<xs:documentation>This is the root element for an SDR exhibit G.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="affiliate" type="AFFILIATE_TYPE" maxOccurs="100"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

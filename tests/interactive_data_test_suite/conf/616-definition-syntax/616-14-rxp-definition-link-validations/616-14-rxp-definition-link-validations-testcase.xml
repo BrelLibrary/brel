@@ -1,0 +1,133 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl"?>
+<conf:testcase xmlns:conf="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <conf:creator>
+        <conf:name>SEC Office of Structured Disclosure</conf:name>
+        <conf:email>StructuredData@sec.gov</conf:email>
+    </conf:creator>
+    <conf:number>{number}</conf:number>
+    <conf:name>EDGAR Filer Manual {version}</conf:name>
+    <conf:description>
+        <div>
+            <a href="https://www.sec.gov/files/edgar/filermanual/efmvol2.pdf#6.16.14 RXP definition link validations">EDGAR Filer Manual:6.16.14 RXP definition link validations</a>
+        </div>
+    </conf:description>
+    <conf:variation id="_001gd">
+        <conf:name>DocumentType: 2.01 SD, Valid example, GD</conf:name>
+        <conf:description>DocumentType: 2.01 SD, Valid example, GD</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "SD/A", "exhibitType": "EX-2.01"}'></conf:parameter>
+            <conf:instance readMeFirst="true" exhibitType="EX-2.01">e61614001gd/e61614001gd-20301231.xml</conf:instance>
+            <conf:schema>e61614001gd/e61614001gd-20301231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+    </conf:result>
+    </conf:variation>
+    <conf:variation id="_002ng">
+        <conf:name>DocumentType: 2.01 SD, wrong source member in projects role</conf:name>
+        <conf:description>DocumentType: 2.01 SD, wrong source member in projects role</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "SD/A", "exhibitType": "EX-2.01"}'></conf:parameter>
+            <conf:instance readMeFirst="true" exhibitType="EX-2.01">e61614002ng/e61614002ng-20301231.xml</conf:instance>
+            <conf:schema>e61614002ng/e61614002ng-20301231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="61614" name="Role-Source-Not-Permitted" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_003ng">
+        <conf:name>DocumentType: 2.01 SD, wrong source member in governments role</conf:name>
+        <conf:description>DocumentType: 2.01 SD, wrong source member in governments role</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "SD/A", "exhibitType": "EX-2.01"}'></conf:parameter>
+            <conf:instance readMeFirst="true" exhibitType="EX-2.01">e61614003ng/e61614003ng-20301231.xml</conf:instance>
+            <conf:schema>e61614003ng/e61614003ng-20301231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="61614" name="Role-Source-Not-Permitted" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_004ng">
+        <conf:name>DocumentType: 2.01 SD, wrong source member in segments role</conf:name>
+        <conf:description>DocumentType: 2.01 SD, wrong source member in segments role</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "SD/A", "exhibitType": "EX-2.01"}'></conf:parameter>
+            <conf:instance readMeFirst="true" exhibitType="EX-2.01">e61614004ng/e61614004ng-20301231.xml</conf:instance>
+            <conf:schema>e61614004ng/e61614004ng-20301231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="61614" name="Role-Source-Not-Permitted" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_005ng">
+        <conf:name>DocumentType: 2.01 SD, wrong source member in entites role</conf:name>
+        <conf:description>DocumentType: 2.01 SD, wrong source member in entites role</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "SD/A", "exhibitType": "EX-2.01"}'></conf:parameter>
+            <conf:instance readMeFirst="true" exhibitType="EX-2.01">e61614005ng/e61614005ng-20301231.xml</conf:instance>
+            <conf:schema>e61614005ng/e61614005ng-20301231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="61614" name="Role-Source-Not-Permitted" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_006ng">
+        <conf:name>DocumentType: 2.01 SD, wrong source member in resources role</conf:name>
+        <conf:description>DocumentType: 2.01 SD, wrong source member in resources role</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "SD/A", "exhibitType": "EX-2.01"}'></conf:parameter>
+            <conf:instance readMeFirst="true" exhibitType="EX-2.01">e61614006ng/e61614006ng-20301231.xml</conf:instance>
+            <conf:schema>e61614006ng/e61614006ng-20301231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="61614" name="Role-Source-Not-Permitted" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_007ng">
+        <conf:name>DocumentType: 2.01 SD, wrong source member in disallowed role</conf:name>
+        <conf:description>DocumentType: 2.01 SD, wrong source member in disallowed role</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "SD/A", "exhibitType": "EX-2.01"}'></conf:parameter>
+            <conf:instance readMeFirst="true" exhibitType="EX-2.01">e61614007ng/e61614007ng-20301231.xml</conf:instance>
+            <conf:schema>e61614007ng/e61614007ng-20301231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="61614" name="Role-Relationship-Not-Permitted" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_008ng">
+        <conf:name>DocumentType: 2.01 SD, targetRole is disallowed</conf:name>
+        <conf:description>DocumentType: 2.01 SD, targetRole is disallowed</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "SD/A", "exhibitType": "EX-2.01"}'></conf:parameter>
+            <conf:instance readMeFirst="true" exhibitType="EX-2.01">e61614008ng/e61614008ng-20301231.xml</conf:instance>
+            <conf:schema>e61614008ng/e61614008ng-20301231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="61614" name="TargetRole-Not-Permitted" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_009gd">
+        <conf:name>DocumentType: 2.01 SD, custom role which is allowed</conf:name>
+        <conf:description>DocumentType: 2.01 SD, custom role which is allowed</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "SD/A", "exhibitType": "EX-2.01"}'></conf:parameter>
+            <conf:instance readMeFirst="true" exhibitType="EX-2.01">e61614009gd/e61614009gd-20301231.xml</conf:instance>
+            <conf:schema>e61614009gd/e61614009gd-20301231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+    </conf:result>
+    </conf:variation>
+    <conf:variation id="_010ng">
+        <conf:name>DocumentType: 2.01 SD, target member concept in 2 RXP roles, NG</conf:name>
+        <conf:description>DocumentType: 2.01 SD, target member concept in 2 RXP roles, NG</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "SD/A", "exhibitType": "EX-2.01"}'></conf:parameter>
+            <conf:instance readMeFirst="true" exhibitType="EX-2.01">e61614010ng/e61614010ng-20301231.xml</conf:instance>
+            <conf:schema>e61614010ng/e61614010ng-20301231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="61614" name="Member-Multiple-RXP-Roles" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+</conf:testcase>

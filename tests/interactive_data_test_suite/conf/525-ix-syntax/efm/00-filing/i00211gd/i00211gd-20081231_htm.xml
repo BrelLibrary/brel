@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xbrl
+  xmlns="http://www.xbrl.org/2003/instance"
+  xmlns:dei="http://xbrl.sec.gov/dei/2018-01-31"
+  xmlns:link="http://www.xbrl.org/2003/linkbase"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+    <link:schemaRef xlink:href="i00211gd-20081231.xsd" xlink:type="simple"/>
+    <context id="d">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+        </entity>
+        <period>
+            <startDate>2008-04-01</startDate>
+            <endDate>2008-12-31</endDate>
+        </period>
+    </context>
+    <context id="i">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+        </entity>
+        <period>
+            <instant>2008-12-31</instant>
+        </period>
+    </context>
+    <unit id="shares">
+        <measure>shares</measure>
+    </unit>
+    <dei:AmendmentFlag contextRef="d">false</dei:AmendmentFlag>
+    <dei:DocumentPeriodEndDate contextRef="d">2008-12-31</dei:DocumentPeriodEndDate>
+    <dei:DocumentFiscalPeriodFocus contextRef="d">Q3</dei:DocumentFiscalPeriodFocus>
+    <dei:EntityCentralIndexKey contextRef="d">9876543210</dei:EntityCentralIndexKey>
+    <dei:CurrentFiscalYearEndDate contextRef="d">--03-31</dei:CurrentFiscalYearEndDate>
+    <dei:DocumentFiscalYearFocus contextRef="d">2008</dei:DocumentFiscalYearFocus>
+    <dei:EntityEmergingGrowthCompany contextRef="d">false</dei:EntityEmergingGrowthCompany>
+    <dei:DocumentType contextRef="d">8-K</dei:DocumentType>
+    <dei:EntityCommonStockSharesOutstanding contextRef="i" decimals="INF" unitRef="shares">154357198</dei:EntityCommonStockSharesOutstanding>
+    <dei:EntityRegistrantName contextRef="d">OSD TEST CO #1 i00211gd</dei:EntityRegistrantName>
+    <dei:EntityTextBlock contextRef="d" id="fact1">
+               &lt;span lang="en"&gt;Hello there, how's it going? &lt;/span&gt;
+               &lt;span lang="fr"&gt;Bonjour, comment &#xe7;a va? &lt;/span&gt;
+               &lt;span lang="ja"&gt;&#x3053;&#x3093;&#x306b;&#x3061;&#x306f;&lt;/span&gt;
+               &lt;span lang="he"&gt;&#x5e9;&#x5dc;&#x5d5;&#x5dd;&lt;/span&gt;
+</dei:EntityTextBlock>
+    <link:footnoteLink
+      xlink:role="http://www.xbrl.org/2003/role/link"
+      xlink:type="extended">
+        <link:loc
+          xlink:href="#fact1"
+          xlink:label="fact1"
+          xlink:type="locator"/>
+        <link:footnote id="footnote1" xlink:label="footnote1" xlink:role="http://www.xbrl.org/2003/role/footnote" xlink:type="resource" xml:lang="en-US"><xhtml:span xml:lang="en">Hello there, how's it going? </xhtml:span>
+               <xhtml:span xml:lang="fr">Bonjour, comment &#xe7;a va? </xhtml:span>
+               <xhtml:span xml:lang="ja">&#x3053;&#x3093;&#x306b;&#x3061;&#x306f;</xhtml:span>
+               <xhtml:span xml:lang="he">&#x5e9;&#x5dc;&#x5d5;&#x5dd;</xhtml:span>
+</link:footnote>
+        <link:footnoteArc
+          xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote"
+          xlink:from="fact1"
+          xlink:to="footnote1"
+          xlink:type="arc"/>
+    </link:footnoteLink>
+</xbrl>

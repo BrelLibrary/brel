@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<link:linkbase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd">
+    <link:roleRef roleURI="http://r09000gd/role/cf" xlink:href="r09000gd-20081231.xsd#cf" xlink:type="simple"></link:roleRef>
+    <link:calculationLink xlink:type="extended" xlink:role="http://r09000gd/role/cf">
+        <link:loc xlink:href="https://xbrl.fasb.org/us-gaap/2021/elts/us-gaap-2021-01-31.xsd#us-gaap_NetCashProvidedByUsedInOperatingActivities" xlink:label="NetCashProvidedByUsedInOperatingActivities" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="https://xbrl.fasb.org/us-gaap/2021/elts/us-gaap-2021-01-31.xsd#us-gaap_AdjustmentsToReconcileNetIncomeLossToCashProvidedByUsedInOperatingActivities" xlink:label="AdjustmentsToReconcileNetIncomeLossToCashProvidedByUsedInOperatingActivities" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="https://xbrl.fasb.org/us-gaap/2021/elts/us-gaap-2021-01-31.xsd#us-gaap_ProfitLoss" xlink:label="ProfitLoss" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="https://xbrl.fasb.org/us-gaap/2021/elts/us-gaap-2021-01-31.xsd#us-gaap_DepreciationDepletionAndAmortization" xlink:label="DepreciationDepletionAndAmortization" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="https://xbrl.fasb.org/us-gaap/2021/elts/us-gaap-2021-01-31.xsd#us-gaap_OtherOperatingActivitiesCashFlowStatement" xlink:label="OtherOperatingActivitiesCashFlowStatement" xlink:type="locator"></link:loc>
+        <link:calculationArc xlink:type="arc" order="1.0" weight="1.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" xlink:from="NetCashProvidedByUsedInOperatingActivities" xlink:to="ProfitLoss"></link:calculationArc>
+        <link:calculationArc xlink:type="arc" order="2.0" weight="1.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" xlink:from="NetCashProvidedByUsedInOperatingActivities" xlink:to="AdjustmentsToReconcileNetIncomeLossToCashProvidedByUsedInOperatingActivities"></link:calculationArc>
+        <link:calculationArc xlink:type="arc" order="3.0" weight="1.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" xlink:from="AdjustmentsToReconcileNetIncomeLossToCashProvidedByUsedInOperatingActivities" xlink:to="DepreciationDepletionAndAmortization"></link:calculationArc>
+        <link:calculationArc xlink:type="arc" order="2.0" weight="1.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" xlink:from="AdjustmentsToReconcileNetIncomeLossToCashProvidedByUsedInOperatingActivities" xlink:to="OtherOperatingActivitiesCashFlowStatement"></link:calculationArc>
+    </link:calculationLink>
+</link:linkbase>

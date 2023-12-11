@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>626-05</number>
+    <name>EDGAR Filer Manual v68d 6.26.5</name>
+    <description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.26.5  Restrictions on rows and columns of embedding commands.">Refer to EFM: 6.26.5  Restrictions on rows and columns of embedding commands.</a>
+    </description>
+    <reference specification="18153"></reference>
+    <variation id="_000gd">
+        <name>6.26.5 All embedding iterators that can be defaulted are defaulted, GOOD</name>
+        <description>All iterators that can be defaulted are defaulted, GOOD</description>
+        <reference specification="18153"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"rptSeriesClassInfo.seriesIds":["S013456789"], "invCompanyType":"N-1A", "submissionType": "485BPOS"}'></parameter>
+            <instance readMeFirst="true">e62605000gd-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_001ng">
+        <name>6.26.5 Untransposed embedding with no row commands, NOGOOD</name>
+        <description>Shareholder Fees embedding with no row commands, NOGOOD</description>
+        <reference specification="18153"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"rptSeriesClassInfo.seriesIds":["S013456789"], "invCompanyType":"N-1A", "submissionType": "485BPOS"}'></parameter>
+            <instance readMeFirst="true">e62605001ng-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="62605" name="Embedding-Command-Missing-Iterator" frd="rq"></assert>
+        </result>
+    </variation>
+    <variation id="_002ng">
+        <name>6.26.5 Transposed embedding with no row commands, NOGOOD</name>
+        <description>Expense Example No Redemption (transposed) embedding with no row commands, NOGOOD</description>
+        <reference specification="18153"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"rptSeriesClassInfo.seriesIds":["S013456789"], "invCompanyType":"N-1A", "submissionType": "485BPOS"}'></parameter>
+            <instance readMeFirst="true">e62605002ng-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="62605" name="Embedding-Command-Missing-Iterator" frd="rq"></assert>
+        </result>
+    </variation>
+    <variation id="_003ng">
+        <name>6.26.5 Untransposed embedding with no column commands, NOGOOD</name>
+        <description>Shareholder Fees embedding with no column commands, NOGOOD</description>
+        <reference specification="18153"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"rptSeriesClassInfo.seriesIds":["S013456789"], "invCompanyType":"N-1A", "submissionType": "485BPOS"}'></parameter>
+            <instance readMeFirst="true">e62605003ng-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="62605" name="Embedding-Command-Missing-Iterator" frd="rq"></assert>
+        </result>
+    </variation>
+    <variation id="_004ng">
+        <name>6.26.5 Transposed embedding with no column commands, NOGOOD</name>
+        <description>Expense Example No Redemption (transposed) embedding with no column commands, NOGOOD</description>
+        <reference specification="18153"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"rptSeriesClassInfo.seriesIds":["S013456789"], "invCompanyType":"N-1A", "submissionType": "485BPOS"}'></parameter>
+            <instance readMeFirst="true">e62605004ng-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="62605" name="Embedding-Command-Missing-Iterator" frd="rq"></assert>
+        </result>
+    </variation>
+</testcase>

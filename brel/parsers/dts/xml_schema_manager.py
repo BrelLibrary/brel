@@ -14,9 +14,20 @@ class XMLSchemaManager(ISchemaManager):
     Class for downloading and caching XBRL taxonomies
     """
 
-    def __init__(self, cache_location: str, filing_location: str, parser: lxml.etree.XMLParser) -> None:
+    def __init__(self, cache_location: str, filing_location: str, schema_filename: str, parser: lxml.etree.XMLParser) -> None:
         self.cache_location = cache_location
+
+        if not os.path.isdir(self.cache_location):
+            raise ValueError(f"{self.cache_location} is not a valid folder path")
+        
+        if not os.path.isdir(filing_location):
+            raise ValueError(f"{filing_location} is not a valid folder path")
+        
+        if not schema_filename in os.listdir(filing_location):
+            raise ValueError(f"{schema_filename} is not a file  the folder {filing_location}")
+
         self.__filing_location = filing_location
+        self.__main_schema_filename = schema_filename
 
         # self.__parser = lxml.etree.XMLParser(
         #     remove_blank_text=True,
@@ -31,17 +42,7 @@ class XMLSchemaManager(ISchemaManager):
 
         self.__xbrl_schema_cache: dict[str, lxml.etree._ElementTree] = {}
 
-        filenames = os.listdir(filing_location)
-        schema_filename = None
-        for filename in filenames:
-            if filename.endswith(".xsd"):
-                schema_filename = filename
-                break
-        
-        if not schema_filename:
-            raise Exception("No schema found in filing")
-        
-        self.__download_dts(schema_filename)
+        self.__download_dts(self.__filing_location + self.__main_schema_filename)
 
         # iterate over all files in the cache and add them to the schema names
         # self.__schema_names = []
@@ -49,7 +50,7 @@ class XMLSchemaManager(ISchemaManager):
         #     if filename.endswith(".xsd"):
         #         self.__schema_names.append(filename)
         self.__schema_names: list[str] = []
-        self.__compute_schema_names_closure(schema_filename)
+        self.__compute_schema_names_closure(self.__filing_location + self.__main_schema_filename)
 
     def url_to_filename(self, url: str) -> str:
         """
@@ -129,10 +130,11 @@ class XMLSchemaManager(ISchemaManager):
         Stores them in the cache
         """
 
+        original_file_name = xsd_url.split("/")[-1]
         file_name = self.url_to_filename(xsd_url)
 
         is_url_remote = xsd_url.startswith("http")
-        is_in_filing = xsd_url in os.listdir(self.__filing_location)
+        is_in_filing = original_file_name in os.listdir(self.__filing_location)
         is_cached = file_name in os.listdir(self.cache_location)
 
         if is_cached:
@@ -152,7 +154,7 @@ class XMLSchemaManager(ISchemaManager):
 
         elif is_in_filing:
             # otherwise load it from the current directory
-            with open(self.__filing_location + xsd_url, "rb") as f:
+            with open(self.__filing_location + original_file_name, "rb") as f:
                 xsd_content = f.read()
 
         else:

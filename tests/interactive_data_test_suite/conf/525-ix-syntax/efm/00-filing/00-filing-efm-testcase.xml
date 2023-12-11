@@ -1,0 +1,1454 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>525-00</number>
+    <name>EDGAR Filer Manual v68d 5.2.5</name>
+    <description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#5.2.5 Inline XBRL Documents">Refer to EFM: 5.2.5 Inline XBRL Documents</a>
+    </description>
+    <variation id="_200gd">
+        <name>All valid HTML tag and attribute combinations including span, thead, tbody, and tfoot, GOOD</name>
+        <description>EFM-PASS-html-span-table-elements</description>
+        <reference efmspec="5.02.05"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00200gd/i00200gd-20081231.htm</instance>
+            <linkbase>i00200gd/i00200gd-20081231_pre.xml</linkbase>
+            <linkbase>i00200gd/i00200gd-20081231_lab.xml</linkbase>
+            <schema>i00200gd/i00200gd-20081231.xsd</schema>
+            <image>i00200gd/i00200gd-20081231.jpg</image>
+        </data>
+        <result expected="valid">
+            <!--<instance>i00200gd/i00200gd-20081231_htm.xml</instance>-->
+        </result>
+    </variation>
+    <variation id="_201gd">
+        <name>Valid @href attribute, GOOD</name>
+        <description>EFM-PASS-html-legal-href-attribute</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Attribute href (on the 'a' tag) may only reference other HTML and ASCII documents that are local or are in previously filed submissions at http://www.sec.gov/Archives/edgar/data/."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00201gd/i00201gd-20081231.htm</instance>
+            <linkbase>i00201gd/i00201gd-20081231_pre.xml</linkbase>
+            <linkbase>i00201gd/i00201gd-20081231_lab.xml</linkbase>
+            <schema>i00201gd/i00201gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid">
+
+</result>
+    </variation>
+    <variation id="_202gd">
+        <name>Valid image tag, GOOD</name>
+        <description>EFM-PASS-html-valid-img-tag</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Attribute @src (on the img tag) may only locally reference jpeg and gif graphics."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00202gd/i00202gd-20081231.htm</instance>
+            <linkbase>i00202gd/i00202gd-20081231_pre.xml</linkbase>
+            <linkbase>i00202gd/i00202gd-20081231_lab.xml</linkbase>
+            <schema>i00202gd/i00202gd-20081231.xsd</schema>
+            <image>i00202gd/i00202gd-20081231.jpg</image>
+        </data>
+        <result expected="valid">
+
+</result>
+    </variation>
+    <variation id="_203gd">
+        <name>Valid escaped-chars-in-test-block, GOOD</name>
+        <description>EFM-PASS-html-valid-escaped-chars-in-test-block </description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Valid escaped chars in test block"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00203gd/i00203gd-20081231.htm</instance>
+            <linkbase>i00203gd/i00203gd-20081231_pre.xml</linkbase>
+            <linkbase>i00203gd/i00203gd-20081231_lab.xml</linkbase>
+            <schema>i00203gd/i00203gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid">
+
+</result>
+    </variation>
+    <variation id="_204gd">
+        <name>inline document with ifrs taxonomy, GOOD</name>
+        <description>EFM-PASS-inline-ifrs</description>
+        <reference efmspec="6.22.1"></reference>
+        <reference specification="IFRS filings can be inline documents."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"submissionType":"6-K/A" }'></parameter>
+            <instance readMeFirst="true">i00204gd/i00204gd-20081231.htm</instance>
+            <linkbase>i00204gd/i00204gd-20081231_pre.xml</linkbase>
+            <linkbase>i00204gd/i00204gd-20081231_lab.xml</linkbase>
+            <schema>i00204gd/i00204gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid">
+
+</result>
+    </variation>
+    <variation id="_210gd">
+        <name>Inline document with xml lang attributes, GOOD</name>
+        <description>EFM-PASS-inline-lang-attributes</description>
+        <reference efmspec="5.2.5.9"></reference>
+        <reference specification="lang and xml:lang attributes in footnotes and text blocks."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00210gd/i00210gd-20081231.htm</instance>
+            <linkbase>i00210gd/i00210gd-20081231_pre.xml</linkbase>
+            <linkbase>i00210gd/i00210gd-20081231_lab.xml</linkbase>
+            <schema>i00210gd/i00210gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid">
+
+</result>
+    </variation>
+    <variation id="_211gd">
+        <name>Inline document with xml lang attributes, GOOD</name>
+        <description>EFM-PASS-inline-lang-attributes</description>
+        <reference efmspec="5.2.5.9"></reference>
+        <reference specification=""></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00211gd/i00211gd-20081231.htm</instance>
+            <linkbase>i00211gd/i00211gd-20081231_pre.xml</linkbase>
+            <linkbase>i00211gd/i00211gd-20081231_lab.xml</linkbase>
+            <schema>i00211gd/i00211gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid">
+
+</result>
+    </variation>
+    <variation id="_301ng">
+        <name>The document is inline XBRL but there is a DOCTYPE declaration, NOGOOD</name>
+        <description>EFM-FAIL-doctype-declaration</description>
+        <reference specification="There must be no &lt;DOCTYPE&gt; declaration"></reference>
+        <reference efmspec="5.02.05"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00301ng/i00301ng-20081231.htm</instance>
+            <linkbase>i00301ng/i00301ng-20081231_pre.xml</linkbase>
+            <linkbase>i00301ng/i00301ng-20081231_lab.xml</linkbase>
+            <schema>i00301ng/i00301ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="EFM.5.02.05.doctypeDisallowed" frd="ix" fj="FATAL_ERRROR_DOCTYPE_DEFINED" txt="Inline XBRL file has element &lt;DOCTYPE&gt;. Remove DOCTYPE or remove the Inline XBRL features."></assert>
+        </result>
+    </variation>
+    <variation id="_302ng">
+        <name>The root element is html in the xhtml namespace, there are elements in the ix namespace, but the &lt;,meta&gt; tag content-type value is not text/html.NOGOOD</name>
+        <description>EFM-FAIL-meta-content-type</description>
+        <reference efmspec="5.02.05"></reference>
+        <reference specification="The &lt;meta&gt; tag must have content-type equal to text/html."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00302ng/i00302ng-20081231.htm</instance>
+            <linkbase>i00302ng/i00302ng-20081231_pre.xml</linkbase>
+            <linkbase>i00302ng/i00302ng-20081231_lab.xml</linkbase>
+            <schema>i00302ng/i00302ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="EFM.5.02.05.disallowedMetaContent" frd="ix" fj="FATAL_ERROR_UNSUPPORTED_CONTENT_TYPE" txt="InlineXBRL &lt;meta&gt; content is &quot;$&quot; but must be &quot;text/html&quot;"></assert>
+        </result>
+    </variation>
+    <variation id="_303ng">
+        <name>There are elements in the ix namespace but the root element is not html in the xhtml namespace, NOGOOD</name>
+        <description>EFM-FAIL-unsupported-document</description>
+        <reference efmspec="5.02.05"></reference>
+        <reference specification="The root element of an inline XBRL document must be &lt;html&gt;."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00303ng/i00303ng-20081231.htm</instance>
+            <linkbase>i00303ng/i00303ng-20081231_pre.xml</linkbase>
+            <linkbase>i00303ng/i00303ng-20081231_lab.xml</linkbase>
+            <schema>i00303ng/i00303ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="EFM.5.02.05.xhtmlNamespaceMissing" frd="ix" fj="FATAL_ERROR_UNSUPPORTED_DOCUMENT" nnum="70100" txt="InlineXBRL root element &lt;html&gt; MUST be html and have the xhtml"></assert>
+        </result>
+    </variation>
+    <variation id="_304gw">
+        <name>Unhandled error, GOOD WITH WARNING</name>
+        <description>EFM-WARN-unhandled-error</description>
+        <reference efmspec="00.00.00"></reference>
+        <reference specification="If an internal error occurs during validation, the submission is considered to have passed."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00304gw/i00304gw-20081231.htm</instance>
+            <linkbase>i00304gw/i00304gw-20081231_pre.xml</linkbase>
+            <linkbase>i00304gw/i00304gw-20081231_lab.xml</linkbase>
+            <schema>i00304gw/i00304gw-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="wrn" num="99999" name="exception:AssertionError" frd="ix" fj="UNHANDLED_ERROR" nnum="70100" txt="The validator was unable to produce output due to an internal error. This is not considered an error in the filing."></assert>
+        </result>
+    </variation>
+    <variation id="_305ng">
+        <name>illegal anchor with external href, NOGOOD</name>
+        <description>EFM-FAIL-html-illegal-anchor-href</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Attribute href (on &lt;a&gt;) may only reference other HTML and ASCII documents that are local or are in previously filed submissions at http://www.sec.gov/Archives/edgar/data/."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00305ng/i00305ng-20081231.htm</instance>
+            <linkbase>i00305ng/i00305ng-20081231_pre.xml</linkbase>
+            <linkbase>i00305ng/i00305ng-20081231_lab.xml</linkbase>
+            <schema>i00305ng/i00305ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="EFM.5.02.05.externalReference" frd="ix" fj="EDGAR_HTML_ATTRIBUTE_VALUE_DISALLOWED" nnum="70100" txt="InlineXBRL has an invalid external reference in '$' for &lt;*&gt;: #"></assert>
+        </result>
+    </variation>
+    <variation id="_306ng">
+        <name>invalid external image source, NOGOOD</name>
+        <description>EFM-FAIL-invalid-img-src</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Attribute @src (on the img tag) may only locally reference jpeg and gif graphics."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00306ng/i00306ng-20081231.htm</instance>
+            <linkbase>i00306ng/i00306ng-20081231_pre.xml</linkbase>
+            <linkbase>i00306ng/i00306ng-20081231_lab.xml</linkbase>
+            <schema>i00306ng/i00306ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="EFM.5.02.05.externalReference" frd="ix" fj="EDGAR_HTML_ATTRIBUTE_VALUE_DISALLOWED" nnum="70100" txt="InlineXBRL has an invalid external reference in '$' for &lt;*&gt;: #"></assert>
+        </result>
+    </variation>
+    <variation id="_307ng">
+        <name>disallowed &lt;font&gt; tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-font-tag</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Element &lt;font&gt; is no longer allowed in modern HTML dialects such XHTML 1.1, on which Inline XBRL is based"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00307ng/i00307ng-20081231.htm</instance>
+            <linkbase>i00307ng/i00307ng-20081231_pre.xml</linkbase>
+            <linkbase>i00307ng/i00307ng-20081231_lab.xml</linkbase>
+            <schema>i00307ng/i00307ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Invalid content was found starting with element : $"></assert>
+        </result>
+    </variation>
+    <variation id="_308ng">
+        <name>disallowed &lt;u&gt; tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-u-tag</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Element &lt;u&gt; is no longer allowed in modern HTML dialects such XHTML 1.1, on which Inline XBRL is based"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00308ng/i00308ng-20081231.htm</instance>
+            <linkbase>i00308ng/i00308ng-20081231_pre.xml</linkbase>
+            <linkbase>i00308ng/i00308ng-20081231_lab.xml</linkbase>
+            <schema>i00308ng/i00308ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Invalid content was found starting with element : {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_309ng">
+        <name>disallowed clear attribute of the br tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-br-clear-attribute</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Element &lt;br&gt; does not allow attribute clear in EDGAR"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00309ng/i00309ng-20081231.htm</instance>
+            <linkbase>i00309ng/i00309ng-20081231_pre.xml</linkbase>
+            <linkbase>i00309ng/i00309ng-20081231_lab.xml</linkbase>
+            <schema>i00309ng/i00309ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Attribute {attribute} is not allowed to appear in element {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_310ng">
+        <name>disallowed active content(javascript) in image source, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-active-content</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="No Active Content (Actions, embedded JavaScript, etc.) is allowed."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00310ng/i00310ng-20081231.htm</instance>
+            <linkbase>i00310ng/i00310ng-20081231_pre.xml</linkbase>
+            <linkbase>i00310ng/i00310ng-20081231_lab.xml</linkbase>
+            <schema>i00310ng/i00310ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="EFM.5.02.05.activeContent" frd="ix" fj="EDGAR_ACTIVE_CONTENT_NOT_ALLOWED" nnum="70100" txt="InlineXBRL has javascript in attribute '$' for &lt;*&gt;"></assert>
+        </result>
+    </variation>
+    <variation id="_311ng">
+        <name>disallowed xmp tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-xmp-tag</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Element is not allowed in EDGAR HTML"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00311ng/i00311ng-20081231.htm</instance>
+            <linkbase>i00311ng/i00311ng-20081231_pre.xml</linkbase>
+            <linkbase>i00311ng/i00311ng-20081231_lab.xml</linkbase>
+            <schema>i00311ng/i00311ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Invalid content was found starting with element : {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_312ng">
+        <name>disallowed strike tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-strike-tag</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Element is not allowed in EDGAR HTML"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00312ng/i00312ng-20081231.htm</instance>
+            <linkbase>i00312ng/i00312ng-20081231_pre.xml</linkbase>
+            <linkbase>i00312ng/i00312ng-20081231_lab.xml</linkbase>
+            <schema>i00312ng/i00312ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Invalid content was found starting with element : {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_313ng">
+        <name>disallowed plaintext tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-plaintext-tag</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Element is not allowed in EDGAR HTML"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00313ng/i00313ng-20081231.htm</instance>
+            <linkbase>i00313ng/i00313ng-20081231_pre.xml</linkbase>
+            <linkbase>i00313ng/i00313ng-20081231_lab.xml</linkbase>
+            <schema>i00313ng/i00313ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Invalid content was found starting with element : {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_314ng">
+        <name>disallowed listing tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-listing-tag</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Element is not allowed in EDGAR HTML"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00314ng/i00314ng-20081231.htm</instance>
+            <linkbase>i00314ng/i00314ng-20081231_pre.xml</linkbase>
+            <linkbase>i00314ng/i00314ng-20081231_lab.xml</linkbase>
+            <schema>i00314ng/i00314ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Invalid content was found starting with element : {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_315ng">
+        <name>disallowed menu tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-menu-tag</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Element is not allowed in EDGAR HTML"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00315ng/i00315ng-20081231.htm</instance>
+            <linkbase>i00315ng/i00315ng-20081231_pre.xml</linkbase>
+            <linkbase>i00315ng/i00315ng-20081231_lab.xml</linkbase>
+            <schema>i00315ng/i00315ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Invalid content was found starting with element : {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_316ng">
+        <name>disallowed dir tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-dir-tag</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Element is not allowed in EDGAR HTML"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00316ng/i00316ng-20081231.htm</instance>
+            <linkbase>i00316ng/i00316ng-20081231_pre.xml</linkbase>
+            <linkbase>i00316ng/i00316ng-20081231_lab.xml</linkbase>
+            <schema>i00316ng/i00316ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Invalid content was found starting with element : {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_317ng">
+        <name>disallowed cite tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-cite-tag</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Element is not allowed in EDGAR HTML"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00317ng/i00317ng-20081231.htm</instance>
+            <linkbase>i00317ng/i00317ng-20081231_pre.xml</linkbase>
+            <linkbase>i00317ng/i00317ng-20081231_lab.xml</linkbase>
+            <schema>i00317ng/i00317ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="EFM.5.02.05.disallowedElement" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Invalid content was found starting with element : {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_318ng">
+        <name>disallowed dd tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-dd-tag</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Element is not allowed in EDGAR HTML"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00318ng/i00318ng-20081231.htm</instance>
+            <linkbase>i00318ng/i00318ng-20081231_pre.xml</linkbase>
+            <linkbase>i00318ng/i00318ng-20081231_lab.xml</linkbase>
+            <schema>i00318ng/i00318ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="EFM.5.02.05.disallowedElement" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Invalid content was found starting with element : {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_319ng">
+        <name>disallowed acronym tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-acronym-tag</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Element is not allowed in EDGAR HTML"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00319ng/i00319ng-20081231.htm</instance>
+            <linkbase>i00319ng/i00319ng-20081231_pre.xml</linkbase>
+            <linkbase>i00319ng/i00319ng-20081231_lab.xml</linkbase>
+            <schema>i00319ng/i00319ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="EFM.5.02.05.disallowedElement" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Invalid content was found starting with element : {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_320ng">
+        <name>disallowed applet tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-applet-tag</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Active content is not allowed"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00320ng/i00320ng-20081231.htm</instance>
+            <linkbase>i00320ng/i00320ng-20081231_pre.xml</linkbase>
+            <linkbase>i00320ng/i00320ng-20081231_lab.xml</linkbase>
+            <schema>i00320ng/i00320ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Invalid content was found starting with element : {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_321ng">
+        <name>disallowed area tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-area-tag</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Active content is not allowed"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00321ng/i00321ng-20081231.htm</instance>
+            <linkbase>i00321ng/i00321ng-20081231_pre.xml</linkbase>
+            <linkbase>i00321ng/i00321ng-20081231_lab.xml</linkbase>
+            <schema>i00321ng/i00321ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="EFM.5.02.05.disallowedElement" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Invalid content was found starting with element : {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_322ng">
+        <name>disallowed base tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-base-tag</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Element is not allowed in EDGAR HTML"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00322ng/i00322ng-20081231.htm</instance>
+            <linkbase>i00322ng/i00322ng-20081231_pre.xml</linkbase>
+            <linkbase>i00322ng/i00322ng-20081231_lab.xml</linkbase>
+            <schema>i00322ng/i00322ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="EFM.5.02.05.disallowedElement" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Invalid content was found starting with element : {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_323ng">
+        <name>disallowed basefont tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-basefont-tag</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Element is not allowed in EDGAR HTML"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00323ng/i00323ng-20081231.htm</instance>
+            <linkbase>i00323ng/i00323ng-20081231_pre.xml</linkbase>
+            <linkbase>i00323ng/i00323ng-20081231_lab.xml</linkbase>
+            <schema>i00323ng/i00323ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Invalid content was found starting with element : {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_324ng">
+        <name>disallowed bdo tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-bdo-tag</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Active content is not allowed"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00324ng/i00324ng-20081231.htm</instance>
+            <linkbase>i00324ng/i00324ng-20081231_pre.xml</linkbase>
+            <linkbase>i00324ng/i00324ng-20081231_lab.xml</linkbase>
+            <schema>i00324ng/i00324ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="EFM.5.02.05.disallowedElement" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Invalid content was found starting with element : {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_325ng">
+        <name>disallowed button tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-button-tag</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Active content is not allowed"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00325ng/i00325ng-20081231.htm</instance>
+            <linkbase>i00325ng/i00325ng-20081231_pre.xml</linkbase>
+            <linkbase>i00325ng/i00325ng-20081231_lab.xml</linkbase>
+            <schema>i00325ng/i00325ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="EFM.5.02.05.disallowedElement" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Invalid content was found starting with element : {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_326ng">
+        <name>disallowed col tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-col-tag</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Element is not allowed in EDGAR HTML"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00326ng/i00326ng-20081231.htm</instance>
+            <linkbase>i00326ng/i00326ng-20081231_pre.xml</linkbase>
+            <linkbase>i00326ng/i00326ng-20081231_lab.xml</linkbase>
+            <schema>i00326ng/i00326ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="EFM.5.02.05.disallowedElement" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Invalid content was found starting with element : {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_327ng">
+        <name>disallowed colgroup tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-colgroup-tag</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Element is not allowed in EDGAR HTML"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00327ng/i00327ng-20081231.htm</instance>
+            <linkbase>i00327ng/i00327ng-20081231_pre.xml</linkbase>
+            <linkbase>i00327ng/i00327ng-20081231_lab.xml</linkbase>
+            <schema>i00327ng/i00327ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="EFM.5.02.05.disallowedElement" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Invalid content was found starting with element : {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_328ng">
+        <name>disallowed del tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-del-tag</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Element is not allowed in EDGAR HTML"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00328ng/i00328ng-20081231.htm</instance>
+            <linkbase>i00328ng/i00328ng-20081231_pre.xml</linkbase>
+            <linkbase>i00328ng/i00328ng-20081231_lab.xml</linkbase>
+            <schema>i00328ng/i00328ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="EFM.5.02.05.disallowedElement" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Invalid content was found starting with element : {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_329ng">
+        <name>disallowed fieldset tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-fieldset-tag</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Active content is not allowed"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00329ng/i00329ng-20081231.htm</instance>
+            <linkbase>i00329ng/i00329ng-20081231_pre.xml</linkbase>
+            <linkbase>i00329ng/i00329ng-20081231_lab.xml</linkbase>
+            <schema>i00329ng/i00329ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="EFM.5.02.05.disallowedElement" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Invalid content was found starting with element : {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_330ng">
+        <name>disallowed form tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-form-tag</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Active content is not allowed"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00330ng/i00330ng-20081231.htm</instance>
+            <linkbase>i00330ng/i00330ng-20081231_pre.xml</linkbase>
+            <linkbase>i00330ng/i00330ng-20081231_lab.xml</linkbase>
+            <schema>i00330ng/i00330ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="EFM.5.02.05.disallowedElement" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Invalid content was found starting with element : {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_331ng">
+        <name>disallowed frame tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-frame-tag</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Element is not allowed in EDGAR HTML"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00331ng/i00331ng-20081231.htm</instance>
+            <linkbase>i00331ng/i00331ng-20081231_pre.xml</linkbase>
+            <linkbase>i00331ng/i00331ng-20081231_lab.xml</linkbase>
+            <schema>i00331ng/i00331ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Invalid content was found starting with element : {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_332ng">
+        <name>disallowed frameset tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-frameset-tag</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Element is not allowed in EDGAR HTML"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00332ng/i00332ng-20081231.htm</instance>
+            <linkbase>i00332ng/i00332ng-20081231_pre.xml</linkbase>
+            <linkbase>i00332ng/i00332ng-20081231_lab.xml</linkbase>
+            <schema>i00332ng/i00332ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Invalid content was found starting with element : {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_333ng">
+        <name>disallowed iframe tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-iframe-tag</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Element is not allowed in EDGAR HTML"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00333ng/i00333ng-20081231.htm</instance>
+            <linkbase>i00333ng/i00333ng-20081231_pre.xml</linkbase>
+            <linkbase>i00333ng/i00333ng-20081231_lab.xml</linkbase>
+            <schema>i00333ng/i00333ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Invalid content was found starting with element : {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_334ng">
+        <name>disallowed input tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-input-tag</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Active content is not allowed"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00334ng/i00334ng-20081231.htm</instance>
+            <linkbase>i00334ng/i00334ng-20081231_pre.xml</linkbase>
+            <linkbase>i00334ng/i00334ng-20081231_lab.xml</linkbase>
+            <schema>i00334ng/i00334ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="EFM.5.02.05.disallowedElement" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Invalid content was found starting with element : {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_335ng">
+        <name>disallowed ins tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-ins-tag</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Element is not allowed in EDGAR HTML"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00335ng/i00335ng-20081231.htm</instance>
+            <linkbase>i00335ng/i00335ng-20081231_pre.xml</linkbase>
+            <linkbase>i00335ng/i00335ng-20081231_lab.xml</linkbase>
+            <schema>i00335ng/i00335ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="EFM.5.02.05.disallowedElement" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Invalid content was found starting with element : {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_336ng">
+        <name>disallowed label tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-label-tag</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Element is not allowed in EDGAR HTML"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00336ng/i00336ng-20081231.htm</instance>
+            <linkbase>i00336ng/i00336ng-20081231_pre.xml</linkbase>
+            <linkbase>i00336ng/i00336ng-20081231_lab.xml</linkbase>
+            <schema>i00336ng/i00336ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="EFM.5.02.05.disallowedElement" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Invalid content was found starting with element : {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_337ng">
+        <name>disallowed legend tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-legend-tag</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Element is no longer allowed in modern HTML dialects such XHTML 1.1, on which Inline XBRL is based"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00337ng/i00337ng-20081231.htm</instance>
+            <linkbase>i00337ng/i00337ng-20081231_pre.xml</linkbase>
+            <linkbase>i00337ng/i00337ng-20081231_lab.xml</linkbase>
+            <schema>i00337ng/i00337ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="EFM.5.02.05.disallowedElement" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Invalid content was found starting with element : {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_338ng">
+        <name>disallowed map tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-map-tag</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Active content is not allowed"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00338ng/i00338ng-20081231.htm</instance>
+            <linkbase>i00338ng/i00338ng-20081231_pre.xml</linkbase>
+            <linkbase>i00338ng/i00338ng-20081231_lab.xml</linkbase>
+            <schema>i00338ng/i00338ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="EFM.5.02.05.disallowedElement" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Invalid content was found starting with element : {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_339ng">
+        <name>disallowed noframes tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-noframes-tag</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Element is not allowed in EDGAR HTML"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00339ng/i00339ng-20081231.htm</instance>
+            <linkbase>i00339ng/i00339ng-20081231_pre.xml</linkbase>
+            <linkbase>i00339ng/i00339ng-20081231_lab.xml</linkbase>
+            <schema>i00339ng/i00339ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Invalid content was found starting with element : {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_340ng">
+        <name>disallowed noscript tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-noscript-tag</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Element is not allowed in EDGAR HTML."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00340ng/i00340ng-20081231.htm</instance>
+            <linkbase>i00340ng/i00340ng-20081231_pre.xml</linkbase>
+            <linkbase>i00340ng/i00340ng-20081231_lab.xml</linkbase>
+            <schema>i00340ng/i00340ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="EFM.5.02.05.disallowedElement" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Invalid content was found starting with element : {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_341ng">
+        <name>disallowed object tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-object-tag</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Active content is not allowed"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00341ng/i00341ng-20081231.htm</instance>
+            <linkbase>i00341ng/i00341ng-20081231_pre.xml</linkbase>
+            <linkbase>i00341ng/i00341ng-20081231_lab.xml</linkbase>
+            <schema>i00341ng/i00341ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="EFM.5.02.05.disallowedElement" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Invalid content was found starting with element : {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_342ng">
+        <name>disallowed option tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-option-tag</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Active content is not allowed"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00342ng/i00342ng-20081231.htm</instance>
+            <linkbase>i00342ng/i00342ng-20081231_pre.xml</linkbase>
+            <linkbase>i00342ng/i00342ng-20081231_lab.xml</linkbase>
+            <schema>i00342ng/i00342ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="EFM.5.02.05.disallowedElement" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Invalid content was found starting with element : {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_343ng">
+        <name>disallowed param tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-param-tag</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Active content is not allowed"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00343ng/i00343ng-20081231.htm</instance>
+            <linkbase>i00343ng/i00343ng-20081231_pre.xml</linkbase>
+            <linkbase>i00343ng/i00343ng-20081231_lab.xml</linkbase>
+            <schema>i00343ng/i00343ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="EFM.5.02.05.disallowedElement" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Invalid content was found starting with element : {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_344ng">
+        <name>disallowed q tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-q-tag</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Element is no longer allowed in modern HTML dialects such XHTML 1.1, on which Inline XBRL is based"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00344ng/i00344ng-20081231.htm</instance>
+            <linkbase>i00344ng/i00344ng-20081231_pre.xml</linkbase>
+            <linkbase>i00344ng/i00344ng-20081231_lab.xml</linkbase>
+            <schema>i00344ng/i00344ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="EFM.5.02.05.disallowedElement" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Invalid content was found starting with element : {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_345ng">
+        <name>disallowed s tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-s-tag</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Element is no longer allowed in modern HTML dialects such XHTML 1.1, on which Inline XBRL is based"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00345ng/i00345ng-20081231.htm</instance>
+            <linkbase>i00345ng/i00345ng-20081231_pre.xml</linkbase>
+            <linkbase>i00345ng/i00345ng-20081231_lab.xml</linkbase>
+            <schema>i00345ng/i00345ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Invalid content was found starting with element : {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_346ng">
+        <name>disallowed script tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-script-tag</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Active content is not allowed"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00346ng/i00346ng-20081231.htm</instance>
+            <linkbase>i00346ng/i00346ng-20081231_pre.xml</linkbase>
+            <linkbase>i00346ng/i00346ng-20081231_lab.xml</linkbase>
+            <schema>i00346ng/i00346ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="EFM.5.02.05.disallowedElement" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Invalid content was found starting with element : {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_347ng">
+        <name>disallowed select tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-select-tag</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Active content is not allowed"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00347ng/i00347ng-20081231.htm</instance>
+            <linkbase>i00347ng/i00347ng-20081231_pre.xml</linkbase>
+            <linkbase>i00347ng/i00347ng-20081231_lab.xml</linkbase>
+            <schema>i00347ng/i00347ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="EFM.5.02.05.disallowedElement" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Invalid content was found starting with element : {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_348ng">
+        <name>disallowed style tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-style-tag</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Element is not allowed in EDGAR HTML."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00348ng/i00348ng-20081231.htm</instance>
+            <linkbase>i00348ng/i00348ng-20081231_pre.xml</linkbase>
+            <linkbase>i00348ng/i00348ng-20081231_lab.xml</linkbase>
+            <schema>i00348ng/i00348ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="EFM.5.02.05.disallowedElement" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Invalid content was found starting with element : {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_349ng">
+        <name>disallowed textarea tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-textarea-tag</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Active content is not allowed"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00349ng/i00349ng-20081231.htm</instance>
+            <linkbase>i00349ng/i00349ng-20081231_pre.xml</linkbase>
+            <linkbase>i00349ng/i00349ng-20081231_lab.xml</linkbase>
+            <schema>i00349ng/i00349ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="EFM.5.02.05.disallowedElement" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Invalid content was found starting with element : {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_350ng">
+        <name>disallowed embed tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-embed-tag</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Active content is not allowed"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00350ng/i00350ng-20081231.htm</instance>
+            <linkbase>i00350ng/i00350ng-20081231_pre.xml</linkbase>
+            <linkbase>i00350ng/i00350ng-20081231_lab.xml</linkbase>
+            <schema>i00350ng/i00350ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="EFM.5.02.05.disallowedElement" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Invalid content was found starting with element : {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_351ng">
+        <name>disallowed alink attribute of the body tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-body-alink-attribute</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Attribute is not allowed in EDGAR IXBRL parent tag"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00351ng/i00351ng-20081231.htm</instance>
+            <linkbase>i00351ng/i00351ng-20081231_pre.xml</linkbase>
+            <linkbase>i00351ng/i00351ng-20081231_lab.xml</linkbase>
+            <schema>i00351ng/i00351ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Attribute {attribute} is not allowed to appear in element {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_352ng">
+        <name>disallowed bgcolor attribute of the body tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-body-bgcolor-attribute</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Attribute is not allowed in EDGAR IXBRL parent tag"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00352ng/i00352ng-20081231.htm</instance>
+            <linkbase>i00352ng/i00352ng-20081231_pre.xml</linkbase>
+            <linkbase>i00352ng/i00352ng-20081231_lab.xml</linkbase>
+            <schema>i00352ng/i00352ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Attribute {attribute} is not allowed to appear in element {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_353ng">
+        <name>disallowed bgcolor attribute of the table tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-table-bgcolor-attribute</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Attribute is not allowed in EDGAR IXBRL parent tag"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00353ng/i00353ng-20081231.htm</instance>
+            <linkbase>i00353ng/i00353ng-20081231_pre.xml</linkbase>
+            <linkbase>i00353ng/i00353ng-20081231_lab.xml</linkbase>
+            <schema>i00353ng/i00353ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Attribute {attribute} is not allowed to appear in element {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_354ng">
+        <name>disallowed compact attribute of the dl tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-dl-compact-attribute</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Attribute is not allowed in EDGAR IXBRL parent tag"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00354ng/i00354ng-20081231.htm</instance>
+            <linkbase>i00354ng/i00354ng-20081231_pre.xml</linkbase>
+            <linkbase>i00354ng/i00354ng-20081231_lab.xml</linkbase>
+            <schema>i00354ng/i00354ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Attribute {attribute} is not allowed to appear in element {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_355ng">
+        <name>disallowed compact attribute of the ol tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-ol-compact-attribute</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Attribute is not allowed in EDGAR IXBRL parent tag"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00355ng/i00355ng-20081231.htm</instance>
+            <linkbase>i00355ng/i00355ng-20081231_pre.xml</linkbase>
+            <linkbase>i00355ng/i00355ng-20081231_lab.xml</linkbase>
+            <schema>i00355ng/i00355ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Attribute {attribute} is not allowed to appear in element {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_356ng">
+        <name>disallowed compact attribute of the ul tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-ul-compact-attribute</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Attribute is not allowed in EDGAR IXBRL parent tag"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00356ng/i00356ng-20081231.htm</instance>
+            <linkbase>i00356ng/i00356ng-20081231_pre.xml</linkbase>
+            <linkbase>i00356ng/i00356ng-20081231_lab.xml</linkbase>
+            <schema>i00356ng/i00356ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Attribute {attribute} is not allowed to appear in element {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_357ng">
+        <name>disallowed link attribute of the body tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-body-link-attribute</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Attribute is not allowed in EDGAR IXBRL parent tag"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00357ng/i00357ng-20081231.htm</instance>
+            <linkbase>i00357ng/i00357ng-20081231_pre.xml</linkbase>
+            <linkbase>i00357ng/i00357ng-20081231_lab.xml</linkbase>
+            <schema>i00357ng/i00357ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="EFM.5.02.05.disallowedAttribute" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Attribute {attribute} is not allowed to appear in element {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_358ng">
+        <name>disallowed name attribute of the a tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-a-name-attribute</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Attribute is not allowed in EDGAR IXBRL parent tag"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00358ng/i00358ng-20081231.htm</instance>
+            <linkbase>i00358ng/i00358ng-20081231_pre.xml</linkbase>
+            <linkbase>i00358ng/i00358ng-20081231_lab.xml</linkbase>
+            <schema>i00358ng/i00358ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="EFM.5.02.05.disallowedAttribute" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Attribute {attribute} is not allowed to appear in element {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_359ng">
+        <name>disallowed noshade attribute of the hr tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-hr-noshade-attribute</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Attribute is not allowed in EDGAR IXBRL parent tag"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00359ng/i00359ng-20081231.htm</instance>
+            <linkbase>i00359ng/i00359ng-20081231_pre.xml</linkbase>
+            <linkbase>i00359ng/i00359ng-20081231_lab.xml</linkbase>
+            <schema>i00359ng/i00359ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Attribute {attribute} is not allowed to appear in element {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_360ng">
+        <name>disallowed nowrap attribute of the td tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-td-nowrap-attribute</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Attribute is not allowed in EDGAR IXBRL parent tag"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00360ng/i00360ng-20081231.htm</instance>
+            <linkbase>i00360ng/i00360ng-20081231_pre.xml</linkbase>
+            <linkbase>i00360ng/i00360ng-20081231_lab.xml</linkbase>
+            <schema>i00360ng/i00360ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Attribute {attribute} is not allowed to appear in element {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_361ng">
+        <name>disallowed nowrap attribute of the th tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-th-nowrap-attribute</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Attribute is not allowed in EDGAR IXBRL parent tag"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00361ng/i00361ng-20081231.htm</instance>
+            <linkbase>i00361ng/i00361ng-20081231_pre.xml</linkbase>
+            <linkbase>i00361ng/i00361ng-20081231_lab.xml</linkbase>
+            <schema>i00361ng/i00361ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Attribute {attribute} is not allowed to appear in element {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_362ng">
+        <name>disallowed rel attribute of the link tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-link-rel-attribute</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Attribute is not allowed in EDGAR IXBRL parent tag"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00362ng/i00362ng-20081231.htm</instance>
+            <linkbase>i00362ng/i00362ng-20081231_pre.xml</linkbase>
+            <linkbase>i00362ng/i00362ng-20081231_lab.xml</linkbase>
+            <schema>i00362ng/i00362ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="EFM.5.02.05.disallowedAttribute" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Attribute {attribute} is not allowed to appear in element {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_363ng">
+        <name>disallowed rev attribute of the link tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-link-rev-attribute</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Attribute is not allowed in EDGAR IXBRL parent tag"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00363ng/i00363ng-20081231.htm</instance>
+            <linkbase>i00363ng/i00363ng-20081231_pre.xml</linkbase>
+            <linkbase>i00363ng/i00363ng-20081231_lab.xml</linkbase>
+            <schema>i00363ng/i00363ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="EFM.5.02.05.disallowedAttribute" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Attribute {attribute} is not allowed to appear in element {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_364ng">
+        <name>disallowed size attribute of the hr tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-hr-size-attribute</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Attribute is not allowed in EDGAR IXBRL parent tag"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00364ng/i00364ng-20081231.htm</instance>
+            <linkbase>i00364ng/i00364ng-20081231_pre.xml</linkbase>
+            <linkbase>i00364ng/i00364ng-20081231_lab.xml</linkbase>
+            <schema>i00364ng/i00364ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Attribute {attribute} is not allowed to appear in element {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_365ng">
+        <name>disallowed start attribute of the ol tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-ol-start-attribute</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Attribute is not allowed in EDGAR IXBRL parent tag"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00365ng/i00365ng-20081231.htm</instance>
+            <linkbase>i00365ng/i00365ng-20081231_pre.xml</linkbase>
+            <linkbase>i00365ng/i00365ng-20081231_lab.xml</linkbase>
+            <schema>i00365ng/i00365ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Attribute {attribute} is not allowed to appear in element {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_366ng">
+        <name>disallowed text attribute of the body tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-body-text-attribute</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Attribute is not allowed in EDGAR IXBRL parent tag"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00366ng/i00366ng-20081231.htm</instance>
+            <linkbase>i00366ng/i00366ng-20081231_pre.xml</linkbase>
+            <linkbase>i00366ng/i00366ng-20081231_lab.xml</linkbase>
+            <schema>i00366ng/i00366ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Attribute {attribute} is not allowed to appear in element {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_367ng">
+        <name>disallowed type attribute of the li tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-li-type-attribute</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Attribute is not allowed in EDGAR IXBRL parent tag"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00367ng/i00367ng-20081231.htm</instance>
+            <linkbase>i00367ng/i00367ng-20081231_pre.xml</linkbase>
+            <linkbase>i00367ng/i00367ng-20081231_lab.xml</linkbase>
+            <schema>i00367ng/i00367ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Attribute {attribute} is not allowed to appear in element {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_368ng">
+        <name>disallowed type attribute of the ol tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-ol-type-attribute</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Attribute is not allowed in EDGAR IXBRL parent tag"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00368ng/i00368ng-20081231.htm</instance>
+            <linkbase>i00368ng/i00368ng-20081231_pre.xml</linkbase>
+            <linkbase>i00368ng/i00368ng-20081231_lab.xml</linkbase>
+            <schema>i00368ng/i00368ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Attribute {attribute} is not allowed to appear in element {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_369ng">
+        <name>disallowed type attribute of the ul tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-ul-type-attribute</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Attribute is not allowed in EDGAR IXBRL parent tag"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00369ng/i00369ng-20081231.htm</instance>
+            <linkbase>i00369ng/i00369ng-20081231_pre.xml</linkbase>
+            <linkbase>i00369ng/i00369ng-20081231_lab.xml</linkbase>
+            <schema>i00369ng/i00369ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Attribute {attribute} is not allowed to appear in element {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_370ng">
+        <name>disallowed vlink attribute of the body tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-body-vlink-attribute</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Attribute is not allowed in EDGAR IXBRL parent tag"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00370ng/i00370ng-20081231.htm</instance>
+            <linkbase>i00370ng/i00370ng-20081231_pre.xml</linkbase>
+            <linkbase>i00370ng/i00370ng-20081231_lab.xml</linkbase>
+            <schema>i00370ng/i00370ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Attribute {attribute} is not allowed to appear in element {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_371ng">
+        <name>disallowed width attribute of the hr tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-hr-width-attribute</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Attribute is not allowed in EDGAR IXBRL parent tag"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00371ng/i00371ng-20081231.htm</instance>
+            <linkbase>i00371ng/i00371ng-20081231_pre.xml</linkbase>
+            <linkbase>i00371ng/i00371ng-20081231_lab.xml</linkbase>
+            <schema>i00371ng/i00371ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Attribute {attribute} is not allowed to appear in element {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_372ng">
+        <name>disallowed width attribute of the td tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-td-width-attribute</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Attribute is not allowed in EDGAR IXBRL parent tag"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00372ng/i00372ng-20081231.htm</instance>
+            <linkbase>i00372ng/i00372ng-20081231_pre.xml</linkbase>
+            <linkbase>i00372ng/i00372ng-20081231_lab.xml</linkbase>
+            <schema>i00372ng/i00372ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Attribute {attribute} is not allowed to appear in element {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_373ng">
+        <name>disallowed width attribute of the th tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-th-width-attribute</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Attribute is not allowed in EDGAR IXBRL parent tag"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00373ng/i00373ng-20081231.htm</instance>
+            <linkbase>i00373ng/i00373ng-20081231_pre.xml</linkbase>
+            <linkbase>i00373ng/i00373ng-20081231_lab.xml</linkbase>
+            <schema>i00373ng/i00373ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Attribute {attribute} is not allowed to appear in element {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_374ng">
+        <name>disallowed lang attribute of the html tag, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-html-lang-attribute</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="Attribute is not allowed in EDGAR IXBRL parent tag"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00374ng/i00374ng-20081231.htm</instance>
+            <linkbase>i00374ng/i00374ng-20081231_pre.xml</linkbase>
+            <linkbase>i00374ng/i00374ng-20081231_lab.xml</linkbase>
+            <schema>i00374ng/i00374ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="EFM.5.02.05.disallowedAttribute" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70100" txt="Attribute {attribute} is not allowed to appear in element {element}"></assert>
+        </result>
+    </variation>
+    <variation id="_375ng">
+        <name>EFM disallowed nested table, NOGOOD</name>
+        <description>EFM-FAIL-disallowed-nested-table</description>
+        <reference efmspec="5.02.02"></reference>
+        <reference specification="No nested TABLE tags"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00375ng/i00375ng-20081231.htm</instance>
+            <linkbase>i00375ng/i00375ng-20081231_pre.xml</linkbase>
+            <linkbase>i00375ng/i00375ng-20081231_lab.xml</linkbase>
+            <schema>i00375ng/i00375ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="EFM.5.02.05.nestedTable" frd="ix" fj="EFM_NESTED_TABLES_NOT_ALLOWED" nnum="70100" txt="InlineXBRL has nested &lt;table&gt; elements."></assert>
+        </result>
+    </variation>
+    <variation id="_376gw">
+        <name>EFM warns if schemaLocation appears, GOOD WITH WARNING</name>
+        <description>EFM-WARN-schemaLocation-hint</description>
+        <reference efmspec="5.02.05"></reference>
+        <reference specification="Attribute xsi:schemaLocation should not be used in an Inline XBRL document."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00376gw/i00376gw-20081231.htm</instance>
+            <linkbase>i00376gw/i00376gw-20081231_pre.xml</linkbase>
+            <linkbase>i00376gw/i00376gw-20081231_lab.xml</linkbase>
+            <schema>i00376gw/i00376gw-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="wrn" num="99999" name="EFM.5.02.05.schemaLocationDisallowed" frd="ix" fj="EFM_SCHEMALOCATION_SHOULD_NOT_BE_USED" nnum="70100" txt="Ignoring schemaLocation attribute which should not be used: $"></assert>
+        </result>
+    </variation>
+    <variation id="_377gw">
+        <name>EFM warns if &lt;a&gt; appears with ancestors other than html, body, or div, GOOD WITH WARNING</name>
+        <description>EFM-WARN-anchor-position</description>
+        <reference efmspec="5.02.05"></reference>
+        <reference specification="If element &lt;a&gt; does not have attribute @href, it must not have any ancestors other than html, body, or div."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00377gw/i00377gw-20081231.htm</instance>
+            <linkbase>i00377gw/i00377gw-20081231_pre.xml</linkbase>
+            <linkbase>i00377gw/i00377gw-20081231_lab.xml</linkbase>
+            <schema>i00377gw/i00377gw-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="wrn" num="99999" name="EFM.5.02.05.anchorElementPosition" frd="ix" fj="EFM_ANCHOR_ELEMENT_POSITION" nnum="70100" txt="Ignoring &lt;a&gt; without @href with ancestors other than html, body, and div: $"></assert>
+        </result>
+    </variation>
+    <variation id="_378ng">
+        <name>invalid image file type, NOGOOD</name>
+        <description>EFM-FAIL-invalid-img-file-type</description>
+        <reference efmspec="5.02.05"></reference>
+        <reference specification="Attribute @src (on the img tag) may only locally reference jpeg and gif graphics."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00378ng/i00378ng-20081231.htm</instance>
+            <linkbase>i00378ng/i00378ng-20081231_pre.xml</linkbase>
+            <linkbase>i00378ng/i00378ng-20081231_lab.xml</linkbase>
+            <schema>i00378ng/i00378ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="EFM.5.02.05.graphicFileType" frd="ix" fj="EDGAR_INVALID_GRAPHIC_FILE_TYPE" nnum="70100" txt="InlineXBRL references a graphics file which isn't .gif or .jpg '$' for &lt;img&gt;"></assert>
+        </result>
+    </variation>
+    <variation id="_379ng">
+        <name>x: prefix for html namespace, NOGOOD</name>
+        <description>EFM-FAIL-standard-namespace-prefix</description>
+        <reference efmspec="6.02"></reference>
+        <reference specification="EFM 6.2 specifies empty as the prefix for the xhtml namespace."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00379ng/i00379ng-20081231.htm</instance>
+            <linkbase>i00379ng/i00379ng-20081231_pre.xml</linkbase>
+            <linkbase>i00379ng/i00379ng-20081231_lab.xml</linkbase>
+            <schema>i00379ng/i00379ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="EFM.5.02.05.standardNamespacePrefix" frd="ix" fj="" nnum="70100" txt=""></assert>
+        </result>
+    </variation>
+    <variation id="_380ng">
+        <name>ix11 prefix for inline xbrl 1.1 namespace, NOGOOD</name>
+        <description>EFM-FAIL-standard-namespace-prefix</description>
+        <reference efmspec="6.02"></reference>
+        <reference specification="EFM 6.2 specifies ix as the prefix for inline XBRL 1.1 namespace."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00380ng/i00380ng-20081231.htm</instance>
+            <linkbase>i00380ng/i00380ng-20081231_pre.xml</linkbase>
+            <linkbase>i00380ng/i00380ng-20081231_lab.xml</linkbase>
+            <schema>i00380ng/i00380ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="EFM.5.02.05.standardNamespacePrefix" frd="ix" fj="" nnum="70100" txt=""></assert>
+        </result>
+    </variation>
+    <variation id="_381ng">
+        <name>ixt3 prefix for inline transformations namespace, NOGOOD</name>
+        <description>EFM-FAIL-standard-namespace-prefix</description>
+        <reference efmspec="6.02"></reference>
+        <reference specification="EFM 6.2 specifies ixt as the prefix for inline XBRL transformations."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00381ng/i00381ng-20081231.htm</instance>
+            <linkbase>i00381ng/i00381ng-20081231_pre.xml</linkbase>
+            <linkbase>i00381ng/i00381ng-20081231_lab.xml</linkbase>
+            <schema>i00381ng/i00381ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="EFM.5.02.05.standardNamespacePrefix" frd="ix" fj="" nnum="70100" txt=""></assert>
+        </result>
+    </variation>
+    <variation id="_382ng">
+        <name>ixt3 prefix for SEC ix transformations namespace, NOGOOD</name>
+        <description>EFM-FAIL-standard-namespace-prefix</description>
+        <reference efmspec="6.02"></reference>
+        <reference specification="EFM 5.2.5 specifies ixt-sec as the prefix for SEC inline XBRL transformations."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00382ng/i00382ng-20081231.htm</instance>
+            <linkbase>i00382ng/i00382ng-20081231_pre.xml</linkbase>
+            <linkbase>i00382ng/i00382ng-20081231_lab.xml</linkbase>
+            <schema>i00382ng/i00382ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="EFM.5.02.05.standardNamespacePrefix" frd="ix" fj="" nnum="70100" txt=""></assert>
+        </result>
+    </variation>
+    <variation id="_383ng">
+        <name>image file source empty, NOGOOD</name>
+        <description>EFM-FAIL-empty-img-file</description>
+        <reference efmspec="5.02.05"></reference>
+        <reference specification="Attribute @src (on the img tag) may only locally reference jpeg and gif graphics."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00383ng/i00383ng-20081231.htm</instance>
+            <linkbase>i00383ng/i00383ng-20081231_pre.xml</linkbase>
+            <linkbase>i00383ng/i00383ng-20081231_lab.xml</linkbase>
+            <schema>i00383ng/i00383ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="EFM.5.02.05.graphicFileType" frd="ix" fj="EDGAR_INVALID_GRAPHIC_FILE_TYPE" nnum="70100" txt="InlineXBRL references a graphics file which isn't .gif or .jpg '$' for &lt;img&gt;"></assert>
+        </result>
+    </variation>
+</testcase>

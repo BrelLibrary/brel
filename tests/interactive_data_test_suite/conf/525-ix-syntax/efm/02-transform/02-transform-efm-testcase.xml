@@ -1,0 +1,284 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../../lib/test.xsl"?>
+<conf:testcase xmlns:conf="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../../lib/test.xsd">
+    <conf:creator>
+        <conf:name>SEC Office of Structured Disclosure</conf:name>
+        <conf:email>StructuredData@sec.gov</conf:email>
+    </conf:creator>
+    <conf:number>525-02</conf:number>
+    <conf:name>EDGAR Filer Manual v68d 5.2.5.12</conf:name>
+    <conf:description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#5.2.5.12 Inline XBRL Transformation Registries supported by EDGAR">Refer to EFM: 5.2.5.12 Inline XBRL Transformation Registries supported by EDGAR</a>
+    </conf:description>
+    <conf:variation id="_010gd">
+        <conf:name>TR3 - good examples - GOOD</conf:name>
+        <conf:description>TR3 - good examples - GOOD</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "8-K", "periodOfReport": "12-31-2008"}'></conf:parameter>
+            <conf:instance readMeFirst="true">i02010gd/i02010gd-20081231.htm</conf:instance>
+            <conf:linkbase>i02010gd/i02001gd-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>i02010gd/i02001gd-20081231_lab.xml</conf:linkbase>
+            <conf:schema>i02010gd/i02001gd-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_011gd">
+        <conf:name>TR4 - good examples - GOOD</conf:name>
+        <conf:description>TR4 - good examples - GOOD</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "8-K", "periodOfReport": "12-31-2008"}'></conf:parameter>
+            <conf:instance readMeFirst="true">i02011gd/i02011gd-20081231.htm</conf:instance>
+            <conf:linkbase>i02011gd/i02001gd-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>i02011gd/i02001gd-20081231_lab.xml</conf:linkbase>
+            <conf:schema>i02011gd/i02001gd-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_012gd">
+        <conf:name>TR3-use for nil value,  GOOD</conf:name>
+        <conf:description>TR3- use for nil value, GOOD</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "8-K", "periodOfReport": "12-31-2008"}'></conf:parameter>
+            <conf:instance readMeFirst="true">i02012gd/i02012gd-20081231.htm</conf:instance>
+            <conf:linkbase>i02012gd/i02002gd-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>i02012gd/i02002gd-20081231_lab.xml</conf:linkbase>
+            <conf:schema>i02012gd/i02002gd-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_013gd">
+        <conf:name>TR4- user for nil value,  GOOD</conf:name>
+        <conf:description>TR4- user for nil value, GOOD</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "8-K", "periodOfReport": "12-31-2008"}'></conf:parameter>
+            <conf:instance readMeFirst="true">i02013gd/i02013gd-20081231.htm</conf:instance>
+            <conf:linkbase>i02013gd/i02002gd-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>i02013gd/i02002gd-20081231_lab.xml</conf:linkbase>
+            <conf:schema>i02013gd/i02002gd-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_020ng">
+        <conf:name>TR2 usage - NOGOOD</conf:name>
+        <conf:description>TR2 usage - NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "8-K", "periodOfReport": "12-31-2008"}'></conf:parameter>
+            <conf:instance readMeFirst="true">i02020ng/i02020ng-20081231.htm</conf:instance>
+            <conf:linkbase>i02020ng/i02001gd-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>i02020ng/i02001gd-20081231_lab.xml</conf:linkbase>
+            <conf:schema>i02020ng/i02001gd-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="50205" name="EFM.5.02.05.12.unupportedTransformationRegistry" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_021ng">
+        <conf:name>TR4-some-wrong-prefix, NOGOOD</conf:name>
+        <conf:description>TR4-some-wrong-prefix, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "8-K", "periodOfReport": "12-31-2008"}'></conf:parameter>
+            <conf:instance readMeFirst="true">i02021ng/i02021ng-20081231.htm</conf:instance>
+            <conf:linkbase>i02021ng/i02001gd-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>i02021ng/i02001gd-20081231_lab.xml</conf:linkbase>
+            <conf:schema>i02021ng/i02001gd-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="50205" name="EFM.5.02.05.standardNamespacePrefix" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_200gd">
+        <conf:name>Format_testcases_Set4, GOOD</conf:name>
+        <conf:description>duration with SEC specific transformations GOOD</conf:description>
+        <conf:reference efmspec="5.02.05"></conf:reference>
+        <conf:reference specification="Transformations duryear, durmonth, durweek, durdays, and durhours transform decimal numbers into xs:duration datatypes."></conf:reference>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></conf:parameter>
+            <conf:instance readMeFirst="true">i02200gd/i02200gd-20081231.htm</conf:instance>
+            <conf:linkbase>i02200gd/i02200gd-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>i02200gd/i02200gd-20081231_lab.xml</conf:linkbase>
+            <conf:schema>i02200gd/i02200gd-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_201gd">
+        <conf:name>Format_testcases_Set5, GOOD</conf:name>
+        <conf:description>nonFractions with SEC-specific numeric formats. GOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></conf:parameter>
+            <conf:instance readMeFirst="true">i02201gd/i02201gd-20081231.htm</conf:instance>
+            <conf:linkbase>i02201gd/i02201gd-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>i02201gd/i02201gd-20081231_lab.xml</conf:linkbase>
+            <conf:schema>i02201gd/i02201gd-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_202gd">
+        <conf:name>Format_testcases_Set5, GOOD</conf:name>
+        <conf:description>comma-and-word-transforms GOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></conf:parameter>
+            <conf:instance readMeFirst="true">i02202gd/i02202gd-20081231.htm</conf:instance>
+            <conf:linkbase>i02202gd/i02202gd-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>i02202gd/i02202gd-20081231_lab.xml</conf:linkbase>
+            <conf:schema>i02202gd/i02202gd-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_203gd">
+        <conf:name>Format_testcases_Set5, GOOD</conf:name>
+        <conf:description>duration-word-transforms GOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></conf:parameter>
+            <conf:instance readMeFirst="true">i02203gd/i02203gd-20081231.htm</conf:instance>
+            <conf:linkbase>i02203gd/i02203gd-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>i02203gd/i02203gd-20081231_lab.xml</conf:linkbase>
+            <conf:schema>i02203gd/i02203gd-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_204gd">
+        <conf:name>date-quarter-transforms, GOOD</conf:name>
+        <conf:description>date-quarter-transforms GOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></conf:parameter>
+            <conf:instance readMeFirst="true">i02204gd/i02204gd-20081231.htm</conf:instance>
+            <conf:linkbase>i02204gd/i02204gd-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>i02204gd/i02204gd-20081231_lab.xml</conf:linkbase>
+            <conf:schema>i02204gd/i02204gd-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_210ng">
+        <conf:name>Transformation_testcases_Set2, NOGOOD</conf:name>
+        <conf:description>EFM-FAIL-invalid-transformation-duration-years NOGOOD</conf:description>
+        <conf:reference efmspec="5.02.05"></conf:reference>
+        <conf:reference specification="Transformations duryear, durmonth, durweek, durdays, and durhours transform decimal numbers into xs:duration datatypes."></conf:reference>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></conf:parameter>
+            <conf:instance readMeFirst="true">i02210ng/i02210ng-20081231.htm</conf:instance>
+            <conf:linkbase>i02210ng/i02200gd-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>i02210ng/i02200gd-20081231_lab.xml</conf:linkbase>
+            <conf:schema>i02210ng/i02200gd-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="99999" name="ix11.11.1.1:transformValueError" frd="ix" fj="IXBRL_INVALID_DATA_TYPE" txt="Inline element * fact # transform ~ value error: ^"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_211ng">
+        <conf:name>Transformation_testcases_Set2, NOGOOD</conf:name>
+        <conf:description>EFM-FAIL-invalid-transformation-duration-months NOGOOD</conf:description>
+        <conf:reference efmspec="5.02.05"></conf:reference>
+        <conf:reference specification="Transformations duryear, durmonth, durweek, durdays, and durhours transform decimal numbers into xs:duration datatypes."></conf:reference>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></conf:parameter>
+            <conf:instance readMeFirst="true">i02211ng/i02211ng-20081231.htm</conf:instance>
+            <conf:linkbase>i02211ng/i02200gd-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>i02211ng/i02200gd-20081231_lab.xml</conf:linkbase>
+            <conf:schema>i02211ng/i02200gd-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="99999" name="ix11.11.1.1:transformValueError" frd="ix" fj="IXBRL_INVALID_DATA_TYPE" txt="Inline element * fact # transform ~ value error: ^"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_212ng">
+        <conf:name>Transformation_testcases_Set2, NOGOOD</conf:name>
+        <conf:description>EFM-FAIL-invalid-transformation-duration-weeks NOGOOD</conf:description>
+        <conf:reference efmspec="5.02.05"></conf:reference>
+        <conf:reference specification="Transformations duryear, durmonth, durweek, durdays, and durhours transform decimal numbers into xs:duration datatypes."></conf:reference>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></conf:parameter>
+            <conf:instance readMeFirst="true">i02212ng/i02212ng-20081231.htm</conf:instance>
+            <conf:linkbase>i02212ng/i02200gd-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>i02212ng/i02200gd-20081231_lab.xml</conf:linkbase>
+            <conf:schema>i02212ng/i02200gd-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="99999" name="ix11.11.1.1:transformValueError" frd="ix" fj="IXBRL_INVALID_DATA_TYPE" txt="Inline element * fact # transform ~ value error: ^"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_213ng">
+        <conf:name>Transformation_testcases_Set2, NOGOOD</conf:name>
+        <conf:description>EFM-FAIL-invalid-transformation-duration-days NOGOOD</conf:description>
+        <conf:reference efmspec="5.02.05"></conf:reference>
+        <conf:reference specification="Transformations duryear, durmonth, durweek, durdays, and durhours transform decimal numbers into xs:duration datatypes."></conf:reference>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></conf:parameter>
+            <conf:instance readMeFirst="true">i02213ng/i02213ng-20081231.htm</conf:instance>
+            <conf:linkbase>i02213ng/i02200gd-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>i02213ng/i02200gd-20081231_lab.xml</conf:linkbase>
+            <conf:schema>i02213ng/i02200gd-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="99999" name="ix11.11.1.1:transformValueError" frd="ix" fj="IXBRL_INVALID_DATA_TYPE" txt="Inline element * fact # transform ~ value error: ^"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_214ng">
+        <conf:name>Transformation_testcases_Set2, NOGOOD</conf:name>
+        <conf:description>EFM-FAIL-invalid-transformation-duration-hours NOGOOD</conf:description>
+        <conf:reference efmspec="5.02.05"></conf:reference>
+        <conf:reference specification="Transformations duryear, durmonth, durweek, durdays, and durhours transform decimal numbers into xs:duration datatypes."></conf:reference>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></conf:parameter>
+            <conf:instance readMeFirst="true">i02214ng/i02214ng-20081231.htm</conf:instance>
+            <conf:linkbase>i02214ng/i02200gd-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>i02214ng/i02200gd-20081231_lab.xml</conf:linkbase>
+            <conf:schema>i02214ng/i02200gd-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="99999" name="ix11.11.1.1:transformValueError" frd="ix" fj="IXBRL_INVALID_DATA_TYPE" txt="Inline element * fact # transform ~ value error: ^"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_215ng">
+        <conf:name>Transformation_testcases_datequarterend, NOGOOD</conf:name>
+        <conf:description>EFM-FAIL-invalid-transformation-datequarterend NOGOOD</conf:description>
+        <conf:reference efmspec="5.02.05"></conf:reference>
+        <conf:reference specification="Transformations duryear, durmonth, durweek, durdays, and durhours transform decimal numbers into xs:duration datatypes."></conf:reference>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></conf:parameter>
+            <conf:instance readMeFirst="true">i02215ng/i02215ng-20081231.htm</conf:instance>
+            <conf:linkbase>i02215ng/i02200gd-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>i02215ng/i02200gd-20081231_lab.xml</conf:linkbase>
+            <conf:schema>i02215ng/i02200gd-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="99999" name="ix11.11.1.1:transformValueError" frd="ix" fj="IXBRL_INVALID_DATA_TYPE" txt="Inline element * fact # transform ~ value error: ^"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_216ng">
+        <conf:name>Transformation_testcases_Set5, NOGOOD</conf:name>
+        <conf:description>EFM-FAIL-invalid-transformation-num-words NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></conf:parameter>
+            <conf:instance readMeFirst="true">i02216ng/i02216ng-20081231.htm</conf:instance>
+            <conf:linkbase>i02216ng/i02202gd-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>i02216ng/i02202gd-20081231_lab.xml</conf:linkbase>
+            <conf:schema>i02216ng/i02202gd-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="99999" name="ix11.10.1.1:transformValueError" frd="ix" fj="IXBRL_INVALID_DATA_TYPE" txt="Inline element * fact # transform ~ value error: ^"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_217ng">
+        <conf:name>TR3-use for nil value, with incorrect ixt format, NOGOOD</conf:name>
+        <conf:description>TR3- use for nil value, with incorrect ixt format, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "8-K", "periodOfReport": "12-31-2008"}'></conf:parameter>
+            <conf:instance readMeFirst="true">i02217ng/i02217ng-20081231.htm</conf:instance>
+            <conf:linkbase>i02217ng/i02002gd-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>i02217ng/i02002gd-20081231_lab.xml</conf:linkbase>
+            <conf:schema>i02217ng/i02217ng-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="99999" name="ix11.10.1.1:transformValueError" frd="ix" fj="IXBRL_INVALID_DATA_TYPE" txt="Inline element * fact # transform ~ value error: ^"></conf:assert>
+        </conf:result>
+    </conf:variation>
+</conf:testcase>

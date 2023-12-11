@@ -1,0 +1,189 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xbrl xmlns="http://www.xbrl.org/2003/instance" xmlns:dei="http://xbrl.sec.gov/dei/2023" xmlns:iso4217="http://www.xbrl.org/2003/iso4217" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:us-gaap="http://fasb.org/us-gaap/2023" xmlns:xbrldi="http://xbrl.org/2006/xbrldi" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <link:schemaRef xlink:href="edgar-20181231.xsd" xlink:type="simple"></link:schemaRef>
+    <context id="fy18">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+        </entity>
+        <period>
+            <startDate>2018-01-01</startDate>
+            <endDate>2018-12-31</endDate>
+        </period>
+    </context>
+    <context id="i18h1e">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+        </entity>
+        <period>
+            <instant>2018-12-31</instant>
+        </period>
+    </context>
+    <context id="d18_CommonClassAMember">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+            <segment>
+                <xbrldi:explicitMember dimension="us-gaap:StatementClassOfStockAxis">us-gaap:CommonClassAMember</xbrldi:explicitMember>
+            </segment>
+        </entity>
+        <period>
+            <startDate>2018-01-01</startDate>
+            <endDate>2018-12-31</endDate>
+        </period>
+    </context>
+    <context id="d18_CommonClassBMember">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+            <segment>
+                <xbrldi:explicitMember dimension="us-gaap:StatementClassOfStockAxis">us-gaap:CommonClassBMember</xbrldi:explicitMember>
+            </segment>
+        </entity>
+        <period>
+            <startDate>2018-01-01</startDate>
+            <endDate>2018-12-31</endDate>
+        </period>
+    </context>
+    <context id="i20190213e_CommonClassAMember">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+            <segment>
+                <xbrldi:explicitMember dimension="us-gaap:StatementClassOfStockAxis">us-gaap:CommonClassAMember</xbrldi:explicitMember>
+            </segment>
+        </entity>
+        <period>
+            <instant>2019-02-13</instant>
+        </period>
+    </context>
+    <context id="i20190213e_CommonClassBMember">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+            <segment>
+                <xbrldi:explicitMember dimension="us-gaap:StatementClassOfStockAxis">us-gaap:CommonClassBMember</xbrldi:explicitMember>
+            </segment>
+        </entity>
+        <period>
+            <instant>2019-02-13</instant>
+        </period>
+    </context>
+    <unit id="USD">
+        <measure>iso4217:USD</measure>
+    </unit>
+    <unit id="Shares">
+        <measure>shares</measure>
+    </unit>
+    <unit id="USD_per_Share">
+        <divide>
+            <unitNumerator>
+                <measure>iso4217:USD</measure>
+            </unitNumerator>
+            <unitDenominator>
+                <measure>shares</measure>
+            </unitDenominator>
+        </divide>
+    </unit>
+    <dei:AmendmentFlag contextRef="fy18" id="amend">false</dei:AmendmentFlag>
+    <dei:DocumentFiscalPeriodFocus contextRef="fy18" id="doc-fp">FY</dei:DocumentFiscalPeriodFocus>
+    <dei:EntityCentralIndexKey contextRef="fy18" id="ent-cik">9876543210</dei:EntityCentralIndexKey>
+    <dei:DocumentType contextRef="fy18">10-K</dei:DocumentType>
+    <dei:DocumentAnnualReport contextRef="fy18" id="doc-ann-rpt">true</dei:DocumentAnnualReport>
+    <dei:DocumentPeriodEndDate contextRef="fy18">2018-12-31</dei:DocumentPeriodEndDate>
+    <dei:CurrentFiscalYearEndDate contextRef="fy18" id="ent-fyend">--12-31</dei:CurrentFiscalYearEndDate>
+    <dei:DocumentFiscalYearFocus contextRef="fy18" id="ent-fy">2018</dei:DocumentFiscalYearFocus>
+    <dei:DocumentTransitionReport contextRef="fy18" id="doc-trans-rpt">false</dei:DocumentTransitionReport>
+    <dei:EntityFileNumber contextRef="fy18">001-14905</dei:EntityFileNumber>
+    <dei:EntityRegistrantName contextRef="fy18">BIRDBEAK THATAWAY INC.</dei:EntityRegistrantName>
+    <dei:EntityIncorporationStateCountryCode contextRef="fy18">DE</dei:EntityIncorporationStateCountryCode>
+    <dei:EntityTaxIdentificationNumber contextRef="fy18">47-0813844</dei:EntityTaxIdentificationNumber>
+    <dei:EntityAddressAddressLine1 contextRef="fy18">8080 Floppy Disk Drive</dei:EntityAddressAddressLine1>
+    <dei:EntityAddressCityOrTown contextRef="fy18">San Sushi</dei:EntityAddressCityOrTown>
+    <dei:EntityAddressStateOrProvince contextRef="fy18">CA</dei:EntityAddressStateOrProvince>
+    <dei:EntityAddressPostalZipCode contextRef="fy18">94025</dei:EntityAddressPostalZipCode>
+    <dei:CityAreaCode contextRef="fy18">415</dei:CityAreaCode>
+    <dei:LocalPhoneNumber contextRef="fy18">555-1400</dei:LocalPhoneNumber>
+    <dei:Security12bTitle contextRef="d18_CommonClassAMember">Class A common stock</dei:Security12bTitle>
+    <dei:SecurityExchangeName contextRef="d18_CommonClassAMember">NYSE</dei:SecurityExchangeName>
+    <dei:EntityWellKnownSeasonedIssuer contextRef="fy18" id="ent-wksi">Yes</dei:EntityWellKnownSeasonedIssuer>
+    <dei:EntityVoluntaryFilers contextRef="fy18">No</dei:EntityVoluntaryFilers>
+    <dei:EntityCurrentReportingStatus contextRef="fy18" id="ent-current">Yes</dei:EntityCurrentReportingStatus>
+    <dei:EntityInteractiveDataCurrent contextRef="fy18">Yes</dei:EntityInteractiveDataCurrent>
+    <dei:EntityFilerCategory contextRef="fy18">Large Accelerated Filer</dei:EntityFilerCategory>
+    <dei:IcfrAuditorAttestationFlag contextRef="fy18">true</dei:IcfrAuditorAttestationFlag>
+    <dei:EntitySmallBusiness contextRef="fy18" id="ent-src">false</dei:EntitySmallBusiness>
+    <dei:EntityEmergingGrowthCompany contextRef="fy18" id="ent-egc">false</dei:EntityEmergingGrowthCompany>
+    <dei:EntityShellCompany contextRef="fy18" id="ent-shell">false</dei:EntityShellCompany>
+    <dei:EntityPublicFloat contextRef="i18h1e" decimals="-3" id="ent-float" unitRef="USD">327898000</dei:EntityPublicFloat>
+    <dei:EntityBankruptcyProceedingsReportingCurrent contextRef="fy18" id="ent-bankruptcy">true</dei:EntityBankruptcyProceedingsReportingCurrent>
+    <dei:Security12bTitle contextRef="d18_CommonClassAMember">Class A common stock</dei:Security12bTitle>
+    <dei:EntityCommonStockSharesOutstanding contextRef="i20190213e_CommonClassAMember" decimals="INF" unitRef="Shares">748</dei:EntityCommonStockSharesOutstanding>
+    <dei:Security12bTitle contextRef="d18_CommonClassBMember">Class B common stock</dei:Security12bTitle>
+    <dei:EntityCommonStockSharesOutstanding contextRef="i20190213e_CommonClassBMember" decimals="INF" unitRef="Shares">1344332</dei:EntityCommonStockSharesOutstanding>
+    <dei:DocumentsIncorporatedByReferenceTextBlock contextRef="fy18">
+				        &lt;p style="margin-top:4.0pt;margin-right:0in; margin-bottom:0in;margin-left:0in;margin-bottom:.0001pt;text-align:center; line-height:normal"&gt;
+					          &lt;b&gt;
+						            &lt;span style="font-size:10.0pt;font-family:'Times New Roman'"&gt;DOCUMENTS INCORPORATED BY REFERENCE&lt;/span&gt;
+					          &lt;/b&gt;
+				        &lt;/p&gt;
+				        &lt;p style="margin-bottom:0in;margin-bottom:.0001pt;line-height: normal"&gt;
+					          &lt;span style="font-size:4.0pt;font-family:'Times New Roman'"&gt;&#160;&lt;/span&gt;
+				        &lt;/p&gt;
+				        &lt;div&gt;
+					          &lt;table border="0" cellpadding="0" cellspacing="0" style="width:100.0%;border-collapse:collapse" width="100%"&gt;
+						            &lt;tr&gt;
+							              &lt;td style="width:69.0%;padding:0in 0in 0in 0in"/&gt;
+							              &lt;td style="width:1.0%;padding:0in 0in 0in 0in" valign="bottom"/&gt;
+							              &lt;td style="width:30.0%;padding:0in 0in 0in 0in"/&gt;
+						            &lt;/tr&gt;
+						            &lt;tr style="page-break-inside:avoid"&gt;
+							              &lt;td style="padding:0in 0in 0in 0in" valign="bottom"&gt;
+								                &lt;div style="border:none;border-bottom:solid black 1.0pt;padding:0in 0in 0in 0in"&gt;
+									                  &lt;p style="margin-bottom:0in;margin-bottom:.0001pt; text-align:center;line-height:normal;border:none;padding:0in"&gt;
+										                    &lt;b&gt;
+											                      &lt;span style="font-size:7.5pt;font-family:'Times New Roman'"&gt; Document&lt;/span&gt;
+										                    &lt;/b&gt;
+									                  &lt;/p&gt;
+								                &lt;/div&gt;
+							              &lt;/td&gt;
+							              &lt;td style="padding:0in 0in 0in 0in" valign="bottom"&gt;
+								                &lt;p style="margin-bottom:0in;margin-bottom:.0001pt;line-height: normal"&gt;
+									                  &lt;span style="font-size:7.5pt;font-family:'Times New Roman'"&gt; &#160;&lt;/span&gt;
+								                &lt;/p&gt;
+							              &lt;/td&gt;
+							              &lt;td style="padding:0in 0in 0in 0in" valign="bottom"&gt;
+								                &lt;div style="border:none;border-bottom:solid black 1.0pt;padding:0in 0in 0in 0in"&gt;
+									                  &lt;p style="margin-bottom:0in;margin-bottom:.0001pt; text-align:center;line-height:normal;border:none;padding:0in"&gt;
+										                    &lt;b&gt;
+											                      &lt;span style="font-size:7.5pt;font-family:'Times New Roman'"&gt; Incorporated In&lt;/span&gt;
+										                    &lt;/b&gt;
+									                  &lt;/p&gt;
+								                &lt;/div&gt;
+							              &lt;/td&gt;
+						            &lt;/tr&gt;
+						            &lt;tr style="page-break-inside:avoid"&gt;
+							              &lt;td style="padding:0in 0in 0in 0in" valign="bottom"&gt;
+								                &lt;p style="margin-top:0in;margin-right:0in;margin-bottom:0in; margin-left:12.0pt;margin-bottom:.0001pt;line-height:normal"&gt;
+									                  &lt;span style="font-size:10.0pt;font-family:'Times New Roman'"&gt; Proxy Statement for Registrant&#8217;s Annual Meeting to be held May&#160;5, 2018&lt;/span&gt;
+								                &lt;/p&gt;
+							              &lt;/td&gt;
+							              &lt;td style="padding:0in 0in 0in 0in" valign="bottom"&gt;
+								                &lt;p style="margin-bottom:0in;margin-bottom:.0001pt;line-height: normal"&gt;
+									                  &lt;span style="font-size:10.0pt;font-family:'Times New Roman'"&gt; &#160;&lt;/span&gt;
+								                &lt;/p&gt;
+							              &lt;/td&gt;
+							              &lt;td style="padding:0in 0in 0in 0in" valign="bottom"&gt;
+								                &lt;p style="margin-bottom:0in;margin-bottom:.0001pt; text-align:center;line-height:normal"&gt;
+									                  &lt;span style="font-size:10.0pt; font-family:'Times New Roman'"&gt; Part III&lt;/span&gt;
+								                &lt;/p&gt;
+							              &lt;/td&gt;
+						            &lt;/tr&gt;
+					          &lt;/table&gt;
+				        &lt;/div&gt;
+			      </dei:DocumentsIncorporatedByReferenceTextBlock>
+    <link:footnoteLink xlink:role="http://www.xbrl.org/2003/role/link" xlink:type="extended">
+        <link:loc xlink:href="#ent-float" xlink:label="ent-float" xlink:type="locator"></link:loc>
+        <link:footnote id="f" xlink:label="f" xlink:role="http://www.xbrl.org/2003/role/footnote" xlink:type="resource" xml:lang="en-US">
+            <xhtml:p style="margin-bottom:0in;margin-bottom:.0001pt;line-height: normal">
+                <xhtml:span style="font-size:10.0pt;font-family:'Times New Roman'">This aggregate value is computed at the last sale price of the common stock on June&#160;30, 2018. It does not include the value of Class&#160;A common stock (308,306 shares) and Class&#160;B common stock (64,644,309 shares) held by Directors and Executive Officers of the Registrant and members of their immediate families, some of whom may not constitute &#8220;affiliates&#8221; for purpose of the Securities Exchange Act of 1934.</xhtml:span>
+            </xhtml:p>
+        </link:footnote>
+        <link:footnoteArc xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote" xlink:from="ent-float" xlink:to="f" xlink:type="arc"></link:footnoteArc>
+    </link:footnoteLink>
+</xbrl>

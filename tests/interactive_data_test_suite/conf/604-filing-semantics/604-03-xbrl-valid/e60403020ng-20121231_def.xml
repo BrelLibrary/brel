@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<link:linkbase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xbrli="http://www.xbrl.org/2003/instance">
+  <link:roleRef roleURI="http://xbrl.sec.gov/dei/role/document/Defaults" xlink:type="simple" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#defaults"/>
+  <link:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/dimension-default" xlink:type="simple" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#dimension-default"/>
+  <link:definitionLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/dei/role/document/Defaults">
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityContactPersonnelContactPersonTypeAxis" xlink:label="EntityContactPersonnelContactPersonTypeAxis"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_ContactPersonTypeDomain" xlink:label="ContactPersonTypeDomain"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-default" xlink:from="EntityContactPersonnelContactPersonTypeAxis" xlink:to="ContactPersonTypeDomain" order="1.0"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityPhoneFaxNumbersPhoneFaxNumberTypeAxis" xlink:label="EntityPhoneFaxNumbersPhoneFaxNumberTypeAxis"/>
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_PhoneFaxNumberTypeDomain" xlink:label="PhoneFaxNumberTypeDomain"/>
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-default" xlink:from="EntityPhoneFaxNumbersPhoneFaxNumberTypeAxis" xlink:to="PhoneFaxNumberTypeDomain" order="1.0"/>
+  </link:definitionLink>
+</link:linkbase>

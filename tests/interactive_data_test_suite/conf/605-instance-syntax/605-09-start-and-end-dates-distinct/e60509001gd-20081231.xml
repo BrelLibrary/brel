@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xbrli:xbrl xmlns:dei="http://xbrl.sec.gov/dei/2023" xmlns:iso4217="http://www.xbrl.org/2003/iso4217" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xbrldi="http://xbrl.org/2006/xbrldi" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:e60509001gd="http://e60509001gd/20081231">
+    <link:schemaRef xlink:href="e60509001gd-20081231.xsd" xlink:type="simple"></link:schemaRef>
+    <xbrli:context id="day">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">3333333333</xbrli:identifier>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2009-01-01</xbrli:startDate>
+            <xbrli:endDate>2009-01-01</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="day_S013456789">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">3333333333</xbrli:identifier>
+            <xbrli:segment>
+                <xbrldi:explicitMember dimension="dei:LegalEntityAxis">e60509001gd:S013456789Member</xbrldi:explicitMember>
+            </xbrli:segment>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2009-01-01</xbrli:startDate>
+            <xbrli:endDate>2009-01-01</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="dayShiftedTwelveHours">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">3333333333</xbrli:identifier>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2009-01-01T12:00:00</xbrli:startDate>
+            <xbrli:endDate>2009-01-02T12:00:00</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:unit id="shares">
+        <xbrli:measure>xbrli:shares</xbrli:measure>
+    </xbrli:unit>
+    <xbrli:unit id="usd">
+        <xbrli:measure>iso4217:USD</xbrli:measure>
+    </xbrli:unit>
+    <dei:DocumentType contextRef="day">485BPOS</dei:DocumentType>
+    <dei:AmendmentFlag contextRef="day">false</dei:AmendmentFlag>
+    <dei:DocumentPeriodEndDate contextRef="day">2009-01-01</dei:DocumentPeriodEndDate>
+    <dei:EntityRegistrantName contextRef="day">e60509001gd</dei:EntityRegistrantName>
+    <dei:EntityCentralIndexKey contextRef="day">3333333333</dei:EntityCentralIndexKey>
+    <dei:DocumentInformationTextBlock contextRef="day">No endDates within any startDate+(0,24h]</dei:DocumentInformationTextBlock>
+    <dei:DocumentInformationTextBlock contextRef="dayShiftedTwelveHours">A day shifted 12 hrs later.</dei:DocumentInformationTextBlock>
+    <dei:EntityInvCompanyType contextRef="day">N-1A</dei:EntityInvCompanyType>
+    <dei:DocumentInformationTextBlock contextRef="day_S013456789">Description</dei:DocumentInformationTextBlock>
+</xbrli:xbrl>

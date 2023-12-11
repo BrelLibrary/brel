@@ -1,0 +1,238 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl" ?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>605-36</number>
+    <name>EDGAR Filer Manual v68d 6.5.36</name>
+    <description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.5.36 The local name in xbrli:measure in UTF-8 must not exceed 200 bytes.">Refer to EFM: 6.5.36 The local name in xbrli:measure in UTF-8 must not exceed 200 bytes.</a>
+    </description>
+    <reference specification="12907"></reference>
+    <variation id="_000gd">
+        <name>6.5.36 Unit u200onebyte in measure, GOOD.</name>
+        <description>Unit u200onebyte in measure, GOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"emergingGrowthCompanyFlag" : false , "periodOfReport" : "12-31-2008" , "submissionType" : "8-K"}'></parameter>
+            <instance readMeFirst="true">e60536000gd-20111231.xml</instance>
+            <linkbase>edgar-20111231_def.xml</linkbase>
+            <linkbase>edgar-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_pre.xml</linkbase>
+            <schema>edgar-20111231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_001gd">
+        <name>6.5.36 Unit u200onebyte in multiplied measure, GOOD.</name>
+        <description>Unit u200onebyte in multiplied measure, GOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"emergingGrowthCompanyFlag" : false , "periodOfReport" : "12-31-2008" , "submissionType" : "8-K"}'></parameter>
+            <instance readMeFirst="true">e60536001gd-20111231.xml</instance>
+            <linkbase>edgar-20111231_def.xml</linkbase>
+            <linkbase>edgar-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_pre.xml</linkbase>
+            <schema>edgar-20111231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_002gd">
+        <name>6.5.36 Unit u200onebyte in numerator, GOOD.</name>
+        <description>Unit u200onebyte in numerator, GOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"emergingGrowthCompanyFlag" : false , "periodOfReport" : "12-31-2008" , "submissionType" : "8-K"}'></parameter>
+            <instance readMeFirst="true">e60536002gd-20111231.xml</instance>
+            <linkbase>edgar-20111231_def.xml</linkbase>
+            <linkbase>edgar-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_pre.xml</linkbase>
+            <schema>edgar-20111231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_003gd">
+        <name>6.5.36 Unit u200onebyte in denominator, GOOD.</name>
+        <description>Unit u200onebyte in denominator, GOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"emergingGrowthCompanyFlag" : false , "periodOfReport" : "12-31-2008" , "submissionType" : "8-K"}'></parameter>
+            <instance readMeFirst="true">e60536003gd-20111231.xml</instance>
+            <linkbase>edgar-20111231_def.xml</linkbase>
+            <linkbase>edgar-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_pre.xml</linkbase>
+            <schema>edgar-20111231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_004ng">
+        <name>6.5.36 Unit u201onebyte in measure, NOGOOD.</name>
+        <description>Unit u201onebyte in measure, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"emergingGrowthCompanyFlag" : false , "periodOfReport" : "12-31-2008" , "submissionType" : "8-K"}'></parameter>
+            <instance readMeFirst="true">e60536004ng-20111231.xml</instance>
+            <linkbase>edgar-20111231_def.xml</linkbase>
+            <linkbase>edgar-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_pre.xml</linkbase>
+            <schema>edgar-20111231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60536" name="Name-Length-Limit" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_005ng">
+        <name>6.5.36 Unit u201onebyte in multiplied measure, NOGOOD.</name>
+        <description>Unit u201onebyte in multiplied measure, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"emergingGrowthCompanyFlag" : false , "periodOfReport" : "12-31-2008" , "submissionType" : "8-K"}'></parameter>
+            <instance readMeFirst="true">e60536005ng-20111231.xml</instance>
+            <linkbase>edgar-20111231_def.xml</linkbase>
+            <linkbase>edgar-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_pre.xml</linkbase>
+            <schema>edgar-20111231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60536" name="Name-Length-Limit" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_006ng">
+        <name>6.5.36 Unit u201onebyte in numerator, NOGOOD.</name>
+        <description>Unit u201onebyte in numerator, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"emergingGrowthCompanyFlag" : false , "periodOfReport" : "12-31-2008" , "submissionType" : "8-K"}'></parameter>
+            <instance readMeFirst="true">e60536006ng-20111231.xml</instance>
+            <linkbase>edgar-20111231_def.xml</linkbase>
+            <linkbase>edgar-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_pre.xml</linkbase>
+            <schema>edgar-20111231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60536" name="Name-Length-Limit" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_007ng">
+        <name>6.5.36 Unit u201onebyte in denominator, NOGOOD.</name>
+        <description>Unit u201onebyte in denominator, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"emergingGrowthCompanyFlag" : false , "periodOfReport" : "12-31-2008" , "submissionType" : "8-K"}'></parameter>
+            <instance readMeFirst="true">e60536007ng-20111231.xml</instance>
+            <linkbase>edgar-20111231_def.xml</linkbase>
+            <linkbase>edgar-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_pre.xml</linkbase>
+            <schema>edgar-20111231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60536" name="Name-Length-Limit" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_008gd">
+        <name>6.5.36 Unit u100twobyte in measure, GOOD.</name>
+        <description>Unit u100twobyte in measure, GOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"emergingGrowthCompanyFlag" : false , "periodOfReport" : "12-31-2008" , "submissionType" : "8-K"}'></parameter>
+            <instance readMeFirst="true">e60536008gd-20111231.xml</instance>
+            <linkbase>edgar-20111231_def.xml</linkbase>
+            <linkbase>edgar-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_pre.xml</linkbase>
+            <schema>edgar-20111231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_009gd">
+        <name>6.5.36 Unit u100twobyte in multiplied measure, GOOD.</name>
+        <description>Unit u100twobyte in multiplied measure, GOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"emergingGrowthCompanyFlag" : false , "periodOfReport" : "12-31-2008" , "submissionType" : "8-K"}'></parameter>
+            <instance readMeFirst="true">e60536009gd-20111231.xml</instance>
+            <linkbase>edgar-20111231_def.xml</linkbase>
+            <linkbase>edgar-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_pre.xml</linkbase>
+            <schema>edgar-20111231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_010gd">
+        <name>6.5.36 Unit u100twobyte in numerator, GOOD.</name>
+        <description>Unit u100twobyte in numerator, GOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"emergingGrowthCompanyFlag" : false , "periodOfReport" : "12-31-2008" , "submissionType" : "8-K"}'></parameter>
+            <instance readMeFirst="true">e60536010gd-20111231.xml</instance>
+            <linkbase>edgar-20111231_def.xml</linkbase>
+            <linkbase>edgar-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_pre.xml</linkbase>
+            <schema>edgar-20111231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_011gd">
+        <name>6.5.36 Unit u100twobyte in denominator, GOOD.</name>
+        <description>Unit u100twobyte in denominator, GOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"emergingGrowthCompanyFlag" : false , "periodOfReport" : "12-31-2008" , "submissionType" : "8-K"}'></parameter>
+            <instance readMeFirst="true">e60536011gd-20111231.xml</instance>
+            <linkbase>edgar-20111231_def.xml</linkbase>
+            <linkbase>edgar-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_pre.xml</linkbase>
+            <schema>edgar-20111231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_012ng">
+        <name>6.5.36 Unit u100twobyte1onebyte in measure, NOGOOD.</name>
+        <description>Unit u100twobyte1onebyte in measure, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"emergingGrowthCompanyFlag" : false , "periodOfReport" : "12-31-2008" , "submissionType" : "8-K"}'></parameter>
+            <instance readMeFirst="true">e60536012ng-20111231.xml</instance>
+            <linkbase>edgar-20111231_def.xml</linkbase>
+            <linkbase>edgar-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_pre.xml</linkbase>
+            <schema>edgar-20111231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60536" name="Name-Length-Limit" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_013ng">
+        <name>6.5.36 Unit u100twobyte1onebyte in multiplied measure, NOGOOD.</name>
+        <description>Unit u100twobyte1onebyte in multiplied measure, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"emergingGrowthCompanyFlag" : false , "periodOfReport" : "12-31-2008" , "submissionType" : "8-K"}'></parameter>
+            <instance readMeFirst="true">e60536013ng-20111231.xml</instance>
+            <linkbase>edgar-20111231_def.xml</linkbase>
+            <linkbase>edgar-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_pre.xml</linkbase>
+            <schema>edgar-20111231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60536" name="Name-Length-Limit" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_014ng">
+        <name>6.5.36 Unit u100twobyte1onebyte in numerator, NOGOOD.</name>
+        <description>Unit u100twobyte1onebyte in numerator, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"emergingGrowthCompanyFlag" : false , "periodOfReport" : "12-31-2008" , "submissionType" : "8-K"}'></parameter>
+            <instance readMeFirst="true">e60536014ng-20111231.xml</instance>
+            <linkbase>edgar-20111231_def.xml</linkbase>
+            <linkbase>edgar-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_pre.xml</linkbase>
+            <schema>edgar-20111231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60536" name="Name-Length-Limit" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_015ng">
+        <name>6.5.36 Unit u100twobyte1onebyte in denominator, NOGOOD.</name>
+        <description>Unit u100twobyte1onebyte in denominator, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"emergingGrowthCompanyFlag" : false , "periodOfReport" : "12-31-2008" , "submissionType" : "8-K"}'></parameter>
+            <instance readMeFirst="true">e60536015ng-20111231.xml</instance>
+            <linkbase>edgar-20111231_def.xml</linkbase>
+            <linkbase>edgar-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_pre.xml</linkbase>
+            <schema>edgar-20111231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60536" name="Name-Length-Limit" frd="du"></assert>
+        </result>
+    </variation>
+</testcase>

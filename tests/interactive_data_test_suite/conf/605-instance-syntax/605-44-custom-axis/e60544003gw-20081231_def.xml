@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<linkbase xmlns="http://www.xbrl.org/2003/linkbase" xmlns:edgar="http://edgar/20081231" xmlns:xbrldt="http://xbrl.org/2005/xbrldt" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd">
+    <roleRef roleURI="http://edgar/role/role1" xlink:href="e60544003gw-20081231.xsd#role1" xlink:type="simple"></roleRef>
+    <roleRef roleURI="http://edgar/role/role2" xlink:href="e60544003gw-20081231.xsd#role2" xlink:type="simple"></roleRef>
+    <roleRef roleURI="http://edgar/role/Defaults" xlink:href="e60544003gw-20081231.xsd#Defaults" xlink:type="simple"></roleRef>
+    <arcroleRef xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#all" xlink:type="simple" arcroleURI="http://xbrl.org/int/dim/arcrole/all"></arcroleRef>
+    <arcroleRef xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#dimension-domain" xlink:type="simple" arcroleURI="http://xbrl.org/int/dim/arcrole/dimension-domain"></arcroleRef>
+    <arcroleRef xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#hypercube-dimension" xlink:type="simple" arcroleURI="http://xbrl.org/int/dim/arcrole/hypercube-dimension"></arcroleRef>
+    <arcroleRef xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#dimension-default" xlink:type="simple" arcroleURI="http://xbrl.org/int/dim/arcrole/dimension-default"></arcroleRef>
+    <arcroleRef xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#domain-member" xlink:type="simple" arcroleURI="http://xbrl.org/int/dim/arcrole/domain-member"></arcroleRef>
+    <definitionLink xlink:type="extended" xlink:role="http://edgar/role/role1">
+        <loc xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityInformationLineItems" xlink:label="EntityInformationLineItems" xlink:type="locator"></loc>
+        <loc xlink:href="e60544003gw-20081231.xsd#edgar_Table" xlink:label="Table" xlink:type="locator"></loc>
+        <definitionArc xlink:type="arc" order="1.0" use="optional" xbrldt:closed="true" xbrldt:contextElement="segment" xlink:arcrole="http://xbrl.org/int/dim/arcrole/all" xlink:from="EntityInformationLineItems" xlink:to="Table"></definitionArc>
+        <loc xlink:href="e60544003gw-20081231.xsd#edgar_ForeignCurrencyAxis" xlink:label="ForeignCurrencyAxis" xlink:type="locator"></loc>
+        <definitionArc xlink:type="arc" order="1.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="Table" xlink:to="ForeignCurrencyAxis"></definitionArc>
+        <loc xlink:href="e60544003gw-20081231.xsd#edgar_TotalDomain" xlink:label="TotalDomain" xlink:type="locator"></loc>
+        <definitionArc xlink:type="arc" order="1.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="ForeignCurrencyAxis" xlink:to="TotalDomain"></definitionArc>
+        <loc xlink:href="e60544003gw-20081231.xsd#edgar_PepperoniMember" xlink:label="PepperoniMember" xlink:type="locator"></loc>
+        <definitionArc xlink:type="arc" order="1.0" use="optional" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="TotalDomain" xlink:to="PepperoniMember"></definitionArc>
+        <loc xlink:href="e60544003gw-20081231.xsd#edgar_CompanyOwnedRestaurantSalesDomestic" xlink:label="CompanyOwnedRestaurantSalesDomestic" xlink:type="locator"></loc>
+        <definitionArc xlink:type="arc" order="2.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="EntityInformationLineItems" xlink:to="CompanyOwnedRestaurantSalesDomestic"></definitionArc>
+    </definitionLink>
+    <definitionLink xlink:type="extended" xlink:role="http://edgar/role/Defaults">
+        <loc xlink:href="e60544003gw-20081231.xsd#edgar_ForeignCurrencyAxis" xlink:label="ForeignCurrencyAxis" xlink:type="locator"></loc>
+        <loc xlink:href="e60544003gw-20081231.xsd#edgar_TotalDomain" xlink:label="TotalDomain_2" xlink:type="locator"></loc>
+        <definitionArc xlink:type="arc" order="1.0" priority="1" use="optional" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-default" xlink:from="ForeignCurrencyAxis" xlink:to="TotalDomain_2"></definitionArc>
+    </definitionLink>
+</linkbase>

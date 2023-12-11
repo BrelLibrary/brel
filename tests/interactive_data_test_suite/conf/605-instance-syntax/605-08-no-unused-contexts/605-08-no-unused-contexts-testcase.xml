@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>605-08</number>
+    <name>EDGAR Filer Manual v68d 6.5.8</name>
+    <description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.5.8  Every xbrli:context element must appear in at least one contextRef attribute.">Refer to EFM: 6.5.8  Every xbrli:context element must appear in at least one contextRef attribute.</a>
+    </description>
+    <reference specification="10993"></reference>
+    <variation id="_001ng">
+        <name>6.5.8, Instance with an unused context, NOGOOD.</name>
+        <description>6.5.8, An instance having an unused context, NOGOOD.</description>
+        <reference specification="10993"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "06-30-2011", "submissionType" : "8-K", "emergingGrowthCompanyFlag" : false }'></parameter>
+            <instance readMeFirst="true">e60508001ng-20111231.xml</instance>
+            <schema>e60508001ng-20111231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60508" name="Unused-Context" frd="du"></assert>
+        </result>
+    </variation>
+</testcase>

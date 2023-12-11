@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xs:schema xmlns:edgar="http://edgar/20181231" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:dtr-types="http://www.xbrl.org/dtr/type/2022-03-31"  xmlns:xbrldt="http://xbrl.org/2005/xbrldt" xmlns:xbrli="http://www.xbrl.org/2003/instance"
+    xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:country="http://xbrl.sec.gov/country/2023" xmlns:srt="http://fasb.org/srt/2023" xmlns:srt-types="http://fasb.org/srt-types/2019-01-31"
+    xmlns:us-gaap="http://fasb.org/us-gaap/2023" xmlns:us-types="http://fasb.org/us-types/2023" targetNamespace="http://edgar/20181231" elementFormDefault="qualified"
+>
+    <xs:annotation>
+        <xs:appinfo>
+            <link:linkbase>
+                <link:roleRef roleURI="http://xbrl.sec.gov/dei/role/document/Cover" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#cover" xlink:type="simple"></link:roleRef>
+                <link:presentationLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/dei/role/document/Cover">
+                    <link:loc xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityListingsTable" xlink:label="EntityListingsTable" xlink:type="locator"></link:loc>
+                    <link:loc xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_StatementClassOfStockAxis" xlink:label="StatementClassOfStockAxis" xlink:type="locator"></link:loc>
+                    <link:loc xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_ClassOfStockDomain" xlink:label="ClassOfStockDomain" xlink:type="locator"></link:loc>
+                    <link:loc xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_CommonClassAMember" xlink:label="CommonClassAMember" xlink:type="locator"></link:loc>
+                    <link:loc xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_CommonClassBMember" xlink:label="CommonClassBMember" xlink:type="locator"></link:loc>
+                    <link:presentationArc xlink:type="arc" order="1.5" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityListingsTable" xlink:to="StatementClassOfStockAxis"></link:presentationArc>
+                    <link:presentationArc xlink:type="arc" order="1.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="StatementClassOfStockAxis" xlink:to="ClassOfStockDomain"></link:presentationArc>
+                    <link:presentationArc xlink:type="arc" order="2.0" preferredLabel="http://www.xbrl.org/2003/role/terseLabel" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="StatementClassOfStockAxis" xlink:to="CommonClassAMember"></link:presentationArc>
+                    <link:presentationArc xlink:type="arc" order="3.0" preferredLabel="http://www.xbrl.org/2003/role/terseLabel" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="StatementClassOfStockAxis" xlink:to="CommonClassBMember"></link:presentationArc>
+                </link:presentationLink>
+            </link:linkbase>
+            <link:linkbase>
+                <link:roleRef roleURI="http://xbrl.sec.gov/dei/role/document/Defaults" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#defaults" xlink:type="simple"></link:roleRef>
+                <link:roleRef roleURI="http://xbrl.sec.gov/dei/role/document/EntityInformationEntityListingsTable" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#EntityInformationEntityListingsTable" xlink:type="simple"></link:roleRef>
+                <link:arcroleRef xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#dimension-default" xlink:type="simple" arcroleURI="http://xbrl.org/int/dim/arcrole/dimension-default"></link:arcroleRef>
+                <link:arcroleRef xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#dimension-domain" xlink:type="simple" arcroleURI="http://xbrl.org/int/dim/arcrole/dimension-domain"></link:arcroleRef>
+                <link:arcroleRef xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#domain-member" xlink:type="simple" arcroleURI="http://xbrl.org/int/dim/arcrole/domain-member"></link:arcroleRef>
+                <link:arcroleRef xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#hypercube-dimension" xlink:type="simple" arcroleURI="http://xbrl.org/int/dim/arcrole/hypercube-dimension"></link:arcroleRef>
+                <link:definitionLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/dei/role/document/Defaults">
+                    <link:loc xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_StatementClassOfStockAxis" xlink:label="StatementClassOfStockAxis" xlink:type="locator"></link:loc>
+                    <link:loc xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_ClassOfStockDomain" xlink:label="ClassOfStockDomain" xlink:type="locator"></link:loc>
+                    <link:definitionArc xlink:type="arc" order="1.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-default" xlink:from="StatementClassOfStockAxis" xlink:to="ClassOfStockDomain"></link:definitionArc>
+                </link:definitionLink>
+                <link:definitionLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/dei/role/document/EntityInformationEntityListingsTable">
+                    <link:loc xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityListingsTable" xlink:label="EntityListingsTable" xlink:type="locator"></link:loc>
+                    <link:loc xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_StatementClassOfStockAxis" xlink:label="StatementClassOfStockAxis" xlink:type="locator"></link:loc>
+                    <link:loc xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_ClassOfStockDomain" xlink:label="ClassOfStockDomain" xlink:type="locator"></link:loc>
+                    <link:loc xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_CommonClassAMember" xlink:label="CommonClassAMember" xlink:type="locator"></link:loc>
+                    <link:loc xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_CommonClassBMember" xlink:label="CommonClassBMember" xlink:type="locator"></link:loc>
+                    <link:definitionArc xlink:type="arc" order="3.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="EntityListingsTable" xlink:to="StatementClassOfStockAxis"></link:definitionArc>
+                    <link:definitionArc xlink:type="arc" order="1.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="StatementClassOfStockAxis" xlink:to="ClassOfStockDomain"></link:definitionArc>
+                    <link:definitionArc xlink:type="arc" order="1.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ClassOfStockDomain" xlink:to="CommonClassAMember"></link:definitionArc>
+                    <link:definitionArc xlink:type="arc" order="2.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ClassOfStockDomain" xlink:to="CommonClassBMember"></link:definitionArc>
+                </link:definitionLink>
+            </link:linkbase>
+            <link:linkbase>
+                <link:labelLink xlink:type="extended" xlink:role="http://www.xbrl.org/2003/role/link">
+                    <link:loc xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_CommonClassBMember" xlink:label="CommonClassBMember" xlink:type="locator"></link:loc>
+                    <link:loc xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_CommonClassAMember" xlink:label="CommonClassAMember" xlink:type="locator"></link:loc>
+                    <link:loc xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_StatementClassOfStockAxis" xlink:label="StatementClassOfStockAxis" xlink:type="locator"></link:loc>
+                    <link:loc xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_ClassOfStockDomain" xlink:label="ClassOfStockDomain" xlink:type="locator"></link:loc>
+                    <link:label id="label_CommonClassBMember" xml:lang="en-US" xlink:label="label_CommonClassBMember" xlink:type="resource" xlink:role="http://www.xbrl.org/2003/role/label">Common Class B [Member]</link:label>
+                    <link:label id="label_CommonClassBMember_2" xml:lang="en-US" xlink:label="label_CommonClassBMember_2" xlink:type="resource" xlink:role="http://www.xbrl.org/2003/role/terseLabel">Class B</link:label>
+                    <link:label id="label_CommonClassAMember" xml:lang="en-US" xlink:label="label_CommonClassAMember" xlink:type="resource" xlink:role="http://www.xbrl.org/2003/role/label">Common Class A [Member]</link:label>
+                    <link:label id="label_CommonClassAMember_2" xml:lang="en-US" xlink:label="label_CommonClassAMember_2" xlink:type="resource" xlink:role="http://www.xbrl.org/2003/role/terseLabel">Class A</link:label>
+                    <link:label id="label_StatementClassOfStockAxis" xml:lang="en-US" xlink:label="label_StatementClassOfStockAxis" xlink:type="resource" xlink:role="http://www.xbrl.org/2003/role/label">Class of Stock [Axis]</link:label>
+                    <link:label id="label_ClassOfStockDomain" xml:lang="en-US" xlink:label="label_ClassOfStockDomain" xlink:type="resource" xlink:role="http://www.xbrl.org/2003/role/label">Class of Stock [Domain]</link:label>
+                    <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="CommonClassBMember" xlink:to="label_CommonClassBMember"></link:labelArc>
+                    <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="CommonClassBMember" xlink:to="label_CommonClassBMember_2"></link:labelArc>
+                    <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="CommonClassAMember" xlink:to="label_CommonClassAMember"></link:labelArc>
+                    <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="CommonClassAMember" xlink:to="label_CommonClassAMember_2"></link:labelArc>
+                    <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="StatementClassOfStockAxis" xlink:to="label_StatementClassOfStockAxis"></link:labelArc>
+                    <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ClassOfStockDomain" xlink:to="label_ClassOfStockDomain"></link:labelArc>
+                </link:labelLink>
+            </link:linkbase>
+        </xs:appinfo>
+    </xs:annotation>
+    <xs:import schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd" namespace="http://www.xbrl.org/2003/instance"></xs:import>
+    <xs:import schemaLocation="https://xbrl.sec.gov/dei/2023/dei-2023_def.xsd" namespace="http://xbrl.sec.gov/dei-def/2023"></xs:import>
+    <xs:import schemaLocation="https://xbrl.sec.gov/dei/2023/dei-2023_pre.xsd" namespace="http://xbrl.sec.gov/dei-pre/2023"></xs:import>
+    <xs:import schemaLocation="https://xbrl.sec.gov/dei/2023/dei-2023_lab.xsd" namespace="http://xbrl.sec.gov/dei-lab/2023"></xs:import>
+    <xs:import schemaLocation="https://xbrl.sec.gov/dei/2023/dei-2023.xsd" namespace="http://xbrl.sec.gov/dei/2023"></xs:import>
+    <xs:import schemaLocation="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd" namespace="http://fasb.org/us-gaap/2023"></xs:import>
+    <xs:import schemaLocation="https://xbrl.fasb.org/srt/2023/elts/srt-roles-2023.xsd" namespace="http://fasb.org/srt-roles/2023"></xs:import>
+</xs:schema>

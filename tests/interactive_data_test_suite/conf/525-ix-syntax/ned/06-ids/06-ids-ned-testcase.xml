@@ -1,0 +1,167 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>525-06</number>
+    <name>Inline XBRL Test Suite v68d : IDs tests, Not EDGAR Dependent</name>
+    <description>
+        <p>The id attribute can appear on almost any ix: element.  In XBRL the id attributes are declared with ID/IDREF pairings so that (say) the value of unitRef must be the id of an xbrli:unit.  Not so in Inline XBRL, because it allows mutliple document input sets.</p>
+        <p>But Inline XBRL does add the condition that the id must be unique across the entire Inline XBRL Document Set, and this test set is not testing that condition, so the error signaled would be different than the xmlSchema:duplicateID error shown in cases 001ng through 108ng.</p>
+    </description>
+    <variation id="_001gd">
+        <name>Normal use of distinct ids, GOOD</name>
+        <description>PASS-standard-IDs</description>
+        <reference xiitest="PASS-standard-IDs"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i06001gd/i06001gd-20081231.htm</instance>
+            <linkbase>i06001gd/i06001gd-20081231_pre.xml</linkbase>
+            <linkbase>i06001gd/i06001gd-20081231_lab.xml</linkbase>
+            <schema>i06001gd/i06001gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_100ng">
+        <name>Three elements with id=duplicateID, NOGOOD</name>
+        <description>FAIL-id-triplication</description>
+        <reference xiitest="FAIL-id-triplication"></reference>
+        <reference specification="ID values MUST uniquely identify the elements which bear them."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i06100ng/i06100ng-20081231.htm</instance>
+            <linkbase>i06100ng/i06100ng-20081231_pre.xml</linkbase>
+            <linkbase>i06100ng/i06100ng-20081231_lab.xml</linkbase>
+            <schema>i06100ng/i06100ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="xml.3.3.1:idMustBeUnique" frd="ix" fj="IXBRL_DUPLICATE_ELEMENT_ID_FOUND" nnum="70106" txt="Element $ id * is duplicated"></assert>
+        </result>
+    </variation>
+    <variation id="_101ng">
+        <name>Duplicate context ids, NOGOOD</name>
+        <description>FAIL-non-unique-id-context</description>
+        <reference xiitest="FAIL-non-unique-id-context"></reference>
+        <reference specification="ID values MUST uniquely identify the elements which bear them."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i06101ng/i06101ng-20081231.htm</instance>
+            <linkbase>i06101ng/i06101ng-20081231_pre.xml</linkbase>
+            <linkbase>i06101ng/i06101ng-20081231_lab.xml</linkbase>
+            <schema>i06101ng/i06101ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="xml.3.3.1:idMustBeUnique" frd="ix" fj="IXBRL_DUPLICATE_ELEMENT_ID_FOUND" nnum="70106" txt="Element $ id * is duplicated"></assert>
+        </result>
+    </variation>
+    <variation id="_102ng">
+        <name>Duplicate footnote ids, NOGOOD</name>
+        <description>FAIL-non-unique-id-footnote</description>
+        <reference xiitest="FAIL-non-unique-id-footnote"></reference>
+        <reference specification="ID values MUST uniquely identify the elements which bear them."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i06102ng/i06102ng-20081231.htm</instance>
+            <linkbase>i06102ng/i06102ng-20081231_pre.xml</linkbase>
+            <linkbase>i06102ng/i06102ng-20081231_lab.xml</linkbase>
+            <schema>i06102ng/i06102ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="xml.3.3.1:idMustBeUnique" frd="ix" fj="IXBRL_DUPLICATE_ELEMENT_ID_FOUND" nnum="70106" txt="Element $ id * is duplicated"></assert>
+        </result>
+    </variation>
+    <variation id="_103ng">
+        <name>Duplicate fraction ids, NOGOOD</name>
+        <description>FAIL-non-unique-id-fraction</description>
+        <reference xiitest="FAIL-non-unique-id-fraction"></reference>
+        <reference specification="ID values MUST uniquely identify the elements which bear them."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i06103ng/i06103ng-20081231.htm</instance>
+            <linkbase>i06103ng/i06103ng-20081231_pre.xml</linkbase>
+            <linkbase>i06103ng/i06103ng-20081231_lab.xml</linkbase>
+            <schema>i06103ng/i06103ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="xml.3.3.1:idMustBeUnique" frd="ix" fj="IXBRL_DUPLICATE_ELEMENT_ID_FOUND" nnum="70106" txt="Element $ id * is duplicated"></assert>
+        </result>
+    </variation>
+    <variation id="_104ng">
+        <name>Duplicate nonFraction ids, NOGOOD</name>
+        <description>FAIL-non-unique-id-nonFraction</description>
+        <reference xiitest="FAIL-non-unique-id-nonFraction"></reference>
+        <reference specification="ID values MUST uniquely identify the elements which bear them."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i06104ng/i06104ng-20081231.htm</instance>
+            <linkbase>i06104ng/i06104ng-20081231_pre.xml</linkbase>
+            <linkbase>i06104ng/i06104ng-20081231_lab.xml</linkbase>
+            <schema>i06104ng/i06104ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="xml.3.3.1:idMustBeUnique" frd="ix" fj="IXBRL_DUPLICATE_ELEMENT_ID_FOUND" nnum="70106" txt="Element $ id * is duplicated"></assert>
+        </result>
+    </variation>
+    <variation id="_105ng">
+        <name>Duplicate nonNumeric ids, NOGOOD</name>
+        <description>FAIL-non-unique-id-nonNumeric</description>
+        <reference xiitest="FAIL-non-unique-id-nonNumeric"></reference>
+        <reference specification="ID values MUST uniquely identify the elements which bear them."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i06105ng/i06105ng-20081231.htm</instance>
+            <linkbase>i06105ng/i06105ng-20081231_pre.xml</linkbase>
+            <linkbase>i06105ng/i06105ng-20081231_lab.xml</linkbase>
+            <schema>i06105ng/i06105ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="xml.3.3.1:idMustBeUnique" frd="ix" fj="IXBRL_DUPLICATE_ELEMENT_ID_FOUND" nnum="70106" txt="Element $ id * is duplicated"></assert>
+        </result>
+    </variation>
+    <variation id="_106ng">
+        <name>Duplicate references ids, NOGOOD</name>
+        <description>FAIL-non-unique-id-references</description>
+        <reference xiitest="FAIL-non-unique-id-references"></reference>
+        <reference specification="ID values MUST uniquely identify the elements which bear them."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i06106ng/i06106ng-20081231.htm</instance>
+            <linkbase>i06106ng/i06106ng-20081231_pre.xml</linkbase>
+            <linkbase>i06106ng/i06106ng-20081231_lab.xml</linkbase>
+            <schema>i06106ng/i06106ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="xml.3.3.1:idMustBeUnique" frd="ix" fj="IXBRL_DUPLICATE_ELEMENT_ID_FOUND" nnum="70106" txt="Element $ id * is duplicated"></assert>
+        </result>
+    </variation>
+    <variation id="_107ng">
+        <name>Duplicate tuple ids, NOGOOD</name>
+        <description>FAIL-non-unique-id-tuple</description>
+        <reference xiitest="FAIL-non-unique-id-tuple"></reference>
+        <reference specification="ID values MUST uniquely identify the elements which bear them."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i06107ng/i06107ng-20081231.htm</instance>
+            <linkbase>i06107ng/i06107ng-20081231_pre.xml</linkbase>
+            <linkbase>i06107ng/i06107ng-20081231_lab.xml</linkbase>
+            <schema>i06107ng/i06107ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="xml.3.3.1:idMustBeUnique" frd="ix" fj="IXBRL_DUPLICATE_ELEMENT_ID_FOUND" nnum="70106" txt="Element $ id * is duplicated"></assert>
+        </result>
+    </variation>
+    <variation id="_109ng">
+        <name>Duplicate id on two units, NOGOOD</name>
+        <description>Duplicate id on two units, NOGOOD</description>
+        <data>
+            <parameter name="ELOparams" value='{"submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e06ids109ng/e06ids109ng-20081231.htm</instance>
+            <schema>e06ids109ng/edgar-20181231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="xml.3.3.1:idMustBeUnique" frd="ix" fj="IXBRL_DUPLICATE_ELEMENT_ID_FOUND" nnum="70106" txt="Element $ id * is duplicated"></assert>
+        </result>
+    </variation>
+</testcase>

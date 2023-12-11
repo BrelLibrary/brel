@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl"?>
+<conf:testcase xmlns:conf="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <conf:creator>
+        <conf:name>SEC Office of Structured Disclosure</conf:name>
+        <conf:email>StructuredData@sec.gov</conf:email>
+    </conf:creator>
+    <conf:number>614-09</conf:number>
+    <conf:name>EDGAR Filer Manual v68d 6.14.9</conf:name>
+    <conf:description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.14.9  OEF calculation link validations">Refer to EFM: 6.14.9  OEF calculation link validations</a>
+    </conf:description>
+    <conf:variation id="_001gd">
+        <conf:name>DocumentType: N-CSR, Valid example, calc-between-us-gaap-elements, GD</conf:name>
+        <conf:description>DocumentType: N-CSR, Valid example, calc-between-us-gaap-elements, GD</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "N-CSR/A", "CIK": "0001314612", "invCompanyType": "N-1A", "fileNumber": "333-110904", "datetimeForTesting": "2032-11-15"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e61409001gd/e61409001gd-20321031.htm</conf:instance>
+            <conf:schema>e61409001gd/e61409001gd-20321031.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+    </conf:result>
+    </conf:variation>
+    <conf:variation id="_002ng">
+        <conf:name>DocumentType: N-CSR, calc-between-us-gaap-element-and-ecd-element, NG</conf:name>
+        <conf:description>DocumentType: N-CSR, calc-between-us-gaap-element-and-ecd-element, NG</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "N-CSRS/A", "CIK": "0001314612", "invCompanyType": "N-1A", "fileNumber": "333-110904", "datetimeForTesting": "2032-05-15"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e61409002ng/e61409002ng-20320430.htm</conf:instance>
+            <conf:schema>e61409002ng/e61409002ng-20320430.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="61409" name="Relationship-Not-Permitted" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+</conf:testcase>

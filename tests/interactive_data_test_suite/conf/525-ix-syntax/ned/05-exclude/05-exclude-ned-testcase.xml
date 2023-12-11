@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>525-05</number>
+    <name>Inline XBRL Test Suite v68d : Exclude tests, Not EDGAR Dependent</name>
+    <description>
+        <h2>Various "good" (gd) and "not good" (ng) test files that demonstrate specific iXBRL Exclude usage</h2>
+    </description>
+    <variation id="_001gd">
+        <name>excludes some content in a nonNumeric, GOOD</name>
+        <description>excludes some content in a nonNumeric</description>
+        <reference xiispec="5"></reference>
+        <reference specification="Various exclude examples (The ix:exclude element is a descendant of ix:nonNumeric element)"></reference>
+        <reference xiitest="PASS-element-ix-exclude-complete"></reference>
+        <reference xiitest="PASS-exclude-nonNumeric-parent"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i05001gd/i05001gd-20081231.htm</instance>
+            <linkbase>i05001gd/i05001gd-20081231_pre.xml</linkbase>
+            <linkbase>i05001gd/i05001gd-20081231_lab.xml</linkbase>
+            <schema>i05001gd/i05001gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_100ng">
+        <name>Invalid excluded content of nonFraction (which will be a parent any time it is an ancestor), NOGOOD</name>
+        <description>FAIL-exclude-nonFraction-parent</description>
+        <reference xiispec="5.1.1"></reference>
+        <reference specification="nonFraction Content: ( ix:nonFraction | any text node )"></reference>
+        <reference xiitest="FAIL-exclude-nonFraction-parent"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i05100ng/i05100ng-20081231.htm</instance>
+            <linkbase>i05100ng/i05100ng-20081231_pre.xml</linkbase>
+            <linkbase>i05100ng/i05100ng-20081231_lab.xml</linkbase>
+            <schema>i05100ng/i05100ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.5.1.1:excludeMisplaced" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70105" txt="The ix:exclude element MUST be a descendant of atleast one ix:continuation, ix:footnote or ix:nonNumeric element"></assert>
+        </result>
+    </variation>
+    <variation id="_101ng">
+        <name>misplaced ix:exclude, NOGOOD</name>
+        <description>FAIL-misplaced-exclude</description>
+        <reference xiispec="5.1.1"></reference>
+        <reference specification="The ix:exclude element MUST be a descendant of at least one ix:continuation, ix:footnote or ix:nonNumeric element"></reference>
+        <reference xiitest="FAIL-misplaced-exclude"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i05101ng/i05101ng-20081231.htm</instance>
+            <linkbase>i05101ng/i05101ng-20081231_pre.xml</linkbase>
+            <linkbase>i05101ng/i05101ng-20081231_lab.xml</linkbase>
+            <schema>i05101ng/i05101ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.5.1.1:excludeMisplaced" frd="ix" fj="Inline XBRL ix:exclude must be nested in ix:continuation, ix:footnote, ix:nonNumeric must have at least 1 but none present element." nnum="70105"></assert>
+        </result>
+    </variation>
+</testcase>

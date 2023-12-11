@@ -1,0 +1,263 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet   type="text/xsl" href="../../../lib/test.xsl"?>
+<conf:testcase xmlns:conf="http://edgar/2009/conformance" xmlns:iso4217="http://www.xbrl.org/2003/iso4217" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xbrldt="http://xbrl.org/2005/xbrldt" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <conf:creator>
+        <conf:name>SEC Office of Structured Disclosure</conf:name>
+        <conf:email>StructuredData@sec.gov</conf:email>
+    </conf:creator>
+    <conf:number>622-01</conf:number>
+    <conf:name>EDGAR Filer Manual v68d 6.22.1</conf:name>
+    <conf:description>
+        6.22.1 <h2 xmlns="http://edgar/2009/conformance">Supported Versions of XBRL Standard Taxonomies.</h2>
+        <p xmlns="http://edgar/2009/conformance">
+            Refer to the SEC's public website (
+            <a href="http://www.sec.gov/info/edgar/edgartaxonomies.shtml">http://www.sec.gov/info/edgar/edgartaxonomies.shtml</a>
+            ) for an up-to-date listing of standard taxonomy files that are supported by EDGAR, their locations, required namespaces, and where appropriate, the relevant EDGAR form types.
+        </p>
+        <p xmlns="http://edgar/2009/conformance">
+            REMARK: There is no such section 6.22.1, it is meant to refer to 'taxonomies that we allow'. For purposes of this test
+            <a href="../../../lib/edgartaxonomies.xml">edgartaxonomies.xml</a>
+            is the ONLY authoritative source of "standard taxonomies". This test checks the allowed files in groups according to family and version (i.e., release).
+        </p>
+    </conf:description>
+    <conf:reference specification="11172"></conf:reference>
+    <conf:variation id="_000gd">
+        <conf:name>us-gaap/2023, ecd/2023, cef/2023 and stx/2023(stx is dei along with country, currency, exch, naics, sic and stpr), GOOD</conf:name>
+        <conf:description>us-gaap/2023, ecd/2023, cef/2023 and stx/2023(stx is dei along with country, currency, exch, naics, sic and stpr), GOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62201000gd/e62201000gd-20081231.htm</conf:instance>
+            <conf:schema>e62201000gd/e62201016gd-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_001gd">
+        <conf:name>'cef/2023',  'dei/2023', 'srt/2023', 'us-gaap/2023' GOOD</conf:name>
+        <conf:description>'cef/2023',  'dei/2023', 'srt/2023', 'us-gaap/2023', GOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "10-Q"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62201001gd/cef05-20220630.htm</conf:instance>
+            <conf:schema>e62201001gd/cef05-20220630.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_002gd">
+        <conf:name>dei/2023, rr/2023, GOOD</conf:name>
+        <conf:description>dei/2023, rr/2023,  GOOD</conf:description>
+        <conf:reference specification="EMR-183"></conf:reference>
+        <conf:data>
+            <conf:parameter name="submissionType" value="485BPOS"></conf:parameter>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType":"485BPOS","rptSeriesClassInfo.seriesIds":["S010101010"]}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62201002gd/e62201002gd-20081231.htm</conf:instance>
+            <conf:schema>e62201002gd/e62201018gd-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_003gd">
+        <conf:name>vip/2023, dei/2023, GOOD</conf:name>
+        <conf:description>vip/2023, dei/2023, Form N-4 with all three entry points, GOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "N-4"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62201003gd/e62201003gd-20211231.htm</conf:instance>
+            <conf:schema>e62201003gd/e62201019gd-20211231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_004gd">
+        <conf:name>ecd/2023, dei/2023, us-gaap/2023</conf:name>
+        <conf:description>ecd/2023, dei/2023, us-gaap/2023</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62201004gd/e62201004gd-20081231.htm</conf:instance>
+            <conf:schema>e62201004gd/e62201016gd-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_005gd">
+        <conf:name>ifrs/2023, dei/2023, GOOD</conf:name>
+        <conf:description>ifrs/2023, dei/2023, GOOD</conf:description>
+        <conf:reference specification="EMR-184"></conf:reference>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "6-K" ,"periodOfReport" : "12-31-2008" ,"items" : "8.01" }'></conf:parameter>
+            <conf:instance readMeFirst="true">e62201005gd/e62201005gd-20081231.htm</conf:instance>
+            <conf:schema>e62201005gd/e62201005gd-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_006gd">
+        <conf:name>rxp/2023, snj/2023, GD</conf:name>
+        <conf:description>rxp/2023, snj/2023 GD</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "SD"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62201006gd/e62201006gd-20301231.xml</conf:instance>
+            <conf:schema>e62201006gd/e62201006gd-20301231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+    </conf:result>
+    </conf:variation>
+    <conf:variation id="_007gd">
+        <conf:name>oef/2023, GD</conf:name>
+        <conf:description>oef/2023, GD</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "N-CSR/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62201007gd/e62201007gd-20321031.htm</conf:instance>
+            <conf:schema>e62201007gd/e62201007gd-20321031.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+    </conf:result>
+    </conf:variation>
+    <conf:variation id="_008gd">
+        <conf:name>country/2023, dei/2023, shr-10b51/2023, shr-exh/2023, shr-narr/2023, shr/2023, srt-roles/2023, srt/2023, us-gaap/2023,  GD</conf:name>
+        <conf:description>country/2023, dei/2023, shr-10b51/2023, shr-exh/2023, shr-narr/2023, shr/2023, srt-roles/2023, srt/2023, us-gaap/2023,  GD</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "10-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62201008gd/e62201008gd-20331231.htm</conf:instance>
+            <conf:schema>e62201008gd/e62201008gd-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+    </conf:result>
+    </conf:variation>
+    <conf:variation id="_009gd">
+        <conf:name>fnd/2022 with compatible taxonomies, GD</conf:name>
+        <conf:description>fnd/2022 with compatible taxonomies, GD</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "S-6"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62201009gd/e62201009gd-20230930.htm</conf:instance>
+            <conf:schema>e62201009gd/e62201009gd-20230930.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+    </conf:result>
+    </conf:variation>
+    <conf:variation id="_010gd">
+        <conf:name>fnd-rr/2022 with compatible taxonomies, GD</conf:name>
+        <conf:description>fnd-rr/2022 with compatible taxonomies, GD</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "N-1A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62201010gd/e62201010gd-20230930.htm</conf:instance>
+            <conf:schema>e62201010gd/e62201010gd-20230930.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+    </conf:result>
+    </conf:variation>
+    <conf:variation id="_011gd">
+        <conf:name>fnd/2023 with compatible taxonomies, GD</conf:name>
+        <conf:description>fnd/2023 with compatible taxonomies, GD</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "S-6"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62201011gd/e62201011gd-20230930.htm</conf:instance>
+            <conf:schema>e62201011gd/e62201011gd-20230930.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+    </conf:result>
+    </conf:variation>
+    <conf:variation id="_012gd">
+        <conf:name>fnd-oef/2023 with compatible taxonomies, GD</conf:name>
+        <conf:description>fnd-oef/2023 with compatible taxonomies, GD</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "N-1A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62201012gd/e62201012gd-20230930.htm</conf:instance>
+            <conf:schema>e62201012gd/e62201012gd-20230930.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+    </conf:result>
+    </conf:variation>
+    <conf:variation id="_013gd">
+        <conf:name>fnd-cef-pre/2023 with compatible taxonomies, GD</conf:name>
+        <conf:description>fnd-cef-pre/2023 with compatible taxonomies, GD</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "N-2"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62201013gd/e62201013gd-20230930.htm</conf:instance>
+            <conf:schema>e62201013gd/e62201013gd-20230930.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+    </conf:result>
+    </conf:variation>
+    <conf:variation id="_016gd">
+        <conf:name>country/2022, currency/2022, dei/2022, exch/2022, naics/2022, sic/2022, srt/2022, stpr/2022, us-gaap/2022, GOOD</conf:name>
+        <conf:description>(us-gaap only) country/2022, currency/2022, dei/2022, exch/2022, naics/2022, sic/2022, srt/2022, stpr/2022, us-gaap/2022, GOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"datetimeForTesting":"2022-06-30", "periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62201016gd/e62201016gd-20081231.htm</conf:instance>
+            <conf:schema>e62201016gd/e62201016gd-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_017gd">
+        <conf:name>cef/2022, dei/2022, GOOD</conf:name>
+        <conf:description>cef/2022, dei/2022, like 015gd, GOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "N-2"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62201017gd/e62201017gd-20211231.htm</conf:instance>
+            <conf:schema>e62201017gd/e62201017gd-20211231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_018gd">
+        <conf:name>dei/2022, rr/2022, GOOD</conf:name>
+        <conf:description>dei/2022, rr/2022, like 011gd, GOOD</conf:description>
+        <conf:reference specification="EMR-183"></conf:reference>
+        <conf:data>
+            <conf:parameter name="submissionType" value="485BPOS"></conf:parameter>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType":"485BPOS","rptSeriesClassInfo.seriesIds":["S010101010"]}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62201018gd/e62201018gd-20081231.htm</conf:instance>
+            <conf:schema>e62201018gd/e62201018gd-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_019gd">
+        <conf:name>vip/2022, dei/2022, GOOD</conf:name>
+        <conf:description>vip/2022, dei/2022, Form N-4 with all three entry points, GOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "N-4"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62201019gd/e62201019gd-20211231.htm</conf:instance>
+            <conf:schema>e62201019gd/e62201019gd-20211231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_020gd">
+        <conf:name>ifrs/2022, dei/2022, GOOD</conf:name>
+        <conf:description>ifrs/2022, dei/2022, GOOD</conf:description>
+        <conf:reference specification="EMR-184"></conf:reference>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "6-K" ,"periodOfReport" : "12-31-2008" ,"items" : "8.01" }'></conf:parameter>
+            <conf:instance readMeFirst="true">e62201020gd/e62201020gd-20081231.htm</conf:instance>
+            <conf:schema>e62201020gd/e62201014gd-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_021gd">
+        <conf:name>vip/2022q2, dei/2022, Form N-4 with all three entry points, GOOD</conf:name>
+        <conf:description>vipq2/2022q2, dei/2022, Form N-4 with all three entry points, GOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "N-4"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62201021gd/e62201021gd-20211231.htm</conf:instance>
+            <conf:schema>e62201021gd/e62201019gd-20211231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_022gd">
+        <conf:name>us-gaap/2022q3 with dei/2022, GOOD</conf:name>
+        <conf:description>us-gaap/2022q3 with dei/2022, GOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62201022gd/e62201022gd-20081231.htm</conf:instance>
+            <conf:schema>e62201022gd/e62201016gd-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_023gd">
+        <conf:name>ecd/2022q4, dei/2022q4</conf:name>
+        <conf:description>ecd/2022q4, dei/2022q4</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e62201023gd/e62201023gd-20081231.htm</conf:instance>
+            <conf:schema>e62201023gd/e62201016gd-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+</conf:testcase>

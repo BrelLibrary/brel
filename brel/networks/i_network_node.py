@@ -89,7 +89,7 @@ class INetworkNode(ABC):
         return f"NetworkNode(report_element={self.get_report_element()}, no. children={len(self.get_children())}"
     
     @abstractmethod
-    def get_order(self) -> int:
+    def get_order(self) -> float:
         """
         Returns the order of this node in the network
         @return: int containing the order of this node in the network

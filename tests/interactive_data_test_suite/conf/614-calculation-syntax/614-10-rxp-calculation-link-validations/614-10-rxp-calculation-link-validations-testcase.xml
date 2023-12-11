@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl"?>
+<conf:testcase xmlns:conf="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <conf:creator>
+        <conf:name>SEC Office of Structured Disclosure</conf:name>
+        <conf:email>StructuredData@sec.gov</conf:email>
+    </conf:creator>
+    <conf:number>{number}</conf:number>
+    <conf:name>EDGAR Filer Manual {version}</conf:name>
+    <conf:description>
+        <div>
+            <a href="https://www.sec.gov/files/edgar/filermanual/efmvol2.pdf#6.14.10 RXP calculation link validations">EDGAR Filer Manual:6.14.10 RXP calculation link validations</a>
+        </div>
+    </conf:description>
+    <conf:variation id="_001gd">
+        <conf:name>DocumentType: 2.01 SD, Valid example, calc-between-dei-elements, GD</conf:name>
+        <conf:description>DocumentType: 2.01 SD, Valid example, calc-between-dei-elements, GD</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "SD/A", "exhibitType": "EX-2.01"}'></conf:parameter>
+            <conf:instance readMeFirst="true" exhibitType="EX-2.01">e61410001gd/e61410001gd-20301231.xml</conf:instance>
+            <conf:schema>e61410001gd/e61410001gd-20301231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+    </conf:result>
+    </conf:variation>
+    <conf:variation id="_002ng">
+        <conf:name>DocumentType: 2.01 SD, Invalid example, calc between RXP and non-RXP elements, NG</conf:name>
+        <conf:description>DocumentType: 2.01 SD, Invalid example, calc between RXP and non-RXP elements, NG</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "SD/A", "exhibitType": "EX-2.01"}'></conf:parameter>
+            <conf:instance readMeFirst="true" exhibitType="EX-2.01">e61410002ng/e61410002ng-20301231.xml</conf:instance>
+            <conf:schema>e61410002ng/e61410002ng-20301231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="61410" name="Relationship-Not-Permitted" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+</conf:testcase>

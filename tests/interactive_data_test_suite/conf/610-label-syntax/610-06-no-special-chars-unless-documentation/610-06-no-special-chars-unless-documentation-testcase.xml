@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>610-06</number>
+    <name>EDGAR Filer Manual v68d 6.10.6</name>
+    <description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.10.6  Restrictions on label lengths.">Refer to EFM: 6.10.6  Restrictions on label lengths.</a>
+    </description>
+    <reference specification="11200"></reference>
+    <variation id="_000gd">
+        <name>6.10.6, a documentation label that is over 1000 characters with the special character '&lt;', GOOD.</name>
+        <description> a documentation label that is over 1000 characters with the special character '&lt;', GOOD.</description>
+        <reference specification="11200"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e61006000gd-20081231.xml</instance>
+            <linkbase>e61006000gd-20081231_lab.xml</linkbase>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+            <schema>e61006000gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_002ng">
+        <name>6.10.6, a standard label of 562 characters, NOGOOD.</name>
+        <description> a standard label of 562 characters, NOGOOD.</description>
+        <reference specification="11200"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e61006002ng-20081231.xml</instance>
+            <linkbase>e61006002ng-20081231_lab.xml</linkbase>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+            <schema>e61006002ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="61006" name="Label-Disallowed" frd="rq"></assert>
+        </result>
+    </variation>
+    <variation id="_003ng">
+        <name>6.10.6, a verbose label containing &lt; character, NOGOOD.</name>
+        <description> a verbose label containing &lt; character, NOGOOD.</description>
+        <reference specification="11200"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e61006003ng-20081231.xml</instance>
+            <linkbase>e61006003ng-20081231_lab.xml</linkbase>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+            <schema>e61006003ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="61006" name="Label-Disallowed" frd="rq"></assert>
+        </result>
+    </variation>
+    <variation id="_004gd">
+        <name>6.10.6, a standard label containing &gt; character which used to be 'special', GOOD.</name>
+        <description> a standard label containing &gt; character which used to be 'special', GOOD.</description>
+        <reference specification="11200"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e61006004gd-20081231.xml</instance>
+            <linkbase>e61006004gd-20081231_lab.xml</linkbase>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+            <schema>e61006004gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_005ng">
+        <name>6.10.6, a standard label containing consecutive whitespace, NOGOOD.</name>
+        <description> a standard label containing consecutive whitespace, NOGOOD.</description>
+        <reference specification="11200"></reference>
+        <reference specification="SPR"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e61006005ng-20081231.xml</instance>
+            <linkbase>e61006005ng-20081231_lab.xml</linkbase>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+            <schema>e61006005ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="61006" name="Label-Disallowed" frd="rq"></assert>
+        </result>
+    </variation>
+</testcase>

@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>605-23</number>
+    <name>EDGAR Filer Manual v68d 6.5.23</name>
+    <description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.5.23  The Entity CIK in the required context.">Refer to EFM: 6.5.23  The Entity CIK in the required context.</a>
+    </description>
+    <reference specification="10491.2.1"></reference>
+    <variation id="_000gd">
+        <name>6.5.23, CIK in element and context are 9876543210, GOOD.</name>
+        <description>6.5.23, Good CIK Match, GOOD.</description>
+        <reference specification="10491.2.1"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "06-30-2009", "submissionType": "8-K", "CIK":"9876543210"}'></parameter>
+            <instance readMeFirst="true">e60523000gd-20081231.xml</instance>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_001ng">
+        <name>6.5.23, CIK in element is 99999999, context is 9876543210, NOGOOD.</name>
+        <description>6.5.23, Bad CIK Match, NOGOOD.</description>
+        <reference specification="10491.2.1"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "06-30-2009", "submissionType": "8-K", "cikList":"9876543210"}'></parameter>
+            <instance readMeFirst="true">e60523001ng-20081231.xml</instance>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60523" name="Non-Matching-Cik" frd="cp"></assert>
+        </result>
+    </variation>
+    <variation id="_002gd">
+        <name>6.5.23, CIK in element and context are 9876543210, GOOD.</name>
+        <description>6.5.23, Good CIK Match, GOOD.</description>
+        <reference specification="10491.2.1"></reference>
+        <reference specification="10872"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2009", "submissionType": "8-K", "CIK":"9876543210"}'></parameter>
+            <instance readMeFirst="true">e60523002gd-20091231.xml</instance>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_003ng">
+        <name>6.5.23, CIK in element is 99999999, context is 9876543210, NOGOOD.</name>
+        <description>6.5.23, Bad CIK Match, NOGOOD.</description>
+        <reference specification="10491.2.1"></reference>
+        <reference specification="10872"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2009", "submissionType": "8-K", "cikList":"9876543210"}'></parameter>
+            <instance readMeFirst="true">e60523003ng-20091231.xml</instance>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60523" name="Non-Matching-Cik" frd="cp"></assert>
+        </result>
+    </variation>
+    <variation id="_004ng">
+        <name>6.5.23, CIK and context are 9876543210 but parameter is 9999999999, NOGOOD.</name>
+        <description>6.5.23, Bad CIK Match, NOGOOD.</description>
+        <reference specification="10491.2.1"></reference>
+        <reference specification="10872"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "06-30-2009", "submissionType": "8-K", "CIK":"9999999999"}'></parameter>
+            <instance readMeFirst="true">e60523004ng-20081231.xml</instance>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60523" name="Non-Matching-Cik" frd="cp"></assert>
+        </result>
+    </variation>
+    <variation id="_005gd">
+        <name>6.5.23, CIK and context are 9876543210 and an extra CIK in different context 9999999999, GOOD.</name>
+        <description>6.5.23, GOOD</description>
+        <reference specification="10491.2.1"></reference>
+        <reference specification="10872"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "06-30-2009", "submissionType": "8-K", "CIK":"9876543210"}'></parameter>
+            <instance readMeFirst="true">e60523005gd-20081231.xml</instance>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+</testcase>

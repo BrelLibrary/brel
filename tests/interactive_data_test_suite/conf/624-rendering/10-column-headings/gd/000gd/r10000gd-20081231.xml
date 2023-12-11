@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xbrli:xbrl xmlns:dei="http://xbrl.sec.gov/dei/2023" xmlns:iso4217="http://www.xbrl.org/2003/iso4217" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:dtr-types="http://www.xbrl.org/dtr/type/2022-03-31" xmlns:xbrldt="http://xbrl.org/2005/xbrldt" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:r10000gd="http://r10000gd/20081231" xmlns:us-roles="http://fasb.org/us-roles/2023" xmlns:us-types="http://fasb.org/us-types/2023">
+    <link:schemaRef xlink:href="r10000gd-20081231.xsd" xlink:type="simple"></link:schemaRef>
+    <xbrli:context id="d">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2015-01-01</xbrli:startDate>
+            <xbrli:endDate>2015-12-31</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="d2">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2014-01-01</xbrli:startDate>
+            <xbrli:endDate>2014-12-31</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:unit id="usd_per_share">
+        <xbrli:divide>
+            <xbrli:unitNumerator>
+                <xbrli:measure>iso4217:USD</xbrli:measure>
+            </xbrli:unitNumerator>
+            <xbrli:unitDenominator>
+                <xbrli:measure>xbrli:shares</xbrli:measure>
+            </xbrli:unitDenominator>
+        </xbrli:divide>
+    </xbrli:unit>
+    <xbrli:unit id="USD">
+        <xbrli:measure>iso4217:USD</xbrli:measure>
+    </xbrli:unit>
+    <dei:DocumentType contextRef="d">8-K</dei:DocumentType>
+    <dei:AmendmentFlag contextRef="d">false</dei:AmendmentFlag>
+    <dei:EntityCentralIndexKey contextRef="d">9876543210</dei:EntityCentralIndexKey>
+    <dei:EntityRegistrantName contextRef="d">OID TEST CO #1 r10000gd</dei:EntityRegistrantName>
+    <dei:DocumentPeriodEndDate contextRef="d">2015-12-31</dei:DocumentPeriodEndDate>
+    <r10000gd:MonetaryDurationItem contextRef="d" unitRef="USD" decimals="0">330000</r10000gd:MonetaryDurationItem>
+    <r10000gd:MonetaryDurationItem contextRef="d2" unitRef="USD" decimals="0">220000</r10000gd:MonetaryDurationItem>
+    <EntityEmergingGrowthCompany xmlns="http://xbrl.sec.gov/dei/2023" contextRef="d">false</EntityEmergingGrowthCompany>
+</xbrli:xbrl>

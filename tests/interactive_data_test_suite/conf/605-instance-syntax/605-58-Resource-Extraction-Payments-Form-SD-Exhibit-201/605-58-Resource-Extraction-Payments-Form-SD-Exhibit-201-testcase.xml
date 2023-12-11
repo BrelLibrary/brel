@@ -1,0 +1,134 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl"?>
+<conf:testcase xmlns:conf="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <conf:creator>
+        <conf:name>SEC Office of Structured Disclosure</conf:name>
+        <conf:email>StructuredData@sec.gov</conf:email>
+    </conf:creator>
+    <conf:number>{number}</conf:number>
+    <conf:name>EDGAR Filer Manual {version}</conf:name>
+    <conf:description>
+        <div>
+            <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.5.58 Resource Extraction Payments Form SD Exhibit 2.01">6.6.58 Resource Extraction Payments Form SD Exhibit 2.01</a>
+        </div>
+    </conf:description>
+    <conf:variation id="_001gd">
+        <conf:name>DocumentType: 2.01 SD, Valid example, GD</conf:name>
+        <conf:description>DocumentType: 2.01 SD, Valid example, GD</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "SD/A", "exhibitType": "EX-2.01"}'></conf:parameter>
+            <conf:instance readMeFirst="true" exhibitType="EX-2.01">e60558001gd/e60558001gd-20301231.xml</conf:instance>
+            <conf:schema>e60558001gd/e60558001gd-20301231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+    </conf:result>
+    </conf:variation>
+    <conf:variation id="_002gw">
+        <conf:name>SubmissionType: SD/A, DocumentType: 2.01 SD, dei:EntityReportingCurrencyISOCode-R* - A non-null fact should exist, GW</conf:name>
+        <conf:description>SubmissionType: SD/A, DocumentType: 2.01 SD, dei:EntityReportingCurrencyISOCode-R* - A non-null fact should exist, GW</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "SD/A", "exhibitType": "EX-2.01"}'></conf:parameter>
+            <conf:instance readMeFirst="true" exhibitType="EX-2.01">e60558002gw/e60558002gw-20301231.xml</conf:instance>
+            <conf:schema>e60558002gw/e60558002gw-20301231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60558" name="dei:EntityReportingCurrencyISOCodeMissing" frd="tbd"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_003gw">
+        <conf:name>SubmissionType: SD/A, DocumentType: 2.01 SD, rxp:TotalPayments-R* - A non-null fact should exist, GW</conf:name>
+        <conf:description>SubmissionType: SD/A, DocumentType: 2.01 SD, rxp:TotalPayments-R* - A non-null fact should exist, GW</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "SD/A", "exhibitType": "EX-2.01"}'></conf:parameter>
+            <conf:instance readMeFirst="true" exhibitType="EX-2.01">e60558003gw/e60558003gw-20301231.xml</conf:instance>
+            <conf:schema>e60558003gw/e60558003gw-20301231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60558" name="rxp:TotalPaymentsMissing" frd="tbd"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_004gw">
+        <conf:name>SubmissionType: SD/A, DocumentType: 2.01 SD, rxp:Gv- rxp:A requires non-null rxp:Gv, rxp:Co, rxp:R, rxp:M, GW</conf:name>
+        <conf:description>SubmissionType: SD/A, DocumentType: 2.01 SD, rxp:Gv- rxp:A requires non-null rxp:Gv, rxp:Co, rxp:R, rxp:M, GW</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "SD/A", "exhibitType": "EX-2.01"}'></conf:parameter>
+            <conf:instance readMeFirst="true" exhibitType="EX-2.01">e60558004gw/e60558004gw-20301231.xml</conf:instance>
+            <conf:schema>e60558004gw/e60558004gw-20301231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60558" name="rxp:GvMissing" frd="tbd"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_005gw">
+        <conf:name>SubmissionType: SD/A, DocumentType: 2.01 SD, rxp:Co- rxp:A requires non-null rxp:Gv, rxp:Co, rxp:R, rxp:M, GW</conf:name>
+        <conf:description>SubmissionType: SD/A, DocumentType: 2.01 SD, rxp:Co- rxp:A requires non-null rxp:Gv, rxp:Co, rxp:R, rxp:M, GW</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "SD/A", "exhibitType": "EX-2.01"}'></conf:parameter>
+            <conf:instance readMeFirst="true" exhibitType="EX-2.01">e60558005gw/e60558005gw-20301231.xml</conf:instance>
+            <conf:schema>e60558005gw/e60558005gw-20301231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60558" name="rxp:CoMissing" frd="tbd"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_006gw">
+        <conf:name>SubmissionType: SD/A, DocumentType: 2.01 SD, rxp:R- rxp:A requires non-null rxp:Gv, rxp:Co, rxp:R, rxp:M, GW</conf:name>
+        <conf:description>SubmissionType: SD/A, DocumentType: 2.01 SD, rxp:R- rxp:A requires non-null rxp:Gv, rxp:Co, rxp:R, rxp:M, GW</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "SD/A", "exhibitType": "EX-2.01"}'></conf:parameter>
+            <conf:instance readMeFirst="true" exhibitType="EX-2.01">e60558006gw/e60558006gw-20301231.xml</conf:instance>
+            <conf:schema>e60558006gw/e60558006gw-20301231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60558" name="rxp:RMissing" frd="tbd"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_007gw">
+        <conf:name>SubmissionType: SD/A, DocumentType: 2.01 SD, rxp:M- rxp:A requires non-null rxp:Gv, rxp:Co, rxp:R, rxp:M, GW</conf:name>
+        <conf:description>SubmissionType: SD/A, DocumentType: 2.01 SD, rxp:M- rxp:A requires non-null rxp:Gv, rxp:Co, rxp:R, rxp:M, GW</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "SD/A", "exhibitType": "EX-2.01"}'></conf:parameter>
+            <conf:instance readMeFirst="true" exhibitType="EX-2.01">e60558007gw/e60558007gw-20301231.xml</conf:instance>
+            <conf:schema>e60558007gw/e60558007gw-20301231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60558" name="rxp:MMissing" frd="tbd"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_008gw">
+        <conf:name>SubmissionType: SD, DocumentType: 2.01 SD, rxp:K- rxp:Km requires non-null	rxp:K, GW</conf:name>
+        <conf:description>SubmissionType: SD, DocumentType: 2.01 SD, rxp:K- rxp:Km requires non-null	rxp:K, GW</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "SD"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60558008gw/e60558008gw-20301231.xml</conf:instance>
+            <conf:schema>e60558008gw/e60558008gw-20301231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60558" name="rxp:KMissing" frd="tbd"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_009gw">
+        <conf:name>SubmissionType: SD, DocumentType: 2.01 SD, rxp:Km- rxp:K requires non-null	rxp:Km, rxp:A, GW</conf:name>
+        <conf:description>SubmissionType: SD, DocumentType: 2.01 SD, rxp:Km- rxp:K requires non-null	rxp:Km, rxp:A, GW</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "SD"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60558009gw/e60558009gw-20301231.xml</conf:instance>
+            <conf:schema>e60558009gw/e60558009gw-20301231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60558" name="rxp:KmMissing" frd="tbd"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_010gw">
+        <conf:name>SubmissionType: SD, DocumentType: 2.01 SD, rxp:A- rxp:K requires non-null	rxp:Km, rxp:A, GW</conf:name>
+        <conf:description>SubmissionType: SD, DocumentType: 2.01 SD, rxp:A- rxp:K requires non-null	rxp:Km, rxp:A, GW</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "SD"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60558010gw/e60558010gw-20301231.xml</conf:instance>
+            <conf:schema>e60558010gw/e60558010gw-20301231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60558" name="rxp:AMissing" frd="tbd"></conf:assert>
+        </conf:result>
+    </conf:variation>
+</conf:testcase>

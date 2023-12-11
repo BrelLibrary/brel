@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>626-01</number>
+    <name>EDGAR Filer Manual v68d 6.26.1</name>
+    <description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.26.1  Each axis that is presented requires at least one child element.">Refer to EFM: 6.26.1  Each axis that is presented requires at least one child element.</a>
+    </description>
+    <reference specification="18153"></reference>
+    <variation id="_000gd">
+        <name>6.26.1 Axis appears with a member child appearing on a fact in an element that is used in the presentation group, GOOD.</name>
+        <description>Axis appears with a member child that is used in the presentation group, GOOD.</description>
+        <reference specification="18153"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e62601000gd-20081231.xml</instance>
+            <linkbase>e62601000gd-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+            <schema>e62601000gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_001gw">
+        <name>6.26.1 Axis appears with a member child only, but none of the facts with that member appear in the presentation group, GOOD/WARN.</name>
+        <description>Axis appears with a member child only, but none of the facts with that member appear in the presentation group, GOOD/WARN.</description>
+        <reference specification="18153"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e62601001gw-20081231.xml</instance>
+            <linkbase>e62601001gw-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+            <schema>e62601001gw-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="wrn" num="62601" name="All-Facts-Filtered" frd="rq"></assert>
+        </result>
+    </variation>
+    <variation id="_002gw">
+        <name>6.26.1 Axis appears with a member child only, and there are no such facts in the instance, GOOD/WARN.</name>
+        <description>LegalEntityAxis appears in 'Other Information' with the SubsidiaryMember child only, but there are no contexts with explicit member SubsidiaryMember, GOOD/WARN.</description>
+        <reference specification="18153"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e62601002gw-20081231.xml</instance>
+            <linkbase>e62601002gw-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+            <schema>e62601002gw-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="wrn" num="62601" name="All-Facts-Filtered" frd="rq"></assert>
+        </result>
+    </variation>
+</testcase>

@@ -1,0 +1,591 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xbrl
+  xmlns="http://www.xbrl.org/2003/instance"
+  xmlns:dei="http://xbrl.sec.gov/dei/2018-01-31"
+  xmlns:i09001gd="http://i09001gd/20081231"
+  xmlns:iso4217="http://www.xbrl.org/2003/iso4217"
+  xmlns:link="http://www.xbrl.org/2003/linkbase"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+    <link:schemaRef xlink:href="i09001gd-20081231.xsd" xlink:type="simple"/>
+    <context id="d">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+        </entity>
+        <period>
+            <startDate>2008-04-01</startDate>
+            <endDate>2008-12-31</endDate>
+        </period>
+    </context>
+    <context id="i">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+        </entity>
+        <period>
+            <instant>2008-12-31</instant>
+        </period>
+    </context>
+    <context id="NFC1">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+        </entity>
+        <period>
+            <startDate>2005-01-01</startDate>
+            <endDate>2005-12-31</endDate>
+        </period>
+    </context>
+    <context id="NFC2">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+        </entity>
+        <period>
+            <startDate>2006-01-01</startDate>
+            <endDate>2006-12-31</endDate>
+        </period>
+    </context>
+    <context id="NFC3">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+        </entity>
+        <period>
+            <startDate>2007-01-01</startDate>
+            <endDate>2007-12-31</endDate>
+        </period>
+    </context>
+    <context id="NFC4">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+        </entity>
+        <period>
+            <startDate>2008-01-01</startDate>
+            <endDate>2008-12-31</endDate>
+        </period>
+    </context>
+    <unit id="shares">
+        <measure>shares</measure>
+    </unit>
+    <unit id="iso4217_USD_per_Share">
+        <divide>
+            <unitNumerator>
+                <measure>iso4217:USD</measure>
+            </unitNumerator>
+            <unitDenominator>
+                <measure>shares</measure>
+            </unitDenominator>
+        </divide>
+    </unit>
+    <dei:AmendmentFlag contextRef="d">false</dei:AmendmentFlag>
+    <dei:DocumentPeriodEndDate contextRef="d">2008-12-31</dei:DocumentPeriodEndDate>
+    <dei:DocumentFiscalPeriodFocus contextRef="d">Q3</dei:DocumentFiscalPeriodFocus>
+    <dei:EntityCentralIndexKey contextRef="d">9876543210</dei:EntityCentralIndexKey>
+    <dei:CurrentFiscalYearEndDate contextRef="d">--03-31</dei:CurrentFiscalYearEndDate>
+    <dei:EntityEmergingGrowthCompany contextRef="d">false</dei:EntityEmergingGrowthCompany>
+    <dei:DocumentType contextRef="d">8-K</dei:DocumentType>
+    <dei:DocumentFiscalYearFocus contextRef="d">2008</dei:DocumentFiscalYearFocus>
+    <dei:EntityRegistrantName contextRef="d">OSD TEST CO #1 i09001gd</dei:EntityRegistrantName>
+    <dei:EntityCommonStockSharesOutstanding contextRef="i" decimals="INF" unitRef="shares">154357198</dei:EntityCommonStockSharesOutstanding>
+    <i09001gd:Content1
+      contextRef="d"
+      decimals="2"
+      id="fact1"
+      unitRef="iso4217_USD_per_Share">1234.56</i09001gd:Content1>
+    <i09001gd:Content1
+      contextRef="NFC4"
+      decimals="2"
+      id="fact22"
+      unitRef="iso4217_USD_per_Share">12.25</i09001gd:Content1>
+    <i09001gd:Content2
+      contextRef="NFC4"
+      decimals="2"
+      id="fact23"
+      unitRef="iso4217_USD_per_Share">20.25</i09001gd:Content2>
+    <i09001gd:Content2
+      contextRef="d"
+      decimals="2"
+      id="fact2"
+      unitRef="iso4217_USD_per_Share">1234.56</i09001gd:Content2>
+    <i09001gd:Content1
+      contextRef="NFC1"
+      decimals="2"
+      id="fact3a"
+      unitRef="iso4217_USD_per_Share">1234.56</i09001gd:Content1>
+    <i09001gd:Content2
+      contextRef="NFC1"
+      decimals="2"
+      id="fact3b"
+      unitRef="iso4217_USD_per_Share">1234.56</i09001gd:Content2>
+    <i09001gd:Content1
+      contextRef="NFC2"
+      decimals="2"
+      id="fact4"
+      unitRef="iso4217_USD_per_Share">1.15</i09001gd:Content1>
+    <i09001gd:Content2
+      contextRef="NFC2"
+      decimals="2"
+      id="fact5"
+      unitRef="iso4217_USD_per_Share">1234.56</i09001gd:Content2>
+    <i09001gd:Content3
+      contextRef="NFC3"
+      decimals="2"
+      id="fact32"
+      unitRef="iso4217_USD_per_Share">1234.56</i09001gd:Content3>
+    <i09001gd:Content6
+      contextRef="d"
+      decimals="2"
+      id="fact7"
+      unitRef="iso4217_USD_per_Share">1234.56</i09001gd:Content6>
+    <i09001gd:Content7
+      contextRef="d"
+      decimals="2"
+      id="fact8"
+      unitRef="iso4217_USD_per_Share">1234.56</i09001gd:Content7>
+    <i09001gd:Content4
+      contextRef="NFC1"
+      decimals="2"
+      id="fact9"
+      unitRef="iso4217_USD_per_Share">1234.56</i09001gd:Content4>
+    <i09001gd:Content5
+      contextRef="NFC1"
+      decimals="2"
+      id="fact10"
+      unitRef="iso4217_USD_per_Share">1234.56</i09001gd:Content5>
+    <dei:DocumentSynopsis contextRef="NFC3" id="fact11">This is the cost of the new website.                                            </dei:DocumentSynopsis>
+    <i09001gd:Content3
+      contextRef="NFC2"
+      decimals="2"
+      id="fact33"
+      unitRef="iso4217_USD_per_Share">1.25</i09001gd:Content3>
+    <i09001gd:Content6
+      contextRef="NFC1"
+      decimals="2"
+      id="fact12"
+      unitRef="iso4217_USD_per_Share">1.15</i09001gd:Content6>
+    <i09001gd:Content7
+      contextRef="NFC1"
+      decimals="2"
+      id="fact13"
+      unitRef="iso4217_USD_per_Share">1.56</i09001gd:Content7>
+    <dei:EntityRegistrantName contextRef="NFC2" id="fact15">OSD TEST CO #1 i09001gd</dei:EntityRegistrantName>
+    <i09001gd:Content6
+      contextRef="NFC2"
+      decimals="2"
+      id="fact16"
+      unitRef="iso4217_USD_per_Share">1.25</i09001gd:Content6>
+    <i09001gd:Content7
+      contextRef="NFC2"
+      decimals="2"
+      id="fact18"
+      unitRef="iso4217_USD_per_Share">1.56</i09001gd:Content7>
+    <dei:DocumentDescription contextRef="NFC3" id="fact19">Basic description</dei:DocumentDescription>
+    <i09001gd:Content8
+      contextRef="NFC2"
+      decimals="2"
+      id="fact20"
+      unitRef="iso4217_USD_per_Share">1.56</i09001gd:Content8>
+    <i09001gd:Content1
+      contextRef="NFC3"
+      decimals="2"
+      id="fact24"
+      unitRef="iso4217_USD_per_Share">1.25</i09001gd:Content1>
+    <i09001gd:Content2
+      contextRef="NFC3"
+      decimals="2"
+      id="fact25"
+      unitRef="iso4217_USD_per_Share">2.45</i09001gd:Content2>
+    <i09001gd:Content4
+      contextRef="NFC3"
+      decimals="2"
+      id="fact27"
+      unitRef="iso4217_USD_per_Share">1.25</i09001gd:Content4>
+    <i09001gd:Content5
+      contextRef="NFC3"
+      decimals="2"
+      id="fact28"
+      unitRef="iso4217_USD_per_Share">2.45</i09001gd:Content5>
+    <i09001gd:Content6
+      contextRef="NFC3"
+      decimals="2"
+      id="fact29"
+      unitRef="iso4217_USD_per_Share">1.0</i09001gd:Content6>
+    <i09001gd:Content7
+      contextRef="NFC3"
+      decimals="2"
+      id="fact30"
+      unitRef="iso4217_USD_per_Share">2.0</i09001gd:Content7>
+    <i09001gd:Content8
+      contextRef="NFC3"
+      decimals="2"
+      id="fact31"
+      unitRef="iso4217_USD_per_Share">3.0</i09001gd:Content8>
+    <i09001gd:Content3
+      contextRef="NFC4"
+      decimals="2"
+      id="fact34"
+      unitRef="iso4217_USD_per_Share">1.45</i09001gd:Content3>
+    <i09001gd:Content4
+      contextRef="NFC4"
+      decimals="2"
+      id="fact35"
+      unitRef="iso4217_USD_per_Share">2.54</i09001gd:Content4>
+    <i09001gd:Content5
+      contextRef="NFC4"
+      decimals="2"
+      id="fact36"
+      unitRef="iso4217_USD_per_Share">3.77</i09001gd:Content5>
+    <link:footnoteLink
+      xlink:role="http://www.xbrl.org/2003/role/link"
+      xlink:type="extended">
+        <link:loc
+          xlink:href="#fact1"
+          xlink:label="fact1"
+          xlink:type="locator"/>
+        <link:footnote id="VAT69" xlink:label="VAT69" xlink:role="http://www.xbrl.org/2003/role/footnote" xlink:type="resource" xml:lang="en-US">Net of the effects of the merger and contingent liabilities.</link:footnote>
+        <link:footnoteArc
+          xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote"
+          xlink:from="fact1"
+          xlink:to="VAT69"
+          xlink:type="arc"/>
+        <link:loc
+          xlink:href="#fact2"
+          xlink:label="fact2"
+          xlink:type="locator"/>
+        <link:footnote id="footnote" xlink:label="footnote" xlink:role="http://www.xbrl.org/2003/role/footnote" xlink:type="resource" xml:lang="en-US">Net of the effects of the merger and contingent liabilities.</link:footnote>
+        <link:footnoteArc
+          xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote"
+          xlink:from="fact2"
+          xlink:to="footnote"
+          xlink:type="arc"/>
+        <link:loc
+          xlink:href="#fact3a"
+          xlink:label="fact3a"
+          xlink:type="locator"/>
+        <link:footnote id="aFootnote" xlink:label="aFootnote" xlink:role="http://www.xbrl.org/2003/role/footnote" xlink:type="resource" xml:lang="en-US">Net of the effects of the merger and contingent liabilities.</link:footnote>
+        <link:footnote id="footnoteB" xlink:label="footnoteB" xlink:role="http://www.xbrl.org/2003/role/footnote" xlink:type="resource" xml:lang="en-US">Another footnote.</link:footnote>
+        <link:footnoteArc
+          xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote"
+          xlink:from="fact3a"
+          xlink:to="footnoteB"
+          xlink:type="arc"/>
+        <link:footnoteArc
+          xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote"
+          xlink:from="fact3a"
+          xlink:to="aFootnote"
+          xlink:type="arc"/>
+        <link:loc
+          xlink:href="#fact3b"
+          xlink:label="fact3b"
+          xlink:type="locator"/>
+        <link:footnoteArc
+          xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote"
+          xlink:from="fact3b"
+          xlink:to="footnoteB"
+          xlink:type="arc"/>
+        <link:loc
+          xlink:href="#fact4"
+          xlink:label="fact4"
+          xlink:type="locator"/>
+        <link:footnote id="footnote1" xlink:label="footnote1" xlink:role="http://www.xbrl.org/2003/role/footnote" xlink:type="resource" xml:lang="en-US">Foo bar</link:footnote>
+        <link:footnoteArc
+          xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote"
+          xlink:from="fact4"
+          xlink:to="footnote1"
+          xlink:type="arc"/>
+        <link:loc
+          xlink:href="#fact5"
+          xlink:label="fact5"
+          xlink:type="locator"/>
+        <link:footnote id="footnote2" xlink:label="footnote2" xlink:role="http://www.xbrl.org/2003/role/footnote" xlink:type="resource" xml:lang="en-US">Net of the effects of the merger and contingent liabilities.</link:footnote>
+        <link:footnoteArc
+          xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote"
+          xlink:from="fact5"
+          xlink:to="footnote2"
+          xlink:type="arc"/>
+        <link:loc
+          xlink:href="#fact8"
+          xlink:label="fact8"
+          xlink:type="locator"/>
+        <link:footnote id="footnote6" xlink:label="footnote6" xlink:role="http://www.xbrl.org/2003/role/footnote" xlink:type="resource" xml:lang="en-US">Net of the effects of the
+            <xhtml:a href="mergerInfo.html">merger</xhtml:a> and contingent liabilities.
+                  
+               
+          </link:footnote>
+        <link:footnoteArc
+          xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote"
+          xlink:from="fact8"
+          xlink:to="footnote6"
+          xlink:type="arc"/>
+        <link:loc
+          xlink:href="#fact9"
+          xlink:label="fact9"
+          xlink:type="locator"/>
+        <link:footnote id="footnote7" xlink:label="footnote7" xlink:role="http://www.xbrl.org/2003/role/footnote" xlink:type="resource" xml:lang="en-US">Net of the effects of
+            <xhtml:ul>
+              <xhtml:li>the merger and</xhtml:li>
+              <xhtml:li>contingent liabilities.</xhtml:li>
+            </xhtml:ul>
+          </link:footnote>
+        <link:footnoteArc
+          xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote"
+          xlink:from="fact9"
+          xlink:to="footnote7"
+          xlink:type="arc"/>
+        <link:loc
+          xlink:href="#fact10"
+          xlink:label="fact10"
+          xlink:type="locator"/>
+        <link:footnote id="footnote8" xlink:label="footnote8" xlink:role="http://www.xbrl.org/2003/role/footnote" xlink:type="resource" xml:lang="en-US">Net of the effects of
+            <xhtml:ul>
+              <xhtml:li>the merger and</xhtml:li>
+              <xhtml:li>contingent
+                liabilities.
+                        
+                     
+              </xhtml:li>
+            </xhtml:ul>
+          </link:footnote>
+        <link:footnoteArc
+          xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote"
+          xlink:from="fact10"
+          xlink:to="footnote8"
+          xlink:type="arc"/>
+        <link:loc
+          xlink:href="#fact11"
+          xlink:label="fact11"
+          xlink:type="locator"/>
+        <link:footnote id="footnote9" xlink:label="footnote9" xlink:role="http://www.xbrl.org/2003/role/footnote" xlink:type="resource" xml:lang="en-US">Net of the effects of the merger and contingent liabilities.
+            
+          </link:footnote>
+        <link:footnoteArc
+          xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote"
+          xlink:from="fact11"
+          xlink:to="footnote9"
+          xlink:type="arc"/>
+        <link:loc
+          xlink:href="#fact12"
+          xlink:label="fact12"
+          xlink:type="locator"/>
+        <link:footnote id="footnote10" xlink:label="footnote10" xlink:role="http://www.xbrl.org/2003/role/footnote" xlink:type="resource" xml:lang="en-US">Net of the effects of the merger and contingent liabilities.</link:footnote>
+        <link:footnoteArc
+          xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote"
+          xlink:from="fact12"
+          xlink:to="footnote10"
+          xlink:type="arc"/>
+        <link:loc
+          xlink:href="#fact13"
+          xlink:label="fact13"
+          xlink:type="locator"/>
+        <link:footnote id="footnote11" xlink:label="footnote11" xlink:role="http://www.xbrl.org/2003/role/footnote" xlink:type="resource" xml:lang="en-US">
+                  Net of the effects of the
+            <xhtml:em>merger</xhtml:em> and
+                  
+               
+           contingent liabilities.
+                      <xhtml:p>More Content.</xhtml:p>
+                    </link:footnote>
+        <link:footnoteArc
+          xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote"
+          xlink:from="fact13"
+          xlink:to="footnote11"
+          xlink:type="arc"/>
+        <link:loc
+          xlink:href="#fact15"
+          xlink:label="fact15"
+          xlink:type="locator"/>
+        <link:footnote id="footnote13" xlink:label="footnote13" xlink:role="http://www.xbrl.org/2003/role/footnote" xlink:type="resource" xml:lang="en-US">Net of the
+            effects of the merger and contingent liabilities.
+                  
+               
+          </link:footnote>
+        <link:footnoteArc
+          xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote"
+          xlink:from="fact15"
+          xlink:to="footnote13"
+          xlink:type="arc"/>
+        <link:loc
+          xlink:href="#fact16"
+          xlink:label="fact16"
+          xlink:type="locator"/>
+        <link:footnote id="footnote15" xlink:label="footnote15" xlink:role="http://www.xbrl.org/2003/role/footnote" xlink:type="resource" xml:lang="en-US">Net of the effects of the merger and contingent liabilities.</link:footnote>
+        <link:footnoteArc
+          xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote"
+          xlink:from="fact16"
+          xlink:to="footnote15"
+          xlink:type="arc"/>
+        <link:loc
+          xlink:href="#fact18"
+          xlink:label="fact18"
+          xlink:type="locator"/>
+        <link:footnote id="footnote17" xlink:label="footnote17" xlink:role="http://www.xbrl.org/2003/role/footnote" xlink:type="resource" xml:lang="en-US">
+                  Footnote text.
+            <xhtml:a href="relative uri with spaces.html">Link</xhtml:a>
+            <xhtml:a href="www.sec.gov/Archives/edgar/data/absolute uri with spaces">Link</xhtml:a>
+          </link:footnote>
+        <link:footnoteArc
+          xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote"
+          xlink:from="fact18"
+          xlink:to="footnote17"
+          xlink:type="arc"/>
+        <link:loc
+          xlink:href="#fact19"
+          xlink:label="fact19"
+          xlink:type="locator"/>
+        <link:footnote id="footnote18" xlink:label="footnote18" xlink:role="http://www.xbrl.org/2003/role/footnote" xlink:type="resource" xml:lang="en-US">Outer footnote
+            Nested footnote
+            <xhtml:p>In html</xhtml:p>
+          </link:footnote>
+        <link:footnote id="footnote19" xlink:label="footnote19" xlink:role="http://www.xbrl.org/2003/role/footnote" xlink:type="resource" xml:lang="en-US">Nested footnote</link:footnote>
+        <link:footnoteArc
+          xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote"
+          xlink:from="fact19"
+          xlink:to="footnote18"
+          xlink:type="arc"/>
+        <link:footnoteArc
+          xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote"
+          xlink:from="fact19"
+          xlink:to="footnote19"
+          xlink:type="arc"/>
+        <link:loc
+          xlink:href="#fact22"
+          xlink:label="fact22"
+          xlink:type="locator"/>
+        <link:footnote id="footnote22" xlink:label="footnote22" xlink:role="http://www.xbrl.org/2003/role/footnote" xlink:type="resource" xml:lang="en-US">
+                  Net of the effects of the merger and contingent liabilities.
+            <xhtml:p>More content.</xhtml:p>
+          </link:footnote>
+        <link:footnoteArc
+          xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote"
+          xlink:from="fact22"
+          xlink:to="footnote22"
+          xlink:type="arc"/>
+        <link:loc
+          xlink:href="#fact23"
+          xlink:label="fact23"
+          xlink:type="locator"/>
+        <link:footnote id="footnote23" xlink:label="footnote23" xlink:role="http://www.xbrl.org/2003/role/footnote" xlink:type="resource" xml:lang="en-US"><xhtml:p>This footnote contains some XHTML including some
+              <xhtml:a href="relative.file">relative links</xhtml:a>.
+                     
+                  
+            </xhtml:p>
+          </link:footnote>
+        <link:footnoteArc
+          xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote"
+          xlink:from="fact23"
+          xlink:to="footnote23"
+          xlink:type="arc"/>
+        <link:loc
+          xlink:href="#fact24"
+          xlink:label="fact24"
+          xlink:type="locator"/>
+        <link:footnote id="footnote24" xlink:label="footnote24" xlink:role="http://www.xbrl.org/2003/role/footnote" xlink:type="resource" xml:lang="en-US">foo</link:footnote>
+        <link:footnoteArc
+          xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote"
+          xlink:from="fact24"
+          xlink:to="footnote24"
+          xlink:type="arc"/>
+        <link:loc
+          xlink:href="#fact27"
+          xlink:label="fact27"
+          xlink:type="locator"/>
+        <link:loc
+          xlink:href="#fact28"
+          xlink:label="fact28"
+          xlink:type="locator"/>
+        <link:footnote id="footnote27" xlink:label="footnote27" xlink:role="http://www.xbrl.org/2003/role/footnote" xlink:type="resource" xml:lang="en-US">foo foo</link:footnote>
+        <link:footnoteArc
+          xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote"
+          xlink:from="fact28"
+          xlink:to="footnote27"
+          xlink:type="arc"/>
+        <link:footnoteArc
+          xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote"
+          xlink:from="fact27"
+          xlink:to="footnote27"
+          xlink:type="arc"/>
+        <link:loc
+          xlink:href="#fact29"
+          xlink:label="fact29"
+          xlink:type="locator"/>
+        <link:loc
+          xlink:href="#fact30"
+          xlink:label="fact30"
+          xlink:type="locator"/>
+        <link:footnote id="footnote28" xlink:label="footnote28" xlink:role="http://www.xbrl.org/2003/role/footnote" xlink:type="resource" xml:lang="en-US">foo foo</link:footnote>
+        <link:footnoteArc
+          xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote"
+          xlink:from="fact30"
+          xlink:to="footnote28"
+          xlink:type="arc"/>
+        <link:footnoteArc
+          xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote"
+          xlink:from="fact29"
+          xlink:to="footnote28"
+          xlink:type="arc"/>
+        <link:loc
+          xlink:href="#fact31"
+          xlink:label="fact31"
+          xlink:type="locator"/>
+        <link:footnote id="footnote29" xlink:label="footnote29" xlink:role="http://www.xbrl.org/2003/role/footnote" xlink:type="resource" xml:lang="en-US">bar bar</link:footnote>
+        <link:footnoteArc
+          xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote"
+          xlink:from="fact31"
+          xlink:to="footnote29"
+          xlink:type="arc"/>
+        <link:loc
+          xlink:href="#fact32"
+          xlink:label="fact32"
+          xlink:type="locator"/>
+        <link:footnote id="footnote30" xlink:label="footnote30" xlink:role="http://www.xbrl.org/2003/role/footnote" xlink:type="resource" xml:lang="en-US">Net of the effects of the merger and contingent liabilities.</link:footnote>
+        <link:footnote id="footnote31" xlink:label="footnote31" xlink:role="http://www.xbrl.org/2003/role/footnote" xlink:type="resource" xml:lang="en-US">This footnote has default footnoteRole and footnoteLinkRole.</link:footnote>
+        <link:footnoteArc
+          xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote"
+          xlink:from="fact32"
+          xlink:to="footnote31"
+          xlink:type="arc"/>
+        <link:footnoteArc
+          xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote"
+          xlink:from="fact32"
+          xlink:to="footnote30"
+          xlink:type="arc"/>
+        <link:loc
+          xlink:href="#fact33"
+          xlink:label="fact33"
+          xlink:type="locator"/>
+        <link:footnote id="footnote32" xlink:label="footnote32" xlink:role="http://www.xbrl.org/2003/role/footnote" xlink:type="resource" xml:lang="en-US">
+                  This is some non-normalized footnote text.
+                  
+               </link:footnote>
+        <link:footnoteArc
+          xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote"
+          xlink:from="fact33"
+          xlink:to="footnote32"
+          xlink:type="arc"/>
+        <link:loc
+          xlink:href="#fact34"
+          xlink:label="fact34"
+          xlink:type="locator"/>
+        <link:loc
+          xlink:href="#fact35"
+          xlink:label="fact35"
+          xlink:type="locator"/>
+        <link:loc
+          xlink:href="#fact36"
+          xlink:label="fact36"
+          xlink:type="locator"/>
+        <link:footnote id="footnote33" xlink:label="footnote33" xlink:role="http://www.xbrl.org/2003/role/footnote" xlink:type="resource" xml:lang="en-US">foo foo</link:footnote>
+        <link:footnoteArc
+          xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote"
+          xlink:from="fact36"
+          xlink:to="footnote33"
+          xlink:type="arc"/>
+        <link:footnoteArc
+          xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote"
+          xlink:from="fact34"
+          xlink:to="footnote33"
+          xlink:type="arc"/>
+        <link:footnoteArc
+          xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote"
+          xlink:from="fact35"
+          xlink:to="footnote33"
+          xlink:type="arc"/>
+    </link:footnoteLink>
+</xbrl>

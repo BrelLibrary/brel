@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl"?>
+<conf:testcase xmlns:conf="http://edgar/2009/conformance" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <conf:creator>
+        <conf:name>SEC Office of Structured Disclosure</conf:name>
+        <conf:email>StructuredData@sec.gov</conf:email>
+    </conf:creator>
+    <conf:number>605-42</conf:number>
+    <conf:name>EDGAR Filer Manual v68d 6.5.42</conf:name>
+    <conf:description>
+        <h2>Instances should not use elements declared "deprecated" in any standard namespace.</h2>
+        <p> Each time the edgartaxonomies.xml file is updated with allowed versions of standard namespaces (see 6.22) newer namespaces are normally accompanied with a list of elements from earlier versions that have been deprecated. Subsequent submissions should no longer use the deprecated elements. </p>
+        <p> For example, suppose element Xyz exists in us-gaap 2018 and is used in a submission that is accepted in February 2019. The new us-gaap 2019 taxonomy then deprecates element Xyz. Subsequently, on March 1st, 2019, us gaap 2019 is added to the standard taxonomies. Subsequently, the submission previously using Xyz will still be accepted but with an XBRL warning. </p>
+    </conf:description>
+    <conf:variation id="_000gd">
+        <conf:name>8-K,  GOOD</conf:name>
+        <conf:description>8-K, GOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="string" value='{"submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60542000gd/e60542000gd-20081231.htm</conf:instance>
+            <conf:schema>e60542000gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_001gd">
+        <conf:name>10-Q, GOOD</conf:name>
+        <conf:description>10-Q, GOOD</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "10-Q"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60542001gd/e60542001gd-20220630.htm</conf:instance>
+            <conf:schema>e60542001gd/cef05-20220630.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+    </conf:result>
+    </conf:variation>
+    <conf:variation id="_003gw">
+        <conf:name>8-K, uses deprecated cef:LatestNav,  GW</conf:name>
+        <conf:description>8-K, uses deprecated cef:LatestNav, GW</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="string" value='{"submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60542003gw/e60542003gw-20081231.htm</conf:instance>
+            <conf:schema>e60542003gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60542" name="Deprecated-Concept" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_005gw">
+        <conf:name>8-K, uses deprecated cef:LatestSharePrice,  GW</conf:name>
+        <conf:description>8-K, uses deprecated cef:LatestNav, GW</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="string" value='{"submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60542005gw/e60542005gw-20081231.htm</conf:instance>
+            <conf:schema>e60542005gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60542" name="Deprecated-Concept" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_006gw">
+        <conf:name>10-Q, uses deprecated exch:BULK GW </conf:name>
+        <conf:description>10-Q, uses deprecated exch:BULK GW</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType" : "10-Q"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60542006gw/e60542006gw-20081231.htm</conf:instance>
+            <conf:schema>e60542006gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60542" name="Deprecated-Concept" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+</conf:testcase>

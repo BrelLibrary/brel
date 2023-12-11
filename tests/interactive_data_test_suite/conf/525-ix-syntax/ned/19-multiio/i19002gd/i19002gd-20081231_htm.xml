@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xbrl
+  xmlns="http://www.xbrl.org/2003/instance"
+  xmlns:dei="http://xbrl.sec.gov/dei/2018-01-31"
+  xmlns:i19002gd="http://i19002gd/20081231"
+  xmlns:iso4217="http://www.xbrl.org/2003/iso4217"
+  xmlns:link="http://www.xbrl.org/2003/linkbase"
+  xmlns:srt="http://fasb.org/srt/2019-01-31"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+    <link:schemaRef xlink:href="i19002gd-20081231.xsd" xlink:type="simple"/>
+    <context id="d">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+        </entity>
+        <period>
+            <startDate>2008-04-01</startDate>
+            <endDate>2008-12-31</endDate>
+        </period>
+    </context>
+    <context id="i">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+        </entity>
+        <period>
+            <instant>2008-12-31</instant>
+        </period>
+    </context>
+    <context id="NNC1">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+        </entity>
+        <period>
+            <instant>2005-12-31</instant>
+        </period>
+    </context>
+    <context id="NFC1">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+        </entity>
+        <period>
+            <startDate>2005-01-01</startDate>
+            <endDate>2005-12-31</endDate>
+        </period>
+    </context>
+    <context id="NFC2">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+        </entity>
+        <period>
+            <startDate>2006-01-01</startDate>
+            <endDate>2006-12-31</endDate>
+        </period>
+    </context>
+    <context id="NFC3">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+        </entity>
+        <period>
+            <startDate>2007-01-01</startDate>
+            <endDate>2007-12-31</endDate>
+        </period>
+    </context>
+    <unit id="shares">
+        <measure>shares</measure>
+    </unit>
+    <unit id="U_iso4217USD">
+        <measure>iso4217:USD</measure>
+    </unit>
+    <unit id="iso4217_USD_per_Share">
+        <divide>
+            <unitNumerator>
+                <measure>iso4217:USD</measure>
+            </unitNumerator>
+            <unitDenominator>
+                <measure>shares</measure>
+            </unitDenominator>
+        </divide>
+    </unit>
+    <unit id="iso4217_GBP_per_Share">
+        <divide>
+            <unitNumerator>
+                <measure>iso4217:GBP</measure>
+            </unitNumerator>
+            <unitDenominator>
+                <measure>shares</measure>
+            </unitDenominator>
+        </divide>
+    </unit>
+    <dei:AmendmentFlag contextRef="d">false</dei:AmendmentFlag>
+    <dei:AmendmentDescription contextRef="NFC1">About 30 words.</dei:AmendmentDescription>
+    <dei:DocumentPeriodEndDate contextRef="d">2008-12-31</dei:DocumentPeriodEndDate>
+    <dei:DocumentFiscalPeriodFocus contextRef="d">Q3</dei:DocumentFiscalPeriodFocus>
+    <dei:EntityCentralIndexKey contextRef="d">9876543210</dei:EntityCentralIndexKey>
+    <dei:EntityEmergingGrowthCompany contextRef="d">false</dei:EntityEmergingGrowthCompany>
+    <dei:DocumentType contextRef="d">8-K</dei:DocumentType>
+    <dei:DocumentFiscalYearFocus contextRef="d">2008</dei:DocumentFiscalYearFocus>
+    <dei:EntityRegistrantName contextRef="d">OSD TEST CO #1</dei:EntityRegistrantName>
+    <dei:EntityCommonStockSharesOutstanding contextRef="i" decimals="INF" unitRef="shares">154357198</dei:EntityCommonStockSharesOutstanding>
+    <dei:AmendmentFlag contextRef="d">false</dei:AmendmentFlag>
+    <dei:AmendmentFlag contextRef="NFC1">true</dei:AmendmentFlag>
+    <i19002gd:Content3
+      contextRef="NNC1"
+      decimals="2"
+      unitRef="iso4217_USD_per_Share">0</i19002gd:Content3>
+    <dei:DocumentPeriodEndDate contextRef="NFC1">2008-12-31</dei:DocumentPeriodEndDate>
+    <dei:DocumentCreationDate contextRef="NFC1">2012-08-13</dei:DocumentCreationDate>
+    <dei:DocumentEffectiveDate contextRef="NFC1">2012-08-13</dei:DocumentEffectiveDate>
+    <dei:DocumentPeriodStartDate contextRef="NFC1">2012-09-03</dei:DocumentPeriodStartDate>
+    <dei:EntityIncorporationDateOfIncorporation contextRef="NFC1">2032-09-03</dei:EntityIncorporationDateOfIncorporation>
+    <dei:CurrentFiscalYearEndDate contextRef="NFC1">--08-13</dei:CurrentFiscalYearEndDate>
+    <dei:DocumentPeriodEndDate contextRef="NFC2">2008-12-31</dei:DocumentPeriodEndDate>
+    <dei:DocumentCreationDate contextRef="NFC2">2012-09-03</dei:DocumentCreationDate>
+    <dei:DocumentEffectiveDate contextRef="NFC2">2032-08-13</dei:DocumentEffectiveDate>
+    <dei:DocumentPeriodStartDate contextRef="NFC2">2012-09-03</dei:DocumentPeriodStartDate>
+    <dei:EntityIncorporationDateOfIncorporation contextRef="NFC2">2012-09-03</dei:EntityIncorporationDateOfIncorporation>
+    <dei:DocumentPeriodEndDate contextRef="NFC3">2008-12-31</dei:DocumentPeriodEndDate>
+    <dei:CurrentFiscalYearEndDate contextRef="NFC2">--08-13</dei:CurrentFiscalYearEndDate>
+    <dei:CurrentFiscalYearEndDate contextRef="d">--08-13</dei:CurrentFiscalYearEndDate>
+    <dei:CurrentFiscalYearEndDate contextRef="NFC3">--08-13</dei:CurrentFiscalYearEndDate>
+    <dei:DocumentPeriodEndDate contextRef="d">2008-12-31</dei:DocumentPeriodEndDate>
+    <dei:DocumentPeriodStartDate contextRef="d">2003-01-13</dei:DocumentPeriodStartDate>
+    <srt:RevisionsOfPreviousQuantityEstimates contextRef="NFC2" decimals="3" unitRef="U_iso4217USD">0.345</srt:RevisionsOfPreviousQuantityEstimates>
+    <srt:RevisionsOfPreviousQuantityEstimates contextRef="NFC1" decimals="1" unitRef="U_iso4217USD">12345</srt:RevisionsOfPreviousQuantityEstimates>
+    <i19002gd:Content1 contextRef="d" decimals="0" unitRef="iso4217_USD_per_Share">-1000.00</i19002gd:Content1>
+    <i19002gd:Content2 contextRef="d" decimals="0" unitRef="iso4217_USD_per_Share">-1000.00</i19002gd:Content2>
+    <i19002gd:Content4
+      contextRef="NNC1"
+      decimals="0"
+      unitRef="iso4217_USD_per_Share">-1000.00</i19002gd:Content4>
+    <i19002gd:Content5
+      contextRef="NNC1"
+      decimals="0"
+      unitRef="iso4217_USD_per_Share">-1000.00</i19002gd:Content5>
+    <i19002gd:Content6
+      contextRef="NNC1"
+      decimals="0"
+      unitRef="iso4217_USD_per_Share">-1000.00</i19002gd:Content6>
+    <dei:DocumentDescription contextRef="d"/>
+    <i19002gd:Date01 contextRef="d">2000-01-31</i19002gd:Date01>
+    <i19002gd:Date02 contextRef="d">1978-10-19</i19002gd:Date02>
+    <i19002gd:Date03 contextRef="d">2000-01-31</i19002gd:Date03>
+    <i19002gd:Date04 contextRef="d">1979-10-19</i19002gd:Date04>
+    <i19002gd:Date04 contextRef="NFC1">1979-11-19</i19002gd:Date04>
+    <i19002gd:Date09 contextRef="d">1998-11</i19002gd:Date09>
+    <i19002gd:Date10 contextRef="d">1988-10</i19002gd:Date10>
+    <i19002gd:Date11 contextRef="d">1921-05</i19002gd:Date11>
+    <i19002gd:Date12 contextRef="d">1979-10</i19002gd:Date12>
+    <i19002gd:Content8
+      contextRef="NNC1"
+      decimals="2"
+      unitRef="iso4217_GBP_per_Share">123456.78</i19002gd:Content8>
+    <i19002gd:Content7
+      contextRef="NNC1"
+      decimals="2"
+      unitRef="iso4217_USD_per_Share">0</i19002gd:Content7>
+    <i19002gd:Content8
+      contextRef="NNC1"
+      decimals="2"
+      unitRef="iso4217_USD_per_Share">-0.25</i19002gd:Content8>
+</xbrl>

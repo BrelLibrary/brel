@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xbrl xmlns="http://www.xbrl.org/2003/instance" xmlns:dei="http://xbrl.sec.gov/dei/2023" xmlns:iso4217="http://www.xbrl.org/2003/iso4217" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:us-gaap="http://fasb.org/us-gaap/2023" xmlns:xbrldi="http://xbrl.org/2006/xbrldi" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <link:schemaRef xlink:href="edgar-20181231.xsd" xlink:type="simple"></link:schemaRef>
+    <context id="fy18">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+        </entity>
+        <period>
+            <startDate>2018-01-01</startDate>
+            <endDate>2018-12-31</endDate>
+        </period>
+    </context>
+    <context id="fy18e_CommonClassAMember">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+            <segment>
+                <xbrldi:explicitMember dimension="us-gaap:StatementClassOfStockAxis">us-gaap:CommonClassAMember</xbrldi:explicitMember>
+            </segment>
+        </entity>
+        <period>
+            <instant>2018-12-31</instant>
+        </period>
+    </context>
+    <context id="fy18e_CommonClassBMember">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+            <segment>
+                <xbrldi:explicitMember dimension="us-gaap:StatementClassOfStockAxis">us-gaap:CommonClassBMember</xbrldi:explicitMember>
+            </segment>
+        </entity>
+        <period>
+            <instant>2018-12-31</instant>
+        </period>
+    </context>
+    <context id="fy18_BusinessContactMember">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+            <segment>
+                <xbrldi:explicitMember dimension="dei:EntityAddressesAddressTypeAxis">dei:BusinessContactMember</xbrldi:explicitMember>
+            </segment>
+        </entity>
+        <period>
+            <startDate>2018-01-01</startDate>
+            <endDate>2018-12-31</endDate>
+        </period>
+    </context>
+    <unit id="USD">
+        <measure>iso4217:USD</measure>
+    </unit>
+    <unit id="Shares">
+        <measure>shares</measure>
+    </unit>
+    <unit id="USD_per_Share">
+        <divide>
+            <unitNumerator>
+                <measure>iso4217:USD</measure>
+            </unitNumerator>
+            <unitDenominator>
+                <measure>shares</measure>
+            </unitDenominator>
+        </divide>
+    </unit>
+    <dei:AmendmentFlag contextRef="fy18" id="amend">false</dei:AmendmentFlag>
+    <dei:DocumentFiscalPeriodFocus contextRef="fy18" id="doc-fp">FY</dei:DocumentFiscalPeriodFocus>
+    <dei:EntityCentralIndexKey contextRef="fy18" id="ent-cik">9876543210</dei:EntityCentralIndexKey>
+    <dei:DocumentType contextRef="fy18">40-F</dei:DocumentType>
+    <dei:DocumentRegistrationStatement contextRef="fy18" id="doc-reg-stmt">false</dei:DocumentRegistrationStatement>
+    <dei:DocumentAnnualReport contextRef="fy18" id="doc-ann-rpt">true</dei:DocumentAnnualReport>
+    <dei:DocumentPeriodEndDate contextRef="fy18">2018-12-31</dei:DocumentPeriodEndDate>
+    <dei:CurrentFiscalYearEndDate contextRef="fy18" id="ent-fyend">--12-31</dei:CurrentFiscalYearEndDate>
+    <dei:DocumentFiscalYearFocus contextRef="fy18">2018</dei:DocumentFiscalYearFocus>
+    <dei:EntityFileNumber contextRef="fy18">001-10805</dei:EntityFileNumber>
+    <dei:EntityRegistrantName contextRef="fy18">McFeely Communications Inc.</dei:EntityRegistrantName>
+    <dei:EntityIncorporationStateCountryCode contextRef="fy18">A1</dei:EntityIncorporationStateCountryCode>
+    <dei:EntityPrimarySicNumber contextRef="fy18">4812</dei:EntityPrimarySicNumber>
+    <dei:EntityTaxIdentificationNumber contextRef="fy18" id="ent-tax">11-0902001</dei:EntityTaxIdentificationNumber>
+    <dei:EntityAddressAddressLine1 contextRef="fy18">333 Bloor Street East, 10th Floor</dei:EntityAddressAddressLine1>
+    <dei:EntityAddressCityOrTown contextRef="fy18">Toronto</dei:EntityAddressCityOrTown>
+    <dei:EntityAddressStateOrProvince contextRef="fy18">ON</dei:EntityAddressStateOrProvince>
+    <dei:EntityAddressPostalZipCode contextRef="fy18">M4W 1G9</dei:EntityAddressPostalZipCode>
+    <dei:CityAreaCode contextRef="fy18">416</dei:CityAreaCode>
+    <dei:LocalPhoneNumber contextRef="fy18">979-9966</dei:LocalPhoneNumber>
+    <dei:ContactPersonnelName contextRef="fy18_BusinessContactMember">Wacky Duck Corporation</dei:ContactPersonnelName>
+    <dei:EntityAddressAddressLine1 contextRef="fy18_BusinessContactMember">111 Eighth Avenue, 13th Floor</dei:EntityAddressAddressLine1>
+    <dei:EntityAddressCityOrTown contextRef="fy18_BusinessContactMember">New York</dei:EntityAddressCityOrTown>
+    <dei:EntityAddressStateOrProvince contextRef="fy18_BusinessContactMember">NY</dei:EntityAddressStateOrProvince>
+    <dei:EntityAddressPostalZipCode contextRef="fy18_BusinessContactMember">10011</dei:EntityAddressPostalZipCode>
+    <dei:CityAreaCode contextRef="fy18_BusinessContactMember">(212)</dei:CityAreaCode>
+    <dei:LocalPhoneNumber contextRef="fy18_BusinessContactMember">894-8940</dei:LocalPhoneNumber>
+    <dei:Security12bTitle contextRef="fy18">Class B Non-Voting</dei:Security12bTitle>
+    <dei:SecurityExchangeName contextRef="fy18">NYSE</dei:SecurityExchangeName>
+    <dei:SecurityReportingObligation contextRef="fy18">15(d)</dei:SecurityReportingObligation>
+    <dei:TradingSymbol contextRef="fy18">MCFY</dei:TradingSymbol>
+    <dei:SecurityReportingObligation contextRef="fy18">15(d)</dei:SecurityReportingObligation>
+    <dei:AnnualInformationForm contextRef="fy18" id="anninfo">true</dei:AnnualInformationForm>
+    <dei:AuditedAnnualFinancialStatements contextRef="fy18" id="audited">true</dei:AuditedAnnualFinancialStatements>
+    <dei:EntityCommonStockSharesOutstanding contextRef="fy18e_CommonClassAMember" decimals="INF" unitRef="Shares">112407192</dei:EntityCommonStockSharesOutstanding>
+    <dei:EntityCommonStockSharesOutstanding contextRef="fy18e_CommonClassBMember" decimals="INF" unitRef="Shares">402403433</dei:EntityCommonStockSharesOutstanding>
+    <dei:EntityCurrentReportingStatus contextRef="fy18">Yes</dei:EntityCurrentReportingStatus>
+    <dei:EntityInteractiveDataCurrent contextRef="fy18">Yes</dei:EntityInteractiveDataCurrent>
+    <dei:EntityEmergingGrowthCompany contextRef="fy18" id="ent-egc">true</dei:EntityEmergingGrowthCompany>
+    <dei:EntityExTransitionPeriod contextRef="fy18" id="ent-ext">false</dei:EntityExTransitionPeriod>
+</xbrl>

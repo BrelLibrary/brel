@@ -1,0 +1,318 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>605-instance-syntax</title>
+</head>
+<body><table style="border:0; empty-cells:show;"><tbody>
+<tr>
+<td colspan="3">605-instance-syntax</td>
+<td colspan="3"></td>
+</tr>
+<tr><td colspan="2"></td></tr>
+<tr>
+<th>Name</th>
+<th>Variations</th>
+<th>Error Codes</th>
+<th>Remarks</th>
+</tr>
+<tr>
+<td nowrap valign="top"><a href="605-01-entity-identifier-scheme/605-01-entity-identifier-scheme-testcase.xml">EDGAR Filer Manual v48 6.5.1 page 6-8</a></td>
+<td align="center" valign="top">2</td>
+<td nowrap valign="top">Entity-Identifier-Scheme</td>
+<td valign="top"></td>
+</tr>
+<tr>
+<td nowrap valign="top"><a href="605-02-entity-identifier-match-cik/605-02-entity-identifier-match-cik-testcase.xml">EDGAR Filer Manual v48 6.5.2 page 6-8</a></td>
+<td align="center" valign="top">3</td>
+<td nowrap valign="top">Cik-Element-Context-Mismatch</td>
+<td valign="top"><p>REMARK: Variations 001ng and 002ng may produce error 60523 depending on implementation.</p></td>
+</tr>
+<tr>
+<td nowrap valign="top"><a href="605-03-entity-identifier-all-identical/605-03-entity-identifier-all-identical-testcase.xml">EDGAR Filer Manual v48 6.5.3 page 6-9</a></td>
+<td align="center" valign="top">2</td>
+<td nowrap valign="top">Invalid-Cik</td>
+<td valign="top"><p>REMARK: this will inevitably generate two errors</p></td>
+</tr>
+<tr>
+<td nowrap valign="top"><a href="605-04-no-scenario-elements/605-04-no-scenario-elements-testcase.xml">EDGAR Filer Manual v48 6.5.4 page 6-9</a></td>
+<td align="center" valign="top">3</td>
+<td nowrap valign="top">No-Scenario</td>
+<td valign="top"></td>
+</tr>
+<tr>
+<td nowrap valign="top"><a href="605-07-no-duplicate-contexts/605-07-no-duplicate-contexts-testcase.xml">EDGAR Filer Manual v48 6.5.7 page 6-9</a></td>
+<td align="center" valign="top">2</td>
+<td nowrap valign="top">Duplicate-Contexts</td>
+<td valign="top"></td>
+</tr>
+<tr>
+<td nowrap valign="top"><a href="605-08-no-unused-contexts/605-08-no-unused-contexts-testcase.xml">EDGAR Filer Manual v48 6.5.8 page 6-9</a></td>
+<td align="center" valign="top">1</td>
+<td nowrap valign="top">Unused-Context</td>
+<td valign="top"></td>
+</tr>
+<tr>
+<td nowrap valign="top"><a href="605-09-start-and-end-dates-distinct/605-09-start-and-end-dates-distinct-testcase.xml">EDGAR Filer Manual v48 6.5.9 page 6-10</a></td>
+<td align="center" valign="top">12</td>
+<td nowrap valign="top">Start-And-End-Dates-Not-Distinct-Inconsistent-With-Document-Type</td>
+<td valign="top"><p>REMARK: 6.5.9 applies to  context start dates compared against context end dates, irrespective of segments.</p></td>
+</tr>
+<tr>
+<td nowrap valign="top"><a href="605-11-no-duplicate-units/605-11-no-duplicate-units-testcase.xml">EDGAR Filer Manual v48 6.5.11 page 6-10</a></td>
+<td align="center" valign="top">4</td>
+<td nowrap valign="top">Duplicate-Units</td>
+<td valign="top"><p>REMARK: Abbreviations are from
+<a href="http://en.wikipedia.org/wiki/SI_base_unit">Base Units</a>
+</p></td>
+</tr>
+<tr>
+<td nowrap valign="top"><a href="605-12-no-duplicate-facts/605-12-no-duplicate-facts-testcase.xml">EDGAR Filer Manual v48 6.5.12 page 6-10</a></td>
+<td align="center" valign="top">19</td>
+<td nowrap valign="top">Duplicate-Facts</td>
+<td valign="top"></td>
+</tr>
+<tr>
+<td nowrap valign="top"><a href="605-13-english-default/605-13-english-default-testcase.xml">EDGAR Filer Manual v48 6.5.13 page 6-11</a></td>
+<td align="center" valign="top">1</td>
+<td nowrap valign="top">Duplicate-Facts</td>
+<td valign="top"><p>REMARK: This rule establishes what the default value of xml:lang is and therefore can only be indirectly violated by the violation of
+
+some other rule. Therefore the only error code that appears here is du-60512-Duplicate-Facts which normally would appear in 6.5.12.</p></td>
+</tr>
+<tr>
+<td nowrap valign="top"><a href="605-14-foreign-content-needs-english/605-14-foreign-content-needs-english-testcase.xml">EDGAR Filer Manual v48 6.5.14 page 6-11</a></td>
+<td align="center" valign="top">6</td>
+<td nowrap valign="top">English-Text-Missing</td>
+<td valign="top"></td>
+</tr>
+<tr>
+<td nowrap valign="top"><a href="605-15-text-blocks-xml-well-formed/605-15-text-blocks-xml-well-formed-testcase.xml">EDGAR Filer Manual v48 6.5.15 page 6-11</a></td>
+<td align="center" valign="top">15</td>
+<td nowrap valign="top">Text-Block-Not-Well-Formed-XML</td>
+<td valign="top">
+<p>REMARK: In XML it is vital to distinguish the DOM from its various serializations. For a text block, the DOM node
+
+starts as an element with one child text node; exactly one. It is that child text node that you now treat as a
+
+string, wrap &lt;body&gt; and &lt;/body&gt; around it, then re-parse and validate against edbody.dtd; the grammar for
+
+the % Flow entity is clear.</p>
+<p>REMARK: By contrast, the content of a footnote according to XBRL 2.1 is any alternating sequence of text nodes
+
+and element nodes drawn with names in the xhtml namespace. The serialization does not (and cannot) matter. The
+
+additional constraint on footnotes imposed by EDGAR is that a footnote cannot just contain any old sequence of
+
+text and element DOM nodes. It has to be a sequence of DOM nodes that would be valid if they were the children of
+
+a body node instead. You do not read the footnote as a text node (that might have ampersands and angle brackets),
+
+as if it were itself a serialization. You take that sequence of DOM nodes, make them the children of a
+
+&lt;body&gt; node and validate.</p>
+<p>REMARK: Only restrictions of the textBlockItemType are relevant because the base type xbrli:stringItemType is declared
+
+final in the XBRL 2.1 schema and cannot be extended.</p>
+</td>
+</tr>
+<tr>
+<td nowrap valign="top"><a href="605-16-html-limited/605-16-html-limited-testcase.xml">EDGAR Filer Manual v48 6.5.16 page 6-12</a></td>
+<td align="center" valign="top">32</td>
+<td nowrap valign="top">Prohibited-Html-Body</td>
+<td valign="top">
+<p>REMARK: Restrictions on the content of href are documented in EFM 5.2.2.1. There is a DTD (edbody.dtd in the "lib" folder) used
+
+for validation of unescaped content, but a change to Schema (and therefore disallowing named entities) may occur at some time in the
+
+future. The DTD by itself does NOT check for nested &lt;table&gt; elements, but they are disallowed, as variation _030ng shows.
+
+</p>
+<p>REMARK: For reference only, here are tags forbidden, keeping in mind that all permitted tags are lower case: &lt;acronym/&gt; &lt;applet/&gt;
+
+&lt;area/&gt; &lt;base/&gt; &lt;basefont/&gt; &lt;bdo/&gt; &lt;button/&gt; &lt;col/&gt; &lt;colgroup/&gt; &lt;del/&gt;
+
+&lt;fieldset/&gt; &lt;font/&gt; &lt;form/&gt; &lt;frame/&gt; &lt;frameset/&gt; &lt;iframe/&gt; &lt;input/&gt; &lt;ins/&gt;
+
+&lt;label/&gt; &lt;legend/&gt; &lt;map/&gt; &lt;meta http-equiv="name" content="content"/&gt; &lt;noframes/&gt; &lt;noscript/&gt;
+
+&lt;object/&gt; &lt;option/&gt; &lt;param/&gt; &lt;q/&gt; &lt;s/&gt; &lt;S/&gt; &lt;script/&gt; &lt;select/&gt; 
+
+&lt;style/&gt; &lt;textarea/&gt; </p>
+<p>REMARK: Variations 018 through 022 require http://www.xbrl.org/dtr/type/nonNumeric-2010-12-16.xsd in edgartaxonomies.xml</p>
+</td>
+</tr>
+<tr>
+<td nowrap valign="top"><a href="605-17-decimals-not-precision/605-17-decimals-not-precision-testcase.xml">EDGAR Filer Manual v48 6.5.17 page 6-12</a></td>
+<td align="center" valign="top">3</td>
+<td nowrap valign="top">Decimals-Not-Precision</td>
+<td valign="top"></td>
+</tr>
+<tr>
+<td nowrap valign="top"><a href="605-19-required-context/605-19-required-context-testcase.xml">EDGAR Filer Manual v48 6.5.19 page 6-12</a></td>
+<td align="center" valign="top">5</td>
+<td nowrap valign="top">Required-Context-Missing</td>
+<td valign="top">
+<p>REMARK: The absence of required context will cause several other errors in section 6.5, this has a separate error code to help users identify the root error of the cascade.</p>
+<p>REMARK: At this point there is only one distinction, between 485BPOS and 497 which require a one day duration, and all other filings having any duration. At some point in the future this will be extended to include columns that indicate the allowable range of durations, for example:</p>
+</td>
+</tr>
+<tr>
+<td nowrap valign="top"><a href="605-20-required-document-elts/605-20-required-document-elts-testcase.xml">EDGAR Filer Manual v48 6.5.20 page 6-13</a></td>
+<td align="center" valign="top">168</td>
+<td nowrap valign="top">Amendment-Flag-Existence<br>Amendment-Description-Without-Amendment-Flag<br>Amendment-Flag-Without-Amendment-Description<br>Document-Type-Existence<br>Document-Period-End-Date-Existence<br>Document-Type-Value<br>Document-Type-Not-Matched-To-Submission-Type<br>Document-Type-Value</td>
+<td valign="top"><p>REMARK: There is a mapping from submission types recognized by EDGAR, to the valid values of the dei:DocumentType element, as follows. From the 2012 DEI schema onward, all of the document type values shown are allowed; in earlier schemas you may find that the less common filing types must use other values:</p></td>
+</tr>
+<tr>
+<td nowrap valign="top"><a href="605-21-required-entity-elts/605-21-required-entity-elts-testcase.xml">EDGAR Filer Manual v48 6.5.21 page 6-14</a></td>
+<td align="center" valign="top">104</td>
+<td nowrap valign="top">Entity-Registrant-Name<br>Central-Index-Key<br>Current-Fiscal-Year-End-Date<br>Well-Known-Seasoned-Issuer<br>Entity-Voluntary-Filers<br>Entity-Current-Reporting-Status<br>Entity-Filer-Category<br>Entity-Public-Float<br>Document-Fiscal-Year-Focus<br>Document-Fiscal-Period-Focus</td>
+<td valign="top"></td>
+</tr>
+<tr>
+<td nowrap valign="top"><a href="605-22-other-dei-elements-optional/605-22-other-dei-elements-optional-testcase.xml">EDGAR Filer Manual v48 6.5.22 page 6-16</a></td>
+<td align="center" valign="top">2</td>
+<td nowrap valign="top"></td>
+<td valign="top"><p>REMARK: The second variation is logically part of 6.5.20, but it generates no errors so that shouldn't matter.</p></td>
+</tr>
+<tr>
+<td nowrap valign="top"><a href="605-23-required-context-match-cik/605-23-required-context-match-cik-testcase.xml">EDGAR Filer Manual v48 6.5.23 page 6-16</a></td>
+<td align="center" valign="top">6</td>
+<td nowrap valign="top">Non-Matching-Cik</td>
+<td valign="top"></td>
+</tr>
+<tr>
+<td nowrap valign="top"><a href="605-24-registrant-name-matches-dei/605-24-registrant-name-matches-dei-testcase.xml">EDGAR Filer Manual v48 6.5.24 page 6-16</a></td>
+<td align="center" valign="top">13</td>
+<td nowrap valign="top">Registrant-Name-Mismatch</td>
+<td valign="top">
+<p>REMARK: The syntax of the cikList is comma separated 10-digit numbers [0-9]{10}(,[0-9]{10})*</p>
+<p>REMARK: The syntax of the cikNameList is "|Edgar|" separated text (.)+(\|Edgar\|,(.)+)</p>
+<p>REMARK: Continued at
+<a href="../../902-sdr/60524-sdr-registrant-name/902-sdr-60524-registrant-name-matches-dei-testcase.xml">902-sdr-60524</a>
+</p>
+</td>
+</tr>
+<tr>
+<td nowrap valign="top"><a href="605-25-no-domain-items-as-facts/605-25-no-domain-items-as-facts-testcase.xml">EDGAR Filer Manual v48 6.5.25 page 6-16</a></td>
+<td align="center" valign="top">7</td>
+<td nowrap valign="top">Domain-As-Fact</td>
+<td valign="top"><p>REMARK: Only restrictions of the type are relevant because the base type xbrli:stringItemType is declared
+
+final in the XBRL 2.1 schema and cannot be extended.</p></td>
+</tr>
+<tr>
+<td nowrap valign="top"><a href="605-26-common-shares-outstanding/605-26-common-shares-outstanding-testcase.xml">EDGAR Filer Manual v48 6.5.26 page 6-16</a></td>
+<td align="center" valign="top">64</td>
+<td nowrap valign="top">Common-Shares-Inconsistent-With-Document-Type</td>
+<td valign="top"><p>REMARK: The rule does not strictly require definition links, only that the contexts use xbrli:explicitMember elements in contexts.</p></td>
+</tr>
+<tr>
+<td nowrap valign="top"><a href="605-27-footnote-no-substitutions/605-27-footnote-no-substitutions-testcase.xml">EDGAR Filer Manual v48 6.5.27 page 6-17</a></td>
+<td align="center" valign="top">5</td>
+<td nowrap valign="top">Footnote-Substitution-Group</td>
+<td valign="top"><p>REMARK: Although these variations each show only one error code, depending on a vendors' implementation, validation errors may occur prior to the error listed, or other errors may cascade after Footnote-Substitution-Group. In particular, the schema fales of the ng variations should throw error 6.7.27 because they use a substitutionGroup disallowed by that rule; the point being that 6.7.27 would not apply to a standard taxonomy but 6.5.27 would still be an error. As long as all variations marked NOGOOD are rejected because of the disallowed substitutionGroup, a validator may be considered as legitimately passing this testcase.</p></td>
+</tr>
+<tr>
+<td nowrap valign="top"><a href="605-28-footnote-no-custom-footnote-role/605-28-footnote-no-custom-footnote-role-testcase.xml">EDGAR Filer Manual v48 6.5.28 page 6-17</a></td>
+<td align="center" valign="top">3</td>
+<td nowrap valign="top">Footnote-Custom-Footnote-Role<br>Footnote-Role-Missing</td>
+<td valign="top"><p>REMARK: The content of the link:definition element is irrelevant because the entire declaration is forbidden.
+
+These variations may also signal errors 6.9.4 and 6.9.5 for the schemas, or 6.8.3, but the point is that this test is still
+
+meaningful even if the schemas with offending role declarations happened to be in standard taxonomies.</p></td>
+</tr>
+<tr>
+<td nowrap valign="top"><a href="605-29-footnote-loc-role-not-custom/605-29-footnote-loc-role-not-custom-testcase.xml">EDGAR Filer Manual v48 6.5.29 page 6-17</a></td>
+<td align="center" valign="top">1</td>
+<td nowrap valign="top">Footnote-Custom-Loc-Role</td>
+<td valign="top"></td>
+</tr>
+<tr>
+<td nowrap valign="top"><a href="605-32-footnote-loc-fragment-portable/605-32-footnote-loc-fragment-portable-testcase.xml">EDGAR Filer Manual v48 6.5.32 page 6-17</a></td>
+<td align="center" valign="top">1</td>
+<td nowrap valign="top">Footnote-Locator-Portable</td>
+<td valign="top"></td>
+</tr>
+<tr>
+<td nowrap valign="top"><a href="605-33-footnote-linked-to-facts/605-33-footnote-linked-to-facts-testcase.xml">EDGAR Filer Manual v48 6.5.33 page 6-17</a></td>
+<td align="center" valign="top">3</td>
+<td nowrap valign="top">Dangling-Footnote</td>
+<td valign="top"><p>REMARK: It would have been better instead of referring to "link:footnote element" to refer to
+
+"link:footnoteLink child element with @xlink:type of 'resource'". Likewise instead of "link:footnoteArc element"
+
+refer to "link:footnoteLink child element with @xlink:type of 'arc'". Then you will never get spurious errors if
+
+element substitutionGroups were to be allowed.</p></td>
+</tr>
+<tr>
+<td nowrap valign="top"><a href="605-34-footnote-xhtml/605-34-footnote-xhtml-testcase.xml">EDGAR Filer Manual v48 6.5.34 page 6-17</a></td>
+<td align="center" valign="top">9</td>
+<td nowrap valign="top">Prohibited-Html-Footnote-Body</td>
+<td valign="top"><p>REMARK: XBRL footnotes are not text blocks. Any quoted HTML appearing in an XBRL footnote is just a string. All processing should treat it as a string and nothing more.</p></td>
+</tr>
+<tr>
+<td nowrap valign="top"><a href="605-35-numeric-units/605-35-numeric-units-testcase.xml">EDGAR Filer Manual v47 6.5.35 page 6-17</a></td>
+<td align="center" valign="top">69</td>
+<td nowrap valign="top">Incompatible-Numeric-Type-And-Unit</td>
+<td valign="top"></td>
+</tr>
+<tr>
+<td nowrap valign="top"><a href="605-36-measure-local-name/605-36-measure-local-name-testcase.xml">EDGAR Filer Manual v48 6.5.36 page 6-19</a></td>
+<td align="center" valign="top">16</td>
+<td nowrap valign="top">Name-Length-Limit</td>
+<td valign="top"><p>REMARK: the unit "u 100 twobyte 1 onebyte" means there is a measure whose local name consists
+
+of 100 two-byte unicode characters and one single-byte character.</p></td>
+</tr>
+<tr>
+<td nowrap valign="top"><a href="605-37-nonzero-truncation/605-37-nonzero-truncation-testcase.xml">EDGAR Filer Manual v48 6.5.37 page 6-19</a></td>
+<td align="center" valign="top">6</td>
+<td nowrap valign="top">Nonzero-Digits-Truncated</td>
+<td valign="top"></td>
+</tr>
+<tr>
+<td nowrap valign="top"><a href="605-38-forever-period/605-38-forever-period-testcase.xml">EDGAR Filer Manual v48 6.5.38 page 6-19</a></td>
+<td align="center" valign="top">1</td>
+<td nowrap valign="top">Context-Has-Period-Forever</td>
+<td valign="top"></td>
+</tr>
+<tr>
+<td nowrap valign="top"><a href="605-39-dimensions/605-39-dimensions-testcase.xml">EDGAR Filer Manual v48 6.5.39 page 6-19</a></td>
+<td align="center" valign="top">4</td>
+<td nowrap valign="top">Segment-Child-Not-Explicit-Member<br>Typed-Dimension-Not-Standard</td>
+<td valign="top"></td>
+</tr>
+<tr>
+<td nowrap valign="top"><a href="605-40-submission-header/605-40-submission-header-testcase.xml">EDGAR Filer Manual v48 6.5.40 page 6-18</a></td>
+<td align="center" valign="top">172</td>
+<td nowrap valign="top">Document-Period-End-Date-Existence<br>Document-Period-End-Date-Value<br>Entity-Voluntary-Filers-Value<br>Submission-Unexpected-Voluntary-Filer-Flag<br>Entity-Voluntary-Filers-Unexpected<br>Entity-Well-Known-Seasoned-Issuer-Value<br>Submission-Unexpected-Well-Known-Seasoned-Issuer-Flag<br>Entity-Well-Known-Seasoned-Issuer-Unexpected<br>Entity-Shell-Company-Missing<br>Entity-Shell-Company-Value<br>Submission-Unexpected-Shell-Company-Flag<br>Entity-Shell-Company-Unexpected<br>Entity-Filer-Category-Small<br>Entity-Filer-Category-Small-Accelerated<br>Entity-Small-Business-Unexpected<br>Entity-Small-Business-Missing<br>Entity-Inv-Company-Type-Value<br>Submission-Unexpected-Inv-Company-Type<br>Entity-Inv-Company-Type-Unexpected<br>Entity-Filer-Category-Value<br>Entity-Emerging-Growth-Company-Unexpected<br>Entity-Emerging-Growth-Company-Missing<br>Entity-Emerging-Growth-Company-Value<br>Submission-Unexpected-Accelerated-Filer-Status<br>Entity-Small-Business-Value<br>Submission-Unexpected-Small-Business-Flag<br>Entity-Emerging-Growth-Company-Value<br>Entity-Ex-Transition-Period-Value<br>Entity-Small-Business-Value<br>Document-Period-End-Date-Value<br>Entity-Filer-Category-Value<br>Entity-Shell-Company-Value<br>Entity-Voluntary-Filers-Value<br>Entity-Well-Known-Seasoned-Issuer-Value<br>Submission-Unexpected-Inv-Company-Type<br>Entity-Emerging-Growth-Company-Value<br>Entity-Ex-Transition-Period-Value<br>Entity-Small-Business-Value<br>Document-Period-End-Date-Value<br>Entity-Filer-Category-Value<br>Entity-Shell-Company-Value<br>Entity-Voluntary-Filers-Value<br>Entity-Well-Known-Seasoned-Issuer-Value<br>Submission-Unexpected-Inv-Company-Type<br>Entity-Emerging-Growth-Company-Value<br>Entity-Ex-Transition-Period-Value<br>Document-Period-End-Date-Value<br>Submission-Unexpected-Small-Business-Flag<br>Submission-Unexpected-Accelerated-Filer-Status<br>Submission-Unexpected-Shell-Company-Flag<br>Submission-Unexpected-Voluntary-Filer-Flag<br>Submission-Unexpected-Well-Known-Seasoned-Issuer-Flag<br>Submission-Unexpected-Inv-Company-Type<br>Entity-Emerging-Growth-Company-Value<br>Entity-Ex-Transition-Period-Value<br>Entity-Small-Business-Value<br>Document-Period-End-Date-Value<br>Entity-Filer-Category-Value<br>Entity-Shell-Company-Value<br>Entity-Voluntary-Filers-Value<br>Entity-Well-Known-Seasoned-Issuer-Value<br>Submission-Unexpected-Inv-Company-Type<br>Entity-Emerging-Growth-Company-Value<br>Entity-Ex-Transition-Period-Value<br>Entity-Small-Business-Value<br>Document-Period-End-Date-Value<br>Submission-Unexpected-Accelerated-Filer-Status<br>Submission-Unexpected-Shell-Company-Flag<br>Submission-Unexpected-Voluntary-Filer-Flag<br>Submission-Unexpected-Well-Known-Seasoned-Issuer-Flag<br>Submission-Unexpected-Inv-Company-Type<br>Entity-Emerging-Growth-Company-Value<br>Entity-Ex-Transition-Period-Value<br>Entity-Small-Business-Value<br>Document-Period-End-Date-Value<br>Submission-Unexpected-Accelerated-Filer-Status<br>Submission-Unexpected-Shell-Company-Flag<br>Submission-Unexpected-Voluntary-Filer-Flag<br>Submission-Unexpected-Well-Known-Seasoned-Issuer-Flag<br>Submission-Unexpected-Inv-Company-Type<br>Document-Period-End-Date-Value<br>Submission-Unexpected-Inv-Company-Type<br>Entity-Emerging-Growth-Company-Value<br>Entity-Ex-Transition-Period-Value<br>Entity-Small-Business-Value<br>Document-Period-End-Date-Value<br>Submission-Unexpected-Inv-Company-Type<br>Entity-Emerging-Growth-Company-Value<br>Entity-Ex-Transition-Period-Value<br>Entity-Small-Business-Unexpected<br>Document-Period-End-Date-Value<br>Submission-Unexpected-Inv-Company-Type<br>Entity-Emerging-Growth-Company-Value<br>Entity-Ex-Transition-Period-Value<br>Entity-Small-Business-Unexpected<br>Document-Period-End-Date-Value<br>Submission-Unexpected-Inv-Company-Type<br>Document-Period-End-Date-Existence<br>Entity-Shell-Company-Missing<br>Entity-Small-Business-Missing<br>Entity-Inv-Company-Type-Unexpected<br>Submission-Unexpected-Period<br>Current-Fiscal-Year-End-Date-Value<br>Entity-Small-Business-Filer-Category-Consistency<br>Entity-Ex-Transition-Period-Unexpected<br>Entity-Ex-Transition-Period-Missing<br>Entity-Ex-Transition-Period-Value<br>Submission-Unexpected-Ex-Transition-Period-Flag<br>Entity-Inv-Company-Type-Missing<br>Submission-Unexpected-Emerging-Growth-Company-Flag<br>Entity-Filer-Category-Unexpected</td>
+<td valign="top"></td>
+</tr>
+<tr>
+<td nowrap valign="top"><a href="605-41-seriesid/605-41-seriesid-testcase.xml">EDGAR Filer Manual v48 6.5.41 page 6-20</a></td>
+<td align="center" valign="top">9</td>
+<td nowrap valign="top">Series-Id-Member-Not-Declared<br>Series-Id-Member-Not-Axis-Member<br>Series-Id-Member-Not-in-Context</td>
+<td valign="top"></td>
+</tr>
+<tr>
+<td nowrap valign="top"><a href="605-42-deprecated/605-42-deprecated-testcase.xml">EDGAR Filer Manual v48 6.5.42 page 6-20</a></td>
+<td align="center" valign="top">11</td>
+<td nowrap valign="top">Deprecated-Concept</td>
+<td valign="top"></td>
+</tr>
+<tr>
+<td nowrap valign="top"><a href="605-43-signs/605-43-signs-testcase.xml">EDGAR Filer Manual v48 6.5.43 page 6-20</a></td>
+<td align="center" valign="top">11</td>
+<td nowrap valign="top">signs</td>
+<td valign="top"></td>
+</tr>
+<tr>
+<td nowrap valign="top"><a href="605-44-custom-axis/605-44-custom-axis-testcase.xml">EDGAR Filer Manual v48 6.5.44 page 6-21</a></td>
+<td align="center" valign="top">6</td>
+<td nowrap valign="top">Custom-Axis</td>
+<td valign="top"></td>
+</tr>
+</tbody></table></body>
+</html>

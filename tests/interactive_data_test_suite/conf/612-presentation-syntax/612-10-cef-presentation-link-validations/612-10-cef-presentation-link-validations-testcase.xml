@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl"?>
+<conf:testcase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:conf="http://edgar/2009/conformance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <conf:creator>
+        <conf:name>SEC Office of Structured Disclosure</conf:name>
+        <conf:email>StructuredData@sec.gov</conf:email>
+    </conf:creator>
+    <conf:number>612-10</conf:number>
+    <conf:name>EDGAR Filer Manual v68d 6.12.10</conf:name>
+    <conf:description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.12.10  CEF presentation link validations">Refer to EFM: 6.12.10  CEF presentation link validations</a>
+    </conf:description>
+    <conf:variation id="_100gd">
+        <conf:name>pre1-cust-not-N2-ok, GD</conf:name>
+        <conf:description>pre1-cust-not-N2-ok, GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "N-2/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e61210100gd/e61210100gd-20210601.htm</conf:instance>
+            <conf:schema>e61210100gd/iil-20210601.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_101gd">
+        <conf:name>pre2-cust-new-dom-mbr-of-all-risks-ok, GD</conf:name>
+        <conf:description>pre2-cust-new-dom-mbr-of-all-risks-ok, GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "N-2/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e61210101gd/e61210101gd-20210601.htm</conf:instance>
+            <conf:schema>e61210101gd/iil-20210601.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_102gd">
+        <conf:name>pre3-cust-new-dom-mbr-descendant-of-all-securities-ok, GD</conf:name>
+        <conf:description>pre3-cust-new-dom-mbr-descendant-of-all-securities-ok, GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "N-2/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e61210102gd/e61210102gd-20210601.htm</conf:instance>
+            <conf:schema>e61210102gd/iil-20210601.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_103ng">
+        <conf:name>pre4-cust-new-dom-mbr-of-all-risks-not-N2-ng, NG</conf:name>
+        <conf:description>pre4-cust-new-dom-mbr-of-all-risks-not-N2-ng, NG</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "N-2/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e61210103ng/e61210103ng-20210601.htm</conf:instance>
+            <conf:schema>e61210103ng/iil-20210601.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="61210" name="relationshipNotPermitted" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_104ng">
+        <conf:name>pre5-cust-non-dom-mbr-in-N2-ng, NG</conf:name>
+        <conf:description>pre5-cust-non-dom-mbr-in-N2-ng, NG</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "N-2/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e61210104ng/e61210104ng-20210601.htm</conf:instance>
+            <conf:schema>e61210104ng/iil-20210601.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="61210" name="relationshipNotPermitted" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+</conf:testcase>

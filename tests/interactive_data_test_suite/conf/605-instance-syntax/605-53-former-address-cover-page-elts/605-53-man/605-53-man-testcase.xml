@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../../lib/test.xsl"?>
+<conf:testcase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:conf="http://edgar/2009/conformance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../../lib/test.xsd">
+    <conf:creator>
+        <conf:name>SEC Office of Structured Disclosure</conf:name>
+        <conf:email>StructuredData@sec.gov</conf:email>
+    </conf:creator>
+    <conf:number>605-53</conf:number>
+    <conf:name>EDGAR Filer Manual v68d 6.5.53</conf:name>
+    <conf:description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.5.53 Former address cover page elements">Refer to EFM: 6.5.53 Former address cover page elements</a>
+    </conf:description>
+    <conf:variation id="_100gd">
+        <conf:name>8-K, GOOD </conf:name>
+        <conf:description>8-K, GOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"periodOfReport" : "10-26-2018" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60553100gd/e60553100gd-20081231.htm</conf:instance>
+            <conf:linkbase>e60553100gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60553100gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:schema>e60553100gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_101gd">
+        <conf:name>10-Q, GOOD </conf:name>
+        <conf:description>10-Q GOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"periodOfReport" : "12-31-2018" , "emergingGrowthCompanyFlag" : false , "smallBusinessFlag" : false , "submissionType" : "10-Q"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60553101gd/e60553101gd-20081231.htm</conf:instance>
+            <conf:linkbase>e60553101gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60553101gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60553101gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60553101gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_102gd">
+        <conf:name> 8-K, Ri, GOOD </conf:name>
+        <conf:description> 8-K, Ri, Commented PreCommencementIssuerTenderOffer, GOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"periodOfReport" : "10-26-2018" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60553102gd/e60553102gd-20081231.htm</conf:instance>
+            <conf:linkbase>e60553102gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60553102gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:schema>e60553102gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+</conf:testcase>

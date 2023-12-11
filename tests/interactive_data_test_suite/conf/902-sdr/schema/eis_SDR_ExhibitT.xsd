@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sec.gov/edgar/document/sdr/exhibitt" xmlns:mstns="http://www.sec.gov/edgar/document/sdr/exhibitt" xmlns:ns1="http://www.sec.gov/edgar/common" xmlns:ns2="http://www.sec.gov/edgar/sdrcommon" targetNamespace="http://www.sec.gov/edgar/document/sdr/exhibitt" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.sec.gov/edgar/common" schemaLocation="eis_Common.xsd"/>
+	<xs:import namespace="http://www.sec.gov/edgar/sdrcommon" schemaLocation="eis_SDR_common.xsd"/>
+	<xs:simpleType name="LMTD_SUBSCRIBER_TYPE_CODE_TYPE">
+		<xs:annotation>
+			<xs:documentation>
+Enumerated values and descriptions: 1: Natural Person, 2: Organization</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="LIMITED_ACCESS_SUBSCRIBER_TYPE">
+		<xs:annotation>
+			<xs:documentation>These elements part of the repeatable LIMITED_ACCESS_SUBSCRIBER_TYPE group</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="limitedAccessSubscriberTypeCode" type="LMTD_SUBSCRIBER_TYPE_CODE_TYPE"/>
+			<xs:element name="limitedAccessSubscriberFirstName" type="ns1:STRING_30_TYPE" minOccurs="0"/>
+			<xs:element name="limitedAccessSubscriberMiddleName" type="ns1:STRING_30_TYPE" minOccurs="0"/>
+			<xs:element name="limitedAccessSubscriberLastName" type="ns1:STRING_30_TYPE" minOccurs="0"/>
+			<xs:element name="limitedAccessSubscriberOrgName" type="ns2:STRING_100_TYPE" minOccurs="0"/>
+			<xs:element name="limitationOrProhibitionReason" type="ns2:STRING_1500_TYPE" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="INFO_DELIVERY_SERVICE_TYPE">
+		<xs:annotation>
+			<xs:documentation>These elements part of the repeatable INFO_DELIVERY_SERVICE_TYPE group</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="numberOfDevice" type="ns2:INTEGER_TYPE_5"/>
+			<xs:element name="minRequiredNumOfDevice" type="ns2:INTEGER_TYPE_5" minOccurs="0"/>
+			<xs:element name="maxPermittedNumOfDevice" type="ns2:INTEGER_TYPE_5" minOccurs="0"/>
+			<xs:element name="dataElementForInfoDeliveryDevice" type="ns1:STRING_1K_TYPE" maxOccurs="100"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MACHINE_READABLE_SERVICE_TYPE">
+		<xs:annotation>
+			<xs:documentation>These elements part of the repeatable MACHINE_READABLE_SERVICE_TYPE group</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="machineReadableServiceStoreMedia" type="ns2:STRING_100_TYPE"/>
+			<xs:element name="machineReadableServiceDataElement" type="ns1:STRING_1K_TYPE" maxOccurs="100"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="subscriberInformation">
+		<xs:annotation>
+			<xs:documentation>This is the root element for an SDR exhibit T.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="numberOfSubscriber" type="ns2:INTEGER_TYPE_5"/>
+				<xs:element name="limitedAccessSubscriber" type="LIMITED_ACCESS_SUBSCRIBER_TYPE" minOccurs="0" maxOccurs="100000"/>
+				<xs:element name="infoDeliveryService" type="INFO_DELIVERY_SERVICE_TYPE" minOccurs="0" maxOccurs="100"/>
+				<xs:element name="machineReadableService" type="MACHINE_READABLE_SERVICE_TYPE" minOccurs="0" maxOccurs="100"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

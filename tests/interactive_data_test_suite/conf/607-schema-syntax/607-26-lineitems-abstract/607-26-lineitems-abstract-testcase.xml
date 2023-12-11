@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>607-26</number>
+    <name>EDGAR Filer Manual v68d 6.7.26</name>
+    <description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.7.26 If an element name ends with &#239;&#191;&#189;LineItems&#239;&#191;&#189; then the abstract attribute must be &#239;&#191;&#189;true&#239;&#191;&#189;.">Refer to EFM: 6.7.26 If an element name ends with &#239;&#191;&#189;LineItems&#239;&#191;&#189; then the abstract attribute must be &#239;&#191;&#189;true&#239;&#191;&#189;.</a>
+    </description>
+    <reference specification="11186"></reference>
+    <variation id="_000gd">
+        <name>6.7.26, Element name ends in lineitems not abstract, GOOD.</name>
+        <description>Element name ends in lineitems not abstract, GOOD.</description>
+        <reference specification="11186"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60726000gd-20081231.xml</instance>
+            <linkbase>e60726000gd-20081231_pre.xml</linkbase>
+            <linkbase>e60726000gd-20081231_lab.xml</linkbase>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+            <schema>e60726000gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_001ng">
+        <name>6.7.26, Element name ends in LineItems not abstract, NOGOOD.</name>
+        <description>Element name ends in LineItems not abstract, NOGOOD.</description>
+        <reference specification="11186"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60726001ng-20081231.xml</instance>
+            <linkbase>e60726001ng-20081231_pre.xml</linkbase>
+            <linkbase>e60726001ng-20081231_lab.xml</linkbase>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+            <schema>e60726001ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60726" name="LineItems-Abstract-Name-Mismatch" frd="du"></assert>
+        </result>
+    </variation>
+</testcase>

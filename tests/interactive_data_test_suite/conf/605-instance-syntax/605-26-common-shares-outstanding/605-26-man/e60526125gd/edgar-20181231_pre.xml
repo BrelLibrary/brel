@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<link:linkbase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xbrli="http://www.xbrl.org/2003/instance" xsi:schemaLocation="http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd">
+    <link:roleRef roleURI="http://xbrl.sec.gov/dei/role/document/Cover" xlink:type="simple" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#cover"></link:roleRef>
+    <link:presentationLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/dei/role/document/Cover">
+        <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityListingsExchangeAxis" xlink:label="EntityListingsExchangeAxis"></link:loc>
+        <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityListingsTable" xlink:label="EntityListingsTable"></link:loc>
+        <link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_StatementClassOfStockAxis" xlink:label="StatementClassOfStockAxis"></link:loc>
+        <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/exch/2023/exch-2023.xsd#exch_XNYS" xlink:label="XNYS"></link:loc>
+        <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/exch/2023/exch-2023.xsd#exch_XCHI" xlink:label="XCHI"></link:loc>
+        <link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_ClassOfStockDomain" xlink:label="ClassOfStockDomain"></link:loc>
+        <link:loc xlink:type="locator" xlink:href="edgar-20181231.xsd#edgar_FixedNotes2026Member" xlink:label="FixedNotes2026Member"></link:loc>
+        <link:loc xlink:type="locator" xlink:href="edgar-20181231.xsd#edgar_FixedNotes2022Member" xlink:label="FixedNotes2022Member"></link:loc>
+        <link:loc xlink:type="locator" xlink:href="edgar-20181231.xsd#edgar_FloatingNotes2020Member" xlink:label="FloatingNotes2020Member"></link:loc>
+        <link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_CommonStockMember" xlink:label="CommonStockMember"></link:loc>
+        <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityListingsExchangeAxis" xlink:to="XNYS" order="2.0"></link:presentationArc>
+        <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityListingsExchangeAxis" xlink:to="XCHI" order="3.0"></link:presentationArc>
+        <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityListingsTable" xlink:to="StatementClassOfStockAxis" order="25.0"></link:presentationArc>
+        <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="StatementClassOfStockAxis" xlink:to="ClassOfStockDomain" order="1.0"></link:presentationArc>
+        <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="StatementClassOfStockAxis" xlink:to="FixedNotes2026Member" order="3.0"></link:presentationArc>
+        <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="StatementClassOfStockAxis" xlink:to="FixedNotes2022Member" order="4.0"></link:presentationArc>
+        <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="StatementClassOfStockAxis" xlink:to="FloatingNotes2020Member" order="5.0"></link:presentationArc>
+        <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="StatementClassOfStockAxis" xlink:to="CommonStockMember" order="2.0"></link:presentationArc>
+    </link:presentationLink>
+</link:linkbase>

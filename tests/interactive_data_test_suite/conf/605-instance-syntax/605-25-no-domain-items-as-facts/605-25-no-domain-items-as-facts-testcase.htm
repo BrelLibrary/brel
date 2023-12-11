@@ -1,0 +1,403 @@
+<html xmlns:case="http://edgar/2009/conformance">
+  <head>
+    <title>605-25
+        :
+        EDGAR Filer Manual v68d 6.5.25</title>
+    <style type="text/css">
+        table, td, th {border: solid black 1pt; border-collapse: collapse;} td {vertical-align: top;}
+      </style>
+  </head>
+  <body>
+    <h1>605-25
+        :
+        EDGAR Filer Manual v68d 6.5.25</h1>
+    <p>
+        Created by: 
+        <a href="mailto:StructuredData@sec.gov">SEC Office of Structured Disclosure</a></p>
+    <p>
+      <description xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.5.25 Domain item type elements are not facts.">Refer to EFM: 6.5.25 Domain item type elements are not facts.</a>
+    </description>
+    </p>
+    <h2>
+        Variations
+      </h2>
+    <table border="solid">
+      <thead>
+        <tr>
+          <th>Number</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>References</th>
+          <th>Data Inputs</th>
+          <th>Result Outputs</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>_000gd</td>
+          <td>6.5.25 DementedDomain concept is nonnum:domainItemType but not used as fact, GOOD.</td>
+          <td>DementedDomain concept is nonnum:domainItemType but not used as fact, GOOD.</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"periodOfReport": "12-31-2008", "submissionType": "8-K"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60525000gd-20081231.xml">e60525000gd-20081231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_pre.xml">edgar-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_def.xml">edgar-20081231_def.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_lab.xml">edgar-20081231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="e60525000gd-20081231_lab.xml">e60525000gd-20081231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="e60525000gd-20081231_def.xml">e60525000gd-20081231_def.xml</a></li>
+              <li>
+    Linkbase
+    <a href="e60525000gd-20081231_pre.xml">e60525000gd-20081231_pre.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20081231.xsd">edgar-20081231.xsd</a></li>
+              <li>
+    Schema
+    <a href="e60525000gd-20081231.xsd">e60525000gd-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_001ng</td>
+          <td>6.5.25 AbcMember, a non-abstract nonnum:domainItemType, used as empty valued fact, NOGOOD.</td>
+          <td>AbcMember, a non-abstract nonnum:domainItemType, used as empty valued fact, NOGOOD.</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"periodOfReport": "12-31-2008", "submissionType": "8-K"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60525001ng-20081231.xml">e60525001ng-20081231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_pre.xml">edgar-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_def.xml">edgar-20081231_def.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_lab.xml">edgar-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20081231.xsd">edgar-20081231.xsd</a></li>
+              <li>
+    Schema
+    <a href="e60525001ng-20081231.xsd">e60525001ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 60525, <a href="../../../../lib/xbrlerrors.htm#du-0525-Domain-As-Fact">Domain-As-Fact</a></td></tr><tr><td>FRD:</td><td>du</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_002ng</td>
+          <td>6.5.25 Concept DoesNotLookLikeButIsDomainMember with type derived from nonnum:domainItemType used in a fact, NOGOOD.</td>
+          <td>Concept DoesNotLookLikeButIsDomainMember with type derived from nonnum:domainItemType used in a fact, NOGOOD.</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"periodOfReport": "12-31-2008", "submissionType": "8-K"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60525002ng-20081231.xml">e60525002ng-20081231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_pre.xml">edgar-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_def.xml">edgar-20081231_def.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_lab.xml">edgar-20081231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="e60525002ng-20081231_lab.xml">e60525002ng-20081231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="e60525002ng-20081231_def.xml">e60525002ng-20081231_def.xml</a></li>
+              <li>
+    Linkbase
+    <a href="e60525002ng-20081231_pre.xml">e60525002ng-20081231_pre.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20081231.xsd">edgar-20081231.xsd</a></li>
+              <li>
+    Schema
+    <a href="e60525002ng-20081231.xsd">e60525002ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 60525, <a href="../../../../lib/xbrlerrors.htm#du-0525-Domain-As-Fact">Domain-As-Fact</a></td></tr><tr><td>FRD:</td><td>du</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_003gd</td>
+          <td>6.5.25 edgar:LooksLikeButIsNotDomainMemberHaHa concept derived from string, used as fact, GOOD.</td>
+          <td>edgar:LooksLikeButIsNotDomainMemberHaHa concept derived from string, used as fact, GOOD.</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"periodOfReport": "12-31-2010", "submissionType": "8-K"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60525003gd-20101231.xml">e60525003gd-20101231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="edgar-20101231_pre.xml">edgar-20101231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20101231_def.xml">edgar-20101231_def.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20101231_lab.xml">edgar-20101231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20101231.xsd">edgar-20101231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_004gd</td>
+          <td>6.5.25 edgar:LooksLikeButIsNotDomainMemberHaHa concept derived from string, used as fact, GOOD.</td>
+          <td>edgar:LooksLikeButIsNotDomainMemberHaHa concept derived from string, used as fact, GOOD.</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"periodOfReport": "12-31-2010", "submissionType": "8-K"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60525004gd-20101231.xml">e60525004gd-20101231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="edgar-20101231_pre.xml">edgar-20101231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20101231_def.xml">edgar-20101231_def.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20101231_lab.xml">edgar-20101231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20101231.xsd">edgar-20101231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_005ng</td>
+          <td>6.5.25 edgar:DomainMember non-abstract concept (type us-types:domainItemType) used as fact, NOGOOD.</td>
+          <td>edgar:DomainMember non-abstract concept (type us-types:domainItemType) used as fact, NOGOOD.</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"periodOfReport": "12-31-2010", "submissionType": "8-K"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60525005ng-20101231.xml">e60525005ng-20101231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="edgar-20101231_pre.xml">edgar-20101231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20101231_def.xml">edgar-20101231_def.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20101231_lab.xml">edgar-20101231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20101231.xsd">edgar-20101231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 60525, <a href="../../../../lib/xbrlerrors.htm#du-0525-Domain-As-Fact">Domain-As-Fact</a></td></tr><tr><td>FRD:</td><td>du</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_006ng</td>
+          <td>6.5.25 edgar:DerivedDomainMember non-abstract concept (type us-types:domainItemType) used as fact, NOGOOD.</td>
+          <td>edgar:DerivedDomainMember concept (type us-types:domainItemType) used as fact, NOGOOD.</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"periodOfReport": "12-31-2010", "submissionType": "8-K"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60525006ng-20101231.xml">e60525006ng-20101231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="edgar-20101231_pre.xml">edgar-20101231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20101231_def.xml">edgar-20101231_def.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20101231_lab.xml">edgar-20101231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20101231.xsd">edgar-20101231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 60525, <a href="../../../../lib/xbrlerrors.htm#du-0525-Domain-As-Fact">Domain-As-Fact</a></td></tr><tr><td>FRD:</td><td>du</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

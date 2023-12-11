@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>618-01</number>
+    <name>EDGAR Filer Manual v68d 6.18.1</name>
+    <description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.18.1  An element that has a company specific namespace must not have a reference.">Refer to EFM: 6.18.1  An element that has a company specific namespace must not have a reference.</a>
+    </description>
+    <reference specification="nroce"></reference>
+    <variation id="_000gd">
+        <name>6.18.1, reference linkbase exists but it is empty of arcs, GOOD. </name>
+        <description> reference linkbase exists but it is empty of arcs, GOOD. </description>
+        <reference specification="10491"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e61801000gd-20081231.xml</instance>
+            <linkbase>e61801000gd-20081231_ref.xml</linkbase>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+            <schema>e61801000gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_001ng">
+        <name>6.18.1, arc to (local, not standard) reference for custom element exists, NOGOOD. </name>
+        <description> arc to (local, not standard) reference for custom element exists, NOGOOD. </description>
+        <reference specification="10491"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e61801001ng-20081231.xml</instance>
+            <linkbase>e61801001ng-20081231_ref.xml</linkbase>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+            <schema>e61801001ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="61801" name="Custom-Element-Has-Reference" frd="cp"></assert>
+        </result>
+    </variation>
+</testcase>

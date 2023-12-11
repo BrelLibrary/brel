@@ -1,0 +1,763 @@
+<html xmlns:case="http://edgar/2009/conformance">
+  <head>
+    <title>525-13
+        :
+        Inline XBRL Test Suite v68d : References tests, Not EDGAR Dependent</title>
+    <style type="text/css">
+        table, td, th {border: solid black 1pt; border-collapse: collapse;} td {vertical-align: top;}
+      </style>
+  </head>
+  <body>
+    <h1>525-13
+        :
+        Inline XBRL Test Suite v68d : References tests, Not EDGAR Dependent</h1>
+    <p>
+        Created by: 
+        <a href="mailto:StructuredData@sec.gov">SEC Office of Structured Disclosure</a></p>
+    <p>
+      <description xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <h2>Various "good" (gd) and "not good" (ng) test files that demonstrate specific References usage</h2>
+        <p>
+            <a href="http://www.xbrl.org/specification/inlinexbrl-part1/rec-2013-11-18/inlinexbrl-part1-rec-2013-11-18.html#sec-references">12 The references element</a>
+        </p>
+    </description>
+    </p>
+    <h2>
+        Variations
+      </h2>
+    <table border="solid">
+      <thead>
+        <tr>
+          <th>Number</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>References</th>
+          <th>Data Inputs</th>
+          <th>Result Outputs</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>_001gd</td>
+          <td>Valid references, GOOD</td>
+          <td>The ix:references element is used to contain reference elements</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i12001gd/i12001gd-20081231.htm">i12001gd/i12001gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i12001gd/i12001gd-20081231_pre.xml">i12001gd/i12001gd-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i12001gd/i12001gd-20081231_lab.xml">i12001gd/i12001gd-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i12001gd/i12001gd-20081231.xsd">i12001gd/i12001gd-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_002gd</td>
+          <td>References with non ix attributes, GOOD</td>
+          <td>References may contain any attribute with a namespace name which has a value other than http://www.xbrl.org/2013/inlineXBRL</td>
+          <td>12.1 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i12002gd/i12002gd-20081231.htm">i12002gd/i12002gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i12002gd/i12002gd-20081231_pre.xml">i12002gd/i12002gd-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i12002gd/i12002gd-20081231_lab.xml">i12002gd/i12002gd-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i12002gd/i12002gd-20081231.xsd">i12002gd/i12002gd-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_100ng</td>
+          <td>references element is present but has no children, NOGOOD</td>
+          <td>FAIL-empty-references</td>
+          <td>There MUST be at least one (nonempty) ix:references element in the Inline XBRL Document Set for each Target Document. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i12100ng/i12100ng-20081231.htm">i12100ng/i12100ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i12100ng/i12100ng-20081231_pre.xml">i12100ng/i12100ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i12100ng/i12100ng-20081231_lab.xml">i12100ng/i12100ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i12100ng/i12100ng-20081231.xsd">i12100ng/i12100ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.12.1.2:missingReferences">ix11.12.1.2:missingReferences</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_101ng</td>
+          <td>References with xbrl instance namespace on attribute, NOGOOD</td>
+          <td>FAIL-ix-references-03</td>
+          <td>The ix:references element MUST NOT have any attributes with a namespace name which has a value of http://www.xbrl.org/2003/instance. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i12101ng/i12101ng-20081231.htm">i12101ng/i12101ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i12101ng/i12101ng-20081231_pre.xml">i12101ng/i12101ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i12101ng/i12101ng-20081231_lab.xml">i12101ng/i12101ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i12101ng/i12101ng-20081231.xsd">i12101ng/i12101ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.12.1.1:qualifiedAttributeDisallowed">ix11.12.1.1:qualifiedAttributeDisallowed</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_102ng</td>
+          <td>Duplicate ID for references, NOGOOD</td>
+          <td>FAIL-ix-references-09</td>
+          <td>ID values MUST uniquely identify the elements which bear them. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i12102ng/i12102ng-20081231.htm">i12102ng/i12102ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i12102ng/i12102ng-20081231_pre.xml">i12102ng/i12102ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i12102ng/i12102ng-20081231_lab.xml">i12102ng/i12102ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i12102ng/i12102ng-20081231.xsd">i12102ng/i12102ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-xml.3.3.1:idMustBeUnique">xml.3.3.1:idMustBeUnique</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_103ng</td>
+          <td>Missing References element, NOGOOD</td>
+          <td>FAIL-missing-references</td>
+          <td>There MUST be at least one ix:references element in the Inline XBRL Document Set for each Target Document. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i12103ng/i12103ng-20081231.htm">i12103ng/i12103ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i12103ng/i12103ng-20081231_pre.xml">i12103ng/i12103ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i12103ng/i12103ng-20081231_lab.xml">i12103ng/i12103ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i12103ng/i12103ng-20081231.xsd">i12103ng/i12103ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.12.1.2:missingReferences">ix11.12.1.2:missingReferences</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_104ng</td>
+          <td>Inconsistent default namespace bindings, NOGOOD</td>
+          <td>FAIL-ix-references-namespace-bindings-02</td>
+          <td>Each ix:references element in the Inline XBRL Document Set with a given value for the {target} property MUST have the same default namespace or have no default namespace in scope.  
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i12104ng/i12104ng-20081231.htm">i12104ng/i12104ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i12104ng/i12104ng-20081231_pre.xml">i12104ng/i12104ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i12104ng/i12104ng-20081231_lab.xml">i12104ng/i12104ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i12104ng/i12104ng-20081231.xsd">i12104ng/i12104ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.12.1.2:referencesNamespacePrefixConflict">ix11.12.1.2:referencesNamespacePrefixConflict</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_105ng</td>
+          <td>Invalid element link:roleRef in references, NOGOOD</td>
+          <td>FAIL-references-illegal-content</td>
+          <td>Element ix:references allows only children link:schemaRef or link:linkbaseRef. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i12105ng/i12105ng-20081231.htm">i12105ng/i12105ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i12105ng/i12105ng-20081231_pre.xml">i12105ng/i12105ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i12105ng/i12105ng-20081231_lab.xml">i12105ng/i12105ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i12105ng/i12105ng-20081231.xsd">i12105ng/i12105ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-html:syntaxError">html:syntaxError</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_106ng</td>
+          <td>Illegal order for references, NOGOOD</td>
+          <td>FAIL-references-illegal-order-in-header</td>
+          <td>The ix:references element must have children ix:hidden, ix:references, and/or ix:resources in that order. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i12106ng/i12106ng-20081231.htm">i12106ng/i12106ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i12106ng/i12106ng-20081231_pre.xml">i12106ng/i12106ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i12106ng/i12106ng-20081231_lab.xml">i12106ng/i12106ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i12106ng/i12106ng-20081231.xsd">i12106ng/i12106ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-html:syntaxError">html:syntaxError</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_107ng</td>
+          <td>Illegal location for references, NOGOOD</td>
+          <td>FAIL-references-illegal-location</td>
+          <td>The ix:references element MUST be a child of the ix:header element. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i12107ng/i12107ng-20081231.htm">i12107ng/i12107ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i12107ng/i12107ng-20081231_pre.xml">i12107ng/i12107ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i12107ng/i12107ng-20081231_lab.xml">i12107ng/i12107ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i12107ng/i12107ng-20081231.xsd">i12107ng/i12107ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-html:syntaxError">html:syntaxError</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_108ng</td>
+          <td>Multiple references attribute have same values, NOGOOD</td>
+          <td>FAIL-ix-references-rule-multiple-attributes-sameValue</td>
+          <td>Each attribute in {other attributes} MUST NOT occur in more than one ix:references element in the Inline XBRL Document Set with a given value for the {target} property. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i12108ng/i12108ng-20081231.htm">i12108ng/i12108ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i12108ng/i12108ng-20081231_pre.xml">i12108ng/i12108ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i12108ng/i12108ng-20081231_lab.xml">i12108ng/i12108ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i12108ng/i12108ng-20081231.xsd">i12108ng/i12108ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.12.1.2:referencesAttributeDuplication">ix11.12.1.2:referencesAttributeDuplication</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_109ng</td>
+          <td>Multiple references elements have IDs, NOGOOD</td>
+          <td>FAIL-ix-references-rule-multiple-id</td>
+          <td>There MUST NOT be more than one ix:references element in the Inline XBRL Document Set with a given value for the {target} property which has an id attribute.  
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i12109ng/i12109ng-20081231.htm">i12109ng/i12109ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i12109ng/i12109ng-20081231_pre.xml">i12109ng/i12109ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i12109ng/i12109ng-20081231_lab.xml">i12109ng/i12109ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i12109ng/i12109ng-20081231.xsd">i12109ng/i12109ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.12.1.2:referencesTargetId">ix11.12.1.2:referencesTargetId</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_110ng</td>
+          <td>Inconsistent bindings for namespace prefix pf, NOGOOD</td>
+          <td>FAIL-ix-references-namespace-bindings-03</td>
+          <td>The set of (namespace prefix, URI reference) pairs formed by the namespace declarations in scope on ix:references elements with a given value for the {target} property MUST NOT contain multiple pairs for the same namespace prefix with different URI references. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i12110ng/i12110ng-20081231.htm">i12110ng/i12110ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i12110ng/i12110ng-20081231_pre.xml">i12110ng/i12110ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i12110ng/i12110ng-20081231_lab.xml">i12110ng/i12110ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i12110ng/i12110ng-20081231.xsd">i12110ng/i12110ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.12.1.2:referencesNamespacePrefixConflict">ix11.12.1.2:referencesNamespacePrefixConflict</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_111ng</td>
+          <td>Inconsistent xml:lang bindings on references, NOGOOD</td>
+          <td>FAIL-ix-references-08</td>
+          <td>Each attribute in {other attributes} MUST NOT occur in more than one ix:references element in the Inline XBRL Document Set with a given value for the {target} property. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i12111ng/i12111ng-20081231.htm">i12111ng/i12111ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i12111ng/i12111ng-20081231_pre.xml">i12111ng/i12111ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i12111ng/i12111ng-20081231_lab.xml">i12111ng/i12111ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i12111ng/i12111ng-20081231.xsd">i12111ng/i12111ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.12.1.2:referencesAttributeDuplication">ix11.12.1.2:referencesAttributeDuplication</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_112ng</td>
+          <td>Inconsistent default namespace bindings, NOGOOD</td>
+          <td>FAIL-ix-references-namespace-bindings-01</td>
+          <td>Each ix:references element in the Inline XBRL Document Set with a given value for the {target} property MUST have the same default namespace or have no default namespace in scope.  
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i12112ng/i12112ng-20081231.htm">i12112ng/i12112ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i12112ng/i12112ng-20081231_pre.xml">i12112ng/i12112ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i12112ng/i12112ng-20081231_lab.xml">i12112ng/i12112ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i12112ng/i12112ng-20081231.xsd">i12112ng/i12112ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.12.1.2:referencesNamespacePrefixConflict">ix11.12.1.2:referencesNamespacePrefixConflict</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_113ng</td>
+          <td>Inconsistent pf namespace bindings and a third default, NOGOOD</td>
+          <td>FAIL-ix-references-namespace-bindings-04</td>
+          <td>Each ix:references element in the Inline XBRL Document Set with a given value for the {target} property MUST have the same default namespace or have no default namespace in scope.  
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i12113ng/i12113ng-20081231.htm">i12113ng/i12113ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i12113ng/i12113ng-20081231_pre.xml">i12113ng/i12113ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i12113ng/i12113ng-20081231_lab.xml">i12113ng/i12113ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i12113ng/i12113ng-20081231.xsd">i12113ng/i12113ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.12.1.2:referencesNamespacePrefixConflict">ix11.12.1.2:referencesNamespacePrefixConflict</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl"?>
+<conf:testcase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:conf="http://edgar/2009/conformance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <conf:creator>
+        <conf:name>SEC Office of Structured Disclosure</conf:name>
+        <conf:email>StructuredData@sec.gov</conf:email>
+    </conf:creator>
+    <conf:number>612-12</conf:number>
+    <conf:name>EDGAR Filer Manual v68d 6.12.12</conf:name>
+    <conf:description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.12.12  SHR presentation link validations">Refer to EFM: 6.12.12  SHR presentation link validations</a>
+    </conf:description>
+    <conf:variation id="_100gd">
+        <conf:name>pre1-cust-in-SHR-role-ok, GD</conf:name>
+        <conf:description>pre1-cust-in-SHR-role-ok, GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{}'></conf:parameter>
+            <conf:instance readMeFirst="true">e61212100gd/shr00-20331231.htm</conf:instance>
+            <conf:schema>e61212100gd/shr00-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_101ng">
+        <conf:name>pre-SHR-elts-in-non-SHR-role-ng, NG</conf:name>
+        <conf:description>pre-SHR-elts-in-non-SHR-role-ng, NG</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{}'></conf:parameter>
+            <conf:instance readMeFirst="true">e61212101ng/shr00-20331231.htm</conf:instance>
+            <conf:schema>e61212101ng/shr00-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="61212" name="Relationship-Not-Permitted" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_102ng">
+        <conf:name>pre1-cust-non-dom-mbr-in-SHR-role-ng, NG</conf:name>
+        <conf:description>pre1-cust-cust-non-dom-mbr-in-SHR-role-ng, NG</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{}'></conf:parameter>
+            <conf:instance readMeFirst="true">e61212102ng/shr00-20331231.htm</conf:instance>
+            <conf:schema>e61212102ng/shr00-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="61212" name="Relationship-Not-Permitted" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+</conf:testcase>

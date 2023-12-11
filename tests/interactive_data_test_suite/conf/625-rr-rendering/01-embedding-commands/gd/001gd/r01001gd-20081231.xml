@@ -1,0 +1,1193 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xbrli:xbrl xmlns:dei="http://xbrl.sec.gov/dei/2023" xmlns:iso4217="http://www.xbrl.org/2003/iso4217" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xbrldi="http://xbrl.org/2006/xbrldi" xmlns:xbrldt="http://xbrl.org/2005/xbrldt" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ixt="http://www.xbrl.org/2008/inlineXBRL/transformation" xmlns:r01001gd="http://r01001gd/20090701" xmlns:rr="http://xbrl.sec.gov/rr/2023">
+    <link:schemaRef xlink:href="r01001gd-20081231.xsd" xlink:type="simple"></link:schemaRef>
+    <xbrli:context id="_">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2009-01-01</xbrli:startDate>
+            <xbrli:endDate>2009-07-01</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="S123456789">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+            <xbrli:segment>
+                <xbrldi:explicitMember dimension="dei:LegalEntityAxis">r01001gd:S123456789Member</xbrldi:explicitMember>
+            </xbrli:segment>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2009-01-01</xbrli:startDate>
+            <xbrli:endDate>2009-07-01</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="Investors_S123456789">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+            <xbrli:segment>
+                <xbrldi:explicitMember dimension="dei:LegalEntityAxis">r01001gd:S123456789Member</xbrldi:explicitMember>
+                <xbrldi:explicitMember dimension="dei:DocumentInformationDocumentAxis">r01001gd:InvestorsMember</xbrldi:explicitMember>
+            </xbrli:segment>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2009-01-01</xbrli:startDate>
+            <xbrli:endDate>2009-07-01</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="RetirementPlan_S123456789">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+            <xbrli:segment>
+                <xbrldi:explicitMember dimension="dei:LegalEntityAxis">r01001gd:S123456789Member</xbrldi:explicitMember>
+                <xbrldi:explicitMember dimension="dei:DocumentInformationDocumentAxis">r01001gd:RetirementPlanMember</xbrldi:explicitMember>
+            </xbrli:segment>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2009-01-01</xbrli:startDate>
+            <xbrli:endDate>2009-07-01</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="Universal_S123456789">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+            <xbrli:segment>
+                <xbrldi:explicitMember dimension="dei:LegalEntityAxis">r01001gd:S123456789Member</xbrldi:explicitMember>
+                <xbrldi:explicitMember dimension="dei:DocumentInformationDocumentAxis">r01001gd:UniversalMember</xbrldi:explicitMember>
+            </xbrli:segment>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2009-01-01</xbrli:startDate>
+            <xbrli:endDate>2009-07-01</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="S123456789_C123456719">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+            <xbrli:segment>
+                <xbrldi:explicitMember dimension="dei:LegalEntityAxis">r01001gd:S123456789Member</xbrldi:explicitMember>
+                <xbrldi:explicitMember dimension="rr:ProspectusShareClassAxis">r01001gd:C123456719Member</xbrldi:explicitMember>
+            </xbrli:segment>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2009-01-01</xbrli:startDate>
+            <xbrli:endDate>2009-07-01</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="S123456789_C123456727">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+            <xbrli:segment>
+                <xbrldi:explicitMember dimension="dei:LegalEntityAxis">r01001gd:S123456789Member</xbrldi:explicitMember>
+                <xbrldi:explicitMember dimension="rr:ProspectusShareClassAxis">r01001gd:C123456727Member</xbrldi:explicitMember>
+            </xbrli:segment>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2009-01-01</xbrli:startDate>
+            <xbrli:endDate>2009-07-01</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="S123456789_C123456726">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+            <xbrli:segment>
+                <xbrldi:explicitMember dimension="dei:LegalEntityAxis">r01001gd:S123456789Member</xbrldi:explicitMember>
+                <xbrldi:explicitMember dimension="rr:ProspectusShareClassAxis">r01001gd:C123456726Member</xbrldi:explicitMember>
+            </xbrli:segment>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2009-01-01</xbrli:startDate>
+            <xbrli:endDate>2009-07-01</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="S123456789_C123456725">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+            <xbrli:segment>
+                <xbrldi:explicitMember dimension="dei:LegalEntityAxis">r01001gd:S123456789Member</xbrldi:explicitMember>
+                <xbrldi:explicitMember dimension="rr:ProspectusShareClassAxis">r01001gd:C123456725Member</xbrldi:explicitMember>
+            </xbrli:segment>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2009-01-01</xbrli:startDate>
+            <xbrli:endDate>2009-07-01</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="SandP500Index">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+            <xbrli:segment>
+                <xbrldi:explicitMember dimension="dei:LegalEntityAxis">r01001gd:S123456789Member</xbrldi:explicitMember>
+                <xbrldi:explicitMember dimension="rr:PerformanceMeasureAxis">r01001gd:SandP500IndexMember</xbrldi:explicitMember>
+            </xbrli:segment>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2009-01-01</xbrli:startDate>
+            <xbrli:endDate>2009-07-01</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="BountyGrowthAndIncomeFundsIndex">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+            <xbrli:segment>
+                <xbrldi:explicitMember dimension="dei:LegalEntityAxis">r01001gd:S123456789Member</xbrldi:explicitMember>
+                <xbrldi:explicitMember dimension="rr:PerformanceMeasureAxis">r01001gd:BountyGrowthAndIncomeFundsIndexMember</xbrldi:explicitMember>
+            </xbrli:segment>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2009-01-01</xbrli:startDate>
+            <xbrli:endDate>2009-07-01</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="S123456789_C123456720">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+            <xbrli:segment>
+                <xbrldi:explicitMember dimension="dei:LegalEntityAxis">r01001gd:S123456789Member</xbrldi:explicitMember>
+                <xbrldi:explicitMember dimension="rr:ProspectusShareClassAxis">r01001gd:C123456720Member</xbrldi:explicitMember>
+            </xbrli:segment>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2009-01-01</xbrli:startDate>
+            <xbrli:endDate>2009-07-01</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="S123456789Member_AfterTaxesOnDistributions_C123456719">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+            <xbrli:segment>
+                <xbrldi:explicitMember dimension="dei:LegalEntityAxis">r01001gd:S123456789Member</xbrldi:explicitMember>
+                <xbrldi:explicitMember dimension="rr:PerformanceMeasureAxis">rr:AfterTaxesOnDistributionsMember</xbrldi:explicitMember>
+                <xbrldi:explicitMember dimension="rr:ProspectusShareClassAxis">r01001gd:C123456719Member</xbrldi:explicitMember>
+            </xbrli:segment>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2009-01-01</xbrli:startDate>
+            <xbrli:endDate>2009-07-01</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="S123456789Member_AfterTaxesOnDistributionsAndSales_C123456719">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+            <xbrli:segment>
+                <xbrldi:explicitMember dimension="dei:LegalEntityAxis">r01001gd:S123456789Member</xbrldi:explicitMember>
+                <xbrldi:explicitMember dimension="rr:PerformanceMeasureAxis">rr:AfterTaxesOnDistributionsAndSalesMember</xbrldi:explicitMember>
+                <xbrldi:explicitMember dimension="rr:ProspectusShareClassAxis">r01001gd:C123456719Member</xbrldi:explicitMember>
+            </xbrli:segment>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2009-01-01</xbrli:startDate>
+            <xbrli:endDate>2009-07-01</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:unit id="USD">
+        <xbrli:measure>iso4217:USD</xbrli:measure>
+    </xbrli:unit>
+    <xbrli:unit id="Ratio">
+        <xbrli:measure>xbrli:pure</xbrli:measure>
+    </xbrli:unit>
+    <dei:DocumentType contextRef="_">485BPOS</dei:DocumentType>
+    <dei:EntityRegistrantName contextRef="_">OID TEST CO #1 r01001gd</dei:EntityRegistrantName>
+    <dei:EntityCentralIndexKey contextRef="_">9876543210</dei:EntityCentralIndexKey>
+    <dei:AmendmentFlag contextRef="_">false</dei:AmendmentFlag>
+    <rr:RiskReturnDetailTableTextBlock contextRef="_">&lt;div style="display: none"&gt;~ http://xbrl.sec.gov/rr/role/RiskReturnDetailData
+
+column period compact *
+
+row dei_DocumentInformationDocumentAxis compact *
+
+row dei_LegalEntityAxis compact *
+
+row rr_ProspectusShareClassAxis compact *
+
+row rr_PerformanceMeasureAxis compact *
+
+row primary compact * ~&lt;/div&gt;</rr:RiskReturnDetailTableTextBlock>
+    <rr:MaximumAccountFee contextRef="S123456789_C123456727" unitRef="USD" decimals="INF">15</rr:MaximumAccountFee>
+    <rr:ManagementFeesOverAssets contextRef="S123456789_C123456719" unitRef="Ratio" decimals="INF">0.0027</rr:ManagementFeesOverAssets>
+    <rr:ManagementFeesOverAssets contextRef="S123456789_C123456725" unitRef="Ratio" decimals="INF">0.0027</rr:ManagementFeesOverAssets>
+    <rr:ManagementFeesOverAssets contextRef="S123456789_C123456726" unitRef="Ratio" decimals="INF">0.0027</rr:ManagementFeesOverAssets>
+    <rr:ManagementFeesOverAssets contextRef="S123456789_C123456727" unitRef="Ratio" decimals="INF">0.0027</rr:ManagementFeesOverAssets>
+    <rr:DistributionAndService12b1FeesOverAssets contextRef="S123456789_C123456719" unitRef="Ratio" decimals="INF">0.0023</rr:DistributionAndService12b1FeesOverAssets>
+    <rr:OtherExpensesOverAssets contextRef="S123456789_C123456719" unitRef="Ratio" decimals="INF">0.0014</rr:OtherExpensesOverAssets>
+    <rr:ExpensesOverAssets contextRef="S123456789_C123456719" unitRef="Ratio" decimals="INF">0.0064</rr:ExpensesOverAssets>
+    <rr:DistributionAndService12b1FeesOverAssets contextRef="S123456789_C123456725" unitRef="Ratio" decimals="INF">0.0095</rr:DistributionAndService12b1FeesOverAssets>
+    <rr:OtherExpensesOverAssets contextRef="S123456789_C123456725" unitRef="Ratio" decimals="INF">0.0013</rr:OtherExpensesOverAssets>
+    <rr:ExpensesOverAssets contextRef="S123456789_C123456725" unitRef="Ratio" decimals="INF">0.0135</rr:ExpensesOverAssets>
+    <rr:DistributionAndService12b1FeesOverAssets contextRef="S123456789_C123456726" unitRef="Ratio" decimals="INF">0.0095</rr:DistributionAndService12b1FeesOverAssets>
+    <rr:DistributionAndService12b1FeesOverAssets contextRef="S123456789_C123456727" unitRef="Ratio" decimals="INF">0.0024</rr:DistributionAndService12b1FeesOverAssets>
+    <rr:OtherExpensesOverAssets contextRef="S123456789_C123456726" unitRef="Ratio" decimals="INF">0.0018</rr:OtherExpensesOverAssets>
+    <rr:ExpensesOverAssets contextRef="S123456789_C123456726" unitRef="Ratio" decimals="INF">0.0140</rr:ExpensesOverAssets>
+    <rr:OtherExpensesOverAssets contextRef="S123456789_C123456727" unitRef="Ratio" decimals="INF">0.0013</rr:OtherExpensesOverAssets>
+    <rr:ExpensesOverAssets contextRef="S123456789_C123456727" unitRef="Ratio" decimals="INF">0.0064</rr:ExpensesOverAssets>
+    <rr:ManagementFeesOverAssets contextRef="S123456789_C123456720" unitRef="Ratio" decimals="INF">0.0027</rr:ManagementFeesOverAssets>
+    <rr:DistributionAndService12b1FeesOverAssets contextRef="S123456789_C123456720" unitRef="Ratio" decimals="INF">0.0094</rr:DistributionAndService12b1FeesOverAssets>
+    <rr:OtherExpensesOverAssets contextRef="S123456789_C123456720" unitRef="Ratio" decimals="INF">0.0015</rr:OtherExpensesOverAssets>
+    <rr:ExpensesOverAssets contextRef="S123456789_C123456720" unitRef="Ratio" decimals="INF">0.0136</rr:ExpensesOverAssets>
+    <rr:MaximumDeferredSalesChargeOverOther id="id_footnote_elem_8843252" contextRef="S123456789_C123456725" unitRef="Ratio" decimals="INF">0.0450</rr:MaximumDeferredSalesChargeOverOther>
+    <rr:MaximumDeferredSalesChargeOverOther id="id_footnote_elem_20484300" contextRef="S123456789_C123456726" unitRef="Ratio" decimals="INF">.0100</rr:MaximumDeferredSalesChargeOverOther>
+    <rr:MaximumDeferredSalesChargeOverOther contextRef="S123456789_C123456719" unitRef="Ratio" decimals="INF">0</rr:MaximumDeferredSalesChargeOverOther>
+    <rr:MaximumSalesChargeOnReinvestedDividendsAndDistributionsOverOther contextRef="S123456789_C123456719" unitRef="Ratio" decimals="INF">0</rr:MaximumSalesChargeOnReinvestedDividendsAndDistributionsOverOther>
+    <rr:RedemptionFee contextRef="S123456789_C123456719" unitRef="USD" decimals="INF">0</rr:RedemptionFee>
+    <rr:MaximumDeferredSalesChargeOverOther contextRef="S123456789_C123456720" unitRef="Ratio" decimals="INF">0</rr:MaximumDeferredSalesChargeOverOther>
+    <rr:MaximumSalesChargeOnReinvestedDividendsAndDistributionsOverOther contextRef="S123456789_C123456720" unitRef="Ratio" decimals="INF">0</rr:MaximumSalesChargeOnReinvestedDividendsAndDistributionsOverOther>
+    <rr:RedemptionFee contextRef="S123456789_C123456720" unitRef="USD" decimals="INF">0</rr:RedemptionFee>
+    <rr:MaximumDeferredSalesChargeOverOther contextRef="S123456789_C123456727" unitRef="Ratio" decimals="INF">0</rr:MaximumDeferredSalesChargeOverOther>
+    <rr:MaximumSalesChargeOnReinvestedDividendsAndDistributionsOverOther contextRef="S123456789_C123456725" unitRef="Ratio" decimals="INF">0</rr:MaximumSalesChargeOnReinvestedDividendsAndDistributionsOverOther>
+    <rr:MaximumSalesChargeOnReinvestedDividendsAndDistributionsOverOther contextRef="S123456789_C123456726" unitRef="Ratio" decimals="INF">0</rr:MaximumSalesChargeOnReinvestedDividendsAndDistributionsOverOther>
+    <rr:MaximumSalesChargeOnReinvestedDividendsAndDistributionsOverOther contextRef="S123456789_C123456727" unitRef="Ratio" decimals="INF">0</rr:MaximumSalesChargeOnReinvestedDividendsAndDistributionsOverOther>
+    <rr:RedemptionFee contextRef="S123456789_C123456725" unitRef="USD" decimals="INF">0</rr:RedemptionFee>
+    <rr:RedemptionFee contextRef="S123456789_C123456726" unitRef="USD" decimals="INF">0</rr:RedemptionFee>
+    <rr:RedemptionFee contextRef="S123456789_C123456727" unitRef="USD" decimals="INF">0</rr:RedemptionFee>
+    <rr:MaximumAccountFee contextRef="S123456789_C123456719" unitRef="USD" decimals="INF">0</rr:MaximumAccountFee>
+    <rr:MaximumAccountFee contextRef="S123456789_C123456725" unitRef="USD" decimals="INF">0</rr:MaximumAccountFee>
+    <rr:MaximumAccountFee contextRef="S123456789_C123456726" unitRef="USD" decimals="INF">0</rr:MaximumAccountFee>
+    <rr:MaximumAccountFee contextRef="S123456789_C123456720" unitRef="USD" decimals="INF">0</rr:MaximumAccountFee>
+    <rr:ExpenseExampleYear01 contextRef="S123456789_C123456719" unitRef="USD" decimals="0">607</rr:ExpenseExampleYear01>
+    <rr:ExpenseExampleYear03 contextRef="S123456789_C123456719" unitRef="USD" decimals="0">739</rr:ExpenseExampleYear03>
+    <rr:ExpenseExampleYear05 contextRef="S123456789_C123456719" unitRef="USD" decimals="0">884</rr:ExpenseExampleYear05>
+    <rr:ExpenseExampleYear10 contextRef="S123456789_C123456719" unitRef="USD" decimals="0">1302</rr:ExpenseExampleYear10>
+    <rr:ExpenseExampleYear01 contextRef="S123456789_C123456725" unitRef="USD" decimals="0">604</rr:ExpenseExampleYear01>
+    <rr:ExpenseExampleYear03 contextRef="S123456789_C123456725" unitRef="USD" decimals="0">929</rr:ExpenseExampleYear03>
+    <rr:ExpenseExampleYear05 contextRef="S123456789_C123456725" unitRef="USD" decimals="0">1277</rr:ExpenseExampleYear05>
+    <rr:ExpenseExampleYear10 contextRef="S123456789_C123456725" unitRef="USD" decimals="0">2264</rr:ExpenseExampleYear10>
+    <rr:ExpenseExampleYear01 contextRef="S123456789_C123456726" unitRef="USD" decimals="0">246</rr:ExpenseExampleYear01>
+    <rr:ExpenseExampleYear03 contextRef="S123456789_C123456726" unitRef="USD" decimals="0">555</rr:ExpenseExampleYear03>
+    <rr:ExpenseExampleYear05 contextRef="S123456789_C123456726" unitRef="USD" decimals="0">886</rr:ExpenseExampleYear05>
+    <rr:ExpenseExampleYear10 contextRef="S123456789_C123456726" unitRef="USD" decimals="0">1821</rr:ExpenseExampleYear10>
+    <rr:ExpenseExampleYear01 contextRef="S123456789_C123456727" unitRef="USD" decimals="0">81</rr:ExpenseExampleYear01>
+    <rr:ExpenseExampleYear03 contextRef="S123456789_C123456727" unitRef="USD" decimals="0">251</rr:ExpenseExampleYear03>
+    <rr:ExpenseExampleYear05 contextRef="S123456789_C123456727" unitRef="USD" decimals="0">433</rr:ExpenseExampleYear05>
+    <rr:ExpenseExampleYear10 contextRef="S123456789_C123456727" unitRef="USD" decimals="0">951</rr:ExpenseExampleYear10>
+    <rr:ExpenseExampleNoRedemptionYear01 contextRef="S123456789_C123456725" unitRef="USD" decimals="0">138</rr:ExpenseExampleNoRedemptionYear01>
+    <rr:ExpenseExampleNoRedemptionYear03 contextRef="S123456789_C123456725" unitRef="USD" decimals="0">428</rr:ExpenseExampleNoRedemptionYear03>
+    <rr:ExpenseExampleNoRedemptionYear05 contextRef="S123456789_C123456725" unitRef="USD" decimals="0">740</rr:ExpenseExampleNoRedemptionYear05>
+    <rr:ExpenseExampleNoRedemptionYear10 contextRef="S123456789_C123456725" unitRef="USD" decimals="0">1624</rr:ExpenseExampleNoRedemptionYear10>
+    <rr:ExpenseExampleNoRedemptionYear01 contextRef="S123456789_C123456726" unitRef="USD" decimals="0">143</rr:ExpenseExampleNoRedemptionYear01>
+    <rr:ExpenseExampleNoRedemptionYear03 contextRef="S123456789_C123456726" unitRef="USD" decimals="0">444</rr:ExpenseExampleNoRedemptionYear03>
+    <rr:ExpenseExampleNoRedemptionYear05 contextRef="S123456789_C123456726" unitRef="USD" decimals="0">767</rr:ExpenseExampleNoRedemptionYear05>
+    <rr:ExpenseExampleNoRedemptionYear10 contextRef="S123456789_C123456726" unitRef="USD" decimals="0">1679</rr:ExpenseExampleNoRedemptionYear10>
+    <rr:PortfolioTurnoverRate contextRef="S123456789" unitRef="Ratio" decimals="2">0.39</rr:PortfolioTurnoverRate>
+    <rr:AnnualReturn1999 contextRef="S123456789_C123456719" unitRef="Ratio" decimals="4">0.0157</rr:AnnualReturn1999>
+    <rr:AnnualReturn2000 contextRef="S123456789_C123456719" unitRef="Ratio" decimals="4">0.1223</rr:AnnualReturn2000>
+    <rr:AnnualReturn2001 contextRef="S123456789_C123456719" unitRef="Ratio" decimals="4">0.0204</rr:AnnualReturn2001>
+    <rr:AnnualReturn2002 contextRef="S123456789_C123456719" unitRef="Ratio" decimals="4">-0.2005</rr:AnnualReturn2002>
+    <rr:AnnualReturn2003 contextRef="S123456789_C123456719" unitRef="Ratio" decimals="4">0.3486</rr:AnnualReturn2003>
+    <rr:AnnualReturn2004 contextRef="S123456789_C123456719" unitRef="Ratio" decimals="4">0.1339</rr:AnnualReturn2004>
+    <rr:AnnualReturn2005 contextRef="S123456789_C123456719" unitRef="Ratio" decimals="4">0.0479</rr:AnnualReturn2005>
+    <rr:AnnualReturn2006 contextRef="S123456789_C123456719" unitRef="Ratio" decimals="4">0.2435</rr:AnnualReturn2006>
+    <rr:AnnualReturn2007 contextRef="S123456789_C123456719" unitRef="Ratio" decimals="4">0.0536</rr:AnnualReturn2007>
+    <rr:AnnualReturn2008 contextRef="S123456789_C123456719" unitRef="Ratio" decimals="4">-0.4469</rr:AnnualReturn2008>
+    <rr:HighestQuarterlyReturnLabel contextRef="S123456789_C123456719">******** ***** **** *** *****</rr:HighestQuarterlyReturnLabel>
+    <rr:BarChartHighestQuarterlyReturn contextRef="S123456789_C123456719" unitRef="Ratio" decimals="4">0.1594</rr:BarChartHighestQuarterlyReturn>
+    <rr:BarChartHighestQuarterlyReturnDate contextRef="S123456789_C123456719">2003-06-30</rr:BarChartHighestQuarterlyReturnDate>
+    <rr:LowestQuarterlyReturnLabel contextRef="S123456789_C123456719">******** ***** ******** *** *****</rr:LowestQuarterlyReturnLabel>
+    <rr:BarChartLowestQuarterlyReturn contextRef="S123456789_C123456719" unitRef="Ratio" decimals="4">-0.2022</rr:BarChartLowestQuarterlyReturn>
+    <rr:BarChartLowestQuarterlyReturnDate contextRef="S123456789_C123456719">2008-12-31</rr:BarChartLowestQuarterlyReturnDate>
+    <rr:YearToDateReturnLabel contextRef="S123456789_C123456719">*** ****** ***** ****** *** *** ***** ****** ***** ***** *** ****</rr:YearToDateReturnLabel>
+    <rr:BarChartYearToDateReturnDate contextRef="S123456789_C123456719">2009-03-31</rr:BarChartYearToDateReturnDate>
+    <rr:BarChartYearToDateReturn contextRef="S123456789_C123456719" unitRef="Ratio" decimals="4">-0.1323</rr:BarChartYearToDateReturn>
+    <rr:AverageAnnualReturnYear01 id="FACT_d10e754" contextRef="SandP500Index" unitRef="Ratio" decimals="4">-0.3699</rr:AverageAnnualReturnYear01>
+    <rr:AverageAnnualReturnYear05 id="FACT_d10e758" contextRef="SandP500Index" unitRef="Ratio" decimals="4">-0.0219</rr:AverageAnnualReturnYear05>
+    <rr:AverageAnnualReturnYear10 id="FACT_d10e762" contextRef="SandP500Index" unitRef="Ratio" decimals="4">-0.0138</rr:AverageAnnualReturnYear10>
+    <rr:AverageAnnualReturnSinceInception id="FACT_d10e766" contextRef="SandP500Index" unitRef="Ratio" decimals="4">0.1016</rr:AverageAnnualReturnSinceInception>
+    <rr:AverageAnnualReturnYear01 contextRef="BountyGrowthAndIncomeFundsIndex" unitRef="Ratio" decimals="4">-0.3754</rr:AverageAnnualReturnYear01>
+    <rr:AverageAnnualReturnYear05 contextRef="BountyGrowthAndIncomeFundsIndex" unitRef="Ratio" decimals="4">-0.0212</rr:AverageAnnualReturnYear05>
+    <rr:AverageAnnualReturnYear10 contextRef="BountyGrowthAndIncomeFundsIndex" unitRef="Ratio" decimals="4">-0.0024</rr:AverageAnnualReturnYear10>
+    <rr:AverageAnnualReturnYear01 contextRef="S123456789_C123456719" unitRef="Ratio" decimals="4">-0.3695</rr:AverageAnnualReturnYear01>
+    <rr:AverageAnnualReturnYear05 contextRef="S123456789_C123456719" unitRef="Ratio" decimals="4">-0.0251</rr:AverageAnnualReturnYear05>
+    <rr:AverageAnnualReturnYear10 contextRef="S123456789_C123456719" unitRef="Ratio" decimals="4">0.0055</rr:AverageAnnualReturnYear10>
+    <rr:AverageAnnualReturnSinceInception contextRef="S123456789_C123456719" unitRef="Ratio" decimals="4">0.1150</rr:AverageAnnualReturnSinceInception>
+    <rr:AverageAnnualReturnInceptionDate contextRef="S123456789_C123456719">1958-10-19</rr:AverageAnnualReturnInceptionDate>
+    <rr:AverageAnnualReturnYear01 contextRef="S123456789_C123456725" unitRef="Ratio" decimals="4">-0.3682</rr:AverageAnnualReturnYear01>
+    <rr:AverageAnnualReturnYear05 contextRef="S123456789_C123456725" unitRef="Ratio" decimals="4">-0.0243</rr:AverageAnnualReturnYear05>
+    <rr:AverageAnnualReturnSinceInception contextRef="S123456789_C123456725" unitRef="Ratio" decimals="4">0.0148</rr:AverageAnnualReturnSinceInception>
+    <rr:AverageAnnualReturnInceptionDate contextRef="S123456789_C123456725">1999-03-12</rr:AverageAnnualReturnInceptionDate>
+    <rr:AverageAnnualReturnYear01 contextRef="S123456789_C123456726" unitRef="Ratio" decimals="4">-0.3428</rr:AverageAnnualReturnYear01>
+    <rr:AverageAnnualReturnYear05 contextRef="S123456789_C123456726" unitRef="Ratio" decimals="4">-0.0216</rr:AverageAnnualReturnYear05>
+    <rr:AverageAnnualReturnSinceInception contextRef="S123456789_C123456726" unitRef="Ratio" decimals="4">-0.0041</rr:AverageAnnualReturnSinceInception>
+    <rr:AverageAnnualReturnInceptionDate contextRef="S123456789_C123456726">2001-03-12</rr:AverageAnnualReturnInceptionDate>
+    <rr:AverageAnnualReturnYear01 contextRef="S123456789_C123456727" unitRef="Ratio" decimals="4">-0.3312</rr:AverageAnnualReturnYear01>
+    <rr:AverageAnnualReturnYear05 contextRef="S123456789_C123456727" unitRef="Ratio" decimals="4">-0.0138</rr:AverageAnnualReturnYear05>
+    <rr:AverageAnnualReturnSinceInception contextRef="S123456789_C123456727" unitRef="Ratio" decimals="4">0.0037</rr:AverageAnnualReturnSinceInception>
+    <rr:AverageAnnualReturnInceptionDate contextRef="S123456789_C123456727">2001-03-12</rr:AverageAnnualReturnInceptionDate>
+    <rr:AverageAnnualReturnYear01 contextRef="S123456789_C123456720" unitRef="Ratio" decimals="4">-0.3364</rr:AverageAnnualReturnYear01>
+    <rr:AverageAnnualReturnYear05 contextRef="S123456789_C123456720" unitRef="Ratio" decimals="4">-0.0218</rr:AverageAnnualReturnYear05>
+    <rr:AverageAnnualReturnSinceInception contextRef="S123456789_C123456720" unitRef="Ratio" decimals="4">-0.0104</rr:AverageAnnualReturnSinceInception>
+    <rr:AverageAnnualReturnInceptionDate contextRef="S123456789_C123456720">1989-05-07</rr:AverageAnnualReturnInceptionDate>
+    <rr:AverageAnnualReturnYear01 contextRef="S123456789Member_AfterTaxesOnDistributions_C123456719" unitRef="Ratio" decimals="4">-0.4741</rr:AverageAnnualReturnYear01>
+    <rr:AverageAnnualReturnYear05 contextRef="S123456789Member_AfterTaxesOnDistributions_C123456719" unitRef="Ratio" decimals="4">-0.0217</rr:AverageAnnualReturnYear05>
+    <rr:AverageAnnualReturnYear10 contextRef="S123456789Member_AfterTaxesOnDistributions_C123456719" unitRef="Ratio" decimals="4">-0.0154</rr:AverageAnnualReturnYear10>
+    <rr:AverageAnnualReturnYear01 id="id_footnote_elem_25433550" contextRef="S123456789Member_AfterTaxesOnDistributionsAndSales_C123456719" unitRef="Ratio" decimals="4">-0.2329</rr:AverageAnnualReturnYear01>
+    <rr:AverageAnnualReturnYear05 id="id_footnote_elem_7886308" contextRef="S123456789Member_AfterTaxesOnDistributionsAndSales_C123456719" unitRef="Ratio" decimals="4">-0.0193</rr:AverageAnnualReturnYear05>
+    <rr:AverageAnnualReturnYear10 id="id_footnote_elem_13589224" contextRef="S123456789Member_AfterTaxesOnDistributionsAndSales_C123456719" unitRef="Ratio" decimals="4">0.0026</rr:AverageAnnualReturnYear10>
+    <dei:DocumentPeriodEndDate contextRef="_">2009-03-12</dei:DocumentPeriodEndDate>
+    <rr:ObjectiveHeading contextRef="Investors_S123456789">Investment Objective</rr:ObjectiveHeading>
+    <rr:ObjectivePrimaryTextBlock contextRef="Investors_S123456789">&lt;pre&gt;
+
+*** ****** ********** ********* ** ** ******* ****** *** ** ******* **
+
+*********** *** ****** ** ********* ********** **** ***** ****** *****
+
+**********
+
+*** ****** ********** ********* ** ** ******* ****** *** ** ******* **
+
+*********** *** ****** ** ********* ********** **** &lt;/pre&gt;</rr:ObjectivePrimaryTextBlock>
+    <rr:ExpenseHeading contextRef="Investors_S123456789">Fees and Expenses of the Fund</rr:ExpenseHeading>
+    <rr:ExpenseNarrativeTextBlock contextRef="Investors_S123456789">&lt;pre&gt;
+
+**** ***** ********* *** **** *** ******** **** *** *** *** ** *** *** *** ****
+
+****** ** *** ***** *** *** ******* *** ***** ****** ********* ** *** *** ****
+
+****** ******* ** ***** ** ****** ** *** ******* ** ***** ******* ** ****** ******  
+
+**** *********** ***** ***** *** ***** ********* ** ********* **** ****
+
+********* ************ *** ** *** ****** ****** ********** *** ******** *******
+
+** **** ** ** **** ********** *** ** **** ** ** *** ****** ********* **
+
+********** ************
+
+&lt;/pre&gt;</rr:ExpenseNarrativeTextBlock>
+    <rr:ExpenseBreakpointDiscounts contextRef="Investors_S123456789">*** *** ******* *** ***** ****** ********* ** *** *** ****
+
+****** ******* ** ***** ** ****** ** *** ******* ** ***** ******* ** ****** ******</rr:ExpenseBreakpointDiscounts>
+    <rr:ExpenseBreakpointMinimumInvestmentRequiredAmount contextRef="Investors_S123456789" unitRef="USD" decimals="INF">25000</rr:ExpenseBreakpointMinimumInvestmentRequiredAmount>
+    <rr:ShareholderFeesCaption contextRef="Investors_S123456789">Shareholder Fees (Fees paid directly from your investment)</rr:ShareholderFeesCaption>
+    <rr:ShareholderFeesTableTextBlock contextRef="Investors_S123456789">&lt;div style="display:none"&gt;~ http://xbrl.sec.gov/rr/role/ShareholderFeesData 
+
+column period compact *
+
+column rr_ProspectusShareClassAxis compact *
+
+row primary compact *
+
+row dei_LegalEntityAxis compact r01001gd_S123456789Member 
+
+~&lt;/div&gt;</rr:ShareholderFeesTableTextBlock>
+    <rr:OperatingExpensesCaption contextRef="Investors_S123456789">Annual Fund Operating Expenses (Expenses that you pay each year as a percentage of your investment)</rr:OperatingExpensesCaption>
+    <rr:AnnualFundOperatingExpensesTableTextBlock contextRef="Investors_S123456789">&lt;div style="display:none"&gt;~ http://xbrl.sec.gov/rr/role/OperatingExpensesData 
+
+column period compact *
+
+column rr_ProspectusShareClassAxis compact *
+
+row primary compact *
+
+row dei_LegalEntityAxis compact r01001gd_S123456789Member 
+
+~&lt;/div&gt;</rr:AnnualFundOperatingExpensesTableTextBlock>
+    <rr:ExpenseExampleHeading contextRef="Investors_S123456789">EXAMPLE</rr:ExpenseExampleHeading>
+    <rr:ExpenseExampleNarrativeTextBlock contextRef="Investors_S123456789">&lt;pre&gt;
+
+**** ******* ** ******** ** **** *** ******* *** **** ** ********* ** *** ****
+
+**** *** **** ** ********* ** ***** ****** ******
+
+*** ******* ******* **** *** ****** ******* ** *** **** *** *** **** *******
+
+********* *** **** ****** *** ** **** ****** ** *** *** ** ***** ******** ***
+
+******* **** ******* **** **** ********** *** * ** ****** **** ***** **** ***
+
+********* *** ******* **** ************* *** *********** **** *** *** ***
+
+******* ******* ** ********** ******** ***** ******* *** **** *** ******
+
+********* ******** ****** *** ***** ******** **** ****** ***** *** ** ****** **
+
+****** ***** ** ***** ************ **** ***** ***** ***
+
+&lt;/pre&gt;</rr:ExpenseExampleNarrativeTextBlock>
+    <rr:ExpenseExampleWithRedemptionTableTextBlock contextRef="Investors_S123456789">&lt;div style="display:none"&gt;~ http://xbrl.sec.gov/rr/role/ExpenseExample 
+
+column period compact *
+
+column rr_ProspectusShareClassAxis compact *
+
+row primary compact *
+
+row dei_LegalEntityAxis compact r01001gd_S123456789Member 
+
+~&lt;/div&gt;</rr:ExpenseExampleWithRedemptionTableTextBlock>
+    <rr:ExpenseExampleNoRedemptionNarrativeTextBlock contextRef="Investors_S123456789">&lt;pre&gt;  
+
+*** *** ***** ******* ****** ****** *** ***** *** *** ********* ** *** *** ***
+
+****** **** *******
+
+&lt;/pre&gt;</rr:ExpenseExampleNoRedemptionNarrativeTextBlock>
+    <rr:ExpenseExampleNoRedemptionTableTextBlock contextRef="Investors_S123456789">&lt;div style="display:none"&gt;~ http://xbrl.sec.gov/rr/role/ExpenseExampleNoRedemption 
+
+column period compact *
+
+column rr_ProspectusShareClassAxis compact *
+
+row primary compact *
+
+row dei_LegalEntityAxis compact r01001gd_S123456789Member 
+
+~&lt;/div&gt;</rr:ExpenseExampleNoRedemptionTableTextBlock>
+    <rr:PortfolioTurnoverHeading contextRef="Investors_S123456789">Portfolio Turnover</rr:PortfolioTurnoverHeading>
+    <rr:PortfolioTurnoverTextBlock contextRef="Investors_S123456789">&lt;pre&gt;
+
+*** **** **** *********** ****** **** ** ************ **** ** **** *** *****
+
+********** *** ****** ***** *** *********** * ****** ********* ******** **** ***
+
+******** ****** *********** ***** *** *** ****** ** ****** ***** **** ****
+
+****** *** **** ** * ******* ******** ***** ****** ***** *** *** ********* **
+
+****** **** ********* ******** ** ** *** ******** ****** *** ****** ************
+
+****** *** **** ****** ****** ***** *** ****** ********* ******** **** *** ***
+
+** *** ******* ***** ** *** **********
+
+&lt;/pre&gt;</rr:PortfolioTurnoverTextBlock>
+    <rr:StrategyHeading contextRef="Investors_S123456789">Principal investment strategies</rr:StrategyHeading>
+    <rr:StrategyNarrativeTextBlock contextRef="Investors_S123456789">&lt;pre&gt;
+
+*** **** ******* ********* ** ****** ****** ** *********** ********* **** *** ******
+
+*** ** **** *** ********* ******* ************ *** *** *** **** ***** ******** ***
+
+**** * ****** ****** ** ******** *** **********  *** **** ******* **
+
+********** *** ********* ******* *********** ********* ******* ********* ***
+
+***** **************** ** *** ********* ** ****** ****** *** ***** **********
+
+*** *********** ******* *** ********* ***** ** **** ** *** ********* ***
+
+********* ******* ************ *** *********** *** **** ***** ** ******* **
+
+************* ***** ** *** ********* ****** ************ ** ******** ** ********
+
+* ****** *** ********* ***** ** ****** ********* *******
+
+*** **** *** ********** ********* ********** ***** **** ******** *********** **
+
+*** ****** ****** ******** ***** *** *** ******** ** ******** *** ***********
+
+*********** ***** *** ******* ***** **** ********** ***** *** ** ****** *** ****
+
+****** *** **** *** ** ********* ***** ** ***** ** *** ********** ********* ***
+
+******** ** *** ****** ***** ** ********* ** ** *********** **********
+
+*********** *** * ******* ******** ******* ************* *** ****** *** ******
+
+** ********* ********** **** ****** ***** ********** *** ********** ******* **
+
+******** ** ****** *** ****** *********** *********** **** *** ******** *****
+
+*** ********** ******* ******** *** ******** **** *** ***** *************** **
+
+*** ***** ** ********* ********* ******* ********* *** ********* ********** ****
+
+*** ****** ********** **********
+
+*** **** ****** ** *** ************ ******** ** *** ********** ******* ** ****
+
+********* ***** *** ****** ********* ************ *** ***** **********
+
+********** ** *** ********** ******* ** ** **** ** ****** ** ************ ******
+
+********* ***** ** *** ******** ********* ************* ********* **********
+
+************** *** ********** ******* ******** **** ** ********* *** **
+
+********** **** ** ******* *********** ********* ***** *** ******* ******* ****
+
+******* ********** *** ********** ********** ********* *** ************
+
+********** *** ** **** **** *** ********** ******* ******** **** **** ** ******
+
+********* ********** ********** ********** **************
+
+&lt;/pre&gt;</rr:StrategyNarrativeTextBlock>
+    <rr:StrategyPortfolioConcentration contextRef="Investors_S123456789">
+
+*** **** ******* ********* ** ****** ****** ** *********** ********* **** *** ******
+
+*** ** **** *** ********* ******* ************ *** *** *** **** ***** ******** ***
+
+**** * ****** ****** ** ******** *** **********</rr:StrategyPortfolioConcentration>
+    <rr:RiskHeading contextRef="Investors_S123456789">Principal risks</rr:RiskHeading>
+    <rr:RiskTextBlock contextRef="Investors_S123456789">&lt;pre&gt;
+
+*** *** **** ***** ** ********* ** *** ***** *** ********** ** **** *** **
+
+******* ** *** ****** *** * ******* ****** ** *****
+
+*** ****** *** *** *** ****** ********* *** *** ****** ****** *** ***** 
+
+********** **** ** *** **** *** ******* ** ******** ** ******* ****** ****** 
+
+***** ****** *** ****** ********* ***** ******** ********* *** ********* *****
+
+********** *** ***** ** *** ***** ********** ********* *** ******* ******** 
+
+******* ****** ******** ****** ******** ** ****** ********** ****** ** ******** 
+
+************ *** ********* ******** **** *** ********* ***** *************
+
+**** ********** ** *** **** ** *** * **** ******* *** ** *** ******* **
+
+********** ** *** ******* ******* ********* *********** ** *** ***** **********
+
+******* ****** ** *******
+
+&lt;/pre&gt;</rr:RiskTextBlock>
+    <rr:BarChartAndPerformanceTableHeading contextRef="Investors_S123456789">Performance</rr:BarChartAndPerformanceTableHeading>
+    <rr:BarChartNarrativeTextBlock contextRef="Investors_S123456789">&lt;pre&gt;
+
+*** *** ***** ***** ***** *** *** ****** ********** ******* **** ****** 
+
+**** **** ** ***** *** *** ***** ** **** * ***** *** *** ****** ******* ****** *****
+
+******* *** ******* ******* ******* **** ********* ***** ******** ** ******
+
+************ **** *********** ******** **** ********** ** *** ***** ** *********
+
+** *** ***** 
+
+**** ******* ******* *** ***** ****** *** *** ********** ** 
+
+****** ******** 
+
+******* *********** ** *** ****** ******* *** ** ******** ** ********
+
+******************
+
+&lt;/pre&gt;</rr:BarChartNarrativeTextBlock>
+    <rr:PerformanceInformationIllustratesVariabilityOfReturns contextRef="Investors_S123456789">*** *** ***** ***** ***** *** *** ****** ********** ******* **** ****** 
+
+**** **** ** ***** </rr:PerformanceInformationIllustratesVariabilityOfReturns>
+    <rr:PerformancePastDoesNotIndicateFuture contextRef="Investors_S123456789">
+
+**** ******* ******* *** ***** ****** *** *** ********** ** 
+
+****** ********</rr:PerformancePastDoesNotIndicateFuture>
+    <rr:PerformanceAvailabilityWebSiteAddress contextRef="Investors_S123456789">
+
+******* *********** ** *** ****** ******* *** ** ******** ** ********
+
+******************
+
+</rr:PerformanceAvailabilityWebSiteAddress>
+    <rr:BarChartHeading contextRef="Investors_S123456789">
+
+******** **** ***** ******* *** ***** * ****** 
+
+******* ** *** ******* * ***** ******* ** * ***** ****** **** ********* 
+
+******* ***** ** ******</rr:BarChartHeading>
+    <rr:BarChartDoesNotReflectSalesLoads contextRef="Investors_S123456789">******* ** *** ******* * ***** ******* ** * ***** ****** **** ********* ******* ***** ** ******</rr:BarChartDoesNotReflectSalesLoads>
+    <rr:BarChartTableTextBlock contextRef="Investors_S123456789">&lt;div style="display:none"&gt;~ http://xbrl.sec.gov/rr/role/BarChartData 
+
+column period compact *
+
+column rr_ProspectusShareClassAxis compact *
+
+row primary compact *
+
+row dei_LegalEntityAxis compact r01001gd_S123456789Member 
+
+~&lt;/div&gt;</rr:BarChartTableTextBlock>
+    <rr:BarChartClosingTextBlock contextRef="Investors_S123456789">&lt;pre&gt;
+
+************** ********* ******* ****** **** **** ****** *****
+
+*******            ******  ******** ***** **** *** *****
+
+******            *******  ******** ***** ******** *** *****
+
+*** ****** ***** ****** *** *** ***** ****** ***** ***** *** ***** *** ********
+
+&lt;/pre&gt;</rr:BarChartClosingTextBlock>
+    <rr:PerformanceTableHeading contextRef="Investors_S123456789">
+
+******* ****** ***** ******* *** *** ******* ***** ******** *** **** ***** ******* ***** ********</rr:PerformanceTableHeading>
+    <rr:IndexNoDeductionForFeesExpensesTaxes contextRef="Investors_S123456789">***** ******* ***** *******</rr:IndexNoDeductionForFeesExpensesTaxes>
+    <rr:PerformanceTableTextBlock contextRef="Investors_S123456789">&lt;div style="display: none"&gt;~ http://xbrl.sec.gov/rr/role/PerformanceTableData ~&lt;/div&gt;</rr:PerformanceTableTextBlock>
+    <rr:ThirtyDayYieldCaption contextRef="S123456789_C123456719">***** * ********** ****** ***** ** ***** *** ****</rr:ThirtyDayYieldCaption>
+    <rr:ThirtyDayYield contextRef="S123456789_C123456719" unitRef="Ratio" decimals="4">0.0379</rr:ThirtyDayYield>
+    <rr:ThirtyDayYieldPhone contextRef="S123456789_C123456719">800/555-1989</rr:ThirtyDayYieldPhone>
+    <rr:MarketIndexPerformanceTableTextBlock contextRef="Investors_S123456789">&lt;div style="display: none"&gt;~ http://xbrl.sec.gov/rr/role/MarketIndexPerformanceData ~&lt;/div&gt;
+
+</rr:MarketIndexPerformanceTableTextBlock>
+    <rr:PerformanceTableClosingTextBlock contextRef="Investors_S123456789">&lt;pre&gt;
+
+********* ******* *** ***** **** *** ***** * ******* ********* ******* *** *****
+
+***** ******* **** ***** ********* ******* *** ********** ***** *** *******
+
+********** ******* ****** *** ***** ** ****** ****** **** **** ** *** *******
+
+***** *** ** *** ******* *** ****** ** ***** *** ***** ******  **** ******
+
+********* ******* ****** ** **** ********** *** ********* *** ****** **** ******
+
+**** *** ******* ***** ****** ** ********* ********* ******* *** *** ******** **
+
+*** **** **** **** ****** ******* * ************ ************ **** ** * ******
+
+***** ********** ********** ******* ***** ** *** ******* ******* ***** *******
+
+**** *** **** ********* *** ***** *** ****** ***** *** ***** ***** ***
+
+********** ** ****** ** **** *** **** *** **** * **** **** ** ********
+
+&lt;/pre&gt;</rr:PerformanceTableClosingTextBlock>
+    <rr:PerformanceTableOneClassOfAfterTaxShown contextRef="Investors_S123456789">********* ******* *** ***** **** *** ***** * ******* ********* ******* *** *****
+
+***** ******* **** *****</rr:PerformanceTableOneClassOfAfterTaxShown>
+    <rr:PerformanceTableUsesHighestFederalRate contextRef="Investors_S123456789">********* ******* *** ********** ***** *** *******
+
+********** ******* ****** *** ***** ** ****** ****** **** **** ** *** *******
+
+***** *** ** *** ******* *** ****** ** ***** *** ***** ****** </rr:PerformanceTableUsesHighestFederalRate>
+    <rr:PerformanceTableNotRelevantToTaxDeferred contextRef="Investors_S123456789">** ********* ********* ******* *** *** ******** **
+
+*** **** **** **** ****** ******* * ************ ************ **** ** * ******
+
+***** ********** ********** ******* ***** ** *** ******* ******* *****</rr:PerformanceTableNotRelevantToTaxDeferred>
+    <rr:ObjectiveHeading contextRef="RetirementPlan_S123456789">Investment Objective</rr:ObjectiveHeading>
+    <rr:ObjectivePrimaryTextBlock contextRef="RetirementPlan_S123456789">&lt;pre&gt;
+
+*** ****** ********** ********* ** ** ******* ****** *** ** ******* **
+
+*********** *** ****** ** ********* ********** **** ***** ****** *****
+
+**********&lt;/pre&gt;</rr:ObjectivePrimaryTextBlock>
+    <rr:ExpenseHeading contextRef="RetirementPlan_S123456789">Fees and Expenses of the Fund</rr:ExpenseHeading>
+    <rr:ExpenseNarrativeTextBlock contextRef="RetirementPlan_S123456789">&lt;pre&gt;
+
+**** ***** ********* *** **** *** ******** **** *** *** *** ** *** *** *** ****
+
+****** ** *** ***** *** *** ******* *** ***** ****** ********* ** *** *** ****
+
+****** ******* ** ***** ** ****** ** *** ******* ** ***** ******* ** ****** ******  
+
+**** *********** ***** ***** *** ***** ********* ** *********
+
+**** **** ********* ************ *** ** *** ****** ****** *********** ******* **
+
+**** ** ** **** ********** *** ** **** ** ** *** ****** ********* ** **********
+
+************&lt;/pre&gt;</rr:ExpenseNarrativeTextBlock>
+    <rr:ExpenseBreakpointDiscounts contextRef="RetirementPlan_S123456789">*** *** ******* *** ***** ****** ********* ** *** *** ****
+
+****** ******* ** ***** ** ****** ** *** ******* ** ***** ******* ** ****** ******</rr:ExpenseBreakpointDiscounts>
+    <rr:ExpenseBreakpointMinimumInvestmentRequiredAmount contextRef="RetirementPlan_S123456789" unitRef="USD" decimals="INF">25000</rr:ExpenseBreakpointMinimumInvestmentRequiredAmount>
+    <rr:ShareholderFeesTableTextBlock contextRef="RetirementPlan_S123456789">&lt;div style="display:none"&gt;~ http://r01001gd/role/ShareholderFeesDataRetirementPlan 
+
+column period compact *
+
+column rr_ProspectusShareClassAxis compact *
+
+row primary compact *
+
+row dei_LegalEntityAxis compact r01001gd_S123456789Member ~&lt;/div&gt;</rr:ShareholderFeesTableTextBlock>
+    <rr:ShareholderFeesCaption contextRef="RetirementPlan_S123456789">Shareholder Fees (Fees paid directly from your investment)</rr:ShareholderFeesCaption>
+    <rr:AnnualFundOperatingExpensesTableTextBlock contextRef="RetirementPlan_S123456789">&lt;div style="display:none"&gt;~ http://r01001gd/role/OperatingExpensesDataRetirementPlan 
+
+column period compact *
+
+column rr_ProspectusShareClassAxis compact *
+
+row primary compact *
+
+row dei_LegalEntityAxis compact r01001gd_S123456789Member 
+
+~&lt;/div&gt;</rr:AnnualFundOperatingExpensesTableTextBlock>
+    <rr:OperatingExpensesCaption contextRef="RetirementPlan_S123456789">Annual Fund Operating Expenses (Expenses that you pay each year as a percentage of your investment)</rr:OperatingExpensesCaption>
+    <rr:ExpenseExampleHeading contextRef="RetirementPlan_S123456789">EXAMPLE</rr:ExpenseExampleHeading>
+    <rr:ExpenseExampleNarrativeTextBlock contextRef="RetirementPlan_S123456789">&lt;pre&gt;
+
+**** ******* ** ******** ** **** *** ******* *** **** ** ********* ** *** ****
+
+**** *** **** ** ********* ** ***** ****** ******
+
+*** ******* ******* **** *** ****** ******* ** *** **** *** *** **** *******
+
+********* *** **** ****** *** ** **** ****** ** *** *** ** ***** ******** ***
+
+******* **** ******* **** **** ********** *** * ** ****** **** ***** **** ***
+
+********* *** ******* **** ************* *** *********** **** *** *** ***
+
+******* ******* ** ********** ******** ***** ******* *** **** *** ******
+
+********* ******** ****** *** ***** ******** **** ****** ***** *** ** ****** **
+
+****** ***** ** ***** ************ **** ***** ***** ***
+
+&lt;/pre&gt;</rr:ExpenseExampleNarrativeTextBlock>
+    <rr:ExpenseExampleWithRedemptionTableTextBlock contextRef="RetirementPlan_S123456789">&lt;div style="display:none"&gt;~ http://r01001gd/role/ExpenseExampleRetirementPlan 
+
+column period compact *
+
+column rr_ProspectusShareClassAxis compact *
+
+row primary compact *
+
+row dei_LegalEntityAxis compact r01001gd_S123456789Member 
+
+~&lt;/div&gt;</rr:ExpenseExampleWithRedemptionTableTextBlock>
+    <rr:PortfolioTurnoverHeading contextRef="RetirementPlan_S123456789">Portfolio Turnover</rr:PortfolioTurnoverHeading>
+    <rr:PortfolioTurnoverTextBlock contextRef="RetirementPlan_S123456789">&lt;pre&gt;
+
+*** **** **** *********** ****** **** ** ************ **** ** **** *** *****
+
+********** *** ****** ***** *** *********** * ****** ********* ******** **** ***
+
+******** ****** *********** ***** *** *** ****** ** ****** ***** **** ****
+
+****** *** **** ** * ******* ******** ***** ****** ***** *** *** ********* **
+
+****** **** ********* ******** ** ** *** ******** ****** *** ****** ************
+
+****** *** **** ****** ****** ***** *** ****** ********* ******** **** *** ***
+
+** *** ******* ***** ** *** **********
+
+&lt;/pre&gt;</rr:PortfolioTurnoverTextBlock>
+    <rr:StrategyHeading contextRef="RetirementPlan_S123456789">Principal investment strategies</rr:StrategyHeading>
+    <rr:StrategyNarrativeTextBlock contextRef="RetirementPlan_S123456789">&lt;pre&gt;
+
+*** **** ******* ********* ** ****** ****** ** *********** ********* **** *** ******
+
+*** ** **** *** ********* ******* ************ *** *** *** **** ***** ******** ***
+
+**** * ****** ****** ** ******** *** **********  *** **** ******* **
+
+********** *** ********* ******* *********** ********* ******* ********* ***
+
+***** **************** ** *** ********* ** ****** ****** *** ***** **********
+
+*** *********** ******* *** ********* ***** ** **** ** *** ********* ***
+
+********* ******* ************ *** *********** *** **** ***** ** ******* **
+
+************* ***** ** *** ********* ****** ************ ** ******** ** ********
+
+* ****** *** ********* ***** ** ****** ********* *******
+
+*** **** *** ********** ********* ********** ***** **** ******** *********** **
+
+*** ****** ****** ******** ***** *** *** ******** ** ******** *** ***********
+
+*********** ***** *** ******* ***** **** ********** ***** *** ** ****** *** ****
+
+****** *** **** *** ** ********* ***** ** ***** ** *** ********** ********* ***
+
+******** ** *** ****** ***** ** ********* ** ** *********** **********
+
+*********** *** * ******* ******** ******* ************* *** ****** *** ******
+
+** ********* ********** **** ****** ***** ********** *** ********** ******* **
+
+******** ** ****** *** ****** *********** *********** **** *** ******** *****
+
+*** ********** ******* ******** *** ******** **** *** ***** *************** **
+
+*** ***** ** ********* ********* ******* ********* *** ********* ********** ****
+
+*** ****** ********** **********
+
+*** **** ****** ** *** ************ ******** ** *** ********** ******* ** ****
+
+********* ***** *** ****** ********* ************ *** ***** **********
+
+********** ** *** ********** ******* ** ** **** ** ****** ** ************ ******
+
+********* ***** ** *** ******** ********* ************* ********* **********
+
+************** *** ********** ******* ******** **** ** ********* *** **
+
+********** **** ** ******* *********** ********* ***** *** ******* ******* ****
+
+******* ********** *** ********** ********** ********* *** ************
+
+********** *** ** **** **** *** ********** ******* ******** **** **** ** ******
+
+********* ********** ********** ********** **************
+
+&lt;/pre&gt;</rr:StrategyNarrativeTextBlock>
+    <rr:StrategyPortfolioConcentration contextRef="RetirementPlan_S123456789">
+
+*** **** ******* ********* ** ****** ****** ** *********** ********* **** *** ******
+
+*** ** **** *** ********* ******* ************ *** *** *** **** ***** ******** ***
+
+**** * ****** ****** ** ******** *** **********</rr:StrategyPortfolioConcentration>
+    <rr:RiskHeading contextRef="RetirementPlan_S123456789">Principal risks</rr:RiskHeading>
+    <rr:RiskTextBlock contextRef="RetirementPlan_S123456789">&lt;pre&gt;
+
+*** *** **** ***** ** ********* ** *** ***** *** ********** ** **** *** **
+
+******* ** *** ****** *** * ******* ****** ** *****
+
+*** ****** *** *** *** ****** ********* *** *** ****** ****** *** ***** 
+
+********** **** ** *** **** *** ******* ** ******** ** ******* ****** ****** 
+
+***** ****** *** ****** ********* ***** ******** ********* *** ********* *****
+
+********** *** ***** ** *** ***** ********** ********* *** ******* ******** 
+
+******* ****** ******** ****** ******** ** ****** ********** ****** ** ******** 
+
+************ *** ********* ******** **** *** ********* ***** *************
+
+**** ********** ** *** **** ** *** * **** ******* *** ** *** ******* **
+
+********** ** *** ******* ******* ********* *********** ** *** ***** **********
+
+******* ****** ** *******&lt;/pre&gt;</rr:RiskTextBlock>
+    <rr:PerformancePastDoesNotIndicateFuture contextRef="RetirementPlan_S123456789">
+
+**** ******* ******* *** ***** ****** *** *** ********** ** ****** ********
+
+</rr:PerformancePastDoesNotIndicateFuture>
+    <rr:BarChartHeading contextRef="RetirementPlan_S123456789">
+
+******** **** ***** ******* *** ***** * ****** ******* ** *** ******* * ***** ******* ** * ***** ****** **** ********* 
+
+******* ***** ** ******
+
+</rr:BarChartHeading>
+    <rr:BarChartDoesNotReflectSalesLoads contextRef="RetirementPlan_S123456789">******* ** *** ******* * ***** ******* ** * ***** ****** **** ********* ******* ***** ** ******</rr:BarChartDoesNotReflectSalesLoads>
+    <rr:BarChartTableTextBlock contextRef="RetirementPlan_S123456789">&lt;div style="display:none"&gt;~ http://xbrl.sec.gov/rr/role/BarChartData 
+
+column period compact *
+
+column rr_ProspectusShareClassAxis compact *
+
+row primary compact *
+
+row dei_LegalEntityAxis compact r01001gd_S123456789Member 
+
+~&lt;/div&gt;</rr:BarChartTableTextBlock>
+    <rr:BarChartClosingTextBlock contextRef="RetirementPlan_S123456789">&lt;pre&gt;
+
+************** ********* ******* ****** **** **** ****** *****
+
+*******            ******  ******** ***** **** *** *****
+
+******            *******  ******** ***** ******** *** *****
+
+*** ****** ***** ****** *** *** ***** ****** ***** ***** *** ***** *** ********
+
+&lt;/pre&gt;</rr:BarChartClosingTextBlock>
+    <rr:PerformanceTableHeading contextRef="RetirementPlan_S123456789">
+
+******* ****** ***** *******
+
+*** *** ******* ***** ******** *** ****
+
+***** ******* ***** ********
+
+</rr:PerformanceTableHeading>
+    <rr:IndexNoDeductionForFeesExpensesTaxes contextRef="RetirementPlan_S123456789">
+
+***** ******* ***** ********
+
+</rr:IndexNoDeductionForFeesExpensesTaxes>
+    <rr:PerformanceTableTextBlock contextRef="RetirementPlan_S123456789">&lt;div style="display: none"&gt;~ http://r01001gd/role/PerformanceTableDataRetirementPlan ~&lt;/div&gt;
+
+</rr:PerformanceTableTextBlock>
+    <rr:MarketIndexPerformanceTableTextBlock contextRef="RetirementPlan_S123456789">&lt;div style="display: none"&gt;~ http://xbrl.sec.gov/rr/role/MarketIndexPerformanceData ~ &lt;/div&gt;</rr:MarketIndexPerformanceTableTextBlock>
+    <rr:PerformanceTableClosingTextBlock contextRef="RetirementPlan_S123456789">&lt;pre&gt;    
+
+******* **** *** **** ********* *** ***** *** ****** ***** *** ***** ***** ***
+
+********** ** *** ** **** *** **** *** **** * **** **** ** ********
+
+&lt;/pre&gt;</rr:PerformanceTableClosingTextBlock>
+    <rr:ObjectiveHeading contextRef="Universal_S123456789">Investment Objective</rr:ObjectiveHeading>
+    <rr:ObjectivePrimaryTextBlock contextRef="Universal_S123456789">&lt;pre&gt;
+
+*** ****** ********** ********* ** ** ******* ****** *** ** ******* **
+
+*********** *** ****** ** ********* ********** **** ***** ****** *****
+
+**********&lt;/pre&gt;</rr:ObjectivePrimaryTextBlock>
+    <rr:ExpenseHeading contextRef="Universal_S123456789">Fees and Expenses of the Fund</rr:ExpenseHeading>
+    <rr:ExpenseNarrativeTextBlock contextRef="Universal_S123456789">&lt;pre&gt;
+
+**** ***** ********* *** **** *** ******** **** *** *** *** ** *** *** *** ****
+
+****** ** *** ***** *** *** ******* *** ***** ****** ********* ** *** *** ****
+
+****** ******* ** ***** ** ****** ** *** ******* ** ***** ******* ** ****** ******  
+
+**** *********** ***** ***** *** ***** ********* ** *********
+
+**** **** ********* ************ *** ** *** ****** ****** *********** ******* **
+
+**** ** ** **** ********** *** ** **** ** ** *** ****** ********* ** **********
+
+************&lt;/pre&gt;</rr:ExpenseNarrativeTextBlock>
+    <rr:ExpenseBreakpointDiscounts contextRef="Universal_S123456789">*** *** ******* *** ***** ****** ********* ** *** *** ****
+
+****** ******* ** ***** ** ****** ** *** ******* ** ***** ******* ** ****** ******</rr:ExpenseBreakpointDiscounts>
+    <rr:ExpenseBreakpointMinimumInvestmentRequiredAmount contextRef="Universal_S123456789" unitRef="USD" decimals="INF">25000</rr:ExpenseBreakpointMinimumInvestmentRequiredAmount>
+    <rr:ShareholderFeesTableTextBlock contextRef="Universal_S123456789">&lt;div style="display:none"&gt;~ http://r01001gd/role/ShareholderFeesDataUniversal 
+
+column period compact * 
+
+column rr_ProspectusShareClassAxis compact * 
+
+row primary compact *
+
+row dei_LegalEntityAxis compact r01001gd_S123456789Member ~&lt;/div&gt;</rr:ShareholderFeesTableTextBlock>
+    <rr:ShareholderFeesCaption contextRef="Universal_S123456789">Shareholder Fees (Fees paid directly from your investment)</rr:ShareholderFeesCaption>
+    <rr:AnnualFundOperatingExpensesTableTextBlock contextRef="Universal_S123456789">&lt;div style="display:none"&gt;~ http://r01001gd/role/OperatingExpensesDataUniversal 
+
+column period compact *
+
+column rr_ProspectusShareClassAxis compact *
+
+row primary compact *
+
+row dei_LegalEntityAxis compact r01001gd_S123456789Member 
+
+~&lt;/div&gt;</rr:AnnualFundOperatingExpensesTableTextBlock>
+    <rr:OperatingExpensesCaption contextRef="Universal_S123456789">Annual Fund Operating Expenses (Expenses that you pay each year as a percentage of your investment)</rr:OperatingExpensesCaption>
+    <rr:ExpenseExampleHeading contextRef="Universal_S123456789">EXAMPLE</rr:ExpenseExampleHeading>
+    <rr:ExpenseExampleNarrativeTextBlock contextRef="Universal_S123456789">&lt;pre&gt;
+
+**** ******* ** ******** ** **** *** ******* *** **** ** ********* ** *** ****
+
+**** *** **** ** ********* ** ***** ****** ******
+
+*** ******* ******* **** *** ****** ******* ** *** **** *** *** **** *******
+
+********* *** **** ****** *** ** **** ****** ** *** *** ** ***** ******** ***
+
+******* **** ******* **** **** ********** *** * ** ****** **** ***** **** ***
+
+********* *** ******* **** ************* *** *********** **** *** *** ***
+
+******* ******* ** ********** ******** ***** ******* *** **** *** ******
+
+********* ******** ****** *** ***** ******** **** ****** ***** *** ** ****** **
+
+****** ***** ** ***** ************ **** ***** ***** ***
+
+&lt;/pre&gt;</rr:ExpenseExampleNarrativeTextBlock>
+    <rr:ExpenseExampleWithRedemptionTableTextBlock contextRef="Universal_S123456789">&lt;div style="display:none"&gt;~ http://r01001gd/role/ExpenseExampleUniversal 
+
+column period compact *
+
+column rr_ProspectusShareClassAxis compact *
+
+row primary compact *
+
+row dei_LegalEntityAxis compact r01001gd_S123456789Member 
+
+~&lt;/div&gt;</rr:ExpenseExampleWithRedemptionTableTextBlock>
+    <rr:PortfolioTurnoverHeading contextRef="Universal_S123456789">Portfolio Turnover</rr:PortfolioTurnoverHeading>
+    <rr:PortfolioTurnoverTextBlock contextRef="Universal_S123456789">&lt;pre&gt;
+
+*** **** **** *********** ****** **** ** ************ **** ** **** *** *****
+
+********** *** ****** ***** *** *********** * ****** ********* ******** **** ***
+
+******** ****** *********** ***** *** *** ****** ** ****** ***** **** ****
+
+****** *** **** ** * ******* ******** ***** ****** ***** *** *** ********* **
+
+****** **** ********* ******** ** ** *** ******** ****** *** ****** ************
+
+****** *** **** ****** ****** ***** *** ****** ********* ******** **** *** ***
+
+** *** ******* ***** ** *** **********
+
+&lt;/pre&gt;</rr:PortfolioTurnoverTextBlock>
+    <rr:StrategyHeading contextRef="Universal_S123456789">Principal investment strategies</rr:StrategyHeading>
+    <rr:StrategyNarrativeTextBlock contextRef="Universal_S123456789">&lt;pre&gt;
+
+*** **** ******* ********* ** ****** ****** ** *********** ********* **** *** ******
+
+*** ** **** *** ********* ******* ************ *** *** *** **** ***** ******** ***
+
+**** * ****** ****** ** ******** *** **********  *** **** ******* **
+
+********** *** ********* ******* *********** ********* ******* ********* ***
+
+***** **************** ** *** ********* ** ****** ****** *** ***** **********
+
+*** *********** ******* *** ********* ***** ** **** ** *** ********* ***
+
+********* ******* ************ *** *********** *** **** ***** ** ******* **
+
+************* ***** ** *** ********* ****** ************ ** ******** ** ********
+
+* ****** *** ********* ***** ** ****** ********* *******
+
+*** **** *** ********** ********* ********** ***** **** ******** *********** **
+
+*** ****** ****** ******** ***** *** *** ******** ** ******** *** ***********
+
+*********** ***** *** ******* ***** **** ********** ***** *** ** ****** *** ****
+
+****** *** **** *** ** ********* ***** ** ***** ** *** ********** ********* ***
+
+******** ** *** ****** ***** ** ********* ** ** *********** **********
+
+*********** *** * ******* ******** ******* ************* *** ****** *** ******
+
+** ********* ********** **** ****** ***** ********** *** ********** ******* **
+
+******** ** ****** *** ****** *********** *********** **** *** ******** *****
+
+*** ********** ******* ******** *** ******** **** *** ***** *************** **
+
+*** ***** ** ********* ********* ******* ********* *** ********* ********** ****
+
+*** ****** ********** **********
+
+*** **** ****** ** *** ************ ******** ** *** ********** ******* ** ****
+
+********* ***** *** ****** ********* ************ *** ***** **********
+
+********** ** *** ********** ******* ** ** **** ** ****** ** ************ ******
+
+********* ***** ** *** ******** ********* ************* ********* **********
+
+************** *** ********** ******* ******** **** ** ********* *** **
+
+********** **** ** ******* *********** ********* ***** *** ******* ******* ****
+
+******* ********** *** ********** ********** ********* *** ************
+
+********** *** ** **** **** *** ********** ******* ******** **** **** ** ******
+
+********* ********** ********** ********** **************
+
+&lt;/pre&gt;</rr:StrategyNarrativeTextBlock>
+    <rr:StrategyPortfolioConcentration contextRef="Universal_S123456789">
+
+*** **** ******* ********* ** ****** ****** ** *********** ********* **** *** ******
+
+*** ** **** *** ********* ******* ************ *** *** *** **** ***** ******** ***
+
+**** * ****** ****** ** ******** *** **********</rr:StrategyPortfolioConcentration>
+    <rr:RiskHeading contextRef="Universal_S123456789">Principal risks</rr:RiskHeading>
+    <rr:RiskTextBlock contextRef="Universal_S123456789">&lt;pre&gt;
+
+*** *** **** ***** ** ********* ** *** ***** *** ********** ** **** *** **
+
+******* ** *** ****** *** * ******* ****** ** *****
+
+*** ****** *** *** *** ****** ********* *** *** ****** ****** *** ***** 
+
+********** **** ** *** **** *** ******* ** ******** ** ******* ****** ****** 
+
+***** ****** *** ****** ********* ***** ******** ********* *** ********* *****
+
+********** *** ***** ** *** ***** ********** ********* *** ******* ******** 
+
+******* ****** ******** ****** ******** ** ****** ********** ****** ** ******** 
+
+************ *** ********* ******** **** *** ********* ***** *************
+
+**** ********** ** *** **** ** *** * **** ******* *** ** *** ******* **
+
+********** ** *** ******* ******* ********* *********** ** *** ***** **********
+
+******* ****** ** *******&lt;/pre&gt;</rr:RiskTextBlock>
+    <rr:PerformancePastDoesNotIndicateFuture contextRef="Universal_S123456789">
+
+**** ******* ******* *** ***** ****** *** *** ********** ** ****** ********
+
+</rr:PerformancePastDoesNotIndicateFuture>
+    <rr:BarChartHeading contextRef="Universal_S123456789">
+
+******** **** ***** ******* *** ***** * ****** 
+
+******* ** *** ******* * ***** ******* ** * ***** ****** **** ********* 
+
+******* ***** ** ******
+
+</rr:BarChartHeading>
+    <rr:BarChartDoesNotReflectSalesLoads contextRef="Universal_S123456789">******* ** *** ******* * ***** ******* ** * ***** ****** **** ********* ******* ***** ** ******</rr:BarChartDoesNotReflectSalesLoads>
+    <rr:BarChartTableTextBlock contextRef="Universal_S123456789">&lt;div style="display:none"&gt;~ http://xbrl.sec.gov/rr/role/BarChartData 
+
+column period compact * 
+
+column rr_ProspectusShareClassAxis compact * 
+
+row primary compact * 
+
+row dei_LegalEntityAxis compact r01001gd_S123456789Member 
+
+~&lt;/div&gt;</rr:BarChartTableTextBlock>
+    <rr:BarChartClosingTextBlock contextRef="Universal_S123456789">&lt;pre&gt;
+
+************** ********* ******* ****** **** **** ****** *****
+
+*******            ******  ******** ***** **** *** *****
+
+******            *******  ******** ***** ******** *** *****
+
+*** ****** ***** ****** *** *** ***** ****** ***** ***** *** ***** *** ********
+
+&lt;/pre&gt;</rr:BarChartClosingTextBlock>
+    <rr:PerformanceTableHeading contextRef="Universal_S123456789">
+
+******* ****** ***** *******
+
+*** *** ******* ***** ******** *** ****
+
+***** ******* ***** ********
+
+</rr:PerformanceTableHeading>
+    <rr:IndexNoDeductionForFeesExpensesTaxes contextRef="Universal_S123456789">
+
+***** ******* ***** ********
+
+</rr:IndexNoDeductionForFeesExpensesTaxes>
+    <rr:PerformanceTableTextBlock contextRef="Universal_S123456789">&lt;div style="display: none"&gt;~ http://r01001gd/role/PerformanceTableDataUniversal ~&lt;/div&gt;</rr:PerformanceTableTextBlock>
+    <rr:MarketIndexPerformanceTableTextBlock contextRef="Universal_S123456789">&lt;div style="display: none"&gt;~ http://xbrl.sec.gov/rr/role/MarketIndexPerformanceData ~&lt;/div&gt;</rr:MarketIndexPerformanceTableTextBlock>
+    <rr:PerformanceTableClosingTextBlock contextRef="Universal_S123456789">&lt;pre&gt;    
+
+******* **** *** **** ********* *** ***** *** ****** ***** *** ***** ***** ***
+
+********** ** *** ** **** *** **** *** **** * **** **** ** ********
+
+&lt;/pre&gt;</rr:PerformanceTableClosingTextBlock>
+    <rr:MaximumSalesChargeImposedOnPurchasesOverOfferingPrice contextRef="S123456789_C123456719" unitRef="Ratio" decimals="INF">0.0545</rr:MaximumSalesChargeImposedOnPurchasesOverOfferingPrice>
+    <rr:MaximumSalesChargeImposedOnPurchasesOverOfferingPrice contextRef="S123456789_C123456727" unitRef="Ratio" decimals="INF">0</rr:MaximumSalesChargeImposedOnPurchasesOverOfferingPrice>
+    <rr:MaximumSalesChargeImposedOnPurchasesOverOfferingPrice contextRef="S123456789_C123456726" unitRef="Ratio" decimals="INF">0</rr:MaximumSalesChargeImposedOnPurchasesOverOfferingPrice>
+    <rr:MaximumSalesChargeImposedOnPurchasesOverOfferingPrice contextRef="S123456789_C123456725" unitRef="Ratio" decimals="INF">0</rr:MaximumSalesChargeImposedOnPurchasesOverOfferingPrice>
+    <rr:MaximumSalesChargeImposedOnPurchasesOverOfferingPrice contextRef="S123456789_C123456720" unitRef="Ratio" decimals="INF">0</rr:MaximumSalesChargeImposedOnPurchasesOverOfferingPrice>
+    <rr:ExpenseExampleYear01 contextRef="S123456789_C123456720" unitRef="USD" decimals="0">139</rr:ExpenseExampleYear01>
+    <rr:ExpenseExampleYear03 contextRef="S123456789_C123456720" unitRef="USD" decimals="0">432</rr:ExpenseExampleYear03>
+    <rr:ExpenseExampleYear05 contextRef="S123456789_C123456720" unitRef="USD" decimals="0">746</rr:ExpenseExampleYear05>
+    <rr:ExpenseExampleYear10 contextRef="S123456789_C123456720" unitRef="USD" decimals="0">1635</rr:ExpenseExampleYear10>
+    <link:footnoteLink xlink:type="extended" xlink:role="http://www.xbrl.org/2003/role/link">
+        <link:loc xlink:href="#id_footnote_elem_8843252" xlink:label="MaximumDeferredSalesChargeOverOther_8843252" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="#id_footnote_elem_20484300" xlink:label="MaximumDeferredSalesChargeOverOther_20484300" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="#id_footnote_elem_25433550" xlink:label="AverageAnnualReturnYear01_25433550" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="#id_footnote_elem_7886308" xlink:label="AverageAnnualReturnYear05_7886308" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="#id_footnote_elem_13589224" xlink:label="AverageAnnualReturnYear10_13589224" xlink:type="locator"></link:loc>
+        <link:footnote xml:lang="en-US" xlink:label="footnote_13181892" xlink:type="resource" xlink:role="http://www.xbrl.org/2003/role/footnote">***** * *** * * *** * ** * * ********* * * ****** * ******** ******* * ********** * ** * *** *** ** * * * ********** * * *** * ** * * *** * ***</link:footnote>
+        <link:footnote xml:lang="en-US" xlink:label="footnote_28119789" xlink:type="resource" xlink:role="http://www.xbrl.org/2003/role/footnote">* * * ******* ******* ******* ***** * ******** ******</link:footnote>
+        <link:footnoteArc xlink:type="arc" order="1.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote" xlink:from="MaximumDeferredSalesChargeOverOther_8843252" xlink:to="footnote_13181892"></link:footnoteArc>
+        <link:footnoteArc xlink:type="arc" order="1.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote" xlink:from="MaximumDeferredSalesChargeOverOther_20484300" xlink:to="footnote_13181892"></link:footnoteArc>
+        <link:footnoteArc xlink:type="arc" order="1.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote" xlink:from="AverageAnnualReturnYear01_25433550" xlink:to="footnote_28119789"></link:footnoteArc>
+        <link:footnoteArc xlink:type="arc" order="1.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote" xlink:from="AverageAnnualReturnYear05_7886308" xlink:to="footnote_28119789"></link:footnoteArc>
+        <link:footnoteArc xlink:type="arc" order="1.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote" xlink:from="AverageAnnualReturnYear10_13589224" xlink:to="footnote_28119789"></link:footnoteArc>
+    </link:footnoteLink>
+    <EntityInvCompanyType xmlns="http://xbrl.sec.gov/dei/2023" contextRef="_">N-1A</EntityInvCompanyType>
+</xbrli:xbrl>

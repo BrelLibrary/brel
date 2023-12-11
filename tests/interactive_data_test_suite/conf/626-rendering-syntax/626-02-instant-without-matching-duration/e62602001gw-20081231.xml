@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xbrli:xbrl xmlns="http://www.w3.org/1999/xhtml" xmlns:dei="http://xbrl.sec.gov/dei/2023" xmlns:edgar="http://edgar/20081231" xmlns:iso4217="http://www.xbrl.org/2003/iso4217" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:dtr-types="http://www.xbrl.org/dtr/type/2022-03-31" xmlns:xbrldi="http://xbrl.org/2006/xbrldi" xmlns:xbrldt="http://xbrl.org/2005/xbrldt" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:e6260200="http://e6260200/20081231">
+    <link:schemaRef xlink:href="e62602001gw-20081231.xsd" xlink:type="simple"></link:schemaRef>
+    <xbrli:context id="FY08YTD">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2008-01-01</xbrli:startDate>
+            <xbrli:endDate>2008-09-30</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="FY07YTD">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2007-01-01</xbrli:startDate>
+            <xbrli:endDate>2007-09-30</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="FY08e">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:instant>2008-12-31</xbrli:instant>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="FY07e">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:instant>2007-12-31</xbrli:instant>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="FY06e">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:instant>2006-12-31</xbrli:instant>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:unit id="USD">
+        <xbrli:measure>iso4217:USD</xbrli:measure>
+    </xbrli:unit>
+    <xbrli:unit id="Shares">
+        <xbrli:measure>xbrli:shares</xbrli:measure>
+    </xbrli:unit>
+    <dei:DocumentType contextRef="FY08YTD">8-K</dei:DocumentType>
+    <dei:EntityCentralIndexKey contextRef="FY08YTD">9876543210</dei:EntityCentralIndexKey>
+    <dei:EntityRegistrantName contextRef="FY08YTD">e62602001gw</dei:EntityRegistrantName>
+    <dei:DocumentPeriodEndDate contextRef="FY08YTD">2008-09-30</dei:DocumentPeriodEndDate>
+    <dei:AmendmentFlag contextRef="FY08YTD">false</dei:AmendmentFlag>
+    <edgar:AverageShares contextRef="FY07YTD" unitRef="Shares" decimals="0">100</edgar:AverageShares>
+    <edgar:AverageShares contextRef="FY08YTD" unitRef="Shares" decimals="0">100</edgar:AverageShares>
+    <edgar:MoneyLevel contextRef="FY06e" unitRef="USD" decimals="0">1000</edgar:MoneyLevel>
+    <edgar:MoneyFlow contextRef="FY07YTD" unitRef="USD" decimals="0">2000</edgar:MoneyFlow>
+    <edgar:MoneyFlow contextRef="FY08YTD" unitRef="USD" decimals="0">4000</edgar:MoneyFlow>
+    <edgar:MoneyLevel contextRef="FY08e" unitRef="USD" decimals="0">8000</edgar:MoneyLevel>
+    <edgar:MoneyLevel contextRef="FY07e" unitRef="USD" decimals="0">3000</edgar:MoneyLevel>
+    <EntityEmergingGrowthCompany xmlns="http://xbrl.sec.gov/dei/2023" contextRef="FY08YTD">false</EntityEmergingGrowthCompany>
+</xbrli:xbrl>

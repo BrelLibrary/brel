@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xbrli:xbrl xmlns:dei="http://xbrl.sec.gov/dei/2023" xmlns:edgar="http://edgar/20081231" xmlns:iso4217="http://www.xbrl.org/2003/iso4217" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:dtr-types="http://www.xbrl.org/dtr/type/2022-03-31" xmlns:xbrldt="http://xbrl.org/2005/xbrldt" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:us-gaap="http://fasb.org/us-gaap/2023">
+    <link:schemaRef xlink:href="r13000gd-20081231.xsd" xlink:type="simple"></link:schemaRef>
+    <xbrli:context id="FY11">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2011-01-01</xbrli:startDate>
+            <xbrli:endDate>2011-12-31</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="FY11e">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:instant>2011-12-31</xbrli:instant>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="FY10e">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:instant>2010-12-31</xbrli:instant>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="FY09e">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:instant>2009-12-31</xbrli:instant>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:unit id="USD">
+        <xbrli:measure>iso4217:USD</xbrli:measure>
+    </xbrli:unit>
+    <xbrli:unit id="Shares">
+        <xbrli:measure>xbrli:shares</xbrli:measure>
+    </xbrli:unit>
+    <dei:EntityCurrentReportingStatus contextRef="FY11" id="ent-current">Yes</dei:EntityCurrentReportingStatus>
+    <dei:EntityShellCompany contextRef="FY11" id="ent-shell">false</dei:EntityShellCompany>
+    <dei:DocumentType contextRef="FY11">10-Q</dei:DocumentType>
+    <dei:EntityInteractiveDataCurrent contextRef="FY11">Yes</dei:EntityInteractiveDataCurrent>
+    <dei:AmendmentFlag contextRef="FY11">false</dei:AmendmentFlag>
+    <dei:EntityCentralIndexKey contextRef="FY11">9876543210</dei:EntityCentralIndexKey>
+    <dei:EntityRegistrantName contextRef="FY11">OID TEST CO #1 r13000gd</dei:EntityRegistrantName>
+    <dei:CurrentFiscalYearEndDate contextRef="FY11">--12-31</dei:CurrentFiscalYearEndDate>
+    <dei:DocumentPeriodEndDate contextRef="FY11">2011-12-31</dei:DocumentPeriodEndDate>
+    <us-gaap:AccumulatedDistributionsInExcessOfNetIncome contextRef="FY11e" unitRef="USD" decimals="-6">10000000</us-gaap:AccumulatedDistributionsInExcessOfNetIncome>
+    <us-gaap:StatutoryAccountingPracticesStatutoryAmountAvailableForDividendPaymentsWithoutRegulatoryApproval contextRef="FY11e" unitRef="USD" decimals="-6">30000000</us-gaap:StatutoryAccountingPracticesStatutoryAmountAvailableForDividendPaymentsWithoutRegulatoryApproval>
+    <us-gaap:AccumulatedDistributionsInExcessOfNetIncome contextRef="FY10e" unitRef="USD" decimals="-6">40000000</us-gaap:AccumulatedDistributionsInExcessOfNetIncome>
+    <us-gaap:StatutoryAccountingPracticesStatutoryAmountAvailableForDividendPaymentsWithoutRegulatoryApproval contextRef="FY10e" unitRef="USD" decimals="-6">60000000</us-gaap:StatutoryAccountingPracticesStatutoryAmountAvailableForDividendPaymentsWithoutRegulatoryApproval>
+    <us-gaap:AccumulatedDistributionsInExcessOfNetIncome contextRef="FY09e" unitRef="USD" decimals="-6">70000000</us-gaap:AccumulatedDistributionsInExcessOfNetIncome>
+    <us-gaap:StatutoryAccountingPracticesStatutoryAmountAvailableForDividendPaymentsWithoutRegulatoryApproval contextRef="FY09e" unitRef="USD" decimals="-6">90000000</us-gaap:StatutoryAccountingPracticesStatutoryAmountAvailableForDividendPaymentsWithoutRegulatoryApproval>
+    <dei:DocumentFiscalYearFocus contextRef="FY11">2011</dei:DocumentFiscalYearFocus>
+    <dei:DocumentFiscalPeriodFocus contextRef="FY11">FY</dei:DocumentFiscalPeriodFocus>
+    <dei:EntityFilerCategory contextRef="FY11">Non-accelerated Filer</dei:EntityFilerCategory>
+    <dei:EntitySmallBusiness contextRef="FY11">true</dei:EntitySmallBusiness>
+    <dei:EntityEmergingGrowthCompany contextRef="FY11">false</dei:EntityEmergingGrowthCompany>
+    <dei:EntityCommonStockSharesOutstanding contextRef="FY11e" unitRef="Shares" decimals="0">0</dei:EntityCommonStockSharesOutstanding>
+    <us-gaap:StatutoryAccountingPracticesStatutoryAmountAvailableForDividendPaymentsWithRegulatoryApproval contextRef="FY11e" unitRef="USD" decimals="-6">20000000</us-gaap:StatutoryAccountingPracticesStatutoryAmountAvailableForDividendPaymentsWithRegulatoryApproval>
+    <us-gaap:AmountAvailableForDividendDistributionWithoutAffectingCapitalAdequacyRequirements contextRef="FY10e" unitRef="USD" decimals="-6">50000000</us-gaap:AmountAvailableForDividendDistributionWithoutAffectingCapitalAdequacyRequirements>
+    <us-gaap:StatutoryAccountingPracticesStatutoryAmountAvailableForDividendPaymentsWithRegulatoryApproval contextRef="FY09e" unitRef="USD" decimals="-6">100000000</us-gaap:StatutoryAccountingPracticesStatutoryAmountAvailableForDividendPaymentsWithRegulatoryApproval>
+    <us-gaap:AmountAvailableForDividendDistributionWithoutAffectingCapitalAdequacyRequirements contextRef="FY09e" unitRef="USD" decimals="-6">11000000</us-gaap:AmountAvailableForDividendDistributionWithoutAffectingCapitalAdequacyRequirements>
+</xbrli:xbrl>

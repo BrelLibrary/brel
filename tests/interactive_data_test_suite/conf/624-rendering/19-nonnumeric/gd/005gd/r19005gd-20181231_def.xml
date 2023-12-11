@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8'?>
+<link:linkbase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:r19005gd="http://r19005gd/20181231" xsi:schemaLocation="http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd">
+    <link:roleRef roleURI="http://fasb.org/us-gaap/role/eedm/ExtensibleEnumerationLists" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-roles-2023.xsd#eedm" xlink:type="simple"></link:roleRef>
+    <link:arcroleRef xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#domain-member" xlink:type="simple" arcroleURI="http://xbrl.org/int/dim/arcrole/domain-member"></link:arcroleRef>
+    <link:definitionLink xlink:type="extended" xlink:role="http://fasb.org/us-gaap/role/eedm/ExtensibleEnumerationLists">
+        <link:loc xlink:href="https://xbrl.fasb.org/srt/2023/elts/srt-2023.xsd#srt_ProductsAndServicesDomain" xlink:label="ProductsAndServicesDomain" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_OilAndGasPurchasedMember" xlink:label="OilAndGasPurchasedMember" xlink:type="locator"></link:loc>
+        <link:definitionArc xlink:type="arc" order="201.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProductsAndServicesDomain" xlink:to="OilAndGasPurchasedMember"></link:definitionArc>
+    </link:definitionLink>
+</link:linkbase>

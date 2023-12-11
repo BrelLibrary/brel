@@ -1,0 +1,514 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>604-03</number>
+    <name>EDGAR Filer Manual v68d 6.4.3</name>
+    <description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.4.3 The XBRL instance documents in a submission must be XBRL 2.1 valid.">Refer to EFM: 6.4.3 The XBRL instance documents in a submission must be XBRL 2.1 valid.</a>
+    </description>
+    <reference specification="10898"></reference>
+    <variation id="_001ng">
+        <name>6.4.3, Invalid id attribute value inside appinfo element, NOGOOD.</name>
+        <description>Invalid id attribute value inside appinfo appinfo element, NOGOOD.</description>
+        <reference specification="10898"></reference>
+        <reference specification="SPR-11097"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "06-30-2011", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">e60403001ng-20111231.xml</instance>
+            <linkbase>e60403001ng-20111231_lab.xml</linkbase>
+            <linkbase>e60403001ng-20111231_pre.xml</linkbase>
+            <linkbase>e60403001ng-20111231_def.xml</linkbase>
+            <schema>e60403001ng-20111231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60403" name="Xbrl21-Invalid" frd="cp"></assert>
+        </result>
+    </variation>
+    <variation id="_002ng">
+        <name>6.4.3, Footnote fact locator not found, NOGOOD.</name>
+        <description>Footnote fact locator not found, NOGOOD.</description>
+        <reference specification="10898"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "06-30-2011", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">e60403002ng-20111231.xml</instance>
+            <linkbase>e60403002ng-20111231_lab.xml</linkbase>
+            <linkbase>e60403002ng-20111231_pre.xml</linkbase>
+            <linkbase>e60403002ng-20111231_def.xml</linkbase>
+            <schema>e60403002ng-20111231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60403" name="Xbrl21-Invalid" frd="cp"></assert>
+        </result>
+    </variation>
+    <variation id="_003ng">
+        <name>6.4.3, Use of a custom label role without a roleRef, NOGOOD.</name>
+        <description>Use of a custom label role without a roleRef, NOGOOD.</description>
+        <reference specification="10898"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "06-30-2011", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">e60403003ng-20111231.xml</instance>
+            <linkbase>e60403003ng-20111231_lab.xml</linkbase>
+            <linkbase>e60403003ng-20111231_pre.xml</linkbase>
+            <linkbase>e60403003ng-20111231_def.xml</linkbase>
+            <schema>e60403003ng-20111231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60403" name="Xbrl21-Invalid" frd="cp"></assert>
+        </result>
+    </variation>
+    <variation id="_004ng">
+        <name>6.4.3, Violation of period start strictly-less-than period end constraint in XBRL 2.1, NOGOOD.</name>
+        <description>Violation of period start strictly-less-than period end constraint in XBRL 2.1, NOGOOD.</description>
+        <reference specification="10898"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "06-30-2011", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">e60403004ng-20111231.xml</instance>
+            <linkbase>e60403004ng-20111231_lab.xml</linkbase>
+            <linkbase>e60403004ng-20111231_pre.xml</linkbase>
+            <linkbase>e60403004ng-20111231_def.xml</linkbase>
+            <schema>e60403004ng-20111231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60403" name="Xbrl21-Invalid" frd="cp"></assert>
+        </result>
+    </variation>
+    <variation id="_005ng">
+        <name>6.4.3, Violation duplicate roleRef in linkbase constraint in XBRL 2.1, NOGOOD.</name>
+        <description>Violation duplicate roleRef in linkbase constraint in XBRL 2.1, NOGOOD.</description>
+        <reference specification="10898"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "06-30-2011", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">e60403005ng-20111231.xml</instance>
+            <linkbase>e60403005ng-20111231_lab.xml</linkbase>
+            <linkbase>e60403005ng-20111231_def.xml</linkbase>
+            <linkbase>e60403005ng-20111231_pre.xml</linkbase>
+            <schema>e60403005ng-20111231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60403" name="Xbrl21-Invalid" frd="cp"></assert>
+        </result>
+    </variation>
+    <variation id="_006ng">
+        <name>6.4.3, Violation duplicate roleRef in instance constraint in XBRL 2.1, NOGOOD.</name>
+        <description>Violation duplicate roleRef in instance constraint in XBRL 2.1, NOGOOD.</description>
+        <reference specification="10898"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "06-30-2011", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">e60403006ng-20111231.xml</instance>
+            <linkbase>e60403006ng-20111231_lab.xml</linkbase>
+            <linkbase>e60403006ng-20111231_def.xml</linkbase>
+            <linkbase>e60403006ng-20111231_pre.xml</linkbase>
+            <schema>e60403006ng-20111231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60403" name="Xbrl21-Invalid" frd="cp"></assert>
+        </result>
+    </variation>
+    <variation id="_007gd">
+        <name>6.4.3, Two axes with the same domain, GOOD.</name>
+        <description>Two axes with the same domain, GOOD.</description>
+        <reference specification="10898"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "06-30-2011", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">e60403007gd-20111231.xml</instance>
+            <linkbase>e60403007gd-20111231_def.xml</linkbase>
+            <linkbase>e60403007gd-20111231_lab.xml</linkbase>
+            <linkbase>e60403007gd-20111231_pre.xml</linkbase>
+            <schema>e60403007gd-20111231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_008ng">
+        <name>6.4.3, A custom role unused in presentation linkbase but the roleRef points nowhere, NOGOOD.</name>
+        <description>A custom role unused in presentation linkbase but the roleRef points nowhere, NOGOOD.</description>
+        <reference specification="10898"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "06-30-2011", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">e60403008ng-20111231.xml</instance>
+            <linkbase>e60403008ng-20111231_lab.xml</linkbase>
+            <linkbase>e60403008ng-20111231_pre.xml</linkbase>
+            <linkbase>e60403008ng-20111231_def.xml</linkbase>
+            <schema>e60403008ng-20111231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60403" name="Xbrl21-Invalid" frd="cp"></assert>
+        </result>
+    </variation>
+    <variation id="_010ng">
+        <name>6.4.3, A calculation weight violation, NOGOOD.</name>
+        <description>A calculation weight violation, NOGOOD.</description>
+        <reference specification="10898"></reference>
+        <reference specification="SPR-12337"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "06-30-2011", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">e60403010ng-20111231.xml</instance>
+            <linkbase>e60403010ng-20111231_lab.xml</linkbase>
+            <linkbase>e60403010ng-20111231_pre.xml</linkbase>
+            <linkbase>e60403010ng-20111231_def.xml</linkbase>
+            <linkbase>e60403010ng-20111231_cal.xml</linkbase>
+            <schema>e60403010ng-20111231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60403" name="Xbrl21-Invalid" frd="cp"></assert>
+        </result>
+    </variation>
+    <variation id="_011ng">
+        <name>6.4.3, Duplicate arcs in presentation, NOGOOD.</name>
+        <description>Duplicate arcs in presentation (called out in 6.9.1), NOGOOD.</description>
+        <reference specification="10898"></reference>
+        <reference specification="SPR-12337"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "06-30-2011", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">e60403011ng-20081231.xml</instance>
+            <linkbase>e60403011ng-20081231_lab.xml</linkbase>
+            <linkbase>e60403011ng-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+            <schema>e60403011ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60403" name="Xbrl21-Invalid" frd="cp"></assert>
+        </result>
+    </variation>
+    <variation id="_012gd">
+        <name>6.4.3, Use of preferred namespace 'dei' for extension taxonomy, GOOD.</name>
+        <description>Use of preferred namespace 'dei' for extension taxonomy, GOOD.</description>
+        <reference specification="10898"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "06-30-2011", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">e60403012gd-20111231.xml</instance>
+            <linkbase>e60403012gd-20111231_lab.xml</linkbase>
+            <linkbase>e60403012gd-20111231_def.xml</linkbase>
+            <linkbase>e60403012gd-20111231_pre.xml</linkbase>
+            <schema>e60403012gd-20111231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_013gd">
+        <name>6.4.3, Use of a default decimals value on a custom type, with no decimals attribute on the fact, GOOD.</name>
+        <description>Use of a default decimals value on a custom type, with no decimals attribute on the fact, GOOD.</description>
+        <reference specification="10898"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "06-30-2011", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">e60403013gd-20111231.xml</instance>
+            <linkbase>e60403013gd-20111231_lab.xml</linkbase>
+            <linkbase>e60403013gd-20111231_def.xml</linkbase>
+            <linkbase>e60403013gd-20111231_pre.xml</linkbase>
+            <schema>e60403013gd-20111231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_014gd">
+        <name>6.4.3, Use of a default fact value on a custom type, with fact empty but not nil, GOOD.</name>
+        <description>Use of a default fact value on a custom type, with fact empty but not nil, GOOD.</description>
+        <reference specification="10898"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "06-30-2011", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">e60403014gd-20111231.xml</instance>
+            <linkbase>e60403014gd-20111231_lab.xml</linkbase>
+            <linkbase>e60403014gd-20111231_def.xml</linkbase>
+            <linkbase>e60403014gd-20111231_pre.xml</linkbase>
+            <schema>e60403014gd-20111231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_015gd">
+        <name>6.4.3, Use of a fixed fact value on a custom type, with fact empty but not nil, GOOD.</name>
+        <description>Use of a fixed fact value on a custom type, with fact empty but not nil, GOOD.</description>
+        <reference specification="10898"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "06-30-2011", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">e60403015gd-20111231.xml</instance>
+            <linkbase>e60403015gd-20111231_lab.xml</linkbase>
+            <linkbase>e60403015gd-20111231_def.xml</linkbase>
+            <linkbase>e60403015gd-20111231_pre.xml</linkbase>
+            <schema>e60403015gd-20111231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_019ng">
+        <name>6.4.3, A gYear item with a one-digit year, NOGOOD.</name>
+        <description>A gYear item with a one-digit year, NOGOOD.</description>
+        <reference specification="10898"></reference>
+        <reference specification="12745"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "06-30-2011", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">e60403019ng-20121231.xml</instance>
+            <linkbase>e60403019ng-20121231_def.xml</linkbase>
+            <linkbase>e60403019ng-20121231_lab.xml</linkbase>
+            <linkbase>e60403019ng-20121231_pre.xml</linkbase>
+            <schema>e60403019ng-20121231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60403" name="Xbrl21-Invalid" frd="cp"></assert>
+        </result>
+    </variation>
+    <variation id="_020ng">
+        <name>6.4.3, A preferred label relationship with no label present, XBRL 2.1 (5.2.4.2.1) NOGOOD.</name>
+        <description>A preferred label relationship with no label present, XBRL 2.1 (5.2.4.2.1) NOGOOD.</description>
+        <reference specification="10898"></reference>
+        <reference specification="SPR-14870"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "06-30-2011", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">e60403020ng-20121231.xml</instance>
+            <linkbase>e60403020ng-20121231_def.xml</linkbase>
+            <linkbase>e60403020ng-20121231_lab.xml</linkbase>
+            <linkbase>e60403020ng-20121231_pre.xml</linkbase>
+            <schema>e60403020ng-20121231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60403" name="Xbrl21-Invalid" frd="cp"></assert>
+        </result>
+    </variation>
+    <variation id="_021gd">
+        <name>6.4.3, Target namespace http://ntype/20121231 is imported from more than one location, GOOD.</name>
+        <description>Target namespace http://ntype/20121231 is imported from more than one location, allowed by XML Schema and tested in XBRL 2.1 suite, GOOD</description>
+        <reference specification="10898"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "06-30-2011", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">e60403021gd-20121231.xml</instance>
+            <linkbase>e60403021gd-20121231_lab.xml</linkbase>
+            <linkbase>e60403021gd-20121231_pre.xml</linkbase>
+            <schema>e60403021gd-20121231.xsd</schema>
+            <schema>e60403022gd-20121231.xsd</schema>
+            <schema>e60403023gd-20121231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_024ng">
+        <name>6.4.3, Bad date 31 November in dateItemType, NOGOOD.</name>
+        <description>Bad date 31 November in DocumentCreationDate, a dateItemType is XML Schema Datatypes-1 Invalid, NOGOOD.</description>
+        <reference specification="10898"></reference>
+        <reference specification="SPR-15580"></reference>
+        <reference specification="12745"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "06-30-2011", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">e60403024ng-20121231.xml</instance>
+            <linkbase>e60403024ng-20121231_lab.xml</linkbase>
+            <linkbase>e60403024ng-20121231_pre.xml</linkbase>
+            <schema>e60403024ng-20121231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60403" name="Xbrl21-Invalid" frd="cp"></assert>
+        </result>
+    </variation>
+    <variation id="_025ng">
+        <name>6.4.3, dtr namespace used in element but not imported into schema directly, NOGOOD.</name>
+        <description>dtr namespace used in declaration of element AMember but not its schema is not imported into schema directly but only by way of dei schema, NOGOOD.</description>
+        <reference specification="10898"></reference>
+        <reference specification="SPR-15566"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "06-30-2011", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">e60403025ng-20121231.xml</instance>
+            <linkbase>e60403025ng-20121231_lab.xml</linkbase>
+            <linkbase>e60403025ng-20121231_pre.xml</linkbase>
+            <schema>e60403025ng-20121231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60403" name="Xbrl21-Invalid" frd="cp"></assert>
+        </result>
+    </variation>
+    <variation id="_026ng">
+        <name>6.4.3, Decimal element empty without xsi:nil, NOGOOD.</name>
+        <description>Decimal element empty without xsi:nil, an XML Schema validation problem, NOGOOD.</description>
+        <reference specification="10898"></reference>
+        <reference specification="SPR-15580"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "06-30-2011", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">e60403026ng-20121231.xml</instance>
+            <linkbase>e60403026ng-20121231_lab.xml</linkbase>
+            <linkbase>e60403026ng-20121231_pre.xml</linkbase>
+            <schema>e60403026ng-20121231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60403" name="Xbrl21-Invalid" frd="cp"></assert>
+        </result>
+    </variation>
+    <variation id="_027ng">
+        <name>6.4.3, Nonnumeric type with @unitRef, NOGOOD.</name>
+        <description>Nonnumeric type with @unitRef, an XML Schema validation, NOGOOD.</description>
+        <reference specification="10898"></reference>
+        <reference specification="SPR-15656"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "06-30-2011", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">e60403027ng-20121231.xml</instance>
+            <linkbase>e60403027ng-20121231_lab.xml</linkbase>
+            <linkbase>e60403027ng-20121231_pre.xml</linkbase>
+            <schema>e60403027ng-20121231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60403" name="Xbrl21-Invalid" frd="cp"></assert>
+        </result>
+    </variation>
+    <variation id="_028ng">
+        <name>6.4.3, Footnote with HTML markup but no XHTML namespace declaration, NOGOOD.</name>
+        <description>Footnote with HTML markup but no XHTML namespace declaration, NOGOOD.</description>
+        <reference specification="10898"></reference>
+        <reference specification="SPR-15655"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "06-30-2011", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">e60403028ng-20121231.xml</instance>
+            <linkbase>e60403028ng-20121231_lab.xml</linkbase>
+            <linkbase>e60403028ng-20121231_pre.xml</linkbase>
+            <schema>e60403028ng-20121231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60403" name="Xbrl21-Invalid" frd="cp"></assert>
+        </result>
+    </variation>
+    <variation id="_029ng">
+        <name>6.4.3, roleRef URI does not match target @roleURI, NOGOOD.</name>
+        <description>roleRef URI does not match target @roleURI, NOGOOD.</description>
+        <reference specification="10898"></reference>
+        <reference specification="SPR-15657"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "06-30-2011", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">e60403029ng-20121231.xml</instance>
+            <linkbase>e60403029ng-20121231_lab.xml</linkbase>
+            <linkbase>e60403029ng-20121231_pre.xml</linkbase>
+            <schema>e60403029ng-20121231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60403" name="Xbrl21-Invalid" frd="cp"></assert>
+        </result>
+    </variation>
+    <variation id="_030ng">
+        <name>6.4.3, footnote xlink:role value not valid, NOGOOD.</name>
+        <description>footnote xlink:role value not valid, NOGOOD.</description>
+        <reference specification="10898"></reference>
+        <reference specification="SPR-15662"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "06-30-2011", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">e60403030ng-20121231.xml</instance>
+            <linkbase>e60403030ng-20121231_lab.xml</linkbase>
+            <linkbase>e60403030ng-20121231_pre.xml</linkbase>
+            <schema>e60403030ng-20121231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60403" name="Xbrl21-Invalid" frd="cp"></assert>
+        </result>
+    </variation>
+    <variation id="_031ng">
+        <name>6.4.3, Schema validation error in context, NOGOOD.</name>
+        <description>Schema validation error (missing xbrli:segment) in context, NOGOOD.</description>
+        <reference specification="10898"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "06-30-2011", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">e60403031ng-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60403" name="Xbrl21-Invalid" frd="cp"></assert>
+        </result>
+    </variation>
+    <variation id="_032ng">
+        <name>6.4.3, A decimal type fact with value NaN, NOGOOD.</name>
+        <description>A decimal type fact with value NaN, NOGOOD.</description>
+        <reference specification="10898"></reference>
+        <reference specification="SPR-16785"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "06-30-2011", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">e60403032ng-20111231.xml</instance>
+            <linkbase>e60403032ng-20111231_lab.xml</linkbase>
+            <linkbase>e60403032ng-20111231_pre.xml</linkbase>
+            <schema>e60403032ng-20111231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60403" name="Xbrl21-Invalid" frd="cp"></assert>
+        </result>
+    </variation>
+    <variation id="_033ng">
+        <name>6.4.3, A decimal type fact with value INF, NOGOOD</name>
+        <description>A decimal type fact with value INF, NOGOOD.</description>
+        <reference specification="10898"></reference>
+        <reference specification="SPR-16785"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "06-30-2011", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">e60403033ng-20111231.xml</instance>
+            <linkbase>e60403033ng-20111231_lab.xml</linkbase>
+            <linkbase>e60403033ng-20111231_pre.xml</linkbase>
+            <schema>e60403033ng-20111231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60403" name="Xbrl21-Invalid" frd="cp"></assert>
+        </result>
+    </variation>
+    <variation id="_034ng">
+        <name>6.4.3, A decimal type fact with value -INF, NOGOOD.</name>
+        <description>A decimal type fact with value -INF, NOGOOD.</description>
+        <reference specification="10898"></reference>
+        <reference specification="SPR-16785"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "06-30-2011", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">e60403034ng-20111231.xml</instance>
+            <linkbase>e60403034ng-20111231_lab.xml</linkbase>
+            <linkbase>e60403034ng-20111231_pre.xml</linkbase>
+            <schema>e60403034ng-20111231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60403" name="Xbrl21-Invalid" frd="cp"></assert>
+        </result>
+    </variation>
+    <variation id="_035gd">
+        <name>6.4.3, A float type element with fact values NaN, INF and -INF, GOOD.</name>
+        <description>A float type element with fact values NaN, INF and -INF, GOOD.</description>
+        <reference specification="10898"></reference>
+        <reference specification="SPR-16785"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "06-30-2011", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">e60403035gd-20111231.xml</instance>
+            <linkbase>e60403035gd-20111231_lab.xml</linkbase>
+            <linkbase>e60403035gd-20111231_pre.xml</linkbase>
+            <schema>e60403035gd-20111231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_036gd">
+        <name>Label and footnote resources can inherit xml:lang.</name>
+        <description>Base spec suite now requires inheritance on label and footnote resources.</description>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "06-30-2011", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">e60403036gd-20111231.xml</instance>
+            <linkbase>e60403036gd-20111231_lab.xml</linkbase>
+            <linkbase>e60403036gd-20111231_def.xml</linkbase>
+            <linkbase>e60403036gd-20111231_pre.xml</linkbase>
+            <schema>e60403036gd-20111231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_037ng">
+        <name>Label resources missing xml:lang due to un-declaration.</name>
+        <description>Root xml:lang is un-declared by empty string on intermediate element.</description>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "06-30-2011", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">e60403037ng-20111231.xml</instance>
+            <linkbase>e60403037ng-20111231_lab.xml</linkbase>
+            <linkbase>e60403037ng-20111231_def.xml</linkbase>
+            <linkbase>e60403037ng-20111231_pre.xml</linkbase>
+            <schema>e60403037ng-20111231.xsd</schema>
+        </data>
+        <result expected="invalid"></result>
+    </variation>
+    <variation id="_038ng">
+        <name>Footnote missing xml:lang due to un-declaration.</name>
+        <description>Root xml:lang is un-declared by empty string on intermediate element.</description>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "06-30-2011", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">e60403038ng-20111231.xml</instance>
+            <schema>e60403036gd-20111231.xsd</schema>
+            <linkbase>e60403036gd-20111231_pre.xml</linkbase>
+            <linkbase>e60403036gd-20111231_def.xml</linkbase>
+            <linkbase>e60403036gd-20111231_lab.xml</linkbase>
+        </data>
+        <result expected="invalid"></result>
+    </variation>
+</testcase>

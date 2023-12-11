@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>626-09</number>
+    <name>EDGAR Filer Manual v68d 6.26.9</name>
+    <description>
+        <h2>The {Elements} token implies "column primary" embedding.</h2>
+        <p>An embedding command should not have both "{Elements}" in the definition text of its URI, and an iterator with direction token "column" and axis token "primary".
+   The layout qualifier "{Elements}" forces the primary axis to be displayed as rows.</p>
+    </description>
+    <reference specification="18153"></reference>
+    <variation id="_001gw">
+        <name>6.26.9 Primary Axis on Rows with Elements qualifier, GOOD/WARN</name>
+        <description>Primary Axis on Rows with Elements qualifier, GOOD/WARN</description>
+        <reference specification="18153"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"rptSeriesClassInfo.seriesIds":["S013456789"], "invCompanyType":"N-1A", "submissionType": "485BPOS"}'></parameter>
+            <instance readMeFirst="true">e62609001gw-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="wrn" num="62609" name="primary-axis-on-rows" frd="rq"></assert>
+        </result>
+    </variation>
+</testcase>

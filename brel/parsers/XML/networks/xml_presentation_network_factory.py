@@ -59,7 +59,7 @@ class PresentationNetworkFactory(IXMLNetworkFactory):
             
             preferred_label_role = BrelLabelRole.from_url(preferred_label)
             arc_role = xml_arc.attrib.get("{" + nsmap["xlink"] + "}arcrole")
-            order = int(xml_arc.attrib.get("order") or 1)
+            order = float(xml_arc.attrib.get("order") or 1)
             arc_qname = QName.from_string(xml_arc.tag)
         else:
             raise ValueError(f"referenced element {xml_referenced_element} is not connected to arc {xml_arc}")

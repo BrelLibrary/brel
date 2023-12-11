@@ -1,0 +1,549 @@
+<html xmlns:case="http://edgar/2009/conformance">
+  <head>
+    <title>605-24
+        :
+        EDGAR Filer Manual v68d 6.5.24</title>
+    <style type="text/css">
+        table, td, th {border: solid black 1pt; border-collapse: collapse;} td {vertical-align: top;}
+      </style>
+  </head>
+  <body>
+    <h1>605-24
+        :
+        EDGAR Filer Manual v68d 6.5.24</h1>
+    <p>
+        Created by: 
+        <a href="mailto:StructuredData@sec.gov">SEC Office of Structured Disclosure</a></p>
+    <p>
+      <conf:description xmlns:conf="http://edgar/2009/conformance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.5.24 The Registrant Name in the required context.">Refer to EFM: 6.5.24 The Registrant Name in the required context.</a>
+    </conf:description>
+    </p>
+    <h3>References</h3>
+    <ul>17659</ul>
+    <h2>
+        Variations
+      </h2>
+    <table border="solid">
+      <thead>
+        <tr>
+          <th>Number</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>References</th>
+          <th>Data Inputs</th>
+          <th>Result Outputs</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>_600gd</td>
+          <td>6.5.24 No registrant name, two L SDR CIKs are 000000000, GOOD</td>
+          <td>6.5.24 No registrant name, CIK for both L SDR exhibits is 000000000, and their names are different, GOOD</td>
+          <td>17659.2 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>cikList</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td>xs:string</td>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>0001312818,0000917144,0000121644,0000350001</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>cikNameList</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td>xs:string</td>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>SBSE Co|Edgar|LTEST|Edgar|MTEST|Edgar|ALLEN TEST &amp; RAIN WATER CO INC 3 \/\/</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="600gd/k60524600gd-20151231.xml">600gd/k60524600gd-20151231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="600gd/k60524600gd-20151231_lab.xml">600gd/k60524600gd-20151231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="600gd/k60524600gd-20151231_pre.xml">600gd/k60524600gd-20151231_pre.xml</a></li>
+              <li>
+    Schema
+    <a href="600gd/k60524600gd-20151231.xsd">600gd/k60524600gd-20151231.xsd</a></li>
+              <li>
+    Instance
+    <a href="600gd/l60524600gd-20151231.xml">600gd/l60524600gd-20151231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="600gd/l60524600gd-20151231_lab.xml">600gd/l60524600gd-20151231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="600gd/l60524600gd-20151231_pre.xml">600gd/l60524600gd-20151231_pre.xml</a></li>
+              <li>
+    Schema
+    <a href="600gd/l60524600gd-20151231.xsd">600gd/l60524600gd-20151231.xsd</a></li>
+              <li>
+    Instance
+    <a href="600gd/m60524600gd-20151231.xml">600gd/m60524600gd-20151231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="600gd/m60524600gd-20151231_lab.xml">600gd/m60524600gd-20151231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="600gd/m60524600gd-20151231_pre.xml">600gd/m60524600gd-20151231_pre.xml</a></li>
+              <li>
+    Schema
+    <a href="600gd/m60524600gd-20151231.xsd">600gd/m60524600gd-20151231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_601ng</td>
+          <td>6.5.24 Exhibit L SDRs with CIKs both 000000000 but registrant names are the same, NOGOOD</td>
+          <td>6.5.24 No registrant name, CIK for both L SDR exhibits is 000000000, their names are the same value, ANONYMOUS, NOGOOD</td>
+          <td>17659.2 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>cikList</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td>xs:string</td>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>0001312818,0000917144,0000121644,0000350001</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>cikNameList</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td>xs:string</td>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>SBSE Co|Edgar|LTEST|Edgar|MTEST|Edgar|ALLEN TEST &amp; RAIN WATER CO INC 3 \/\/</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="601ng/k60524601ng-20151231.xml">601ng/k60524601ng-20151231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="601ng/k60524601ng-20151231_lab.xml">601ng/k60524601ng-20151231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="601ng/k60524601ng-20151231_pre.xml">601ng/k60524601ng-20151231_pre.xml</a></li>
+              <li>
+    Schema
+    <a href="601ng/k60524601ng-20151231.xsd">601ng/k60524601ng-20151231.xsd</a></li>
+              <li>
+    Instance
+    <a href="601ng/l60524601ng-20151231.xml">601ng/l60524601ng-20151231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="601ng/l60524601ng-20151231_lab.xml">601ng/l60524601ng-20151231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="601ng/l60524601ng-20151231_pre.xml">601ng/l60524601ng-20151231_pre.xml</a></li>
+              <li>
+    Schema
+    <a href="601ng/l60524601ng-20151231.xsd">601ng/l60524601ng-20151231.xsd</a></li>
+              <li>
+    Instance
+    <a href="601ng/m60524601ng-20151231.xml">601ng/m60524601ng-20151231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="601ng/m60524601ng-20151231_lab.xml">601ng/m60524601ng-20151231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="601ng/m60524601ng-20151231_pre.xml">601ng/m60524601ng-20151231_pre.xml</a></li>
+              <li>
+    Schema
+    <a href="601ng/m60524601ng-20151231.xsd">601ng/m60524601ng-20151231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 60524, <a href="../../../../lib/xbrlerrors.htm#cp-0524-Multiple-L-Sdr-Reports-For-Entity">Multiple-L-Sdr-Reports-For-Entity</a></td></tr><tr><td>FRD:</td><td>cp</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_602gd</td>
+          <td>6.5.24, CIK 91744 and 50845, GOOD.</td>
+          <td>Two L SDR exhibits using CIK 91744 and 50845, GOOD.</td>
+          <td>17659.2 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>submissionType</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td>xs:string</td>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>SDR</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>cikList</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td>xs:string</td>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>0001312818,0000917144,0000121644,0000350001</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>cikNameList</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td>xs:string</td>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>SBSE Co|Edgar|LTEST|Edgar|MTEST|Edgar|ALLEN TEST &amp; RAIN WATER CO INC 3 \/\/</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="602gd/k60524602gd-20151231.xml">602gd/k60524602gd-20151231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="602gd/k60524602gd-20151231_lab.xml">602gd/k60524602gd-20151231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="602gd/k60524602gd-20151231_pre.xml">602gd/k60524602gd-20151231_pre.xml</a></li>
+              <li>
+    Schema
+    <a href="602gd/k60524602gd-20151231.xsd">602gd/k60524602gd-20151231.xsd</a></li>
+              <li>
+    Instance
+    <a href="602gd/l60524602gd-20151231.xml">602gd/l60524602gd-20151231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="602gd/l60524602gd-20151231_lab.xml">602gd/l60524602gd-20151231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="602gd/l60524602gd-20151231_pre.xml">602gd/l60524602gd-20151231_pre.xml</a></li>
+              <li>
+    Schema
+    <a href="602gd/l60524602gd-20151231.xsd">602gd/l60524602gd-20151231.xsd</a></li>
+              <li>
+    Instance
+    <a href="602gd/m60524602gd-20151231.xml">602gd/m60524602gd-20151231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="602gd/m60524602gd-20151231_lab.xml">602gd/m60524602gd-20151231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="602gd/m60524602gd-20151231_pre.xml">602gd/m60524602gd-20151231_pre.xml</a></li>
+              <li>
+    Schema
+    <a href="602gd/m60524602gd-20151231.xsd">602gd/m60524602gd-20151231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_603gd</td>
+          <td>6.5.24, CIK 91744 and 50845, GOOD.</td>
+          <td>Two L SDR exhibits using CIK 91744 and 00000, GOOD.</td>
+          <td>17659.2 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>submissionType</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td>xs:string</td>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>SDR</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>cikList</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td>xs:string</td>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>0001312818,0000917144,0000121644,0000350001</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>cikNameList</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td>xs:string</td>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>SBSE Co|Edgar|LTEST|Edgar|MTEST|Edgar|ALLEN TEST &amp; RAIN WATER CO INC 3 \/\/</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="603gd/k60524603gd-20151231.xml">603gd/k60524603gd-20151231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="603gd/k60524603gd-20151231_lab.xml">603gd/k60524603gd-20151231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="603gd/k60524603gd-20151231_pre.xml">603gd/k60524603gd-20151231_pre.xml</a></li>
+              <li>
+    Schema
+    <a href="603gd/k60524603gd-20151231.xsd">603gd/k60524603gd-20151231.xsd</a></li>
+              <li>
+    Instance
+    <a href="603gd/l60524603gd-20151231.xml">603gd/l60524603gd-20151231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="603gd/l60524603gd-20151231_lab.xml">603gd/l60524603gd-20151231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="603gd/l60524603gd-20151231_pre.xml">603gd/l60524603gd-20151231_pre.xml</a></li>
+              <li>
+    Schema
+    <a href="603gd/l60524603gd-20151231.xsd">603gd/l60524603gd-20151231.xsd</a></li>
+              <li>
+    Instance
+    <a href="603gd/m60524603gd-20151231.xml">603gd/m60524603gd-20151231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="603gd/m60524603gd-20151231_lab.xml">603gd/m60524603gd-20151231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="603gd/m60524603gd-20151231_pre.xml">603gd/m60524603gd-20151231_pre.xml</a></li>
+              <li>
+    Schema
+    <a href="603gd/m60524603gd-20151231.xsd">603gd/m60524603gd-20151231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_604ng</td>
+          <td>6.5.24, CIK 91744 and 91744, NOGOOD.</td>
+          <td>Two L SDR exhibits using CIK 91744 and 91744, NOGOOD.</td>
+          <td>17659.2 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>submissionType</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td>xs:string</td>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>SDR</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>cikList</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td>xs:string</td>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>0001312818,0000917144,0000121644,0000350001</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>cikNameList</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td>xs:string</td>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>SBSE Co|Edgar|LTEST|Edgar|MTEST|Edgar|ALLEN TEST &amp; RAIN WATER CO INC 3 \/\/</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="604ng/k60524604ng-20151231.xml">604ng/k60524604ng-20151231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="604ng/k60524604ng-20151231_lab.xml">604ng/k60524604ng-20151231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="604ng/k60524604ng-20151231_pre.xml">604ng/k60524604ng-20151231_pre.xml</a></li>
+              <li>
+    Schema
+    <a href="604ng/k60524604ng-20151231.xsd">604ng/k60524604ng-20151231.xsd</a></li>
+              <li>
+    Instance
+    <a href="604ng/l60524604ng-20151231.xml">604ng/l60524604ng-20151231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="604ng/l60524604ng-20151231_lab.xml">604ng/l60524604ng-20151231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="604ng/l60524604ng-20151231_pre.xml">604ng/l60524604ng-20151231_pre.xml</a></li>
+              <li>
+    Schema
+    <a href="604ng/l60524604ng-20151231.xsd">604ng/l60524604ng-20151231.xsd</a></li>
+              <li>
+    Instance
+    <a href="604ng/m60524604ng-20151231.xml">604ng/m60524604ng-20151231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="604ng/m60524604ng-20151231_lab.xml">604ng/m60524604ng-20151231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="604ng/m60524604ng-20151231_pre.xml">604ng/m60524604ng-20151231_pre.xml</a></li>
+              <li>
+    Schema
+    <a href="604ng/m60524604ng-20151231.xsd">604ng/m60524604ng-20151231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 60524, <a href="../../../../lib/xbrlerrors.htm#cp-0524-Multiple-L-Sdr-Reports-For-Entity">Multiple-L-Sdr-Reports-For-Entity</a></td></tr><tr><td>FRD:</td><td>cp</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

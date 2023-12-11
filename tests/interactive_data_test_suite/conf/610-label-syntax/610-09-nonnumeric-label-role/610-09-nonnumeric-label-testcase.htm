@@ -1,0 +1,978 @@
+<html xmlns:case="http://edgar/2009/conformance">
+  <head>
+    <title>610-09
+        :
+        EDGAR Filer Manual v68d 6.10.9</title>
+    <style type="text/css">
+        table, td, th {border: solid black 1pt; border-collapse: collapse;} td {vertical-align: top;}
+      </style>
+  </head>
+  <body>
+    <h1>610-09
+        :
+        EDGAR Filer Manual v68d 6.10.9</h1>
+    <p>
+        Created by: 
+        <a href="mailto:StructuredData@sec.gov">SEC Office of Structured Disclosure</a></p>
+    <p>
+      <description xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <h2>Do not use numeric label roles on non-numeric elements.</h2>
+        <p>Non-numeric elements must not have labels whose xlink:role value implies they apply to numeric values.</p>
+        <table xmlns="" style="border-collapse:collapse;border:solid black 1pt">
+            <tr>
+                <th style="border-collapse:collapse;border:solid black 1pt">Value of the xlink:role attribute on link:label</th>
+                <th style="border-collapse:collapse;border:solid black 1pt">Non numeric</th>
+            </tr>
+            <tr>
+                <td>http://www.xbrl.org/2003/role/positiveLabel</td>
+                <td style="border-collapse:collapse;border:solid black 1pt;vertical-align:top;" rowspan="16">Disallowed</td>
+            </tr>
+            <tr>
+                <td>http://www.xbrl.org/2003/role/positiveTerseLabel</td>
+            </tr>
+            <tr>
+                <td>http://www.xbrl.org/2003/role/positiveVerboseLabel</td>
+            </tr>
+            <tr>
+                <td>http://www.xbrl.org/2003/role/negativeLabel</td>
+            </tr>
+            <tr>
+                <td>http://www.xbrl.org/2003/role/negativeTerseLabel</td>
+            </tr>
+            <tr>
+                <td>http://www.xbrl.org/2003/role/negativeVerboseLabel</td>
+            </tr>
+            <tr>
+                <td>http://www.xbrl.org/2003/role/zeroLabel</td>
+            </tr>
+            <tr>
+                <td>http://www.xbrl.org/2003/role/zeroTerseLabel</td>
+            </tr>
+            <tr>
+                <td>http://www.xbrl.org/2003/role/zeroVerboseLabel</td>
+            </tr>
+            <tr>
+                <td>http://www.xbrl.org/2003/role/totalLabel</td>
+            </tr>
+            <tr>
+                <td>http://www.xbrl.org/2009/role/negatedLabel</td>
+            </tr>
+            <tr>
+                <td>http://www.xbrl.org/2009/role/negatedPeriodEndLabel</td>
+            </tr>
+            <tr>
+                <td>http://www.xbrl.org/2009/role/negatedPeriodStartLabel</td>
+            </tr>
+            <tr>
+                <td>http://www.xbrl.org/2009/role/negatedTotalLabel</td>
+            </tr>
+            <tr>
+                <td>hhttp://www.xbrl.org/2009/role/negatedNetLabel</td>
+            </tr>
+            <tr>
+                <td>http://www.xbrl.org/2009/role/negatedTerseLabel</td>
+            </tr>
+            <tr>
+                <td>http://xbrl.us/us-gaap/role/label/negated</td>
+            </tr>
+            <tr>
+                <td>http://xbrl.us/us-gaap/role/label/negatedTotal</td>
+            </tr>
+            <tr>
+                <td>http://xbrl.us/us-gaap/role/label/negatedPeriodStart</td>
+            </tr>
+            <tr>
+                <td>http://xbrl.us/us-gaap/role/label/negatedPeriodEnd</td>
+            </tr>
+            <tr>
+                <td style="border-collapse:collapse;border:solid black 1pt;">All Others</td>
+                <td style="border-collapse:collapse;border:solid black 1pt;">Allowed</td>
+            </tr>
+        </table>
+    </description>
+    </p>
+    <h3>References</h3>
+    <ul>12909</ul>
+    <h2>
+        Variations
+      </h2>
+    <table border="solid">
+      <thead>
+        <tr>
+          <th>Number</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>References</th>
+          <th>Data Inputs</th>
+          <th>Result Outputs</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>_000ng</td>
+          <td>6.10.9 Role http://www.xbrl.org/2003/role/totalLabel on non-numeric element, NOGOOD.</td>
+          <td>Role http://www.xbrl.org/2003/role/totalLabel on non-numeric element, NOGOOD.</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"periodOfReport" : "12-31-2011" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e61009000ng-20111231.xml">e61009000ng-20111231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="e61009000ng-20111231_lab.xml">e61009000ng-20111231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20111231_def.xml">edgar-20111231_def.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20111231_lab.xml">edgar-20111231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20111231_pre.xml">edgar-20111231_pre.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20111231.xsd">edgar-20111231.xsd</a></li>
+              <li>
+    Schema
+    <a href="e61009000ng-20111231.xsd">e61009000ng-20111231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 61009, <a href="../../../../lib/xbrlerrors.htm#du-1009-Numeric-Label-Role">Numeric-Label-Role</a></td></tr><tr><td>FRD:</td><td>du</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_001ng</td>
+          <td>6.10.9 Role http://www.xbrl.org/2003/role/positiveLabel on non-numeric element, NOGOOD.</td>
+          <td>Role http://www.xbrl.org/2003/role/positiveLabel on non-numeric element, NOGOOD.</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"periodOfReport" : "12-31-2011" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e61009001ng-20111231.xml">e61009001ng-20111231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="e61009001ng-20111231_lab.xml">e61009001ng-20111231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20111231_def.xml">edgar-20111231_def.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20111231_lab.xml">edgar-20111231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20111231_pre.xml">edgar-20111231_pre.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20111231.xsd">edgar-20111231.xsd</a></li>
+              <li>
+    Schema
+    <a href="e61009001ng-20111231.xsd">e61009001ng-20111231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 61009, <a href="../../../../lib/xbrlerrors.htm#du-1009-Numeric-Label-Role">Numeric-Label-Role</a></td></tr><tr><td>FRD:</td><td>du</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_002ng</td>
+          <td>6.10.9 Role http://www.xbrl.org/2003/role/negativeLabel on non-numeric element, NOGOOD.</td>
+          <td>Role http://www.xbrl.org/2003/role/negativeLabel on non-numeric element, NOGOOD.</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"periodOfReport" : "12-31-2011" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e61009002ng-20111231.xml">e61009002ng-20111231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="e61009002ng-20111231_lab.xml">e61009002ng-20111231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20111231_def.xml">edgar-20111231_def.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20111231_lab.xml">edgar-20111231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20111231_pre.xml">edgar-20111231_pre.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20111231.xsd">edgar-20111231.xsd</a></li>
+              <li>
+    Schema
+    <a href="e61009002ng-20111231.xsd">e61009002ng-20111231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 61009, <a href="../../../../lib/xbrlerrors.htm#du-1009-Numeric-Label-Role">Numeric-Label-Role</a></td></tr><tr><td>FRD:</td><td>du</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_003ng</td>
+          <td>6.10.9 Role http://www.xbrl.org/2003/role/zeroLabel on non-numeric element, NOGOOD.</td>
+          <td>Role http://www.xbrl.org/2003/role/zeroLabel on non-numeric element, NOGOOD.</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"periodOfReport" : "12-31-2011" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e61009003ng-20111231.xml">e61009003ng-20111231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="e61009003ng-20111231_lab.xml">e61009003ng-20111231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20111231_def.xml">edgar-20111231_def.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20111231_lab.xml">edgar-20111231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20111231_pre.xml">edgar-20111231_pre.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20111231.xsd">edgar-20111231.xsd</a></li>
+              <li>
+    Schema
+    <a href="e61009003ng-20111231.xsd">e61009003ng-20111231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 61009, <a href="../../../../lib/xbrlerrors.htm#du-1009-Numeric-Label-Role">Numeric-Label-Role</a></td></tr><tr><td>FRD:</td><td>du</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_004ng</td>
+          <td>6.10.9 Role http://www.xbrl.org/2003/role/positiveTerseLabel on non-numeric element, NOGOOD.</td>
+          <td>Role http://www.xbrl.org/2003/role/positiveTerseLabel on non-numeric element, NOGOOD.</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"periodOfReport" : "12-31-2011" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e61009004ng-20111231.xml">e61009004ng-20111231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="e61009004ng-20111231_lab.xml">e61009004ng-20111231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20111231_def.xml">edgar-20111231_def.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20111231_lab.xml">edgar-20111231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20111231_pre.xml">edgar-20111231_pre.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20111231.xsd">edgar-20111231.xsd</a></li>
+              <li>
+    Schema
+    <a href="e61009004ng-20111231.xsd">e61009004ng-20111231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 61009, <a href="../../../../lib/xbrlerrors.htm#du-1009-Numeric-Label-Role">Numeric-Label-Role</a></td></tr><tr><td>FRD:</td><td>du</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_005ng</td>
+          <td>6.10.9 Role http://www.xbrl.org/2003/role/negativeTerseLabel on non-numeric element, NOGOOD.</td>
+          <td>Role http://www.xbrl.org/2003/role/negativeTerseLabel on non-numeric element, NOGOOD.</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"periodOfReport" : "12-31-2011" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e61009005ng-20111231.xml">e61009005ng-20111231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="e61009005ng-20111231_lab.xml">e61009005ng-20111231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20111231_def.xml">edgar-20111231_def.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20111231_lab.xml">edgar-20111231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20111231_pre.xml">edgar-20111231_pre.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20111231.xsd">edgar-20111231.xsd</a></li>
+              <li>
+    Schema
+    <a href="e61009005ng-20111231.xsd">e61009005ng-20111231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 61009, <a href="../../../../lib/xbrlerrors.htm#du-1009-Numeric-Label-Role">Numeric-Label-Role</a></td></tr><tr><td>FRD:</td><td>du</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_006ng</td>
+          <td>6.10.9 Role http://www.xbrl.org/2003/role/zeroTerseLabel on non-numeric element, NOGOOD.</td>
+          <td>Role http://www.xbrl.org/2003/role/zeroTerseLabel on non-numeric element, NOGOOD.</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"periodOfReport" : "12-31-2011" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e61009006ng-20111231.xml">e61009006ng-20111231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="e61009006ng-20111231_lab.xml">e61009006ng-20111231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20111231_def.xml">edgar-20111231_def.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20111231_lab.xml">edgar-20111231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20111231_pre.xml">edgar-20111231_pre.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20111231.xsd">edgar-20111231.xsd</a></li>
+              <li>
+    Schema
+    <a href="e61009006ng-20111231.xsd">e61009006ng-20111231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 61009, <a href="../../../../lib/xbrlerrors.htm#du-1009-Numeric-Label-Role">Numeric-Label-Role</a></td></tr><tr><td>FRD:</td><td>du</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_007ng</td>
+          <td>6.10.9 Role http://www.xbrl.org/2003/role/positiveVerboseLabel on non-numeric element, NOGOOD.</td>
+          <td>Role http://www.xbrl.org/2003/role/positiveVerboseLabel on non-numeric element, NOGOOD.</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"periodOfReport" : "12-31-2011" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e61009007ng-20111231.xml">e61009007ng-20111231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="e61009007ng-20111231_lab.xml">e61009007ng-20111231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20111231_def.xml">edgar-20111231_def.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20111231_lab.xml">edgar-20111231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20111231_pre.xml">edgar-20111231_pre.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20111231.xsd">edgar-20111231.xsd</a></li>
+              <li>
+    Schema
+    <a href="e61009007ng-20111231.xsd">e61009007ng-20111231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 61009, <a href="../../../../lib/xbrlerrors.htm#du-1009-Numeric-Label-Role">Numeric-Label-Role</a></td></tr><tr><td>FRD:</td><td>du</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_008ng</td>
+          <td>6.10.9 Role http://www.xbrl.org/2003/role/negativeVerboseLabel on non-numeric element, NOGOOD.</td>
+          <td>Role http://www.xbrl.org/2003/role/negativeVerboseLabel on non-numeric element, NOGOOD.</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"periodOfReport" : "12-31-2011" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e61009008ng-20111231.xml">e61009008ng-20111231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="e61009008ng-20111231_lab.xml">e61009008ng-20111231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20111231_def.xml">edgar-20111231_def.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20111231_lab.xml">edgar-20111231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20111231_pre.xml">edgar-20111231_pre.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20111231.xsd">edgar-20111231.xsd</a></li>
+              <li>
+    Schema
+    <a href="e61009008ng-20111231.xsd">e61009008ng-20111231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 61009, <a href="../../../../lib/xbrlerrors.htm#du-1009-Numeric-Label-Role">Numeric-Label-Role</a></td></tr><tr><td>FRD:</td><td>du</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_009ng</td>
+          <td>6.10.9 Role http://www.xbrl.org/2003/role/zeroVerboseLabel on non-numeric element, NOGOOD.</td>
+          <td>Role http://www.xbrl.org/2003/role/zeroVerboseLabel on non-numeric element, NOGOOD.</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"periodOfReport" : "12-31-2011" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e61009009ng-20111231.xml">e61009009ng-20111231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="e61009009ng-20111231_lab.xml">e61009009ng-20111231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20111231_def.xml">edgar-20111231_def.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20111231_lab.xml">edgar-20111231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20111231_pre.xml">edgar-20111231_pre.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20111231.xsd">edgar-20111231.xsd</a></li>
+              <li>
+    Schema
+    <a href="e61009009ng-20111231.xsd">e61009009ng-20111231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 61009, <a href="../../../../lib/xbrlerrors.htm#du-1009-Numeric-Label-Role">Numeric-Label-Role</a></td></tr><tr><td>FRD:</td><td>du</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_010ng</td>
+          <td>6.10.9 Role http://www.xbrl.org/2009/role/negatedLabel on non-numeric element, NOGOOD.</td>
+          <td>Role http://www.xbrl.org/2009/role/negatedLabel on non-numeric element, NOGOOD.</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"periodOfReport" : "12-31-2011" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e61009010ng-20111231.xml">e61009010ng-20111231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="e61009010ng-20111231_lab.xml">e61009010ng-20111231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20111231_def.xml">edgar-20111231_def.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20111231_lab.xml">edgar-20111231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20111231_pre.xml">edgar-20111231_pre.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20111231.xsd">edgar-20111231.xsd</a></li>
+              <li>
+    Schema
+    <a href="e61009010ng-20111231.xsd">e61009010ng-20111231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 61009, <a href="../../../../lib/xbrlerrors.htm#du-1009-Numeric-Label-Role">Numeric-Label-Role</a></td></tr><tr><td>FRD:</td><td>du</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_011ng</td>
+          <td>6.10.9 Role http://www.xbrl.org/2009/role/negatedPeriodEndLabel on non-numeric element, NOGOOD.</td>
+          <td>Role http://www.xbrl.org/2009/role/negatedPeriodEndLabel on non-numeric element, NOGOOD.</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"periodOfReport" : "12-31-2011" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e61009011ng-20111231.xml">e61009011ng-20111231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="e61009011ng-20111231_lab.xml">e61009011ng-20111231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20111231_def.xml">edgar-20111231_def.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20111231_lab.xml">edgar-20111231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20111231_pre.xml">edgar-20111231_pre.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20111231.xsd">edgar-20111231.xsd</a></li>
+              <li>
+    Schema
+    <a href="e61009011ng-20111231.xsd">e61009011ng-20111231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 61009, <a href="../../../../lib/xbrlerrors.htm#du-1009-Numeric-Label-Role">Numeric-Label-Role</a></td></tr><tr><td>FRD:</td><td>du</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_012ng</td>
+          <td>6.10.9 Role http://www.xbrl.org/2009/role/negatedPeriodStartLabel on non-numeric element, NOGOOD.</td>
+          <td>Role http://www.xbrl.org/2009/role/negatedPeriodStartLabel on non-numeric element, NOGOOD.</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"periodOfReport" : "12-31-2011" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e61009012ng-20111231.xml">e61009012ng-20111231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="e61009012ng-20111231_lab.xml">e61009012ng-20111231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20111231_def.xml">edgar-20111231_def.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20111231_lab.xml">edgar-20111231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20111231_pre.xml">edgar-20111231_pre.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20111231.xsd">edgar-20111231.xsd</a></li>
+              <li>
+    Schema
+    <a href="e61009012ng-20111231.xsd">e61009012ng-20111231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 61009, <a href="../../../../lib/xbrlerrors.htm#du-1009-Numeric-Label-Role">Numeric-Label-Role</a></td></tr><tr><td>FRD:</td><td>du</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_013ng</td>
+          <td>6.10.9 Role http://www.xbrl.org/2009/role/negatedTotalLabel on non-numeric element, NOGOOD.</td>
+          <td>Role http://www.xbrl.org/2009/role/negatedTotalLabel on non-numeric element, NOGOOD.</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"periodOfReport" : "12-31-2011" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e61009013ng-20111231.xml">e61009013ng-20111231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="e61009013ng-20111231_lab.xml">e61009013ng-20111231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20111231_def.xml">edgar-20111231_def.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20111231_lab.xml">edgar-20111231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20111231_pre.xml">edgar-20111231_pre.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20111231.xsd">edgar-20111231.xsd</a></li>
+              <li>
+    Schema
+    <a href="e61009013ng-20111231.xsd">e61009013ng-20111231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 61009, <a href="../../../../lib/xbrlerrors.htm#du-1009-Numeric-Label-Role">Numeric-Label-Role</a></td></tr><tr><td>FRD:</td><td>du</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_014ng</td>
+          <td>6.10.9 Role http://www.xbrl.org/2009/role/negatedNetLabel on non-numeric element, NOGOOD.</td>
+          <td>Role http://www.xbrl.org/2009/role/negatedNetLabel on non-numeric element, NOGOOD.</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"periodOfReport" : "12-31-2011" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e61009014ng-20111231.xml">e61009014ng-20111231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="e61009014ng-20111231_lab.xml">e61009014ng-20111231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20111231_def.xml">edgar-20111231_def.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20111231_lab.xml">edgar-20111231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20111231_pre.xml">edgar-20111231_pre.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20111231.xsd">edgar-20111231.xsd</a></li>
+              <li>
+    Schema
+    <a href="e61009014ng-20111231.xsd">e61009014ng-20111231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 61009, <a href="../../../../lib/xbrlerrors.htm#du-1009-Numeric-Label-Role">Numeric-Label-Role</a></td></tr><tr><td>FRD:</td><td>du</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_015ng</td>
+          <td>6.10.9 Role http://www.xbrl.org/2009/role/negatedTerseLabel on non-numeric element, NOGOOD.</td>
+          <td>Role http://www.xbrl.org/2009/role/negatedTerseLabel on non-numeric element, NOGOOD.</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"periodOfReport" : "12-31-2011" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e61009015ng-20111231.xml">e61009015ng-20111231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="e61009015ng-20111231_lab.xml">e61009015ng-20111231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20111231_def.xml">edgar-20111231_def.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20111231_lab.xml">edgar-20111231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20111231_pre.xml">edgar-20111231_pre.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20111231.xsd">edgar-20111231.xsd</a></li>
+              <li>
+    Schema
+    <a href="e61009015ng-20111231.xsd">e61009015ng-20111231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 61009, <a href="../../../../lib/xbrlerrors.htm#du-1009-Numeric-Label-Role">Numeric-Label-Role</a></td></tr><tr><td>FRD:</td><td>du</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

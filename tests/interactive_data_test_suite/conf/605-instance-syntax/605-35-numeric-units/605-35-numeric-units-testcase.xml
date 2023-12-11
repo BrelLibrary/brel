@@ -1,0 +1,1046 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl"?>
+<conf:testcase xmlns:conf="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <conf:creator>
+        <conf:name>SEC Office of Structured Disclosure</conf:name>
+        <conf:email>StructuredData@sec.gov</conf:email>
+    </conf:creator>
+    <conf:number>605-35</conf:number>
+    <conf:name>EDGAR Filer Manual v68d 6.5.35</conf:name>
+    <conf:description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.5.35 Unit type registry restrictions apply.">Refer to EFM: 6.5.35 Unit type registry restrictions apply.</a>
+    </conf:description>
+    <conf:variation id="_000gd">
+        <conf:name>6.5.35, Instance with all compatible combinations of numeric type and unit on directly typed concepts, GOOD.</conf:name>
+        <conf:description>Instance with all compatible combinations of numeric type and unit on directly typed concepts, GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535000gd-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_002ng">
+        <conf:name>6.5.35, AreaItemTypeConcept fact with unit u1, NOGOOD</conf:name>
+        <conf:description>AreaItemTypeConcept fact with unit u1, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535002ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_003ng">
+        <conf:name>6.5.35, AreaItemTypeConcept fact with locally defined unit acre, NOGOOD</conf:name>
+        <conf:description>AreaItemTypeConcept fact with locally defined unit acre, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535003ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_004ng">
+        <conf:name>6.5.35, AreaItemTypeConcept fact with unit u1_u2, NOGOOD</conf:name>
+        <conf:description>AreaItemTypeConcept fact with unit u1_u2, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535004ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_005ng">
+        <conf:name>6.5.35, DerivedAreaItemTypeConcept fact with unit u1, NOGOOD</conf:name>
+        <conf:description>DerivedAreaItemTypeConcept fact with unit u1, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535005ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_006ng">
+        <conf:name>6.5.35, DerivedAreaItemTypeConcept fact with locally defined unit acre, NOGOOD</conf:name>
+        <conf:description>DerivedAreaItemTypeConcept fact with locally defined unit acre, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535006ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_007ng">
+        <conf:name>6.5.35, DerivedAreaItemTypeConcept fact with unit u1_u2, NOGOOD</conf:name>
+        <conf:description>DerivedAreaItemTypeConcept fact with unit u1_u2, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535007ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_008ng">
+        <conf:name>6.5.35, ElectricCurrentItemTypeConcept fact with unit u1, NOGOOD</conf:name>
+        <conf:description>ElectricCurrentItemTypeConcept fact with unit u1, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535008ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_009ng">
+        <conf:name>6.5.35, ElectricCurrentItemTypeConcept fact with locally defined unit A, NOGOOD</conf:name>
+        <conf:description>ElectricCurrentItemTypeConcept fact with locally defined unit A, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535009ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_010ng">
+        <conf:name>6.5.35, ElectricCurrentItemTypeConcept fact with unit u1_u2, NOGOOD</conf:name>
+        <conf:description>ElectricCurrentItemTypeConcept fact with unit u1_u2, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535010ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_011ng">
+        <conf:name>6.5.35, DerivedElectricCurrentItemTypeConcept fact with unit u1, NOGOOD</conf:name>
+        <conf:description>DerivedElectricCurrentItemTypeConcept fact with unit u1, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535011ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_012ng">
+        <conf:name>6.5.35, DerivedElectricCurrentItemTypeConcept fact with locally defined unit A, NOGOOD</conf:name>
+        <conf:description>DerivedElectricCurrentItemTypeConcept fact with locally defined unit A, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535012ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_013ng">
+        <conf:name>6.5.35, DerivedElectricCurrentItemTypeConcept fact with unit u1_u2, NOGOOD</conf:name>
+        <conf:description>DerivedElectricCurrentItemTypeConcept fact with unit u1_u2, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535013ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_014ng">
+        <conf:name>6.5.35, EnergyItemTypeConcept fact with unit u1, NOGOOD</conf:name>
+        <conf:description>EnergyItemTypeConcept fact with unit u1, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535014ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_015ng">
+        <conf:name>6.5.35, EnergyItemTypeConcept fact with locally defined unit Bcfe, NOGOOD</conf:name>
+        <conf:description>EnergyItemTypeConcept fact with locally defined unit Bcfe, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535015ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_016ng">
+        <conf:name>6.5.35, EnergyItemTypeConcept fact with unit u1_u2, NOGOOD</conf:name>
+        <conf:description>EnergyItemTypeConcept fact with unit u1_u2, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535016ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_017ng">
+        <conf:name>6.5.35, DerivedEnergyItemTypeConcept fact with unit u1, NOGOOD</conf:name>
+        <conf:description>DerivedEnergyItemTypeConcept fact with unit u1, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535017ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_018ng">
+        <conf:name>6.5.35, DerivedEnergyItemTypeConcept fact with locally defined unit Bcfe, NOGOOD</conf:name>
+        <conf:description>DerivedEnergyItemTypeConcept fact with locally defined unit Bcfe, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535018ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_019ng">
+        <conf:name>6.5.35, DerivedEnergyItemTypeConcept fact with unit u1_u2, NOGOOD</conf:name>
+        <conf:description>DerivedEnergyItemTypeConcept fact with unit u1_u2, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535019ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_020ng">
+        <conf:name>6.5.35, VoltageItemTypeConcept fact with unit u1, NOGOOD</conf:name>
+        <conf:description>VoltageItemTypeConcept fact with unit u1, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535020ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_021ng">
+        <conf:name>6.5.35, VoltageItemTypeConcept fact with locally defined unit GV, NOGOOD</conf:name>
+        <conf:description>VoltageItemTypeConcept fact with locally defined unit GV, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535021ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_022ng">
+        <conf:name>6.5.35, VoltageItemTypeConcept fact with unit u1_u2, NOGOOD</conf:name>
+        <conf:description>VoltageItemTypeConcept fact with unit u1_u2, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535022ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_023ng">
+        <conf:name>6.5.35, DerivedVoltageItemTypeConcept fact with unit u1, NOGOOD</conf:name>
+        <conf:description>DerivedVoltageItemTypeConcept fact with unit u1, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535023ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_024ng">
+        <conf:name>6.5.35, DerivedVoltageItemTypeConcept fact with locally defined unit GV, NOGOOD</conf:name>
+        <conf:description>DerivedVoltageItemTypeConcept fact with locally defined unit GV, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535024ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_025ng">
+        <conf:name>6.5.35, DerivedVoltageItemTypeConcept fact with unit u1_u2, NOGOOD</conf:name>
+        <conf:description>DerivedVoltageItemTypeConcept fact with unit u1_u2, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535025ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_026ng">
+        <conf:name>6.5.35, FrequencyItemTypeConcept fact with unit u1, NOGOOD</conf:name>
+        <conf:description>FrequencyItemTypeConcept fact with unit u1, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535026ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_027ng">
+        <conf:name>6.5.35, FrequencyItemTypeConcept fact with locally defined unit Hz, NOGOOD</conf:name>
+        <conf:description>FrequencyItemTypeConcept fact with locally defined unit Hz, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535027ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_028ng">
+        <conf:name>6.5.35, FrequencyItemTypeConcept fact with unit u1_u2, NOGOOD</conf:name>
+        <conf:description>FrequencyItemTypeConcept fact with unit u1_u2, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535028ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_029ng">
+        <conf:name>6.5.35, DerivedFrequencyItemTypeConcept fact with unit u1, NOGOOD</conf:name>
+        <conf:description>DerivedFrequencyItemTypeConcept fact with unit u1, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535029ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_030ng">
+        <conf:name>6.5.35, DerivedFrequencyItemTypeConcept fact with locally defined unit Hz, NOGOOD</conf:name>
+        <conf:description>DerivedFrequencyItemTypeConcept fact with locally defined unit Hz, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535030ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_031ng">
+        <conf:name>6.5.35, DerivedFrequencyItemTypeConcept fact with unit u1_u2, NOGOOD</conf:name>
+        <conf:description>DerivedFrequencyItemTypeConcept fact with unit u1_u2, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535031ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_032ng">
+        <conf:name>6.5.35, LengthItemTypeConcept fact with unit u1, NOGOOD</conf:name>
+        <conf:description>LengthItemTypeConcept fact with unit u1, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535032ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_033ng">
+        <conf:name>6.5.35, LengthItemTypeConcept fact with locally defined unit cm, NOGOOD</conf:name>
+        <conf:description>LengthItemTypeConcept fact with locally defined unit cm, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535033ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_034ng">
+        <conf:name>6.5.35, LengthItemTypeConcept fact with unit u1_u2, NOGOOD</conf:name>
+        <conf:description>LengthItemTypeConcept fact with unit u1_u2, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535034ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_035ng">
+        <conf:name>6.5.35, DerivedLengthItemTypeConcept fact with unit u1, NOGOOD</conf:name>
+        <conf:description>DerivedLengthItemTypeConcept fact with unit u1, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535035ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_036ng">
+        <conf:name>6.5.35, DerivedLengthItemTypeConcept fact with locally defined unit cm, NOGOOD</conf:name>
+        <conf:description>DerivedLengthItemTypeConcept fact with locally defined unit cm, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535036ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_037ng">
+        <conf:name>6.5.35, DerivedLengthItemTypeConcept fact with unit u1_u2, NOGOOD</conf:name>
+        <conf:description>DerivedLengthItemTypeConcept fact with unit u1_u2, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535037ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_038ng">
+        <conf:name>6.5.35, MassItemTypeConcept fact with unit u1, NOGOOD</conf:name>
+        <conf:description>MassItemTypeConcept fact with unit u1, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535038ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_039ng">
+        <conf:name>6.5.35, MassItemTypeConcept fact with locally defined unit g, NOGOOD</conf:name>
+        <conf:description>MassItemTypeConcept fact with locally defined unit g, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535039ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_040ng">
+        <conf:name>6.5.35, MassItemTypeConcept fact with unit u1_u2, NOGOOD</conf:name>
+        <conf:description>MassItemTypeConcept fact with unit u1_u2, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535040ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_041ng">
+        <conf:name>6.5.35, DerivedMassItemTypeConcept fact with unit u1, NOGOOD</conf:name>
+        <conf:description>DerivedMassItemTypeConcept fact with unit u1, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535041ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_042ng">
+        <conf:name>6.5.35, DerivedMassItemTypeConcept fact with locally defined unit g, NOGOOD</conf:name>
+        <conf:description>DerivedMassItemTypeConcept fact with locally defined unit g, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535042ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_043ng">
+        <conf:name>6.5.35, DerivedMassItemTypeConcept fact with unit u1_u2, NOGOOD</conf:name>
+        <conf:description>DerivedMassItemTypeConcept fact with unit u1_u2, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535043ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_044ng">
+        <conf:name>6.5.35, MemoryItemTypeConcept fact with unit u1, NOGOOD</conf:name>
+        <conf:description>MemoryItemTypeConcept fact with unit u1, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535044ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_045ng">
+        <conf:name>6.5.35, MemoryItemTypeConcept fact with locally defined unit B, NOGOOD</conf:name>
+        <conf:description>MemoryItemTypeConcept fact with locally defined unit B, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535045ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_046ng">
+        <conf:name>6.5.35, MemoryItemTypeConcept fact with unit u1_u2, NOGOOD</conf:name>
+        <conf:description>MemoryItemTypeConcept fact with unit u1_u2, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535046ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_047ng">
+        <conf:name>6.5.35, DerivedMemoryItemTypeConcept fact with unit u1, NOGOOD</conf:name>
+        <conf:description>DerivedMemoryItemTypeConcept fact with unit u1, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535047ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_048ng">
+        <conf:name>6.5.35, DerivedMemoryItemTypeConcept fact with locally defined unit B, NOGOOD</conf:name>
+        <conf:description>DerivedMemoryItemTypeConcept fact with locally defined unit B, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535048ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_049ng">
+        <conf:name>6.5.35, DerivedMemoryItemTypeConcept fact with unit u1_u2, NOGOOD</conf:name>
+        <conf:description>DerivedMemoryItemTypeConcept fact with unit u1_u2, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535049ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_050ng">
+        <conf:name>6.5.35, PerShareItemTypeConcept fact with unit u1, NOGOOD</conf:name>
+        <conf:description>PerShareItemTypeConcept fact with unit u1, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535050ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_051ng">
+        <conf:name>6.5.35, PerShareItemTypeConcept fact with locally defined unit u1_shares, NOGOOD</conf:name>
+        <conf:description>PerShareItemTypeConcept fact with locally defined unit u1_shares, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535051ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_052ng">
+        <conf:name>6.5.35, PerShareItemTypeConcept fact with unit u1_xshares, NOGOOD</conf:name>
+        <conf:description>PerShareItemTypeConcept fact with unit u1_xshares, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535052ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_053ng">
+        <conf:name>6.5.35, DerivedPerShareItemTypeConcept fact with unit u1, NOGOOD</conf:name>
+        <conf:description>DerivedPerShareItemTypeConcept fact with unit u1, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535053ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_054ng">
+        <conf:name>6.5.35, DerivedPerShareItemTypeConcept fact with locally defined unit u1_shares, NOGOOD</conf:name>
+        <conf:description>DerivedPerShareItemTypeConcept fact with locally defined unit u1_shares, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535054ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_055ng">
+        <conf:name>6.5.35, DerivedPerShareItemTypeConcept fact with unit u1_xshares, NOGOOD</conf:name>
+        <conf:description>DerivedPerShareItemTypeConcept fact with unit u1_xshares, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535055ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_056ng">
+        <conf:name>6.5.35, PerUnitItemTypeConcept fact with unit u1, NOGOOD</conf:name>
+        <conf:description>PerUnitItemTypeConcept fact with unit u1, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535056ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_057ng">
+        <conf:name>6.5.35, PerUnitItemTypeConcept fact with unit u1_u2, NOGOOD</conf:name>
+        <conf:description>PerUnitItemTypeConcept fact with unit u1_u2, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535057ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_058ng">
+        <conf:name>6.5.35, PowerItemTypeConcept fact with unit u1, NOGOOD</conf:name>
+        <conf:description>PowerItemTypeConcept fact with unit u1, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535058ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_059ng">
+        <conf:name>6.5.35, PowerItemTypeConcept fact with locally defined unit GW, NOGOOD</conf:name>
+        <conf:description>PowerItemTypeConcept fact with locally defined unit GW, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535059ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_060ng">
+        <conf:name>6.5.35, PowerItemTypeConcept fact with unit u1_u2, NOGOOD</conf:name>
+        <conf:description>PowerItemTypeConcept fact with unit u1_u2, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535060ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_061ng">
+        <conf:name>6.5.35, DerivedPowerItemTypeConcept fact with unit u1, NOGOOD</conf:name>
+        <conf:description>DerivedPowerItemTypeConcept fact with unit u1, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535061ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_062ng">
+        <conf:name>6.5.35, DerivedPowerItemTypeConcept fact with locally defined unit GW, NOGOOD</conf:name>
+        <conf:description>DerivedPowerItemTypeConcept fact with locally defined unit GW, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535062ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_063ng">
+        <conf:name>6.5.35, DerivedPowerItemTypeConcept fact with unit u1_u2, NOGOOD</conf:name>
+        <conf:description>DerivedPowerItemTypeConcept fact with unit u1_u2, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535063ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_064ng">
+        <conf:name>6.5.35, VolumeItemTypeConcept fact with unit u1, NOGOOD</conf:name>
+        <conf:description>VolumeItemTypeConcept fact with unit u1, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535064ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_065ng">
+        <conf:name>6.5.35, VolumeItemTypeConcept fact with locally defined unit aft, NOGOOD</conf:name>
+        <conf:description>VolumeItemTypeConcept fact with locally defined unit aft, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535065ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_066ng">
+        <conf:name>6.5.35, VolumeItemTypeConcept fact with unit u1_u2, NOGOOD</conf:name>
+        <conf:description>VolumeItemTypeConcept fact with unit u1_u2, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535066ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_067ng">
+        <conf:name>6.5.35, DerivedVolumeItemTypeConcept fact with unit u1, NOGOOD</conf:name>
+        <conf:description>DerivedVolumeItemTypeConcept fact with unit u1, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535067ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_068ng">
+        <conf:name>6.5.35, DerivedVolumeItemTypeConcept fact with locally defined unit aft, NOGOOD</conf:name>
+        <conf:description>DerivedVolumeItemTypeConcept fact with locally defined unit aft, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535068ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_069ng">
+        <conf:name>6.5.35, DerivedVolumeItemTypeConcept fact with unit u1_u2, NOGOOD</conf:name>
+        <conf:description>DerivedVolumeItemTypeConcept fact with unit u1_u2, NOGOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60535069ng-20101231.xml</conf:instance>
+            <conf:linkbase>edgar-20101231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_lab.xml</conf:linkbase>
+            <conf:linkbase>edgar-20101231_def.xml</conf:linkbase>
+            <conf:schema>edgar-20101231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60535" name="Incompatible-Numeric-Type-And-Unit" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+</conf:testcase>

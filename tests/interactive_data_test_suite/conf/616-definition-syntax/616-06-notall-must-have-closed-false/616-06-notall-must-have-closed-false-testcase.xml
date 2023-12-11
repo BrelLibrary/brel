@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>616-06</number>
+    <name>EDGAR Filer Manual v68d 6.16.6</name>
+    <description>
+        <h2>Restriction on the "closed" attribute.</h2>
+        <p>An effective relationship with an xlink:arcrole attribute equal to 'http://xbrl.org/int/dim/arcrole/notAll' must have an xbrldt:closed attribute equal to 'false'.</p>
+        <p>REMARK: This only applies to company extension linkbases. If a standard taxonomy linkbase appearing in edgartaxonomies.xml violated this rule it would be included in a 'good' test variation.</p>
+    </description>
+    <reference specification="10979"></reference>
+    <variation id="_001ng">
+        <name>6.16.6, notall arc with closed = true, NOGOOD. </name>
+        <description> notall arc with closed = true, NOGOOD. </description>
+        <reference specification="10979"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e61606001ng-20081231.xml</instance>
+            <linkbase>e61606001ng-20081231_lab.xml</linkbase>
+            <linkbase>e61606001ng-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+            <schema>e61606001ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="61606" name="Not-All-Relationship-Is-Closed" frd="fs"></assert>
+        </result>
+    </variation>
+</testcase>

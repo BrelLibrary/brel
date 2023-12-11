@@ -1,0 +1,647 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<xbrli:xbrl
+xmlns:dei="http://xbrl.sec.gov/dei/2018-01-31"
+xmlns:iso4217="http://www.xbrl.org/2003/iso4217"
+xmlns:link="http://www.xbrl.org/2003/linkbase"
+xmlns:dtr-types="http://www.xbrl.org/dtr/type/2020-01-21"
+
+xmlns:xbrldi="http://xbrl.org/2006/xbrldi"
+xmlns:xbrldt="http://xbrl.org/2005/xbrldt"
+xmlns:xbrli="http://www.xbrl.org/2003/instance"
+xmlns:xlink="http://www.w3.org/1999/xlink"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:negated="http://www.xbrl.org/2009/role/negated"
+xmlns:r15000gd="http://r15000gd/20111231"
+xmlns:ref="http://www.xbrl.org/2006/ref"
+xmlns:srt="http://fasb.org/srt/2019-01-31"
+xmlns:us-gaap="http://fasb.org/us-gaap/2019-01-31"
+xmlns:us-roles="http://fasb.org/us-roles/2019-01-31"
+xmlns:us-types="http://fasb.org/us-types/2019-01-31">
+<link:schemaRef xlink:href="r15000gd-20081231.xsd" xlink:type="simple" />
+<xbrli:context id="I2009">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:instant>2009-06-30</xbrli:instant>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="I2008">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:instant>2008-06-30</xbrli:instant>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="D2009">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:startDate>2008-07-01</xbrli:startDate>
+<xbrli:endDate>2009-06-30</xbrli:endDate>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="I2007">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:instant>2007-06-30</xbrli:instant>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="D2008">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:startDate>2007-07-01</xbrli:startDate>
+<xbrli:endDate>2008-06-30</xbrli:endDate>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="I2010">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:instant>2010-06-30</xbrli:instant>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="I2010_CommonStockMember">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+<xbrli:segment>
+<xbrldi:explicitMember dimension="us-gaap:StatementEquityComponentsAxis">us-gaap:CommonStockMember</xbrldi:explicitMember>
+</xbrli:segment>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:instant>2010-06-30</xbrli:instant>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="I2010_RetainedEarningsMember">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+<xbrli:segment>
+<xbrldi:explicitMember dimension="us-gaap:StatementEquityComponentsAxis">us-gaap:RetainedEarningsMember</xbrldi:explicitMember>
+</xbrli:segment>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:instant>2010-06-30</xbrli:instant>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="I2010_AccumulatedOtherComprehensiveIncomeMember">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+<xbrli:segment>
+<xbrldi:explicitMember dimension="us-gaap:StatementEquityComponentsAxis">us-gaap:AccumulatedOtherComprehensiveIncomeMember</xbrldi:explicitMember>
+</xbrli:segment>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:instant>2010-06-30</xbrli:instant>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="I2010_NoncontrollingInterestMember">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+<xbrli:segment>
+<xbrldi:explicitMember dimension="us-gaap:StatementEquityComponentsAxis">us-gaap:NoncontrollingInterestMember</xbrldi:explicitMember>
+</xbrli:segment>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:instant>2010-06-30</xbrli:instant>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="I2007_CommonStockMember">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+<xbrli:segment>
+<xbrldi:explicitMember dimension="us-gaap:StatementEquityComponentsAxis">us-gaap:CommonStockMember</xbrldi:explicitMember>
+</xbrli:segment>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:instant>2007-06-30</xbrli:instant>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="I2007_RetainedEarningsMember">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+<xbrli:segment>
+<xbrldi:explicitMember dimension="us-gaap:StatementEquityComponentsAxis">us-gaap:RetainedEarningsMember</xbrldi:explicitMember>
+</xbrli:segment>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:instant>2007-06-30</xbrli:instant>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="I2007_AccumulatedOtherComprehensiveIncomeMember">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+<xbrli:segment>
+<xbrldi:explicitMember dimension="us-gaap:StatementEquityComponentsAxis">us-gaap:AccumulatedOtherComprehensiveIncomeMember</xbrldi:explicitMember>
+</xbrli:segment>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:instant>2007-06-30</xbrli:instant>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="I2007_NoncontrollingInterestMember">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+<xbrli:segment>
+<xbrldi:explicitMember dimension="us-gaap:StatementEquityComponentsAxis">us-gaap:NoncontrollingInterestMember</xbrldi:explicitMember>
+</xbrli:segment>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:instant>2007-06-30</xbrli:instant>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="D2010_CommonStockMember">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+<xbrli:segment>
+<xbrldi:explicitMember dimension="us-gaap:StatementEquityComponentsAxis">us-gaap:CommonStockMember</xbrldi:explicitMember>
+</xbrli:segment>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:startDate>2009-07-01</xbrli:startDate>
+<xbrli:endDate>2010-06-30</xbrli:endDate>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="D2010_RetainedEarningsMember">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+<xbrli:segment>
+<xbrldi:explicitMember dimension="us-gaap:StatementEquityComponentsAxis">us-gaap:RetainedEarningsMember</xbrldi:explicitMember>
+</xbrli:segment>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:startDate>2009-07-01</xbrli:startDate>
+<xbrli:endDate>2010-06-30</xbrli:endDate>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="D2010_AccumulatedOtherComprehensiveIncomeMember">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+<xbrli:segment>
+<xbrldi:explicitMember dimension="us-gaap:StatementEquityComponentsAxis">us-gaap:AccumulatedOtherComprehensiveIncomeMember</xbrldi:explicitMember>
+</xbrli:segment>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:startDate>2009-07-01</xbrli:startDate>
+<xbrli:endDate>2010-06-30</xbrli:endDate>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="D2010_NoncontrollingInterestMember">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+<xbrli:segment>
+<xbrldi:explicitMember dimension="us-gaap:StatementEquityComponentsAxis">us-gaap:NoncontrollingInterestMember</xbrldi:explicitMember>
+</xbrli:segment>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:startDate>2009-07-01</xbrli:startDate>
+<xbrli:endDate>2010-06-30</xbrli:endDate>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="D2008_CommonStockMember">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+<xbrli:segment>
+<xbrldi:explicitMember dimension="us-gaap:StatementEquityComponentsAxis">us-gaap:CommonStockMember</xbrldi:explicitMember>
+</xbrli:segment>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:startDate>2007-07-01</xbrli:startDate>
+<xbrli:endDate>2008-06-30</xbrli:endDate>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="D2008_RetainedEarningsMember">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+<xbrli:segment>
+<xbrldi:explicitMember dimension="us-gaap:StatementEquityComponentsAxis">us-gaap:RetainedEarningsMember</xbrldi:explicitMember>
+</xbrli:segment>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:startDate>2007-07-01</xbrli:startDate>
+<xbrli:endDate>2008-06-30</xbrli:endDate>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="D2008_AccumulatedOtherComprehensiveIncomeMember">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+<xbrli:segment>
+<xbrldi:explicitMember dimension="us-gaap:StatementEquityComponentsAxis">us-gaap:AccumulatedOtherComprehensiveIncomeMember</xbrldi:explicitMember>
+</xbrli:segment>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:startDate>2007-07-01</xbrli:startDate>
+<xbrli:endDate>2008-06-30</xbrli:endDate>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="D2008_NoncontrollingInterestMember">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+<xbrli:segment>
+<xbrldi:explicitMember dimension="us-gaap:StatementEquityComponentsAxis">us-gaap:NoncontrollingInterestMember</xbrldi:explicitMember>
+</xbrli:segment>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:startDate>2007-07-01</xbrli:startDate>
+<xbrli:endDate>2008-06-30</xbrli:endDate>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="I2008_CommonStockMember">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+<xbrli:segment>
+<xbrldi:explicitMember dimension="us-gaap:StatementEquityComponentsAxis">us-gaap:CommonStockMember</xbrldi:explicitMember>
+</xbrli:segment>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:instant>2008-06-30</xbrli:instant>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="I2008_RetainedEarningsMember">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+<xbrli:segment>
+<xbrldi:explicitMember dimension="us-gaap:StatementEquityComponentsAxis">us-gaap:RetainedEarningsMember</xbrldi:explicitMember>
+</xbrli:segment>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:instant>2008-06-30</xbrli:instant>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="I2008_AccumulatedOtherComprehensiveIncomeMember">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+<xbrli:segment>
+<xbrldi:explicitMember dimension="us-gaap:StatementEquityComponentsAxis">us-gaap:AccumulatedOtherComprehensiveIncomeMember</xbrldi:explicitMember>
+</xbrli:segment>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:instant>2008-06-30</xbrli:instant>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="I2008_NoncontrollingInterestMember">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+<xbrli:segment>
+<xbrldi:explicitMember dimension="us-gaap:StatementEquityComponentsAxis">us-gaap:NoncontrollingInterestMember</xbrldi:explicitMember>
+</xbrli:segment>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:instant>2008-06-30</xbrli:instant>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="I2009_CommonStockMember">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+<xbrli:segment>
+<xbrldi:explicitMember dimension="us-gaap:StatementEquityComponentsAxis">us-gaap:CommonStockMember</xbrldi:explicitMember>
+</xbrli:segment>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:instant>2009-06-30</xbrli:instant>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="I2009_RetainedEarningsMember">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+<xbrli:segment>
+<xbrldi:explicitMember dimension="us-gaap:StatementEquityComponentsAxis">us-gaap:RetainedEarningsMember</xbrldi:explicitMember>
+</xbrli:segment>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:instant>2009-06-30</xbrli:instant>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="I2009_AccumulatedOtherComprehensiveIncomeMember">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+<xbrli:segment>
+<xbrldi:explicitMember dimension="us-gaap:StatementEquityComponentsAxis">us-gaap:AccumulatedOtherComprehensiveIncomeMember</xbrldi:explicitMember>
+</xbrli:segment>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:instant>2009-06-30</xbrli:instant>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="I2009_NoncontrollingInterestMember">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+<xbrli:segment>
+<xbrldi:explicitMember dimension="us-gaap:StatementEquityComponentsAxis">us-gaap:NoncontrollingInterestMember</xbrldi:explicitMember>
+</xbrli:segment>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:instant>2009-06-30</xbrli:instant>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="D2009_CommonStockMember">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+<xbrli:segment>
+<xbrldi:explicitMember dimension="us-gaap:StatementEquityComponentsAxis">us-gaap:CommonStockMember</xbrldi:explicitMember>
+</xbrli:segment>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:startDate>2008-07-01</xbrli:startDate>
+<xbrli:endDate>2009-06-30</xbrli:endDate>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="D2009_RetainedEarningsMember">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+<xbrli:segment>
+<xbrldi:explicitMember dimension="us-gaap:StatementEquityComponentsAxis">us-gaap:RetainedEarningsMember</xbrldi:explicitMember>
+</xbrli:segment>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:startDate>2008-07-01</xbrli:startDate>
+<xbrli:endDate>2009-06-30</xbrli:endDate>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="D2009_AccumulatedOtherComprehensiveIncomeMember">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+<xbrli:segment>
+<xbrldi:explicitMember dimension="us-gaap:StatementEquityComponentsAxis">us-gaap:AccumulatedOtherComprehensiveIncomeMember</xbrldi:explicitMember>
+</xbrli:segment>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:startDate>2008-07-01</xbrli:startDate>
+<xbrli:endDate>2009-06-30</xbrli:endDate>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="D2009_NoncontrollingInterestMember">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+<xbrli:segment>
+<xbrldi:explicitMember dimension="us-gaap:StatementEquityComponentsAxis">us-gaap:NoncontrollingInterestMember</xbrldi:explicitMember>
+</xbrli:segment>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:startDate>2008-07-01</xbrli:startDate>
+<xbrli:endDate>2009-06-30</xbrli:endDate>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="D2010">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:startDate>2009-07-01</xbrli:startDate>
+<xbrli:endDate>2010-06-30</xbrli:endDate>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="D2009_ComprehensiveIncomeMember">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+<xbrli:segment>
+<xbrldi:explicitMember dimension="us-gaap:StatementEquityComponentsAxis">us-gaap:ComprehensiveIncomeMember</xbrldi:explicitMember>
+</xbrli:segment>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:startDate>2008-07-01</xbrli:startDate>
+<xbrli:endDate>2009-06-30</xbrli:endDate>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="D2010_ComprehensiveIncomeMember">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+<xbrli:segment>
+<xbrldi:explicitMember dimension="us-gaap:StatementEquityComponentsAxis">us-gaap:ComprehensiveIncomeMember</xbrldi:explicitMember>
+</xbrli:segment>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:startDate>2009-07-01</xbrli:startDate>
+<xbrli:endDate>2010-06-30</xbrli:endDate>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="D2008_ComprehensiveIncomeMember">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+<xbrli:segment>
+<xbrldi:explicitMember dimension="us-gaap:StatementEquityComponentsAxis">us-gaap:ComprehensiveIncomeMember</xbrldi:explicitMember>
+</xbrli:segment>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:startDate>2007-07-01</xbrli:startDate>
+<xbrli:endDate>2008-06-30</xbrli:endDate>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="Context_Instant_RetainedEarningsMember_ScenarioPreviouslyReportedMember2008">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+<xbrli:segment>
+<xbrldi:explicitMember dimension="us-gaap:StatementEquityComponentsAxis">us-gaap:RetainedEarningsMember</xbrldi:explicitMember>
+<xbrldi:explicitMember dimension="us-gaap:StatementScenarioAxis">srt:ScenarioPreviouslyReportedMember</xbrldi:explicitMember>
+</xbrli:segment>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:instant>2008-06-30</xbrli:instant>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="Context_Instant_RetainedEarningsMember_RestatementAdjustmentMember2008">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+<xbrli:segment>
+<xbrldi:explicitMember dimension="us-gaap:StatementEquityComponentsAxis">us-gaap:RetainedEarningsMember</xbrldi:explicitMember>
+<xbrldi:explicitMember dimension="us-gaap:StatementScenarioAxis">srt:RestatementAdjustmentMember</xbrldi:explicitMember>
+</xbrli:segment>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:instant>2008-06-30</xbrli:instant>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="Context_Instant_FAS158Member_RetainedEarningsMember_RestatementAdjustmentMember2008">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+<xbrli:segment>
+<xbrldi:explicitMember dimension="us-gaap:AdjustmentsForNewAccountingPronouncementsAxis">us-gaap:AccountingStandardsUpdate201617Member</xbrldi:explicitMember>
+<xbrldi:explicitMember dimension="us-gaap:StatementEquityComponentsAxis">us-gaap:RetainedEarningsMember</xbrldi:explicitMember>
+<xbrldi:explicitMember dimension="us-gaap:StatementScenarioAxis">srt:RestatementAdjustmentMember</xbrldi:explicitMember>
+</xbrli:segment>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:instant>2008-06-30</xbrli:instant>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="Context_Instant_AccountingStandardsUpdate200916Member_RetainedEarningsMember_RestatementAdjustmentMember2008">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+<xbrli:segment>
+<xbrldi:explicitMember dimension="us-gaap:AdjustmentsForNewAccountingPronouncementsAxis">us-gaap:AccountingStandardsUpdate201618Member</xbrldi:explicitMember>
+<xbrldi:explicitMember dimension="us-gaap:StatementEquityComponentsAxis">us-gaap:RetainedEarningsMember</xbrldi:explicitMember>
+<xbrldi:explicitMember dimension="us-gaap:StatementScenarioAxis">srt:RestatementAdjustmentMember</xbrldi:explicitMember>
+</xbrli:segment>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:instant>2008-06-30</xbrli:instant>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="Context_Instant_RetainedEarningsMember_ScenarioPreviouslyReportedMember">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+<xbrli:segment>
+<xbrldi:explicitMember dimension="us-gaap:StatementEquityComponentsAxis">us-gaap:RetainedEarningsMember</xbrldi:explicitMember>
+<xbrldi:explicitMember dimension="us-gaap:StatementScenarioAxis">srt:ScenarioPreviouslyReportedMember</xbrldi:explicitMember>
+</xbrli:segment>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:instant>2010-06-30</xbrli:instant>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="Context_Instant_RetainedEarningsMember_RestatementAdjustmentMember">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+<xbrli:segment>
+<xbrldi:explicitMember dimension="us-gaap:StatementEquityComponentsAxis">us-gaap:RetainedEarningsMember</xbrldi:explicitMember>
+<xbrldi:explicitMember dimension="us-gaap:StatementScenarioAxis">srt:RestatementAdjustmentMember</xbrldi:explicitMember>
+</xbrli:segment>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:instant>2010-06-30</xbrli:instant>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="Context_Instant_FAS158Member_RetainedEarningsMember_RestatementAdjustmentMember">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+<xbrli:segment>
+<xbrldi:explicitMember dimension="us-gaap:AdjustmentsForNewAccountingPronouncementsAxis">us-gaap:AccountingStandardsUpdate201617Member</xbrldi:explicitMember>
+<xbrldi:explicitMember dimension="us-gaap:StatementEquityComponentsAxis">us-gaap:RetainedEarningsMember</xbrldi:explicitMember>
+<xbrldi:explicitMember dimension="us-gaap:StatementScenarioAxis">srt:RestatementAdjustmentMember</xbrldi:explicitMember>
+</xbrli:segment>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:instant>2010-06-30</xbrli:instant>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="Context_Instant_AccountingStandardsUpdate200916Member_RetainedEarningsMember_RestatementAdjustmentMember">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+<xbrli:segment>
+<xbrldi:explicitMember dimension="us-gaap:AdjustmentsForNewAccountingPronouncementsAxis">us-gaap:AccountingStandardsUpdate201618Member</xbrldi:explicitMember>
+<xbrldi:explicitMember dimension="us-gaap:StatementEquityComponentsAxis">us-gaap:RetainedEarningsMember</xbrldi:explicitMember>
+<xbrldi:explicitMember dimension="us-gaap:StatementScenarioAxis">srt:RestatementAdjustmentMember</xbrldi:explicitMember>
+</xbrli:segment>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:instant>2010-06-30</xbrli:instant>
+</xbrli:period>
+</xbrli:context>
+<xbrli:unit id="USD">
+<xbrli:measure>iso4217:USD</xbrli:measure>
+</xbrli:unit>
+<xbrli:unit id="Shares">
+<xbrli:measure>xbrli:shares</xbrli:measure>
+</xbrli:unit>
+<us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest contextRef="Context_Instant_RetainedEarningsMember_ScenarioPreviouslyReportedMember2008" unitRef="USD" decimals="0">7000000000</us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest>
+<us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest contextRef="Context_Instant_RetainedEarningsMember_RestatementAdjustmentMember2008" unitRef="USD" decimals="0">463000000</us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest>
+<us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest contextRef="Context_Instant_FAS158Member_RetainedEarningsMember_RestatementAdjustmentMember2008" unitRef="USD" decimals="0">460000000</us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest>
+<us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest contextRef="Context_Instant_AccountingStandardsUpdate200916Member_RetainedEarningsMember_RestatementAdjustmentMember2008" unitRef="USD" decimals="0">3000000</us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest>
+<us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest contextRef="I2007_CommonStockMember" unitRef="USD" decimals="-6">5272000000</us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest>
+<us-gaap:SharesIssued contextRef="I2007_CommonStockMember" unitRef="Shares" decimals="-6">643000000</us-gaap:SharesIssued>
+<us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest contextRef="I2007_RetainedEarningsMember" unitRef="USD" decimals="-6">5974000000</us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest>
+<us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest contextRef="I2007_AccumulatedOtherComprehensiveIncomeMember" unitRef="USD" decimals="-6">181000000</us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest>
+<us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest contextRef="I2007_NoncontrollingInterestMember" unitRef="USD" decimals="-6">19000000</us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest>
+<us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest contextRef="I2007" unitRef="USD" decimals="-6">11446000000</us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest>
+<us-gaap:TreasuryStockSharesAcquired contextRef="D2008_CommonStockMember" unitRef="Shares" decimals="-6">2000000</us-gaap:TreasuryStockSharesAcquired>
+<us-gaap:TreasuryStockValueAcquiredCostMethod contextRef="D2008_CommonStockMember" unitRef="USD" decimals="-6">61000000</us-gaap:TreasuryStockValueAcquiredCostMethod>
+<r15000gd:ForwardContractComponentOfEquityUnits contextRef="D2008_CommonStockMember" unitRef="USD" decimals="-6">110000000</r15000gd:ForwardContractComponentOfEquityUnits>
+<us-gaap:StockholdersEquityOther contextRef="D2008_CommonStockMember" unitRef="USD" decimals="-6">-50000000</us-gaap:StockholdersEquityOther>
+<us-gaap:StockholdersEquityOtherShares contextRef="D2008_CommonStockMember" unitRef="Shares" decimals="-6">-3000000</us-gaap:StockholdersEquityOtherShares>
+<us-gaap:ProfitLoss contextRef="D2008_RetainedEarningsMember" unitRef="USD" decimals="-6">1780000000</us-gaap:ProfitLoss>
+<us-gaap:DividendsCommonStockCash contextRef="D2008_RetainedEarningsMember" unitRef="USD" decimals="-6">316000000</us-gaap:DividendsCommonStockCash>
+<us-gaap:StockholdersEquityOther contextRef="D2008_RetainedEarningsMember" unitRef="USD" decimals="-6">-25000000</us-gaap:StockholdersEquityOther>
+<us-gaap:OtherComprehensiveIncomeLossNetOfTax contextRef="D2008_AccumulatedOtherComprehensiveIncomeMember" unitRef="USD" decimals="-6">776000000</us-gaap:OtherComprehensiveIncomeLossNetOfTax>
+<us-gaap:ProfitLoss contextRef="D2008_NoncontrollingInterestMember" unitRef="USD" decimals="-6">6000000</us-gaap:ProfitLoss>
+<us-gaap:ComprehensiveIncomeNetOfTaxIncludingPortionAttributableToNoncontrollingInterest contextRef="D2008" unitRef="USD" decimals="-6">2562000000</us-gaap:ComprehensiveIncomeNetOfTaxIncludingPortionAttributableToNoncontrollingInterest>
+<us-gaap:DividendsCommonStockCash contextRef="D2008" unitRef="USD" decimals="-6">316000000</us-gaap:DividendsCommonStockCash>
+<us-gaap:TreasuryStockValueAcquiredCostMethod contextRef="D2008" unitRef="USD" decimals="-6">61000000</us-gaap:TreasuryStockValueAcquiredCostMethod>
+<r15000gd:ForwardContractComponentOfEquityUnits contextRef="D2008" unitRef="USD" decimals="-6">110000000</r15000gd:ForwardContractComponentOfEquityUnits>
+<us-gaap:StockholdersEquityOther contextRef="D2008" unitRef="USD" decimals="-6">-75000000</us-gaap:StockholdersEquityOther>
+<us-gaap:SharesIssued contextRef="I2008_CommonStockMember" unitRef="Shares" decimals="-6">644000000</us-gaap:SharesIssued>
+<us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest contextRef="I2008_CommonStockMember" unitRef="USD" decimals="-6">5221000000</us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest>
+<us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest contextRef="I2008_RetainedEarningsMember" unitRef="USD" decimals="-6">7463000000</us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest>
+<us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest contextRef="I2008_AccumulatedOtherComprehensiveIncomeMember" unitRef="USD" decimals="-6">957000000</us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest>
+<us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest contextRef="I2008_NoncontrollingInterestMember" unitRef="USD" decimals="-6">25000000</us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest>
+<us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest contextRef="I2008" unitRef="USD" decimals="-6">13666000000</us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest>
+<us-gaap:TreasuryStockValueAcquiredCostMethod contextRef="D2009_CommonStockMember" unitRef="USD" decimals="-6">100000000</us-gaap:TreasuryStockValueAcquiredCostMethod>
+<us-gaap:TreasuryStockSharesAcquired contextRef="D2009_CommonStockMember" unitRef="Shares" decimals="-6">4000000</us-gaap:TreasuryStockSharesAcquired>
+<us-gaap:StockholdersEquityOtherShares contextRef="D2009_CommonStockMember" unitRef="Shares" decimals="-6">-2000000</us-gaap:StockholdersEquityOtherShares>
+<us-gaap:StockholdersEquityOther contextRef="D2009_CommonStockMember" unitRef="USD" decimals="-6">-18000000</us-gaap:StockholdersEquityOther>
+<us-gaap:ProfitLoss contextRef="D2009_RetainedEarningsMember" unitRef="USD" decimals="-6">1684000000</us-gaap:ProfitLoss>
+<us-gaap:DividendsCommonStockCash contextRef="D2009_RetainedEarningsMember" unitRef="USD" decimals="-6">347000000</us-gaap:DividendsCommonStockCash>
+<us-gaap:StockholdersEquityOther contextRef="D2009_RetainedEarningsMember" unitRef="USD" decimals="-6">1000000</us-gaap:StockholdersEquityOther>
+<us-gaap:OtherComprehensiveIncomeLossNetOfTax contextRef="D2009_AccumulatedOtherComprehensiveIncomeMember" unitRef="USD" decimals="-6">-1312000000</us-gaap:OtherComprehensiveIncomeLossNetOfTax>
+<us-gaap:ProfitLoss contextRef="D2009_NoncontrollingInterestMember" unitRef="USD" decimals="-6">4000000</us-gaap:ProfitLoss>
+<us-gaap:DividendsCommonStockCash contextRef="D2009" unitRef="USD" decimals="-6">347000000</us-gaap:DividendsCommonStockCash>
+<us-gaap:TreasuryStockValueAcquiredCostMethod contextRef="D2009" unitRef="USD" decimals="-6">100000000</us-gaap:TreasuryStockValueAcquiredCostMethod>
+<us-gaap:ComprehensiveIncomeNetOfTaxIncludingPortionAttributableToNoncontrollingInterest contextRef="D2009" unitRef="USD" decimals="-6">376000000</us-gaap:ComprehensiveIncomeNetOfTaxIncludingPortionAttributableToNoncontrollingInterest>
+<us-gaap:StockholdersEquityOther contextRef="D2009" unitRef="USD" decimals="-6">-14000000</us-gaap:StockholdersEquityOther>
+<us-gaap:SharesIssued contextRef="I2009_CommonStockMember" unitRef="Shares" decimals="-6">642000000</us-gaap:SharesIssued>
+<us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest contextRef="I2009_CommonStockMember" unitRef="USD" decimals="-6">5204000000</us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest>
+<us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest contextRef="I2009_RetainedEarningsMember" unitRef="USD" decimals="-6">8778000000</us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest>
+<us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest contextRef="I2009_AccumulatedOtherComprehensiveIncomeMember" unitRef="USD" decimals="-6">-355000000</us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest>
+<us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest contextRef="I2009_NoncontrollingInterestMember" unitRef="USD" decimals="-6">26000000</us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest>
+<us-gaap:ProfitLoss contextRef="D2010_RetainedEarningsMember" unitRef="USD" decimals="-6">1930000000</us-gaap:ProfitLoss>
+<us-gaap:ProfitLoss contextRef="D2010_NoncontrollingInterestMember" unitRef="USD" decimals="-6">-11000000</us-gaap:ProfitLoss>
+<us-gaap:TreasuryStockValueAcquiredCostMethod contextRef="D2010_CommonStockMember" unitRef="USD" decimals="-6">100000000</us-gaap:TreasuryStockValueAcquiredCostMethod>
+<us-gaap:TreasuryStockSharesAcquired contextRef="D2010_CommonStockMember" unitRef="Shares" decimals="-6">4000000</us-gaap:TreasuryStockSharesAcquired>
+<us-gaap:StockholdersEquityOther contextRef="D2010_CommonStockMember" unitRef="USD" decimals="-6">-2000000</us-gaap:StockholdersEquityOther>
+<us-gaap:StockholdersEquityOtherShares contextRef="D2010_CommonStockMember" unitRef="Shares" decimals="-6">-1000000</us-gaap:StockholdersEquityOtherShares>
+<us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest contextRef="I2010_CommonStockMember" unitRef="USD" decimals="-6">5151000000</us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest>
+<us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest contextRef="I2010_RetainedEarningsMember" unitRef="USD" decimals="-6">10357000000</us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest>
+<us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest contextRef="I2010_AccumulatedOtherComprehensiveIncomeMember" unitRef="USD" decimals="-6">-899000000</us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest>
+<us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest contextRef="I2010_NoncontrollingInterestMember" unitRef="USD" decimals="-6">22000000</us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest>
+<us-gaap:SharesIssued contextRef="I2010_CommonStockMember" unitRef="Shares" decimals="-6">639000000</us-gaap:SharesIssued>
+<us-gaap:StockholdersEquityOther contextRef="D2009_NoncontrollingInterestMember" unitRef="USD" decimals="-6">3000000</us-gaap:StockholdersEquityOther>
+<us-gaap:ProfitLoss contextRef="D2009_ComprehensiveIncomeMember" unitRef="USD" decimals="-6">1688000000</us-gaap:ProfitLoss>
+<us-gaap:OtherComprehensiveIncomeLossNetOfTax contextRef="D2010_AccumulatedOtherComprehensiveIncomeMember" unitRef="USD" decimals="-6">-544000000</us-gaap:OtherComprehensiveIncomeLossNetOfTax>
+<us-gaap:ComprehensiveIncomeNetOfTaxIncludingPortionAttributableToNoncontrollingInterest contextRef="D2009_ComprehensiveIncomeMember" unitRef="USD" decimals="-6">376000000</us-gaap:ComprehensiveIncomeNetOfTaxIncludingPortionAttributableToNoncontrollingInterest>
+<us-gaap:ProfitLoss contextRef="D2008_ComprehensiveIncomeMember" unitRef="USD" decimals="-6">1786000000</us-gaap:ProfitLoss>
+<us-gaap:OtherComprehensiveIncomeLossNetOfTax contextRef="D2008_ComprehensiveIncomeMember" unitRef="USD" decimals="-6">776000000</us-gaap:OtherComprehensiveIncomeLossNetOfTax>
+<us-gaap:ComprehensiveIncomeNetOfTaxIncludingPortionAttributableToNoncontrollingInterest contextRef="D2008_ComprehensiveIncomeMember" unitRef="USD" decimals="-6">2562000000</us-gaap:ComprehensiveIncomeNetOfTaxIncludingPortionAttributableToNoncontrollingInterest>
+<us-gaap:ProfitLoss contextRef="D2010_ComprehensiveIncomeMember" unitRef="USD" decimals="-6">1919000000</us-gaap:ProfitLoss>
+<us-gaap:OtherComprehensiveIncomeLossNetOfTax contextRef="D2010_ComprehensiveIncomeMember" unitRef="USD" decimals="-6">-544000000</us-gaap:OtherComprehensiveIncomeLossNetOfTax>
+<us-gaap:ComprehensiveIncomeNetOfTaxIncludingPortionAttributableToNoncontrollingInterest contextRef="D2010_ComprehensiveIncomeMember" unitRef="USD" decimals="-6">1375000000</us-gaap:ComprehensiveIncomeNetOfTaxIncludingPortionAttributableToNoncontrollingInterest>
+<us-gaap:ComprehensiveIncomeNetOfTaxIncludingPortionAttributableToNoncontrollingInterest contextRef="D2010" unitRef="USD" decimals="-6">1375000000</us-gaap:ComprehensiveIncomeNetOfTaxIncludingPortionAttributableToNoncontrollingInterest>
+<us-gaap:DividendsCommonStockCash contextRef="D2010_RetainedEarningsMember" unitRef="USD" decimals="-6">372000000</us-gaap:DividendsCommonStockCash>
+<us-gaap:DividendsCommonStockCash contextRef="D2010" unitRef="USD" decimals="-6">372000000</us-gaap:DividendsCommonStockCash>
+<us-gaap:TreasuryStockValueAcquiredCostMethod contextRef="D2010" unitRef="USD" decimals="-6">100000000</us-gaap:TreasuryStockValueAcquiredCostMethod>
+<us-gaap:StockholdersEquityOther contextRef="D2010_RetainedEarningsMember" unitRef="USD" decimals="-6">-21000000</us-gaap:StockholdersEquityOther>
+<us-gaap:StockholdersEquityOther contextRef="D2010_NoncontrollingInterestMember" unitRef="USD" decimals="-6">-7000000</us-gaap:StockholdersEquityOther>
+<us-gaap:StockholdersEquityOther contextRef="D2010" unitRef="USD" decimals="-6">-30000000</us-gaap:StockholdersEquityOther>
+<us-gaap:OtherComprehensiveIncomeLossNetOfTax contextRef="D2009_ComprehensiveIncomeMember" unitRef="USD" decimals="-6">-1312000000</us-gaap:OtherComprehensiveIncomeLossNetOfTax>
+<us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest contextRef="I2010" unitRef="USD" decimals="-6">14631000000</us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest>
+<us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest contextRef="I2009" unitRef="USD" decimals="-6">13653000000</us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest>
+<us-gaap:ProfitLoss contextRef="D2010" unitRef="USD" decimals="-6">1919000000</us-gaap:ProfitLoss>
+<us-gaap:ProfitLoss contextRef="D2009" unitRef="USD" decimals="-6">1688000000</us-gaap:ProfitLoss>
+<us-gaap:ProfitLoss contextRef="D2008" unitRef="USD" decimals="-6">1786000000</us-gaap:ProfitLoss>
+<us-gaap:AdjustmentsToAdditionalPaidInCapitalSharebasedCompensationRequisiteServicePeriodRecognitionValue contextRef="D2008_CommonStockMember" unitRef="USD" decimals="-6">70000000</us-gaap:AdjustmentsToAdditionalPaidInCapitalSharebasedCompensationRequisiteServicePeriodRecognitionValue>
+<us-gaap:AdjustmentsToAdditionalPaidInCapitalSharebasedCompensationRequisiteServicePeriodRecognitionValue contextRef="D2008" unitRef="USD" decimals="-6">70000000</us-gaap:AdjustmentsToAdditionalPaidInCapitalSharebasedCompensationRequisiteServicePeriodRecognitionValue>
+<us-gaap:AdjustmentsToAdditionalPaidInCapitalSharebasedCompensationRequisiteServicePeriodRecognitionValue contextRef="D2009_CommonStockMember" unitRef="USD" decimals="-6">65000000</us-gaap:AdjustmentsToAdditionalPaidInCapitalSharebasedCompensationRequisiteServicePeriodRecognitionValue>
+<us-gaap:AdjustmentsToAdditionalPaidInCapitalSharebasedCompensationRequisiteServicePeriodRecognitionValue contextRef="D2009" unitRef="USD" decimals="-6">65000000</us-gaap:AdjustmentsToAdditionalPaidInCapitalSharebasedCompensationRequisiteServicePeriodRecognitionValue>
+<us-gaap:AdjustmentsToAdditionalPaidInCapitalSharebasedCompensationRequisiteServicePeriodRecognitionValue contextRef="D2010_CommonStockMember" unitRef="USD" decimals="-6">45000000</us-gaap:AdjustmentsToAdditionalPaidInCapitalSharebasedCompensationRequisiteServicePeriodRecognitionValue>
+<us-gaap:AdjustmentsToAdditionalPaidInCapitalSharebasedCompensationRequisiteServicePeriodRecognitionValue contextRef="D2010" unitRef="USD" decimals="-6">45000000</us-gaap:AdjustmentsToAdditionalPaidInCapitalSharebasedCompensationRequisiteServicePeriodRecognitionValue>
+<us-gaap:OtherComprehensiveIncomeLossNetOfTax contextRef="D2010" unitRef="USD" decimals="-6">-544000000</us-gaap:OtherComprehensiveIncomeLossNetOfTax>
+<us-gaap:OtherComprehensiveIncomeLossNetOfTax contextRef="D2009" unitRef="USD" decimals="-6">-1312000000</us-gaap:OtherComprehensiveIncomeLossNetOfTax>
+<us-gaap:OtherComprehensiveIncomeLossNetOfTax contextRef="D2008" unitRef="USD" decimals="-6">776000000</us-gaap:OtherComprehensiveIncomeLossNetOfTax>
+<us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest contextRef="Context_Instant_RetainedEarningsMember_ScenarioPreviouslyReportedMember" unitRef="USD" decimals="0">10000000000</us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest>
+<us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest contextRef="Context_Instant_RetainedEarningsMember_RestatementAdjustmentMember" unitRef="USD" decimals="0">357000000</us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest>
+<us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest contextRef="Context_Instant_FAS158Member_RetainedEarningsMember_RestatementAdjustmentMember" unitRef="USD" decimals="0">300000000</us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest>
+<us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest contextRef="Context_Instant_AccountingStandardsUpdate200916Member_RetainedEarningsMember_RestatementAdjustmentMember" unitRef="USD" decimals="0">57000000</us-gaap:StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest>
+<dei:EntityRegistrantName contextRef="D2010">OID TEST CO #1 e62415000gd</dei:EntityRegistrantName>
+<dei:DocumentType contextRef="D2010">8-K</dei:DocumentType>
+<dei:AmendmentFlag contextRef="D2010">false</dei:AmendmentFlag>
+<dei:DocumentFiscalYearFocus contextRef="D2010">2009</dei:DocumentFiscalYearFocus>
+<dei:DocumentFiscalPeriodFocus contextRef="D2010">FY</dei:DocumentFiscalPeriodFocus>
+<dei:EntityCentralIndexKey contextRef="D2010">9876543210</dei:EntityCentralIndexKey>
+<dei:DocumentPeriodEndDate contextRef="D2010">2010-06-30</dei:DocumentPeriodEndDate>
+<EntityEmergingGrowthCompany contextRef="D2010"
+xmlns="http://xbrl.sec.gov/dei/2018-01-31">false</EntityEmergingGrowthCompany>
+</xbrli:xbrl>

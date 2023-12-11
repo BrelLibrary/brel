@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>525-10</number>
+    <name>EDGAR Filer Manual v68d 5.2.5.13</name>
+    <description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#5.2.5.13 Other Inline XBRL restrictions">Refer to EFM: 5.2.5.13 Other Inline XBRL restrictions</a>
+    </description>
+    <variation id="_201gw">
+        <name>Header does not have div/@style="display:none", GOOD</name>
+        <description>EFM-WARN-no-parent-div</description>
+        <reference xiispec="8.1.2"></reference>
+        <reference xiitest="EFM-WARN-no-parent-div"></reference>
+        <reference specification="It is RECOMMENDED that the ix:header element be the descendant of a div element which has a style attribute equivalent to display:none."></reference>
+        <reference specification="SPR19848"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i10201gw/i10201gw-20081231.htm</instance>
+            <linkbase>i10201gw/i10201gw-20081231_pre.xml</linkbase>
+            <linkbase>i10201gw/i10201gw-20081231_lab.xml</linkbase>
+            <schema>i10201gw/i10201gw-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="wrn" num="99999" name="ix11.8.1.2:headerDisplayNone" frd="ix" fj="IXBRL_HEADER_ELEMENT_HAS_MISSING_PARENT_DIV_TAG_STYLE" nnum="70110" txt="Inline XBRL ix:header is recommended to be nested in a &lt;div&gt; with style display:none."></assert>
+        </result>
+    </variation>
+</testcase>

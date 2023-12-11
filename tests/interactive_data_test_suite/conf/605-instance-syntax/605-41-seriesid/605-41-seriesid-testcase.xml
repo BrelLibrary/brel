@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl"?>
+<conf:testcase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:conf="http://edgar/2009/conformance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <conf:creator>
+        <conf:name>SEC Office of Structured Disclosure</conf:name>
+        <conf:email>StructuredData@sec.gov</conf:email>
+    </conf:creator>
+    <conf:number>605-41</conf:number>
+    <conf:name>EDGAR Filer Manual v68d 6.5.41</conf:name>
+    <conf:description xmlns="">
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.5.41 Each series ID in the header should be a member of LegalEntityAxis in a context.">Refer to EFM: 6.5.41 Each series ID in the header should be a member of LegalEntityAxis in a context.</a>
+    </conf:description>
+    <conf:variation id="_001gd">
+        <conf:name>6.5.41 Basic 497 one series, GOOD.</conf:name>
+        <conf:description>Basic 497 one series, GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ELOparams" datatype="xs:string" value='{ "submissionType" : "497", "invCompanyType" : "N-1A" ,     "rptSeriesClassInfo.seriesIds" : [ "S013456789" ] }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60541001gd-20081231.xml</conf:instance>
+            <conf:linkbase>e60541001gd-20081231_def.xml</conf:linkbase>
+            <conf:linkbase>e60541001gd-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60541001gd-20081231_pre.xml</conf:linkbase>
+            <conf:schema>e60541001gd-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_002gd">
+        <conf:name>6.5.41 Basic 497 two series, GOOD.</conf:name>
+        <conf:description>Basic 497 two series, GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ELOparams" datatype="xs:string" value='{ "submissionType" : "497", "invCompanyType" : "N-1A",     "rptSeriesClassInfo.seriesIds" : [ "S234567890","S000009156" ] }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60541002gd-20090501.xml</conf:instance>
+            <conf:linkbase>e60541002gd-20090501_cal.xml</conf:linkbase>
+            <conf:linkbase>e60541002gd-20090501_def.xml</conf:linkbase>
+            <conf:linkbase>e60541002gd-20090501_lab.xml</conf:linkbase>
+            <conf:linkbase>e60541002gd-20090501_pre.xml</conf:linkbase>
+            <conf:schema>e60541002gd-20090501.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_003gd">
+        <conf:name>6.5.41 Basic 497 three series, GOOD.</conf:name>
+        <conf:description>Basic 497 three series, GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ELOparams" datatype="xs:string" value='{ "submissionType" : "497", "invCompanyType" : "N-1A",     "rptSeriesClassInfo.seriesIds" : [ "S234567890", "S000009156", "S000009157" ] }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60541003gd-20090501.xml</conf:instance>
+            <conf:linkbase>e60541003gd-20090501_cal.xml</conf:linkbase>
+            <conf:linkbase>e60541003gd-20090501_def.xml</conf:linkbase>
+            <conf:linkbase>e60541003gd-20090501_lab.xml</conf:linkbase>
+            <conf:linkbase>e60541003gd-20090501_pre.xml</conf:linkbase>
+            <conf:schema>e60541003gd-20090501.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_004gd">
+        <conf:name>6.5.41 Basic 497 four series, GOOD.</conf:name>
+        <conf:description>Basic 497 four series, GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ELOparams" datatype="xs:string" value='{ "submissionType" : "497", "invCompanyType" : "N-1A",     "rptSeriesClassInfo.seriesIds" : [ "S234567890", "S000005894", "S000009156", "S000009157" ] }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60541004gd-20090501.xml</conf:instance>
+            <conf:linkbase>e60541004gd-20090501_cal.xml</conf:linkbase>
+            <conf:linkbase>e60541004gd-20090501_def.xml</conf:linkbase>
+            <conf:linkbase>e60541004gd-20090501_lab.xml</conf:linkbase>
+            <conf:linkbase>e60541004gd-20090501_pre.xml</conf:linkbase>
+            <conf:schema>e60541004gd-20090501.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_200gw">
+        <conf:name>6.5.41 Basic 497 one series in sub, no series in schema, no facts, GOOD WITH WARNING.</conf:name>
+        <conf:description>Basic 497 one series in sub, no series in schema, no facts, GOOD WITH WARNING.</conf:description>
+        <conf:data>
+            <conf:parameter xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ELOparams" datatype="xs:string" value='{ "submissionType" : "497", "invCompanyType" : "N-1A" ,     "rptSeriesClassInfo.seriesIds" : [ "S013456789" ] }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60541200gw-20081231.xml</conf:instance>
+            <conf:linkbase>e60541200gw-20081231_def.xml</conf:linkbase>
+            <conf:linkbase>e60541200gw-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60541200gw-20081231_pre.xml</conf:linkbase>
+            <conf:schema>e60541200gw-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="Series-Id-Member-Not-Declared" num="60541" severity="wrn" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_201gw">
+        <conf:name>6.5.41 Basic 497 one series in sub, one series in schema, no domain-member relationships, GOOD WITH WARNING.</conf:name>
+        <conf:description>Basic 497 one series in sub, one series in schema, no domain-member relationships, GOOD WITH WARNING</conf:description>
+        <conf:data>
+            <conf:parameter xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ELOparams" datatype="xs:string" value='{ "submissionType" : "497", "invCompanyType" : "N-1A" ,     "rptSeriesClassInfo.seriesIds" : [ "S013456789" ] }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60541201gw-20081231.xml</conf:instance>
+            <conf:linkbase>e60541201gw-20081231_def.xml</conf:linkbase>
+            <conf:linkbase>e60541201gw-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60541201gw-20081231_pre.xml</conf:linkbase>
+            <conf:schema>e60541201gw-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="Series-Id-Member-Not-Axis-Member" num="60541" severity="wrn" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_202gw">
+        <conf:name>6.5.41 Basic 497 one series in sub, one series in schema, no facts, GOOD WITH WARNING.</conf:name>
+        <conf:description>Basic 497 one series in sub, one series in schema, no facts, GOOD WITH WARNING.</conf:description>
+        <conf:data>
+            <conf:parameter xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ELOparams" datatype="xs:string" value='{ "submissionType" : "497", "invCompanyType" : "N-1A" ,       "rptSeriesClassInfo.seriesIds" : [ "S013456789" ] }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60541202gw-20081231.xml</conf:instance>
+            <conf:linkbase>e60541202gw-20081231_def.xml</conf:linkbase>
+            <conf:linkbase>e60541202gw-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60541202gw-20081231_pre.xml</conf:linkbase>
+            <conf:schema>e60541202gw-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="Series-Id-Member-Not-in-Context" num="60541" severity="wrn" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_203gw">
+        <conf:name>6.5.41 Basic 497 two series, no facts in one, GOOD WITH WARNING.</conf:name>
+        <conf:description>Basic 497 two series, no facts in one, GOOD WITH WARNING.</conf:description>
+        <conf:data>
+            <conf:parameter xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ELOparams" datatype="xs:string" value='{ "submissionType" : "497", "invCompanyType" : "N-1A", "rptIncludeAllSeriesFlag" : true,         "newClass2.seriesIds" : [ "S234567890", "S000005894" ] }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60541203gw-20081231.xml</conf:instance>
+            <conf:linkbase>e60541203gw-20081231_cal.xml</conf:linkbase>
+            <conf:linkbase>e60541203gw-20081231_def.xml</conf:linkbase>
+            <conf:linkbase>e60541203gw-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60541203gw-20081231_pre.xml</conf:linkbase>
+            <conf:schema>e60541203gw-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="Series-Id-Member-Not-in-Context" num="60541" severity="wrn" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_204gw">
+        <conf:name>6.5.41 Basic 497 one series, GOOD /w WARNING.</conf:name>
+        <conf:description>Basic 497 one series, GOOD /w WARNING.</conf:description>
+        <conf:data>
+            <conf:parameter xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ELOparams" datatype="xs:string" value='{ "submissionType" : "497", "invCompanyType" : "N-1A" , "rptIncludeAllSeriesFlag" : false,           "rptSeriesClassInfo.seriesIds" : [ "S013456789" ] }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60541204gw-20081231.xml</conf:instance>
+            <conf:linkbase>e60541204gw-20081231_def.xml</conf:linkbase>
+            <conf:linkbase>e60541204gw-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60541204gw-20081231_pre.xml</conf:linkbase>
+            <conf:schema>e60541204gw-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="Series-Id-Member-Not-in-Context" num="60541" severity="wrn" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+</conf:testcase>

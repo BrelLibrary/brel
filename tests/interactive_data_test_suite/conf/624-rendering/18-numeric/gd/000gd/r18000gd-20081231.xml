@@ -1,0 +1,146 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xbrli:xbrl xmlns:dei="http://xbrl.sec.gov/dei/2021" xmlns:edgar="http://edgar/20081231" xmlns:iso4217="http://www.xbrl.org/2003/iso4217" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xbrldt="http://xbrl.org/2005/xbrldt" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <link:schemaRef xlink:href="r18000gd-20081231.xsd" xlink:type="simple"></link:schemaRef>
+    <xbrli:context id="i18h1e">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:instant>2018-06-30</xbrli:instant>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="fy08">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2008-01-01</xbrli:startDate>
+            <xbrli:endDate>2008-12-31</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:unit id="shares">
+        <xbrli:measure>xbrli:shares</xbrli:measure>
+    </xbrli:unit>
+    <xbrli:unit id="USD">
+        <xbrli:measure>iso4217:USD</xbrli:measure>
+    </xbrli:unit>
+    <xbrli:unit id="EUR">
+        <xbrli:measure>iso4217:EUR</xbrli:measure>
+    </xbrli:unit>
+    <dei:DocumentType contextRef="fy08">10-K</dei:DocumentType>
+    <dei:AmendmentFlag contextRef="fy08">false</dei:AmendmentFlag>
+    <dei:DocumentPeriodEndDate contextRef="fy08">2013-12-31</dei:DocumentPeriodEndDate>
+    <dei:EntityRegistrantName contextRef="fy08">e60512000gd</dei:EntityRegistrantName>
+    <dei:EntityCentralIndexKey contextRef="fy08">9876543210</dei:EntityCentralIndexKey>
+    <dei:EntityEmergingGrowthCompany contextRef="fy08">false</dei:EntityEmergingGrowthCompany>
+    <dei:DocumentFiscalPeriodFocus contextRef="fy08" id="doc-fp">FY</dei:DocumentFiscalPeriodFocus>
+    <dei:DocumentFiscalYearFocus contextRef="fy08" id="doc-fy">2018</dei:DocumentFiscalYearFocus>
+    <dei:CurrentFiscalYearEndDate contextRef="fy08" id="ent-fyend">--12-31</dei:CurrentFiscalYearEndDate>
+    <dei:EntityFilerCategory contextRef="fy08">Large Accelerated Filer</dei:EntityFilerCategory>
+    <dei:IcfrAuditorAttestationFlag contextRef="fy08">true</dei:IcfrAuditorAttestationFlag>
+    <dei:EntityWellKnownSeasonedIssuer contextRef="fy08" id="ent-wksi">Yes</dei:EntityWellKnownSeasonedIssuer>
+    <dei:EntitySmallBusiness contextRef="fy08" id="ent-src">true</dei:EntitySmallBusiness>
+    <dei:EntityVoluntaryFilers contextRef="fy08">No</dei:EntityVoluntaryFilers>
+    <dei:EntityPublicFloat contextRef="i18h1e" decimals="-3" id="ent-float" unitRef="USD">327898000</dei:EntityPublicFloat>
+    <dei:EntityCurrentReportingStatus contextRef="fy08" id="ent-current">Yes</dei:EntityCurrentReportingStatus>
+    <dei:EntityInteractiveDataCurrent contextRef="fy08" id="ent-int-data-current">Yes</dei:EntityInteractiveDataCurrent>
+    <dei:EntityCommonStockSharesOutstanding contextRef="i18h1e" decimals="INF" unitRef="shares">3764</dei:EntityCommonStockSharesOutstanding>
+    <dei:EntityShellCompany contextRef="fy08" id="ent-shell">false</dei:EntityShellCompany>
+</xbrli:xbrl>
+<!-- 
+<?xml version="1.0" encoding="US-ASCII"?>
+<xbrli:xbrl
+xmlns:dei="http://xbrl.sec.gov/dei/2021"
+xmlns:iso4217="http://www.xbrl.org/2003/iso4217"
+xmlns:link="http://www.xbrl.org/2003/linkbase"
+xmlns:dtr-types="http://www.xbrl.org/dtr/type/2020-01-21"
+
+xmlns:xbrldt="http://xbrl.org/2005/xbrldt"
+xmlns:xbrli="http://www.xbrl.org/2003/instance"
+xmlns:xlink="http://www.w3.org/1999/xlink"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:r18000gd="http://r18000gd/20081231"
+xmlns:us-gaap="http://fasb.org/us-gaap/2021-01-31"
+xmlns:us-roles="http://fasb.org/us-roles/2021-01-31"
+xmlns:us-types="http://fasb.org/us-types/2021-01-31">
+<link:schemaRef xlink:href="r18000gd-20081231.xsd" xlink:type="simple" />
+<xbrli:context id="e2013">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:instant>2013-12-31</xbrli:instant>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="d2013_m9">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:startDate>2013-04-01</xbrli:startDate>
+<xbrli:endDate>2013-12-31</xbrli:endDate>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="e2012">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:instant>2012-12-31</xbrli:instant>
+</xbrli:period>
+</xbrli:context>
+<xbrli:context id="efy2012">
+<xbrli:entity>
+<xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+</xbrli:entity>
+<xbrli:period>
+<xbrli:instant>2013-03-31</xbrli:instant>
+</xbrli:period>
+</xbrli:context>
+<xbrli:unit id="USD">
+<xbrli:measure>iso4217:USD</xbrli:measure>
+</xbrli:unit>
+<xbrli:unit id="USD_per_Share">
+<xbrli:divide>
+<xbrli:unitNumerator>
+<xbrli:measure>iso4217:USD</xbrli:measure>
+</xbrli:unitNumerator>
+<xbrli:unitDenominator>
+<xbrli:measure>xbrli:shares</xbrli:measure>
+</xbrli:unitDenominator>
+</xbrli:divide>
+</xbrli:unit>
+<xbrli:unit id="Shares">
+<xbrli:measure>xbrli:shares</xbrli:measure>
+</xbrli:unit>
+<xbrli:unit id="Humans">
+<xbrli:measure>r18000gd:Humans</xbrli:measure>
+</xbrli:unit>
+<xbrli:unit id="Ratio">
+<xbrli:measure>xbrli:pure</xbrli:measure>
+</xbrli:unit>
+<dei:DocumentType contextRef="d2013_m9">8-K</dei:DocumentType>
+<dei:EntityCentralIndexKey contextRef="d2013_m9">9876543210</dei:EntityCentralIndexKey>
+<dei:EntityRegistrantName contextRef="d2013_m9">OID TEST CO #1 e62418000gd </dei:EntityRegistrantName>
+<dei:AmendmentFlag contextRef="d2013_m9">false</dei:AmendmentFlag>
+<dei:DocumentPeriodEndDate contextRef="d2013_m9">2013-12-31</dei:DocumentPeriodEndDate>
+<dei:CurrentFiscalYearEndDate contextRef="d2013_m9">-03-31</dei:CurrentFiscalYearEndDate>
+<dei:DocumentFiscalYearFocus contextRef="d2013_m9">2013</dei:DocumentFiscalYearFocus>
+<dei:DocumentFiscalPeriodFocus contextRef="d2013_m9">M9</dei:DocumentFiscalPeriodFocus>
+<us-gaap:CashAndCashEquivalentsAtCarryingValue contextRef="e2013" unitRef="USD" decimals="-6">1000000</us-gaap:CashAndCashEquivalentsAtCarryingValue>
+<us-gaap:CashAndCashEquivalentsAtCarryingValue contextRef="efy2012" unitRef="USD" decimals="-3">250000</us-gaap:CashAndCashEquivalentsAtCarryingValue>
+<us-gaap:NetCashProvidedByUsedInFinancingActivities contextRef="d2013_m9" unitRef="USD" decimals="-3">200000</us-gaap:NetCashProvidedByUsedInFinancingActivities>
+<us-gaap:NetCashProvidedByUsedInInvestingActivities contextRef="d2013_m9" unitRef="USD" decimals="-3">200000</us-gaap:NetCashProvidedByUsedInInvestingActivities>
+<us-gaap:Revenues contextRef="d2013_m9" unitRef="USD" decimals="-9">1000000000</us-gaap:Revenues>
+<us-gaap:Assets contextRef="e2013" unitRef="USD" decimals="-3">1000</us-gaap:Assets>
+<us-gaap:ProfitLoss contextRef="d2013_m9" unitRef="USD" decimals="-6">1000000</us-gaap:ProfitLoss>
+<us-gaap:EarningsPerShareBasic contextRef="d2013_m9" unitRef="USD_per_Share" decimals="2">1.11</us-gaap:EarningsPerShareBasic>
+<dei:EntityCommonStockSharesOutstanding contextRef="e2013" unitRef="Shares" decimals="INF">10000000</dei:EntityCommonStockSharesOutstanding>
+<dei:EntityNumberOfEmployees contextRef="e2013" unitRef="Humans" decimals="-3">3000</dei:EntityNumberOfEmployees>
+<dei:EntityPublicFloat contextRef="e2013" unitRef="USD" decimals="0">1000000000</dei:EntityPublicFloat>
+<dei:EntityPublicFloat contextRef="e2012" unitRef="USD" decimals="0">1000000000</dei:EntityPublicFloat>
+<us-gaap:CombinedRatio contextRef="d2013_m9" unitRef="Ratio" decimals="2">1.55</us-gaap:CombinedRatio>
+<EntityEmergingGrowthCompany contextRef="d2013_m9"
+xmlns="http://xbrl.sec.gov/dei/2021">false</EntityEmergingGrowthCompany>
+</xbrli:xbrl>
+ -->

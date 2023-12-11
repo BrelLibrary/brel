@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>607-11</number>
+    <name>EDGAR Filer Manual v68d 6.7.11</name>
+    <description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.7.11 Restrictions on the roleType usedOn element.">Refer to EFM: 6.7.11 Restrictions on the roleType usedOn element.</a>
+    </description>
+    <reference specification="11003"></reference>
+    <variation id="_000gd">
+        <name>6.7.11 Role defined with pre, def, and cal usedOn, GOOD.</name>
+        <description>Role defined with pre, def, and cal usedOn, GOOD.</description>
+        <reference specification="11003"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60711000gd-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+            <schema>e60711000gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_001ng">
+        <name>6.7.11 Role defined with pre, def, not cal usedOn, NOGOOD.</name>
+        <description>Role defined with pre, def, not cal usedOn, NOGOOD.</description>
+        <reference specification="11003"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60711001ng-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+            <schema>e60711001ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60711" name="Role-Type-Declaration-Incomplete" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_002ng">
+        <name>6.7.11 Role defined with pre, not def, and cal usedOn, NOGOOD.</name>
+        <description>Role defined with pre, not def, and cal usedOn, NOGOOD.</description>
+        <reference specification="11003"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60711002ng-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+            <schema>e60711002ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60711" name="Role-Type-Declaration-Incomplete" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_003ng">
+        <name>6.7.11 Role defined with not pre, def, cal usedOn, NOGOOD. </name>
+        <description> 6.7.11 Role defined with not pre, def, cal usedOn, NOGOOD.</description>
+        <reference specification="11003"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60711003ng-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+            <schema>e60711003ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60711" name="Role-Type-Declaration-Incomplete" frd="du"></assert>
+        </result>
+    </variation>
+</testcase>

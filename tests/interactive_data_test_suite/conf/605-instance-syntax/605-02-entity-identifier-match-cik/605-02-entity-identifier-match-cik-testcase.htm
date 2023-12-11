@@ -1,0 +1,190 @@
+<html xmlns:case="http://edgar/2009/conformance">
+  <head>
+    <title>605-02
+        :
+        EDGAR Filer Manual v68d 6.5.2</title>
+    <style type="text/css">
+        table, td, th {border: solid black 1pt; border-collapse: collapse;} td {vertical-align: top;}
+      </style>
+  </head>
+  <body>
+    <h1>605-02
+        :
+        EDGAR Filer Manual v68d 6.5.2</h1>
+    <p>
+        Created by: 
+        <a href="mailto:StructuredData@sec.gov">SEC Office of Structured Disclosure</a></p>
+    <p>
+      <description xmlns="http://edgar/2009/conformance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <h2>An xbrli:identifier element contains the CIK of the registrant, with one exception</h2>
+        <p>The CIK is an xsd:normalizedString of exactly ten digits from 0 to 9. An xbrli:identifier element must have the CIK of the registrant as its content except in attachment EX-99.SDR L.INS when it contains the financial report of an entity without a CIK.</p>
+        <p>The xbrli:identifier contains the CIK of the registrant (issuer), not the filer. Fund Series and Class identifiers, which are nine digits following an S or C, are not allowed in the xbrli:identifier element. Document type EX-99.SDR L.INS may contain the financial report of an entity that is not an SEC registrant; in that case use 0000000000 in xbrli:identifier.</p>
+        <p>If multiple subsidiaries are reported in the same instance, then the CIK of the holding company is the only CIK that will appear in the xbrli:identifier element of that one instance. Section 6.6 below contains rules that apply to the xbrli:context elements in an instance containing a combined submission.</p>
+        <p>REMARK: Variations 001ng and 002ng may produce error 60523 depending on implementation.</p>
+    </description>
+    </p>
+    <h3>References</h3>
+    <ul>10491.2.111076</ul>
+    <h2>
+        Variations
+      </h2>
+    <table border="solid">
+      <thead>
+        <tr>
+          <th>Number</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>References</th>
+          <th>Data Inputs</th>
+          <th>Result Outputs</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>_000gd</td>
+          <td>6.5.2 match to CIK, GOOD</td>
+          <td>6.5.2 match to CIK, GOOD</td>
+          <td>10491.2.111076 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "06-30-2011", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60502000gd-20111231.xml">e60502000gd-20111231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="e60502000gd-20111231_pre.xml">e60502000gd-20111231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="e60502000gd-20111231_def.xml">e60502000gd-20111231_def.xml</a></li>
+              <li>
+    Linkbase
+    <a href="e60502000gd-20111231_lab.xml">e60502000gd-20111231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="e60502000gd-20111231.xsd">e60502000gd-20111231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_001ng</td>
+          <td>6.5.2 CIK starts with C, is not a CIK, NOGOOD</td>
+          <td>6.5.2 CIK starts with C, is not a CIK, NOGOOD</td>
+          <td>10491.2.111076 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "06-30-2011", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60502001ng-20111231.xml">e60502001ng-20111231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="e60502001ng-20111231_pre.xml">e60502001ng-20111231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="e60502001ng-20111231_def.xml">e60502001ng-20111231_def.xml</a></li>
+              <li>
+    Linkbase
+    <a href="e60502001ng-20111231_lab.xml">e60502001ng-20111231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="e60502001ng-20111231.xsd">e60502001ng-20111231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 60502, <a href="../../../../lib/xbrlerrors.htm#cp-0502-Cik-Element-Context-Mismatch">Cik-Element-Context-Mismatch</a></td></tr><tr><td>FRD:</td><td>cp</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_002ng</td>
+          <td>6.5.2 CIK starts with S, is not a CIK, NOGOOD</td>
+          <td>6.5.2 CIK starts with S, is not a CIK, NOGOOD</td>
+          <td>10491.2.111076 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "06-30-2011", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60502002ng-20111231.xml">e60502002ng-20111231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="e60502002ng-20111231_pre.xml">e60502002ng-20111231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="e60502002ng-20111231_def.xml">e60502002ng-20111231_def.xml</a></li>
+              <li>
+    Linkbase
+    <a href="e60502002ng-20111231_lab.xml">e60502002ng-20111231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="e60502002ng-20111231.xsd">e60502002ng-20111231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 60502, <a href="../../../../lib/xbrlerrors.htm#cp-0502-Cik-Element-Context-Mismatch">Cik-Element-Context-Mismatch</a></td></tr><tr><td>FRD:</td><td>cp</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

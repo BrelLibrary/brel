@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>605-13</number>
+    <name>EDGAR Filer Manual v68d 6.5.13</name>
+    <description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.5.13  Attribute xml:lang defaults to &#239;&#191;&#189;en-US&#239;&#191;&#189;.">Refer to EFM: 6.5.13  Attribute xml:lang defaults to &#239;&#191;&#189;en-US&#239;&#191;&#189;.</a>
+    </description>
+    <reference specification=""></reference>
+    <variation id="_001ng">
+        <name>6.5.13 Two non-numeric (string) facts, language specified in one as en-US but not the other, so it defaults to en-US. NOGOOD</name>
+        <description>An instance with two facts with the same effective xml:lang value. NOGOOD.</description>
+        <reference specification=""></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">e60513001ng-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60512" name="Duplicate-Facts" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_002ng">
+        <name>xml:lang values are case-insensitive, same as _001ng but specified lang is en-us, lowercase, which is the xml canonical form of en-US.  Same result, one is en-us, which case-insensitive is same as defaults of en-US. NOGOOD</name>
+        <description>An instance with two facts with the same effective xml:lang value. NOGOOD.</description>
+        <reference specification=""></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">e60513002ng-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60512" name="Duplicate-Facts" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_003ng">
+        <name>6.5.13 Two non-numeric (date) facts, language doesn't apply, although one specified as en-US and not the other as fr, they are compared without considering language. NOGOOD</name>
+        <description>An instance with two date facts with different xml:lang values (that don't apply to dates). NOGOOD.</description>
+        <reference specification=""></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">e60513003ng-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60512" name="Duplicate-Facts" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_004ng">
+        <name>6.5.13 Two non-numeric (token-valued) facts, language doesn't apply, although one specified as en-us and not the other as fr, they are compared without considering language. NOGOOD</name>
+        <description>An instance with two token-valued facts (CIK) with the same different xml:lang values (that don't apply to tokens). NOGOOD.</description>
+        <reference specification=""></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">e60513004ng-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60512" name="Duplicate-Facts" frd="du"></assert>
+        </result>
+    </variation>
+</testcase>

@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl"?>
+<conf:testcase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:conf="http://edgar/2009/conformance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <conf:creator>
+        <conf:name>SEC Office of Structured Disclosure</conf:name>
+        <conf:email>StructuredData@sec.gov</conf:email>
+    </conf:creator>
+    <conf:number>614-06</conf:number>
+    <conf:name>EDGAR Filer Manual v68d 6.14.5</conf:name>
+    <conf:description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.14.5  Facts in a calculation must appear together in at least one presentation group.">Refer to EFM: 6.14.5  Facts in a calculation must appear together in at least one presentation group.</a>
+    </conf:description>
+    <conf:variation id="_001gd">
+        <conf:name>calc-between-custom-elements, GD</conf:name>
+        <conf:description>calc-between-custom-elements, GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "N-3"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e61407000gd/n3a-20200430.htm</conf:instance>
+            <conf:schema>e61407000gd/n3a-20200430.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_002ng">
+        <conf:name>calc-between-custom-element-and-vip-element, NG</conf:name>
+        <conf:description>calc-between-custom-element-and-vip-element, NG</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "N-3"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e61407001ng/n3a-20200430.htm</conf:instance>
+            <conf:schema>e61407001ng/n3a-20200430.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="61407" name="Relationship-Not-Permitted" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+</conf:testcase>

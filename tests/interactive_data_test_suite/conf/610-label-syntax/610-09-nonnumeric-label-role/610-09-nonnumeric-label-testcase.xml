@@ -1,0 +1,358 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl" ?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>610-09</number>
+    <name>EDGAR Filer Manual v68d 6.10.9</name>
+    <description>
+        <h2>Do not use numeric label roles on non-numeric elements.</h2>
+        <p>Non-numeric elements must not have labels whose xlink:role value implies they apply to numeric values.</p>
+        <table xmlns="" style="border-collapse:collapse;border:solid black 1pt">
+            <tr>
+                <th style="border-collapse:collapse;border:solid black 1pt">Value of the xlink:role attribute on link:label</th>
+                <th style="border-collapse:collapse;border:solid black 1pt">Non numeric</th>
+            </tr>
+            <tr>
+                <td>http://www.xbrl.org/2003/role/positiveLabel</td>
+                <td style="border-collapse:collapse;border:solid black 1pt;vertical-align:top;" rowspan="16">Disallowed</td>
+            </tr>
+            <tr>
+                <td>http://www.xbrl.org/2003/role/positiveTerseLabel</td>
+            </tr>
+            <tr>
+                <td>http://www.xbrl.org/2003/role/positiveVerboseLabel</td>
+            </tr>
+            <tr>
+                <td>http://www.xbrl.org/2003/role/negativeLabel</td>
+            </tr>
+            <tr>
+                <td>http://www.xbrl.org/2003/role/negativeTerseLabel</td>
+            </tr>
+            <tr>
+                <td>http://www.xbrl.org/2003/role/negativeVerboseLabel</td>
+            </tr>
+            <tr>
+                <td>http://www.xbrl.org/2003/role/zeroLabel</td>
+            </tr>
+            <tr>
+                <td>http://www.xbrl.org/2003/role/zeroTerseLabel</td>
+            </tr>
+            <tr>
+                <td>http://www.xbrl.org/2003/role/zeroVerboseLabel</td>
+            </tr>
+            <tr>
+                <td>http://www.xbrl.org/2003/role/totalLabel</td>
+            </tr>
+            <tr>
+                <td>http://www.xbrl.org/2009/role/negatedLabel</td>
+            </tr>
+            <tr>
+                <td>http://www.xbrl.org/2009/role/negatedPeriodEndLabel</td>
+            </tr>
+            <tr>
+                <td>http://www.xbrl.org/2009/role/negatedPeriodStartLabel</td>
+            </tr>
+            <tr>
+                <td>http://www.xbrl.org/2009/role/negatedTotalLabel</td>
+            </tr>
+            <tr>
+                <td>hhttp://www.xbrl.org/2009/role/negatedNetLabel</td>
+            </tr>
+            <tr>
+                <td>http://www.xbrl.org/2009/role/negatedTerseLabel</td>
+            </tr>
+            <tr>
+                <td>http://xbrl.us/us-gaap/role/label/negated</td>
+            </tr>
+            <tr>
+                <td>http://xbrl.us/us-gaap/role/label/negatedTotal</td>
+            </tr>
+            <tr>
+                <td>http://xbrl.us/us-gaap/role/label/negatedPeriodStart</td>
+            </tr>
+            <tr>
+                <td>http://xbrl.us/us-gaap/role/label/negatedPeriodEnd</td>
+            </tr>
+            <tr>
+                <td style="border-collapse:collapse;border:solid black 1pt;">All Others</td>
+                <td style="border-collapse:collapse;border:solid black 1pt;">Allowed</td>
+            </tr>
+        </table>
+    </description>
+    <reference specification="12909"></reference>
+    <variation id="_000ng">
+        <name>6.10.9 Role http://www.xbrl.org/2003/role/totalLabel on non-numeric element, NOGOOD.</name>
+        <description>Role http://www.xbrl.org/2003/role/totalLabel on non-numeric element, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport" : "12-31-2011" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></parameter>
+            <instance readMeFirst="true">e61009000ng-20111231.xml</instance>
+            <linkbase>e61009000ng-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_def.xml</linkbase>
+            <linkbase>edgar-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_pre.xml</linkbase>
+            <schema>edgar-20111231.xsd</schema>
+            <schema>e61009000ng-20111231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="61009" name="Numeric-Label-Role" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_001ng">
+        <name>6.10.9 Role http://www.xbrl.org/2003/role/positiveLabel on non-numeric element, NOGOOD.</name>
+        <description>Role http://www.xbrl.org/2003/role/positiveLabel on non-numeric element, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport" : "12-31-2011" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></parameter>
+            <instance readMeFirst="true">e61009001ng-20111231.xml</instance>
+            <linkbase>e61009001ng-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_def.xml</linkbase>
+            <linkbase>edgar-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_pre.xml</linkbase>
+            <schema>edgar-20111231.xsd</schema>
+            <schema>e61009001ng-20111231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="61009" name="Numeric-Label-Role" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_002ng">
+        <name>6.10.9 Role http://www.xbrl.org/2003/role/negativeLabel on non-numeric element, NOGOOD.</name>
+        <description>Role http://www.xbrl.org/2003/role/negativeLabel on non-numeric element, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport" : "12-31-2011" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></parameter>
+            <instance readMeFirst="true">e61009002ng-20111231.xml</instance>
+            <linkbase>e61009002ng-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_def.xml</linkbase>
+            <linkbase>edgar-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_pre.xml</linkbase>
+            <schema>edgar-20111231.xsd</schema>
+            <schema>e61009002ng-20111231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="61009" name="Numeric-Label-Role" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_003ng">
+        <name>6.10.9 Role http://www.xbrl.org/2003/role/zeroLabel on non-numeric element, NOGOOD.</name>
+        <description>Role http://www.xbrl.org/2003/role/zeroLabel on non-numeric element, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport" : "12-31-2011" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></parameter>
+            <instance readMeFirst="true">e61009003ng-20111231.xml</instance>
+            <linkbase>e61009003ng-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_def.xml</linkbase>
+            <linkbase>edgar-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_pre.xml</linkbase>
+            <schema>edgar-20111231.xsd</schema>
+            <schema>e61009003ng-20111231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="61009" name="Numeric-Label-Role" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_004ng">
+        <name>6.10.9 Role http://www.xbrl.org/2003/role/positiveTerseLabel on non-numeric element, NOGOOD.</name>
+        <description>Role http://www.xbrl.org/2003/role/positiveTerseLabel on non-numeric element, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport" : "12-31-2011" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></parameter>
+            <instance readMeFirst="true">e61009004ng-20111231.xml</instance>
+            <linkbase>e61009004ng-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_def.xml</linkbase>
+            <linkbase>edgar-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_pre.xml</linkbase>
+            <schema>edgar-20111231.xsd</schema>
+            <schema>e61009004ng-20111231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="61009" name="Numeric-Label-Role" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_005ng">
+        <name>6.10.9 Role http://www.xbrl.org/2003/role/negativeTerseLabel on non-numeric element, NOGOOD.</name>
+        <description>Role http://www.xbrl.org/2003/role/negativeTerseLabel on non-numeric element, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport" : "12-31-2011" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></parameter>
+            <instance readMeFirst="true">e61009005ng-20111231.xml</instance>
+            <linkbase>e61009005ng-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_def.xml</linkbase>
+            <linkbase>edgar-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_pre.xml</linkbase>
+            <schema>edgar-20111231.xsd</schema>
+            <schema>e61009005ng-20111231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="61009" name="Numeric-Label-Role" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_006ng">
+        <name>6.10.9 Role http://www.xbrl.org/2003/role/zeroTerseLabel on non-numeric element, NOGOOD.</name>
+        <description>Role http://www.xbrl.org/2003/role/zeroTerseLabel on non-numeric element, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport" : "12-31-2011" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></parameter>
+            <instance readMeFirst="true">e61009006ng-20111231.xml</instance>
+            <linkbase>e61009006ng-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_def.xml</linkbase>
+            <linkbase>edgar-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_pre.xml</linkbase>
+            <schema>edgar-20111231.xsd</schema>
+            <schema>e61009006ng-20111231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="61009" name="Numeric-Label-Role" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_007ng">
+        <name>6.10.9 Role http://www.xbrl.org/2003/role/positiveVerboseLabel on non-numeric element, NOGOOD.</name>
+        <description>Role http://www.xbrl.org/2003/role/positiveVerboseLabel on non-numeric element, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport" : "12-31-2011" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></parameter>
+            <instance readMeFirst="true">e61009007ng-20111231.xml</instance>
+            <linkbase>e61009007ng-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_def.xml</linkbase>
+            <linkbase>edgar-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_pre.xml</linkbase>
+            <schema>edgar-20111231.xsd</schema>
+            <schema>e61009007ng-20111231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="61009" name="Numeric-Label-Role" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_008ng">
+        <name>6.10.9 Role http://www.xbrl.org/2003/role/negativeVerboseLabel on non-numeric element, NOGOOD.</name>
+        <description>Role http://www.xbrl.org/2003/role/negativeVerboseLabel on non-numeric element, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport" : "12-31-2011" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></parameter>
+            <instance readMeFirst="true">e61009008ng-20111231.xml</instance>
+            <linkbase>e61009008ng-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_def.xml</linkbase>
+            <linkbase>edgar-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_pre.xml</linkbase>
+            <schema>edgar-20111231.xsd</schema>
+            <schema>e61009008ng-20111231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="61009" name="Numeric-Label-Role" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_009ng">
+        <name>6.10.9 Role http://www.xbrl.org/2003/role/zeroVerboseLabel on non-numeric element, NOGOOD.</name>
+        <description>Role http://www.xbrl.org/2003/role/zeroVerboseLabel on non-numeric element, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport" : "12-31-2011" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></parameter>
+            <instance readMeFirst="true">e61009009ng-20111231.xml</instance>
+            <linkbase>e61009009ng-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_def.xml</linkbase>
+            <linkbase>edgar-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_pre.xml</linkbase>
+            <schema>edgar-20111231.xsd</schema>
+            <schema>e61009009ng-20111231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="61009" name="Numeric-Label-Role" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_010ng">
+        <name>6.10.9 Role http://www.xbrl.org/2009/role/negatedLabel on non-numeric element, NOGOOD.</name>
+        <description>Role http://www.xbrl.org/2009/role/negatedLabel on non-numeric element, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport" : "12-31-2011" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></parameter>
+            <instance readMeFirst="true">e61009010ng-20111231.xml</instance>
+            <linkbase>e61009010ng-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_def.xml</linkbase>
+            <linkbase>edgar-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_pre.xml</linkbase>
+            <schema>edgar-20111231.xsd</schema>
+            <schema>e61009010ng-20111231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="61009" name="Numeric-Label-Role" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_011ng">
+        <name>6.10.9 Role http://www.xbrl.org/2009/role/negatedPeriodEndLabel on non-numeric element, NOGOOD.</name>
+        <description>Role http://www.xbrl.org/2009/role/negatedPeriodEndLabel on non-numeric element, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport" : "12-31-2011" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></parameter>
+            <instance readMeFirst="true">e61009011ng-20111231.xml</instance>
+            <linkbase>e61009011ng-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_def.xml</linkbase>
+            <linkbase>edgar-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_pre.xml</linkbase>
+            <schema>edgar-20111231.xsd</schema>
+            <schema>e61009011ng-20111231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="61009" name="Numeric-Label-Role" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_012ng">
+        <name>6.10.9 Role http://www.xbrl.org/2009/role/negatedPeriodStartLabel on non-numeric element, NOGOOD.</name>
+        <description>Role http://www.xbrl.org/2009/role/negatedPeriodStartLabel on non-numeric element, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport" : "12-31-2011" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></parameter>
+            <instance readMeFirst="true">e61009012ng-20111231.xml</instance>
+            <linkbase>e61009012ng-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_def.xml</linkbase>
+            <linkbase>edgar-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_pre.xml</linkbase>
+            <schema>edgar-20111231.xsd</schema>
+            <schema>e61009012ng-20111231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="61009" name="Numeric-Label-Role" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_013ng">
+        <name>6.10.9 Role http://www.xbrl.org/2009/role/negatedTotalLabel on non-numeric element, NOGOOD.</name>
+        <description>Role http://www.xbrl.org/2009/role/negatedTotalLabel on non-numeric element, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport" : "12-31-2011" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></parameter>
+            <instance readMeFirst="true">e61009013ng-20111231.xml</instance>
+            <linkbase>e61009013ng-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_def.xml</linkbase>
+            <linkbase>edgar-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_pre.xml</linkbase>
+            <schema>edgar-20111231.xsd</schema>
+            <schema>e61009013ng-20111231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="61009" name="Numeric-Label-Role" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_014ng">
+        <name>6.10.9 Role http://www.xbrl.org/2009/role/negatedNetLabel on non-numeric element, NOGOOD.</name>
+        <description>Role http://www.xbrl.org/2009/role/negatedNetLabel on non-numeric element, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport" : "12-31-2011" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></parameter>
+            <instance readMeFirst="true">e61009014ng-20111231.xml</instance>
+            <linkbase>e61009014ng-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_def.xml</linkbase>
+            <linkbase>edgar-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_pre.xml</linkbase>
+            <schema>edgar-20111231.xsd</schema>
+            <schema>e61009014ng-20111231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="61009" name="Numeric-Label-Role" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_015ng">
+        <name>6.10.9 Role http://www.xbrl.org/2009/role/negatedTerseLabel on non-numeric element, NOGOOD.</name>
+        <description>Role http://www.xbrl.org/2009/role/negatedTerseLabel on non-numeric element, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport" : "12-31-2011" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></parameter>
+            <instance readMeFirst="true">e61009015ng-20111231.xml</instance>
+            <linkbase>e61009015ng-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_def.xml</linkbase>
+            <linkbase>edgar-20111231_lab.xml</linkbase>
+            <linkbase>edgar-20111231_pre.xml</linkbase>
+            <schema>edgar-20111231.xsd</schema>
+            <schema>e61009015ng-20111231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="61009" name="Numeric-Label-Role" frd="du"></assert>
+        </result>
+    </variation>
+</testcase>

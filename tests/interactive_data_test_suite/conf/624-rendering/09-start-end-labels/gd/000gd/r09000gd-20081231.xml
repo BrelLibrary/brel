@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xbrli:xbrl xmlns:dei="http://xbrl.sec.gov/dei/2021" xmlns:iso4217="http://www.xbrl.org/2003/iso4217" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:dtr-types="http://www.xbrl.org/dtr/type/2020-01-21"  xmlns:xbrldt="http://xbrl.org/2005/xbrldt" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:r09000gd="http://r09000gd/20081231" xmlns:us-gaap="http://fasb.org/us-gaap/2021-01-31" xmlns:us-roles="http://fasb.org/us-roles/2021-01-31" xmlns:us-types="http://fasb.org/us-types/2021-01-31">
+    <link:schemaRef xlink:href="r09000gd-20081231.xsd" xlink:type="simple"></link:schemaRef>
+    <xbrli:context id="fy2015">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2015-01-01</xbrli:startDate>
+            <xbrli:endDate>2015-12-31</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="fye2015">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:instant>2015-12-31</xbrli:instant>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="fye2014">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:instant>2014-12-31</xbrli:instant>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="fy2014">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2014-01-01</xbrli:startDate>
+            <xbrli:endDate>2014-12-31</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="fye2013">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:instant>2013-12-31</xbrli:instant>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:unit id="USD">
+        <xbrli:measure>iso4217:USD</xbrli:measure>
+    </xbrli:unit>
+    <dei:DocumentType contextRef="fy2015">8-K</dei:DocumentType>
+    <dei:AmendmentFlag contextRef="fy2015">false</dei:AmendmentFlag>
+    <dei:EntityCentralIndexKey contextRef="fy2015">9876543210</dei:EntityCentralIndexKey>
+    <dei:EntityRegistrantName contextRef="fy2015">OID TEST CO #1 r62409000gd </dei:EntityRegistrantName>
+    <dei:DocumentPeriodEndDate contextRef="fy2015">2015-12-31</dei:DocumentPeriodEndDate>
+    <us-gaap:ProfitLoss contextRef="fy2015" unitRef="USD" decimals="0">3000</us-gaap:ProfitLoss>
+    <us-gaap:ProfitLoss contextRef="fy2014" unitRef="USD" decimals="0">2000</us-gaap:ProfitLoss>
+    <us-gaap:CashAndCashEquivalentsAtCarryingValue contextRef="fye2013" unitRef="USD" decimals="0">5000</us-gaap:CashAndCashEquivalentsAtCarryingValue>
+    <us-gaap:NetCashProvidedByUsedInInvestingActivities contextRef="fy2014" unitRef="USD" decimals="0">300</us-gaap:NetCashProvidedByUsedInInvestingActivities>
+    <us-gaap:NetCashProvidedByUsedInOperatingActivities contextRef="fy2014" unitRef="USD" decimals="0">2300</us-gaap:NetCashProvidedByUsedInOperatingActivities>
+    <us-gaap:NetCashProvidedByUsedInFinancingActivities contextRef="fy2014" unitRef="USD" decimals="0">200</us-gaap:NetCashProvidedByUsedInFinancingActivities>
+    <us-gaap:DepreciationDepletionAndAmortization contextRef="fy2014" unitRef="USD" decimals="0">100</us-gaap:DepreciationDepletionAndAmortization>
+    <us-gaap:OtherOperatingActivitiesCashFlowStatement contextRef="fy2014" unitRef="USD" decimals="0">200</us-gaap:OtherOperatingActivitiesCashFlowStatement>
+    <us-gaap:AdjustmentsToReconcileNetIncomeLossToCashProvidedByUsedInOperatingActivities contextRef="fy2014" unitRef="USD" decimals="0">300</us-gaap:AdjustmentsToReconcileNetIncomeLossToCashProvidedByUsedInOperatingActivities>
+    <us-gaap:CashAndCashEquivalentsAtCarryingValue contextRef="fye2014" unitRef="USD" decimals="0">7800</us-gaap:CashAndCashEquivalentsAtCarryingValue>
+    <us-gaap:DepreciationDepletionAndAmortization contextRef="fy2015" unitRef="USD" decimals="0">300</us-gaap:DepreciationDepletionAndAmortization>
+    <us-gaap:OtherOperatingActivitiesCashFlowStatement contextRef="fy2015" unitRef="USD" decimals="0">400</us-gaap:OtherOperatingActivitiesCashFlowStatement>
+    <us-gaap:AdjustmentsToReconcileNetIncomeLossToCashProvidedByUsedInOperatingActivities contextRef="fy2015" unitRef="USD" decimals="0">700</us-gaap:AdjustmentsToReconcileNetIncomeLossToCashProvidedByUsedInOperatingActivities>
+    <us-gaap:NetCashProvidedByUsedInOperatingActivities contextRef="fy2015" unitRef="USD" decimals="0">3700</us-gaap:NetCashProvidedByUsedInOperatingActivities>
+    <us-gaap:NetCashProvidedByUsedInFinancingActivities contextRef="fy2015" unitRef="USD" decimals="0">300</us-gaap:NetCashProvidedByUsedInFinancingActivities>
+    <us-gaap:NetCashProvidedByUsedInInvestingActivities contextRef="fy2015" unitRef="USD" decimals="0">400</us-gaap:NetCashProvidedByUsedInInvestingActivities>
+    <us-gaap:CashAndCashEquivalentsAtCarryingValue contextRef="fye2015" unitRef="USD" decimals="0">11200</us-gaap:CashAndCashEquivalentsAtCarryingValue>
+    <EntityEmergingGrowthCompany xmlns="http://xbrl.sec.gov/dei/2021" contextRef="fy2015">false</EntityEmergingGrowthCompany>
+</xbrli:xbrl>

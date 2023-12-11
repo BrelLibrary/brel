@@ -1,0 +1,204 @@
+<html xmlns:case="http://edgar/2009/conformance">
+  <head>
+    <title>609-05
+        :
+        EDGAR Filer Manual v68d 6.9.5</title>
+    <style type="text/css">
+        table, td, th {border: solid black 1pt; border-collapse: collapse;} td {vertical-align: top;}
+      </style>
+  </head>
+  <body>
+    <h1>609-05
+        :
+        EDGAR Filer Manual v68d 6.9.5</h1>
+    <p>
+        Created by: 
+        <a href="mailto:StructuredData@sec.gov">SEC Office of Structured Disclosure</a></p>
+    <p>
+      <description xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.9.5 Restrictions on resource role attributes.">Refer to EFM: 6.9.5 Restrictions on resource role attributes.</a>
+    </description>
+    </p>
+    <h3>References</h3>
+    <ul>11198</ul>
+    <h2>
+        Variations
+      </h2>
+    <table border="solid">
+      <thead>
+        <tr>
+          <th>Number</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>References</th>
+          <th>Data Inputs</th>
+          <th>Result Outputs</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>_000gd</td>
+          <td>6.9.5, a label resource for PublicFloat with a 2009 'negated label' role attribute, and custom role http://e6090500/role/Rockn declared but not used, GOOD.</td>
+          <td>a label resource for PublicFloat with a 2009 'negated label' role attribute, and custom role http://e6090500/role/Rockn declared but not used, GOOD.</td>
+          <td>11198 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60905000gd-20081231.xml">e60905000gd-20081231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="e60905000gd-20081231_lab.xml">e60905000gd-20081231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_pre.xml">edgar-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_def.xml">edgar-20081231_def.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_lab.xml">edgar-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20081231.xsd">edgar-20081231.xsd</a></li>
+              <li>
+    Schema
+    <a href="e60905000gd-20081231.xsd">e60905000gd-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_001ng</td>
+          <td>6.9.5, A label resource for PublicFloat using a custom xlink:role attribute http://e6090500/role/Rockn, even though not used on any preferredLabel, NOGOOD. </td>
+          <td>A label resource for PublicFloat using a custom xlink:role attribute http://e6090500/role/Rockn, even though not used on any preferredLabel, NOGOOD. </td>
+          <td>11198 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60905001ng-20081231.xml">e60905001ng-20081231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="e60905001ng-20081231_lab.xml">e60905001ng-20081231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_pre.xml">edgar-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_def.xml">edgar-20081231_def.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_lab.xml">edgar-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20081231.xsd">edgar-20081231.xsd</a></li>
+              <li>
+    Schema
+    <a href="e60905001ng-20081231.xsd">e60905001ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 60905, <a href="../../../../lib/xbrlerrors.htm#fs-0905-Custom-Resource-Role-Used">Custom-Resource-Role-Used</a></td></tr><tr><td>FRD:</td><td>fs</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_002gd</td>
+          <td>6.9.5, a label resource for PublicFloat with the 2009 'negated label' role attribute, and custom role http://e6090500/role/Rockn declared but not used, GOOD.</td>
+          <td>a label resource for PublicFloat with the 2009 'negated label' role attribute, and custom role http://e6090500/role/Rockn declared but not used, GOOD.</td>
+          <td>11198 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60905002gd-20091231.xml">e60905002gd-20091231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="e60905002gd-20091231_lab.xml">e60905002gd-20091231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_pre.xml">edgar-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_def.xml">edgar-20081231_def.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_lab.xml">edgar-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20081231.xsd">edgar-20081231.xsd</a></li>
+              <li>
+    Schema
+    <a href="e60905002gd-20091231.xsd">e60905002gd-20091231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

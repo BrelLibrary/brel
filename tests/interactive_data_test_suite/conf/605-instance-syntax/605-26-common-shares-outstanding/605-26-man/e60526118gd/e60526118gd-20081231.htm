@@ -1,0 +1,509 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ixt="http://www.xbrl.org/inlineXBRL/transformation/2015-02-26" xmlns:ixt-sec="http://www.sec.gov/inlineXBRL/transformation/2015-08-31" xmlns:edgar="http://edgar/20181231" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:dei="http://xbrl.sec.gov/dei/2023" xmlns:i="http://www.xbrl.org/2003/instance" xmlns:iso4217="http://www.xbrl.org/2003/iso4217" xmlns:ix="http://www.xbrl.org/2013/inlineXBRL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:utr="http://www.xbrl.org/2009/utr" xmlns:xbrldi="http://xbrl.org/2006/xbrldi" xmlns:us-gaap="http://fasb.org/us-gaap/2023" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <head>
+        <title>FORM 40-F MCFY (us-gaap)</title>
+        <meta content="text/html; charset=US-ASCII" http-equiv="Content-Type"></meta>
+    </head>
+    <body>
+        <div style="display: none">
+            <ix:header>
+                <ix:hidden>
+                    <ix:nonNumeric contextRef="fy18" id="amend" name="dei:AmendmentFlag">false</ix:nonNumeric>
+                    <ix:nonNumeric contextRef="fy18" id="doc-fp" name="dei:DocumentFiscalPeriodFocus">FY</ix:nonNumeric>
+                    <ix:nonNumeric contextRef="fy18" id="ent-cik" name="dei:EntityCentralIndexKey">9876543210</ix:nonNumeric>
+                </ix:hidden>
+                <ix:references>
+                    <link:schemaRef xlink:arcrole="http://www.xbrl.org/2003/linkbase" xlink:href="edgar-20181231.xsd" xlink:type="simple"></link:schemaRef>
+                </ix:references>
+                <ix:resources>
+                    <i:context id="fy18">
+                        <i:entity>
+                            <i:identifier scheme="http://www.sec.gov/CIK">9876543210</i:identifier>
+                        </i:entity>
+                        <i:period>
+                            <i:startDate>2018-01-01</i:startDate>
+                            <i:endDate>2018-12-31</i:endDate>
+                        </i:period>
+                    </i:context>
+                    <i:context id="fy18e_CommonClassAMember">
+                        <i:entity>
+                            <i:identifier scheme="http://www.sec.gov/CIK">9876543210</i:identifier>
+                            <i:segment>
+                                <xbrldi:explicitMember dimension="us-gaap:StatementClassOfStockAxis">us-gaap:CommonClassAMember</xbrldi:explicitMember>
+                            </i:segment>
+                        </i:entity>
+                        <i:period>
+                            <i:instant>2018-12-31</i:instant>
+                        </i:period>
+                    </i:context>
+                    <i:context id="fy18e_CommonClassBMember">
+                        <i:entity>
+                            <i:identifier scheme="http://www.sec.gov/CIK">9876543210</i:identifier>
+                            <i:segment>
+                                <xbrldi:explicitMember dimension="us-gaap:StatementClassOfStockAxis">us-gaap:CommonClassBMember</xbrldi:explicitMember>
+                            </i:segment>
+                        </i:entity>
+                        <i:period>
+                            <i:instant>2018-12-31</i:instant>
+                        </i:period>
+                    </i:context>
+                    <i:context id="fy18_BusinessContactMember">
+                        <i:entity>
+                            <i:identifier scheme="http://www.sec.gov/CIK">9876543210</i:identifier>
+                            <i:segment>
+                                <xbrldi:explicitMember dimension="dei:EntityAddressesAddressTypeAxis">dei:BusinessContactMember</xbrldi:explicitMember>
+                            </i:segment>
+                        </i:entity>
+                        <i:period>
+                            <i:startDate>2018-01-01</i:startDate>
+                            <i:endDate>2018-12-31</i:endDate>
+                        </i:period>
+                    </i:context>
+                    <i:unit id="USD">
+                        <i:measure>iso4217:USD</i:measure>
+                    </i:unit>
+                    <i:unit id="Shares">
+                        <i:measure>i:shares</i:measure>
+                    </i:unit>
+                    <i:unit id="USD_per_Share">
+                        <i:divide>
+                            <i:unitNumerator>
+                                <i:measure>iso4217:USD</i:measure>
+                            </i:unitNumerator>
+                            <i:unitDenominator>
+                                <i:measure>i:shares</i:measure>
+                            </i:unitDenominator>
+                        </i:divide>
+                    </i:unit>
+                </ix:resources>
+            </ix:header>
+        </div>
+        <div>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: 21.6pt">
+                <b>
+                    <span style="font-size: 18.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;; color: black">UNITED STATES</span>
+                </b>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: 21.6pt">
+                <b>
+                    <span style="font-size: 18.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;; color: black">SECURITIES AND EXCHANGE COMMISSION</span>
+                </b>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: 14.4pt">
+                <b>
+                    <span style="font-size: 12.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;; color: black">Washington, D.C. 20549</span>
+                </b>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: 21.6pt">
+                <b>
+                    <span style="font-size: 18.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;; color: black">FORM <ix:nonNumeric contextRef="fy18" name="dei:DocumentType">40-F</ix:nonNumeric>
+                        <ix:nonNumeric contextRef="fy18" name="dei:DocumentFinStmtErrorCorrectionFlag" id="DocumentFinStmtErrorCorrectionFlag" format="ixt:booleantrue">YES</ix:nonNumeric>
+                        <ix:nonNumeric contextRef="fy18" name="dei:DocumentFinStmtRestatementRecoveryAnalysisFlag" id="DocumentFinStmtRestatementRecoveryAnalysisFlag" format="ixt:booleantrue">YES</ix:nonNumeric>
+                    </span>
+                </b>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: 12.0pt">
+                <b>
+                    <span style="font-size: 10.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;; color: black">[Check one]</span>
+                </b>
+            </p>
+            <table style="width: 100.0%; border-collapse: collapse">
+                <tr>
+                    <td colspan="2" style="width: 100.0%; padding: 0in 0in 0in 0in"></td>
+                </tr>
+                <tr>
+                    <td style="width: 6.04%; padding: 0in 0in 0in 0in"></td>
+                    <td style="width: 93.96%; padding: 0in 0in 0in 0in"></td>
+                </tr>
+                <tr>
+                    <td style="width: 6.04%; padding: 1.5pt 1.5pt 1.5pt 1.5pt" valign="top">
+                        <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                            <span style="font-size: 12.0pt; font-family: Wingdings">
+                                <ix:nonNumeric contextRef="fy18" format="ixt:booleanfalse" id="doc-reg-stmt" name="dei:DocumentRegistrationStatement">o</ix:nonNumeric>
+                            </span>
+                        </p>
+                    </td>
+                    <td style="width: 93.96%; padding: 1.5pt 1.5pt 1.5pt 1.5pt" valign="top">
+                        <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                            <b>
+                                <span style="font-size: 12.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;">REGISTRATION STATEMENT PURSUANT TO SECTION&#160;12 OF THE SECURITIES EXCHANGE ACT OF&#160;1934</span>
+                            </b>
+                        </p>
+                    </td>
+                </tr>
+            </table>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: 12.0pt">
+                <b>
+                    <span style="font-size: 10.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;; color: black">OR</span>
+                </b>
+            </p>
+            <table style="width: 100.0%; border-collapse: collapse">
+                <tr>
+                    <td colspan="2" style="width: 100.0%; padding: 0in 0in 0in 0in"></td>
+                </tr>
+                <tr>
+                    <td style="width: 6.04%; padding: 0in 0in 0in 0in"></td>
+                    <td style="width: 93.96%; padding: 0in 0in 0in 0in"></td>
+                </tr>
+                <tr>
+                    <td style="width: 6.04%; padding: 1.5pt 1.5pt 1.5pt 1.5pt" valign="top">
+                        <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                            <span style="font-size: 12.0pt; font-family: Wingdings">
+                                <ix:nonNumeric contextRef="fy18" format="ixt:booleantrue" id="doc-ann-rpt" name="dei:DocumentAnnualReport">&#253;</ix:nonNumeric>
+                            </span>
+                        </p>
+                    </td>
+                    <td style="width: 93.96%; padding: 1.5pt 1.5pt 1.5pt 1.5pt" valign="top">
+                        <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                            <b>
+                                <span style="font-size: 12.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;">ANNUAL REPORT PURSUANT TO SECTION&#160;13(a) OR&#160;15(d) OF THE SECURITIES EXCHANGE ACT OF&#160;1934</span>
+                            </b>
+                        </p>
+                    </td>
+                </tr>
+            </table>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: 12.0pt">
+                <b>
+                    <span style="font-size: 10.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;; color: black">For the fiscal year ended <ix:nonNumeric contextRef="fy18" format="ixt:datemonthdayyearen" name="dei:DocumentPeriodEndDate">
+                            <ix:nonNumeric contextRef="fy18" format="ixt:datemonthdayen" id="ent-fyend" name="dei:CurrentFiscalYearEndDate">December&#160;31</ix:nonNumeric>,&#160;<ix:nonNumeric contextRef="fy18" name="dei:DocumentFiscalYearFocus">2018</ix:nonNumeric>
+                        </ix:nonNumeric>
+                    </span>
+                </b>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: 12.0pt">
+                <b>
+                    <span style="font-size: 10.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;; color: black">Commission&#160;File Number <ix:nonNumeric contextRef="fy18" name="dei:EntityFileNumber">001-10805</ix:nonNumeric>
+                    </span>
+                </b>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: 28.8pt">
+                <b>
+                    <span style="font-size: 24.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;; color: black">
+                        <ix:nonNumeric contextRef="fy18" name="dei:EntityRegistrantName">McFeely Communications Inc.</ix:nonNumeric>
+                    </span>
+                </b>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: 12.0pt">
+                <b>
+                    <span style="font-size: 10.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;; color: black">(Exact name of Registrant as specified in its charter)</span>
+                </b>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: 12.0pt">
+                <b>
+                    <span style="font-size: 10.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;; color: black">
+         Not Applicable</span>
+                </b>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: 9.6pt">
+                <b>
+                    <span style="font-size: 8.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;; color: black">(Translation of Registrant&#8217;s name into English (if applicable))</span>
+                </b>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: 12.0pt">
+                <b>
+                    <span style="font-size: 10.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;; color: black">
+                        <ix:nonNumeric contextRef="fy18" format="ixt-sec:edgarprovcountryen" name="dei:EntityIncorporationStateCountryCode">British Columbia</ix:nonNumeric>
+                    </span>
+                </b>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: 9.6pt">
+                <b>
+                    <span style="font-size: 8.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;; color: black">(Province or other jurisdiction of incorporation or organization)</span>
+                </b>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: 12.0pt">
+                <b>
+                    <span style="font-size: 10.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;; color: black">
+                        <ix:nonNumeric contextRef="fy18" name="dei:EntityPrimarySicNumber">4812</ix:nonNumeric>, 4813, 4822, 4832, 4833, 4841</span>
+                </b>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: 9.6pt">
+                <b>
+                    <span style="font-size: 8.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;; color: black">(Primary Standard Industrial Classification Code Number (if applicable))</span>
+                </b>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: 12.0pt">
+                <b>
+                    <span style="font-size: 10.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;; color: black">
+                        <span style="">
+                            <ix:nonNumeric contextRef="fy18" id="ent-tax" name="dei:EntityTaxIdentificationNumber">11-0902001</ix:nonNumeric>
+                        </span>
+                    </span>
+                </b>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: 9.6pt">
+                <b>
+                    <span style="font-size: 8.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;; color: black">(I.R.S. Employer Identification Number (if applicable))</span>
+                </b>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: 9.6pt">
+                <span style="font-size: 8.0pt; font-family: &quot;Times New Roman&quot;, &quot;serif&quot;; color: black"> &#160;</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: 12.0pt">
+                <b>
+                    <span style="font-size: 10.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;; color: black">
+                        <ix:nonNumeric contextRef="fy18" name="dei:EntityAddressAddressLine1">333 Bloor Street East, 10th Floor</ix:nonNumeric>
+                    </span>
+                </b>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: 12.0pt">
+                <b>
+                    <span style="font-size: 10.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;; color: black">
+                        <ix:nonNumeric contextRef="fy18" name="dei:EntityAddressCityOrTown">Toronto</ix:nonNumeric>, <ix:nonNumeric contextRef="fy18" name="dei:EntityAddressStateOrProvince">ON</ix:nonNumeric>
+                        <ix:nonNumeric contextRef="fy18" name="dei:EntityAddressPostalZipCode">M4W 1G9</ix:nonNumeric>
+                    </span>
+                </b>
+            </p>
+      (<ix:nonNumeric contextRef="fy18" name="dei:CityAreaCode">416</ix:nonNumeric>) 
+            <ix:nonNumeric contextRef="fy18" name="dei:LocalPhoneNumber">979-9966</ix:nonNumeric>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: 9.6pt">
+                <b>
+                    <span style="font-size: 8.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;; color: black">(Address and telephone number of Registrant&#8217;s principal executive offices)</span>
+                </b>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: 9.6pt">
+                <span style="font-size: 8.0pt; font-family: &quot;Times New Roman&quot;, &quot;serif&quot;; color: black"> &#160;</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: 12.0pt">
+                <b>
+                    <span style="font-size: 10.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;; color: black">
+                        <ix:nonNumeric contextRef="fy18_BusinessContactMember" name="dei:ContactPersonnelName">Wacky Duck Corporation</ix:nonNumeric>
+                    </span>
+                </b>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: 12.0pt">
+                <b>
+                    <span style="font-size: 10.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;; color: black">
+                        <ix:nonNumeric contextRef="fy18_BusinessContactMember" name="dei:EntityAddressAddressLine1">111 Eighth Avenue, 13th Floor</ix:nonNumeric>
+                    </span>
+                </b>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: 12.0pt">
+                <b>
+                    <span style="font-size: 10.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;; color: black">
+                        <ix:nonNumeric contextRef="fy18_BusinessContactMember" name="dei:EntityAddressCityOrTown">New York</ix:nonNumeric>, 
+          <ix:nonNumeric contextRef="fy18_BusinessContactMember" name="dei:EntityAddressStateOrProvince">NY</ix:nonNumeric>
+                        <ix:nonNumeric contextRef="fy18_BusinessContactMember" name="dei:EntityAddressPostalZipCode">10011</ix:nonNumeric>
+                    </span>
+                </b>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: 12.0pt">
+                <b>
+                    <span style="font-size: 10.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;; color: black">
+                        <ix:nonNumeric contextRef="fy18_BusinessContactMember" name="dei:CityAreaCode">(212)</ix:nonNumeric>
+                        <ix:nonNumeric contextRef="fy18_BusinessContactMember" name="dei:LocalPhoneNumber">894-8940</ix:nonNumeric>
+                    </span>
+                </b>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: 9.6pt">
+                <b>
+                    <span style="font-size: 8.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;; color: black">(Name, address (including zip code) and telephone number (including area code)</span>
+                </b>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: 9.6pt">
+                <b>
+                    <span style="font-size: 8.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;; color: black">of agent for service in the United States)</span>
+                </b>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: 12.0pt">
+                <b>
+                    <span style="font-size: 10.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;; color: black">Securities registered or to be registered pursuant to Section&#160;12(b) of the Act.</span>
+                </b>
+            </p>
+            <table style="width: 100.0%; border-collapse: collapse">
+                <tr>
+                    <td colspan="5" style="width: 100.0%; padding: 0in 0in 0in 0in"></td>
+                </tr>
+                <tr>
+                    <td style="width: 31%; padding: 0in 0in 0in 0in"></td>
+                    <td style="width: 4%; padding: 0in 0in 0in 0in"></td>
+                    <td style="width: 31%; padding: 0in 0in 0in 0in"></td>
+                    <td style="width: 3%; padding: 0in 0in 0in 0in"></td>
+                    <td style="width: 30%; padding: 0in 0in 0in 0in"></td>
+                </tr>
+                <tr>
+                    <td style="width: 31%; padding: 1.5pt 1.5pt 1.5pt 1.5pt" valign="bottom">
+                        <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                            <b>
+                                <span style="font-size: 8.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;">Title of each class</span>
+                            </b>
+                        </p>
+                    </td>
+                    <td style="width: 4%; padding: 1.5pt 1.5pt 1.5pt 1.5pt" valign="bottom">
+                        <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                            <span style="font-size: 8.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;">&#160;</span>
+                        </p>
+                    </td>
+                    <td style="width: 30%; padding: 1.5pt 1.5pt 1.5pt 1.5pt" valign="bottom">
+                        <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                            <b>
+                                <span style="font-size: 8.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;">Ticker Symbol</span>
+                            </b>
+                        </p>
+                    </td>
+                    <td style="width: 3%; padding: 1.5pt 1.5pt 1.5pt 1.5pt" valign="bottom">
+                        <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                            <span style="font-size: 8.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;">&#160;</span>
+                        </p>
+                    </td>
+                    <td style="width: 31%; padding: 1.5pt 1.5pt 1.5pt 1.5pt" valign="bottom">
+                        <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                            <b>
+                                <span style="font-size: 8.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;">Name of each exchange on which registered</span>
+                            </b>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 32%; padding: 1.5pt 1.5pt 1.5pt 1.5pt" valign="top">
+                    </td>
+                    <td style="width: 3%; padding: 1.5pt 1.5pt 1.5pt 1.5pt" valign="bottom">
+                        <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                            <span style="font-size: 10.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;">&#160;</span>
+                        </p>
+                    </td>
+                    <td style="width: 31%; padding: 1.5pt 1.5pt 1.5pt 1.5pt" valign="top">
+                        <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                            <b>
+                                <span style="font-size: 10.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;">
+                                    <ix:nonNumeric contextRef="fy18" name="dei:Security12bTitle">Class B Non-Voting</ix:nonNumeric>
+                                    <ix:nonNumeric contextRef="fy18" name="dei:SecurityExchangeName">NYSE</ix:nonNumeric>
+                                    <ix:nonNumeric contextRef="fy18" name="dei:SecurityReportingObligation">15(d)</ix:nonNumeric>
+                                    <ix:nonNumeric contextRef="fy18" name="dei:TradingSymbol">MCFY</ix:nonNumeric>
+                                </span>
+                            </b>
+                        </p>
+                    </td>
+                    <td style="width: 4%; padding: 1.5pt 1.5pt 1.5pt 1.5pt" valign="bottom">
+                        <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                            <span style="font-size: 10.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;">&#160;</span>
+                        </p>
+                    </td>
+                    <td style="width: 31%; padding: 1.5pt 1.5pt 1.5pt 1.5pt" valign="top">
+                    </td>
+                </tr>
+            </table>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: 12.0pt">
+                <b>
+                    <span style="font-size: 10.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;; color: black">&#160;</span>
+                </b>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: 12.0pt">
+                <b>
+                    <span style="font-size: 10.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;; color: black">Securities registered or to be registered pursuant to Section&#160;12(g) of the Act.</span>
+                </b>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: 12.0pt">
+                <b>
+                    <span style="font-size: 10.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;; color: black">Not Applicable</span>
+                </b>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: 9.6pt">
+                <b>
+                    <span style="font-size: 8.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;; color: black">(Title of Class)</span>
+                </b>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: 9.6pt">
+                <span style="font-size: 8.0pt; font-family: &quot;Times New Roman&quot;, &quot;serif&quot;; color: black"> &#160;</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                <span style="font-size: 10.0pt; font-family: &quot;Times New Roman&quot;, &quot;serif&quot;; color: black"> &#160;</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: 12.0pt">
+                <span style="font-size: 10.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;; color: black">SEC 2285 (04-17)</span>
+            </p>
+            <div style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                <hr style="color: black"></hr>
+            </div>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: 12.0pt">
+                <span style="font-size: 10.0pt; font-family: &quot;Times New Roman&quot;, &quot;serif&quot;; color: black"> &#160;</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                <span style="font-size: 10.0pt; font-family: &quot;Times New Roman&quot;, &quot;serif&quot;; color: black"> &#160;</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: 12.0pt">
+                <b>
+                    <span style="font-size: 10.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;; color: black">Securities for which there is a reporting obligation pursuant to Section&#160;
+			   of the Act.</span>
+                </b>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: 9.6pt">
+                <b>
+                    <span style="font-size: 8.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;; color: black">(Title of Class)</span>
+                </b>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: justify; line-height: 12.0pt">
+                <span style="font-size: 10.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;; color: black">For annual reports, indicate by check mark the information filed with this Form:</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: 12.0pt">
+                <span style="font-size: 10.0pt; font-family: Wingdings; color: black;">
+                    <ix:nonNumeric contextRef="fy18" format="ixt:booleantrue" id="anninfo" name="dei:AnnualInformationForm">&#253;</ix:nonNumeric>
+                </span>
+                <span style="font-size: 10.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;; color: black">&#160;&#160;Annual information form&#160;&#160;&#160;&#160;&#160; &#160;&#160;&#160;&#160;&#160; &#160;&#160;&#160;</span>
+                <span style="font-size: 10.0pt; font-family: Wingdings; color: black;">
+                    <ix:nonNumeric contextRef="fy18" format="ixt:booleantrue" id="audited" name="dei:AuditedAnnualFinancialStatements">&#253;</ix:nonNumeric>
+                </span>
+                <span style="font-size: 10.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;; color: black">&#160;&#160;Audited annual financial statements</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: justify; line-height: 12.0pt">
+                <span style="font-size: 10.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;; color: black">Indicate the number of outstanding shares of each of the issuer&#8217;s classes of capital or common stock as of the close of the period covered by the annual report.</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: 12.0pt">
+                <b>
+                    <span style="font-size: 10.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;; color: black; text-decoration: underline;">
+                        <ix:nonFraction contextRef="fy18e_CommonClassAMember" decimals="INF" format="ixt:numdotdecimal" name="dei:EntityCommonStockSharesOutstanding" unitRef="Shares">112,407,192</ix:nonFraction>&#160;Class&#160;A Voting shares;&#160;<ix:nonFraction contextRef="fy18e_CommonClassBMember" decimals="INF" format="ixt:numdotdecimal" name="dei:EntityCommonStockSharesOutstanding" unitRef="Shares">402,403,433</ix:nonFraction>&#160;Class B Non-Voting shares.</span>
+                </b>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: justify; line-height: 12.0pt">
+                <span style="font-size: 10.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;; color: black">Indicate by check mark whether the Registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Exchange Act during the preceding 12 months (or for such shorter period that the Registrant was required to file such reports) and (2) has been subject to such filing requirements for the past 90 days.</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: 12.0pt">
+                <span style="font-size: 10.0pt; font-family: Wingdings; color: black">&#253;</span>
+                <span style="font-size: 10.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;; color: black">
+                    <ix:nonNumeric contextRef="fy18" name="dei:EntityCurrentReportingStatus">Yes</ix:nonNumeric>
+                </span>
+                <b>
+                    <span style="font-size: 10.0pt; font-family: Wingdings; color: black">o</span>
+                </b>
+                <span style="font-size: 10.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;; color: black">&#160;&#160;No</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: justify; line-height: 12.0pt">
+                <span style="font-size: 10.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;; color: black">Indicate by check mark whether the Registrant has submitted electronically and posted on its corporate Website, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulations S-T during the preceding 12 months.</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: 12.0pt">
+                <span style="font-size: 10.0pt; font-family: Wingdings; color: black">&#253;</span>
+                <span style="font-size: 10.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;; color: black">
+                    <ix:nonNumeric contextRef="fy18" name="dei:EntityInteractiveDataCurrent">Yes</ix:nonNumeric>
+                </span>
+                <b>
+                    <span style="font-size: 10.0pt; font-family: Wingdings; color: black">o</span>
+                </b>
+                <span style="font-size: 10.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;; color: black">&#160;&#160;No</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: 12.0pt">
+                <span style="font-size: 10.0pt; font-family: &quot;Times New Roman&quot;, &quot;serif&quot;; color: black"> &#160;</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: 12.0pt">
+                <span style="font-size: 10.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;; color: black">Indicate by check mark whether the registrant is an emerging growth company as defined in Rule&#160;12b-2 of the Exchange Act.</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: 12.0pt">
+                <span style="font-size: 10.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;; color: black">Emerging growth company&#160;</span>
+                <b>
+                    <span style="font-size: 10.0pt; font-family: Wingdings; color: black">
+                        <ix:nonNumeric contextRef="fy18" format="ixt:booleanfalse" id="ent-egc" name="dei:EntityEmergingGrowthCompany">o</ix:nonNumeric>
+                    </span>
+                </b>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: 12.0pt">
+                <span style="font-size: 10.0pt; font-family: &quot;Times New Roman&quot;, &quot;serif&quot;; color: black"> &#160;</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: 12.0pt">
+                <span style="font-size: 10.0pt; font-family: &quot;Times New Roman&quot;, &quot;serif&quot;; color: black"> &#160;</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: 12.0pt">
+                <span style="font-size: 10.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;; color: black">&#8224;The term &#8220;new or revised financial accounting standard&#8221; refers to any update issued by the Financial Accounting Standards Board to its Accounting Standards Codification after April&#160;5, 2012.</span>
+            </p>
+            <p>&#160;</p>
+        </div>
+    </body>
+</html>

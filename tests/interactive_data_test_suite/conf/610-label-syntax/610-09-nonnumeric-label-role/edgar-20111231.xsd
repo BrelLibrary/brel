@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xs:schema xmlns:dei="http://xbrl.sec.gov/dei/2023" xmlns:edgar="http://edgar/20111231" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:dtr-types="http://www.xbrl.org/dtr/type/2022-03-31"  xmlns:xbrldt="http://xbrl.org/2005/xbrldt" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:utr="http://www.xbrl.org/2009/utr" xmlns:xl="http://www.xbrl.org/2003/XLink" targetNamespace="http://edgar/20111231" elementFormDefault="qualified">
+    <xs:annotation>
+        <xs:appinfo>
+            <link:linkbaseRef xlink:href="edgar-20111231_pre.xml" xlink:type="simple" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:role="http://www.xbrl.org/2003/role/presentationLinkbaseRef"></link:linkbaseRef>
+            <link:linkbaseRef xlink:href="edgar-20111231_def.xml" xlink:type="simple" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:role="http://www.xbrl.org/2003/role/definitionLinkbaseRef"></link:linkbaseRef>
+            <link:linkbaseRef xlink:href="edgar-20111231_lab.xml" xlink:type="simple" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef"></link:linkbaseRef>
+            <link:roleType id="EntityInformation" roleURI="http://edgar/role/EntityInformation">
+                <link:definition>991 - Document - Entity Information</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="DocumentInformation" roleURI="http://edgar/role/DocumentInformation">
+                <link:definition>992 - Document - Document Information</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="OtherInformation" roleURI="http://edgar/role/OtherInformation">
+                <link:definition>990 - Document - Other Information</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="Defaults" roleURI="http://edgar/role/Defaults">
+                <link:definition>999 - Document - Defaults</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+        </xs:appinfo>
+    </xs:annotation>
+    <xs:import schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd" namespace="http://www.xbrl.org/2003/instance"></xs:import>
+    <xs:import schemaLocation="http://www.xbrl.org/2005/xbrldt-2005.xsd" namespace="http://xbrl.org/2005/xbrldt"></xs:import>
+    <xs:import schemaLocation="https://xbrl.sec.gov/dei/2023/dei-2023.xsd" namespace="http://xbrl.sec.gov/dei/2023"></xs:import>
+    <xs:element name="Top" id="edgar_Top" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true" nillable="true" substitutionGroup="xbrli:item"></xs:element>
+    <xs:element name="stringItem" id="edgar_stringItem" type="xbrli:stringItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></xs:element>
+    <xs:element name="dateItem" id="edgar_dateItem" type="xbrli:dateItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></xs:element>
+    <xs:element name="gYearItem" id="edgar_gYearItem" type="xbrli:gYearItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></xs:element>
+    <xs:element name="booleanItem" id="edgar_booleanItem" type="xbrli:booleanItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></xs:element>
+    <xs:element name="dateTimeItem" id="edgar_dateTimeItem" type="xbrli:dateTimeItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></xs:element>
+    <xs:element name="durationItem" id="edgar_durationItem" type="xbrli:durationItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></xs:element>
+    <xs:element name="gDayItem" id="edgar_gDayItem" type="xbrli:gDayItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></xs:element>
+    <xs:element name="gMonthDayItem" id="edgar_gMonthDayItem" type="xbrli:gMonthDayItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></xs:element>
+    <xs:element name="QNameItem" id="edgar_QNameItem" type="xbrli:QNameItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></xs:element>
+    <xs:element name="anyURIItem" id="edgar_anyURIItem" type="xbrli:anyURIItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></xs:element>
+    <xs:element name="base64BinaryItem" id="edgar_base64BinaryItem" type="xbrli:base64BinaryItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></xs:element>
+    <xs:element name="gMonthItem" id="edgar_gMonthItem" type="xbrli:gMonthItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></xs:element>
+    <xs:element name="gYearMonthItem" id="edgar_gYearMonthItem" type="xbrli:gMonthDayItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></xs:element>
+    <xs:element name="hexBinaryItem" id="edgar_hexBinaryItem" type="xbrli:hexBinaryItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></xs:element>
+    <xs:element name="timeItem" id="edgar_timeItem" type="xbrli:timeItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></xs:element>
+    <xs:element name="normalizedStringItem" id="edgar_normalizedStringItem" type="xbrli:normalizedStringItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></xs:element>
+    <xs:element name="tokenItem" id="edgar_tokenItem" type="xbrli:tokenItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></xs:element>
+    <xs:element name="NCNameItem" id="edgar_NCNameItem" type="xbrli:NCNameItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></xs:element>
+    <xs:element name="NameItem" id="edgar_NameItem" type="xbrli:NameItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></xs:element>
+    <xs:element name="languageItem" id="edgar_languageItem" type="xbrli:languageItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item"></xs:element>
+</xs:schema>

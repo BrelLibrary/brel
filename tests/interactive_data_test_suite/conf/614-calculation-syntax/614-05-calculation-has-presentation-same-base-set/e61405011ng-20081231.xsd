@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xsd:schema xmlns:dei="http://xbrl.sec.gov/dei/2023" xmlns:edgar="http://edgar/20081231" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:dtr-types="http://www.xbrl.org/dtr/type/2022-03-31"  xmlns:xbrldt="http://xbrl.org/2005/xbrldt" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:e6140500="http://e6140500/20081231" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://e6140500/20081231" elementFormDefault="qualified">
+    <xsd:annotation>
+        <xsd:appinfo>
+            <link:linkbaseRef xlink:href="e61405011ng-20081231_pre.xml" xlink:type="simple" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:role="http://www.xbrl.org/2003/role/presentationLinkbaseRef"></link:linkbaseRef>
+            <link:linkbaseRef xlink:href="e61405011ng-20081231_cal.xml" xlink:type="simple" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:role="http://www.xbrl.org/2003/role/calculationLinkbaseRef"></link:linkbaseRef>
+            <link:linkbaseRef xlink:href="e61405011ng-20081231_lab.xml" xlink:type="simple" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef"></link:linkbaseRef>
+            <link:roleType id="Calpregrp" roleURI="http://e6140500/role/Calpregrp">
+                <link:definition>9901 - Disclosure - Details, ABC</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="Tax1" roleURI="http://e6140500/role/Tax1">
+                <link:definition>001 - Disclosure - Tax Gross minus Net</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="Tax2" roleURI="http://e6140500/role/Tax2">
+                <link:definition>002 - Disclosure - Tax Current plus Noncurrent</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="Tax3" roleURI="http://e6140500/role/Tax3">
+                <link:definition>003 - Disclosure - Tax (Parenthetical)</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+        </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:import schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd" namespace="http://www.xbrl.org/2003/instance"></xsd:import>
+    <xsd:import schemaLocation="edgar-20081231.xsd" namespace="http://edgar/20081231"></xsd:import>
+    <xsd:element name="DeferredTaxAssetsLiabilitiesNetAbstract" id="e6140500_DeferredTaxAssetsLiabilitiesNetAbstract" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true" nillable="true" substitutionGroup="xbrli:item"></xsd:element>
+    <xsd:element name="DeferredTaxAssetsLiabilitiesNet" id="e6140500_DeferredTaxAssetsLiabilitiesNet" type="xbrli:monetaryItemType" xbrli:periodType="instant" nillable="true" substitutionGroup="xbrli:item" xbrli:balance="debit"></xsd:element>
+    <xsd:element name="DeferredTaxAssetsNetAbstract" id="e6140500_DeferredTaxAssetsNetAbstract" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true" nillable="true" substitutionGroup="xbrli:item"></xsd:element>
+    <xsd:element name="DeferredTaxAssetsNet" id="e6140500_DeferredTaxAssetsNet" type="xbrli:monetaryItemType" xbrli:periodType="instant" nillable="true" substitutionGroup="xbrli:item" xbrli:balance="debit"></xsd:element>
+    <xsd:element name="DeferredTaxAssetsNetCurrent" id="e6140500_DeferredTaxAssetsNetCurrent" type="xbrli:monetaryItemType" xbrli:periodType="instant" nillable="true" substitutionGroup="xbrli:item" xbrli:balance="debit"></xsd:element>
+    <xsd:element name="DeferredTaxAssetsNetNoncurrent" id="e6140500_DeferredTaxAssetsNetNoncurrent" type="xbrli:monetaryItemType" xbrli:periodType="instant" nillable="true" substitutionGroup="xbrli:item" xbrli:balance="debit"></xsd:element>
+    <xsd:element name="DeferredTaxAssetsGross" id="e6140500_DeferredTaxAssetsGross" type="xbrli:monetaryItemType" xbrli:periodType="instant" nillable="true" substitutionGroup="xbrli:item" xbrli:balance="debit"></xsd:element>
+    <xsd:element name="DeferredTaxAssetsValuationAllowance" id="e6140500_DeferredTaxAssetsValuationAllowance" type="xbrli:monetaryItemType" xbrli:periodType="instant" nillable="true" substitutionGroup="xbrli:item" xbrli:balance="credit"></xsd:element>
+    <xsd:element name="DeferredTaxLiabilitiesNet" id="e6140500_DeferredTaxLiabilitiesNet" type="xbrli:monetaryItemType" xbrli:periodType="instant" nillable="true" substitutionGroup="xbrli:item" xbrli:balance="credit"></xsd:element>
+</xsd:schema>

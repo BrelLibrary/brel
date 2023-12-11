@@ -1,0 +1,295 @@
+<html xmlns:case="http://edgar/2009/conformance">
+  <head>
+    <title>605-27
+        :
+        EDGAR Filer Manual v68d 6.5.27</title>
+    <style type="text/css">
+        table, td, th {border: solid black 1pt; border-collapse: collapse;} td {vertical-align: top;}
+      </style>
+  </head>
+  <body>
+    <h1>605-27
+        :
+        EDGAR Filer Manual v68d 6.5.27</h1>
+    <p>
+        Created by: 
+        <a href="mailto:StructuredData@sec.gov">SEC Office of Structured Disclosure</a></p>
+    <p>
+      <description xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <h2>A footnoteLink element must have no children other than loc, footnote, and footnoteArc.</h2>
+        <p>REMARK: Although these variations each show only one error code, depending on a vendors' implementation, validation errors may occur prior to the error listed, or other errors may cascade after Footnote-Substitution-Group. In particular, the schema fales of the ng variations should throw error 6.7.27 because they use a substitutionGroup disallowed by that rule; the point being that 6.7.27 would not apply to a standard taxonomy but 6.5.27 would still be an error. As long as all variations marked NOGOOD are rejected because of the disallowed substitutionGroup, a validator may be considered as legitimately passing this testcase.</p>
+    </description>
+    </p>
+    <h3>References</h3>
+    <ul>1094210944</ul>
+    <h2>
+        Variations
+      </h2>
+    <table border="solid">
+      <thead>
+        <tr>
+          <th>Number</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>References</th>
+          <th>Data Inputs</th>
+          <th>Result Outputs</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>_000ng</td>
+          <td>6.5.27 Instance footnote contains a link:documentation element, NOGOOD</td>
+          <td>Instance footnote contains a link:documentation element, NOGOOD</td>
+          <td>1094210944 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"periodOfReport": "12-31-2008", "submissionType": "8-K"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60527000ng-20081231.xml">e60527000ng-20081231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_pre.xml">edgar-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_def.xml">edgar-20081231_def.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_lab.xml">edgar-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20081231.xsd">edgar-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 60527, <a href="../../../../lib/xbrlerrors.htm#du-0527-Footnote-Substitution-Group">Footnote-Substitution-Group</a></td></tr><tr><td>FRD:</td><td>du</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_001ng</td>
+          <td>6.5.27 Instance footnote contains an footsub:Arc in place of a link:footnoteArc, NOGOOD</td>
+          <td>Instance footnote contains an footsub:Arc in place of a link:footnoteArc, which MAY also cause an XBRL 2.1 validation error because the fact-footnote arc appears on an element other than link:footnote, or error Substitution-Group-Custom. NOGOOD.</td>
+          <td>1094210944 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"periodOfReport": "12-31-2008", "submissionType": "8-K"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60527001ng-20081231.xml">e60527001ng-20081231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_pre.xml">edgar-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_def.xml">edgar-20081231_def.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_lab.xml">edgar-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20081231.xsd">edgar-20081231.xsd</a></li>
+              <li>
+    Schema
+    <a href="e60527001ng-20081231.xsd">e60527001ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 60527, <a href="../../../../lib/xbrlerrors.htm#du-0527-Footnote-Substitution-Group">Footnote-Substitution-Group</a></td></tr><tr><td>FRD:</td><td>du</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_002ng</td>
+          <td>6.5.27 Instance footnote contains an footsub:Title element, NOGOOD</td>
+          <td>Instance footnote contains an footsub:Title element, this MAY also cause error Substitution-Group-Custom, NOGOOD.</td>
+          <td>1094210944 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"periodOfReport": "12-31-2008", "submissionType": "8-K"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60527002ng-20081231.xml">e60527002ng-20081231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_pre.xml">edgar-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_def.xml">edgar-20081231_def.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_lab.xml">edgar-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20081231.xsd">edgar-20081231.xsd</a></li>
+              <li>
+    Schema
+    <a href="e60527002ng-20081231.xsd">e60527002ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 60527, <a href="../../../../lib/xbrlerrors.htm#du-0527-Footnote-Substitution-Group">Footnote-Substitution-Group</a></td></tr><tr><td>FRD:</td><td>du</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_003ng</td>
+          <td>6.5.27 Instance footnote contains an footsub:Loc in place of a link:loc, NOGOOD</td>
+          <td>Instance footnote contains an footsub:Loc in place of a link:loc. This MAY cause other cascading errors such as an XLink unresolvable arc label, or a Dangling-Footnote error, or Substitution-Group-Custom. NOGOOD.</td>
+          <td>1094210944 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"periodOfReport": "12-31-2008", "submissionType": "8-K"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60527003ng-20081231.xml">e60527003ng-20081231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_pre.xml">edgar-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_def.xml">edgar-20081231_def.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_lab.xml">edgar-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20081231.xsd">edgar-20081231.xsd</a></li>
+              <li>
+    Schema
+    <a href="e60527003ng-20081231.xsd">e60527003ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 60527, <a href="../../../../lib/xbrlerrors.htm#du-0527-Footnote-Substitution-Group">Footnote-Substitution-Group</a></td></tr><tr><td>FRD:</td><td>du</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_004ng</td>
+          <td>6.5.27 Instance footnote contains an (empty) footsub:Footnote in place of a link:footnote, NOGOOD</td>
+          <td>Instance footnote contains an (empty) footsub:Footnote in place of a link:footnote, this MAY also cause error Substitution-Group-Custom. NOGOOD.</td>
+          <td>1094210944 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"periodOfReport": "12-31-2008", "submissionType": "8-K"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60527004ng-20081231.xml">e60527004ng-20081231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_pre.xml">edgar-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_def.xml">edgar-20081231_def.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_lab.xml">edgar-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20081231.xsd">edgar-20081231.xsd</a></li>
+              <li>
+    Schema
+    <a href="e60527004ng-20081231.xsd">e60527004ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 60527, <a href="../../../../lib/xbrlerrors.htm#du-0527-Footnote-Substitution-Group">Footnote-Substitution-Group</a></td></tr><tr><td>FRD:</td><td>du</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

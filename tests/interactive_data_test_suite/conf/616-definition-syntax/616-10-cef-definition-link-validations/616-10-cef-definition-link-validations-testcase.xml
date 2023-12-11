@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl"?>
+<conf:testcase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:conf="http://edgar/2009/conformance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <conf:creator>
+        <conf:name>SEC Office of Structured Disclosure</conf:name>
+        <conf:email>StructuredData@sec.gov</conf:email>
+    </conf:creator>
+    <conf:number>616-10</conf:number>
+    <conf:name>EDGAR Filer Manual v68d 6.16.10</conf:name>
+    <conf:description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.16.10  CEF definition link validations">Refer to EFM: 6.16.10  CEF definition link validations</a>
+    </conf:description>
+    <conf:variation id="_100gd">
+        <conf:name>dim1-cust-non-cef, GD</conf:name>
+        <conf:description>dim1-cust-non-cef, GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "N-2/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e61610100gd/e61610100gd-20210601.htm</conf:instance>
+            <conf:schema>e61610100gd/iil-20210601.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_101gd">
+        <conf:name>dim2-cust-new-dom-mbr-of-N2-secur-ok, GD</conf:name>
+        <conf:description>dim2-cust-new-dom-mbr-of-N2-secur-ok, GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "N-2/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e61610101gd/e61610101gd-20210601.htm</conf:instance>
+            <conf:schema>e61610101gd/iil-20210601.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_102gd">
+        <conf:name>dim3-cust-new-dom-mbr-of-N2-risk-ok, GD</conf:name>
+        <conf:description>dim3-cust-new-dom-mbr-of-N2-risk-ok, GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "N-2/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e61610102gd/e61610102gd-20210601.htm</conf:instance>
+            <conf:schema>e61610102gd/iil-20210601.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_103ng">
+        <conf:name>dim4-cust-new-dom-mbr-of-cust-ng, NG</conf:name>
+        <conf:description>dim4-cust-new-dom-mbr-of-cust-ng, NG</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "N-2/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e61610103ng/e61610103ng-20210601.htm</conf:instance>
+            <conf:schema>e61610103ng/iil-20210601.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="61610" name="relationshipNotPermitted" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_104ng">
+        <conf:name>dim5-valid-cef-override-not-N2-ng, NG</conf:name>
+        <conf:description>dim5-valid-cef-override-not-N2-ng, NG</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "N-2/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e61610104ng/e61610104ng-20210601.htm</conf:instance>
+            <conf:schema>e61610104ng/iil-20210601.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="61610" name="relationshipNotPermitted" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_105ng">
+        <conf:name>dim5-dimension-domain-ng, NG</conf:name>
+        <conf:description>dim5-dimension-domain-ng, NG</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "N-2/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e61610105ng/e61610105ng-20210601.htm</conf:instance>
+            <conf:schema>e61610105ng/iil-20210601.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="61610" name="relationshipNotPermitted" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+</conf:testcase>

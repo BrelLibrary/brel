@@ -1,0 +1,224 @@
+<html xmlns:case="http://edgar/2009/conformance">
+  <head>
+    <title>525-10
+        :
+        Inline XBRL Test Suite v68d : Header tests, Not EDGAR Dependent</title>
+    <style type="text/css">
+        table, td, th {border: solid black 1pt; border-collapse: collapse;} td {vertical-align: top;}
+      </style>
+  </head>
+  <body>
+    <h1>525-10
+        :
+        Inline XBRL Test Suite v68d : Header tests, Not EDGAR Dependent</h1>
+    <p>
+        Created by: 
+        <a href="mailto:StructuredData@sec.gov">SEC Office of Structured Disclosure</a></p>
+    <p>
+      <description xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <h2>Various "good" (gd) and "not good" (ng) test files that
+
+			demonstrate non-compliant
+
+			iXBRL Header usage</h2>
+    </description>
+    </p>
+    <h2>
+        Variations
+      </h2>
+    <table border="solid">
+      <thead>
+        <tr>
+          <th>Number</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>References</th>
+          <th>Data Inputs</th>
+          <th>Result Outputs</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>_001gd</td>
+          <td>Valid header test case, GOOD</td>
+          <td>PASS-single-ix-header-multi-input</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i10001gd/i10001gd-20081231.htm">i10001gd/i10001gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i10001gd/i10001gd-20081231_pre.xml">i10001gd/i10001gd-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i10001gd/i10001gd-20081231_lab.xml">i10001gd/i10001gd-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i10001gd/i10001gd-20081231.xsd">i10001gd/i10001gd-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_101ng</td>
+          <td>Empty header element, NOGOOD</td>
+          <td>FAIL-empty header</td>
+          <td>There MUST be at least one ix:header element in the Inline XBRL Document. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i10101ng/i10101ng-20081231.htm">i10101ng/i10101ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i10101ng/i10101ng-20081231_pre.xml">i10101ng/i10101ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i10101ng/i10101ng-20081231_lab.xml">i10101ng/i10101ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i10101ng/i10101ng-20081231.xsd">i10101ng/i10101ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.8.1.3:headerMissing">ix11.8.1.3:headerMissing</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_102ng</td>
+          <td>ix:header element is child of html head, NOGOOD</td>
+          <td>FAIL-ix-header-child-of-html-header</td>
+          <td>The ix:header element MUST NOT be a descendant of an HTML head element. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i10102ng/i10102ng-20081231.htm">i10102ng/i10102ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i10102ng/i10102ng-20081231_pre.xml">i10102ng/i10102ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i10102ng/i10102ng-20081231_lab.xml">i10102ng/i10102ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i10102ng/i10102ng-20081231.xsd">i10102ng/i10102ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-html:syntaxError">html:syntaxError</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_103ng</td>
+          <td>The header element contains continuation and nonNumeric elements, NOGOOD</td>
+          <td>misplaced-ix-element-in-header</td>
+          <td>The ix:header element can contain ix:hidden, ix:references and ix:resources in the content 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i10103ng/i10103ng-20081231.htm">i10103ng/i10103ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i10103ng/i10103ng-20081231_pre.xml">i10103ng/i10103ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i10103ng/i10103ng-20081231_lab.xml">i10103ng/i10103ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i10103ng/i10103ng-20081231.xsd">i10103ng/i10103ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-html:syntaxError">html:syntaxError</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

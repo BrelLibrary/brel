@@ -1,0 +1,2437 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../../lib/test.xsl"?>
+<conf:testcase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:conf="http://edgar/2009/conformance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../../lib/test.xsd">
+    <conf:creator>
+        <conf:name>SEC Office of Structured Disclosure</conf:name>
+        <conf:email>StructuredData@sec.gov</conf:email>
+    </conf:creator>
+    <conf:number>605-52</conf:number>
+    <conf:name>EDGAR Filer Manual v68d 6.5.52</conf:name>
+    <conf:description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.5.52 Form 8-K cover page and name changes">Refer to EFM: 6.5.52 Form 8-K cover page and name changes</a>
+    </conf:description>
+    <conf:variation id="_001gd">
+        <conf:name>8-K GOOD </conf:name>
+        <conf:description>8-K GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552001gd/g60552001gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60552001gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552001gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552001gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552001gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_002gd">
+        <conf:name>8-K-GD-Ri - If an inline document, then a non-null fact should exist in the context, per the axis in the applicable context, and be visible (provide warning); else may or may not exist. WrittenCommunications </conf:name>
+        <conf:description>8-K-GD-Ri - If an inline document, then a non-null fact should exist in the context, per the axis in the applicable context, and be visible (provide warning); else may or may not exist. WrittenCommunications. Missing WrittenCommunications</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552002gd/g60552002gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60552002gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552002gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552002gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552002gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_003gd">
+        <conf:name>8-K-GD-Ri - If an inline document, then a non-null fact should exist in the context, per the axis in the applicable context, and be visible (provide warning); else may or may not exist. SolicitingMaterial </conf:name>
+        <conf:description>8-K-GD-Ri - If an inline document, then a non-null fact should exist in the context, per the axis in the applicable context, and be visible (provide warning); else may or may not exist. SolicitingMaterial. Missing SolicitingMaterial</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552003gd/g60552003gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60552003gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552003gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552003gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552003gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_004gd">
+        <conf:name>8-K-GD-Ri - If an inline document, then a non-null fact should exist in the context, per the axis in the applicable context, and be visible (provide warning); else may or may not exist. PreCommencementTenderOffer </conf:name>
+        <conf:description>8-K-GD-Ri - If an inline document, then a non-null fact should exist in the context, per the axis in the applicable context, and be visible (provide warning); else may or may not exist. PreCommencementTenderOffer. Missing PreCommencementTenderOffer</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552004gd/g60552004gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60552004gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552004gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552004gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552004gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_005gd">
+        <conf:name>8-K-GD-Ri - If an inline document, then a non-null fact should exist in the context, per the axis in the applicable context, and be visible (provide warning); else may or may not exist. PreCommencementIssuerTenderOffer </conf:name>
+        <conf:description>8-K-GD-Ri - If an inline document, then a non-null fact should exist in the context, per the axis in the applicable context, and be visible (provide warning); else may or may not exist. PreCommencementIssuerTenderOffer. Missing PreCommencementIssuerTenderOffer</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552005gd/g60552005gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60552005gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552005gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552005gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552005gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_006gd">
+        <conf:name>10-K GOOD </conf:name>
+        <conf:description>10-K GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552006gd/g60552006gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60552006gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552006gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552006gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552006gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_007gw">
+        <conf:name>10-K-GW-Blank &#8211; a non-null fact should not exist. WrittenCommunications </conf:name>
+        <conf:description>10-K-GW-Blank &#8211; a non-null fact should not exist. WrittenCommunications </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552007gw/g60552007gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552007gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552007gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552007gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552007gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="WrittenCommunications" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_008gw">
+        <conf:name>10-K-GW-Blank &#8211; a non-null fact should not exist. SolicitingMaterial </conf:name>
+        <conf:description>10-K-GW-Blank &#8211; a non-null fact should not exist. SolicitingMaterial </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552008gw/g60552008gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552008gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552008gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552008gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552008gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SolicitingMaterial" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_009gw">
+        <conf:name>10-K-GW-Blank &#8211; a non-null fact should not exist. PreCommencementTenderOffer </conf:name>
+        <conf:description>10-K-GW-Blank &#8211; a non-null fact should not exist. PreCommencementTenderOffer </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552009gw/g60552009gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552009gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552009gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552009gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552009gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="PreCommencementTenderOffer" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_010gw">
+        <conf:name>10-K-GW-Blank &#8211; a non-null fact should not exist. PreCommencementIssuerTenderOffer </conf:name>
+        <conf:description>10-K-GW-Blank &#8211; a non-null fact should not exist. PreCommencementIssuerTenderOffer </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552010gw/g60552010gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552010gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552010gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552010gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552010gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="PreCommencementIssuerTenderOffer" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_011gw">
+        <conf:name>10-K-GW-Blank &#8211; a non-null fact should not exist. EntityInformationFormerLegalOrRegisteredName </conf:name>
+        <conf:description>10-K-GW-Blank &#8211; a non-null fact should not exist. EntityInformationFormerLegalOrRegisteredName </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552011gw/g60552011gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552011gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552011gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552011gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552011gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="EntityInformationFormerLegalOrRegisteredName" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_012gd">
+        <conf:name>10-KT GOOD </conf:name>
+        <conf:description>10-KT GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-KT"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552012gd/g60552012gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60552012gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552012gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552012gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552012gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_013gw">
+        <conf:name>10-KT-GW-Blank &#8211; a non-null fact should not exist. WrittenCommunications </conf:name>
+        <conf:description>10-KT-GW-Blank &#8211; a non-null fact should not exist. WrittenCommunications </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-KT"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552013gw/g60552013gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552013gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552013gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552013gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552013gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="WrittenCommunications" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_014gw">
+        <conf:name>10-KT-GW-Blank &#8211; a non-null fact should not exist. SolicitingMaterial </conf:name>
+        <conf:description>10-KT-GW-Blank &#8211; a non-null fact should not exist. SolicitingMaterial </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-KT"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552014gw/g60552014gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552014gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552014gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552014gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552014gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SolicitingMaterial" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_015gw">
+        <conf:name>10-KT-GW-Blank &#8211; a non-null fact should not exist. PreCommencementTenderOffer </conf:name>
+        <conf:description>10-KT-GW-Blank &#8211; a non-null fact should not exist. PreCommencementTenderOffer </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-KT"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552015gw/g60552015gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552015gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552015gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552015gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552015gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="PreCommencementTenderOffer" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_016gw">
+        <conf:name>10-KT-GW-Blank &#8211; a non-null fact should not exist. PreCommencementIssuerTenderOffer </conf:name>
+        <conf:description>10-KT-GW-Blank &#8211; a non-null fact should not exist. PreCommencementIssuerTenderOffer </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-KT"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552016gw/g60552016gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552016gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552016gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552016gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552016gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="PreCommencementIssuerTenderOffer" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_017gw">
+        <conf:name>10-KT-GW-Blank &#8211; a non-null fact should not exist. EntityInformationFormerLegalOrRegisteredName </conf:name>
+        <conf:description>10-KT-GW-Blank &#8211; a non-null fact should not exist. EntityInformationFormerLegalOrRegisteredName </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-KT"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552017gw/g60552017gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552017gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552017gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552017gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552017gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="EntityInformationFormerLegalOrRegisteredName" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_018gd">
+        <conf:name>10-Q GOOD </conf:name>
+        <conf:description>10-Q GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-Q"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552018gd/g60552018gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60552018gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552018gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552018gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552018gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_019gw">
+        <conf:name>10-Q-GW-Blank &#8211; a non-null fact should not exist. WrittenCommunications </conf:name>
+        <conf:description>10-Q-GW-Blank &#8211; a non-null fact should not exist. WrittenCommunications </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-Q"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552019gw/g60552019gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552019gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552019gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552019gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552019gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="WrittenCommunications" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_020gw">
+        <conf:name>10-Q-GW-Blank &#8211; a non-null fact should not exist. SolicitingMaterial </conf:name>
+        <conf:description>10-Q-GW-Blank &#8211; a non-null fact should not exist. SolicitingMaterial </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-Q"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552020gw/g60552020gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552020gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552020gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552020gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552020gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SolicitingMaterial" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_021gw">
+        <conf:name>10-Q-GW-Blank &#8211; a non-null fact should not exist. PreCommencementTenderOffer </conf:name>
+        <conf:description>10-Q-GW-Blank &#8211; a non-null fact should not exist. PreCommencementTenderOffer </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-Q"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552021gw/g60552021gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552021gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552021gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552021gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552021gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="PreCommencementTenderOffer" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_022gw">
+        <conf:name>10-Q-GW-Blank &#8211; a non-null fact should not exist. PreCommencementIssuerTenderOffer </conf:name>
+        <conf:description>10-Q-GW-Blank &#8211; a non-null fact should not exist. PreCommencementIssuerTenderOffer </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-Q"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552022gw/g60552022gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552022gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552022gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552022gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552022gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="PreCommencementIssuerTenderOffer" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_023gd">
+        <conf:name>10-QT GOOD </conf:name>
+        <conf:description>10-QT GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-QT"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552023gd/g60552023gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60552023gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552023gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552023gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552023gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_024gw">
+        <conf:name>10-QT-GW-Blank &#8211; a non-null fact should not exist. WrittenCommunications </conf:name>
+        <conf:description>10-QT-GW-Blank &#8211; a non-null fact should not exist. WrittenCommunications </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-QT"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552024gw/g60552024gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552024gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552024gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552024gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552024gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="WrittenCommunications" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_025gw">
+        <conf:name>10-QT-GW-Blank &#8211; a non-null fact should not exist. SolicitingMaterial </conf:name>
+        <conf:description>10-QT-GW-Blank &#8211; a non-null fact should not exist. SolicitingMaterial </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-QT"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552025gw/g60552025gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552025gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552025gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552025gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552025gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SolicitingMaterial" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_026gw">
+        <conf:name>10-QT-GW-Blank &#8211; a non-null fact should not exist. PreCommencementTenderOffer </conf:name>
+        <conf:description>10-QT-GW-Blank &#8211; a non-null fact should not exist. PreCommencementTenderOffer </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-QT"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552026gw/g60552026gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552026gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552026gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552026gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552026gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="PreCommencementTenderOffer" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_027gw">
+        <conf:name>10-QT-GW-Blank &#8211; a non-null fact should not exist. PreCommencementIssuerTenderOffer </conf:name>
+        <conf:description>10-QT-GW-Blank &#8211; a non-null fact should not exist. PreCommencementIssuerTenderOffer </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-QT"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552027gw/g60552027gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552027gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552027gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552027gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552027gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="PreCommencementIssuerTenderOffer" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_028gd">
+        <conf:name>20-F GOOD </conf:name>
+        <conf:description>20-F GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "20-F"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552028gd/g60552028gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60552028gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552028gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552028gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552028gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_029gw">
+        <conf:name>20-F-GW-Blank &#8211; a non-null fact should not exist. WrittenCommunications </conf:name>
+        <conf:description>20-F-GW-Blank &#8211; a non-null fact should not exist. WrittenCommunications </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "20-F"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552029gw/g60552029gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552029gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552029gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552029gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552029gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="WrittenCommunications" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_030gw">
+        <conf:name>20-F-GW-Blank &#8211; a non-null fact should not exist. SolicitingMaterial </conf:name>
+        <conf:description>20-F-GW-Blank &#8211; a non-null fact should not exist. SolicitingMaterial </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "20-F"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552030gw/g60552030gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552030gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552030gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552030gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552030gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SolicitingMaterial" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_031gw">
+        <conf:name>20-F-GW-Blank &#8211; a non-null fact should not exist. PreCommencementTenderOffer </conf:name>
+        <conf:description>20-F-GW-Blank &#8211; a non-null fact should not exist. PreCommencementTenderOffer </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "20-F"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552031gw/g60552031gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552031gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552031gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552031gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552031gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="PreCommencementTenderOffer" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_032gw">
+        <conf:name>20-F-GW-Blank &#8211; a non-null fact should not exist. PreCommencementIssuerTenderOffer </conf:name>
+        <conf:description>20-F-GW-Blank &#8211; a non-null fact should not exist. PreCommencementIssuerTenderOffer </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "20-F"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552032gw/g60552032gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552032gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552032gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552032gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552032gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="PreCommencementIssuerTenderOffer" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_033gw">
+        <conf:name>20-F-GW-Blank &#8211; a non-null fact should not exist. EntityInformationFormerLegalOrRegisteredName </conf:name>
+        <conf:description>20-F-GW-Blank &#8211; a non-null fact should not exist. EntityInformationFormerLegalOrRegisteredName </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "20-F"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552033gw/g60552033gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552033gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552033gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552033gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552033gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="EntityInformationFormerLegalOrRegisteredName" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_034gd">
+        <conf:name>40-F GOOD </conf:name>
+        <conf:description>40-F GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "40-F"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552034gd/g60552034gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60552034gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552034gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552034gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552034gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_035gw">
+        <conf:name>40-F-GW-Blank &#8211; a non-null fact should not exist. WrittenCommunications </conf:name>
+        <conf:description>40-F-GW-Blank &#8211; a non-null fact should not exist. WrittenCommunications </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "40-F"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552035gw/g60552035gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552035gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552035gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552035gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552035gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="WrittenCommunications" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_036gw">
+        <conf:name>40-F-GW-Blank &#8211; a non-null fact should not exist. SolicitingMaterial </conf:name>
+        <conf:description>40-F-GW-Blank &#8211; a non-null fact should not exist. SolicitingMaterial </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "40-F"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552036gw/g60552036gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552036gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552036gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552036gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552036gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SolicitingMaterial" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_037gw">
+        <conf:name>40-F-GW-Blank &#8211; a non-null fact should not exist. PreCommencementTenderOffer </conf:name>
+        <conf:description>40-F-GW-Blank &#8211; a non-null fact should not exist. PreCommencementTenderOffer </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "40-F"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552037gw/g60552037gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552037gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552037gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552037gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552037gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="PreCommencementTenderOffer" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_038gw">
+        <conf:name>40-F-GW-Blank &#8211; a non-null fact should not exist. PreCommencementIssuerTenderOffer </conf:name>
+        <conf:description>40-F-GW-Blank &#8211; a non-null fact should not exist. PreCommencementIssuerTenderOffer </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "40-F"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552038gw/g60552038gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552038gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552038gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552038gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552038gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="PreCommencementIssuerTenderOffer" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_039gw">
+        <conf:name>40-F-GW-Blank &#8211; a non-null fact should not exist. EntityInformationFormerLegalOrRegisteredName </conf:name>
+        <conf:description>40-F-GW-Blank &#8211; a non-null fact should not exist. EntityInformationFormerLegalOrRegisteredName </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "40-F"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552039gw/g60552039gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552039gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552039gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552039gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552039gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="EntityInformationFormerLegalOrRegisteredName" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_040gd">
+        <conf:name>10-12B GOOD </conf:name>
+        <conf:description>10-12B GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "10-12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552040gd/g60552040gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60552040gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552040gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552040gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552040gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_041gw">
+        <conf:name>10-12B-GW-Blank &#8211; a non-null fact should not exist. WrittenCommunications </conf:name>
+        <conf:description>10-12B-GW-Blank &#8211; a non-null fact should not exist. WrittenCommunications </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "10-12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552041gw/g60552041gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552041gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552041gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552041gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552041gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="WrittenCommunications" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_042gw">
+        <conf:name>10-12B-GW-Blank &#8211; a non-null fact should not exist. SolicitingMaterial </conf:name>
+        <conf:description>10-12B-GW-Blank &#8211; a non-null fact should not exist. SolicitingMaterial </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "10-12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552042gw/g60552042gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552042gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552042gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552042gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552042gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SolicitingMaterial" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_043gw">
+        <conf:name>10-12B-GW-Blank &#8211; a non-null fact should not exist. PreCommencementTenderOffer </conf:name>
+        <conf:description>10-12B-GW-Blank &#8211; a non-null fact should not exist. PreCommencementTenderOffer </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "10-12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552043gw/g60552043gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552043gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552043gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552043gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552043gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="PreCommencementTenderOffer" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_044gw">
+        <conf:name>10-12B-GW-Blank &#8211; a non-null fact should not exist. PreCommencementIssuerTenderOffer </conf:name>
+        <conf:description>10-12B-GW-Blank &#8211; a non-null fact should not exist. PreCommencementIssuerTenderOffer </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "10-12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552044gw/g60552044gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552044gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552044gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552044gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552044gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="PreCommencementIssuerTenderOffer" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_045gw">
+        <conf:name>10-12B-GW-Blank &#8211; a non-null fact should not exist. EntityInformationFormerLegalOrRegisteredName </conf:name>
+        <conf:description>10-12B-GW-Blank &#8211; a non-null fact should not exist. EntityInformationFormerLegalOrRegisteredName </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "10-12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552045gw/g60552045gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552045gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552045gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552045gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552045gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="EntityInformationFormerLegalOrRegisteredName" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_046gd">
+        <conf:name>10-12G GOOD </conf:name>
+        <conf:description>10-12G GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "10-12G"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552046gd/g60552046gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60552046gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552046gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552046gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552046gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_047gw">
+        <conf:name>10-12G-GW-Blank &#8211; a non-null fact should not exist. WrittenCommunications </conf:name>
+        <conf:description>10-12G-GW-Blank &#8211; a non-null fact should not exist. WrittenCommunications </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "10-12G"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552047gw/g60552047gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552047gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552047gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552047gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552047gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="WrittenCommunications" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_048gw">
+        <conf:name>10-12G-GW-Blank &#8211; a non-null fact should not exist. SolicitingMaterial </conf:name>
+        <conf:description>10-12G-GW-Blank &#8211; a non-null fact should not exist. SolicitingMaterial </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "10-12G"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552048gw/g60552048gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552048gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552048gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552048gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552048gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SolicitingMaterial" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_049gw">
+        <conf:name>10-12G-GW-Blank &#8211; a non-null fact should not exist. PreCommencementTenderOffer </conf:name>
+        <conf:description>10-12G-GW-Blank &#8211; a non-null fact should not exist. PreCommencementTenderOffer </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "10-12G"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552049gw/g60552049gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552049gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552049gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552049gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552049gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="PreCommencementTenderOffer" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_050gw">
+        <conf:name>10-12G-GW-Blank &#8211; a non-null fact should not exist. PreCommencementIssuerTenderOffer </conf:name>
+        <conf:description>10-12G-GW-Blank &#8211; a non-null fact should not exist. PreCommencementIssuerTenderOffer </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "10-12G"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552050gw/g60552050gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552050gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552050gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552050gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552050gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="PreCommencementIssuerTenderOffer" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_051gw">
+        <conf:name>10-12G-GW-Blank &#8211; a non-null fact should not exist. EntityInformationFormerLegalOrRegisteredName </conf:name>
+        <conf:description>10-12G-GW-Blank &#8211; a non-null fact should not exist. EntityInformationFormerLegalOrRegisteredName </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "10-12G"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552051gw/g60552051gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552051gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552051gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552051gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552051gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="EntityInformationFormerLegalOrRegisteredName" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_052gd">
+        <conf:name>20FR12B GOOD </conf:name>
+        <conf:description>20FR12B GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "20FR12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552052gd/g60552052gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60552052gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552052gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552052gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552052gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_053gw">
+        <conf:name>20FR12B-GW-Blank &#8211; a non-null fact should not exist. WrittenCommunications </conf:name>
+        <conf:description>20FR12B-GW-Blank &#8211; a non-null fact should not exist. WrittenCommunications </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "20FR12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552053gw/g60552053gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552053gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552053gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552053gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552053gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="WrittenCommunications" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_054gw">
+        <conf:name>20FR12B-GW-Blank &#8211; a non-null fact should not exist. SolicitingMaterial </conf:name>
+        <conf:description>20FR12B-GW-Blank &#8211; a non-null fact should not exist. SolicitingMaterial </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "20FR12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552054gw/g60552054gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552054gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552054gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552054gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552054gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SolicitingMaterial" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_055gw">
+        <conf:name>20FR12B-GW-Blank &#8211; a non-null fact should not exist. PreCommencementTenderOffer </conf:name>
+        <conf:description>20FR12B-GW-Blank &#8211; a non-null fact should not exist. PreCommencementTenderOffer </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "20FR12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552055gw/g60552055gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552055gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552055gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552055gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552055gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="PreCommencementTenderOffer" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_056gw">
+        <conf:name>20FR12B-GW-Blank &#8211; a non-null fact should not exist. PreCommencementIssuerTenderOffer </conf:name>
+        <conf:description>20FR12B-GW-Blank &#8211; a non-null fact should not exist. PreCommencementIssuerTenderOffer </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "20FR12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552056gw/g60552056gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552056gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552056gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552056gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552056gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="PreCommencementIssuerTenderOffer" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_057gw">
+        <conf:name>20FR12B-GW-Blank &#8211; a non-null fact should not exist. EntityInformationFormerLegalOrRegisteredName </conf:name>
+        <conf:description>20FR12B-GW-Blank &#8211; a non-null fact should not exist. EntityInformationFormerLegalOrRegisteredName </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "20FR12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552057gw/g60552057gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552057gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552057gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552057gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552057gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="EntityInformationFormerLegalOrRegisteredName" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_058gd">
+        <conf:name>20FR12G GOOD </conf:name>
+        <conf:description>20FR12G GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "20FR12G"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552058gd/g60552058gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60552058gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552058gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552058gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552058gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_059gw">
+        <conf:name>20FR12G-GW-Blank &#8211; a non-null fact should not exist. WrittenCommunications </conf:name>
+        <conf:description>20FR12G-GW-Blank &#8211; a non-null fact should not exist. WrittenCommunications </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "20FR12G"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552059gw/g60552059gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552059gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552059gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552059gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552059gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="WrittenCommunications" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_060gw">
+        <conf:name>20FR12G-GW-Blank &#8211; a non-null fact should not exist. SolicitingMaterial </conf:name>
+        <conf:description>20FR12G-GW-Blank &#8211; a non-null fact should not exist. SolicitingMaterial </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "20FR12G"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552060gw/g60552060gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552060gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552060gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552060gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552060gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SolicitingMaterial" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_061gw">
+        <conf:name>20FR12G-GW-Blank &#8211; a non-null fact should not exist. PreCommencementTenderOffer </conf:name>
+        <conf:description>20FR12G-GW-Blank &#8211; a non-null fact should not exist. PreCommencementTenderOffer </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "20FR12G"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552061gw/g60552061gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552061gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552061gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552061gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552061gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="PreCommencementTenderOffer" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_062gw">
+        <conf:name>20FR12G-GW-Blank &#8211; a non-null fact should not exist. PreCommencementIssuerTenderOffer </conf:name>
+        <conf:description>20FR12G-GW-Blank &#8211; a non-null fact should not exist. PreCommencementIssuerTenderOffer </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "20FR12G"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552062gw/g60552062gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552062gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552062gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552062gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552062gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="PreCommencementIssuerTenderOffer" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_063gw">
+        <conf:name>20FR12G-GW-Blank &#8211; a non-null fact should not exist. EntityInformationFormerLegalOrRegisteredName </conf:name>
+        <conf:description>20FR12G-GW-Blank &#8211; a non-null fact should not exist. EntityInformationFormerLegalOrRegisteredName </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "20FR12G"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552063gw/g60552063gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552063gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552063gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552063gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552063gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="EntityInformationFormerLegalOrRegisteredName" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_064gd">
+        <conf:name>40FR12B GOOD </conf:name>
+        <conf:description>40FR12B GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "40FR12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552064gd/g60552064gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60552064gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552064gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552064gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552064gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_065gw">
+        <conf:name>40FR12B-GW-Blank &#8211; a non-null fact should not exist. WrittenCommunications </conf:name>
+        <conf:description>40FR12B-GW-Blank &#8211; a non-null fact should not exist. WrittenCommunications </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "40FR12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552065gw/g60552065gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552065gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552065gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552065gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552065gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="WrittenCommunications" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_066gw">
+        <conf:name>40FR12B-GW-Blank &#8211; a non-null fact should not exist. SolicitingMaterial </conf:name>
+        <conf:description>40FR12B-GW-Blank &#8211; a non-null fact should not exist. SolicitingMaterial </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "40FR12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552066gw/g60552066gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552066gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552066gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552066gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552066gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SolicitingMaterial" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_067gw">
+        <conf:name>40FR12B-GW-Blank &#8211; a non-null fact should not exist. PreCommencementTenderOffer </conf:name>
+        <conf:description>40FR12B-GW-Blank &#8211; a non-null fact should not exist. PreCommencementTenderOffer </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "40FR12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552067gw/g60552067gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552067gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552067gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552067gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552067gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="PreCommencementTenderOffer" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_068gw">
+        <conf:name>40FR12B-GW-Blank &#8211; a non-null fact should not exist. PreCommencementIssuerTenderOffer </conf:name>
+        <conf:description>40FR12B-GW-Blank &#8211; a non-null fact should not exist. PreCommencementIssuerTenderOffer </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "40FR12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552068gw/g60552068gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552068gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552068gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552068gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552068gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="PreCommencementIssuerTenderOffer" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_069gw">
+        <conf:name>40FR12B-GW-Blank &#8211; a non-null fact should not exist. EntityInformationFormerLegalOrRegisteredName </conf:name>
+        <conf:description>40FR12B-GW-Blank &#8211; a non-null fact should not exist. EntityInformationFormerLegalOrRegisteredName </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "40FR12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552069gw/g60552069gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552069gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552069gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552069gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552069gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="EntityInformationFormerLegalOrRegisteredName" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_070gd">
+        <conf:name>40FR12G GOOD </conf:name>
+        <conf:description>40FR12G GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "40FR12G"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552070gd/g60552070gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60552070gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552070gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552070gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552070gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_071gw">
+        <conf:name>40FR12G-GW-Blank &#8211; a non-null fact should not exist. WrittenCommunications </conf:name>
+        <conf:description>40FR12G-GW-Blank &#8211; a non-null fact should not exist. WrittenCommunications </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "40FR12G"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552071gw/g60552071gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552071gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552071gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552071gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552071gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="WrittenCommunications" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_072gw">
+        <conf:name>40FR12G-GW-Blank &#8211; a non-null fact should not exist. SolicitingMaterial </conf:name>
+        <conf:description>40FR12G-GW-Blank &#8211; a non-null fact should not exist. SolicitingMaterial </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "40FR12G"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552072gw/g60552072gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552072gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552072gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552072gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552072gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SolicitingMaterial" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_073gw">
+        <conf:name>40FR12G-GW-Blank &#8211; a non-null fact should not exist. PreCommencementTenderOffer </conf:name>
+        <conf:description>40FR12G-GW-Blank &#8211; a non-null fact should not exist. PreCommencementTenderOffer </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "40FR12G"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552073gw/g60552073gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552073gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552073gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552073gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552073gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="PreCommencementTenderOffer" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_074gw">
+        <conf:name>40FR12G-GW-Blank &#8211; a non-null fact should not exist. PreCommencementIssuerTenderOffer </conf:name>
+        <conf:description>40FR12G-GW-Blank &#8211; a non-null fact should not exist. PreCommencementIssuerTenderOffer </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "40FR12G"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552074gw/g60552074gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552074gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552074gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552074gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552074gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="PreCommencementIssuerTenderOffer" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_075gw">
+        <conf:name>40FR12G-GW-Blank &#8211; a non-null fact should not exist. EntityInformationFormerLegalOrRegisteredName </conf:name>
+        <conf:description>40FR12G-GW-Blank &#8211; a non-null fact should not exist. EntityInformationFormerLegalOrRegisteredName </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "40FR12G"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552075gw/g60552075gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552075gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552075gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552075gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552075gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="EntityInformationFormerLegalOrRegisteredName" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_076gd">
+        <conf:name>S-1 GOOD </conf:name>
+        <conf:description>S-1 GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,    "submissionType" : "S-1"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552076gd/g60552076gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60552076gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552076gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552076gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552076gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_077gw">
+        <conf:name>S-1-GW-Blank &#8211; a non-null fact should not exist. WrittenCommunications </conf:name>
+        <conf:description>S-1-GW-Blank &#8211; a non-null fact should not exist. WrittenCommunications </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-1"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552077gw/g60552077gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552077gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552077gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552077gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552077gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="WrittenCommunications" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_078gw">
+        <conf:name>S-1-GW-Blank &#8211; a non-null fact should not exist. SolicitingMaterial </conf:name>
+        <conf:description>S-1-GW-Blank &#8211; a non-null fact should not exist. SolicitingMaterial </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-1"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552078gw/g60552078gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552078gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552078gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552078gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552078gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SolicitingMaterial" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_079gw">
+        <conf:name>S-1-GW-Blank &#8211; a non-null fact should not exist. PreCommencementTenderOffer </conf:name>
+        <conf:description>S-1-GW-Blank &#8211; a non-null fact should not exist. PreCommencementTenderOffer </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-1"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552079gw/g60552079gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552079gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552079gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552079gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552079gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="PreCommencementTenderOffer" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_080gw">
+        <conf:name>S-1-GW-Blank &#8211; a non-null fact should not exist. PreCommencementIssuerTenderOffer </conf:name>
+        <conf:description>S-1-GW-Blank &#8211; a non-null fact should not exist. PreCommencementIssuerTenderOffer </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-1"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552080gw/g60552080gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552080gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552080gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552080gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552080gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="PreCommencementIssuerTenderOffer" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_081gw">
+        <conf:name>S-1-GW-Blank &#8211; a non-null fact should not exist. EntityInformationFormerLegalOrRegisteredName </conf:name>
+        <conf:description>S-1-GW-Blank &#8211; a non-null fact should not exist. EntityInformationFormerLegalOrRegisteredName </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-1"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552081gw/g60552081gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552081gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552081gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552081gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552081gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="EntityInformationFormerLegalOrRegisteredName" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_082gd">
+        <conf:name>S-3 GOOD </conf:name>
+        <conf:description>S-3 GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-3"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552082gd/g60552082gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60552082gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552082gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552082gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552082gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_083gw">
+        <conf:name>S-3-GW-Blank &#8211; a non-null fact should not exist. WrittenCommunications </conf:name>
+        <conf:description>S-3-GW-Blank &#8211; a non-null fact should not exist. WrittenCommunications </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-3"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552083gw/g60552083gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552083gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552083gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552083gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552083gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="WrittenCommunications" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_084gw">
+        <conf:name>S-3-GW-Blank &#8211; a non-null fact should not exist. SolicitingMaterial </conf:name>
+        <conf:description>S-3-GW-Blank &#8211; a non-null fact should not exist. SolicitingMaterial </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-3"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552084gw/g60552084gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552084gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552084gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552084gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552084gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SolicitingMaterial" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_085gw">
+        <conf:name>S-3-GW-Blank &#8211; a non-null fact should not exist. PreCommencementTenderOffer </conf:name>
+        <conf:description>S-3-GW-Blank &#8211; a non-null fact should not exist. PreCommencementTenderOffer </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-3"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552085gw/g60552085gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552085gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552085gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552085gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552085gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="PreCommencementTenderOffer" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_086gw">
+        <conf:name>S-3-GW-Blank &#8211; a non-null fact should not exist. PreCommencementIssuerTenderOffer </conf:name>
+        <conf:description>S-3-GW-Blank &#8211; a non-null fact should not exist. PreCommencementIssuerTenderOffer </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-3"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552086gw/g60552086gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552086gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552086gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552086gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552086gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="PreCommencementIssuerTenderOffer" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_087gw">
+        <conf:name>S-3-GW-Blank &#8211; a non-null fact should not exist. EntityInformationFormerLegalOrRegisteredName </conf:name>
+        <conf:description>S-3-GW-Blank &#8211; a non-null fact should not exist. EntityInformationFormerLegalOrRegisteredName </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-3"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552087gw/g60552087gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552087gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552087gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552087gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552087gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="EntityInformationFormerLegalOrRegisteredName" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_088gd">
+        <conf:name>S-4 GOOD </conf:name>
+        <conf:description>S-4 GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-4"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552088gd/g60552088gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60552088gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552088gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552088gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552088gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_089gw">
+        <conf:name>S-4-GW-Blank &#8211; a non-null fact should not exist. WrittenCommunications </conf:name>
+        <conf:description>S-4-GW-Blank &#8211; a non-null fact should not exist. WrittenCommunications </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-4"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552089gw/g60552089gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552089gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552089gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552089gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552089gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="WrittenCommunications" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_090gw">
+        <conf:name>S-4-GW-Blank &#8211; a non-null fact should not exist. SolicitingMaterial </conf:name>
+        <conf:description>S-4-GW-Blank &#8211; a non-null fact should not exist. SolicitingMaterial </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-4"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552090gw/g60552090gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552090gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552090gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552090gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552090gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SolicitingMaterial" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_091gw">
+        <conf:name>S-4-GW-Blank &#8211; a non-null fact should not exist. PreCommencementTenderOffer </conf:name>
+        <conf:description>S-4-GW-Blank &#8211; a non-null fact should not exist. PreCommencementTenderOffer </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-4"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552091gw/g60552091gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552091gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552091gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552091gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552091gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="PreCommencementTenderOffer" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_092gw">
+        <conf:name>S-4-GW-Blank &#8211; a non-null fact should not exist. PreCommencementIssuerTenderOffer </conf:name>
+        <conf:description>S-4-GW-Blank &#8211; a non-null fact should not exist. PreCommencementIssuerTenderOffer </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-4"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552092gw/g60552092gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552092gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552092gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552092gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552092gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="PreCommencementIssuerTenderOffer" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_093gw">
+        <conf:name>S-4-GW-Blank &#8211; a non-null fact should not exist. EntityInformationFormerLegalOrRegisteredName </conf:name>
+        <conf:description>S-4-GW-Blank &#8211; a non-null fact should not exist. EntityInformationFormerLegalOrRegisteredName </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-4"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552093gw/g60552093gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552093gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552093gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552093gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552093gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="EntityInformationFormerLegalOrRegisteredName" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_094gd">
+        <conf:name>S-11 GOOD </conf:name>
+        <conf:description>S-11 GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-11"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552094gd/g60552094gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60552094gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552094gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552094gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552094gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_095gw">
+        <conf:name>S-11-GW-Blank &#8211; a non-null fact should not exist. WrittenCommunications </conf:name>
+        <conf:description>S-11-GW-Blank &#8211; a non-null fact should not exist. WrittenCommunications </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-11"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552095gw/g60552095gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552095gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552095gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552095gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552095gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="WrittenCommunications" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_096gw">
+        <conf:name>S-11-GW-Blank &#8211; a non-null fact should not exist. SolicitingMaterial </conf:name>
+        <conf:description>S-11-GW-Blank &#8211; a non-null fact should not exist. SolicitingMaterial </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-11"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552096gw/g60552096gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552096gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552096gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552096gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552096gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SolicitingMaterial" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_097gw">
+        <conf:name>S-11-GW-Blank &#8211; a non-null fact should not exist. PreCommencementTenderOffer </conf:name>
+        <conf:description>S-11-GW-Blank &#8211; a non-null fact should not exist. PreCommencementTenderOffer </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-11"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552097gw/g60552097gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552097gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552097gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552097gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552097gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="PreCommencementTenderOffer" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_098gw">
+        <conf:name>S-11-GW-Blank &#8211; a non-null fact should not exist. PreCommencementIssuerTenderOffer </conf:name>
+        <conf:description>S-11-GW-Blank &#8211; a non-null fact should not exist. PreCommencementIssuerTenderOffer </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-11"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552098gw/g60552098gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552098gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552098gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552098gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552098gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="PreCommencementIssuerTenderOffer" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_099gw">
+        <conf:name>S-11-GW-Blank &#8211; a non-null fact should not exist. EntityInformationFormerLegalOrRegisteredName </conf:name>
+        <conf:description>S-11-GW-Blank &#8211; a non-null fact should not exist. EntityInformationFormerLegalOrRegisteredName </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-11"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552099gw/g60552099gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552099gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552099gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552099gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552099gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="EntityInformationFormerLegalOrRegisteredName" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_100gd">
+        <conf:name>POS EX GOOD </conf:name>
+        <conf:description>POS EX GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "POS EX"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552100gd/g60552100gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60552100gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552100gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552100gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552100gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_112gd">
+        <conf:name>F-1 GOOD </conf:name>
+        <conf:description>F-1 GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,    "submissionType" : "F-1"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552112gd/g60552112gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60552112gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552112gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552112gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552112gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_113gw">
+        <conf:name>F-1-GW-Blank &#8211; a non-null fact should not exist. WrittenCommunications </conf:name>
+        <conf:description>F-1-GW-Blank &#8211; a non-null fact should not exist. WrittenCommunications </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "F-1"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552113gw/g60552113gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552113gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552113gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552113gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552113gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="WrittenCommunications" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_114gw">
+        <conf:name>F-1-GW-Blank &#8211; a non-null fact should not exist. SolicitingMaterial </conf:name>
+        <conf:description>F-1-GW-Blank &#8211; a non-null fact should not exist. SolicitingMaterial </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "F-1"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552114gw/g60552114gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552114gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552114gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552114gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552114gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SolicitingMaterial" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_115gw">
+        <conf:name>F-1-GW-Blank &#8211; a non-null fact should not exist. PreCommencementTenderOffer </conf:name>
+        <conf:description>F-1-GW-Blank &#8211; a non-null fact should not exist. PreCommencementTenderOffer </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "F-1"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552115gw/g60552115gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552115gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552115gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552115gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552115gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="PreCommencementTenderOffer" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_116gw">
+        <conf:name>F-1-GW-Blank &#8211; a non-null fact should not exist. PreCommencementIssuerTenderOffer </conf:name>
+        <conf:description>F-1-GW-Blank &#8211; a non-null fact should not exist. PreCommencementIssuerTenderOffer </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "F-1"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552116gw/g60552116gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552116gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552116gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552116gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552116gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="PreCommencementIssuerTenderOffer" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_117gw">
+        <conf:name>F-1-GW-Blank &#8211; a non-null fact should not exist. EntityInformationFormerLegalOrRegisteredName </conf:name>
+        <conf:description>F-1-GW-Blank &#8211; a non-null fact should not exist. EntityInformationFormerLegalOrRegisteredName </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "F-1"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552117gw/g60552117gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552117gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552117gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552117gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552117gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="EntityInformationFormerLegalOrRegisteredName" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_118gd">
+        <conf:name>F-3 GOOD </conf:name>
+        <conf:description>F-3 GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,    "submissionType" : "F-3"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552118gd/g60552118gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60552118gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552118gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552118gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552118gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_119gw">
+        <conf:name>F-3-GW-Blank &#8211; a non-null fact should not exist. WrittenCommunications </conf:name>
+        <conf:description>F-3-GW-Blank &#8211; a non-null fact should not exist. WrittenCommunications </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "F-3"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552119gw/g60552119gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552119gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552119gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552119gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552119gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="WrittenCommunications" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_120gw">
+        <conf:name>F-3-GW-Blank &#8211; a non-null fact should not exist. SolicitingMaterial </conf:name>
+        <conf:description>F-3-GW-Blank &#8211; a non-null fact should not exist. SolicitingMaterial </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "F-3"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552120gw/g60552120gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552120gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552120gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552120gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552120gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SolicitingMaterial" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_121gw">
+        <conf:name>F-3-GW-Blank &#8211; a non-null fact should not exist. PreCommencementTenderOffer </conf:name>
+        <conf:description>F-3-GW-Blank &#8211; a non-null fact should not exist. PreCommencementTenderOffer </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "F-3"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552121gw/g60552121gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552121gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552121gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552121gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552121gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="PreCommencementTenderOffer" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_122gw">
+        <conf:name>F-3-GW-Blank &#8211; a non-null fact should not exist. PreCommencementIssuerTenderOffer </conf:name>
+        <conf:description>F-3-GW-Blank &#8211; a non-null fact should not exist. PreCommencementIssuerTenderOffer </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "F-3"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552122gw/g60552122gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552122gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552122gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552122gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552122gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="PreCommencementIssuerTenderOffer" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_123gw">
+        <conf:name>F-3-GW-Blank &#8211; a non-null fact should not exist. EntityInformationFormerLegalOrRegisteredName </conf:name>
+        <conf:description>F-3-GW-Blank &#8211; a non-null fact should not exist. EntityInformationFormerLegalOrRegisteredName </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "F-3"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552123gw/g60552123gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552123gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552123gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552123gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552123gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="EntityInformationFormerLegalOrRegisteredName" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_124gd">
+        <conf:name>F-4 GOOD </conf:name>
+        <conf:description>F-4 GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,    "submissionType" : "F-4"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552124gd/g60552124gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60552124gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552124gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552124gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552124gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_125gw">
+        <conf:name>F-4-GW-Blank &#8211; a non-null fact should not exist. WrittenCommunications </conf:name>
+        <conf:description>F-4-GW-Blank &#8211; a non-null fact should not exist. WrittenCommunications </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "F-4"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552125gw/g60552125gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552125gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552125gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552125gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552125gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="WrittenCommunications" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_126gw">
+        <conf:name>F-4-GW-Blank &#8211; a non-null fact should not exist. SolicitingMaterial </conf:name>
+        <conf:description>F-4-GW-Blank &#8211; a non-null fact should not exist. SolicitingMaterial </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "F-4"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552126gw/g60552126gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552126gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552126gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552126gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552126gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SolicitingMaterial" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_127gw">
+        <conf:name>F-4-GW-Blank &#8211; a non-null fact should not exist. PreCommencementTenderOffer </conf:name>
+        <conf:description>F-4-GW-Blank &#8211; a non-null fact should not exist. PreCommencementTenderOffer </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "F-4"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552127gw/g60552127gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552127gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552127gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552127gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552127gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="PreCommencementTenderOffer" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_128gw">
+        <conf:name>F-4-GW-Blank &#8211; a non-null fact should not exist. PreCommencementIssuerTenderOffer </conf:name>
+        <conf:description>F-4-GW-Blank &#8211; a non-null fact should not exist. PreCommencementIssuerTenderOffer </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "F-4"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552128gw/g60552128gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552128gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552128gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552128gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552128gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="PreCommencementIssuerTenderOffer" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_129gw">
+        <conf:name>F-4-GW-Blank &#8211; a non-null fact should not exist. EntityInformationFormerLegalOrRegisteredName </conf:name>
+        <conf:description>F-4-GW-Blank &#8211; a non-null fact should not exist. EntityInformationFormerLegalOrRegisteredName </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "F-4"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552129gw/g60552129gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552129gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552129gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552129gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552129gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="EntityInformationFormerLegalOrRegisteredName" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_130gd">
+        <conf:name>6-K GOOD </conf:name>
+        <conf:description>6-K GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "periodOfReport" : "12-31-2018",  "submissionType" : "6-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552130gd/g60552130gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60552130gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552130gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552130gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552130gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_131gw">
+        <conf:name>6-K-GW-Blank &#8211; a non-null fact should not exist. WrittenCommunications </conf:name>
+        <conf:description>6-K-GW-Blank &#8211; a non-null fact should not exist. WrittenCommunications </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "periodOfReport" : "12-31-2018",  "submissionType" : "6-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552131gw/g60552131gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552131gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552131gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552131gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552131gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="WrittenCommunications" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_132gw">
+        <conf:name>6-K-GW-Blank &#8211; a non-null fact should not exist. SolicitingMaterial </conf:name>
+        <conf:description>6-K-GW-Blank &#8211; a non-null fact should not exist. SolicitingMaterial </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "periodOfReport" : "12-31-2018",  "submissionType" : "6-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552132gw/g60552132gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552132gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552132gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552132gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552132gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SolicitingMaterial" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_133gw">
+        <conf:name>6-K-GW-Blank &#8211; a non-null fact should not exist. PreCommencementTenderOffer </conf:name>
+        <conf:description>6-K-GW-Blank &#8211; a non-null fact should not exist. PreCommencementTenderOffer </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "periodOfReport" : "12-31-2018",  "submissionType" : "6-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552133gw/g60552133gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552133gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552133gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552133gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552133gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="PreCommencementTenderOffer" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_134gw">
+        <conf:name>6-K-GW-Blank &#8211; a non-null fact should not exist. PreCommencementIssuerTenderOffer </conf:name>
+        <conf:description>6-K-GW-Blank &#8211; a non-null fact should not exist. PreCommencementIssuerTenderOffer </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "periodOfReport" : "12-31-2018",  "submissionType" : "6-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552134gw/g60552134gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552134gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552134gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552134gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552134gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="PreCommencementIssuerTenderOffer" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_135gw">
+        <conf:name>6-K-GW-Blank &#8211; a non-null fact should not exist. EntityInformationFormerLegalOrRegisteredName </conf:name>
+        <conf:description>6-K-GW-Blank &#8211; a non-null fact should not exist. EntityInformationFormerLegalOrRegisteredName </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "periodOfReport" : "12-31-2018",  "submissionType" : "6-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552135gw/g60552135gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552135gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552135gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552135gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552135gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="EntityInformationFormerLegalOrRegisteredName" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_136gd">
+        <conf:name>K-SDR GOOD </conf:name>
+        <conf:description>K-SDR GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "SDR"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552136gd/g60552136gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60552136gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552136gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552136gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552136gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_137gw">
+        <conf:name>K-SDR-GW-Blank &#8211; a non-null fact should not exist. WrittenCommunications </conf:name>
+        <conf:description>K-SDR-GW-Blank &#8211; a non-null fact should not exist. WrittenCommunications </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "SDR"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552137gw/g60552137gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552137gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552137gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552137gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552137gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="WrittenCommunications" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_138gw">
+        <conf:name>K-SDR-GW-Blank &#8211; a non-null fact should not exist. SolicitingMaterial </conf:name>
+        <conf:description>K-SDR-GW-Blank &#8211; a non-null fact should not exist. SolicitingMaterial </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "SDR"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552138gw/g60552138gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552138gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552138gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552138gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552138gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SolicitingMaterial" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_139gw">
+        <conf:name>K-SDR-GW-Blank &#8211; a non-null fact should not exist. PreCommencementTenderOffer </conf:name>
+        <conf:description>K-SDR-GW-Blank &#8211; a non-null fact should not exist. PreCommencementTenderOffer </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "SDR"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552139gw/g60552139gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552139gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552139gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552139gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552139gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="PreCommencementTenderOffer" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_140gw">
+        <conf:name>K-SDR-GW-Blank &#8211; a non-null fact should not exist. PreCommencementIssuerTenderOffer </conf:name>
+        <conf:description>K-SDR-GW-Blank &#8211; a non-null fact should not exist. PreCommencementIssuerTenderOffer </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "SDR"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552140gw/g60552140gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552140gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552140gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552140gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552140gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="PreCommencementIssuerTenderOffer" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_141gw">
+        <conf:name>K-SDR-GW-Blank &#8211; a non-null fact should not exist. EntityInformationFormerLegalOrRegisteredName </conf:name>
+        <conf:description>K-SDR-GW-Blank &#8211; a non-null fact should not exist. EntityInformationFormerLegalOrRegisteredName </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "SDR"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552141gw/g60552141gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552141gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552141gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552141gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552141gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="EntityInformationFormerLegalOrRegisteredName" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_142gd">
+        <conf:name>485APOS GOOD </conf:name>
+        <conf:description>485APOS GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "485APOS"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552142gd/g60552142gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60552142gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552142gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552142gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552142gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_143gw">
+        <conf:name>485APOS-GW-Blank &#8211; a non-null fact should not exist. WrittenCommunications </conf:name>
+        <conf:description>485APOS-GW-Blank &#8211; a non-null fact should not exist. WrittenCommunications </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "485APOS"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552143gw/g60552143gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552143gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552143gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552143gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552143gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="WrittenCommunications" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_144gw">
+        <conf:name>485APOS-GW-Blank &#8211; a non-null fact should not exist. SolicitingMaterial </conf:name>
+        <conf:description>485APOS-GW-Blank &#8211; a non-null fact should not exist. SolicitingMaterial </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "485APOS"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552144gw/g60552144gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552144gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552144gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552144gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552144gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SolicitingMaterial" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_145gw">
+        <conf:name>485APOS-GW-Blank &#8211; a non-null fact should not exist. PreCommencementTenderOffer </conf:name>
+        <conf:description>485APOS-GW-Blank &#8211; a non-null fact should not exist. PreCommencementTenderOffer </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "485APOS"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552145gw/g60552145gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552145gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552145gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552145gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552145gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="PreCommencementTenderOffer" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_146gw">
+        <conf:name>485APOS-GW-Blank &#8211; a non-null fact should not exist. PreCommencementIssuerTenderOffer </conf:name>
+        <conf:description>485APOS-GW-Blank &#8211; a non-null fact should not exist. PreCommencementIssuerTenderOffer </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "485APOS"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552146gw/g60552146gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552146gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552146gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552146gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552146gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="PreCommencementIssuerTenderOffer" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_147gw">
+        <conf:name>485APOS-GW-Blank &#8211; a non-null fact should not exist. EntityInformationFormerLegalOrRegisteredName </conf:name>
+        <conf:description>485APOS-GW-Blank &#8211; a non-null fact should not exist. EntityInformationFormerLegalOrRegisteredName </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "485APOS"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552147gw/g60552147gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552147gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552147gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552147gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552147gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="EntityInformationFormerLegalOrRegisteredName" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_148gd">
+        <conf:name>485BPOS GOOD </conf:name>
+        <conf:description>485BPOS GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "invCompanyType" : "N-1A",  "periodOfReport" : "12-31-2018",  "submissionType" : "485BPOS"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552148gd/g60552148gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60552148gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552148gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552148gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552148gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_149gw">
+        <conf:name>485BPOS-GW-Blank &#8211; a non-null fact should not exist. WrittenCommunications </conf:name>
+        <conf:description>485BPOS-GW-Blank &#8211; a non-null fact should not exist. WrittenCommunications </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "invCompanyType" : "N-1A",  "periodOfReport" : "12-31-2018",  "submissionType" : "485BPOS"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552149gw/g60552149gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552149gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552149gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552149gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552149gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="WrittenCommunications" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_150gw">
+        <conf:name>485BPOS-GW-Blank &#8211; a non-null fact should not exist. SolicitingMaterial </conf:name>
+        <conf:description>485BPOS-GW-Blank &#8211; a non-null fact should not exist. SolicitingMaterial </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "invCompanyType" : "N-1A",  "periodOfReport" : "12-31-2018",  "submissionType" : "485BPOS"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552150gw/g60552150gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552150gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552150gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552150gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552150gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SolicitingMaterial" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_151gw">
+        <conf:name>485BPOS-GW-Blank &#8211; a non-null fact should not exist. PreCommencementTenderOffer </conf:name>
+        <conf:description>485BPOS-GW-Blank &#8211; a non-null fact should not exist. PreCommencementTenderOffer </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "invCompanyType" : "N-1A",  "periodOfReport" : "12-31-2018",  "submissionType" : "485BPOS"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552151gw/g60552151gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552151gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552151gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552151gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552151gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="PreCommencementTenderOffer" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_152gw">
+        <conf:name>485BPOS-GW-Blank &#8211; a non-null fact should not exist. PreCommencementIssuerTenderOffer </conf:name>
+        <conf:description>485BPOS-GW-Blank &#8211; a non-null fact should not exist. PreCommencementIssuerTenderOffer </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "invCompanyType" : "N-1A",  "periodOfReport" : "12-31-2018",  "submissionType" : "485BPOS"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552152gw/g60552152gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552152gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552152gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552152gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552152gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="PreCommencementIssuerTenderOffer" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_153gw">
+        <conf:name>485BPOS-GW-Blank &#8211; a non-null fact should not exist. EntityInformationFormerLegalOrRegisteredName </conf:name>
+        <conf:description>485BPOS-GW-Blank &#8211; a non-null fact should not exist. EntityInformationFormerLegalOrRegisteredName </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "invCompanyType" : "N-1A",  "periodOfReport" : "12-31-2018",  "submissionType" : "485BPOS"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552153gw/g60552153gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552153gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552153gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552153gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552153gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="EntityInformationFormerLegalOrRegisteredName" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_154gd">
+        <conf:name>485BXT GOOD </conf:name>
+        <conf:description>485BXT GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "485BXT"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552154gd/g60552154gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60552154gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552154gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552154gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552154gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_155gw">
+        <conf:name>485BXT-GW-Blank &#8211; a non-null fact should not exist. WrittenCommunications </conf:name>
+        <conf:description>485BXT-GW-Blank &#8211; a non-null fact should not exist. WrittenCommunications </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "485BXT"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552155gw/g60552155gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552155gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552155gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552155gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552155gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="WrittenCommunications" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_156gw">
+        <conf:name>485BXT-GW-Blank &#8211; a non-null fact should not exist. SolicitingMaterial </conf:name>
+        <conf:description>485BXT-GW-Blank &#8211; a non-null fact should not exist. SolicitingMaterial </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "485BXT"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552156gw/g60552156gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552156gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552156gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552156gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552156gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SolicitingMaterial" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_157gw">
+        <conf:name>485BXT-GW-Blank &#8211; a non-null fact should not exist. PreCommencementTenderOffer </conf:name>
+        <conf:description>485BXT-GW-Blank &#8211; a non-null fact should not exist. PreCommencementTenderOffer </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "485BXT"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552157gw/g60552157gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552157gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552157gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552157gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552157gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="PreCommencementTenderOffer" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_158gw">
+        <conf:name>485BXT-GW-Blank &#8211; a non-null fact should not exist. PreCommencementIssuerTenderOffer </conf:name>
+        <conf:description>485BXT-GW-Blank &#8211; a non-null fact should not exist. PreCommencementIssuerTenderOffer </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "485BXT"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552158gw/g60552158gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552158gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552158gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552158gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552158gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="PreCommencementIssuerTenderOffer" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_159gw">
+        <conf:name>485BXT-GW-Blank &#8211; a non-null fact should not exist. EntityInformationFormerLegalOrRegisteredName </conf:name>
+        <conf:description>485BXT-GW-Blank &#8211; a non-null fact should not exist. EntityInformationFormerLegalOrRegisteredName </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "485BXT"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552159gw/g60552159gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552159gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552159gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552159gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552159gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="EntityInformationFormerLegalOrRegisteredName" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_160gd">
+        <conf:name>N-1A GOOD </conf:name>
+        <conf:description>N-1A GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "N-1A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552160gd/g60552160gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60552160gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552160gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552160gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552160gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_161gw">
+        <conf:name>N-1A-GW-Blank &#8211; a non-null fact should not exist. WrittenCommunications </conf:name>
+        <conf:description>N-1A-GW-Blank &#8211; a non-null fact should not exist. WrittenCommunications </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "N-1A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552161gw/g60552161gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552161gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552161gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552161gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552161gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="WrittenCommunications" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_162gw">
+        <conf:name>N-1A-GW-Blank &#8211; a non-null fact should not exist. SolicitingMaterial </conf:name>
+        <conf:description>N-1A-GW-Blank &#8211; a non-null fact should not exist. SolicitingMaterial </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "N-1A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552162gw/g60552162gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552162gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552162gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552162gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552162gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SolicitingMaterial" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_163gw">
+        <conf:name>N-1A-GW-Blank &#8211; a non-null fact should not exist. PreCommencementTenderOffer </conf:name>
+        <conf:description>N-1A-GW-Blank &#8211; a non-null fact should not exist. PreCommencementTenderOffer </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "N-1A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552163gw/g60552163gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552163gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552163gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552163gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552163gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="PreCommencementTenderOffer" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_164gw">
+        <conf:name>N-1A-GW-Blank &#8211; a non-null fact should not exist. PreCommencementIssuerTenderOffer </conf:name>
+        <conf:description>N-1A-GW-Blank &#8211; a non-null fact should not exist. PreCommencementIssuerTenderOffer </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "N-1A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552164gw/g60552164gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552164gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552164gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552164gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552164gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="PreCommencementIssuerTenderOffer" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_165gw">
+        <conf:name>N-1A-GW-Blank &#8211; a non-null fact should not exist. EntityInformationFormerLegalOrRegisteredName </conf:name>
+        <conf:description>N-1A-GW-Blank &#8211; a non-null fact should not exist. EntityInformationFormerLegalOrRegisteredName </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "N-1A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552165gw/g60552165gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552165gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552165gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552165gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552165gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="EntityInformationFormerLegalOrRegisteredName" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_166gd">
+        <conf:name>SP 15D2 GOOD </conf:name>
+        <conf:description>SP 15D2 GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "SP 15D2"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552166gd/g60552166gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60552166gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552166gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552166gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552166gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_167gw">
+        <conf:name>SP 15D2-GW-Blank &#8211; a non-null fact should not exist. WrittenCommunications </conf:name>
+        <conf:description>SP 15D2-GW-Blank &#8211; a non-null fact should not exist. WrittenCommunications </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "SP 15D2"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552167gw/g60552167gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552167gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552167gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552167gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552167gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="WrittenCommunications" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_168gw">
+        <conf:name>SP 15D2-GW-Blank &#8211; a non-null fact should not exist. SolicitingMaterial </conf:name>
+        <conf:description>SP 15D2-GW-Blank &#8211; a non-null fact should not exist. SolicitingMaterial </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "SP 15D2"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552168gw/g60552168gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552168gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552168gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552168gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552168gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SolicitingMaterial" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_169gw">
+        <conf:name>SP 15D2-GW-Blank &#8211; a non-null fact should not exist. PreCommencementTenderOffer </conf:name>
+        <conf:description>SP 15D2-GW-Blank &#8211; a non-null fact should not exist. PreCommencementTenderOffer </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "SP 15D2"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552169gw/g60552169gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552169gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552169gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552169gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552169gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="PreCommencementTenderOffer" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_170gw">
+        <conf:name>SP 15D2-GW-Blank &#8211; a non-null fact should not exist. PreCommencementIssuerTenderOffer </conf:name>
+        <conf:description>SP 15D2-GW-Blank &#8211; a non-null fact should not exist. PreCommencementIssuerTenderOffer </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "SP 15D2"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552170gw/g60552170gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552170gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552170gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552170gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552170gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="PreCommencementIssuerTenderOffer" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_171gw">
+        <conf:name>SP 15D2-GW-Blank &#8211; a non-null fact should not exist. EntityInformationFormerLegalOrRegisteredName </conf:name>
+        <conf:description>SP 15D2-GW-Blank &#8211; a non-null fact should not exist. EntityInformationFormerLegalOrRegisteredName </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "SP 15D2"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552171gw/g60552171gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552171gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552171gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552171gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552171gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="EntityInformationFormerLegalOrRegisteredName" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_172gd">
+        <conf:name>POSASR GOOD </conf:name>
+        <conf:description>POSASR GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "POSASR"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552172gd/g60552172gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60552172gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552172gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552172gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552172gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_173gw">
+        <conf:name>POSASR-GW-Blank &#8211; a non-null fact should not exist. WrittenCommunications </conf:name>
+        <conf:description>POSASR-GW-Blank &#8211; a non-null fact should not exist. WrittenCommunications </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "POSASR"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552173gw/g60552173gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552173gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552173gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552173gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552173gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="WrittenCommunications" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_174gw">
+        <conf:name>POSASR-GW-Blank &#8211; a non-null fact should not exist. SolicitingMaterial </conf:name>
+        <conf:description>POSASR-GW-Blank &#8211; a non-null fact should not exist. SolicitingMaterial </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "POSASR"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552174gw/g60552174gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552174gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552174gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552174gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552174gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SolicitingMaterial" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_175gw">
+        <conf:name>POSASR-GW-Blank &#8211; a non-null fact should not exist. PreCommencementTenderOffer </conf:name>
+        <conf:description>POSASR-GW-Blank &#8211; a non-null fact should not exist. PreCommencementTenderOffer </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "POSASR"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552175gw/g60552175gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552175gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552175gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552175gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552175gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="PreCommencementTenderOffer" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_176gw">
+        <conf:name>POSASR-GW-Blank &#8211; a non-null fact should not exist. PreCommencementIssuerTenderOffer </conf:name>
+        <conf:description>POSASR-GW-Blank &#8211; a non-null fact should not exist. PreCommencementIssuerTenderOffer </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "POSASR"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552176gw/g60552176gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552176gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552176gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552176gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552176gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="PreCommencementIssuerTenderOffer" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_177gw">
+        <conf:name>POSASR-GW-Blank &#8211; a non-null fact should not exist. EntityInformationFormerLegalOrRegisteredName </conf:name>
+        <conf:description>POSASR-GW-Blank &#8211; a non-null fact should not exist. EntityInformationFormerLegalOrRegisteredName </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "POSASR"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60552177gw/g60552177gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60552177gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60552177gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60552177gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60552177gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="EntityInformationFormerLegalOrRegisteredName" num="60552" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+</conf:testcase>

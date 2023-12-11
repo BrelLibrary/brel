@@ -1,0 +1,228 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>525-10</number>
+    <name>EDGAR Filer Manual v68d 5.2.5.13</name>
+    <description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#5.2.5.13 Other Inline XBRL restrictions">Refer to EFM: 5.2.5.13 Other Inline XBRL restrictions</a>
+    </description>
+    <variation id="_201gd">
+        <name>Hidden GOOD</name>
+        <description>Numeric Nil, Required to Display, Displayed, GOOD</description>
+        <reference efmspec="5.2.5.14"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i11201gd/i11201gd-20081231.htm</instance>
+            <linkbase>i11201gd/i11201gd-20081231_pre.xml</linkbase>
+            <linkbase>i11201gd/i11201gd-20081231_lab.xml</linkbase>
+            <schema>i11201gd/i11201gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid">
+
+</result>
+    </variation>
+    <variation id="_202gw">
+        <name>Hidden WARN</name>
+        <description>Numeric Nil, Required to Display, Not displayed, GOOD/WARN</description>
+        <reference efmspec="5.2.5.14"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i11202gw/i11202gw-20081231.htm</instance>
+            <linkbase>i11202gw/i11202gw-20081231_pre.xml</linkbase>
+            <linkbase>i11202gw/i11202gw-20081231_lab.xml</linkbase>
+            <schema>i11202gw/i11202gw-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="wrn" num="99999" name="EFM.5.02.05.14.hidden-fact-not-referenced" frd="ix" fj="fj" nnum="70110" txt="txt"></assert>
+            <!-- <instance>i11202gw/i11202gw-20081231_htm.xml</instance> -->
+        </result>
+    </variation>
+    <variation id="_203gd">
+        <name>Hidden GOOD</name>
+        <description>QName, Not nil, Not Eligible for Transformation, Required to Display, Displayed, GOOD</description>
+        <reference efmspec="5.2.5.14"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i11203gd/i11203gd-20081231.htm</instance>
+            <linkbase>i11203gd/i11203gd-20081231_pre.xml</linkbase>
+            <linkbase>i11203gd/i11203gd-20081231_lab.xml</linkbase>
+            <schema>i11203gd/i11203gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid">
+
+</result>
+    </variation>
+    <variation id="_204gw">
+        <name>Hidden WARN</name>
+        <description>QName, Not nil, Not Eligible for Transformation, Required to Display, Not displayed, GOOD/WARN</description>
+        <reference efmspec="5.2.5.14"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i11204gw/i11204gw-20081231.htm</instance>
+            <linkbase>i11204gw/i11204gw-20081231_pre.xml</linkbase>
+            <linkbase>i11204gw/i11204gw-20081231_lab.xml</linkbase>
+            <schema>i11204gw/i11204gw-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="wrn" num="99999" name="EFM.5.02.05.14.hidden-fact-not-referenced" frd="ix" fj="fj" nnum="70110" txt="txt"></assert>
+            <!-- <instance>i11204gw/i11204gw-20081231_htm.xml</instance> -->
+        </result>
+    </variation>
+    <variation id="_205gw">
+        <name>Hidden WARN</name>
+        <description>Numeric Not Nil, Eligible for Transformation, GOOD/WARN</description>
+        <reference efmspec="5.2.5.14"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i11205gw/i11205gw-20081231.htm</instance>
+            <linkbase>i11205gw/i11205gw-20081231_pre.xml</linkbase>
+            <linkbase>i11205gw/i11205gw-20081231_lab.xml</linkbase>
+            <schema>i11205gw/i11205gw-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="wrn" num="99999" name="EFM.5.02.05.14.hidden-fact-eligible-for-transform" frd="ix" fj="fj" nnum="70110" txt="txt"></assert>
+            <!-- <instance>i11205gw/i11205gw-20081231_htm.xml</instance> -->
+        </result>
+    </variation>
+    <variation id="_206gw">
+        <name>Hidden WARN</name>
+        <description>Numeric nil, referenced twice, GOOD/WARN</description>
+        <reference efmspec="5.2.5.14"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i11206gw/i11206gw-20081231.htm</instance>
+            <linkbase>i11206gw/i11206gw-20081231_pre.xml</linkbase>
+            <linkbase>i11206gw/i11206gw-20081231_lab.xml</linkbase>
+            <schema>i11206gw/i11206gw-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="wrn" num="99999" name="EFM.5.02.05.14.hidden-fact-multiple-references" frd="ix" fj="fj" nnum="70110" txt="txt"></assert>
+            <!-- <instance>i11206gw/i11206gw-20081231_htm.xml</instance> -->
+        </result>
+    </variation>
+    <variation id="_208gd">
+        <name>Hidden GOOD</name>
+        <description>
+		</description>
+        <reference efmspec="5.2.5.14"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i11208gd/i11208gd-20081231.htm</instance>
+            <linkbase>i11208gd/i11208gd-20081231_pre.xml</linkbase>
+            <linkbase>i11208gd/i11208gd-20081231_lab.xml</linkbase>
+            <schema>i11208gd/i11208gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+        <!-- <result expected="valid"> <instance>i11208gd/i11208gd-20081231_htm.xml</instance> 
+			</result> -->
+    </variation>
+    <variation id="_209gw">
+        <name>Hidden Fact, Required to Display, Not displayed, WARN</name>
+        <description>Hidden Fact, Required to Display, Not displayed, WARN </description>
+        <reference efmspec="5.2.5.14"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i11209gw/i11209gw-20081231.htm</instance>
+            <linkbase>i11209gw/i11209gw-20081231_pre.xml</linkbase>
+            <linkbase>i11209gw/i11209gw-20081231_lab.xml</linkbase>
+            <schema>i11209gw/i11209gw-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="wrn" num="99999" name="EFM.5.02.05.14.hidden-fact-not-referenced" frd="ix" fj="fj" nnum="70110" txt="txt"></assert>
+        </result>
+    </variation>
+    <variation id="_210gw">
+        <name>Hidden LanguageItemType, Required to Display, Not displayed, WARN</name>
+        <description>Hidden LanguageItemType, Required to Display, Not displayed, WARN</description>
+        <reference efmspec="5.2.5.14"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i11210gw/i11210gw-20081231.htm</instance>
+            <linkbase>i11210gw/i11210gw-20081231_pre.xml</linkbase>
+            <linkbase>i11210gw/i11210gw-20081231_lab.xml</linkbase>
+            <schema>i11210gw/i11210gw-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="wrn" num="99999" name="EFM.5.02.05.14.hidden-fact-not-referenced" frd="ix" fj="fj" nnum="70110" txt="txt"></assert>
+        </result>
+    </variation>
+    <variation id="_211gw">
+        <name>Hidden URIItemType, Required to Display, Not displayed, WARN</name>
+        <description>Hidden URIItemType, Required to Display, Not displayed, WARN</description>
+        <reference efmspec="5.2.5.14"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i11211gw/i11211gw-20081231.htm</instance>
+            <linkbase>i11211gw/i11211gw-20081231_pre.xml</linkbase>
+            <linkbase>i11211gw/i11211gw-20081231_lab.xml</linkbase>
+            <schema>i11211gw/i11211gw-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="wrn" num="99999" name="EFM.5.02.05.14.hidden-fact-not-referenced" frd="ix" fj="fj" nnum="70110" txt="txt"></assert>
+        </result>
+    </variation>
+    <variation id="_212gw">
+        <name>Hidden DerivedURIItemType, Required to Display, Not displayed, WARN</name>
+        <description>Hidden DerivedURIItemType, Required to Display, Not displayed, WARN</description>
+        <reference efmspec="5.2.5.14"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i11212gw/i11212gw-20081231.htm</instance>
+            <linkbase>i11212gw/i11212gw-20081231_pre.xml</linkbase>
+            <linkbase>i11212gw/i11212gw-20081231_lab.xml</linkbase>
+            <schema>i11212gw/i11212gw-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="wrn" num="99999" name="EFM.5.02.05.14.hidden-fact-not-referenced" frd="ix" fj="fj" nnum="70110" txt="txt"></assert>
+        </result>
+    </variation>
+    <variation id="_213gw">
+        <name>Hidden Base64BinaryItemType, Required to Display, Not displayed, WARN</name>
+        <description>Hidden Base64BinaryItemType, Required to Display, Not displayed, WARN</description>
+        <reference efmspec="5.2.5.14"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i11213gw/i11213gw-20081231.htm</instance>
+            <linkbase>i11213gw/i11213gw-20081231_pre.xml</linkbase>
+            <linkbase>i11213gw/i11213gw-20081231_lab.xml</linkbase>
+            <schema>i11213gw/i11213gw-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="wrn" num="99999" name="EFM.5.02.05.14.hidden-fact-not-referenced" frd="ix" fj="fj" nnum="70110" txt="txt"></assert>
+        </result>
+    </variation>
+    <variation id="_214gw">
+        <name>Hidden DerivedBase64BinaryItemType, Required to Display, Not displayed, WARN</name>
+        <description>Hidden DerivedBase64BinaryItemType, Required to Display, Not displayed, WARN</description>
+        <reference efmspec="5.2.5.14"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i11214gw/i11214gw-20081231.htm</instance>
+            <linkbase>i11214gw/i11214gw-20081231_pre.xml</linkbase>
+            <linkbase>i11214gw/i11214gw-20081231_lab.xml</linkbase>
+            <schema>i11214gw/i11214gw-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="wrn" num="99999" name="EFM.5.02.05.14.hidden-fact-not-referenced" frd="ix" fj="fj" nnum="70110" txt="txt"></assert>
+        </result>
+    </variation>
+    <variation id="_302ng">
+        <name>Hidden NOGOOD</name>
+        <description>sec-ix-hidden property value does not reference a hidden fact, NOGOOD.</description>
+        <reference efmspec="5.2.5.14"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i11302ng/i11302ng-20081231.htm</instance>
+            <linkbase>i11302ng/i11302ng-20081231_pre.xml</linkbase>
+            <linkbase>i11302ng/i11302ng-20081231_lab.xml</linkbase>
+            <schema>i11302ng/i11302ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="EFM.5.02.05.14.hidden-fact-not-found" frd="ix" fj="fj" nnum="70110" txt="txt"></assert>
+        </result>
+    </variation>
+</testcase>

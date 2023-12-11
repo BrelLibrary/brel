@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xbrl
+  xmlns="http://www.xbrl.org/2003/instance"
+  xmlns:dei="http://xbrl.sec.gov/dei/2018-01-31"
+  xmlns:i03001gd="http://i03001gd/20081231"
+  xmlns:iso4217="http://www.xbrl.org/2003/iso4217"
+  xmlns:link="http://www.xbrl.org/2003/linkbase"
+  xmlns:srt="http://fasb.org/srt/2019-01-31"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <link:schemaRef xlink:href="i03001gd-20081231.xsd" xlink:type="simple"/>
+    <context id="d">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+        </entity>
+        <period>
+            <startDate>2008-04-01</startDate>
+            <endDate>2008-12-31</endDate>
+        </period>
+    </context>
+    <context id="i">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+        </entity>
+        <period>
+            <instant>2008-12-31</instant>
+        </period>
+    </context>
+    <context id="NNC1">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+        </entity>
+        <period>
+            <instant>2005-12-31</instant>
+        </period>
+    </context>
+    <context id="NNC2">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+        </entity>
+        <period>
+            <instant>2006-12-31</instant>
+        </period>
+    </context>
+    <context id="NNC3">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+        </entity>
+        <period>
+            <instant>2007-12-31</instant>
+        </period>
+    </context>
+    <context id="NFC1">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+        </entity>
+        <period>
+            <startDate>2005-01-01</startDate>
+            <endDate>2005-12-31</endDate>
+        </period>
+    </context>
+    <context id="NFC2">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+        </entity>
+        <period>
+            <startDate>2006-01-01</startDate>
+            <endDate>2006-12-31</endDate>
+        </period>
+    </context>
+    <context id="NFC3">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+        </entity>
+        <period>
+            <startDate>2007-01-01</startDate>
+            <endDate>2007-12-31</endDate>
+        </period>
+    </context>
+    <unit id="shares">
+        <measure>shares</measure>
+    </unit>
+    <unit id="U_iso4217USD">
+        <measure>iso4217:USD</measure>
+    </unit>
+    <unit id="iso4217_USD_per_Share">
+        <divide>
+            <unitNumerator>
+                <measure>iso4217:USD</measure>
+            </unitNumerator>
+            <unitDenominator>
+                <measure>shares</measure>
+            </unitDenominator>
+        </divide>
+    </unit>
+    <dei:AmendmentFlag contextRef="d">false</dei:AmendmentFlag>
+    <dei:DocumentPeriodEndDate contextRef="d">2008-12-31</dei:DocumentPeriodEndDate>
+    <dei:DocumentFiscalPeriodFocus contextRef="d">Q3</dei:DocumentFiscalPeriodFocus>
+    <dei:EntityCentralIndexKey contextRef="d">9876543210</dei:EntityCentralIndexKey>
+    <dei:CurrentFiscalYearEndDate contextRef="d">--03-31</dei:CurrentFiscalYearEndDate>
+    <dei:EntityEmergingGrowthCompany contextRef="d">false</dei:EntityEmergingGrowthCompany>
+    <dei:DocumentType contextRef="d">8-K</dei:DocumentType>
+    <dei:DocumentFiscalYearFocus contextRef="d">2008</dei:DocumentFiscalYearFocus>
+    <dei:EntityRegistrantName contextRef="d">OSD TEST CO #1 i03001gd</dei:EntityRegistrantName>
+    <dei:EntityCommonStockSharesOutstanding contextRef="i" decimals="INF" unitRef="shares">154357198</dei:EntityCommonStockSharesOutstanding>
+    <i03001gd:Content1 contextRef="d" decimals="2" unitRef="iso4217_USD_per_Share">0.25</i03001gd:Content1>
+    <i03001gd:Content2 contextRef="d" decimals="2" unitRef="iso4217_USD_per_Share">250</i03001gd:Content2>
+    <srt:RevisionsOfPreviousQuantityEstimates contextRef="NFC1" decimals="1" unitRef="U_iso4217USD">12345</srt:RevisionsOfPreviousQuantityEstimates>
+    <i03001gd:Content1
+      contextRef="NFC1"
+      decimals="2"
+      unitRef="iso4217_USD_per_Share">-0.25</i03001gd:Content1>
+    <i03001gd:Content4 contextRef="d" decimals="0" unitRef="iso4217_USD_per_Share">-1000.00</i03001gd:Content4>
+    <i03001gd:Content5 contextRef="d" decimals="0" unitRef="iso4217_USD_per_Share">-1000.00</i03001gd:Content5>
+    <i03001gd:Content6 contextRef="d" decimals="0" unitRef="iso4217_USD_per_Share">-1000.00</i03001gd:Content6>
+    <i03001gd:Content7 contextRef="d" decimals="0" unitRef="iso4217_USD_per_Share">-1000.00</i03001gd:Content7>
+    <i03001gd:Content8 contextRef="d" decimals="0" unitRef="iso4217_USD_per_Share">-1000.00</i03001gd:Content8>
+    <i03001gd:Content2
+      contextRef="NFC1"
+      decimals="0"
+      unitRef="iso4217_USD_per_Share">1234</i03001gd:Content2>
+    <i03001gd:Content2
+      contextRef="NFC2"
+      decimals="2"
+      unitRef="iso4217_USD_per_Share">-123456.78</i03001gd:Content2>
+    <i03001gd:Content4
+      contextRef="NFC2"
+      decimals="2"
+      unitRef="iso4217_USD_per_Share">0.25</i03001gd:Content4>
+    <i03001gd:Content6
+      contextRef="NFC2"
+      decimals="2"
+      unitRef="iso4217_USD_per_Share">1000.00</i03001gd:Content6>
+    <i03001gd:Content7
+      contextRef="NFC2"
+      decimals="2"
+      unitRef="iso4217_USD_per_Share">0</i03001gd:Content7>
+    <i03001gd:Content4
+      contextRef="NFC1"
+      decimals="1"
+      unitRef="iso4217_USD_per_Share">12345</i03001gd:Content4>
+    <i03001gd:Content5
+      contextRef="NFC1"
+      decimals="1"
+      unitRef="iso4217_USD_per_Share">123450000000000</i03001gd:Content5>
+    <i03001gd:Content1
+      contextRef="NFC3"
+      decimals="1"
+      unitRef="iso4217_USD_per_Share">-12345</i03001gd:Content1>
+    <i03001gd:Content8
+      contextRef="NFC2"
+      decimals="2"
+      unitRef="iso4217_USD_per_Share">-1234567.00</i03001gd:Content8>
+    <i03001gd:Content6
+      contextRef="NFC1"
+      decimals="2"
+      unitRef="iso4217_USD_per_Share">0.50</i03001gd:Content6>
+    <i03001gd:Content7
+      contextRef="NFC1"
+      decimals="2"
+      unitRef="iso4217_USD_per_Share">0.25</i03001gd:Content7>
+    <i03001gd:Content8
+      contextRef="NFC1"
+      decimals="2"
+      unitRef="iso4217_USD_per_Share">-123456.78</i03001gd:Content8>
+    <i03001gd:Content2
+      contextRef="NFC3"
+      decimals="2"
+      unitRef="iso4217_USD_per_Share">-123456.78</i03001gd:Content2>
+    <i03001gd:Content4
+      contextRef="NFC3"
+      decimals="2"
+      unitRef="iso4217_USD_per_Share">-123456.78</i03001gd:Content4>
+    <i03001gd:Content5
+      contextRef="NFC3"
+      decimals="2"
+      unitRef="iso4217_USD_per_Share">-123456.78</i03001gd:Content5>
+    <i03001gd:Content3
+      contextRef="NNC1"
+      decimals="2"
+      unitRef="iso4217_USD_per_Share">1000.00</i03001gd:Content3>
+    <i03001gd:Content3 contextRef="i" decimals="3" unitRef="iso4217_USD_per_Share">1000.00</i03001gd:Content3>
+    <i03001gd:Content3
+      contextRef="NNC2"
+      unitRef="iso4217_USD_per_Share"
+      xsi:nil="true"/>
+    <i03001gd:Content3
+      contextRef="NNC3"
+      unitRef="iso4217_USD_per_Share"
+      xsi:nil="true"/>
+    <i03001gd:Content8
+      contextRef="NFC3"
+      decimals="2"
+      unitRef="iso4217_USD_per_Share">5.25</i03001gd:Content8>
+</xbrl>

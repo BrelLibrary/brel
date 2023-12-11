@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<link:linkbase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd">
+    <link:labelLink xlink:type="extended" xlink:role="http://www.xbrl.org/2003/role/link">
+        <link:loc xlink:href="e61604011ng-20081231.xsd#e6160400_CashLike" xlink:label="CashLike" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="e61604011ng-20081231.xsd#e6160400_ChangeInCashLike" xlink:label="ChangeInCashLike" xlink:type="locator"></link:loc>
+        <link:label id="label_CashLike" xml:lang="en-US" xlink:label="label_CashLike" xlink:type="resource" xlink:role="http://www.xbrl.org/2003/role/label">Cash-like</link:label>
+        <link:label id="label_CashLike_2" xml:lang="en-US" xlink:label="label_CashLike_2" xlink:type="resource" xlink:role="http://www.xbrl.org/2003/role/periodStartLabel">Cash-like, Beginning of Period</link:label>
+        <link:label id="label_CashLike_3" xml:lang="en-US" xlink:label="label_CashLike_3" xlink:type="resource" xlink:role="http://www.xbrl.org/2003/role/periodEndLabel">Cash-like, End of Period</link:label>
+        <link:label id="label_ChangeInCashLike" xml:lang="en-US" xlink:label="label_ChangeInCashLike" xlink:type="resource" xlink:role="http://www.xbrl.org/2003/role/label">Change in Cash-like</link:label>
+        <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="CashLike" xlink:to="label_CashLike"></link:labelArc>
+        <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="CashLike" xlink:to="label_CashLike_2"></link:labelArc>
+        <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="CashLike" xlink:to="label_CashLike_3"></link:labelArc>
+        <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ChangeInCashLike" xlink:to="label_ChangeInCashLike"></link:labelArc>
+    </link:labelLink>
+</link:linkbase>

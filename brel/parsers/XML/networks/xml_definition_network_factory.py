@@ -36,17 +36,17 @@ class PhysicalDefinitionNetworkFactory(IXMLNetworkFactory):
         if xml_arc is None:
             # the node is not connected to any other node
             arc_role = "unknown"
-            order = 0
+            order = 0.0
             arc_qname = QName.from_string("link:unknown")
         elif xml_arc.get(f"{{{nsmap['xlink']}}}from", None) == label:
             # the node is a root
             arc_role = xml_arc.attrib.get("{" + nsmap["xlink"] + "}arcrole")
-            order = 0 # TODO: ask ghislain why this is different from the calculation network and definition network
+            order = 0.0 # TODO: ask ghislain why this is different from the calculation network and definition network
             arc_qname = QName.from_string(xml_arc.tag)
         elif xml_arc.get(f"{{{nsmap['xlink']}}}to", None) == label:
             # the node is an inner node
             arc_role = xml_arc.attrib.get("{" + nsmap["xlink"] + "}arcrole")
-            order = float(xml_arc.attrib.get("order") or 0.0).__round__()
+            order = float(xml_arc.attrib.get("order") or 0.0)
             arc_qname = QName.from_string(xml_arc.tag)
         else:
             raise ValueError(f"referenced element {xml_referenced_element} is not connected to arc {xml_arc}")

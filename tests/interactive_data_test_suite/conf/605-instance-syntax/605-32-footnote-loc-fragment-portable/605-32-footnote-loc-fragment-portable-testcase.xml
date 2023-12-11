@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>605-32</number>
+    <name>EDGAR Filer Manual v68d 6.5.32</name>
+    <description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.5.32 A link:footnoteLink link:loc xlink:href attribute must start with the sharp sign &#239;&#191;&#189;#&#239;&#191;&#189;.">Refer to EFM: 6.5.32 A link:footnoteLink link:loc xlink:href attribute must start with the sharp sign &#239;&#191;&#189;#&#239;&#191;&#189;.</a>
+    </description>
+    <reference specification="10998"></reference>
+    <variation id="_000ng">
+        <name>6.5.32 Instance footnote locator refers to own file name, NOGOOD</name>
+        <description> Instance footnote locator refers to own file name, NOGOOD</description>
+        <reference specification="10998"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60532000ng-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60532" name="Footnote-Locator-Portable" frd="du"></assert>
+        </result>
+    </variation>
+</testcase>

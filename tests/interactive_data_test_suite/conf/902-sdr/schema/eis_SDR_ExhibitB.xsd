@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sec.gov/edgar/document/sdr/exhibitb" xmlns:mstns="http://www.sec.gov/edgar/document/sdr/exhibitb" xmlns:ns1="http://www.sec.gov/edgar/common" xmlns:ns2="http://www.sec.gov/edgar/sdrcommon" targetNamespace="http://www.sec.gov/edgar/document/sdr/exhibitb" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.sec.gov/edgar/common" schemaLocation="eis_Common.xsd"/>
+	<xs:import namespace="http://www.sec.gov/edgar/sdrcommon" schemaLocation="eis_SDR_common.xsd"/>
+	<xs:complexType name="CHIEF_COMPLIANCE_OFFICER_TYPE">
+		<xs:annotation>
+			<xs:documentation>These elements part of the repeatable CHIEF_COMPLIANCE_OFFICER_TYPE group</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="chiefComplianceOfficerFirstName" type="ns1:STRING_30_TYPE"/>
+			<xs:element name="chiefComplianceOfficerMiddleName" type="ns1:STRING_30_TYPE" minOccurs="0"/>
+			<xs:element name="chiefComplianceOfficerLastName" type="ns1:STRING_30_TYPE"/>
+			<xs:element name="chiefComplianceOfficerTitle" type="ns2:STRING_100_TYPE"/>
+			<xs:element name="termCommencementDate" type="ns1:DATE_TYPE"/>
+			<xs:element name="termTerminateDate" type="ns1:DATE_TYPE" minOccurs="0"/>
+			<xs:element name="numberOfYearInPosition" type="ns1:INTEGER_TYPE_2"/>
+			<xs:element name="numberOfMonthInPosition" type="ns1:INTEGER_TYPE_2"/>
+			<xs:element name="businessExperienceDesc" type="ns2:STRING_1500_TYPE"/>
+			<xs:element name="otherBusinessAffiliation" type="ns2:STRING_1500_TYPE" minOccurs="0" maxOccurs="100"/>
+			<xs:element name="disciplinaryHistory" type="ns2:STRING_1500_TYPE" minOccurs="0" maxOccurs="100"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="chiefComplianceOfficers">
+		<xs:annotation>
+			<xs:documentation>This is the root element for an SDR exhibit B.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="chiefComplianceOfficer" type="CHIEF_COMPLIANCE_OFFICER_TYPE" maxOccurs="10"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

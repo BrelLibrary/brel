@@ -1,0 +1,296 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ixt-sec="http://www.sec.gov/inlineXBRL/transformation/2015-08-31" xmlns:ix="http://www.xbrl.org/2013/inlineXBRL" xmlns:ixt="http://www.xbrl.org/inlineXBRL/transformation/2020-02-12" xmlns:shr00="http://shr00/20331231" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:shr="http://xbrl.sec.gov/shr/2023" xmlns:xbrldi="http://xbrl.org/2006/xbrldi" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:iso4217="http://www.xbrl.org/2003/iso4217" xmlns:us-gaap="http://fasb.org/us-gaap/2023" xmlns:dei="http://xbrl.sec.gov/dei/2023" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+        <title>out.htm</title>
+    </head>
+    <body>
+        <div style="display: none">
+            <ix:header>
+                <ix:hidden>
+                    <ix:nonNumeric contextRef="fy" name="dei:AmendmentFlag">false</ix:nonNumeric>
+                    <ix:nonNumeric contextRef="fy" name="dei:EntityCentralIndexKey">9876543210</ix:nonNumeric>
+                    <ix:nonNumeric contextRef="fy" name="dei:DocumentFiscalYearFocus">2033</ix:nonNumeric>
+                    <ix:nonNumeric contextRef="fy" name="dei:DocumentFiscalPeriodFocus">FY</ix:nonNumeric>
+                </ix:hidden>
+                <ix:references>
+                    <link:schemaRef xlink:type="simple" xlink:href="e62203005ng-20331231.xsd"></link:schemaRef>
+                </ix:references>
+                <ix:resources>
+                    <xbrli:context id="fy">
+                        <xbrli:entity>
+                            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+                        </xbrli:entity>
+                        <xbrli:period>
+                            <xbrli:startDate>2022-01-01</xbrli:startDate>
+                            <xbrli:endDate>2022-12-31</xbrli:endDate>
+                        </xbrli:period>
+                    </xbrli:context>
+                    <xbrli:context id="fy_StockRepurchaseProgramCustomMember">
+                        <xbrli:entity>
+                            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+                            <xbrli:segment>
+                                <xbrldi:explicitMember dimension="us-gaap:ShareRepurchaseProgramAxis">shr00:StockRepurchaseProgramCustomMember</xbrldi:explicitMember>
+                            </xbrli:segment>
+                        </xbrli:entity>
+                        <xbrli:period>
+                            <xbrli:startDate>2022-01-01</xbrli:startDate>
+                            <xbrli:endDate>2022-12-31</xbrli:endDate>
+                        </xbrli:period>
+                    </xbrli:context>
+                    <xbrli:context id="fye_StockRepurchaseProgramCustomMember">
+                        <xbrli:entity>
+                            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+                            <xbrli:segment>
+                                <xbrldi:explicitMember dimension="us-gaap:ShareRepurchaseProgramAxis">shr00:StockRepurchaseProgramCustomMember</xbrldi:explicitMember>
+                            </xbrli:segment>
+                        </xbrli:entity>
+                        <xbrli:period>
+                            <xbrli:instant>2022-12-31</xbrli:instant>
+                        </xbrli:period>
+                    </xbrli:context>
+                    <xbrli:context id="fy_IssrRule10b51ArrDomainMember">
+                        <xbrli:entity>
+                            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+                            <xbrli:segment>
+                                <xbrldi:explicitMember dimension="shr:IssrRule10b51ArrAxis">shr00:IssrRule10b51ArrCustomMember</xbrldi:explicitMember>
+                            </xbrli:segment>
+                        </xbrli:entity>
+                        <xbrli:period>
+                            <xbrli:startDate>2022-01-01</xbrli:startDate>
+                            <xbrli:endDate>2022-12-31</xbrli:endDate>
+                        </xbrli:period>
+                    </xbrli:context>
+                    <xbrli:context id="fye">
+                        <xbrli:entity>
+                            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+                        </xbrli:entity>
+                        <xbrli:period>
+                            <xbrli:instant>2022-12-31</xbrli:instant>
+                        </xbrli:period>
+                    </xbrli:context>
+                    <xbrli:unit id="USD">
+                        <xbrli:measure>iso4217:USD</xbrli:measure>
+                    </xbrli:unit>
+                    <xbrli:unit id="Shares">
+                        <xbrli:measure>xbrli:shares</xbrli:measure>
+                    </xbrli:unit>
+                </ix:resources>
+            </ix:header>
+        </div>
+        <div>
+            <p>
+                <span style="color:blue; font-weight:bold">StockRepurchaseProgramNumberOfSharesAuthorizedToBeRepurchased:</span>
+                <ix:nonFraction decimals="0" contextRef="fye_StockRepurchaseProgramCustomMember" unitRef="Shares" name="us-gaap:StockRepurchaseProgramNumberOfSharesAuthorizedToBeRepurchased">30000</ix:nonFraction>
+            </p>
+            <p>
+                <span style="color:blue; font-weight:bold">StockRepurchaseProgramExpirationDate:</span>
+                <ix:nonNumeric contextRef="fy_StockRepurchaseProgramCustomMember" name="us-gaap:StockRepurchaseProgramExpirationDate">2034-06-30</ix:nonNumeric>
+            </p>
+            <p>
+                <span style="color:blue; font-weight:bold">RpPlanObjctvOrRatnlTextBlock:</span>
+                <ix:nonNumeric contextRef="fy_StockRepurchaseProgramCustomMember" name="shr:RpPlanObjctvOrRatnlTextBlock">The objective of the plan is to increase shareholder value whenever the share price falls below a threshold determined by the Board of Directors on a quarterly basis </ix:nonNumeric>
+            </p>
+            <p>
+                <span style="color:blue; font-weight:bold">RpAmtPrcOrCritTextBlock:</span>
+                <ix:nonNumeric contextRef="fy_StockRepurchaseProgramCustomMember" name="shr:RpAmtPrcOrCritTextBlock">Whenever the share price falls below this predetermined threshold, the CEO and CFO are notified and must approve the number of shares to be purchased.  The CEO and CFO consider recent company performance and future capital allocation plans in determining repurchase amounts </ix:nonNumeric>
+            </p>
+            <p>
+                <span style="color:blue; font-weight:bold">RpdSctiesOpenMktFlag:</span>
+                <ix:nonNumeric contextRef="fy_StockRepurchaseProgramCustomMember" name="shr:RpdSctiesOpenMktFlag">true</ix:nonNumeric>
+            </p>
+            <p>
+                <span style="color:blue; font-weight:bold">RpdSctiesTndrOfferFlag:</span>
+                <ix:nonNumeric contextRef="fy_StockRepurchaseProgramCustomMember" name="shr:RpdSctiesTndrOfferFlag">false</ix:nonNumeric>
+            </p>
+            <p>
+                <span style="color:blue; font-weight:bold">RpdSctiesPutOptnObligtnFlag:</span>
+                <ix:nonNumeric contextRef="fy_StockRepurchaseProgramCustomMember" name="shr:RpdSctiesPutOptnObligtnFlag">false</ix:nonNumeric>
+            </p>
+            <p>
+                <span style="color:blue; font-weight:bold">RpdSctiesNotPblcPlanDescTextBlock:</span>
+                <ix:nonNumeric contextRef="fy_StockRepurchaseProgramCustomMember" name="shr:RpdSctiesNotPblcPlanDescTextBlock">During the 4th quarter of 2033, the company repurchased 500 shares of its common stock; this repurchase was not part of a publicly announced plan or program, and was effected in open-market transactions .  </ix:nonNumeric>
+            </p>
+            <p>
+                <span style="color:blue; font-weight:bold">RpdSctiesNotPblcPlanShrs:</span>
+                <ix:nonFraction decimals="0" contextRef="fy_StockRepurchaseProgramCustomMember" unitRef="Shares" name="shr:RpdSctiesNotPblcPlanShrs">500</ix:nonFraction>
+            </p>
+            <p>
+                <span style="color:blue; font-weight:bold">SctyRpPrgmAnncmntDt:</span>
+                <ix:nonNumeric contextRef="fy_StockRepurchaseProgramCustomMember" name="shr:SctyRpPrgmAnncmntDt">2031-06-30</ix:nonNumeric>
+            </p>
+            <p>
+                <span style="color:blue; font-weight:bold">InsiderRpRstrctnsTextBlock:</span>
+                <ix:nonNumeric contextRef="fy_StockRepurchaseProgramCustomMember" name="shr:InsiderRpRstrctnsTextBlock">There are no restrictions on the price or number of shares being repurchased, but the repurchases must be made in adherence to a previously announced purchase plan or program</ix:nonNumeric>
+            </p>
+            <p>
+                <span style="color:blue; font-weight:bold">InsiderRpPoliciesProcTextBlock:</span>
+                <ix:nonNumeric contextRef="fy_StockRepurchaseProgramCustomMember" name="shr:InsiderRpPoliciesProcTextBlock">As discussed above, the company may repurchase its common stock through Rule 10b5-1 plans </ix:nonNumeric>
+            </p>
+            <p>
+                <span style="color:blue; font-weight:bold">SctyRpPrgmExpiredDuringPeriodFlag:</span>
+                <ix:nonNumeric contextRef="fy_StockRepurchaseProgramCustomMember" name="shr:SctyRpPrgmExpiredDuringPeriodFlag">false</ix:nonNumeric>
+            </p>
+            <p>
+                <span style="color:blue; font-weight:bold">SctyRpPrgmToBeTerminatedFlag:</span>
+                <ix:nonNumeric contextRef="fy_StockRepurchaseProgramCustomMember" name="shr:SctyRpPrgmToBeTerminatedFlag">false</ix:nonNumeric>
+            </p>
+            <p>
+                <span style="color:blue; font-weight:bold">IssrRule10b51ArrAdoptedFlag:</span>
+                <ix:nonNumeric contextRef="fy_IssrRule10b51ArrDomainMember" name="shr:IssrRule10b51ArrAdoptedFlag">true</ix:nonNumeric>
+            </p>
+            <p>
+                <span style="color:blue; font-weight:bold">IssrRule10b51ArrTrmntdFlag:</span>
+                <ix:nonNumeric contextRef="fy_IssrRule10b51ArrDomainMember" name="shr:IssrRule10b51ArrTrmntdFlag">false</ix:nonNumeric>
+            </p>
+            <p>
+                <span style="color:blue; font-weight:bold">IssrRule10b51ArrAdoptionDt:</span>
+                <ix:nonNumeric contextRef="fy_IssrRule10b51ArrDomainMember" name="shr:IssrRule10b51ArrAdoptionDt">2022-10-01</ix:nonNumeric>
+            </p>
+            <p>
+                <span style="color:blue; font-weight:bold">IssrRule10b51AggtAvlblShrs:</span>
+                <ix:nonFraction decimals="0" contextRef="fy_IssrRule10b51ArrDomainMember" unitRef="Shares" name="shr:IssrRule10b51AggtAvlblShrs">6000</ix:nonFraction>
+            </p>
+            <p>
+                <span style="color:blue; font-weight:bold">IssrRule10b51ArrTermntnDt:</span>
+                <ix:nonNumeric contextRef="fy_IssrRule10b51ArrDomainMember" name="shr:IssrRule10b51ArrTermntnDt">2022-12-31</ix:nonNumeric>
+            </p>
+            <p>
+                <span style="color:blue; font-weight:bold">DocumentType:</span>
+                <ix:nonNumeric contextRef="fy" name="dei:DocumentType">10-K</ix:nonNumeric>
+            </p>
+            <p>
+                <span style="color:blue; font-weight:bold">EntityInteractiveDataCurrent:</span>
+                <ix:nonNumeric contextRef="fy" name="dei:EntityInteractiveDataCurrent">Yes</ix:nonNumeric>
+            </p>
+            <p>
+                <span style="color:blue; font-weight:bold">DocumentPeriodEndDate:</span>
+                <ix:nonNumeric contextRef="fy" name="dei:DocumentPeriodEndDate">2022-12-31</ix:nonNumeric>
+            </p>
+            <p>
+                <span style="color:blue; font-weight:bold">EntityShellCompany:</span>
+                <ix:nonNumeric contextRef="fy" name="dei:EntityShellCompany">false</ix:nonNumeric>
+            </p>
+            <p>
+                <span style="color:blue; font-weight:bold">EntityFilerCategory:</span>
+                <ix:nonNumeric contextRef="fy" name="dei:EntityFilerCategory">Large Accelerated Filer</ix:nonNumeric>
+            </p>
+            <p>
+                <span style="color:blue; font-weight:bold">EntitySmallBusiness:</span>
+                <ix:nonNumeric contextRef="fy" name="dei:EntitySmallBusiness">false</ix:nonNumeric>
+            </p>
+            <p>
+                <span style="color:blue; font-weight:bold">EntityEmergingGrowthCompany:</span>
+                <ix:nonNumeric contextRef="fy" name="dei:EntityEmergingGrowthCompany">false</ix:nonNumeric>
+            </p>
+            <p>
+                <span style="color:blue; font-weight:bold">EntityCurrentReportingStatus:</span>
+                <ix:nonNumeric contextRef="fy" name="dei:EntityCurrentReportingStatus">Yes</ix:nonNumeric>
+            </p>
+            <p>
+                <span style="color:blue; font-weight:bold">EntityVoluntaryFilers:</span>
+                <ix:nonNumeric contextRef="fy" name="dei:EntityVoluntaryFilers">No</ix:nonNumeric>
+            </p>
+            <p>
+                <span style="color:blue; font-weight:bold">EntityWellKnownSeasonedIssuer:</span>
+                <ix:nonNumeric contextRef="fy" name="dei:EntityWellKnownSeasonedIssuer">No</ix:nonNumeric>
+            </p>
+            <p>
+                <span style="color:blue; font-weight:bold">CurrentFiscalYearEndDate:</span>
+                <ix:nonNumeric contextRef="fy" name="dei:CurrentFiscalYearEndDate">--12-31</ix:nonNumeric>
+            </p>
+            <p>
+                <span style="color:blue; font-weight:bold">EntityRegistrantName:</span>
+                <ix:nonNumeric contextRef="fy" name="dei:EntityRegistrantName">OSD Test Company</ix:nonNumeric>
+            </p>
+            <p>
+                <span style="color:blue; font-weight:bold">EntityPublicFloat:</span>
+                <ix:nonFraction decimals="INF" contextRef="fye" unitRef="USD" name="dei:EntityPublicFloat">1000000</ix:nonFraction>
+            </p>
+            <p>
+                <span style="color:blue; font-weight:bold">EntityAddressAddressLine1:</span>
+                <ix:nonNumeric contextRef="fy" name="dei:EntityAddressAddressLine1">8080 Floppy Disk Drive</ix:nonNumeric>
+            </p>
+            <p>
+                <span style="color:blue; font-weight:bold">EntityAddressCityOrTown:</span>
+                <ix:nonNumeric contextRef="fy" name="dei:EntityAddressCityOrTown">San Sushi</ix:nonNumeric>
+            </p>
+            <p>
+                <span style="color:blue; font-weight:bold">EntityAddressStateOrProvince:</span>
+                <ix:nonNumeric contextRef="fy" name="dei:EntityAddressStateOrProvince">CA</ix:nonNumeric>
+            </p>
+            <p>
+                <span style="color:blue; font-weight:bold">EntityAddressPostalZipCode:</span>
+                <ix:nonNumeric contextRef="fy" name="dei:EntityAddressPostalZipCode">94025</ix:nonNumeric>
+            </p>
+            <p>
+                <span style="color:blue; font-weight:bold">Security12bTitle:</span>
+                <ix:nonNumeric contextRef="fy" name="dei:Security12bTitle">Common Shares, .01 par value</ix:nonNumeric>
+            </p>
+            <p>
+                <span style="color:blue; font-weight:bold">TradingSymbol:</span>
+                <ix:nonNumeric contextRef="fy" name="dei:TradingSymbol">FAIL</ix:nonNumeric>
+            </p>
+            <p>
+                <span style="color:blue; font-weight:bold">SecurityExchangeName:</span>
+                <ix:nonNumeric contextRef="fy" name="dei:SecurityExchangeName">NYSE</ix:nonNumeric>
+            </p>
+            <p>
+                <span style="color:blue; font-weight:bold">AuditorName:</span>
+                <ix:nonNumeric contextRef="fy" name="dei:AuditorName">Bowie Stauffenberg</ix:nonNumeric>
+            </p>
+            <p>
+                <span style="color:blue; font-weight:bold">AuditorFirmId:</span>
+                <ix:nonNumeric contextRef="fy" name="dei:AuditorFirmId">886</ix:nonNumeric>
+            </p>
+            <p>
+                <span style="color:blue; font-weight:bold">AuditorLocation:</span>
+                <ix:nonNumeric contextRef="fy" name="dei:AuditorLocation">Incendio, CA</ix:nonNumeric>
+            </p>
+            <p>
+                <span style="color:blue; font-weight:bold">IcfrAuditorAttestationFlag:</span>
+                <ix:nonNumeric contextRef="fy" name="dei:IcfrAuditorAttestationFlag">true</ix:nonNumeric>
+            </p>
+            <p>
+                <span style="color:blue; font-weight:bold">EntityCommonStockSharesOutstanding:</span>
+                <ix:nonFraction decimals="0" contextRef="fye" unitRef="Shares" name="dei:EntityCommonStockSharesOutstanding">1000000</ix:nonFraction>
+            </p>
+            <p>
+                <span style="color:blue; font-weight:bold">Assets:</span>
+                <ix:nonFraction decimals="INF" contextRef="fye" unitRef="USD" name="us-gaap:Assets">10000</ix:nonFraction>
+            </p>
+            <p>
+                <span style="color:blue; font-weight:bold">EntityFileNumber:</span>
+                <ix:nonNumeric contextRef="fy" name="dei:EntityFileNumber">333-00000</ix:nonNumeric>
+            </p>
+            <p>
+                <span style="color:blue; font-weight:bold">EntityIncorporationStateCountryCode:</span>
+                <ix:nonNumeric contextRef="fy" name="dei:EntityIncorporationStateCountryCode">DE</ix:nonNumeric>
+            </p>
+            <p>
+                <span style="color:blue; font-weight:bold">EntityTaxIdentificationNumber:</span>
+                <ix:nonNumeric contextRef="fy" name="dei:EntityTaxIdentificationNumber">47-0813844</ix:nonNumeric>
+            </p>
+            <p>
+                <span style="color:blue; font-weight:bold">CityAreaCode:</span>
+                <ix:nonNumeric contextRef="fy" name="dei:CityAreaCode">456</ix:nonNumeric>
+            </p>
+            <p>
+                <span style="color:blue; font-weight:bold">LocalPhoneNumber:</span>
+                <ix:nonNumeric contextRef="fy" name="dei:LocalPhoneNumber">456-123-4321</ix:nonNumeric>
+            </p>
+            <p>
+                <span style="color:blue; font-weight:bold">DocumentAnnualReport:</span>
+                <ix:nonNumeric contextRef="fy" name="dei:DocumentAnnualReport">true</ix:nonNumeric>
+            </p>
+            <p>
+                <span style="color:blue; font-weight:bold">DocumentFinStmtErrorCorrectionFlag:</span>
+                <ix:nonNumeric contextRef="fy" name="dei:DocumentFinStmtErrorCorrectionFlag">false</ix:nonNumeric>
+            </p>
+            <p>
+                <span style="color:blue; font-weight:bold">DocumentTransitionReport:</span>
+                <ix:nonNumeric contextRef="fy" name="dei:DocumentTransitionReport">false</ix:nonNumeric>
+            </p>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<link:linkbase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd">
+    <link:labelLink xlink:type="extended" xlink:role="http://www.xbrl.org/2003/role/link">
+        <link:loc xlink:href="e60516015ng-20081231.xsd#e60516_ItemTextBlock" xlink:label="edgar_MyReceivablesPolicyTextBlock" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="e60516015ng-20081231.xsd#e60516_ItemString" xlink:label="stringItem" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="e60516015ng-20081231.xsd#e60516_ItemMonetaryInstant" xlink:label="monetaryItem" xlink:type="locator"></link:loc>
+        <link:label xml:lang="en-US" xlink:label="edgar_MyReceivablesPolicyTextBlock_lbl" xlink:type="resource" xlink:role="http://www.xbrl.org/2003/role/label">Item [Text Block]</link:label>
+        <link:label id="label_stringItem" xml:lang="en-US" xlink:label="label_stringItem" xlink:type="resource" xlink:role="http://www.xbrl.org/2003/role/label">Item [String]</link:label>
+        <link:label id="label_monetaryItem" xml:lang="en-US" xlink:label="label_monetaryItem" xlink:type="resource" xlink:role="http://www.xbrl.org/2003/role/label">Item [Monetary, Instant]</link:label>
+        <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="edgar_MyReceivablesPolicyTextBlock" xlink:to="edgar_MyReceivablesPolicyTextBlock_lbl"></link:labelArc>
+        <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="stringItem" xlink:to="label_stringItem"></link:labelArc>
+        <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="monetaryItem" xlink:to="label_monetaryItem"></link:labelArc>
+    </link:labelLink>
+</link:linkbase>

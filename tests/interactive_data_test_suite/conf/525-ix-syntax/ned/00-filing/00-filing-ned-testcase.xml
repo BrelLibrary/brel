@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>525-00</number>
+    <name>Inline XBRL Test Suite v68d : Self-Closing Tag Inline Tests NED (Not EDGAR Dependent)</name>
+    <description>
+        <h2>"Good" (gd) and "good with warning" (gw) inline xbrl variations.</h2>
+        <p>The warning is issued for any self-closing tag unless: (1) its content model disallows children, or (2) it cannot appear in a schema-valid inline XBRL document followed by a text node.</p>
+        <p>Elements in category (1) are &lt;ix:relationship/&gt;, &lt;link:schemaRef/&gt;, &lt;link:linkbaseRef/&gt;, &lt;link:roleRef/&gt;, &lt;link:arcroleRef/&gt;, and in the xhtml namespace, &lt;area&gt;, &lt;base&gt;, &lt;basefont&gt;, &lt;br&gt;, &lt;col&gt;, &lt;hr&gt;, &lt;img&gt;, &lt;input&gt;, &lt;isindex&gt;, &lt;meta&gt;, &lt;param&gt;, and &lt;img&gt;.</p>
+        <p>Elements in category (2) are &lt;td&gt;, &lt;tr&gt;, &lt;thead&gt;, &lt;tbody&gt;, and &lt;tfoot&gt;.</p>
+        <p>Therefore, among the elements that will generate warnings when they appear self-closed are &lt;ix:continuation/&gt;, &lt;ix:nonNumeric/&gt;, &lt;ix:footnote/&gt;, &lt;ix:nonFraction/&gt;, and in the xhtml namespace &lt;div/&gt;, &lt;p/&gt;, &lt;span/&gt;, &lt;font/&gt;, &lt;b/&gt;, &lt;i/&gt;, &lt;u/&gt;, &lt;ol/&gt;, &lt;ul/&gt;, &lt;li/&gt;, &lt;h1/&gt;, &lt;h2/&gt;, &lt;h3/&gt;, &lt;h4/&gt;, &lt;h5/&gt;, &lt;h6/&gt;, &lt;caption/&gt;, and others.</p>
+    </description>
+    <variation id="_201gd">
+        <name>nonFraction non-self closing test example, GOOD</name>
+        <description>nonFraction non-self closing test example, GOOD </description>
+        <reference xiitest=""></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00201gd/i00201gd-20081231.htm</instance>
+            <linkbase>i00201gd/i00201gd-20081231_pre.xml</linkbase>
+            <linkbase>i00201gd/i00201gd-20081231_lab.xml</linkbase>
+            <schema>i00201gd/i00201gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid">
+		</result>
+    </variation>
+    <variation id="_301gw">
+        <name>nonFraction self-closing, WARN</name>
+        <description>nonFraction self-closing, WARN</description>
+        <reference xiispec=""></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00301gw/i00301gw-20081231.htm</instance>
+            <linkbase>i00301gw/i00301gw-20081231_pre.xml</linkbase>
+            <linkbase>i00301gw/i00301gw-20081231_lab.xml</linkbase>
+            <schema>i00301gw/i00301gw-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="wrn" num="99999" name="ixbrl:selfClosedTagWarning" frd="ix"></assert>
+        </result>
+    </variation>
+    <variation id="_302gw">
+        <name>span self-closing, WARN</name>
+        <description>span self-closing, WARN</description>
+        <reference xiispec=""></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00302gw/i00302gw-20081231.htm</instance>
+            <linkbase>i00302gw/i00302gw-20081231_pre.xml</linkbase>
+            <linkbase>i00302gw/i00302gw-20081231_lab.xml</linkbase>
+            <schema>i00302gw/i00302gw-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="wrn" num="99999" name="ixbrl:selfClosedTagWarning" frd="ix"></assert>
+        </result>
+    </variation>
+    <variation id="_303gw">
+        <name>continuation self-closing, GOOD with Warning</name>
+        <description>continuation self-closing, GOOD with Warning </description>
+        <reference xiispec=""></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00303gw/i00303gw-20081231.htm</instance>
+            <linkbase>i00303gw/i00303gw-20081231_pre.xml</linkbase>
+            <linkbase>i00303gw/i00303gw-20081231_lab.xml</linkbase>
+            <schema>i00303gw/i00303gw-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="wrn" num="99999" name="ixbrl:selfClosedTagWarning" frd="ix"></assert>
+        </result>
+    </variation>
+    <variation id="_304gw">
+        <name>nonNumeric self-closing, GOOD with Warning</name>
+        <description>nonNumeric self-closing, GOOD with Warning </description>
+        <reference xiispec=""></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00304gw/i00304gw-20081231.htm</instance>
+            <linkbase>i00304gw/i00304gw-20081231_pre.xml</linkbase>
+            <linkbase>i00304gw/i00304gw-20081231_lab.xml</linkbase>
+            <schema>i00304gw/i00304gw-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="wrn" num="99999" name="ixbrl:selfClosedTagWarning" frd="ix"></assert>
+        </result>
+    </variation>
+    <variation id="_305gw">
+        <name>exclude self-closing, GOOD with Warning</name>
+        <description>exclude self-closing, GOOD with Warning </description>
+        <reference xiispec=""></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00305gw/i00305gw-20081231.htm</instance>
+            <linkbase>i00305gw/i00305gw-20081231_pre.xml</linkbase>
+            <linkbase>i00305gw/i00305gw-20081231_lab.xml</linkbase>
+            <schema>i00305gw/i00305gw-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="wrn" num="99999" name="ixbrl:selfClosedTagWarning" frd="ix"></assert>
+        </result>
+    </variation>
+    <variation id="_306ng">
+        <name>xml declaration is  preceded by blank, NOGOOD</name>
+        <description>xml declaration is  preceded by blank, NOGOOD</description>
+        <reference xiitest=""></reference>
+        <data>
+            <parameter name="ELOparams" value='{"submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i00306ng/e00fil001ng-20081231.htm</instance>
+            <schema>i00306ng/e00fil001ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="xmlSyntax:xmlDeclarationError" frd="tbd"></assert>
+        </result>
+    </variation>
+</testcase>

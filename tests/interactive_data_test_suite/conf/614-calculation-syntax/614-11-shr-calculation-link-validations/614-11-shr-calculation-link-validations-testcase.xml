@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl"?>
+<conf:testcase xmlns:conf="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <conf:creator>
+        <conf:name>SEC Office of Structured Disclosure</conf:name>
+        <conf:email>StructuredData@sec.gov</conf:email>
+    </conf:creator>
+    <conf:number>614-11</conf:number>
+    <conf:name>EDGAR Filer Manual v68d 6.14.11</conf:name>
+    <conf:description>
+        <div>
+            <a href="https://www.sec.gov/files/edgar/filermanual/efmvol2.pdf#6.14.11 SHR calculation link validations">EDGAR Filer Manual:6.14.11 SHR calculation link validations</a>
+        </div>
+    </conf:description>
+    <conf:variation id="_001gd">
+        <conf:name>Valid example, calc-between-dei-elements, GD</conf:name>
+        <conf:description>Valid example, calc-between-dei-elements, GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{}'></conf:parameter>
+            <conf:instance readMeFirst="true">e61411101gd/shr00-20331231.htm</conf:instance>
+            <conf:schema>e61411101gd/shr00-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+    </conf:result>
+    </conf:variation>
+    <conf:variation id="_002ng">
+        <conf:name>Invalid example, calc between SHR and non-SHR elements, NG</conf:name>
+        <conf:description>Invalid example, calc between SHR and non-SHR elements, NG</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{}'></conf:parameter>
+            <conf:instance readMeFirst="true">e61411102ng/shr00-20331231.htm</conf:instance>
+            <conf:schema>e61411102ng/shr00-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="61411" name="Relationship-Not-Permitted" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+</conf:testcase>

@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>624-06</number>
+    <name>EDGAR Filer Manual v68d 6.24.6</name>
+    <description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.24.6  Layout as Columns and Rows">Refer to EFM: 6.24.6  Layout as Columns and Rows</a>
+    </description>
+    <reference specification="18153"></reference>
+    <variation id="_000gd">
+        <name>Simple statement with one duration and one instant column.</name>
+        <description>Roughly duplicates first figure in EFM 6.25.6.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2013", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">000gd/r06000gd-20081231.xml</instance>
+            <linkbase>000gd/r06000gd-20081231_cal.xml</linkbase>
+            <linkbase>000gd/r06000gd-20081231_def.xml</linkbase>
+            <linkbase>000gd/r06000gd-20081231_lab.xml</linkbase>
+            <linkbase>000gd/r06000gd-20081231_pre.xml</linkbase>
+            <schema>000gd/r06000gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_001gd">
+        <name>Simple statement with one duration and one instant, and two currencies.</name>
+        <description>Roughly duplicates second figure in EFM 6.25.6.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2013", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">001gd/r06001gd-20081231.xml</instance>
+            <linkbase>001gd/r06001gd-20081231_cal.xml</linkbase>
+            <linkbase>001gd/r06001gd-20081231_def.xml</linkbase>
+            <linkbase>001gd/r06001gd-20081231_lab.xml</linkbase>
+            <linkbase>001gd/r06001gd-20081231_pre.xml</linkbase>
+            <schema>001gd/r06001gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_002gd">
+        <name>Simple statement with a duration and instant, and one subsidary.</name>
+        <description>Roughly duplicates third figure in EFM 6.25.6.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2013", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">002gd/r06002gd-20081231.xml</instance>
+            <linkbase>002gd/r06002gd-20081231_cal.xml</linkbase>
+            <linkbase>002gd/r06002gd-20081231_def.xml</linkbase>
+            <linkbase>002gd/r06002gd-20081231_lab.xml</linkbase>
+            <linkbase>002gd/r06002gd-20081231_pre.xml</linkbase>
+            <schema>002gd/r06002gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+</testcase>

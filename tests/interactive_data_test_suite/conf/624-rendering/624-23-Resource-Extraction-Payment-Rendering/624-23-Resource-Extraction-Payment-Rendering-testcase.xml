@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl"?>
+<conf:testcase xmlns:conf="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <conf:creator>
+        <conf:name>SEC Office of Structured Disclosure</conf:name>
+        <conf:email>StructuredData@sec.gov</conf:email>
+    </conf:creator>
+    <conf:number>{number}</conf:number>
+    <conf:name>EDGAR Filer Manual {version}</conf:name>
+    <conf:description>
+        <div>
+            <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.24.23 Resource Extraction Payment Rendering">Refer to EFM: 6.24.23 Resource Extraction Payment Rendering</a>
+        </div>
+    </conf:description>
+    <conf:variation id="_001gd">
+        <conf:name>DocumentType: 2.01 SD, Valid example, GD</conf:name>
+        <conf:description>DocumentType: 2.01 SD, Valid example, GD</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "SD/A", "exhibitType": "EX-2.01"}'></conf:parameter>
+            <conf:instance readMeFirst="true" exhibitType="EX-2.01">e62423001gd/e62423001gd-20301231.xml</conf:instance>
+            <conf:schema>e62423001gd/e62423001gd-20301231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+    </conf:result>
+    </conf:variation>
+</conf:testcase>

@@ -1,0 +1,101 @@
+<html xmlns:case="http://edgar/2009/conformance">
+  <head>
+    <title>616-06
+        :
+        EDGAR Filer Manual v68d 6.16.6</title>
+    <style type="text/css">
+        table, td, th {border: solid black 1pt; border-collapse: collapse;} td {vertical-align: top;}
+      </style>
+  </head>
+  <body>
+    <h1>616-06
+        :
+        EDGAR Filer Manual v68d 6.16.6</h1>
+    <p>
+        Created by: 
+        <a href="mailto:StructuredData@sec.gov">SEC Office of Structured Disclosure</a></p>
+    <p>
+      <description xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <h2>Restriction on the "closed" attribute.</h2>
+        <p>An effective relationship with an xlink:arcrole attribute equal to 'http://xbrl.org/int/dim/arcrole/notAll' must have an xbrldt:closed attribute equal to 'false'.</p>
+        <p>REMARK: This only applies to company extension linkbases. If a standard taxonomy linkbase appearing in edgartaxonomies.xml violated this rule it would be included in a 'good' test variation.</p>
+    </description>
+    </p>
+    <h3>References</h3>
+    <ul>10979</ul>
+    <h2>
+        Variations
+      </h2>
+    <table border="solid">
+      <thead>
+        <tr>
+          <th>Number</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>References</th>
+          <th>Data Inputs</th>
+          <th>Result Outputs</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>_001ng</td>
+          <td>6.16.6, notall arc with closed = true, NOGOOD. </td>
+          <td> notall arc with closed = true, NOGOOD. </td>
+          <td>10979 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e61606001ng-20081231.xml">e61606001ng-20081231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="e61606001ng-20081231_lab.xml">e61606001ng-20081231_lab.xml</a></li>
+              <li>
+    Linkbase
+    <a href="e61606001ng-20081231_def.xml">e61606001ng-20081231_def.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_pre.xml">edgar-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_def.xml">edgar-20081231_def.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_lab.xml">edgar-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20081231.xsd">edgar-20081231.xsd</a></li>
+              <li>
+    Schema
+    <a href="e61606001ng-20081231.xsd">e61606001ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 61606, <a href="../../../../lib/xbrlerrors.htm#fs-1606-Not-All-Relationship-Is-Closed">Not-All-Relationship-Is-Closed</a></td></tr><tr><td>FRD:</td><td>fs</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

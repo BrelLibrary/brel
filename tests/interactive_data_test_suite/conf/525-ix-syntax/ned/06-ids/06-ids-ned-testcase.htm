@@ -1,0 +1,485 @@
+<html xmlns:case="http://edgar/2009/conformance">
+  <head>
+    <title>525-06
+        :
+        Inline XBRL Test Suite v68d : IDs tests, Not EDGAR Dependent</title>
+    <style type="text/css">
+        table, td, th {border: solid black 1pt; border-collapse: collapse;} td {vertical-align: top;}
+      </style>
+  </head>
+  <body>
+    <h1>525-06
+        :
+        Inline XBRL Test Suite v68d : IDs tests, Not EDGAR Dependent</h1>
+    <p>
+        Created by: 
+        <a href="mailto:StructuredData@sec.gov">SEC Office of Structured Disclosure</a></p>
+    <p>
+      <description xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <p>The id attribute can appear on almost any ix: element.  In XBRL the id attributes are declared with ID/IDREF pairings so that (say) the value of unitRef must be the id of an xbrli:unit.  Not so in Inline XBRL, because it allows mutliple document input sets.</p>
+        <p>But Inline XBRL does add the condition that the id must be unique across the entire Inline XBRL Document Set, and this test set is not testing that condition, so the error signaled would be different than the xmlSchema:duplicateID error shown in cases 001ng through 108ng.</p>
+    </description>
+    </p>
+    <h2>
+        Variations
+      </h2>
+    <table border="solid">
+      <thead>
+        <tr>
+          <th>Number</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>References</th>
+          <th>Data Inputs</th>
+          <th>Result Outputs</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>_001gd</td>
+          <td>Normal use of distinct ids, GOOD</td>
+          <td>PASS-standard-IDs</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i06001gd/i06001gd-20081231.htm">i06001gd/i06001gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i06001gd/i06001gd-20081231_pre.xml">i06001gd/i06001gd-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i06001gd/i06001gd-20081231_lab.xml">i06001gd/i06001gd-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i06001gd/i06001gd-20081231.xsd">i06001gd/i06001gd-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_100ng</td>
+          <td>Three elements with id=duplicateID, NOGOOD</td>
+          <td>FAIL-id-triplication</td>
+          <td>ID values MUST uniquely identify the elements which bear them. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i06100ng/i06100ng-20081231.htm">i06100ng/i06100ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i06100ng/i06100ng-20081231_pre.xml">i06100ng/i06100ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i06100ng/i06100ng-20081231_lab.xml">i06100ng/i06100ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i06100ng/i06100ng-20081231.xsd">i06100ng/i06100ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-xml.3.3.1:idMustBeUnique">xml.3.3.1:idMustBeUnique</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_101ng</td>
+          <td>Duplicate context ids, NOGOOD</td>
+          <td>FAIL-non-unique-id-context</td>
+          <td>ID values MUST uniquely identify the elements which bear them. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i06101ng/i06101ng-20081231.htm">i06101ng/i06101ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i06101ng/i06101ng-20081231_pre.xml">i06101ng/i06101ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i06101ng/i06101ng-20081231_lab.xml">i06101ng/i06101ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i06101ng/i06101ng-20081231.xsd">i06101ng/i06101ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-xml.3.3.1:idMustBeUnique">xml.3.3.1:idMustBeUnique</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_102ng</td>
+          <td>Duplicate footnote ids, NOGOOD</td>
+          <td>FAIL-non-unique-id-footnote</td>
+          <td>ID values MUST uniquely identify the elements which bear them. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i06102ng/i06102ng-20081231.htm">i06102ng/i06102ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i06102ng/i06102ng-20081231_pre.xml">i06102ng/i06102ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i06102ng/i06102ng-20081231_lab.xml">i06102ng/i06102ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i06102ng/i06102ng-20081231.xsd">i06102ng/i06102ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-xml.3.3.1:idMustBeUnique">xml.3.3.1:idMustBeUnique</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_103ng</td>
+          <td>Duplicate fraction ids, NOGOOD</td>
+          <td>FAIL-non-unique-id-fraction</td>
+          <td>ID values MUST uniquely identify the elements which bear them. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i06103ng/i06103ng-20081231.htm">i06103ng/i06103ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i06103ng/i06103ng-20081231_pre.xml">i06103ng/i06103ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i06103ng/i06103ng-20081231_lab.xml">i06103ng/i06103ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i06103ng/i06103ng-20081231.xsd">i06103ng/i06103ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-xml.3.3.1:idMustBeUnique">xml.3.3.1:idMustBeUnique</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_104ng</td>
+          <td>Duplicate nonFraction ids, NOGOOD</td>
+          <td>FAIL-non-unique-id-nonFraction</td>
+          <td>ID values MUST uniquely identify the elements which bear them. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i06104ng/i06104ng-20081231.htm">i06104ng/i06104ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i06104ng/i06104ng-20081231_pre.xml">i06104ng/i06104ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i06104ng/i06104ng-20081231_lab.xml">i06104ng/i06104ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i06104ng/i06104ng-20081231.xsd">i06104ng/i06104ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-xml.3.3.1:idMustBeUnique">xml.3.3.1:idMustBeUnique</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_105ng</td>
+          <td>Duplicate nonNumeric ids, NOGOOD</td>
+          <td>FAIL-non-unique-id-nonNumeric</td>
+          <td>ID values MUST uniquely identify the elements which bear them. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i06105ng/i06105ng-20081231.htm">i06105ng/i06105ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i06105ng/i06105ng-20081231_pre.xml">i06105ng/i06105ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i06105ng/i06105ng-20081231_lab.xml">i06105ng/i06105ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i06105ng/i06105ng-20081231.xsd">i06105ng/i06105ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-xml.3.3.1:idMustBeUnique">xml.3.3.1:idMustBeUnique</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_106ng</td>
+          <td>Duplicate references ids, NOGOOD</td>
+          <td>FAIL-non-unique-id-references</td>
+          <td>ID values MUST uniquely identify the elements which bear them. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i06106ng/i06106ng-20081231.htm">i06106ng/i06106ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i06106ng/i06106ng-20081231_pre.xml">i06106ng/i06106ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i06106ng/i06106ng-20081231_lab.xml">i06106ng/i06106ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i06106ng/i06106ng-20081231.xsd">i06106ng/i06106ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-xml.3.3.1:idMustBeUnique">xml.3.3.1:idMustBeUnique</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_107ng</td>
+          <td>Duplicate tuple ids, NOGOOD</td>
+          <td>FAIL-non-unique-id-tuple</td>
+          <td>ID values MUST uniquely identify the elements which bear them. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i06107ng/i06107ng-20081231.htm">i06107ng/i06107ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i06107ng/i06107ng-20081231_pre.xml">i06107ng/i06107ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i06107ng/i06107ng-20081231_lab.xml">i06107ng/i06107ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i06107ng/i06107ng-20081231.xsd">i06107ng/i06107ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-xml.3.3.1:idMustBeUnique">xml.3.3.1:idMustBeUnique</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_109ng</td>
+          <td>Duplicate id on two units, NOGOOD</td>
+          <td>Duplicate id on two units, NOGOOD</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"submissionType": "8-K"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e06ids109ng/e06ids109ng-20081231.htm">e06ids109ng/e06ids109ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e06ids109ng/edgar-20181231.xsd">e06ids109ng/edgar-20181231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-xml.3.3.1:idMustBeUnique">xml.3.3.1:idMustBeUnique</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

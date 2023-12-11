@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>525-00</number>
+    <name>EDGAR Filer Manual v68d 5.2.5.11</name>
+    <description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#5.2.5.11 Inline XBRL 1.1 features that are not supported by EDGAR">Refer to EFM: 5.2.5.11 Inline XBRL 1.1 features that are not supported by EDGAR</a>
+    </description>
+    <variation id="_001gd">
+        <name>multi htm, GOOD</name>
+        <description>multi htm, GOOD</description>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i19001gd/i19001gd1-20081231.htm</instance>
+            <instance readMeFirst="true">i19001gd/i19001gd2-20081231.htm</instance>
+            <linkbase>i19001gd/i19001gd-20081231_pre.xml</linkbase>
+            <linkbase>i19001gd/i19001gd-20081231_lab.xml</linkbase>
+            <schema>i19001gd/i19001gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid">
+    </result>
+    </variation>
+    <variation id="_002gd">
+        <name>multi htm two input files, GOOD</name>
+        <description>multi htm two input files, GOOD</description>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i19002gd/i19002gd1-20081231.htm</instance>
+            <instance readMeFirst="true">i19002gd/i19002gd2-20081231.htm</instance>
+            <linkbase>i19002gd/i19002gd-20081231_pre.xml</linkbase>
+            <linkbase>i19002gd/i19002gd-20081231_lab.xml</linkbase>
+            <schema>i19002gd/i19002gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid">
+    </result>
+    </variation>
+    <variation id="_003gd">
+        <name>multi htm three input files, GOOD</name>
+        <description>multi htm three input files, GOOD</description>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i19003gd/i19003gd1-20081231.htm</instance>
+            <instance readMeFirst="true">i19003gd/i19003gd2-20081231.htm</instance>
+            <instance readMeFirst="true">i19003gd/i19003gd3-20081231.htm</instance>
+            <linkbase>i19003gd/i19003gd-20081231_pre.xml</linkbase>
+            <linkbase>i19003gd/i19003gd-20081231_lab.xml</linkbase>
+            <schema>i19003gd/i19003gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid">
+    </result>
+    </variation>
+    <variation id="_100ng">
+        <name>multihtm two input files-duplicate-context-ids, NOGOOD</name>
+        <description>multihtm two input files - FAIL-duplicate context ID values, NOGOOD</description>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i19100ng/i19100ng1-20081231.htm</instance>
+            <instance readMeFirst="true">i19100ng/i19100ng2-20081231.htm</instance>
+            <linkbase>i19100ng/i19100ng-20081231_pre.xml</linkbase>
+            <linkbase>i19100ng/i19100ng-20081231_lab.xml</linkbase>
+            <schema>i19100ng/i19100ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.14.1.2:resourceIdDuplication" frd="ix"></assert>
+        </result>
+    </variation>
+    <variation id="_101ng">
+        <name>multihtm two input files-duplicate-unit-ids, NOGOOD</name>
+        <description>multihtm two input files - FAIL-duplicate unit ID values, NOGOOD</description>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i19101ng/i19101ng1-20081231.htm</instance>
+            <instance readMeFirst="true">i19101ng/i19101ng2-20081231.htm</instance>
+            <linkbase>i19101ng/i19101ng-20081231_pre.xml</linkbase>
+            <linkbase>i19101ng/i19101ng-20081231_lab.xml</linkbase>
+            <schema>i19101ng/i19101ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.14.1.2:resourceIdDuplication" frd="ix"></assert>
+        </result>
+    </variation>
+</testcase>

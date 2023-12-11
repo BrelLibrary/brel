@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:oef11="http://oef11/20221103" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:oef="http://xbrl.sec.gov/oef/2023" xmlns:dtr="http://www.xbrl.org/2009/dtr" xmlns:xbrldt="http://xbrl.org/2005/xbrldt" xmlns:xbrldi="http://xbrl.org/2006/xbrldi" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:dei="http://xbrl.sec.gov/dei/2023" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dtr-types="http://www.xbrl.org/dtr/type/2022-03-31" targetNamespace="http://oef11/20221103" elementFormDefault="qualified">
+   <xs:import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"/>
+   <xs:import namespace="http://www.xbrl.org/2003/linkbase" schemaLocation="http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd"/>
+   <xs:import namespace="http://xbrl.org/2005/xbrldt" schemaLocation="http://www.xbrl.org/2005/xbrldt-2005.xsd"/>
+   <xs:import namespace="http://xbrl.sec.gov/oef/2023" schemaLocation="https://xbrl.sec.gov/oef/2023/oef-2023.xsd"/>
+   <xs:import namespace="http://www.xbrl.org/dtr/type/2022-03-31" schemaLocation="https://www.xbrl.org/dtr/type/2022-03-31/types.xsd"/>
+   <xs:import namespace="http://xbrl.sec.gov/oef-rr/2023" schemaLocation="https://xbrl.sec.gov/oef/2023/oef-rr-2023.xsd"/>
+   <xs:import namespace="http://xbrl.sec.gov/oef-lab/2023" schemaLocation="https://xbrl.sec.gov/oef/2023/oef-2023_lab.xsd"/>
+   <xs:import namespace="http://xbrl.sec.gov/dei/2023" schemaLocation="https://xbrl.sec.gov/dei/2023/dei-2023.xsd"/>
+   <xs:annotation>
+      <xs:appinfo>
+         <link:linkbase id="lnk">
+            <link:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/domain-member" xlink:type="simple" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#domain-member"/>
+            <link:roleRef roleURI="http://xbrl.sec.gov/rr/role/BarChartData" xlink:type="simple" xlink:href="https://xbrl.sec.gov/oef/2023/oef-2023.xsd#BarChartData"/>
+            <link:roleRef roleURI="http://xbrl.sec.gov/rr/role/ExpenseExample" xlink:type="simple" xlink:href="https://xbrl.sec.gov/oef/2023/oef-2023.xsd#ExpenseExample"/>
+            <link:roleRef roleURI="http://xbrl.sec.gov/rr/role/ExpenseExampleNoRedemption" xlink:type="simple" xlink:href="https://xbrl.sec.gov/oef/2023/oef-2023.xsd#ExpenseExampleNoRedemption"/>
+            <link:roleRef roleURI="http://xbrl.sec.gov/rr/role/OperatingExpensesData" xlink:type="simple" xlink:href="https://xbrl.sec.gov/oef/2023/oef-2023.xsd#OperatingExpensesData"/>
+            <link:roleRef roleURI="http://xbrl.sec.gov/rr/role/PerformanceTableData" xlink:type="simple" xlink:href="https://xbrl.sec.gov/oef/2023/oef-2023.xsd#PerformanceTableData"/>
+            <link:roleRef roleURI="http://xbrl.sec.gov/rr/role/RiskReturn" xlink:type="simple" xlink:href="https://xbrl.sec.gov/oef/2023/oef-2023.xsd#RiskReturn"/>
+            <link:roleRef roleURI="http://xbrl.sec.gov/rr/role/ShareholderFeesData" xlink:type="simple" xlink:href="https://xbrl.sec.gov/oef/2023/oef-2023.xsd#ShareholderFeesData"/>
+            <link:roleRef roleURI="http://xbrl.sec.gov/rr/role/FeesAndExpenses" xlink:type="simple" xlink:href="https://xbrl.sec.gov/oef/2023/oef-2023.xsd#FeesAndExpenses"/>
+            <link:roleRef roleURI="http://xbrl.sec.gov/rr/role/InvestmentRisks" xlink:type="simple" xlink:href="https://xbrl.sec.gov/oef/2023/oef-2023.xsd#InvestmentRisks"/>
+            <link:roleRef roleURI="http://xbrl.sec.gov/rr/role/InvestmentStrategy" xlink:type="simple" xlink:href="https://xbrl.sec.gov/oef/2023/oef-2023.xsd#InvestmentStrategy"/>
+            <link:roleRef roleURI="http://xbrl.sec.gov/rr/role/PerformanceManagement" xlink:type="simple" xlink:href="https://xbrl.sec.gov/oef/2023/oef-2023.xsd#PerformanceManagement"/>
+            <link:roleRef roleURI="http://xbrl.sec.gov/rr/role/SeriesOnly" xlink:type="simple" xlink:href="https://xbrl.sec.gov/oef/2023/oef-2023.xsd#SeriesOnly"/>
+            <link:roleRef roleURI="http://xbrl.sec.gov/oef/role/ClassOnly" xlink:type="simple" xlink:href="https://xbrl.sec.gov/oef/2023/oef-2023.xsd#ClassOnly"/>
+            <link:roleRef roleURI="http://xbrl.sec.gov/rr/role/PerformanceMeasureOnly" xlink:type="simple" xlink:href="https://xbrl.sec.gov/oef/2023/oef-2023.xsd#PerformanceMeasureOnly"/>
+            <link:roleRef roleURI="http://xbrl.sec.gov/rr/role/RiskOnly" xlink:type="simple" xlink:href="https://xbrl.sec.gov/oef/2023/oef-2023.xsd#RiskOnly"/>
+            <link:presentationLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/rr/role/RiskReturn">
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_LegalEntityAxis" xlink:label="LegalEntityAxis"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_S000014796Member" xlink:label="S000014796Member"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="LegalEntityAxis" xlink:to="S000014796Member" order="2.0" priority="1"/>
+            </link:presentationLink>
+            <link:presentationLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/rr/role/ShareholderFeesData">
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_LegalEntityAxis" xlink:label="LegalEntityAxis"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_S000014796Member" xlink:label="S000014796Member"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="LegalEntityAxis" xlink:to="S000014796Member" order="2.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/oef/2023/oef-2023.xsd#oef_ClassAxis" xlink:label="ClassAxis"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000014542Member" xlink:label="C000014542Member"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ClassAxis" xlink:to="C000014542Member" order="3.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000014543Member" xlink:label="C000014543Member"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ClassAxis" xlink:to="C000014543Member" order="4.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000014544Member" xlink:label="C000014544Member"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ClassAxis" xlink:to="C000014544Member" order="5.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000014545Member" xlink:label="C000014545Member"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ClassAxis" xlink:to="C000014545Member" order="6.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000014546Member" xlink:label="C000014546Member"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ClassAxis" xlink:to="C000014546Member" order="7.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000014547Member" xlink:label="C000014547Member"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ClassAxis" xlink:to="C000014547Member" order="8.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000017029Member" xlink:label="C000017029Member"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ClassAxis" xlink:to="C000017029Member" order="2.0" priority="1"/>
+            </link:presentationLink>
+            <link:presentationLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/rr/role/OperatingExpensesData">
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_LegalEntityAxis" xlink:label="LegalEntityAxis"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_S000014796Member" xlink:label="S000014796Member"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="LegalEntityAxis" xlink:to="S000014796Member" order="2.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/oef/2023/oef-2023.xsd#oef_ClassAxis" xlink:label="ClassAxis"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000014542Member" xlink:label="C000014542Member"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ClassAxis" xlink:to="C000014542Member" order="3.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000014543Member" xlink:label="C000014543Member"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ClassAxis" xlink:to="C000014543Member" order="4.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000014544Member" xlink:label="C000014544Member"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ClassAxis" xlink:to="C000014544Member" order="5.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000014545Member" xlink:label="C000014545Member"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ClassAxis" xlink:to="C000014545Member" order="6.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000014546Member" xlink:label="C000014546Member"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ClassAxis" xlink:to="C000014546Member" order="7.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000014547Member" xlink:label="C000014547Member"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ClassAxis" xlink:to="C000014547Member" order="8.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000017029Member" xlink:label="C000017029Member"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ClassAxis" xlink:to="C000017029Member" order="2.0" priority="1"/>
+            </link:presentationLink>
+            <link:presentationLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/rr/role/ExpenseExample">
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_LegalEntityAxis" xlink:label="LegalEntityAxis"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_S000014796Member" xlink:label="S000014796Member"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="LegalEntityAxis" xlink:to="S000014796Member" order="2.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/oef/2023/oef-2023.xsd#oef_ClassAxis" xlink:label="ClassAxis"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000014542Member" xlink:label="C000014542Member"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ClassAxis" xlink:to="C000014542Member" order="3.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000014543Member" xlink:label="C000014543Member"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ClassAxis" xlink:to="C000014543Member" order="4.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000014544Member" xlink:label="C000014544Member"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ClassAxis" xlink:to="C000014544Member" order="5.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000014545Member" xlink:label="C000014545Member"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ClassAxis" xlink:to="C000014545Member" order="6.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000014546Member" xlink:label="C000014546Member"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ClassAxis" xlink:to="C000014546Member" order="7.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000014547Member" xlink:label="C000014547Member"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ClassAxis" xlink:to="C000014547Member" order="8.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000017029Member" xlink:label="C000017029Member"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ClassAxis" xlink:to="C000017029Member" order="2.0" priority="1"/>
+            </link:presentationLink>
+            <link:presentationLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/rr/role/ExpenseExampleNoRedemption">
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_LegalEntityAxis" xlink:label="LegalEntityAxis"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_S000014796Member" xlink:label="S000014796Member"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="LegalEntityAxis" xlink:to="S000014796Member" order="2.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/oef/2023/oef-2023.xsd#oef_ClassAxis" xlink:label="ClassAxis"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000014542Member" xlink:label="C000014542Member"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ClassAxis" xlink:to="C000014542Member" order="3.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000014543Member" xlink:label="C000014543Member"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ClassAxis" xlink:to="C000014543Member" order="4.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000014544Member" xlink:label="C000014544Member"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ClassAxis" xlink:to="C000014544Member" order="5.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000014545Member" xlink:label="C000014545Member"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ClassAxis" xlink:to="C000014545Member" order="6.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000014546Member" xlink:label="C000014546Member"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ClassAxis" xlink:to="C000014546Member" order="7.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000014547Member" xlink:label="C000014547Member"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ClassAxis" xlink:to="C000014547Member" order="8.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000017029Member" xlink:label="C000017029Member"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ClassAxis" xlink:to="C000017029Member" order="2.0" priority="1"/>
+            </link:presentationLink>
+            <link:presentationLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/rr/role/BarChartData">
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_LegalEntityAxis" xlink:label="LegalEntityAxis"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_S000014796Member" xlink:label="S000014796Member"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="LegalEntityAxis" xlink:to="S000014796Member" order="2.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/oef/2023/oef-2023.xsd#oef_ProspectusLineItems" xlink:label="ProspectusLineItems"/>
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/oef/2023/oef-2023.xsd#oef_AnnualReturn2012" xlink:label="AnnualReturn2012"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AnnualReturn2012" use="optional" order="5.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/oef/2023/oef-2023.xsd#oef_AnnualReturn2013" xlink:label="AnnualReturn2013"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AnnualReturn2013" use="optional" order="6.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/oef/2023/oef-2023.xsd#oef_AnnualReturn2014" xlink:label="AnnualReturn2014"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AnnualReturn2014" use="optional" order="7.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/oef/2023/oef-2023.xsd#oef_AnnualReturn2015" xlink:label="AnnualReturn2015"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AnnualReturn2015" order="8.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/oef/2023/oef-2023.xsd#oef_AnnualReturn2016" xlink:label="AnnualReturn2016"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AnnualReturn2016" order="9.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/oef/2023/oef-2023.xsd#oef_AnnualReturn2017" xlink:label="AnnualReturn2017"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AnnualReturn2017" order="10.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/oef/2023/oef-2023.xsd#oef_AnnualReturn2018" xlink:label="AnnualReturn2018"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AnnualReturn2018" order="11.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/oef/2023/oef-2023.xsd#oef_AnnualReturn2019" xlink:label="AnnualReturn2019"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AnnualReturn2019" order="12.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/oef/2023/oef-2023.xsd#oef_AnnualReturn2020" xlink:label="AnnualReturn2020"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AnnualReturn2020" order="13.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/oef/2023/oef-2023.xsd#oef_AnnualReturn2021" xlink:label="AnnualReturn2021"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AnnualReturn2021" order="14.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/oef/2023/oef-2023.xsd#oef_AnnualReturn2022" xlink:label="AnnualReturn2022"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AnnualReturn2022" order="15.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/oef/2023/oef-2023.xsd#oef_ClassAxis" xlink:label="ClassAxis"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000014542Member" xlink:label="C000014542Member"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ClassAxis" xlink:to="C000014542Member" order="3.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000014543Member" xlink:label="C000014543Member"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ClassAxis" xlink:to="C000014543Member" order="4.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000014544Member" xlink:label="C000014544Member"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ClassAxis" xlink:to="C000014544Member" order="5.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000014545Member" xlink:label="C000014545Member"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ClassAxis" xlink:to="C000014545Member" order="6.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000014546Member" xlink:label="C000014546Member"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ClassAxis" xlink:to="C000014546Member" order="7.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000014547Member" xlink:label="C000014547Member"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ClassAxis" xlink:to="C000014547Member" order="8.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000017029Member" xlink:label="C000017029Member"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ClassAxis" xlink:to="C000017029Member" order="2.0" priority="1"/>
+            </link:presentationLink>
+            <link:presentationLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/rr/role/PerformanceTableData">
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/oef/2023/oef-2023.xsd#oef_ProspectusLineItems" xlink:label="ProspectusLineItems"/>
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/oef/2023/oef-2023.xsd#oef_AverageAnnualReturnYear01" xlink:label="AverageAnnualReturnYear01"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AverageAnnualReturnYear01" use="optional" order="5.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/oef/2023/oef-2023.xsd#oef_AverageAnnualReturnYear05" xlink:label="AverageAnnualReturnYear05"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AverageAnnualReturnYear05" use="optional" order="6.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/oef/2023/oef-2023.xsd#oef_AverageAnnualReturnYear10" xlink:label="AverageAnnualReturnYear10"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AverageAnnualReturnYear10" use="optional" order="7.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/oef/2023/oef-2023.xsd#oef_AverageAnnualReturnSinceInception" xlink:label="AverageAnnualReturnSinceInception"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AverageAnnualReturnSinceInception" use="optional" order="8.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/oef/2023/oef-2023.xsd#oef_AverageAnnualReturnInceptionDate" xlink:label="AverageAnnualReturnInceptionDate"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AverageAnnualReturnInceptionDate" use="optional" order="9.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/oef/2023/oef-2023.xsd#oef_ClassAxis" xlink:label="ClassAxis"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000014542Member" xlink:label="C000014542Member"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ClassAxis" xlink:to="C000014542Member" order="3.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000014543Member" xlink:label="C000014543Member"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ClassAxis" xlink:to="C000014543Member" order="4.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000014544Member" xlink:label="C000014544Member"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ClassAxis" xlink:to="C000014544Member" order="5.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000014545Member" xlink:label="C000014545Member"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ClassAxis" xlink:to="C000014545Member" order="6.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000014546Member" xlink:label="C000014546Member"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ClassAxis" xlink:to="C000014546Member" order="7.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000014547Member" xlink:label="C000014547Member"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ClassAxis" xlink:to="C000014547Member" order="8.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000017029Member" xlink:label="C000017029Member"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ClassAxis" xlink:to="C000017029Member" order="2.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/oef/2023/oef-2023.xsd#oef_PerformanceMeasureAxis" xlink:label="PerformanceMeasureAxis"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_MSCIEAFEIndexMember" xlink:label="MSCIEAFEIndexMember"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PerformanceMeasureAxis" xlink:to="MSCIEAFEIndexMember" order="4.0" priority="1"/>
+            </link:presentationLink>
+            <link:presentationLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/rr/role/FeesAndExpenses">
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_LegalEntityAxis" xlink:label="LegalEntityAxis"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_S000014796Member" xlink:label="S000014796Member"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="LegalEntityAxis" xlink:to="S000014796Member" order="2.0" priority="1"/>
+            </link:presentationLink>
+            <link:presentationLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/rr/role/InvestmentStrategy">
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_LegalEntityAxis" xlink:label="LegalEntityAxis"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_S000014796Member" xlink:label="S000014796Member"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="LegalEntityAxis" xlink:to="S000014796Member" order="2.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/oef/2023/oef-2023.xsd#oef_ProspectusLineItems" xlink:label="ProspectusLineItems"/>
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/oef/2023/oef-2023.xsd#oef_RiskNarrativeTextBlock" xlink:label="RiskNarrativeTextBlock"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="RiskNarrativeTextBlock" order="29.0" priority="1"/>
+            </link:presentationLink>
+            <link:presentationLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/rr/role/InvestmentRisks">
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_LegalEntityAxis" xlink:label="LegalEntityAxis"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_S000014796Member" xlink:label="S000014796Member"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="LegalEntityAxis" xlink:to="S000014796Member" order="2.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/oef/2023/oef-2023.xsd#oef_RiskAxis" xlink:label="RiskAxis"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_PerformanceRiskMember" xlink:label="PerformanceRiskMember"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="RiskAxis" xlink:to="PerformanceRiskMember" order="10.0" preferredLabel="http://www.xbrl.org/2003/role/terseLabel" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_InternationalInvestmentsRiskMember" xlink:label="InternationalInvestmentsRiskMember"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="RiskAxis" xlink:to="InternationalInvestmentsRiskMember" order="11.0" preferredLabel="http://www.xbrl.org/2003/role/terseLabel" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_RegionalRiskMember" xlink:label="RegionalRiskMember"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="RiskAxis" xlink:to="RegionalRiskMember" order="12.0" preferredLabel="http://www.xbrl.org/2003/role/terseLabel" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_DerivativesRiskMember" xlink:label="DerivativesRiskMember"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="RiskAxis" xlink:to="DerivativesRiskMember" order="13.0" preferredLabel="http://www.xbrl.org/2003/role/terseLabel" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_ManagementRiskMember" xlink:label="ManagementRiskMember"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="RiskAxis" xlink:to="ManagementRiskMember" order="14.0" preferredLabel="http://www.xbrl.org/2003/role/terseLabel" priority="1"/>
+            </link:presentationLink>
+            <link:presentationLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/rr/role/PerformanceManagement">
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_LegalEntityAxis" xlink:label="LegalEntityAxis"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_S000014796Member" xlink:label="S000014796Member"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="LegalEntityAxis" xlink:to="S000014796Member" order="2.0" priority="1"/>
+            </link:presentationLink>
+            <link:definitionLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/rr/role/SeriesOnly">
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityDomain" xlink:label="loc_deiEntityDomain"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_S000014796Member" xlink:label="loc_oef11S000014796Member"/>
+               <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_deiEntityDomain" xlink:to="loc_oef11S000014796Member" order="1.0" priority="1"/>
+            </link:definitionLink>
+            <link:definitionLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/oef/role/ClassOnly">
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/oef/2023/oef-2023.xsd#oef_ShareClassDomain" xlink:label="loc_rrShareClassDomain"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000014542Member" xlink:label="loc_oef11C000014542Member"/>
+               <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_rrShareClassDomain" xlink:to="loc_oef11C000014542Member" order="2.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000014543Member" xlink:label="loc_oef11C000014543Member"/>
+               <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_rrShareClassDomain" xlink:to="loc_oef11C000014543Member" order="3.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000014544Member" xlink:label="loc_oef11C000014544Member"/>
+               <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_rrShareClassDomain" xlink:to="loc_oef11C000014544Member" order="4.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000014545Member" xlink:label="loc_oef11C000014545Member"/>
+               <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_rrShareClassDomain" xlink:to="loc_oef11C000014545Member" order="5.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000014546Member" xlink:label="loc_oef11C000014546Member"/>
+               <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_rrShareClassDomain" xlink:to="loc_oef11C000014546Member" order="6.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000014547Member" xlink:label="loc_oef11C000014547Member"/>
+               <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_rrShareClassDomain" xlink:to="loc_oef11C000014547Member" order="7.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000017029Member" xlink:label="loc_oef11C000017029Member"/>
+               <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_rrShareClassDomain" xlink:to="loc_oef11C000017029Member" order="1.0" priority="1"/>
+            </link:definitionLink>
+            <link:definitionLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/rr/role/PerformanceMeasureOnly">
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/oef/2023/oef-2023.xsd#oef_PerformanceMeasureDomain" xlink:label="loc_rrPerformanceMeasureDomain"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_MSCIEAFEIndexMember" xlink:label="loc_oef11MSCIEAFEIndexMember"/>
+               <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_rrPerformanceMeasureDomain" xlink:to="loc_oef11MSCIEAFEIndexMember" order="3.0" priority="1"/>
+            </link:definitionLink>
+            <!-- custom def link in non-only role -->
+            <link:definitionLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/rr/role/ExpenseExample">
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/oef/2023/oef-2023.xsd#oef_PerformanceMeasureDomain" xlink:label="loc_rrPerformanceMeasureDomain"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_MSCIEAFEIndexMember" xlink:label="loc_oef11MSCIEAFEIndexMember"/>
+               <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="loc_rrPerformanceMeasureDomain" xlink:to="loc_oef11MSCIEAFEIndexMember" order="3.0" priority="1"/>
+            </link:definitionLink>
+            <!-- end custom def link in non-only role -->
+            <link:definitionLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/rr/role/RiskOnly">
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/oef/2023/oef-2023.xsd#oef_AllRisksMember" xlink:label="AllRisksMember"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_PerformanceRiskMember" xlink:label="PerformanceRiskMember"/>
+               <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AllRisksMember" xlink:to="PerformanceRiskMember" order="9.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_InternationalInvestmentsRiskMember" xlink:label="InternationalInvestmentsRiskMember"/>
+               <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AllRisksMember" xlink:to="InternationalInvestmentsRiskMember" order="10.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_RegionalRiskMember" xlink:label="RegionalRiskMember"/>
+               <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AllRisksMember" xlink:to="RegionalRiskMember" order="11.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_DerivativesRiskMember" xlink:label="DerivativesRiskMember"/>
+               <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AllRisksMember" xlink:to="DerivativesRiskMember" order="12.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_ManagementRiskMember" xlink:label="ManagementRiskMember"/>
+               <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AllRisksMember" xlink:to="ManagementRiskMember" order="13.0" priority="1"/>
+            </link:definitionLink>
+            <link:labelLink xlink:type="extended" xlink:role="http://www.xbrl.org/2003/role/link">
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/oef/2023/oef-2023.xsd#oef_NetExpensesOverAssets" xlink:label="oef_NetExpensesOverAssets"/>
+               <link:label xlink:type="resource" xlink:label="oef_NetExpensesOverAssets_lbl" xlink:role="http://www.xbrl.org/2003/role/totalLabel" xml:lang="en-US">Net Expenses (as a percentage of Assets)</link:label>
+               <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="oef_NetExpensesOverAssets" xlink:to="oef_NetExpensesOverAssets_lbl" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000014542Member" xlink:label="oef11_C000014542Member"/>
+               <link:label xlink:type="resource" xlink:label="oef11_C000014542Member_lbl" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Class B</link:label>
+               <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="oef11_C000014542Member" xlink:to="oef11_C000014542Member_lbl" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000014543Member" xlink:label="oef11_C000014543Member"/>
+               <link:label xlink:type="resource" xlink:label="oef11_C000014543Member_lbl" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Class C</link:label>
+               <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="oef11_C000014543Member" xlink:to="oef11_C000014543Member_lbl" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000014544Member" xlink:label="oef11_C000014544Member"/>
+               <link:label xlink:type="resource" xlink:label="oef11_C000014544Member_lbl" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Class I</link:label>
+               <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="oef11_C000014544Member" xlink:to="oef11_C000014544Member_lbl" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000014545Member" xlink:label="oef11_C000014545Member"/>
+               <link:label xlink:type="resource" xlink:label="oef11_C000014545Member_lbl" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Class R</link:label>
+               <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="oef11_C000014545Member" xlink:to="oef11_C000014545Member_lbl" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000014546Member" xlink:label="oef11_C000014546Member"/>
+               <link:label xlink:type="resource" xlink:label="oef11_C000014546Member_lbl" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Class R2</link:label>
+               <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="oef11_C000014546Member" xlink:to="oef11_C000014546Member_lbl" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000014547Member" xlink:label="oef11_C000014547Member"/>
+               <link:label xlink:type="resource" xlink:label="oef11_C000014547Member_lbl" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Class R3</link:label>
+               <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="oef11_C000014547Member" xlink:to="oef11_C000014547Member_lbl" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_C000017029Member" xlink:label="oef11_C000017029Member"/>
+               <link:label xlink:type="resource" xlink:label="oef11_C000017029Member_lbl" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Class A</link:label>
+               <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="oef11_C000017029Member" xlink:to="oef11_C000017029Member_lbl" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_DerivativesRiskMember" xlink:label="oef11_DerivativesRiskMember"/>
+               <link:label xlink:type="resource" xlink:label="oef11_DerivativesRiskMember_lbl" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Derivatives Risk [Member]</link:label>
+               <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="oef11_DerivativesRiskMember" xlink:to="oef11_DerivativesRiskMember_lbl" priority="1"/>
+               <link:label xlink:type="resource" xlink:label="label_DerivativesRiskMember" xlink:role="http://www.xbrl.org/2003/role/terseLabel" xml:lang="en-US" id="label_DerivativesRiskMember">Derivatives</link:label>
+               <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="oef11_DerivativesRiskMember" xlink:to="label_DerivativesRiskMember" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_InternationalInvestmentsRiskMember" xlink:label="oef11_InternationalInvestmentsRiskMember"/>
+               <link:label xlink:type="resource" xlink:label="oef11_InternationalInvestmentsRiskMember_lbl" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">International Investments Risk [Member]</link:label>
+               <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="oef11_InternationalInvestmentsRiskMember" xlink:to="oef11_InternationalInvestmentsRiskMember_lbl" priority="1"/>
+               <link:label xlink:type="resource" xlink:label="label_InternationalInvestmentsRiskMember" xlink:role="http://www.xbrl.org/2003/role/terseLabel" xml:lang="en-US" id="label_InternationalInvestmentsRiskMember">International Investments</link:label>
+               <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="oef11_InternationalInvestmentsRiskMember" xlink:to="label_InternationalInvestmentsRiskMember" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_MSCIEAFEIndexMember" xlink:label="oef11_MSCIEAFEIndexMember"/>
+               <link:label xlink:type="resource" xlink:label="oef11_MSCIEAFEIndexMember_lbl" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">MSCI EAFE Index [Member]</link:label>
+               <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="oef11_MSCIEAFEIndexMember" xlink:to="oef11_MSCIEAFEIndexMember_lbl" priority="1"/>
+               <link:label xlink:type="resource" xlink:label="label_MSCIEAFEIndexMember" xlink:role="http://www.xbrl.org/2003/role/terseLabel" xml:lang="en-US" id="label_MSCIEAFEIndexMember">MSCI EAFE Index</link:label>
+               <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="oef11_MSCIEAFEIndexMember" xlink:to="label_MSCIEAFEIndexMember" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_ManagementRiskMember" xlink:label="oef11_ManagementRiskMember"/>
+               <link:label xlink:type="resource" xlink:label="oef11_ManagementRiskMember_lbl" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Management Risk [Member]</link:label>
+               <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="oef11_ManagementRiskMember" xlink:to="oef11_ManagementRiskMember_lbl" priority="1"/>
+               <link:label xlink:type="resource" xlink:label="label_ManagementRiskMember" xlink:role="http://www.xbrl.org/2003/role/terseLabel" xml:lang="en-US" id="label_ManagementRiskMember">Management</link:label>
+               <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="oef11_ManagementRiskMember" xlink:to="label_ManagementRiskMember" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_PerformanceRiskMember" xlink:label="oef11_PerformanceRiskMember"/>
+               <link:label xlink:type="resource" xlink:label="oef11_PerformanceRiskMember_lbl" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Performance Risk [Member]</link:label>
+               <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="oef11_PerformanceRiskMember" xlink:to="oef11_PerformanceRiskMember_lbl" priority="1"/>
+               <link:label xlink:type="resource" xlink:label="label_PerformanceRiskMember" xlink:role="http://www.xbrl.org/2003/role/terseLabel" xml:lang="en-US" id="label_PerformanceRiskMember">Performance</link:label>
+               <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="oef11_PerformanceRiskMember" xlink:to="label_PerformanceRiskMember" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_RegionalRiskMember" xlink:label="oef11_RegionalRiskMember"/>
+               <link:label xlink:type="resource" xlink:label="oef11_RegionalRiskMember_lbl" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Regional Risk [Member]</link:label>
+               <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="oef11_RegionalRiskMember" xlink:to="oef11_RegionalRiskMember_lbl" priority="1"/>
+               <link:label xlink:type="resource" xlink:label="label_RegionalRiskMember" xlink:role="http://www.xbrl.org/2003/role/terseLabel" xml:lang="en-US" id="label_RegionalRiskMember">Regional</link:label>
+               <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="oef11_RegionalRiskMember" xlink:to="label_RegionalRiskMember" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#oef11_S000014796Member" xlink:label="oef11_S000014796Member"/>
+               <link:label xlink:type="resource" xlink:label="oef11_S000014796Member_lbl" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">XYZ Contrarian Fund</link:label>
+               <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="oef11_S000014796Member" xlink:to="oef11_S000014796Member_lbl" priority="1"/>
+            </link:labelLink>
+         </link:linkbase>
+      </xs:appinfo>
+  </xs:annotation>
+   <xs:element name="S000014796Member" id="oef11_S000014796Member" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+   <xs:element name="C000017029Member" id="oef11_C000017029Member" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+   <xs:element name="C000014542Member" id="oef11_C000014542Member" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+   <xs:element name="C000014543Member" id="oef11_C000014543Member" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+   <xs:element name="C000014544Member" id="oef11_C000014544Member" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+   <xs:element name="C000014545Member" id="oef11_C000014545Member" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+   <xs:element name="C000014546Member" id="oef11_C000014546Member" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+   <xs:element name="C000014547Member" id="oef11_C000014547Member" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+   <xs:element name="PerformanceRiskMember" id="oef11_PerformanceRiskMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+   <xs:element name="InternationalInvestmentsRiskMember" id="oef11_InternationalInvestmentsRiskMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+   <xs:element name="RegionalRiskMember" id="oef11_RegionalRiskMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+   <xs:element name="DerivativesRiskMember" id="oef11_DerivativesRiskMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+   <xs:element name="ManagementRiskMember" id="oef11_ManagementRiskMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+   <xs:element name="MSCIEAFEIndexMember" id="oef11_MSCIEAFEIndexMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+</xs:schema>

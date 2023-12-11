@@ -1,0 +1,769 @@
+<html xmlns:case="http://edgar/2009/conformance">
+  <head>
+    <title>525-07
+        :
+        Inline XBRL Test Suite v68d : Continuation tests, Not EDGAR Dependent</title>
+    <style type="text/css">
+        table, td, th {border: solid black 1pt; border-collapse: collapse;} td {vertical-align: top;}
+      </style>
+  </head>
+  <body>
+    <h1>525-07
+        :
+        Inline XBRL Test Suite v68d : Continuation tests, Not EDGAR Dependent</h1>
+    <p>
+        Created by: 
+        <a href="mailto:StructuredData@sec.gov">SEC Office of Structured Disclosure</a></p>
+    <p>
+      <description xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <h2>Various "not good" (ng) test files that demonstrate non-valid Inline XBRL Continuation usage</h2>
+        <p>
+            <a href="http://www.xbrl.org/specification/inlinexbrl-part1/rec-2013-11-18/inlinexbrl-part1-rec-2013-11-18.html#d1e1266">4 The Continuation Element</a>
+        </p>
+        <p>
+            <a href="http://www.xbrl.org/specification/inlinexbrl-part1/rec-2013-11-18/inlinexbrl-part1-rec-2013-11-18.html#d1e1734">6 The Continuation Element</a>
+        </p>
+        <p>
+            <a href="http://www.xbrl.org/specification/inlinexbrl-part1/rec-2013-11-18/inlinexbrl-part1-rec-2013-11-18.html#d1e5997">11 The nonNumeric Element</a>
+        </p>
+    </description>
+    </p>
+    <h2>
+        Variations
+      </h2>
+    <table border="solid">
+      <thead>
+        <tr>
+          <th>Number</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>References</th>
+          <th>Data Inputs</th>
+          <th>Result Outputs</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>_001gd</td>
+          <td>Valid continuation chains, GOOD.</td>
+          <td> The ix:continuation element is used to define data that is to be treated as part of ix:footnote or ix:nonNumeric elements. PASS-nonNumeric-continuation-multiple-documents is NOT supported at this time. </td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i07001gd/i07001gd-20081231.htm">i07001gd/i07001gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i07001gd/i07001gd-20081231_pre.xml">i07001gd/i07001gd-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i07001gd/i07001gd-20081231_lab.xml">i07001gd/i07001gd-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i07001gd/i07001gd-20081231.xsd">i07001gd/i07001gd-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_002gd</td>
+          <td>Valid but interleaved continuation chains, GOOD.</td>
+          <td>Valid but interleaved ix:continuation chains, GOOD.</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i07002gd/i07002gd-20081231.htm">i07002gd/i07002gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i07002gd/i07002gd-20081231_pre.xml">i07002gd/i07002gd-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i07002gd/i07002gd-20081231_lab.xml">i07002gd/i07002gd-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i07002gd/i07002gd-20081231.xsd">i07002gd/i07002gd-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_100ng</td>
+          <td>Nonnumeric continued at continuation, continues at continuation, continues at first continuation, NOGOOD.</td>
+          <td>FAIL-continuation-nonNumeric-circular</td>
+          <td>If the continuedAt attribute is present, the {continuation reference} property MUST NOT match the {continuation reference} property of any other element in the Inline XBRL Document Set. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i07100ng/i07100ng-20081231.htm">i07100ng/i07100ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i07100ng/i07100ng-20081231_pre.xml">i07100ng/i07100ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i07100ng/i07100ng-20081231_lab.xml">i07100ng/i07100ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i07100ng/i07100ng-20081231.xsd">i07100ng/i07100ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.4.1.2:continuationReferences">ix11.4.1.2:continuationReferences</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.4.1.2:continuationCycle">ix11.4.1.2:continuationCycle</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_101ng</td>
+          <td>nonNumeric element has ancestor in continuation chain, NOGOOD.</td>
+          <td>FAIL-continuation-nonNumeric-invalid-nesting</td>
+          <td>The {continuation chain} property MUST NOT contain any element which is a descendant of any other element in the {continuation chain} property. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i07101ng/i07101ng-20081231.htm">i07101ng/i07101ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i07101ng/i07101ng-20081231_pre.xml">i07101ng/i07101ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i07101ng/i07101ng-20081231_lab.xml">i07101ng/i07101ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i07101ng/i07101ng-20081231.xsd">i07101ng/i07101ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.11.1.2:continuationChainNested">ix11.11.1.2:continuationChainNested</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_102ng</td>
+          <td>nonNumeric continuedAt target is itself, NOGOOD.</td>
+          <td>FAIL-continuation-nonNumeric-self</td>
+          <td>If the continuedAt attribute is present, there MUST exist an ix:continuation element in the Inline XBRL Document Set with an {id} property which has a value matching the {continuation reference} property. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i07102ng/i07102ng-20081231.htm">i07102ng/i07102ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i07102ng/i07102ng-20081231_pre.xml">i07102ng/i07102ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i07102ng/i07102ng-20081231_lab.xml">i07102ng/i07102ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i07102ng/i07102ng-20081231.xsd">i07102ng/i07102ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.11.1.2:continuationTarget">ix11.11.1.2:continuationTarget</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_103ng</td>
+          <td>continuedAt="cont4" appears twice, NOGOOD</td>
+          <td>FAIL-continuation-used-twice</td>
+          <td>If the continuedAt attribute is present, the {continuation reference} property MUST NOT match the {continuation reference} property of any other element in the Inline XBRL Document Set. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i07103ng/i07103ng-20081231.htm">i07103ng/i07103ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i07103ng/i07103ng-20081231_pre.xml">i07103ng/i07103ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i07103ng/i07103ng-20081231_lab.xml">i07103ng/i07103ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i07103ng/i07103ng-20081231.xsd">i07103ng/i07103ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.4.1.2:continuationReferences">ix11.4.1.2:continuationReferences</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_104ng</td>
+          <td>Footnote has continuation chain that includes an ancestor, NOGOOD</td>
+          <td>FAIL-footnote-continuation-invalid-nesting</td>
+          <td>The {continuation chain} property MUST NOT contain any element which is a descendant of any other element in the {continuation chain} property. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i07104ng/i07104ng-20081231.htm">i07104ng/i07104ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i07104ng/i07104ng-20081231_pre.xml">i07104ng/i07104ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i07104ng/i07104ng-20081231_lab.xml">i07104ng/i07104ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i07104ng/i07104ng-20081231.xsd">i07104ng/i07104ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.6.1.2:continuationChainNested">ix11.6.1.2:continuationChainNested</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_105ng</td>
+          <td>Nonnumeric element with continuedAt having unresolved referent, NOGOOD</td>
+          <td>FAIL-nonNumeric-dangling-continuation</td>
+          <td>If the continuedAt attribute is present, there MUST exist an ix:continuation element in the Inline XBRL Document Set with an {id} property which has a value matching the {continuation reference} property. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i07105ng/i07105ng-20081231.htm">i07105ng/i07105ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i07105ng/i07105ng-20081231_pre.xml">i07105ng/i07105ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i07105ng/i07105ng-20081231_lab.xml">i07105ng/i07105ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i07105ng/i07105ng-20081231.xsd">i07105ng/i07105ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.11.1.2:continuationMissing">ix11.11.1.2:continuationMissing</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_106ng</td>
+          <td>nonNumeric element has a descendant in its continuation chain, NOGOOD.</td>
+          <td>FAIL-continuation-nonNumeric-invalid-nesting-2</td>
+          <td>The {continuation chain} property MUST NOT contain any element which is a descendant of any other element in the {continuation chain} property. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i07106ng/i07106ng-20081231.htm">i07106ng/i07106ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i07106ng/i07106ng-20081231_pre.xml">i07106ng/i07106ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i07106ng/i07106ng-20081231_lab.xml">i07106ng/i07106ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i07106ng/i07106ng-20081231.xsd">i07106ng/i07106ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.4.1.2:continuationChainNested">ix11.4.1.2:continuationChainNested</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_107ng</td>
+          <td>Footnote element has a descendant in its continuation chain, NOGOOD.</td>
+          <td>FAIL-footnote-continuation-invalid-nesting-2</td>
+          <td>The {continuation chain} property MUST NOT contain any element which is a descendant of any other element in the {continuation chain} property. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i07107ng/i07107ng-20081231.htm">i07107ng/i07107ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i07107ng/i07107ng-20081231_pre.xml">i07107ng/i07107ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i07107ng/i07107ng-20081231_lab.xml">i07107ng/i07107ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i07107ng/i07107ng-20081231.xsd">i07107ng/i07107ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.4.1.2:continuationChainNested">ix11.4.1.2:continuationChainNested</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_108ng</td>
+          <td>nonNumeric element continuedAt="cont5" not matched with any element id, NOGOOD</td>
+          <td>FAIL-nonNumeric-dangling-continuation-2</td>
+          <td>If the continuedAt attribute is present, there MUST exist an ix:continuation element in the Inline XBRL Document Set with an {id} property which has a value matching the {continuation reference} property. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i07108ng/i07108ng-20081231.htm">i07108ng/i07108ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i07108ng/i07108ng-20081231_pre.xml">i07108ng/i07108ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i07108ng/i07108ng-20081231_lab.xml">i07108ng/i07108ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i07108ng/i07108ng-20081231.xsd">i07108ng/i07108ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.4.1.2:continuationMissing">ix11.4.1.2:continuationMissing</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_109ng</td>
+          <td>continuation with id not referenced by continuedAt</td>
+          <td>FAIL-orphaned-continuation</td>
+          <td>There MUST exist an ix:footnote, ix:nonNumeric or other ix:continuation element in the Inline XBRL Document Set with a {continuation reference} property which has a value matching the {id} property. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i07109ng/i07109ng-20081231.htm">i07109ng/i07109ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i07109ng/i07109ng-20081231_pre.xml">i07109ng/i07109ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i07109ng/i07109ng-20081231_lab.xml">i07109ng/i07109ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i07109ng/i07109ng-20081231.xsd">i07109ng/i07109ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.4.1.2:continuationNotReferenced">ix11.4.1.2:continuationNotReferenced</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_110ng</td>
+          <td>Nonnumeric element has two continuation elements with the continuedAt id in the same input document.</td>
+          <td>FAIL-continuation-duplicate-id</td>
+          <td>ID values MUST uniquely identify the elements which bear them. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i07110ng/i07110ng-20081231.htm">i07110ng/i07110ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i07110ng/i07110ng-20081231_pre.xml">i07110ng/i07110ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i07110ng/i07110ng-20081231_lab.xml">i07110ng/i07110ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i07110ng/i07110ng-20081231.xsd">i07110ng/i07110ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-xml.3.3.1:idMustBeUnique">xml.3.3.1:idMustBeUnique</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_111ng</td>
+          <td>Hidden element has continuation as a descendant.</td>
+          <td>FAIL-hidden-continuation-element</td>
+          <td>The ix:continuation element MUST NOT be a descendant of an ix:hidden element. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i07111ng/i07111ng-20081231.htm">i07111ng/i07111ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i07111ng/i07111ng-20081231_pre.xml">i07111ng/i07111ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i07111ng/i07111ng-20081231_lab.xml">i07111ng/i07111ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i07111ng/i07111ng-20081231.xsd">i07111ng/i07111ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.4.1.1:ancestorNodeDisallowed">ix11.4.1.1:ancestorNodeDisallowed</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_112ng</td>
+          <td>Continuation continues at itself, could be one of several errors, NOGOOD</td>
+          <td>FAIL-continuation-orphaned-cycle</td>
+          <td>The {continuation chain} property MUST NOT contain any element which is a descendant of any other element in the {continuation chain} property. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i07112ng/i07112ng-20081231.htm">i07112ng/i07112ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i07112ng/i07112ng-20081231_pre.xml">i07112ng/i07112ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i07112ng/i07112ng-20081231_lab.xml">i07112ng/i07112ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i07112ng/i07112ng-20081231.xsd">i07112ng/i07112ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.4.1.2:continuationNotReferenced">ix11.4.1.2:continuationNotReferenced</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.4.1.2:continuationNotReferenced">ix11.4.1.2:continuationNotReferenced</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_113ng</td>
+          <td>Nonnumeric points to continuation, points back to Nonnumeric.</td>
+          <td>FAIL-continuation-nonNumeric-circular2</td>
+          <td>If the continuedAt attribute is present, the {continuation reference} property MUST NOT match the {continuation reference} property of any other element in the Inline XBRL Document Set. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i07113ng/i07113ng-20081231.htm">i07113ng/i07113ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i07113ng/i07113ng-20081231_pre.xml">i07113ng/i07113ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i07113ng/i07113ng-20081231_lab.xml">i07113ng/i07113ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i07113ng/i07113ng-20081231.xsd">i07113ng/i07113ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.4.1.2:continuationTarget">ix11.4.1.2:continuationTarget</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.4.1.2:continuationCycle">ix11.4.1.2:continuationCycle</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

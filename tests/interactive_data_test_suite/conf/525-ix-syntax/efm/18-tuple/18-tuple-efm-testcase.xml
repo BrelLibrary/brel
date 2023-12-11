@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>525-18</number>
+    <name>EDGAR Filer Manual v68d 5.2.5.11</name>
+    <description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#5.2.5.11 Inline XBRL 1.1 features that are not supported by EDGAR">Refer to EFM: 5.2.5.11 Inline XBRL 1.1 features that are not supported by EDGAR</a>
+    </description>
+    <variation id="_301ng">
+        <name>EFM Tuple element, NOGOOD</name>
+        <description>EFM-FAIL-tuple-element-disallowed</description>
+        <reference efmspec="5.02.05"></reference>
+        <reference specification="The tuple element must not appear in an Inline XBRL document."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i18301ng/i18301ng-20081231.htm</instance>
+            <linkbase>i18301ng/i18301ng-20081231_pre.xml</linkbase>
+            <linkbase>i18301ng/i18301ng-20081231_lab.xml</linkbase>
+            <schema>i18301ng/i18301ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="EFM.5.02.05.tupleDisallowed" frd="ix" fj="EFM_TUPLE_DISALLOWED" txt="Inline tuple $ is disallowed."></assert>
+        </result>
+    </variation>
+</testcase>

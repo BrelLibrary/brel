@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='utf-8'?>
+<link:linkbase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd">
+    <link:roleRef roleURI="http://xbrl.sec.gov/dei/role/document/Defaults" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#defaults" xlink:type="simple"></link:roleRef>
+    <link:roleRef roleURI="http://xbrl.sec.gov/dei/role/document/EntityInformationEntityListingsTable" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#EntityInformationEntityListingsTable" xlink:type="simple"></link:roleRef>
+    <link:arcroleRef xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#dimension-default" xlink:type="simple" arcroleURI="http://xbrl.org/int/dim/arcrole/dimension-default"></link:arcroleRef>
+    <link:arcroleRef xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#dimension-domain" xlink:type="simple" arcroleURI="http://xbrl.org/int/dim/arcrole/dimension-domain"></link:arcroleRef>
+    <link:arcroleRef xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#domain-member" xlink:type="simple" arcroleURI="http://xbrl.org/int/dim/arcrole/domain-member"></link:arcroleRef>
+    <link:arcroleRef xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#hypercube-dimension" xlink:type="simple" arcroleURI="http://xbrl.org/int/dim/arcrole/hypercube-dimension"></link:arcroleRef>
+    <link:definitionLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/dei/role/document/Defaults">
+        <link:loc xlink:href="https://xbrl.ifrs.org/taxonomy/2023-03-23/full_ifrs/full_ifrs-cor_2023-03-23.xsd#ifrs-full_ClassesOfShareCapitalAxis" xlink:label="ClassesOfShareCapitalAxis" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="https://xbrl.ifrs.org/taxonomy/2023-03-23/full_ifrs/full_ifrs-cor_2023-03-23.xsd#ifrs-full_ClassesOfShareCapitalMember" xlink:label="ClassesOfShareCapitalMember" xlink:type="locator"></link:loc>
+        <link:definitionArc xlink:type="arc" order="1.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-default" xlink:from="ClassesOfShareCapitalAxis" xlink:to="ClassesOfShareCapitalMember"></link:definitionArc>
+    </link:definitionLink>
+    <link:definitionLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/dei/role/document/EntityInformationEntityListingsTable">
+        <link:loc xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityListingsTable" xlink:label="EntityListingsTable_2" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="https://xbrl.ifrs.org/taxonomy/2023-03-23/full_ifrs/full_ifrs-cor_2023-03-23.xsd#ifrs-full_ClassesOfShareCapitalAxis" xlink:label="ClassesOfShareCapitalAxis" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="https://xbrl.ifrs.org/taxonomy/2023-03-23/full_ifrs/full_ifrs-cor_2023-03-23.xsd#ifrs-full_ClassesOfShareCapitalMember" xlink:label="ClassesOfShareCapitalMember" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="eifrs-20181231.xsd#eifrs_ClassASharesMember" xlink:label="ClassASharesMember" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="eifrs-20181231.xsd#eifrs_ClassBSharesMember" xlink:label="ClassBSharesMember" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="eifrs-20181231.xsd#eifrs_ClassCSharesMember" xlink:label="ClassCSharesMember" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="eifrs-20181231.xsd#eifrs_ClassDSharesMember" xlink:label="ClassDSharesMember" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="eifrs-20181231.xsd#eifrs_ClassESharesMember" xlink:label="ClassESharesMember" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="eifrs-20181231.xsd#eifrs_CommonSharesMember" xlink:label="CommonSharesMember" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="eifrs-20181231.xsd#eifrs_ClassAPreferredSharesSeries1Member" xlink:label="ClassAPreferredSharesSeries1Member" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="eifrs-20181231.xsd#eifrs_ClassAPreferredSharesSeries2Member" xlink:label="ClassAPreferredSharesSeries2Member" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="eifrs-20181231.xsd#eifrs_ClassAPreferredSharesSeries3Member" xlink:label="ClassAPreferredSharesSeries3Member" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="eifrs-20181231.xsd#eifrs_ClassAPreferredSharesSeries4Member" xlink:label="ClassAPreferredSharesSeries4Member" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="eifrs-20181231.xsd#eifrs_ClassAPreferredSharesSeries5Member" xlink:label="ClassAPreferredSharesSeries5Member" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="eifrs-20181231.xsd#eifrs_ClassAPreferredSharesSeries8RMember" xlink:label="ClassAPreferredSharesSeries8RMember" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="eifrs-20181231.xsd#eifrs_ClassAPreferredSharesSeries9QRMember" xlink:label="ClassAPreferredSharesSeries9QRMember" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="eifrs-20181231.xsd#eifrs_ClassAPreferredSharesSeries10RMember" xlink:label="ClassAPreferredSharesSeries10RMember" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="eifrs-20181231.xsd#eifrs_ClassAPreferredSharesSeries11QRMember" xlink:label="ClassAPreferredSharesSeries11QRMember" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="eifrs-20181231.xsd#eifrs_ClassAPreferredSharesSeries12RMember" xlink:label="ClassAPreferredSharesSeries12RMember" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_AdrMember" xlink:label="AdrMember_2" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityListingsTable" xlink:label="EntityListingsTable" xlink:type="locator"></link:loc>
+        <link:definitionArc xlink:type="arc" order="3.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="EntityListingsTable_2" xlink:to="ClassesOfShareCapitalAxis"></link:definitionArc>
+        <link:definitionArc xlink:type="arc" order="1.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="ClassesOfShareCapitalAxis" xlink:to="ClassesOfShareCapitalMember"></link:definitionArc>
+        <link:definitionArc xlink:type="arc" order="1.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ClassesOfShareCapitalMember" xlink:to="ClassASharesMember"></link:definitionArc>
+        <link:definitionArc xlink:type="arc" order="2.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ClassesOfShareCapitalMember" xlink:to="ClassBSharesMember"></link:definitionArc>
+        <link:definitionArc xlink:type="arc" order="3.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ClassesOfShareCapitalMember" xlink:to="ClassCSharesMember"></link:definitionArc>
+        <link:definitionArc xlink:type="arc" order="4.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ClassesOfShareCapitalMember" xlink:to="ClassDSharesMember"></link:definitionArc>
+        <link:definitionArc xlink:type="arc" order="5.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ClassesOfShareCapitalMember" xlink:to="ClassESharesMember"></link:definitionArc>
+        <link:definitionArc xlink:type="arc" order="6.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ClassesOfShareCapitalMember" xlink:to="CommonSharesMember"></link:definitionArc>
+        <link:definitionArc xlink:type="arc" order="7.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ClassesOfShareCapitalMember" xlink:to="ClassAPreferredSharesSeries1Member"></link:definitionArc>
+        <link:definitionArc xlink:type="arc" order="8.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ClassesOfShareCapitalMember" xlink:to="ClassAPreferredSharesSeries2Member"></link:definitionArc>
+        <link:definitionArc xlink:type="arc" order="9.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ClassesOfShareCapitalMember" xlink:to="ClassAPreferredSharesSeries3Member"></link:definitionArc>
+        <link:definitionArc xlink:type="arc" order="10.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ClassesOfShareCapitalMember" xlink:to="ClassAPreferredSharesSeries4Member"></link:definitionArc>
+        <link:definitionArc xlink:type="arc" order="11.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ClassesOfShareCapitalMember" xlink:to="ClassAPreferredSharesSeries5Member"></link:definitionArc>
+        <link:definitionArc xlink:type="arc" order="12.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ClassesOfShareCapitalMember" xlink:to="ClassAPreferredSharesSeries8RMember"></link:definitionArc>
+        <link:definitionArc xlink:type="arc" order="13.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ClassesOfShareCapitalMember" xlink:to="ClassAPreferredSharesSeries9QRMember"></link:definitionArc>
+        <link:definitionArc xlink:type="arc" order="14.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ClassesOfShareCapitalMember" xlink:to="ClassAPreferredSharesSeries10RMember"></link:definitionArc>
+        <link:definitionArc xlink:type="arc" order="15.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ClassesOfShareCapitalMember" xlink:to="ClassAPreferredSharesSeries11QRMember"></link:definitionArc>
+        <link:definitionArc xlink:type="arc" order="16.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ClassesOfShareCapitalMember" xlink:to="ClassAPreferredSharesSeries12RMember"></link:definitionArc>
+        <link:definitionArc xlink:type="arc" order="17.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ClassesOfShareCapitalMember" xlink:to="AdrMember_2"></link:definitionArc>
+    </link:definitionLink>
+</link:linkbase>

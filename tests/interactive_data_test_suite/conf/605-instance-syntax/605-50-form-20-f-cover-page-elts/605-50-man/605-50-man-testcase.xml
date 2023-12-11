@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../../lib/test.xsl"?>
+<conf:testcase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:conf="http://edgar/2009/conformance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../../lib/test.xsd">
+    <conf:creator>
+        <conf:name>SEC Office of Structured Disclosure</conf:name>
+        <conf:email>StructuredData@sec.gov</conf:email>
+    </conf:creator>
+    <conf:number>605-50</conf:number>
+    <conf:name>EDGAR Filer Manual v68d 6.5.50</conf:name>
+    <conf:description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.5.50 Form 20-F cover page elements">Refer to EFM: 6.5.50 Form 20-F cover page elements</a>
+    </conf:description>
+    <conf:variation id="_100gd">
+        <conf:name>20-F, GOOD. </conf:name>
+        <conf:description>20-F, xeny GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "20-F" ,"periodOfReport" : "12-31-2018","emergingGrowthCompanyFlag" : false,"shellCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60550100gd/e60550100gd-20081231.htm</conf:instance>
+            <conf:linkbase>e60550100gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60550100gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60550100gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60550100gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_101gd">
+        <conf:name>20-F, Ri, GOOD. </conf:name>
+        <conf:description>20-F, Ri, GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "20-F" ,"periodOfReport" : "12-31-2018","emergingGrowthCompanyFlag" : false,"shellCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60550101gd/e60550101gd-20081231.htm</conf:instance>
+            <conf:linkbase>e60550101gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60550101gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60550101gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60550101gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_102gw">
+        <conf:name>20-F, Oth, GW. </conf:name>
+        <conf:description>20-F, Oth, xeny GW.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "20-F" ,"periodOfReport" : "12-31-2018","emergingGrowthCompanyFlag" : false,"shellCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60550102gw/e60550102gw-20081231.htm</conf:instance>
+            <conf:linkbase>e60550102gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60550102gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60550102gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60550102gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="OtherReportingStandardItemNumber" num="60550" severity="wrn" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_103gw">
+        <conf:name> 8-K, blank, GW </conf:name>
+        <conf:description> 8-K, blank, GW</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"periodOfReport" : "12-31-2018" , "emergingGrowthCompanyFlag" : true , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60550103gw/e60550103gw-20081231.htm</conf:instance>
+            <conf:linkbase>e60550103gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60550103gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:schema>e60550103gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="DocumentAccountingStandard" num="60550" severity="wrn" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_104gd">
+        <conf:name>20-F, GOOD. </conf:name>
+        <conf:description>20-F, xeny GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "20-F" ,"periodOfReport" : "12-31-2018","emergingGrowthCompanyFlag" : false,"shellCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60550104gd/e60550104gd-20081231.htm</conf:instance>
+            <conf:linkbase>e60550104gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60550104gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60550104gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60550104gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_105gd">
+        <conf:name>20-F, Ri, GOOD. </conf:name>
+        <conf:description>20-F, Ri, GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "20-F" ,"periodOfReport" : "12-31-2018","emergingGrowthCompanyFlag" : false,"shellCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60550105gd/e60550105gd-20081231.htm</conf:instance>
+            <conf:linkbase>e60550105gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60550105gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60550105gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60550105gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_106gw">
+        <conf:name>20-F, Oth, GW. </conf:name>
+        <conf:description>20-F, Oth, xeny GW.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "20-F" ,"periodOfReport" : "12-31-2018","emergingGrowthCompanyFlag" : false,"shellCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60550106gw/e60550106gw-20081231.htm</conf:instance>
+            <conf:linkbase>e60550106gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60550106gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60550106gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60550106gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="OtherReportingStandardItemNumber" num="60550" severity="wrn" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_107gw">
+        <conf:name> 8-K, blank, GW </conf:name>
+        <conf:description> 8-K, blank, GW</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"periodOfReport" : "12-31-2018" , "emergingGrowthCompanyFlag" : true , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60550107gw/e60550107gw-20081231.htm</conf:instance>
+            <conf:linkbase>e60550107gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60550107gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60550107gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60550107gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="DocumentAccountingStandard" num="60550" severity="wrn" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+</conf:testcase>

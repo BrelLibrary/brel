@@ -1,0 +1,616 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<xs:schema targetNamespace="http://edgar/20111231" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:edgar="http://edgar/20111231" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:dei="http://xbrl.sec.gov/dei/2023" xmlns:xbrldt="http://xbrl.org/2005/xbrldt" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dtr-types="http://www.xbrl.org/dtr/type/2022-03-31" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink">
+<xs:annotation>
+<xs:appinfo>
+<link:roleType roleURI="http://edgar/role/EntityInformation" id="EntityInformation">
+<link:definition>991 - Document - Entity Information, ABC</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://edgar/role/DocumentInformation" id="DocumentInformation">
+<link:definition>992 - Document - Document Information, ABC</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://edgar/role/OtherInformation" id="OtherInformation">
+<link:definition>990 - Document - Other Information, ABC</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://edgar/role/Defaults" id="Defaults">
+<link:definition>999 - Document - Defaults</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+</link:roleType>
+<link:linkbase>
+<link:roleRef roleURI="http://edgar/role/DocumentInformation" xlink:type="simple" xlink:href="#DocumentInformation"/>
+<link:roleRef roleURI="http://edgar/role/EntityInformation" xlink:type="simple" xlink:href="#EntityInformation"/>
+<link:roleRef roleURI="http://edgar/role/Defaults" xlink:type="simple" xlink:href="#Defaults"/>
+<link:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/all" xlink:type="simple" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#all"/>
+<link:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/dimension-default" xlink:type="simple" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#dimension-default"/>
+<link:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:type="simple" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#dimension-domain"/>
+<link:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/domain-member" xlink:type="simple" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#domain-member"/>
+<link:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:type="simple" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#hypercube-dimension"/>
+<link:presentationLink xlink:type="extended" xlink:role="http://edgar/role/DocumentInformation">
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentInformationTextBlock" xlink:label="DocumentInformationTextBlock"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentInformationTable" xlink:label="DocumentInformationTable"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationTextBlock" xlink:to="DocumentInformationTable" use="optional" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentInformationDocumentAxis" xlink:label="DocumentInformationDocumentAxis"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationTable" xlink:to="DocumentInformationDocumentAxis" use="optional" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentDomain" xlink:label="DocumentDomain"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationDocumentAxis" xlink:to="DocumentDomain" use="optional" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="#edgar_Form10KMember" xlink:label="Form10KMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentDomain" xlink:to="Form10KMember" use="optional" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="#edgar_Exhibit31Member" xlink:label="Exhibit31Member"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentDomain" xlink:to="Exhibit31Member" use="optional" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentInformationLineItems" xlink:label="DocumentInformationLineItems"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationTable" xlink:to="DocumentInformationLineItems" use="optional" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentName" xlink:label="DocumentName"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="DocumentName" use="optional" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentTitle" xlink:label="DocumentTitle"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="DocumentTitle" use="optional" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentSubtitle" xlink:label="DocumentSubtitle"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="DocumentSubtitle" use="optional" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentSynopsis" xlink:label="DocumentSynopsis"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="DocumentSynopsis" use="optional" order="4.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentType" xlink:label="DocumentType"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="DocumentType" use="optional" order="5.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityEmergingGrowthCompany" xlink:label="EntityEmergingGrowthCompany"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="EntityEmergingGrowthCompany" use="optional" order="5.11"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityInvCompanyType" xlink:label="EntityInvCompanyType"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="EntityInvCompanyType" use="optional" order="5.12"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntitySmallBusiness" xlink:label="EntitySmallBusiness"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="EntitySmallBusiness" use="optional" order="5.13"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_AmendmentFlag" xlink:label="AmendmentFlag"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="AmendmentFlag" use="optional" order="7.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_AmendmentDescription" xlink:label="AmendmentDescription"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="AmendmentDescription" use="optional" order="8.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentDescription" xlink:label="DocumentDescription"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="DocumentDescription" use="optional" order="9.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentCreationDate" xlink:label="DocumentCreationDate"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="DocumentCreationDate" use="optional" order="10.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentEffectiveDate" xlink:label="DocumentEffectiveDate"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="DocumentEffectiveDate" use="optional" order="11.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentPeriodStartDate" xlink:label="DocumentPeriodStartDate"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="DocumentPeriodStartDate" use="optional" order="12.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentPeriodEndDate" xlink:label="DocumentPeriodEndDate"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="DocumentPeriodEndDate" use="optional" order="13.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentFiscalYearFocus" xlink:label="DocumentFiscalYearFocus"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="DocumentFiscalYearFocus" use="optional" order="14.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentFiscalPeriodFocus" xlink:label="DocumentFiscalPeriodFocus"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="DocumentFiscalPeriodFocus" use="optional" order="15.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentVersion" xlink:label="DocumentVersion"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="DocumentVersion" use="optional" order="16.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentCopyrightInformation" xlink:label="DocumentCopyrightInformation"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="DocumentCopyrightInformation" use="optional" order="17.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_ContainedFileInformationFileName" xlink:label="ContainedFileInformationFileName"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="ContainedFileInformationFileName" use="optional" order="18.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_ContainedFileInformationFileDescription" xlink:label="ContainedFileInformationFileDescription"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="ContainedFileInformationFileDescription" use="optional" order="19.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_ContainedFileInformationFileType" xlink:label="ContainedFileInformationFileType"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="ContainedFileInformationFileType" use="optional" order="20.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_ContainedFileInformationFileNumber" xlink:label="ContainedFileInformationFileNumber"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="ContainedFileInformationFileNumber" use="optional" order="21.0"/>
+</link:presentationLink>
+<link:presentationLink xlink:type="extended" xlink:role="http://edgar/role/EntityInformation">
+<link:loc xlink:type="locator" xlink:href="#edgar_Top" xlink:label="Top"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityTextBlock" xlink:label="EntityTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="Top" xlink:to="EntityTextBlock" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntitiesTable" xlink:label="EntitiesTable"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="Top" xlink:to="EntitiesTable" use="optional" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_LegalEntityAxis" xlink:label="LegalEntityAxis"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntitiesTable" xlink:to="LegalEntityAxis" use="optional" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityDomain" xlink:label="EntityDomain"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="LegalEntityAxis" xlink:to="EntityDomain" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="#edgar_AbcfsMember" xlink:label="AbcfsMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityDomain" xlink:to="AbcfsMember" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="#edgar_AbcMember" xlink:label="AbcMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityDomain" xlink:to="AbcMember" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityInformationLineItems" xlink:label="EntityInformationLineItems"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntitiesTable" xlink:to="EntityInformationLineItems" use="optional" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityRegistrantName" xlink:label="EntityRegistrantName"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityInformationLineItems" xlink:to="EntityRegistrantName" use="optional" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityCentralIndexKey" xlink:label="EntityCentralIndexKey"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityInformationLineItems" xlink:to="EntityCentralIndexKey" use="optional" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityTaxIdentificationNumber" xlink:label="EntityTaxIdentificationNumber"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityInformationLineItems" xlink:to="EntityTaxIdentificationNumber" use="optional" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityDataUniversalNumberingSystemNumber" xlink:label="EntityDataUniversalNumberingSystemNumber"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityInformationLineItems" xlink:to="EntityDataUniversalNumberingSystemNumber" use="optional" order="4.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityOtherIdentificationType" xlink:label="EntityOtherIdentificationType"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityInformationLineItems" xlink:to="EntityOtherIdentificationType" use="optional" order="5.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityOtherIdentificationValue" xlink:label="EntityOtherIdentificationValue"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityInformationLineItems" xlink:to="EntityOtherIdentificationValue" use="optional" order="6.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityInformationFormerLegalOrRegisteredName" xlink:label="EntityInformationFormerLegalOrRegisteredName"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityInformationLineItems" xlink:to="EntityInformationFormerLegalOrRegisteredName" use="optional" order="8.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityInformationDateToChangeFormerLegalOrRegisteredName" xlink:label="EntityInformationDateToChangeFormerLegalOrRegisteredName"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityInformationLineItems" xlink:to="EntityInformationDateToChangeFormerLegalOrRegisteredName" use="optional" order="9.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityHomeCountryISOCode" xlink:label="EntityHomeCountryISOCode"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityInformationLineItems" xlink:to="EntityHomeCountryISOCode" use="optional" order="11.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_ParentEntityLegalName" xlink:label="ParentEntityLegalName"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityInformationLineItems" xlink:to="ParentEntityLegalName" use="optional" order="12.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityAccountingStandard" xlink:label="EntityAccountingStandard"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityInformationLineItems" xlink:to="EntityAccountingStandard" use="optional" order="13.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityReportingCurrencyISOCode" xlink:label="EntityReportingCurrencyISOCode"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityInformationLineItems" xlink:to="EntityReportingCurrencyISOCode" use="optional" order="14.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityIncorporationDateOfIncorporation" xlink:label="EntityIncorporationDateOfIncorporation"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityInformationLineItems" xlink:to="EntityIncorporationDateOfIncorporation" use="optional" order="16.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityNumberOfEmployees" xlink:label="EntityNumberOfEmployees"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityInformationLineItems" xlink:to="EntityNumberOfEmployees" use="optional" order="17.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_CurrentFiscalYearEndDate" xlink:label="CurrentFiscalYearEndDate"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityInformationLineItems" xlink:to="CurrentFiscalYearEndDate" use="optional" order="18.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityCommonStockSharesOutstanding" xlink:label="EntityCommonStockSharesOutstanding"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityInformationLineItems" xlink:to="EntityCommonStockSharesOutstanding" use="optional" order="25.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityPublicFloat" xlink:label="EntityPublicFloat"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityInformationLineItems" xlink:to="EntityPublicFloat" use="optional" order="24.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityFilerCategory" xlink:label="EntityFilerCategory"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityInformationLineItems" xlink:to="EntityFilerCategory" use="optional" order="23.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityCurrentReportingStatus" xlink:label="EntityCurrentReportingStatus"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityInformationLineItems" xlink:to="EntityCurrentReportingStatus" use="optional" order="22.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityVoluntaryFilers" xlink:label="EntityVoluntaryFilers"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityInformationLineItems" xlink:to="EntityVoluntaryFilers" use="optional" order="21.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityWellKnownSeasonedIssuer" xlink:label="EntityWellKnownSeasonedIssuer"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityInformationLineItems" xlink:to="EntityWellKnownSeasonedIssuer" use="optional" order="20.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_FormerFiscalYearEndDate" xlink:label="FormerFiscalYearEndDate"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityInformationLineItems" xlink:to="FormerFiscalYearEndDate" use="optional" order="19.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityLegalForm" xlink:label="EntityLegalForm"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityInformationLineItems" xlink:to="EntityLegalForm" use="optional" order="10.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityContactPersonnelTable" xlink:label="EntityContactPersonnelTable"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="Top" xlink:to="EntityContactPersonnelTable" use="optional" order="3.0"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityContactPersonnelTable" xlink:to="LegalEntityAxis" use="optional" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityContactPersonnelContactPersonTypeAxis" xlink:label="EntityContactPersonnelContactPersonTypeAxis"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityContactPersonnelTable" xlink:to="EntityContactPersonnelContactPersonTypeAxis" use="optional" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_ContactPersonTypeDomain" xlink:label="ContactPersonTypeDomain"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityContactPersonnelContactPersonTypeAxis" xlink:to="ContactPersonTypeDomain" use="optional" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentContactMember" xlink:label="DocumentContactMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ContactPersonTypeDomain" xlink:to="DocumentContactMember" use="optional" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_LegalContactMember" xlink:label="LegalContactMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ContactPersonTypeDomain" xlink:to="LegalContactMember" use="optional" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_AccountingContactMember" xlink:label="AccountingContactMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ContactPersonTypeDomain" xlink:to="AccountingContactMember" use="optional" order="4.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_InvestorRelationsContactMember" xlink:label="InvestorRelationsContactMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ContactPersonTypeDomain" xlink:to="InvestorRelationsContactMember" use="optional" order="5.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_HumanResourcesContactMember" xlink:label="HumanResourcesContactMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ContactPersonTypeDomain" xlink:to="HumanResourcesContactMember" use="optional" order="6.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityContactPersonnelLineItems" xlink:label="EntityContactPersonnelLineItems"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityContactPersonnelTable" xlink:to="EntityContactPersonnelLineItems" use="optional" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_ContactPersonnelName" xlink:label="ContactPersonnelName"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityContactPersonnelLineItems" xlink:to="ContactPersonnelName" use="optional" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_ContactPersonnelEmailAddress" xlink:label="ContactPersonnelEmailAddress"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityContactPersonnelLineItems" xlink:to="ContactPersonnelEmailAddress" use="optional" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityAddressesTable" xlink:label="EntityAddressesTable"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="Top" xlink:to="EntityAddressesTable" use="optional" order="4.0"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityAddressesTable" xlink:to="LegalEntityAxis" use="optional" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityAddressesAddressTypeAxis" xlink:label="EntityAddressesAddressTypeAxis"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityAddressesTable" xlink:to="EntityAddressesAddressTypeAxis" use="optional" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_AddressTypeDomain" xlink:label="AddressTypeDomain"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityAddressesAddressTypeAxis" xlink:to="AddressTypeDomain" use="optional" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_MailingAddressMember" xlink:label="MailingAddressMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AddressTypeDomain" xlink:to="MailingAddressMember" use="optional" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_OtherAddressMember" xlink:label="OtherAddressMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AddressTypeDomain" xlink:to="OtherAddressMember" use="optional" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_LegalAddressMember" xlink:label="LegalAddressMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AddressTypeDomain" xlink:to="LegalAddressMember" use="optional" order="4.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_AccountingAddressMember" xlink:label="AccountingAddressMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AddressTypeDomain" xlink:to="AccountingAddressMember" use="optional" order="5.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_ContactAddressMember" xlink:label="ContactAddressMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AddressTypeDomain" xlink:to="ContactAddressMember" use="optional" order="6.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityAddressesLineItems" xlink:label="EntityAddressesLineItems"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityAddressesTable" xlink:to="EntityAddressesLineItems" use="optional" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityAddressAddressDescription" xlink:label="EntityAddressAddressDescription"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityAddressesLineItems" xlink:to="EntityAddressAddressDescription" use="optional" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityAddressAddressLine1" xlink:label="EntityAddressAddressLine1"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityAddressesLineItems" xlink:to="EntityAddressAddressLine1" use="optional" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityAddressAddressLine2" xlink:label="EntityAddressAddressLine2"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityAddressesLineItems" xlink:to="EntityAddressAddressLine2" use="optional" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityAddressAddressLine3" xlink:label="EntityAddressAddressLine3"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityAddressesLineItems" xlink:to="EntityAddressAddressLine3" use="optional" order="4.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityAddressCityOrTown" xlink:label="EntityAddressCityOrTown"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityAddressesLineItems" xlink:to="EntityAddressCityOrTown" use="optional" order="5.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityAddressStateOrProvince" xlink:label="EntityAddressStateOrProvince"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityAddressesLineItems" xlink:to="EntityAddressStateOrProvince" use="optional" order="6.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityAddressRegion" xlink:label="EntityAddressRegion"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityAddressesLineItems" xlink:to="EntityAddressRegion" use="optional" order="7.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityAddressCountry" xlink:label="EntityAddressCountry"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityAddressesLineItems" xlink:to="EntityAddressCountry" use="optional" order="8.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityAddressPostalZipCode" xlink:label="EntityAddressPostalZipCode"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityAddressesLineItems" xlink:to="EntityAddressPostalZipCode" use="optional" order="9.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityPhoneFaxNumbersTable" xlink:label="EntityPhoneFaxNumbersTable"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="Top" xlink:to="EntityPhoneFaxNumbersTable" use="optional" order="5.0"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityPhoneFaxNumbersTable" xlink:to="LegalEntityAxis" use="optional" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityPhoneFaxNumbersPhoneFaxNumberTypeAxis" xlink:label="EntityPhoneFaxNumbersPhoneFaxNumberTypeAxis"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityPhoneFaxNumbersTable" xlink:to="EntityPhoneFaxNumbersPhoneFaxNumberTypeAxis" use="optional" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_PhoneFaxNumberTypeDomain" xlink:label="PhoneFaxNumberTypeDomain"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityPhoneFaxNumbersPhoneFaxNumberTypeAxis" xlink:to="PhoneFaxNumberTypeDomain" use="optional" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_InvestorRelationsPhoneMember" xlink:label="InvestorRelationsPhoneMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PhoneFaxNumberTypeDomain" xlink:to="InvestorRelationsPhoneMember" use="optional" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_InvestorRelationsFaxMember" xlink:label="InvestorRelationsFaxMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PhoneFaxNumberTypeDomain" xlink:to="InvestorRelationsFaxMember" use="optional" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_GeneralPhoneMember" xlink:label="GeneralPhoneMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PhoneFaxNumberTypeDomain" xlink:to="GeneralPhoneMember" use="optional" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_GeneralFaxMember" xlink:label="GeneralFaxMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PhoneFaxNumberTypeDomain" xlink:to="GeneralFaxMember" use="optional" order="4.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_LegalPhoneMember" xlink:label="LegalPhoneMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PhoneFaxNumberTypeDomain" xlink:to="LegalPhoneMember" use="optional" order="5.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_LegalFaxMember" xlink:label="LegalFaxMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PhoneFaxNumberTypeDomain" xlink:to="LegalFaxMember" use="optional" order="6.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_AccountingPhoneMember" xlink:label="AccountingPhoneMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PhoneFaxNumberTypeDomain" xlink:to="AccountingPhoneMember" use="optional" order="7.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_AccountingFaxMember" xlink:label="AccountingFaxMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PhoneFaxNumberTypeDomain" xlink:to="AccountingFaxMember" use="optional" order="8.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_ContactPhoneMember" xlink:label="ContactPhoneMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PhoneFaxNumberTypeDomain" xlink:to="ContactPhoneMember" use="optional" order="9.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_ContactFaxMember" xlink:label="ContactFaxMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PhoneFaxNumberTypeDomain" xlink:to="ContactFaxMember" use="optional" order="10.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityPhoneFaxNumbersLineItems" xlink:label="EntityPhoneFaxNumbersLineItems"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityPhoneFaxNumbersTable" xlink:to="EntityPhoneFaxNumbersLineItems" use="optional" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_PhoneFaxNumberDescription" xlink:label="PhoneFaxNumberDescription"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityPhoneFaxNumbersLineItems" xlink:to="PhoneFaxNumberDescription" use="optional" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_CountryRegion" xlink:label="CountryRegion"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityPhoneFaxNumbersLineItems" xlink:to="CountryRegion" use="optional" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_CityAreaCode" xlink:label="CityAreaCode"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityPhoneFaxNumbersLineItems" xlink:to="CityAreaCode" use="optional" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_LocalPhoneNumber" xlink:label="LocalPhoneNumber"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityPhoneFaxNumbersLineItems" xlink:to="LocalPhoneNumber" use="optional" order="4.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_Extension" xlink:label="Extension"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityPhoneFaxNumbersLineItems" xlink:to="Extension" use="optional" order="5.0"/>
+</link:presentationLink>
+<link:definitionLink xlink:type="extended" xlink:role="http://edgar/role/DocumentInformation">
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentInformationLineItems" xlink:label="DocumentInformationLineItems"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentInformationTable" xlink:label="DocumentInformationTable"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/all" xlink:from="DocumentInformationLineItems" xlink:to="DocumentInformationTable" use="optional" order="1.0" xbrldt:contextElement="segment"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentInformationDocumentAxis" xlink:label="DocumentInformationDocumentAxis"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="DocumentInformationTable" xlink:to="DocumentInformationDocumentAxis" use="optional" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentDomain" xlink:label="DocumentDomain"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="DocumentInformationDocumentAxis" xlink:to="DocumentDomain" use="optional" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="#edgar_Form10KMember" xlink:label="Form10KMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="DocumentDomain" xlink:to="Form10KMember" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="#edgar_Exhibit31Member" xlink:label="Exhibit31Member"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="DocumentDomain" xlink:to="Exhibit31Member" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentName" xlink:label="DocumentName"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="DocumentInformationLineItems" xlink:to="DocumentName" use="optional" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentTitle" xlink:label="DocumentTitle"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="DocumentInformationLineItems" xlink:to="DocumentTitle" use="optional" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentSubtitle" xlink:label="DocumentSubtitle"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="DocumentInformationLineItems" xlink:to="DocumentSubtitle" use="optional" order="4.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentSynopsis" xlink:label="DocumentSynopsis"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="DocumentInformationLineItems" xlink:to="DocumentSynopsis" use="optional" order="5.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentType" xlink:label="DocumentType"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="DocumentInformationLineItems" xlink:to="DocumentType" use="optional" order="6.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityEmergingGrowthCompany" xlink:label="EntityEmergingGrowthCompany"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="DocumentInformationLineItems" xlink:to="EntityEmergingGrowthCompany" use="optional" order="6.11"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityInvCompanyType" xlink:label="EntityInvCompanyType"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="DocumentInformationLineItems" xlink:to="EntityInvCompanyType" use="optional" order="6.12"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntitySmallBusiness" xlink:label="EntitySmallBusiness"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="DocumentInformationLineItems" xlink:to="EntitySmallBusiness" use="optional" order="6.13"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_AmendmentFlag" xlink:label="AmendmentFlag"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="DocumentInformationLineItems" xlink:to="AmendmentFlag" use="optional" order="8.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_AmendmentDescription" xlink:label="AmendmentDescription"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="DocumentInformationLineItems" xlink:to="AmendmentDescription" use="optional" order="9.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentDescription" xlink:label="DocumentDescription"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="DocumentInformationLineItems" xlink:to="DocumentDescription" use="optional" order="10.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentCreationDate" xlink:label="DocumentCreationDate"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="DocumentInformationLineItems" xlink:to="DocumentCreationDate" use="optional" order="11.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentEffectiveDate" xlink:label="DocumentEffectiveDate"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="DocumentInformationLineItems" xlink:to="DocumentEffectiveDate" use="optional" order="12.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentPeriodStartDate" xlink:label="DocumentPeriodStartDate"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="DocumentInformationLineItems" xlink:to="DocumentPeriodStartDate" use="optional" order="13.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentPeriodEndDate" xlink:label="DocumentPeriodEndDate"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="DocumentInformationLineItems" xlink:to="DocumentPeriodEndDate" use="optional" order="14.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentFiscalYearFocus" xlink:label="DocumentFiscalYearFocus"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="DocumentInformationLineItems" xlink:to="DocumentFiscalYearFocus" use="optional" order="15.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentFiscalPeriodFocus" xlink:label="DocumentFiscalPeriodFocus"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="DocumentInformationLineItems" xlink:to="DocumentFiscalPeriodFocus" use="optional" order="16.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentVersion" xlink:label="DocumentVersion"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="DocumentInformationLineItems" xlink:to="DocumentVersion" use="optional" order="17.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentCopyrightInformation" xlink:label="DocumentCopyrightInformation"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="DocumentInformationLineItems" xlink:to="DocumentCopyrightInformation" use="optional" order="18.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_ContainedFileInformationFileName" xlink:label="ContainedFileInformationFileName"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="DocumentInformationLineItems" xlink:to="ContainedFileInformationFileName" use="optional" order="19.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_ContainedFileInformationFileDescription" xlink:label="ContainedFileInformationFileDescription"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="DocumentInformationLineItems" xlink:to="ContainedFileInformationFileDescription" use="optional" order="20.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_ContainedFileInformationFileType" xlink:label="ContainedFileInformationFileType"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="DocumentInformationLineItems" xlink:to="ContainedFileInformationFileType" use="optional" order="21.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_ContainedFileInformationFileNumber" xlink:label="ContainedFileInformationFileNumber"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="DocumentInformationLineItems" xlink:to="ContainedFileInformationFileNumber" use="optional" order="22.0"/>
+</link:definitionLink>
+<link:definitionLink xlink:type="extended" xlink:role="http://edgar/role/EntityInformation">
+<link:loc xlink:type="locator" xlink:href="#edgar_Top" xlink:label="Top"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityInformationLineItems" xlink:label="EntityInformationLineItems"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="Top" xlink:to="EntityInformationLineItems" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntitiesTable" xlink:label="EntitiesTable"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/all" xlink:from="EntityInformationLineItems" xlink:to="EntitiesTable" use="optional" order="1.0" xbrldt:contextElement="segment"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_LegalEntityAxis" xlink:label="LegalEntityAxis"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="EntitiesTable" xlink:to="LegalEntityAxis" use="optional" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityDomain" xlink:label="EntityDomain"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="LegalEntityAxis" xlink:to="EntityDomain" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="#edgar_AbcfsMember" xlink:label="AbcfsMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="EntityDomain" xlink:to="AbcfsMember" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="#edgar_AbcMember" xlink:label="AbcMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="EntityDomain" xlink:to="AbcMember" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityRegistrantName" xlink:label="EntityRegistrantName"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="EntityInformationLineItems" xlink:to="EntityRegistrantName" use="optional" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityCentralIndexKey" xlink:label="EntityCentralIndexKey"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="EntityInformationLineItems" xlink:to="EntityCentralIndexKey" use="optional" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityTaxIdentificationNumber" xlink:label="EntityTaxIdentificationNumber"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="EntityInformationLineItems" xlink:to="EntityTaxIdentificationNumber" use="optional" order="4.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityDataUniversalNumberingSystemNumber" xlink:label="EntityDataUniversalNumberingSystemNumber"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="EntityInformationLineItems" xlink:to="EntityDataUniversalNumberingSystemNumber" use="optional" order="5.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityOtherIdentificationType" xlink:label="EntityOtherIdentificationType"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="EntityInformationLineItems" xlink:to="EntityOtherIdentificationType" use="optional" order="6.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityOtherIdentificationValue" xlink:label="EntityOtherIdentificationValue"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="EntityInformationLineItems" xlink:to="EntityOtherIdentificationValue" use="optional" order="7.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityInformationFormerLegalOrRegisteredName" xlink:label="EntityInformationFormerLegalOrRegisteredName"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="EntityInformationLineItems" xlink:to="EntityInformationFormerLegalOrRegisteredName" use="optional" order="9.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityInformationDateToChangeFormerLegalOrRegisteredName" xlink:label="EntityInformationDateToChangeFormerLegalOrRegisteredName"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="EntityInformationLineItems" xlink:to="EntityInformationDateToChangeFormerLegalOrRegisteredName" use="optional" order="10.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityLegalForm" xlink:label="EntityLegalForm"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="EntityInformationLineItems" xlink:to="EntityLegalForm" use="optional" order="11.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityHomeCountryISOCode" xlink:label="EntityHomeCountryISOCode"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="EntityInformationLineItems" xlink:to="EntityHomeCountryISOCode" use="optional" order="12.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_ParentEntityLegalName" xlink:label="ParentEntityLegalName"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="EntityInformationLineItems" xlink:to="ParentEntityLegalName" use="optional" order="13.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityAccountingStandard" xlink:label="EntityAccountingStandard"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="EntityInformationLineItems" xlink:to="EntityAccountingStandard" use="optional" order="14.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityReportingCurrencyISOCode" xlink:label="EntityReportingCurrencyISOCode"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="EntityInformationLineItems" xlink:to="EntityReportingCurrencyISOCode" use="optional" order="15.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityIncorporationDateOfIncorporation" xlink:label="EntityIncorporationDateOfIncorporation"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="EntityInformationLineItems" xlink:to="EntityIncorporationDateOfIncorporation" use="optional" order="17.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityNumberOfEmployees" xlink:label="EntityNumberOfEmployees"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="EntityInformationLineItems" xlink:to="EntityNumberOfEmployees" use="optional" order="18.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_CurrentFiscalYearEndDate" xlink:label="CurrentFiscalYearEndDate"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="EntityInformationLineItems" xlink:to="CurrentFiscalYearEndDate" use="optional" order="19.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_FormerFiscalYearEndDate" xlink:label="FormerFiscalYearEndDate"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="EntityInformationLineItems" xlink:to="FormerFiscalYearEndDate" use="optional" order="20.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityWellKnownSeasonedIssuer" xlink:label="EntityWellKnownSeasonedIssuer"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="EntityInformationLineItems" xlink:to="EntityWellKnownSeasonedIssuer" use="optional" order="21.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityVoluntaryFilers" xlink:label="EntityVoluntaryFilers"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="EntityInformationLineItems" xlink:to="EntityVoluntaryFilers" use="optional" order="22.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityCurrentReportingStatus" xlink:label="EntityCurrentReportingStatus"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="EntityInformationLineItems" xlink:to="EntityCurrentReportingStatus" use="optional" order="23.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityFilerCategory" xlink:label="EntityFilerCategory"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="EntityInformationLineItems" xlink:to="EntityFilerCategory" use="optional" order="24.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityPublicFloat" xlink:label="EntityPublicFloat"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="EntityInformationLineItems" xlink:to="EntityPublicFloat" use="optional" order="25.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityCommonStockSharesOutstanding" xlink:label="EntityCommonStockSharesOutstanding"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="EntityInformationLineItems" xlink:to="EntityCommonStockSharesOutstanding" use="optional" order="26.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityContactPersonnelLineItems" xlink:label="EntityContactPersonnelLineItems"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="Top" xlink:to="EntityContactPersonnelLineItems" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityContactPersonnelTable" xlink:label="EntityContactPersonnelTable"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/all" xlink:from="EntityContactPersonnelLineItems" xlink:to="EntityContactPersonnelTable" use="optional" order="1.0" xbrldt:contextElement="segment"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="EntityContactPersonnelTable" xlink:to="LegalEntityAxis" use="optional" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityContactPersonnelContactPersonTypeAxis" xlink:label="EntityContactPersonnelContactPersonTypeAxis"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="EntityContactPersonnelTable" xlink:to="EntityContactPersonnelContactPersonTypeAxis" use="optional" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_ContactPersonTypeDomain" xlink:label="ContactPersonTypeDomain_2"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="EntityContactPersonnelContactPersonTypeAxis" xlink:to="ContactPersonTypeDomain_2" use="optional" priority="1" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_ContactPersonTypeDomain" xlink:label="ContactPersonTypeDomain"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentContactMember" xlink:label="DocumentContactMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ContactPersonTypeDomain" xlink:to="DocumentContactMember" use="optional" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_LegalContactMember" xlink:label="LegalContactMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ContactPersonTypeDomain" xlink:to="LegalContactMember" use="optional" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_BusinessContactMember" xlink:label="BusinessContactMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ContactPersonTypeDomain" xlink:to="BusinessContactMember" use="optional" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_AccountingContactMember" xlink:label="AccountingContactMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ContactPersonTypeDomain" xlink:to="AccountingContactMember" use="optional" order="4.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_InvestorRelationsContactMember" xlink:label="InvestorRelationsContactMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ContactPersonTypeDomain" xlink:to="InvestorRelationsContactMember" use="optional" order="5.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_HumanResourcesContactMember" xlink:label="HumanResourcesContactMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ContactPersonTypeDomain" xlink:to="HumanResourcesContactMember" use="optional" order="6.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_ContactPersonnelName" xlink:label="ContactPersonnelName"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="EntityContactPersonnelLineItems" xlink:to="ContactPersonnelName" use="optional" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_ContactPersonnelEmailAddress" xlink:label="ContactPersonnelEmailAddress"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="EntityContactPersonnelLineItems" xlink:to="ContactPersonnelEmailAddress" use="optional" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_ContactPersonnelUniformResourceLocatorURL" xlink:label="ContactPersonnelUniformResourceLocatorURL"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="EntityContactPersonnelLineItems" xlink:to="ContactPersonnelUniformResourceLocatorURL" use="optional" order="4.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityAddressesLineItems" xlink:label="EntityAddressesLineItems"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="Top" xlink:to="EntityAddressesLineItems" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityAddressesTable" xlink:label="EntityAddressesTable"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/all" xlink:from="EntityAddressesLineItems" xlink:to="EntityAddressesTable" use="optional" order="1.0" xbrldt:contextElement="segment"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="EntityAddressesTable" xlink:to="LegalEntityAxis" use="optional" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityAddressesAddressTypeAxis" xlink:label="EntityAddressesAddressTypeAxis"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="EntityAddressesTable" xlink:to="EntityAddressesAddressTypeAxis" use="optional" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_AddressTypeDomain" xlink:label="AddressTypeDomain_2"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="EntityAddressesAddressTypeAxis" xlink:to="AddressTypeDomain_2" use="optional" priority="1" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_AddressTypeDomain" xlink:label="AddressTypeDomain"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_MailingAddressMember" xlink:label="MailingAddressMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AddressTypeDomain" xlink:to="MailingAddressMember" use="optional" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_OtherAddressMember" xlink:label="OtherAddressMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AddressTypeDomain" xlink:to="OtherAddressMember" use="optional" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_LegalAddressMember" xlink:label="LegalAddressMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AddressTypeDomain" xlink:to="LegalAddressMember" use="optional" order="4.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_AccountingAddressMember" xlink:label="AccountingAddressMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AddressTypeDomain" xlink:to="AccountingAddressMember" use="optional" order="5.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_ContactAddressMember" xlink:label="ContactAddressMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AddressTypeDomain" xlink:to="ContactAddressMember" use="optional" order="6.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityAddressAddressDescription" xlink:label="EntityAddressAddressDescription"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="EntityAddressesLineItems" xlink:to="EntityAddressAddressDescription" use="optional" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityAddressAddressLine1" xlink:label="EntityAddressAddressLine1"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="EntityAddressesLineItems" xlink:to="EntityAddressAddressLine1" use="optional" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityAddressAddressLine2" xlink:label="EntityAddressAddressLine2"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="EntityAddressesLineItems" xlink:to="EntityAddressAddressLine2" use="optional" order="4.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityAddressAddressLine3" xlink:label="EntityAddressAddressLine3"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="EntityAddressesLineItems" xlink:to="EntityAddressAddressLine3" use="optional" order="5.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityAddressCityOrTown" xlink:label="EntityAddressCityOrTown"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="EntityAddressesLineItems" xlink:to="EntityAddressCityOrTown" use="optional" order="6.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityAddressStateOrProvince" xlink:label="EntityAddressStateOrProvince"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="EntityAddressesLineItems" xlink:to="EntityAddressStateOrProvince" use="optional" order="7.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityAddressRegion" xlink:label="EntityAddressRegion"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="EntityAddressesLineItems" xlink:to="EntityAddressRegion" use="optional" order="8.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityAddressCountry" xlink:label="EntityAddressCountry"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="EntityAddressesLineItems" xlink:to="EntityAddressCountry" use="optional" order="9.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityAddressPostalZipCode" xlink:label="EntityAddressPostalZipCode"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="EntityAddressesLineItems" xlink:to="EntityAddressPostalZipCode" use="optional" order="10.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityPhoneFaxNumbersLineItems" xlink:label="EntityPhoneFaxNumbersLineItems"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="Top" xlink:to="EntityPhoneFaxNumbersLineItems" order="4.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityPhoneFaxNumbersTable" xlink:label="EntityPhoneFaxNumbersTable"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/all" xlink:from="EntityPhoneFaxNumbersLineItems" xlink:to="EntityPhoneFaxNumbersTable" use="optional" order="1.0" xbrldt:contextElement="segment"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="EntityPhoneFaxNumbersTable" xlink:to="LegalEntityAxis" use="optional" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityPhoneFaxNumbersPhoneFaxNumberTypeAxis" xlink:label="EntityPhoneFaxNumbersPhoneFaxNumberTypeAxis"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="EntityPhoneFaxNumbersTable" xlink:to="EntityPhoneFaxNumbersPhoneFaxNumberTypeAxis" use="optional" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_PhoneFaxNumberTypeDomain" xlink:label="PhoneFaxNumberTypeDomain_2"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="EntityPhoneFaxNumbersPhoneFaxNumberTypeAxis" xlink:to="PhoneFaxNumberTypeDomain_2" use="optional" priority="1" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_PhoneFaxNumberTypeDomain" xlink:label="PhoneFaxNumberTypeDomain"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_InvestorRelationsPhoneMember" xlink:label="InvestorRelationsPhoneMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="PhoneFaxNumberTypeDomain" xlink:to="InvestorRelationsPhoneMember" use="optional" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_InvestorRelationsFaxMember" xlink:label="InvestorRelationsFaxMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="PhoneFaxNumberTypeDomain" xlink:to="InvestorRelationsFaxMember" use="optional" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_GeneralPhoneMember" xlink:label="GeneralPhoneMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="PhoneFaxNumberTypeDomain" xlink:to="GeneralPhoneMember" use="optional" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_GeneralFaxMember" xlink:label="GeneralFaxMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="PhoneFaxNumberTypeDomain" xlink:to="GeneralFaxMember" use="optional" order="4.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_LegalPhoneMember" xlink:label="LegalPhoneMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="PhoneFaxNumberTypeDomain" xlink:to="LegalPhoneMember" use="optional" order="5.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_LegalFaxMember" xlink:label="LegalFaxMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="PhoneFaxNumberTypeDomain" xlink:to="LegalFaxMember" use="optional" order="6.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_AccountingPhoneMember" xlink:label="AccountingPhoneMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="PhoneFaxNumberTypeDomain" xlink:to="AccountingPhoneMember" use="optional" order="7.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_AccountingFaxMember" xlink:label="AccountingFaxMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="PhoneFaxNumberTypeDomain" xlink:to="AccountingFaxMember" use="optional" order="8.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_ContactPhoneMember" xlink:label="ContactPhoneMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="PhoneFaxNumberTypeDomain" xlink:to="ContactPhoneMember" use="optional" order="9.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_ContactFaxMember" xlink:label="ContactFaxMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="PhoneFaxNumberTypeDomain" xlink:to="ContactFaxMember" use="optional" order="10.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_PhoneFaxNumberDescription" xlink:label="PhoneFaxNumberDescription"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="EntityPhoneFaxNumbersLineItems" xlink:to="PhoneFaxNumberDescription" use="optional" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_CountryRegion" xlink:label="CountryRegion"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="EntityPhoneFaxNumbersLineItems" xlink:to="CountryRegion" use="optional" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_CityAreaCode" xlink:label="CityAreaCode"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="EntityPhoneFaxNumbersLineItems" xlink:to="CityAreaCode" use="optional" order="4.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_LocalPhoneNumber" xlink:label="LocalPhoneNumber"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="EntityPhoneFaxNumbersLineItems" xlink:to="LocalPhoneNumber" use="optional" order="5.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_Extension" xlink:label="Extension"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="EntityPhoneFaxNumbersLineItems" xlink:to="Extension" use="optional" order="6.0"/>
+</link:definitionLink>
+<link:definitionLink xlink:type="extended" xlink:role="http://edgar/role/Defaults">
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentInformationDocumentAxis" xlink:label="DocumentInformationDocumentAxis"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentDomain" xlink:label="DocumentDomain_2"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-default" xlink:from="DocumentInformationDocumentAxis" xlink:to="DocumentDomain_2" use="optional" priority="1" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentDomain" xlink:label="DocumentDomain"/>
+<link:loc xlink:type="locator" xlink:href="#edgar_Form10KMember" xlink:label="Form10KMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="DocumentDomain" xlink:to="Form10KMember" use="optional" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="#edgar_Exhibit31Member" xlink:label="Exhibit31Member"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="DocumentDomain" xlink:to="Exhibit31Member" use="optional" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_LegalEntityAxis" xlink:label="LegalEntityAxis"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityDomain" xlink:label="EntityDomain_2"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-default" xlink:from="LegalEntityAxis" xlink:to="EntityDomain_2" use="optional" priority="1" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityDomain" xlink:label="EntityDomain"/>
+<link:loc xlink:type="locator" xlink:href="#edgar_AbcfsMember" xlink:label="AbcfsMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="EntityDomain" xlink:to="AbcfsMember" use="optional" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="#edgar_AbcMember" xlink:label="AbcMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="EntityDomain" xlink:to="AbcMember" use="optional" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityContactPersonnelContactPersonTypeAxis" xlink:label="EntityContactPersonnelContactPersonTypeAxis"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_ContactPersonTypeDomain" xlink:label="ContactPersonTypeDomain"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-default" xlink:from="EntityContactPersonnelContactPersonTypeAxis" xlink:to="ContactPersonTypeDomain" use="optional" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentContactMember" xlink:label="DocumentContactMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ContactPersonTypeDomain" xlink:to="DocumentContactMember" use="optional" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_LegalContactMember" xlink:label="LegalContactMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ContactPersonTypeDomain" xlink:to="LegalContactMember" use="optional" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_BusinessContactMember" xlink:label="BusinessContactMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ContactPersonTypeDomain" xlink:to="BusinessContactMember" use="optional" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_AccountingContactMember" xlink:label="AccountingContactMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ContactPersonTypeDomain" xlink:to="AccountingContactMember" use="optional" order="4.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_InvestorRelationsContactMember" xlink:label="InvestorRelationsContactMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ContactPersonTypeDomain" xlink:to="InvestorRelationsContactMember" use="optional" order="5.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_HumanResourcesContactMember" xlink:label="HumanResourcesContactMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ContactPersonTypeDomain" xlink:to="HumanResourcesContactMember" use="optional" order="6.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityAddressesAddressTypeAxis" xlink:label="EntityAddressesAddressTypeAxis"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_AddressTypeDomain" xlink:label="AddressTypeDomain"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-default" xlink:from="EntityAddressesAddressTypeAxis" xlink:to="AddressTypeDomain" use="optional" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_MailingAddressMember" xlink:label="MailingAddressMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AddressTypeDomain" xlink:to="MailingAddressMember" use="optional" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_OtherAddressMember" xlink:label="OtherAddressMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AddressTypeDomain" xlink:to="OtherAddressMember" use="optional" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_LegalAddressMember" xlink:label="LegalAddressMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AddressTypeDomain" xlink:to="LegalAddressMember" use="optional" order="4.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_AccountingAddressMember" xlink:label="AccountingAddressMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AddressTypeDomain" xlink:to="AccountingAddressMember" use="optional" order="5.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_ContactAddressMember" xlink:label="ContactAddressMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AddressTypeDomain" xlink:to="ContactAddressMember" use="optional" order="6.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityPhoneFaxNumbersPhoneFaxNumberTypeAxis" xlink:label="EntityPhoneFaxNumbersPhoneFaxNumberTypeAxis"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_PhoneFaxNumberTypeDomain" xlink:label="PhoneFaxNumberTypeDomain"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-default" xlink:from="EntityPhoneFaxNumbersPhoneFaxNumberTypeAxis" xlink:to="PhoneFaxNumberTypeDomain" use="optional" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_InvestorRelationsPhoneMember" xlink:label="InvestorRelationsPhoneMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="PhoneFaxNumberTypeDomain" xlink:to="InvestorRelationsPhoneMember" use="optional" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_InvestorRelationsFaxMember" xlink:label="InvestorRelationsFaxMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="PhoneFaxNumberTypeDomain" xlink:to="InvestorRelationsFaxMember" use="optional" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_GeneralPhoneMember" xlink:label="GeneralPhoneMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="PhoneFaxNumberTypeDomain" xlink:to="GeneralPhoneMember" use="optional" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_GeneralFaxMember" xlink:label="GeneralFaxMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="PhoneFaxNumberTypeDomain" xlink:to="GeneralFaxMember" use="optional" order="4.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_LegalPhoneMember" xlink:label="LegalPhoneMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="PhoneFaxNumberTypeDomain" xlink:to="LegalPhoneMember" use="optional" order="5.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_LegalFaxMember" xlink:label="LegalFaxMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="PhoneFaxNumberTypeDomain" xlink:to="LegalFaxMember" use="optional" order="6.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_AccountingPhoneMember" xlink:label="AccountingPhoneMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="PhoneFaxNumberTypeDomain" xlink:to="AccountingPhoneMember" use="optional" order="7.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_AccountingFaxMember" xlink:label="AccountingFaxMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="PhoneFaxNumberTypeDomain" xlink:to="AccountingFaxMember" use="optional" order="8.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_ContactPhoneMember" xlink:label="ContactPhoneMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="PhoneFaxNumberTypeDomain" xlink:to="ContactPhoneMember" use="optional" order="9.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_ContactFaxMember" xlink:label="ContactFaxMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="PhoneFaxNumberTypeDomain" xlink:to="ContactFaxMember" use="optional" order="10.0"/>
+</link:definitionLink>
+<link:labelLink xlink:type="extended" xlink:role="http://www.xbrl.org/2003/role/link">
+<link:loc xlink:type="locator" xlink:href="#edgar_Form10KMember" xlink:label="Form10KMember"/>
+<link:label xlink:type="resource" xlink:label="label_Form10KMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" id="label_Form10KMember">Form 10K [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="Form10KMember" xlink:to="label_Form10KMember"/>
+<link:loc xlink:type="locator" xlink:href="#edgar_Exhibit31Member" xlink:label="Exhibit31Member"/>
+<link:label xlink:type="resource" xlink:label="label_Exhibit31Member" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" id="label_Exhibit31Member">Exhibit 31 [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="Exhibit31Member" xlink:to="label_Exhibit31Member"/>
+<link:loc xlink:type="locator" xlink:href="#edgar_AbcfsMember" xlink:label="AbcfsMember"/>
+<link:label xlink:type="resource" xlink:label="label_AbcfsMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" id="label_AbcfsMember">ABCFS [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="AbcfsMember" xlink:to="label_AbcfsMember"/>
+<link:loc xlink:type="locator" xlink:href="#edgar_AbcMember" xlink:label="AbcMember"/>
+<link:label xlink:type="resource" xlink:label="label_AbcMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" id="label_AbcMember">ABC [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="AbcMember" xlink:to="label_AbcMember"/>
+<link:loc xlink:type="locator" xlink:href="#edgar_Top" xlink:label="Top"/>
+<link:label xlink:type="resource" xlink:label="label_Top" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" id="label_Top">Top</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="Top" xlink:to="label_Top"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentType" xlink:label="DocumentType"/>
+<link:label xlink:type="resource" xlink:label="label_DocumentType" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" id="label_DocumentType">Document Type</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="DocumentType" xlink:to="label_DocumentType"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityEmergingGrowthCompany" xlink:label="EntityEmergingGrowthCompany"/>
+<link:label xlink:type="resource" xlink:label="label_EntityEmergingGrowthCompany" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Entity Emerging Growth Company</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="EntityEmergingGrowthCompany" xlink:to="label_EntityEmergingGrowthCompany"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityInvCompanyType" xlink:label="EntityInvCompanyType"/>
+<link:label xlink:type="resource" xlink:label="label_EntityInvCompanyType" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Entity Inv Company Type</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="EntityInvCompanyType" xlink:to="label_EntityInvCompanyType"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntitySmallBusiness" xlink:label="EntitySmallBusiness"/>
+<link:label xlink:type="resource" xlink:label="label_EntitySmallBusiness" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Entity Small Business</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="EntitySmallBusiness" xlink:to="label_EntitySmallBusiness"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_AmendmentFlag" xlink:label="AmendmentFlag"/>
+<link:label xlink:type="resource" xlink:label="label_AmendmentFlag" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" id="label_AmendmentFlag">Amendment Flag</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="AmendmentFlag" xlink:to="label_AmendmentFlag"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_AmendmentDescription" xlink:label="AmendmentDescription"/>
+<link:label xlink:type="resource" xlink:label="label_AmendmentDescription" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" id="label_AmendmentDescription">Amendment Description</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="AmendmentDescription" xlink:to="label_AmendmentDescription"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentPeriodEndDate" xlink:label="DocumentPeriodEndDate"/>
+<link:label xlink:type="resource" xlink:label="label_DocumentPeriodEndDate" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" id="label_DocumentPeriodEndDate">Document Period End Date</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="DocumentPeriodEndDate" xlink:to="label_DocumentPeriodEndDate"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityRegistrantName" xlink:label="EntityRegistrantName"/>
+<link:label xlink:type="resource" xlink:label="label_EntityRegistrantName" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" id="label_EntityRegistrantName">Registrant Name</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="EntityRegistrantName" xlink:to="label_EntityRegistrantName"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityCentralIndexKey" xlink:label="EntityCentralIndexKey"/>
+<link:label xlink:type="resource" xlink:label="label_EntityCentralIndexKey" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" id="label_EntityCentralIndexKey">Central Index Key</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="EntityCentralIndexKey" xlink:to="label_EntityCentralIndexKey"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_CurrentFiscalYearEndDate" xlink:label="CurrentFiscalYearEndDate"/>
+<link:label xlink:type="resource" xlink:label="label_CurrentFiscalYearEndDate" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" id="label_CurrentFiscalYearEndDate">Current Fiscal Year End Date</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="CurrentFiscalYearEndDate" xlink:to="label_CurrentFiscalYearEndDate"/>
+</link:labelLink>
+</link:linkbase>
+</xs:appinfo>
+</xs:annotation>
+<xs:import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"/>
+<xs:import namespace="http://xbrl.sec.gov/dei/2023" schemaLocation="https://xbrl.sec.gov/dei/2023/dei-2023.xsd"/>
+<xs:import namespace="http://www.xbrl.org/dtr/type/2022-03-31" schemaLocation="https://www.xbrl.org/dtr/type/2022-03-31/types.xsd"/>
+<xs:import namespace="http://xbrl.org/2005/xbrldt" schemaLocation="http://www.xbrl.org/2005/xbrldt-2005.xsd"/>
+<xs:element name="Form10KMember" id="edgar_Form10KMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="Exhibit31Member" id="edgar_Exhibit31Member" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AbcfsMember" id="edgar_AbcfsMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AbcMember" id="edgar_AbcMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="Top" id="edgar_Top" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="OtherFloat" id="edgar_OtherFloat" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:balance="credit" xbrli:periodType="instant"/>
+</xs:schema>

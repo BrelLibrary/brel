@@ -1,0 +1,854 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../../lib/test.xsl"?>
+<conf:testcase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:conf="http://edgar/2009/conformance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../../lib/test.xsd">
+    <conf:creator>
+        <conf:name>SEC Office of Structured Disclosure</conf:name>
+        <conf:email>StructuredData@sec.gov</conf:email>
+    </conf:creator>
+    <conf:number>605-46</conf:number>
+    <conf:name>EDGAR Filer Manual v68d 6.5.46</conf:name>
+    <conf:description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.5.46 Registered securities cover page information">Refer to EFM: 6.5.46 Registered securities cover page information</a>
+    </conf:description>
+    <conf:variation id="_100gw">
+        <conf:name>20FR12B, T1*, GW. </conf:name>
+        <conf:description>20FR12B, T1*, GW.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "20FR12B" ,"emergingGrowthCompanyFlag" : false}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546100gw/e60546100gw-20081231.htm</conf:instance>
+            <conf:linkbase>e60546100gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546100gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546100gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546100gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="NoTradingSymbolFlag" num="60546" severity="wrn" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_101gw">
+        <conf:name> 8-K, GW </conf:name>
+        <conf:description> 8-K, GW T Case SecurityRegistration unexpected, because title is not present</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"periodOfReport" : "12-31-2018" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546101gw/e60546101gw-20081231.htm</conf:instance>
+            <conf:linkbase>e60546101gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546101gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546101gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546101gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="Security12bTitle unexpected " num="60546" severity="wrn" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_102gw">
+        <conf:name> 8-K, Te GW </conf:name>
+        <conf:description> 8-K, GW Te Case SecurityExchangeName unexpected, because title is not present</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"periodOfReport" : "12-31-2018" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546102gw/e60546102gw-20081231.htm</conf:instance>
+            <conf:linkbase>e60546102gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546102gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546102gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546102gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="Security12bTitle unexpected " num="60546" severity="wrn" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_103gw">
+        <conf:name> 8-K, GW </conf:name>
+        <conf:description> 8-K, GW T1 Both trading and Notrading is present</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"periodOfReport" : "10-26-2018" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546103gw/e60546103gw-20081231.htm</conf:instance>
+            <conf:linkbase>e60546103gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546103gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546103gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546103gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="NoTradingSymbolFlag " num="60546" severity="wrn" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_104gw">
+        <conf:name>8-K, T1 GW </conf:name>
+        <conf:description>8-K, T1 Commented trading symbol and security title present, GW</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"periodOfReport" : "10-26-2018" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546104gw/e60546104gw-20081231.htm</conf:instance>
+            <conf:linkbase>e60546104gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546104gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546104gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546104gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="TradingSymbol" num="60546" severity="wrn" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_105gw">
+        <conf:name>8-K, Te GW </conf:name>
+        <conf:description>8-K, Te, GW</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"periodOfReport" : "10-26-2018" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546105gw/e60546105gw-20081231.htm</conf:instance>
+            <conf:linkbase>e60546105gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546105gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546105gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546105gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="tradingSymbolNoTradingSymbolFlagSecurityInconsistency unexpected " num="60546" severity="wrn" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_106gd">
+        <conf:name>10-12B, GOOD</conf:name>
+        <conf:description>10-12B, GOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "10-12B" ,"emergingGrowthCompanyFlag" : true}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546106gd/e60546106gd-20081231.htm</conf:instance>
+            <conf:linkbase>e60546106gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546106gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546106gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546106gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_107gd">
+        <conf:name>1012-botc, GOOD.</conf:name>
+        <conf:description>1012_botc, GOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"emergingGrowthCompanyFlag" : true , "smallBusinessFlag" : true , "submissionType" : "10-12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546107gd/e60546107gd-20081231.htm</conf:instance>
+            <conf:linkbase>e60546107gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546107gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546107gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546107gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_108gd">
+        <conf:name>1012-notc, GOOD.</conf:name>
+        <conf:description>1012_notc, GOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"emergingGrowthCompanyFlag" : true , "smallBusinessFlag" : true , "submissionType" : "10-12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546108gd/e60546108gd-20081231.htm</conf:instance>
+            <conf:linkbase>e60546108gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546108gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546108gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546108gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_109gd">
+        <conf:name>20-F, GOOD</conf:name>
+        <conf:description>20-F, GOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "20-F" ,"periodOfReport" : "12-31-2018" ,"emergingGrowthCompanyFlag" : false ,"acceleratedFilerStatus" : "Large Accelerated Filer" ,"voluntaryFilerFlag" : false ,"shellCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546109gd/e60546109gd-20081231.htm</conf:instance>
+            <conf:linkbase>e60546109gd/eifrs-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546109gd/eifrs-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546109gd/eifrs-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546109gd/eifrs-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_110gd">
+        <conf:name>20FR12B, GOOD</conf:name>
+        <conf:description>20FR12B, GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "20FR12B" ,"emergingGrowthCompanyFlag" : false}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546110gd/e60546110gd-20081231.htm</conf:instance>
+            <conf:linkbase>e60546110gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546110gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546110gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546110gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_111gd">
+        <conf:name>20FR12B, T1*, GOOD</conf:name>
+        <conf:description>20FR12B, T1*, Commented Trading Symbol GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "20FR12B" ,"emergingGrowthCompanyFlag" : false}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546111gd/e60546111gd-20081231.htm</conf:instance>
+            <conf:linkbase>e60546111gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546111gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546111gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546111gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_112gw">
+        <conf:name>20FR12B, T1*, GW. </conf:name>
+        <conf:description>20FR12B, T1*, GW.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "20FR12B" ,"emergingGrowthCompanyFlag" : false}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546112gw/e60546112gw-20081231.htm</conf:instance>
+            <conf:linkbase>e60546112gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546112gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546112gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546112gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="NoTradingSymbolFlag" num="60546" severity="wrn" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_113gd">
+        <conf:name>20FR12B, OG*, GOOD. </conf:name>
+        <conf:description>20FR12B, OG*, GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "20FR12B" ,"emergingGrowthCompanyFlag" : true}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546113gd/e60546113gd-20081231.htm</conf:instance>
+            <conf:linkbase>e60546113gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546113gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546113gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546113gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_114gd">
+        <conf:name>20FR12B, Te*, GOOD. </conf:name>
+        <conf:description>20FR12B, Te* Commented SecurityExchangeName, GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "20FR12B" ,"emergingGrowthCompanyFlag" : false}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546114gd/e60546114gd-20081231.htm</conf:instance>
+            <conf:linkbase>e60546114gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546114gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546114gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546114gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_115gd">
+        <conf:name>20FR12B, Oth*, GOOD. </conf:name>
+        <conf:description>20FR12B, Oth*, GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "20FR12B" ,"emergingGrowthCompanyFlag" : false}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546115gd/e60546115gd-20081231.htm</conf:instance>
+            <conf:linkbase>e60546115gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546115gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546115gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546115gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_116gd">
+        <conf:name>20FR12B, O*, GOOD. </conf:name>
+        <conf:description>20FR12B, O*, Commented DocumentAccountingStandard, GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "20FR12B" ,"emergingGrowthCompanyFlag" : false}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546116gd/e60546116gd-20081231.htm</conf:instance>
+            <conf:linkbase>e60546116gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546116gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546116gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546116gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_117gd">
+        <conf:name>20FR12B, O*, GOOD. </conf:name>
+        <conf:description>20FR12B, O*, Un Commented DocumentAccountingStandard, GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "20FR12B" ,"emergingGrowthCompanyFlag" : false}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546117gd/e60546117gd-20081231.htm</conf:instance>
+            <conf:linkbase>e60546117gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546117gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546117gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546117gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_118gd">
+        <conf:name>20FR12B, X*, GOOD. </conf:name>
+        <conf:description>20FR12B, X*, GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "20FR12B" ,"emergingGrowthCompanyFlag" : false}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546118gd/e60546118gd-20081231.htm</conf:instance>
+            <conf:linkbase>e60546118gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546118gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546118gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546118gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_119gd">
+        <conf:name>20FR12B, r*, GOOD. </conf:name>
+        <conf:description>20FR12B, r*, GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "20FR12B" ,"emergingGrowthCompanyFlag" : false}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546119gd/e60546119gd-20081231.htm</conf:instance>
+            <conf:linkbase>e60546119gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546119gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546119gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546119gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_120gd">
+        <conf:name>20FR12B, N*, GOOD. </conf:name>
+        <conf:description>20FR12B, N*, GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "20FR12B" ,"emergingGrowthCompanyFlag" : false}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546120gd/e60546120gd-20081231.htm</conf:instance>
+            <conf:linkbase>e60546120gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546120gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546120gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546120gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_121gd">
+        <conf:name>20FR12B, Ot*, GOOD. </conf:name>
+        <conf:description>20FR12B, Ot* SecurityReportingObligation, GOOD. </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "20FR12B" ,"emergingGrowthCompanyFlag" : false}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546121gd/e60546121gd-20081231.htm</conf:instance>
+            <conf:linkbase>e60546121gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546121gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546121gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546121gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_122gd">
+        <conf:name>20FR12B, Y*, GOOD. </conf:name>
+        <conf:description>20FR12B, Y*, Commented DocumentRegistrationStatement GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "20FR12B" ,"emergingGrowthCompanyFlag" : false}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546122gd/e60546122gd-20081231.htm</conf:instance>
+            <conf:linkbase>e60546122gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546122gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546122gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546122gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_123gd">
+        <conf:name>20FR12B, Ol1*, GOOD. </conf:name>
+        <conf:description>20FR12B, OL1*, Commented EntityAddressAddressLine2 GOOD. </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "20FR12B" ,"emergingGrowthCompanyFlag" : false}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546123gd/e60546123gd-20081231.htm</conf:instance>
+            <conf:linkbase>e60546123gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546123gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546123gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546123gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_124gd">
+        <conf:name>20FR12B, Oph*, GOOD. </conf:name>
+        <conf:description>20FR12B, Oph*, GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "20FR12B" ,"emergingGrowthCompanyFlag" : false}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546124gd/e60546124gd-20081231.htm</conf:instance>
+            <conf:linkbase>e60546124gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546124gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546124gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546124gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_125gd">
+        <conf:name>40-F GOOD. </conf:name>
+        <conf:description>40-F GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "40-F" ,"periodOfReport" : "12-31-2018" ,"emergingGrowthCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546125gd/e60546125gd-20081231.htm</conf:instance>
+            <conf:linkbase>e60546125gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546125gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546125gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546125gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_126gd">
+        <conf:name>40-F, O, GOOD. </conf:name>
+        <conf:description>40-F, O, Commented EntityPrimarySicNumber GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "40-F" ,"periodOfReport" : "12-31-2018" ,"emergingGrowthCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546126gd/e60546126gd-20081231.htm</conf:instance>
+            <conf:linkbase>e60546126gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546126gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546126gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546126gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_127gd">
+        <conf:name>40-F, GOOD. </conf:name>
+        <conf:description>40-F, dead GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "40-F" ,"periodOfReport" : "12-31-2018" ,"emergingGrowthCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546127gd/e60546127gd-20081231.htm</conf:instance>
+            <conf:linkbase>e60546127gd/eifrs-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546127gd/eifrs-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546127gd/eifrs-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546127gd/eifrs-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_128gd">
+        <conf:name>40FR12B GOOD. </conf:name>
+        <conf:description>40FR12B GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "40FR12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546128gd/e60546128gd-20081231.htm</conf:instance>
+            <conf:linkbase>e60546128gd/eifrs-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546128gd/eifrs-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546128gd/eifrs-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546128gd/eifrs-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_129gd">
+        <conf:name>40FR12B A, GOOD. </conf:name>
+        <conf:description>40FR12B A, GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "40FR12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546129gd/e60546129gd-20081231.htm</conf:instance>
+            <conf:linkbase>e60546129gd/eifrs-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546129gd/eifrs-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546129gd/eifrs-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546129gd/eifrs-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_130gd">
+        <conf:name>40FR12B Ou*, GOOD. </conf:name>
+        <conf:description>40FR12B Ou, GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "40FR12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546130gd/e60546130gd-20081231.htm</conf:instance>
+            <conf:linkbase>e60546130gd/eifrs-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546130gd/eifrs-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546130gd/eifrs-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546130gd/eifrs-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_131gd">
+        <conf:name>8-K, GOOD </conf:name>
+        <conf:description>8-K, GOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"periodOfReport" : "10-26-2018" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546131gd/e60546131gd-20081231.htm</conf:instance>
+            <conf:linkbase>e60546131gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546131gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546131gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546131gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_132gd">
+        <conf:name>10-Q, GOOD </conf:name>
+        <conf:description>10-Q GOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"periodOfReport" : "12-31-2018" , "emergingGrowthCompanyFlag" : false , "smallBusinessFlag" : false , "submissionType" : "10-Q"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546132gd/e60546132gd-20081231.htm</conf:instance>
+            <conf:linkbase>e60546132gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546132gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546132gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546132gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_133gd">
+        <conf:name>10-K, GOOD </conf:name>
+        <conf:description>10-K, GOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"periodOfReport" : "12-31-2018" , "emergingGrowthCompanyFlag" : false , "acceleratedFilerStatus" : "Large Accelerated Filer", "smallBusinessFlag" : false , "shellCompanyFlag" : false , "submissionType" : "10-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546133gd/e60546133gd-20081231.htm</conf:instance>
+            <conf:linkbase>e60546133gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546133gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546133gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546133gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_134gw">
+        <conf:name> 8-K, GW </conf:name>
+        <conf:description> 8-K, GW T Case SecurityRegistration unexpected, because title is not present</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"periodOfReport" : "12-31-2018" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546134gw/e60546134gw-20081231.htm</conf:instance>
+            <conf:linkbase>e60546134gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546134gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546134gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546134gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="Security12bTitle-unexpected" num="60546" severity="wrn" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_135gw">
+        <conf:name> 8-K, Te GW </conf:name>
+        <conf:description> 8-K, GW Te Case SecurityExchangeName unexpected, because title is not present</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"periodOfReport" : "12-31-2018" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546135gw/e60546135gw-20081231.htm</conf:instance>
+            <conf:linkbase>e60546135gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546135gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546135gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546135gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="Security12bTitle-unexpected" num="60546" severity="wrn" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_136gw">
+        <conf:name> 8-K, GW </conf:name>
+        <conf:description> 8-K, GW T1 Both trading and Notrading is present</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"periodOfReport" : "10-26-2018" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546136gw/e60546136gw-20081231.htm</conf:instance>
+            <conf:linkbase>e60546136gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546136gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546136gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546136gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="NoTradingSymbolFlag" num="60546" severity="wrn" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_137gd">
+        <conf:name> 8-K, Ri, GOOD </conf:name>
+        <conf:description> 8-K, Ri, Commented PreCommencementIssuerTenderOffer, GOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"periodOfReport" : "10-26-2018" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546137gd/e60546137gd-20081231.htm</conf:instance>
+            <conf:linkbase>e60546137gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546137gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546137gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546137gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_138gw">
+        <conf:name>8-K, T1 GW </conf:name>
+        <conf:description>8-K, T1 Commented trading symbol and security title present, GW</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"periodOfReport" : "10-26-2018" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546138gw/e60546138gw-20081231.htm</conf:instance>
+            <conf:linkbase>e60546138gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546138gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546138gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546138gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="TradingSymbol" num="60546" severity="wrn" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_139gw">
+        <conf:name>8-K, Te GW </conf:name>
+        <conf:description>8-K, Te, GW</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"periodOfReport" : "10-26-2018" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546139gw/e60546139gw-20081231.htm</conf:instance>
+            <conf:linkbase>e60546139gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546139gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546139gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546139gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SecurityExchangeName" num="60546" severity="wrn" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_140gd">
+        <conf:name>10-K, GOOD </conf:name>
+        <conf:description>10-K, GOOD, Security Title exists and NoTradingSymbolFlag true.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"periodOfReport" : "12-31-2018" , "emergingGrowthCompanyFlag" : false , "acceleratedFilerStatus" : "Large Accelerated Filer", "smallBusinessFlag" : false , "shellCompanyFlag" : false , "submissionType" : "10-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546140gd/e60546140gd-20081231.htm</conf:instance>
+            <conf:linkbase>e60546140gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546140gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546140gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546140gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_141gd">
+        <conf:name>10-K, Te GOOD </conf:name>
+        <conf:description>10-K, Te, GOOD, Security Title and Trading Symbol exists, Security Exchange Name missing</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"periodOfReport" : "12-31-2018" , "emergingGrowthCompanyFlag" : false , "acceleratedFilerStatus" : "Large Accelerated Filer", "smallBusinessFlag" : false , "shellCompanyFlag" : false , "submissionType" : "10-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546141gd/e60546141gd-20081231.htm</conf:instance>
+            <conf:linkbase>e60546141gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546141gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546141gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546141gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_142gw">
+        <conf:name>10-K, T1 GW </conf:name>
+        <conf:description>10-K, T1, GW, Security Title exists, Trading Symbol missing</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"periodOfReport" : "12-31-2018" , "emergingGrowthCompanyFlag" : false , "acceleratedFilerStatus" : "Large Accelerated Filer", "smallBusinessFlag" : false , "shellCompanyFlag" : false , "submissionType" : "10-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546142gw/e60546142gw-20081231.htm</conf:instance>
+            <conf:linkbase>e60546142gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546142gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546142gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546142gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="TradingSymbol" num="60546" severity="wrn" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_143gd">
+        <conf:name>10-K, Te GOOD </conf:name>
+        <conf:description>10-K, Te, GOOD, Security Title exists, NoTradingSymbolFlag true, and Security Exchange Name missing</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"periodOfReport" : "12-31-2018" , "emergingGrowthCompanyFlag" : false , "acceleratedFilerStatus" : "Large Accelerated Filer", "smallBusinessFlag" : false , "shellCompanyFlag" : false , "submissionType" : "10-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546143gd/e60546143gd-20081231.htm</conf:instance>
+            <conf:linkbase>e60546143gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546143gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546143gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546143gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_144gd">
+        <conf:name>40-F, GOOD</conf:name>
+        <conf:description>40-F, GOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "40-F" ,"periodOfReport" : "12-31-2018" ,"emergingGrowthCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546144gd/e60546144gd-20081231.htm</conf:instance>
+            <conf:linkbase>e60546144gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546144gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546144gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546144gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_145gd">
+        <conf:name>40-F, GOOD</conf:name>
+        <conf:description>40-F, GOOD, Security Title exists and NoTradingSymbolFlag true</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "40-F" ,"periodOfReport" : "12-31-2018" ,"emergingGrowthCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546145gd/e60546145gd-20081231.htm</conf:instance>
+            <conf:linkbase>e60546145gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546145gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546145gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546145gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_146gd">
+        <conf:name>40-F, GOOD</conf:name>
+        <conf:description>40-F, GOOD, Security Title and Trading Symbol exists, Security Exchange Name missing</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "40-F" ,"periodOfReport" : "12-31-2018" ,"emergingGrowthCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546146gd/e60546146gd-20081231.htm</conf:instance>
+            <conf:linkbase>e60546146gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546146gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546146gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546146gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_147gw">
+        <conf:name>40-F, GW</conf:name>
+        <conf:description>40-F, GW, Security Title exists, Trading Symbol missing</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "40-F" ,"periodOfReport" : "12-31-2018" ,"emergingGrowthCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546147gw/e60546147gw-20081231.htm</conf:instance>
+            <conf:linkbase>e60546147gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546147gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546147gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546147gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="TradingSymbol" num="60546" severity="wrn" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_148gd">
+        <conf:name>40-F, GOOD</conf:name>
+        <conf:description>40-F, GOOD, Security Title exists, NoTradingSymbolFlag true, and Security Exchange Name missing</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "40-F" ,"periodOfReport" : "12-31-2018" ,"emergingGrowthCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546148gd/e60546148gd-20081231.htm</conf:instance>
+            <conf:linkbase>e60546148gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546148gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546148gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546148gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_149gd">
+        <conf:name>10-K, GOOD </conf:name>
+        <conf:description>10-K, GOOD, Security Title exists and NoTradingSymbolFlag true.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"periodOfReport" : "12-31-2018" , "emergingGrowthCompanyFlag" : true , "acceleratedFilerStatus" : "Large Accelerated Filer", "smallBusinessFlag" : false , "shellCompanyFlag" : false , "submissionType" : "10-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546149gd/e60546149gd-20081231.xml</conf:instance>
+            <conf:linkbase>e60546149gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546149gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546149gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546149gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_150gd">
+        <conf:name>10-K, Te GOOD </conf:name>
+        <conf:description>10-K, Te, GOOD, Security Title and Trading Symbol exists, Security Exchange Name missing</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"periodOfReport" : "12-31-2018" , "emergingGrowthCompanyFlag" : true , "acceleratedFilerStatus" : "Large Accelerated Filer", "smallBusinessFlag" : false , "shellCompanyFlag" : false , "submissionType" : "10-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546150gd/e60546150gd-20081231.xml</conf:instance>
+            <conf:linkbase>e60546150gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546150gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546150gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546150gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_151gw">
+        <conf:name>10-K, T1 GW </conf:name>
+        <conf:description>10-K, T1, GW, Security Title exists, Trading Symbol missing</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"periodOfReport" : "12-31-2018" , "emergingGrowthCompanyFlag" : false , "acceleratedFilerStatus" : "Large Accelerated Filer", "smallBusinessFlag" : false , "shellCompanyFlag" : false , "submissionType" : "10-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546151gw/e60546151gw-20081231.xml</conf:instance>
+            <conf:linkbase>e60546151gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546151gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546151gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546151gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="TradingSymbol" num="60546" severity="wrn" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_152gd">
+        <conf:name>10-K, Te GOOD </conf:name>
+        <conf:description>10-K, Te, GOOD, Security Title exists, NoTradingSymbolFlag true, and Security Exchange Name missing</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"periodOfReport" : "12-31-2018" , "emergingGrowthCompanyFlag" : true , "acceleratedFilerStatus" : "Large Accelerated Filer", "smallBusinessFlag" : false , "shellCompanyFlag" : false , "submissionType" : "10-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546152gd/e60546152gd-20081231.xml</conf:instance>
+            <conf:linkbase>e60546152gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546152gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546152gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546152gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_153gd">
+        <conf:name>40-F, GOOD</conf:name>
+        <conf:description>40-F, GOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "40-F" ,"periodOfReport" : "12-31-2018" ,"emergingGrowthCompanyFlag" : true }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546153gd/e60546153gd-20081231.xml</conf:instance>
+            <conf:linkbase>e60546153gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546153gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546153gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546153gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_154gd">
+        <conf:name>40-F, GOOD</conf:name>
+        <conf:description>40-F, GOOD, Security Title exists and NoTradingSymbolFlag true</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "40-F" ,"periodOfReport" : "12-31-2018" ,"emergingGrowthCompanyFlag" : true }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546154gd/e60546154gd-20081231.xml</conf:instance>
+            <conf:linkbase>e60546154gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546154gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546154gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546154gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_155gd">
+        <conf:name>40-F, GOOD</conf:name>
+        <conf:description>40-F, GOOD, Security Title and Trading Symbol exists, Security Exchange Name missing</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "40-F" ,"periodOfReport" : "12-31-2018" ,"emergingGrowthCompanyFlag" : true }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546155gd/e60546155gd-20081231.xml</conf:instance>
+            <conf:linkbase>e60546155gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546155gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546155gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546155gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_156gw">
+        <conf:name>40-F, GW</conf:name>
+        <conf:description>40-F, GW, Security Title exists, Trading Symbol missing</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "40-F" ,"periodOfReport" : "12-31-2018" ,"emergingGrowthCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546156gw/e60546156gw-20081231.xml</conf:instance>
+            <conf:linkbase>e60546156gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546156gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546156gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546156gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="TradingSymbol" num="60546" severity="wrn" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_157gd">
+        <conf:name>40-F, GOOD</conf:name>
+        <conf:description>40-F, GOOD, Security Title exists, NoTradingSymbolFlag true, and Security Exchange Name missing</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "40-F" ,"periodOfReport" : "12-31-2018" ,"emergingGrowthCompanyFlag" : true }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546157gd/e60546157gd-20081231.xml</conf:instance>
+            <conf:linkbase>e60546157gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546157gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546157gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546157gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_158gd">
+        <conf:name>10-K, GOOD</conf:name>
+        <conf:description>10-K, GOOD, Security 12b Title 100 characters</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"periodOfReport" : "12-31-2018" , "emergingGrowthCompanyFlag" : false , "acceleratedFilerStatus" : "Large Accelerated Filer", "smallBusinessFlag" : false , "shellCompanyFlag" : false , "submissionType" : "10-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546158gd/e60546158gd-20081231.htm</conf:instance>
+            <conf:linkbase>e60546158gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546158gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546158gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546158gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_159gd">
+        <conf:name>10-K, GOOD</conf:name>
+        <conf:description>10-K, GOOD, Security 12b Title 101 characters</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"periodOfReport" : "12-31-2018" , "emergingGrowthCompanyFlag" : false , "acceleratedFilerStatus" : "Large Accelerated Filer", "smallBusinessFlag" : false , "shellCompanyFlag" : false , "submissionType" : "10-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546159gd/e60546159gd-20081231.htm</conf:instance>
+            <conf:linkbase>e60546159gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546159gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546159gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546159gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_160gd">
+        <conf:name>10-K, GOOD</conf:name>
+        <conf:description>10-K, GOOD, Security 12b Title 150 characters</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"periodOfReport" : "12-31-2018" , "emergingGrowthCompanyFlag" : false , "acceleratedFilerStatus" : "Large Accelerated Filer", "smallBusinessFlag" : false , "shellCompanyFlag" : false , "submissionType" : "10-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546160gd/e60546160gd-20081231.htm</conf:instance>
+            <conf:linkbase>e60546160gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546160gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546160gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546160gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_161ng">
+        <conf:name>10-K, NOGOOD</conf:name>
+        <conf:description>10-K, NOGOOD, Security 12b Title 151 characters</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"periodOfReport" : "12-31-2018" , "emergingGrowthCompanyFlag" : false , "acceleratedFilerStatus" : "Large Accelerated Filer", "smallBusinessFlag" : false , "shellCompanyFlag" : false , "submissionType" : "10-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60546161ng/e60546161ng-20081231.htm</conf:instance>
+            <conf:linkbase>e60546161ng/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60546161ng/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60546161ng/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60546161ng/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="Security12bTitleSecurityAxes" num="60546" severity="wrn" frd="dq"></conf:assert>
+            <conf:assert name="TradingSymbolNoTradingSymbolFlagSecurity12bTitleSecurity12gTitleExclusiveDependency" num="60546" severity="wrn" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+</conf:testcase>

@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<link:linkbase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd">
+    <link:roleRef roleURI="http://edgar/role/EntityInformation" xlink:href="edgar-20081231.xsd#EntityInformation" xlink:type="simple"></link:roleRef>
+    <link:arcroleRef xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#domain-member" xlink:type="simple" arcroleURI="http://xbrl.org/int/dim/arcrole/domain-member"></link:arcroleRef>
+    <link:definitionLink xlink:type="extended" xlink:role="http://edgar/role/EntityInformation">
+        <link:loc xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityDomain" xlink:label="EntityDomain" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityInformationLineItems" xlink:label="EntityInformationLineItems" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="e61203002ng-20081231.xsd#e6120300_DefMember" xlink:label="DefMember" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="e61203002ng-20081231.xsd#e6120300_Statistics" xlink:label="Statistics" xlink:type="locator"></link:loc>
+        <link:definitionArc xlink:type="arc" order="0.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="EntityDomain" xlink:to="DefMember"></link:definitionArc>
+        <link:definitionArc xlink:type="arc" order="27.0" use="optional" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="EntityInformationLineItems" xlink:to="Statistics"></link:definitionArc>
+    </link:definitionLink>
+</link:linkbase>

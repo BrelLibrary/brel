@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sec.gov/edgar/document/sdr/exhibitc" xmlns:mstns="http://www.sec.gov/edgar/document/sdr/exhibitc" xmlns:ns1="http://www.sec.gov/edgar/common" xmlns:ns2="http://www.sec.gov/edgar/sdrcommon" targetNamespace="http://www.sec.gov/edgar/document/sdr/exhibitc" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.sec.gov/edgar/common" schemaLocation="eis_Common.xsd"/>
+	<xs:import namespace="http://www.sec.gov/edgar/sdrcommon" schemaLocation="eis_SDR_common.xsd"/>
+	<xs:complexType name="OFFICER_TYPE">
+		<xs:annotation>
+			<xs:documentation>These elements part of the repeatable OFFICER_TYPE group</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="officerFirstName" type="ns1:STRING_30_TYPE"/>
+			<xs:element name="officerMiddleName" type="ns1:STRING_30_TYPE" minOccurs="0"/>
+			<xs:element name="officerLastName" type="ns1:STRING_30_TYPE"/>
+			<xs:element name="officerTitle" type="ns2:STRING_100_TYPE"/>
+			<xs:element name="officerTermCommencementDate" type="ns1:DATE_TYPE"/>
+			<xs:element name="officerTermTerminateDate" type="ns1:DATE_TYPE" minOccurs="0"/>
+			<xs:element name="officerNumOfYearInPosition" type="ns1:INTEGER_TYPE_2"/>
+			<xs:element name="officerNumOfMonthInPosition" type="ns1:INTEGER_TYPE_2"/>
+			<xs:element name="officerBusinessExperienceDesc" type="ns2:STRING_1500_TYPE"/>
+			<xs:element name="officerOtherBusinessAffiliation" type="ns2:STRING_1500_TYPE" minOccurs="0" maxOccurs="100"/>
+			<xs:element name="officerDisciplinaryHistory" type="ns2:STRING_1500_TYPE" minOccurs="0" maxOccurs="100"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="STANDING_COMMITTEE_MEMBER_TYPE">
+		<xs:annotation>
+			<xs:documentation>These elements part of the repeatable STANDING_COMMITTEE_MEMBER_TYPE group</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="memberFirstName" type="ns1:STRING_30_TYPE"/>
+			<xs:element name="memberMiddleName" type="ns1:STRING_30_TYPE" minOccurs="0"/>
+			<xs:element name="memberLastName" type="ns1:STRING_30_TYPE"/>
+			<xs:element name="memberTitle" type="ns2:STRING_100_TYPE"/>
+			<xs:element name="memberTermCommencementDate" type="ns1:DATE_TYPE"/>
+			<xs:element name="memberTermTerminateDate" type="ns1:DATE_TYPE" minOccurs="0"/>
+			<xs:element name="memberNumOfYearInPosition" type="ns1:INTEGER_TYPE_2"/>
+			<xs:element name="memberNumOfMonthInPosition" type="ns1:INTEGER_TYPE_2"/>
+			<xs:element name="memberBusinessExperienceDesc" type="ns2:STRING_1500_TYPE"/>
+			<xs:element name="memberOtherBusinessAffiliation" type="ns2:STRING_1500_TYPE" minOccurs="0" maxOccurs="100"/>
+			<xs:element name="memberDisciplinaryHistory" type="ns2:STRING_1500_TYPE" minOccurs="0" maxOccurs="100"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="STANDING_COMMITTEE_TYPE">
+		<xs:annotation>
+			<xs:documentation>These elements part of the repeatable STANDING_COMMITTEE_TYPE group</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="standingCommitteeName" type="ns2:STRING_100_TYPE"/>
+			<xs:element name="standingCommitteeMember" type="STANDING_COMMITTEE_MEMBER_TYPE" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="directorGovernors">
+		<xs:annotation>
+			<xs:documentation>This is the root element for an SDR Data exhibit.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="officer" type="OFFICER_TYPE" minOccurs="0" maxOccurs="100"/>
+				<xs:element name="standingCommittee" type="STANDING_COMMITTEE_TYPE" minOccurs="0" maxOccurs="100"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

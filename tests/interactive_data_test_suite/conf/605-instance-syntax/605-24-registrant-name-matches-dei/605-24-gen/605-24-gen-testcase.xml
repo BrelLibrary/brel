@@ -1,0 +1,403 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../../lib/test.xsl"?>
+<conf:testcase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:conf="http://edgar/2009/conformance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../../lib/test.xsd">
+    <conf:creator>
+        <conf:name>SEC Office of Structured Disclosure</conf:name>
+        <conf:email>StructuredData@sec.gov</conf:email>
+    </conf:creator>
+    <conf:number>605-24</conf:number>
+    <conf:name>EDGAR Filer Manual v68d 6.5.24</conf:name>
+    <conf:description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.5.24 The Registrant Name in the required context.">Refer to EFM: 6.5.24 The Registrant Name in the required context.</a>
+    </conf:description>
+    <conf:variation id="_001gd">
+        <conf:name>8-K GD  </conf:name>
+        <conf:description>8-K GD  </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60524001gd/g60524001gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60524001gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60524001gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60524001gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60524001gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_002gd">
+        <conf:name>10-K GD  </conf:name>
+        <conf:description>10-K GD  </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60524002gd/g60524002gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60524002gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60524002gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60524002gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60524002gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_003gd">
+        <conf:name>10-KT GD  </conf:name>
+        <conf:description>10-KT GD  </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-KT"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60524003gd/g60524003gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60524003gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60524003gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60524003gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60524003gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_004gd">
+        <conf:name>10-Q GD  </conf:name>
+        <conf:description>10-Q GD  </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-Q"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60524004gd/g60524004gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60524004gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60524004gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60524004gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60524004gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_005gd">
+        <conf:name>10-QT GD  </conf:name>
+        <conf:description>10-QT GD  </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-QT"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60524005gd/g60524005gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60524005gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60524005gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60524005gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60524005gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_006gd">
+        <conf:name>20-F GD  </conf:name>
+        <conf:description>20-F GD  </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "20-F"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60524006gd/g60524006gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60524006gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60524006gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60524006gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60524006gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_007gd">
+        <conf:name>40-F GD  </conf:name>
+        <conf:description>40-F GD  </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "40-F"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60524007gd/g60524007gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60524007gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60524007gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60524007gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60524007gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_008gd">
+        <conf:name>10-12B GD  </conf:name>
+        <conf:description>10-12B GD  </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "10-12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60524008gd/g60524008gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60524008gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60524008gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60524008gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60524008gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_009gd">
+        <conf:name>10-12G GD  </conf:name>
+        <conf:description>10-12G GD  </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "10-12G"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60524009gd/g60524009gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60524009gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60524009gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60524009gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60524009gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_010gd">
+        <conf:name>20FR12B GD  </conf:name>
+        <conf:description>20FR12B GD  </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "20FR12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60524010gd/g60524010gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60524010gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60524010gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60524010gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60524010gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_011gd">
+        <conf:name>20FR12G GD  </conf:name>
+        <conf:description>20FR12G GD  </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "20FR12G"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60524011gd/g60524011gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60524011gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60524011gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60524011gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60524011gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_012gd">
+        <conf:name>40FR12B GD  </conf:name>
+        <conf:description>40FR12B GD  </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "40FR12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60524012gd/g60524012gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60524012gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60524012gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60524012gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60524012gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_013gd">
+        <conf:name>40FR12G GD  </conf:name>
+        <conf:description>40FR12G GD  </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "40FR12G"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60524013gd/g60524013gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60524013gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60524013gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60524013gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60524013gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_014gd">
+        <conf:name>S-1 GD  </conf:name>
+        <conf:description>S-1 GD  </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,    "submissionType" : "S-1"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60524014gd/g60524014gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60524014gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60524014gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60524014gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60524014gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_015gd">
+        <conf:name>S-3 GD  </conf:name>
+        <conf:description>S-3 GD  </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-3"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60524015gd/g60524015gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60524015gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60524015gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60524015gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60524015gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_016gd">
+        <conf:name>S-4 GD  </conf:name>
+        <conf:description>S-4 GD  </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-4"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60524016gd/g60524016gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60524016gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60524016gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60524016gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60524016gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_017gd">
+        <conf:name>S-11 GD  </conf:name>
+        <conf:description>S-11 GD  </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-11"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60524017gd/g60524017gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60524017gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60524017gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60524017gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60524017gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_018gd">
+        <conf:name>POS EX GD  </conf:name>
+        <conf:description>POS EX GD  </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "POS EX"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60524018gd/g60524018gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60524018gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60524018gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60524018gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60524018gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_019gd">
+        <conf:name>POS AM GD  </conf:name>
+        <conf:description>POS AM GD  </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "periodOfReport" : "12-31-2018",  "submissionType" : "POS AM"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60524019gd/g60524019gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60524019gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60524019gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60524019gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60524019gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_020gd">
+        <conf:name>F-1 GD  </conf:name>
+        <conf:description>F-1 GD  </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,    "submissionType" : "F-1"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60524020gd/g60524020gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60524020gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60524020gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60524020gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60524020gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_021gd">
+        <conf:name>F-3 GD  </conf:name>
+        <conf:description>F-3 GD  </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,    "submissionType" : "F-3"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60524021gd/g60524021gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60524021gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60524021gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60524021gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60524021gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_022gd">
+        <conf:name>F-4 GD  </conf:name>
+        <conf:description>F-4 GD  </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,    "submissionType" : "F-4"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60524022gd/g60524022gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60524022gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60524022gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60524022gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60524022gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_023gd">
+        <conf:name>6-K GD  </conf:name>
+        <conf:description>6-K GD  </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "periodOfReport" : "12-31-2018",  "submissionType" : "6-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60524023gd/g60524023gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60524023gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60524023gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60524023gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60524023gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_024gd">
+        <conf:name>K-SDR GD  </conf:name>
+        <conf:description>K-SDR GD  </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "SDR"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60524024gd/g60524024gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60524024gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60524024gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60524024gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60524024gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_025gd">
+        <conf:name>485APOS GD  </conf:name>
+        <conf:description>485APOS GD  </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "485APOS"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60524025gd/g60524025gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60524025gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60524025gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60524025gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60524025gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_026gd">
+        <conf:name>485BPOS GD  </conf:name>
+        <conf:description>485BPOS GD  </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "invCompanyType" : "N-1A",  "periodOfReport" : "12-31-2018",  "submissionType" : "485BPOS"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60524026gd/g60524026gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60524026gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60524026gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60524026gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60524026gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_027gd">
+        <conf:name>485BXT GD  </conf:name>
+        <conf:description>485BXT GD  </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "485BXT"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60524027gd/g60524027gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60524027gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60524027gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60524027gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60524027gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_028gd">
+        <conf:name>N-1A GD  </conf:name>
+        <conf:description>N-1A GD  </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "N-1A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60524028gd/g60524028gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60524028gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60524028gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60524028gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60524028gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_029gd">
+        <conf:name>SP 15D2 GD  </conf:name>
+        <conf:description>SP 15D2 GD  </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "SP 15D2"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60524029gd/g60524029gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60524029gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60524029gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60524029gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60524029gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_030gd">
+        <conf:name>POSASR GD  </conf:name>
+        <conf:description>POSASR GD  </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "POSASR"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60524030gd/g60524030gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60524030gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60524030gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60524030gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60524030gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+</conf:testcase>

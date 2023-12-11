@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<link:linkbase xmlns:iso4217="http://www.xbrl.org/2003/iso4217" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:lrr="http://www.xbrl.org/2005/lrr" xsi:schemaLocation="http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd">
+    <link:roleRef roleURI="http://www.xbrl.org/2009/role/negatedTerseLabel" xlink:href="http://www.xbrl.org/lrr/role/negated-2009-12-16.xsd#negatedTerseLabel" xlink:type="simple"></link:roleRef>
+    <link:labelLink xlink:type="extended" xlink:role="http://www.xbrl.org/2003/role/link">
+        <link:loc xlink:href="edgar-20111231.xsd#edgar_normalizedStringItem" xlink:label="normalizedStringItem" xlink:type="locator"></link:loc>
+        <link:label id="label_normalizedStringItem" xml:lang="en-US" xlink:label="label_normalizedStringItem" xlink:type="resource" xlink:role="http://www.xbrl.org/2009/role/negatedTerseLabel">normalizedString Item</link:label>
+        <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="normalizedStringItem" xlink:to="label_normalizedStringItem"></link:labelArc>
+    </link:labelLink>
+</link:linkbase>

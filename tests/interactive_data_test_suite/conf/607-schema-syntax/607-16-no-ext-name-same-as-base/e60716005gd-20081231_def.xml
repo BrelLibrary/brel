@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='utf-8'?>
+<link:linkbase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xbrldt="http://xbrl.org/2005/xbrldt" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd">
+    <link:roleRef roleURI="http://e6071600/role/Rockn" xlink:href="e60716005gd-20081231.xsd#Rockn" xlink:type="simple"></link:roleRef>
+    <link:arcroleRef xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#all" xlink:type="simple" arcroleURI="http://xbrl.org/int/dim/arcrole/all"></link:arcroleRef>
+    <link:arcroleRef xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#dimension-default" xlink:type="simple" arcroleURI="http://xbrl.org/int/dim/arcrole/dimension-default"></link:arcroleRef>
+    <link:arcroleRef xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#dimension-domain" xlink:type="simple" arcroleURI="http://xbrl.org/int/dim/arcrole/dimension-domain"></link:arcroleRef>
+    <link:arcroleRef xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#domain-member" xlink:type="simple" arcroleURI="http://xbrl.org/int/dim/arcrole/domain-member"></link:arcroleRef>
+    <link:arcroleRef xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#hypercube-dimension" xlink:type="simple" arcroleURI="http://xbrl.org/int/dim/arcrole/hypercube-dimension"></link:arcroleRef>
+    <link:definitionLink xlink:type="extended" xlink:role="http://e6071600/role/Rockn">
+        <link:loc xlink:href="e60716005gd-20081231.xsd#e6071600_SomeAbstract" xlink:label="SomeAbstract" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityLocationTable" xlink:label="EntityLocationTable" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityByLocationAxis" xlink:label="EntityByLocationAxis" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_LocationDomain" xlink:label="LocationDomain" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="e60716005gd-20081231.xsd#e6071600_SomeStuff" xlink:label="SomeStuff" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_LocationDomain" xlink:label="LocationDomain_2" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="https://xbrl.sec.gov/stpr/2023/stpr-2023.xsd#stpr_KY" xlink:label="KY" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="https://xbrl.sec.gov/country/2023/country-2023.xsd#country_KY" xlink:label="KY_2" xlink:type="locator"></link:loc>
+        <link:definitionArc xlink:type="arc" order="1.0" use="optional" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="SomeAbstract" xlink:to="SomeStuff"></link:definitionArc>
+        <link:definitionArc xlink:type="arc" order="4.0" xbrldt:closed="true" xbrldt:contextElement="segment" xlink:arcrole="http://xbrl.org/int/dim/arcrole/all" xlink:from="SomeAbstract" xlink:to="EntityLocationTable"></link:definitionArc>
+        <link:definitionArc xlink:type="arc" order="1.0" use="optional" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="EntityLocationTable" xlink:to="EntityByLocationAxis"></link:definitionArc>
+        <link:definitionArc xlink:type="arc" order="1.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="EntityByLocationAxis" xlink:to="LocationDomain"></link:definitionArc>
+        <link:definitionArc xlink:type="arc" order="2.0" priority="1" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-default" xlink:from="EntityByLocationAxis" xlink:to="LocationDomain_2"></link:definitionArc>
+        <link:definitionArc xlink:type="arc" order="1.0" use="optional" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="LocationDomain" xlink:to="KY"></link:definitionArc>
+        <link:definitionArc xlink:type="arc" order="2.0" use="optional" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="LocationDomain" xlink:to="KY_2"></link:definitionArc>
+    </link:definitionLink>
+</link:linkbase>

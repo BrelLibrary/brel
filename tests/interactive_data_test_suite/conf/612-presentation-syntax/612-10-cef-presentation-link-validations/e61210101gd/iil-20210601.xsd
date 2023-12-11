@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!-- Field: Doc-Info; Name: Generator; Value: GoXBRL; Version: 5.10a -->
+<!-- Field: Doc-Info; Name: VendorURI; Value: https://www.novaworks.com -->
+<!-- Field: Doc-Info; Name: Status; Value: 0x00000000 -->
+<!-- Field: Doc-Info; Name: Misc; Value: /ak5s7xRiXgen8uKYnVcSaCKObOdyp51eekxtmp6HWnaTyEn/fRrACJcz+gWQbcP -->
+<schema targetNamespace="http://iil.com/20210601" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:IIL="http://iil.com/20210601" xmlns:link="http://www.xbrl.org/2003/linkbase"   xmlns:dtr="http://www.xbrl.org/2009/dtr" xmlns:ref="http://www.xbrl.org/2006/ref" xmlns:xbrldt="http://xbrl.org/2005/xbrldt" xmlns:xl="http://www.xbrl.org/2003/XLink" xmlns:dei="http://xbrl.sec.gov/dei/2023" xmlns:dtr-types="http://www.xbrl.org/dtr/type/2022-03-31" xmlns:xbrldi="http://xbrl.org/2006/xbrldi" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:cef="http://xbrl.sec.gov/cef/2023" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <annotation>
+    <appinfo>
+      <link:linkbase xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xbrldt="http://xbrl.org/2005/xbrldt">
+<link:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/domain-member" xlink:type="simple" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#domain-member"/>
+<link:roleRef roleURI="http://xbrl.sec.gov/cef/role/N2" xlink:type="simple" xlink:href="https://xbrl.sec.gov/cef/2023/cef-2023.xsd#N2"/>
+<link:roleRef roleURI="http://xbrl.sec.gov/cef/role/RiskOnly" xlink:type="simple" xlink:href="https://xbrl.sec.gov/cef/2023/cef-2023.xsd#RiskOnly"/>
+<link:roleRef roleURI="http://xbrl.sec.gov/cef/role/SecurityOnly" xlink:type="simple" xlink:href="https://xbrl.sec.gov/cef/2023/cef-2023.xsd#SecurityOnly"/>
+<link:definitionLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/cef/role/SecurityOnly">
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/cef/2023/cef-2023.xsd#cef_AllSecuritiesMember" xlink:label="AllSecuritiesMember"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_TheFacilityMember" xlink:label="TheFacilityMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AllSecuritiesMember" xlink:to="TheFacilityMember" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_Notes2035Member" xlink:label="Notes2035Member"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AllSecuritiesMember" xlink:to="Notes2035Member" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_SeriesA2025PrefStockMember" xlink:label="SeriesA2025PrefStockMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AllSecuritiesMember" xlink:to="SeriesA2025PrefStockMember" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_SeriesD2029PrefStockMember" xlink:label="SeriesD2029PrefStockMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AllSecuritiesMember" xlink:to="SeriesD2029PrefStockMember" order="4.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_SeriesE2024PrefStockMember" xlink:label="SeriesE2024PrefStockMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AllSecuritiesMember" xlink:to="SeriesE2024PrefStockMember" order="5.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_SeriesF2027PrefStockMember" xlink:label="SeriesF2027PrefStockMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AllSecuritiesMember" xlink:to="SeriesF2027PrefStockMember" order="6.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_SeriesG2026PrefStockMember" xlink:label="SeriesG2026PrefStockMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AllSecuritiesMember" xlink:to="SeriesG2026PrefStockMember" order="7.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_SeriesH2026PrefStockMember" xlink:label="SeriesH2026PrefStockMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AllSecuritiesMember" xlink:to="SeriesH2026PrefStockMember" order="8.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_SeriesI2028PrefStockMember" xlink:label="SeriesI2028PrefStockMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AllSecuritiesMember" xlink:to="SeriesI2028PrefStockMember" order="9.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_SeriesB2023PrefStockMember" xlink:label="SeriesB2023PrefStockMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AllSecuritiesMember" xlink:to="SeriesB2023PrefStockMember" order="10.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_SeriesC2024PrefStockMember" xlink:label="SeriesC2024PrefStockMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AllSecuritiesMember" xlink:to="SeriesC2024PrefStockMember" order="11.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_NotesDue2022Member" xlink:label="NotesDue2022Member"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AllSecuritiesMember" xlink:to="NotesDue2022Member" order="12.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_NotesDue2025Member" xlink:label="NotesDue2025Member"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AllSecuritiesMember" xlink:to="NotesDue2025Member" order="13.0"/>
+</link:definitionLink>
+<link:definitionLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/cef/role/RiskOnly">
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/cef/2023/cef-2023.xsd#cef_AllRisksMember" xlink:label="AllRisksMember"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_LimitedTermRiskMember" xlink:label="LimitedTermRiskMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AllRisksMember" xlink:to="LimitedTermRiskMember" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_InvestmentAndMarketRiskMember" xlink:label="InvestmentAndMarketRiskMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AllRisksMember" xlink:to="InvestmentAndMarketRiskMember" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_ManagementRiskMember" xlink:label="ManagementRiskMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AllRisksMember" xlink:to="ManagementRiskMember" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_IncomeRiskMember" xlink:label="IncomeRiskMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AllRisksMember" xlink:to="IncomeRiskMember" order="4.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_DividendRiskMember" xlink:label="DividendRiskMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AllRisksMember" xlink:to="DividendRiskMember" order="5.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_IncomeSecuritiesRiskMember" xlink:label="IncomeSecuritiesRiskMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AllRisksMember" xlink:to="IncomeSecuritiesRiskMember" order="6.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_BelowInvestmentGradeSecuritiesRiskMember" xlink:label="BelowInvestmentGradeSecuritiesRiskMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AllRisksMember" xlink:to="BelowInvestmentGradeSecuritiesRiskMember" order="7.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_StructuredFinanceInvestmentsRiskMember" xlink:label="StructuredFinanceInvestmentsRiskMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AllRisksMember" xlink:to="StructuredFinanceInvestmentsRiskMember" order="8.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_MortgageBackedSecuritiesRiskMember" xlink:label="MortgageBackedSecuritiesRiskMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AllRisksMember" xlink:to="MortgageBackedSecuritiesRiskMember" order="9.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_AssetBackedSecuritiesRiskMember" xlink:label="AssetBackedSecuritiesRiskMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AllRisksMember" xlink:to="AssetBackedSecuritiesRiskMember" order="10.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_CollaterlizedRiskMember" xlink:label="CollaterlizedRiskMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AllRisksMember" xlink:to="CollaterlizedRiskMember" order="11.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_RiskLinkedSecuritiesRiskMember" xlink:label="RiskLinkedSecuritiesRiskMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AllRisksMember" xlink:to="RiskLinkedSecuritiesRiskMember" order="12.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_StructuredNotesRiskMember" xlink:label="StructuredNotesRiskMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AllRisksMember" xlink:to="StructuredNotesRiskMember" order="13.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_SeniorLoansRiskMember" xlink:label="SeniorLoansRiskMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AllRisksMember" xlink:to="SeniorLoansRiskMember" order="14.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_SecondLienLoansRiskMember" xlink:label="SecondLienLoansRiskMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AllRisksMember" xlink:to="SecondLienLoansRiskMember" order="15.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_SubordinatedSecuredLoansRiskMember" xlink:label="SubordinatedSecuredLoansRiskMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AllRisksMember" xlink:to="SubordinatedSecuredLoansRiskMember" order="16.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_UnsecuredLoansRiskMember" xlink:label="UnsecuredLoansRiskMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AllRisksMember" xlink:to="UnsecuredLoansRiskMember" order="17.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_LoanParticipationRiskMember" xlink:label="LoanParticipationRiskMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AllRisksMember" xlink:to="LoanParticipationRiskMember" order="18.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_MezzanineInvestmentsRiskMember" xlink:label="MezzanineInvestmentsRiskMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AllRisksMember" xlink:to="MezzanineInvestmentsRiskMember" order="19.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_DistressedSecuritiesRiskMember" xlink:label="DistressedSecuritiesRiskMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AllRisksMember" xlink:to="DistressedSecuritiesRiskMember" order="20.0"/>
+</link:definitionLink>
+<link:labelLink xlink:type="extended" xlink:role="http://www.xbrl.org/2003/role/link">
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_TheFacilityMember" xlink:label="TheFacilityMember"/>
+<link:label xlink:type="resource" xlink:label="label_TheFacilityMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">The Facility [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="TheFacilityMember" xlink:to="label_TheFacilityMember"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_NotesDue2022Member" xlink:label="NotesDue2022Member"/>
+<link:label xlink:type="resource" xlink:label="label_NotesDue2022Member" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">NotesDue 2022 [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="NotesDue2022Member" xlink:to="label_NotesDue2022Member"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_Notes2035Member" xlink:label="Notes2035Member"/>
+<link:label xlink:type="resource" xlink:label="label_Notes2035Member" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Notes 2035 [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="Notes2035Member" xlink:to="label_Notes2035Member"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_NotesDue2025Member" xlink:label="NotesDue2025Member"/>
+<link:label xlink:type="resource" xlink:label="label_NotesDue2025Member" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Notes Due 2025 [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="NotesDue2025Member" xlink:to="label_NotesDue2025Member"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_SeriesA2025PrefStockMember" xlink:label="SeriesA2025PrefStockMember"/>
+<link:label xlink:type="resource" xlink:label="label_SeriesA2025PrefStockMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Series A 2025 Pref Stock [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="SeriesA2025PrefStockMember" xlink:to="label_SeriesA2025PrefStockMember"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_SeriesD2029PrefStockMember" xlink:label="SeriesD2029PrefStockMember"/>
+<link:label xlink:type="resource" xlink:label="label_SeriesD2029PrefStockMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Series D 2029 Pref Stock [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="SeriesD2029PrefStockMember" xlink:to="label_SeriesD2029PrefStockMember"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_SeriesE2024PrefStockMember" xlink:label="SeriesE2024PrefStockMember"/>
+<link:label xlink:type="resource" xlink:label="label_SeriesE2024PrefStockMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Series E 2024 Pref Stock [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="SeriesE2024PrefStockMember" xlink:to="label_SeriesE2024PrefStockMember"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_SeriesF2027PrefStockMember" xlink:label="SeriesF2027PrefStockMember"/>
+<link:label xlink:type="resource" xlink:label="label_SeriesF2027PrefStockMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Series F 2027 Pref Stock [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="SeriesF2027PrefStockMember" xlink:to="label_SeriesF2027PrefStockMember"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_SeriesG2026PrefStockMember" xlink:label="SeriesG2026PrefStockMember"/>
+<link:label xlink:type="resource" xlink:label="label_SeriesG2026PrefStockMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Series G 2026 Pref Stock [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="SeriesG2026PrefStockMember" xlink:to="label_SeriesG2026PrefStockMember"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_SeriesH2026PrefStockMember" xlink:label="SeriesH2026PrefStockMember"/>
+<link:label xlink:type="resource" xlink:label="label_SeriesH2026PrefStockMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Series H 2026 Pref Stock [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="SeriesH2026PrefStockMember" xlink:to="label_SeriesH2026PrefStockMember"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_SeriesI2028PrefStockMember" xlink:label="SeriesI2028PrefStockMember"/>
+<link:label xlink:type="resource" xlink:label="label_SeriesI2028PrefStockMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Series I 2028 Pref Stock [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="SeriesI2028PrefStockMember" xlink:to="label_SeriesI2028PrefStockMember"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_SeriesB2023PrefStockMember" xlink:label="SeriesB2023PrefStockMember"/>
+<link:label xlink:type="resource" xlink:label="label_SeriesB2023PrefStockMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Series B 2023 Pref Stock [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="SeriesB2023PrefStockMember" xlink:to="label_SeriesB2023PrefStockMember"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_SeriesC2024PrefStockMember" xlink:label="SeriesC2024PrefStockMember"/>
+<link:label xlink:type="resource" xlink:label="label_SeriesC2024PrefStockMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Series C 2024 Pref Stock [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="SeriesC2024PrefStockMember" xlink:to="label_SeriesC2024PrefStockMember"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_LimitedTermRiskMember" xlink:label="LimitedTermRiskMember"/>
+<link:label xlink:type="resource" xlink:label="label_LimitedTermRiskMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Limited Term Risk [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="LimitedTermRiskMember" xlink:to="label_LimitedTermRiskMember"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_InvestmentAndMarketRiskMember" xlink:label="InvestmentAndMarketRiskMember"/>
+<link:label xlink:type="resource" xlink:label="label_InvestmentAndMarketRiskMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Investment And Market Risk [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="InvestmentAndMarketRiskMember" xlink:to="label_InvestmentAndMarketRiskMember"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_ManagementRiskMember" xlink:label="ManagementRiskMember"/>
+<link:label xlink:type="resource" xlink:label="label_ManagementRiskMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Management Risk [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ManagementRiskMember" xlink:to="label_ManagementRiskMember"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_IncomeRiskMember" xlink:label="IncomeRiskMember"/>
+<link:label xlink:type="resource" xlink:label="label_IncomeRiskMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Income Risk [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="IncomeRiskMember" xlink:to="label_IncomeRiskMember"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_DividendRiskMember" xlink:label="DividendRiskMember"/>
+<link:label xlink:type="resource" xlink:label="label_DividendRiskMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Dividend Risk [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="DividendRiskMember" xlink:to="label_DividendRiskMember"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_IncomeSecuritiesRiskMember" xlink:label="IncomeSecuritiesRiskMember"/>
+<link:label xlink:type="resource" xlink:label="label_IncomeSecuritiesRiskMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Income Securities Risk [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="IncomeSecuritiesRiskMember" xlink:to="label_IncomeSecuritiesRiskMember"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_BelowInvestmentGradeSecuritiesRiskMember" xlink:label="BelowInvestmentGradeSecuritiesRiskMember"/>
+<link:label xlink:type="resource" xlink:label="label_BelowInvestmentGradeSecuritiesRiskMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Below Investment-Grade Securitie Risk [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="BelowInvestmentGradeSecuritiesRiskMember" xlink:to="label_BelowInvestmentGradeSecuritiesRiskMember"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_StructuredFinanceInvestmentsRiskMember" xlink:label="StructuredFinanceInvestmentsRiskMember"/>
+<link:label xlink:type="resource" xlink:label="label_StructuredFinanceInvestmentsRiskMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Structured Finance Investments Risk [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="StructuredFinanceInvestmentsRiskMember" xlink:to="label_StructuredFinanceInvestmentsRiskMember"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_MortgageBackedSecuritiesRiskMember" xlink:label="MortgageBackedSecuritiesRiskMember"/>
+<link:label xlink:type="resource" xlink:label="label_MortgageBackedSecuritiesRiskMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Mortgage-Backed Securities Risk [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="MortgageBackedSecuritiesRiskMember" xlink:to="label_MortgageBackedSecuritiesRiskMember"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_AssetBackedSecuritiesRiskMember" xlink:label="AssetBackedSecuritiesRiskMember"/>
+<link:label xlink:type="resource" xlink:label="label_AssetBackedSecuritiesRiskMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Asset-Backed Securities Risk [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="AssetBackedSecuritiesRiskMember" xlink:to="label_AssetBackedSecuritiesRiskMember"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_CollaterlizedRiskMember" xlink:label="CollaterlizedRiskMember"/>
+<link:label xlink:type="resource" xlink:label="label_CollaterlizedRiskMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Collateralized Risk [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="CollaterlizedRiskMember" xlink:to="label_CollaterlizedRiskMember"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_RiskLinkedSecuritiesRiskMember" xlink:label="RiskLinkedSecuritiesRiskMember"/>
+<link:label xlink:type="resource" xlink:label="label_RiskLinkedSecuritiesRiskMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Risk-Linked Securities Risk [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="RiskLinkedSecuritiesRiskMember" xlink:to="label_RiskLinkedSecuritiesRiskMember"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_StructuredNotesRiskMember" xlink:label="StructuredNotesRiskMember"/>
+<link:label xlink:type="resource" xlink:label="label_StructuredNotesRiskMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Structured Notes Risk [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="StructuredNotesRiskMember" xlink:to="label_StructuredNotesRiskMember"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_SeniorLoansRiskMember" xlink:label="SeniorLoansRiskMember"/>
+<link:label xlink:type="resource" xlink:label="label_SeniorLoansRiskMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Senior Loans Risk [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="SeniorLoansRiskMember" xlink:to="label_SeniorLoansRiskMember"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_SecondLienLoansRiskMember" xlink:label="SecondLienLoansRiskMember"/>
+<link:label xlink:type="resource" xlink:label="label_SecondLienLoansRiskMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Second Lien Loans Risk [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="SecondLienLoansRiskMember" xlink:to="label_SecondLienLoansRiskMember"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_SubordinatedSecuredLoansRiskMember" xlink:label="SubordinatedSecuredLoansRiskMember"/>
+<link:label xlink:type="resource" xlink:label="label_SubordinatedSecuredLoansRiskMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Subordinated Secured Loans Risk [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="SubordinatedSecuredLoansRiskMember" xlink:to="label_SubordinatedSecuredLoansRiskMember"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_UnsecuredLoansRiskMember" xlink:label="UnsecuredLoansRiskMember"/>
+<link:label xlink:type="resource" xlink:label="label_UnsecuredLoansRiskMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Unsecured Loans Risk [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="UnsecuredLoansRiskMember" xlink:to="label_UnsecuredLoansRiskMember"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_LoanParticipationRiskMember" xlink:label="LoanParticipationRiskMember"/>
+<link:label xlink:type="resource" xlink:label="label_LoanParticipationRiskMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Loan Participation Risk [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="LoanParticipationRiskMember" xlink:to="label_LoanParticipationRiskMember"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_MezzanineInvestmentsRiskMember" xlink:label="MezzanineInvestmentsRiskMember"/>
+<link:label xlink:type="resource" xlink:label="label_MezzanineInvestmentsRiskMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Mezzanine Investments Risk [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="MezzanineInvestmentsRiskMember" xlink:to="label_MezzanineInvestmentsRiskMember"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_DistressedSecuritiesRiskMember" xlink:label="DistressedSecuritiesRiskMember"/>
+<link:label xlink:type="resource" xlink:label="label_DistressedSecuritiesRiskMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Distressed Securitie Risk [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="DistressedSecuritiesRiskMember" xlink:to="label_DistressedSecuritiesRiskMember"/>
+</link:labelLink>
+<link:presentationLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/cef/role/N2">
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/cef/2023/cef-2023.xsd#cef_AllSecuritiesMember" xlink:label="AllSecuritiesMember"/>
+<!-- HF addition 2023 -->
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/cef/2023/cef-2023.xsd#cef_ProspectusTable" xlink:label="ProspectusTable"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusTable" xlink:to="AllSecuritiesMember" order="0.9"/>
+<!-- to here -->
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_TheFacilityMember" xlink:label="TheFacilityMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AllSecuritiesMember" xlink:to="TheFacilityMember" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_Notes2035Member" xlink:label="Notes2035Member"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AllSecuritiesMember" xlink:to="Notes2035Member" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_SeriesA2025PrefStockMember" xlink:label="SeriesA2025PrefStockMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AllSecuritiesMember" xlink:to="SeriesA2025PrefStockMember" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_SeriesD2029PrefStockMember" xlink:label="SeriesD2029PrefStockMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AllSecuritiesMember" xlink:to="SeriesD2029PrefStockMember" order="4.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_SeriesE2024PrefStockMember" xlink:label="SeriesE2024PrefStockMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AllSecuritiesMember" xlink:to="SeriesE2024PrefStockMember" order="5.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_SeriesF2027PrefStockMember" xlink:label="SeriesF2027PrefStockMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AllSecuritiesMember" xlink:to="SeriesF2027PrefStockMember" order="6.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_SeriesG2026PrefStockMember" xlink:label="SeriesG2026PrefStockMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AllSecuritiesMember" xlink:to="SeriesG2026PrefStockMember" order="7.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_SeriesH2026PrefStockMember" xlink:label="SeriesH2026PrefStockMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AllSecuritiesMember" xlink:to="SeriesH2026PrefStockMember" order="8.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_SeriesI2028PrefStockMember" xlink:label="SeriesI2028PrefStockMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AllSecuritiesMember" xlink:to="SeriesI2028PrefStockMember" order="9.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_SeriesB2023PrefStockMember" xlink:label="SeriesB2023PrefStockMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AllSecuritiesMember" xlink:to="SeriesB2023PrefStockMember" order="10.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_SeriesC2024PrefStockMember" xlink:label="SeriesC2024PrefStockMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AllSecuritiesMember" xlink:to="SeriesC2024PrefStockMember" order="11.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_NotesDue2022Member" xlink:label="NotesDue2022Member"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AllSecuritiesMember" xlink:to="NotesDue2022Member" order="12.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_NotesDue2025Member" xlink:label="NotesDue2025Member"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AllSecuritiesMember" xlink:to="NotesDue2025Member" order="13.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/cef/2023/cef-2023.xsd#cef_AllRisksMember" xlink:label="AllRisksMember"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_LimitedTermRiskMember" xlink:label="LimitedTermRiskMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AllRisksMember" xlink:to="LimitedTermRiskMember" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_InvestmentAndMarketRiskMember" xlink:label="InvestmentAndMarketRiskMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AllRisksMember" xlink:to="InvestmentAndMarketRiskMember" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_ManagementRiskMember" xlink:label="ManagementRiskMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AllRisksMember" xlink:to="ManagementRiskMember" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_IncomeRiskMember" xlink:label="IncomeRiskMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AllRisksMember" xlink:to="IncomeRiskMember" order="4.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_DividendRiskMember" xlink:label="DividendRiskMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AllRisksMember" xlink:to="DividendRiskMember" order="5.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_IncomeSecuritiesRiskMember" xlink:label="IncomeSecuritiesRiskMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AllRisksMember" xlink:to="IncomeSecuritiesRiskMember" order="6.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_BelowInvestmentGradeSecuritiesRiskMember" xlink:label="BelowInvestmentGradeSecuritiesRiskMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AllRisksMember" xlink:to="BelowInvestmentGradeSecuritiesRiskMember" order="7.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_StructuredFinanceInvestmentsRiskMember" xlink:label="StructuredFinanceInvestmentsRiskMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AllRisksMember" xlink:to="StructuredFinanceInvestmentsRiskMember" order="8.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_MortgageBackedSecuritiesRiskMember" xlink:label="MortgageBackedSecuritiesRiskMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AllRisksMember" xlink:to="MortgageBackedSecuritiesRiskMember" order="9.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_AssetBackedSecuritiesRiskMember" xlink:label="AssetBackedSecuritiesRiskMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AllRisksMember" xlink:to="AssetBackedSecuritiesRiskMember" order="10.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_CollaterlizedRiskMember" xlink:label="CollaterlizedRiskMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AllRisksMember" xlink:to="CollaterlizedRiskMember" order="11.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_RiskLinkedSecuritiesRiskMember" xlink:label="RiskLinkedSecuritiesRiskMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AllRisksMember" xlink:to="RiskLinkedSecuritiesRiskMember" order="12.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_StructuredNotesRiskMember" xlink:label="StructuredNotesRiskMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AllRisksMember" xlink:to="StructuredNotesRiskMember" order="13.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_SeniorLoansRiskMember" xlink:label="SeniorLoansRiskMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AllRisksMember" xlink:to="SeniorLoansRiskMember" order="14.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_SecondLienLoansRiskMember" xlink:label="SecondLienLoansRiskMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AllRisksMember" xlink:to="SecondLienLoansRiskMember" order="15.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_SubordinatedSecuredLoansRiskMember" xlink:label="SubordinatedSecuredLoansRiskMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AllRisksMember" xlink:to="SubordinatedSecuredLoansRiskMember" order="16.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_UnsecuredLoansRiskMember" xlink:label="UnsecuredLoansRiskMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AllRisksMember" xlink:to="UnsecuredLoansRiskMember" order="17.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_LoanParticipationRiskMember" xlink:label="LoanParticipationRiskMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AllRisksMember" xlink:to="LoanParticipationRiskMember" order="18.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_MezzanineInvestmentsRiskMember" xlink:label="MezzanineInvestmentsRiskMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AllRisksMember" xlink:to="MezzanineInvestmentsRiskMember" order="19.0"/>
+<link:loc xlink:type="locator" xlink:href="iil-20210601.xsd#IIL_DistressedSecuritiesRiskMember" xlink:label="DistressedSecuritiesRiskMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AllRisksMember" xlink:to="DistressedSecuritiesRiskMember" order="20.0"/>
+</link:presentationLink>
+</link:linkbase>
+<link:linkbase>
+<link:roleRef roleURI="http://xbrl.sec.gov/cef/role/N2" xlink:type="simple" xlink:href="https://xbrl.sec.gov/cef/2023/cef-2023.xsd#N2"/>
+<link:roleRef roleURI="http://iil.com/role/TestRole" xlink:type="simple" xlink:href="#TestRole"/>
+<link:presentationLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/cef/role/N2">
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/cef/2023/cef-2023.xsd#cef_AllRisksMember" xlink:label="AllRisksMember"/>
+<link:loc xlink:type="locator" xlink:href="#IIL_TestNewMember" xlink:label="TestNewMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AllRisksMember" xlink:to="TestNewMember" order="99.0" />
+</link:presentationLink>
+</link:linkbase>
+      <link:roleType roleURI="http://iil.com/role/TestRole" id="TestRole">
+        <link:definition>999999 - Document - Test Role {Unlabeled}</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://iil.com/role/RiskReturn" id="RiskReturn">
+        <link:definition>00000003 - Document - Risk/Return Summary {Unlabeled}</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://iil.com/role/ShareholderFeesData" id="ShareholderFeesData">
+        <link:definition>00000004 - Schedule - Shareholder Fees</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://iil.com/role/OperatingExpensesData" id="OperatingExpensesData">
+        <link:definition>00000005 - Schedule - Annual Fund Operating Expenses</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://iil.com/role/ExpenseExample" id="ExpenseExample">
+        <link:definition>00000006 - Schedule - Expense Example {Transposed}</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://iil.com/role/ExpenseExampleNoRedemption" id="ExpenseExampleNoRedemption">
+        <link:definition>00000007 - Schedule - Expense Example, No Redemption {Transposed}</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://iil.com/role/BarChartData" id="BarChartData">
+        <link:definition>00000008 - Schedule - Annual Total Returns</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://iil.com/role/PerformanceTableData" id="PerformanceTableData">
+        <link:definition>00000009 - Schedule - Average Annual Total Returns {Transposed}</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://iil.com/role/RiskReturnDetail" id="RiskReturnDetail">
+        <link:definition>00000010 - Document - Risk/Return Detail {Unlabeled}</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+    </appinfo>
+  </annotation>
+  <import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"/>
+  <import namespace="http://www.xbrl.org/2003/linkbase" schemaLocation="http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd"/>
+  <import namespace="http://xbrl.org/2005/xbrldt" schemaLocation="http://www.xbrl.org/2005/xbrldt-2005.xsd"/>
+  <import namespace="http://xbrl.sec.gov/dei/2023" schemaLocation="https://xbrl.sec.gov/dei/2023/dei-2023.xsd"/>
+  <import namespace="http://www.xbrl.org/dtr/type/2022-03-31" schemaLocation="https://www.xbrl.org/dtr/type/2022-03-31/types.xsd"/>
+  <import namespace="http://xbrl.sec.gov/cef-pre/2023" schemaLocation="https://xbrl.sec.gov/cef/2023/cef-2023_pre.xsd"/>
+  <element name="TheFacilityMember" id="IIL_TheFacilityMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+  <element name="NotesDue2022Member" id="IIL_NotesDue2022Member" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+  <element name="Notes2035Member" id="IIL_Notes2035Member" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+  <element name="NotesDue2025Member" id="IIL_NotesDue2025Member" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+  <element name="SeriesA2025PrefStockMember" id="IIL_SeriesA2025PrefStockMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+  <element name="SeriesD2029PrefStockMember" id="IIL_SeriesD2029PrefStockMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+  <element name="SeriesE2024PrefStockMember" id="IIL_SeriesE2024PrefStockMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+  <element name="SeriesF2027PrefStockMember" id="IIL_SeriesF2027PrefStockMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+  <element name="SeriesG2026PrefStockMember" id="IIL_SeriesG2026PrefStockMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+  <element name="SeriesH2026PrefStockMember" id="IIL_SeriesH2026PrefStockMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+  <element name="SeriesI2028PrefStockMember" id="IIL_SeriesI2028PrefStockMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+  <element name="SeriesB2023PrefStockMember" id="IIL_SeriesB2023PrefStockMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+  <element name="SeriesC2024PrefStockMember" id="IIL_SeriesC2024PrefStockMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+  <element name="LimitedTermRiskMember" id="IIL_LimitedTermRiskMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+  <element name="InvestmentAndMarketRiskMember" id="IIL_InvestmentAndMarketRiskMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+  <element name="ManagementRiskMember" id="IIL_ManagementRiskMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+  <element name="IncomeRiskMember" id="IIL_IncomeRiskMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+  <element name="DividendRiskMember" id="IIL_DividendRiskMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+  <element name="IncomeSecuritiesRiskMember" id="IIL_IncomeSecuritiesRiskMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+  <element name="BelowInvestmentGradeSecuritiesRiskMember" id="IIL_BelowInvestmentGradeSecuritiesRiskMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+  <element name="StructuredFinanceInvestmentsRiskMember" id="IIL_StructuredFinanceInvestmentsRiskMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+  <element name="MortgageBackedSecuritiesRiskMember" id="IIL_MortgageBackedSecuritiesRiskMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+  <element name="AssetBackedSecuritiesRiskMember" id="IIL_AssetBackedSecuritiesRiskMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+  <element name="CollaterlizedRiskMember" id="IIL_CollaterlizedRiskMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+  <element name="RiskLinkedSecuritiesRiskMember" id="IIL_RiskLinkedSecuritiesRiskMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+  <element name="StructuredNotesRiskMember" id="IIL_StructuredNotesRiskMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+  <element name="SeniorLoansRiskMember" id="IIL_SeniorLoansRiskMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+  <element name="SecondLienLoansRiskMember" id="IIL_SecondLienLoansRiskMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+  <element name="SubordinatedSecuredLoansRiskMember" id="IIL_SubordinatedSecuredLoansRiskMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+  <element name="UnsecuredLoansRiskMember" id="IIL_UnsecuredLoansRiskMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+  <element name="LoanParticipationRiskMember" id="IIL_LoanParticipationRiskMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+  <element name="MezzanineInvestmentsRiskMember" id="IIL_MezzanineInvestmentsRiskMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+  <element name="DistressedSecuritiesRiskMember" id="IIL_DistressedSecuritiesRiskMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+  <element name="TestNewMember" id="IIL_TestNewMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+</schema>

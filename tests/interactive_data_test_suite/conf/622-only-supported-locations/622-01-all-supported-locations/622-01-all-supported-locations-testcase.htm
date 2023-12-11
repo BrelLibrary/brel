@@ -1,0 +1,948 @@
+<html xmlns:case="http://edgar/2009/conformance">
+  <head>
+    <title>622-01
+        :
+        EDGAR Filer Manual v68d 6.22.1</title>
+    <style type="text/css">
+        table, td, th {border: solid black 1pt; border-collapse: collapse;} td {vertical-align: top;}
+      </style>
+  </head>
+  <body>
+    <h1>622-01
+        :
+        EDGAR Filer Manual v68d 6.22.1</h1>
+    <p>
+        Created by: 
+        <a href="mailto:StructuredData@sec.gov">SEC Office of Structured Disclosure</a></p>
+    <p>
+      <conf:description xmlns:conf="http://edgar/2009/conformance" xmlns:iso4217="http://www.xbrl.org/2003/iso4217" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xbrldt="http://xbrl.org/2005/xbrldt" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        6.22.1 <h2 xmlns="http://edgar/2009/conformance">Supported Versions of XBRL Standard Taxonomies.</h2>
+        <p xmlns="http://edgar/2009/conformance">
+            Refer to the SEC's public website (
+            <a href="http://www.sec.gov/info/edgar/edgartaxonomies.shtml">http://www.sec.gov/info/edgar/edgartaxonomies.shtml</a>
+            ) for an up-to-date listing of standard taxonomy files that are supported by EDGAR, their locations, required namespaces, and where appropriate, the relevant EDGAR form types.
+        </p>
+        <p xmlns="http://edgar/2009/conformance">
+            REMARK: There is no such section 6.22.1, it is meant to refer to 'taxonomies that we allow'. For purposes of this test
+            <a href="../../../lib/edgartaxonomies.xml">edgartaxonomies.xml</a>
+            is the ONLY authoritative source of "standard taxonomies". This test checks the allowed files in groups according to family and version (i.e., release).
+        </p>
+    </conf:description>
+    </p>
+    <h3>References</h3>
+    <ul>11172</ul>
+    <h2>
+        Variations
+      </h2>
+    <table border="solid">
+      <thead>
+        <tr>
+          <th>Number</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>References</th>
+          <th>Data Inputs</th>
+          <th>Result Outputs</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>_000gd</td>
+          <td>us-gaap/2023, ecd/2023, cef/2023 and stx/2023(stx is dei along with country, currency, exch, naics, sic and stpr), GOOD</td>
+          <td>us-gaap/2023, ecd/2023, cef/2023 and stx/2023(stx is dei along with country, currency, exch, naics, sic and stpr), GOOD</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td>xs:string</td>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"submissionType" : "8-K"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e62201000gd/e62201000gd-20081231.htm">e62201000gd/e62201000gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e62201000gd/e62201016gd-20081231.xsd">e62201000gd/e62201016gd-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_001gd</td>
+          <td>'cef/2023',  'dei/2023', 'srt/2023', 'us-gaap/2023' GOOD</td>
+          <td>'cef/2023',  'dei/2023', 'srt/2023', 'us-gaap/2023', GOOD</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"submissionType": "10-Q"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e62201001gd/cef05-20220630.htm">e62201001gd/cef05-20220630.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e62201001gd/cef05-20220630.xsd">e62201001gd/cef05-20220630.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_002gd</td>
+          <td>dei/2023, rr/2023, GOOD</td>
+          <td>dei/2023, rr/2023,  GOOD</td>
+          <td>EMR-183 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>submissionType</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>485BPOS</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td>xs:string</td>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"submissionType":"485BPOS","rptSeriesClassInfo.seriesIds":["S010101010"]}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e62201002gd/e62201002gd-20081231.htm">e62201002gd/e62201002gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e62201002gd/e62201018gd-20081231.xsd">e62201002gd/e62201018gd-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_003gd</td>
+          <td>vip/2023, dei/2023, GOOD</td>
+          <td>vip/2023, dei/2023, Form N-4 with all three entry points, GOOD</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"submissionType": "N-4"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e62201003gd/e62201003gd-20211231.htm">e62201003gd/e62201003gd-20211231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e62201003gd/e62201019gd-20211231.xsd">e62201003gd/e62201019gd-20211231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_004gd</td>
+          <td>ecd/2023, dei/2023, us-gaap/2023</td>
+          <td>ecd/2023, dei/2023, us-gaap/2023</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td>xs:string</td>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"submissionType" : "8-K"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e62201004gd/e62201004gd-20081231.htm">e62201004gd/e62201004gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e62201004gd/e62201016gd-20081231.xsd">e62201004gd/e62201016gd-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_005gd</td>
+          <td>ifrs/2023, dei/2023, GOOD</td>
+          <td>ifrs/2023, dei/2023, GOOD</td>
+          <td>EMR-184 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td>xs:string</td>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"submissionType" : "6-K" ,"periodOfReport" : "12-31-2008" ,"items" : "8.01" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e62201005gd/e62201005gd-20081231.htm">e62201005gd/e62201005gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e62201005gd/e62201005gd-20081231.xsd">e62201005gd/e62201005gd-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_006gd</td>
+          <td>rxp/2023, snj/2023, GD</td>
+          <td>rxp/2023, snj/2023 GD</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"submissionType": "SD"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e62201006gd/e62201006gd-20301231.xml">e62201006gd/e62201006gd-20301231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e62201006gd/e62201006gd-20301231.xsd">e62201006gd/e62201006gd-20301231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_007gd</td>
+          <td>oef/2023, GD</td>
+          <td>oef/2023, GD</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"submissionType": "N-CSR/A"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e62201007gd/e62201007gd-20321031.htm">e62201007gd/e62201007gd-20321031.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e62201007gd/e62201007gd-20321031.xsd">e62201007gd/e62201007gd-20321031.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_008gd</td>
+          <td>country/2023, dei/2023, shr-10b51/2023, shr-exh/2023, shr-narr/2023, shr/2023, srt-roles/2023, srt/2023, us-gaap/2023,  GD</td>
+          <td>country/2023, dei/2023, shr-10b51/2023, shr-exh/2023, shr-narr/2023, shr/2023, srt-roles/2023, srt/2023, us-gaap/2023,  GD</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"submissionType": "10-K"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e62201008gd/e62201008gd-20331231.htm">e62201008gd/e62201008gd-20331231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e62201008gd/e62201008gd-20331231.xsd">e62201008gd/e62201008gd-20331231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_009gd</td>
+          <td>fnd/2022 with compatible taxonomies, GD</td>
+          <td>fnd/2022 with compatible taxonomies, GD</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"submissionType": "S-6"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e62201009gd/e62201009gd-20230930.htm">e62201009gd/e62201009gd-20230930.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e62201009gd/e62201009gd-20230930.xsd">e62201009gd/e62201009gd-20230930.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_010gd</td>
+          <td>fnd-rr/2022 with compatible taxonomies, GD</td>
+          <td>fnd-rr/2022 with compatible taxonomies, GD</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"submissionType": "N-1A"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e62201010gd/e62201010gd-20230930.htm">e62201010gd/e62201010gd-20230930.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e62201010gd/e62201010gd-20230930.xsd">e62201010gd/e62201010gd-20230930.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_011gd</td>
+          <td>fnd/2023 with compatible taxonomies, GD</td>
+          <td>fnd/2023 with compatible taxonomies, GD</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"submissionType": "S-6"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e62201011gd/e62201011gd-20230930.htm">e62201011gd/e62201011gd-20230930.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e62201011gd/e62201011gd-20230930.xsd">e62201011gd/e62201011gd-20230930.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_012gd</td>
+          <td>fnd-oef/2023 with compatible taxonomies, GD</td>
+          <td>fnd-oef/2023 with compatible taxonomies, GD</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"submissionType": "N-1A"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e62201012gd/e62201012gd-20230930.htm">e62201012gd/e62201012gd-20230930.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e62201012gd/e62201012gd-20230930.xsd">e62201012gd/e62201012gd-20230930.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_013gd</td>
+          <td>fnd-cef-pre/2023 with compatible taxonomies, GD</td>
+          <td>fnd-cef-pre/2023 with compatible taxonomies, GD</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"submissionType": "N-2"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e62201013gd/e62201013gd-20230930.htm">e62201013gd/e62201013gd-20230930.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e62201013gd/e62201013gd-20230930.xsd">e62201013gd/e62201013gd-20230930.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_016gd</td>
+          <td>country/2022, currency/2022, dei/2022, exch/2022, naics/2022, sic/2022, srt/2022, stpr/2022, us-gaap/2022, GOOD</td>
+          <td>(us-gaap only) country/2022, currency/2022, dei/2022, exch/2022, naics/2022, sic/2022, srt/2022, stpr/2022, us-gaap/2022, GOOD</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td>xs:string</td>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"datetimeForTesting":"2022-06-30", "periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e62201016gd/e62201016gd-20081231.htm">e62201016gd/e62201016gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e62201016gd/e62201016gd-20081231.xsd">e62201016gd/e62201016gd-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_017gd</td>
+          <td>cef/2022, dei/2022, GOOD</td>
+          <td>cef/2022, dei/2022, like 015gd, GOOD</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"submissionType": "N-2"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e62201017gd/e62201017gd-20211231.htm">e62201017gd/e62201017gd-20211231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e62201017gd/e62201017gd-20211231.xsd">e62201017gd/e62201017gd-20211231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_018gd</td>
+          <td>dei/2022, rr/2022, GOOD</td>
+          <td>dei/2022, rr/2022, like 011gd, GOOD</td>
+          <td>EMR-183 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>submissionType</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>485BPOS</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td>xs:string</td>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"submissionType":"485BPOS","rptSeriesClassInfo.seriesIds":["S010101010"]}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e62201018gd/e62201018gd-20081231.htm">e62201018gd/e62201018gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e62201018gd/e62201018gd-20081231.xsd">e62201018gd/e62201018gd-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_019gd</td>
+          <td>vip/2022, dei/2022, GOOD</td>
+          <td>vip/2022, dei/2022, Form N-4 with all three entry points, GOOD</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"submissionType": "N-4"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e62201019gd/e62201019gd-20211231.htm">e62201019gd/e62201019gd-20211231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e62201019gd/e62201019gd-20211231.xsd">e62201019gd/e62201019gd-20211231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_020gd</td>
+          <td>ifrs/2022, dei/2022, GOOD</td>
+          <td>ifrs/2022, dei/2022, GOOD</td>
+          <td>EMR-184 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td>xs:string</td>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"submissionType" : "6-K" ,"periodOfReport" : "12-31-2008" ,"items" : "8.01" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e62201020gd/e62201020gd-20081231.htm">e62201020gd/e62201020gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e62201020gd/e62201014gd-20081231.xsd">e62201020gd/e62201014gd-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_021gd</td>
+          <td>vip/2022q2, dei/2022, Form N-4 with all three entry points, GOOD</td>
+          <td>vipq2/2022q2, dei/2022, Form N-4 with all three entry points, GOOD</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"submissionType": "N-4"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e62201021gd/e62201021gd-20211231.htm">e62201021gd/e62201021gd-20211231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e62201021gd/e62201019gd-20211231.xsd">e62201021gd/e62201019gd-20211231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_022gd</td>
+          <td>us-gaap/2022q3 with dei/2022, GOOD</td>
+          <td>us-gaap/2022q3 with dei/2022, GOOD</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td>xs:string</td>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"periodOfReport" : "12-31-2008" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e62201022gd/e62201022gd-20081231.htm">e62201022gd/e62201022gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e62201022gd/e62201016gd-20081231.xsd">e62201022gd/e62201016gd-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_023gd</td>
+          <td>ecd/2022q4, dei/2022q4</td>
+          <td>ecd/2022q4, dei/2022q4</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td>xs:string</td>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"submissionType" : "8-K"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e62201023gd/e62201023gd-20081231.htm">e62201023gd/e62201023gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e62201023gd/e62201016gd-20081231.xsd">e62201023gd/e62201016gd-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

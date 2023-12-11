@@ -1,0 +1,223 @@
+<html xmlns:case="http://edgar/2009/conformance">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>603-08
+        :
+        EDGAR Filer Manual v62 6.3.8 page 6-7</title>
+<style type="text/css">
+        table, td, th {border: solid black 1pt; border-collapse: collapse;} td {vertical-align: top;}
+      </style>
+</head>
+<body>
+<h1>603-08
+        :
+        EDGAR Filer Manual v62 6.3.8 page 6-7</h1>
+<p>
+        Created by: 
+        <a href="mailto:StructuredData@sec.gov">SEC Office of Structured Disclosure</a></p>
+<p><conf:description xmlns:conf="http://edgar/2009/conformance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<h2>A submission must contain exactly one EX-101.INS or EX-99.SDR K.INS.</h2>
+<p>An Interactive Data instance in XBRL format must be an EX-101.INS, EX-99.SDR K.INS, or EX-99.SDR L.INS.</p>
+<p>REMARK: This is a continuation of
+<a href="../../603-filing-syntax/603-08-only-one-instance/603-08-only-one-instance-testcase.xml">603-08</a>.
+</p>
+</conf:description></p>
+<h2>
+        Variations
+      </h2>
+<table border="solid">
+<thead><tr>
+<th>Number</th>
+<th>Name</th>
+<th>Description</th>
+<th>References</th>
+<th>Data Inputs</th>
+<th>Result Outputs</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>_001ng</td>
+<td>6.3.8, Mixing an EX-99.K SDR and EX-99.L SDR with an EX-101, NOGOOD.</td>
+<td>Mixing an EX-99.K SDR and EX-99.L SDR with an EX-101 that is an 8-K, NOGOOD.</td>
+<td> 
+    </td>
+<td><ul>
+<li><table align="top">
+<tr><th colspan="2" align="left">Parameter</th></tr>
+<tr>
+<td>Name</td>
+<td>submissionType</td>
+</tr>
+<tr>
+<td>Type</td>
+<td>xs:string</td>
+</tr>
+<tr>
+<td>Value</td>
+<td>SDR</td>
+</tr>
+</table></li>
+<li>
+    Instance
+    <a href="001ng/k60308001ng-20151231.xml">001ng/k60308001ng-20151231.xml</a>
+ReadMeFirst</li>
+<li>
+    Linkbase
+    <a href="001ng/k60308001ng-20151231_lab.xml">001ng/k60308001ng-20151231_lab.xml</a>
+</li>
+<li>
+    Linkbase
+    <a href="001ng/k60308001ng-20151231_pre.xml">001ng/k60308001ng-20151231_pre.xml</a>
+</li>
+<li>
+    Schema
+    <a href="001ng/k60308001ng-20151231.xsd">001ng/k60308001ng-20151231.xsd</a>
+</li>
+<li>
+    Instance
+    <a href="001ng/l60308001ng-20151231.xml">001ng/l60308001ng-20151231.xml</a>
+ReadMeFirst</li>
+<li>
+    Linkbase
+    <a href="001ng/l60308001ng-20151231_lab.xml">001ng/l60308001ng-20151231_lab.xml</a>
+</li>
+<li>
+    Linkbase
+    <a href="001ng/l60308001ng-20151231_pre.xml">001ng/l60308001ng-20151231_pre.xml</a>
+</li>
+<li>
+    Schema
+    <a href="001ng/l60308001ng-20151231.xsd">001ng/l60308001ng-20151231.xsd</a>
+</li>
+<li>
+    Instance
+    <a href="001ng/m60308001ng-20151231.xml">001ng/m60308001ng-20151231.xml</a>
+ReadMeFirst</li>
+<li>
+    Linkbase
+    <a href="001ng/m60308001ng-20151231_lab.xml">001ng/m60308001ng-20151231_lab.xml</a>
+</li>
+<li>
+    Linkbase
+    <a href="001ng/m60308001ng-20151231_pre.xml">001ng/m60308001ng-20151231_pre.xml</a>
+</li>
+<li>
+    Schema
+    <a href="001ng/m60308001ng-20151231.xsd">001ng/m60308001ng-20151231.xsd</a>
+</li>
+</ul></td>
+<td>
+<ul><li><table align="top">
+<tr><th colspan="2" align="left">Assertion</th></tr>
+<tr><td colspan="2" align="left">ID:  err, 60520, <a href="../../../../lib/xbrlerrors.htm#cp-0520-Submission-Document-Type">Submission-Document-Type</a>
+</td></tr>
+<tr>
+<td>FRD:</td>
+<td>cp</td>
+</tr>
+<tr>
+<td>Count satisfied</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Count not satisfied</td>
+<td>1</td>
+</tr>
+</table></li></ul> 
+    </td>
+</tr>
+<tr>
+<td>_002ng</td>
+<td>6.3.8, Mixing an EX-99.K SDR and EX-99.L SDR with an EX-101 (gateway tests it), NOGOOD</td>
+<td>Mixing an EX-99.K SDR and EX-99.L SDR with an EX-101 (gateway tests it) that is an L SDR, NOGOOD.</td>
+<td> 
+    </td>
+<td><ul>
+<li><table align="top">
+<tr><th colspan="2" align="left">Parameter</th></tr>
+<tr>
+<td>Name</td>
+<td>submissionType</td>
+</tr>
+<tr>
+<td>Type</td>
+<td>xs:string</td>
+</tr>
+<tr>
+<td>Value</td>
+<td>SDR</td>
+</tr>
+</table></li>
+<li>
+    Instance
+    <a href="002ng/k60308002ng-20151231.xml">002ng/k60308002ng-20151231.xml</a>
+ReadMeFirst</li>
+<li>
+    Linkbase
+    <a href="002ng/k60308002ng-20151231_lab.xml">002ng/k60308002ng-20151231_lab.xml</a>
+</li>
+<li>
+    Linkbase
+    <a href="002ng/k60308002ng-20151231_pre.xml">002ng/k60308002ng-20151231_pre.xml</a>
+</li>
+<li>
+    Schema
+    <a href="002ng/k60308002ng-20151231.xsd">002ng/k60308002ng-20151231.xsd</a>
+</li>
+<li>
+    Instance
+    <a href="002ng/l60308002ng-20151231.xml">002ng/l60308002ng-20151231.xml</a>
+ReadMeFirst</li>
+<li>
+    Linkbase
+    <a href="002ng/l60308002ng-20151231_lab.xml">002ng/l60308002ng-20151231_lab.xml</a>
+</li>
+<li>
+    Linkbase
+    <a href="002ng/l60308002ng-20151231_pre.xml">002ng/l60308002ng-20151231_pre.xml</a>
+</li>
+<li>
+    Schema
+    <a href="002ng/l60308002ng-20151231.xsd">002ng/l60308002ng-20151231.xsd</a>
+</li>
+<li>
+    Instance
+    <a href="002ng/m60308002ng-20151231.xml">002ng/m60308002ng-20151231.xml</a>
+ReadMeFirst</li>
+<li>
+    Linkbase
+    <a href="002ng/m60308002ng-20151231_lab.xml">002ng/m60308002ng-20151231_lab.xml</a>
+</li>
+<li>
+    Linkbase
+    <a href="002ng/m60308002ng-20151231_pre.xml">002ng/m60308002ng-20151231_pre.xml</a>
+</li>
+<li>
+    Schema
+    <a href="002ng/m60308002ng-20151231.xsd">002ng/m60308002ng-20151231.xsd</a>
+</li>
+</ul></td>
+<td>
+<ul><li><table align="top">
+<tr><th colspan="2" align="left">Assertion</th></tr>
+<tr><td colspan="2" align="left">ID:  err, 60308, <a href="../../../../lib/xbrlerrors.htm#cp-0308-Disallowed-Combination-Of-Exhibits">Disallowed-Combination-Of-Exhibits</a>
+</td></tr>
+<tr>
+<td>FRD:</td>
+<td>cp</td>
+</tr>
+<tr>
+<td>Count satisfied</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Count not satisfied</td>
+<td>1</td>
+</tr>
+</table></li></ul> 
+    </td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

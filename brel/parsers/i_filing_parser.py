@@ -1,11 +1,13 @@
 from abc import ABC, abstractmethod
 from time import time
 
-from brel import QName, BrelLabel, Fact, Component
+from brel import QName, Fact, Component
 from brel.reportelements import IReportElement
 from brel.networks import INetwork
 
 from typing import final
+
+DEBUG = False
 
 # Implemented as an abstract class
 class IFilingParser(ABC):
@@ -17,12 +19,23 @@ class IFilingParser(ABC):
     - parse_facts() -> Iterator[Fact]
     - parse_concepts() -> Iterator[Concept]
     """
+    def __init__(
+            self,
+            instance_filename: str,
+            networks_filenames: list[str],
+            ) -> None:
+        """
+        Initialize the parser.
+        """
+        raise NotImplementedError
+
     def __print(self, output: str):
         """
         Print a message with the prefix [IFilingParser].
         """
-        print_prefix = "[Parser]"
-        print(print_prefix, output)
+        if DEBUG:  # pragma: no cover
+            print_prefix = "[Parser]"
+            print(print_prefix, output)
 
     @final
     def parse(self) -> dict:
@@ -31,27 +44,33 @@ class IFilingParser(ABC):
         """
         parser_start_time = time()
         
-        self.__print("Parsing Report Elements")
+        if DEBUG:  # pragma: no cover
+            self.__print("Parsing Report Elements")
         start_time = time()
         report_elements = self.parse_report_elements()
-        self.__print(f"took {time() - start_time:.2f} sec")
 
-        self.__print("Parsing Networks")
+        if DEBUG:  # pragma: no cover
+            self.__print(f"took {time() - start_time:.2f} sec")
+
+            self.__print("Parsing Networks")
         start_time = time()
         networks = self.parse_networks(report_elements)
-        self.__print(f"took {time() - start_time:.2f} sec")
-        
-        self.__print("Parsing Components")
+        if DEBUG:  # pragma: no cover
+            self.__print(f"took {time() - start_time:.2f} sec")
+            
+            self.__print("Parsing Components")
         start_time = time()
         components, report_elements = self.parse_components(report_elements, networks)
-        self.__print(f"took {time() - start_time:.2f} sec")
-        
-        self.__print("Parsing Facts")
+        if DEBUG:  # pragma: no cover
+            self.__print(f"took {time() - start_time:.2f} sec")
+            
+            self.__print("Parsing Facts")
         start_time = time()
         facts = self.parse_facts(report_elements)
-        self.__print(f"took {time() - start_time:.2f} sec")
-        
-        self.__print(f"Done Parsing (took {time() - parser_start_time:.2f} sec)")
+        if DEBUG:  # pragma: no cover
+            self.__print(f"took {time() - start_time:.2f} sec")
+            
+            self.__print(f"Done Parsing (took {time() - parser_start_time:.2f} sec)")
         filing_type = self.get_filing_type()
 
         networks_flattened = [network for networks_list in networks.values() for network in networks_list]

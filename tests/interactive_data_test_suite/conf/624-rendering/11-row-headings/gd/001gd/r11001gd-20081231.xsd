@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<xs:schema targetNamespace="http://r11001gd/20081231"
+xmlns:dei="http://xbrl.sec.gov/dei/2018-01-31"
+xmlns:link="http://www.xbrl.org/2003/linkbase"
+xmlns:dtr-types="http://www.xbrl.org/dtr/type/2020-01-21"
+
+xmlns:xbrldt="http://xbrl.org/2005/xbrldt"
+xmlns:xbrli="http://www.xbrl.org/2003/instance"
+xmlns:xlink="http://www.w3.org/1999/xlink"
+xmlns:xs="http://www.w3.org/2001/XMLSchema"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified"
+xmlns:r11001gd="http://r11001gd/20081231"
+xmlns:ref="http://www.xbrl.org/2006/ref"
+xmlns:us-gaap="http://fasb.org/us-gaap/2017-01-31"
+xmlns:us-roles="http://fasb.org/us-roles/2017-01-31"
+xmlns:us-types="http://fasb.org/us-types/2017-01-31"
+xmlns:xl="http://www.xbrl.org/2003/XLink">
+<xs:annotation>
+<xs:appinfo>
+<link:linkbaseRef xlink:href="r11001gd-20081231_pre.xml" xlink:type="simple" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:role="http://www.xbrl.org/2003/role/presentationLinkbaseRef" />
+<link:linkbaseRef xlink:href="r11001gd-20081231_cal.xml" xlink:type="simple" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:role="http://www.xbrl.org/2003/role/calculationLinkbaseRef" />
+<link:linkbaseRef xlink:href="r11001gd-20081231_def.xml" xlink:type="simple" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:role="http://www.xbrl.org/2003/role/definitionLinkbaseRef" />
+<link:linkbaseRef xlink:href="r11001gd-20081231_lab.xml" xlink:type="simple" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" />
+<link:roleType id="short" roleURI="http://r11001gd/role/short">
+<link:definition>000000 - Document - Short Statement</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+</link:roleType>
+</xs:appinfo>
+</xs:annotation>
+<xs:import schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd" namespace="http://www.xbrl.org/2003/instance" />
+<xs:import schemaLocation="http://www.xbrl.org/2005/xbrldt-2005.xsd" namespace="http://xbrl.org/2005/xbrldt" />
+<xs:import schemaLocation="https://xbrl.sec.gov/dei/2018/dei-2018-01-31.xsd" namespace="http://xbrl.sec.gov/dei/2018-01-31" />
+<xs:import schemaLocation="http://xbrl.fasb.org/us-gaap/2017/elts/us-types-2017-01-31.xsd" namespace="http://fasb.org/us-types/2017-01-31" />
+<xs:import schemaLocation="http://xbrl.fasb.org/us-gaap/2017/elts/us-roles-2017-01-31.xsd" namespace="http://fasb.org/us-roles/2017-01-31" />
+<xs:import schemaLocation="https://www.xbrl.org/dtr/type/2020-01-21/types.xsd" namespace="http://www.xbrl.org/dtr/type/2020-01-21" />
+<xs:import schemaLocation="http://xbrl.fasb.org/us-gaap/2017/elts/us-gaap-2017-01-31.xsd" namespace="http://fasb.org/us-gaap/2017-01-31" />
+<xs:element name="ABCMember" id="r11001gd_ABCMember" type="dtr-types:domainItemType" xbrli:periodType="duration" abstract="true" nillable="true" substitutionGroup="xbrli:item" />
+<xs:element name="DEFMember" id="r11001gd_DEFMember" type="dtr-types:domainItemType" xbrli:periodType="duration" abstract="true" nillable="true" substitutionGroup="xbrli:item" />
+</xs:schema>

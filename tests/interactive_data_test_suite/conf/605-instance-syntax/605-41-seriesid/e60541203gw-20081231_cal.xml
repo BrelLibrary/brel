@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<link:linkbase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:e60541203gw="http://e60541203gw/20090501" xsi:schemaLocation="http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd">
+    <link:roleRef roleURI="http://xbrl.sec.gov/rr/role/OperatingExpensesData" xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#OperatingExpensesData" xlink:type="simple"></link:roleRef>
+    <link:calculationLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/rr/role/OperatingExpensesData">
+        <link:loc xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_OtherExpensesOverAssets" xlink:label="lab_OtherExpensesOverAssets" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_ExpensesOverAssets" xlink:label="ExpensesOverAssets" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_Component1OtherExpensesOverAssets" xlink:label="lab_Component1OtherExpensesOverAssets" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="https://xbrl.sec.gov/rr/2023/rr-2023.xsd#rr_Component2OtherExpensesOverAssets" xlink:label="lab_Component2OtherExpensesOverAssets" xlink:type="locator"></link:loc>
+<!--         <link:calculationArc xlink:type="arc" order="1.0" priority="1" use="prohibited" weight="1.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" xlink:from="lab_OtherExpensesOverAssets" xlink:to="lab_Component1OtherExpensesOverAssets"></link:calculationArc> -->
+<!--         <link:calculationArc xlink:type="arc" order="2.0" priority="1" use="prohibited" weight="1.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" xlink:from="lab_OtherExpensesOverAssets" xlink:to="lab_Component2OtherExpensesOverAssets"></link:calculationArc> -->
+        <link:calculationArc xlink:type="arc" order="41.0" use="optional" weight="1.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" xlink:from="ExpensesOverAssets" xlink:to="lab_Component1OtherExpensesOverAssets"></link:calculationArc>
+        <link:calculationArc xlink:type="arc" order="42.0" use="optional" weight="1.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" xlink:from="ExpensesOverAssets" xlink:to="lab_Component2OtherExpensesOverAssets"></link:calculationArc>
+    </link:calculationLink>
+</link:linkbase>

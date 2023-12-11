@@ -1,0 +1,2288 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../../lib/test.xsl"?>
+<conf:testcase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:conf="http://edgar/2009/conformance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../../lib/test.xsd">
+    <conf:creator>
+        <conf:name>SEC Office of Structured Disclosure</conf:name>
+        <conf:email>StructuredData@sec.gov</conf:email>
+    </conf:creator>
+    <conf:number>605-46</conf:number>
+    <conf:name>EDGAR Filer Manual v68d 6.5.46</conf:name>
+    <conf:description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.5.46 Registered securities cover page information">Refer to EFM: 6.5.46 Registered securities cover page information</a>
+    </conf:description>
+    <conf:variation id="_001gd">
+        <conf:name>8-K GOOD </conf:name>
+        <conf:description>8-K GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546001gd/g60546001gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60546001gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546001gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546001gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546001gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_002gw">
+        <conf:name>8-K-GW-Te &#8211; if a non-null TradingSymbol exists, then one non-null fact should exist (and if inline, visible), else should not. SecurityExchangeName(c) </conf:name>
+        <conf:description>8-K-GW-Te &#8211; if a non-null TradingSymbol exists, then one non-null fact should exist (and if inline, visible), else should not. SecurityExchangeName(c). No Security12bTitle or Security12gTitle present.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546002gw/g60546002gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546002gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546002gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546002gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546002gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SecurityExchangeName" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_003gw">
+        <conf:name>8-K-GW-T1 &#8211; if a non-null Security12bTitle or Security12gTitle exists, then one non-null fact, but not both, may exist (and if inline, visible). TradingSymbol(c) </conf:name>
+        <conf:description>8-K-GW-T1 &#8211; if a non-null Security12bTitle or Security12gTitle exists, then one non-null fact, but not both, may exist (and if inline, visible). TradingSymbol(c) TradingSymbol. Both are absent.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546003gw/g60546003gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546003gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546003gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546003gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546003gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="TradingSymbol" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_004gw">
+        <conf:name>8-K-GW-T1 &#8211; if a non-null Security12bTitle or Security12gTitle exists, then one non-null fact, but not both, may exist (and if inline, visible). NoTradingSymbolFlag(c) </conf:name>
+        <conf:description>8-K-GW-T1 &#8211; if a non-null Security12bTitle or Security12gTitle exists, then one non-null fact, but not both, may exist (and if inline, visible). NoTradingSymbolFlag(c). Both T1 are present.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546004gw/g60546004gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546004gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546004gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546004gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546004gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="NoTradingSymbolFlag" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_005gw">
+        <conf:name>8-K-GW-Blank &#8211; a non-null fact should not exist. SecurityReportingObligation(c) </conf:name>
+        <conf:description>8-K-GW-Blank &#8211; a non-null fact should not exist. SecurityReportingObligation(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546005gw/g60546005gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546005gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546005gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546005gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546005gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SecurityReportingObligation" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_006gd">
+        <conf:name>10-K GOOD </conf:name>
+        <conf:description>10-K GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546006gd/g60546006gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60546006gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546006gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546006gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546006gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_007gw">
+        <conf:name>10-K-GW-Te &#8211; if a non-null TradingSymbol exists, then one non-null fact should exist (and if inline, visible), else should not. SecurityExchangeName(c) </conf:name>
+        <conf:description>10-K-GW-Te &#8211; if a non-null TradingSymbol exists, then one non-null fact should exist (and if inline, visible), else should not. SecurityExchangeName(c). No Security12bTitle or Security12gTitle present.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546007gw/g60546007gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546007gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546007gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546007gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546007gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SecurityExchangeName" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_008gw">
+        <conf:name>10-K-GW-T1 &#8211; if a non-null Security12bTitle or Security12gTitle exists, then one non-null fact, but not both, may exist (and if inline, visible). TradingSymbol(c) </conf:name>
+        <conf:description>10-K-GW-T1 &#8211; if a non-null Security12bTitle or Security12gTitle exists, then one non-null fact, but not both, may exist (and if inline, visible). TradingSymbol(c) TradingSymbol. Both are absent.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546008gw/g60546008gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546008gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546008gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546008gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546008gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="TradingSymbol" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_009gw">
+        <conf:name>10-K-GW-T1 &#8211; if a non-null Security12bTitle or Security12gTitle exists, then one non-null fact, but not both, may exist (and if inline, visible). NoTradingSymbolFlag(c) </conf:name>
+        <conf:description>10-K-GW-T1 &#8211; if a non-null Security12bTitle or Security12gTitle exists, then one non-null fact, but not both, may exist (and if inline, visible). NoTradingSymbolFlag(c). Both T1 are present.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546009gw/g60546009gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546009gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546009gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546009gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546009gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="NoTradingSymbolFlag" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_010gw">
+        <conf:name>10-K-GW-Blank &#8211; a non-null fact should not exist. SecurityReportingObligation(c) </conf:name>
+        <conf:description>10-K-GW-Blank &#8211; a non-null fact should not exist. SecurityReportingObligation(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546010gw/g60546010gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546010gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546010gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546010gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546010gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SecurityReportingObligation" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_011gd">
+        <conf:name>10-KT GOOD </conf:name>
+        <conf:description>10-KT GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-KT"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546011gd/g60546011gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60546011gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546011gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546011gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546011gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_012gw">
+        <conf:name>10-KT-GW-Te &#8211; if a non-null TradingSymbol exists, then one non-null fact should exist (and if inline, visible), else should not. SecurityExchangeName(c) </conf:name>
+        <conf:description>10-KT-GW-Te &#8211; if a non-null TradingSymbol exists, then one non-null fact should exist (and if inline, visible), else should not. SecurityExchangeName(c). No Security12bTitle or Security12gTitle present.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-KT"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546012gw/g60546012gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546012gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546012gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546012gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546012gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SecurityExchangeName" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_013gw">
+        <conf:name>10-KT-GW-T1 &#8211; if a non-null Security12bTitle or Security12gTitle exists, then one non-null fact, but not both, may exist (and if inline, visible). TradingSymbol(c) </conf:name>
+        <conf:description>10-KT-GW-T1 &#8211; if a non-null Security12bTitle or Security12gTitle exists, then one non-null fact, but not both, may exist (and if inline, visible). TradingSymbol(c) TradingSymbol. Both are absent.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-KT"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546013gw/g60546013gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546013gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546013gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546013gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546013gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="TradingSymbol" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_014gw">
+        <conf:name>10-KT-GW-T1 &#8211; if a non-null Security12bTitle or Security12gTitle exists, then one non-null fact, but not both, may exist (and if inline, visible). NoTradingSymbolFlag(c) </conf:name>
+        <conf:description>10-KT-GW-T1 &#8211; if a non-null Security12bTitle or Security12gTitle exists, then one non-null fact, but not both, may exist (and if inline, visible). NoTradingSymbolFlag(c). Both T1 are present.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-KT"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546014gw/g60546014gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546014gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546014gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546014gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546014gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="NoTradingSymbolFlag" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_015gw">
+        <conf:name>10-KT-GW-Blank &#8211; a non-null fact should not exist. SecurityReportingObligation(c) </conf:name>
+        <conf:description>10-KT-GW-Blank &#8211; a non-null fact should not exist. SecurityReportingObligation(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-KT"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546015gw/g60546015gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546015gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546015gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546015gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546015gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SecurityReportingObligation" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_016gd">
+        <conf:name>10-Q GOOD </conf:name>
+        <conf:description>10-Q GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-Q"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546016gd/g60546016gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60546016gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546016gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546016gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546016gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_017gw">
+        <conf:name>10-Q-GW-Te &#8211; if a non-null TradingSymbol exists, then one non-null fact should exist (and if inline, visible), else should not. SecurityExchangeName(c) </conf:name>
+        <conf:description>10-Q-GW-Te &#8211; if a non-null TradingSymbol exists, then one non-null fact should exist (and if inline, visible), else should not. SecurityExchangeName(c). No Security12bTitle or Security12gTitle present.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-Q"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546017gw/g60546017gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546017gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546017gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546017gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546017gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SecurityExchangeName" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_018gw">
+        <conf:name>10-Q-GW-T1 &#8211; if a non-null Security12bTitle or Security12gTitle exists, then one non-null fact, but not both, may exist (and if inline, visible). TradingSymbol(c) </conf:name>
+        <conf:description>10-Q-GW-T1 &#8211; if a non-null Security12bTitle or Security12gTitle exists, then one non-null fact, but not both, may exist (and if inline, visible). TradingSymbol(c) TradingSymbol. Both are absent.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-Q"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546018gw/g60546018gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546018gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546018gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546018gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546018gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="TradingSymbol" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_019gw">
+        <conf:name>10-Q-GW-T1 &#8211; if a non-null Security12bTitle or Security12gTitle exists, then one non-null fact, but not both, may exist (and if inline, visible). NoTradingSymbolFlag(c) </conf:name>
+        <conf:description>10-Q-GW-T1 &#8211; if a non-null Security12bTitle or Security12gTitle exists, then one non-null fact, but not both, may exist (and if inline, visible). NoTradingSymbolFlag(c). Both T1 are present.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-Q"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546019gw/g60546019gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546019gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546019gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546019gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546019gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="NoTradingSymbolFlag" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_020gw">
+        <conf:name>10-Q-GW-Blank &#8211; a non-null fact should not exist. SecurityReportingObligation(c) </conf:name>
+        <conf:description>10-Q-GW-Blank &#8211; a non-null fact should not exist. SecurityReportingObligation(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-Q"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546020gw/g60546020gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546020gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546020gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546020gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546020gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SecurityReportingObligation" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_021gd">
+        <conf:name>10-QT GOOD </conf:name>
+        <conf:description>10-QT GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-QT"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546021gd/g60546021gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60546021gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546021gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546021gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546021gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_022gw">
+        <conf:name>10-QT-GW-Te &#8211; if a non-null TradingSymbol exists, then one non-null fact should exist (and if inline, visible), else should not. SecurityExchangeName(c) </conf:name>
+        <conf:description>10-QT-GW-Te &#8211; if a non-null TradingSymbol exists, then one non-null fact should exist (and if inline, visible), else should not. SecurityExchangeName(c). No Security12bTitle or Security12gTitle present.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-QT"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546022gw/g60546022gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546022gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546022gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546022gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546022gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SecurityExchangeName" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_023gw">
+        <conf:name>10-QT-GW-T1 &#8211; if a non-null Security12bTitle or Security12gTitle exists, then one non-null fact, but not both, may exist (and if inline, visible). TradingSymbol(c) </conf:name>
+        <conf:description>10-QT-GW-T1 &#8211; if a non-null Security12bTitle or Security12gTitle exists, then one non-null fact, but not both, may exist (and if inline, visible). TradingSymbol(c) TradingSymbol. Both are absent.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-QT"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546023gw/g60546023gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546023gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546023gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546023gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546023gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="TradingSymbol" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_024gw">
+        <conf:name>10-QT-GW-T1 &#8211; if a non-null Security12bTitle or Security12gTitle exists, then one non-null fact, but not both, may exist (and if inline, visible). NoTradingSymbolFlag(c) </conf:name>
+        <conf:description>10-QT-GW-T1 &#8211; if a non-null Security12bTitle or Security12gTitle exists, then one non-null fact, but not both, may exist (and if inline, visible). NoTradingSymbolFlag(c). Both T1 are present.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-QT"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546024gw/g60546024gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546024gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546024gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546024gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546024gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="NoTradingSymbolFlag" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_025gw">
+        <conf:name>10-QT-GW-Blank &#8211; a non-null fact should not exist. SecurityReportingObligation(c) </conf:name>
+        <conf:description>10-QT-GW-Blank &#8211; a non-null fact should not exist. SecurityReportingObligation(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-QT"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546025gw/g60546025gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546025gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546025gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546025gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546025gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SecurityReportingObligation" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_026gd">
+        <conf:name>20-F GOOD </conf:name>
+        <conf:description>20-F GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "20-F"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546026gd/g60546026gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60546026gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546026gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546026gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546026gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_027gw">
+        <conf:name>20-F-GW-Te &#8211; if a non-null TradingSymbol exists, then one non-null fact should exist (and if inline, visible), else should not. SecurityExchangeName(c) </conf:name>
+        <conf:description>20-F-GW-Te &#8211; if a non-null TradingSymbol exists, then one non-null fact should exist (and if inline, visible), else should not. SecurityExchangeName(c). No Security12bTitle or Security12gTitle present.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "20-F"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546027gw/g60546027gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546027gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546027gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546027gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546027gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SecurityExchangeName" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_028gw">
+        <conf:name>20-F-GW-T1 &#8211; if a non-null Security12bTitle or Security12gTitle exists, then one non-null fact, but not both, may exist (and if inline, visible). TradingSymbol(c) </conf:name>
+        <conf:description>20-F-GW-T1 &#8211; if a non-null Security12bTitle or Security12gTitle exists, then one non-null fact, but not both, may exist (and if inline, visible). TradingSymbol(c) TradingSymbol. Both are absent.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "20-F"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546028gw/g60546028gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546028gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546028gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546028gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546028gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="TradingSymbol" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_029gw">
+        <conf:name>20-F-GW-T1 &#8211; if a non-null Security12bTitle or Security12gTitle exists, then one non-null fact, but not both, may exist (and if inline, visible). NoTradingSymbolFlag(c) </conf:name>
+        <conf:description>20-F-GW-T1 &#8211; if a non-null Security12bTitle or Security12gTitle exists, then one non-null fact, but not both, may exist (and if inline, visible). NoTradingSymbolFlag(c). Both T1 are present.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "20-F"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546029gw/g60546029gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546029gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546029gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546029gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546029gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="NoTradingSymbolFlag" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_030gd">
+        <conf:name>40-F GOOD </conf:name>
+        <conf:description>40-F GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "40-F"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546030gd/g60546030gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60546030gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546030gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546030gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546030gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_031gw">
+        <conf:name>40-F-GW-Te &#8211; if a non-null TradingSymbol exists, then one non-null fact should exist (and if inline, visible), else should not. SecurityExchangeName(c) </conf:name>
+        <conf:description>40-F-GW-Te &#8211; if a non-null TradingSymbol exists, then one non-null fact should exist (and if inline, visible), else should not. SecurityExchangeName(c). No Security12bTitle or Security12gTitle present.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "40-F"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546031gw/g60546031gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546031gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546031gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546031gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546031gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SecurityExchangeName" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_032gw">
+        <conf:name>40-F-GW-T1 &#8211; if a non-null Security12bTitle or Security12gTitle exists, then one non-null fact, but not both, may exist (and if inline, visible). TradingSymbol(c) </conf:name>
+        <conf:description>40-F-GW-T1 &#8211; if a non-null Security12bTitle or Security12gTitle exists, then one non-null fact, but not both, may exist (and if inline, visible). TradingSymbol(c) TradingSymbol. Both are absent.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "40-F"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546032gw/g60546032gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546032gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546032gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546032gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546032gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="TradingSymbol" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_033gw">
+        <conf:name>40-F-GW-T1 &#8211; if a non-null Security12bTitle or Security12gTitle exists, then one non-null fact, but not both, may exist (and if inline, visible). NoTradingSymbolFlag(c) </conf:name>
+        <conf:description>40-F-GW-T1 &#8211; if a non-null Security12bTitle or Security12gTitle exists, then one non-null fact, but not both, may exist (and if inline, visible). NoTradingSymbolFlag(c). Both T1 are present.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "40-F"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546033gw/g60546033gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546033gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546033gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546033gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546033gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="NoTradingSymbolFlag" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_034gd">
+        <conf:name>10-12B GOOD </conf:name>
+        <conf:description>10-12B GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "10-12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546034gd/g60546034gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60546034gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546034gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546034gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546034gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_035gw">
+        <conf:name>10-12B-GW-Te* &#8211; if a non-null TradingSymbol exists, then one non-null fact should exist, else should not. SecurityExchangeName(c) </conf:name>
+        <conf:description>10-12B-GW-Te* &#8211; if a non-null TradingSymbol exists, then one non-null fact should exist, else should not. SecurityExchangeName(c). No Security12bTitle or Security12gTitle present.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "10-12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546035gw/g60546035gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546035gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546035gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546035gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546035gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SecurityExchangeName" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_036gw">
+        <conf:name>10-12B-GW-T1* &#8211; if a non-null Security12bTitle or Security12gTitle exists, then one non-null fact, but not both, may exist. TradingSymbol(c) </conf:name>
+        <conf:description>10-12B-GW-T1* &#8211; if a non-null Security12bTitle or Security12gTitle exists, then one non-null fact, but not both, may exist. TradingSymbol(c) TradingSymbol. Both are absent.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "10-12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546036gw/g60546036gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546036gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546036gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546036gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546036gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="TradingSymbol" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_037gw">
+        <conf:name>10-12B-GW-T1* &#8211; if a non-null Security12bTitle or Security12gTitle exists, then one non-null fact, but not both, may exist. NoTradingSymbolFlag(c) </conf:name>
+        <conf:description>10-12B-GW-T1* &#8211; if a non-null Security12bTitle or Security12gTitle exists, then one non-null fact, but not both, may exist. NoTradingSymbolFlag(c). Both T1 are present.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "10-12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546037gw/g60546037gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546037gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546037gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546037gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546037gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="NoTradingSymbolFlag" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_038gw">
+        <conf:name>10-12B-GW-Blank &#8211; a non-null fact should not exist. SecurityReportingObligation(c) </conf:name>
+        <conf:description>10-12B-GW-Blank &#8211; a non-null fact should not exist. SecurityReportingObligation(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "10-12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546038gw/g60546038gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546038gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546038gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546038gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546038gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SecurityReportingObligation" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_039gd">
+        <conf:name>10-12G GOOD </conf:name>
+        <conf:description>10-12G GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "10-12G"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546039gd/g60546039gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60546039gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546039gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546039gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546039gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_040gw">
+        <conf:name>10-12G-GW-Te* &#8211; if a non-null TradingSymbol exists, then one non-null fact should exist, else should not. SecurityExchangeName(c) </conf:name>
+        <conf:description>10-12G-GW-Te* &#8211; if a non-null TradingSymbol exists, then one non-null fact should exist, else should not. SecurityExchangeName(c). No Security12bTitle or Security12gTitle present.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "10-12G"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546040gw/g60546040gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546040gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546040gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546040gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546040gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SecurityExchangeName" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_041gw">
+        <conf:name>10-12G-GW-T1* &#8211; if a non-null Security12bTitle or Security12gTitle exists, then one non-null fact, but not both, may exist. TradingSymbol(c) </conf:name>
+        <conf:description>10-12G-GW-T1* &#8211; if a non-null Security12bTitle or Security12gTitle exists, then one non-null fact, but not both, may exist. TradingSymbol(c) TradingSymbol. Both are absent.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "10-12G"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546041gw/g60546041gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546041gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546041gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546041gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546041gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="TradingSymbol" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_042gw">
+        <conf:name>10-12G-GW-T1* &#8211; if a non-null Security12bTitle or Security12gTitle exists, then one non-null fact, but not both, may exist. NoTradingSymbolFlag(c) </conf:name>
+        <conf:description>10-12G-GW-T1* &#8211; if a non-null Security12bTitle or Security12gTitle exists, then one non-null fact, but not both, may exist. NoTradingSymbolFlag(c). Both T1 are present.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "10-12G"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546042gw/g60546042gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546042gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546042gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546042gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546042gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="NoTradingSymbolFlag" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_043gw">
+        <conf:name>10-12G-GW-Blank &#8211; a non-null fact should not exist. SecurityReportingObligation(c) </conf:name>
+        <conf:description>10-12G-GW-Blank &#8211; a non-null fact should not exist. SecurityReportingObligation(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "10-12G"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546043gw/g60546043gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546043gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546043gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546043gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546043gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SecurityReportingObligation" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_044gd">
+        <conf:name>20FR12B GOOD </conf:name>
+        <conf:description>20FR12B GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "20FR12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546044gd/g60546044gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60546044gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546044gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546044gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546044gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_045gw">
+        <conf:name>20FR12B-GW-Te* &#8211; if a non-null TradingSymbol exists, then one non-null fact should exist, else should not. SecurityExchangeName(c) </conf:name>
+        <conf:description>20FR12B-GW-Te* &#8211; if a non-null TradingSymbol exists, then one non-null fact should exist, else should not. SecurityExchangeName(c). No Security12bTitle or Security12gTitle present.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "20FR12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546045gw/g60546045gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546045gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546045gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546045gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546045gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SecurityExchangeName" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_046gw">
+        <conf:name>20FR12B-GW-T1* &#8211; if a non-null Security12bTitle or Security12gTitle exists, then one non-null fact, but not both, may exist. TradingSymbol(c) </conf:name>
+        <conf:description>20FR12B-GW-T1* &#8211; if a non-null Security12bTitle or Security12gTitle exists, then one non-null fact, but not both, may exist. TradingSymbol(c) TradingSymbol. Both are absent.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "20FR12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546046gw/g60546046gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546046gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546046gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546046gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546046gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="TradingSymbol" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_047gw">
+        <conf:name>20FR12B-GW-T1* &#8211; if a non-null Security12bTitle or Security12gTitle exists, then one non-null fact, but not both, may exist. NoTradingSymbolFlag(c) </conf:name>
+        <conf:description>20FR12B-GW-T1* &#8211; if a non-null Security12bTitle or Security12gTitle exists, then one non-null fact, but not both, may exist. NoTradingSymbolFlag(c). Both T1 are present.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "20FR12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546047gw/g60546047gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546047gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546047gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546047gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546047gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="NoTradingSymbolFlag" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_048gd">
+        <conf:name>20FR12G GOOD </conf:name>
+        <conf:description>20FR12G GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "20FR12G"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546048gd/g60546048gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60546048gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546048gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546048gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546048gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_049gw">
+        <conf:name>20FR12G-GW-Te* &#8211; if a non-null TradingSymbol exists, then one non-null fact should exist, else should not. SecurityExchangeName(c) </conf:name>
+        <conf:description>20FR12G-GW-Te* &#8211; if a non-null TradingSymbol exists, then one non-null fact should exist, else should not. SecurityExchangeName(c). No Security12bTitle or Security12gTitle present.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "20FR12G"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546049gw/g60546049gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546049gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546049gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546049gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546049gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SecurityExchangeName" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_050gw">
+        <conf:name>20FR12G-GW-T1* &#8211; if a non-null Security12bTitle or Security12gTitle exists, then one non-null fact, but not both, may exist. TradingSymbol(c) </conf:name>
+        <conf:description>20FR12G-GW-T1* &#8211; if a non-null Security12bTitle or Security12gTitle exists, then one non-null fact, but not both, may exist. TradingSymbol(c) TradingSymbol. Both are absent.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "20FR12G"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546050gw/g60546050gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546050gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546050gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546050gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546050gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="TradingSymbol" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_051gw">
+        <conf:name>20FR12G-GW-T1* &#8211; if a non-null Security12bTitle or Security12gTitle exists, then one non-null fact, but not both, may exist. NoTradingSymbolFlag(c) </conf:name>
+        <conf:description>20FR12G-GW-T1* &#8211; if a non-null Security12bTitle or Security12gTitle exists, then one non-null fact, but not both, may exist. NoTradingSymbolFlag(c). Both T1 are present.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "20FR12G"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546051gw/g60546051gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546051gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546051gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546051gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546051gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="NoTradingSymbolFlag" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_052gd">
+        <conf:name>40FR12B GOOD </conf:name>
+        <conf:description>40FR12B GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "40FR12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546052gd/g60546052gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60546052gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546052gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546052gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546052gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_053gw">
+        <conf:name>40FR12B-GW-Te* &#8211; if a non-null TradingSymbol exists, then one non-null fact should exist, else should not. SecurityExchangeName(c) </conf:name>
+        <conf:description>40FR12B-GW-Te* &#8211; if a non-null TradingSymbol exists, then one non-null fact should exist, else should not. SecurityExchangeName(c). No Security12bTitle or Security12gTitle present.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "40FR12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546053gw/g60546053gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546053gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546053gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546053gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546053gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SecurityExchangeName" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_054gw">
+        <conf:name>40FR12B-GW-T1* &#8211; if a non-null Security12bTitle or Security12gTitle exists, then one non-null fact, but not both, may exist. TradingSymbol(c) </conf:name>
+        <conf:description>40FR12B-GW-T1* &#8211; if a non-null Security12bTitle or Security12gTitle exists, then one non-null fact, but not both, may exist. TradingSymbol(c) TradingSymbol. Both are absent.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "40FR12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546054gw/g60546054gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546054gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546054gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546054gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546054gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="TradingSymbol" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_055gw">
+        <conf:name>40FR12B-GW-T1* &#8211; if a non-null Security12bTitle or Security12gTitle exists, then one non-null fact, but not both, may exist. NoTradingSymbolFlag(c) </conf:name>
+        <conf:description>40FR12B-GW-T1* &#8211; if a non-null Security12bTitle or Security12gTitle exists, then one non-null fact, but not both, may exist. NoTradingSymbolFlag(c). Both T1 are present.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "40FR12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546055gw/g60546055gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546055gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546055gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546055gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546055gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="NoTradingSymbolFlag" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_056gd">
+        <conf:name>40FR12G GOOD </conf:name>
+        <conf:description>40FR12G GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "40FR12G"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546056gd/g60546056gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60546056gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546056gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546056gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546056gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_057gw">
+        <conf:name>40FR12G-GW-Te* &#8211; if a non-null TradingSymbol exists, then one non-null fact should exist, else should not. SecurityExchangeName(c) </conf:name>
+        <conf:description>40FR12G-GW-Te* &#8211; if a non-null TradingSymbol exists, then one non-null fact should exist, else should not. SecurityExchangeName(c). No Security12bTitle or Security12gTitle present.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "40FR12G"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546057gw/g60546057gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546057gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546057gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546057gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546057gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SecurityExchangeName" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_058gw">
+        <conf:name>40FR12G-GW-T1* &#8211; if a non-null Security12bTitle or Security12gTitle exists, then one non-null fact, but not both, may exist. TradingSymbol(c) </conf:name>
+        <conf:description>40FR12G-GW-T1* &#8211; if a non-null Security12bTitle or Security12gTitle exists, then one non-null fact, but not both, may exist. TradingSymbol(c) TradingSymbol. Both are absent.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "40FR12G"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546058gw/g60546058gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546058gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546058gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546058gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546058gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="TradingSymbol" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_059gw">
+        <conf:name>40FR12G-GW-T1* &#8211; if a non-null Security12bTitle or Security12gTitle exists, then one non-null fact, but not both, may exist. NoTradingSymbolFlag(c) </conf:name>
+        <conf:description>40FR12G-GW-T1* &#8211; if a non-null Security12bTitle or Security12gTitle exists, then one non-null fact, but not both, may exist. NoTradingSymbolFlag(c). Both T1 are present.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "40FR12G"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546059gw/g60546059gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546059gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546059gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546059gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546059gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="NoTradingSymbolFlag" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_060gd">
+        <conf:name>S-1 GOOD </conf:name>
+        <conf:description>S-1 GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,    "submissionType" : "S-1"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546060gd/g60546060gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60546060gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546060gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546060gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546060gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_061gw">
+        <conf:name>S-1-GW-Blank &#8211; a non-null fact should not exist. Security12bTitle(c) </conf:name>
+        <conf:description>S-1-GW-Blank &#8211; a non-null fact should not exist. Security12bTitle(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-1"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546061gw/g60546061gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546061gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546061gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546061gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546061gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="Security12bTitle" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_062gw">
+        <conf:name>S-1-GW-Blank &#8211; a non-null fact should not exist. SecurityExchangeName(c) </conf:name>
+        <conf:description>S-1-GW-Blank &#8211; a non-null fact should not exist. SecurityExchangeName(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-1"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546062gw/g60546062gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546062gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546062gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546062gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546062gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SecurityExchangeName" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_063gw">
+        <conf:name>S-1-GW-Blank &#8211; a non-null fact should not exist. NoTradingSymbolFlag(c) </conf:name>
+        <conf:description>S-1-GW-Blank &#8211; a non-null fact should not exist. NoTradingSymbolFlag(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-1"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546063gw/g60546063gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546063gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546063gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546063gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546063gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="NoTradingSymbolFlag" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_064gw">
+        <conf:name>S-1-GW-Blank &#8211; a non-null fact should not exist. TradingSymbol(c) </conf:name>
+        <conf:description>S-1-GW-Blank &#8211; a non-null fact should not exist. TradingSymbol(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-1"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546064gw/g60546064gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546064gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546064gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546064gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546064gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="TradingSymbol" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_065gw">
+        <conf:name>S-1-GW-Blank &#8211; a non-null fact should not exist. SecurityReportingObligation(c) </conf:name>
+        <conf:description>S-1-GW-Blank &#8211; a non-null fact should not exist. SecurityReportingObligation(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-1"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546065gw/g60546065gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546065gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546065gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546065gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546065gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SecurityReportingObligation" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_066gd">
+        <conf:name>S-3 GOOD </conf:name>
+        <conf:description>S-3 GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-3"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546066gd/g60546066gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60546066gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546066gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546066gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546066gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_067gw">
+        <conf:name>S-3-GW-Blank &#8211; a non-null fact should not exist. Security12bTitle(c) </conf:name>
+        <conf:description>S-3-GW-Blank &#8211; a non-null fact should not exist. Security12bTitle(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-3"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546067gw/g60546067gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546067gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546067gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546067gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546067gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="Security12bTitle" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_068gw">
+        <conf:name>S-3-GW-Blank &#8211; a non-null fact should not exist. SecurityExchangeName(c) </conf:name>
+        <conf:description>S-3-GW-Blank &#8211; a non-null fact should not exist. SecurityExchangeName(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-3"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546068gw/g60546068gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546068gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546068gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546068gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546068gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SecurityExchangeName" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_069gw">
+        <conf:name>S-3-GW-Blank &#8211; a non-null fact should not exist. NoTradingSymbolFlag(c) </conf:name>
+        <conf:description>S-3-GW-Blank &#8211; a non-null fact should not exist. NoTradingSymbolFlag(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-3"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546069gw/g60546069gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546069gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546069gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546069gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546069gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="NoTradingSymbolFlag" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_070gw">
+        <conf:name>S-3-GW-Blank &#8211; a non-null fact should not exist. TradingSymbol(c) </conf:name>
+        <conf:description>S-3-GW-Blank &#8211; a non-null fact should not exist. TradingSymbol(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-3"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546070gw/g60546070gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546070gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546070gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546070gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546070gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="TradingSymbol" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_071gw">
+        <conf:name>S-3-GW-Blank &#8211; a non-null fact should not exist. SecurityReportingObligation(c) </conf:name>
+        <conf:description>S-3-GW-Blank &#8211; a non-null fact should not exist. SecurityReportingObligation(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-3"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546071gw/g60546071gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546071gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546071gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546071gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546071gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SecurityReportingObligation" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_072gd">
+        <conf:name>S-4 GOOD </conf:name>
+        <conf:description>S-4 GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-4"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546072gd/g60546072gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60546072gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546072gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546072gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546072gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_073gw">
+        <conf:name>S-4-GW-Blank &#8211; a non-null fact should not exist. Security12bTitle(c) </conf:name>
+        <conf:description>S-4-GW-Blank &#8211; a non-null fact should not exist. Security12bTitle(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-4"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546073gw/g60546073gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546073gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546073gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546073gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546073gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="Security12bTitle" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_074gw">
+        <conf:name>S-4-GW-Blank &#8211; a non-null fact should not exist. SecurityExchangeName(c) </conf:name>
+        <conf:description>S-4-GW-Blank &#8211; a non-null fact should not exist. SecurityExchangeName(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-4"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546074gw/g60546074gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546074gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546074gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546074gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546074gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SecurityExchangeName" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_075gw">
+        <conf:name>S-4-GW-Blank &#8211; a non-null fact should not exist. NoTradingSymbolFlag(c) </conf:name>
+        <conf:description>S-4-GW-Blank &#8211; a non-null fact should not exist. NoTradingSymbolFlag(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-4"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546075gw/g60546075gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546075gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546075gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546075gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546075gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="NoTradingSymbolFlag" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_076gw">
+        <conf:name>S-4-GW-Blank &#8211; a non-null fact should not exist. TradingSymbol(c) </conf:name>
+        <conf:description>S-4-GW-Blank &#8211; a non-null fact should not exist. TradingSymbol(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-4"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546076gw/g60546076gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546076gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546076gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546076gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546076gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="TradingSymbol" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_077gw">
+        <conf:name>S-4-GW-Blank &#8211; a non-null fact should not exist. SecurityReportingObligation(c) </conf:name>
+        <conf:description>S-4-GW-Blank &#8211; a non-null fact should not exist. SecurityReportingObligation(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-4"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546077gw/g60546077gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546077gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546077gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546077gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546077gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SecurityReportingObligation" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_078gd">
+        <conf:name>S-11 GOOD </conf:name>
+        <conf:description>S-11 GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-11"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546078gd/g60546078gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60546078gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546078gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546078gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546078gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_079gw">
+        <conf:name>S-11-GW-Blank &#8211; a non-null fact should not exist. Security12bTitle(c) </conf:name>
+        <conf:description>S-11-GW-Blank &#8211; a non-null fact should not exist. Security12bTitle(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-11"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546079gw/g60546079gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546079gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546079gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546079gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546079gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="Security12bTitle" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_080gw">
+        <conf:name>S-11-GW-Blank &#8211; a non-null fact should not exist. SecurityExchangeName(c) </conf:name>
+        <conf:description>S-11-GW-Blank &#8211; a non-null fact should not exist. SecurityExchangeName(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-11"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546080gw/g60546080gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546080gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546080gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546080gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546080gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SecurityExchangeName" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_081gw">
+        <conf:name>S-11-GW-Blank &#8211; a non-null fact should not exist. NoTradingSymbolFlag(c) </conf:name>
+        <conf:description>S-11-GW-Blank &#8211; a non-null fact should not exist. NoTradingSymbolFlag(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-11"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546081gw/g60546081gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546081gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546081gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546081gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546081gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="NoTradingSymbolFlag" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_082gw">
+        <conf:name>S-11-GW-Blank &#8211; a non-null fact should not exist. TradingSymbol(c) </conf:name>
+        <conf:description>S-11-GW-Blank &#8211; a non-null fact should not exist. TradingSymbol(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-11"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546082gw/g60546082gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546082gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546082gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546082gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546082gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="TradingSymbol" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_083gw">
+        <conf:name>S-11-GW-Blank &#8211; a non-null fact should not exist. SecurityReportingObligation(c) </conf:name>
+        <conf:description>S-11-GW-Blank &#8211; a non-null fact should not exist. SecurityReportingObligation(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-11"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546083gw/g60546083gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546083gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546083gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546083gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546083gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SecurityReportingObligation" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_084gd">
+        <conf:name>POS EX GOOD </conf:name>
+        <conf:description>POS EX GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "POS EX"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546084gd/g60546084gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60546084gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546084gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546084gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546084gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_085gd">
+        <conf:name>POS EX-GD-Blank &#8211; a non-null fact may not exist. Security12bTitle(c) </conf:name>
+        <conf:description>POS EX-GD-Blank &#8211; a non-null fact may not exist. Security12bTitle(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "POS EX"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546085gd/g60546085gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60546085gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546085gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546085gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546085gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_086gd">
+        <conf:name>POS EX-GD-Blank &#8211; a non-null fact may not exist. SecurityExchangeName(c) </conf:name>
+        <conf:description>POS EX-GD-Blank &#8211; a non-null fact may not exist. SecurityExchangeName(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "POS EX"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546086gd/g60546086gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60546086gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546086gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546086gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546086gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_087gd">
+        <conf:name>POS EX-GD-Blank &#8211; a non-null fact may not exist. NoTradingSymbolFlag(c) </conf:name>
+        <conf:description>POS EX-GD-Blank &#8211; a non-null fact may not exist. NoTradingSymbolFlag(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "POS EX"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546087gd/g60546087gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60546087gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546087gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546087gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546087gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_088gd">
+        <conf:name>POS EX-GD-Blank &#8211; a non-null fact may not exist. TradingSymbol(c) </conf:name>
+        <conf:description>POS EX-GD-Blank &#8211; a non-null fact may not exist. TradingSymbol(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "POS EX"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546088gd/g60546088gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60546088gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546088gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546088gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546088gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_089gd">
+        <conf:name>POS EX-GD-Blank &#8211; a non-null fact may not exist. SecurityReportingObligation(c) </conf:name>
+        <conf:description>POS EX-GD-Blank &#8211; a non-null fact may not exist. SecurityReportingObligation(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "POS EX"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546089gd/g60546089gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60546089gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546089gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546089gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546089gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_090gd">
+        <conf:name>POS AM GOOD </conf:name>
+        <conf:description>POS AM GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "periodOfReport" : "12-31-2018",  "submissionType" : "POS AM"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546090gd/g60546090gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60546090gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546090gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546090gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546090gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_091gd">
+        <conf:name>POS AM-GD-Blank &#8211; a non-null fact may not exist. Security12bTitle(c) </conf:name>
+        <conf:description>POS AM-GD-Blank &#8211; a non-null fact may not exist. Security12bTitle(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "periodOfReport" : "12-31-2018",  "submissionType" : "POS AM"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546091gd/g60546091gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60546091gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546091gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546091gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546091gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_092gd">
+        <conf:name>POS AM-GD-Blank &#8211; a non-null fact may not exist. SecurityExchangeName(c) </conf:name>
+        <conf:description>POS AM-GD-Blank &#8211; a non-null fact may not exist. SecurityExchangeName(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "periodOfReport" : "12-31-2018",  "submissionType" : "POS AM"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546092gd/g60546092gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60546092gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546092gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546092gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546092gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_093gd">
+        <conf:name>POS AM-GD-Blank &#8211; a non-null fact may not exist. NoTradingSymbolFlag(c) </conf:name>
+        <conf:description>POS AM-GD-Blank &#8211; a non-null fact may not exist. NoTradingSymbolFlag(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "periodOfReport" : "12-31-2018",  "submissionType" : "POS AM"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546093gd/g60546093gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60546093gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546093gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546093gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546093gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_094gd">
+        <conf:name>POS AM-GD-Blank &#8211; a non-null fact may not exist. TradingSymbol(c) </conf:name>
+        <conf:description>POS AM-GD-Blank &#8211; a non-null fact may not exist. TradingSymbol(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "periodOfReport" : "12-31-2018",  "submissionType" : "POS AM"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546094gd/g60546094gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60546094gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546094gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546094gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546094gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_095gd">
+        <conf:name>POS AM-GD-Blank &#8211; a non-null fact may not exist. SecurityReportingObligation(c) </conf:name>
+        <conf:description>POS AM-GD-Blank &#8211; a non-null fact may not exist. SecurityReportingObligation(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "periodOfReport" : "12-31-2018",  "submissionType" : "POS AM"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546095gd/g60546095gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60546095gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546095gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546095gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546095gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_096gd">
+        <conf:name>F-1 GOOD </conf:name>
+        <conf:description>F-1 GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,    "submissionType" : "F-1"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546096gd/g60546096gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60546096gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546096gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546096gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546096gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_097gw">
+        <conf:name>F-1-GW-Blank &#8211; a non-null fact should not exist. Security12bTitle(c) </conf:name>
+        <conf:description>F-1-GW-Blank &#8211; a non-null fact should not exist. Security12bTitle(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "F-1"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546097gw/g60546097gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546097gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546097gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546097gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546097gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="Security12bTitle" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_098gw">
+        <conf:name>F-1-GW-Blank &#8211; a non-null fact should not exist. SecurityExchangeName(c) </conf:name>
+        <conf:description>F-1-GW-Blank &#8211; a non-null fact should not exist. SecurityExchangeName(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "F-1"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546098gw/g60546098gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546098gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546098gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546098gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546098gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SecurityExchangeName" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_099gw">
+        <conf:name>F-1-GW-Blank &#8211; a non-null fact should not exist. NoTradingSymbolFlag(c) </conf:name>
+        <conf:description>F-1-GW-Blank &#8211; a non-null fact should not exist. NoTradingSymbolFlag(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "F-1"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546099gw/g60546099gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546099gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546099gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546099gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546099gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="NoTradingSymbolFlag" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_100gw">
+        <conf:name>F-1-GW-Blank &#8211; a non-null fact should not exist. TradingSymbol(c) </conf:name>
+        <conf:description>F-1-GW-Blank &#8211; a non-null fact should not exist. TradingSymbol(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "F-1"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546100gw/g60546100gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546100gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546100gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546100gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546100gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="TradingSymbol" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_101gw">
+        <conf:name>F-1-GW-Blank &#8211; a non-null fact should not exist. SecurityReportingObligation(c) </conf:name>
+        <conf:description>F-1-GW-Blank &#8211; a non-null fact should not exist. SecurityReportingObligation(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "F-1"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546101gw/g60546101gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546101gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546101gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546101gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546101gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SecurityReportingObligation" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_102gd">
+        <conf:name>F-3 GOOD </conf:name>
+        <conf:description>F-3 GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,    "submissionType" : "F-3"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546102gd/g60546102gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60546102gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546102gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546102gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546102gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_103gw">
+        <conf:name>F-3-GW-Blank &#8211; a non-null fact should not exist. Security12bTitle(c) </conf:name>
+        <conf:description>F-3-GW-Blank &#8211; a non-null fact should not exist. Security12bTitle(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "F-3"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546103gw/g60546103gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546103gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546103gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546103gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546103gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="Security12bTitle" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_104gw">
+        <conf:name>F-3-GW-Blank &#8211; a non-null fact should not exist. SecurityExchangeName(c) </conf:name>
+        <conf:description>F-3-GW-Blank &#8211; a non-null fact should not exist. SecurityExchangeName(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "F-3"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546104gw/g60546104gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546104gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546104gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546104gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546104gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SecurityExchangeName" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_105gw">
+        <conf:name>F-3-GW-Blank &#8211; a non-null fact should not exist. NoTradingSymbolFlag(c) </conf:name>
+        <conf:description>F-3-GW-Blank &#8211; a non-null fact should not exist. NoTradingSymbolFlag(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "F-3"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546105gw/g60546105gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546105gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546105gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546105gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546105gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="NoTradingSymbolFlag" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_106gw">
+        <conf:name>F-3-GW-Blank &#8211; a non-null fact should not exist. TradingSymbol(c) </conf:name>
+        <conf:description>F-3-GW-Blank &#8211; a non-null fact should not exist. TradingSymbol(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "F-3"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546106gw/g60546106gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546106gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546106gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546106gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546106gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="TradingSymbol" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_107gw">
+        <conf:name>F-3-GW-Blank &#8211; a non-null fact should not exist. SecurityReportingObligation(c) </conf:name>
+        <conf:description>F-3-GW-Blank &#8211; a non-null fact should not exist. SecurityReportingObligation(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "F-3"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546107gw/g60546107gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546107gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546107gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546107gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546107gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SecurityReportingObligation" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_108gd">
+        <conf:name>F-4 GOOD </conf:name>
+        <conf:description>F-4 GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,    "submissionType" : "F-4"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546108gd/g60546108gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60546108gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546108gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546108gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546108gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_109gw">
+        <conf:name>F-4-GW-Blank &#8211; a non-null fact should not exist. Security12bTitle(c) </conf:name>
+        <conf:description>F-4-GW-Blank &#8211; a non-null fact should not exist. Security12bTitle(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "F-4"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546109gw/g60546109gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546109gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546109gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546109gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546109gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="Security12bTitle" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_110gw">
+        <conf:name>F-4-GW-Blank &#8211; a non-null fact should not exist. SecurityExchangeName(c) </conf:name>
+        <conf:description>F-4-GW-Blank &#8211; a non-null fact should not exist. SecurityExchangeName(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "F-4"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546110gw/g60546110gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546110gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546110gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546110gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546110gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SecurityExchangeName" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_111gw">
+        <conf:name>F-4-GW-Blank &#8211; a non-null fact should not exist. NoTradingSymbolFlag(c) </conf:name>
+        <conf:description>F-4-GW-Blank &#8211; a non-null fact should not exist. NoTradingSymbolFlag(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "F-4"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546111gw/g60546111gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546111gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546111gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546111gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546111gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="NoTradingSymbolFlag" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_112gw">
+        <conf:name>F-4-GW-Blank &#8211; a non-null fact should not exist. TradingSymbol(c) </conf:name>
+        <conf:description>F-4-GW-Blank &#8211; a non-null fact should not exist. TradingSymbol(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "F-4"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546112gw/g60546112gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546112gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546112gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546112gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546112gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="TradingSymbol" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_113gw">
+        <conf:name>F-4-GW-Blank &#8211; a non-null fact should not exist. SecurityReportingObligation(c) </conf:name>
+        <conf:description>F-4-GW-Blank &#8211; a non-null fact should not exist. SecurityReportingObligation(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "F-4"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546113gw/g60546113gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546113gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546113gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546113gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546113gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SecurityReportingObligation" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_114gd">
+        <conf:name>6-K GOOD </conf:name>
+        <conf:description>6-K GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "periodOfReport" : "12-31-2018",  "submissionType" : "6-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546114gd/g60546114gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60546114gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546114gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546114gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546114gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_115gw">
+        <conf:name>6-K-GW-Blank &#8211; a non-null fact should not exist. Security12bTitle(c) </conf:name>
+        <conf:description>6-K-GW-Blank &#8211; a non-null fact should not exist. Security12bTitle(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "periodOfReport" : "12-31-2018",  "submissionType" : "6-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546115gw/g60546115gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546115gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546115gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546115gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546115gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="Security12bTitle" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_116gw">
+        <conf:name>6-K-GW-Blank &#8211; a non-null fact should not exist. SecurityExchangeName(c) </conf:name>
+        <conf:description>6-K-GW-Blank &#8211; a non-null fact should not exist. SecurityExchangeName(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "periodOfReport" : "12-31-2018",  "submissionType" : "6-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546116gw/g60546116gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546116gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546116gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546116gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546116gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SecurityExchangeName" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_117gw">
+        <conf:name>6-K-GW-Blank &#8211; a non-null fact should not exist. NoTradingSymbolFlag(c) </conf:name>
+        <conf:description>6-K-GW-Blank &#8211; a non-null fact should not exist. NoTradingSymbolFlag(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "periodOfReport" : "12-31-2018",  "submissionType" : "6-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546117gw/g60546117gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546117gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546117gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546117gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546117gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="NoTradingSymbolFlag" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_118gw">
+        <conf:name>6-K-GW-Blank &#8211; a non-null fact should not exist. TradingSymbol(c) </conf:name>
+        <conf:description>6-K-GW-Blank &#8211; a non-null fact should not exist. TradingSymbol(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "periodOfReport" : "12-31-2018",  "submissionType" : "6-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546118gw/g60546118gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546118gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546118gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546118gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546118gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="TradingSymbol" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_119gw">
+        <conf:name>6-K-GW-Blank &#8211; a non-null fact should not exist. SecurityReportingObligation(c) </conf:name>
+        <conf:description>6-K-GW-Blank &#8211; a non-null fact should not exist. SecurityReportingObligation(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "periodOfReport" : "12-31-2018",  "submissionType" : "6-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546119gw/g60546119gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546119gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546119gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546119gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546119gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SecurityReportingObligation" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_120gd">
+        <conf:name>K-SDR GOOD </conf:name>
+        <conf:description>K-SDR GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "SDR"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546120gd/g60546120gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60546120gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546120gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546120gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546120gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_121gw">
+        <conf:name>K-SDR-GW-Blank &#8211; a non-null fact should not exist. Security12bTitle(c) </conf:name>
+        <conf:description>K-SDR-GW-Blank &#8211; a non-null fact should not exist. Security12bTitle(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "SDR"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546121gw/g60546121gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546121gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546121gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546121gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546121gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="Security12bTitle" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_122gw">
+        <conf:name>K-SDR-GW-Blank &#8211; a non-null fact should not exist. SecurityExchangeName(c) </conf:name>
+        <conf:description>K-SDR-GW-Blank &#8211; a non-null fact should not exist. SecurityExchangeName(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "SDR"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546122gw/g60546122gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546122gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546122gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546122gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546122gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SecurityExchangeName" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_123gw">
+        <conf:name>K-SDR-GW-Blank &#8211; a non-null fact should not exist. NoTradingSymbolFlag(c) </conf:name>
+        <conf:description>K-SDR-GW-Blank &#8211; a non-null fact should not exist. NoTradingSymbolFlag(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "SDR"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546123gw/g60546123gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546123gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546123gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546123gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546123gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="NoTradingSymbolFlag" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_124gw">
+        <conf:name>K-SDR-GW-Blank &#8211; a non-null fact should not exist. TradingSymbol(c) </conf:name>
+        <conf:description>K-SDR-GW-Blank &#8211; a non-null fact should not exist. TradingSymbol(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "SDR"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546124gw/g60546124gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546124gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546124gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546124gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546124gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="TradingSymbol" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_125gw">
+        <conf:name>K-SDR-GW-Blank &#8211; a non-null fact should not exist. SecurityReportingObligation(c) </conf:name>
+        <conf:description>K-SDR-GW-Blank &#8211; a non-null fact should not exist. SecurityReportingObligation(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "SDR"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546125gw/g60546125gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546125gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546125gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546125gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546125gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SecurityReportingObligation" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_126gd">
+        <conf:name>485APOS GOOD </conf:name>
+        <conf:description>485APOS GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "485APOS"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546126gd/g60546126gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60546126gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546126gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546126gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546126gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_127gw">
+        <conf:name>485APOS-GW-Blank &#8211; a non-null fact should not exist. Security12bTitle(c) </conf:name>
+        <conf:description>485APOS-GW-Blank &#8211; a non-null fact should not exist. Security12bTitle(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "485APOS"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546127gw/g60546127gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546127gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546127gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546127gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546127gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="Security12bTitle" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_128gw">
+        <conf:name>485APOS-GW-Blank &#8211; a non-null fact should not exist. SecurityExchangeName(c) </conf:name>
+        <conf:description>485APOS-GW-Blank &#8211; a non-null fact should not exist. SecurityExchangeName(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "485APOS"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546128gw/g60546128gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546128gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546128gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546128gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546128gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SecurityExchangeName" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_129gw">
+        <conf:name>485APOS-GW-Blank &#8211; a non-null fact should not exist. NoTradingSymbolFlag(c) </conf:name>
+        <conf:description>485APOS-GW-Blank &#8211; a non-null fact should not exist. NoTradingSymbolFlag(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "485APOS"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546129gw/g60546129gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546129gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546129gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546129gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546129gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="NoTradingSymbolFlag" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_130gw">
+        <conf:name>485APOS-GW-Blank &#8211; a non-null fact should not exist. SecurityReportingObligation(c) </conf:name>
+        <conf:description>485APOS-GW-Blank &#8211; a non-null fact should not exist. SecurityReportingObligation(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "485APOS"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546130gw/g60546130gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546130gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546130gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546130gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546130gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SecurityReportingObligation" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_131gd">
+        <conf:name>485BPOS GOOD </conf:name>
+        <conf:description>485BPOS GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "invCompanyType" : "N-1A",  "periodOfReport" : "12-31-2018",  "submissionType" : "485BPOS"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546131gd/g60546131gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60546131gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546131gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546131gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546131gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_132gw">
+        <conf:name>485BPOS-GW-Blank &#8211; a non-null fact should not exist. Security12bTitle(c) </conf:name>
+        <conf:description>485BPOS-GW-Blank &#8211; a non-null fact should not exist. Security12bTitle(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "invCompanyType" : "N-1A",  "periodOfReport" : "12-31-2018",  "submissionType" : "485BPOS"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546132gw/g60546132gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546132gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546132gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546132gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546132gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="Security12bTitle" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_133gw">
+        <conf:name>485BPOS-GW-Blank &#8211; a non-null fact should not exist. SecurityExchangeName(c) </conf:name>
+        <conf:description>485BPOS-GW-Blank &#8211; a non-null fact should not exist. SecurityExchangeName(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "invCompanyType" : "N-1A",  "periodOfReport" : "12-31-2018",  "submissionType" : "485BPOS"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546133gw/g60546133gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546133gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546133gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546133gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546133gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SecurityExchangeName" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_134gw">
+        <conf:name>485BPOS-GW-Blank &#8211; a non-null fact should not exist. NoTradingSymbolFlag(c) </conf:name>
+        <conf:description>485BPOS-GW-Blank &#8211; a non-null fact should not exist. NoTradingSymbolFlag(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "invCompanyType" : "N-1A",  "periodOfReport" : "12-31-2018",  "submissionType" : "485BPOS"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546134gw/g60546134gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546134gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546134gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546134gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546134gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="NoTradingSymbolFlag" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_135gw">
+        <conf:name>485BPOS-GW-Blank &#8211; a non-null fact should not exist. SecurityReportingObligation(c) </conf:name>
+        <conf:description>485BPOS-GW-Blank &#8211; a non-null fact should not exist. SecurityReportingObligation(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "invCompanyType" : "N-1A",  "periodOfReport" : "12-31-2018",  "submissionType" : "485BPOS"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546135gw/g60546135gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546135gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546135gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546135gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546135gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SecurityReportingObligation" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_136gd">
+        <conf:name>485BXT GOOD </conf:name>
+        <conf:description>485BXT GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "485BXT"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546136gd/g60546136gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60546136gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546136gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546136gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546136gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_137gw">
+        <conf:name>485BXT-GW-Blank &#8211; a non-null fact should not exist. Security12bTitle(c) </conf:name>
+        <conf:description>485BXT-GW-Blank &#8211; a non-null fact should not exist. Security12bTitle(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "485BXT"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546137gw/g60546137gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546137gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546137gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546137gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546137gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="Security12bTitle" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_138gw">
+        <conf:name>485BXT-GW-Blank &#8211; a non-null fact should not exist. SecurityExchangeName(c) </conf:name>
+        <conf:description>485BXT-GW-Blank &#8211; a non-null fact should not exist. SecurityExchangeName(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "485BXT"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546138gw/g60546138gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546138gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546138gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546138gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546138gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SecurityExchangeName" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_139gw">
+        <conf:name>485BXT-GW-Blank &#8211; a non-null fact should not exist. NoTradingSymbolFlag(c) </conf:name>
+        <conf:description>485BXT-GW-Blank &#8211; a non-null fact should not exist. NoTradingSymbolFlag(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "485BXT"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546139gw/g60546139gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546139gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546139gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546139gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546139gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="NoTradingSymbolFlag" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_140gw">
+        <conf:name>485BXT-GW-Blank &#8211; a non-null fact should not exist. SecurityReportingObligation(c) </conf:name>
+        <conf:description>485BXT-GW-Blank &#8211; a non-null fact should not exist. SecurityReportingObligation(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "485BXT"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546140gw/g60546140gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546140gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546140gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546140gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546140gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SecurityReportingObligation" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_141gd">
+        <conf:name>N-1A GOOD </conf:name>
+        <conf:description>N-1A GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "N-1A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546141gd/g60546141gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60546141gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546141gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546141gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546141gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_142gw">
+        <conf:name>N-1A-GW-Blank &#8211; a non-null fact should not exist. Security12bTitle(c) </conf:name>
+        <conf:description>N-1A-GW-Blank &#8211; a non-null fact should not exist. Security12bTitle(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "N-1A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546142gw/g60546142gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546142gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546142gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546142gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546142gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="Security12bTitle" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_143gw">
+        <conf:name>N-1A-GW-Blank &#8211; a non-null fact should not exist. SecurityExchangeName(c) </conf:name>
+        <conf:description>N-1A-GW-Blank &#8211; a non-null fact should not exist. SecurityExchangeName(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "N-1A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546143gw/g60546143gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546143gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546143gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546143gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546143gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SecurityExchangeName" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_144gw">
+        <conf:name>N-1A-GW-Blank &#8211; a non-null fact should not exist. NoTradingSymbolFlag(c) </conf:name>
+        <conf:description>N-1A-GW-Blank &#8211; a non-null fact should not exist. NoTradingSymbolFlag(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "N-1A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546144gw/g60546144gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546144gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546144gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546144gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546144gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="NoTradingSymbolFlag" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_145gw">
+        <conf:name>N-1A-GW-Blank &#8211; a non-null fact should not exist. SecurityReportingObligation(c) </conf:name>
+        <conf:description>N-1A-GW-Blank &#8211; a non-null fact should not exist. SecurityReportingObligation(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "N-1A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546145gw/g60546145gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546145gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546145gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546145gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546145gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SecurityReportingObligation" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_146gd">
+        <conf:name>SP 15D2 GOOD </conf:name>
+        <conf:description>SP 15D2 GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "SP 15D2"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546146gd/g60546146gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60546146gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546146gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546146gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546146gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_147gw">
+        <conf:name>SP 15D2-GW-Blank &#8211; a non-null fact should not exist. Security12bTitle(c) </conf:name>
+        <conf:description>SP 15D2-GW-Blank &#8211; a non-null fact should not exist. Security12bTitle(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "SP 15D2"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546147gw/g60546147gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546147gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546147gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546147gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546147gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="Security12bTitle" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_148gw">
+        <conf:name>SP 15D2-GW-Blank &#8211; a non-null fact should not exist. SecurityExchangeName(c) </conf:name>
+        <conf:description>SP 15D2-GW-Blank &#8211; a non-null fact should not exist. SecurityExchangeName(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "SP 15D2"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546148gw/g60546148gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546148gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546148gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546148gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546148gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SecurityExchangeName" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_149gw">
+        <conf:name>SP 15D2-GW-Blank &#8211; a non-null fact should not exist. NoTradingSymbolFlag(c) </conf:name>
+        <conf:description>SP 15D2-GW-Blank &#8211; a non-null fact should not exist. NoTradingSymbolFlag(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "SP 15D2"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546149gw/g60546149gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546149gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546149gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546149gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546149gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="NoTradingSymbolFlag" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_150gw">
+        <conf:name>SP 15D2-GW-Blank &#8211; a non-null fact should not exist. TradingSymbol(c) </conf:name>
+        <conf:description>SP 15D2-GW-Blank &#8211; a non-null fact should not exist. TradingSymbol(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "SP 15D2"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546150gw/g60546150gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546150gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546150gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546150gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546150gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="TradingSymbol" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_151gw">
+        <conf:name>SP 15D2-GW-Blank &#8211; a non-null fact should not exist. SecurityReportingObligation(c) </conf:name>
+        <conf:description>SP 15D2-GW-Blank &#8211; a non-null fact should not exist. SecurityReportingObligation(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "SP 15D2"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546151gw/g60546151gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546151gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546151gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546151gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546151gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SecurityReportingObligation" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_152gd">
+        <conf:name>POSASR GOOD </conf:name>
+        <conf:description>POSASR GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "POSASR"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546152gd/g60546152gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60546152gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546152gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546152gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546152gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_153gw">
+        <conf:name>POSASR-GW-Blank &#8211; a non-null fact should not exist. Security12bTitle(c) </conf:name>
+        <conf:description>POSASR-GW-Blank &#8211; a non-null fact should not exist. Security12bTitle(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "POSASR"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546153gw/g60546153gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546153gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546153gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546153gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546153gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="Security12bTitle" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_154gw">
+        <conf:name>POSASR-GW-Blank &#8211; a non-null fact should not exist. SecurityExchangeName(c) </conf:name>
+        <conf:description>POSASR-GW-Blank &#8211; a non-null fact should not exist. SecurityExchangeName(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "POSASR"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546154gw/g60546154gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546154gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546154gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546154gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546154gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SecurityExchangeName" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_155gw">
+        <conf:name>POSASR-GW-Blank &#8211; a non-null fact should not exist. NoTradingSymbolFlag(c) </conf:name>
+        <conf:description>POSASR-GW-Blank &#8211; a non-null fact should not exist. NoTradingSymbolFlag(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "POSASR"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546155gw/g60546155gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546155gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546155gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546155gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546155gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="NoTradingSymbolFlag" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_156gw">
+        <conf:name>POSASR-GW-Blank &#8211; a non-null fact should not exist. TradingSymbol(c) </conf:name>
+        <conf:description>POSASR-GW-Blank &#8211; a non-null fact should not exist. TradingSymbol(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "POSASR"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546156gw/g60546156gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546156gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546156gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546156gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546156gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="TradingSymbol" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_157gw">
+        <conf:name>POSASR-GW-Blank &#8211; a non-null fact should not exist. SecurityReportingObligation(c) </conf:name>
+        <conf:description>POSASR-GW-Blank &#8211; a non-null fact should not exist. SecurityReportingObligation(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "POSASR"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60546157gw/g60546157gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60546157gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60546157gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60546157gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60546157gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SecurityReportingObligation" num="60546" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+</conf:testcase>

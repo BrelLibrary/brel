@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xbrl
+  xmlns="http://www.xbrl.org/2003/instance"
+  xmlns:dei="http://xbrl.sec.gov/dei/2018-01-31"
+  xmlns:i01200gd="http://i01200gd/20081231"
+  xmlns:iso4217="http://www.xbrl.org/2003/iso4217"
+  xmlns:link="http://www.xbrl.org/2003/linkbase"
+  xmlns:us-gaap="http://fasb.org/us-gaap/2019-01-31"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+    <link:schemaRef xlink:href="i01200gd-20081231.xsd" xlink:type="simple"/>
+    <context id="d">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+        </entity>
+        <period>
+            <startDate>2008-04-01</startDate>
+            <endDate>2008-12-31</endDate>
+        </period>
+    </context>
+    <context id="dForYears">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+        </entity>
+        <period>
+            <startDate>2010-04-01</startDate>
+            <endDate>2010-12-31</endDate>
+        </period>
+    </context>
+    <context id="dForMonths">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+        </entity>
+        <period>
+            <startDate>2011-04-01</startDate>
+            <endDate>2011-12-31</endDate>
+        </period>
+    </context>
+    <context id="dForWeeks">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+        </entity>
+        <period>
+            <startDate>2012-04-01</startDate>
+            <endDate>2012-12-31</endDate>
+        </period>
+    </context>
+    <context id="dForDays">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+        </entity>
+        <period>
+            <startDate>2013-04-01</startDate>
+            <endDate>2013-12-31</endDate>
+        </period>
+    </context>
+    <context id="dForHours">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+        </entity>
+        <period>
+            <startDate>2014-04-01</startDate>
+            <endDate>2014-12-31</endDate>
+        </period>
+    </context>
+    <context id="i">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+        </entity>
+        <period>
+            <instant>2008-12-31</instant>
+        </period>
+    </context>
+    <unit id="shares">
+        <measure>shares</measure>
+    </unit>
+    <unit id="iso4217_USD_per_Share">
+        <divide>
+            <unitNumerator>
+                <measure>iso4217:USD</measure>
+            </unitNumerator>
+            <unitDenominator>
+                <measure>shares</measure>
+            </unitDenominator>
+        </divide>
+    </unit>
+    <dei:AmendmentFlag contextRef="d">false</dei:AmendmentFlag>
+    <dei:DocumentPeriodEndDate contextRef="d">2008-12-31</dei:DocumentPeriodEndDate>
+    <dei:DocumentFiscalPeriodFocus contextRef="d">Q3</dei:DocumentFiscalPeriodFocus>
+    <dei:EntityCentralIndexKey contextRef="d">9876543210</dei:EntityCentralIndexKey>
+    <dei:CurrentFiscalYearEndDate contextRef="d">--03-31</dei:CurrentFiscalYearEndDate>
+    <dei:EntityEmergingGrowthCompany contextRef="d">false</dei:EntityEmergingGrowthCompany>
+    <dei:DocumentType contextRef="d">8-K</dei:DocumentType>
+    <dei:DocumentFiscalYearFocus contextRef="d">2008</dei:DocumentFiscalYearFocus>
+    <dei:EntityRegistrantName contextRef="d">OSD TEST CO #1 i01200gd</dei:EntityRegistrantName>
+    <i01200gd:ParValuePerShare
+      contextRef="d"
+      decimals="INF"
+      unitRef="iso4217_USD_per_Share">1.00</i01200gd:ParValuePerShare>
+    <dei:EntityCommonStockSharesOutstanding contextRef="i" decimals="INF" unitRef="shares">154357198</dei:EntityCommonStockSharesOutstanding>
+    <us-gaap:AcquiredFiniteLivedIntangibleAssetsWeightedAverageUsefulLife contextRef="dForHours">PT1H</us-gaap:AcquiredFiniteLivedIntangibleAssetsWeightedAverageUsefulLife>
+    <us-gaap:AcquiredFiniteLivedIntangibleAssetsWeightedAverageUsefulLife contextRef="dForDays">P1DT2H</us-gaap:AcquiredFiniteLivedIntangibleAssetsWeightedAverageUsefulLife>
+    <us-gaap:AcquiredFiniteLivedIntangibleAssetsWeightedAverageUsefulLife contextRef="dForWeeks">P7D</us-gaap:AcquiredFiniteLivedIntangibleAssetsWeightedAverageUsefulLife>
+    <us-gaap:AcquiredFiniteLivedIntangibleAssetsWeightedAverageUsefulLife contextRef="dForMonths">P1M3D</us-gaap:AcquiredFiniteLivedIntangibleAssetsWeightedAverageUsefulLife>
+    <us-gaap:AcquiredFiniteLivedIntangibleAssetsWeightedAverageUsefulLife contextRef="dForYears">P1Y1M6D</us-gaap:AcquiredFiniteLivedIntangibleAssetsWeightedAverageUsefulLife>
+    <us-gaap:EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognizedPeriodForRecognition1 contextRef="dForHours">PT22H</us-gaap:EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognizedPeriodForRecognition1>
+    <us-gaap:EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognizedPeriodForRecognition1 contextRef="dForDays">P22D</us-gaap:EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognizedPeriodForRecognition1>
+    <us-gaap:EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognizedPeriodForRecognition1 contextRef="dForWeeks">P154D</us-gaap:EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognizedPeriodForRecognition1>
+    <us-gaap:EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognizedPeriodForRecognition1 contextRef="dForMonths">P22M</us-gaap:EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognizedPeriodForRecognition1>
+    <us-gaap:EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognizedPeriodForRecognition1 contextRef="dForYears">P22Y</us-gaap:EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognizedPeriodForRecognition1>
+    <us-gaap:FiscalPeriodDuration contextRef="dForHours">PT33H</us-gaap:FiscalPeriodDuration>
+    <us-gaap:FiscalPeriodDuration contextRef="dForDays">P33D</us-gaap:FiscalPeriodDuration>
+    <us-gaap:FiscalPeriodDuration contextRef="dForWeeks">P231D</us-gaap:FiscalPeriodDuration>
+    <us-gaap:FiscalPeriodDuration contextRef="dForMonths">P33M</us-gaap:FiscalPeriodDuration>
+    <us-gaap:FiscalPeriodDuration contextRef="dForYears">P33Y</us-gaap:FiscalPeriodDuration>
+    <us-gaap:SharebasedCompensationArrangementBySharebasedPaymentAwardOptionsOutstandingWeightedAverageRemainingContractualTerm2 contextRef="dForHours">PT44H</us-gaap:SharebasedCompensationArrangementBySharebasedPaymentAwardOptionsOutstandingWeightedAverageRemainingContractualTerm2>
+    <us-gaap:SharebasedCompensationArrangementBySharebasedPaymentAwardOptionsOutstandingWeightedAverageRemainingContractualTerm2 contextRef="dForDays">P44D</us-gaap:SharebasedCompensationArrangementBySharebasedPaymentAwardOptionsOutstandingWeightedAverageRemainingContractualTerm2>
+    <us-gaap:SharebasedCompensationArrangementBySharebasedPaymentAwardOptionsOutstandingWeightedAverageRemainingContractualTerm2 contextRef="dForWeeks">P308D</us-gaap:SharebasedCompensationArrangementBySharebasedPaymentAwardOptionsOutstandingWeightedAverageRemainingContractualTerm2>
+    <us-gaap:SharebasedCompensationArrangementBySharebasedPaymentAwardOptionsOutstandingWeightedAverageRemainingContractualTerm2 contextRef="dForMonths">P44M</us-gaap:SharebasedCompensationArrangementBySharebasedPaymentAwardOptionsOutstandingWeightedAverageRemainingContractualTerm2>
+    <us-gaap:SharebasedCompensationArrangementBySharebasedPaymentAwardOptionsOutstandingWeightedAverageRemainingContractualTerm2 contextRef="dForYears">P44Y</us-gaap:SharebasedCompensationArrangementBySharebasedPaymentAwardOptionsOutstandingWeightedAverageRemainingContractualTerm2>
+    <us-gaap:SharebasedCompensationArrangementBySharebasedPaymentAwardOptionsVestedAndExpectedToVestOutstandingWeightedAverageRemainingContractualTerm1 contextRef="dForHours">PT55H</us-gaap:SharebasedCompensationArrangementBySharebasedPaymentAwardOptionsVestedAndExpectedToVestOutstandingWeightedAverageRemainingContractualTerm1>
+    <us-gaap:SharebasedCompensationArrangementBySharebasedPaymentAwardOptionsVestedAndExpectedToVestOutstandingWeightedAverageRemainingContractualTerm1 contextRef="dForDays">P55D</us-gaap:SharebasedCompensationArrangementBySharebasedPaymentAwardOptionsVestedAndExpectedToVestOutstandingWeightedAverageRemainingContractualTerm1>
+    <us-gaap:SharebasedCompensationArrangementBySharebasedPaymentAwardOptionsVestedAndExpectedToVestOutstandingWeightedAverageRemainingContractualTerm1 contextRef="dForWeeks">P385D</us-gaap:SharebasedCompensationArrangementBySharebasedPaymentAwardOptionsVestedAndExpectedToVestOutstandingWeightedAverageRemainingContractualTerm1>
+    <us-gaap:SharebasedCompensationArrangementBySharebasedPaymentAwardOptionsVestedAndExpectedToVestOutstandingWeightedAverageRemainingContractualTerm1 contextRef="dForMonths">P55M</us-gaap:SharebasedCompensationArrangementBySharebasedPaymentAwardOptionsVestedAndExpectedToVestOutstandingWeightedAverageRemainingContractualTerm1>
+    <us-gaap:SharebasedCompensationArrangementBySharebasedPaymentAwardOptionsVestedAndExpectedToVestOutstandingWeightedAverageRemainingContractualTerm1 contextRef="dForYears">P55Y</us-gaap:SharebasedCompensationArrangementBySharebasedPaymentAwardOptionsVestedAndExpectedToVestOutstandingWeightedAverageRemainingContractualTerm1>
+    <us-gaap:ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingPeriod1 contextRef="dForHours">PT6H</us-gaap:ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingPeriod1>
+    <us-gaap:ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingPeriod1 contextRef="dForDays">P6DT14H</us-gaap:ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingPeriod1>
+    <us-gaap:ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingPeriod1 contextRef="dForWeeks">P46D</us-gaap:ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingPeriod1>
+    <us-gaap:ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingPeriod1 contextRef="dForMonths">P6M18D</us-gaap:ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingPeriod1>
+    <us-gaap:ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingPeriod1 contextRef="dForYears">P6Y7M6D</us-gaap:ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingPeriod1>
+</xbrl>

@@ -1,0 +1,237 @@
+<html xmlns:case="http://edgar/2009/conformance">
+  <head>
+    <title>605-42
+        :
+        EDGAR Filer Manual v68d 6.5.42</title>
+    <style type="text/css">
+        table, td, th {border: solid black 1pt; border-collapse: collapse;} td {vertical-align: top;}
+      </style>
+  </head>
+  <body>
+    <h1>605-42
+        :
+        EDGAR Filer Manual v68d 6.5.42</h1>
+    <p>
+        Created by: 
+        <a href="mailto:StructuredData@sec.gov">SEC Office of Structured Disclosure</a></p>
+    <p>
+      <conf:description xmlns:conf="http://edgar/2009/conformance" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <h2>Instances should not use elements declared "deprecated" in any standard namespace.</h2>
+        <p> Each time the edgartaxonomies.xml file is updated with allowed versions of standard namespaces (see 6.22) newer namespaces are normally accompanied with a list of elements from earlier versions that have been deprecated. Subsequent submissions should no longer use the deprecated elements. </p>
+        <p> For example, suppose element Xyz exists in us-gaap 2018 and is used in a submission that is accepted in February 2019. The new us-gaap 2019 taxonomy then deprecates element Xyz. Subsequently, on March 1st, 2019, us gaap 2019 is added to the standard taxonomies. Subsequently, the submission previously using Xyz will still be accepted but with an XBRL warning. </p>
+    </conf:description>
+    </p>
+    <h2>
+        Variations
+      </h2>
+    <table border="solid">
+      <thead>
+        <tr>
+          <th>Number</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>References</th>
+          <th>Data Inputs</th>
+          <th>Result Outputs</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>_000gd</td>
+          <td>8-K,  GOOD</td>
+          <td>8-K, GOOD</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td>string</td>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"submissionType" : "8-K"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60542000gd/e60542000gd-20081231.htm">e60542000gd/e60542000gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e60542000gd/edgar-20181231.xsd">e60542000gd/edgar-20181231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_001gd</td>
+          <td>10-Q, GOOD</td>
+          <td>10-Q, GOOD</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"submissionType": "10-Q"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60542001gd/e60542001gd-20220630.htm">e60542001gd/e60542001gd-20220630.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e60542001gd/cef05-20220630.xsd">e60542001gd/cef05-20220630.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_003gw</td>
+          <td>8-K, uses deprecated cef:LatestNav,  GW</td>
+          <td>8-K, uses deprecated cef:LatestNav, GW</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td>string</td>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"submissionType" : "8-K"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60542003gw/e60542003gw-20081231.htm">e60542003gw/e60542003gw-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e60542003gw/edgar-20181231.xsd">e60542003gw/edgar-20181231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  wrn, 60542, <a href="../../../../lib/xbrlwarnings.htm#dq-0542-Deprecated-Concept">Deprecated-Concept</a></td></tr><tr><td>FRD:</td><td>dq</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_005gw</td>
+          <td>8-K, uses deprecated cef:LatestSharePrice,  GW</td>
+          <td>8-K, uses deprecated cef:LatestNav, GW</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td>string</td>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"submissionType" : "8-K"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60542005gw/e60542005gw-20081231.htm">e60542005gw/e60542005gw-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e60542005gw/edgar-20181231.xsd">e60542005gw/edgar-20181231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  wrn, 60542, <a href="../../../../lib/xbrlwarnings.htm#dq-0542-Deprecated-Concept">Deprecated-Concept</a></td></tr><tr><td>FRD:</td><td>dq</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_006gw</td>
+          <td>10-Q, uses deprecated exch:BULK GW </td>
+          <td>10-Q, uses deprecated exch:BULK GW</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"submissionType" : "10-Q"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e60542006gw/e60542006gw-20081231.htm">e60542006gw/e60542006gw-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="e60542006gw/edgar-20181231.xsd">e60542006gw/edgar-20181231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  wrn, 60542, <a href="../../../../lib/xbrlwarnings.htm#dq-0542-Deprecated-Concept">Deprecated-Concept</a></td></tr><tr><td>FRD:</td><td>dq</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

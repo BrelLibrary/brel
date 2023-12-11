@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../../lib/test.xsl"?>
+<conf:testcase xmlns:conf="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../../lib/test.xsd">
+    <conf:creator>
+        <conf:name>SEC Office of Structured Disclosure</conf:name>
+        <conf:email>StructuredData@sec.gov</conf:email>
+    </conf:creator>
+    <conf:number>624-15</conf:number>
+    <conf:name>EDGAR Filer Manual v68d 6.24.15</conf:name>
+    <conf:description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.24.15  Statements of Changes in Shareholder Equity">Refer to EFM: 6.24.15  Statements of Changes in Shareholder Equity</a>
+    </conf:description>
+    <conf:reference specification="18153"></conf:reference>
+    <!--<conf:variation id="_001gw">
+<conf:name>Statements Shareholder Equity, US-GAAP, GOOD</conf:name>
+<conf:description>Statements Shareholder Equity, US-GAAP</conf:description>
+<conf:reference specification="18153" />
+<conf:data>
+<conf:parameter name="ELOparams" value='{"periodOfReport": "06-30-2010", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'
+xmlns=""
+xmlns:conf="http://edgar/2009/conformance" />
+<conf:instance readMeFirst="true">001gw/r15001gw-20081231.xml</conf:instance>
+<conf:linkbase>001gw/r15001gw-20081231_pre.xml</conf:linkbase>
+<conf:linkbase>001gw/r15001gw-20081231_lab.xml</conf:linkbase>
+<conf:linkbase>001gw/r15001gw-20081231_def.xml</conf:linkbase>
+<conf:linkbase>001gw/r15001gw-20081231_cal.xml</conf:linkbase>
+<conf:schema>001gw/r15001gw-20081231.xsd</conf:schema>
+</conf:data>
+<conf:result>
+<conf:assert severity="wrn" num="60542" name="Deprecated-Concept" frd="dq" />
+</conf:result>
+</conf:variation>-->
+</conf:testcase>

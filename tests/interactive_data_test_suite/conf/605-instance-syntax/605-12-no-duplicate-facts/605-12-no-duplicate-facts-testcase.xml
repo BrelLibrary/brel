@@ -1,0 +1,307 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>605-12</number>
+    <name>EDGAR Filer Manual v68d 6.5.12</name>
+    <description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.5.12  Fact duplication">Refer to EFM: 6.5.12  Fact duplication</a>
+    </description>
+    <reference specification="10491.4.1"></reference>
+    <reference specification="10491.5.1"></reference>
+    <reference specification="11072"></reference>
+    <reference specification="11084"></reference>
+    <reference specification="17105"></reference>
+    <variation id="_000gd">
+        <name>6.5.12 Simple instance, GOOD</name>
+        <description>Simple instance with no duplicate facts.</description>
+        <reference specification="10491.4.1"></reference>
+        <reference specification="10491.5.1"></reference>
+        <reference specification="11072"></reference>
+        <reference specification="11084"></reference>
+        <reference specification="17105"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "submissionType" : "10-K", "emergingGrowthCompanyFlag" : false }'></parameter>
+            <instance readMeFirst="true">e60512000gd-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_001gd">
+        <name>6.5.12 8-K w/Two non-numeric facts, different languages, GOOD.</name>
+        <description>An instance with two facts differing by xml:lang value.</description>
+        <reference specification="11072"></reference>
+        <reference specification="11084"></reference>
+        <reference specification="17105"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "submissionType" : "8-K", "emergingGrowthCompanyFlag" : false }'></parameter>
+            <instance readMeFirst="true">e60512001gd-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_002ng">
+        <name>6.5.12 10-K w/Two Numeric Facts Attributes Equal not value equal, NOGOOD</name>
+        <description>An instance with two numeric facts with decimals=INF whose values are not v=.</description>
+        <reference specification="10491.4.1"></reference>
+        <reference specification="11072"></reference>
+        <reference specification="11084"></reference>
+        <reference specification="17105"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "submissionType" : "10-K", "emergingGrowthCompanyFlag" : false }'></parameter>
+            <instance readMeFirst="true">e60512002ng-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60512" name="Duplicate-Facts" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_003ng">
+        <name>6.5.12 10-K w/Three Numeric Facts with Attributes Equal but different values, NOGOOD</name>
+        <description>An instance with three numeric facts of decimals=INF whose values are different, NOGOOD.</description>
+        <reference specification="10491.5.1"></reference>
+        <reference specification="11072"></reference>
+        <reference specification="11084"></reference>
+        <reference specification="17105"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "submissionType" : "10-K", "emergingGrowthCompanyFlag" : false }'></parameter>
+            <instance readMeFirst="true">e60512003ng-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60512" name="Duplicate-Facts" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_005ng">
+        <name>6.5.12 8-K w/Five Text Blocks with different values, NOGOOD</name>
+        <description> An instance with five text blocks, all different. </description>
+        <reference specification="10491.5.1"></reference>
+        <reference specification="11072"></reference>
+        <reference specification="11084"></reference>
+        <reference specification="17105"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "submissionType" : "8-K", "emergingGrowthCompanyFlag" : false }'></parameter>
+            <instance readMeFirst="true">e60512005ng-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60512" name="Duplicate-Facts" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_007gd">
+        <name>6.5.12 10-K w/Two Numeric Facts with different Units, GOOD</name>
+        <description> Two Numeric Facts with different Units, GOOD</description>
+        <reference specification="10491.4.1"></reference>
+        <reference specification="10491.5.1"></reference>
+        <reference specification="11072"></reference>
+        <reference specification="11084"></reference>
+        <reference specification="17105"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "submissionType" : "10-K", "emergingGrowthCompanyFlag" : false }'></parameter>
+            <instance readMeFirst="true">e60512007gd-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_008ng">
+        <name>6.5.12 10-K w/Two Numeric Facts, one nil the other not, NOGOOD</name>
+        <description>Two Numeric Facts, one nil the other not, NOGOOD</description>
+        <reference specification="10491.5.1"></reference>
+        <reference specification="11072"></reference>
+        <reference specification="11084"></reference>
+        <reference specification="17105"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "submissionType" : "10-K", "emergingGrowthCompanyFlag" : false }'></parameter>
+            <instance readMeFirst="true">e60512008ng-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60512" name="Duplicate-Facts" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_009gd">
+        <name>6.5.12 10-K w/Numeric with different values of the decimals attribute resulting in equal effective values, GOOD</name>
+        <description> An instance with three pairs of numeric facts where the effective values are equal.</description>
+        <reference specification="10491.5.1"></reference>
+        <reference specification="11072"></reference>
+        <reference specification="11084"></reference>
+        <reference specification="17105"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "submissionType" : "10-K", "emergingGrowthCompanyFlag" : false }'></parameter>
+            <instance readMeFirst="true">e60512009gd-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_010gd">
+        <name>6.5.12 10-K w/Six Numeric Facts with varying lexical representations, NOGOOD</name>
+        <description> An instance with six numeric facts, same element, unit and context but other attributes differ.</description>
+        <reference specification="10491.4.1"></reference>
+        <reference specification="10491.5.1"></reference>
+        <reference specification="11072"></reference>
+        <reference specification="11084"></reference>
+        <reference specification="17105"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "submissionType" : "10-K", "emergingGrowthCompanyFlag" : false }'></parameter>
+            <instance readMeFirst="true">e60512010gd-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_011gd">
+        <name>6.5.12 8-K w/Five duplicated lexical representations of non numeric facts that are equal, GOOD</name>
+        <description>Types are: QName duration dateTime time date normalizedString. Whether 24:00:00 = 00:00:00 is left ambiguous.</description>
+        <reference specification="10491.4.1"></reference>
+        <reference specification="10491.5.1"></reference>
+        <reference specification="11072"></reference>
+        <reference specification="11084"></reference>
+        <reference specification="17105"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "submissionType" : "8-K", "emergingGrowthCompanyFlag" : false }'></parameter>
+            <instance readMeFirst="true">e60512011gd-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_012gd">
+        <name>6.5.12 10-K w/Three numeric facts that are consistent when rounding half to even, GOOD</name>
+        <description>Three numeric facts that are consistent when rounding half to even, GOOD</description>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "submissionType" : "10-K", "emergingGrowthCompanyFlag" : false }'></parameter>
+            <instance readMeFirst="true">e60512012gd-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_013gd">
+        <name>6.5.12 10-K w/Three numeric facts that are consistent when rounding half away from zero, GOOD</name>
+        <description>Three numeric facts now consistent that would have been inconsistent in previous releases, GOOD</description>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "submissionType" : "10-K", "emergingGrowthCompanyFlag" : false }'></parameter>
+            <instance readMeFirst="true">e60512013gd-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_014gd">
+        <name>6.5.12 10-K w/Numeric facts all have same @decimals, Three numeric facts exactly same numeric value - consistent, GOOD</name>
+        <description>Numeric facts all have same @decimals, Three numeric facts exactly same numeric value - consistent, GOOD</description>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "submissionType" : "10-K", "emergingGrowthCompanyFlag" : false }'></parameter>
+            <instance readMeFirst="true">e60512014gd-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_015ng">
+        <name>6.5.12 10-K w/Numeric facts all have same @decimals, three facts - unequal numeric value, NOGOOD</name>
+        <description>Numeric facts all have same @decimals, three facts - unequal numeric value, NOGOOD</description>
+        <reference specification="10491.5.1"></reference>
+        <reference specification="11072"></reference>
+        <reference specification="11084"></reference>
+        <reference specification="17105"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "submissionType" : "10-K", "emergingGrowthCompanyFlag" : false }'></parameter>
+            <instance readMeFirst="true">e60512015ng-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60512" name="Duplicate-Facts" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_016gd">
+        <name>6.5.12 8-K w/Numeric facts, all are nil, GOOD</name>
+        <description>Numeric facts, all are nil, GOOD</description>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "submissionType" : "8-K", "emergingGrowthCompanyFlag" : false }'></parameter>
+            <instance readMeFirst="true">e60512016gd-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_017ng">
+        <name>6.5.12 10-K w/Numeric facts, mixture of nil and not nil, NOGOOD</name>
+        <description>Numeric facts, mixture of nil and not nil - variation on 008ng, NOGOOD</description>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "submissionType" : "10-K", "emergingGrowthCompanyFlag" : false }'></parameter>
+            <instance readMeFirst="true">e60512017ng-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60512" name="Duplicate-Facts" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_018ng">
+        <name>6.5.12 8-K w/Numeric float item type facts, both NaN, NOGOOD</name>
+        <description>Numeric float item type facts, both NaN, NOGOOD</description>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "submissionType" : "8-K", "emergingGrowthCompanyFlag" : false }'></parameter>
+            <instance readMeFirst="true">e60512018ng-20111231.xml</instance>
+            <linkbase>e60512018ng-20111231_pre.xml</linkbase>
+            <linkbase>e60512018ng-20111231_lab.xml</linkbase>
+            <schema>e60512018ng-20111231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60512" name="Duplicate-Facts" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_019gd">
+        <name>6.5.12 8-K w/Numeric float item type facts, both +INF, GOOD</name>
+        <description>Numeric float item type facts, both +INF, GOOD</description>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "submissionType" : "8-K", "emergingGrowthCompanyFlag" : false }'></parameter>
+            <instance readMeFirst="true">e60512019gd-20111231.xml</instance>
+            <linkbase>e60512019gd-20111231_pre.xml</linkbase>
+            <linkbase>e60512019gd-20111231_lab.xml</linkbase>
+            <schema>e60512019gd-20111231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_020gd">
+        <name>6.5.12 8-K w/Numeric float item type facts, both -INF, GOOD</name>
+        <description>Numeric float item type facts, both -INF, GOOD</description>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "submissionType" : "8-K", "emergingGrowthCompanyFlag" : false }'></parameter>
+            <instance readMeFirst="true">e60512020gd-20111231.xml</instance>
+            <linkbase>e60512020gd-20111231_pre.xml</linkbase>
+            <linkbase>e60512020gd-20111231_lab.xml</linkbase>
+            <schema>e60512020gd-20111231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+</testcase>

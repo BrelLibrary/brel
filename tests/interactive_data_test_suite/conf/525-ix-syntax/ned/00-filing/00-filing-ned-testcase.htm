@@ -1,0 +1,353 @@
+<html xmlns:case="http://edgar/2009/conformance">
+  <head>
+    <title>525-00
+        :
+        Inline XBRL Test Suite v68d : Self-Closing Tag Inline Tests NED (Not EDGAR Dependent)</title>
+    <style type="text/css">
+        table, td, th {border: solid black 1pt; border-collapse: collapse;} td {vertical-align: top;}
+      </style>
+  </head>
+  <body>
+    <h1>525-00
+        :
+        Inline XBRL Test Suite v68d : Self-Closing Tag Inline Tests NED (Not EDGAR Dependent)</h1>
+    <p>
+        Created by: 
+        <a href="mailto:StructuredData@sec.gov">SEC Office of Structured Disclosure</a></p>
+    <p>
+      <description xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <h2>"Good" (gd) and "good with warning" (gw) inline xbrl variations.</h2>
+        <p>The warning is issued for any self-closing tag unless: (1) its content model disallows children, or (2) it cannot appear in a schema-valid inline XBRL document followed by a text node.</p>
+        <p>Elements in category (1) are &lt;ix:relationship/&gt;, &lt;link:schemaRef/&gt;, &lt;link:linkbaseRef/&gt;, &lt;link:roleRef/&gt;, &lt;link:arcroleRef/&gt;, and in the xhtml namespace, &lt;area&gt;, &lt;base&gt;, &lt;basefont&gt;, &lt;br&gt;, &lt;col&gt;, &lt;hr&gt;, &lt;img&gt;, &lt;input&gt;, &lt;isindex&gt;, &lt;meta&gt;, &lt;param&gt;, and &lt;img&gt;.</p>
+        <p>Elements in category (2) are &lt;td&gt;, &lt;tr&gt;, &lt;thead&gt;, &lt;tbody&gt;, and &lt;tfoot&gt;.</p>
+        <p>Therefore, among the elements that will generate warnings when they appear self-closed are &lt;ix:continuation/&gt;, &lt;ix:nonNumeric/&gt;, &lt;ix:footnote/&gt;, &lt;ix:nonFraction/&gt;, and in the xhtml namespace &lt;div/&gt;, &lt;p/&gt;, &lt;span/&gt;, &lt;font/&gt;, &lt;b/&gt;, &lt;i/&gt;, &lt;u/&gt;, &lt;ol/&gt;, &lt;ul/&gt;, &lt;li/&gt;, &lt;h1/&gt;, &lt;h2/&gt;, &lt;h3/&gt;, &lt;h4/&gt;, &lt;h5/&gt;, &lt;h6/&gt;, &lt;caption/&gt;, and others.</p>
+    </description>
+    </p>
+    <h2>
+        Variations
+      </h2>
+    <table border="solid">
+      <thead>
+        <tr>
+          <th>Number</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>References</th>
+          <th>Data Inputs</th>
+          <th>Result Outputs</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>_201gd</td>
+          <td>nonFraction non-self closing test example, GOOD</td>
+          <td>nonFraction non-self closing test example, GOOD </td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i00201gd/i00201gd-20081231.htm">i00201gd/i00201gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i00201gd/i00201gd-20081231_pre.xml">i00201gd/i00201gd-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i00201gd/i00201gd-20081231_lab.xml">i00201gd/i00201gd-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i00201gd/i00201gd-20081231.xsd">i00201gd/i00201gd-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_301gw</td>
+          <td>nonFraction self-closing, WARN</td>
+          <td>nonFraction self-closing, WARN</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i00301gw/i00301gw-20081231.htm">i00301gw/i00301gw-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i00301gw/i00301gw-20081231_pre.xml">i00301gw/i00301gw-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i00301gw/i00301gw-20081231_lab.xml">i00301gw/i00301gw-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i00301gw/i00301gw-20081231.xsd">i00301gw/i00301gw-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  wrn, 99999, <a href="../../../../lib/xbrlwarnings.htm#ix-9999-ixbrl:selfClosedTagWarning">ixbrl:selfClosedTagWarning</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_302gw</td>
+          <td>span self-closing, WARN</td>
+          <td>span self-closing, WARN</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i00302gw/i00302gw-20081231.htm">i00302gw/i00302gw-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i00302gw/i00302gw-20081231_pre.xml">i00302gw/i00302gw-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i00302gw/i00302gw-20081231_lab.xml">i00302gw/i00302gw-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i00302gw/i00302gw-20081231.xsd">i00302gw/i00302gw-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  wrn, 99999, <a href="../../../../lib/xbrlwarnings.htm#ix-9999-ixbrl:selfClosedTagWarning">ixbrl:selfClosedTagWarning</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_303gw</td>
+          <td>continuation self-closing, GOOD with Warning</td>
+          <td>continuation self-closing, GOOD with Warning </td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i00303gw/i00303gw-20081231.htm">i00303gw/i00303gw-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i00303gw/i00303gw-20081231_pre.xml">i00303gw/i00303gw-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i00303gw/i00303gw-20081231_lab.xml">i00303gw/i00303gw-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i00303gw/i00303gw-20081231.xsd">i00303gw/i00303gw-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  wrn, 99999, <a href="../../../../lib/xbrlwarnings.htm#ix-9999-ixbrl:selfClosedTagWarning">ixbrl:selfClosedTagWarning</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_304gw</td>
+          <td>nonNumeric self-closing, GOOD with Warning</td>
+          <td>nonNumeric self-closing, GOOD with Warning </td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i00304gw/i00304gw-20081231.htm">i00304gw/i00304gw-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i00304gw/i00304gw-20081231_pre.xml">i00304gw/i00304gw-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i00304gw/i00304gw-20081231_lab.xml">i00304gw/i00304gw-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i00304gw/i00304gw-20081231.xsd">i00304gw/i00304gw-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  wrn, 99999, <a href="../../../../lib/xbrlwarnings.htm#ix-9999-ixbrl:selfClosedTagWarning">ixbrl:selfClosedTagWarning</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_305gw</td>
+          <td>exclude self-closing, GOOD with Warning</td>
+          <td>exclude self-closing, GOOD with Warning </td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i00305gw/i00305gw-20081231.htm">i00305gw/i00305gw-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i00305gw/i00305gw-20081231_pre.xml">i00305gw/i00305gw-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i00305gw/i00305gw-20081231_lab.xml">i00305gw/i00305gw-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i00305gw/i00305gw-20081231.xsd">i00305gw/i00305gw-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  wrn, 99999, <a href="../../../../lib/xbrlwarnings.htm#ix-9999-ixbrl:selfClosedTagWarning">ixbrl:selfClosedTagWarning</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_306ng</td>
+          <td>xml declaration is  preceded by blank, NOGOOD</td>
+          <td>xml declaration is  preceded by blank, NOGOOD</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"submissionType":"8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i00306ng/e00fil001ng-20081231.htm">i00306ng/e00fil001ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Schema
+    <a href="i00306ng/e00fil001ng-20081231.xsd">i00306ng/e00fil001ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#tbd-9999-xmlSyntax:xmlDeclarationError">xmlSyntax:xmlDeclarationError</a></td></tr><tr><td>FRD:</td><td>tbd</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

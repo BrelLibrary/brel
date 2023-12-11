@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sec.gov/edgar/document/sdr/exhibiti" xmlns:mstns="http://www.sec.gov/edgar/document/sdr/exhibiti" xmlns:ns1="http://www.sec.gov/edgar/common" xmlns:ns2="http://www.sec.gov/edgar/sdrcommon" targetNamespace="http://www.sec.gov/edgar/document/sdr/exhibiti" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.sec.gov/edgar/common" schemaLocation="eis_Common.xsd"/>
+	<xs:import namespace="http://www.sec.gov/edgar/sdrcommon" schemaLocation="eis_SDR_common.xsd"/>
+	<xs:simpleType name="CONTRACT_SERV_PROV_TYPE_CODE_TYPE">
+		<xs:annotation>
+			<xs:documentation>
+Enumerated values and descriptions: 1: Security-Based Swap Execution Facility, 2: Clearing Agency, 3: Central Counterparty, 4: Third Party Service Provider</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+			<xs:enumeration value="3"/>
+			<xs:enumeration value="4"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="SERVICE_PROVIDER_CONTRACT_TYPE">
+		<xs:annotation>
+			<xs:documentation>These elements part of the repeatable SERVICE_PROVIDER_CONTRACT_TYPE group</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="contractServiceProviderName" type="ns2:STRING_100_TYPE"/>
+			<xs:element name="contractServiceProviderTypeCode" type="CONTRACT_SERV_PROV_TYPE_CODE_TYPE"/>
+			<xs:element name="contractDescription" type="ns2:STRING_1500_TYPE" minOccurs="0" maxOccurs="100"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="serviceProviderContracts">
+		<xs:annotation>
+			<xs:documentation>This is the root element for an SDR exhibit I.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="serviceProviderContract" type="SERVICE_PROVIDER_CONTRACT_TYPE" maxOccurs="100"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

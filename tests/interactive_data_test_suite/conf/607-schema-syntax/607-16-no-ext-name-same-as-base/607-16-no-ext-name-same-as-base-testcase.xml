@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>607-16</number>
+    <name>EDGAR Filer Manual v68d 6.7.16</name>
+    <description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.7.16 Unique element names.">Refer to EFM: 6.7.16 Unique element names.</a>
+    </description>
+    <reference specification="10491.13.1"></reference>
+    <variation id="_000gd">
+        <name>6.7.16, custom element not a duplicate, GOOD.</name>
+        <description>custom element not a duplicate, GOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60716000gd-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <linkbase>e60716000gd-20081231_pre.xml</linkbase>
+            <linkbase>e60716000gd-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+            <schema>e60716000gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_001ng">
+        <name>6.7.16, custom element a duplicate of DEI tag, used in instance, NOGOOD.</name>
+        <description>custom element a duplicate of DEI tag, used in instance, NOGOOD.</description>
+        <reference specification="10491.13.1"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60716001ng-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <linkbase>e60716001ng-20081231_pre.xml</linkbase>
+            <linkbase>e60716001ng-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+            <schema>e60716001ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60716" name="Element-Name-Same-As-Base" frd="cp"></assert>
+        </result>
+    </variation>
+    <variation id="_002ng">
+        <name>6.7.16, custom element a duplicate of DEI tag, not used in instance, but nevertheless NOGOOD.</name>
+        <description>custom element a duplicate of DEI tag, not used in instance, but nevertheless NOGOOD.</description>
+        <reference specification="10491.13.1"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60716002ng-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <linkbase>e60716002ng-20081231_pre.xml</linkbase>
+            <linkbase>e60716002ng-20081231_lab.xml</linkbase>
+            <schema>e60716002ng-20081231.xsd</schema>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60716" name="Element-Name-Same-As-Base" frd="cp"></assert>
+        </result>
+    </variation>
+    <variation id="_003gd">
+        <name>6.7.16, extension e6071600_Top is a duplicate only of non-standard element edgar_Top, GOOD.</name>
+        <description>extension e6071600_Top is a duplicate only of non-standard element edgar_Top, GOOD.</description>
+        <reference specification="10491.13.1"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60716003gd-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <linkbase>e60716003gd-20081231_pre.xml</linkbase>
+            <linkbase>e60716003gd-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+            <schema>e60716003gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_004gd">
+        <name>6.7.16, extension e6071600_NY is a duplicate of an element in stpr standard taxonomy but stpr is not in the DTS, GOOD.</name>
+        <description>extension e6071600_NY is a duplicate of an element in stpr standard taxonomy but stpr not in the DTS, GOOD.</description>
+        <reference specification="10491.13.1"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60716004gd-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <linkbase>e60716004gd-20081231_pre.xml</linkbase>
+            <linkbase>e60716004gd-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+            <schema>e60716004gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_005gd">
+        <name>6.7.16, KY appears as element name in sptr and country in the same DTS but they are standard taxonomies, GOOD.</name>
+        <description>KY appears as element name in sptr and country in the same DTS but they are standard taxonomies, GOOD.</description>
+        <reference specification="10491.13.1"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60716005gd-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <linkbase>e60716005gd-20081231_pre.xml</linkbase>
+            <linkbase>e60716005gd-20081231_def.xml</linkbase>
+            <linkbase>e60716005gd-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+            <schema>e60716005gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+</testcase>

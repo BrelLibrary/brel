@@ -1,0 +1,266 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>525-04</number>
+    <name>Inline XBRL Test Suite v68d : NonNumeric tests, Not EDGAR Dependent</name>
+    <description>
+        <h2>Good and "not good" (ng) test files that demonstrate iXBRL nonNumeric usage</h2>
+    </description>
+    <variation id="_001gd">
+        <name>NonNumeric_testcases_Set1, GOOD</name>
+        <description>Several PASS test cases.</description>
+        <reference xiispec="11"></reference>
+        <reference xiitest="PASS-nonNumeric"></reference>
+        <reference xiitest="PASS-attribute-ix-name-nonNumeric-01"></reference>
+        <reference xiitest="PASS-element-ix-nonNumeric-complete"></reference>
+        <reference xiitest="PASS-element-ix-nonNumeric-escape-02 thru 07"></reference>
+        <reference xiitest="PASS-element-ix-nonNumeric-ixt-datedoteu-01"></reference>
+        <reference xiitest="PASS-element-ix-nonNumeric-ixt-datedotus-01"></reference>
+        <reference xiitest="PASS-element-ix-nonNumeric-ixt-datelongmonthdayus-01"></reference>
+        <reference xiitest="PASS-element-ix-nonNumeric-ixt-dateshortus-01"></reference>
+        <reference xiitest="PASS-element-ix-nonNumeric-ixt-dateshortus-02"></reference>
+        <reference xiitest="PASS-element-ix-nonNumeric-ixt-datelongus-01"></reference>
+        <reference xiitest="PASS-element-ix-nonNumeric-ixt-datelongus-02"></reference>
+        <reference xiitest="PASS-element-ix-nonNumeric-ixt-dateslashus-01"></reference>
+        <reference xiitest="PASS-element-ix-nonNumeric-ixt-dateslashus-02"></reference>
+        <reference xiitest="PASS-element-ix-nonNumeric-ixt-dateslashus-03"></reference>
+        <reference xiitest="PASS-element-ix-nonNumeric-ixt-dateslashus-04"></reference>
+        <reference xiitest="PASS-nonNumeric-empty-not-xsi-nil"></reference>
+        <reference xiitest="PASS-element-ix-nonNumeric-ixt-dateshortmonthyear-01"></reference>
+        <reference xiitest="PASS-element-ix-nonNumeric-ixt-datelongmonthyear-01"></reference>
+        <reference xiitest="PASS-nonNumeric-escape-with-html-base"></reference>
+        <reference xiitest="PASS-nonNumeric-ix-format-attr"></reference>
+        <reference xiitest="PASS-nonNumeric-ix-target-attr"></reference>
+        <reference xiitest="PASS-nonNumeric-nesting"></reference>
+        <reference xiitest="PASS-nonNumeric-nesting-in-exclude"></reference>
+        <reference xiitest="PASS-nonNumeric-nesting-numerator"></reference>
+        <reference xiitest="PASS-nonNumeric-nesting-text-in-exclude"></reference>
+        <reference xiitest="PASS-nonNumeric-xsi-nil"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i04001gd/i04001gd-20081231.htm</instance>
+            <linkbase>i04001gd/i04001gd-20081231_pre.xml</linkbase>
+            <linkbase>i04001gd/i04001gd-20081231_lab.xml</linkbase>
+            <schema>i04001gd/i04001gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_002gd">
+        <name>NonNumeric_testcases_Set2, GOOD</name>
+        <description>PASS-element-ordering</description>
+        <reference xiitest="PASS-element-ordering"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i04002gd/i04002gd-20081231.htm</instance>
+            <linkbase>i04002gd/i04002gd-20081231_pre.xml</linkbase>
+            <linkbase>i04002gd/i04002gd-20081231_lab.xml</linkbase>
+            <schema>i04002gd/i04002gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_003gd">
+        <name>NonNumeric_testcases_Set3, GOOD</name>
+        <description>PASS-attribute-ix-extension-illegalPlacement-01</description>
+        <reference specification="The ix:nonNumeric element allows attributes in ##other namespace"></reference>
+        <reference xiitest="PASS-attribute-ix-extension-illegalPlacement-01"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i04003gd/i04003gd-20081231.htm</instance>
+            <linkbase>i04003gd/i04003gd-20081231_pre.xml</linkbase>
+            <linkbase>i04003gd/i04003gd-20081231_lab.xml</linkbase>
+            <schema>i04003gd/i04003gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_100ng">
+        <name>nonNumeric with attributeInNoNamespace="Not Allowed", NOGOOD</name>
+        <description>FAIL-nonNumeric-any-ix-attribute</description>
+        <reference xiispec="11.1"></reference>
+        <reference specification="The ix:nonNumeric element allows attributes only in ##other namespaces"></reference>
+        <reference xiitest="FAIL-nonNumeric-any-ix-attribute"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i04100ng/i04100ng-20081231.htm</instance>
+            <linkbase>i04100ng/i04100ng-20081231_pre.xml</linkbase>
+            <linkbase>i04100ng/i04100ng-20081231_lab.xml</linkbase>
+            <schema>i04100ng/i04100ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70104" txt="Attribute '{attribute}' is not allowed to appear on element '{element}'."></assert>
+        </result>
+    </variation>
+    <variation id="_101ng">
+        <name>nonNumeric with i:attInXbrlNamespace="Not allowed", NOGOOD</name>
+        <description>FAIL-nonNumeric-no-xbrli-attributes</description>
+        <reference specification="The ix:nonNumeric element MUST NOT have any attributes with a namespace name which has a value of http://www.xbrl.org/2003/instance"></reference>
+        <reference xiispec="11.1.1"></reference>
+        <reference xiitest="FAIL-nonNumeric-no-xbrli-attributes"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i04101ng/i04101ng-20081231.htm</instance>
+            <linkbase>i04101ng/i04101ng-20081231_pre.xml</linkbase>
+            <linkbase>i04101ng/i04101ng-20081231_lab.xml</linkbase>
+            <schema>i04101ng/i04101ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="xmlSchema:attributesExtraneous" frd="ix" fj="IXBRL_NON_NUMERIC_ELEMENT_HAS_XBRL_NS_ATTRIBUTES" nnum="70104" txt="Element * type string extraneous attributes: $"></assert>
+        </result>
+    </variation>
+    <variation id="_102ng">
+        <name>nonNumeric with attribute ix:thisInlineAttributeNotAllowed, NOGOOD</name>
+        <description>FAIL-nonNumeric-any-ix-attribute</description>
+        <reference xiispec="11.1"></reference>
+        <reference specification="Element ix:nonNumeric may have any attribute with a namespace name which has a value other than http://www.xbrl.org/2013/inlineXBRL."></reference>
+        <reference xiitest="FAIL-nonNumeric-any-ix-attribute"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i04102ng/i04102ng-20081231.htm</instance>
+            <linkbase>i04102ng/i04102ng-20081231_pre.xml</linkbase>
+            <linkbase>i04102ng/i04102ng-20081231_lab.xml</linkbase>
+            <schema>i04102ng/i04102ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70104" txt="Attribute '{attribute}' is not allowed to appear on element '{element}'."></assert>
+        </result>
+    </variation>
+    <variation id="_103ng">
+        <name>nonNumeric element with escape attribute produces unparseable date, NOGOOD</name>
+        <description>FAIL-element-ix-nonNumeric-escape-01</description>
+        <reference xiispec="11.1.1"></reference>
+        <reference specification="The {value} property MUST be valid in accordance with the {format input type} property."></reference>
+        <reference xiitest="FAIL-element-ix-nonNumeric-escape-01"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i04103ng/i04103ng-20081231.htm</instance>
+            <linkbase>i04103ng/i04103ng-20081231_pre.xml</linkbase>
+            <linkbase>i04103ng/i04103ng-20081231_lab.xml</linkbase>
+            <schema>i04103ng/i04103ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.11.1.1:transformValueError" frd="ix" fj="IXBRL_INVALID_DATA_TYPE" nnum="70104" txt="Inline element * fact # transform ~ value error: ^"></assert>
+        </result>
+    </variation>
+    <variation id="_104ng">
+        <name>invalid format attribute on nonNumeric, NOGOOD</name>
+        <description>FAIL-nonNumeric-invalid-ix-format-attr</description>
+        <reference xiispec="11.1.1"></reference>
+        <reference specification="The {value} property MUST be valid in accordance with the {format input type} property."></reference>
+        <reference xiitest="FAIL-nonNumeric-invalid-ix-format-attr"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i04104ng/i04104ng-20081231.htm</instance>
+            <linkbase>i04104ng/i04104ng-20081231_pre.xml</linkbase>
+            <linkbase>i04104ng/i04104ng-20081231_lab.xml</linkbase>
+            <schema>i04104ng/i04104ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.11.1.1:transformValueError" frd="ix" fj="IXBRL_INVALID_DATA_FOR_FORMAT" nnum="70104" txt="Inline XBRL Document invalid data type, value &quot;{value}&quot; does not satisfy format type {format}."></assert>
+        </result>
+    </variation>
+    <variation id="_105ng">
+        <name>nonNumeric element with empty text but format requires nonempty input, NOGOOD</name>
+        <description>FAIL-nonNumeric-empty-with-format</description>
+        <reference xiispec="11.1.1"></reference>
+        <reference specification="The {value} property MUST be valid in accordance with the {format input type} property."></reference>
+        <reference xiitest="FAIL-nonNumeric-empty-with-format"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i04105ng/i04105ng-20081231.htm</instance>
+            <linkbase>i04105ng/i04105ng-20081231_pre.xml</linkbase>
+            <linkbase>i04105ng/i04105ng-20081231_lab.xml</linkbase>
+            <schema>i04105ng/i04105ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.11.1.1:transformValueError" frd="ix" fj="IXBRL_INVALID_DATA_FOR_FORMAT" nnum="70104" txt="Inline XBRL Document invalid data type, value &quot;{value}&quot; does not satisfy format type {format}."></assert>
+        </result>
+    </variation>
+    <variation id="_106ng">
+        <name>nonNumeric element without name attribute, NOGOOD</name>
+        <description>FAIL-nonNumeric-missing-name-attr</description>
+        <reference xiispec="11.1.1"></reference>
+        <reference xiitest="FAIL-nonNumeric-missing-name-attr"></reference>
+        <reference specification="The ix:nonNumeric element MUST have contextRef and name attributes"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i04106ng/i04106ng-20081231.htm</instance>
+            <linkbase>i04106ng/i04106ng-20081231_pre.xml</linkbase>
+            <linkbase>i04106ng/i04106ng-20081231_lab.xml</linkbase>
+            <schema>i04106ng/i04106ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70104" txt="The ix:nonNumeric element MUST have contextRef and name attributes."></assert>
+        </result>
+    </variation>
+    <variation id="_107ng">
+        <name>nonNumeric element has no contextRef attribute, NOGOOD</name>
+        <description>FAIL-nonNumeric-missing-contextRef-attr</description>
+        <reference xiispec="11.1.1"></reference>
+        <reference xiitest="FAIL-nonNumeric-missing-contextRef-attr"></reference>
+        <reference specification="The ix:nonNumeric element MUST have contextRef and name attributes"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i04107ng/i04107ng-20081231.htm</instance>
+            <linkbase>i04107ng/i04107ng-20081231_pre.xml</linkbase>
+            <linkbase>i04107ng/i04107ng-20081231_lab.xml</linkbase>
+            <schema>i04107ng/i04107ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70104" txt="The ix:nonNumeric element MUST have contextRef and name attributes."></assert>
+        </result>
+    </variation>
+    <variation id="_109ng">
+        <name>Extra attribute thisAttributeHasNoNamespace="bar" on nonNumeric, NOGOOD</name>
+        <description>FAIL-nonNumeric-illegal-null-namespace-attr</description>
+        <reference xiispec="11.1"></reference>
+        <reference specification="Element ix:nonNumeric may have any attribute with a namespace name which has a value other than http://www.xbrl.org/2013/inlineXBRL."></reference>
+        <reference xiitest="FAIL-nonNumeric-illegal-null-namespace-attr"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i04109ng/i04109ng-20081231.htm</instance>
+            <linkbase>i04109ng/i04109ng-20081231_pre.xml</linkbase>
+            <linkbase>i04109ng/i04109ng-20081231_lab.xml</linkbase>
+            <schema>i04109ng/i04109ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70104" txt="Attribute '{attribute}' is not allowed to appear on element '{element}'."></assert>
+        </result>
+    </variation>
+    <variation id="_110ng">
+        <name>The ixt prefix is locally bound to the wrong namespace for a transformation, NOGOOD</name>
+        <description>FAIL-nonNumeric-ix-format-attr-wrong-namespace-binding</description>
+        <reference xiispec="11.1.2"></reference>
+        <reference specification="The {format} property MUST match the expanded name implied by the value of the name attribute of a signature element in the relevant Transformation Rules Registry."></reference>
+        <reference xiitest="FAIL-nonNumeric-ix-format-attr-wrong-namespace-binding"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i04110ng/i04110ng-20081231.htm</instance>
+            <linkbase>i04110ng/i04110ng-20081231_pre.xml</linkbase>
+            <linkbase>i04110ng/i04110ng-20081231_lab.xml</linkbase>
+            <schema>i04110ng/i04110ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.11.1.2:invalidTransformation" frd="ix" fj="IXBRL_FORMAT_UNDEFINED" nnum="70104" txt="Fact * has unrecognized transformation name #"></assert>
+        </result>
+    </variation>
+    <variation id="_111ng">
+        <name>nonNumeric with contextRef to nonexistent id, NOGOOD</name>
+        <description>FAIL-nonNumeric-unresolvable-ix-contextRef</description>
+        <reference xiispec="11.1.2"></reference>
+        <reference xiitest="FAIL-nonNumeric-unresolvable-ix-contextRef"></reference>
+        <reference specification="There MUST exist an xbrli:context element in the Inline XBRL Document Set for which the actual value of the id attribute is equal to the {context reference} property."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i04111ng/i04111ng-20081231.htm</instance>
+            <linkbase>i04111ng/i04111ng-20081231_pre.xml</linkbase>
+            <linkbase>i04111ng/i04111ng-20081231_lab.xml</linkbase>
+            <schema>i04111ng/i04111ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.11.1.2:contextReference" frd="ix" fj="IXBRL_INVALID_CONTEXT_REF" nnum="70103" txt="Fact * is missing a context for contextRef #"></assert>
+        </result>
+    </variation>
+</testcase>

@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>609-06</number>
+    <name>EDGAR Filer Manual v68d 6.9.6</name>
+    <description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.9.6 Restrictions on arcroleRef attributes.">Refer to EFM: 6.9.6 Restrictions on arcroleRef attributes.</a>
+    </description>
+    <reference specification="11197"></reference>
+    <variation id="_000gd">
+        <name>6.9.6 Arcrole is defined, not used, GOOD.</name>
+        <description> Arcrole is defined, not used, GOOD.</description>
+        <reference specification="11197"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60906000gd-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+            <schema>e60906000gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_001ng">
+        <name>6.9.6 Arcrole is defined and used, NOGOOD.</name>
+        <description> Arcrole is defined and used, NOGOOD.</description>
+        <reference specification="11197"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60906001ng-20081231.xml</instance>
+            <linkbase>e60906001ng-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+            <schema>e60906001ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60906" name="Custom-Arcrole-Referenced" frd="fs"></assert>
+        </result>
+    </variation>
+</testcase>

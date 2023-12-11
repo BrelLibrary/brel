@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>624-12</number>
+    <name>EDGAR Filer Manual v68d 6.24.12</name>
+    <description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.24.12  Footnotes and Merging">Refer to EFM: 6.24.12  Footnotes and Merging</a>
+    </description>
+    <reference specification="18153"></reference>
+    <variation id="_000gd">
+        <name>Simple instance with five footnotes.</name>
+        <description>Five footnotes appear on the two different reports with different numbering and appear everywhere they can appear: on column or row headings and on individual cells.  One of them is lengthy.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2013", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">000gd/r12000gd-20081231.xml</instance>
+            <linkbase>000gd/r12000gd-20081231_cal.xml</linkbase>
+            <linkbase>000gd/r12000gd-20081231_def.xml</linkbase>
+            <linkbase>000gd/r12000gd-20081231_lab.xml</linkbase>
+            <linkbase>000gd/r12000gd-20081231_pre.xml</linkbase>
+            <schema>000gd/r12000gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+</testcase>

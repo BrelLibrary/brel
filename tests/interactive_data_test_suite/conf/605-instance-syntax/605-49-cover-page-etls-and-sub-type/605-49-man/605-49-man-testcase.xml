@@ -1,0 +1,719 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../../lib/test.xsl"?>
+<conf:testcase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:conf="http://edgar/2009/conformance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../../lib/test.xsd">
+    <conf:creator>
+        <conf:name>SEC Office of Structured Disclosure</conf:name>
+        <conf:email>StructuredData@sec.gov</conf:email>
+    </conf:creator>
+    <conf:number>605-49</conf:number>
+    <conf:name>EDGAR Filer Manual v68d 6.5.49</conf:name>
+    <conf:description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.5.49 Cover page elements and submission types">Refer to EFM: 6.5.49 Cover page elements and submission types</a>
+    </conf:description>
+    <conf:variation id="_100gw">
+        <conf:name>20-F, TF3, GW. </conf:name>
+        <conf:description>20-F, TF3, xeny GW. </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "20-F" ,"periodOfReport" : "12-31-2018","emergingGrowthCompanyFlag" : false,"shellCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549100gw/e60549100gw-20081231.htm</conf:instance>
+            <conf:linkbase>e60549100gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60549100gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60549100gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60549100gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="DocumentTransitionReport" num="60549" severity="wrn" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_101gw">
+        <conf:name>20-F, TR, GW. </conf:name>
+        <conf:description>20-F, TR, xeny GW. </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "20-F" ,"periodOfReport" : "12-31-2018","emergingGrowthCompanyFlag" : false,"shellCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549101gw/e60549101gw-20081231.htm</conf:instance>
+            <conf:linkbase>e60549101gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60549101gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60549101gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60549101gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="DocumentPeriodStartDate" num="60549" severity="wrn" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_102gw">
+        <conf:name>20-F, SR, GW. </conf:name>
+        <conf:description>20-F, SR, xeny GW. </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "20-F" ,"periodOfReport" : "12-31-2018","emergingGrowthCompanyFlag" : false,"shellCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549102gw/e60549102gw-20081231.htm</conf:instance>
+            <conf:linkbase>e60549102gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60549102gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60549102gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60549102gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="DocumentShellCompanyEventDate" num="60549" severity="wrn" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_103gw">
+        <conf:name>20FR12B, N*, DocumentTransitionReport true GW. </conf:name>
+        <conf:description>20FR12B, N*, DocumentTransitionReport true GW.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "20FR12B" ,"emergingGrowthCompanyFlag" : false}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549103gw/e60549103gw-20081231.htm</conf:instance>
+            <conf:linkbase>e60549103gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60549103gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60549103gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60549103gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="DocumentTransitionReport" num="60549" severity="wrn" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_104gw">
+        <conf:name>40FR12B N*, GW. </conf:name>
+        <conf:description>40FR12B N* DocumentAnnualReport, GW.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "40FR12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549104gw/e60549104gw-20081231.htm</conf:instance>
+            <conf:linkbase>e60549104gw/eifrs-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60549104gw/eifrs-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60549104gw/eifrs-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60549104gw/eifrs-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="DocumentAnnualReport" num="60549" severity="wrn" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_105gw">
+        <conf:name>10-QT, N, GW </conf:name>
+        <conf:description>10-QT, N, GW</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"periodOfReport" : "12-31-2018" , "emergingGrowthCompanyFlag" : false , "smallBusinessFlag" : false , "submissionType" : "10-Q"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549105gw/e60549105gw-20081231.htm</conf:instance>
+            <conf:linkbase>e60549105gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60549105gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60549105gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60549105gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="DocumentQuarterlyReport" num="60549" severity="wrn" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_106gw">
+        <conf:name>10-QT, Y, GW </conf:name>
+        <conf:description>10-QT, Y, GW</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"periodOfReport" : "12-31-2018" , "emergingGrowthCompanyFlag" : false , "smallBusinessFlag" : false , "submissionType" : "10-Q"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549106gw/e60549106gw-20081231.htm</conf:instance>
+            <conf:linkbase>e60549106gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60549106gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60549106gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60549106gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="DocumentTransitionReport" num="60549" severity="wrn" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_107gw">
+        <conf:name>20-F, TF3, GW. </conf:name>
+        <conf:description>20-F, TF3, xeny GW. </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "20-F" ,"periodOfReport" : "12-31-2018","emergingGrowthCompanyFlag" : false,"shellCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549107gw/e60549107gw-20081231.htm</conf:instance>
+            <conf:linkbase>e60549107gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60549107gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60549107gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60549107gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="DocumentTransitionReport" num="60549" severity="wrn" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_108gd">
+        <conf:name>20-F, TR, GOOD. Document transistion Report true with DocumentPeriodStartDate present </conf:name>
+        <conf:description>20-F, TR, xeny GOOD. Document transistion Report true with DocumentPeriodStartDate present </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "20-F" ,"periodOfReport" : "12-31-2018","emergingGrowthCompanyFlag" : false,"shellCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549108gd/e60549108gd-20081231.htm</conf:instance>
+            <conf:linkbase>e60549108gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60549108gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60549108gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60549108gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_109gw">
+        <conf:name>20-F, SR, GW. </conf:name>
+        <conf:description>20-F, SR, xeny GW. </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "20-F" ,"periodOfReport" : "12-31-2018","emergingGrowthCompanyFlag" : false,"shellCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549109gw/e60549109gw-20081231.htm</conf:instance>
+            <conf:linkbase>e60549109gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60549109gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60549109gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60549109gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="DocumentShellCompanyEventDate" num="60549" severity="wrn" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_110gw">
+        <conf:name>20FR12B, N*, DocumentTransitionReport true GW. </conf:name>
+        <conf:description>20FR12B, N*, DocumentTransitionReport true GW.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "20FR12B" ,"emergingGrowthCompanyFlag" : false}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549110gw/e60549110gw-20081231.htm</conf:instance>
+            <conf:linkbase>e60549110gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60549110gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60549110gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60549110gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="DocumentTransitionReport" num="60549" severity="wrn" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_111gd">
+        <conf:name>40-F, GOOD. </conf:name>
+        <conf:description>40-F, dead GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "40-F" ,"periodOfReport" : "12-31-2018" ,"emergingGrowthCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549111gd/e60549111gd-20081231.htm</conf:instance>
+            <conf:linkbase>e60549111gd/eifrs-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60549111gd/eifrs-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60549111gd/eifrs-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60549111gd/eifrs-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_112gd">
+        <conf:name>40FR12B GOOD. </conf:name>
+        <conf:description>40FR12B GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "40FR12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549112gd/e60549112gd-20081231.htm</conf:instance>
+            <conf:linkbase>e60549112gd/eifrs-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60549112gd/eifrs-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60549112gd/eifrs-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60549112gd/eifrs-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_113gd">
+        <conf:name>40FR12B A, GOOD. </conf:name>
+        <conf:description>40FR12B A, GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "40FR12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549113gd/e60549113gd-20081231.htm</conf:instance>
+            <conf:linkbase>e60549113gd/eifrs-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60549113gd/eifrs-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60549113gd/eifrs-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60549113gd/eifrs-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_114gd">
+        <conf:name>40FR12B Ou*, GOOD. </conf:name>
+        <conf:description>40FR12B Ou, GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "40FR12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549114gd/e60549114gd-20081231.htm</conf:instance>
+            <conf:linkbase>e60549114gd/eifrs-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60549114gd/eifrs-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60549114gd/eifrs-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60549114gd/eifrs-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_115gw">
+        <conf:name>40FR12B N*, GW. </conf:name>
+        <conf:description>40FR12B N* DocumentAnnualReport, GW.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "40FR12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549115gw/e60549115gw-20081231.htm</conf:instance>
+            <conf:linkbase>e60549115gw/eifrs-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60549115gw/eifrs-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60549115gw/eifrs-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60549115gw/eifrs-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="DocumentAnnualReport" num="60549" severity="wrn" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_116gd">
+        <conf:name>10-Q, GOOD </conf:name>
+        <conf:description>10-Q GOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"periodOfReport" : "12-31-2018" , "emergingGrowthCompanyFlag" : false , "smallBusinessFlag" : false , "submissionType" : "10-Q"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549116gd/e60549116gd-20081231.htm</conf:instance>
+            <conf:linkbase>e60549116gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60549116gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60549116gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60549116gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_117gd">
+        <conf:name>10-K, GOOD </conf:name>
+        <conf:description>10-K, GOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"periodOfReport" : "12-31-2018" , "emergingGrowthCompanyFlag" : false , "acceleratedFilerStatus" : "Large Accelerated Filer", "smallBusinessFlag" : false , "shellCompanyFlag" : false , "submissionType" : "10-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549117gd/e60549117gd-20081231.htm</conf:instance>
+            <conf:linkbase>e60549117gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60549117gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60549117gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60549117gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_118gw">
+        <conf:name>10-QT, N, GW </conf:name>
+        <conf:description>10-QT, N, GW</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"periodOfReport" : "12-31-2018" , "emergingGrowthCompanyFlag" : false , "smallBusinessFlag" : false , "submissionType" : "10-Q"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549118gw/e60549118gw-20081231.htm</conf:instance>
+            <conf:linkbase>e60549118gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60549118gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60549118gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60549118gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="DocumentQuarterlyReport" num="60549" severity="wrn" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_119gw">
+        <conf:name>10-QT, Y, GW </conf:name>
+        <conf:description>10-QT, Y, GW</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"periodOfReport" : "12-31-2018" , "emergingGrowthCompanyFlag" : false , "smallBusinessFlag" : false , "submissionType" : "10-Q"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549119gw/e60549119gw-20081231.htm</conf:instance>
+            <conf:linkbase>e60549119gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60549119gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60549119gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60549119gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="DocumentTransitionReport" num="60549" severity="wrn" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_131gd">
+        <conf:name>10-K/A with ecd, DocumentFinStmtErrorCorrectionFlag is True, DocumentFinStmtRestatementRecoveryAnalysisFlag is True, GD</conf:name>
+        <conf:description>10-K/A with ecd, DocumentFinStmtErrorCorrectionFlag is True, DocumentFinStmtRestatementRecoveryAnalysisFlag is True, GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "10-K/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549131gd/e60549131gd-20331231.htm</conf:instance>
+            <conf:schema>e60549131gd/clb01-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_132gd">
+        <conf:name>10-K/A with ecd, DocumentFinStmtErrorCorrectionFlag is True, DocumentFinStmtRestatementRecoveryAnalysisFlag is False, GD</conf:name>
+        <conf:description>10-K/A with ecd, DocumentFinStmtErrorCorrectionFlag is True, DocumentFinStmtRestatementRecoveryAnalysisFlag is False, GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "10-K/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549132gd/e60549132gd-20331231.htm</conf:instance>
+            <conf:schema>e60549132gd/clb01-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_133gw">
+        <conf:name>10-K/A with ecd, DocumentFinStmtErrorCorrectionFlag is True, DocumentFinStmtRestatementRecoveryAnalysisFlag is absent, GW</conf:name>
+        <conf:description>10-K/A with ecd, DocumentFinStmtErrorCorrectionFlag is True, DocumentFinStmtRestatementRecoveryAnalysisFlag is absent, GW</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "10-K/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549133gw/e60549133gw-20331231.htm</conf:instance>
+            <conf:schema>e60549133gw/clb01-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60549" name="documentFinStmtRestatementRecoveryAnalysisFlagDocumentFinStmtErrorCorrectionFlagDependentValue" frd="tbd"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_134gw">
+        <conf:name>10-K/A with ecd, DocumentFinStmtErrorCorrectionFlag is False, DocumentFinStmtRestatementRecoveryAnalysisFlag is True, GW</conf:name>
+        <conf:description>10-K/A with ecd, DocumentFinStmtErrorCorrectionFlag is False, DocumentFinStmtRestatementRecoveryAnalysisFlag is True, GW</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "10-K/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549134gw/e60549134gw-20331231.htm</conf:instance>
+            <conf:schema>e60549134gw/clb01-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60549" name="documentFinStmtRestatementRecoveryAnalysisFlagDocumentFinStmtErrorCorrectionFlagDependentValue" frd="tbd"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_135gw">
+        <conf:name>10-K/A with ecd, DocumentFinStmtErrorCorrectionFlag is False, DocumentFinStmtRestatementRecoveryAnalysisFlag is False, GW</conf:name>
+        <conf:description>10-K/A with ecd, DocumentFinStmtErrorCorrectionFlag is False, DocumentFinStmtRestatementRecoveryAnalysisFlag is False, GW</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "10-K/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549135gw/e60549135gw-20331231.htm</conf:instance>
+            <conf:schema>e60549135gw/clb01-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60549" name="documentFinStmtRestatementRecoveryAnalysisFlagDocumentFinStmtErrorCorrectionFlagDependentValue" frd="tbd"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_136gd">
+        <conf:name>10-K/A with ecd, DocumentFinStmtErrorCorrectionFlag is False, DocumentFinStmtRestatementRecoveryAnalysisFlag is absent, GD</conf:name>
+        <conf:description>10-K/A with ecd, DocumentFinStmtErrorCorrectionFlag is False, DocumentFinStmtRestatementRecoveryAnalysisFlag is absent, GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "10-K/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549136gd/e60549136gd-20331231.htm</conf:instance>
+            <conf:schema>e60549136gd/clb01-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_137gw">
+        <conf:name>10-K/A with ecd, DocumentFinStmtErrorCorrectionFlag is absent, DocumentFinStmtRestatementRecoveryAnalysisFlag is True, GW</conf:name>
+        <conf:description>10-K/A with ecd, DocumentFinStmtErrorCorrectionFlag is absent, DocumentFinStmtRestatementRecoveryAnalysisFlag is True, GW</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "10-K/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549137gw/e60549137gw-20331231.htm</conf:instance>
+            <conf:schema>e60549137gw/clb01-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60549" name="documentFinStmtErrorCorrectionFlagMissing" frd="tbd"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_138gw">
+        <conf:name>10-K/A with ecd, DocumentFinStmtErrorCorrectionFlag is absent, DocumentFinStmtRestatementRecoveryAnalysisFlag is False, GW</conf:name>
+        <conf:description>10-K/A with ecd, DocumentFinStmtErrorCorrectionFlag is absent, DocumentFinStmtRestatementRecoveryAnalysisFlag is False, GW</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "10-K/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549138gw/e60549138gw-20331231.htm</conf:instance>
+            <conf:schema>e60549138gw/clb01-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60549" name="documentFinStmtErrorCorrectionFlagMissing" frd="tbd"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_139gw">
+        <conf:name>10-K/A with ecd, DocumentFinStmtErrorCorrectionFlag is absent, DocumentFinStmtRestatementRecoveryAnalysisFlag is absent, GW</conf:name>
+        <conf:description>10-K/A with ecd, DocumentFinStmtErrorCorrectionFlag is absent, DocumentFinStmtRestatementRecoveryAnalysisFlag is absent, GW</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "10-K/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549139gw/e60549139gw-20331231.htm</conf:instance>
+            <conf:schema>e60549139gw/clb01-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60549" name="documentFinStmtErrorCorrectionFlagMissing" frd="tbd"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_141gd">
+        <conf:name>10-KT/A with ecd, DocumentFinStmtErrorCorrectionFlag is True, DocumentFinStmtRestatementRecoveryAnalysisFlag is True, GD</conf:name>
+        <conf:description>10-KT/A with ecd, DocumentFinStmtErrorCorrectionFlag is True, DocumentFinStmtRestatementRecoveryAnalysisFlag is True, GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "10-KT/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549141gd/e60549141gd-20331231.htm</conf:instance>
+            <conf:schema>e60549141gd/clb01-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_142gd">
+        <conf:name>10-KT/A with ecd, DocumentFinStmtErrorCorrectionFlag is True, DocumentFinStmtRestatementRecoveryAnalysisFlag is False, GD</conf:name>
+        <conf:description>10-KT/A with ecd, DocumentFinStmtErrorCorrectionFlag is True, DocumentFinStmtRestatementRecoveryAnalysisFlag is False, GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "10-KT/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549142gd/e60549142gd-20331231.htm</conf:instance>
+            <conf:schema>e60549142gd/clb01-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_143gw">
+        <conf:name>10-KT/A with ecd, DocumentFinStmtErrorCorrectionFlag is True, DocumentFinStmtRestatementRecoveryAnalysisFlag is absent, GW</conf:name>
+        <conf:description>10-KT/A with ecd, DocumentFinStmtErrorCorrectionFlag is True, DocumentFinStmtRestatementRecoveryAnalysisFlag is absent, GW</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "10-KT/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549143gw/e60549143gw-20331231.htm</conf:instance>
+            <conf:schema>e60549143gw/clb01-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60549" name="documentFinStmtRestatementRecoveryAnalysisFlagDocumentFinStmtErrorCorrectionFlagDependentValue" frd="tbd"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_144gw">
+        <conf:name>10-KT/A with ecd, DocumentFinStmtErrorCorrectionFlag is False, DocumentFinStmtRestatementRecoveryAnalysisFlag is True, GW</conf:name>
+        <conf:description>10-KT/A with ecd, DocumentFinStmtErrorCorrectionFlag is False, DocumentFinStmtRestatementRecoveryAnalysisFlag is True, GW</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "10-KT/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549144gw/e60549144gw-20331231.htm</conf:instance>
+            <conf:schema>e60549144gw/clb01-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60549" name="documentFinStmtRestatementRecoveryAnalysisFlagDocumentFinStmtErrorCorrectionFlagDependentValue" frd="tbd"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_145gw">
+        <conf:name>10-KT/A with ecd, DocumentFinStmtErrorCorrectionFlag is False, DocumentFinStmtRestatementRecoveryAnalysisFlag is False, GW</conf:name>
+        <conf:description>10-KT/A with ecd, DocumentFinStmtErrorCorrectionFlag is False, DocumentFinStmtRestatementRecoveryAnalysisFlag is False, GW</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "10-KT/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549145gw/e60549145gw-20331231.htm</conf:instance>
+            <conf:schema>e60549145gw/clb01-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60549" name="documentFinStmtRestatementRecoveryAnalysisFlagDocumentFinStmtErrorCorrectionFlagDependentValue" frd="tbd"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_146gd">
+        <conf:name>10-KT/A with ecd, DocumentFinStmtErrorCorrectionFlag is False, DocumentFinStmtRestatementRecoveryAnalysisFlag is absent, GD</conf:name>
+        <conf:description>10-KT/A with ecd, DocumentFinStmtErrorCorrectionFlag is False, DocumentFinStmtRestatementRecoveryAnalysisFlag is absent, GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "10-KT/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549146gd/e60549146gd-20331231.htm</conf:instance>
+            <conf:schema>e60549146gd/clb01-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_147gw">
+        <conf:name>10-KT/A with ecd, DocumentFinStmtErrorCorrectionFlag is absent, DocumentFinStmtRestatementRecoveryAnalysisFlag is True, GW</conf:name>
+        <conf:description>10-KT/A with ecd, DocumentFinStmtErrorCorrectionFlag is absent, DocumentFinStmtRestatementRecoveryAnalysisFlag is True, GW</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "10-KT/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549147gw/e60549147gw-20331231.htm</conf:instance>
+            <conf:schema>e60549147gw/clb01-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60549" name="documentFinStmtErrorCorrectionFlagMissing" frd="tbd"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_148gw">
+        <conf:name>10-KT/A with ecd, DocumentFinStmtErrorCorrectionFlag is absent, DocumentFinStmtRestatementRecoveryAnalysisFlag is False, GW</conf:name>
+        <conf:description>10-KT/A with ecd, DocumentFinStmtErrorCorrectionFlag is absent, DocumentFinStmtRestatementRecoveryAnalysisFlag is False, GW</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "10-KT/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549148gw/e60549148gw-20331231.htm</conf:instance>
+            <conf:schema>e60549148gw/clb01-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60549" name="documentFinStmtErrorCorrectionFlagMissing" frd="tbd"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_149gw">
+        <conf:name>10-KT/A with ecd, DocumentFinStmtErrorCorrectionFlag is absent, DocumentFinStmtRestatementRecoveryAnalysisFlag is absent, GW</conf:name>
+        <conf:description>10-KT/A with ecd, DocumentFinStmtErrorCorrectionFlag is absent, DocumentFinStmtRestatementRecoveryAnalysisFlag is absent, GW</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "10-KT/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549149gw/e60549149gw-20331231.htm</conf:instance>
+            <conf:schema>e60549149gw/clb01-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60549" name="documentFinStmtErrorCorrectionFlagMissing" frd="tbd"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_151gd">
+        <conf:name>20-F/A with ecd, DocumentFinStmtErrorCorrectionFlag is True, DocumentFinStmtRestatementRecoveryAnalysisFlag is True, GD</conf:name>
+        <conf:description>20-F/A with ecd, DocumentFinStmtErrorCorrectionFlag is True, DocumentFinStmtRestatementRecoveryAnalysisFlag is True, GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "20-F/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549151gd/e60549151gd-20331231.htm</conf:instance>
+            <conf:schema>e60549151gd/clb02-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_152gd">
+        <conf:name>20-F/A with ecd, DocumentFinStmtErrorCorrectionFlag is True, DocumentFinStmtRestatementRecoveryAnalysisFlag is False, GD</conf:name>
+        <conf:description>20-F/A with ecd, DocumentFinStmtErrorCorrectionFlag is True, DocumentFinStmtRestatementRecoveryAnalysisFlag is False, GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "20-F/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549152gd/e60549152gd-20331231.htm</conf:instance>
+            <conf:schema>e60549152gd/clb02-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_153gw">
+        <conf:name>20-F/A with ecd, DocumentFinStmtErrorCorrectionFlag is True, DocumentFinStmtRestatementRecoveryAnalysisFlag is absent, GW</conf:name>
+        <conf:description>20-F/A with ecd, DocumentFinStmtErrorCorrectionFlag is True, DocumentFinStmtRestatementRecoveryAnalysisFlag is absent, GW</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "20-F/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549153gw/e60549153gw-20331231.htm</conf:instance>
+            <conf:schema>e60549153gw/clb02-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60549" name="documentFinStmtRestatementRecoveryAnalysisFlagDocumentFinStmtErrorCorrectionFlagDependentValue" frd="tbd"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_154gw">
+        <conf:name>20-F/A with ecd, DocumentFinStmtErrorCorrectionFlag is False, DocumentFinStmtRestatementRecoveryAnalysisFlag is True, GW</conf:name>
+        <conf:description>20-F/A with ecd, DocumentFinStmtErrorCorrectionFlag is False, DocumentFinStmtRestatementRecoveryAnalysisFlag is True, GW</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "20-F/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549154gw/e60549154gw-20331231.htm</conf:instance>
+            <conf:schema>e60549154gw/clb02-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60549" name="documentFinStmtRestatementRecoveryAnalysisFlagDocumentFinStmtErrorCorrectionFlagDependentValue" frd="tbd"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_155gw">
+        <conf:name>20-F/A with ecd, DocumentFinStmtErrorCorrectionFlag is False, DocumentFinStmtRestatementRecoveryAnalysisFlag is False, GW</conf:name>
+        <conf:description>20-F/A with ecd, DocumentFinStmtErrorCorrectionFlag is False, DocumentFinStmtRestatementRecoveryAnalysisFlag is False, GW</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "20-F/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549155gw/e60549155gw-20331231.htm</conf:instance>
+            <conf:schema>e60549155gw/clb02-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60549" name="documentFinStmtRestatementRecoveryAnalysisFlagDocumentFinStmtErrorCorrectionFlagDependentValue" frd="tbd"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_156gd">
+        <conf:name>20-F/A with ecd, DocumentFinStmtErrorCorrectionFlag is False, DocumentFinStmtRestatementRecoveryAnalysisFlag is absent, GD</conf:name>
+        <conf:description>20-F/A with ecd, DocumentFinStmtErrorCorrectionFlag is False, DocumentFinStmtRestatementRecoveryAnalysisFlag is absent, GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "20-F/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549156gd/e60549156gd-20331231.htm</conf:instance>
+            <conf:schema>e60549156gd/clb02-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_157gw">
+        <conf:name>20-F/A with ecd, DocumentFinStmtErrorCorrectionFlag is absent, DocumentFinStmtRestatementRecoveryAnalysisFlag is True, GW</conf:name>
+        <conf:description>20-F/A with ecd, DocumentFinStmtErrorCorrectionFlag is absent, DocumentFinStmtRestatementRecoveryAnalysisFlag is True, GW</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "20-F/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549157gw/e60549157gw-20331231.htm</conf:instance>
+            <conf:schema>e60549157gw/clb02-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60549" name="documentFinStmtErrorCorrectionFlagMissing" frd="tbd"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_158gw">
+        <conf:name>20-F/A with ecd, DocumentFinStmtErrorCorrectionFlag is absent, DocumentFinStmtRestatementRecoveryAnalysisFlag is False, GW</conf:name>
+        <conf:description>20-F/A with ecd, DocumentFinStmtErrorCorrectionFlag is absent, DocumentFinStmtRestatementRecoveryAnalysisFlag is False, GW</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "20-F/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549158gw/e60549158gw-20331231.htm</conf:instance>
+            <conf:schema>e60549158gw/clb02-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60549" name="documentFinStmtErrorCorrectionFlagMissing" frd="tbd"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_159gw">
+        <conf:name>20-F/A with ecd, DocumentFinStmtErrorCorrectionFlag is absent, DocumentFinStmtRestatementRecoveryAnalysisFlag is absent, GW</conf:name>
+        <conf:description>20-F/A with ecd, DocumentFinStmtErrorCorrectionFlag is absent, DocumentFinStmtRestatementRecoveryAnalysisFlag is absent, GW</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "20-F/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549159gw/e60549159gw-20331231.htm</conf:instance>
+            <conf:schema>e60549159gw/clb02-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60549" name="documentFinStmtErrorCorrectionFlagMissing" frd="tbd"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_161gd">
+        <conf:name>40-F/A with ecd, DocumentFinStmtErrorCorrectionFlag is True, DocumentFinStmtRestatementRecoveryAnalysisFlag is True, GD</conf:name>
+        <conf:description>40-F/A with ecd, DocumentFinStmtErrorCorrectionFlag is True, DocumentFinStmtRestatementRecoveryAnalysisFlag is True, GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "40-F/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549161gd/e60549161gd-20331231.htm</conf:instance>
+            <conf:schema>e60549161gd/clb04-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_162gd">
+        <conf:name>40-F/A with ecd, DocumentFinStmtErrorCorrectionFlag is True, DocumentFinStmtRestatementRecoveryAnalysisFlag is False, GD</conf:name>
+        <conf:description>40-F/A with ecd, DocumentFinStmtErrorCorrectionFlag is True, DocumentFinStmtRestatementRecoveryAnalysisFlag is False, GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "40-F/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549162gd/e60549162gd-20331231.htm</conf:instance>
+            <conf:schema>e60549162gd/clb04-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_163gw">
+        <conf:name>40-F/A with ecd, DocumentFinStmtErrorCorrectionFlag is True, DocumentFinStmtRestatementRecoveryAnalysisFlag is absent, GW</conf:name>
+        <conf:description>40-F/A with ecd, DocumentFinStmtErrorCorrectionFlag is True, DocumentFinStmtRestatementRecoveryAnalysisFlag is absent, GW</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "40-F/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549163gw/e60549163gw-20331231.htm</conf:instance>
+            <conf:schema>e60549163gw/clb04-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60549" name="documentFinStmtRestatementRecoveryAnalysisFlagDocumentFinStmtErrorCorrectionFlagDependentValue" frd="tbd"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_164gw">
+        <conf:name>40-F/A with ecd, DocumentFinStmtErrorCorrectionFlag is False, DocumentFinStmtRestatementRecoveryAnalysisFlag is True, GW</conf:name>
+        <conf:description>40-F/A with ecd, DocumentFinStmtErrorCorrectionFlag is False, DocumentFinStmtRestatementRecoveryAnalysisFlag is True, GW</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "40-F/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549164gw/e60549164gw-20331231.htm</conf:instance>
+            <conf:schema>e60549164gw/clb04-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60549" name="documentFinStmtRestatementRecoveryAnalysisFlagDocumentFinStmtErrorCorrectionFlagDependentValue" frd="tbd"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_165gw">
+        <conf:name>40-F/A with ecd, DocumentFinStmtErrorCorrectionFlag is False, DocumentFinStmtRestatementRecoveryAnalysisFlag is False, GW</conf:name>
+        <conf:description>40-F/A with ecd, DocumentFinStmtErrorCorrectionFlag is False, DocumentFinStmtRestatementRecoveryAnalysisFlag is False, GW</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "40-F/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549165gw/e60549165gw-20331231.htm</conf:instance>
+            <conf:schema>e60549165gw/clb04-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60549" name="documentFinStmtRestatementRecoveryAnalysisFlagDocumentFinStmtErrorCorrectionFlagDependentValue" frd="tbd"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_166gd">
+        <conf:name>40-F/A with ecd, DocumentFinStmtErrorCorrectionFlag is False, DocumentFinStmtRestatementRecoveryAnalysisFlag is absent, GD</conf:name>
+        <conf:description>40-F/A with ecd, DocumentFinStmtErrorCorrectionFlag is False, DocumentFinStmtRestatementRecoveryAnalysisFlag is absent, GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "40-F/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549166gd/e60549166gd-20331231.htm</conf:instance>
+            <conf:schema>e60549166gd/clb04-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_167gw">
+        <conf:name>40-F/A with ecd, DocumentFinStmtErrorCorrectionFlag is absent, DocumentFinStmtRestatementRecoveryAnalysisFlag is True, GW</conf:name>
+        <conf:description>40-F/A with ecd, DocumentFinStmtErrorCorrectionFlag is absent, DocumentFinStmtRestatementRecoveryAnalysisFlag is True, GW</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "40-F/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549167gw/e60549167gw-20331231.htm</conf:instance>
+            <conf:schema>e60549167gw/clb04-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60549" name="documentFinStmtErrorCorrectionFlagMissing" frd="tbd"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_168gw">
+        <conf:name>40-F/A with ecd, DocumentFinStmtErrorCorrectionFlag is absent, DocumentFinStmtRestatementRecoveryAnalysisFlag is False, GW</conf:name>
+        <conf:description>40-F/A with ecd, DocumentFinStmtErrorCorrectionFlag is absent, DocumentFinStmtRestatementRecoveryAnalysisFlag is False, GW</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "40-F/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549168gw/e60549168gw-20331231.htm</conf:instance>
+            <conf:schema>e60549168gw/clb04-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60549" name="documentFinStmtErrorCorrectionFlagMissing" frd="tbd"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_169gw">
+        <conf:name>40-F/A with ecd, DocumentFinStmtErrorCorrectionFlag is absent, DocumentFinStmtRestatementRecoveryAnalysisFlag is absent, GW</conf:name>
+        <conf:description>40-F/A with ecd, DocumentFinStmtErrorCorrectionFlag is absent, DocumentFinStmtRestatementRecoveryAnalysisFlag is absent, GW</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"submissionType": "40-F/A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60549169gw/e60549169gw-20331231.htm</conf:instance>
+            <conf:schema>e60549169gw/clb04-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60549" name="documentFinStmtErrorCorrectionFlagMissing" frd="tbd"></conf:assert>
+        </conf:result>
+    </conf:variation>
+</conf:testcase>

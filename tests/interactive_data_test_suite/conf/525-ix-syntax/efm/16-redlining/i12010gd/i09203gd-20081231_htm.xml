@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xbrl
+  xmlns="http://www.xbrl.org/2003/instance"
+  xmlns:dei="http://xbrl.sec.gov/dei/2018-01-31"
+  xmlns:i09203gd="http://i09203gd/20081231"
+  xmlns:iso4217="http://www.xbrl.org/2003/iso4217"
+  xmlns:link="http://www.xbrl.org/2003/linkbase"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+    <link:schemaRef xlink:href="i09203gd-20081231.xsd" xlink:type="simple"/>
+    <context id="d">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+        </entity>
+        <period>
+            <startDate>2008-04-01</startDate>
+            <endDate>2008-12-31</endDate>
+        </period>
+    </context>
+    <context id="i">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+        </entity>
+        <period>
+            <instant>2008-12-31</instant>
+        </period>
+    </context>
+    <context id="NFC1">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+        </entity>
+        <period>
+            <startDate>2008-10-01</startDate>
+            <endDate>2008-12-31</endDate>
+        </period>
+    </context>
+    <unit id="shares">
+        <measure>shares</measure>
+    </unit>
+    <unit id="iso4217_USD_per_Share">
+        <divide>
+            <unitNumerator>
+                <measure>iso4217:USD</measure>
+            </unitNumerator>
+            <unitDenominator>
+                <measure>shares</measure>
+            </unitDenominator>
+        </divide>
+    </unit>
+    <dei:AmendmentFlag contextRef="d">false</dei:AmendmentFlag>
+    <dei:DocumentPeriodEndDate contextRef="d">2008-12-31</dei:DocumentPeriodEndDate>
+    <dei:DocumentFiscalPeriodFocus contextRef="d">Q3</dei:DocumentFiscalPeriodFocus>
+    <dei:EntityCentralIndexKey contextRef="d">9876543210</dei:EntityCentralIndexKey>
+    <dei:CurrentFiscalYearEndDate contextRef="d">--03-31</dei:CurrentFiscalYearEndDate>
+    <dei:EntityEmergingGrowthCompany contextRef="d">false</dei:EntityEmergingGrowthCompany>
+    <dei:DocumentType contextRef="d">8-K</dei:DocumentType>
+    <dei:DocumentFiscalYearFocus contextRef="d">2008</dei:DocumentFiscalYearFocus>
+    <dei:EntityRegistrantName contextRef="d">OSD TEST CO #1 i09203gd</dei:EntityRegistrantName>
+    <dei:EntityCommonStockSharesOutstanding contextRef="i" decimals="INF" unitRef="shares">154357198</dei:EntityCommonStockSharesOutstanding>
+    <dei:EntityRegistrantName contextRef="NFC1" id="fact1">OSD TEST CO #1 i09203gd</dei:EntityRegistrantName>
+    <i09203gd:Content4
+      contextRef="d"
+      decimals="2"
+      id="fact2"
+      unitRef="iso4217_USD_per_Share">1234.56</i09203gd:Content4>
+    <link:footnoteLink
+      xlink:role="http://www.xbrl.org/2003/role/link"
+      xlink:type="extended">
+        <link:loc
+          xlink:href="#fact1"
+          xlink:label="fact1"
+          xlink:type="locator"/>
+        <link:footnote id="footnote1" xlink:label="footnote1" xlink:role="http://www.xbrl.org/2003/role/footnote" xlink:type="resource" xml:lang="en-US">(1) Hidden Footnote!</link:footnote>
+        <link:footnoteArc
+          xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote"
+          xlink:from="fact1"
+          xlink:to="footnote1"
+          xlink:type="arc"/>
+        <link:loc
+          xlink:href="#fact2"
+          xlink:label="fact2"
+          xlink:type="locator"/>
+        <link:footnote id="footnote2" xlink:label="footnote2" xlink:role="http://www.xbrl.org/2003/role/footnote" xlink:type="resource" xml:lang="en-US"><xhtml:div style="font-family: Sans-Serif; font-size: 10.0pt;">(2) This Visible Footnote has a doubly quoted non breaking space entity (&amp;nbsp;) and a pretty picture <xhtml:img alt="pretty" src="i09203gd-20081231.jpg"/>.
+            <xhtml:p style="font-size: 10.0pt;">It also has a span element to <xhtml:span style="font-weight: bold;">boldly</xhtml:span> go here.</xhtml:p>
+            <xhtml:p style="font-size: 10.0pt;">Finally, a thead, tfoot, and tbody:</xhtml:p>
+            <xhtml:table style="border:solid black 1pt;border-collapse: collapse; width: 200pt; margin-left: 20pt;">
+              <xhtml:thead>
+                <xhtml:tr>
+                  <xhtml:th style="vertical-align: bottom; width=25%">X</xhtml:th>
+                  <xhtml:th style="vertical-align: bottom; width=25%">2</xhtml:th>
+                  <xhtml:th style="vertical-align: bottom; width=25%">3</xhtml:th>
+                  <xhtml:th style="vertical-align: bottom; width=25%">4</xhtml:th>
+                </xhtml:tr>
+              </xhtml:thead>
+              <xhtml:tfoot>
+                <xhtml:tr>
+                  <xhtml:td style="text-align: center;">??</xhtml:td>
+                  <xhtml:td style="text-align: center;">?</xhtml:td>
+                  <xhtml:td style="text-align: center;">!</xhtml:td>
+                  <xhtml:td style="text-align: center;">!!</xhtml:td>
+                </xhtml:tr>
+              </xhtml:tfoot>
+              <xhtml:tbody>
+                <xhtml:tr>
+                  <xhtml:td style="text-align: center;">2</xhtml:td>
+                  <xhtml:td style="text-align: center;">4</xhtml:td>
+                  <xhtml:td style="text-align: center;">6</xhtml:td>
+                  <xhtml:td style="text-align: center;">8</xhtml:td>
+                </xhtml:tr>
+                <xhtml:tr>
+                  <xhtml:td style="text-align: center;">3</xhtml:td>
+                  <xhtml:td style="text-align: center;">6</xhtml:td>
+                  <xhtml:td style="text-align: center;">9</xhtml:td>
+                  <xhtml:td style="text-align: center;">12</xhtml:td>
+                </xhtml:tr>
+              </xhtml:tbody>
+            </xhtml:table>
+          </xhtml:div>
+        </link:footnote>
+        <link:footnoteArc
+          xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote"
+          xlink:from="fact2"
+          xlink:to="footnote2"
+          xlink:type="arc"/>
+    </link:footnoteLink>
+</xbrl>

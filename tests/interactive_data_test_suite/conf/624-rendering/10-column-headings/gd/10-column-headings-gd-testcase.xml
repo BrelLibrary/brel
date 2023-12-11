@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>624-10</number>
+    <name>EDGAR Filer Manual v68d 6.24.10</name>
+    <description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.24.10  Column Headings and Promotion">Refer to EFM: 6.24.10  Column Headings and Promotion</a>
+    </description>
+    <reference specification="18153"></reference>
+    <variation id="_000gd">
+        <name>Promotion of USD to the upper left corner.</name>
+        <description></description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2015", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">000gd/r10000gd-20081231.xml</instance>
+            <linkbase>000gd/r10000gd-20081231_lab.xml</linkbase>
+            <linkbase>000gd/r10000gd-20081231_pre.xml</linkbase>
+            <schema>000gd/r10000gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_003gd">
+        <name>End date in a column heading should not have a period after the month "May".</name>
+        <description>End date should not have a period after the month of May.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "05-31-2015", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">003gd/r10003gd-20081231.xml</instance>
+            <linkbase>003gd/r10003gd-20081231_lab.xml</linkbase>
+            <linkbase>003gd/r10003gd-20081231_pre.xml</linkbase>
+            <schema>003gd/r10003gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+</testcase>

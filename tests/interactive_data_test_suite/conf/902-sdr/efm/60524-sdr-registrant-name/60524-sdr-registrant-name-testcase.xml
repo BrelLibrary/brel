@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../../lib/test.xsl" ?>
+<conf:testcase xmlns:conf="http://edgar/2009/conformance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../../lib/test.xsd">
+    <conf:creator>
+        <conf:name>SEC Office of Structured Disclosure</conf:name>
+        <conf:email>StructuredData@sec.gov</conf:email>
+    </conf:creator>
+    <conf:number>605-24</conf:number>
+    <conf:name>EDGAR Filer Manual v68d 6.5.24</conf:name>
+    <conf:description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.5.24 The Registrant Name in the required context.">Refer to EFM: 6.5.24 The Registrant Name in the required context.</a>
+    </conf:description>
+    <conf:reference specification="17659"></conf:reference>
+    <conf:variation id="_600gd">
+        <conf:name>6.5.24 No registrant name, two L SDR CIKs are 000000000, GOOD</conf:name>
+        <conf:description>6.5.24 No registrant name, CIK for both L SDR exhibits is 000000000, and their names are different, GOOD</conf:description>
+        <conf:reference specification="17659.2"></conf:reference>
+        <conf:data>
+            <conf:parameter name="cikList" datatype="xs:string" value="0001312818,0000917144,0000121644,0000350001"></conf:parameter>
+            <conf:parameter name="cikNameList" datatype="xs:string" value="SBSE Co|Edgar|LTEST|Edgar|MTEST|Edgar|ALLEN TEST &amp; RAIN WATER CO INC 3 \/\/"></conf:parameter>
+            <conf:instance readMeFirst="true" exhibitType="EX-99.K SDR">600gd/k60524600gd-20151231.xml</conf:instance>
+            <conf:linkbase>600gd/k60524600gd-20151231_lab.xml</conf:linkbase>
+            <conf:linkbase>600gd/k60524600gd-20151231_pre.xml</conf:linkbase>
+            <conf:schema>600gd/k60524600gd-20151231.xsd</conf:schema>
+            <conf:instance readMeFirst="true" exhibitType="EX-99.L SDR">600gd/l60524600gd-20151231.xml</conf:instance>
+            <conf:linkbase>600gd/l60524600gd-20151231_lab.xml</conf:linkbase>
+            <conf:linkbase>600gd/l60524600gd-20151231_pre.xml</conf:linkbase>
+            <conf:schema>600gd/l60524600gd-20151231.xsd</conf:schema>
+            <conf:instance readMeFirst="true" exhibitType="EX-99.L SDR">600gd/m60524600gd-20151231.xml</conf:instance>
+            <conf:linkbase>600gd/m60524600gd-20151231_lab.xml</conf:linkbase>
+            <conf:linkbase>600gd/m60524600gd-20151231_pre.xml</conf:linkbase>
+            <conf:schema>600gd/m60524600gd-20151231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_601ng">
+        <conf:name>6.5.24 Exhibit L SDRs with CIKs both 000000000 but registrant names are the same, NOGOOD</conf:name>
+        <conf:description>6.5.24 No registrant name, CIK for both L SDR exhibits is 000000000, their names are the same value, ANONYMOUS, NOGOOD</conf:description>
+        <conf:reference specification="17659.2"></conf:reference>
+        <conf:data>
+            <conf:parameter name="cikList" datatype="xs:string" value="0001312818,0000917144,0000121644,0000350001"></conf:parameter>
+            <conf:parameter name="cikNameList" datatype="xs:string" value="SBSE Co|Edgar|LTEST|Edgar|MTEST|Edgar|ALLEN TEST &amp; RAIN WATER CO INC 3 \/\/"></conf:parameter>
+            <conf:instance readMeFirst="true" exhibitType="EX-99.K SDR">601ng/k60524601ng-20151231.xml</conf:instance>
+            <conf:linkbase>601ng/k60524601ng-20151231_lab.xml</conf:linkbase>
+            <conf:linkbase>601ng/k60524601ng-20151231_pre.xml</conf:linkbase>
+            <conf:schema>601ng/k60524601ng-20151231.xsd</conf:schema>
+            <conf:instance readMeFirst="true" exhibitType="EX-99.L SDR">601ng/l60524601ng-20151231.xml</conf:instance>
+            <conf:linkbase>601ng/l60524601ng-20151231_lab.xml</conf:linkbase>
+            <conf:linkbase>601ng/l60524601ng-20151231_pre.xml</conf:linkbase>
+            <conf:schema>601ng/l60524601ng-20151231.xsd</conf:schema>
+            <conf:instance readMeFirst="true" exhibitType="EX-99.L SDR">601ng/m60524601ng-20151231.xml</conf:instance>
+            <conf:linkbase>601ng/m60524601ng-20151231_lab.xml</conf:linkbase>
+            <conf:linkbase>601ng/m60524601ng-20151231_pre.xml</conf:linkbase>
+            <conf:schema>601ng/m60524601ng-20151231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60524" name="Multiple-L-Sdr-Reports-For-Entity" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_602gd">
+        <conf:name>6.5.24, CIK 91744 and 50845, GOOD.</conf:name>
+        <conf:description>Two L SDR exhibits using CIK 91744 and 50845, GOOD.</conf:description>
+        <conf:reference specification="17659.2"></conf:reference>
+        <conf:data>
+            <conf:parameter name="submissionType" datatype="xs:string" value="SDR"></conf:parameter>
+            <conf:parameter name="cikList" datatype="xs:string" value="0001312818,0000917144,0000121644,0000350001"></conf:parameter>
+            <conf:parameter name="cikNameList" datatype="xs:string" value="SBSE Co|Edgar|LTEST|Edgar|MTEST|Edgar|ALLEN TEST &amp; RAIN WATER CO INC 3 \/\/"></conf:parameter>
+            <conf:instance readMeFirst="true" exhibitType="EX-99.K SDR">602gd/k60524602gd-20151231.xml</conf:instance>
+            <conf:linkbase>602gd/k60524602gd-20151231_lab.xml</conf:linkbase>
+            <conf:linkbase>602gd/k60524602gd-20151231_pre.xml</conf:linkbase>
+            <conf:schema>602gd/k60524602gd-20151231.xsd</conf:schema>
+            <conf:instance readMeFirst="true" exhibitType="EX-99.L SDR">602gd/l60524602gd-20151231.xml</conf:instance>
+            <conf:linkbase>602gd/l60524602gd-20151231_lab.xml</conf:linkbase>
+            <conf:linkbase>602gd/l60524602gd-20151231_pre.xml</conf:linkbase>
+            <conf:schema>602gd/l60524602gd-20151231.xsd</conf:schema>
+            <conf:instance readMeFirst="true" exhibitType="EX-99.L SDR">602gd/m60524602gd-20151231.xml</conf:instance>
+            <conf:linkbase>602gd/m60524602gd-20151231_lab.xml</conf:linkbase>
+            <conf:linkbase>602gd/m60524602gd-20151231_pre.xml</conf:linkbase>
+            <conf:schema>602gd/m60524602gd-20151231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_603gd">
+        <conf:name>6.5.24, CIK 91744 and 50845, GOOD.</conf:name>
+        <conf:description>Two L SDR exhibits using CIK 91744 and 00000, GOOD.</conf:description>
+        <conf:reference specification="17659.2"></conf:reference>
+        <conf:data>
+            <conf:parameter name="submissionType" datatype="xs:string" value="SDR"></conf:parameter>
+            <conf:parameter name="cikList" datatype="xs:string" value="0001312818,0000917144,0000121644,0000350001"></conf:parameter>
+            <conf:parameter name="cikNameList" datatype="xs:string" value="SBSE Co|Edgar|LTEST|Edgar|MTEST|Edgar|ALLEN TEST &amp; RAIN WATER CO INC 3 \/\/"></conf:parameter>
+            <conf:instance readMeFirst="true" exhibitType="EX-99.K SDR">603gd/k60524603gd-20151231.xml</conf:instance>
+            <conf:linkbase>603gd/k60524603gd-20151231_lab.xml</conf:linkbase>
+            <conf:linkbase>603gd/k60524603gd-20151231_pre.xml</conf:linkbase>
+            <conf:schema>603gd/k60524603gd-20151231.xsd</conf:schema>
+            <conf:instance readMeFirst="true" exhibitType="EX-99.L SDR">603gd/l60524603gd-20151231.xml</conf:instance>
+            <conf:linkbase>603gd/l60524603gd-20151231_lab.xml</conf:linkbase>
+            <conf:linkbase>603gd/l60524603gd-20151231_pre.xml</conf:linkbase>
+            <conf:schema>603gd/l60524603gd-20151231.xsd</conf:schema>
+            <conf:instance readMeFirst="true" exhibitType="EX-99.L SDR">603gd/m60524603gd-20151231.xml</conf:instance>
+            <conf:linkbase>603gd/m60524603gd-20151231_lab.xml</conf:linkbase>
+            <conf:linkbase>603gd/m60524603gd-20151231_pre.xml</conf:linkbase>
+            <conf:schema>603gd/m60524603gd-20151231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_604ng">
+        <conf:name>6.5.24, CIK 91744 and 91744, NOGOOD.</conf:name>
+        <conf:description>Two L SDR exhibits using CIK 91744 and 91744, NOGOOD.</conf:description>
+        <conf:reference specification="17659.2"></conf:reference>
+        <conf:data>
+            <conf:parameter name="submissionType" datatype="xs:string" value="SDR"></conf:parameter>
+            <conf:parameter name="cikList" datatype="xs:string" value="0001312818,0000917144,0000121644,0000350001"></conf:parameter>
+            <conf:parameter name="cikNameList" datatype="xs:string" value="SBSE Co|Edgar|LTEST|Edgar|MTEST|Edgar|ALLEN TEST &amp; RAIN WATER CO INC 3 \/\/"></conf:parameter>
+            <conf:instance readMeFirst="true" exhibitType="EX-99.K SDR">604ng/k60524604ng-20151231.xml</conf:instance>
+            <conf:linkbase>604ng/k60524604ng-20151231_lab.xml</conf:linkbase>
+            <conf:linkbase>604ng/k60524604ng-20151231_pre.xml</conf:linkbase>
+            <conf:schema>604ng/k60524604ng-20151231.xsd</conf:schema>
+            <conf:instance readMeFirst="true" exhibitType="EX-99.L SDR">604ng/l60524604ng-20151231.xml</conf:instance>
+            <conf:linkbase>604ng/l60524604ng-20151231_lab.xml</conf:linkbase>
+            <conf:linkbase>604ng/l60524604ng-20151231_pre.xml</conf:linkbase>
+            <conf:schema>604ng/l60524604ng-20151231.xsd</conf:schema>
+            <conf:instance readMeFirst="true" exhibitType="EX-99.L SDR">604ng/m60524604ng-20151231.xml</conf:instance>
+            <conf:linkbase>604ng/m60524604ng-20151231_lab.xml</conf:linkbase>
+            <conf:linkbase>604ng/m60524604ng-20151231_pre.xml</conf:linkbase>
+            <conf:schema>604ng/m60524604ng-20151231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60524" name="Multiple-L-Sdr-Reports-For-Entity" frd="cp"></conf:assert>
+        </conf:result>
+    </conf:variation>
+</conf:testcase>

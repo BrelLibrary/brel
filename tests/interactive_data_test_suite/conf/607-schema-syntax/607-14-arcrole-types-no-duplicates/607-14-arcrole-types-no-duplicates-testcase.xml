@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>607-14</number>
+    <name>EDGAR Filer Manual v68d 6.7.14</name>
+    <description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.7.14 Unique arcroleURI attribute values.">Refer to EFM: 6.7.14 Unique arcroleURI attribute values.</a>
+    </description>
+    <reference specification="11005"></reference>
+    <variation id="_000gd">
+        <name>6.7.14 Arcrole is uniquely defined, GOOD.</name>
+        <description>Arcrole is uniquely defined, GOOD.</description>
+        <reference specification="11005"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60714000gd-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+            <schema>e60714000gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_001ng">
+        <name>6.7.14 Arcrole is doubly defined in separate schemas, NOGOOD.</name>
+        <description>Arcrole is doubly defined in separate schemas, NOGOOD.</description>
+        <reference specification="11005"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60714001ng-20090101.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+            <schema>e60714000gd-20081231.xsd</schema>
+            <schema>e60714001ng-20090101.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60714" name="Arcrole-Type-Duplicates" frd="du"></assert>
+        </result>
+    </variation>
+</testcase>

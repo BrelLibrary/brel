@@ -1,0 +1,413 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>525-22</number>
+    <name>EDGAR Filer Manual v68d 5.2.5</name>
+    <description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#5.2.5 Inline XBRL Documents">Refer to EFM: 5.2.5 Inline XBRL Documents</a>
+    </description>
+    <variation id="_201gd">
+        <name>GOOD</name>
+        <description>Inline Form 10-K allowed</description>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "submissionType" : "10-K" }'></parameter>
+            <instance readMeFirst="true">i22201gd/i22201gd-20081231.htm</instance>
+            <linkbase>i22201gd/i22201gd-20081231_pre.xml</linkbase>
+            <linkbase>i22201gd/i22201gd-20081231_lab.xml</linkbase>
+            <schema>i22201gd/i22201gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid">
+    </result>
+    </variation>
+    <variation id="_202gd">
+        <name>GOOD</name>
+        <description>Inline Form S-1 allowed</description>
+        <data>
+            <parameter name="ELOparams" value='{ "submissionType" : "S-1" }'></parameter>
+            <instance readMeFirst="true">i22202gd/i22202gd-20081231.htm</instance>
+            <linkbase>i22202gd/i22202gd-20081231_pre.xml</linkbase>
+            <linkbase>i22202gd/i22202gd-20081231_lab.xml</linkbase>
+            <schema>i22202gd/i22202gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid">
+    </result>
+    </variation>
+    <variation id="_203gd">
+        <name>Submission type 497</name>
+        <description>EFM-GOOD-Submission type 497</description>
+        <data>
+            <parameter name="ELOparams" value='{ "submissionType" : "497"  ,"CIK" : "3333333333" ,"invCompanyType" : "N-1A"  ,"fileNumber" : "333-110904" ,"rptSeriesClassInfo.seriesIds" : ["S013456789"] }'></parameter>
+            <instance readMeFirst="true">i22203gd/i22203gd-20081231.htm</instance>
+            <linkbase>i22203gd/i22203gd-20081231_cal.xml</linkbase>
+            <linkbase>i22203gd/i22203gd-20081231_def.xml</linkbase>
+            <linkbase>i22203gd/i22203gd-20081231_pre.xml</linkbase>
+            <linkbase>i22203gd/i22203gd-20081231_lab.xml</linkbase>
+            <schema>i22203gd/i22203gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid">
+    </result>
+    </variation>
+    <variation id="_205gd">
+        <name>Submission type N-CSR</name>
+        <description>EFM-GOOD-Submission type N-CSR</description>
+        <data>
+            <parameter name="ELOparams" value='{ "submissionType" : "N-CSR"  ,"CIK" : "3333333333" ,"fileNumber" : "333-110904" ,"rptSeriesClassInfo.seriesIds" : ["S013456789"] }'></parameter>
+            <instance readMeFirst="true">i22205gd/i22205gd-20081231.htm</instance>
+            <linkbase>i22205gd/i22205gd-20081231_def.xml</linkbase>
+            <linkbase>i22205gd/i22205gd-20081231_pre.xml</linkbase>
+            <linkbase>i22205gd/i22205gd-20081231_lab.xml</linkbase>
+            <schema>i22205gd/i22205gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid">
+
+    </result>
+    </variation>
+    <variation id="_206gd">
+        <name>Submission type 485BPOS</name>
+        <description>EFM-GOOD-Submission type 485BPOS</description>
+        <data>
+            <parameter name="ELOparams" value='{ "submissionType" : "485BPOS"  ,"CIK" : "3333333333" ,"invCompanyType" : "N-1A"  ,"fileNumber" : "333-110904" ,"rptSeriesClassInfo.seriesIds" : ["S013456789"] }'></parameter>
+            <instance readMeFirst="true">i22206gd/i22206gd-20081231.htm</instance>
+            <linkbase>i22206gd/i22206gd-20081231_cal.xml</linkbase>
+            <linkbase>i22206gd/i22206gd-20081231_def.xml</linkbase>
+            <linkbase>i22206gd/i22206gd-20081231_pre.xml</linkbase>
+            <linkbase>i22206gd/i22206gd-20081231_lab.xml</linkbase>
+            <schema>i22206gd/i22206gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid">
+    </result>
+    </variation>
+    <variation id="_207gd">
+        <name>Submission type F-1</name>
+        <description>EFM-GOOD-Submission type F-1</description>
+        <data>
+            <parameter name="ELOparams" value='{ "emergingGrowthCompanyFlag" : false, "submissionType" : "F-1" }'></parameter>
+            <instance readMeFirst="true">i22207gd/i22207gd-20081231.htm</instance>
+            <linkbase>i22207gd/i22207gd-20081231_pre.xml</linkbase>
+            <linkbase>i22207gd/i22207gd-20081231_lab.xml</linkbase>
+            <schema>i22207gd/i22207gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid">
+
+    </result>
+    </variation>
+    <variation id="_208gd">
+        <name>Submission type 485BXT</name>
+        <description>EFM-GOOD-Submission type 485BXT</description>
+        <data>
+            <parameter name="ELOparams" value='{ "submissionType" : "485BXT"  ,"CIK" : "3333333333" ,"invCompanyType" : "N-1A"  ,"fileNumber" : "333-110904" ,"rptSeriesClassInfo.seriesIds" : ["S013456789"] }'></parameter>
+            <instance readMeFirst="true">i22208gd/i22208gd-20081231.htm</instance>
+            <linkbase>i22208gd/i22208gd-20081231_cal.xml</linkbase>
+            <linkbase>i22208gd/i22208gd-20081231_def.xml</linkbase>
+            <linkbase>i22208gd/i22208gd-20081231_pre.xml</linkbase>
+            <linkbase>i22208gd/i22208gd-20081231_lab.xml</linkbase>
+            <schema>i22208gd/i22208gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid">
+    </result>
+    </variation>
+    <variation id="_209gd">
+        <name>Submission type S-3</name>
+        <description>EFM-GOOD-Submission type S-3</description>
+        <data>
+            <parameter name="ELOparams" value='{ "submissionType" : "S-3" }'></parameter>
+            <instance readMeFirst="true">i22209gd/i22209gd-20081231.htm</instance>
+            <linkbase>i22209gd/i22209gd-20081231_pre.xml</linkbase>
+            <linkbase>i22209gd/i22209gd-20081231_lab.xml</linkbase>
+            <schema>i22209gd/i22209gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid">
+    </result>
+    </variation>
+    <variation id="_210gd">
+        <name>Submission type S-4</name>
+        <description>EFM-GOOD-Submission type S-4</description>
+        <data>
+            <parameter name="ELOparams" value='{ "submissionType" : "S-4" }'></parameter>
+            <instance readMeFirst="true">i22210gd/i22210gd-20081231.htm</instance>
+            <linkbase>i22210gd/i22210gd-20081231_pre.xml</linkbase>
+            <linkbase>i22210gd/i22210gd-20081231_lab.xml</linkbase>
+            <schema>i22210gd/i22210gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid">
+    </result>
+    </variation>
+    <variation id="_211gd">
+        <name>Submission type S-4</name>
+        <description>EFM-GOOD-Submission type S-11</description>
+        <data>
+            <parameter name="ELOparams" value='{ "submissionType" : "S-11" }'></parameter>
+            <instance readMeFirst="true">i22211gd/i22211gd-20081231.htm</instance>
+            <linkbase>i22211gd/i22211gd-20081231_pre.xml</linkbase>
+            <linkbase>i22211gd/i22211gd-20081231_lab.xml</linkbase>
+            <schema>i22211gd/i22211gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid">
+    </result>
+    </variation>
+    <variation id="_212gd">
+        <name>Submission type POS AM</name>
+        <description>EFM-GOOD-Submission type POS AM</description>
+        <data>
+            <parameter name="ELOparams" value='{ "submissionType" : "POS AM" }'></parameter>
+            <instance readMeFirst="true">i22212gd/i22212gd-20081231.htm</instance>
+            <linkbase>i22212gd/i22212gd-20081231_pre.xml</linkbase>
+            <linkbase>i22212gd/i22212gd-20081231_lab.xml</linkbase>
+            <schema>i22212gd/i22212gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid">
+    </result>
+    </variation>
+    <variation id="_213gd">
+        <name>Submission type POS EX</name>
+        <description>EFM-GOOD-Submission type POS EX</description>
+        <data>
+            <parameter name="ELOparams" value='{ "submissionType" : "POS EX" }'></parameter>
+            <instance readMeFirst="true">i22213gd/i22213gd-20081231.htm</instance>
+            <linkbase>i22213gd/i22213gd-20081231_pre.xml</linkbase>
+            <linkbase>i22213gd/i22213gd-20081231_lab.xml</linkbase>
+            <schema>i22213gd/i22213gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid">
+    </result>
+    </variation>
+    <variation id="_214gd">
+        <name>Submission type F-3</name>
+        <description>EFM-GOOD-Submission type F-3</description>
+        <data>
+            <parameter name="ELOparams" value='{ "emergingGrowthCompanyFlag" : false, "submissionType" : "F-3" }'></parameter>
+            <instance readMeFirst="true">i22214gd/i22214gd-20081231.htm</instance>
+            <linkbase>i22214gd/i22214gd-20081231_pre.xml</linkbase>
+            <linkbase>i22214gd/i22214gd-20081231_lab.xml</linkbase>
+            <schema>i22214gd/i22214gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid">
+    </result>
+    </variation>
+    <variation id="_215gd">
+        <name>Submission type F-4</name>
+        <description>EFM-GOOD-Submission type F-4</description>
+        <data>
+            <parameter name="ELOparams" value='{ "emergingGrowthCompanyFlag" : false, "submissionType" : "F-4" }'></parameter>
+            <instance readMeFirst="true">i22215gd/i22215gd-20081231.htm</instance>
+            <linkbase>i22215gd/i22215gd-20081231_pre.xml</linkbase>
+            <linkbase>i22215gd/i22215gd-20081231_lab.xml</linkbase>
+            <schema>i22215gd/i22215gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid">
+    </result>
+    </variation>
+    <variation id="_216gd">
+        <name>Submission type 485APOS</name>
+        <description>EFM-GOOD-Submission type 485APOS</description>
+        <data>
+            <parameter name="ELOparams" value='{ "submissionType" : "485APOS" }'></parameter>
+            <instance readMeFirst="true">i22216gd/i22216gd-20081231.htm</instance>
+            <linkbase>i22216gd/i22216gd-20081231_cal.xml</linkbase>
+            <linkbase>i22216gd/i22216gd-20081231_def.xml</linkbase>
+            <linkbase>i22216gd/i22216gd-20081231_pre.xml</linkbase>
+            <linkbase>i22216gd/i22216gd-20081231_lab.xml</linkbase>
+            <schema>i22216gd/i22216gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid">
+    </result>
+    </variation>
+    <variation id="_217gd">
+        <name>Submission type POSASR</name>
+        <description>EFM-GOOD-Submission type POSASR</description>
+        <data>
+            <parameter name="ELOparams" value='{ "submissionType" : "POSASR" }'></parameter>
+            <instance readMeFirst="true">i22217gd/i22217gd-20081231.htm</instance>
+            <linkbase>i22217gd/i22217gd-20081231_pre.xml</linkbase>
+            <linkbase>i22217gd/i22217gd-20081231_lab.xml</linkbase>
+            <schema>i22217gd/i22217gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid">
+    </result>
+    </variation>
+    <variation id="_218gd">
+        <name>Submission type 10-12B</name>
+        <description>EFM-GOOD-Submission type 10-12B</description>
+        <data>
+            <parameter name="ELOparams" value='{ "submissionType" : "10-12B" }'></parameter>
+            <instance readMeFirst="true">i22218gd/i22218gd-20181231.htm</instance>
+            <linkbase>i22218gd/edgar-20181231_def.xml</linkbase>
+            <linkbase>i22218gd/edgar-20181231_pre.xml</linkbase>
+            <linkbase>i22218gd/edgar-20181231_lab.xml</linkbase>
+            <schema>i22218gd/edgar-20181231.xsd</schema>
+        </data>
+        <result expected="valid">
+    </result>
+    </variation>
+    <variation id="_219gd">
+        <name>Submission type 10-12G</name>
+        <description>EFM-GOOD-Submission type 10-12G</description>
+        <data>
+            <parameter name="ELOparams" value='{ "submissionType" : "10-12G" }'></parameter>
+            <instance readMeFirst="true">i22219gd/i22219gd-20181231.htm</instance>
+            <linkbase>i22219gd/edgar-20181231_def.xml</linkbase>
+            <linkbase>i22219gd/edgar-20181231_pre.xml</linkbase>
+            <linkbase>i22219gd/edgar-20181231_lab.xml</linkbase>
+            <schema>i22219gd/edgar-20181231.xsd</schema>
+        </data>
+        <result expected="valid">
+    </result>
+    </variation>
+    <variation id="_220gd">
+        <name>Submission type 8-K</name>
+        <description>EFM-GOOD-Submission type 8-K</description>
+        <data>
+            <parameter name="ELOparams" value='{ "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i22220gd/i22220gd-20181231.htm</instance>
+            <linkbase>i22220gd/edgar-20181231_def.xml</linkbase>
+            <linkbase>i22220gd/edgar-20181231_pre.xml</linkbase>
+            <linkbase>i22220gd/edgar-20181231_lab.xml</linkbase>
+            <schema>i22220gd/edgar-20181231.xsd</schema>
+        </data>
+        <result expected="valid">
+    </result>
+    </variation>
+    <variation id="_221gd">
+        <name>Submission type 10-Q</name>
+        <description>EFM-GOOD-Submission type 10-Q</description>
+        <data>
+            <parameter name="ELOparams" value='{ "submissionType" : "10-Q" }'></parameter>
+            <instance readMeFirst="true">i22221gd/i22221gd-20181231.htm</instance>
+            <linkbase>i22221gd/edgar-20181231_def.xml</linkbase>
+            <linkbase>i22221gd/edgar-20181231_pre.xml</linkbase>
+            <linkbase>i22221gd/edgar-20181231_lab.xml</linkbase>
+            <schema>i22221gd/edgar-20181231.xsd</schema>
+        </data>
+        <result expected="valid">
+    </result>
+    </variation>
+    <variation id="_222gd">
+        <name>Submission type 20-F</name>
+        <description>EFM-GOOD-Submission type 20-F</description>
+        <data>
+            <parameter name="ELOparams" value='{ "submissionType" : "20-F" }'></parameter>
+            <instance readMeFirst="true">i22222gd/i22222gd-20181231.htm</instance>
+            <linkbase>i22222gd/eifrs-20181231_def.xml</linkbase>
+            <linkbase>i22222gd/eifrs-20181231_pre.xml</linkbase>
+            <linkbase>i22222gd/eifrs-20181231_lab.xml</linkbase>
+            <schema>i22222gd/eifrs-20181231.xsd</schema>
+        </data>
+        <result expected="valid">
+    </result>
+    </variation>
+    <variation id="_223gd">
+        <name>Submission type 40-F</name>
+        <description>EFM-GOOD-Submission type 40-F</description>
+        <data>
+            <parameter name="ELOparams" value='{ "submissionType" : "40-F" }'></parameter>
+            <instance readMeFirst="true">i22223gd/i22223gd-20181231.htm</instance>
+            <linkbase>i22223gd/edgar-20181231_def.xml</linkbase>
+            <linkbase>i22223gd/edgar-20181231_pre.xml</linkbase>
+            <linkbase>i22223gd/edgar-20181231_lab.xml</linkbase>
+            <schema>i22223gd/edgar-20181231.xsd</schema>
+        </data>
+        <result expected="valid">
+    </result>
+    </variation>
+    <variation id="_224gd">
+        <name>Submission type 20FR12B</name>
+        <description>EFM-GOOD-Submission type 20FR12B</description>
+        <data>
+            <parameter name="ELOparams" value='{ "submissionType" : "20FR12B" }'></parameter>
+            <instance readMeFirst="true">i22224gd/i22224gd-20181231.htm</instance>
+            <linkbase>i22224gd/edgar-20181231_def.xml</linkbase>
+            <linkbase>i22224gd/edgar-20181231_pre.xml</linkbase>
+            <linkbase>i22224gd/edgar-20181231_lab.xml</linkbase>
+            <schema>i22224gd/edgar-20181231.xsd</schema>
+        </data>
+        <result expected="valid">
+    </result>
+    </variation>
+    <variation id="_225gd">
+        <name>Submission type 10-KT</name>
+        <description>EFM-GOOD-Submission type 10-KT</description>
+        <data>
+            <parameter name="ELOparams" value='{ "submissionType" : "10-KT" }'></parameter>
+            <instance readMeFirst="true">i22225gd/i22225gd-20081231.htm</instance>
+            <linkbase>i22225gd/i22225gd-20081231_pre.xml</linkbase>
+            <linkbase>i22225gd/i22225gd-20081231_lab.xml</linkbase>
+            <schema>i22225gd/i22225gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid">
+    </result>
+    </variation>
+    <variation id="_226gd">
+        <name>Submission type 10-QT</name>
+        <description>EFM-GOOD-Submission type 10-QT</description>
+        <data>
+            <parameter name="ELOparams" value='{ "submissionType" : "10-QT" }'></parameter>
+            <instance readMeFirst="true">i22226gd/i22226gd-20181231.htm</instance>
+            <linkbase>i22226gd/edgar-20181231_def.xml</linkbase>
+            <linkbase>i22226gd/edgar-20181231_pre.xml</linkbase>
+            <linkbase>i22226gd/edgar-20181231_lab.xml</linkbase>
+            <schema>i22226gd/edgar-20181231.xsd</schema>
+        </data>
+        <result expected="valid">
+    </result>
+    </variation>
+    <variation id="_227gd">
+        <name>Submission type 20FR12G</name>
+        <description>EFM-GOOD-Submission type 20FR12G</description>
+        <data>
+            <parameter name="ELOparams" value='{ "submissionType" : "20FR12G" }'></parameter>
+            <instance readMeFirst="true">i22227gd/i22227gd-20181231.htm</instance>
+            <linkbase>i22227gd/edgar-20181231_def.xml</linkbase>
+            <linkbase>i22227gd/edgar-20181231_pre.xml</linkbase>
+            <linkbase>i22227gd/edgar-20181231_lab.xml</linkbase>
+            <schema>i22227gd/edgar-20181231.xsd</schema>
+        </data>
+        <result expected="valid">
+    </result>
+    </variation>
+    <variation id="_228gd">
+        <name>Submission type 40FR12B</name>
+        <description>EFM-GOOD-Submission type 40FR12B</description>
+        <data>
+            <parameter name="ELOparams" value='{ "submissionType" : "40FR12B" }'></parameter>
+            <instance readMeFirst="true">i22228gd/i22228gd-20181231.htm</instance>
+            <linkbase>i22228gd/edgar-20181231_def.xml</linkbase>
+            <linkbase>i22228gd/edgar-20181231_pre.xml</linkbase>
+            <linkbase>i22228gd/edgar-20181231_lab.xml</linkbase>
+            <schema>i22228gd/edgar-20181231.xsd</schema>
+        </data>
+        <result expected="valid">
+    </result>
+    </variation>
+    <variation id="_229gd">
+        <name>Submission type 40FR12G</name>
+        <description>EFM-GOOD-Submission type 40FR12G</description>
+        <data>
+            <parameter name="ELOparams" value='{ "submissionType" : "40FR12G" }'></parameter>
+            <instance readMeFirst="true">i22229gd/i22229gd-20181231.htm</instance>
+            <linkbase>i22229gd/edgar-20181231_def.xml</linkbase>
+            <linkbase>i22229gd/edgar-20181231_pre.xml</linkbase>
+            <linkbase>i22229gd/edgar-20181231_lab.xml</linkbase>
+            <schema>i22229gd/edgar-20181231.xsd</schema>
+        </data>
+        <result expected="valid">
+    </result>
+    </variation>
+    <variation id="_301ng">
+        <name>Submission type SDR</name>
+        <description>EFM-NOGOOD-Submission type SDR</description>
+        <data>
+            <parameter name="ELOparams" value='{ "submissionType" : "SDR" }'></parameter>
+            <instance readMeFirst="true">i22301ng/i22301ng-20081231.htm</instance>
+            <linkbase>i22301ng/i22301ng-20081231_pre.xml</linkbase>
+            <linkbase>i22301ng/i22301ng-20081231_lab.xml</linkbase>
+            <schema>i22301ng/i22301ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60520" name="Incompatible-Inline-Document-Type" frd="cp"></assert>
+        </result>
+    </variation>
+</testcase>

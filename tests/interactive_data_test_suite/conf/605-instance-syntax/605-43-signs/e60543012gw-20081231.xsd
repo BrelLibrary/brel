@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xs:schema xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:e60543012gw="http://e60543012gw/20081231" targetNamespace="http://e60543012gw/20081231" elementFormDefault="qualified">
+    <xs:annotation>
+        <xs:appinfo>
+            <link:linkbaseRef xlink:href="https://xbrl.sec.gov/dei/2019/dei-pre-2019-01-31.xml" xlink:type="simple" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:role="http://www.xbrl.org/2003/role/presentationLinkbaseRef"></link:linkbaseRef>
+            <link:linkbaseRef xlink:href="https://xbrl.sec.gov/dei/2019/dei-lab-2019-01-31.xml" xlink:type="simple" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef"></link:linkbaseRef>
+            <link:linkbaseRef xlink:href="https://xbrl.sec.gov/dei/2019/dei-def-2019-01-31.xml" xlink:type="simple" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:role="http://www.xbrl.org/2003/role/definitionLinkbaseRef"></link:linkbaseRef>
+            <link:linkbaseRef xlink:href="http://xbrl.fasb.org/srt/2020/elts/srt-eedm1-def-2020-01-31.xml" xlink:type="simple" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:role="http://www.xbrl.org/2003/role/definitionLinkbaseRef"></link:linkbaseRef>
+        </xs:appinfo>
+    </xs:annotation>
+    <xs:import schemaLocation="https://xbrl.sec.gov/stpr/2018/stpr-2018-01-31.xsd" namespace="http://xbrl.sec.gov/stpr/2018-01-31"></xs:import>
+    <xs:import schemaLocation="https://xbrl.sec.gov/sic/2020/sic-2020-01-31.xsd" namespace="http://xbrl.sec.gov/sic/2020-01-31"></xs:import>
+    <xs:import schemaLocation="https://xbrl.sec.gov/naics/2017/naics-2017-01-31.xsd" namespace="http://xbrl.sec.gov/naics/2021"></xs:import>
+    <xs:import schemaLocation="https://xbrl.sec.gov/exch/2020/exch-2020-01-31.xsd" namespace="http://xbrl.sec.gov/exch/2020-01-31"></xs:import>
+    <xs:import schemaLocation="https://xbrl.sec.gov/dei/2021/dei-2021.xsd" namespace="http://xbrl.sec.gov/dei/2021"></xs:import>
+    <xs:import schemaLocation="https://xbrl.sec.gov/dei/2019/dei-std-2019-01-31.xsd" namespace="http://xbrl.sec.gov/dei-std/2019-01-31"></xs:import>
+    <xs:import schemaLocation="https://xbrl.sec.gov/dei/2021/dei-2021_def.xsd" namespace="http://xbrl.sec.gov/dei-def/2021"></xs:import>
+    <xs:import schemaLocation="https://xbrl.sec.gov/dei/2021/dei-2021_pre.xsd" namespace="http://xbrl.sec.gov/dei-pre/2021"></xs:import>
+    <xs:import schemaLocation="https://xbrl.sec.gov/dei/2021/dei-2021_lab.xsd" namespace="http://xbrl.sec.gov/dei-lab/2021"></xs:import>
+    <xs:import schemaLocation="https://xbrl.sec.gov/dei/2021/dei-2021.xsd" namespace="http://xbrl.sec.gov/dei/2021"></xs:import>
+    <xs:import schemaLocation="https://xbrl.sec.gov/currency/2020/currency-2020-01-31.xsd" namespace="http://xbrl.sec.gov/currency/2020-01-31"></xs:import>
+    <xs:import schemaLocation="https://xbrl.sec.gov/country/2020/country-2020-01-31.xsd" namespace="http://xbrl.sec.gov/country/2020-01-31"></xs:import>
+    <xs:import schemaLocation="https://xbrl.sec.gov/exch/2020/exch-2020-01-31.xsd" namespace="http://xbrl.sec.gov/exch/2020-01-31"></xs:import>
+    <xs:import schemaLocation="http://xbrl.fasb.org/us-gaap/2020/elts/us-gaap-2020-01-31.xsd" namespace="http://fasb.org/us-gaap/2020-01-31"></xs:import>
+    <xs:import schemaLocation="http://xbrl.fasb.org/us-gaap/2020/elts/us-types-2020-01-31.xsd" namespace="http://fasb.org/us-types/2020-01-31"></xs:import>
+    <xs:import schemaLocation="http://xbrl.fasb.org/us-gaap/2020/elts/us-roles-2020-01-31.xsd" namespace="http://fasb.org/us-roles/2020-01-31"></xs:import>
+    <xs:import schemaLocation="http://xbrl.fasb.org/srt/2020/elts/srt-2020-01-31.xsd" namespace="http://fasb.org/srt/2020-01-31"></xs:import>
+    <xs:import schemaLocation="http://xbrl.fasb.org/srt/2020/elts/srt-types-2020-01-31.xsd" namespace="http://fasb.org/srt-types/2020-01-31"></xs:import>
+    <xs:import schemaLocation="http://xbrl.fasb.org/srt/2020/elts/srt-roles-2020-01-31.xsd" namespace="http://fasb.org/srt-roles/2020-01-31"></xs:import>
+    <xs:import schemaLocation="https://www.xbrl.org/dtr/type/2020-01-21/types.xsd" namespace="http://www.xbrl.org/dtr/type/2020-01-21"></xs:import>
+    <xs:import schemaLocation="https://www.xbrl.org/dtr/type/2020-01-21/types.xsd" namespace="http://www.xbrl.org/dtr/type/2020-01-21"></xs:import>
+    <xs:import schemaLocation="http://www.xbrl.org/lrr/role/net-2009-12-16.xsd" namespace="http://www.xbrl.org/2009/role/net"></xs:import>
+    <xs:import schemaLocation="http://www.xbrl.org/lrr/role/negated-2009-12-16.xsd" namespace="http://www.xbrl.org/2009/role/negated"></xs:import>
+    <xs:import schemaLocation="http://www.xbrl.org/lrr/arcrole/factExplanatory-2009-12-16.xsd" namespace="http://www.xbrl.org/2009/arcrole/fact-explanatoryFact"></xs:import>
+    <xs:import schemaLocation="edgar-20200131.xsd" namespace="http://edgar/20081231"></xs:import>
+</xs:schema>

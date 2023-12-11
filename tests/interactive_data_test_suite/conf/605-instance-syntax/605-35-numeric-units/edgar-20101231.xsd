@@ -1,0 +1,1757 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xs:schema xmlns:edgar="http://edgar/20101231" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:dtr-types="http://www.xbrl.org/dtr/type/2022-03-31" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:iso="http://www.xbrl.org/2003/iso4217" xmlns:local="local" xmlns:utr="http://www.xbrl.org/2009/utr" targetNamespace="http://edgar/20101231" elementFormDefault="qualified">
+    <xs:annotation>
+        <xs:documentation>The purpose of this schema is to define types and derived types for each type used in utr.xml. The documentation element in each element contains all 'good' units and some 'nogood' units.</xs:documentation>
+        <xs:appinfo>
+            <link:linkbaseRef xlink:href="edgar-20101231_pre.xml" xlink:type="simple" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:role="http://www.xbrl.org/2003/role/presentationLinkbaseRef"></link:linkbaseRef>
+            <link:linkbaseRef xlink:href="edgar-20101231_lab.xml" xlink:type="simple" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef"></link:linkbaseRef>
+            <link:linkbaseRef xlink:href="edgar-20101231_def.xml" xlink:type="simple" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:role="http://www.xbrl.org/2003/role/definitionLinkbaseRef"></link:linkbaseRef>
+            <link:roleType id="EntityInformation" roleURI="http://edgar/role/EntityInformation">
+                <link:definition>991 - Document - Entity Information</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="DocumentInformation" roleURI="http://edgar/role/DocumentInformation">
+                <link:definition>992 - Document - Document Information</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="OtherInformation" roleURI="http://edgar/role/OtherInformation">
+                <link:definition>990 - Document - Other Information</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType id="Defaults" roleURI="http://edgar/role/Defaults">
+                <link:definition>999 - Document - Defaults</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+        </xs:appinfo>
+    </xs:annotation>
+    <xs:import schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd" namespace="http://www.xbrl.org/2003/instance"></xs:import>
+    <xs:import schemaLocation="https://www.xbrl.org/dtr/type/2022-03-31/types.xsd" namespace="http://www.xbrl.org/dtr/type/2022-03-31"></xs:import>
+    <xs:element name="Top" id="edgar_Top" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true" nillable="true" substitutionGroup="xbrli:item"></xs:element>
+    <xs:complexType name="derivedAreaItemType">
+        <xs:simpleContent>
+            <xs:restriction base="dtr-types:areaItemType"></xs:restriction>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:element name="AreaItemTypeConcept" id="edgar_AreaItemTypeConcept" type="dtr-types:areaItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item">
+        <xs:annotation xmlns="http://www.xbrl.org/2003/instance">
+            <xs:documentation source="good">
+                <unit id="d1e6_1__acre">
+                    <measure>utr:acre</measure>
+                </unit>
+                <unit id="d1e90_1__sqft">
+                    <measure>utr:sqft</measure>
+                </unit>
+                <unit id="d1e174_1__sqmi">
+                    <measure>utr:sqmi</measure>
+                </unit>
+                <unit id="d1e258_1__sqyd">
+                    <measure>utr:sqyd</measure>
+                </unit>
+                <unit id="d1e8925_1__ha">
+                    <measure>utr:ha</measure>
+                </unit>
+                <unit id="d1e9009_1__sqkm">
+                    <measure>utr:sqkm</measure>
+                </unit>
+                <unit id="d1e9093_1__sqm">
+                    <measure>utr:sqm</measure>
+                </unit>
+            </xs:documentation>
+            <xs:documentation source="nogood">
+                <unit id="d1e6_5__u1">
+                    <measure>local:u1</measure>
+                </unit>
+                <unit id="d1e6_6__xacre">
+                    <measure>local:acre</measure>
+                </unit>
+                <unit id="d1e6_7__u1_u2">
+                    <divide>
+                        <unitNumerator>
+                            <measure>local:u1</measure>
+                        </unitNumerator>
+                        <unitDenominator>
+                            <measure>local:u2</measure>
+                        </unitDenominator>
+                    </divide>
+                </unit>
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="DerivedAreaItemTypeConcept" id="edgar_DerivedAreaItemTypeConcept" type="edgar:derivedAreaItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item">
+        <xs:annotation xmlns="http://www.xbrl.org/2003/instance">
+            <xs:documentation source="nogood">
+                <unit id="d1e6_9__u1">
+                    <measure>local:u1</measure>
+                </unit>
+                <unit id="d1e6_a__xacre">
+                    <measure>local:acre</measure>
+                </unit>
+                <unit id="d1e6_b__u1_u2">
+                    <divide>
+                        <unitNumerator>
+                            <measure>local:u1</measure>
+                        </unitNumerator>
+                        <unitDenominator>
+                            <measure>local:u2</measure>
+                        </unitDenominator>
+                    </divide>
+                </unit>
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="electricCurrentItemType">
+        <xs:simpleContent>
+            <xs:restriction base="xbrli:decimalItemType"></xs:restriction>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="derivedElectricCurrentItemType">
+        <xs:simpleContent>
+            <xs:restriction base="edgar:electricCurrentItemType"></xs:restriction>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:element name="ElectricCurrentItemTypeConcept" id="edgar_ElectricCurrentItemTypeConcept" type="edgar:electricCurrentItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item">
+        <xs:annotation xmlns="http://www.xbrl.org/2003/instance">
+            <xs:documentation source="good">
+                <unit id="d1e9161_1__A">
+                    <measure>utr:A</measure>
+                </unit>
+            </xs:documentation>
+            <xs:documentation source="nogood">
+                <unit id="d1e9161_5__u1">
+                    <measure>local:u1</measure>
+                </unit>
+                <unit id="d1e9161_6__xA">
+                    <measure>local:A</measure>
+                </unit>
+                <unit id="d1e9161_7__u1_u2">
+                    <divide>
+                        <unitNumerator>
+                            <measure>local:u1</measure>
+                        </unitNumerator>
+                        <unitDenominator>
+                            <measure>local:u2</measure>
+                        </unitDenominator>
+                    </divide>
+                </unit>
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="DerivedElectricCurrentItemTypeConcept" id="edgar_DerivedElectricCurrentItemTypeConcept" type="edgar:derivedElectricCurrentItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item">
+        <xs:annotation xmlns="http://www.xbrl.org/2003/instance">
+            <xs:documentation source="nogood">
+                <unit id="d1e9161_9__u1">
+                    <measure>local:u1</measure>
+                </unit>
+                <unit id="d1e9161_a__xA">
+                    <measure>local:A</measure>
+                </unit>
+                <unit id="d1e9161_b__u1_u2">
+                    <divide>
+                        <unitNumerator>
+                            <measure>local:u1</measure>
+                        </unitNumerator>
+                        <unitDenominator>
+                            <measure>local:u2</measure>
+                        </unitDenominator>
+                    </divide>
+                </unit>
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="derivedEnergyItemType">
+        <xs:simpleContent>
+            <xs:restriction base="dtr-types:energyItemType"></xs:restriction>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:element name="EnergyItemTypeConcept" id="edgar_EnergyItemTypeConcept" type="dtr-types:energyItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item">
+        <xs:annotation xmlns="http://www.xbrl.org/2003/instance">
+            <xs:documentation source="good">
+                <unit id="d1e342_1__Boe">
+                    <measure>utr:Boe</measure>
+                </unit>
+                <unit id="d1e413_1__Btu">
+                    <measure>utr:Btu</measure>
+                </unit>
+                <unit id="d1e506_1__ft_lb">
+                    <measure>utr:ft_lb</measure>
+                </unit>
+                <unit id="d1e576_1__MBoe">
+                    <measure>utr:MBoe</measure>
+                </unit>
+                <unit id="d1e669_1__Mcfe">
+                    <measure>utr:Mcfe</measure>
+                </unit>
+                <unit id="d1e757_1__MMBoe">
+                    <measure>utr:MMBoe</measure>
+                </unit>
+                <unit id="d1e850_1__MMBTU">
+                    <measure>utr:MMBTU</measure>
+                </unit>
+                <unit id="d1e8350_1__Cal">
+                    <measure>utr:Cal</measure>
+                </unit>
+                <unit id="d1e9231_1__J">
+                    <measure>utr:J</measure>
+                </unit>
+                <unit id="d1e9344_1__kJ">
+                    <measure>utr:kJ</measure>
+                </unit>
+                <unit id="d1e9428_1__kWh">
+                    <measure>utr:kWh</measure>
+                </unit>
+                <unit id="d1e9521_1__mJ">
+                    <measure>utr:mJ</measure>
+                </unit>
+                <unit id="d1e9605_1__MWh">
+                    <measure>utr:MWh</measure>
+                </unit>
+                <unit id="d1e12312_1__GWh">
+                    <measure>utr:GWh</measure>
+                </unit>
+                <unit id="d1e12405_1__TWh">
+                    <measure>utr:TWh</measure>
+                </unit>
+                <unit id="d1e12572_1__MMcfe">
+                    <measure>utr:MMcfe</measure>
+                </unit>
+                <unit id="d1e12660_1__Bcfe">
+                    <measure>utr:Bcfe</measure>
+                </unit>
+                <unit id="d1e12749_1__Tcfe">
+                    <measure>utr:Tcfe</measure>
+                </unit>
+                <unit id="d1e13354_1__MWM">
+                    <measure>utr:MWM</measure>
+                </unit>
+                <unit id="d1e13447_1__GWM">
+                    <measure>utr:GWM</measure>
+                </unit>
+            </xs:documentation>
+            <xs:documentation source="nogood">
+                <unit id="d1e342_5__u1">
+                    <measure>local:u1</measure>
+                </unit>
+                <unit id="d1e12660_6__xBcfe">
+                    <measure>local:Bcfe</measure>
+                </unit>
+                <unit id="d1e342_7__u1_u2">
+                    <divide>
+                        <unitNumerator>
+                            <measure>local:u1</measure>
+                        </unitNumerator>
+                        <unitDenominator>
+                            <measure>local:u2</measure>
+                        </unitDenominator>
+                    </divide>
+                </unit>
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="DerivedEnergyItemTypeConcept" id="edgar_DerivedEnergyItemTypeConcept" type="edgar:derivedEnergyItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item">
+        <xs:annotation xmlns="http://www.xbrl.org/2003/instance">
+            <xs:documentation source="nogood">
+                <unit id="d1e342_9__u1">
+                    <measure>local:u1</measure>
+                </unit>
+                <unit id="d1e12660_a__xBcfe">
+                    <measure>local:Bcfe</measure>
+                </unit>
+                <unit id="d1e342_b__u1_u2">
+                    <divide>
+                        <unitNumerator>
+                            <measure>local:u1</measure>
+                        </unitNumerator>
+                        <unitDenominator>
+                            <measure>local:u2</measure>
+                        </unitDenominator>
+                    </divide>
+                </unit>
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="voltageItemType">
+        <xs:simpleContent>
+            <xs:restriction base="xbrli:decimalItemType"></xs:restriction>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="derivedVoltageItemType">
+        <xs:simpleContent>
+            <xs:restriction base="edgar:voltageItemType"></xs:restriction>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:element name="VoltageItemTypeConcept" id="edgar_VoltageItemTypeConcept" type="edgar:voltageItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item">
+        <xs:annotation xmlns="http://www.xbrl.org/2003/instance">
+            <xs:documentation source="good">
+                <unit id="d1e9699_1__V">
+                    <measure>utr:V</measure>
+                </unit>
+                <unit id="d1e10874_1__kV">
+                    <measure>utr:kV</measure>
+                </unit>
+                <unit id="d1e11951_1__MV">
+                    <measure>utr:MV</measure>
+                </unit>
+                <unit id="d1e12032_1__GV">
+                    <measure>utr:GV</measure>
+                </unit>
+            </xs:documentation>
+            <xs:documentation source="nogood">
+                <unit id="d1e9699_5__u1">
+                    <measure>local:u1</measure>
+                </unit>
+                <unit id="d1e12032_6__xGV">
+                    <measure>local:GV</measure>
+                </unit>
+                <unit id="d1e9699_7__u1_u2">
+                    <divide>
+                        <unitNumerator>
+                            <measure>local:u1</measure>
+                        </unitNumerator>
+                        <unitDenominator>
+                            <measure>local:u2</measure>
+                        </unitDenominator>
+                    </divide>
+                </unit>
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="DerivedVoltageItemTypeConcept" id="edgar_DerivedVoltageItemTypeConcept" type="edgar:derivedVoltageItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item">
+        <xs:annotation xmlns="http://www.xbrl.org/2003/instance">
+            <xs:documentation source="nogood">
+                <unit id="d1e9699_9__u1">
+                    <measure>local:u1</measure>
+                </unit>
+                <unit id="d1e12032_a__xGV">
+                    <measure>local:GV</measure>
+                </unit>
+                <unit id="d1e9699_b__u1_u2">
+                    <divide>
+                        <unitNumerator>
+                            <measure>local:u1</measure>
+                        </unitNumerator>
+                        <unitDenominator>
+                            <measure>local:u2</measure>
+                        </unitDenominator>
+                    </divide>
+                </unit>
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="frequencyItemType">
+        <xs:simpleContent>
+            <xs:restriction base="xbrli:decimalItemType"></xs:restriction>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="derivedFrequencyItemType">
+        <xs:simpleContent>
+            <xs:restriction base="edgar:frequencyItemType"></xs:restriction>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:element name="FrequencyItemTypeConcept" id="edgar_FrequencyItemTypeConcept" type="edgar:frequencyItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item">
+        <xs:annotation xmlns="http://www.xbrl.org/2003/instance">
+            <xs:documentation source="good">
+                <unit id="d1e9828_1__Hz">
+                    <measure>utr:Hz</measure>
+                </unit>
+            </xs:documentation>
+            <xs:documentation source="nogood">
+                <unit id="d1e9828_5__u1">
+                    <measure>local:u1</measure>
+                </unit>
+                <unit id="d1e9828_6__xHz">
+                    <measure>local:Hz</measure>
+                </unit>
+                <unit id="d1e9828_7__u1_u2">
+                    <divide>
+                        <unitNumerator>
+                            <measure>local:u1</measure>
+                        </unitNumerator>
+                        <unitDenominator>
+                            <measure>local:u2</measure>
+                        </unitDenominator>
+                    </divide>
+                </unit>
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="DerivedFrequencyItemTypeConcept" id="edgar_DerivedFrequencyItemTypeConcept" type="edgar:derivedFrequencyItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item">
+        <xs:annotation xmlns="http://www.xbrl.org/2003/instance">
+            <xs:documentation source="nogood">
+                <unit id="d1e9828_9__u1">
+                    <measure>local:u1</measure>
+                </unit>
+                <unit id="d1e9828_a__xHz">
+                    <measure>local:Hz</measure>
+                </unit>
+                <unit id="d1e9828_b__u1_u2">
+                    <divide>
+                        <unitNumerator>
+                            <measure>local:u1</measure>
+                        </unitNumerator>
+                        <unitDenominator>
+                            <measure>local:u2</measure>
+                        </unitDenominator>
+                    </divide>
+                </unit>
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="derivedLengthItemType">
+        <xs:simpleContent>
+            <xs:restriction base="dtr-types:lengthItemType"></xs:restriction>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:element name="LengthItemTypeConcept" id="edgar_LengthItemTypeConcept" type="dtr-types:lengthItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item">
+        <xs:annotation xmlns="http://www.xbrl.org/2003/instance">
+            <xs:documentation source="good">
+                <unit id="d1e944_1__ft">
+                    <measure>utr:ft</measure>
+                </unit>
+                <unit id="d1e1014_1__in">
+                    <measure>utr:in</measure>
+                </unit>
+                <unit id="d1e1107_1__mi">
+                    <measure>utr:mi</measure>
+                </unit>
+                <unit id="d1e1177_1__nmi">
+                    <measure>utr:nmi</measure>
+                </unit>
+                <unit id="d1e1247_1__yd">
+                    <measure>utr:yd</measure>
+                </unit>
+                <unit id="d1e9895_1__cm">
+                    <measure>utr:cm</measure>
+                </unit>
+                <unit id="d1e9979_1__dm">
+                    <measure>utr:dm</measure>
+                </unit>
+                <unit id="d1e10060_1__km">
+                    <measure>utr:km</measure>
+                </unit>
+                <unit id="d1e10144_1__m">
+                    <measure>utr:m</measure>
+                </unit>
+                <unit id="d1e10215_1__mm">
+                    <measure>utr:mm</measure>
+                </unit>
+            </xs:documentation>
+            <xs:documentation source="nogood">
+                <unit id="d1e944_5__u1">
+                    <measure>local:u1</measure>
+                </unit>
+                <unit id="d1e9895_6__xcm">
+                    <measure>local:cm</measure>
+                </unit>
+                <unit id="d1e944_7__u1_u2">
+                    <divide>
+                        <unitNumerator>
+                            <measure>local:u1</measure>
+                        </unitNumerator>
+                        <unitDenominator>
+                            <measure>local:u2</measure>
+                        </unitDenominator>
+                    </divide>
+                </unit>
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="DerivedLengthItemTypeConcept" id="edgar_DerivedLengthItemTypeConcept" type="edgar:derivedLengthItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item">
+        <xs:annotation xmlns="http://www.xbrl.org/2003/instance">
+            <xs:documentation source="nogood">
+                <unit id="d1e944_9__u1">
+                    <measure>local:u1</measure>
+                </unit>
+                <unit id="d1e9895_a__xcm">
+                    <measure>local:cm</measure>
+                </unit>
+                <unit id="d1e944_b__u1_u2">
+                    <divide>
+                        <unitNumerator>
+                            <measure>local:u1</measure>
+                        </unitNumerator>
+                        <unitDenominator>
+                            <measure>local:u2</measure>
+                        </unitDenominator>
+                    </divide>
+                </unit>
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="derivedMassItemType">
+        <xs:simpleContent>
+            <xs:restriction base="dtr-types:massItemType"></xs:restriction>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:element name="MassItemTypeConcept" id="edgar_MassItemTypeConcept" type="dtr-types:massItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item">
+        <xs:annotation xmlns="http://www.xbrl.org/2003/instance">
+            <xs:documentation source="good">
+                <unit id="d1e1317_1__lb">
+                    <measure>utr:lb</measure>
+                </unit>
+                <unit id="d1e1388_1__oz">
+                    <measure>utr:oz</measure>
+                </unit>
+                <unit id="d1e1458_1__ozt">
+                    <measure>utr:ozt</measure>
+                </unit>
+                <unit id="d1e1528_1__T">
+                    <measure>utr:T</measure>
+                </unit>
+                <unit id="d1e8420_1__t">
+                    <measure>utr:t</measure>
+                </unit>
+                <unit id="d1e10299_1__g">
+                    <measure>utr:g</measure>
+                </unit>
+                <unit id="d1e10383_1__kg">
+                    <measure>utr:kg</measure>
+                </unit>
+                <unit id="d1e12837_1__kT">
+                    <measure>utr:kT</measure>
+                </unit>
+                <unit id="d1e12925_1__MT">
+                    <measure>utr:MT</measure>
+                </unit>
+                <unit id="d1e13013_1__GT">
+                    <measure>utr:GT</measure>
+                </unit>
+                <unit id="d1e13101_1__kt">
+                    <measure>utr:kt</measure>
+                </unit>
+                <unit id="d1e13185_1__Mt">
+                    <measure>utr:Mt</measure>
+                </unit>
+                <unit id="d1e13270_1__Gt">
+                    <measure>utr:Gt</measure>
+                </unit>
+            </xs:documentation>
+            <xs:documentation source="nogood">
+                <unit id="d1e1317_5__u1">
+                    <measure>local:u1</measure>
+                </unit>
+                <unit id="d1e10299_6__xg">
+                    <measure>local:g</measure>
+                </unit>
+                <unit id="d1e1317_7__u1_u2">
+                    <divide>
+                        <unitNumerator>
+                            <measure>local:u1</measure>
+                        </unitNumerator>
+                        <unitDenominator>
+                            <measure>local:u2</measure>
+                        </unitDenominator>
+                    </divide>
+                </unit>
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="DerivedMassItemTypeConcept" id="edgar_DerivedMassItemTypeConcept" type="edgar:derivedMassItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item">
+        <xs:annotation xmlns="http://www.xbrl.org/2003/instance">
+            <xs:documentation source="nogood">
+                <unit id="d1e1317_9__u1">
+                    <measure>local:u1</measure>
+                </unit>
+                <unit id="d1e10299_a__xg">
+                    <measure>local:g</measure>
+                </unit>
+                <unit id="d1e1317_b__u1_u2">
+                    <divide>
+                        <unitNumerator>
+                            <measure>local:u1</measure>
+                        </unitNumerator>
+                        <unitDenominator>
+                            <measure>local:u2</measure>
+                        </unitDenominator>
+                    </divide>
+                </unit>
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="derivedMemoryItemType">
+        <xs:simpleContent>
+            <xs:restriction base="dtr-types:memoryItemType"></xs:restriction>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:element name="MemoryItemTypeConcept" id="edgar_MemoryItemTypeConcept" type="dtr-types:memoryItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item">
+        <xs:annotation xmlns="http://www.xbrl.org/2003/instance">
+            <xs:documentation source="good">
+                <unit id="d1e8504_1__B">
+                    <measure>utr:B</measure>
+                </unit>
+                <unit id="d1e8588_1__GB">
+                    <measure>utr:GB</measure>
+                </unit>
+                <unit id="d1e8673_1__kB">
+                    <measure>utr:kB</measure>
+                </unit>
+                <unit id="d1e8757_1__MB">
+                    <measure>utr:MB</measure>
+                </unit>
+                <unit id="d1e8841_1__TB">
+                    <measure>utr:TB</measure>
+                </unit>
+            </xs:documentation>
+            <xs:documentation source="nogood">
+                <unit id="d1e8504_5__u1">
+                    <measure>local:u1</measure>
+                </unit>
+                <unit id="d1e8504_6__xB">
+                    <measure>local:B</measure>
+                </unit>
+                <unit id="d1e8504_7__u1_u2">
+                    <divide>
+                        <unitNumerator>
+                            <measure>local:u1</measure>
+                        </unitNumerator>
+                        <unitDenominator>
+                            <measure>local:u2</measure>
+                        </unitDenominator>
+                    </divide>
+                </unit>
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="DerivedMemoryItemTypeConcept" id="edgar_DerivedMemoryItemTypeConcept" type="edgar:derivedMemoryItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item">
+        <xs:annotation xmlns="http://www.xbrl.org/2003/instance">
+            <xs:documentation source="nogood">
+                <unit id="d1e8504_9__u1">
+                    <measure>local:u1</measure>
+                </unit>
+                <unit id="d1e8504_a__xB">
+                    <measure>local:B</measure>
+                </unit>
+                <unit id="d1e8504_b__u1_u2">
+                    <divide>
+                        <unitNumerator>
+                            <measure>local:u1</measure>
+                        </unitNumerator>
+                        <unitDenominator>
+                            <measure>local:u2</measure>
+                        </unitDenominator>
+                    </divide>
+                </unit>
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="derivedMonetaryItemType">
+        <xs:simpleContent>
+            <xs:restriction base="xbrli:monetaryItemType"></xs:restriction>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:element name="MonetaryItemTypeConcept" id="edgar_MonetaryItemTypeConcept" type="xbrli:monetaryItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item">
+        <xs:annotation xmlns="http://www.xbrl.org/2003/instance">
+            <xs:documentation source="good">
+                <unit id="d1e2257_1__AED">
+                    <measure>iso:AED</measure>
+                </unit>
+                <unit id="d1e2292_1__AFN">
+                    <measure>iso:AFN</measure>
+                </unit>
+                <unit id="d1e2326_1__ALL">
+                    <measure>iso:ALL</measure>
+                </unit>
+                <unit id="d1e2360_1__AMD">
+                    <measure>iso:AMD</measure>
+                </unit>
+                <unit id="d1e2394_1__ANG">
+                    <measure>iso:ANG</measure>
+                </unit>
+                <unit id="d1e2428_1__AOA">
+                    <measure>iso:AOA</measure>
+                </unit>
+                <unit id="d1e2462_1__ARS">
+                    <measure>iso:ARS</measure>
+                </unit>
+                <unit id="d1e2497_1__AUD">
+                    <measure>iso:AUD</measure>
+                </unit>
+                <unit id="d1e2531_1__AWG">
+                    <measure>iso:AWG</measure>
+                </unit>
+                <unit id="d1e2565_1__AZN">
+                    <measure>iso:AZN</measure>
+                </unit>
+                <unit id="d1e2599_1__BAM">
+                    <measure>iso:BAM</measure>
+                </unit>
+                <unit id="d1e2633_1__BBD">
+                    <measure>iso:BBD</measure>
+                </unit>
+                <unit id="d1e2667_1__BDT">
+                    <measure>iso:BDT</measure>
+                </unit>
+                <unit id="d1e2702_1__BGN">
+                    <measure>iso:BGN</measure>
+                </unit>
+                <unit id="d1e2736_1__BHD">
+                    <measure>iso:BHD</measure>
+                </unit>
+                <unit id="d1e2770_1__BIF">
+                    <measure>iso:BIF</measure>
+                </unit>
+                <unit id="d1e2804_1__BMD">
+                    <measure>iso:BMD</measure>
+                </unit>
+                <unit id="d1e2838_1__BND">
+                    <measure>iso:BND</measure>
+                </unit>
+                <unit id="d1e2872_1__BOB">
+                    <measure>iso:BOB</measure>
+                </unit>
+                <unit id="d1e2907_1__BOV">
+                    <measure>iso:BOV</measure>
+                </unit>
+                <unit id="d1e2941_1__BRL">
+                    <measure>iso:BRL</measure>
+                </unit>
+                <unit id="d1e2975_1__BSD">
+                    <measure>iso:BSD</measure>
+                </unit>
+                <unit id="d1e3009_1__BTN">
+                    <measure>iso:BTN</measure>
+                </unit>
+                <unit id="d1e3043_1__BWP">
+                    <measure>iso:BWP</measure>
+                </unit>
+                <unit id="d1e3077_1__BYR">
+                    <measure>iso:BYR</measure>
+                </unit>
+                <unit id="d1e3112_1__BZD">
+                    <measure>iso:BZD</measure>
+                </unit>
+                <unit id="d1e3146_1__CAD">
+                    <measure>iso:CAD</measure>
+                </unit>
+                <unit id="d1e3180_1__CDF">
+                    <measure>iso:CDF</measure>
+                </unit>
+                <unit id="d1e3214_1__CHE">
+                    <measure>iso:CHE</measure>
+                </unit>
+                <unit id="d1e3248_1__CHF">
+                    <measure>iso:CHF</measure>
+                </unit>
+                <unit id="d1e3285_1__CHW">
+                    <measure>iso:CHW</measure>
+                </unit>
+                <unit id="d1e3320_1__CLF">
+                    <measure>iso:CLF</measure>
+                </unit>
+                <unit id="d1e3354_1__CLP">
+                    <measure>iso:CLP</measure>
+                </unit>
+                <unit id="d1e3388_1__CNY">
+                    <measure>iso:CNY</measure>
+                </unit>
+                <unit id="d1e3425_1__COP">
+                    <measure>iso:COP</measure>
+                </unit>
+                <unit id="d1e3459_1__COU">
+                    <measure>iso:COU</measure>
+                </unit>
+                <unit id="d1e3493_1__CRC">
+                    <measure>iso:CRC</measure>
+                </unit>
+                <unit id="d1e3528_1__CUC">
+                    <measure>iso:CUC</measure>
+                </unit>
+                <unit id="d1e3562_1__CUP">
+                    <measure>iso:CUP</measure>
+                </unit>
+                <unit id="d1e3596_1__CVE">
+                    <measure>iso:CVE</measure>
+                </unit>
+                <unit id="d1e3630_1__CZK">
+                    <measure>iso:CZK</measure>
+                </unit>
+                <unit id="d1e3664_1__DJF">
+                    <measure>iso:DJF</measure>
+                </unit>
+                <unit id="d1e3698_1__DKK">
+                    <measure>iso:DKK</measure>
+                </unit>
+                <unit id="d1e3733_1__DOP">
+                    <measure>iso:DOP</measure>
+                </unit>
+                <unit id="d1e3767_1__DZD">
+                    <measure>iso:DZD</measure>
+                </unit>
+                <unit id="d1e3801_1__EEK">
+                    <measure>iso:EEK</measure>
+                </unit>
+                <unit id="d1e3835_1__EGP">
+                    <measure>iso:EGP</measure>
+                </unit>
+                <unit id="d1e3869_1__ERN">
+                    <measure>iso:ERN</measure>
+                </unit>
+                <unit id="d1e3903_1__ETB">
+                    <measure>iso:ETB</measure>
+                </unit>
+                <unit id="d1e3938_1__EUR">
+                    <measure>iso:EUR</measure>
+                </unit>
+                <unit id="d1e3975_1__FJD">
+                    <measure>iso:FJD</measure>
+                </unit>
+                <unit id="d1e4009_1__FKP">
+                    <measure>iso:FKP</measure>
+                </unit>
+                <unit id="d1e4043_1__GBP">
+                    <measure>iso:GBP</measure>
+                </unit>
+                <unit id="d1e4080_1__GEL">
+                    <measure>iso:GEL</measure>
+                </unit>
+                <unit id="d1e4114_1__GHS">
+                    <measure>iso:GHS</measure>
+                </unit>
+                <unit id="d1e4149_1__GIP">
+                    <measure>iso:GIP</measure>
+                </unit>
+                <unit id="d1e4183_1__GMD">
+                    <measure>iso:GMD</measure>
+                </unit>
+                <unit id="d1e4217_1__GNF">
+                    <measure>iso:GNF</measure>
+                </unit>
+                <unit id="d1e4251_1__GTQ">
+                    <measure>iso:GTQ</measure>
+                </unit>
+                <unit id="d1e4285_1__GYD">
+                    <measure>iso:GYD</measure>
+                </unit>
+                <unit id="d1e4319_1__HKD">
+                    <measure>iso:HKD</measure>
+                </unit>
+                <unit id="d1e4354_1__HNL">
+                    <measure>iso:HNL</measure>
+                </unit>
+                <unit id="d1e4388_1__HRK">
+                    <measure>iso:HRK</measure>
+                </unit>
+                <unit id="d1e4422_1__HTG">
+                    <measure>iso:HTG</measure>
+                </unit>
+                <unit id="d1e4456_1__HUF">
+                    <measure>iso:HUF</measure>
+                </unit>
+                <unit id="d1e4490_1__IDR">
+                    <measure>iso:IDR</measure>
+                </unit>
+                <unit id="d1e4524_1__ILS">
+                    <measure>iso:ILS</measure>
+                </unit>
+                <unit id="d1e4562_1__INR">
+                    <measure>iso:INR</measure>
+                </unit>
+                <unit id="d1e4599_1__IQD">
+                    <measure>iso:IQD</measure>
+                </unit>
+                <unit id="d1e4633_1__IRR">
+                    <measure>iso:IRR</measure>
+                </unit>
+                <unit id="d1e4667_1__ISK">
+                    <measure>iso:ISK</measure>
+                </unit>
+                <unit id="d1e4701_1__JMD">
+                    <measure>iso:JMD</measure>
+                </unit>
+                <unit id="d1e4735_1__JOD">
+                    <measure>iso:JOD</measure>
+                </unit>
+                <unit id="d1e4770_1__JPY">
+                    <measure>iso:JPY</measure>
+                </unit>
+                <unit id="d1e4807_1__KES">
+                    <measure>iso:KES</measure>
+                </unit>
+                <unit id="d1e4841_1__KGS">
+                    <measure>iso:KGS</measure>
+                </unit>
+                <unit id="d1e4875_1__KHR">
+                    <measure>iso:KHR</measure>
+                </unit>
+                <unit id="d1e4909_1__KMF">
+                    <measure>iso:KMF</measure>
+                </unit>
+                <unit id="d1e4946_1__KPW">
+                    <measure>iso:KPW</measure>
+                </unit>
+                <unit id="d1e4981_1__KRW">
+                    <measure>iso:KRW</measure>
+                </unit>
+                <unit id="d1e5018_1__KWD">
+                    <measure>iso:KWD</measure>
+                </unit>
+                <unit id="d1e5052_1__KYD">
+                    <measure>iso:KYD</measure>
+                </unit>
+                <unit id="d1e5086_1__KZT">
+                    <measure>iso:KZT</measure>
+                </unit>
+                <unit id="d1e5120_1__LAK">
+                    <measure>iso:LAK</measure>
+                </unit>
+                <unit id="d1e5157_1__LBP">
+                    <measure>iso:LBP</measure>
+                </unit>
+                <unit id="d1e5192_1__LKR">
+                    <measure>iso:LKR</measure>
+                </unit>
+                <unit id="d1e5226_1__LRD">
+                    <measure>iso:LRD</measure>
+                </unit>
+                <unit id="d1e5260_1__LSL">
+                    <measure>iso:LSL</measure>
+                </unit>
+                <unit id="d1e5294_1__LTL">
+                    <measure>iso:LTL</measure>
+                </unit>
+                <unit id="d1e5328_1__LVL">
+                    <measure>iso:LVL</measure>
+                </unit>
+                <unit id="d1e5362_1__LYD">
+                    <measure>iso:LYD</measure>
+                </unit>
+                <unit id="d1e5397_1__MAD">
+                    <measure>iso:MAD</measure>
+                </unit>
+                <unit id="d1e5431_1__MDL">
+                    <measure>iso:MDL</measure>
+                </unit>
+                <unit id="d1e5465_1__MGA">
+                    <measure>iso:MGA</measure>
+                </unit>
+                <unit id="d1e5499_1__MKD">
+                    <measure>iso:MKD</measure>
+                </unit>
+                <unit id="d1e5533_1__MMK">
+                    <measure>iso:MMK</measure>
+                </unit>
+                <unit id="d1e5567_1__MNT">
+                    <measure>iso:MNT</measure>
+                </unit>
+                <unit id="d1e5605_1__MOP">
+                    <measure>iso:MOP</measure>
+                </unit>
+                <unit id="d1e5639_1__MRO">
+                    <measure>iso:MRO</measure>
+                </unit>
+                <unit id="d1e5673_1__MUR">
+                    <measure>iso:MUR</measure>
+                </unit>
+                <unit id="d1e5707_1__MVR">
+                    <measure>iso:MVR</measure>
+                </unit>
+                <unit id="d1e5741_1__MWK">
+                    <measure>iso:MWK</measure>
+                </unit>
+                <unit id="d1e5775_1__MXN">
+                    <measure>iso:MXN</measure>
+                </unit>
+                <unit id="d1e5810_1__MXV">
+                    <measure>iso:MXV</measure>
+                </unit>
+                <unit id="d1e5844_1__MYR">
+                    <measure>iso:MYR</measure>
+                </unit>
+                <unit id="d1e5878_1__MZN">
+                    <measure>iso:MZN</measure>
+                </unit>
+                <unit id="d1e5912_1__NAD">
+                    <measure>iso:NAD</measure>
+                </unit>
+                <unit id="d1e5946_1__NGN">
+                    <measure>iso:NGN</measure>
+                </unit>
+                <unit id="d1e5980_1__NIO">
+                    <measure>iso:NIO</measure>
+                </unit>
+                <unit id="d1e6015_1__NOK">
+                    <measure>iso:NOK</measure>
+                </unit>
+                <unit id="d1e6049_1__NPR">
+                    <measure>iso:NPR</measure>
+                </unit>
+                <unit id="d1e6083_1__NZD">
+                    <measure>iso:NZD</measure>
+                </unit>
+                <unit id="d1e6117_1__OMR">
+                    <measure>iso:OMR</measure>
+                </unit>
+                <unit id="d1e6151_1__PAB">
+                    <measure>iso:PAB</measure>
+                </unit>
+                <unit id="d1e6185_1__PEN">
+                    <measure>iso:PEN</measure>
+                </unit>
+                <unit id="d1e6220_1__PGK">
+                    <measure>iso:PGK</measure>
+                </unit>
+                <unit id="d1e6254_1__PHP">
+                    <measure>iso:PHP</measure>
+                </unit>
+                <unit id="d1e6288_1__PKR">
+                    <measure>iso:PKR</measure>
+                </unit>
+                <unit id="d1e6322_1__PLN">
+                    <measure>iso:PLN</measure>
+                </unit>
+                <unit id="d1e6356_1__PYG">
+                    <measure>iso:PYG</measure>
+                </unit>
+                <unit id="d1e6390_1__QAR">
+                    <measure>iso:QAR</measure>
+                </unit>
+                <unit id="d1e6425_1__RON">
+                    <measure>iso:RON</measure>
+                </unit>
+                <unit id="d1e6459_1__RSD">
+                    <measure>iso:RSD</measure>
+                </unit>
+                <unit id="d1e6493_1__RUB">
+                    <measure>iso:RUB</measure>
+                </unit>
+                <unit id="d1e6527_1__RWF">
+                    <measure>iso:RWF</measure>
+                </unit>
+                <unit id="d1e6561_1__SAR">
+                    <measure>iso:SAR</measure>
+                </unit>
+                <unit id="d1e6595_1__SBD">
+                    <measure>iso:SBD</measure>
+                </unit>
+                <unit id="d1e6630_1__SCR">
+                    <measure>iso:SCR</measure>
+                </unit>
+                <unit id="d1e6664_1__SDG">
+                    <measure>iso:SDG</measure>
+                </unit>
+                <unit id="d1e6698_1__SEK">
+                    <measure>iso:SEK</measure>
+                </unit>
+                <unit id="d1e6732_1__SGD">
+                    <measure>iso:SGD</measure>
+                </unit>
+                <unit id="d1e6766_1__SHP">
+                    <measure>iso:SHP</measure>
+                </unit>
+                <unit id="d1e6800_1__SLL">
+                    <measure>iso:SLL</measure>
+                </unit>
+                <unit id="d1e6835_1__SOS">
+                    <measure>iso:SOS</measure>
+                </unit>
+                <unit id="d1e6869_1__SRD">
+                    <measure>iso:SRD</measure>
+                </unit>
+                <unit id="d1e6903_1__STD">
+                    <measure>iso:STD</measure>
+                </unit>
+                <unit id="d1e6937_1__SYP">
+                    <measure>iso:SYP</measure>
+                </unit>
+                <unit id="d1e6971_1__SZL">
+                    <measure>iso:SZL</measure>
+                </unit>
+                <unit id="d1e7005_1__THB">
+                    <measure>iso:THB</measure>
+                </unit>
+                <unit id="d1e7040_1__TJS">
+                    <measure>iso:TJS</measure>
+                </unit>
+                <unit id="d1e7074_1__TMT">
+                    <measure>iso:TMT</measure>
+                </unit>
+                <unit id="d1e7108_1__TND">
+                    <measure>iso:TND</measure>
+                </unit>
+                <unit id="d1e7142_1__TOP">
+                    <measure>iso:TOP</measure>
+                </unit>
+                <unit id="d1e7176_1__TRY">
+                    <measure>iso:TRY</measure>
+                </unit>
+                <unit id="d1e7210_1__TTD">
+                    <measure>iso:TTD</measure>
+                </unit>
+                <unit id="d1e7245_1__TWD">
+                    <measure>iso:TWD</measure>
+                </unit>
+                <unit id="d1e7279_1__TZS">
+                    <measure>iso:TZS</measure>
+                </unit>
+                <unit id="d1e7313_1__UAH">
+                    <measure>iso:UAH</measure>
+                </unit>
+                <unit id="d1e7347_1__UGX">
+                    <measure>iso:UGX</measure>
+                </unit>
+                <unit id="d1e7381_1__USD">
+                    <measure>iso:USD</measure>
+                </unit>
+                <unit id="d1e7418_1__USN">
+                    <measure>iso:USN</measure>
+                </unit>
+                <unit id="d1e7456_1__USS">
+                    <measure>iso:USS</measure>
+                </unit>
+                <unit id="d1e7493_1__UYU">
+                    <measure>iso:UYU</measure>
+                </unit>
+                <unit id="d1e7527_1__UZS">
+                    <measure>iso:UZS</measure>
+                </unit>
+                <unit id="d1e7561_1__VEB">
+                    <measure>iso:VEB</measure>
+                </unit>
+                <unit id="d1e7595_1__VEF">
+                    <measure>iso:VEF</measure>
+                </unit>
+                <unit id="d1e7629_1__VND">
+                    <measure>iso:VND</measure>
+                </unit>
+                <unit id="d1e7667_1__VUV">
+                    <measure>iso:VUV</measure>
+                </unit>
+                <unit id="d1e7701_1__WST">
+                    <measure>iso:WST</measure>
+                </unit>
+                <unit id="d1e7735_1__XAF">
+                    <measure>iso:XAF</measure>
+                </unit>
+                <unit id="d1e7769_1__XAG">
+                    <measure>iso:XAG</measure>
+                </unit>
+                <unit id="d1e7803_1__XAU">
+                    <measure>iso:XAU</measure>
+                </unit>
+                <unit id="d1e7837_1__XBA">
+                    <measure>iso:XBA</measure>
+                </unit>
+                <unit id="d1e7872_1__XBB">
+                    <measure>iso:XBB</measure>
+                </unit>
+                <unit id="d1e7906_1__XBC">
+                    <measure>iso:XBC</measure>
+                </unit>
+                <unit id="d1e7940_1__XBD">
+                    <measure>iso:XBD</measure>
+                </unit>
+                <unit id="d1e7974_1__XCD">
+                    <measure>iso:XCD</measure>
+                </unit>
+                <unit id="d1e8008_1__XDR">
+                    <measure>iso:XDR</measure>
+                </unit>
+                <unit id="d1e8042_1__XFU">
+                    <measure>iso:XFU</measure>
+                </unit>
+                <unit id="d1e8077_1__XOF">
+                    <measure>iso:XOF</measure>
+                </unit>
+                <unit id="d1e8111_1__XPD">
+                    <measure>iso:XPD</measure>
+                </unit>
+                <unit id="d1e8145_1__XPF">
+                    <measure>iso:XPF</measure>
+                </unit>
+                <unit id="d1e8179_1__XPT">
+                    <measure>iso:XPT</measure>
+                </unit>
+                <unit id="d1e8213_1__YER">
+                    <measure>iso:YER</measure>
+                </unit>
+                <unit id="d1e8247_1__ZAR">
+                    <measure>iso:ZAR</measure>
+                </unit>
+                <unit id="d1e8282_1__ZMK">
+                    <measure>iso:ZMK</measure>
+                </unit>
+                <unit id="d1e8316_1__ZWL">
+                    <measure>iso:ZWL</measure>
+                </unit>
+            </xs:documentation>
+            <xs:documentation source="nogood"></xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="DerivedMonetaryItemTypeConcept" id="edgar_DerivedMonetaryItemTypeConcept" type="edgar:derivedMonetaryItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item">
+        <xs:annotation xmlns="http://www.xbrl.org/2003/instance">
+            <xs:documentation source="nogood"></xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="derivedPerShareItemType">
+        <xs:simpleContent>
+            <xs:restriction base="dtr-types:perShareItemType"></xs:restriction>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:element name="PerShareItemTypeConcept" id="edgar_PerShareItemTypeConcept" type="dtr-types:perShareItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item">
+        <xs:annotation xmlns="http://www.xbrl.org/2003/instance">
+            <xs:documentation source="good">
+                <unit id="d1e11473_7__AED_shares">
+                    <divide>
+                        <unitNumerator>
+                            <measure>iso:AED</measure>
+                        </unitNumerator>
+                        <unitDenominator>
+                            <measure>xbrli:shares</measure>
+                        </unitDenominator>
+                    </divide>
+                </unit>
+                <unit id="d1e11473_7__HKD_shares">
+                    <divide>
+                        <unitNumerator>
+                            <measure>iso:HKD</measure>
+                        </unitNumerator>
+                        <unitDenominator>
+                            <measure>xbrli:shares</measure>
+                        </unitDenominator>
+                    </divide>
+                </unit>
+                <unit id="d1e11473_7__QAR_shares">
+                    <divide>
+                        <unitNumerator>
+                            <measure>iso:QAR</measure>
+                        </unitNumerator>
+                        <unitDenominator>
+                            <measure>xbrli:shares</measure>
+                        </unitDenominator>
+                    </divide>
+                </unit>
+            </xs:documentation>
+            <xs:documentation source="nogood">
+                <unit id="d1e11278_51__u1">
+                    <measure>local:u1</measure>
+                </unit>
+                <unit id="d1e11278_71__xu1_shares">
+                    <divide>
+                        <unitNumerator>
+                            <measure>local:u1</measure>
+                        </unitNumerator>
+                        <unitDenominator>
+                            <measure>xbrli:shares</measure>
+                        </unitDenominator>
+                    </divide>
+                </unit>
+                <unit id="d1e11278_72__u1_xshares">
+                    <divide>
+                        <unitNumerator>
+                            <measure>local:u1</measure>
+                        </unitNumerator>
+                        <unitDenominator>
+                            <measure>local:shares</measure>
+                        </unitDenominator>
+                    </divide>
+                </unit>
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="DerivedPerShareItemTypeConcept" id="edgar_DerivedPerShareItemTypeConcept" type="edgar:derivedPerShareItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item">
+        <xs:annotation xmlns="http://www.xbrl.org/2003/instance">
+            <xs:documentation source="nogood">
+                <unit id="d1e11278_a1__u1">
+                    <measure>local:u1</measure>
+                </unit>
+                <unit id="d1e11278_b1__xu1_shares">
+                    <divide>
+                        <unitNumerator>
+                            <measure>local:u1</measure>
+                        </unitNumerator>
+                        <unitDenominator>
+                            <measure>xbrli:shares</measure>
+                        </unitDenominator>
+                    </divide>
+                </unit>
+                <unit id="d1e11278_b2__u1_xshares">
+                    <divide>
+                        <unitNumerator>
+                            <measure>local:u1</measure>
+                        </unitNumerator>
+                        <unitDenominator>
+                            <measure>local:shares</measure>
+                        </unitDenominator>
+                    </divide>
+                </unit>
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="perUnitItemType">
+        <xs:simpleContent>
+            <xs:restriction base="xbrli:decimalItemType"></xs:restriction>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="derivedPerUnitItemType">
+        <xs:simpleContent>
+            <xs:restriction base="edgar:perUnitItemType"></xs:restriction>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:element name="PerUnitItemTypeConcept" id="edgar_PerUnitItemTypeConcept" type="edgar:perUnitItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item">
+        <xs:annotation xmlns="http://www.xbrl.org/2003/instance">
+            <xs:documentation source="good">
+                <unit id="d1e2257_6__AED_u1">
+                    <divide>
+                        <unitNumerator>
+                            <measure>iso:AED</measure>
+                        </unitNumerator>
+                        <unitDenominator>
+                            <measure>local:u1</measure>
+                        </unitDenominator>
+                    </divide>
+                </unit>
+                <unit id="d1e2257_6__AED_shares">
+                    <divide>
+                        <unitNumerator>
+                            <measure>iso:AED</measure>
+                        </unitNumerator>
+                        <unitDenominator>
+                            <measure>xbrli:shares</measure>
+                        </unitDenominator>
+                    </divide>
+                </unit>
+                <unit id="d1e2257_6__AED_pure">
+                    <divide>
+                        <unitNumerator>
+                            <measure>iso:AED</measure>
+                        </unitNumerator>
+                        <unitDenominator>
+                            <measure>xbrli:pure</measure>
+                        </unitDenominator>
+                    </divide>
+                </unit>
+                <unit id="d1e2257_6__AED_USD">
+                    <divide>
+                        <unitNumerator>
+                            <measure>iso:AED</measure>
+                        </unitNumerator>
+                        <unitDenominator>
+                            <measure>iso:USD</measure>
+                        </unitDenominator>
+                    </divide>
+                </unit>
+                <unit id="d1e4319_6__HKD_u1">
+                    <divide>
+                        <unitNumerator>
+                            <measure>iso:HKD</measure>
+                        </unitNumerator>
+                        <unitDenominator>
+                            <measure>local:u1</measure>
+                        </unitDenominator>
+                    </divide>
+                </unit>
+                <unit id="d1e4319_6__HKD_shares">
+                    <divide>
+                        <unitNumerator>
+                            <measure>iso:HKD</measure>
+                        </unitNumerator>
+                        <unitDenominator>
+                            <measure>xbrli:shares</measure>
+                        </unitDenominator>
+                    </divide>
+                </unit>
+                <unit id="d1e4319_6__HKD_pure">
+                    <divide>
+                        <unitNumerator>
+                            <measure>iso:HKD</measure>
+                        </unitNumerator>
+                        <unitDenominator>
+                            <measure>xbrli:pure</measure>
+                        </unitDenominator>
+                    </divide>
+                </unit>
+                <unit id="d1e4319_6__HKD_USD">
+                    <divide>
+                        <unitNumerator>
+                            <measure>iso:HKD</measure>
+                        </unitNumerator>
+                        <unitDenominator>
+                            <measure>iso:USD</measure>
+                        </unitDenominator>
+                    </divide>
+                </unit>
+                <unit id="d1e6390_6__QAR_u1">
+                    <divide>
+                        <unitNumerator>
+                            <measure>iso:QAR</measure>
+                        </unitNumerator>
+                        <unitDenominator>
+                            <measure>local:u1</measure>
+                        </unitDenominator>
+                    </divide>
+                </unit>
+                <unit id="d1e6390_6__QAR_shares">
+                    <divide>
+                        <unitNumerator>
+                            <measure>iso:QAR</measure>
+                        </unitNumerator>
+                        <unitDenominator>
+                            <measure>xbrli:shares</measure>
+                        </unitDenominator>
+                    </divide>
+                </unit>
+                <unit id="d1e6390_6__QAR_pure">
+                    <divide>
+                        <unitNumerator>
+                            <measure>iso:QAR</measure>
+                        </unitNumerator>
+                        <unitDenominator>
+                            <measure>xbrli:pure</measure>
+                        </unitDenominator>
+                    </divide>
+                </unit>
+                <unit id="d1e6390_6__QAR_USD">
+                    <divide>
+                        <unitNumerator>
+                            <measure>iso:QAR</measure>
+                        </unitNumerator>
+                        <unitDenominator>
+                            <measure>iso:USD</measure>
+                        </unitDenominator>
+                    </divide>
+                </unit>
+            </xs:documentation>
+            <xs:documentation source="nogood">
+                <unit id="d1e11319_5__u1">
+                    <measure>local:u1</measure>
+                </unit>
+                <unit id="d1e11319_7__u1_u2">
+                    <divide>
+                        <unitNumerator>
+                            <measure>local:u1</measure>
+                        </unitNumerator>
+                        <unitDenominator>
+                            <measure>local:u2</measure>
+                        </unitDenominator>
+                    </divide>
+                </unit>
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="DerivedPerUnitItemTypeConcept" id="edgar_DerivedPerUnitItemTypeConcept" type="edgar:derivedPerUnitItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item">
+        <xs:annotation xmlns="http://www.xbrl.org/2003/instance">
+            <xs:documentation source="nogood"></xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="derivedPowerItemType">
+        <xs:simpleContent>
+            <xs:restriction base="dtr-types:powerItemType"></xs:restriction>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:element name="PowerItemTypeConcept" id="edgar_PowerItemTypeConcept" type="dtr-types:powerItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item">
+        <xs:annotation xmlns="http://www.xbrl.org/2003/instance">
+            <xs:documentation source="good">
+                <unit id="d1e1598_1__hp">
+                    <measure>utr:hp</measure>
+                </unit>
+                <unit id="d1e10453_1__GW">
+                    <measure>utr:GW</measure>
+                </unit>
+                <unit id="d1e10537_1__kW">
+                    <measure>utr:kW</measure>
+                </unit>
+                <unit id="d1e10621_1__MW">
+                    <measure>utr:MW</measure>
+                </unit>
+                <unit id="d1e10706_1__TW">
+                    <measure>utr:TW</measure>
+                </unit>
+                <unit id="d1e10790_1__W">
+                    <measure>utr:W</measure>
+                </unit>
+            </xs:documentation>
+            <xs:documentation source="nogood">
+                <unit id="d1e1598_5__u1">
+                    <measure>local:u1</measure>
+                </unit>
+                <unit id="d1e10453_6__xGW">
+                    <measure>local:GW</measure>
+                </unit>
+                <unit id="d1e1598_7__u1_u2">
+                    <divide>
+                        <unitNumerator>
+                            <measure>local:u1</measure>
+                        </unitNumerator>
+                        <unitDenominator>
+                            <measure>local:u2</measure>
+                        </unitDenominator>
+                    </divide>
+                </unit>
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="DerivedPowerItemTypeConcept" id="edgar_DerivedPowerItemTypeConcept" type="edgar:derivedPowerItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item">
+        <xs:annotation xmlns="http://www.xbrl.org/2003/instance">
+            <xs:documentation source="nogood">
+                <unit id="d1e1598_9__u1">
+                    <measure>local:u1</measure>
+                </unit>
+                <unit id="d1e10453_a__xGW">
+                    <measure>local:GW</measure>
+                </unit>
+                <unit id="d1e1598_b__u1_u2">
+                    <divide>
+                        <unitNumerator>
+                            <measure>local:u1</measure>
+                        </unitNumerator>
+                        <unitDenominator>
+                            <measure>local:u2</measure>
+                        </unitDenominator>
+                    </divide>
+                </unit>
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="derivedPureItemType">
+        <xs:simpleContent>
+            <xs:restriction base="xbrli:pureItemType"></xs:restriction>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:element name="PureItemTypeConcept" id="edgar_PureItemTypeConcept" type="xbrli:pureItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item">
+        <xs:annotation xmlns="http://www.xbrl.org/2003/instance">
+            <xs:documentation source="good">
+                <unit id="d1e11404_1__pure">
+                    <measure>xbrli:pure</measure>
+                </unit>
+                <unit id="d1e11438_1__Rate">
+                    <measure>utr:Rate</measure>
+                </unit>
+                <unit id="d1e2257_4__AED_FJD">
+                    <divide>
+                        <unitNumerator>
+                            <measure>iso:AED</measure>
+                        </unitNumerator>
+                        <unitDenominator>
+                            <measure>iso:FJD</measure>
+                        </unitDenominator>
+                    </divide>
+                </unit>
+                <unit id="d1e3975_4__FJD_MVR">
+                    <divide>
+                        <unitNumerator>
+                            <measure>iso:FJD</measure>
+                        </unitNumerator>
+                        <unitDenominator>
+                            <measure>iso:MVR</measure>
+                        </unitDenominator>
+                    </divide>
+                </unit>
+                <unit id="d1e5707_4__MVR_USN">
+                    <divide>
+                        <unitNumerator>
+                            <measure>iso:MVR</measure>
+                        </unitNumerator>
+                        <unitDenominator>
+                            <measure>iso:USN</measure>
+                        </unitDenominator>
+                    </divide>
+                </unit>
+            </xs:documentation>
+            <xs:documentation source="nogood"></xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="DerivedPureItemTypeConcept" id="edgar_DerivedPureItemTypeConcept" type="edgar:derivedPureItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item">
+        <xs:annotation xmlns="http://www.xbrl.org/2003/instance">
+            <xs:documentation source="nogood"></xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="derivedSharesItemType">
+        <xs:simpleContent>
+            <xs:restriction base="xbrli:sharesItemType"></xs:restriction>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:element name="SharesItemTypeConcept" id="edgar_SharesItemTypeConcept" type="xbrli:sharesItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item">
+        <xs:annotation xmlns="http://www.xbrl.org/2003/instance">
+            <xs:documentation source="good">
+                <unit id="d1e11473_1__shares">
+                    <measure>xbrli:shares</measure>
+                </unit>
+            </xs:documentation>
+            <xs:documentation source="nogood"></xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="DerivedSharesItemTypeConcept" id="edgar_DerivedSharesItemTypeConcept" type="edgar:derivedSharesItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item">
+        <xs:annotation xmlns="http://www.xbrl.org/2003/instance">
+            <xs:documentation source="nogood"></xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="derivedVolumeItemType">
+        <xs:simpleContent>
+            <xs:restriction base="dtr-types:volumeItemType"></xs:restriction>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:element name="VolumeItemTypeConcept" id="edgar_VolumeItemTypeConcept" type="dtr-types:volumeItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item">
+        <xs:annotation xmlns="http://www.xbrl.org/2003/instance">
+            <xs:documentation source="good">
+                <unit id="d1e1668_1__bbl">
+                    <measure>utr:bbl</measure>
+                </unit>
+                <unit id="d1e1752_1__ft3">
+                    <measure>utr:ft3</measure>
+                </unit>
+                <unit id="d1e1837_1__gal">
+                    <measure>utr:gal</measure>
+                </unit>
+                <unit id="d1e1921_1__MBbls">
+                    <measure>utr:MBbls</measure>
+                </unit>
+                <unit id="d1e2005_1__Mcf">
+                    <measure>utr:Mcf</measure>
+                </unit>
+                <unit id="d1e2089_1__MMBbls">
+                    <measure>utr:MMBbls</measure>
+                </unit>
+                <unit id="d1e2173_1__MMcf">
+                    <measure>utr:MMcf</measure>
+                </unit>
+                <unit id="d1e10958_1__l">
+                    <measure>utr:l</measure>
+                </unit>
+                <unit id="d1e11042_1__m3">
+                    <measure>utr:m3</measure>
+                </unit>
+                <unit id="d1e11126_1__bu">
+                    <measure>utr:bu</measure>
+                </unit>
+                <unit id="d1e11197_1__aft">
+                    <measure>utr:aft</measure>
+                </unit>
+                <unit id="d1e12113_1__Bcf">
+                    <measure>utr:Bcf</measure>
+                </unit>
+                <unit id="d1e12212_1__Tcf">
+                    <measure>utr:Tcf</measure>
+                </unit>
+            </xs:documentation>
+            <xs:documentation source="nogood">
+                <unit id="d1e1668_5__u1">
+                    <measure>local:u1</measure>
+                </unit>
+                <unit id="d1e11197_6__xaft">
+                    <measure>local:aft</measure>
+                </unit>
+                <unit id="d1e1668_7__u1_u2">
+                    <divide>
+                        <unitNumerator>
+                            <measure>local:u1</measure>
+                        </unitNumerator>
+                        <unitDenominator>
+                            <measure>local:u2</measure>
+                        </unitDenominator>
+                    </divide>
+                </unit>
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="DerivedVolumeItemTypeConcept" id="edgar_DerivedVolumeItemTypeConcept" type="edgar:derivedVolumeItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item">
+        <xs:annotation xmlns="http://www.xbrl.org/2003/instance">
+            <xs:documentation source="nogood">
+                <unit id="d1e1668_9__u1">
+                    <measure>local:u1</measure>
+                </unit>
+                <unit id="d1e11197_a__xaft">
+                    <measure>local:aft</measure>
+                </unit>
+                <unit id="d1e1668_b__u1_u2">
+                    <divide>
+                        <unitNumerator>
+                            <measure>local:u1</measure>
+                        </unitNumerator>
+                        <unitDenominator>
+                            <measure>local:u2</measure>
+                        </unitDenominator>
+                    </divide>
+                </unit>
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="flowItemType">
+        <xs:simpleContent>
+            <xs:restriction base="xbrli:decimalItemType"></xs:restriction>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="derivedFlowItemType">
+        <xs:simpleContent>
+            <xs:restriction base="edgar:flowItemType"></xs:restriction>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:element name="FlowItemTypeConcept" id="edgar_FlowItemTypeConcept" type="edgar:flowItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item">
+        <xs:annotation xmlns="http://www.xbrl.org/2003/instance">
+            <xs:documentation source="good">
+                <unit id="d1e11507_5__bbl_Y">
+                    <divide>
+                        <unitNumerator>
+                            <measure>utr:bbl</measure>
+                        </unitNumerator>
+                        <unitDenominator>
+                            <measure>utr:Y</measure>
+                        </unitDenominator>
+                    </divide>
+                </unit>
+                <unit id="d1e11873_5__bbl_S">
+                    <divide>
+                        <unitNumerator>
+                            <measure>utr:bbl</measure>
+                        </unitNumerator>
+                        <unitDenominator>
+                            <measure>utr:S</measure>
+                        </unitDenominator>
+                    </divide>
+                </unit>
+                <unit id="d1e11507_5__MMBbls_Y">
+                    <divide>
+                        <unitNumerator>
+                            <measure>utr:MMBbls</measure>
+                        </unitNumerator>
+                        <unitDenominator>
+                            <measure>utr:Y</measure>
+                        </unitDenominator>
+                    </divide>
+                </unit>
+                <unit id="d1e11873_5__MMBbls_S">
+                    <divide>
+                        <unitNumerator>
+                            <measure>utr:MMBbls</measure>
+                        </unitNumerator>
+                        <unitDenominator>
+                            <measure>utr:S</measure>
+                        </unitDenominator>
+                    </divide>
+                </unit>
+                <unit id="d1e11507_5__aft_Y">
+                    <divide>
+                        <unitNumerator>
+                            <measure>utr:aft</measure>
+                        </unitNumerator>
+                        <unitDenominator>
+                            <measure>utr:Y</measure>
+                        </unitDenominator>
+                    </divide>
+                </unit>
+                <unit id="d1e11873_5__aft_S">
+                    <divide>
+                        <unitNumerator>
+                            <measure>utr:aft</measure>
+                        </unitNumerator>
+                        <unitDenominator>
+                            <measure>utr:S</measure>
+                        </unitDenominator>
+                    </divide>
+                </unit>
+            </xs:documentation>
+            <xs:documentation source="nogood"></xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="DerivedFlowItemTypeConcept" id="edgar_DerivedFlowItemTypeConcept" type="edgar:derivedFlowItemType" xbrli:periodType="duration" nillable="true" substitutionGroup="xbrli:item">
+        <xs:annotation xmlns="http://www.xbrl.org/2003/instance">
+            <xs:documentation source="nogood"></xs:documentation>
+        </xs:annotation>
+    </xs:element>
+</xs:schema>

@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>525-13</number>
+    <name>Inline XBRL Test Suite v68d : Resources tests, Not EDGAR Dependent</name>
+    <description>
+        <h2>Various "good" (gd) and "not good" (ng) test files that demonstrate specific Resources usage</h2>
+    </description>
+    <variation id="_001gd">
+        <name>Resources with arcroleRef and roleRef, GOOD</name>
+        <description>Valid usage of the resource element</description>
+        <reference xiitest="PASS-empty-resources"></reference>
+        <reference xiitest="PASS-simple-arcroleRef"></reference>
+        <reference xiitest="PASS-simple-roleRef"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i13001gd/i13001gd-20081231.htm</instance>
+            <linkbase>i13001gd/i13001gd-20081231_pre.xml</linkbase>
+            <linkbase>i13001gd/i13001gd-20081231_lab.xml</linkbase>
+            <schema>i13001gd/i13001gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_100ng">
+        <name>Document without resources, NOGOOD</name>
+        <description>FAIL-missing-resources</description>
+        <reference xiispec="14.1.2"></reference>
+        <reference xiitest="FAIL-missing-resources"></reference>
+        <reference specification="There MUST be at least one ix:resources element in the Inline XBRL Document Set."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i13100ng/i13100ng-20081231.htm</instance>
+            <linkbase>i13100ng/i13100ng-20081231_pre.xml</linkbase>
+            <linkbase>i13100ng/i13100ng-20081231_lab.xml</linkbase>
+            <schema>i13100ng/i13100ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.14.1.2:missingResources" frd="ix" fj="IXBRL_RESOURCE_ELEMENT_UNDEFINED" nnum="701-13" txt="Inline XBRL ix:resources element not found"></assert>
+        </result>
+    </variation>
+    <variation id="_101ng">
+        <name>Resources context without id, NOGOOD</name>
+        <description>FAIL_context-without-id</description>
+        <reference xiitest="FAIL-context-without-id"></reference>
+        <reference xiispec="14.1.1"></reference>
+        <reference specification="Each context element in ix:resources must have an id attribute."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i13101ng/i13101ng-20081231.htm</instance>
+            <linkbase>i13101ng/i13101ng-20081231_pre.xml</linkbase>
+            <linkbase>i13101ng/i13101ng-20081231_lab.xml</linkbase>
+            <schema>i13101ng/i13101ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="xmlSchema:attributesRequired" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="701-13" txt="Attribute 'id' must appear on element 'i:context'"></assert>
+        </result>
+    </variation>
+    <variation id="_102ng">
+        <name>Resources unit without id, NOGOOD</name>
+        <description>FAIL_unit-without-id</description>
+        <reference xiispec="14.1.1"></reference>
+        <reference specification="Each unit element in ix:resources must have an id attribute."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i13102ng/i13102ng-20081231.htm</instance>
+            <linkbase>i13102ng/i13102ng-20081231_pre.xml</linkbase>
+            <linkbase>i13102ng/i13102ng-20081231_lab.xml</linkbase>
+            <schema>i13102ng/i13102ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="xmlSchema:attributesRequired" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="701-13" txt="Attribute 'id' must appear on element 'i:unit'"></assert>
+        </result>
+    </variation>
+</testcase>

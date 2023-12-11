@@ -1,0 +1,774 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../../lib/test.xsl"?>
+<conf:testcase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:conf="http://edgar/2009/conformance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../../lib/test.xsd">
+    <conf:creator>
+        <conf:name>SEC Office of Structured Disclosure</conf:name>
+        <conf:email>StructuredData@sec.gov</conf:email>
+    </conf:creator>
+    <conf:number>605-26</conf:number>
+    <conf:name>EDGAR Filer Manual v68d 6.5.26</conf:name>
+    <conf:description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.5.26 Common Stock Shares Outstanding facts.">Refer to EFM: 6.5.26 Common Stock Shares Outstanding facts.</a>
+    </conf:description>
+    <conf:variation id="_001gd">
+        <conf:name>8-K GOOD </conf:name>
+        <conf:description>8-K GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60526001gd/g60526001gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60526001gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60526001gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60526001gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60526001gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_002gw">
+        <conf:name>8-K-GW-Blank &#8211; a non-null fact should not exist. EntityCommonStockSharesOutstanding(c) </conf:name>
+        <conf:description>8-K-GW-Blank &#8211; a non-null fact should not exist. EntityCommonStockSharesOutstanding(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60526002gw/g60526002gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60526002gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60526002gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60526002gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60526002gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="EntityCommonStockSharesOutstanding" num="60526" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_003gd">
+        <conf:name>10-K GOOD </conf:name>
+        <conf:description>10-K GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60526003gd/g60526003gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60526003gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60526003gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60526003gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60526003gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_004gw">
+        <conf:name>10-K-GW-r &#8211; A non-null fact should exist (and if inline, be visible). Previously implemented as warning. EntityCommonStockSharesOutstanding(c) </conf:name>
+        <conf:description>10-K-GW-r &#8211; A non-null fact should exist (and if inline, be visible). Previously implemented as warning. EntityCommonStockSharesOutstanding(c). Missing EntityCommonStockSharesOutstanding</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60526004gw/g60526004gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60526004gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60526004gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60526004gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60526004gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="EntityCommonStockSharesOutstanding" num="60526" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_005gd">
+        <conf:name>10-KT GOOD </conf:name>
+        <conf:description>10-KT GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-KT"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60526005gd/g60526005gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60526005gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60526005gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60526005gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60526005gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_006gw">
+        <conf:name>10-KT-GW-r &#8211; A non-null fact should exist (and if inline, be visible). Previously implemented as warning. EntityCommonStockSharesOutstanding(c) </conf:name>
+        <conf:description>10-KT-GW-r &#8211; A non-null fact should exist (and if inline, be visible). Previously implemented as warning. EntityCommonStockSharesOutstanding(c). Missing EntityCommonStockSharesOutstanding</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-KT"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60526006gw/g60526006gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60526006gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60526006gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60526006gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60526006gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="EntityCommonStockSharesOutstanding" num="60526" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_007gd">
+        <conf:name>10-Q GOOD </conf:name>
+        <conf:description>10-Q GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-Q"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60526007gd/g60526007gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60526007gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60526007gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60526007gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60526007gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_008gw">
+        <conf:name>10-Q-GW-r &#8211; A non-null fact should exist (and if inline, be visible). Previously implemented as warning. EntityCommonStockSharesOutstanding(c) </conf:name>
+        <conf:description>10-Q-GW-r &#8211; A non-null fact should exist (and if inline, be visible). Previously implemented as warning. EntityCommonStockSharesOutstanding(c). Missing EntityCommonStockSharesOutstanding</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-Q"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60526008gw/g60526008gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60526008gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60526008gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60526008gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60526008gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="EntityCommonStockSharesOutstanding" num="60526" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_009gd">
+        <conf:name>10-QT GOOD </conf:name>
+        <conf:description>10-QT GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-QT"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60526009gd/g60526009gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60526009gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60526009gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60526009gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60526009gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_010gw">
+        <conf:name>10-QT-GW-r &#8211; A non-null fact should exist (and if inline, be visible). Previously implemented as warning. EntityCommonStockSharesOutstanding(c) </conf:name>
+        <conf:description>10-QT-GW-r &#8211; A non-null fact should exist (and if inline, be visible). Previously implemented as warning. EntityCommonStockSharesOutstanding(c). Missing EntityCommonStockSharesOutstanding</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "10-QT"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60526010gw/g60526010gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60526010gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60526010gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60526010gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60526010gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="EntityCommonStockSharesOutstanding" num="60526" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_011gd">
+        <conf:name>20-F GOOD </conf:name>
+        <conf:description>20-F GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "20-F"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60526011gd/g60526011gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60526011gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60526011gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60526011gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60526011gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_012gw">
+        <conf:name>20-F-GW-r &#8211; A non-null fact should exist (and if inline, be visible). Previously implemented as warning. EntityCommonStockSharesOutstanding(c) </conf:name>
+        <conf:description>20-F-GW-r &#8211; A non-null fact should exist (and if inline, be visible). Previously implemented as warning. EntityCommonStockSharesOutstanding(c). Missing EntityCommonStockSharesOutstanding</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "20-F"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60526012gw/g60526012gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60526012gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60526012gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60526012gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60526012gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="EntityCommonStockSharesOutstanding" num="60526" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_013gd">
+        <conf:name>40-F GOOD </conf:name>
+        <conf:description>40-F GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "periodOfReport" : "12-31-2018",  "submissionType" : "40-F"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60526013gd/g60526013gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60526013gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60526013gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60526013gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60526013gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_014gd">
+        <conf:name>10-12B GOOD </conf:name>
+        <conf:description>10-12B GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "10-12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60526014gd/g60526014gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60526014gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60526014gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60526014gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60526014gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_015gw">
+        <conf:name>10-12B-GW-Blank &#8211; a non-null fact should not exist. EntityCommonStockSharesOutstanding(c) </conf:name>
+        <conf:description>10-12B-GW-Blank &#8211; a non-null fact should not exist. EntityCommonStockSharesOutstanding(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "10-12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60526015gw/g60526015gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60526015gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60526015gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60526015gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60526015gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="EntityCommonStockSharesOutstanding" num="60526" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_016gd">
+        <conf:name>10-12G GOOD </conf:name>
+        <conf:description>10-12G GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "10-12G"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60526016gd/g60526016gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60526016gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60526016gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60526016gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60526016gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_017gw">
+        <conf:name>10-12G-GW-Blank &#8211; a non-null fact should not exist. EntityCommonStockSharesOutstanding(c) </conf:name>
+        <conf:description>10-12G-GW-Blank &#8211; a non-null fact should not exist. EntityCommonStockSharesOutstanding(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "10-12G"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60526017gw/g60526017gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60526017gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60526017gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60526017gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60526017gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="EntityCommonStockSharesOutstanding" num="60526" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_018gd">
+        <conf:name>20FR12B GOOD </conf:name>
+        <conf:description>20FR12B GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "20FR12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60526018gd/g60526018gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60526018gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60526018gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60526018gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60526018gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_019gd">
+        <conf:name>20FR12G GOOD </conf:name>
+        <conf:description>20FR12G GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "20FR12G"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60526019gd/g60526019gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60526019gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60526019gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60526019gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60526019gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_020gd">
+        <conf:name>40FR12B GOOD </conf:name>
+        <conf:description>40FR12B GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "40FR12B"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60526020gd/g60526020gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60526020gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60526020gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60526020gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60526020gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_021gd">
+        <conf:name>40FR12G GOOD </conf:name>
+        <conf:description>40FR12G GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "40FR12G"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60526021gd/g60526021gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60526021gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60526021gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60526021gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60526021gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_022gd">
+        <conf:name>S-1 GOOD </conf:name>
+        <conf:description>S-1 GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,    "submissionType" : "S-1"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60526022gd/g60526022gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60526022gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60526022gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60526022gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60526022gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_023gw">
+        <conf:name>S-1-GW-Blank &#8211; a non-null fact should not exist. EntityCommonStockSharesOutstanding(c) </conf:name>
+        <conf:description>S-1-GW-Blank &#8211; a non-null fact should not exist. EntityCommonStockSharesOutstanding(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-1"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60526023gw/g60526023gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60526023gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60526023gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60526023gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60526023gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="EntityCommonStockSharesOutstanding" num="60526" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_024gd">
+        <conf:name>S-3 GOOD </conf:name>
+        <conf:description>S-3 GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-3"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60526024gd/g60526024gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60526024gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60526024gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60526024gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60526024gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_025gw">
+        <conf:name>S-3-GW-Blank &#8211; a non-null fact should not exist. EntityCommonStockSharesOutstanding(c) </conf:name>
+        <conf:description>S-3-GW-Blank &#8211; a non-null fact should not exist. EntityCommonStockSharesOutstanding(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-3"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60526025gw/g60526025gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60526025gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60526025gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60526025gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60526025gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="EntityCommonStockSharesOutstanding" num="60526" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_026gd">
+        <conf:name>S-4 GOOD </conf:name>
+        <conf:description>S-4 GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-4"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60526026gd/g60526026gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60526026gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60526026gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60526026gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60526026gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_027gw">
+        <conf:name>S-4-GW-Blank &#8211; a non-null fact should not exist. EntityCommonStockSharesOutstanding(c) </conf:name>
+        <conf:description>S-4-GW-Blank &#8211; a non-null fact should not exist. EntityCommonStockSharesOutstanding(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-4"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60526027gw/g60526027gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60526027gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60526027gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60526027gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60526027gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="EntityCommonStockSharesOutstanding" num="60526" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_028gd">
+        <conf:name>S-11 GOOD </conf:name>
+        <conf:description>S-11 GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-11"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60526028gd/g60526028gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60526028gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60526028gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60526028gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60526028gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_029gw">
+        <conf:name>S-11-GW-Blank &#8211; a non-null fact should not exist. EntityCommonStockSharesOutstanding(c) </conf:name>
+        <conf:description>S-11-GW-Blank &#8211; a non-null fact should not exist. EntityCommonStockSharesOutstanding(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "S-11"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60526029gw/g60526029gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60526029gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60526029gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60526029gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60526029gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="EntityCommonStockSharesOutstanding" num="60526" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_030gd">
+        <conf:name>POS EX GOOD </conf:name>
+        <conf:description>POS EX GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "POS EX"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60526030gd/g60526030gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60526030gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60526030gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60526030gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60526030gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_031gd">
+        <conf:name>POS EX-GD-Blank &#8211; a non-null fact may or may not exist. EntityCommonStockSharesOutstanding(c) </conf:name>
+        <conf:description>POS EX-GW-Blank &#8211; a non-null fact may or may not exist. EntityCommonStockSharesOutstanding(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "POS EX"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60526031gd/g60526031gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60526031gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60526031gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60526031gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60526031gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_032gd">
+        <conf:name>POS AM GOOD </conf:name>
+        <conf:description>POS AM GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "periodOfReport" : "12-31-2018",  "submissionType" : "POS AM"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60526032gd/g60526032gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60526032gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60526032gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60526032gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60526032gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_033gd">
+        <conf:name>POS AM-GD-Blank &#8211; a non-null fact may or may not exist. EntityCommonStockSharesOutstanding(c) </conf:name>
+        <conf:description>POS AM-GD-Blank &#8211; a non-null fact may or may not exist. EntityCommonStockSharesOutstanding(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "periodOfReport" : "12-31-2018",  "submissionType" : "POS AM"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60526033gd/g60526033gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60526033gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60526033gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60526033gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60526033gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_034gd">
+        <conf:name>F-1 GOOD </conf:name>
+        <conf:description>F-1 GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,    "submissionType" : "F-1"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60526034gd/g60526034gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60526034gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60526034gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60526034gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60526034gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_035gw">
+        <conf:name>F-1-GW-Blank &#8211; a non-null fact should not exist. EntityCommonStockSharesOutstanding(c) </conf:name>
+        <conf:description>F-1-GW-Blank &#8211; a non-null fact should not exist. EntityCommonStockSharesOutstanding(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "F-1"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60526035gw/g60526035gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60526035gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60526035gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60526035gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60526035gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="EntityCommonStockSharesOutstanding" num="60526" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_036gd">
+        <conf:name>F-3 GOOD </conf:name>
+        <conf:description>F-3 GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,    "submissionType" : "F-3"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60526036gd/g60526036gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60526036gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60526036gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60526036gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60526036gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_037gw">
+        <conf:name>F-3-GW-Blank &#8211; a non-null fact should not exist. EntityCommonStockSharesOutstanding(c) </conf:name>
+        <conf:description>F-3-GW-Blank &#8211; a non-null fact should not exist. EntityCommonStockSharesOutstanding(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "F-3"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60526037gw/g60526037gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60526037gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60526037gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60526037gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60526037gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="EntityCommonStockSharesOutstanding" num="60526" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_038gd">
+        <conf:name>F-4 GOOD </conf:name>
+        <conf:description>F-4 GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,    "submissionType" : "F-4"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60526038gd/g60526038gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60526038gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60526038gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60526038gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60526038gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_039gw">
+        <conf:name>F-4-GW-Blank &#8211; a non-null fact should not exist. EntityCommonStockSharesOutstanding(c) </conf:name>
+        <conf:description>F-4-GW-Blank &#8211; a non-null fact should not exist. EntityCommonStockSharesOutstanding(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "emergingGrowthCompanyFlag" : true,  "submissionType" : "F-4"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60526039gw/g60526039gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60526039gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60526039gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60526039gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60526039gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="EntityCommonStockSharesOutstanding" num="60526" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_040gd">
+        <conf:name>6-K GOOD </conf:name>
+        <conf:description>6-K GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "periodOfReport" : "12-31-2018",  "submissionType" : "6-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60526040gd/g60526040gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60526040gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60526040gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60526040gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60526040gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_041gw">
+        <conf:name>6-K-GW-Blank &#8211; a non-null fact should not exist. EntityCommonStockSharesOutstanding(c) </conf:name>
+        <conf:description>6-K-GW-Blank &#8211; a non-null fact should not exist. EntityCommonStockSharesOutstanding(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "periodOfReport" : "12-31-2018",  "submissionType" : "6-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60526041gw/g60526041gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60526041gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60526041gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60526041gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60526041gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="EntityCommonStockSharesOutstanding" num="60526" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_042gd">
+        <conf:name>K-SDR GOOD </conf:name>
+        <conf:description>K-SDR GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "SDR"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60526042gd/g60526042gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60526042gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60526042gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60526042gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60526042gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_043gw">
+        <conf:name>K-SDR-GW-Blank &#8211; a non-null fact should not exist. EntityCommonStockSharesOutstanding(c) </conf:name>
+        <conf:description>K-SDR-GW-Blank &#8211; a non-null fact should not exist. EntityCommonStockSharesOutstanding(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "SDR"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60526043gw/g60526043gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60526043gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60526043gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60526043gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60526043gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="EntityCommonStockSharesOutstanding" num="60526" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_044gd">
+        <conf:name>485APOS GOOD </conf:name>
+        <conf:description>485APOS GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "485APOS"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60526044gd/g60526044gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60526044gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60526044gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60526044gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60526044gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_045gw">
+        <conf:name>485APOS-GW-Blank &#8211; a non-null fact should not exist. EntityCommonStockSharesOutstanding(c) </conf:name>
+        <conf:description>485APOS-GW-Blank &#8211; a non-null fact should not exist. EntityCommonStockSharesOutstanding(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "485APOS"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60526045gw/g60526045gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60526045gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60526045gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60526045gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60526045gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="EntityCommonStockSharesOutstanding" num="60526" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_046gd">
+        <conf:name>485BPOS GOOD </conf:name>
+        <conf:description>485BPOS GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "invCompanyType" : "N-1A",  "periodOfReport" : "12-31-2018",  "submissionType" : "485BPOS"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60526046gd/g60526046gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60526046gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60526046gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60526046gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60526046gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_047gw">
+        <conf:name>485BPOS-GW-Blank &#8211; a non-null fact should not exist. EntityCommonStockSharesOutstanding(c) </conf:name>
+        <conf:description>485BPOS-GW-Blank &#8211; a non-null fact should not exist. EntityCommonStockSharesOutstanding(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "invCompanyType" : "N-1A",  "periodOfReport" : "12-31-2018",  "submissionType" : "485BPOS"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60526047gw/g60526047gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60526047gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60526047gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60526047gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60526047gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="EntityCommonStockSharesOutstanding" num="60526" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_048gd">
+        <conf:name>485BXT GOOD </conf:name>
+        <conf:description>485BXT GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "485BXT"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60526048gd/g60526048gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60526048gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60526048gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60526048gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60526048gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_049gw">
+        <conf:name>485BXT-GW-Blank &#8211; a non-null fact should not exist. EntityCommonStockSharesOutstanding(c) </conf:name>
+        <conf:description>485BXT-GW-Blank &#8211; a non-null fact should not exist. EntityCommonStockSharesOutstanding(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "485BXT"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60526049gw/g60526049gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60526049gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60526049gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60526049gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60526049gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="EntityCommonStockSharesOutstanding" num="60526" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_050gd">
+        <conf:name>N-1A GOOD </conf:name>
+        <conf:description>N-1A GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "N-1A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60526050gd/g60526050gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60526050gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60526050gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60526050gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60526050gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_051gw">
+        <conf:name>N-1A-GW-Blank &#8211; a non-null fact should not exist. EntityCommonStockSharesOutstanding(c) </conf:name>
+        <conf:description>N-1A-GW-Blank &#8211; a non-null fact should not exist. EntityCommonStockSharesOutstanding(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "N-1A"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60526051gw/g60526051gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60526051gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60526051gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60526051gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60526051gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="EntityCommonStockSharesOutstanding" num="60526" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_052gd">
+        <conf:name>SP 15D2 GOOD </conf:name>
+        <conf:description>SP 15D2 GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "SP 15D2"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60526052gd/g60526052gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60526052gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60526052gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60526052gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60526052gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_053gw">
+        <conf:name>SP 15D2-GW-Blank &#8211; a non-null fact should not exist. EntityCommonStockSharesOutstanding(c) </conf:name>
+        <conf:description>SP 15D2-GW-Blank &#8211; a non-null fact should not exist. EntityCommonStockSharesOutstanding(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "SP 15D2"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60526053gw/g60526053gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60526053gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60526053gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60526053gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60526053gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="EntityCommonStockSharesOutstanding" num="60526" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_054gd">
+        <conf:name>POSASR GOOD </conf:name>
+        <conf:description>POSASR GOOD </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "POSASR"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60526054gd/g60526054gd-20081231.xml</conf:instance>
+            <conf:linkbase>g60526054gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60526054gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60526054gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60526054gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_055gw">
+        <conf:name>POSASR-GW-Blank &#8211; a non-null fact should not exist. EntityCommonStockSharesOutstanding(c) </conf:name>
+        <conf:description>POSASR-GW-Blank &#8211; a non-null fact should not exist. EntityCommonStockSharesOutstanding(c) </conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{  "submissionType" : "POSASR"}'></conf:parameter>
+            <conf:instance readMeFirst="true">g60526055gw/g60526055gw-20081231.xml</conf:instance>
+            <conf:linkbase>g60526055gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>g60526055gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>g60526055gw/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>g60526055gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="EntityCommonStockSharesOutstanding" num="60526" severity="wrn" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+</conf:testcase>

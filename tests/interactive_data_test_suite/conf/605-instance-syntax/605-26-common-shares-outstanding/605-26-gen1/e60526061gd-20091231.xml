@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xbrli:xbrl xmlns="http://www.w3.org/1999/xhtml" xmlns:dei="http://xbrl.sec.gov/dei/2023" xmlns:edgar="http://edgar/20081231" xmlns:iso4217="http://www.xbrl.org/2003/iso4217" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xbrldi="http://xbrl.org/2006/xbrldi" xmlns:xbrldt="http://xbrl.org/2005/xbrldt" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rr="http://xbrl.sec.gov/rr/2023">
+    <link:schemaRef xlink:href="edgar-20081231.xsd" xlink:type="simple"></link:schemaRef>
+    <xbrli:context id="FY09">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2009-01-01</xbrli:startDate>
+            <xbrli:endDate>2009-12-31</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:context id="FY09_DIM">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+            <xbrli:segment>
+                <xbrldi:explicitMember dimension="dei:LegalEntityAxis">edgar:S013456789Member</xbrldi:explicitMember>
+            </xbrli:segment>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2009-01-01</xbrli:startDate>
+            <xbrli:endDate>2009-12-31</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <xbrli:unit id="USD">
+        <xbrli:measure>iso4217:USD</xbrli:measure>
+    </xbrli:unit>
+    <dei:DocumentPeriodEndDate contextRef="FY09">2009-12-31</dei:DocumentPeriodEndDate>
+    <dei:AmendmentFlag contextRef="FY09">false</dei:AmendmentFlag>
+    <dei:DocumentType contextRef="FY09">497</dei:DocumentType>
+    <dei:EntityCentralIndexKey contextRef="FY09">9876543210</dei:EntityCentralIndexKey>
+    <dei:EntityRegistrantName contextRef="FY09">e60526061gd</dei:EntityRegistrantName>
+    <dei:EntityInvCompanyType contextRef="FY09">N-1A</dei:EntityInvCompanyType>
+    <dei:ParentEntityLegalName contextRef="FY09_DIM">Form 497 with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, GOOD.</dei:ParentEntityLegalName>
+</xbrli:xbrl>

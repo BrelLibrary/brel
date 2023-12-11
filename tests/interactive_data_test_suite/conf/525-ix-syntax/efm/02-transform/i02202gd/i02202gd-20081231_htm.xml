@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xbrl
+  xmlns="http://www.xbrl.org/2003/instance"
+  xmlns:dei="http://xbrl.sec.gov/dei/2018-01-31"
+  xmlns:i02202gd="http://i02202gd/20081231"
+  xmlns:iso4217="http://www.xbrl.org/2003/iso4217"
+  xmlns:link="http://www.xbrl.org/2003/linkbase"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+    <link:schemaRef xlink:href="i02202gd-20081231.xsd" xlink:type="simple"/>
+    <context id="d">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+        </entity>
+        <period>
+            <startDate>2008-04-01</startDate>
+            <endDate>2008-12-31</endDate>
+        </period>
+    </context>
+    <context id="i">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+        </entity>
+        <period>
+            <instant>2008-12-31</instant>
+        </period>
+    </context>
+    <unit id="shares">
+        <measure>shares</measure>
+    </unit>
+    <unit id="usd">
+        <measure>iso4217:USD</measure>
+    </unit>
+    <unit id="iso4217_USD_per_Share">
+        <divide>
+            <unitNumerator>
+                <measure>iso4217:USD</measure>
+            </unitNumerator>
+            <unitDenominator>
+                <measure>shares</measure>
+            </unitDenominator>
+        </divide>
+    </unit>
+    <dei:AmendmentFlag contextRef="d">false</dei:AmendmentFlag>
+    <dei:DocumentPeriodEndDate contextRef="d">2008-12-31</dei:DocumentPeriodEndDate>
+    <dei:DocumentFiscalPeriodFocus contextRef="d">Q3</dei:DocumentFiscalPeriodFocus>
+    <dei:EntityCentralIndexKey contextRef="d">9876543210</dei:EntityCentralIndexKey>
+    <dei:CurrentFiscalYearEndDate contextRef="d">--03-31</dei:CurrentFiscalYearEndDate>
+    <dei:EntityEmergingGrowthCompany contextRef="d">false</dei:EntityEmergingGrowthCompany>
+    <dei:DocumentType contextRef="d">8-K</dei:DocumentType>
+    <dei:DocumentFiscalYearFocus contextRef="d">2008</dei:DocumentFiscalYearFocus>
+    <dei:EntityRegistrantName contextRef="d">OSD TEST CO #1 i02202gd</dei:EntityRegistrantName>
+    <i02202gd:ParValuePerShare
+      contextRef="d"
+      decimals="INF"
+      unitRef="iso4217_USD_per_Share">1.00</i02202gd:ParValuePerShare>
+    <dei:EntityCommonStockSharesOutstanding contextRef="i" decimals="INF" unitRef="shares">154357198</dei:EntityCommonStockSharesOutstanding>
+    <i02202gd:Monetary4 contextRef="i" decimals="0" unitRef="usd">0</i02202gd:Monetary4>
+    <i02202gd:Monetary1 contextRef="i" decimals="0" unitRef="usd">1</i02202gd:Monetary1>
+    <i02202gd:Monetary2 contextRef="i" decimals="0" unitRef="usd">12416</i02202gd:Monetary2>
+    <i02202gd:Monetary3 contextRef="i" decimals="0" unitRef="usd">70048</i02202gd:Monetary3>
+    <i02202gd:Monetary4 contextRef="i" decimals="0" unitRef="usd">0</i02202gd:Monetary4>
+    <i02202gd:Monetary5 contextRef="i" decimals="0" unitRef="usd">0</i02202gd:Monetary5>
+    <i02202gd:Monetary6 contextRef="i" decimals="0" unitRef="usd">5</i02202gd:Monetary6>
+    <i02202gd:Monetary7 contextRef="i" decimals="0" unitRef="usd">99</i02202gd:Monetary7>
+    <i02202gd:Monetary8 contextRef="i" decimals="0" unitRef="usd">99</i02202gd:Monetary8>
+    <i02202gd:Monetary9 contextRef="i" decimals="0" unitRef="usd">999999</i02202gd:Monetary9>
+    <i02202gd:Monetary9 contextRef="i" decimals="0" unitRef="usd">999999</i02202gd:Monetary9>
+    <i02202gd:Monetary9 contextRef="i" decimals="0" unitRef="usd">999999</i02202gd:Monetary9>
+    <i02202gd:Monetary9 contextRef="i" decimals="0" unitRef="usd">999999</i02202gd:Monetary9>
+</xbrl>

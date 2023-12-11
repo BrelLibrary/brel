@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<link:linkbase xmlns:dei="http://xbrl.sec.gov/dei/2021" xmlns:edgar="http://edgar/20090501" xmlns:iso4217="http://www.xbrl.org/2003/iso4217" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xbrldi="http://xbrl.org/2006/xbrldi" xmlns:xbrldt="http://xbrl.org/2005/xbrldt" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rr="http://xbrl.sec.gov/rr/2021">
+    <link:roleRef roleURI="http://xbrl.sec.gov/rr/role/Series" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#SeriesOnly" xlink:type="simple"></link:roleRef>
+    <link:roleRef roleURI="http://xbrl.sec.gov/rr/role/Class" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#ClassOnly" xlink:type="simple"></link:roleRef>
+    <link:roleRef roleURI="http://xbrl.sec.gov/rr/role/PerformanceMeasure" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#PerformanceMeasureOnly" xlink:type="simple"></link:roleRef>
+    <link:roleRef roleURI="http://xbrl.sec.gov/rr/role/Prospectus" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#ProspectusOnly" xlink:type="simple"></link:roleRef>
+    <link:roleRef roleURI="http://xbrl.sec.gov/rr/role/RiskReturnDetailData" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#RiskReturnDetailData" xlink:type="simple"></link:roleRef>
+    <link:arcroleRef xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#domain-member" xlink:type="simple" arcroleURI="http://xbrl.org/int/dim/arcrole/domain-member"></link:arcroleRef>
+    <link:definitionLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/rr/role/Series">
+        <link:loc xlink:href="https://xbrl.sec.gov/dei/2021/dei-2021.xsd#dei_EntityDomain" xlink:label="EntityDomain" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="e60540257gd-20081231.xsd#edgar_S000007259Member" xlink:label="S000007259Member" xlink:type="locator"></link:loc>
+        <link:definitionArc xlink:type="arc" order="1.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="EntityDomain" xlink:to="S000007259Member"></link:definitionArc>
+    </link:definitionLink>
+    <link:definitionLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/rr/role/PerformanceMeasure">
+        <link:loc xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_PerformanceMeasureDomain" xlink:label="PerformanceMeasureDomain" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="e60540257gd-20081231.xsd#edgar_SnPIndexMember" xlink:label="SnPIndexMember" xlink:type="locator"></link:loc>
+        <link:definitionArc xlink:type="arc" order="3.0" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="PerformanceMeasureDomain" xlink:to="SnPIndexMember"></link:definitionArc>
+    </link:definitionLink>
+    <link:definitionLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/rr/role/RiskReturnDetailData"></link:definitionLink>
+</link:linkbase>

@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>607-13</number>
+    <name>EDGAR Filer Manual v68d 6.7.13</name>
+    <description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.7.13 Restrictions on the arcroleURI attribute.">Refer to EFM: 6.7.13 Restrictions on the arcroleURI attribute.</a>
+    </description>
+    <reference specification="11004"></reference>
+    <variation id="_000gd">
+        <name>6.7.13 Arcrole authority in standard taxonomy, GOOD.</name>
+        <description>Arcrole authority in standard taxonomy, GOOD.</description>
+        <reference specification="11004"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60713000gd-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+            <schema>e60713000gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_001ng">
+        <name>6.7.13 Arcrole authority does not match targetNamespace, NOGOOD. </name>
+        <description>Arcrole authority does not match targetNamespace, NOGOOD. </description>
+        <reference specification="11004"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60713001ng-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <linkbase>e60713001ng-20081231_pre.xml</linkbase>
+            <linkbase>e60713001ng-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+            <schema>e60713001ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60713" name="Arcrole-Namespace-Mismatch" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_002ng">
+        <name>6.7.13 ArcroleType should end with /arcrole/{mnemonic name}, NOGOOD. </name>
+        <description>ArcroleType  should end with /arcrole/{mnemonic name}, NOGOOD. </description>
+        <reference specification="11004"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60713002ng/e60713002ng-20081231.xml</instance>
+            <linkbase>e60713002ng/edgar-20081231_pre.xml</linkbase>
+            <linkbase>e60713002ng/edgar-20081231_def.xml</linkbase>
+            <linkbase>e60713002ng/edgar-20081231_lab.xml</linkbase>
+            <linkbase>e60713002ng/e60713002ng-20081231_pre.xml</linkbase>
+            <linkbase>e60713002ng/e60713002ng-20081231_lab.xml</linkbase>
+            <schema>e60713002ng/edgar-20081231.xsd</schema>
+            <schema>e60713002ng/e60713002ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60713" name="Arcrole-Ending-Mismatch" frd="du"></assert>
+        </result>
+    </variation>
+</testcase>

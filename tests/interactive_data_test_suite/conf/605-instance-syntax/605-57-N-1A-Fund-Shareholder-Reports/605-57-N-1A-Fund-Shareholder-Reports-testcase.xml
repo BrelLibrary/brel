@@ -1,0 +1,224 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl"?>
+<conf:testcase xmlns:conf="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <conf:creator>
+        <conf:name>SEC Office of Structured Disclosure</conf:name>
+        <conf:email>StructuredData@sec.gov</conf:email>
+    </conf:creator>
+    <conf:number>605-57</conf:number>
+    <conf:name>EDGAR Filer Manual v68d 6.5.57</conf:name>
+    <conf:description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.5.57 N-1A Fund Shareholder Reports">Refer to EFM: 6.5.57 N-1A Fund Shareholder Reports</a>
+    </conf:description>
+    <conf:variation id="_001gd">
+        <conf:name>DocumentType: N-CSR, Valid example, GD</conf:name>
+        <conf:description>DocumentType: N-CSR, Valid example, GD</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "N-CSR/A", "CIK": "0001314612", "invCompanyType": "N-1A", "fileNumber": "333-110904", "datetimeForTesting": "2032-11-15"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60557001gd/e60557001gd-20321031.htm</conf:instance>
+            <conf:schema>e60557001gd/e60557001gd-20321031.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+    </conf:result>
+    </conf:variation>
+    <conf:variation id="_002gd">
+        <conf:name>DocumentType: N-CSR, Valid example, GD</conf:name>
+        <conf:description>DocumentType: N-CSR, Valid example, GD</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "N-CSRS/A", "CIK": "0001314612", "invCompanyType": "N-1A", "fileNumber": "333-110904", "datetimeForTesting": "2032-05-15"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60557002gd/e60557002gd-20320430.htm</conf:instance>
+            <conf:schema>e60557002gd/e60557002gd-20320430.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+    </conf:result>
+    </conf:variation>
+    <conf:variation id="_003ng">
+        <conf:name>DocumentType: N-CSR, submissionType: N-CSR/A, Required Context Period Duration value must be "12 months", GW</conf:name>
+        <conf:description>DocumentType: N-CSR, submissionType: N-CSR/A, Invalid context duration, GW</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "N-CSR/A", "CIK": "0001314612", "invCompanyType": "N-1A", "fileNumber": "333-110904", "datetimeForTesting": "2032-11-15"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60557003ng/e60557003ng-20321031.htm</conf:instance>
+            <conf:schema>e60557003ng/e60557003ng-20321031.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60557" name="requiredContextPeriodDurationValue" frd="tbd"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_004ng">
+        <conf:name>DocumentType: N-CSR,submissionType: N-CSRS/A, Required Context Period Duration value must be 6 months, NG</conf:name>
+        <conf:description>DocumentType: N-CSR, submissionType: N-CSRS/A, Required Context Period Duration value must be 6 months, NG</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "N-CSRS/A", "CIK": "0001314612", "invCompanyType": "N-1A", "fileNumber": "333-110904", "datetimeForTesting": "2032-05-15"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60557004ng/e60557004ng-20320430.htm</conf:instance>
+            <conf:schema>e60557004ng/e60557004ng-20320430.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60557" name="requiredContextPeriodDurationValue" frd="tbd"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_005gw">
+        <conf:name>SubmissionType: N-CSR/A, DocumentType: N-CSR, oef:ShareholderReportAnnualOrSemiAnnual: A non-null fact should exist and should be visible in an inline document, GW</conf:name>
+        <conf:description>SubmissionType: N-CSR/A, DocumentType: N-CSR, oef:ShareholderReportAnnualOrSemiAnnual: A non-null fact should exist and should be visible in an inline document, GW</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "N-CSR/A", "CIK": "0001314612", "invCompanyType": "N-1A", "fileNumber": "333-110904", "datetimeForTesting": "2032-11-15"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60557005gw/e60557005gw-20321031.htm</conf:instance>
+            <conf:schema>e60557005gw/e60557005gw-20321031.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60557" name="ShareholderReportAnnualOrSemiAnnualMissing" frd="tbd"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_006gw">
+        <conf:name>SubmissionType: N-CSR/A, DocumentType: N-CSR, oef:FundName: A non-null fact should exist and should be visible in an inline document, GW</conf:name>
+        <conf:description>SubmissionType: N-CSR/A, DocumentType: N-CSR, oef:FundName: A non-null fact should exist and should be visible in an inline document, GW</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "N-CSR/A", "CIK": "0001314612", "invCompanyType": "N-1A", "fileNumber": "333-110904", "datetimeForTesting": "2032-11-15"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60557006gw/e60557006gw-20321031.htm</conf:instance>
+            <conf:schema>e60557006gw/e60557006gw-20321031.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60557" name="FundNameMissing" frd="tbd"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_007gw">
+        <conf:name>SubmissionType: N-CSR/A, DocumentType: N-CSR, oef:ClassName: A non-null fact should exist and should be visible in an inline document, GW</conf:name>
+        <conf:description>SubmissionType: N-CSR/A, DocumentType: N-CSR, oef:ClassName: A non-null fact should exist and should be visible in an inline document, GW</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "N-CSR/A", "CIK": "0001314612", "invCompanyType": "N-1A", "fileNumber": "333-110904", "datetimeForTesting": "2032-11-15"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60557007gw/e60557007gw-20321031.htm</conf:instance>
+            <conf:schema>e60557007gw/e60557007gw-20321031.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60557" name="ClassNameMissing" frd="tbd"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_008gw">
+        <conf:name>SubmissionType: N-CSRS/A, DocumentType: N-CSR, oef:ShareholderReportAnnualOrSemiAnnual: A non-null fact should exist and should be visible in an inline document, GW</conf:name>
+        <conf:description>SubmissionType: N-CSRS/A, DocumentType: N-CSR, oef:ShareholderReportAnnualOrSemiAnnual: A non-null fact should exist and should be visible in an inline document, GW</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "N-CSRS/A", "CIK": "0001314612", "invCompanyType": "N-1A", "fileNumber": "333-110904", "datetimeForTesting": "2032-05-15"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60557008gw/e60557008gw-20320430.htm</conf:instance>
+            <conf:schema>e60557008gw/e60557008gw-20320430.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60557" name="ShareholderReportAnnualOrSemiAnnualMissing" frd="tbd"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_009gw">
+        <conf:name>SubmissionType: N-CSRS/A, DocumentType: N-CSR, oef:FundName: A non-null fact should exist and should be visible in an inline document, GW</conf:name>
+        <conf:description>SubmissionType: N-CSRS/A, DocumentType: N-CSR, oef:FundName: A non-null fact should exist and should be visible in an inline document, GW</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "N-CSRS/A", "CIK": "0001314612", "invCompanyType": "N-1A", "fileNumber": "333-110904", "datetimeForTesting": "2032-05-15"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60557009gw/e60557009gw-20320430.htm</conf:instance>
+            <conf:schema>e60557009gw/e60557009gw-20320430.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60557" name="FundNameMissing" frd="tbd"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_010gw">
+        <conf:name>SubmissionType: N-CSRS/A, DocumentType: N-CSR, oef:ClassName: A non-null fact should exist and should be visible in an inline document, GW</conf:name>
+        <conf:description>SubmissionType: N-CSRS/A, DocumentType: N-CSR, oef:ClassName: A non-null fact should exist and should be visible in an inline document, GW</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "N-CSRS/A", "CIK": "0001314612", "invCompanyType": "N-1A", "fileNumber": "333-110904", "datetimeForTesting": "2032-05-15"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60557010gw/e60557010gw-20320430.htm</conf:instance>
+            <conf:schema>e60557010gw/e60557010gw-20320430.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60557" name="ClassNameMissing" frd="tbd"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_011gd">
+        <conf:name>DocumentType: N-CSR, Valid example with classId in header, GD</conf:name>
+        <conf:description>DocumentType: N-CSR, Valid example with classId in header, GD</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "N-CSR/A", "CIK": "0001314612", "invCompanyType": "N-1A", "fileNumber": "333-110904", "datetimeForTesting": "2032-11-15", "rptSeriesClassInfo.classIds" : ["C000000002"]}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60557011gd/e60557011gd-20321031.htm</conf:instance>
+            <conf:schema>e60557011gd/e60557011gd-20321031.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+    </conf:result>
+    </conf:variation>
+    <conf:variation id="_012gw">
+        <conf:name>DocumentType: N-CSR,  Every classId should have ClassIdMember declared as a domainItemType element, GW</conf:name>
+        <conf:description>DocumentType: N-CSR, Every classId should have ClassIdMember declared as a domainItemType element, GW</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "N-CSR/A", "CIK": "0001314612", "invCompanyType": "N-1A", "fileNumber": "333-110904", "datetimeForTesting": "2032-11-15", "rptSeriesClassInfo.classIds" : ["C000000001"]}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60557012gw/e60557012gw-20321031.htm</conf:instance>
+            <conf:schema>e60557012gw/e60557012gw-20321031.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60557" name="classIdMemberNotDeclared" frd="tbd"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_013gw">
+        <conf:name>DocumentType: N-CSR, Every classId should have ClassIdMember declared as a domainItemType element (two classId, only one is declared.), GW</conf:name>
+        <conf:description>DocumentType: Every classId should have ClassIdMember declared as a domainItemType element (two classId, only one is declared.), GW</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "N-CSR/A", "CIK": "0001314612", "invCompanyType": "N-1A", "fileNumber": "333-110904", "datetimeForTesting": "2032-11-15", "rptSeriesClassInfo.classIds" : ["C000000002","C000000001"]}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60557013gw/e60557013gw-20321031.htm</conf:instance>
+            <conf:schema>e60557013gw/e60557013gw-20321031.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60557" name="classIdMemberNotDeclared" frd="tbd"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_014gw">
+        <conf:name>SubmissionType: N-CSR/A, DocumentType: N-CSR, If ClassName is present, then NoTradingSymbolFlag or TradingSymbol must exist but not both., GW</conf:name>
+        <conf:description>SubmissionType: N-CSR/A, DocumentType: N-CSR, If ClassName is present, then NoTradingSymbolFlag or TradingSymbol must exist but not both., GW</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "N-CSR/A", "CIK": "0001314612", "invCompanyType": "N-1A", "fileNumber": "333-110904", "datetimeForTesting": "2032-11-15"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60557014gw/e60557014gw-20321031.htm</conf:instance>
+            <conf:schema>e60557014gw/e60557014gw-20321031.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60557" name="noTradingSymbolFlagTradingSymbolExclusivePresence" frd="tbd"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_015gd">
+        <conf:name>SubmissionType: N-CSR/A, DocumentType: N-CSR, Valid variation,  NoTradingSymbolFlag present and no TradingSymbol, GD</conf:name>
+        <conf:description>SubmissionType: N-CSR/A, DocumentType: N-CSR, Valid variation,  NoTradingSymbolFlag present and no TradingSymbol, GD</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "N-CSR/A", "CIK": "0001314612", "invCompanyType": "N-1A", "fileNumber": "333-110904", "datetimeForTesting": "2032-11-15"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60557015gd/e60557015gd-20321031.htm</conf:instance>
+            <conf:schema>e60557015gd/e60557015gd-20321031.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+    </conf:result>
+    </conf:variation>
+    <conf:variation id="_016gw">
+        <conf:name>SubmissionType: N-CSR/A, DocumentType: N-CSR, If NoTradingSymbolFlag does not exist, then dei:TradingSymbol should exist and be visible., NG</conf:name>
+        <conf:description>SubmissionType: N-CSR/A, DocumentType: N-CSR, If NoTradingSymbolFlag does not exist, then dei:TradingSymbol should exist and be visible, NG</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "N-CSR/A", "CIK": "0001314612", "invCompanyType": "N-1A", "fileNumber": "333-110904", "datetimeForTesting": "2032-11-15"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60557016gw/e60557016gw-20321031.htm</conf:instance>
+            <conf:schema>e60557016gw/e60557016gw-20321031.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60557" name="noTradingSymbolFlagTradingSymbolExclusivePresence" frd="tbd"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_017gw">
+        <conf:name>SubmissionType: N-CSR/A, DocumentType: N-CSR, T3-If TradingSymbol does not exist, then the fact should not exist.  If the fact exists it should be visible. , GW</conf:name>
+        <conf:description>SubmissionType: N-CSR/A, DocumentType: N-CSR, T3-If TradingSymbol does not exist, then the fact should not exist.  If the fact exists it should be visible. , GW</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "N-CSR/A", "CIK": "0001314612", "invCompanyType": "N-1A", "fileNumber": "333-110904", "datetimeForTesting": "2032-11-15"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60557017gw/e60557017gw-20321031.htm</conf:instance>
+            <conf:schema>e60557017gw/e60557017gw-20321031.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60557" name="securityExchangeNameTradingSymbolExclusiveDependency" frd="tbd"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_018gd">
+        <conf:name>SubmissionType: N-CSRS/A, DocumentType: N-CSR, Valid variation with two classIds, GD</conf:name>
+        <conf:description>SubmissionType: N-CSRS/A, DocumentType: N-CSR, Valid variation with two classIds, GD</conf:description>
+        <conf:data>
+            <conf:parameter xmlns="" name="ELOparams" value='{"submissionType": "N-CSRS/A", "CIK": "0001314612", "invCompanyType": "N-1A", "fileNumber": "333-110904", "datetimeForTesting": "2032-05-15", "rptSeriesClassInfo.classIds" : ["C000000051","C000000052"]}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60557018gd/e60557018gd-20320430.htm</conf:instance>
+            <conf:schema>e60557018gd/e60557018gd-20320430.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+    </conf:result>
+    </conf:variation>
+</conf:testcase>

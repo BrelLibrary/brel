@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xbrl
+  xmlns="http://www.xbrl.org/2003/instance"
+  xmlns:dei="http://xbrl.sec.gov/dei/2018-01-31"
+  xmlns:i09002gd="http://i09002gd/20081231"
+  xmlns:iso4217="http://www.xbrl.org/2003/iso4217"
+  xmlns:link="http://www.xbrl.org/2003/linkbase"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+    <link:schemaRef xlink:href="i09002gd-20081231.xsd" xlink:type="simple"/>
+    <context id="d">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+        </entity>
+        <period>
+            <startDate>2008-04-01</startDate>
+            <endDate>2008-12-31</endDate>
+        </period>
+    </context>
+    <context id="i">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+        </entity>
+        <period>
+            <instant>2008-12-31</instant>
+        </period>
+    </context>
+    <context id="NFC1">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+        </entity>
+        <period>
+            <startDate>2005-01-01</startDate>
+            <endDate>2005-12-31</endDate>
+        </period>
+    </context>
+    <context id="NFC2">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+        </entity>
+        <period>
+            <startDate>2006-01-01</startDate>
+            <endDate>2006-12-31</endDate>
+        </period>
+    </context>
+    <context id="NFC4">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+        </entity>
+        <period>
+            <startDate>2008-01-01</startDate>
+            <endDate>2008-12-31</endDate>
+        </period>
+    </context>
+    <unit id="shares">
+        <measure>shares</measure>
+    </unit>
+    <unit id="iso4217_USD_per_Share">
+        <divide>
+            <unitNumerator>
+                <measure>iso4217:USD</measure>
+            </unitNumerator>
+            <unitDenominator>
+                <measure>shares</measure>
+            </unitDenominator>
+        </divide>
+    </unit>
+    <dei:AmendmentFlag contextRef="d">true</dei:AmendmentFlag>
+    <dei:DocumentPeriodEndDate contextRef="d">2008-12-31</dei:DocumentPeriodEndDate>
+    <dei:DocumentFiscalPeriodFocus contextRef="d">Q3</dei:DocumentFiscalPeriodFocus>
+    <dei:EntityCentralIndexKey contextRef="d">9876543210</dei:EntityCentralIndexKey>
+    <dei:CurrentFiscalYearEndDate contextRef="d">--03-31</dei:CurrentFiscalYearEndDate>
+    <dei:EntityEmergingGrowthCompany contextRef="d">false</dei:EntityEmergingGrowthCompany>
+    <dei:DocumentDescription contextRef="d">8080
+              &lt;i&gt;Floppy Disk&lt;/i&gt; Drive
+                     
+                  
+            </dei:DocumentDescription>
+    <dei:DocumentDescription contextRef="NFC1">8080
+              Floppy Disk Drive
+                     
+                  
+            </dei:DocumentDescription>
+    <dei:DocumentDescription contextRef="NFC2" id="nestedFact1">
+              &lt;p&gt;Nested fact Content&lt;/p&gt;
+            </dei:DocumentDescription>
+    <dei:DocumentDescription contextRef="NFC4" id="nestedFact2">
+              &lt;p&gt;Nested fact content&lt;/p&gt;
+            </dei:DocumentDescription>
+    <dei:AmendmentDescription contextRef="d" id="fact26">It also contains a nonNumeric!</dei:AmendmentDescription>
+    <dei:DocumentType contextRef="d">8-K</dei:DocumentType>
+    <dei:DocumentFiscalYearFocus contextRef="d">2008</dei:DocumentFiscalYearFocus>
+    <dei:EntityRegistrantName contextRef="d">OSD TEST CO #1 i09002gd</dei:EntityRegistrantName>
+    <dei:EntityCommonStockSharesOutstanding contextRef="i" decimals="INF" unitRef="shares">154357198</dei:EntityCommonStockSharesOutstanding>
+    <dei:EntityRegistrantName contextRef="NFC4" id="fact21">OSD TEST CO #1 i09002gd</dei:EntityRegistrantName>
+    <i09002gd:Content4
+      contextRef="d"
+      decimals="2"
+      id="fact6a"
+      unitRef="iso4217_USD_per_Share">1234.56</i09002gd:Content4>
+    <i09002gd:Content5
+      contextRef="d"
+      decimals="2"
+      id="fact6b"
+      unitRef="iso4217_USD_per_Share">1234.56</i09002gd:Content5>
+    <dei:EntityRegistrantName contextRef="NFC1" id="fact14">OSD TEST CO #1 i09002gd</dei:EntityRegistrantName>
+    <link:footnoteLink
+      xlink:role="http://www.xbrl.org/2003/role/link"
+      xlink:type="extended">
+        <link:loc
+          xlink:href="#fact6a"
+          xlink:label="fact6a"
+          xlink:type="locator"/>
+        <link:footnote id="footnote3" xlink:label="footnote3" xlink:role="http://www.xbrl.org/2003/role/footnote" xlink:type="resource" xml:lang="en-US">Net of the effects of
+            <xhtml:ul>
+              <xhtml:li>the merger and</xhtml:li>
+              <xhtml:li>contingent liabilities.</xhtml:li>
+            </xhtml:ul> The merged entity will have offices at
+            8080
+              <xhtml:i>Floppy Disk</xhtml:i> Drive
+                     
+                  
+            .
+                  
+               
+          </link:footnote>
+        <link:footnoteArc
+          xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote"
+          xlink:from="fact6a"
+          xlink:to="footnote3"
+          xlink:type="arc"/>
+        <link:loc
+          xlink:href="#fact6b"
+          xlink:label="fact6b"
+          xlink:type="locator"/>
+        <link:footnote id="footnote4" xlink:label="footnote4" xlink:role="http://www.xbrl.org/2003/role/footnote" xlink:type="resource" xml:lang="en-US">Net of the effects of
+            <xhtml:ul>
+              <xhtml:li>the merger and</xhtml:li>
+              <xhtml:li>contingent liabilities.</xhtml:li>
+            </xhtml:ul> The merged entity will have offices at
+            8080
+              <xhtml:i>Floppy Disk</xhtml:i> Drive
+                     
+                  
+            .
+                  
+               
+          </link:footnote>
+        <link:footnoteArc
+          xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote"
+          xlink:from="fact6b"
+          xlink:to="footnote4"
+          xlink:type="arc"/>
+        <link:loc
+          xlink:href="#fact14"
+          xlink:label="fact14"
+          xlink:type="locator"/>
+        <link:footnote id="footnote12" xlink:label="footnote12" xlink:role="http://www.xbrl.org/2003/role/footnote" xlink:type="resource" xml:lang="en-US">Some
+            
+            <xhtml:i>footnote</xhtml:i> Content.
+            
+              <xhtml:p>Nested fact Content</xhtml:p>
+            
+          </link:footnote>
+        <link:footnoteArc
+          xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote"
+          xlink:from="fact14"
+          xlink:to="footnote12"
+          xlink:type="arc"/>
+        <link:loc
+          xlink:href="#fact21"
+          xlink:label="fact21"
+          xlink:type="locator"/>
+        <link:footnote id="footnote21" xlink:label="footnote21" xlink:role="http://www.xbrl.org/2003/role/footnote" xlink:type="resource" xml:lang="en-US">Some
+            
+            <xhtml:i>footnote</xhtml:i> content.
+            
+              <xhtml:p>Nested fact content</xhtml:p>
+            
+          </link:footnote>
+        <link:footnoteArc
+          xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote"
+          xlink:from="fact21"
+          xlink:to="footnote21"
+          xlink:type="arc"/>
+        <link:loc
+          xlink:href="#fact26"
+          xlink:label="fact26"
+          xlink:type="locator"/>
+        <link:footnote id="footnote26" xlink:label="footnote26" xlink:role="http://www.xbrl.org/2003/role/footnote" xlink:type="resource" xml:lang="en-US"><xhtml:p>This footnote has some XHTML including some
+              <xhtml:a href="relative.file">relative links</xhtml:a>.
+                     
+                  
+            </xhtml:p>
+            It also contains a nonNumeric!
+          </link:footnote>
+        <link:footnoteArc
+          xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote"
+          xlink:from="fact26"
+          xlink:to="footnote26"
+          xlink:type="arc"/>
+    </link:footnoteLink>
+</xbrl>

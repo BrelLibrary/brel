@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sec.gov/edgar/document/sdr/exhibita" xmlns:mstns="http://www.sec.gov/edgar/document/sdr/exhibita" xmlns:ns1="http://www.sec.gov/edgar/common" xmlns:ns2="http://www.sec.gov/edgar/sdrcommon" targetNamespace="http://www.sec.gov/edgar/document/sdr/exhibita" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.sec.gov/edgar/common" schemaLocation="eis_Common.xsd"/>
+	<xs:import namespace="http://www.sec.gov/edgar/sdrcommon" schemaLocation="eis_SDR_common.xsd"/>
+	<xs:simpleType name="PERSON_TYPE_CODE_TYPE">
+		<xs:annotation>
+			<xs:documentation>
+Enumerated values and descriptions: 1: Natural Person, 2: Organization</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="CONTROL_PERSON_TYPE">
+		<xs:annotation>
+			<xs:documentation>These elements part of the repeatable CONTROL_PERSON_TYPE group</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="personTypeCode" type="PERSON_TYPE_CODE_TYPE"/>
+			<xs:element name="personFirstName" type="ns1:STRING_30_TYPE"/>
+			<xs:element name="personMiddleName" type="ns1:STRING_30_TYPE" minOccurs="0"/>
+			<xs:element name="personLastName" type="ns1:STRING_30_TYPE"/>
+			<xs:element name="personNameOfOrg" type="ns1:STRING_150_TYPE"/>
+			<xs:element name="address" type="ns1:ADDRESS_TYPE"/>
+			<xs:element name="agreementDescription" type="ns2:STRING_1500_TYPE" minOccurs="0" maxOccurs="10"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="controllingPersons">
+		<xs:annotation>
+			<xs:documentation>This is the root element for an SDR exhibit A.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="controlPerson" type="CONTROL_PERSON_TYPE" maxOccurs="100"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

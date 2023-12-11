@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl"?>
+<conf:testcase xmlns:conf="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <conf:creator>
+        <conf:name>SEC Office of Structured Disclosure</conf:name>
+        <conf:email>StructuredData@sec.gov</conf:email>
+    </conf:creator>
+    <conf:number>616-15</conf:number>
+    <conf:name>EDGAR Filer Manual v68d 6.16.15</conf:name>
+    <conf:description>
+        <div>
+            <a href="https://www.sec.gov/files/edgar/filermanual/efmvol2.pdf#6.16.15 SHR definition link validations">EDGAR Filer Manual:6.16.15 SHR definition link validations</a>
+        </div>
+    </conf:description>
+    <conf:variation id="_001gd">
+        <conf:name>Valid example, GD</conf:name>
+        <conf:description>Valid example, GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{}'></conf:parameter>
+            <conf:instance readMeFirst="true">e61615001gd/shr00-20331231.htm</conf:instance>
+            <conf:schema>e61615001gd/shr00-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+    </conf:result>
+    </conf:variation>
+    <conf:variation id="_002ng">
+        <conf:name>wrong source member in IssrOrAfflShrRpPrgmsOnly role</conf:name>
+        <conf:description>wrong source member in IssrOrAfflShrRpPrgmsOnly role</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{}'></conf:parameter>
+            <conf:instance readMeFirst="true">e61615002ng/shr00-20331231.htm</conf:instance>
+            <conf:schema>e61615002ng/shr00-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="61615" name="Role-Source-Not-Permitted" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_003ng">
+        <conf:name>wrong source member in 10b51ArrangementsOnly role</conf:name>
+        <conf:description>wrong source member in 10b51ArrangementsOnly role</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{}'></conf:parameter>
+            <conf:instance readMeFirst="true">e61615003ng/shr00-20331231.htm</conf:instance>
+            <conf:schema>e61615003ng/shr00-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="61615" name="Role-Source-Not-Permitted" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_004ng">
+        <conf:name>wrong source member in IssrOrAfflRepurchsStockOnly role</conf:name>
+        <conf:description>wrong source member in IssrOrAfflRepurchsStockOnly role</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{}'></conf:parameter>
+            <conf:instance readMeFirst="true">e61615004ng/shr00-20331231.htm</conf:instance>
+            <conf:schema>e61615004ng/shr00-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="61615" name="Role-Source-Not-Permitted" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_005ng">
+        <conf:name>wrong source member in IssrOrAfflRepurchsCapitalUnitsOnly role</conf:name>
+        <conf:description>wrong source member in IssrOrAfflRepurchsCapitalUnitsOnly role</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{}'></conf:parameter>
+            <conf:instance readMeFirst="true">e61615005ng/shr00-20331231.htm</conf:instance>
+            <conf:schema>e61615005ng/shr00-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="61615" name="Role-Source-Not-Permitted" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_006ng">
+        <conf:name>wrong source member in IssrOrAfflRepurchsWarrantsOnly role</conf:name>
+        <conf:description>wrong source member in IssrOrAfflRepurchsWarrantsOnly role</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{}'></conf:parameter>
+            <conf:instance readMeFirst="true">e61615006ng/shr00-20331231.htm</conf:instance>
+            <conf:schema>e61615006ng/shr00-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="61615" name="Role-Source-Not-Permitted" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_007gd">
+        <conf:name>any source member in unspecified SHR role</conf:name>
+        <conf:description>any source member in unspecified role</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{}'></conf:parameter>
+            <conf:instance readMeFirst="true">e61615007gd/shr00-20331231.htm</conf:instance>
+            <conf:schema>e61615007gd/shr00-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+    </conf:result>
+    </conf:variation>
+    <conf:variation id="_008ng">
+        <conf:name>targetRole is disallowed</conf:name>
+        <conf:description>targetRole is disallowed</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{}'></conf:parameter>
+            <conf:instance readMeFirst="true">e61615008ng/shr00-20331231.htm</conf:instance>
+            <conf:schema>e61615008ng/shr00-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="61615" name="TargetRole-Not-Permitted" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_009gd">
+        <conf:name>custom role which is allowed</conf:name>
+        <conf:description>custom role which is allowed</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{}'></conf:parameter>
+            <conf:instance readMeFirst="true">e61615009gd/shr00-20331231.htm</conf:instance>
+            <conf:schema>e61615009gd/shr00-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+    </conf:result>
+    </conf:variation>
+    <conf:variation id="_010ng">
+        <conf:name>target member concept in 2 SHR roles, NG</conf:name>
+        <conf:description>target member concept in 2 SHR roles, NG</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{}'></conf:parameter>
+            <conf:instance readMeFirst="true">e61615010ng/shr00-20331231.htm</conf:instance>
+            <conf:schema>e61615010ng/shr00-20331231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="61615" name="Member-Multiple-RXP-Roles" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+</conf:testcase>

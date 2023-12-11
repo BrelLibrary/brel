@@ -1,0 +1,529 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>525-03</number>
+    <name>Inline XBRL Test Suite v68d : NonFraction tests, Not EDGAR Dependent</name>
+    <description>
+        <h2>Various "good" (gd) and "not good" (ng) test files that demonstrate specific iXBRL NonFraction usage</h2>
+    </description>
+    <variation id="_001gd">
+        <name>nonFraction PASS test cases, GOOD</name>
+        <description>nonFraction PASS test cases, GOOD</description>
+        <reference xiispec="10.1"></reference>
+        <reference xiitest="PASS-simple-nonFraction"></reference>
+        <reference xiitest="PASS-nonFraction-valid-scale-attr"></reference>
+        <reference xiitest="PASS-attribute-ix-format-nonFraction-01"></reference>
+        <reference xiitest="PASS-nonFraction-valid-sign-attr"></reference>
+        <reference xiitest="PASS-nonFraction-valid-sign-format-attr"></reference>
+        <reference xiitest="PASS-attribute-ix-name-nonFraction-01"></reference>
+        <reference xiitest="PASS-element-ix-nonFraction-ixt-numcomma"></reference>
+        <reference xiitest="PASS-nonFraction-decimals-attr"></reference>
+        <reference xiitest="PASS-nonFraction-ix-format-valid"></reference>
+        <reference xiitest="PASS-element-ix-nonFraction-ixt-numdash"></reference>
+        <reference xiitest="PASS-attribute-ix-scale-nonFraction-01"></reference>
+        <reference xiitest="PASS-attribute-ix-scale-nonFraction-04"></reference>
+        <reference xiitest="PASS-attribute-ix-sign-nonFraction-01"></reference>
+        <reference xiitest="PASS-element-ix-nonFraction-complete"></reference>
+        <reference xiitest="PASS-nonFraction-ix-target-attr"></reference>
+        <reference xiitest="PASS-element-ix-nonFraction-ixt-numcommadot"></reference>
+        <reference xiitest="PASS-element-ix-nonFraction-ixt-numdotcomma"></reference>
+        <reference xiitest="PASS-element-ix-nonFraction-ixt-numspacecomma"></reference>
+        <reference xiitest="PASS-element-ix-nonFraction-ixt-numspacedot"></reference>
+        <reference xiitest="PASS-nonFraction-nesting-formats-2"></reference>
+        <reference xiitest="PASS-nonFraction-xsi-nil-attr"></reference>
+        <reference xiitest="PASS-nonFraction-comments"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i03001gd/i03001gd-20081231.htm</instance>
+            <linkbase>i03001gd/i03001gd-20081231_pre.xml</linkbase>
+            <linkbase>i03001gd/i03001gd-20081231_lab.xml</linkbase>
+            <schema>i03001gd/i03001gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_002gd">
+        <name>NonFraction_testcases_Set2, GOOD</name>
+        <description>PASS-nonFraction-nesting-scale</description>
+        <reference specification="The {format}, {scale} and {unit reference} properties MUST match the respective {format}, {scale} and {unit    reference} properties of any ancestor ix:nonFraction element"></reference>
+        <reference xiispec="10.1.1"></reference>
+        <reference xiitest="PASS-nonFraction-nesting-scale"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i03002gd/i03002gd-20081231.htm</instance>
+            <linkbase>i03002gd/i03002gd-20081231_pre.xml</linkbase>
+            <linkbase>i03002gd/i03002gd-20081231_lab.xml</linkbase>
+            <schema>i03002gd/i03002gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_003gd">
+        <name>NonFraction_testcases_Set3, GOOD</name>
+        <description>PASS nonFraction nesting cases</description>
+        <reference xiispec="10.1.1"></reference>
+        <reference xiitest="PASS-nonFraction-nesting-formats"></reference>
+        <reference xiitest="PASS-nonFraction-nesting-2"></reference>
+        <reference specification="The {format}, {scale} and {unit reference} properties MUST match the respective {format}, {scale} and {unit reference} properties of any ancestor ix:nonFraction element"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i03003gd/i03003gd-20081231.htm</instance>
+            <linkbase>i03003gd/i03003gd-20081231_pre.xml</linkbase>
+            <linkbase>i03003gd/i03003gd-20081231_lab.xml</linkbase>
+            <schema>i03003gd/i03003gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_004gd">
+        <name>Comments anywhere in the input do not appear in the output, GOOD</name>
+        <description>PASS-nonFraction-comments</description>
+        <reference xiispec="11.2.3"></reference>
+        <reference xiitest="PASS-nonFraction-comments"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i03004gd/i03004gd-20081231.htm</instance>
+            <linkbase>i03004gd/i03004gd-20081231_pre.xml</linkbase>
+            <linkbase>i03004gd/i03004gd-20081231_lab.xml</linkbase>
+            <schema>i03004gd/i03004gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_005gd">
+        <name>Nested nonFractions, legal combination.</name>
+        <description>PASS-nonFraction-nesting</description>
+        <reference xiispec="10.1.1"></reference>
+        <reference xiitest="PASS-nonFraction-nesting"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i03005gd/i03005gd-20081231.htm</instance>
+            <linkbase>i03005gd/i03005gd-20081231_pre.xml</linkbase>
+            <linkbase>i03005gd/i03005gd-20081231_lab.xml</linkbase>
+            <schema>i03005gd/i03005gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_006gd">
+        <name>nonFraction with scale="-3" and decimals="1", GOOD</name>
+        <description>PASS-attribute-ix-scale-nonFraction-01</description>
+        <reference xiispec="10.1"></reference>
+        <reference xiitest="PASS-attribute-ix-scale-nonFraction-01"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i03006gd/i03006gd-20081231.htm</instance>
+            <linkbase>i03006gd/i03006gd-20081231_pre.xml</linkbase>
+            <linkbase>i03006gd/i03006gd-20081231_lab.xml</linkbase>
+            <schema>i03006gd/i03006gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_100ng">
+        <name>Nested nonFractions with mis-matched scale attributes, NOGOOD</name>
+        <description>FAIL-nonFraction-nesting-scale-mismatch</description>
+        <reference xiispec="10.1.1"></reference>
+        <reference xiitest="FAIL-nonFraction-nesting-scale-mismatch"></reference>
+        <reference specification="The {format}, {scale} and {unit reference} properties MUST match the respective {format}, {scale} and {unit reference} properties of any ancestor ix:nonFraction element"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i03100ng/i03100ng-20081231.htm</instance>
+            <linkbase>i03100ng/i03100ng-20081231_pre.xml</linkbase>
+            <linkbase>i03100ng/i03100ng-20081231_lab.xml</linkbase>
+            <schema>i03100ng/i03100ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.10.1.2:nestedNonFractionProperties" frd="ix" fj="IXBRL_NON_FRACTION_NESTING_ATTRIBUTE_MISMATCH" nnum="70103" txt="Inline XBRL nested ix:nonFraction must have matching format, scale, and unitRef properties"></assert>
+        </result>
+    </variation>
+    <variation id="_101ng">
+        <name>Nested nonFractions with mis-matched scale attributes, -3 and 0, NOGOOD</name>
+        <description>FAIL-nonFraction-nesting-format-mismatch-2</description>
+        <reference xiispec="10.1.1"></reference>
+        <reference specification="The {format}, {scale} and {unit reference} properties MUST match the respective {format}, {scale} and {unit reference} properties of any ancestor ix:nonFraction element"></reference>
+        <reference xiitest="FAIL-nonFraction-nesting-format-mismatch-2"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i03101ng/i03101ng-20081231.htm</instance>
+            <linkbase>i03101ng/i03101ng-20081231_pre.xml</linkbase>
+            <linkbase>i03101ng/i03101ng-20081231_lab.xml</linkbase>
+            <schema>i03101ng/i03101ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.10.1.2:nestedNonFractionProperties" frd="ix" fj="IXBRL_NON_FRACTION_NESTING_ATTRIBUTE_MISMATCH" nnum="70103" txt="Inline XBRL nested ix:nonFraction must have matching format, scale, and unitRef properties"></assert>
+        </result>
+    </variation>
+    <variation id="_102ng">
+        <name>Any ix: qualified attribute and arbitrary unqualified attributes on nonFraction are illegal, NOGOOD</name>
+        <description>FAIL-nonFraction-any-attribute</description>
+        <reference xiispec="10.1.1"></reference>
+        <reference specification="The ix:nonFraction element allows attributes in ##other namespace but not in NO namespace."></reference>
+        <reference xiitest="FAIL-nonFraction-any-attribute"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i03102ng/i03102ng-20081231.htm</instance>
+            <linkbase>i03102ng/i03102ng-20081231_pre.xml</linkbase>
+            <linkbase>i03102ng/i03102ng-20081231_lab.xml</linkbase>
+            <schema>i03102ng/i03102ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70103" txt="cvc-complex-type.3.2.2: Attribute 'foo' is not allowed to appear in element 'ix:nonFraction'."></assert>
+        </result>
+    </variation>
+    <variation id="_103ng">
+        <name>nonFraction mixes text node and element children at two levels, NOGOOD</name>
+        <description>FAIL-nonFraction-double-nesting</description>
+        <reference xiispec="10.1.1"></reference>
+        <reference specification="The ix:nonFraction element MUST have exactly one child which SHALL be either an ix:nonFraction element or a text node, unless it has an xsi:nil attribute with the value true."></reference>
+        <reference xiitest="FAIL-nonFraction-double-nesting"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i03103ng/i03103ng-20081231.htm</instance>
+            <linkbase>i03103ng/i03103ng-20081231_pre.xml</linkbase>
+            <linkbase>i03103ng/i03103ng-20081231_lab.xml</linkbase>
+            <schema>i03103ng/i03103ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.10.1.2:nonFractionChildren" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70103" txt="cvc-complex-type.2.4.d: Invalid content was found starting with element 'ix:nonFraction'. No child element is expected at this point."></assert>
+        </result>
+    </variation>
+    <variation id="_104ng">
+        <name>NonFraction_testcases_Set15, NOGOOD</name>
+        <description>FAIL-nonfraction-rule-no-xbrli-attributes</description>
+        <reference xiispec="10.1.1"></reference>
+        <reference specification="The ix:nonFraction element MUST NOT have any attributes with a namespace name which has a value of http://www.xbrl.org/2003/instance"></reference>
+        <reference xiitest="FAIL-nonfraction-rule-no-xbrli-attributes"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i03104ng/i03104ng-20081231.htm</instance>
+            <linkbase>i03104ng/i03104ng-20081231_pre.xml</linkbase>
+            <linkbase>i03104ng/i03104ng-20081231_lab.xml</linkbase>
+            <schema>i03104ng/i03104ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="xmlSchema:attributesExtraneous" frd="ix" fj="IXBRL_NON_FRACTION_ELEMENT_HAS_XBRL_NS_ATTRIBUTES" nnum="70103" txt="Element $ type decimal extraneous attributes: *"></assert>
+        </result>
+    </variation>
+    <variation id="_105ng">
+        <name>NonFraction_testcases_Set15, NOGOOD</name>
+        <description>FAIL-overflow-nonFraction</description>
+        <reference xiispec="10.2.3"></reference>
+        <reference specification="The text content is equal to the result of applying the {format transformation} property (if present) to the {value} property"></reference>
+        <reference xiitest="FAIL-overflow-nonFraction"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i03105ng/i03105ng-20081231.htm</instance>
+            <linkbase>i03105ng/i03105ng-20081231_pre.xml</linkbase>
+            <linkbase>i03105ng/i03105ng-20081231_lab.xml</linkbase>
+            <schema>i03105ng/i03105ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="xmlSchema:valueError" frd="ix" fj="IXBRL_NON_FRACTION_VALUE_IS_INFINITE" nnum="70103" txt="Element ix:nonFraction fact $ type decimal value error: *INF, lexical pattern mismatch"></assert>
+        </result>
+    </variation>
+    <variation id="_106ng">
+        <name>NonFraction_testcases_Set4, NOGOOD</name>
+        <description>FAIL-nonFraction-nesting-scale-mismatch-2</description>
+        <reference xiispec="10.1.1"></reference>
+        <reference specification="The {format}, {scale} and {unit reference} properties MUST match the respective {format}, {scale} and {unit reference} properties of any ancestor ix:nonFraction element."></reference>
+        <reference xiitest="FAIL-nonFraction-nesting-scale-mismatch-2"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i03106ng/i03106ng-20081231.htm</instance>
+            <linkbase>i03106ng/i03106ng-20081231_pre.xml</linkbase>
+            <linkbase>i03106ng/i03106ng-20081231_lab.xml</linkbase>
+            <schema>i03106ng/i03106ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.10.1.2:nestedNonFractionProperties" frd="ix" fj="IXBRL_NON_FRACTION_NESTING_ATTRIBUTE_MISMATCH" nnum="70103" txt="Inline XBRL nested ix:nonFraction must have matching format, scale, and unitRef properties"></assert>
+        </result>
+    </variation>
+    <variation id="_107ng">
+        <name>Tests that nonFraction with child element cannot also have text children., NOGOOD</name>
+        <description>FAIL-nonFraction-mixed-nesting</description>
+        <reference xiispec="10.1.1"></reference>
+        <reference specification="The ix:nonFraction element MUST have exactly one child which SHALL be either an ix:nonFraction element or a text node, unless it has an xsi:nil attribute with the value true."></reference>
+        <reference xiitest="FAIL-nonFraction-mixed-nesting"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i03107ng/i03107ng-20081231.htm</instance>
+            <linkbase>i03107ng/i03107ng-20081231_pre.xml</linkbase>
+            <linkbase>i03107ng/i03107ng-20081231_lab.xml</linkbase>
+            <schema>i03107ng/i03107ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.10.1.1:nonFractionChildren" frd="ix" fj="IXBRL_NON_FRACTION_CAN_NOT_HAVE_BOTH_TEXT_AND_CHILD" nnum="70103" txt="Fact $ is a non-nil nonFraction and MUST have exactly one ix:nonFraction child element or text."></assert>
+        </result>
+    </variation>
+    <variation id="_108ng">
+        <name>Tests that nonFraction with child element cannot also have text children, NOGOOD</name>
+        <description>FAIL-nonFraction-mixed-nesting-3</description>
+        <reference xiispec="10.1.1"></reference>
+        <reference specification="The ix:nonFraction element MUST have exactly one child which SHALL be either an ix:nonFraction element or a text node, unless it has an xsi:nil attribute with the value true."></reference>
+        <reference xiitest="FAIL-nonFraction-mixed-nesting-3"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i03108ng/i03108ng-20081231.htm</instance>
+            <linkbase>i03108ng/i03108ng-20081231_pre.xml</linkbase>
+            <linkbase>i03108ng/i03108ng-20081231_lab.xml</linkbase>
+            <schema>i03108ng/i03108ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.10.1.2:nonFractionChildren" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70103" txt="cvc-complex-type.2.4.a: Invalid content was found starting with element 'p'. One of '{&quot;http://www.xbrl.org/2013/inlineXBRL&quot;:nonFraction}' is expected."></assert>
+        </result>
+    </variation>
+    <variation id="_109ng">
+        <name>Tests that null nonFraction has no non-nil ancestors, NOGOOD</name>
+        <description>FAIL-nonFraction-nesting-xsi-nil</description>
+        <reference xiispec="10.1.1"></reference>
+        <reference specification="The ix:nonFraction element MUST have exactly one child which SHALL be either an ix:nonFraction element or a text node, unless it has an xsi:nil attribute with the value true."></reference>
+        <reference xiitest="FAIL-nonFraction-nesting-xsi-nil"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i03109ng/i03109ng-20081231.htm</instance>
+            <linkbase>i03109ng/i03109ng-20081231_pre.xml</linkbase>
+            <linkbase>i03109ng/i03109ng-20081231_lab.xml</linkbase>
+            <schema>i03109ng/i03109ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.10.1.2:nestedNonFractionIsNil" frd="ix" fj="IXBRL_NON_FRACTION_ELEMENT_HAS_NIL_AND_ANCESTOR_NON_FRACTION_ELEMENT" nnum="70103" txt="Inline XBRL nil ix:nonFraction may not have an ancestor ix:nonFraction"></assert>
+        </result>
+    </variation>
+    <variation id="_110ng">
+        <name>nonFraction with numdotdecimal and numcommadecimal of same text, NOGOOD</name>
+        <description>FAIL-nonFraction-nesting-format-mismatch</description>
+        <reference xiispec="10.1.1"></reference>
+        <reference specification="The {format}, {scale} and {unit reference} properties MUST match the respective {format}, {scale} and {unit reference} properties of any ancestor ix:nonFraction element."></reference>
+        <reference xiitest="FAIL-nonFraction-nesting-format-mismatch"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i03110ng/i03110ng-20081231.htm</instance>
+            <linkbase>i03110ng/i03110ng-20081231_pre.xml</linkbase>
+            <linkbase>i03110ng/i03110ng-20081231_lab.xml</linkbase>
+            <schema>i03110ng/i03110ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.10.1.2:nestedNonFractionProperties" frd="ix" fj="IXBRL_NON_FRACTION_NESTING_ATTRIBUTE_MISMATCH" nnum="70103" txt="Inline XBRL nested ix:nonFraction must have matching format, scale, and unitRef properties"></assert>
+        </result>
+    </variation>
+    <variation id="_111ng">
+        <name>nonFraction without a unitRef, NOGOOD</name>
+        <description>FAIL-nonFraction-missing-unit-attr</description>
+        <reference xiispec="10.1.1"></reference>
+        <reference specification="The ix:nonFraction element MUST have contextRef, name and unitRef attributes."></reference>
+        <reference xiitest="FAIL-nonFraction-missing-unit-attr"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i03111ng/i03111ng-20081231.htm</instance>
+            <linkbase>i03111ng/i03111ng-20081231_pre.xml</linkbase>
+            <linkbase>i03111ng/i03111ng-20081231_lab.xml</linkbase>
+            <schema>i03111ng/i03111ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70103" txt="Attribute $ required on element $"></assert>
+        </result>
+    </variation>
+    <variation id="_112ng">
+        <name>nonFraction without a name attribute, NOGOOD</name>
+        <description>FAIL-nonFraction-missing-name-attr</description>
+        <reference xiispec="10.1.1"></reference>
+        <reference specification="The ix:nonFraction element MUST have contextRef, name and unitRef attributes."></reference>
+        <reference xiitest="FAIL-nonFraction-missing-name-attr"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i03112ng/i03112ng-20081231.htm</instance>
+            <linkbase>i03112ng/i03112ng-20081231_pre.xml</linkbase>
+            <linkbase>i03112ng/i03112ng-20081231_lab.xml</linkbase>
+            <schema>i03112ng/i03112ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70103" txt="Attribute $ required on element $"></assert>
+        </result>
+    </variation>
+    <variation id="_113ng">
+        <name>nonFraction without a contextRef, NOGOOD</name>
+        <description>FAIL-nonFraction-missing-context-attr</description>
+        <reference xiispec="10.1.1"></reference>
+        <reference specification="The ix:nonFraction element MUST have contextRef, name and unitRef attributes."></reference>
+        <reference xiitest="FAIL-nonFraction-missing-context-attr"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i03113ng/i03113ng-20081231.htm</instance>
+            <linkbase>i03113ng/i03113ng-20081231_pre.xml</linkbase>
+            <linkbase>i03113ng/i03113ng-20081231_lab.xml</linkbase>
+            <schema>i03113ng/i03113ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70103" txt="Attribute $ required on element $"></assert>
+        </result>
+    </variation>
+    <variation id="_114ng">
+        <name>NonFraction_testcases_Set9, NOGOOD</name>
+        <description>FAIL-nonFraction-invalid-sign-attr</description>
+        <reference xiispec="10.1.1"></reference>
+        <reference specification="The sign attribute, if present, MUST have the value '-'"></reference>
+        <reference xiitest="FAIL-nonFraction-invalid-sign-attr"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i03114ng/i03114ng-20081231.htm</instance>
+            <linkbase>i03114ng/i03114ng-20081231_pre.xml</linkbase>
+            <linkbase>i03114ng/i03114ng-20081231_lab.xml</linkbase>
+            <schema>i03114ng/i03114ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70103" txt="The value $ of attribute $ on element $ is not valid with respect to its type."></assert>
+        </result>
+    </variation>
+    <variation id="_115ng">
+        <name>nonFraction is empty but nil is false, NOGOOD</name>
+        <description>FAIL-nonFraction-empty-without-xsi-nil</description>
+        <reference xiispec="10.1.1"></reference>
+        <reference specification="If the ix:nonFraction element has an xsi:nil attribute with the value true, there MUST NOT be any ancestor ix:nonFraction elements."></reference>
+        <reference xiitest="FAIL-nonFraction-empty-without-xsi-nil"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i03115ng/i03115ng-20081231.htm</instance>
+            <linkbase>i03115ng/i03115ng-20081231_pre.xml</linkbase>
+            <linkbase>i03115ng/i03115ng-20081231_lab.xml</linkbase>
+            <schema>i03115ng/i03115ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="xmlSchema:valueError" frd="ix" fj="IXBRL_NON_FRACTION_HAS_EMPTY_VALUE" nnum="70103" txt="Element $ fact * error Invalid value for nonFraction number:  value: #"></assert>
+        </result>
+    </variation>
+    <variation id="_116ng">
+        <name>nonFraction has a negative value, NOGOOD</name>
+        <description>FAIL-nonFraction-ix-format-invalid</description>
+        <reference xiispec="10.1.2"></reference>
+        <reference specification="The {value} property MUST be valid in accordance with the {format input type} property."></reference>
+        <reference xiitest="FAIL-nonFraction-ix-format-invalid"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i03116ng/i03116ng-20081231.htm</instance>
+            <linkbase>i03116ng/i03116ng-20081231_pre.xml</linkbase>
+            <linkbase>i03116ng/i03116ng-20081231_lab.xml</linkbase>
+            <schema>i03116ng/i03116ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.10.1.1:transformValueError" frd="ix" fj="IXBRL_INVALID_DATA_TYPE" nnum="70103" txt="Inline element * fact # transform ~ value error: ^"></assert>
+        </result>
+    </variation>
+    <variation id="_117ng">
+        <name>An ix:nonFraction has an undefined format although its namespace is okay, NOGOOD</name>
+        <description>FAIL-nonFraction-ix-format-expanded-name-mismatch</description>
+        <reference xiispec="10.1.2"></reference>
+        <reference specification="The {format} property MUST match the expanded name implied by the value of the name attribute of a signature element in the relevant Transformation Rules Registry."></reference>
+        <reference xiitest="FAIL-nonFraction-ix-format-expanded-name-mismatch"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i03117ng/i03117ng-20081231.htm</instance>
+            <linkbase>i03117ng/i03117ng-20081231_pre.xml</linkbase>
+            <linkbase>i03117ng/i03117ng-20081231_lab.xml</linkbase>
+            <schema>i03117ng/i03117ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.10.1.2:invalidTransformation" frd="ix" fj="IXBRL_FORMAT_UNDEFINED" nnum="70103" txt="Fact * has unrecognized transformation name #"></assert>
+        </result>
+    </variation>
+    <variation id="_118ng">
+        <name>ix:nonFraction has text content as well as a nested ix:nonFraction, test seems redundant, NOGOOD</name>
+        <description>FAIL-nonFraction-IXBRLelement-content</description>
+        <reference xiispec="10.1.1"></reference>
+        <reference specification="The ix:nonFraction element MUST have exactly one child which SHALL be either an ix:nonFraction element or a text node, unless it has an xsi:nil attribute with the value true."></reference>
+        <reference xiitest="FAIL-nonFraction-IXBRLelement-content"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i03118ng/i03118ng-20081231.htm</instance>
+            <linkbase>i03118ng/i03118ng-20081231_pre.xml</linkbase>
+            <linkbase>i03118ng/i03118ng-20081231_lab.xml</linkbase>
+            <schema>i03118ng/i03118ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.10.1.1:nonFractionChildren" frd="ix" fj="IXBRL_NON_FRACTION_CAN_NOT_HAVE_BOTH_TEXT_AND_CHILD" nnum="70103" txt="Fact $ is a non-nil nonFraction and MUST have exactly one ix:nonFraction child element or text."></assert>
+        </result>
+    </variation>
+    <variation id="_119ng">
+        <name>An ix:nonFraction element has nil=false and neither decimals nor precision., NOGOOD</name>
+        <description>FAIL-nonFraction-nil-attr-false</description>
+        <reference xiispec="10.1.1"></reference>
+        <reference specification="The ix:nonFraction element MUST have exactly one of: a decimals attribute or a precision attribute, or have an xsi:nil attribute with the value true."></reference>
+        <reference xiitest="FAIL-nonFraction-nil-attr-false"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i03119ng/i03119ng-20081231.htm</instance>
+            <linkbase>i03119ng/i03119ng-20081231_pre.xml</linkbase>
+            <linkbase>i03119ng/i03119ng-20081231_lab.xml</linkbase>
+            <schema>i03119ng/i03119ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="xbrl.4.6.3:missingPrecisionDecimals" frd="ix" fj="IXBRL_NON_FRACTION_MUST_HAVE_DECIMALS_OR_PRECISION_ATTRIBUTE" nnum="70103" txt="Fact * context $ is a numeric concept and must have either precision or decimals."></assert>
+        </result>
+    </variation>
+    <variation id="_120ng">
+        <name>nonFraction with xsi:nil true and decimals, NOGOOD</name>
+        <description>FAIL-nonFraction-nil-decimal-conflict</description>
+        <reference xiispec="10.1.1"></reference>
+        <reference specification="The ix:nonFraction element MUST have exactly one of: a decimals attribute or a precision attribute, or have an xsi:nil attribute with the value true."></reference>
+        <reference xiitest="FAIL-nonFraction-nil-decimal-conflict"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i03120ng/i03120ng-20081231.htm</instance>
+            <linkbase>i03120ng/i03120ng-20081231_pre.xml</linkbase>
+            <linkbase>i03120ng/i03120ng-20081231_lab.xml</linkbase>
+            <schema>i03120ng/i03120ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="xbrl.4.6.3:nilPrecisionDecimals" frd="ix" fj="IXBRL_NON_FRACTION_SHOULD_HAVE_ONLY_ONE_OF_NIL_OR_DECIMALS_OR_PRECISION" nnum="70103" txt="Fact * context $ can not be nil and have either precision or decimals"></assert>
+        </result>
+    </variation>
+    <variation id="_121ng">
+        <name>nonFraction with contextRef to nonexistent id, NOGOOD</name>
+        <description>FAIL-unresolvable-contextRef</description>
+        <reference xiispec="10.1.2"></reference>
+        <reference specification="There MUST exist an xbrli:context element in the Inline XBRL Document Set for which the actual value of the id attribute is equal to the {context reference} property."></reference>
+        <reference xiitest="FAIL-unresolvable-contextRef"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i03121ng/i03121ng-20081231.htm</instance>
+            <linkbase>i03121ng/i03121ng-20081231_pre.xml</linkbase>
+            <linkbase>i03121ng/i03121ng-20081231_lab.xml</linkbase>
+            <schema>i03121ng/i03121ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.10.1.2:contextReference" frd="ix" fj="IXBRL_INVALID_CONTEXT_REF" nnum="70103" txt="Fact * is missing a context for contextRef #"></assert>
+        </result>
+    </variation>
+    <variation id="_122ng">
+        <name>nonFraction with unitRef to nonexistent id (actually not clear the spec meant it must be resolved), NOGOOD</name>
+        <description>FAIL-unresolvable-unitRef</description>
+        <reference xiispec="10.1.1"></reference>
+        <reference specification="The value of the unitRef attribute is equal to the value of the id attribute of an xbrli:unit element in the Target Document which is s-equal to the {unit definition} property."></reference>
+        <reference xiitest="FAIL-unresolvable-unitRef"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i03122ng/i03122ng-20081231.htm</instance>
+            <linkbase>i03122ng/i03122ng-20081231_pre.xml</linkbase>
+            <linkbase>i03122ng/i03122ng-20081231_lab.xml</linkbase>
+            <schema>i03122ng/i03122ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.10.1.2:unitReference" frd="ix" fj="IXBRL_INVALID_UNIT_REF" nnum="70103" txt="Fact * is missing a unit for unitRef #"></assert>
+        </result>
+    </variation>
+    <variation id="_123ng">
+        <name>nonFraction nested with different unitRefs, NOGOOD</name>
+        <description>FAIL-nonFraction-nesting-unitRef-mismatch</description>
+        <reference xiispec="10.1.1"></reference>
+        <reference specification="The {format}, {scale} and {unit reference} properties MUST match the respective {format}, {scale} and {unit reference} properties of any ancestor ix:nonFraction element."></reference>
+        <reference xiitest="FAIL-nonFraction-nesting-unitRef-mismatch"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i03123ng/i03123ng-20081231.htm</instance>
+            <linkbase>i03123ng/i03123ng-20081231_pre.xml</linkbase>
+            <linkbase>i03123ng/i03123ng-20081231_lab.xml</linkbase>
+            <schema>i03123ng/i03123ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.10.1.2:nestedNonFractionProperties" frd="ix" fj="IXBRL_NON_FRACTION_NESTING_ATTRIBUTE_MISMATCH" nnum="70103" txt="Inline XBRL nested ix:nonFraction must have matching format, scale, and unitRef properties"></assert>
+        </result>
+    </variation>
+</testcase>

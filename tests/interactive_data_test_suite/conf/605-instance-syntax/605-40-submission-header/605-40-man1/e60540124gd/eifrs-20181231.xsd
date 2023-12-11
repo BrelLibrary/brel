@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xs:schema xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:dtr-types="http://www.xbrl.org/dtr/type/2022-03-31"  xmlns:xbrldt="http://xbrl.org/2005/xbrldt" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:eifrs="http://eifrs/20181231" targetNamespace="http://eifrs/20181231" elementFormDefault="qualified">
+    <xs:annotation>
+        <xs:appinfo>
+            <link:linkbaseRef xlink:href="eifrs-20181231_pre.xml" xlink:type="simple" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:role="http://www.xbrl.org/2003/role/presentationLinkbaseRef"></link:linkbaseRef>
+            <link:linkbaseRef xlink:href="eifrs-20181231_def.xml" xlink:type="simple" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:role="http://www.xbrl.org/2003/role/definitionLinkbaseRef"></link:linkbaseRef>
+            <link:linkbaseRef xlink:href="eifrs-20181231_lab.xml" xlink:type="simple" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef"></link:linkbaseRef>
+        </xs:appinfo>
+    </xs:annotation>
+    <xs:import schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd" namespace="http://www.xbrl.org/2003/instance"></xs:import>
+    <xs:import schemaLocation="https://xbrl.sec.gov/dei/2023/dei-2023_def.xsd" namespace="http://xbrl.sec.gov/dei-def/2023"></xs:import>
+    <xs:import schemaLocation="https://xbrl.sec.gov/dei/2023/dei-2023_pre.xsd" namespace="http://xbrl.sec.gov/dei-pre/2023"></xs:import>
+    <xs:import schemaLocation="https://xbrl.sec.gov/dei/2023/dei-2023_lab.xsd" namespace="http://xbrl.sec.gov/dei-lab/2023"></xs:import>
+    <xs:import schemaLocation="https://xbrl.sec.gov/dei/2023/dei-2023.xsd" namespace="http://xbrl.sec.gov/dei/2023"></xs:import>
+    <xs:import schemaLocation="https://xbrl.ifrs.org/taxonomy/2023-03-23/full_ifrs/full_ifrs-cor_2023-03-23.xsd" namespace="https://xbrl.ifrs.org/taxonomy/2023-03-23/ifrs-full"></xs:import>
+    <xs:import schemaLocation="https://www.xbrl.org/dtr/type/2022-03-31/types.xsd" namespace="http://www.xbrl.org/dtr/type/2022-03-31"></xs:import>
+    <xs:element name="ClassASharesMember" id="eifrs_ClassASharesMember" type="dtr-types:domainItemType" xbrli:periodType="duration" abstract="true" nillable="true" substitutionGroup="xbrli:item"></xs:element>
+    <xs:element name="ClassBSharesMember" id="eifrs_ClassBSharesMember" type="dtr-types:domainItemType" xbrli:periodType="duration" abstract="true" nillable="true" substitutionGroup="xbrli:item"></xs:element>
+    <xs:element name="ClassCSharesMember" id="eifrs_ClassCSharesMember" type="dtr-types:domainItemType" xbrli:periodType="duration" abstract="true" nillable="true" substitutionGroup="xbrli:item"></xs:element>
+    <xs:element name="ClassDSharesMember" id="eifrs_ClassDSharesMember" type="dtr-types:domainItemType" xbrli:periodType="duration" abstract="true" nillable="true" substitutionGroup="xbrli:item"></xs:element>
+    <xs:element name="ClassESharesMember" id="eifrs_ClassESharesMember" type="dtr-types:domainItemType" xbrli:periodType="duration" abstract="true" nillable="true" substitutionGroup="xbrli:item"></xs:element>
+    <xs:element name="CommonSharesMember" id="eifrs_CommonSharesMember" type="dtr-types:domainItemType" xbrli:periodType="duration" abstract="true" nillable="true" substitutionGroup="xbrli:item"></xs:element>
+    <xs:element name="ClassAPreferredSharesSeries1Member" id="eifrs_ClassAPreferredSharesSeries1Member" type="dtr-types:domainItemType" xbrli:periodType="duration" abstract="true" nillable="true" substitutionGroup="xbrli:item"></xs:element>
+    <xs:element name="ClassAPreferredSharesSeries2Member" id="eifrs_ClassAPreferredSharesSeries2Member" type="dtr-types:domainItemType" xbrli:periodType="duration" abstract="true" nillable="true" substitutionGroup="xbrli:item"></xs:element>
+    <xs:element name="ClassAPreferredSharesSeries3Member" id="eifrs_ClassAPreferredSharesSeries3Member" type="dtr-types:domainItemType" xbrli:periodType="duration" abstract="true" nillable="true" substitutionGroup="xbrli:item"></xs:element>
+    <xs:element name="ClassAPreferredSharesSeries4Member" id="eifrs_ClassAPreferredSharesSeries4Member" type="dtr-types:domainItemType" xbrli:periodType="duration" abstract="true" nillable="true" substitutionGroup="xbrli:item"></xs:element>
+    <xs:element name="ClassAPreferredSharesSeries5Member" id="eifrs_ClassAPreferredSharesSeries5Member" type="dtr-types:domainItemType" xbrli:periodType="duration" abstract="true" nillable="true" substitutionGroup="xbrli:item"></xs:element>
+    <xs:element name="ClassAPreferredSharesSeries8RMember" id="eifrs_ClassAPreferredSharesSeries8RMember" type="dtr-types:domainItemType" xbrli:periodType="duration" abstract="true" nillable="true" substitutionGroup="xbrli:item"></xs:element>
+    <xs:element name="ClassAPreferredSharesSeries9QRMember" id="eifrs_ClassAPreferredSharesSeries9QRMember" type="dtr-types:domainItemType" xbrli:periodType="duration" abstract="true" nillable="true" substitutionGroup="xbrli:item"></xs:element>
+    <xs:element name="ClassAPreferredSharesSeries10RMember" id="eifrs_ClassAPreferredSharesSeries10RMember" type="dtr-types:domainItemType" xbrli:periodType="duration" abstract="true" nillable="true" substitutionGroup="xbrli:item"></xs:element>
+    <xs:element name="ClassAPreferredSharesSeries11QRMember" id="eifrs_ClassAPreferredSharesSeries11QRMember" type="dtr-types:domainItemType" xbrli:periodType="duration" abstract="true" nillable="true" substitutionGroup="xbrli:item"></xs:element>
+    <xs:element name="ClassAPreferredSharesSeries12RMember" id="eifrs_ClassAPreferredSharesSeries12RMember" type="dtr-types:domainItemType" xbrli:periodType="duration" abstract="true" nillable="true" substitutionGroup="xbrli:item"></xs:element>
+</xs:schema>

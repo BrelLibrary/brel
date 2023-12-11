@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<?xml-stylesheet type="text/xsl" href="../../../../lib/test.xsl"?>
+<conf:testcase
+xmlns:conf="http://edgar/2009/conformance"
+xmlns:xs="http://www.w3.org/2001/XMLSchema"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../../lib/test.xsd">
+<conf:creator>
+<conf:name>SEC Office of Structured Disclosure</conf:name>
+<conf:email>StructuredData@sec.gov</conf:email>
+</conf:creator>
+<conf:number>603-08</conf:number>
+<conf:name>EDGAR Filer Manual  v66d 6.3.8 page 6-7</conf:name>
+<conf:description>
+<h2>A submission must contain exactly one EX-101.INS or EX-99.SDR K.INS.</h2>
+<p>An Interactive Data instance in XBRL format must be an EX-101.INS, EX-99.SDR K.INS, or EX-99.SDR L.INS.</p>
+<p>REMARK: This is a continuation of
+<a href="../../603-filing-syntax/603-08-only-one-instance/603-08-only-one-instance-testcase.xml">603-08</a>.
+</p>
+</conf:description>
+<conf:variation id="_001ng">
+<conf:name>6.3.8, Mixing an EX-99.K SDR and EX-99.L SDR with an EX-101, NOGOOD.</conf:name>
+<conf:description>Mixing an EX-99.K SDR and EX-99.L SDR with an EX-101 that is an 8-K, NOGOOD.</conf:description>
+<conf:data>
+<conf:parameter name="submissionType" datatype="xs:string" value="SDR" />
+<conf:instance readMeFirst="true" exhibitType="K SDR">001ng/k60308001ng-20151231.xml</conf:instance>
+<conf:linkbase>001ng/k60308001ng-20151231_lab.xml</conf:linkbase>
+<conf:linkbase>001ng/k60308001ng-20151231_pre.xml</conf:linkbase>
+<conf:schema>001ng/k60308001ng-20151231.xsd</conf:schema>
+<conf:instance readMeFirst="true" exhibitType="EX-101">001ng/l60308001ng-20151231.xml</conf:instance>
+<conf:linkbase>001ng/l60308001ng-20151231_lab.xml</conf:linkbase>
+<conf:linkbase>001ng/l60308001ng-20151231_pre.xml</conf:linkbase>
+<conf:schema>001ng/l60308001ng-20151231.xsd</conf:schema>
+<conf:instance readMeFirst="true" exhibitType="L SDR">001ng/m60308001ng-20151231.xml</conf:instance>
+<conf:linkbase>001ng/m60308001ng-20151231_lab.xml</conf:linkbase>
+<conf:linkbase>001ng/m60308001ng-20151231_pre.xml</conf:linkbase>
+<conf:schema>001ng/m60308001ng-20151231.xsd</conf:schema>
+</conf:data>
+<result
+xmlns="http://edgar/2009/conformance">
+<assert severity="err" num="60520" name="Submission-Document-Type" frd="cp" />
+</result>
+</conf:variation>
+<conf:variation id="_002ng">
+<conf:name>6.3.8, Mixing an EX-99.K SDR and EX-99.L SDR with an EX-101 (gateway tests it), NOGOOD</conf:name>
+<conf:description>Mixing an EX-99.K SDR and EX-99.L SDR with an EX-101 (gateway tests it) that is an L SDR, NOGOOD.</conf:description>
+<conf:data>
+<conf:parameter name="submissionType" datatype="xs:string" value="SDR" />
+<conf:instance readMeFirst="true" exhibitType="K SDR">002ng/k60308002ng-20151231.xml</conf:instance>
+<conf:linkbase>002ng/k60308002ng-20151231_lab.xml</conf:linkbase>
+<conf:linkbase>002ng/k60308002ng-20151231_pre.xml</conf:linkbase>
+<conf:schema>002ng/k60308002ng-20151231.xsd</conf:schema>
+<conf:instance readMeFirst="true" exhibitType="EX-101">002ng/l60308002ng-20151231.xml</conf:instance>
+<conf:linkbase>002ng/l60308002ng-20151231_lab.xml</conf:linkbase>
+<conf:linkbase>002ng/l60308002ng-20151231_pre.xml</conf:linkbase>
+<conf:schema>002ng/l60308002ng-20151231.xsd</conf:schema>
+<conf:instance readMeFirst="true" exhibitType="L SDR">002ng/m60308002ng-20151231.xml</conf:instance>
+<conf:linkbase>002ng/m60308002ng-20151231_lab.xml</conf:linkbase>
+<conf:linkbase>002ng/m60308002ng-20151231_pre.xml</conf:linkbase>
+<conf:schema>002ng/m60308002ng-20151231.xsd</conf:schema>
+</conf:data>
+<result
+xmlns="http://edgar/2009/conformance">
+<assert severity="err" num="60308" name="Disallowed-Combination-Of-Exhibits" frd="cp" />
+</result>
+</conf:variation>
+</conf:testcase>

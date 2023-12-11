@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>603-04</number>
+    <name>EDGAR Filer Manual v68d 6.3.4</name>
+    <description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.3.4 An XBRL document must not contain HTML character name references.">Refer to EFM: 6.3.4 An XBRL document must not contain HTML character name references.</a>
+    </description>
+    <variation id="_001ng">
+        <name>Instance has HTML characters in footnote, NOGOOD.</name>
+        <description>Tests that incorrect characters are caught, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "06-30-2011", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">e60304001ng-20111231.xml</instance>
+            <linkbase>e60304001ng-20111231_lab.xml</linkbase>
+            <linkbase>e60304001ng-20111231_def.xml</linkbase>
+            <linkbase>e60304001ng-20111231_pre.xml</linkbase>
+            <schema>e60304001ng-20111231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60304" name="Invalid-Html-In-Footnote" frd="cp"></assert>
+        </result>
+    </variation>
+    <variation id="_002ng">
+        <name>Label linkbase has HTML characters, NOGOOD.</name>
+        <description>Tests that incorrect characters are caught, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "06-30-2011", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">e60304002ng-20111231.xml</instance>
+            <linkbase>e60304002ng-20111231_lab.xml</linkbase>
+            <linkbase>e60304002ng-20111231_def.xml</linkbase>
+            <linkbase>e60304002ng-20111231_pre.xml</linkbase>
+            <schema>e60304002ng-20111231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60304" name="Invalid-Html-In-Linkbase" frd="cp"></assert>
+        </result>
+    </variation>
+</testcase>

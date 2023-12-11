@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>605-11</number>
+    <name>EDGAR Filer Manual v68d 6.5.11</name>
+    <description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.5.11  Element xbrli:xbrl must not have duplicate child xbrli:unit elements.">Refer to EFM: 6.5.11  Element xbrli:xbrl must not have duplicate child xbrli:unit elements.</a>
+    </description>
+    <reference specification="10991"></reference>
+    <variation id="_000gd">
+        <name>6.5.12 No units the same - GOOD</name>
+        <description> An instance having no duplicate units - GOOD</description>
+        <reference specification="10991"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">e60511000gd-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_001ng">
+        <name>6.5.12 Identical QNames - NOGOOD</name>
+        <description>An instance having two units (lumen and Lumen) with the same QNames.</description>
+        <reference specification="10991"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">e60511001ng-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60511" name="Duplicate-Units" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_002ng">
+        <name>6.5.12 Same except Order of Denominator - NOGOOD</name>
+        <description>An instance having two units (Pascals) differing only in the order of their denominator elements (m*sec*sec vs sec*sec*m).</description>
+        <reference specification="10991"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">e60511002ng-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60511" name="Duplicate-Units" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_003ng">
+        <name>6.5.12 Same except Order of Numerator - NOGOOD</name>
+        <description>An instance having two units (Newtons) differing only in the order of their numerator elements (m*kg vs kg*m).</description>
+        <reference specification="10991"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">e60511003ng-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60511" name="Duplicate-Units" frd="du"></assert>
+        </result>
+    </variation>
+</testcase>

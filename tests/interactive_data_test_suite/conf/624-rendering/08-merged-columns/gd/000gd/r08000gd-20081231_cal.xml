@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<link:linkbase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd">
+    <link:roleRef roleURI="http://r08000gd/role/short" xlink:href="r08000gd-20081231.xsd#short" xlink:type="simple"></link:roleRef>
+    <link:calculationLink xlink:type="extended" xlink:role="http://r08000gd/role/short">
+        <link:loc xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_NetCashProvidedByUsedInOperatingActivities" xlink:label="NetCashProvidedByUsedInOperatingActivities" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_ProfitLoss" xlink:label="ProfitLoss" xlink:type="locator"></link:loc>
+        <link:calculationArc xlink:type="arc" order="1.0" weight="1.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" xlink:from="NetCashProvidedByUsedInOperatingActivities" xlink:to="ProfitLoss"></link:calculationArc>
+    </link:calculationLink>
+</link:linkbase>

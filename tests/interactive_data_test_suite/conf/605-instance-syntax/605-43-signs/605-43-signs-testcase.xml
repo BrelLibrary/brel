@@ -1,0 +1,249 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl"?>
+<conf:testcase xmlns:conf="http://edgar/2009/conformance" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <conf:creator>
+        <conf:name>SEC Office of Structured Disclosure</conf:name>
+        <conf:email>StructuredData@sec.gov</conf:email>
+    </conf:creator>
+    <conf:number>605-43</conf:number>
+    <conf:name>EDGAR Filer Manual v68d 6.5.43</conf:name>
+    <conf:description xmlns="">
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.5.43 Numeric elements that should not have negative values.">Refer to EFM: 6.5.43 Numeric elements that should not have negative values.</a>
+    </conf:description>
+    <conf:reference specification="12907"></conf:reference>
+    <!-- TBD revisit wrt DQC
+    <conf:variation id="_002gw">
+        <conf:name>6.5.43 Basic 8-K - OtherExpenses GW</conf:name>
+        <conf:description>
+            <div xmlns="">Basic 8-K - OtherExpenses GW</div>
+        </conf:description>
+        <conf:reference specification="eer-121"></conf:reference>
+        <conf:data>
+            <conf:parameter  xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ELOparams" datatype="xs:string" value='{ "emergingGrowthCompanyFlag" : false, "periodOfReport" : "12-31-2008" , "submissionType" : "8-K" }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60543002gw-20081231.xml</conf:instance>
+            <conf:schema>e60543002gw-20081231.xsd</conf:schema>
+            <conf:linkbase>e60543002gw-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60543002gw-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60543002gw-20081231_def.xml</conf:linkbase>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60543" name="signs" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_003gw">
+        <conf:name>6.5.43 Basic 8-K - AccumulatedDepreciationDepletionAndAmortizationPropertyPlantAndEquipment GW</conf:name>
+        <conf:description>
+            <div xmlns="">Basic 8-K - AccumulatedDepreciationDepletionAndAmortizationPropertyPlantAndEquipment GW</div>
+        </conf:description>
+        <conf:reference specification="eer-122"></conf:reference>
+        <conf:data>
+            <conf:parameter  xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ELOparams" datatype="xs:string" value='{ "emergingGrowthCompanyFlag" : false, "periodOfReport" : "12-31-2008" , "submissionType" : "8-K" }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60543003gw-20081231.xml</conf:instance>
+            <conf:schema>e60543003gw-20081231.xsd</conf:schema>
+            <conf:linkbase>e60543003gw-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60543003gw-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60543003gw-20081231_def.xml</conf:linkbase>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60543" name="signs" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_004gw">
+        <conf:name>6.5.43 Basic 8-K - DeferredTaxAssetsLiabilitiesNet GW</conf:name>
+        <conf:description>
+            <div xmlns="">Basic 8-K - DeferredTaxAssetsLiabilitiesNet GW</div>
+        </conf:description>
+        <conf:reference specification="eer-122"></conf:reference>
+        <conf:data>
+            <conf:parameter  xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ELOparams" datatype="xs:string" value='{ "emergingGrowthCompanyFlag" : false, "periodOfReport" : "12-31-2008" , "submissionType" : "8-K" }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60543004gw-20081231.xml</conf:instance>
+            <conf:schema>e60543004gw-20081231.xsd</conf:schema>
+            <conf:linkbase>e60543004gw-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60543004gw-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60543004gw-20081231_def.xml</conf:linkbase>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60543" name="signs" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+ -->
+    <!-- TBD revisit wrt DQC 
+    <conf:variation id="_010gw">
+        <conf:name>6.5.43 Basic 8-K/A - DeferredTaxAssetsLiabilitiesNet StatementEquityComponentsAxis and CommonStockMember GW</conf:name>
+        <conf:description>
+            <div xmlns="">Basic 8-K/A - DeferredTaxAssetsLiabilitiesNet StatementEquityComponentsAxis and CommonStockMember GW</div>
+        </conf:description>
+        <conf:reference specification="eer-122"></conf:reference>
+        <conf:data>
+            <conf:parameter  xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ELOparams" datatype="xs:string" value='{ "emergingGrowthCompanyFlag" : false, "periodOfReport" : "12-31-2008" , "submissionType" : "8-K/A" }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60543010gw-20081231.xml</conf:instance>
+            <conf:schema>e60543010gw-20081231.xsd</conf:schema>
+            <conf:linkbase>e60543010gw-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60543010gw-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60543010gw-20081231_def.xml</conf:linkbase>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60543" name="signs" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+-->
+    <!-- TBD 
+    <conf:variation id="_012gw">
+        <conf:name>6.5.43 Basic 8-K us-gaap AccrualForEnvironmentalLossContingenciesUndiscountedDueInRemainderOfFiscalYear negative value GW</conf:name>
+        <conf:description>
+            <div xmlns="">Basic 8-K us-gaap AccrualForEnvironmentalLossContingenciesUndiscountedDueInRemainderOfFiscalYear negative value GW</div>
+        </conf:description>
+        <conf:reference specification="emr-145"></conf:reference>
+        <conf:data>
+            <conf:parameter xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ELOparams" datatype="xs:string" value='{ "emergingGrowthCompanyFlag" : false, "periodOfReport" : "12-31-2008" , "submissionType" : "8-K" }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60543012gw-20081231.xml</conf:instance>
+            <conf:linkbase>e60543012gw-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60543012gw-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60543012gw-20081231_def.xml</conf:linkbase>
+            <conf:schema>e60543012gw-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60543" name="signs" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_013gw">
+        <conf:name>6.5.43 Basic 8-K us-gaap OtherExpenses with typed dimension GW</conf:name>
+        <conf:description>
+            <div xmlns="">Basic 8-K us-gaap OtherExpenses with typed dimension GW</div>
+        </conf:description>
+        <conf:reference specification="emr-145"></conf:reference>
+        <conf:data>
+            <conf:parameter xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ELOparams" datatype="xs:string" value='{ "emergingGrowthCompanyFlag" : false, "periodOfReport" : "12-31-2008" , "submissionType" : "8-K" }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60543013gw-20081231.xml</conf:instance>
+            <conf:linkbase>e60543013gw-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60543013gw-20081231_lab.xml</conf:linkbase>
+            <conf:schema>e60543013gw-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60543" name="signs" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+-->
+    <conf:variation id="_001gd">
+        <conf:name>6.5.43 Basic 8-K -  GD</conf:name>
+        <conf:description>
+            <div xmlns="">Basic 8-K - GD</div>
+        </conf:description>
+        <conf:reference specification="eer-120"></conf:reference>
+        <conf:data>
+            <conf:parameter xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ELOparams" datatype="xs:string" value='{ "emergingGrowthCompanyFlag" : true, "periodOfReport" : "12-31-2008" , "submissionType" : "8-K" }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60543001gd-20081231.xml</conf:instance>
+            <conf:schema>e60543001gd-20081231.xsd</conf:schema>
+            <conf:linkbase>e60543001gd-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60543001gd-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60543001gd-20081231_def.xml</conf:linkbase>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_005gw">
+        <conf:name>6.5.43 Basic 8-K - OtherExpenseByFunction GW</conf:name>
+        <conf:description>
+            <div xmlns="">Basic 8-K - OtherExpenseByFunction GW</div>
+        </conf:description>
+        <conf:reference specification="eer-122"></conf:reference>
+        <conf:data>
+            <conf:parameter xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ELOparams" datatype="xs:string" value='{ "emergingGrowthCompanyFlag" : false, "periodOfReport" : "12-31-2008" , "submissionType" : "8-K" }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60543005gw-20081231.xml</conf:instance>
+            <conf:schema>e60543005gw-20081231.xsd</conf:schema>
+            <conf:linkbase>e60543005gw-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60543005gw-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60543005gw-20081231_def.xml</conf:linkbase>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60543" name="signs" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_006gw">
+        <conf:name>6.5.43 Basic 8-K - OtherExpenseByNature GW</conf:name>
+        <conf:description>
+            <div xmlns="">Basic 8-K - OtherExpenseByNature GW</div>
+        </conf:description>
+        <conf:reference specification="eer-122"></conf:reference>
+        <conf:data>
+            <conf:parameter xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ELOparams" datatype="xs:string" value='{ "emergingGrowthCompanyFlag" : false, "periodOfReport" : "12-31-2008" , "submissionType" : "8-K" }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60543006gw-20081231.xml</conf:instance>
+            <conf:schema>e60543006gw-20081231.xsd</conf:schema>
+            <conf:linkbase>e60543006gw-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60543006gw-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60543006gw-20081231_def.xml</conf:linkbase>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60543" name="signs" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_007gw">
+        <conf:name>6.5.43 Basic 8-K - DepreciationPropertyPlantAndEquipment GW</conf:name>
+        <conf:description>
+            <div xmlns="">Basic 8-K - DepreciationPropertyPlantAndEquipment GW</div>
+        </conf:description>
+        <conf:reference specification="eer-122"></conf:reference>
+        <conf:data>
+            <conf:parameter xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ELOparams" datatype="xs:string" value='{ "emergingGrowthCompanyFlag" : false, "periodOfReport" : "12-31-2008" , "submissionType" : "8-K" }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60543007gw-20081231.xml</conf:instance>
+            <conf:schema>e60543007gw-20081231.xsd</conf:schema>
+            <conf:linkbase>e60543007gw-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60543007gw-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60543007gw-20081231_def.xml</conf:linkbase>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60543" name="signs" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_008gw">
+        <conf:name>6.5.43 Basic 8-K - DeferredTaxAssets GW</conf:name>
+        <conf:description>
+            <div xmlns="">Basic 8-K - DeferredTaxAssets GW</div>
+        </conf:description>
+        <conf:reference specification="eer-122"></conf:reference>
+        <conf:data>
+            <conf:parameter xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ELOparams" datatype="xs:string" value='{ "emergingGrowthCompanyFlag" : false, "periodOfReport" : "12-31-2008" , "submissionType" : "8-K" }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60543008gw-20081231.xml</conf:instance>
+            <conf:schema>e60543008gw-20081231.xsd</conf:schema>
+            <conf:linkbase>e60543008gw-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60543008gw-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60543008gw-20081231_def.xml</conf:linkbase>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60543" name="signs" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_009gw">
+        <conf:name>6.5.43 Basic 8-K - DeferredTaxLiabilities GW</conf:name>
+        <conf:description>
+            <div xmlns="">Basic 8-K - DeferredTaxLiabilities GW</div>
+        </conf:description>
+        <conf:reference specification="eer-122"></conf:reference>
+        <conf:data>
+            <conf:parameter xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ELOparams" datatype="xs:string" value='{ "emergingGrowthCompanyFlag" : false, "periodOfReport" : "12-31-2008" , "submissionType" : "8-K" }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60543009gw-20081231.xml</conf:instance>
+            <conf:schema>e60543009gw-20081231.xsd</conf:schema>
+            <conf:linkbase>e60543009gw-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60543009gw-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60543009gw-20081231_def.xml</conf:linkbase>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60543" name="signs" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_011gd">
+        <conf:name>6.5.43 8-K/A us-gaap Axis and Member - SubsegmentsConsolidationItemsAxis and IntersubsegmentEliminationsMember, GOOD</conf:name>
+        <conf:description>
+            <div xmlns="">8-K/A us-gaap Axis and Member - SubsegmentsConsolidationItemsAxis and IntersubsegmentEliminationsMember, GOOD</div>
+        </conf:description>
+        <conf:reference specification="eer-122"></conf:reference>
+        <conf:data>
+            <conf:parameter xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ELOparams" datatype="xs:string" value='{ "emergingGrowthCompanyFlag" : false, "periodOfReport" : "12-31-2008" , "submissionType" : "8-K/A" }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60543011gd-20081231.xml</conf:instance>
+            <conf:schema>e60543011gd-20081231.xsd</conf:schema>
+            <conf:linkbase>e60543011gd-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60543011gd-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60543011gd-20081231_def.xml</conf:linkbase>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+</conf:testcase>

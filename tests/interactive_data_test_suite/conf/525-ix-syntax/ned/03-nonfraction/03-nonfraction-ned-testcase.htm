@@ -1,0 +1,1390 @@
+<html xmlns:case="http://edgar/2009/conformance">
+  <head>
+    <title>525-03
+        :
+        Inline XBRL Test Suite v68d : NonFraction tests, Not EDGAR Dependent</title>
+    <style type="text/css">
+        table, td, th {border: solid black 1pt; border-collapse: collapse;} td {vertical-align: top;}
+      </style>
+  </head>
+  <body>
+    <h1>525-03
+        :
+        Inline XBRL Test Suite v68d : NonFraction tests, Not EDGAR Dependent</h1>
+    <p>
+        Created by: 
+        <a href="mailto:StructuredData@sec.gov">SEC Office of Structured Disclosure</a></p>
+    <p>
+      <description xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <h2>Various "good" (gd) and "not good" (ng) test files that demonstrate specific iXBRL NonFraction usage</h2>
+    </description>
+    </p>
+    <h2>
+        Variations
+      </h2>
+    <table border="solid">
+      <thead>
+        <tr>
+          <th>Number</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>References</th>
+          <th>Data Inputs</th>
+          <th>Result Outputs</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>_001gd</td>
+          <td>nonFraction PASS test cases, GOOD</td>
+          <td>nonFraction PASS test cases, GOOD</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i03001gd/i03001gd-20081231.htm">i03001gd/i03001gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i03001gd/i03001gd-20081231_pre.xml">i03001gd/i03001gd-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i03001gd/i03001gd-20081231_lab.xml">i03001gd/i03001gd-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i03001gd/i03001gd-20081231.xsd">i03001gd/i03001gd-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_002gd</td>
+          <td>NonFraction_testcases_Set2, GOOD</td>
+          <td>PASS-nonFraction-nesting-scale</td>
+          <td>The {format}, {scale} and {unit reference} properties MUST match the respective {format}, {scale} and {unit    reference} properties of any ancestor ix:nonFraction element 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i03002gd/i03002gd-20081231.htm">i03002gd/i03002gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i03002gd/i03002gd-20081231_pre.xml">i03002gd/i03002gd-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i03002gd/i03002gd-20081231_lab.xml">i03002gd/i03002gd-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i03002gd/i03002gd-20081231.xsd">i03002gd/i03002gd-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_003gd</td>
+          <td>NonFraction_testcases_Set3, GOOD</td>
+          <td>PASS nonFraction nesting cases</td>
+          <td>The {format}, {scale} and {unit reference} properties MUST match the respective {format}, {scale} and {unit reference} properties of any ancestor ix:nonFraction element 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i03003gd/i03003gd-20081231.htm">i03003gd/i03003gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i03003gd/i03003gd-20081231_pre.xml">i03003gd/i03003gd-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i03003gd/i03003gd-20081231_lab.xml">i03003gd/i03003gd-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i03003gd/i03003gd-20081231.xsd">i03003gd/i03003gd-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_004gd</td>
+          <td>Comments anywhere in the input do not appear in the output, GOOD</td>
+          <td>PASS-nonFraction-comments</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i03004gd/i03004gd-20081231.htm">i03004gd/i03004gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i03004gd/i03004gd-20081231_pre.xml">i03004gd/i03004gd-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i03004gd/i03004gd-20081231_lab.xml">i03004gd/i03004gd-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i03004gd/i03004gd-20081231.xsd">i03004gd/i03004gd-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_005gd</td>
+          <td>Nested nonFractions, legal combination.</td>
+          <td>PASS-nonFraction-nesting</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i03005gd/i03005gd-20081231.htm">i03005gd/i03005gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i03005gd/i03005gd-20081231_pre.xml">i03005gd/i03005gd-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i03005gd/i03005gd-20081231_lab.xml">i03005gd/i03005gd-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i03005gd/i03005gd-20081231.xsd">i03005gd/i03005gd-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_006gd</td>
+          <td>nonFraction with scale="-3" and decimals="1", GOOD</td>
+          <td>PASS-attribute-ix-scale-nonFraction-01</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i03006gd/i03006gd-20081231.htm">i03006gd/i03006gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i03006gd/i03006gd-20081231_pre.xml">i03006gd/i03006gd-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i03006gd/i03006gd-20081231_lab.xml">i03006gd/i03006gd-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i03006gd/i03006gd-20081231.xsd">i03006gd/i03006gd-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_100ng</td>
+          <td>Nested nonFractions with mis-matched scale attributes, NOGOOD</td>
+          <td>FAIL-nonFraction-nesting-scale-mismatch</td>
+          <td>The {format}, {scale} and {unit reference} properties MUST match the respective {format}, {scale} and {unit reference} properties of any ancestor ix:nonFraction element 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i03100ng/i03100ng-20081231.htm">i03100ng/i03100ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i03100ng/i03100ng-20081231_pre.xml">i03100ng/i03100ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i03100ng/i03100ng-20081231_lab.xml">i03100ng/i03100ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i03100ng/i03100ng-20081231.xsd">i03100ng/i03100ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.10.1.2:nestedNonFractionProperties">ix11.10.1.2:nestedNonFractionProperties</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_101ng</td>
+          <td>Nested nonFractions with mis-matched scale attributes, -3 and 0, NOGOOD</td>
+          <td>FAIL-nonFraction-nesting-format-mismatch-2</td>
+          <td>The {format}, {scale} and {unit reference} properties MUST match the respective {format}, {scale} and {unit reference} properties of any ancestor ix:nonFraction element 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i03101ng/i03101ng-20081231.htm">i03101ng/i03101ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i03101ng/i03101ng-20081231_pre.xml">i03101ng/i03101ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i03101ng/i03101ng-20081231_lab.xml">i03101ng/i03101ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i03101ng/i03101ng-20081231.xsd">i03101ng/i03101ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.10.1.2:nestedNonFractionProperties">ix11.10.1.2:nestedNonFractionProperties</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_102ng</td>
+          <td>Any ix: qualified attribute and arbitrary unqualified attributes on nonFraction are illegal, NOGOOD</td>
+          <td>FAIL-nonFraction-any-attribute</td>
+          <td>The ix:nonFraction element allows attributes in ##other namespace but not in NO namespace. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i03102ng/i03102ng-20081231.htm">i03102ng/i03102ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i03102ng/i03102ng-20081231_pre.xml">i03102ng/i03102ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i03102ng/i03102ng-20081231_lab.xml">i03102ng/i03102ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i03102ng/i03102ng-20081231.xsd">i03102ng/i03102ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-html:syntaxError">html:syntaxError</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_103ng</td>
+          <td>nonFraction mixes text node and element children at two levels, NOGOOD</td>
+          <td>FAIL-nonFraction-double-nesting</td>
+          <td>The ix:nonFraction element MUST have exactly one child which SHALL be either an ix:nonFraction element or a text node, unless it has an xsi:nil attribute with the value true. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i03103ng/i03103ng-20081231.htm">i03103ng/i03103ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i03103ng/i03103ng-20081231_pre.xml">i03103ng/i03103ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i03103ng/i03103ng-20081231_lab.xml">i03103ng/i03103ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i03103ng/i03103ng-20081231.xsd">i03103ng/i03103ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.10.1.2:nonFractionChildren">ix11.10.1.2:nonFractionChildren</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_104ng</td>
+          <td>NonFraction_testcases_Set15, NOGOOD</td>
+          <td>FAIL-nonfraction-rule-no-xbrli-attributes</td>
+          <td>The ix:nonFraction element MUST NOT have any attributes with a namespace name which has a value of http://www.xbrl.org/2003/instance 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i03104ng/i03104ng-20081231.htm">i03104ng/i03104ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i03104ng/i03104ng-20081231_pre.xml">i03104ng/i03104ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i03104ng/i03104ng-20081231_lab.xml">i03104ng/i03104ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i03104ng/i03104ng-20081231.xsd">i03104ng/i03104ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-xmlSchema:attributesExtraneous">xmlSchema:attributesExtraneous</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_105ng</td>
+          <td>NonFraction_testcases_Set15, NOGOOD</td>
+          <td>FAIL-overflow-nonFraction</td>
+          <td>The text content is equal to the result of applying the {format transformation} property (if present) to the {value} property 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i03105ng/i03105ng-20081231.htm">i03105ng/i03105ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i03105ng/i03105ng-20081231_pre.xml">i03105ng/i03105ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i03105ng/i03105ng-20081231_lab.xml">i03105ng/i03105ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i03105ng/i03105ng-20081231.xsd">i03105ng/i03105ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-xmlSchema:valueError">xmlSchema:valueError</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_106ng</td>
+          <td>NonFraction_testcases_Set4, NOGOOD</td>
+          <td>FAIL-nonFraction-nesting-scale-mismatch-2</td>
+          <td>The {format}, {scale} and {unit reference} properties MUST match the respective {format}, {scale} and {unit reference} properties of any ancestor ix:nonFraction element. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i03106ng/i03106ng-20081231.htm">i03106ng/i03106ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i03106ng/i03106ng-20081231_pre.xml">i03106ng/i03106ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i03106ng/i03106ng-20081231_lab.xml">i03106ng/i03106ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i03106ng/i03106ng-20081231.xsd">i03106ng/i03106ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.10.1.2:nestedNonFractionProperties">ix11.10.1.2:nestedNonFractionProperties</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_107ng</td>
+          <td>Tests that nonFraction with child element cannot also have text children., NOGOOD</td>
+          <td>FAIL-nonFraction-mixed-nesting</td>
+          <td>The ix:nonFraction element MUST have exactly one child which SHALL be either an ix:nonFraction element or a text node, unless it has an xsi:nil attribute with the value true. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i03107ng/i03107ng-20081231.htm">i03107ng/i03107ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i03107ng/i03107ng-20081231_pre.xml">i03107ng/i03107ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i03107ng/i03107ng-20081231_lab.xml">i03107ng/i03107ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i03107ng/i03107ng-20081231.xsd">i03107ng/i03107ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.10.1.1:nonFractionChildren">ix11.10.1.1:nonFractionChildren</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_108ng</td>
+          <td>Tests that nonFraction with child element cannot also have text children, NOGOOD</td>
+          <td>FAIL-nonFraction-mixed-nesting-3</td>
+          <td>The ix:nonFraction element MUST have exactly one child which SHALL be either an ix:nonFraction element or a text node, unless it has an xsi:nil attribute with the value true. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i03108ng/i03108ng-20081231.htm">i03108ng/i03108ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i03108ng/i03108ng-20081231_pre.xml">i03108ng/i03108ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i03108ng/i03108ng-20081231_lab.xml">i03108ng/i03108ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i03108ng/i03108ng-20081231.xsd">i03108ng/i03108ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.10.1.2:nonFractionChildren">ix11.10.1.2:nonFractionChildren</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_109ng</td>
+          <td>Tests that null nonFraction has no non-nil ancestors, NOGOOD</td>
+          <td>FAIL-nonFraction-nesting-xsi-nil</td>
+          <td>The ix:nonFraction element MUST have exactly one child which SHALL be either an ix:nonFraction element or a text node, unless it has an xsi:nil attribute with the value true. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i03109ng/i03109ng-20081231.htm">i03109ng/i03109ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i03109ng/i03109ng-20081231_pre.xml">i03109ng/i03109ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i03109ng/i03109ng-20081231_lab.xml">i03109ng/i03109ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i03109ng/i03109ng-20081231.xsd">i03109ng/i03109ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.10.1.2:nestedNonFractionIsNil">ix11.10.1.2:nestedNonFractionIsNil</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_110ng</td>
+          <td>nonFraction with numdotdecimal and numcommadecimal of same text, NOGOOD</td>
+          <td>FAIL-nonFraction-nesting-format-mismatch</td>
+          <td>The {format}, {scale} and {unit reference} properties MUST match the respective {format}, {scale} and {unit reference} properties of any ancestor ix:nonFraction element. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i03110ng/i03110ng-20081231.htm">i03110ng/i03110ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i03110ng/i03110ng-20081231_pre.xml">i03110ng/i03110ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i03110ng/i03110ng-20081231_lab.xml">i03110ng/i03110ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i03110ng/i03110ng-20081231.xsd">i03110ng/i03110ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.10.1.2:nestedNonFractionProperties">ix11.10.1.2:nestedNonFractionProperties</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_111ng</td>
+          <td>nonFraction without a unitRef, NOGOOD</td>
+          <td>FAIL-nonFraction-missing-unit-attr</td>
+          <td>The ix:nonFraction element MUST have contextRef, name and unitRef attributes. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i03111ng/i03111ng-20081231.htm">i03111ng/i03111ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i03111ng/i03111ng-20081231_pre.xml">i03111ng/i03111ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i03111ng/i03111ng-20081231_lab.xml">i03111ng/i03111ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i03111ng/i03111ng-20081231.xsd">i03111ng/i03111ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-html:syntaxError">html:syntaxError</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_112ng</td>
+          <td>nonFraction without a name attribute, NOGOOD</td>
+          <td>FAIL-nonFraction-missing-name-attr</td>
+          <td>The ix:nonFraction element MUST have contextRef, name and unitRef attributes. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i03112ng/i03112ng-20081231.htm">i03112ng/i03112ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i03112ng/i03112ng-20081231_pre.xml">i03112ng/i03112ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i03112ng/i03112ng-20081231_lab.xml">i03112ng/i03112ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i03112ng/i03112ng-20081231.xsd">i03112ng/i03112ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-html:syntaxError">html:syntaxError</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_113ng</td>
+          <td>nonFraction without a contextRef, NOGOOD</td>
+          <td>FAIL-nonFraction-missing-context-attr</td>
+          <td>The ix:nonFraction element MUST have contextRef, name and unitRef attributes. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i03113ng/i03113ng-20081231.htm">i03113ng/i03113ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i03113ng/i03113ng-20081231_pre.xml">i03113ng/i03113ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i03113ng/i03113ng-20081231_lab.xml">i03113ng/i03113ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i03113ng/i03113ng-20081231.xsd">i03113ng/i03113ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-html:syntaxError">html:syntaxError</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_114ng</td>
+          <td>NonFraction_testcases_Set9, NOGOOD</td>
+          <td>FAIL-nonFraction-invalid-sign-attr</td>
+          <td>The sign attribute, if present, MUST have the value '-' 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i03114ng/i03114ng-20081231.htm">i03114ng/i03114ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i03114ng/i03114ng-20081231_pre.xml">i03114ng/i03114ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i03114ng/i03114ng-20081231_lab.xml">i03114ng/i03114ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i03114ng/i03114ng-20081231.xsd">i03114ng/i03114ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-html:syntaxError">html:syntaxError</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_115ng</td>
+          <td>nonFraction is empty but nil is false, NOGOOD</td>
+          <td>FAIL-nonFraction-empty-without-xsi-nil</td>
+          <td>If the ix:nonFraction element has an xsi:nil attribute with the value true, there MUST NOT be any ancestor ix:nonFraction elements. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i03115ng/i03115ng-20081231.htm">i03115ng/i03115ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i03115ng/i03115ng-20081231_pre.xml">i03115ng/i03115ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i03115ng/i03115ng-20081231_lab.xml">i03115ng/i03115ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i03115ng/i03115ng-20081231.xsd">i03115ng/i03115ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-xmlSchema:valueError">xmlSchema:valueError</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_116ng</td>
+          <td>nonFraction has a negative value, NOGOOD</td>
+          <td>FAIL-nonFraction-ix-format-invalid</td>
+          <td>The {value} property MUST be valid in accordance with the {format input type} property. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i03116ng/i03116ng-20081231.htm">i03116ng/i03116ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i03116ng/i03116ng-20081231_pre.xml">i03116ng/i03116ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i03116ng/i03116ng-20081231_lab.xml">i03116ng/i03116ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i03116ng/i03116ng-20081231.xsd">i03116ng/i03116ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.10.1.1:transformValueError">ix11.10.1.1:transformValueError</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_117ng</td>
+          <td>An ix:nonFraction has an undefined format although its namespace is okay, NOGOOD</td>
+          <td>FAIL-nonFraction-ix-format-expanded-name-mismatch</td>
+          <td>The {format} property MUST match the expanded name implied by the value of the name attribute of a signature element in the relevant Transformation Rules Registry. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i03117ng/i03117ng-20081231.htm">i03117ng/i03117ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i03117ng/i03117ng-20081231_pre.xml">i03117ng/i03117ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i03117ng/i03117ng-20081231_lab.xml">i03117ng/i03117ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i03117ng/i03117ng-20081231.xsd">i03117ng/i03117ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.10.1.2:invalidTransformation">ix11.10.1.2:invalidTransformation</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_118ng</td>
+          <td>ix:nonFraction has text content as well as a nested ix:nonFraction, test seems redundant, NOGOOD</td>
+          <td>FAIL-nonFraction-IXBRLelement-content</td>
+          <td>The ix:nonFraction element MUST have exactly one child which SHALL be either an ix:nonFraction element or a text node, unless it has an xsi:nil attribute with the value true. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i03118ng/i03118ng-20081231.htm">i03118ng/i03118ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i03118ng/i03118ng-20081231_pre.xml">i03118ng/i03118ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i03118ng/i03118ng-20081231_lab.xml">i03118ng/i03118ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i03118ng/i03118ng-20081231.xsd">i03118ng/i03118ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.10.1.1:nonFractionChildren">ix11.10.1.1:nonFractionChildren</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_119ng</td>
+          <td>An ix:nonFraction element has nil=false and neither decimals nor precision., NOGOOD</td>
+          <td>FAIL-nonFraction-nil-attr-false</td>
+          <td>The ix:nonFraction element MUST have exactly one of: a decimals attribute or a precision attribute, or have an xsi:nil attribute with the value true. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i03119ng/i03119ng-20081231.htm">i03119ng/i03119ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i03119ng/i03119ng-20081231_pre.xml">i03119ng/i03119ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i03119ng/i03119ng-20081231_lab.xml">i03119ng/i03119ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i03119ng/i03119ng-20081231.xsd">i03119ng/i03119ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-xbrl.4.6.3:missingPrecisionDecimals">xbrl.4.6.3:missingPrecisionDecimals</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_120ng</td>
+          <td>nonFraction with xsi:nil true and decimals, NOGOOD</td>
+          <td>FAIL-nonFraction-nil-decimal-conflict</td>
+          <td>The ix:nonFraction element MUST have exactly one of: a decimals attribute or a precision attribute, or have an xsi:nil attribute with the value true. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i03120ng/i03120ng-20081231.htm">i03120ng/i03120ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i03120ng/i03120ng-20081231_pre.xml">i03120ng/i03120ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i03120ng/i03120ng-20081231_lab.xml">i03120ng/i03120ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i03120ng/i03120ng-20081231.xsd">i03120ng/i03120ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-xbrl.4.6.3:nilPrecisionDecimals">xbrl.4.6.3:nilPrecisionDecimals</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_121ng</td>
+          <td>nonFraction with contextRef to nonexistent id, NOGOOD</td>
+          <td>FAIL-unresolvable-contextRef</td>
+          <td>There MUST exist an xbrli:context element in the Inline XBRL Document Set for which the actual value of the id attribute is equal to the {context reference} property. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i03121ng/i03121ng-20081231.htm">i03121ng/i03121ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i03121ng/i03121ng-20081231_pre.xml">i03121ng/i03121ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i03121ng/i03121ng-20081231_lab.xml">i03121ng/i03121ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i03121ng/i03121ng-20081231.xsd">i03121ng/i03121ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.10.1.2:contextReference">ix11.10.1.2:contextReference</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_122ng</td>
+          <td>nonFraction with unitRef to nonexistent id (actually not clear the spec meant it must be resolved), NOGOOD</td>
+          <td>FAIL-unresolvable-unitRef</td>
+          <td>The value of the unitRef attribute is equal to the value of the id attribute of an xbrli:unit element in the Target Document which is s-equal to the {unit definition} property. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i03122ng/i03122ng-20081231.htm">i03122ng/i03122ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i03122ng/i03122ng-20081231_pre.xml">i03122ng/i03122ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i03122ng/i03122ng-20081231_lab.xml">i03122ng/i03122ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i03122ng/i03122ng-20081231.xsd">i03122ng/i03122ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.10.1.2:unitReference">ix11.10.1.2:unitReference</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_123ng</td>
+          <td>nonFraction nested with different unitRefs, NOGOOD</td>
+          <td>FAIL-nonFraction-nesting-unitRef-mismatch</td>
+          <td>The {format}, {scale} and {unit reference} properties MUST match the respective {format}, {scale} and {unit reference} properties of any ancestor ix:nonFraction element. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i03123ng/i03123ng-20081231.htm">i03123ng/i03123ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i03123ng/i03123ng-20081231_pre.xml">i03123ng/i03123ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i03123ng/i03123ng-20081231_lab.xml">i03123ng/i03123ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i03123ng/i03123ng-20081231.xsd">i03123ng/i03123ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.10.1.2:nestedNonFractionProperties">ix11.10.1.2:nestedNonFractionProperties</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

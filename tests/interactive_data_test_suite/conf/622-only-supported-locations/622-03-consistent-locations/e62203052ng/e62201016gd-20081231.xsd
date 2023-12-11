@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xs:schema xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:e62201016gd="http://e62201016gd/20081231" targetNamespace="http://e62201016gd/20081231" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo>
+        </xs:appinfo>
+  </xs:annotation>
+  <xs:import schemaLocation="https://xbrl.sec.gov/stpr/2022/stpr-2022.xsd" namespace="http://xbrl.sec.gov/stpr/2022"></xs:import>
+  <xs:import schemaLocation="https://xbrl.sec.gov/sic/2022/sic-2022.xsd" namespace="http://xbrl.sec.gov/sic/2022"></xs:import>
+  <xs:import schemaLocation="https://xbrl.sec.gov/naics/2022/naics-2022.xsd" namespace="http://xbrl.sec.gov/naics/2022"></xs:import>
+  <xs:import schemaLocation="https://xbrl.sec.gov/exch/2022/exch-2022.xsd" namespace="http://xbrl.sec.gov/exch/2022"></xs:import>
+  <xs:import schemaLocation="https://xbrl.fasb.org/us-gaap/2022/elts/us-gaap-2022.xsd" namespace="http://fasb.org/us-gaap/2022"></xs:import>
+  <xs:import schemaLocation="https://xbrl.fasb.org/us-gaap/2022/elts/us-types-2022.xsd" namespace="http://fasb.org/us-types/2022"></xs:import>
+  <xs:import schemaLocation="https://xbrl.fasb.org/us-gaap/2022/elts/us-roles-2022.xsd" namespace="http://fasb.org/us-roles/2022"></xs:import>
+  <xs:import schemaLocation="https://xbrl.fasb.org/us-gaap/2022q3/us-gaap-sup-2022q3.xsd" namespace="http://fasb.org/us-gaap-sup/2022q3"></xs:import>
+  <xs:import schemaLocation="https://xbrl.fasb.org/srt/2022/elts/srt-2022.xsd" namespace="http://fasb.org/srt/2022"></xs:import>
+  <xs:import schemaLocation="https://xbrl.fasb.org/srt/2022/elts/srt-types-2022.xsd" namespace="http://fasb.org/srt-types/2022"></xs:import>
+  <xs:import schemaLocation="https://xbrl.fasb.org/srt/2022/elts/srt-roles-2022.xsd" namespace="http://fasb.org/srt-roles/2022"></xs:import>
+  <xs:import schemaLocation="https://xbrl.fasb.org/srt/2022q3/srt-sup-2022q3.xsd" namespace="http://fasb.org/srt-sup/2022q3"></xs:import>
+  <xs:import schemaLocation="http://www.xbrl.org/lrr/role/net-2009-12-16.xsd" namespace="http://www.xbrl.org/2009/role/net"></xs:import>
+  <xs:import schemaLocation="http://www.xbrl.org/lrr/role/negated-2009-12-16.xsd" namespace="http://www.xbrl.org/2009/role/negated"></xs:import>
+  <xs:import schemaLocation="http://www.xbrl.org/lrr/arcrole/factExplanatory-2009-12-16.xsd" namespace="http://www.xbrl.org/2009/arcrole/fact-explanatoryFact"></xs:import>
+  <xs:import schemaLocation="https://www.xbrl.org/dtr/type/2020-01-21/types.xsd" namespace="http://www.xbrl.org/dtr/type/2020-01-21"></xs:import>
+  <xs:import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"></xs:import>
+  <xs:import namespace="http://www.xbrl.org/2003/linkbase" schemaLocation="http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd"></xs:import>
+  <xs:import namespace="http://www.xbrl.org/dtr/type/2022-03-31" schemaLocation="https://www.xbrl.org/dtr/type/2022-03-31/types.xsd"></xs:import>
+  <xs:import schemaLocation="https://xbrl.sec.gov/country/2022/country-2022.xsd" namespace="http://xbrl.sec.gov/country/2022"></xs:import>
+  <xs:import schemaLocation="https://xbrl.sec.gov/currency/2022/currency-2022.xsd" namespace="http://xbrl.sec.gov/currency/2022"></xs:import>
+  <xs:import namespace="http://xbrl.sec.gov/dei/2022q4" schemaLocation="https://xbrl.sec.gov/dei/2022q4/dei-2022q4.xsd"></xs:import>
+  <xs:import namespace="http://xbrl.sec.gov/dei-sub/2022q4" schemaLocation="https://xbrl.sec.gov/dei/2022q4/dei-sub-2022q4.xsd"></xs:import>
+  <xs:import schemaLocation="https://xbrl.sec.gov/exch/2022/exch-2022.xsd" namespace="http://xbrl.sec.gov/exch/2022"></xs:import>
+  <xs:import schemaLocation="https://xbrl.ifrs.org/taxonomy/2022-03-24/full_ifrs/full_ifrs-cor_2022-03-24.xsd" namespace="https://xbrl.ifrs.org/taxonomy/2022-03-24/ifrs-full"></xs:import>
+  <xs:import schemaLocation="https://xbrl.sec.gov/naics/2022/naics-2022.xsd" namespace="http://xbrl.sec.gov/naics/2022"></xs:import>
+  <xs:import schemaLocation="https://xbrl.sec.gov/sic/2022/sic-2022.xsd" namespace="http://xbrl.sec.gov/sic/2022"></xs:import>
+  <xs:import schemaLocation="https://xbrl.sec.gov/stpr/2022/stpr-2022.xsd" namespace="http://xbrl.sec.gov/stpr/2022"></xs:import>
+  <xs:import namespace="http://xbrl.sec.gov/ecd/2022q4" schemaLocation="https://xbrl.sec.gov/ecd/2022q4/ecd-2022q4.xsd"></xs:import>
+  <xs:import namespace="http://xbrl.sec.gov/ecd-sub/2022q4" schemaLocation="https://xbrl.sec.gov/ecd/2022q4/ecd-sub-2022q4.xsd"></xs:import>
+  <xs:import namespace="http://xbrl.sec.gov/rr/2022" schemaLocation="https://xbrl.sec.gov/rr/2022/rr-2022.xsd"></xs:import>
+</xs:schema>

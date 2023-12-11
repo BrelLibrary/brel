@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>626-02</number>
+    <name>EDGAR Filer Manual v68d 6.26.2</name>
+    <description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.26.2  Period start and end preferred labels should be separated by duration elements.">Refer to EFM: 6.26.2  Period start and end preferred labels should be separated by duration elements.</a>
+    </description>
+    <reference specification="18153"></reference>
+    <!-- TBD - revisit wrt DQC 
+    <variation id="_004gd">
+        <name>6.26.2 Three non-abutting movements are considered complete, GOOD.</name>
+        <description>Three non-abutting movements are considered complete, GOOD.</description>
+        <reference specification="18153"></reference>
+        <data>
+            <parameter  name="ELOparams" value='{"periodOfReport": "12-31-2010", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e62602004gd-20081231.xml</instance>
+            <linkbase>e62602004gd-20081231_pre.xml</linkbase>
+            <linkbase>e62602004gd-20081231_def.xml</linkbase>
+            <linkbase>e62602004gd-20081231_lab.xml</linkbase>
+            <schema>e62602004gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+-->
+    <variation id="_000gd">
+        <name>6.26.2 Movement is Complete, GOOD</name>
+        <description>Movement is Complete, GOOD</description>
+        <reference specification="18153"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "09-30-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e62602000gd-20081231.xml</instance>
+            <linkbase>e62602000gd-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+            <schema>e62602000gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_001gw">
+        <name>6.26.2 Movement is incomplete, GOOD/WARN</name>
+        <description>Movement is incomplete, GOOD/WARN</description>
+        <reference specification="18153"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "09-30-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e62602001gw-20081231.xml</instance>
+            <linkbase>e62602001gw-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+            <schema>e62602001gw-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="wrn" num="62602" name="Instant-Without-Matching-Duration" frd="rq"></assert>
+        </result>
+    </variation>
+    <variation id="_002gw">
+        <name>6.26.2 Movement is incomplete, GOOD/WARN</name>
+        <description>Movement is incomplete, GOOD/WARN</description>
+        <reference specification="18153"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "09-30-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e62602002gw-20081231.xml</instance>
+            <linkbase>e62602002gw-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+            <schema>e62602002gw-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="wrn" num="62602" name="Instant-Without-Matching-Duration" frd="rq"></assert>
+        </result>
+    </variation>
+    <variation id="_003gd">
+        <name>6.26.2 Movement is considered complete with regard to column layout independently of context segments, GOOD.</name>
+        <description>Movement is considered complete with regard to column layout independently of context segments, GOOD.</description>
+        <reference specification="18153"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "09-30-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e62602003gd-20081231.xml</instance>
+            <linkbase>e62602003gd-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+            <schema>e62602003gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+</testcase>

@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>605-14</number>
+    <name>EDGAR Filer Manual v68d 6.5.14</name>
+    <description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.5.14  Non-US English content may appear but it must be translated into US English.">Refer to EFM: 6.5.14  Non-US English content may appear but it must be translated into US English.</a>
+    </description>
+    <reference specification="10945"></reference>
+    <reference specification="12910"></reference>
+    <variation id="_000gd">
+        <name>6.5.14 French text matched with missing xml:lang defaulting to en-US, GOOD</name>
+        <description> An instance with good translation, text with xml:lang= fr matched with defaulted xml:lang, GOOD.</description>
+        <reference specification="10945"></reference>
+        <reference specification="12910"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">e60514000gd-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_001gd">
+        <name>6.5.14 French text matched with en-US, GOOD</name>
+        <description> An instance with good translation, text with xml:lang fr matched with xml:lang en-US, GOOD.</description>
+        <reference specification="10945"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">e60514001gd-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_002gd">
+        <name>6.5.14 French text is nil, so does not require translation, GOOD</name>
+        <description> An instance with good translation, text with xml:lang= fr is xsi:nil= true so no need for translation.</description>
+        <reference specification="10945"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">e60514002gd-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_003ng">
+        <name>6.5.14, Non-nil text with xml:lang= fr and no translation, NOGOOD</name>
+        <description> An instance with inadequate translation, non-nil text of EntityAccountingStandard with xml:lang= fr not matched with any xml:lang = en-US non-nil fact, NOGOOD.</description>
+        <reference specification="10945"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">e60514003ng-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60514" name="English-Text-Missing" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_004ng">
+        <name>6.5.14 French text matched with en only, NOGOOD</name>
+        <description>An instance with almost right translation, text with xml:lang= fr matched with xml:lang = en, NOGOOD.</description>
+        <reference specification="10945"></reference>
+        <reference specification="12910"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">e60514004ng-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60514" name="English-Text-Missing" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_005ng">
+        <name>6.5.14 French text matched with en-NZ, NOGOOD</name>
+        <description> An instance with almost right translation, text with xml:lang= fr matched with xml:lang = en-NZ, NOGOOD.</description>
+        <reference specification="10945"></reference>
+        <reference specification="12910"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">e60514005ng-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60514" name="English-Text-Missing" frd="du"></assert>
+        </result>
+    </variation>
+</testcase>

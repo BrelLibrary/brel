@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>525-08</number>
+    <name>Inline XBRL Test Suite v68d : Relationship tests, Not EDGAR Dependent</name>
+    <description>
+        <h2>Various "good" (gd) and "not good" (ng) test files that demonstrate non-valid Inline XBRL Relationship usage</h2>
+    </description>
+    <variation id="_001gd">
+        <name>Valid Relationship test cases, GOOD</name>
+        <description>The ix:relationship element is used to define relationships between XBRL facts or between XBRL facts and footnote resources. </description>
+        <reference xiispec="13"></reference>
+        <reference specification="For each token in the {from} property there MUST NOT exist a token in the {to} property which has a matching value."></reference>
+        <reference xiitest="PASS-explanatory-fact"></reference>
+        <reference xiitest="PASS-relationship-to-multiple-explanatory-facts-multiple-outputs"></reference>
+        <reference xiitest="PASS-relationship-to-multiple-explanatory-facts"></reference>
+        <reference xiitest="PASS-explanatory-fact-cycle"></reference>
+        <reference xiitest="PASS-explanatory-fact-copy-to-owner-target"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i08001gd/i08001gd-20081231.htm</instance>
+            <linkbase>i08001gd/i08001gd-20081231_pre.xml</linkbase>
+            <linkbase>i08001gd/i08001gd-20081231_lab.xml</linkbase>
+            <schema>i08001gd/i08001gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_002gd">
+        <name>two relationships among five facts, GOOD</name>
+        <description>PASS-explanatory-fact with arcroleRef</description>
+        <reference xiitest="PASS-explanatory-fact"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i08002gd/i08002gd-20081231.htm</instance>
+            <linkbase>i08002gd/i08002gd-20081231_pre.xml</linkbase>
+            <linkbase>i08002gd/i08002gd-20081231_lab.xml</linkbase>
+            <schema>i08002gd/i08002gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_100ng">
+        <name>Relationship mixes both footnote and explanatory fact, NOGOOD</name>
+        <description>FAIL-relationship-mixes-footnote-with-explanatory-fact </description>
+        <reference xiitest="FAIL-relationship-mixes-footnote-with-explanatory-fact"></reference>
+        <reference xiispec="13.1.2"></reference>
+        <reference specification="If any element in the {references} property is an ix:footnote element, then all the elements in the {references} property MUST be ix:footnote elements."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i08100ng/i08100ng-20081231.htm</instance>
+            <linkbase>i08100ng/i08100ng-20081231_pre.xml</linkbase>
+            <linkbase>i08100ng/i08100ng-20081231_lab.xml</linkbase>
+            <schema>i08100ng/i08100ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.13.1.2:relationshipReferencesMixed" frd="ix" fj="IXBRL_RELATIONSHIP_TO_REFERRING_FOOTNOTE_AND_OTHER_ELEMENTS" nnum="70108" txt="Inline relationship references footnote(s) $ and thereby is not allowed to reference *."></assert>
+        </result>
+    </variation>
+    <variation id="_101ng">
+        <name>Relationship with a meaningless attribute, NOGOOD</name>
+        <description>FAIL-relationship-with-no-namespace-attribute</description>
+        <reference xiitest="FAIL-relationship-with-no-namespace-attribute"></reference>
+        <reference xiispec="13.1.1"></reference>
+        <reference specification="The ix:relationship element MUST NOT have any attribute with a namespace name which has the value http://www.w3.org/XML/1998/namespace"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i08101ng/i08101ng-20081231.htm</instance>
+            <linkbase>i08101ng/i08101ng-20081231_pre.xml</linkbase>
+            <linkbase>i08101ng/i08101ng-20081231_lab.xml</linkbase>
+            <schema>i08101ng/i08101ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70108" txt="Attribute $ is not expected on element : $"></assert>
+        </result>
+    </variation>
+    <variation id="_102ng">
+        <name>Self-cycle relationship, NOGOOD</name>
+        <description>FAIL-relationship-cross-duplication</description>
+        <reference xiitest="FAIL-relationship-cross-duplication"></reference>
+        <reference specification="For each token in the {from} property there MUST NOT exist a token in the {to} property which has a matching value."></reference>
+        <reference xiispec="13.1.2"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i08102ng/i08102ng-20081231.htm</instance>
+            <linkbase>i08102ng/i08102ng-20081231_pre.xml</linkbase>
+            <linkbase>i08102ng/i08102ng-20081231_lab.xml</linkbase>
+            <schema>i08102ng/i08102ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="xbrl.5.1.4.3:cycles" frd="ix" fj="IXBRL_RELATIONSHIP_FROM_TO_REF_CYCLIC" nnum="70108" txt="Relationships have a directed cycle in arcrole $ link role * link link:footnoteLink arc link:footnotArc path #"></assert>
+        </result>
+    </variation>
+    <variation id="_103ng">
+        <name>relationship element with spurious i:period, NOGOOD</name>
+        <description>FAIL-relationship-with-xbrli-attribute</description>
+        <reference xiitest="FAIL-relationship-with-xbrli-attribute"></reference>
+        <reference xiispec="13.1.1"></reference>
+        <reference specification="The ix:relationship element MUST NOT have any attributes with a namespace name which has a value of http://www.xbrl.org/2003/instance."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i08103ng/i08103ng-20081231.htm</instance>
+            <linkbase>i08103ng/i08103ng-20081231_pre.xml</linkbase>
+            <linkbase>i08103ng/i08103ng-20081231_lab.xml</linkbase>
+            <schema>i08103ng/i08103ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70108" txt="Attribute $ is not expected on element : $"></assert>
+        </result>
+    </variation>
+    <variation id="_104ng">
+        <name>ix:relationship with spurious xlink:arc attribute, NOGOOD</name>
+        <description>FAIL-relationship-with-xlink-attribute</description>
+        <reference xiitest="FAIL-relationship-with-xlink-attribute"></reference>
+        <reference xiispec="13.2"></reference>
+        <reference specification="The ix:relationship element does not allow additional attributes without a namespace name which has the value http://www.w3.org/XML/1998/namespace"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i08104ng/i08104ng-20081231.htm</instance>
+            <linkbase>i08104ng/i08104ng-20081231_pre.xml</linkbase>
+            <linkbase>i08104ng/i08104ng-20081231_lab.xml</linkbase>
+            <schema>i08104ng/i08104ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70108" txt="Attribute $ is not expected on element : $"></assert>
+        </result>
+    </variation>
+</testcase>

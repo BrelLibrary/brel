@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>525-01</number>
+    <name>EDGAR Filer Manual v68d 5.2.5.12</name>
+    <description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#5.2.5.12 Inline XBRL Transformation Registries supported by EDGAR">Refer to EFM: 5.2.5.12 Inline XBRL Transformation Registries supported by EDGAR</a>
+    </description>
+    <variation id="_200gd">
+        <name>Format_testcases_Set4, GOOD</name>
+        <description>nonFractions with SEC-specific duration formats.</description>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport":"12-31-2008" ,"emergingGrowthCompanyFlag" : false, "submissionType":"8-K" }'></parameter>
+            <instance readMeFirst="true">i01200gd/i01200gd-20081231.htm</instance>
+            <linkbase>i01200gd/i01200gd-20081231_pre.xml</linkbase>
+            <linkbase>i01200gd/i01200gd-20081231_lab.xml</linkbase>
+            <schema>i01200gd/i01200gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid">
+        </result>
+    </variation>
+</testcase>

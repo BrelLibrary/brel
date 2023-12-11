@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>607-09</number>
+    <name>EDGAR Filer Manual v68d 6.7.9</name>
+    <description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.7.9 Restrictions on the roleURI attribute.">Refer to EFM: 6.7.9 Restrictions on the roleURI attribute.</a>
+    </description>
+    <reference specification="11001"></reference>
+    <variation id="_000gd">
+        <name>6.7.9 Role contains all the mark characters of RFC 2396, GOOD.</name>
+        <description>Role is http://e60709/-/_/./!/~/*/'/(/)/marks, GOOD.</description>
+        <reference specification="11001"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60709000gd/e60709000gd-20081231.xml</instance>
+            <linkbase>e60709000gd/edgar-20081231_pre.xml</linkbase>
+            <linkbase>e60709000gd/edgar-20081231_def.xml</linkbase>
+            <linkbase>e60709000gd/edgar-20081231_lab.xml</linkbase>
+            <linkbase>e60709000gd/e60709000gd-20081231_pre.xml</linkbase>
+            <linkbase>e60709000gd/e60709000gd-20081231_lab.xml</linkbase>
+            <schema>e60709000gd/edgar-20081231.xsd</schema>
+            <schema>e60709000gd/e60709000gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_001ng">
+        <name>6.7.9 Role authority does not match targetNamespace authority, NOGOOD.</name>
+        <description>Role authority 'wrong' does not match targetNamespace authority 'e60709001ng', NOGOOD.</description>
+        <reference specification="11001"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60709001ng-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <linkbase>e60709001ng-20081231_pre.xml</linkbase>
+            <linkbase>e60709001ng-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+            <schema>e60709001ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60709" name="Role-Namespace-Mismatch" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_002ng">
+        <name>6.7.9 Role authority does not match targetNamespace, NOGOOD.</name>
+        <description>Role authority 'E60709' is not a case-sensitive match to targetNamespace authority 'e60709', NOGOOD.</description>
+        <reference specification="11001"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60709002ng-20081231.xml</instance>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <linkbase>e60709002ng-20081231_pre.xml</linkbase>
+            <linkbase>e60709002ng-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+            <schema>e60709002ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60709" name="Role-Namespace-Mismatch" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_003ng">
+        <name>6.7.9 RoleType should end with /role/{mnemonic name}, NOGOOD.</name>
+        <description>RoleType should end with /role/{mnemonic name}, NOGOOD.</description>
+        <reference specification="11001"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e60709003ng/e60709003ng-20081231.xml</instance>
+            <linkbase>e60709003ng/edgar-20081231_pre.xml</linkbase>
+            <linkbase>e60709003ng/edgar-20081231_def.xml</linkbase>
+            <linkbase>e60709003ng/edgar-20081231_lab.xml</linkbase>
+            <linkbase>e60709003ng/e60709003ng-20081231_pre.xml</linkbase>
+            <linkbase>e60709003ng/e60709003ng-20081231_lab.xml</linkbase>
+            <schema>e60709003ng/edgar-20081231.xsd</schema>
+            <schema>e60709003ng/e60709003ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60709" name="Role-Ending-Mismatch" frd="du"></assert>
+        </result>
+    </variation>
+</testcase>

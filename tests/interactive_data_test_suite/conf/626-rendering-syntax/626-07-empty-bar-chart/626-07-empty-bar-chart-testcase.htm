@@ -1,0 +1,90 @@
+<html xmlns:case="http://edgar/2009/conformance">
+  <head>
+    <title>626-07
+        :
+        EDGAR Filer Manual v68d 6.26.7</title>
+    <style type="text/css">
+        table, td, th {border: solid black 1pt; border-collapse: collapse;} td {vertical-align: top;}
+      </style>
+  </head>
+  <body>
+    <h1>626-07
+        :
+        EDGAR Filer Manual v68d 6.26.7</h1>
+    <p>
+        Created by: 
+        <a href="mailto:StructuredData@sec.gov">SEC Office of Structured Disclosure</a></p>
+    <p>
+      <description xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.26.7  A Bar Chart should select at least one Annual Return fact.">Refer to EFM: 6.26.7  A Bar Chart should select at least one Annual Return fact.</a>
+    </description>
+    </p>
+    <h3>References</h3>
+    <ul>18153</ul>
+    <h2>
+        Variations
+      </h2>
+    <table border="solid">
+      <thead>
+        <tr>
+          <th>Number</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>References</th>
+          <th>Data Inputs</th>
+          <th>Result Outputs</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>_001gw</td>
+          <td>6.26.7 No annual return facts, GOOD/WARN</td>
+          <td>No annual return facts, but bar chart embedding is present, GOOD/WARN</td>
+          <td>18153 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{"rptSeriesClassInfo.seriesIds":["S013456789"], "invCompanyType":"N-1A", "submissionType": "485BPOS"}</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="e62607001gw-20081231.xml">e62607001gw-20081231.xml</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_pre.xml">edgar-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_def.xml">edgar-20081231_def.xml</a></li>
+              <li>
+    Linkbase
+    <a href="edgar-20081231_lab.xml">edgar-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="edgar-20081231.xsd">edgar-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  wrn, 62607, <a href="../../../../lib/xbrlwarnings.htm#rq-2607-Bar-Chart-Has-No-Facts">Bar-Chart-Has-No-Facts</a></td></tr><tr><td>FRD:</td><td>rq</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<xs:schema
+xmlns:xs="http://www.w3.org/2001/XMLSchema"
+xmlns:rxp01="http://rxp01/20301231"
+xmlns:link="http://www.xbrl.org/2003/linkbase"
+xmlns:country="http://xbrl.sec.gov/country/2023"
+xmlns:xbrldt="http://xbrl.org/2005/xbrldt"
+xmlns:snj="http://xbrl.sec.gov/snj/2023"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:dtr-types="http://www.xbrl.org/dtr/type/2020-01-21"
+xmlns:xbrli="http://www.xbrl.org/2003/instance"
+xmlns:utr="http://www.xbrl.org/2009/utr"
+xmlns:rxp="http://xbrl.sec.gov/rxp/2023"
+xmlns:xlink="http://www.w3.org/1999/xlink"
+xmlns:dei="http://xbrl.sec.gov/dei/2023"
+targetNamespace="http://rxp01/20301231" elementFormDefault="qualified">
+   <xs:import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"/>
+   <xs:import namespace="http://www.xbrl.org/dtr/type/2020-01-21" schemaLocation="https://www.xbrl.org/dtr/type/2020-01-21/types.xsd"/>
+   <xs:import namespace="http://xbrl.sec.gov/rxp/2023" schemaLocation="https://xbrl.sec.gov/rxp/2023/rxp-2023.xsd"/>
+   <xs:annotation>
+      <xs:appinfo>
+         <link:linkbase id="lnk">
+            <link:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/domain-member" xlink:type="simple" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#domain-member"/>
+            <link:roleRef roleURI="http://xbrl.sec.gov/rxp/role/ByGovernment" xlink:type="simple" xlink:href="https://xbrl.sec.gov/rxp/2023/rxp-2023.xsd#ByGovernment"/>
+            <link:roleRef roleURI="http://xbrl.sec.gov/rxp/role/ByProject" xlink:type="simple" xlink:href="https://xbrl.sec.gov/rxp/2023/rxp-2023.xsd#ByProject"/>
+            <link:roleRef roleURI="http://xbrl.sec.gov/rxp/role/GovernmentsOnly" xlink:type="simple" xlink:href="https://xbrl.sec.gov/rxp/2023/rxp-2023.xsd#GovernmentsOnly"/>
+            <link:roleRef roleURI="http://xbrl.sec.gov/rxp/role/ProjectsOnly" xlink:type="simple" xlink:href="https://xbrl.sec.gov/rxp/2023/rxp-2023.xsd#ProjectsOnly"/>
+            <link:roleRef roleURI="http://xbrl.sec.gov/rxp/role/ResourcesOnly" xlink:type="simple" xlink:href="https://xbrl.sec.gov/rxp/2023/rxp-2023.xsd#ResourcesOnly"/>
+            <link:roleRef roleURI="http://xbrl.sec.gov/rxp/role/SegmentsOnly" xlink:type="simple" xlink:href="https://xbrl.sec.gov/rxp/2023/rxp-2023.xsd#SegmentsOnly"/>
+            <link:presentationLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/rxp/role/ByGovernment">
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rxp/2023/rxp-2023.xsd#rxp_CountryAxis" xlink:label="CountryAxis"/>
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/country/2023/country-2023.xsd#country_CG" xlink:label="CG"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="CountryAxis" xlink:to="CG" order="2.0" preferredLabel="http://www.xbrl.org/2003/role/verboseLabel" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rxp/2023/rxp-2023.xsd#rxp_GovernmentAxis" xlink:label="GovernmentAxis"/>
+               <link:loc xlink:type="locator" xlink:href="#rxp01_GeneralDirectorateOfAdministrativeJudicialStateOwnedAndParticipationRevenueMember" xlink:label="AEAuthorityMember"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="GovernmentAxis" xlink:to="AEAuthorityMember" order="4.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#rxp01_DirectorateGeneralOfTaxesMember" xlink:label="ADAuthorityMember"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="GovernmentAxis" xlink:to="ADAuthorityMember" order="3.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#rxp01_GeneralDirectorateOfCustomsAndExciseMember" xlink:label="AFAuthorityMember"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="GovernmentAxis" xlink:to="AFAuthorityMember" order="2.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#rxp01_ProvincialRevenueDepartmentMember" xlink:label="ProvincialRevenueDepartmentMember"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="GovernmentAxis" xlink:to="ProvincialRevenueDepartmentMember" order="5.0" priority="1"/>
+            </link:presentationLink>
+            <link:presentationLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/rxp/role/ByProject">
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rxp/2023/rxp-2023.xsd#rxp_ProjectAxis" xlink:label="ProjectAxis"/>
+               <link:loc xlink:type="locator" xlink:href="#rxp01_ProjectArtemisMember" xlink:label="ProjectArtemisMember"/>
+               <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProjectAxis" xlink:to="ProjectArtemisMember" order="2.0" preferredLabel="http://www.xbrl.org/2003/role/terseLabel" priority="1"/>
+            </link:presentationLink>
+            <link:definitionLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/rxp/role/GovernmentsOnly">
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rxp/2023/rxp-2023.xsd#rxp_AllGovernmentsMember" xlink:label="AllGovernmentsMember"/>
+               <link:loc xlink:type="locator" xlink:href="#rxp01_GeneralDirectorateOfAdministrativeJudicialStateOwnedAndParticipationRevenueMember" xlink:label="AEAuthorityMember"/>
+               <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AllGovernmentsMember" xlink:to="AEAuthorityMember" order="3.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#rxp01_DirectorateGeneralOfTaxesMember" xlink:label="ADAuthorityMember"/>
+               <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AllGovernmentsMember" xlink:to="ADAuthorityMember" order="2.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#rxp01_GeneralDirectorateOfCustomsAndExciseMember" xlink:label="AFAuthorityMember"/>
+               <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AllGovernmentsMember" xlink:to="AFAuthorityMember" order="1.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#rxp01_ProvincialRevenueDepartmentMember" xlink:label="ProvincialRevenueDepartmentMember"/>
+               <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AllGovernmentsMember" xlink:to="ProvincialRevenueDepartmentMember" order="4.0" priority="1"/>
+            </link:definitionLink>
+            <link:definitionLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/rxp/role/ProjectsOnly">
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rxp/2023/rxp-2023.xsd#rxp_AllProjectsMember" xlink:label="AllProjectsMember"/>
+               <link:loc xlink:type="locator" xlink:href="#rxp01_ProjectArtemisMember" xlink:label="ProjectArtemisMember"/>
+               <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AllProjectsMember" xlink:to="ProjectArtemisMember" order="1.0" priority="1"/>
+            </link:definitionLink>
+            <link:definitionLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/rxp/role/SegmentsOnly">
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rxp/2023/rxp-2023.xsd#rxp_AllSegmentsMember" xlink:label="AllSegmentsMember"/>
+               <link:loc xlink:type="locator" xlink:href="#rxp01_UpstreamMember" xlink:label="UpstreamMember"/>
+               <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AllSegmentsMember" xlink:to="UpstreamMember" order="1.0" priority="1"/>
+            </link:definitionLink>
+            <link:definitionLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/rxp/role/ResourcesOnly">
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rxp/2023/rxp-2023.xsd#rxp_AllResourcesMember" xlink:label="AllResourcesMember"/>
+               <link:loc xlink:type="locator" xlink:href="#rxp01_OilMember" xlink:label="OilMember"/>
+               <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AllResourcesMember" xlink:to="OilMember" order="1.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#rxp01_LiquidNauralGasMember" xlink:label="LiquidNauralGasMember"/>
+               <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AllResourcesMember" xlink:to="LiquidNauralGasMember" order="2.0" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#rxp01_CopperMember" xlink:label="CopperMember"/>
+               <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AllResourcesMember" xlink:to="CopperMember" order="3.0" priority="1"/>
+            </link:definitionLink>
+            <link:labelLink xlink:type="extended" xlink:role="http://www.xbrl.org/2003/role/link">
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rxp/2023/rxp-2023.xsd#rxp_AllProjectsMember" xlink:label="AllProjectsMember"/>
+               <link:label xlink:type="resource" xlink:label="label_AllProjectsMember" xlink:role="http://www.xbrl.org/2003/role/terseLabel" xml:lang="en-US" id="label_AllProjectsMember">Total</link:label>
+               <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="AllProjectsMember" xlink:to="label_AllProjectsMember" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/snj/2023/snj-2023.xsd#snj_AllSubnationalJurisdictionsDomain" xlink:label="AllSubnationalJurisdictionsDomain"/>
+               <link:label xlink:type="resource" xlink:label="label_AllSubnationalJurisdictionsDomain" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" id="label_AllSubnationalJurisdictionsDomain">All Subnational Jurisdictions</link:label>
+               <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="AllSubnationalJurisdictionsDomain" xlink:to="label_AllSubnationalJurisdictionsDomain" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#rxp01_GeneralDirectorateOfAdministrativeJudicialStateOwnedAndParticipationRevenueMember" xlink:label="AEAuthority"/>
+               <link:label xlink:type="resource" xlink:label="label_AEAuthority" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">General Directorate of Administrative, Judicial, State-owned and Participation Revenue</link:label>
+               <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="AEAuthority" xlink:to="label_AEAuthority" priority="1"/>
+               <link:label xlink:type="resource" xlink:label="label_GeneralDirectorateOfAdministrativeJudicialStateOwnedAndParticipationRevenueMember" xlink:role="http://www.xbrl.org/2003/role/terseLabel" xml:lang="en-US">DGRAD</link:label>
+               <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="AEAuthority" xlink:to="label_GeneralDirectorateOfAdministrativeJudicialStateOwnedAndParticipationRevenueMember" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#rxp01_DirectorateGeneralOfTaxesMember" xlink:label="ADAuthorityMember"/>
+               <link:label xlink:type="resource" xlink:label="label_ADAuthorityMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Directorate General of Taxes</link:label>
+               <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ADAuthorityMember" xlink:to="label_ADAuthorityMember" priority="1"/>
+               <link:label xlink:type="resource" xlink:label="label_DirectorateGeneralOfTaxesMember" xlink:role="http://www.xbrl.org/2003/role/terseLabel" xml:lang="en-US">DGI</link:label>
+               <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ADAuthorityMember" xlink:to="label_DirectorateGeneralOfTaxesMember" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#rxp01_GeneralDirectorateOfCustomsAndExciseMember" xlink:label="AFAuthorityMember"/>
+               <link:label xlink:type="resource" xlink:label="label_AFAuthorityMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">General Directorate of Customs and Excise</link:label>
+               <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="AFAuthorityMember" xlink:to="label_AFAuthorityMember" priority="1"/>
+               <link:label xlink:type="resource" xlink:label="label_GeneralDirectorateOfCustomsAndExciseMember" xlink:role="http://www.xbrl.org/2003/role/terseLabel" xml:lang="en-US">DGDA</link:label>
+               <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="AFAuthorityMember" xlink:to="label_GeneralDirectorateOfCustomsAndExciseMember" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#rxp01_ProjectArtemisMember" xlink:label="ProjectArtemisMember"/>
+               <link:label xlink:type="resource" xlink:label="label_ProjectArtemisMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Project Artemis [Member]</link:label>
+               <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ProjectArtemisMember" xlink:to="label_ProjectArtemisMember" priority="1"/>
+               <link:label xlink:type="resource" xlink:label="label_ProjectArtemisMember_2" xlink:role="http://www.xbrl.org/2003/role/verboseLabel" xml:lang="en-US">Project Artemis [Member]</link:label>
+               <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ProjectArtemisMember" xlink:to="label_ProjectArtemisMember_2" priority="1"/>
+               <link:label xlink:type="resource" xlink:label="label_ProjectArtemisMember_3" xlink:role="http://www.xbrl.org/2003/role/terseLabel" xml:lang="en-US" id="label_ProjectArtemisMember">Artemis</link:label>
+               <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ProjectArtemisMember" xlink:to="label_ProjectArtemisMember_3" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#rxp01_OilMember" xlink:label="OilMember"/>
+               <link:label xlink:type="resource" xlink:label="label_OilMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Oil</link:label>
+               <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="OilMember" xlink:to="label_OilMember" priority="1"/>
+               <link:label xlink:type="resource" xlink:label="label_OilMember_2" xlink:role="http://www.xbrl.org/2003/role/terseLabel" xml:lang="en-US">Oil</link:label>
+               <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="OilMember" xlink:to="label_OilMember_2" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#rxp01_LiquidNauralGasMember" xlink:label="LiquidNauralGasMember"/>
+               <link:label xlink:type="resource" xlink:label="label_LiquidNauralGasMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Liquid Natural Gas</link:label>
+               <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="LiquidNauralGasMember" xlink:to="label_LiquidNauralGasMember" priority="1"/>
+               <link:label xlink:type="resource" xlink:label="label_LiquidNauralGasMember_2" xlink:role="http://www.xbrl.org/2003/role/terseLabel" xml:lang="en-US">LNG</link:label>
+               <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="LiquidNauralGasMember" xlink:to="label_LiquidNauralGasMember_2" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#rxp01_CopperMember" xlink:label="Gold"/>
+               <link:label xlink:type="resource" xlink:label="label_Gold" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Copper</link:label>
+               <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="Gold" xlink:to="label_Gold" priority="1"/>
+               <link:label xlink:type="resource" xlink:label="label_CopperMember" xlink:role="http://www.xbrl.org/2003/role/terseLabel" xml:lang="en-US">Copper</link:label>
+               <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="Gold" xlink:to="label_CopperMember" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#rxp01_UpstreamMember" xlink:label="UpstreamMember"/>
+               <link:label xlink:type="resource" xlink:label="label_UpstreamMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Upstream</link:label>
+               <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="UpstreamMember" xlink:to="label_UpstreamMember" priority="1"/>
+               <link:label xlink:type="resource" xlink:label="label_UpstreamMember_2" xlink:role="http://www.xbrl.org/2003/role/terseLabel" xml:lang="en-US">Upstream</link:label>
+               <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="UpstreamMember" xlink:to="label_UpstreamMember_2" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/snj/2023/snj-2023.xsd#snj_US-AK" xlink:label="US-AK"/>
+               <link:label xlink:type="resource" xlink:label="label_US-AK" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" id="label_US-AK">Alaska</link:label>
+               <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="US-AK" xlink:to="label_US-AK" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/snj/2023/snj-2023.xsd#snj_MX-AGU" xlink:label="MX-AGU"/>
+               <link:label xlink:type="resource" xlink:label="label_MX-AGU" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" id="label_MX-AGU">Aguascalientes</link:label>
+               <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="MX-AGU" xlink:to="label_MX-AGU" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/snj/2023/snj-2023.xsd#snj_MX-BCN" xlink:label="MX-BCN"/>
+               <link:label xlink:type="resource" xlink:label="label_MX-BCN" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" id="label_MX-BCN">Baja California</link:label>
+               <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="MX-BCN" xlink:to="label_MX-BCN" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="#rxp01_ProvincialRevenueDepartmentMember" xlink:label="ProvincialRevenueDepartmentMember"/>
+               <link:label xlink:type="resource" xlink:label="label_ProvincialRevenueDepartmentMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" id="label_ProvincialRevenueDepartmentMember">Provincial Revenue Department</link:label>
+               <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ProvincialRevenueDepartmentMember" xlink:to="label_ProvincialRevenueDepartmentMember" priority="1"/>
+               <link:label xlink:type="resource" xlink:label="label_ProvincialRevenueDepartmentMember_2" xlink:role="http://www.xbrl.org/2003/role/terseLabel" xml:lang="en-US">Provincial Revenue Dept.</link:label>
+               <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ProvincialRevenueDepartmentMember" xlink:to="label_ProvincialRevenueDepartmentMember_2" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/country/2023/country-2023.xsd#country_CG" xlink:label="CG"/>
+               <link:label xlink:type="resource" xlink:label="label_CG" xlink:role="http://www.xbrl.org/2003/role/verboseLabel" xml:lang="en-US">Democratic Republic of the Congo</link:label>
+               <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="CG" xlink:to="label_CG" priority="1"/>
+               <link:label xlink:type="resource" xlink:label="label_CG_2" xlink:role="http://www.xbrl.org/2003/role/terseLabel" xml:lang="en-US">DRC</link:label>
+               <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="CG" xlink:to="label_CG_2" priority="1"/>
+               <link:label xlink:type="resource" xlink:label="label_CG_3" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">DRC</link:label>
+               <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="CG" xlink:to="label_CG_3" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/country/2023/country-2023.xsd#country_NO" xlink:label="NO"/>
+               <link:label xlink:type="resource" xlink:label="label_NO" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" id="label_NO">Norway</link:label>
+               <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="NO" xlink:to="label_NO" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/country/2023/country-2023.xsd#country_SA" xlink:label="SA"/>
+               <link:label xlink:type="resource" xlink:label="label_SA" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" id="label_SA">Saudi Arabia</link:label>
+               <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="SA" xlink:to="label_SA" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/country/2023/country-2023.xsd#country_US" xlink:label="US"/>
+               <link:label xlink:type="resource" xlink:label="label_US" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" id="label_US">United States</link:label>
+               <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="US" xlink:to="label_US" priority="1"/>
+               <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/snj/2023/snj-2023.xsd#snj_CG-BZV" xlink:label="CG-BZV"/>
+               <link:label xlink:type="resource" xlink:label="label_CG-BZV" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" id="label_CG-BZV">Brazzaville</link:label>
+               <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="CG-BZV" xlink:to="label_CG-BZV" priority="1"/>
+            </link:labelLink>
+         </link:linkbase>
+           <!-- Test case calculation relationships -->
+            <link:roleType roleURI="http://rxp01/20321031/role/test" id="CustomRoleForTesting">
+                <link:definition>999999 - Disclosure - Custom role for testing</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:linkbase>
+                <link:roleRef roleURI="http://rxp01/20321031/role/test" xlink:type="simple" xlink:href="#CustomRoleForTesting"></link:roleRef>
+                <link:calculationLink xlink:type="extended" xlink:role="http://rxp01/20321031/role/test">
+                    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rxp/2023/rxp-2023.xsd#rxp_A" xlink:label="rxpElement1"></link:loc>
+                    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rxp/2023/rxp-2023.xsd#rxp_Bonuses" xlink:label="rxpElement2"></link:loc>
+                    <link:calculationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" xlink:from="rxpElement1" xlink:to="rxpElement2" order="1.0" weight="1.0"></link:calculationArc>
+                </link:calculationLink>
+         </link:linkbase>
+      </xs:appinfo>
+  </xs:annotation>
+   <xs:element name="ProjectArtemisMember" id="rxp01_ProjectArtemisMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+   <xs:element name="GeneralDirectorateOfAdministrativeJudicialStateOwnedAndParticipationRevenueMember" id="rxp01_GeneralDirectorateOfAdministrativeJudicialStateOwnedAndParticipationRevenueMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+   <xs:element name="DirectorateGeneralOfTaxesMember" id="rxp01_DirectorateGeneralOfTaxesMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+   <xs:element name="ProvincialRevenueDepartmentMember" id="rxp01_ProvincialRevenueDepartmentMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+   <xs:element name="OilMember" id="rxp01_OilMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+   <xs:element name="LiquidNauralGasMember" id="rxp01_LiquidNauralGasMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+   <xs:element name="CopperMember" id="rxp01_CopperMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+   <xs:element name="UpstreamMember" id="rxp01_UpstreamMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+   <xs:element name="GeneralDirectorateOfCustomsAndExciseMember" id="rxp01_GeneralDirectorateOfCustomsAndExciseMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+</xs:schema>

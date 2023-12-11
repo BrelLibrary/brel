@@ -1,0 +1,220 @@
+<html xmlns:case="http://edgar/2009/conformance">
+  <head>
+    <title>525-13
+        :
+        Inline XBRL Test Suite v68d : Resources tests, Not EDGAR Dependent</title>
+    <style type="text/css">
+        table, td, th {border: solid black 1pt; border-collapse: collapse;} td {vertical-align: top;}
+      </style>
+  </head>
+  <body>
+    <h1>525-13
+        :
+        Inline XBRL Test Suite v68d : Resources tests, Not EDGAR Dependent</h1>
+    <p>
+        Created by: 
+        <a href="mailto:StructuredData@sec.gov">SEC Office of Structured Disclosure</a></p>
+    <p>
+      <description xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <h2>Various "good" (gd) and "not good" (ng) test files that demonstrate specific Resources usage</h2>
+    </description>
+    </p>
+    <h2>
+        Variations
+      </h2>
+    <table border="solid">
+      <thead>
+        <tr>
+          <th>Number</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>References</th>
+          <th>Data Inputs</th>
+          <th>Result Outputs</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>_001gd</td>
+          <td>Resources with arcroleRef and roleRef, GOOD</td>
+          <td>Valid usage of the resource element</td>
+          <td> 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i13001gd/i13001gd-20081231.htm">i13001gd/i13001gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i13001gd/i13001gd-20081231_pre.xml">i13001gd/i13001gd-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i13001gd/i13001gd-20081231_lab.xml">i13001gd/i13001gd-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i13001gd/i13001gd-20081231.xsd">i13001gd/i13001gd-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_100ng</td>
+          <td>Document without resources, NOGOOD</td>
+          <td>FAIL-missing-resources</td>
+          <td>There MUST be at least one ix:resources element in the Inline XBRL Document Set. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i13100ng/i13100ng-20081231.htm">i13100ng/i13100ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i13100ng/i13100ng-20081231_pre.xml">i13100ng/i13100ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i13100ng/i13100ng-20081231_lab.xml">i13100ng/i13100ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i13100ng/i13100ng-20081231.xsd">i13100ng/i13100ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.14.1.2:missingResources">ix11.14.1.2:missingResources</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_101ng</td>
+          <td>Resources context without id, NOGOOD</td>
+          <td>FAIL_context-without-id</td>
+          <td>Each context element in ix:resources must have an id attribute. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i13101ng/i13101ng-20081231.htm">i13101ng/i13101ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i13101ng/i13101ng-20081231_pre.xml">i13101ng/i13101ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i13101ng/i13101ng-20081231_lab.xml">i13101ng/i13101ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i13101ng/i13101ng-20081231.xsd">i13101ng/i13101ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-xmlSchema:attributesRequired">xmlSchema:attributesRequired</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_102ng</td>
+          <td>Resources unit without id, NOGOOD</td>
+          <td>FAIL_unit-without-id</td>
+          <td>Each unit element in ix:resources must have an id attribute. 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i13102ng/i13102ng-20081231.htm">i13102ng/i13102ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i13102ng/i13102ng-20081231_pre.xml">i13102ng/i13102ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i13102ng/i13102ng-20081231_lab.xml">i13102ng/i13102ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i13102ng/i13102ng-20081231.xsd">i13102ng/i13102ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-xmlSchema:attributesRequired">xmlSchema:attributesRequired</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

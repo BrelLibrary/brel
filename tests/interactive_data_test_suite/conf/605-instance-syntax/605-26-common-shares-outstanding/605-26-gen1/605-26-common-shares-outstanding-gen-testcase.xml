@@ -1,0 +1,921 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../../lib/test.xsl" ?>
+<conf:testcase xmlns:conf="http://edgar/2009/conformance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../../lib/test.xsd">
+    <conf:creator>
+        <conf:name>SEC Office of Structured Disclosure</conf:name>
+        <conf:email>StructuredData@sec.gov</conf:email>
+    </conf:creator>
+    <conf:number>605-26</conf:number>
+    <conf:name>EDGAR Filer Manual v68d 6.5.26</conf:name>
+    <conf:description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.5.26 Common Stock Shares Outstanding facts.">Refer to EFM: 6.5.26 Common Stock Shares Outstanding facts.</a>
+    </conf:description>
+    <!-- <conf:variation id="_053gw">
+        <conf:name>6.5.26 Form 40-F with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, WARN.</conf:name>
+        <conf:description>Form 40-F with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, WARN.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string"
+                value="{&quot;submissionType&quot; : &quot;40-F&quot; ,&quot;periodOfReport&quot; : &quot;12-31-2009&quot; ,&quot;emergingGrowthCompanyFlag&quot; : false }" />
+            <conf:instance readMeFirst="true">e60526053gw-20091231.xml</conf:instance>
+            <conf:linkbase>enodef-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>enodef-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>enodef-20081231_def.xml</conf:linkbase>
+            <conf:schema>enodef-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60526" name="Common-Shares-Inconsistent-With-Document-Type" frd="du" />
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_054gw">
+        <conf:name>6.5.26 Form 40-F [IFRS] with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, WARN.</conf:name>
+        <conf:description>Form 40-F [IFRS] with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, WARN.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string"
+                value="{&quot;submissionType&quot; : &quot;40-F&quot; ,&quot;periodOfReport&quot; : &quot;12-31-2009&quot; ,&quot;emergingGrowthCompanyFlag&quot; : false }" />
+            <conf:instance readMeFirst="true">e60526054gw-20091231.xml</conf:instance>
+            <conf:linkbase>eifrs-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>eifrs-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>eifrs-20081231_def.xml</conf:linkbase>
+            <conf:schema>eifrs-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60526" name="Common-Shares-Inconsistent-With-Document-Type" frd="du" />
+        </conf:result>
+    </conf:variation>-->
+    <conf:variation id="_000gw">
+        <conf:name>6.5.26 Form 10-K with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, with definition links, WARN.</conf:name>
+        <conf:description>Form 10-K with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, with definition links, WARN.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "10-K" ,"acceleratedFilerStatus" : "Non-Accelerated Filer" ,"periodOfReport" : "12-31-2009" ,"emergingGrowthCompanyFlag" : false ,"smallBusinessFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526000gw-20091231.xml</conf:instance>
+            <conf:linkbase>edgar-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_def.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_lab.xml</conf:linkbase>
+            <conf:schema>edgar-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60526" name="Common-Shares-Inconsistent-With-Document-Type" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_001gw">
+        <conf:name>6.5.26 Form 10-K with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 1 in other contexts, with definition links, WARN.</conf:name>
+        <conf:description>Form 10-K with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 1 in other contexts, with definition links, WARN.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "10-K" ,"acceleratedFilerStatus" : "Non-Accelerated Filer" ,"periodOfReport" : "12-31-2009" ,"emergingGrowthCompanyFlag" : false ,"smallBusinessFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526001gw-20091231.xml</conf:instance>
+            <conf:linkbase>edgar-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_def.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_lab.xml</conf:linkbase>
+            <conf:schema>edgar-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60526" name="Common-Shares-Inconsistent-With-Document-Type" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_002gw">
+        <conf:name>6.5.26 Form 10-K with 0 Common Shares facts in the Required Context, 1 facts in contexts with the Share Class Axis, and 0 in other contexts, with definition links, WARN.</conf:name>
+        <conf:description>Form 10-K with 0 Common Shares facts in the Required Context, 1 facts in contexts with the Share Class Axis, and 0 in other contexts, with definition links, WARN.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "10-K" ,"acceleratedFilerStatus" : "Non-Accelerated Filer" ,"periodOfReport" : "12-31-2009" ,"emergingGrowthCompanyFlag" : false ,"smallBusinessFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526002gw-20091231.xml</conf:instance>
+            <conf:linkbase>edgar-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_def.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_lab.xml</conf:linkbase>
+            <conf:schema>edgar-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60526" name="Common-Shares-Inconsistent-With-Document-Type" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_003gw">
+        <conf:name>6.5.26 Form 10-K with 0 Common Shares facts in the Required Context, 1 facts in contexts with the Share Class Axis, and 1 in other contexts, with definition links, WARN.</conf:name>
+        <conf:description>Form 10-K with 0 Common Shares facts in the Required Context, 1 facts in contexts with the Share Class Axis, and 1 in other contexts, with definition links, WARN.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "10-K" ,"acceleratedFilerStatus" : "Non-Accelerated Filer" ,"periodOfReport" : "12-31-2009" ,"emergingGrowthCompanyFlag" : false ,"smallBusinessFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526003gw-20091231.xml</conf:instance>
+            <conf:linkbase>edgar-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_def.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_lab.xml</conf:linkbase>
+            <conf:schema>edgar-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60526" name="Common-Shares-Inconsistent-With-Document-Type" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_004gd">
+        <conf:name>6.5.26 Form 10-K with 0 Common Shares facts in the Required Context, 2 facts in contexts with the Share Class Axis, and 0 in other contexts, with definition links, GOOD.</conf:name>
+        <conf:description>Form 10-K with 0 Common Shares facts in the Required Context, 2 facts in contexts with the Share Class Axis, and 0 in other contexts, with definition links, GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "10-K" ,"acceleratedFilerStatus" : "Non-Accelerated Filer" ,"periodOfReport" : "12-31-2009" ,"emergingGrowthCompanyFlag" : false ,"smallBusinessFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526004gd-20091231.xml</conf:instance>
+            <conf:linkbase>edgar-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_def.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_lab.xml</conf:linkbase>
+            <conf:schema>edgar-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_005gd">
+        <conf:name>6.5.26 Form 10-K with 0 Common Shares facts in the Required Context, 2 facts in contexts with the Share Class Axis, and 1 in other contexts, with definition links, GOOD.</conf:name>
+        <conf:description>Form 10-K with 0 Common Shares facts in the Required Context, 2 facts in contexts with the Share Class Axis, and 1 in other contexts, with definition links, GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "10-K" ,"acceleratedFilerStatus" : "Non-Accelerated Filer" ,"periodOfReport" : "12-31-2009" ,"emergingGrowthCompanyFlag" : false ,"smallBusinessFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526005gd-20091231.xml</conf:instance>
+            <conf:linkbase>edgar-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_def.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_lab.xml</conf:linkbase>
+            <conf:schema>edgar-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_006gd">
+        <conf:name>6.5.26 Form 10-K with 1 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, with definition links, GOOD.</conf:name>
+        <conf:description>Form 10-K with 1 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, with definition links, GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "10-K" ,"acceleratedFilerStatus" : "Non-Accelerated Filer" ,"periodOfReport" : "12-31-2009" ,"emergingGrowthCompanyFlag" : false ,"smallBusinessFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526006gd-20091231.xml</conf:instance>
+            <conf:linkbase>edgar-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_def.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_lab.xml</conf:linkbase>
+            <conf:schema>edgar-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_007gd">
+        <conf:name>6.5.26 Form 10-K with 1 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 1 in other contexts, with definition links, GOOD.</conf:name>
+        <conf:description>Form 10-K with 1 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 1 in other contexts, with definition links, GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "10-K" ,"acceleratedFilerStatus" : "Non-Accelerated Filer" ,"periodOfReport" : "12-31-2009" ,"emergingGrowthCompanyFlag" : false ,"smallBusinessFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526007gd-20091231.xml</conf:instance>
+            <conf:linkbase>edgar-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_def.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_lab.xml</conf:linkbase>
+            <conf:schema>edgar-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_008gw">
+        <conf:name>6.5.26 Form 10-K with 1 Common Shares facts in the Required Context, 1 facts in contexts with the Share Class Axis, and 0 in other contexts, with definition links, WARN.</conf:name>
+        <conf:description>Form 10-K with 1 Common Shares facts in the Required Context, 1 facts in contexts with the Share Class Axis, and 0 in other contexts, with definition links, WARN.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "10-K" ,"acceleratedFilerStatus" : "Non-Accelerated Filer" ,"periodOfReport" : "12-31-2009" ,"emergingGrowthCompanyFlag" : false ,"smallBusinessFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526008gw-20091231.xml</conf:instance>
+            <conf:linkbase>edgar-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_def.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_lab.xml</conf:linkbase>
+            <conf:schema>edgar-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60526" name="Common-Shares-Inconsistent-With-Document-Type" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_009gw">
+        <conf:name>6.5.26 Form 10-K with 1 Common Shares facts in the Required Context, 1 facts in contexts with the Share Class Axis, and 1 in other contexts, with definition links, WARN.</conf:name>
+        <conf:description>Form 10-K with 1 Common Shares facts in the Required Context, 1 facts in contexts with the Share Class Axis, and 1 in other contexts, with definition links, WARN.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "10-K" ,"acceleratedFilerStatus" : "Non-Accelerated Filer" ,"periodOfReport" : "12-31-2009" ,"emergingGrowthCompanyFlag" : false ,"smallBusinessFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526009gw-20091231.xml</conf:instance>
+            <conf:linkbase>edgar-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_def.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_lab.xml</conf:linkbase>
+            <conf:schema>edgar-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60526" name="Common-Shares-Inconsistent-With-Document-Type" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_010gw">
+        <conf:name>6.5.26 Form 10-K with 1 Common Shares facts in the Required Context, 2 facts in contexts with the Share Class Axis, and 0 in other contexts, with definition links, WARN.</conf:name>
+        <conf:description>Form 10-K with 1 Common Shares facts in the Required Context, 2 facts in contexts with the Share Class Axis, and 0 in other contexts, with definition links, WARN.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "10-K" ,"acceleratedFilerStatus" : "Non-Accelerated Filer" ,"periodOfReport" : "12-31-2009" ,"emergingGrowthCompanyFlag" : false ,"smallBusinessFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526010gw-20091231.xml</conf:instance>
+            <conf:linkbase>edgar-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_def.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_lab.xml</conf:linkbase>
+            <conf:schema>edgar-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60526" name="Common-Shares-Inconsistent-With-Document-Type" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_011gw">
+        <conf:name>6.5.26 Form 10-K with 1 Common Shares facts in the Required Context, 2 facts in contexts with the Share Class Axis, and 1 in other contexts, with definition links, WARN.</conf:name>
+        <conf:description>Form 10-K with 1 Common Shares facts in the Required Context, 2 facts in contexts with the Share Class Axis, and 1 in other contexts, with definition links, WARN.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "10-K" ,"acceleratedFilerStatus" : "Non-Accelerated Filer" ,"periodOfReport" : "12-31-2009" ,"emergingGrowthCompanyFlag" : false ,"smallBusinessFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526011gw-20091231.xml</conf:instance>
+            <conf:linkbase>edgar-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_def.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_lab.xml</conf:linkbase>
+            <conf:schema>edgar-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60526" name="Common-Shares-Inconsistent-With-Document-Type" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_012gw">
+        <conf:name>6.5.26 Form 10-Q with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, with definition links, WARN.</conf:name>
+        <conf:description>Form 10-Q with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, with definition links, WARN.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "10-Q" ,"periodOfReport" : "12-31-2009" ,"emergingGrowthCompanyFlag" : false ,"smallBusinessFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526012gw-20091231.xml</conf:instance>
+            <conf:linkbase>edgar-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_def.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_lab.xml</conf:linkbase>
+            <conf:schema>edgar-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60526" name="Common-Shares-Inconsistent-With-Document-Type" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_013gw">
+        <conf:name>6.5.26 Form 20-F with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, with definition links, WARN.</conf:name>
+        <conf:description>Form 20-F with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, with definition links, WARN.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "20-F" ,"acceleratedFilerStatus" : "Non-Accelerated Filer" ,"periodOfReport" : "12-31-2009" ,"emergingGrowthCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526013gw-20091231.xml</conf:instance>
+            <conf:linkbase>edgar-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_def.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_lab.xml</conf:linkbase>
+            <conf:schema>edgar-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60526" name="Common-Shares-Inconsistent-With-Document-Type" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_014gw">
+        <conf:name>6.5.26 Form 20-F with 0 Common Shares facts in the Required Context, 1 facts in contexts with the Share Class Axis, and 0 in other contexts, with definition links, WARN.</conf:name>
+        <conf:description>Form 20-F with 0 Common Shares facts in the Required Context, 1 facts in contexts with the Share Class Axis, and 0 in other contexts, with definition links, WARN.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "20-F" ,"acceleratedFilerStatus" : "Non-Accelerated Filer" ,"periodOfReport" : "12-31-2009" ,"emergingGrowthCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526014gw-20091231.xml</conf:instance>
+            <conf:linkbase>edgar-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_def.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_lab.xml</conf:linkbase>
+            <conf:schema>edgar-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60526" name="Common-Shares-Inconsistent-With-Document-Type" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_015gd">
+        <conf:name>6.5.26 Form 20-F with 0 Common Shares facts in the Required Context, 2 facts in contexts with the Share Class Axis, and 0 in other contexts, with definition links, GOOD.</conf:name>
+        <conf:description>Form 20-F with 0 Common Shares facts in the Required Context, 2 facts in contexts with the Share Class Axis, and 0 in other contexts, with definition links, GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "20-F" ,"acceleratedFilerStatus" : "Non-Accelerated Filer" ,"periodOfReport" : "12-31-2009" ,"emergingGrowthCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526015gd-20091231.xml</conf:instance>
+            <conf:linkbase>edgar-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_def.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_lab.xml</conf:linkbase>
+            <conf:schema>edgar-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_016gd">
+        <conf:name>6.5.26 Form 20-F with 1 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, with definition links, GOOD.</conf:name>
+        <conf:description>Form 20-F with 1 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, with definition links, GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "20-F" ,"acceleratedFilerStatus" : "Non-Accelerated Filer" ,"periodOfReport" : "12-31-2009" ,"emergingGrowthCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526016gd-20091231.xml</conf:instance>
+            <conf:linkbase>edgar-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_def.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_lab.xml</conf:linkbase>
+            <conf:schema>edgar-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_017gw">
+        <conf:name>6.5.26 Form 20-F with 1 Common Shares facts in the Required Context, 1 facts in contexts with the Share Class Axis, and 0 in other contexts, with definition links, WARN.</conf:name>
+        <conf:description>Form 20-F with 1 Common Shares facts in the Required Context, 1 facts in contexts with the Share Class Axis, and 0 in other contexts, with definition links, WARN.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "20-F" ,"acceleratedFilerStatus" : "Non-Accelerated Filer" ,"periodOfReport" : "12-31-2009" ,"emergingGrowthCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526017gw-20091231.xml</conf:instance>
+            <conf:linkbase>edgar-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_def.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_lab.xml</conf:linkbase>
+            <conf:schema>edgar-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60526" name="Common-Shares-Inconsistent-With-Document-Type" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_018gw">
+        <conf:name>6.5.26 Form 20-F with 1 Common Shares facts in the Required Context, 2 facts in contexts with the Share Class Axis, and 0 in other contexts, with definition links, WARN.</conf:name>
+        <conf:description>Form 20-F with 1 Common Shares facts in the Required Context, 2 facts in contexts with the Share Class Axis, and 0 in other contexts, with definition links, WARN.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "20-F" ,"acceleratedFilerStatus" : "Non-Accelerated Filer" ,"periodOfReport" : "12-31-2009" ,"emergingGrowthCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526018gw-20091231.xml</conf:instance>
+            <conf:linkbase>edgar-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_def.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_lab.xml</conf:linkbase>
+            <conf:schema>edgar-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60526" name="Common-Shares-Inconsistent-With-Document-Type" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_019gw">
+        <conf:name>6.5.26 Form 40-F with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, with definition links, WARN.</conf:name>
+        <conf:description>Form 40-F with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, with definition links, WARN.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "40-F" ,"periodOfReport" : "12-31-2009" ,"emergingGrowthCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526019gw-20091231.xml</conf:instance>
+            <conf:linkbase>edgar-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_def.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_lab.xml</conf:linkbase>
+            <conf:schema>edgar-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60526" name="Common-Shares-Inconsistent-With-Document-Type" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_020gd">
+        <conf:name>6.5.26 Form N-Q with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, with definition links, GOOD.</conf:name>
+        <conf:description>Form N-Q with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, with definition links, GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "N-Q" ,"invCompanyType" : "N-1A" ,"rptSeriesClassInfo.seriesIds":["S013456789"]}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526020gd-20091231.xml</conf:instance>
+            <conf:linkbase>edgar-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_def.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_lab.xml</conf:linkbase>
+            <conf:schema>edgar-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_021gd">
+        <conf:name>6.5.26 Form 8-K with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, with definition links, GOOD.</conf:name>
+        <conf:description>Form 8-K with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, with definition links, GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "8-K" ,"periodOfReport" : "12-31-2009" ,"emergingGrowthCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526021gd-20091231.xml</conf:instance>
+            <conf:linkbase>edgar-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_def.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_lab.xml</conf:linkbase>
+            <conf:schema>edgar-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_022gd">
+        <conf:name>6.5.26 Form 6-K with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, with definition links, GOOD.</conf:name>
+        <conf:description>Form 6-K with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, with definition links, GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "6-K" ,"periodOfReport" : "12-31-2009" }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526022gd-20091231.xml</conf:instance>
+            <conf:linkbase>edgar-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_def.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_lab.xml</conf:linkbase>
+            <conf:schema>edgar-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_023gd">
+        <conf:name>6.5.26 Form N-CSR with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, with definition links, GOOD.</conf:name>
+        <conf:description>Form N-CSR with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, with definition links, GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "N-CSR" ,"invCompanyType" : "N-1A" ,"periodOfReport" : "12-31-2009" ,"rptSeriesClassInfo.seriesIds":["S013456789"]}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526023gd-20091231.xml</conf:instance>
+            <conf:linkbase>edgar-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_def.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_lab.xml</conf:linkbase>
+            <conf:schema>edgar-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_024gd">
+        <conf:name>6.5.26 Form 485BPOS with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, with definition links, GOOD.</conf:name>
+        <conf:description>Form 485BPOS with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, with definition links, GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "485BPOS" ,"invCompanyType" : "N-1A" ,"rptSeriesClassInfo.seriesIds":["S013456789"]}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526024gd-20091231.xml</conf:instance>
+            <conf:linkbase>edgar-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_def.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_lab.xml</conf:linkbase>
+            <conf:schema>edgar-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_025gd">
+        <conf:name>6.5.26 Form 497 with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, with definition links, GOOD.</conf:name>
+        <conf:description>Form 497 with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, with definition links, GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "497" ,"invCompanyType" : "N-1A" ,"rptSeriesClassInfo.seriesIds":["S013456789"]}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526025gd-20091231.xml</conf:instance>
+            <conf:linkbase>edgar-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_def.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_lab.xml</conf:linkbase>
+            <conf:schema>edgar-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_026gw">
+        <conf:name>6.5.26 Form 10-KT with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, with definition links, WARN.</conf:name>
+        <conf:description>Form 10-KT with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, with definition links, WARN.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "10-KT" ,"acceleratedFilerStatus" : "Non-Accelerated Filer" ,"periodOfReport" : "12-31-2009" ,"emergingGrowthCompanyFlag" : false ,"smallBusinessFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526026gw-20091231.xml</conf:instance>
+            <conf:linkbase>edgar-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_def.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_lab.xml</conf:linkbase>
+            <conf:schema>edgar-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60526" name="Common-Shares-Inconsistent-With-Document-Type" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_027gw">
+        <conf:name>6.5.26 Form 10-QT with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, with definition links, WARN.</conf:name>
+        <conf:description>Form 10-QT with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, with definition links, WARN.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "10-QT" ,"periodOfReport" : "12-31-2009" ,"emergingGrowthCompanyFlag" : false ,"smallBusinessFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526027gw-20091231.xml</conf:instance>
+            <conf:linkbase>edgar-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_def.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_lab.xml</conf:linkbase>
+            <conf:schema>edgar-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60526" name="Common-Shares-Inconsistent-With-Document-Type" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_028gw">
+        <conf:name>6.5.26 Form 10-K with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, WARN.</conf:name>
+        <conf:description>Form 10-K with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, WARN.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "10-K" ,"acceleratedFilerStatus" : "Non-Accelerated Filer" ,"periodOfReport" : "12-31-2009" ,"emergingGrowthCompanyFlag" : false ,"smallBusinessFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526028gw-20091231.xml</conf:instance>
+            <conf:linkbase>enodef-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>enodef-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>enodef-20081231_def.xml</conf:linkbase>
+            <conf:schema>enodef-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60526" name="Common-Shares-Inconsistent-With-Document-Type" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_029gw">
+        <conf:name>6.5.26 Form 10-K with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 1 in other contexts, without definition links, WARN.</conf:name>
+        <conf:description>Form 10-K with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 1 in other contexts, without definition links, WARN.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "10-K" ,"acceleratedFilerStatus" : "Non-Accelerated Filer" ,"periodOfReport" : "12-31-2009" ,"emergingGrowthCompanyFlag" : false ,"smallBusinessFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526029gw-20091231.xml</conf:instance>
+            <conf:linkbase>enodef-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>enodef-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>enodef-20081231_def.xml</conf:linkbase>
+            <conf:schema>enodef-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60526" name="Common-Shares-Inconsistent-With-Document-Type" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_030gw">
+        <conf:name>6.5.26 Form 10-K with 0 Common Shares facts in the Required Context, 1 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, WARN.</conf:name>
+        <conf:description>Form 10-K with 0 Common Shares facts in the Required Context, 1 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, WARN.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "10-K" ,"acceleratedFilerStatus" : "Non-Accelerated Filer" ,"periodOfReport" : "12-31-2009" ,"emergingGrowthCompanyFlag" : false ,"smallBusinessFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526030gw-20091231.xml</conf:instance>
+            <conf:linkbase>enodef-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>enodef-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>enodef-20081231_def.xml</conf:linkbase>
+            <conf:schema>enodef-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60526" name="Common-Shares-Inconsistent-With-Document-Type" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_031gw">
+        <conf:name>6.5.26 Form 10-K with 0 Common Shares facts in the Required Context, 1 facts in contexts with the Share Class Axis, and 1 in other contexts, without definition links, WARN.</conf:name>
+        <conf:description>Form 10-K with 0 Common Shares facts in the Required Context, 1 facts in contexts with the Share Class Axis, and 1 in other contexts, without definition links, WARN.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "10-K" ,"acceleratedFilerStatus" : "Non-Accelerated Filer" ,"periodOfReport" : "12-31-2009" ,"emergingGrowthCompanyFlag" : false ,"smallBusinessFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526031gw-20091231.xml</conf:instance>
+            <conf:linkbase>enodef-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>enodef-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>enodef-20081231_def.xml</conf:linkbase>
+            <conf:schema>enodef-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60526" name="Common-Shares-Inconsistent-With-Document-Type" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_032gd">
+        <conf:name>6.5.26 Form 10-K with 0 Common Shares facts in the Required Context, 2 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, GOOD.</conf:name>
+        <conf:description>Form 10-K with 0 Common Shares facts in the Required Context, 2 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "10-K" ,"acceleratedFilerStatus" : "Non-Accelerated Filer" ,"periodOfReport" : "12-31-2009" ,"emergingGrowthCompanyFlag" : false ,"smallBusinessFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526032gd-20091231.xml</conf:instance>
+            <conf:linkbase>enodef-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>enodef-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>enodef-20081231_def.xml</conf:linkbase>
+            <conf:schema>enodef-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_033gd">
+        <conf:name>6.5.26 Form 10-K with 0 Common Shares facts in the Required Context, 2 facts in contexts with the Share Class Axis, and 1 in other contexts, without definition links, GOOD.</conf:name>
+        <conf:description>Form 10-K with 0 Common Shares facts in the Required Context, 2 facts in contexts with the Share Class Axis, and 1 in other contexts, without definition links, GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "10-K" ,"acceleratedFilerStatus" : "Non-Accelerated Filer" ,"periodOfReport" : "12-31-2009" ,"emergingGrowthCompanyFlag" : false ,"smallBusinessFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526033gd-20091231.xml</conf:instance>
+            <conf:linkbase>enodef-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>enodef-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>enodef-20081231_def.xml</conf:linkbase>
+            <conf:schema>enodef-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_034gd">
+        <conf:name>6.5.26 Form 10-K with 1 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, GOOD.</conf:name>
+        <conf:description>Form 10-K with 1 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "10-K" ,"acceleratedFilerStatus" : "Non-Accelerated Filer" ,"periodOfReport" : "12-31-2009" ,"emergingGrowthCompanyFlag" : false ,"smallBusinessFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526034gd-20091231.xml</conf:instance>
+            <conf:linkbase>enodef-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>enodef-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>enodef-20081231_def.xml</conf:linkbase>
+            <conf:schema>enodef-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_035gd">
+        <conf:name>6.5.26 Form 10-K with 1 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 1 in other contexts, without definition links, GOOD.</conf:name>
+        <conf:description>Form 10-K with 1 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 1 in other contexts, without definition links, GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "10-K" ,"acceleratedFilerStatus" : "Non-Accelerated Filer" ,"periodOfReport" : "12-31-2009" ,"emergingGrowthCompanyFlag" : false ,"smallBusinessFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526035gd-20091231.xml</conf:instance>
+            <conf:linkbase>enodef-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>enodef-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>enodef-20081231_def.xml</conf:linkbase>
+            <conf:schema>enodef-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_036gw">
+        <conf:name>6.5.26 Form 10-K with 1 Common Shares facts in the Required Context, 1 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, WARN.</conf:name>
+        <conf:description>Form 10-K with 1 Common Shares facts in the Required Context, 1 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, WARN.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "10-K" ,"acceleratedFilerStatus" : "Non-Accelerated Filer" ,"periodOfReport" : "12-31-2009" ,"emergingGrowthCompanyFlag" : false ,"smallBusinessFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526036gw-20091231.xml</conf:instance>
+            <conf:linkbase>enodef-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>enodef-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>enodef-20081231_def.xml</conf:linkbase>
+            <conf:schema>enodef-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60526" name="Common-Shares-Inconsistent-With-Document-Type" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_037gw">
+        <conf:name>6.5.26 Form 10-K with 1 Common Shares facts in the Required Context, 1 facts in contexts with the Share Class Axis, and 1 in other contexts, without definition links, WARN.</conf:name>
+        <conf:description>Form 10-K with 1 Common Shares facts in the Required Context, 1 facts in contexts with the Share Class Axis, and 1 in other contexts, without definition links, WARN.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "10-K" ,"acceleratedFilerStatus" : "Non-Accelerated Filer" ,"periodOfReport" : "12-31-2009" ,"emergingGrowthCompanyFlag" : false ,"smallBusinessFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526037gw-20091231.xml</conf:instance>
+            <conf:linkbase>enodef-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>enodef-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>enodef-20081231_def.xml</conf:linkbase>
+            <conf:schema>enodef-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60526" name="Common-Shares-Inconsistent-With-Document-Type" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_038gw">
+        <conf:name>6.5.26 Form 10-K with 1 Common Shares facts in the Required Context, 2 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, WARN.</conf:name>
+        <conf:description>Form 10-K with 1 Common Shares facts in the Required Context, 2 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, WARN.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "10-K" ,"acceleratedFilerStatus" : "Non-Accelerated Filer" ,"periodOfReport" : "12-31-2009" ,"emergingGrowthCompanyFlag" : false ,"smallBusinessFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526038gw-20091231.xml</conf:instance>
+            <conf:linkbase>enodef-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>enodef-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>enodef-20081231_def.xml</conf:linkbase>
+            <conf:schema>enodef-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60526" name="Common-Shares-Inconsistent-With-Document-Type" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_039gw">
+        <conf:name>6.5.26 Form 10-K with 1 Common Shares facts in the Required Context, 2 facts in contexts with the Share Class Axis, and 1 in other contexts, without definition links, WARN.</conf:name>
+        <conf:description>Form 10-K with 1 Common Shares facts in the Required Context, 2 facts in contexts with the Share Class Axis, and 1 in other contexts, without definition links, WARN.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "10-K" ,"acceleratedFilerStatus" : "Non-Accelerated Filer" ,"periodOfReport" : "12-31-2009" ,"emergingGrowthCompanyFlag" : false ,"smallBusinessFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526039gw-20091231.xml</conf:instance>
+            <conf:linkbase>enodef-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>enodef-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>enodef-20081231_def.xml</conf:linkbase>
+            <conf:schema>enodef-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60526" name="Common-Shares-Inconsistent-With-Document-Type" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_040gw">
+        <conf:name>6.5.26 Form 10-Q with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, WARN.</conf:name>
+        <conf:description>Form 10-Q with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, WARN.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "10-Q" ,"periodOfReport" : "12-31-2009" ,"emergingGrowthCompanyFlag" : false ,"smallBusinessFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526040gw-20091231.xml</conf:instance>
+            <conf:linkbase>enodef-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>enodef-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>enodef-20081231_def.xml</conf:linkbase>
+            <conf:schema>enodef-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60526" name="Common-Shares-Inconsistent-With-Document-Type" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_041gw">
+        <conf:name>6.5.26 Form 20-F with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, WARN.</conf:name>
+        <conf:description>Form 20-F with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, WARN.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "20-F" ,"acceleratedFilerStatus" : "Non-Accelerated Filer" ,"periodOfReport" : "12-31-2009" ,"emergingGrowthCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526041gw-20091231.xml</conf:instance>
+            <conf:linkbase>enodef-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>enodef-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>enodef-20081231_def.xml</conf:linkbase>
+            <conf:schema>enodef-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60526" name="Common-Shares-Inconsistent-With-Document-Type" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_042gw">
+        <conf:name>6.5.26 Form 20-F [IFRS] with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, WARN.</conf:name>
+        <conf:description>Form 20-F [IFRS] with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, WARN.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "20-F" ,"acceleratedFilerStatus" : "Non-Accelerated Filer" ,"periodOfReport" : "12-31-2009" ,"emergingGrowthCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526042gw-20091231.xml</conf:instance>
+            <conf:linkbase>eifrs-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>eifrs-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>eifrs-20081231_def.xml</conf:linkbase>
+            <conf:schema>eifrs-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60526" name="Common-Shares-Inconsistent-With-Document-Type" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_043gw">
+        <conf:name>6.5.26 Form 20-F with 0 Common Shares facts in the Required Context, 1 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, WARN.</conf:name>
+        <conf:description>Form 20-F with 0 Common Shares facts in the Required Context, 1 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, WARN.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "20-F" ,"acceleratedFilerStatus" : "Non-Accelerated Filer" ,"periodOfReport" : "12-31-2009" ,"emergingGrowthCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526043gw-20091231.xml</conf:instance>
+            <conf:linkbase>enodef-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>enodef-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>enodef-20081231_def.xml</conf:linkbase>
+            <conf:schema>enodef-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60526" name="Common-Shares-Inconsistent-With-Document-Type" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_044gw">
+        <conf:name>6.5.26 Form 20-F [IFRS] with 0 Common Shares facts in the Required Context, 1 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, WARN.</conf:name>
+        <conf:description>Form 20-F [IFRS] with 0 Common Shares facts in the Required Context, 1 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, WARN.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "20-F" ,"acceleratedFilerStatus" : "Non-Accelerated Filer" ,"periodOfReport" : "12-31-2009" ,"emergingGrowthCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526044gw-20091231.xml</conf:instance>
+            <conf:linkbase>eifrs-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>eifrs-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>eifrs-20081231_def.xml</conf:linkbase>
+            <conf:schema>eifrs-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60526" name="Common-Shares-Inconsistent-With-Document-Type" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_045gd">
+        <conf:name>6.5.26 Form 20-F with 0 Common Shares facts in the Required Context, 2 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, GOOD.</conf:name>
+        <conf:description>Form 20-F with 0 Common Shares facts in the Required Context, 2 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "20-F" ,"acceleratedFilerStatus" : "Non-Accelerated Filer" ,"periodOfReport" : "12-31-2009" ,"emergingGrowthCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526045gd-20091231.xml</conf:instance>
+            <conf:linkbase>enodef-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>enodef-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>enodef-20081231_def.xml</conf:linkbase>
+            <conf:schema>enodef-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_046gd">
+        <conf:name>6.5.26 Form 20-F [IFRS] with 0 Common Shares facts in the Required Context, 2 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, GOOD.</conf:name>
+        <conf:description>Form 20-F [IFRS] with 0 Common Shares facts in the Required Context, 2 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "20-F" ,"acceleratedFilerStatus" : "Non-Accelerated Filer" ,"periodOfReport" : "12-31-2009" ,"emergingGrowthCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526046gd-20091231.xml</conf:instance>
+            <conf:linkbase>eifrs-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>eifrs-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>eifrs-20081231_def.xml</conf:linkbase>
+            <conf:schema>eifrs-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_047gd">
+        <conf:name>6.5.26 Form 20-F with 1 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, GOOD.</conf:name>
+        <conf:description>Form 20-F with 1 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "20-F" ,"acceleratedFilerStatus" : "Non-Accelerated Filer" ,"periodOfReport" : "12-31-2009" ,"emergingGrowthCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526047gd-20091231.xml</conf:instance>
+            <conf:linkbase>enodef-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>enodef-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>enodef-20081231_def.xml</conf:linkbase>
+            <conf:schema>enodef-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_048gd">
+        <conf:name>6.5.26 Form 20-F [IFRS] with 1 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, GOOD.</conf:name>
+        <conf:description>Form 20-F [IFRS] with 1 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "20-F" ,"acceleratedFilerStatus" : "Non-Accelerated Filer" ,"periodOfReport" : "12-31-2009" ,"emergingGrowthCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526048gd-20091231.xml</conf:instance>
+            <conf:linkbase>eifrs-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>eifrs-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>eifrs-20081231_def.xml</conf:linkbase>
+            <conf:schema>eifrs-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_049gw">
+        <conf:name>6.5.26 Form 20-F with 1 Common Shares facts in the Required Context, 1 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, WARN.</conf:name>
+        <conf:description>Form 20-F with 1 Common Shares facts in the Required Context, 1 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, WARN.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "20-F" ,"acceleratedFilerStatus" : "Non-Accelerated Filer" ,"periodOfReport" : "12-31-2009" ,"emergingGrowthCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526049gw-20091231.xml</conf:instance>
+            <conf:linkbase>enodef-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>enodef-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>enodef-20081231_def.xml</conf:linkbase>
+            <conf:schema>enodef-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60526" name="Common-Shares-Inconsistent-With-Document-Type" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_050gw">
+        <conf:name>6.5.26 Form 20-F [IFRS] with 1 Common Shares facts in the Required Context, 1 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, WARN.</conf:name>
+        <conf:description>Form 20-F [IFRS] with 1 Common Shares facts in the Required Context, 1 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, WARN.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "20-F" ,"acceleratedFilerStatus" : "Non-Accelerated Filer" ,"periodOfReport" : "12-31-2009" ,"emergingGrowthCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526050gw-20091231.xml</conf:instance>
+            <conf:linkbase>eifrs-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>eifrs-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>eifrs-20081231_def.xml</conf:linkbase>
+            <conf:schema>eifrs-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60526" name="Common-Shares-Inconsistent-With-Document-Type" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_051gw">
+        <conf:name>6.5.26 Form 20-F with 1 Common Shares facts in the Required Context, 2 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, WARN.</conf:name>
+        <conf:description>Form 20-F with 1 Common Shares facts in the Required Context, 2 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, WARN.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "20-F" ,"acceleratedFilerStatus" : "Non-Accelerated Filer" ,"periodOfReport" : "12-31-2009" ,"emergingGrowthCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526051gw-20091231.xml</conf:instance>
+            <conf:linkbase>enodef-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>enodef-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>enodef-20081231_def.xml</conf:linkbase>
+            <conf:schema>enodef-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60526" name="Common-Shares-Inconsistent-With-Document-Type" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_052gw">
+        <conf:name>6.5.26 Form 20-F [IFRS] with 1 Common Shares facts in the Required Context, 2 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, WARN.</conf:name>
+        <conf:description>Form 20-F [IFRS] with 1 Common Shares facts in the Required Context, 2 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, WARN.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "20-F" ,"acceleratedFilerStatus" : "Non-Accelerated Filer" ,"periodOfReport" : "12-31-2009" ,"emergingGrowthCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526052gw-20091231.xml</conf:instance>
+            <conf:linkbase>eifrs-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>eifrs-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>eifrs-20081231_def.xml</conf:linkbase>
+            <conf:schema>eifrs-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60526" name="Common-Shares-Inconsistent-With-Document-Type" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_055gd">
+        <conf:name>6.5.26 Form N-Q with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, GOOD.</conf:name>
+        <conf:description>Form N-Q with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "N-Q" ,"invCompanyType" : "N-1A" ,"rptSeriesClassInfo.seriesIds":["S013456789"]}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526055gd-20091231.xml</conf:instance>
+            <conf:linkbase>edgar-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_def.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_lab.xml</conf:linkbase>
+            <conf:schema>edgar-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_056gd">
+        <conf:name>6.5.26 Form 8-K with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, GOOD.</conf:name>
+        <conf:description>Form 8-K with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "8-K" ,"periodOfReport" : "12-31-2009" ,"emergingGrowthCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526056gd-20091231.xml</conf:instance>
+            <conf:linkbase>enodef-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>enodef-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>enodef-20081231_def.xml</conf:linkbase>
+            <conf:schema>enodef-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_057gd">
+        <conf:name>6.5.26 Form 6-K with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, GOOD.</conf:name>
+        <conf:description>Form 6-K with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "6-K" ,"periodOfReport" : "12-31-2009" }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526057gd-20091231.xml</conf:instance>
+            <conf:linkbase>enodef-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>enodef-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>enodef-20081231_def.xml</conf:linkbase>
+            <conf:schema>enodef-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_058gd">
+        <conf:name>6.5.26 Form 6-K [IFRS] with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, GOOD.</conf:name>
+        <conf:description>Form 6-K [IFRS] with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "6-K" ,"periodOfReport" : "12-31-2009" }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526058gd-20091231.xml</conf:instance>
+            <conf:linkbase>eifrs-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>eifrs-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>eifrs-20081231_def.xml</conf:linkbase>
+            <conf:schema>eifrs-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_059gd">
+        <conf:name>6.5.26 Form N-CSR with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, GOOD.</conf:name>
+        <conf:description>Form N-CSR with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "N-CSR" ,"invCompanyType" : "N-1A" ,"periodOfReport" : "12-31-2009" ,"rptSeriesClassInfo.seriesIds":["S013456789"]}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526059gd-20091231.xml</conf:instance>
+            <conf:linkbase>edgar-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_def.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_lab.xml</conf:linkbase>
+            <conf:schema>edgar-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_060gd">
+        <conf:name>6.5.26 Form 485BPOS with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, GOOD.</conf:name>
+        <conf:description>Form 485BPOS with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "485BPOS" ,"invCompanyType" : "N-1A" ,"rptSeriesClassInfo.seriesIds":["S013456789"]}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526060gd-20091231.xml</conf:instance>
+            <conf:linkbase>edgar-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_def.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_lab.xml</conf:linkbase>
+            <conf:schema>edgar-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_061gd">
+        <conf:name>6.5.26 Form 497 with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, GOOD.</conf:name>
+        <conf:description>Form 497 with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, GOOD.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "497" ,"invCompanyType" : "N-1A" ,"rptSeriesClassInfo.seriesIds":["S013456789"]}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526061gd-20091231.xml</conf:instance>
+            <conf:linkbase>edgar-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_def.xml</conf:linkbase>
+            <conf:linkbase>edgar-20081231_lab.xml</conf:linkbase>
+            <conf:schema>edgar-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_062gw">
+        <conf:name>6.5.26 Form 10-KT with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, WARN.</conf:name>
+        <conf:description>Form 10-KT with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, WARN.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "10-KT" ,"acceleratedFilerStatus" : "Non-Accelerated Filer" ,"periodOfReport" : "12-31-2009" ,"emergingGrowthCompanyFlag" : false ,"smallBusinessFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526062gw-20091231.xml</conf:instance>
+            <conf:linkbase>enodef-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>enodef-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>enodef-20081231_def.xml</conf:linkbase>
+            <conf:schema>enodef-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60526" name="Common-Shares-Inconsistent-With-Document-Type" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_063gw">
+        <conf:name>6.5.26 Form 10-QT with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, WARN.</conf:name>
+        <conf:description>Form 10-QT with 0 Common Shares facts in the Required Context, 0 facts in contexts with the Share Class Axis, and 0 in other contexts, without definition links, WARN.</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"submissionType" : "10-QT" ,"periodOfReport" : "12-31-2009" ,"emergingGrowthCompanyFlag" : false ,"smallBusinessFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60526063gw-20091231.xml</conf:instance>
+            <conf:linkbase>enodef-20081231_pre.xml</conf:linkbase>
+            <conf:linkbase>enodef-20081231_lab.xml</conf:linkbase>
+            <conf:linkbase>enodef-20081231_def.xml</conf:linkbase>
+            <conf:schema>enodef-20081231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60526" name="Common-Shares-Inconsistent-With-Document-Type" frd="du"></conf:assert>
+        </conf:result>
+    </conf:variation>
+</conf:testcase>

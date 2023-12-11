@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>614-04</number>
+    <name>EDGAR Filer Manual v68d 6.14.4</name>
+    <description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.14.4  No directed cycles in calculation relationships.">Refer to EFM: 6.14.4  No directed cycles in calculation relationships.</a>
+    </description>
+    <reference specification="10931"></reference>
+    <variation id="_000gd">
+        <name>6.14.4, calculation relationships form an undirected cycle, which is allowed. GOOD. </name>
+        <description> calculation relationships form an undirected cycle, which is allowed. GOOD. </description>
+        <reference specification="10931"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e61404000gd-20081231.xml</instance>
+            <linkbase>e61404000gd-20081231_lab.xml</linkbase>
+            <linkbase>e61404000gd-20081231_pre.xml</linkbase>
+            <linkbase>e61404000gd-20081231_cal.xml</linkbase>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+            <schema>e61404000gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_002ng">
+        <name>6.14.4, calculation relationships form a directed cycle. NOGOOD. </name>
+        <description> calculation relationships form a directed cycle. NOGOOD. </description>
+        <reference specification="10931"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e61404002ng-20081231.xml</instance>
+            <linkbase>e61404002ng-20081231_lab.xml</linkbase>
+            <linkbase>e61404002ng-20081231_pre.xml</linkbase>
+            <linkbase>e61404002ng-20081231_cal.xml</linkbase>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+            <schema>e61404002ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="61404" name="Circular-Calculation" frd="fs"></assert>
+        </result>
+    </variation>
+    <variation id="_003gd">
+        <name>6.14.4, calculation arcs form a directed cycle, but effective relationships do not. GOOD. </name>
+        <description> calculation arcs form a directed cycle, but effective relationships do not. GOOD. </description>
+        <reference specification="10931"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"submissionType": "485BPOS"}'></parameter>
+            <instance readMeFirst="true">e61404003gd-20081231.xml</instance>
+            <linkbase>e61404003gd-20081231_lab.xml</linkbase>
+            <linkbase>e61404003gd-20081231_cal.xml</linkbase>
+            <linkbase>e61404003gd-20081231_def.xml</linkbase>
+            <linkbase>e61404003gd-20081231_pre.xml</linkbase>
+            <schema>e61404003gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+</testcase>

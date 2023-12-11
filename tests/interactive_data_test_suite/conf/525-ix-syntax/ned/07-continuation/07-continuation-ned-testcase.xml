@@ -1,0 +1,296 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>525-07</number>
+    <name>Inline XBRL Test Suite v68d : Continuation tests, Not EDGAR Dependent</name>
+    <description>
+        <h2>Various "not good" (ng) test files that demonstrate non-valid Inline XBRL Continuation usage</h2>
+        <p>
+            <a href="http://www.xbrl.org/specification/inlinexbrl-part1/rec-2013-11-18/inlinexbrl-part1-rec-2013-11-18.html#d1e1266">4 The Continuation Element</a>
+        </p>
+        <p>
+            <a href="http://www.xbrl.org/specification/inlinexbrl-part1/rec-2013-11-18/inlinexbrl-part1-rec-2013-11-18.html#d1e1734">6 The Continuation Element</a>
+        </p>
+        <p>
+            <a href="http://www.xbrl.org/specification/inlinexbrl-part1/rec-2013-11-18/inlinexbrl-part1-rec-2013-11-18.html#d1e5997">11 The nonNumeric Element</a>
+        </p>
+    </description>
+    <variation id="_001gd">
+        <name>Valid continuation chains, GOOD.</name>
+        <description> The ix:continuation element is used to define data that is to be treated as part of ix:footnote or ix:nonNumeric elements. PASS-nonNumeric-continuation-multiple-documents is NOT supported at this time. </description>
+        <reference xiitest="PASS-nonNumeric-continuation"></reference>
+        <reference xiitest="PASS-nonNumeric-continuation-other-descendants"></reference>
+        <reference xiitest="PASS-nonNumeric-continuation-other-descendants-escaped"></reference>
+        <reference xiitest="PASS-nonNumeric-continuation-out-of-order"></reference>
+        <reference xiitest="PASS-nonNumeric-continuation-transform"></reference>
+        <reference xiispec="4.1"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i07001gd/i07001gd-20081231.htm</instance>
+            <linkbase>i07001gd/i07001gd-20081231_pre.xml</linkbase>
+            <linkbase>i07001gd/i07001gd-20081231_lab.xml</linkbase>
+            <schema>i07001gd/i07001gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_002gd">
+        <name>Valid but interleaved continuation chains, GOOD.</name>
+        <description>Valid but interleaved ix:continuation chains, GOOD.</description>
+        <reference xiispec="6.1.2"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i07002gd/i07002gd-20081231.htm</instance>
+            <linkbase>i07002gd/i07002gd-20081231_pre.xml</linkbase>
+            <linkbase>i07002gd/i07002gd-20081231_lab.xml</linkbase>
+            <schema>i07002gd/i07002gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_100ng">
+        <name>Nonnumeric continued at continuation, continues at continuation, continues at first continuation, NOGOOD.</name>
+        <description>FAIL-continuation-nonNumeric-circular</description>
+        <reference specification="If the continuedAt attribute is present, the {continuation reference} property MUST NOT match the {continuation reference} property of any other element in the Inline XBRL Document Set."></reference>
+        <reference xiitest="FAIL-continuation-nonNumeric-circular"></reference>
+        <reference xiispec="4.1.2"></reference>
+        <reference xiispec="11.1.2"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i07100ng/i07100ng-20081231.htm</instance>
+            <linkbase>i07100ng/i07100ng-20081231_pre.xml</linkbase>
+            <linkbase>i07100ng/i07100ng-20081231_lab.xml</linkbase>
+            <schema>i07100ng/i07100ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.4.1.2:continuationReferences" frd="ix" fj="IXBRL_CONTINUATION_CONTINUE_AT_REF_DUPLICATES_FOUND" nnum="70107" txt="continuedAt $ has * references on # elements, only one reference allowed."></assert>
+            <assert severity="err" num="99999" name="ix11.4.1.2:continuationCycle" frd="ix" fj="IXBRL_CONTINUATION_CYCLIC_REFERENCE" nnum="70107" txt="Inline XBRL continuation cycle: $"></assert>
+        </result>
+    </variation>
+    <variation id="_101ng">
+        <name>nonNumeric element has ancestor in continuation chain, NOGOOD.</name>
+        <description>FAIL-continuation-nonNumeric-invalid-nesting</description>
+        <reference xiitest="FAIL-continuation-nonNumeric-invalid-nesting"></reference>
+        <reference xiispec="4.1.2"></reference>
+        <reference specification="The {continuation chain} property MUST NOT contain any element which is a descendant of any other element in the {continuation chain} property."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i07101ng/i07101ng-20081231.htm</instance>
+            <linkbase>i07101ng/i07101ng-20081231_pre.xml</linkbase>
+            <linkbase>i07101ng/i07101ng-20081231_lab.xml</linkbase>
+            <schema>i07101ng/i07101ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.11.1.2:continuationChainNested" frd="ix" fj="IXBRL_CONTINUATION_ILLEGAL_TO_DESCENDANT_ELEMENT" nnum="70111" txt="Inline XBRL continuation chain element * has descendant element #"></assert>
+        </result>
+    </variation>
+    <variation id="_102ng">
+        <name>nonNumeric continuedAt target is itself, NOGOOD.</name>
+        <description>FAIL-continuation-nonNumeric-self</description>
+        <reference xiitest="FAIL-continuation-nonNumeric-self"></reference>
+        <reference xiispec="11.1.2"></reference>
+        <reference specification="If the continuedAt attribute is present, there MUST exist an ix:continuation element in the Inline XBRL Document Set with an {id} property which has a value matching the {continuation reference} property."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i07102ng/i07102ng-20081231.htm</instance>
+            <linkbase>i07102ng/i07102ng-20081231_pre.xml</linkbase>
+            <linkbase>i07102ng/i07102ng-20081231_lab.xml</linkbase>
+            <schema>i07102ng/i07102ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.11.1.2:continuationTarget" frd="ix" fj="IXBRL_CONTINUATION_OR_CONTINUE_REF_ILLEGAL_TO_ANCESTOR_OR_SELF" nnum="70107" txt="Inline XBRL continuation chain element * has descendant element #"></assert>
+        </result>
+    </variation>
+    <variation id="_103ng">
+        <name>continuedAt="cont4" appears twice, NOGOOD</name>
+        <description>FAIL-continuation-used-twice</description>
+        <reference xiitest="FAIL-continuation-used-twice"></reference>
+        <reference xiispec="11.1.2"></reference>
+        <reference specification="If the continuedAt attribute is present, the {continuation reference} property MUST NOT match the {continuation reference} property of any other element in the Inline XBRL Document Set."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i07103ng/i07103ng-20081231.htm</instance>
+            <linkbase>i07103ng/i07103ng-20081231_pre.xml</linkbase>
+            <linkbase>i07103ng/i07103ng-20081231_lab.xml</linkbase>
+            <schema>i07103ng/i07103ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.4.1.2:continuationReferences" frd="ix" fj="IXBRL_CONTINUATION_CONTINUE_AT_REF_DUPLICATES_FOUND" nnum="70107" txt="continuedAt $ has * references on # elements, only one reference allowed."></assert>
+        </result>
+    </variation>
+    <variation id="_104ng">
+        <name>Footnote has continuation chain that includes an ancestor, NOGOOD</name>
+        <description>FAIL-footnote-continuation-invalid-nesting</description>
+        <reference xiitest="FAIL-footnote-continuation-invalid-nesting"></reference>
+        <reference xiispec="6.1.2"></reference>
+        <reference specification="The {continuation chain} property MUST NOT contain any element which is a descendant of any other element in the {continuation chain} property."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i07104ng/i07104ng-20081231.htm</instance>
+            <linkbase>i07104ng/i07104ng-20081231_pre.xml</linkbase>
+            <linkbase>i07104ng/i07104ng-20081231_lab.xml</linkbase>
+            <schema>i07104ng/i07104ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.6.1.2:continuationChainNested" frd="ix" fj="IXBRL_CONTINUATION_ILLEGAL_TO_DESCENDANT_ELEMENT" nnum="70107" txt="Inline XBRL continuation chain element * has descendant element #"></assert>
+        </result>
+    </variation>
+    <variation id="_105ng">
+        <name>Nonnumeric element with continuedAt having unresolved referent, NOGOOD</name>
+        <description>FAIL-nonNumeric-dangling-continuation</description>
+        <reference xiitest="FAIL-nonNumeric-dangling-continuation"></reference>
+        <reference xiispec="11.1.2"></reference>
+        <reference specification="If the continuedAt attribute is present, there MUST exist an ix:continuation element in the Inline XBRL Document Set with an {id} property which has a value matching the {continuation reference} property."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i07105ng/i07105ng-20081231.htm</instance>
+            <linkbase>i07105ng/i07105ng-20081231_pre.xml</linkbase>
+            <linkbase>i07105ng/i07105ng-20081231_lab.xml</linkbase>
+            <schema>i07105ng/i07105ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.11.1.2:continuationMissing" frd="ix" fj="IXBRL_CONTINUATION_INVALID_CONTINUED_AT_REF" nnum="70107" txt="Inline XBRL continuation $ not found"></assert>
+        </result>
+    </variation>
+    <variation id="_106ng">
+        <name>nonNumeric element has a descendant in its continuation chain, NOGOOD.</name>
+        <description>FAIL-continuation-nonNumeric-invalid-nesting-2</description>
+        <reference xiitest="FAIL-continuation-nonNumeric-invalid-nesting-2"></reference>
+        <reference xiispec="11.1.2"></reference>
+        <reference specification="The {continuation chain} property MUST NOT contain any element which is a descendant of any other element in the {continuation chain} property."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i07106ng/i07106ng-20081231.htm</instance>
+            <linkbase>i07106ng/i07106ng-20081231_pre.xml</linkbase>
+            <linkbase>i07106ng/i07106ng-20081231_lab.xml</linkbase>
+            <schema>i07106ng/i07106ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.4.1.2:continuationChainNested" frd="ix" fj="IXBRL_CONTINUATION_OR_CONTINUE_REF_ILLEGAL_TO_ANCESTOR_OR_SELF" nnum="70107" txt="Inline XBRL continuation chain element * has descendant element #"></assert>
+        </result>
+    </variation>
+    <variation id="_107ng">
+        <name>Footnote element has a descendant in its continuation chain, NOGOOD.</name>
+        <description>FAIL-footnote-continuation-invalid-nesting-2</description>
+        <reference xiitest="FAIL-footnote-continuation-invalid-nesting-2"></reference>
+        <reference xiispec="11.1.2"></reference>
+        <reference specification="The {continuation chain} property MUST NOT contain any element which is a descendant of any other element in the {continuation chain} property."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i07107ng/i07107ng-20081231.htm</instance>
+            <linkbase>i07107ng/i07107ng-20081231_pre.xml</linkbase>
+            <linkbase>i07107ng/i07107ng-20081231_lab.xml</linkbase>
+            <schema>i07107ng/i07107ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.4.1.2:continuationChainNested" frd="ix" fj="IXBRL_CONTINUATION_OR_CONTINUE_REF_ILLEGAL_TO_ANCESTOR_OR_SELF" nnum="70107" txt="Inline XBRL continuation chain element * has descendant element #"></assert>
+        </result>
+    </variation>
+    <variation id="_108ng">
+        <name>nonNumeric element continuedAt="cont5" not matched with any element id, NOGOOD</name>
+        <description>FAIL-nonNumeric-dangling-continuation-2</description>
+        <reference xiitest="FAIL-nonNumeric-dangling-continuation-2"></reference>
+        <reference xiispec="4.1.2"></reference>
+        <reference specification="If the continuedAt attribute is present, there MUST exist an ix:continuation element in the Inline XBRL Document Set with an {id} property which has a value matching the {continuation reference} property."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i07108ng/i07108ng-20081231.htm</instance>
+            <linkbase>i07108ng/i07108ng-20081231_pre.xml</linkbase>
+            <linkbase>i07108ng/i07108ng-20081231_lab.xml</linkbase>
+            <schema>i07108ng/i07108ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.4.1.2:continuationMissing" frd="ix" fj="IXBRL_CONTINUATION_INVALID_CONTINUED_AT_REF" nnum="70107" txt="Inline XBRL continuation $ not found"></assert>
+        </result>
+    </variation>
+    <variation id="_109ng">
+        <name>continuation with id not referenced by continuedAt</name>
+        <description>FAIL-orphaned-continuation</description>
+        <reference xiitest="FAIL-orphaned-continuation"></reference>
+        <reference xiispec="4.1.2"></reference>
+        <reference specification="There MUST exist an ix:footnote, ix:nonNumeric or other ix:continuation element in the Inline XBRL Document Set with a {continuation reference} property which has a value matching the {id} property."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i07109ng/i07109ng-20081231.htm</instance>
+            <linkbase>i07109ng/i07109ng-20081231_pre.xml</linkbase>
+            <linkbase>i07109ng/i07109ng-20081231_lab.xml</linkbase>
+            <schema>i07109ng/i07109ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.4.1.2:continuationNotReferenced" frd="ix" fj="IXBRL_CONTINUATION_NOT_USED" nnum="70107" txt="ix:continuation $ is not referenced by a, ix:footnote, ix:nonNumeric or other ix:continuation element."></assert>
+        </result>
+    </variation>
+    <variation id="_110ng">
+        <name>Nonnumeric element has two continuation elements with the continuedAt id in the same input document.</name>
+        <description>FAIL-continuation-duplicate-id</description>
+        <reference xiitest="FAIL-continuation-duplicate-id"></reference>
+        <reference xiispec="4.1.2"></reference>
+        <reference specification="ID values MUST uniquely identify the elements which bear them."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i07110ng/i07110ng-20081231.htm</instance>
+            <linkbase>i07110ng/i07110ng-20081231_pre.xml</linkbase>
+            <linkbase>i07110ng/i07110ng-20081231_lab.xml</linkbase>
+            <schema>i07110ng/i07110ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="xml.3.3.1:idMustBeUnique" frd="ix" fj="IXBRL_DUPLICATE_ELEMENT_ID_FOUND" nnum="70107" txt="Element $ id * is duplicated: "></assert>
+        </result>
+    </variation>
+    <variation id="_111ng">
+        <name>Hidden element has continuation as a descendant.</name>
+        <description>FAIL-hidden-continuation-element</description>
+        <reference xiitest="NONE"></reference>
+        <reference xiispec="4.1.1"></reference>
+        <reference specification="The ix:continuation element MUST NOT be a descendant of an ix:hidden element."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i07111ng/i07111ng-20081231.htm</instance>
+            <linkbase>i07111ng/i07111ng-20081231_pre.xml</linkbase>
+            <linkbase>i07111ng/i07111ng-20081231_lab.xml</linkbase>
+            <schema>i07111ng/i07111ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.4.1.1:ancestorNodeDisallowed" frd="ix" fj="IXBRL_CONTINUATION_ANCESTOR_HIDDEN" nnum="70107" txt="Inline XBRL ix:continuation may not be nested in ix:hidden element"></assert>
+        </result>
+    </variation>
+    <variation id="_112ng">
+        <name>Continuation continues at itself, could be one of several errors, NOGOOD</name>
+        <description>FAIL-continuation-orphaned-cycle</description>
+        <reference xiitest="FAIL-continuation-orphaned-cycle"></reference>
+        <reference xiispec="4.1.2"></reference>
+        <reference specification="The {continuation chain} property MUST NOT contain any element which is a descendant of any other element in the {continuation chain} property."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i07112ng/i07112ng-20081231.htm</instance>
+            <linkbase>i07112ng/i07112ng-20081231_pre.xml</linkbase>
+            <linkbase>i07112ng/i07112ng-20081231_lab.xml</linkbase>
+            <schema>i07112ng/i07112ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.4.1.2:continuationNotReferenced" frd="ix" fj="IXBRL_CONTINUATION_OR_CONTINUE_REF_ILLEGAL_TO_ANCESTOR_OR_SELF" nnum="70107" txt="Inline XBRL continuation chain element * has descendant element #"></assert>
+            <assert severity="err" num="99999" name="ix11.4.1.2:continuationNotReferenced" frd="ix" fj="IXBRL_CONTINUATION_CYCLIC_REFERENCE" nnum="70107" txt="Inline XBRL continuation cycle: $"></assert>
+        </result>
+    </variation>
+    <variation id="_113ng">
+        <name>Nonnumeric points to continuation, points back to Nonnumeric.</name>
+        <description>FAIL-continuation-nonNumeric-circular2</description>
+        <reference xiitest="FAIL-continuation-nonNumeric-circular2"></reference>
+        <reference xiispec="4.1.2"></reference>
+        <reference xiispec="11.1.2"></reference>
+        <reference specification="If the continuedAt attribute is present, the {continuation reference} property MUST NOT match the {continuation reference} property of any other element in the Inline XBRL Document Set."></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i07113ng/i07113ng-20081231.htm</instance>
+            <linkbase>i07113ng/i07113ng-20081231_pre.xml</linkbase>
+            <linkbase>i07113ng/i07113ng-20081231_lab.xml</linkbase>
+            <schema>i07113ng/i07113ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="ix11.4.1.2:continuationTarget" frd="ix" fj="IXBRL_NON_NUMERIC_AND_CONTINUATION_CYCLIC" nnum="70107" txt="continuedAt $ target is an * element instead of ix:continuation element."></assert>
+            <assert severity="err" num="99999" name="ix11.4.1.2:continuationCycle" frd="ix" fj="IXBRL_CONTINUATION_CYCLIC_REFERENCE" nnum="70107" txt="Inline XBRL continuation cycle: $"></assert>
+        </result>
+    </variation>
+</testcase>

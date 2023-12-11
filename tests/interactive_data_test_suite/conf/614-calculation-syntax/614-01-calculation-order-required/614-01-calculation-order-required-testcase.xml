@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>614-01</number>
+    <name>EDGAR Filer Manual v68d 6.14.1</name>
+    <description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.14.1  Element link:calculationArc requires an order attribute.">Refer to EFM: 6.14.1  Element link:calculationArc requires an order attribute.</a>
+    </description>
+    <variation id="_001ng">
+        <name>6.14.1, calculation arc missing order attribute, NOGOOD.</name>
+        <description>calculation arc missing order attribute, NOGOOD.</description>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'></parameter>
+            <instance readMeFirst="true">e61401001ng-20081231.xml</instance>
+            <linkbase>e61401001ng-20081231_lab.xml</linkbase>
+            <linkbase>e61401001ng-20081231_pre.xml</linkbase>
+            <linkbase>e61401001ng-20081231_cal.xml</linkbase>
+            <linkbase>edgar-20081231_pre.xml</linkbase>
+            <linkbase>edgar-20081231_def.xml</linkbase>
+            <linkbase>edgar-20081231_lab.xml</linkbase>
+            <schema>edgar-20081231.xsd</schema>
+            <schema>e61401001ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="61401" name="Calculation-Relationship-Order-Missing" frd="du"></assert>
+        </result>
+    </variation>
+</testcase>

@@ -1,0 +1,175 @@
+<html xmlns:case="http://edgar/2009/conformance">
+  <head>
+    <title>525-05
+        :
+        Inline XBRL Test Suite v68d : Exclude tests, Not EDGAR Dependent</title>
+    <style type="text/css">
+        table, td, th {border: solid black 1pt; border-collapse: collapse;} td {vertical-align: top;}
+      </style>
+  </head>
+  <body>
+    <h1>525-05
+        :
+        Inline XBRL Test Suite v68d : Exclude tests, Not EDGAR Dependent</h1>
+    <p>
+        Created by: 
+        <a href="mailto:StructuredData@sec.gov">SEC Office of Structured Disclosure</a></p>
+    <p>
+      <description xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <h2>Various "good" (gd) and "not good" (ng) test files that demonstrate specific iXBRL Exclude usage</h2>
+    </description>
+    </p>
+    <h2>
+        Variations
+      </h2>
+    <table border="solid">
+      <thead>
+        <tr>
+          <th>Number</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>References</th>
+          <th>Data Inputs</th>
+          <th>Result Outputs</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>_001gd</td>
+          <td>excludes some content in a nonNumeric, GOOD</td>
+          <td>excludes some content in a nonNumeric</td>
+          <td>Various exclude examples (The ix:exclude element is a descendant of ix:nonNumeric element) 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i05001gd/i05001gd-20081231.htm">i05001gd/i05001gd-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i05001gd/i05001gd-20081231_pre.xml">i05001gd/i05001gd-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i05001gd/i05001gd-20081231_lab.xml">i05001gd/i05001gd-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i05001gd/i05001gd-20081231.xsd">i05001gd/i05001gd-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul>valid</ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_100ng</td>
+          <td>Invalid excluded content of nonFraction (which will be a parent any time it is an ancestor), NOGOOD</td>
+          <td>FAIL-exclude-nonFraction-parent</td>
+          <td>nonFraction Content: ( ix:nonFraction | any text node ) 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i05100ng/i05100ng-20081231.htm">i05100ng/i05100ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i05100ng/i05100ng-20081231_pre.xml">i05100ng/i05100ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i05100ng/i05100ng-20081231_lab.xml">i05100ng/i05100ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i05100ng/i05100ng-20081231.xsd">i05100ng/i05100ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.5.1.1:excludeMisplaced">ix11.5.1.1:excludeMisplaced</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+        <tr>
+          <td>_101ng</td>
+          <td>misplaced ix:exclude, NOGOOD</td>
+          <td>FAIL-misplaced-exclude</td>
+          <td>The ix:exclude element MUST be a descendant of at least one ix:continuation, ix:footnote or ix:nonNumeric element 
+    </td>
+          <td>
+            <ul>
+              <li>
+                <table align="top">
+                  <tr>
+                    <th colspan="2" align="left">Parameter</th>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>ELOparams</td>
+                  </tr>
+                  <tr>
+                    <td>Type</td>
+                    <td/>
+                  </tr>
+                  <tr>
+                    <td>Value</td>
+                    <td>{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }</td>
+                  </tr>
+                </table>
+              </li>
+              <li>
+    Instance
+    <a href="i05101ng/i05101ng-20081231.htm">i05101ng/i05101ng-20081231.htm</a>
+ReadMeFirst</li>
+              <li>
+    Linkbase
+    <a href="i05101ng/i05101ng-20081231_pre.xml">i05101ng/i05101ng-20081231_pre.xml</a></li>
+              <li>
+    Linkbase
+    <a href="i05101ng/i05101ng-20081231_lab.xml">i05101ng/i05101ng-20081231_lab.xml</a></li>
+              <li>
+    Schema
+    <a href="i05101ng/i05101ng-20081231.xsd">i05101ng/i05101ng-20081231.xsd</a></li>
+            </ul>
+          </td>
+          <td><ul><li><table align="top"><tr><th colspan="2" align="left">Assertion</th></tr><tr><td colspan="2" align="left">ID:  err, 99999, <a href="../../../../lib/xbrlerrors.htm#ix-9999-ix11.5.1.1:excludeMisplaced">ix11.5.1.1:excludeMisplaced</a></td></tr><tr><td>FRD:</td><td>ix</td></tr><tr><td>Count satisfied</td><td>0</td></tr><tr><td>Count not satisfied</td><td>1</td></tr></table></li></ul> 
+    </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

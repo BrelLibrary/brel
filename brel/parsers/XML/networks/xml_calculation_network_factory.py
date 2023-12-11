@@ -52,7 +52,7 @@ class CalculationNetworkFactory(IXMLNetworkFactory):
             # the node is an inner node
             weight = float(xml_arc.attrib.get("weight") or 0.0)
             arc_role = xml_arc.attrib.get("{" + nsmap["xlink"] + "}arcrole")
-            order = int(xml_arc.attrib.get("order") or 1)
+            order = float(xml_arc.attrib.get("order") or 1)
             arc_qname = QName.from_string(xml_arc.tag)
         else:
             raise ValueError(f"referenced element {xml_referenced_element} is not connected to arc {xml_arc}")

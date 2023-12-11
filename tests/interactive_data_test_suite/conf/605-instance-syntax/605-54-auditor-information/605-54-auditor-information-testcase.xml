@@ -1,0 +1,519 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../lib/test.xsl"?>
+<conf:testcase xmlns:conf="http://edgar/2009/conformance" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../lib/test.xsd">
+    <conf:creator>
+        <conf:name>SEC Office of Structured Disclosure</conf:name>
+        <conf:email>StructuredData@sec.gov</conf:email>
+    </conf:creator>
+    <conf:number>605-54</conf:number>
+    <conf:name>EDGAR Filer Manual v68d 6.5.54</conf:name>
+    <conf:description xmlns="">
+        <div>
+            <h3>6.5.54 Auditor Name, Location, and Firm ID</h3>
+            <p style="color: black;">The name represents the plain text (not logo
+        nor signature) name of the auditor; the location text represents the
+        city along with either or both country, US state or Canadian province;
+        the firm ID is the auditors&#226;&#8364;&#8482; Firm ID as assigned by the US PCAOB.</p>
+            <p style="color: black;">If the dei namespace version used in the
+        filing has those three standard elements, then the absence of any of
+        the three facts will cause the filing to be suspended (see table in
+        6.5.21).</p>
+            <p style="color: black;">If the dei namespace version used in a
+        filing does not have the three standard elements, the use of that dei
+        namespace version will cause the filing to be suspended. The filer
+        will need to resubmit the filing with a dei namespace version that has
+        the three standard elements.</p>
+            <p style="color: black;">All three facts must also be visible in the
+        sense defined by 5.2.5.14, and should be tagged where they normally
+        appear, adjacent to the auditors&#226;&#8364;&#8482; opinion.</p>
+            <p style="color: black;">In addition to the primary auditor in the
+        Required Context, additional auditor names, locations and firm ids
+        should be tagged in other contexts distinguished by the relevant
+        reporting period of that audit opinion, and/or a distinct member of
+        one of the following axes in a standard namespace:</p>
+            <ol style="color: black;" type="a">
+                <li style="padding-left: 2em">ConsolidatedEntitiesAxis for
+            subsidiaries,</li>
+                <li style="padding-left: 2em">ScheduleOEquityMethodInvestmentEquityMethodInvesteeNameAxis
+            for investments,</li>
+                <li style="padding-left: 2em">LegalEntityAxis for branches,</li>
+                <li style="padding-left: 2em">OwnershipAxis for components,</li>
+                <li style="padding-left: 2em">CounterpartyNameAxis for all others.</li>
+            </ol>
+            <p style="color: black;">In those other contexts where one of the
+        three facts appear, the other two must also appear.</p>
+        </div>
+    </conf:description>
+    <conf:variation id="_105gd">
+        <conf:name>20-F,  GD</conf:name>
+        <conf:description>20-F,  Auditor information tags required and present in default context. GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"datetimeForTesting":"2022-06-30", "submissionType" : "20-F" ,"periodOfReport" : "12-31-2021" ,"emergingGrowthCompanyFlag" : false ,"acceleratedFilerStatus" : "Large Accelerated Filer" ,"voluntaryFilerFlag" : false ,"shellCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60554105gd/e60554105gd-20081231.htm</conf:instance>
+            <conf:schema>e60554105gd/eifrs-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_106gd">
+        <conf:name>40-F,  GD</conf:name>
+        <conf:description>40-F,  Auditor information tags required and present in default context. GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"datetimeForTesting":"2022-06-30", "submissionType" : "40-F" ,"periodOfReport" : "12-31-2021" ,"emergingGrowthCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60554106gd/e60554106gd-20081231.htm</conf:instance>
+            <conf:schema>e60554106gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_107gd">
+        <conf:name>10-KT , GD</conf:name>
+        <conf:description>10-KT,  Auditor information tags required and present in default context. GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"datetimeForTesting":"2022-06-30", "submissionType": "10-KT", "periodOfReport": "12-31-2021", "smallBusinessFlag": false, "shellCompanyFlag": false, "voluntaryFilerFlag": false, "wellKnownSeasonedIssuerFlag": true, "acceleratedFilerStatus": "Large Accelerated Filer", "emergingGrowthCompanyFlag": false, "exTransitionPeriodFlag": false}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60554107gd/e60554107gd-20081231.htm</conf:instance>
+            <conf:schema>e60554107gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_110gd">
+        <conf:name>10-K , GD</conf:name>
+        <conf:description>10-K,  Auditor information tags required and present in default context. GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"datetimeForTesting":"2022-06-30", "submissionType": "10-K", "periodOfReport": "12-31-2021", "smallBusinessFlag": false, "shellCompanyFlag": false, "voluntaryFilerFlag": false, "wellKnownSeasonedIssuerFlag": true, "acceleratedFilerStatus": "Large Accelerated Filer", "emergingGrowthCompanyFlag": false, "exTransitionPeriodFlag": false}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60554110gd/e60554110gd-20081231.htm</conf:instance>
+            <conf:schema>e60554110gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_111gd">
+        <conf:name>10-K/A , GD</conf:name>
+        <conf:description>10-K/A,  Auditor information tags required and present in default context. GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"datetimeForTesting":"2022-06-30", "submissionType": "10-K/A", "periodOfReport": "12-31-2021", "smallBusinessFlag": false, "shellCompanyFlag": false, "voluntaryFilerFlag": false, "wellKnownSeasonedIssuerFlag": true, "acceleratedFilerStatus": "Large Accelerated Filer", "emergingGrowthCompanyFlag": false, "exTransitionPeriodFlag": false}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60554111gd/e60554111gd-20081231.htm</conf:instance>
+            <conf:schema>e60554111gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_112ng">
+        <conf:name>10-K, Auditor info not in default context. NG</conf:name>
+        <conf:description>10-K,  Auditor information not in default context. NG</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"datetimeForTesting":"2022-06-30", "submissionType": "10-K", "periodOfReport": "12-31-2021", "smallBusinessFlag": false, "shellCompanyFlag": false, "voluntaryFilerFlag": false, "wellKnownSeasonedIssuerFlag": true, "acceleratedFilerStatus": "Large Accelerated Filer", "emergingGrowthCompanyFlag": false, "exTransitionPeriodFlag": false}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60554112ng/e60554112ng-20081231.htm</conf:instance>
+            <conf:schema>e60554112ng/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60554" name="auditorInformationNotInRequiredContext" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_113ng">
+        <conf:name>10-K, Auditor information: auditorLocation missing. NG</conf:name>
+        <conf:description>10-K, Auditor information: auditorLocation missing. NG</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"datetimeForTesting":"2022-06-30", "submissionType": "10-K", "periodOfReport": "12-31-2021", "smallBusinessFlag": false, "shellCompanyFlag": false, "voluntaryFilerFlag": false, "wellKnownSeasonedIssuerFlag": true, "acceleratedFilerStatus": "Large Accelerated Filer", "emergingGrowthCompanyFlag": false, "exTransitionPeriodFlag": false, "datetimeForTesting":"2022-06-30" }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60554113ng/e60554113ng-20081231.htm</conf:instance>
+            <conf:schema>e60554113ng/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60554" name="auditorLocationMissing" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_114ng">
+        <conf:name>10-K, Auditor information: auditorName missing. NG</conf:name>
+        <conf:description>10-K, Auditor information: auditorName missing. NG</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"datetimeForTesting":"2022-06-30", "submissionType": "10-K", "periodOfReport": "12-31-2021", "smallBusinessFlag": false, "shellCompanyFlag": false, "voluntaryFilerFlag": false, "wellKnownSeasonedIssuerFlag": true, "acceleratedFilerStatus": "Large Accelerated Filer", "emergingGrowthCompanyFlag": false, "exTransitionPeriodFlag": false}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60554114ng/e60554114ng-20081231.htm</conf:instance>
+            <conf:schema>e60554114ng/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60554" name="auditorNameMissing" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_115ng">
+        <conf:name>10-K, Auditor information: auditorFirmId missing. NG</conf:name>
+        <conf:description>10-K, Auditor information: auditorFirmId missing. NG</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"datetimeForTesting":"2022-06-30", "submissionType": "10-K", "periodOfReport": "12-31-2021", "smallBusinessFlag": false, "shellCompanyFlag": false, "voluntaryFilerFlag": false, "wellKnownSeasonedIssuerFlag": true, "acceleratedFilerStatus": "Large Accelerated Filer", "emergingGrowthCompanyFlag": false, "exTransitionPeriodFlag": false}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60554115ng/e60554115ng-20081231.htm</conf:instance>
+            <conf:schema>e60554115ng/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60554" name="auditorFirmIdMissing" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_116ng">
+        <conf:name>10-K, Auditor information missing. NG</conf:name>
+        <conf:description>10-K, Auditor information missing. NG</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"datetimeForTesting":"2022-06-30", "submissionType": "10-K", "periodOfReport": "12-31-2021", "smallBusinessFlag": false, "shellCompanyFlag": false, "voluntaryFilerFlag": false, "wellKnownSeasonedIssuerFlag": true, "acceleratedFilerStatus": "Large Accelerated Filer", "emergingGrowthCompanyFlag": false, "exTransitionPeriodFlag": false}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60554116ng/e60554116ng-20081231.htm</conf:instance>
+            <conf:schema>e60554116ng/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60554" name="auditorInformationMissing" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_117ng">
+        <conf:name>10-K, Auditor information: auditorName and auditorLocation are empty string. NG</conf:name>
+        <conf:description>10-K, Auditor information: auditorName and auditorLocation are empty string. NG</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"datetimeForTesting":"2022-06-30", "submissionType": "10-K", "periodOfReport": "12-31-2021", "smallBusinessFlag": false, "shellCompanyFlag": false, "voluntaryFilerFlag": false, "wellKnownSeasonedIssuerFlag": true, "acceleratedFilerStatus": "Large Accelerated Filer", "emergingGrowthCompanyFlag": false, "exTransitionPeriodFlag": false}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60554117ng/e60554117ng-20081231.htm</conf:instance>
+            <conf:schema>e60554117ng/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="99999" name="xmlSchema:valueError" frd="ix"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_118ng">
+        <conf:name>10-K, Auditor information: hidden, NG</conf:name>
+        <conf:description>10-K, Auditor information: hidden, NG</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"datetimeForTesting":"2022-06-30", "submissionType": "10-K", "periodOfReport": "12-31-2021", "smallBusinessFlag": false, "shellCompanyFlag": false, "voluntaryFilerFlag": false, "wellKnownSeasonedIssuerFlag": true, "acceleratedFilerStatus": "Large Accelerated Filer", "emergingGrowthCompanyFlag": false, "exTransitionPeriodFlag": false}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60554118ng/e60554118ng-20081231.htm</conf:instance>
+            <conf:schema>e60554118ng/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60545" name="" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_119ng">
+        <conf:name>10-K, Auditor Info: auditorLocation is nil. NG</conf:name>
+        <conf:description>10-K,  Auditor information: auditorLocation is nil. NG</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"datetimeForTesting":"2022-06-30", "submissionType": "10-K", "periodOfReport": "12-31-2021", "smallBusinessFlag": false, "shellCompanyFlag": false, "voluntaryFilerFlag": false, "wellKnownSeasonedIssuerFlag": true, "acceleratedFilerStatus": "Large Accelerated Filer", "emergingGrowthCompanyFlag": false, "exTransitionPeriodFlag": false}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60554119ng/e60554119ng-20081231.htm</conf:instance>
+            <conf:schema>e60554119ng/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60554" name="" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_120ng">
+        <conf:name>10-K, Auditor information: auditorFirmId negative number. NG</conf:name>
+        <conf:description>10-K, Auditor information: auditorFirmId negative number. NG</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"datetimeForTesting":"2022-06-30", "submissionType": "10-K", "periodOfReport": "12-31-2021", "smallBusinessFlag": false, "shellCompanyFlag": false, "voluntaryFilerFlag": false, "wellKnownSeasonedIssuerFlag": true, "acceleratedFilerStatus": "Large Accelerated Filer", "emergingGrowthCompanyFlag": false, "exTransitionPeriodFlag": false}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60554120ng/e60554120ng-20081231.htm</conf:instance>
+            <conf:schema>e60554120ng/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="99999" name="xmlSchema:valueError" frd="ix"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_121ng">
+        <conf:name>10-K, Auditor information: auditorFirmId nil value. NG</conf:name>
+        <conf:description>10-K, Auditor information: auditorFirmId nil value. NG</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"datetimeForTesting":"2022-06-30", "submissionType": "10-K", "periodOfReport": "12-31-2021", "smallBusinessFlag": false, "shellCompanyFlag": false, "voluntaryFilerFlag": false, "wellKnownSeasonedIssuerFlag": true, "acceleratedFilerStatus": "Large Accelerated Filer", "emergingGrowthCompanyFlag": false, "exTransitionPeriodFlag": false}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60554121ng/e60554121ng-20081231.htm</conf:instance>
+            <conf:schema>e60554121ng/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60554" name="auditorFirmIdMissing" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_122ng">
+        <conf:name>10-K, Auditor information: auditorFirmId string value. NG</conf:name>
+        <conf:description>10-K, Auditor information: auditorFirmId string value. NG</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"datetimeForTesting":"2022-06-30", "submissionType": "10-K", "periodOfReport": "12-31-2021", "smallBusinessFlag": false, "shellCompanyFlag": false, "voluntaryFilerFlag": false, "wellKnownSeasonedIssuerFlag": true, "acceleratedFilerStatus": "Large Accelerated Filer", "emergingGrowthCompanyFlag": false, "exTransitionPeriodFlag": false}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60554122ng/e60554122ng-20081231.htm</conf:instance>
+            <conf:schema>e60554122ng/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="99999" name="xmlSchema:valueError" frd="ix"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_123gd">
+        <conf:name>10-Q,  GD</conf:name>
+        <conf:description>10-Q,  GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"datetimeForTesting":"2022-06-30", "periodOfReport" : "12-31-2021" , "emergingGrowthCompanyFlag" : false , "smallBusinessFlag" : false , "submissionType" : "10-Q"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60554123gd/e60554123gd-20081231.htm</conf:instance>
+            <conf:schema>e60554123gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_124gw">
+        <conf:name>10-Q, Auditor information present, GW</conf:name>
+        <conf:description>10-Q, Auditor Information present, GW</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"datetimeForTesting":"2022-06-30", "periodOfReport" : "12-31-2021" , "emergingGrowthCompanyFlag" : false , "smallBusinessFlag" : false , "submissionType" : "10-Q"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60554124gw/e60554124gw-20081231.htm</conf:instance>
+            <conf:schema>e60554124gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60554" name="" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_125gd">
+        <conf:name>10-Q,  Auditor info tags present but have nil value. GD</conf:name>
+        <conf:description>10-Q,  Auditor info tags present but have nil value. GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"datetimeForTesting":"2022-06-30", "periodOfReport" : "12-31-2021" , "emergingGrowthCompanyFlag" : false , "smallBusinessFlag" : false , "submissionType" : "10-Q"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60554125gd/e60554125gd-20081231.htm</conf:instance>
+            <conf:schema>e60554125gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_126gd">
+        <conf:name>10-K , Auditor information in dei:LegalEntityAxis, GD</conf:name>
+        <conf:description>10-K , Auditor information in dei:LegalEntityAxis, GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"datetimeForTesting":"2022-06-30", "submissionType": "10-K", "periodOfReport": "12-31-2021", "smallBusinessFlag": false, "shellCompanyFlag": false, "voluntaryFilerFlag": false, "wellKnownSeasonedIssuerFlag": true, "acceleratedFilerStatus": "Large Accelerated Filer", "emergingGrowthCompanyFlag": false, "exTransitionPeriodFlag": false}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60554126gd/e60554126gd-20081231.htm</conf:instance>
+            <conf:schema>e60554126gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_127gd">
+        <conf:name>10-K , Auditor information in dei:LegalEntityAxis (two entities), GD</conf:name>
+        <conf:description>10-K , Auditor information in dei:LegalEntityAxis, (two entities) GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"datetimeForTesting":"2022-06-30", "submissionType": "10-K", "periodOfReport": "12-31-2021", "smallBusinessFlag": false, "shellCompanyFlag": false, "voluntaryFilerFlag": false, "wellKnownSeasonedIssuerFlag": true, "acceleratedFilerStatus": "Large Accelerated Filer", "emergingGrowthCompanyFlag": false, "exTransitionPeriodFlag": false}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60554127gd/e60554127gd-20081231.htm</conf:instance>
+            <conf:schema>e60554127gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_128ng">
+        <conf:name>10-K , Auditor information incomplete in dei:LegalEntityAxis,  NG</conf:name>
+        <conf:description>10-K , Auditor information incomplete in dei:LegalEntityAxis, NG</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"datetimeForTesting":"2022-06-30", "submissionType": "10-K", "periodOfReport": "12-31-2021", "smallBusinessFlag": false, "shellCompanyFlag": false, "voluntaryFilerFlag": false, "wellKnownSeasonedIssuerFlag": true, "acceleratedFilerStatus": "Large Accelerated Filer", "emergingGrowthCompanyFlag": false, "exTransitionPeriodFlag": false}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60554128ng/e60554128ng-20081231.htm</conf:instance>
+            <conf:schema>e60554128ng/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60554" name="auditorFirmIdMissing" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_129gw">
+        <conf:name>10-K , Auditor information in dei:LegalEntityAxis, along with not-permitted axis,  NG</conf:name>
+        <conf:description>10-K , Auditor information in dei:LegalEntityAxis, along with not-permitted axis, NG</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"datetimeForTesting":"2022-06-30", "submissionType": "10-K", "periodOfReport": "12-31-2021", "smallBusinessFlag": false, "shellCompanyFlag": false, "voluntaryFilerFlag": false, "wellKnownSeasonedIssuerFlag": true, "acceleratedFilerStatus": "Large Accelerated Filer", "emergingGrowthCompanyFlag": false, "exTransitionPeriodFlag": false}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60554129gw/e60554129gw-20081231.htm</conf:instance>
+            <conf:schema>e60554129gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60554" name="auditorFirmIdMissing" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_130gd">
+        <conf:name>10-K , Auditor information in srt:ConsolidatedEntitiesAxis, GD</conf:name>
+        <conf:description>10-K , Auditor information in srt:ConsolidatedEntitiesAxis, GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"datetimeForTesting":"2022-06-30", "submissionType": "10-K", "periodOfReport": "12-31-2021", "smallBusinessFlag": false, "shellCompanyFlag": false, "voluntaryFilerFlag": false, "wellKnownSeasonedIssuerFlag": true, "acceleratedFilerStatus": "Large Accelerated Filer", "emergingGrowthCompanyFlag": false, "exTransitionPeriodFlag": false}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60554130gd/e60554130gd-20081231.htm</conf:instance>
+            <conf:schema>e60554130gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_131ng">
+        <conf:name>10-K , Auditor information incomplete in srt:ConsolidatedEntitiesAxis, NG</conf:name>
+        <conf:description>10-K , Auditor information incomplete in srt:ConsolidatedEntitiesAxis, NG</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"datetimeForTesting":"2022-06-30", "submissionType": "10-K", "periodOfReport": "12-31-2021", "smallBusinessFlag": false, "shellCompanyFlag": false, "voluntaryFilerFlag": false, "wellKnownSeasonedIssuerFlag": true, "acceleratedFilerStatus": "Large Accelerated Filer", "emergingGrowthCompanyFlag": false, "exTransitionPeriodFlag": false}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60554131ng/e60554131ng-20081231.htm</conf:instance>
+            <conf:schema>e60554131ng/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60554" name="auditorNameAuditorLocationAuditorFirmIdMutualDependency" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_132gd">
+        <conf:name>10-K , Auditor information in srt:ScheduleOfEquityMethodInvestmentEquityMethodInvesteeNameAxis, GD</conf:name>
+        <conf:description>10-K , Auditor information in srt:ScheduleOfEquityMethodInvestmentEquityMethodInvesteeNameAxis, GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"datetimeForTesting":"2022-06-30", "submissionType": "10-K", "periodOfReport": "12-31-2021", "smallBusinessFlag": false, "shellCompanyFlag": false, "voluntaryFilerFlag": false, "wellKnownSeasonedIssuerFlag": true, "acceleratedFilerStatus": "Large Accelerated Filer", "emergingGrowthCompanyFlag": false, "exTransitionPeriodFlag": false}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60554132gd/e60554132gd-20081231.htm</conf:instance>
+            <conf:schema>e60554132gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_134gd">
+        <conf:name>10-K , Auditor information in srt:OwnershipAxis, GD</conf:name>
+        <conf:description>10-K , Auditor information in srt:OwnershipAxis, GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"datetimeForTesting":"2022-06-30", "submissionType": "10-K", "periodOfReport": "12-31-2021", "smallBusinessFlag": false, "shellCompanyFlag": false, "voluntaryFilerFlag": false, "wellKnownSeasonedIssuerFlag": true, "acceleratedFilerStatus": "Large Accelerated Filer", "emergingGrowthCompanyFlag": false, "exTransitionPeriodFlag": false}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60554134gd/e60554134gd-20081231.htm</conf:instance>
+            <conf:schema>e60554134gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid">
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_135ng">
+        <conf:name>10-K , Auditor information incomplete in srt:OwnershipAxis, NG</conf:name>
+        <conf:description>10-K , Auditor information incomplete in srt:OwnershipAxis, NG</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"datetimeForTesting":"2022-06-30", "submissionType": "10-K", "periodOfReport": "12-31-2021", "smallBusinessFlag": false, "shellCompanyFlag": false, "voluntaryFilerFlag": false, "wellKnownSeasonedIssuerFlag": true, "acceleratedFilerStatus": "Large Accelerated Filer", "emergingGrowthCompanyFlag": false, "exTransitionPeriodFlag": false}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60554135ng/e60554135ng-20081231.htm</conf:instance>
+            <conf:schema>e60554135ng/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60554" name="auditorNameAuditorLocationAuditorFirmIdMutualDependency" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_140ng">
+        <conf:name>10-K, Auditor information: auditorFirmId has blank value. NG</conf:name>
+        <conf:description>10-K, Auditor information: auditorFirmId has blank value. NG</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" value='{"datetimeForTesting":"2022-06-30", "submissionType": "10-K", "periodOfReport": "12-31-2021", "smallBusinessFlag": false, "shellCompanyFlag": false, "voluntaryFilerFlag": false, "wellKnownSeasonedIssuerFlag": true, "acceleratedFilerStatus": "Large Accelerated Filer", "emergingGrowthCompanyFlag": false, "exTransitionPeriodFlag": false}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60554140ng/e60554140ng-20081231.htm</conf:instance>
+            <conf:schema>e60554140ng/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="99999" name="xmlSchema:valueError" frd="ix"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_150gd">
+        <conf:name>8-K , GD</conf:name>
+        <conf:description>8-K,  GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"datetimeForTesting":"2022-06-30", "periodOfReport" : "12-31-2021" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60554150gd/e60554150gd-20081231.htm</conf:instance>
+            <conf:schema>e60554150gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_151gw">
+        <conf:name>8-K , Auditor information provided, but not permitted, GW</conf:name>
+        <conf:description>8-K,  Auditor information provided, but not permitted, GW</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"datetimeForTesting":"2022-06-30", "periodOfReport" : "12-31-2021" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60554151gw/e60554151gw-20081231.htm</conf:instance>
+            <conf:schema>e60554151gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60554" name="auditorFirmIdUnexpected" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_160gd">
+        <conf:name>20-F,  GD</conf:name>
+        <conf:description>20-F,  Auditor information tags required and present in default context. GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"datetimeForTesting":"2022-06-30", "submissionType" : "20-F" ,"periodOfReport" : "12-31-2021" ,"emergingGrowthCompanyFlag" : false ,"acceleratedFilerStatus" : "Large Accelerated Filer" ,"voluntaryFilerFlag" : false ,"shellCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60554160gd/e60554160gd-20081231.htm</conf:instance>
+            <conf:schema>e60554160gd/eifrs-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_161gd">
+        <conf:name>20-F,  GD</conf:name>
+        <conf:description>20-F,  Auditor information tags required and present in prior-context-and-default-context. GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"datetimeForTesting":"2022-06-30", "submissionType" : "20-F" ,"periodOfReport" : "12-31-2021" ,"emergingGrowthCompanyFlag" : false ,"acceleratedFilerStatus" : "Large Accelerated Filer" ,"voluntaryFilerFlag" : false ,"shellCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60554161gd/e60554161gd-20081231.htm</conf:instance>
+            <conf:schema>e60554161gd/eifrs-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_162ng">
+        <conf:name>20-F,  NG</conf:name>
+        <conf:description>20-F,  Auditor information tags required and not present in default-context-and-future-context. NG</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"datetimeForTesting":"2022-06-30", "submissionType" : "20-F" ,"periodOfReport" : "12-31-2021" ,"emergingGrowthCompanyFlag" : false ,"acceleratedFilerStatus" : "Large Accelerated Filer" ,"voluntaryFilerFlag" : false ,"shellCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60554162ng/e60554162ng-20081231.htm</conf:instance>
+            <conf:schema>e60554162ng/eifrs-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60554" name="auditorFirmIdUnexpectedauditorFirmIdUnexpected" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_163ng">
+        <conf:name>20-F,  NG</conf:name>
+        <conf:description>20-F,  Auditor information tags required and present in future-context-no-default-context. NG</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"datetimeForTesting":"2022-06-30", "submissionType" : "20-F" ,"periodOfReport" : "12-31-2021" ,"emergingGrowthCompanyFlag" : false ,"acceleratedFilerStatus" : "Large Accelerated Filer" ,"voluntaryFilerFlag" : false ,"shellCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60554163ng/e60554163ng-20081231.htm</conf:instance>
+            <conf:schema>e60554163ng/eifrs-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60554" name="auditorFirmIdMissing" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_164ng">
+        <conf:name>20-F,  NG</conf:name>
+        <conf:description>20-F,  Auditor information tags required and present in prior-context-no-default-context. NG</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"datetimeForTesting":"2022-06-30", "submissionType" : "20-F" ,"periodOfReport" : "12-31-2021" ,"emergingGrowthCompanyFlag" : false ,"acceleratedFilerStatus" : "Large Accelerated Filer" ,"voluntaryFilerFlag" : false ,"shellCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60554164ng/e60554164ng-20081231.htm</conf:instance>
+            <conf:schema>e60554164ng/eifrs-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="err" num="60554" name="auditorFirmIdMissing" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_170gd">
+        <conf:name>20-F,  GD</conf:name>
+        <conf:description>20-F,  Auditor information tags not required, but present, default context, where periodOfReport before cutoff date. GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"datetimeForTesting":"2022-06-30", "submissionType" : "20-F" ,"periodOfReport" : "11-14-2021" ,"emergingGrowthCompanyFlag" : false ,"acceleratedFilerStatus" : "Large Accelerated Filer" ,"voluntaryFilerFlag" : false ,"shellCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60554170gd/e60554170gd-20081231.htm</conf:instance>
+            <conf:schema>e60554170gd/eifrs-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_171gd">
+        <conf:name>20-F,  GD</conf:name>
+        <conf:description>20-F,  Auditor information tags not required and present in default context, where periodOfReport = the cutfoff date. GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"datetimeForTesting":"2022-06-30", "submissionType" : "20-F" ,"periodOfReport" : "11-15-2021" ,"emergingGrowthCompanyFlag" : false ,"acceleratedFilerStatus" : "Large Accelerated Filer" ,"voluntaryFilerFlag" : false ,"shellCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60554171gd/e60554171gd-20081231.htm</conf:instance>
+            <conf:schema>e60554171gd/eifrs-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_172gd">
+        <conf:name>20-F,  GD</conf:name>
+        <conf:description>20-F,  Auditor information tags required and present in default context, periodOfReport is after the cutoff date. GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"datetimeForTesting":"2022-06-30", "submissionType" : "20-F" ,"periodOfReport" : "11-16-2021" ,"emergingGrowthCompanyFlag" : false ,"acceleratedFilerStatus" : "Large Accelerated Filer" ,"voluntaryFilerFlag" : false ,"shellCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60554172gd/e60554172gd-20081231.htm</conf:instance>
+            <conf:schema>e60554172gd/eifrs-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_173gd">
+        <conf:name>20-F,  GD</conf:name>
+        <conf:description>20-F,  Auditor information tags not required, and NOT present, default context, where periodOfReport before cutoff date. GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"datetimeForTesting":"2022-06-30", "submissionType" : "20-F" ,"periodOfReport" : "11-14-2021" ,"emergingGrowthCompanyFlag" : false ,"acceleratedFilerStatus" : "Large Accelerated Filer" ,"voluntaryFilerFlag" : false ,"shellCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60554173gd/e60554173gd-20081231.htm</conf:instance>
+            <conf:schema>e60554173gd/eifrs-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_174gd">
+        <conf:name>20-F,  GD</conf:name>
+        <conf:description>20-F,  Auditor information tags not required and NOT present in default context, where periodOfReport = the cutfoff date. GD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"datetimeForTesting":"2022-06-30", "submissionType" : "20-F" ,"periodOfReport" : "11-15-2021" ,"emergingGrowthCompanyFlag" : false ,"acceleratedFilerStatus" : "Large Accelerated Filer" ,"voluntaryFilerFlag" : false ,"shellCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60554174gd/e60554174gd-20081231.htm</conf:instance>
+            <conf:schema>e60554174gd/eifrs-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_175ng">
+        <conf:name>20-F,  NG</conf:name>
+        <conf:description>20-F,  Auditor information tags required and NOT present in default context, periodOfReport is after the cutoff date. NG</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"datetimeForTesting":"2022-06-30", "submissionType" : "20-F" ,"periodOfReport" : "12-31-2021" ,"emergingGrowthCompanyFlag" : false ,"acceleratedFilerStatus" : "Large Accelerated Filer" ,"voluntaryFilerFlag" : false ,"shellCompanyFlag" : false }'></conf:parameter>
+            <conf:instance readMeFirst="true">e60554175ng/e60554175ng-20081231.htm</conf:instance>
+            <conf:schema>e60554175ng/eifrs-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert severity="wrn" num="60554" name="auditorFirmIdMissing" frd="rq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+</conf:testcase>

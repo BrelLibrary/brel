@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xbrl
+  xmlns="http://www.xbrl.org/2003/instance"
+  xmlns:dei="http://xbrl.sec.gov/dei/2018-01-31"
+  xmlns:iso4217="http://www.xbrl.org/2003/iso4217"
+  xmlns:link="http://www.xbrl.org/2003/linkbase"
+  xmlns:us-gaap="http://fasb.org/us-gaap/2019-01-31"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+    <link:schemaRef xlink:href="i19206gd-20081231.xsd" xlink:type="simple"/>
+    <context id="NineMonthsEnded_2016-09-30">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+        </entity>
+        <period>
+            <startDate>2016-01-01</startDate>
+            <endDate>2016-09-30</endDate>
+        </period>
+    </context>
+    <context id="BalanceAsOf_2015-12-31">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+        </entity>
+        <period>
+            <instant>2015-12-31</instant>
+        </period>
+    </context>
+    <context id="BalanceAsOf_2016-09-30">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+        </entity>
+        <period>
+            <instant>2016-09-30</instant>
+        </period>
+    </context>
+    <unit id="iso4217_USD">
+        <measure>iso4217:USD</measure>
+    </unit>
+    <unit id="iso4217_USD_per_shares">
+        <divide>
+            <unitNumerator>
+                <measure>iso4217:USD</measure>
+            </unitNumerator>
+            <unitDenominator>
+                <measure>shares</measure>
+            </unitDenominator>
+        </divide>
+    </unit>
+    <dei:EntityRegistrantName contextRef="NineMonthsEnded_2016-09-30">OSD TEST CO #1 i19206gd</dei:EntityRegistrantName>
+    <dei:CurrentFiscalYearEndDate contextRef="NineMonthsEnded_2016-09-30">--12-31</dei:CurrentFiscalYearEndDate>
+    <dei:EntityCentralIndexKey contextRef="NineMonthsEnded_2016-09-30">9876543210</dei:EntityCentralIndexKey>
+    <dei:DocumentFiscalPeriodFocus contextRef="NineMonthsEnded_2016-09-30">Q3</dei:DocumentFiscalPeriodFocus>
+    <dei:DocumentPeriodEndDate contextRef="NineMonthsEnded_2016-09-30">2008-12-31</dei:DocumentPeriodEndDate>
+    <dei:AmendmentFlag contextRef="NineMonthsEnded_2016-09-30">false</dei:AmendmentFlag>
+    <dei:EntityEmergingGrowthCompany contextRef="NineMonthsEnded_2016-09-30">false</dei:EntityEmergingGrowthCompany>
+    <dei:DocumentType contextRef="NineMonthsEnded_2016-09-30">8-K</dei:DocumentType>
+    <us-gaap:CashAndCashEquivalentsAtCarryingValue
+      contextRef="BalanceAsOf_2016-09-30"
+      decimals="-3"
+      unitRef="iso4217_USD">288783000</us-gaap:CashAndCashEquivalentsAtCarryingValue>
+    <us-gaap:CashAndCashEquivalentsAtCarryingValue
+      contextRef="BalanceAsOf_2015-12-31"
+      decimals="-3"
+      unitRef="iso4217_USD">362786000</us-gaap:CashAndCashEquivalentsAtCarryingValue>
+</xbrl>

@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>525-11</number>
+    <name>Inline XBRL Test Suite v68d : Hidden tests, Not EDGAR Dependent</name>
+    <description>
+        <h2>Various "good" (gd) and "not good" (ng) test files that demonstrate specific ix:hidden usage</h2>
+    </description>
+    <variation id="_001gd">
+        <name>Hidden_testcases_Set1, GOOD</name>
+        <description>PASS-hidden-nonFraction-content</description>
+        <reference xiispec="9"></reference>
+        <reference specification="9 The Hidden element"></reference>
+        <reference xiitest="PASS-hidden-nonNumeric-content"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i11001gd/i11001gd-20081231.htm</instance>
+            <linkbase>i11001gd/i11001gd-20081231_pre.xml</linkbase>
+            <linkbase>i11001gd/i11001gd-20081231_lab.xml</linkbase>
+            <schema>i11001gd/i11001gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_100ng">
+        <name>ix:hidden element with no children, NOGOOD</name>
+        <description>FAIL-hidden-empty</description>
+        <reference xiispec="9.1"></reference>
+        <reference specification="The ix:hidden element contains (ix:footnote|ix:fraction|ix:nonFraction|ix:nonNumeric|ix:tuple)+"></reference>
+        <reference xiitest="FAIL-hidden-empty"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i11100ng/i11100ng-20081231.htm</instance>
+            <linkbase>i11100ng/i11100ng-20081231_pre.xml</linkbase>
+            <linkbase>i11100ng/i11100ng-20081231_lab.xml</linkbase>
+            <schema>i11100ng/i11100ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70111" txt="cvc-complex-type.2.4.b: The content of element 'ix:hidden' is not complete."></assert>
+        </result>
+    </variation>
+    <variation id="_101ng">
+        <name>ix:hidden with illegal content - div element, NOGOOD</name>
+        <description>FAIL-hidden-illegal-content</description>
+        <reference xiispec="9.1"></reference>
+        <reference specification="The ix:hidden element contains (ix:footnote|ix:fraction|ix:nonFraction|ix:nonNumeric|ix:tuple)+"></reference>
+        <reference xiitest="FAIL-hidden-illegal-content"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i11101ng/i11101ng-20081231.htm</instance>
+            <linkbase>i11101ng/i11101ng-20081231_pre.xml</linkbase>
+            <linkbase>i11101ng/i11101ng-20081231_lab.xml</linkbase>
+            <schema>i11101ng/i11101ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70111" txt="cvc-complex-type.2.4.a: Invalid content was found starting with element 'div'."></assert>
+        </result>
+    </variation>
+    <variation id="_102ng">
+        <name>ix:hidden not child of the the header, NOGOOD</name>
+        <description>FAIL-hidden-not-header-descendant</description>
+        <reference xiispec="9.1.1"></reference>
+        <reference specification="The ix:hidden element MUST be a child of the ix:header element."></reference>
+        <reference xiitest="FAIL-hidden-not-header-descendant"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i11102ng/i11102ng-20081231.htm</instance>
+            <linkbase>i11102ng/i11102ng-20081231_pre.xml</linkbase>
+            <linkbase>i11102ng/i11102ng-20081231_lab.xml</linkbase>
+            <schema>i11102ng/i11102ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70111" txt="cvc-complex-type.2.4.a: Invalid content was found starting with element 'ix:hidden'."></assert>
+        </result>
+    </variation>
+    <variation id="_103ng">
+        <name>ix:hidden in the wrong position within ix:header, NOGOOD</name>
+        <description>FAIL-hidden-incorrect-order-in-header</description>
+        <reference xiispec="8.1"></reference>
+        <reference specification="The ix:references element must have children ix:hidden, ix:references, and/or ix:resources in that order."></reference>
+        <reference xiitest="FAIL-hidden-incorrect-order-in-header"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i11103ng/i11103ng-20081231.htm</instance>
+            <linkbase>i11103ng/i11103ng-20081231_pre.xml</linkbase>
+            <linkbase>i11103ng/i11103ng-20081231_lab.xml</linkbase>
+            <schema>i11103ng/i11103ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70111" txt="cvc-complex-type.2.4.d: Invalid content was found starting with element 'ix:hidden'."></assert>
+        </result>
+    </variation>
+    <variation id="_104ng">
+        <name>ix:hidden with illegal content - text node, NOGOOD</name>
+        <description>FAIL-hidden-illegal-text-content</description>
+        <reference xiispec="9.1"></reference>
+        <reference specification="The ix:hidden element contains (ix:footnote|ix:fraction|ix:nonFraction|ix:nonNumeric|ix:tuple)+"></reference>
+        <reference xiitest="FAIL-hidden-illegal-text-content"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i11104ng/i11104ng-20081231.htm</instance>
+            <linkbase>i11104ng/i11104ng-20081231_pre.xml</linkbase>
+            <linkbase>i11104ng/i11104ng-20081231_lab.xml</linkbase>
+            <schema>i11104ng/i11104ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="99999" name="html:syntaxError" frd="ix" fj="IXBRL_SCHEMA_VIOLATION" nnum="70111" txt=" cvc-complex-type.2.3: Element 'ix:hidden' cannot have character [children], because the type's content type is element-only.]"></assert>
+        </result>
+    </variation>
+</testcase>

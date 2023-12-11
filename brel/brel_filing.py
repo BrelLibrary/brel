@@ -9,7 +9,6 @@ from brel.parsers import IFilingParser, XMLFilingParser
 
 class Filing:
     """A wrapper class for loading and manipulating a filing"""
-    # TODO: update docstrings
     
     def __init__(self, parser: IFilingParser) -> None:
         parser_result = parser.parse()
@@ -46,25 +45,33 @@ class Filing:
         return self.__components
     
     @classmethod
-    def open(cls, folder_path):
+    def open(cls, path, **kwargs):
         """Load a filing from a local folder"""
-        # check if the folder path is a string ending with a slash
-        if not isinstance(folder_path, str) or not folder_path.endswith("/"):
-            raise ValueError(f"The path {folder_path} is not a valid folder path. It has to end with a slash '/'")
-
-        # first check if the file path resolves to a folder
-        if not os.path.isdir(folder_path):
-            # TODO: Don't use exceptions. use message passing instead
-            raise ValueError(f"The path {folder_path} does not resolve to a folder")
         
-        # create a parser for xml
-        # TODO: support parsers for json and csv. also automatically choose the right parser
-        parser = XMLFilingParser(folder_path)
-        
-        # create a new Filing object
-        new_filing = cls(parser)
+        if path.endswith("/"):
+            if not os.path.isdir(path):
+                raise ValueError(f"{path} is not a valid folder path")
 
-        return new_filing
+            folder_filenames = os.listdir(path)
+            instance_file = next(filter(lambda x: x.endswith("htm.xml"), folder_filenames))
+            networks: list[str] = list(filter(lambda x: x.endswith("xml") and not x.endswith("htm.xml"), folder_filenames))
+
+            def prepend_path(filename: str) -> str:
+                return path + filename
+            
+            networks = list(map(prepend_path, networks))
+            instance_file = prepend_path(instance_file)
+
+            parser = XMLFilingParser(instance_file, networks)
+            return cls(parser)
+        elif path.endswith(".xml"):
+            instance_file = path
+            networks = kwargs.get("linkbases", [])
+            parser = XMLFilingParser(instance_file, networks)
+            return cls(parser)
+        else:
+            raise ValueError(f"{path} is not a valid folder path")
+
     
     # second class citizens
     def get_all_concepts(self) -> list[Concept]:

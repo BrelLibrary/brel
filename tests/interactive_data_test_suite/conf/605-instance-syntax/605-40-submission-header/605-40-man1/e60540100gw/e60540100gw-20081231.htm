@@ -1,0 +1,916 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ixt="http://www.xbrl.org/inlineXBRL/transformation/2015-02-26" xmlns:ixt-sec="http://www.sec.gov/inlineXBRL/transformation/2015-08-31" xmlns:edgar="http://edgar/20181231" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:dei="http://xbrl.sec.gov/dei/2023" xmlns:i="http://www.xbrl.org/2003/instance" xmlns:iso4217="http://www.xbrl.org/2003/iso4217" xmlns:ix="http://www.xbrl.org/2013/inlineXBRL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:utr="http://www.xbrl.org/2009/utr" xmlns:xbrldi="http://xbrl.org/2006/xbrldi" xmlns:us-gaap="http://fasb.org/us-gaap/2023" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <head>
+        <title>FORM 20FR12B YADA (us-gaap)</title>
+        <meta content="text/html; charset=US-ASCII" http-equiv="Content-Type"></meta>
+    </head>
+    <body>
+        <div style="display: none">
+            <ix:header>
+                <ix:hidden>
+                    <ix:nonNumeric contextRef="fy18" id="amend" name="dei:AmendmentFlag">false</ix:nonNumeric>
+                    <ix:nonNumeric contextRef="fy18" id="doc-type" name="dei:DocumentType">20FR12B</ix:nonNumeric>
+                    <ix:nonNumeric contextRef="fy18" id="doc-fp" name="dei:DocumentFiscalPeriodFocus">FY</ix:nonNumeric>
+                    <ix:nonNumeric contextRef="fy18" id="doc-fy" name="dei:DocumentFiscalYearFocus">2018</ix:nonNumeric>
+                    <ix:nonNumeric contextRef="fy18" id="ent-cik" name="dei:EntityCentralIndexKey">9876543210</ix:nonNumeric>
+                </ix:hidden>
+                <ix:references>
+                    <link:schemaRef xlink:arcrole="http://www.xbrl.org/2003/linkbase" xlink:href="edgar-20181231.xsd" xlink:type="simple"></link:schemaRef>
+                </ix:references>
+                <ix:resources>
+                    <i:context id="fy18">
+                        <i:entity>
+                            <i:identifier scheme="http://www.sec.gov/CIK">9876543210</i:identifier>
+                        </i:entity>
+                        <i:period>
+                            <i:startDate>2018-01-01</i:startDate>
+                            <i:endDate>2018-12-31</i:endDate>
+                        </i:period>
+                    </i:context>
+                    <i:context id="fy18_AdrMember">
+                        <i:entity>
+                            <i:identifier scheme="http://www.sec.gov/CIK">9876543210</i:identifier>
+                            <i:segment>
+                                <xbrldi:explicitMember dimension="us-gaap:StatementClassOfStockAxis">dei:AdrMember</xbrldi:explicitMember>
+                            </i:segment>
+                        </i:entity>
+                        <i:period>
+                            <i:startDate>2018-01-01</i:startDate>
+                            <i:endDate>2018-12-31</i:endDate>
+                        </i:period>
+                    </i:context>
+                    <i:context id="fy18_NonvotingCommonStockMember">
+                        <i:entity>
+                            <i:identifier scheme="http://www.sec.gov/CIK">9876543210</i:identifier>
+                            <i:segment>
+                                <xbrldi:explicitMember dimension="us-gaap:StatementClassOfStockAxis">us-gaap:NonvotingCommonStockMember</xbrldi:explicitMember>
+                            </i:segment>
+                        </i:entity>
+                        <i:period>
+                            <i:startDate>2018-01-01</i:startDate>
+                            <i:endDate>2018-12-31</i:endDate>
+                        </i:period>
+                    </i:context>
+                    <i:context id="fy18e">
+                        <i:entity>
+                            <i:identifier scheme="http://www.sec.gov/CIK">9876543210</i:identifier>
+                        </i:entity>
+                        <i:period>
+                            <i:instant>2018-12-31</i:instant>
+                        </i:period>
+                    </i:context>
+                    <i:context id="fy18_BusinessContactMember">
+                        <i:entity>
+                            <i:identifier scheme="http://www.sec.gov/CIK">9876543210</i:identifier>
+                            <i:segment>
+                                <xbrldi:explicitMember dimension="dei:EntityAddressesAddressTypeAxis">dei:BusinessContactMember</xbrldi:explicitMember>
+                            </i:segment>
+                        </i:entity>
+                        <i:period>
+                            <i:startDate>2018-01-01</i:startDate>
+                            <i:endDate>2018-12-31</i:endDate>
+                        </i:period>
+                    </i:context>
+                    <i:unit id="USD">
+                        <i:measure>iso4217:USD</i:measure>
+                    </i:unit>
+                    <i:unit id="Shares">
+                        <i:measure>i:shares</i:measure>
+                    </i:unit>
+                    <i:unit id="USD_per_Share">
+                        <i:divide>
+                            <i:unitNumerator>
+                                <i:measure>iso4217:USD</i:measure>
+                            </i:unitNumerator>
+                            <i:unitDenominator>
+                                <i:measure>i:shares</i:measure>
+                            </i:unitDenominator>
+                        </i:divide>
+                    </i:unit>
+                </ix:resources>
+            </ix:header>
+        </div>
+        <div>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                <b>
+                    <span style="font-size: 14.0pt; font-family: 'Times New Roman', 'serif'">UNITED STATES</span>
+                </b>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                <b>
+                    <span style="font-size: 14.0pt; font-family: 'Times New Roman', 'serif'">SECURITIES AND EXCHANGE COMMISSION</span>
+                </b>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                <b>
+                    <span style="font-size: 14.0pt; font-family: 'Times New Roman', 'serif'">WASHINGTON, D.C. 20549</span>
+                </b>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                <span style="font-size: 1.0pt; font-family: 'Times New Roman', 'serif'">&#160;</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                <b>
+                    <span style="font-size: 18.0pt; font-family: 'Times New Roman', 'serif';-sec-ix-hidden:doc-type;">FORM&#160;20-F</span>
+                </b>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                <span style="font-size: 3.0pt; font-family: 'Times New Roman', 'serif'">&#160;</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                <b>
+                    <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">(Mark One)</span>
+                </b>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                <span style="font-size: 3.0pt; font-family: 'Times New Roman', 'serif'">&#160;</span>
+            </p>
+            <div>
+                <table style="width: 100.0%; border-collapse: collapse">
+                    <tr>
+                        <td style="width: 5.0%; padding: 0in .7pt 0in .7pt" valign="top">
+                            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                                <b>
+                                    <span style="font-size: 12.0pt; font-family: Wingdings">
+                                        <ix:nonNumeric contextRef="fy18" format="ixt:booleantrue" id="doc-reg-stmt" name="dei:DocumentRegistrationStatement">x</ix:nonNumeric>
+                                    </span>
+                                </b>
+                            </p>
+                        </td>
+                        <td style="width: 95.0%; padding: 0in .7pt 0in .7pt" valign="top">
+                            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                                <b>
+                                    <span style="font-size: 12.0pt; font-family: 'Times New Roman', 'serif';white-space:nowrap;"> REGISTRATION STATEMENT PURSUANT TO SECTION 
+                  12(b)
+                  OR (g)&#160;OF THE SECURITIES EXCHANGE ACT OF 1934</span>
+                                </b>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 5.0%; padding: 0in .7pt 0in .7pt" valign="top">
+                            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                                <b>
+                                    <span style="font-size: 4.0pt; font-family: 'Times New Roman', 'serif'"> &#160;</span>
+                                </b>
+                            </p>
+                        </td>
+                        <td style="width: 95.0%; padding: 0in .7pt 0in .7pt" valign="top">
+                            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                                <b>
+                                    <span style="font-size: 4.0pt; font-family: 'Times New Roman', 'serif'"> &#160;</span>
+                                </b>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="width: 100.0%; padding: 0in .7pt 0in .7pt" valign="top">
+                            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                                <b>
+                                    <span style="font-size: 12.0pt; font-family: 'Times New Roman', 'serif'"> OR</span>
+                                </b>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 5.0%; padding: 0in .7pt 0in .7pt" valign="top">
+                            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                                <b>
+                                    <span style="font-size: 4.0pt; font-family: 'Times New Roman', 'serif'"> &#160;</span>
+                                </b>
+                            </p>
+                        </td>
+                        <td style="width: 95.0%; padding: 0in .7pt 0in .7pt" valign="top">
+                            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                                <b>
+                                    <span style="font-size: 4.0pt; font-family: 'Times New Roman', 'serif'"> &#160;</span>
+                                </b>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 5.0%; padding: 0in .7pt 0in .7pt" valign="top">
+                            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                                <b>
+                                    <span style="font-size: 12.0pt; font-family: Wingdings">
+                                        <ix:nonNumeric contextRef="fy18" format="ixt:booleanfalse" id="doc-ann-rpt" name="dei:DocumentAnnualReport">o</ix:nonNumeric>
+                                    </span>
+                                </b>
+                            </p>
+                        </td>
+                        <td style="width: 95.0%; padding: 0in .7pt 0in .7pt" valign="top">
+                            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                                <b>
+                                    <span style="font-size: 12.0pt; font-family: 'Times New Roman', 'serif'"> ANNUAL REPORT PURSUANT TO SECTION&#160;13 OR 15(d)&#160;OF THE SECURITIES EXCHANGE ACT OF 1934<br></br> For the fiscal year ended 
+                  </span>
+                                </b>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 5.0%; padding: 0in .7pt 0in .7pt" valign="top">
+                            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                                <b>
+                                    <span style="font-size: 4.0pt; font-family: 'Times New Roman', 'serif'"> &#160;</span>
+                                </b>
+                            </p>
+                        </td>
+                        <td style="width: 95.0%; padding: 0in .7pt 0in .7pt" valign="top">
+                            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                                <b>
+                                    <span style="font-size: 4.0pt; font-family: 'Times New Roman', 'serif'"> &#160;</span>
+                                </b>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="width: 100.0%; padding: 0in .7pt 0in .7pt" valign="top">
+                            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                                <b>
+                                    <span style="font-size: 12.0pt; font-family: 'Times New Roman', 'serif'"> OR</span>
+                                </b>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 5.0%; padding: 0in .7pt 0in .7pt" valign="top">
+                            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                                <b>
+                                    <span style="font-size: 4.0pt; font-family: 'Times New Roman', 'serif'"> &#160;</span>
+                                </b>
+                            </p>
+                        </td>
+                        <td style="width: 95.0%; padding: 0in .7pt 0in .7pt" valign="top">
+                            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                                <b>
+                                    <span style="font-size: 4.0pt; font-family: 'Times New Roman', 'serif'"> &#160;</span>
+                                </b>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 5.0%; padding: 0in .7pt 0in .7pt" valign="top">
+                            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                                <b>
+                                    <span style="font-size: 12.0pt; font-family: Wingdings">
+                                        <ix:nonNumeric contextRef="fy18" format="ixt:booleanfalse" id="doc-transition-rpt" name="dei:DocumentTransitionReport">o</ix:nonNumeric>
+                                    </span>
+                                </b>
+                            </p>
+                        </td>
+                        <td style="width: 95.0%; padding: 0in .7pt 0in .7pt" valign="top">
+                            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                                <b>
+                                    <span style="font-size: 12.0pt; font-family: 'Times New Roman', 'serif'"> TRANSITION REPORT PURSUANT TO SECTION&#160;13 OR 15(d)&#160;OF THE SECURITIES EXCHANGE ACT OF 1934<br></br> For the transition period from &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; to &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;. </span>
+                                </b>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 5.0%; padding: 0in .7pt 0in .7pt" valign="top">
+                            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                                <b>
+                                    <span style="font-size: 4.0pt; font-family: 'Times New Roman', 'serif'"> &#160;</span>
+                                </b>
+                            </p>
+                        </td>
+                        <td style="width: 95.0%; padding: 0in .7pt 0in .7pt" valign="top">
+                            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                                <b>
+                                    <span style="font-size: 4.0pt; font-family: 'Times New Roman', 'serif'"> &#160;</span>
+                                </b>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="width: 100.0%; padding: 0in .7pt 0in .7pt" valign="top">
+                            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                                <b>
+                                    <span style="font-size: 12.0pt; font-family: 'Times New Roman', 'serif'"> OR</span>
+                                </b>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 5.0%; padding: 0in .7pt 0in .7pt" valign="top">
+                            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                                <b>
+                                    <span style="font-size: 4.0pt; font-family: 'Times New Roman', 'serif'"> &#160;</span>
+                                </b>
+                            </p>
+                        </td>
+                        <td style="width: 95.0%; padding: 0in .7pt 0in .7pt" valign="top">
+                            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                                <b>
+                                    <span style="font-size: 4.0pt; font-family: 'Times New Roman', 'serif'"> &#160;</span>
+                                </b>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 5.0%; padding: 0in .7pt 0in .7pt" valign="top">
+                            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                                <b>
+                                    <span style="font-size: 12.0pt; font-family: Wingdings">
+                                        <ix:nonNumeric contextRef="fy18" format="ixt:booleanfalse" id="doc-shell-rpt" name="dei:DocumentShellCompanyReport">o</ix:nonNumeric>
+                                    </span>
+                                </b>
+                            </p>
+                        </td>
+                        <td style="width: 95.0%; padding: 0in .7pt 0in .7pt" valign="top">
+                            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                                <b>
+                                    <span style="font-size: 12.0pt; font-family: 'Times New Roman', 'serif'"> SHELL COMPANY REPORT PURSUANT TO SECTION&#160;13 OR 15(d)&#160;OF THE SECURITIES EXCHANGE ACT OF 1934</span>
+                                </b>
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <p style="margin-top: 0in; margin-right: 0in; margin-bottom: 0in; margin-left: .25in; margin-bottom: .0001pt; text-indent: -.25in; line-height: normal">
+                <span style="font-size: 3.0pt; font-family: 'Times New Roman', 'serif'">&#160;</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">Date of event requiring this shell company report . . . . . . . . . . . . . . . . . . .</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                <span style="font-size: 3.0pt; font-family: 'Times New Roman', 'serif'">&#160;</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                <b>
+                    <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">For the transition period from &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; to &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;.</span>
+                </b>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                <span style="font-size: 3.0pt; font-family: 'Times New Roman', 'serif'">&#160;</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">Commission file number: <ix:nonNumeric contextRef="fy18" name="dei:EntityFileNumber">001-11960</ix:nonNumeric>
+                </span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                <span style="font-size: 3.0pt; font-family: 'Times New Roman', 'serif'">&#160;</span>
+            </p>
+            <table style="width: 100.0%; border-collapse: collapse">
+                <tr>
+                    <td style="width: 100.0%; border: none; border-bottom: solid windowtext 1.0pt; padding: 0in .7pt 0in .7pt" valign="top">
+                        <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                            <b>
+                                <span style="font-size: 18.0pt; font-family: 'Times New Roman', 'serif'">
+                                    <ix:nonNumeric contextRef="fy18" name="dei:EntityRegistrantName">YADA, YADA LTD</ix:nonNumeric>
+                                </span>
+                            </b>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 100.0%; padding: 0in .7pt 0in .7pt" valign="top">
+                        <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                            <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'"> (Exact name of Registrant as specified in its charter)</span>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 100.0%; padding: 0in .7pt 0in .7pt" valign="top">
+                        <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                            <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'"> &#160;</span>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 100.0%; border: none; border-bottom: solid windowtext 1.0pt; padding: 0in .7pt 0in .7pt" valign="top">
+                        <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                            <b>
+                                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif';">
+                                    <ix:nonNumeric contextRef="fy18" format="ixt-sec:edgarprovcountryen" id="ent-jur" name="dei:EntityIncorporationStateCountryCode">England and Wales</ix:nonNumeric>
+                                </span>
+                            </b>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 100.0%; padding: 0in .7pt 0in .7pt" valign="top">
+                        <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                            <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'"> (Jurisdiction of incorporation or organization)</span>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 100.0%; padding: 0in .7pt 0in .7pt" valign="top">
+                        <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                            <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'"> &#160;</span>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 100.0%; border: none; border-bottom: solid windowtext 1.0pt; padding: 0in .7pt 0in .7pt" valign="top">
+                        <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                            <b>
+                                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">
+                                    <ix:nonNumeric contextRef="fy18" name="dei:EntityAddressAddressLine1">10 Moriarty Avenue</ix:nonNumeric>
+                                </span>
+                            </b>
+                        </p>
+                        <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                            <b>
+                                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">
+                                    <ix:nonNumeric contextRef="fy18" name="dei:EntityAddressCityOrTown">Fontwidth-on-Tyne</ix:nonNumeric>
+                                    <ix:nonNumeric contextRef="fy18" name="dei:EntityAddressPostalZipCode">CB2 0AA</ix:nonNumeric>
+                                </span>
+                            </b>
+                        </p>
+                        <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                            <b>
+                                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">
+                                    <ix:nonNumeric contextRef="fy18" format="ixt-sec:countrynameen" name="dei:EntityAddressCountry">United Kingdom of Great Britain and Northern Ireland</ix:nonNumeric>
+                                </span>
+                            </b>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 100.0%; padding: 0in .7pt 0in .7pt" valign="top">
+                        <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                            <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'"> (Address of principal executive offices)</span>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 100.0%; padding: 0in .7pt 0in .7pt" valign="top">
+                        <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                            <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'"> &#160;</span>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 100.0%; border: none; border-bottom: solid windowtext 1.0pt; padding: 0in .7pt 0in .7pt" valign="top">
+                        <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                            <b>
+                                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">
+                                    <ix:nonNumeric contextRef="fy18_BusinessContactMember" name="dei:ContactPersonnelName">Wanda Smythe-Backwater</ix:nonNumeric>
+                                </span>
+                            </b>
+                        </p>
+                        <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                            <b>
+                                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">
+                                    <ix:nonNumeric contextRef="fy18_BusinessContactMember" name="dei:EntityAddressAddressLine1">Yada, Yada Ltd</ix:nonNumeric>
+                                </span>
+                            </b>
+                        </p>
+                        <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                            <b>
+                                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">
+                                    <ix:nonNumeric contextRef="fy18_BusinessContactMember" name="dei:EntityAddressAddressLine2">10 Moriarty Avenue</ix:nonNumeric>
+                                </span>
+                            </b>
+                        </p>
+                        <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                            <b>
+                                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">
+                                    <ix:nonNumeric contextRef="fy18_BusinessContactMember" name="dei:EntityAddressCityOrTown">Fontwidth-on-Tyne</ix:nonNumeric>
+                                    <ix:nonNumeric contextRef="fy18_BusinessContactMember" name="dei:EntityAddressPostalZipCode">CB2 0AA</ix:nonNumeric>
+                                </span>
+                            </b>
+                        </p>
+                        <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                            <b>
+                                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">
+                                    <ix:nonNumeric contextRef="fy18_BusinessContactMember" format="ixt-sec:countrynameen" name="dei:EntityAddressCountry">UK</ix:nonNumeric>
+                                </span>
+                            </b>
+                        </p>
+                        <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                            <b>
+                                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'"> Telephone: <ix:nonNumeric contextRef="fy18_BusinessContactMember" name="dei:CityAreaCode">+44 20</ix:nonNumeric>
+                                    <ix:nonNumeric contextRef="fy18_BusinessContactMember" name="dei:LocalPhoneNumber">3749 5000</ix:nonNumeric>
+                                </span>
+                            </b>
+                        </p>
+                        <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                            <b>
+                                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'"> Facsimile number: <ix:nonNumeric contextRef="fy18_BusinessContactMember" name="dei:ContactPersonnelFaxNumber">+44 1223 352 858</ix:nonNumeric>
+                                </span>
+                            </b>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 100.0%; padding: 0in .7pt 0in .7pt" valign="top">
+                        <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                            <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'"> (Name, Telephone, E-mail and/or Facsimile number and Address of Company Contact Person)</span>
+                        </p>
+                    </td>
+                </tr>
+            </table>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                <span style="font-size: 3.0pt; font-family: 'Times New Roman', 'serif'">&#160;</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif';white-space:nowrap;">Securities registered or to be registered pursuant to Section
+          12(b)of the Act:</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                <span style="font-size: 3.0pt; font-family: 'Times New Roman', 'serif'">&#160;</span>
+            </p>
+            <div>
+                <table style="width: 100.0%; border-collapse: collapse">
+                    <tr>
+                        <td style="width: 48%; border: none; border-bottom: solid windowtext 1.0pt; padding: 0in .7pt 0in .7pt" valign="top">
+                            <p style="margin-bottom: 0in; margin-bottom: 4pt; text-align: center; line-height: normal">
+                                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'"> Title of each class</span>
+                            </p>
+                        </td>
+                        <td style="width: 2%; border: none; border-bottom: solid windowtext 1.0pt; padding: 0in 0in 0in 0in" valign="top">
+                            <p style="margin-bottom: 0in; margin-bottom: 4pt; text-align: center; line-height: normal">
+                                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'"> &#160;</span>
+                            </p>
+                        </td>
+                        <td style="width: 10%; border: none; border-bottom: solid windowtext 1.0pt; padding: 0in 0in 0in 0in" valign="top">
+                            <p style="margin-bottom: 0in; margin-bottom: 4pt; text-align: center; line-height: normal">
+                                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'"> Ticker Symbol</span>
+                            </p>
+                        </td>
+                        <td style="width: 2%; padding: 0in .7pt 0in .7pt" valign="bottom">
+                            <p style="margin-bottom: 0in; margin-bottom: 4pt; line-height: normal">
+                                <span style="font-size: 1.0pt; font-family: 'Times New Roman', 'serif'"> &#160;</span>
+                            </p>
+                        </td>
+                        <td style="width: 38%; border: none; border-bottom: solid windowtext 1.0pt; padding: 0in .7pt 0in .7pt" valign="top">
+                            <p style="margin-bottom: 0in; margin-bottom: 4pt; text-align: center; line-height: normal">
+                                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'"> Name of each exchange on which registered</span>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 48%; padding: 0in .7pt 0in .7pt" valign="top">
+                            <p style="margin-bottom: 0in; margin-bottom: 4pt; line-height: normal">
+                                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'"> Ordinary Shares* of 25&#162; each</span>
+                            </p>
+                        </td>
+                        <td style="width: 2%; padding: 0in 0in 0in 0in" valign="top">
+                            <p style="margin-bottom: 0in; margin-bottom: 4pt; line-height: normal">
+                                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'"> &#160;</span>
+                            </p>
+                        </td>
+                        <td style="width: 10%; padding: 0in 0in 0in 0in" valign="top">
+                            <p style="margin-bottom: 0in; margin-bottom: 4pt; line-height: normal">
+                                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'"> &#160;</span>
+                            </p>
+                        </td>
+                        <td style="width: 2%; padding: 0in .7pt 0in .7pt" valign="top">
+                            <p style="margin-bottom: 0in; margin-bottom: 4pt; line-height: normal">
+                                <span style="font-size: 1.0pt; font-family: 'Times New Roman', 'serif'"> &#160;</span>
+                            </p>
+                        </td>
+                        <td style="width: 38%; padding: 0in .7pt 0in .7pt" valign="top">
+                            <p style="margin-bottom: 0in; margin-bottom: 4pt; line-height: normal">
+                                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">
+                  London Stock Exchange
+                </span>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 48%; padding: 0in .7pt 0in .7pt" valign="top">
+                            <p style="margin-bottom: 0in; margin-bottom: 4pt; line-height: normal">
+                                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">
+                                    <ix:nonNumeric contextRef="fy18_AdrMember" name="dei:Security12bTitle">Ordinary Shares</ix:nonNumeric> of 25&#162; each</span>
+                            </p>
+                        </td>
+                        <td style="width: 2%; padding: 0in 0in 0in 0in" valign="top">
+                            <p style="margin-bottom: 0in; margin-bottom: 4pt; line-height: normal">
+                                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'"> &#160;</span>
+                            </p>
+                        </td>
+                        <td style="width: 10%; padding: 0in 0in 0in 0in" valign="top">
+                            <p style="margin-bottom: 0in; margin-bottom: 4pt; line-height: normal">
+                                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">
+                                    <ix:nonNumeric contextRef="fy18_AdrMember" name="dei:TradingSymbol">YADA</ix:nonNumeric>
+                                    <ix:nonNumeric contextRef="fy18_NonvotingCommonStockMember" name="dei:TradingSymbol">YADA</ix:nonNumeric>
+                                </span>
+                            </p>
+                        </td>
+                        <td style="width: 2%; padding: 0in .7pt 0in .7pt" valign="top">
+                            <p style="margin-bottom: 0in; margin-bottom: 4pt; line-height: normal">
+                                <span style="font-size: 1.0pt; font-family: 'Times New Roman', 'serif'"> &#160;</span>
+                            </p>
+                        </td>
+                        <td style="width: 38%; padding: 0in .7pt 0in .7pt" valign="top">
+                            <p style="margin-bottom: 0in; margin-bottom: 4pt; line-height: normal">
+                                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">
+                                    <ix:nonNumeric contextRef="fy18_AdrMember" name="dei:SecurityExchangeName">NYSE</ix:nonNumeric>
+                                    <ix:nonNumeric contextRef="fy18_NonvotingCommonStockMember" name="dei:SecurityExchangeName">NYSE</ix:nonNumeric>
+                                </span>
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                <span style="font-size: 3.0pt; font-family: 'Times New Roman', 'serif'">&#160;</span>
+            </p>
+            <div style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                <hr style="color: black"></hr>
+            </div>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">* Not for trading, but only in connection with the registration of American Depositary Shares representing such Ordinary Shares pursuant to the requirements of the Securities and Exchange Commission.</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                <span style="font-size: 3.0pt; font-family: 'Times New Roman', 'serif'">&#160;</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">Securities registered or to be registered pursuant to Section&#160;12(g)&#160;of the Act:</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                <span style="font-size: 3.0pt; font-family: 'Times New Roman', 'serif'">&#160;</span>
+            </p>
+            <table style="width: 100.0%; border-collapse: collapse">
+                <tr>
+                    <td style="width: 100.0%; border: none; border-bottom: solid windowtext 1.0pt; padding: 0in .7pt 0in .7pt" valign="top">
+                        <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                            <b>
+                                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'"> None</span>
+                            </b>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 100.0%; padding: 0in .7pt 0in .7pt" valign="top">
+                        <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                            <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'"> (Title of Class)</span>
+                        </p>
+                    </td>
+                </tr>
+            </table>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                <span style="font-size: 3.0pt; font-family: 'Times New Roman', 'serif'">&#160;</span>
+            </p>
+            <div style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                <hr style="color: #010101"></hr>
+            </div>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                <span style="font-size: 12.0pt; font-family: 'Times New Roman', 'serif'">
+                    <br></br>
+                </span>
+                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">&#160;</span>
+            </p>
+            <p style="text-align: center; line-height: 12.0pt">
+                <span style="font-size: 10.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;; color: black">Securities for which there is a reporting obligation pursuant to Section&#160;<ix:nonNumeric contextRef="fy18_NonvotingCommonStockMember" name="dei:SecurityReportingObligation">15(d)</ix:nonNumeric> of the Act.</span>
+            </p>
+            <p style="text-align: center; line-height: 12.0pt">
+                <span style="font-size: 10.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;; color: black">
+                    <ix:nonNumeric contextRef="fy18_NonvotingCommonStockMember" name="dei:Security12bTitle">Class B Non-Voting</ix:nonNumeric> Shares</span>
+            </p>
+            <p style="text-align: center; line-height: 9.6pt">
+                <span style="font-size: 8.0pt; font-family: &quot;inherit&quot;, &quot;serif&quot;; color: black">(Title of Class)</span>
+            </p>
+            <p style="margin-top: 0in; margin-right: 0in; margin-bottom: 0in; margin-left: 23.55pt; margin-bottom: .0001pt; text-indent: -23.55pt"> &#160;</p>
+            <p style="margin-top: 12.0pt; margin-right: 0in; margin-bottom: 0in; margin-left: 0in; margin-bottom: .0001pt">
+                <span style="font-size: 11.0pt">&#160;</span>
+            </p>
+            <p style="margin: 0in; margin-bottom: .0001pt">
+                <span style="font-size: 10.0pt">&#160;</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">Securities for which there is a reporting obligation pursuant to Section&#160;15(d)&#160;of the Act:</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">&#160;</span>
+            </p>
+            <table style="width: 100.0%; border-collapse: collapse">
+                <tr>
+                    <td style="width: 100.0%; border: none; border-bottom: solid windowtext 1.0pt; padding: 0in .7pt 0in .7pt" valign="top">
+                        <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                            <b>
+                                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'"> None</span>
+                            </b>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 100.0%; padding: 0in .7pt 0in .7pt" valign="top">
+                        <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                            <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'"> (Title of Class)</span>
+                        </p>
+                    </td>
+                </tr>
+            </table>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">&#160;</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">Indicate the number of outstanding shares of each of the issuer&#8217;s classes of capital or common stock as of the close of the period covered by the annual report.</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">&#160;</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">The number of outstanding shares of each class of stock of Yada, Yada Ltd as of December&#160;31, 2018 was:</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">&#160;</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">Ordinary Shares of 25&#162; each: <ix:nonFraction contextRef="fy18e" decimals="INF" format="ixt:numdotdecimal" name="dei:EntityCommonStockSharesOutstanding" unitRef="Shares">1,266,221,605</ix:nonFraction>
+                </span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">&#160;</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">Indicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule&#160;405 of the Securities Act.</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: right; line-height: normal">
+                <span style="font-size: 10.0pt; font-family: Wingdings">x</span>
+                <span style="font-size: 10.0pt; font-family: Wingdings">o</span>
+                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">&#160;No</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">&#160;</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">If this report is an annual or transition report, indicate by check mark if the registrant is not required to file reports pursuant to Section&#160;13 or 15(d)&#160;of the Securities Exchange Act of 1934.</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: right; line-height: normal">
+                <span style="font-size: 10.0pt; font-family: Wingdings">o</span>
+                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">&#160;Yes&#160;&#160;&#160;</span>
+                <span style="font-size: 10.0pt; font-family: Wingdings">x</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">&#160;</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">Note &#8212; Checking the box above will not relieve any registrant required to file reports pursuant to Section&#160;13 or 15(d)&#160;of the Securities Exchange Act of 1934 from their obligations under those Sections.</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">&#160;</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">Indicate by check mark whether the registrant (1)&#160;has filed all reports required to be filed by Section&#160;13 or 15(d)&#160;of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2)&#160;has been subject to such filing requirements for the past 90 days.</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: right; line-height: normal">
+                <span style="font-size: 10.0pt; font-family: Wingdings">x</span>
+                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">
+                    <ix:nonNumeric contextRef="fy18" name="dei:EntityCurrentReportingStatus">Yes</ix:nonNumeric>
+                </span>
+                <span style="font-size: 10.0pt; font-family: Wingdings">o</span>
+                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">&#160;No</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">&#160;</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">Indicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (&#167;232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files).</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: right; line-height: normal">
+                <span style="font-size: 10.0pt; font-family: Wingdings">x</span>
+                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">
+                    <ix:nonNumeric contextRef="fy18" name="dei:EntityInteractiveDataCurrent">Yes</ix:nonNumeric>
+                </span>
+                <span style="font-size: 10.0pt; font-family: Wingdings">o</span>
+                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">&#160;No</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">&#160;</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, or a non-accelerated filer. See definition of &#8220;accelerated filer and large accelerated filer&#8221; in Rule 12b-2 of the Exchange Act. (Check one):</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">&#160;</span>
+            </p>
+            <div>
+                <table style="width: 100.0%; border-collapse: collapse">
+                    <tr>
+                        <td style="width: 24.0%; padding: 0in .7pt 0in .7pt" valign="top">
+                            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                                <span style="font-size: 10.0pt; font-family: Wingdings">x</span>
+                            </p>
+                        </td>
+                        <td style="width: 2.0%; padding: 0in .7pt 0in .7pt" valign="bottom">
+                            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                                <span style="font-size: 1.0pt; font-family: Wingdings">&#160;</span>
+                            </p>
+                        </td>
+                        <td style="width: 20.0%; padding: 0in .7pt 0in .7pt" valign="top">
+                            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'"> Accelerated filer&#160;</span>
+                                <span style="font-size: 10.0pt; font-family: Wingdings">o</span>
+                            </p>
+                        </td>
+                        <td style="width: 1.0%; padding: 0in .7pt 0in .7pt" valign="bottom">
+                            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                                <span style="font-size: 1.0pt; font-family: Wingdings">&#160;</span>
+                            </p>
+                        </td>
+                        <td style="width: 23.0%; padding: 0in .7pt 0in .7pt" valign="top">
+                            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'"> Non-accelerated filer&#160;</span>
+                                <span style="font-size: 10.0pt; font-family: Wingdings">o</span>
+                            </p>
+                        </td>
+                        <td style="width: 2.0%; padding: 0in .7pt 0in .7pt" valign="top">
+                            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                                <span style="font-size: 1.0pt; font-family: 'Times New Roman', 'serif'"> &#160;</span>
+                            </p>
+                        </td>
+                        <td style="width: 25.0%; padding: 0in .7pt 0in .7pt" valign="top">
+                            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'"> Emerging growth company&#160;</span>
+                                <span style="font-size: 10.0pt; font-family: Wingdings">
+                                    <ix:nonNumeric contextRef="fy18" format="ixt:booleantrue" id="ent-egc" name="dei:EntityEmergingGrowthCompany">Yes</ix:nonNumeric>
+                                </span>
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">&#160;</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">If an emerging growth company that prepares its financial statements in accordance with U.S. GAAP, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards&#8224;&#160;provided pursuant to Section 13(a) of the Exchange Act.&#160;</span>
+                <span style="font-size: 10.0pt; font-family: Wingdings">
+                </span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">&#160;</span>
+            </p>
+            <div style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                <hr style="color: black"></hr>
+            </div>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">&#8224; The term &#8220;new or revised financial accounting standard&#8221; refers to any update issued by the Financial Accounting Standards Board to its Accounting Standards Codification after April&#160;5, 2012.</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">&#160;</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">Indicate by check mark which basis of accounting the registrant has used to prepare the financial statements included in this filing:</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">&#160;</span>
+            </p>
+            <div>
+                <table style="width: 100.0%; border-collapse: collapse">
+                    <tr>
+                        <td style="width: 26.0%; padding: 0in .7pt 0in .7pt" valign="top">
+                            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">
+                                    <ix:nonNumeric contextRef="fy18" name="dei:DocumentAccountingStandard">U.S. GAAP</ix:nonNumeric>
+                                </span>
+                                <span style="font-size: 10.0pt; font-family: Wingdings">o</span>
+                            </p>
+                        </td>
+                        <td style="width: 2.0%; padding: 0in .7pt 0in .7pt" valign="bottom">
+                            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                                <span style="font-size: 1.0pt; font-family: Wingdings">&#160;</span>
+                            </p>
+                        </td>
+                        <td style="width: 42.0%; padding: 0in .7pt 0in .7pt" valign="top">
+                            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'"> International Financial Reporting Standards as issued<br></br> by the International Accounting Standards Board&#160; </span>
+                                <span style="font-size: 10.0pt; font-family: Wingdings">x</span>
+                            </p>
+                        </td>
+                        <td style="width: 1.0%; padding: 0in .7pt 0in .7pt" valign="bottom">
+                            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                                <span style="font-size: 1.0pt; font-family: Wingdings">&#160;</span>
+                            </p>
+                        </td>
+                        <td style="width: 27.0%; padding: 0in .7pt 0in .7pt" valign="top">
+                            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: center; line-height: normal">
+                                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'"> Other&#160;</span>
+                                <span style="font-size: 10.0pt; font-family: Wingdings">o</span>
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">&#160;</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">If &#8220;Other&#8221; has been checked in response to the previous question, indicate by check mark which financial statement item the registrant has elected to follow.</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: right; line-height: normal">
+                <span style="font-size: 10.0pt; font-family: Wingdings">o</span>
+                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">&#160;Item 17&#160;&#160;&#160;</span>
+                <span style="font-size: 10.0pt; font-family: Wingdings">o</span>
+                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">&#160;Item 18</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: right; line-height: normal">
+                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">&#160;</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; line-height: normal">
+                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">If this is an annual report, indicate by check mark whether the registrant is a shell company (as defined in Rule&#160;12b-2 of the Exchange Act).</span>
+            </p>
+            <p style="margin-bottom: 0in; margin-bottom: .0001pt; text-align: right; line-height: normal">
+                <span style="font-size: 10.0pt; font-family: Wingdings">o</span>
+                <span style="font-size: 10.0pt; font-family: 'Times New Roman', 'serif'">&#160;Yes&#160;&#160;&#160;</span>
+                <span style="font-size: 10.0pt; font-family: Wingdings">x</span>
+            </p>
+        </div>
+    </body>
+</html>

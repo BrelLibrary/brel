@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xbrli:xbrl xmlns="http://www.w3.org/1999/xhtml" xmlns:dei="http://xbrl.sec.gov/dei/2023" xmlns:iso4217="http://www.xbrl.org/2003/iso4217" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <link:schemaRef xlink:href="edgar-20081231.xsd" xlink:type="simple"></link:schemaRef>
+    <dei:DocumentInformationTextBlock contextRef="d">
+
+&lt;p&gt;The following image tag is not allowed because of EDGAR page 5-12 which 
+
+disallows anything but LOCAL image references, which is different than for href's.
+
+&lt;img src="http://www.sec.gov/Archives/edgar/data/711322/000089418909001357/graph_p3.jpg" /&gt; &lt;/p&gt;
+
+</dei:DocumentInformationTextBlock>
+    <xbrli:context id="d">
+        <xbrli:entity>
+            <xbrli:identifier scheme="http://www.sec.gov/CIK">9876543210</xbrli:identifier>
+        </xbrli:entity>
+        <xbrli:period>
+            <xbrli:startDate>2008-01-01</xbrli:startDate>
+            <xbrli:endDate>2008-12-31</xbrli:endDate>
+        </xbrli:period>
+    </xbrli:context>
+    <dei:DocumentType contextRef="d">8-K</dei:DocumentType>
+    <dei:AmendmentFlag contextRef="d">false</dei:AmendmentFlag>
+    <dei:DocumentPeriodEndDate contextRef="d">2008-12-31</dei:DocumentPeriodEndDate>
+    <dei:EntityRegistrantName contextRef="d">e60516033ng</dei:EntityRegistrantName>
+    <dei:EntityCentralIndexKey contextRef="d">9876543210</dei:EntityCentralIndexKey>
+    <dei:DocumentDescription contextRef="d">6.5.16 Image src attribute points to a nonlocal jpg on the SEC web site, NOGOOD. </dei:DocumentDescription>
+    <dei:EntityEmergingGrowthCompany contextRef="d">false</dei:EntityEmergingGrowthCompany>
+</xbrli:xbrl>

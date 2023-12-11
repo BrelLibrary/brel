@@ -1,0 +1,214 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:clb01="http://clb01/20331231" xmlns:srt-types="http://fasb.org/srt-types/2023" xmlns:dtr="http://www.xbrl.org/2009/dtr" xmlns:ref="http://www.xbrl.org/2006/ref" xmlns:xbrldt="http://xbrl.org/2005/xbrldt" xmlns:dei="http://xbrl.sec.gov/dei/2023" xmlns:us-gaap="http://fasb.org/us-gaap/2023" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:enum2="http://xbrl.org/2020/extensible-enumerations-2.0" xmlns:country="http://xbrl.sec.gov/country/2023" xmlns:us-roles="http://fasb.org/us-roles/2023" xmlns:ecd="http://xbrl.sec.gov/ecd/2023" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:us-types="http://fasb.org/us-types/2023" xmlns:dtr-types="http://www.xbrl.org/dtr/type/2022-03-31" xmlns:xbrldi="http://xbrl.org/2006/xbrldi" xmlns:srt="http://fasb.org/srt/2023" xmlns:srt-roles="http://fasb.org/srt-roles/2023" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xbrli="http://www.xbrl.org/2003/instance" targetNamespace="http://clb01/20331231" elementFormDefault="qualified">
+    <xs:annotation>
+        <xs:appinfo>
+            <link:roleType roleURI="http://clb01/role/RevisionOnly" id="RevisionOnly">
+                <link:definition>995428 - Disclosure - Revision</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType roleURI="http://clb01/role/ErrCompAnalysis" id="ErrCompAnalysis">
+                <link:definition>995443 - Disclosure - Erroneous Compensation Analysis</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:roleType roleURI="http://clb01/role/AdditionalErrCompAnalysis" id="AdditionalErrCompAnalysis">
+                <link:definition>995444 - Disclosure - Additional Erroneous Compensation Analysis</link:definition>
+                <link:usedOn>link:presentationLink</link:usedOn>
+                <link:usedOn>link:calculationLink</link:usedOn>
+                <link:usedOn>link:definitionLink</link:usedOn>
+            </link:roleType>
+            <link:linkbase xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xbrldt="http://xbrl.org/2005/xbrldt">
+                <link:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/all" xlink:type="simple" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#all"></link:arcroleRef>
+                <link:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/dimension-default" xlink:type="simple" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#dimension-default"></link:arcroleRef>
+                <link:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:type="simple" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#dimension-domain"></link:arcroleRef>
+                <link:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/domain-member" xlink:type="simple" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#domain-member"></link:arcroleRef>
+                <link:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:type="simple" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#hypercube-dimension"></link:arcroleRef>
+                <link:roleRef roleURI="http://clb01/role/AdditionalErrCompAnalysis" xlink:type="simple" xlink:href="clb01-20331231.xsd#AdditionalErrCompAnalysis"></link:roleRef>
+                <link:roleRef roleURI="http://clb01/role/ErrCompAnalysis" xlink:type="simple" xlink:href="clb01-20331231.xsd#ErrCompAnalysis"></link:roleRef>
+                <link:roleRef roleURI="http://clb01/role/RevisionOnly" xlink:type="simple" xlink:href="clb01-20331231.xsd#RevisionOnly"></link:roleRef>
+                <link:roleRef roleURI="http://fasb.org/srt/role/statement/CommonDomainMembers" xlink:type="simple" xlink:href="https://xbrl.fasb.org/srt/2023/elts/srt-roles-2023.xsd#srt-com"></link:roleRef>
+                <link:roleRef roleURI="http://xbrl.sec.gov/ecd/role/Defaults" xlink:type="simple" xlink:href="https://xbrl.sec.gov/ecd/2023/ecd-2023.xsd#Defaults"></link:roleRef>
+                <link:roleRef roleURI="http://xbrl.sec.gov/ecd/role/ErrCompDisclosure" xlink:type="simple" xlink:href="https://xbrl.sec.gov/ecd/2023/ecd-2023.xsd#ErrCompDisclosure"></link:roleRef>
+                <link:roleRef roleURI="http://xbrl.sec.gov/ecd/role/IndividualsOnly" xlink:type="simple" xlink:href="https://xbrl.sec.gov/ecd/2023/ecd-2023.xsd#IndividualsOnly"></link:roleRef>
+                <link:roleRef roleURI="http://xbrl.sec.gov/ecd/role/PvpDisclosure" xlink:type="simple" xlink:href="https://xbrl.sec.gov/ecd/2023/ecd-2023.xsd#PvpDisclosure"></link:roleRef>
+                <!-- definition link added for this test in non-Only ECD role between two ecd members-->
+                <link:definitionLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/ecd/role/PvpDisclosure">
+                    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/ecd/2023/ecd-2023.xsd#ecd_AllIndividualsMember" xlink:label="EcdMember1"></link:loc>
+                    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/ecd/2023/ecd-2023.xsd#ecd_AllExecutiveCategoriesMember" xlink:label="EcdMember2"></link:loc>
+                    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="EcdMember1" xlink:to="EcdMember2" order="1.0"></link:definitionArc>
+                </link:definitionLink>
+                <!-- end of definition link added for this test -->
+                <link:definitionLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/ecd/role/IndividualsOnly">
+                    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/ecd/2023/ecd-2023.xsd#ecd_AllIndividualsMember" xlink:label="AllIndividualsMember"></link:loc>
+                    <link:loc xlink:type="locator" xlink:href="clb01-20331231.xsd#clb01_SmithMember" xlink:label="SmithMember"></link:loc>
+                    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AllIndividualsMember" xlink:to="SmithMember" order="1.0"></link:definitionArc>
+                    <link:loc xlink:type="locator" xlink:href="clb01-20331231.xsd#clb01_PublicMember" xlink:label="PublicMember"></link:loc>
+                    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AllIndividualsMember" xlink:to="PublicMember" order="2.0"></link:definitionArc>
+                    <link:loc xlink:type="locator" xlink:href="clb01-20331231.xsd#clb01_DoeMember" xlink:label="DoeMember"></link:loc>
+                    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AllIndividualsMember" xlink:to="DoeMember" order="3.0"></link:definitionArc>
+                </link:definitionLink>
+                <link:definitionLink xlink:type="extended" xlink:role="http://fasb.org/srt/role/statement/CommonDomainMembers">
+                    <link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/srt/2023/elts/srt-2023.xsd#srt_RestatementAxis" xlink:label="RestatementAxis"></link:loc>
+                    <link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/srt/2023/elts/srt-2023.xsd#srt_RestatementDomain" xlink:label="RestatementDomain"></link:loc>
+                    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-default" xlink:from="RestatementAxis" xlink:to="RestatementDomain" order="1.0"></link:definitionArc>
+                </link:definitionLink>
+                <link:labelLink xlink:type="extended" xlink:role="http://www.xbrl.org/2003/role/link">
+                    <link:loc xlink:type="locator" xlink:href="clb01-20331231.xsd#clb01_SmithMember" xlink:label="SmithMember"></link:loc>
+                    <link:label xlink:type="resource" xlink:label="label_SmithMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Smith [Member]</link:label>
+                    <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="SmithMember" xlink:to="label_SmithMember"></link:labelArc>
+                    <link:loc xlink:type="locator" xlink:href="clb01-20331231.xsd#clb01_PublicMember" xlink:label="PublicMember"></link:loc>
+                    <link:label xlink:type="resource" xlink:label="label_PublicMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Public [Member]</link:label>
+                    <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="PublicMember" xlink:to="label_PublicMember"></link:labelArc>
+                    <link:loc xlink:type="locator" xlink:href="clb01-20331231.xsd#clb01_DoeMember" xlink:label="DoeMember"></link:loc>
+                    <link:label xlink:type="resource" xlink:label="label_DoeMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Doe [Member]</link:label>
+                    <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="DoeMember" xlink:to="label_DoeMember"></link:labelArc>
+                    <link:loc xlink:type="locator" xlink:href="clb01-20331231.xsd#clb01_RecomputedVariableCompAmt" xlink:label="RecomputedVariableCompAmt"></link:loc>
+                    <link:label xlink:type="resource" xlink:label="label_RecomputedVariableCompAmt" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Recomputed Variable Compensation Amount</link:label>
+                    <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="RecomputedVariableCompAmt" xlink:to="label_RecomputedVariableCompAmt"></link:labelArc>
+                    <link:loc xlink:type="locator" xlink:href="clb01-20331231.xsd#clb01_CustomLineItems" xlink:label="CustomLineItems"></link:loc>
+                    <link:label xlink:type="resource" xlink:label="label_CustomLineItems" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Custom [Line Items]</link:label>
+                    <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="CustomLineItems" xlink:to="label_CustomLineItems"></link:labelArc>
+                    <link:loc xlink:type="locator" xlink:href="clb01-20331231.xsd#clb01_CustomTable" xlink:label="CustomTable"></link:loc>
+                    <link:label xlink:type="resource" xlink:label="label_CustomTable" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Custom [Table]</link:label>
+                    <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="CustomTable" xlink:to="label_CustomTable"></link:labelArc>
+                    <link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/srt/2023/elts/srt-2023.xsd#srt_RestatementAxis" xlink:label="RestatementAxis"></link:loc>
+                    <link:label xlink:type="resource" xlink:label="label_RestatementAxis" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Revision of Prior Period [Axis]</link:label>
+                    <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="RestatementAxis" xlink:to="label_RestatementAxis"></link:labelArc>
+                    <link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/srt/2023/elts/srt-2023.xsd#srt_RestatementDomain" xlink:label="RestatementDomain"></link:loc>
+                    <link:label xlink:type="resource" xlink:label="label_RestatementDomain" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Revision of Prior Period [Domain]</link:label>
+                    <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="RestatementDomain" xlink:to="label_RestatementDomain"></link:labelArc>
+                    <link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/srt/2023/elts/srt-2023.xsd#srt_RestatementAdjustmentMember" xlink:label="RestatementAdjustmentMember"></link:loc>
+                    <link:label xlink:type="resource" xlink:label="label_RestatementAdjustmentMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Revision of Prior Period, Adjustment [Member]</link:label>
+                    <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="RestatementAdjustmentMember" xlink:to="label_RestatementAdjustmentMember"></link:labelArc>
+                    <link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/srt/2023/elts/srt-2023.xsd#srt_ScenarioPreviouslyReportedMember" xlink:label="ScenarioPreviouslyReportedMember"></link:loc>
+                    <link:label xlink:type="resource" xlink:label="label_ScenarioPreviouslyReportedMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Previously Reported [Member]</link:label>
+                    <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ScenarioPreviouslyReportedMember" xlink:to="label_ScenarioPreviouslyReportedMember"></link:labelArc>
+                    <link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_EarningsPerShareDiluted" xlink:label="EarningsPerShareDiluted"></link:loc>
+                    <link:label xlink:type="resource" xlink:label="label_EarningsPerShareDiluted" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Earnings per Share, Diluted</link:label>
+                    <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="EarningsPerShareDiluted" xlink:to="label_EarningsPerShareDiluted"></link:labelArc>
+                    <link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_SharePrice" xlink:label="SharePrice"></link:loc>
+                    <link:label xlink:type="resource" xlink:label="label_SharePrice" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Share Price</link:label>
+                    <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="SharePrice" xlink:to="label_SharePrice"></link:labelArc>
+                    <link:loc xlink:type="locator" xlink:href="clb01-20331231.xsd#clb01_PreviouslyAwardedVariableCompAmt" xlink:label="PreviouslyAwardedVariableCompAmt"></link:loc>
+                    <link:label xlink:type="resource" xlink:label="label_PreviouslyAwardedVariableCompAmt" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Previously Awarded Variable Compensation Amount</link:label>
+                    <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="PreviouslyAwardedVariableCompAmt" xlink:to="label_PreviouslyAwardedVariableCompAmt"></link:labelArc>
+                    <link:loc xlink:type="locator" xlink:href="clb01-20331231.xsd#clb01_CostToPursueRecoveryAmt" xlink:label="CostToPursueRecoveryAmt"></link:loc>
+                    <link:label xlink:type="resource" xlink:label="label_CostToPursueRecoveryAmt" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Cost to Pursue Recovery, Amount</link:label>
+                    <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="CostToPursueRecoveryAmt" xlink:to="label_CostToPursueRecoveryAmt"></link:labelArc>
+                    <link:loc xlink:type="locator" xlink:href="clb01-20331231.xsd#clb01_CustomMonetaryAmt" xlink:label="CustomMonetaryAmt"></link:loc>
+                    <link:label xlink:type="resource" xlink:label="label_CustomMonetaryAmt" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Custom Monetary Amount</link:label>
+                    <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="CustomMonetaryAmt" xlink:to="label_CustomMonetaryAmt"></link:labelArc>
+                    <link:loc xlink:type="locator" xlink:href="clb01-20331231.xsd#clb01_CustomAmtPerShare" xlink:label="CustomAmtPerShare"></link:loc>
+                    <link:label xlink:type="resource" xlink:label="label_CustomAmtPerShare" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Custom Amount per Share</link:label>
+                    <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="CustomAmtPerShare" xlink:to="label_CustomAmtPerShare"></link:labelArc>
+                    <link:loc xlink:type="locator" xlink:href="clb01-20331231.xsd#clb01_CustomNumberOfShares" xlink:label="CustomNumberOfShares"></link:loc>
+                    <link:label xlink:type="resource" xlink:label="label_CustomNumberOfShares" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Custom Number of Shares</link:label>
+                    <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="CustomNumberOfShares" xlink:to="label_CustomNumberOfShares"></link:labelArc>
+                    <link:loc xlink:type="locator" xlink:href="clb01-20331231.xsd#clb01_CustomRatio" xlink:label="CustomRatio"></link:loc>
+                    <link:label xlink:type="resource" xlink:label="label_CustomRatio" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Custom Ratio</link:label>
+                    <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="CustomRatio" xlink:to="label_CustomRatio"></link:labelArc>
+                    <link:loc xlink:type="locator" xlink:href="clb01-20331231.xsd#clb01_CustomNumber" xlink:label="CustomNumber"></link:loc>
+                    <link:label xlink:type="resource" xlink:label="label_CustomNumber" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Custom Number</link:label>
+                    <link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="CustomNumber" xlink:to="label_CustomNumber"></link:labelArc>
+                </link:labelLink>
+                <link:presentationLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/ecd/role/PvpDisclosure">
+                    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/ecd/2023/ecd-2023.xsd#ecd_AllIndividualsMember" xlink:label="AllIndividualsMember"></link:loc>
+                    <link:loc xlink:type="locator" xlink:href="clb01-20331231.xsd#clb01_SmithMember" xlink:label="SmithMember"></link:loc>
+                    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AllIndividualsMember" xlink:to="SmithMember" order="1.0"></link:presentationArc>
+                    <link:loc xlink:type="locator" xlink:href="clb01-20331231.xsd#clb01_PublicMember" xlink:label="PublicMember"></link:loc>
+                    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AllIndividualsMember" xlink:to="PublicMember" order="2.0"></link:presentationArc>
+                    <link:loc xlink:type="locator" xlink:href="clb01-20331231.xsd#clb01_DoeMember" xlink:label="DoeMember"></link:loc>
+                    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AllIndividualsMember" xlink:to="DoeMember" order="3.0"></link:presentationArc>
+                </link:presentationLink>
+                <link:presentationLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/ecd/role/ErrCompDisclosure">
+                    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/ecd/2023/ecd-2023.xsd#ecd_AllIndividualsMember" xlink:label="AllIndividualsMember"></link:loc>
+                    <link:loc xlink:type="locator" xlink:href="clb01-20331231.xsd#clb01_SmithMember" xlink:label="SmithMember"></link:loc>
+                    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AllIndividualsMember" xlink:to="SmithMember" order="1.1"></link:presentationArc>
+                    <link:loc xlink:type="locator" xlink:href="clb01-20331231.xsd#clb01_PublicMember" xlink:label="PublicMember"></link:loc>
+                    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AllIndividualsMember" xlink:to="PublicMember" order="2.0"></link:presentationArc>
+                    <link:loc xlink:type="locator" xlink:href="clb01-20331231.xsd#clb01_DoeMember" xlink:label="DoeMember"></link:loc>
+                    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AllIndividualsMember" xlink:to="DoeMember" order="3.0"></link:presentationArc>
+                </link:presentationLink>
+                <link:presentationLink xlink:type="extended" xlink:role="http://clb01/role/ErrCompAnalysis">
+                    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/ecd/2023/ecd-2023.xsd#ecd_RecoveryOfErrCompDisclosureLineItems" xlink:label="RecoveryOfErrCompDisclosureLineItems"></link:loc>
+                    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/ecd/2023/ecd-2023.xsd#ecd_ErrCompRecoveryTable" xlink:label="ErrCompRecoveryTable"></link:loc>
+                    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="RecoveryOfErrCompDisclosureLineItems" xlink:to="ErrCompRecoveryTable" order="1.0" xbrldt:closed="false" xbrldt:contextElement="segment"></link:presentationArc>
+                    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/ecd/2023/ecd-2023.xsd#ecd_RestatementDateAxis" xlink:label="RestatementDateAxis"></link:loc>
+                    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ErrCompRecoveryTable" xlink:to="RestatementDateAxis" order="1.0"></link:presentationArc>
+                    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/ecd/2023/ecd-2023.xsd#ecd_IndividualAxis" xlink:label="IndividualAxis"></link:loc>
+                    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ErrCompRecoveryTable" xlink:to="IndividualAxis" order="2.0"></link:presentationArc>
+                    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/ecd/2023/ecd-2023.xsd#ecd_AllIndividualsMember" xlink:label="AllIndividualsMember"></link:loc>
+                    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="IndividualAxis" xlink:to="AllIndividualsMember" order="1.0"></link:presentationArc>
+                    <link:loc xlink:type="locator" xlink:href="clb01-20331231.xsd#clb01_SmithMember" xlink:label="SmithMember"></link:loc>
+                    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="IndividualAxis" xlink:to="SmithMember" order="2.0"></link:presentationArc>
+                    <link:loc xlink:type="locator" xlink:href="clb01-20331231.xsd#clb01_DoeMember" xlink:label="DoeMember"></link:loc>
+                    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="IndividualAxis" xlink:to="DoeMember" order="3.0"></link:presentationArc>
+                    <link:loc xlink:type="locator" xlink:href="clb01-20331231.xsd#clb01_PublicMember" xlink:label="PublicMember"></link:loc>
+                    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="IndividualAxis" xlink:to="PublicMember" order="4.0"></link:presentationArc>
+                    <link:loc xlink:type="locator" xlink:href="clb01-20331231.xsd#clb01_PreviouslyAwardedVariableCompAmt" xlink:label="PreviouslyAwardedVariableCompAmt"></link:loc>
+                    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="RecoveryOfErrCompDisclosureLineItems" xlink:to="PreviouslyAwardedVariableCompAmt" order="5.0"></link:presentationArc>
+                    <link:loc xlink:type="locator" xlink:href="clb01-20331231.xsd#clb01_RecomputedVariableCompAmt" xlink:label="RecomputedVariableCompAmt"></link:loc>
+                    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="RecoveryOfErrCompDisclosureLineItems" xlink:to="RecomputedVariableCompAmt" order="6.0"></link:presentationArc>
+                    <link:loc xlink:type="locator" xlink:href="clb01-20331231.xsd#clb01_CostToPursueRecoveryAmt" xlink:label="CostToPursueRecoveryAmt"></link:loc>
+                    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="RecoveryOfErrCompDisclosureLineItems" xlink:to="CostToPursueRecoveryAmt" order="7.0"></link:presentationArc>
+                    <link:loc xlink:type="locator" xlink:href="clb01-20331231.xsd#clb01_CustomMonetaryAmt" xlink:label="CustomMonetaryAmt"></link:loc>
+                    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="RecoveryOfErrCompDisclosureLineItems" xlink:to="CustomMonetaryAmt" order="3.0"></link:presentationArc>
+                    <link:loc xlink:type="locator" xlink:href="clb01-20331231.xsd#clb01_CustomAmtPerShare" xlink:label="CustomAmtPerShare"></link:loc>
+                    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="RecoveryOfErrCompDisclosureLineItems" xlink:to="CustomAmtPerShare" order="4.0"></link:presentationArc>
+                    <link:loc xlink:type="locator" xlink:href="clb01-20331231.xsd#clb01_CustomNumber" xlink:label="CustomNumber"></link:loc>
+                    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="RecoveryOfErrCompDisclosureLineItems" xlink:to="CustomNumber" order="2.0"></link:presentationArc>
+                </link:presentationLink>
+                <link:presentationLink xlink:type="extended" xlink:role="http://clb01/role/AdditionalErrCompAnalysis">
+                    <link:loc xlink:type="locator" xlink:href="clb01-20331231.xsd#clb01_CustomLineItems" xlink:label="CustomLineItems"></link:loc>
+                    <link:loc xlink:type="locator" xlink:href="clb01-20331231.xsd#clb01_CustomTable" xlink:label="CustomTable"></link:loc>
+                    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="CustomLineItems" xlink:to="CustomTable" order="1.0" xbrldt:contextElement="segment" xbrldt:closed="true"></link:presentationArc>
+                    <link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/srt/2023/elts/srt-2023.xsd#srt_RestatementAxis" xlink:label="RestatementAxis"></link:loc>
+                    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="CustomTable" xlink:to="RestatementAxis" order="1.0"></link:presentationArc>
+                    <link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/srt/2023/elts/srt-2023.xsd#srt_RestatementDomain" xlink:label="RestatementDomain"></link:loc>
+                    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="RestatementAxis" xlink:to="RestatementDomain" order="1.0"></link:presentationArc>
+                    <link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/srt/2023/elts/srt-2023.xsd#srt_ScenarioPreviouslyReportedMember" xlink:label="ScenarioPreviouslyReportedMember"></link:loc>
+                    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="RestatementAxis" xlink:to="ScenarioPreviouslyReportedMember" order="2.0"></link:presentationArc>
+                    <link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/srt/2023/elts/srt-2023.xsd#srt_RestatementAdjustmentMember" xlink:label="RestatementAdjustmentMember"></link:loc>
+                    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="RestatementAxis" xlink:to="RestatementAdjustmentMember" order="3.0"></link:presentationArc>
+                    <link:loc xlink:type="locator" xlink:href="clb01-20331231.xsd#clb01_CustomNumber" xlink:label="CustomNumber"></link:loc>
+                    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="CustomLineItems" xlink:to="CustomNumber" order="2.0"></link:presentationArc>
+                    <link:loc xlink:type="locator" xlink:href="clb01-20331231.xsd#clb01_CustomRatio" xlink:label="CustomRatio"></link:loc>
+                    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="CustomLineItems" xlink:to="CustomRatio" order="3.0"></link:presentationArc>
+                    <link:loc xlink:type="locator" xlink:href="clb01-20331231.xsd#clb01_CustomNumberOfShares" xlink:label="CustomNumberOfShares"></link:loc>
+                    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="CustomLineItems" xlink:to="CustomNumberOfShares" order="4.0"></link:presentationArc>
+                    <link:loc xlink:type="locator" xlink:href="clb01-20331231.xsd#clb01_CustomMonetaryAmt" xlink:label="CustomMonetaryAmt"></link:loc>
+                    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="CustomLineItems" xlink:to="CustomMonetaryAmt" order="5.0"></link:presentationArc>
+                    <link:loc xlink:type="locator" xlink:href="clb01-20331231.xsd#clb01_CustomAmtPerShare" xlink:label="CustomAmtPerShare"></link:loc>
+                    <link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="CustomLineItems" xlink:to="CustomAmtPerShare" order="6.0"></link:presentationArc>
+                </link:presentationLink>
+            </link:linkbase>
+        </xs:appinfo>
+    </xs:annotation>
+    <xs:import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"></xs:import>
+    <xs:import namespace="http://www.xbrl.org/2003/linkbase" schemaLocation="http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd"></xs:import>
+    <xs:import namespace="http://xbrl.sec.gov/dei/2023" schemaLocation="https://xbrl.sec.gov/dei/2023/dei-2023.xsd"></xs:import>
+    <xs:import namespace="http://xbrl.sec.gov/dei-sub/2023" schemaLocation="https://xbrl.sec.gov/dei/2023/dei-sub-2023.xsd"></xs:import>
+    <xs:import namespace="http://www.xbrl.org/dtr/type/2022-03-31" schemaLocation="https://www.xbrl.org/dtr/type/2022-03-31/types.xsd"></xs:import>
+    <xs:import namespace="http://fasb.org/srt/2023" schemaLocation="https://xbrl.fasb.org/srt/2023/elts/srt-2023.xsd"></xs:import>
+    <xs:import namespace="http://fasb.org/srt-types/2023" schemaLocation="https://xbrl.fasb.org/srt/2023/elts/srt-types-2023.xsd"></xs:import>
+    <xs:import namespace="http://xbrl.sec.gov/ecd/2023" schemaLocation="https://xbrl.sec.gov/ecd/2023/ecd-2023.xsd"></xs:import>
+    <xs:import namespace="http://xbrl.sec.gov/ecd-sub/2023" schemaLocation="https://xbrl.sec.gov/ecd/2023/ecd-sub-2023.xsd"></xs:import>
+    <xs:import namespace="http://xbrl.org/2005/xbrldt" schemaLocation="http://www.xbrl.org/2005/xbrldt-2005.xsd"></xs:import>
+    <xs:import namespace="http://www.xbrl.org/dtr/type/2022-03-31" schemaLocation="https://www.xbrl.org/dtr/type/2022-03-31/types.xsd"></xs:import>
+    <xs:element name="SmithMember" id="clb01_SmithMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"></xs:element>
+    <xs:element name="PublicMember" id="clb01_PublicMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"></xs:element>
+    <xs:element name="DoeMember" id="clb01_DoeMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"></xs:element>
+    <xs:element name="CustomLineItems" id="clb01_CustomLineItems" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"></xs:element>
+    <xs:element name="CustomTable" id="clb01_CustomTable" type="xbrli:stringItemType" substitutionGroup="xbrldt:hypercubeItem" abstract="true" nillable="true" xbrli:periodType="duration"></xs:element>
+    <xs:element name="CustomMonetaryAmt" id="clb01_CustomMonetaryAmt" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"></xs:element>
+    <xs:element name="CustomAmtPerShare" id="clb01_CustomAmtPerShare" type="dtr-types:perShareItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"></xs:element>
+    <xs:element name="CustomNumber" id="clb01_CustomNumber" type="xbrli:decimalItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"></xs:element>
+    <xs:element name="CustomRatio" id="clb01_CustomRatio" type="xbrli:pureItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"></xs:element>
+    <xs:element name="CustomNumberOfShares" id="clb01_CustomNumberOfShares" type="xbrli:sharesItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"></xs:element>
+    <xs:element name="PreviouslyAwardedVariableCompAmt" id="clb01_PreviouslyAwardedVariableCompAmt" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"></xs:element>
+    <xs:element name="RecomputedVariableCompAmt" id="clb01_RecomputedVariableCompAmt" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"></xs:element>
+    <xs:element name="CostToPursueRecoveryAmt" id="clb01_CostToPursueRecoveryAmt" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"></xs:element>
+</xs:schema>

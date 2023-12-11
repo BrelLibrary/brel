@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../../lib/test.xsl"?>
+<conf:testcase xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:conf="http://edgar/2009/conformance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../../lib/test.xsd">
+    <conf:creator>
+        <conf:name>SEC Office of Structured Disclosure</conf:name>
+        <conf:email>StructuredData@sec.gov</conf:email>
+    </conf:creator>
+    <conf:number>605-52</conf:number>
+    <conf:name>EDGAR Filer Manual v68d 6.5.52</conf:name>
+    <conf:description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.5.52 Form 8-K cover page and name changes">Refer to EFM: 6.5.52 Form 8-K cover page and name changes</a>
+    </conf:description>
+    <conf:variation id="_100gw">
+        <conf:name> 8-K, GW </conf:name>
+        <conf:description> 8-K, GW WrittenCommunications required</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"periodOfReport" : "12-31-2018" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60552100gw/e60552100gw-20081231.htm</conf:instance>
+            <conf:linkbase>e60552100gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60552100gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:schema>e60552100gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="WrittenCommunications unexpected " num="60552" severity="wrn" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_101gw">
+        <conf:name> 8-K, GW </conf:name>
+        <conf:description> 8-K, GW SolicitingMaterial required</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"periodOfReport" : "12-31-2018" , "emergingGrowthCompanyFlag" : true , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60552101gw/e60552101gw-20081231.htm</conf:instance>
+            <conf:linkbase>e60552101gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60552101gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:schema>e60552101gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SolicitingMaterial unexpected " num="60552" severity="wrn" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_102gd">
+        <conf:name>8-K, GOOD </conf:name>
+        <conf:description>8-K, GOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"periodOfReport" : "10-26-2018" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60552102gd/e60552102gd-20081231.htm</conf:instance>
+            <conf:linkbase>e60552102gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60552102gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:schema>e60552102gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_103gd">
+        <conf:name>10-Q, GOOD </conf:name>
+        <conf:description>10-Q GOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"periodOfReport" : "12-31-2018" , "emergingGrowthCompanyFlag" : false , "smallBusinessFlag" : false , "submissionType" : "10-Q"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60552103gd/e60552103gd-20081231.htm</conf:instance>
+            <conf:linkbase>e60552103gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60552103gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:linkbase>e60552103gd/edgar-20181231_def.xml</conf:linkbase>
+            <conf:schema>e60552103gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+    <conf:variation id="_104gw">
+        <conf:name> 8-K, GW </conf:name>
+        <conf:description> 8-K, GW WrittenCommunications required</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"periodOfReport" : "12-31-2018" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60552104gw/e60552104gw-20081231.htm</conf:instance>
+            <conf:linkbase>e60552104gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60552104gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:schema>e60552104gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="WrittenCommunications unexpected " num="60552" severity="wrn" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_105gw">
+        <conf:name> 8-K, GW </conf:name>
+        <conf:description> 8-K, GW SolicitingMaterial required</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"periodOfReport" : "12-31-2018" , "emergingGrowthCompanyFlag" : true , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60552105gw/e60552105gw-20081231.htm</conf:instance>
+            <conf:linkbase>e60552105gw/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60552105gw/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:schema>e60552105gw/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result>
+            <conf:assert name="SolicitingMaterial unexpected " num="60552" severity="wrn" frd="dq"></conf:assert>
+        </conf:result>
+    </conf:variation>
+    <conf:variation id="_106gd">
+        <conf:name> 8-K, Ri, GOOD </conf:name>
+        <conf:description> 8-K, Ri, Commented PreCommencementIssuerTenderOffer, GOOD</conf:description>
+        <conf:data>
+            <conf:parameter name="ELOparams" datatype="xs:string" value='{"periodOfReport" : "10-26-2018" , "emergingGrowthCompanyFlag" : false , "submissionType" : "8-K"}'></conf:parameter>
+            <conf:instance readMeFirst="true">e60552106gd/e60552106gd-20081231.htm</conf:instance>
+            <conf:linkbase>e60552106gd/edgar-20181231_pre.xml</conf:linkbase>
+            <conf:linkbase>e60552106gd/edgar-20181231_lab.xml</conf:linkbase>
+            <conf:schema>e60552106gd/edgar-20181231.xsd</conf:schema>
+        </conf:data>
+        <conf:result expected="valid"></conf:result>
+    </conf:variation>
+</conf:testcase>

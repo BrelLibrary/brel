@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>624-15</number>
+    <name>EDGAR Filer Manual v68d 6.24.15</name>
+    <description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#6.24.15  Statements of Changes in Shareholder Equity">Refer to EFM: 6.24.15  Statements of Changes in Shareholder Equity</a>
+    </description>
+    <reference specification="18153"></reference>
+    <!--   <variation id="_000gd"> -->
+    <!--     <name>Consolidated Statements of Shareholders' Equity, US-GAAP, GOOD</name> -->
+    <!--     <description>Consolidated Statements of Shareholders' Equity, US-GAAP</description> -->
+    <!--     <reference specification="18153"/> -->
+    <!--     <data> -->
+    <!--       <conf:parameter  xmlns:conf="http://edgar/2009/conformance" name="ELOparams" value='{"periodOfReport": "06-30-2010", "emergingGrowthCompanyFlag" : false, "submissionType": "8-K"}'/> -->
+    <!--       <instance readMeFirst="true">000gd/r15000gd-20081231.xml</instance> -->
+    <!--       <linkbase>000gd/r15000gd-20081231_pre.xml</linkbase> -->
+    <!--       <linkbase>000gd/r15000gd-20081231_lab.xml</linkbase> -->
+    <!--       <linkbase>000gd/r15000gd-20081231_def.xml</linkbase> -->
+    <!--       <schema>000gd/r15000gd-20081231.xsd</schema> -->
+    <!--     </data> -->
+    <!--     <result expected="valid"/> -->
+    <!--   </variation> -->
+    <variation id="_002gd">
+        <name>Statements Shareholder Equity, IFRS, GOOD</name>
+        <description>Basic Shareholder Equity, IFRS, GOOD</description>
+        <reference specification="18153"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2016", "submissionType": "6-K/A"}'></parameter>
+            <instance readMeFirst="true">002gd/r15002gd-20081231.xml</instance>
+            <linkbase>002gd/r15002gd-20081231_pre.xml</linkbase>
+            <linkbase>002gd/r15002gd-20081231_lab.xml</linkbase>
+            <linkbase>002gd/r15002gd-20081231_def.xml</linkbase>
+            <linkbase>002gd/r15002gd-20081231_cal.xml</linkbase>
+            <schema>002gd/r15002gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_003gd">
+        <name>Statements Shareholder Equity, IFRS, GOOD</name>
+        <description>Basic Shareholder Equity with some restated facts, IFRS, GOOD</description>
+        <reference specification="18153"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2016", "submissionType": "6-K/A"}'></parameter>
+            <instance readMeFirst="true">003gd/r15003gd-20081231.xml</instance>
+            <linkbase>003gd/r15003gd-20081231_pre.xml</linkbase>
+            <linkbase>003gd/r15003gd-20081231_lab.xml</linkbase>
+            <linkbase>003gd/r15003gd-20081231_def.xml</linkbase>
+            <linkbase>003gd/r15003gd-20081231_cal.xml</linkbase>
+            <schema>003gd/r15003gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+    <variation id="_004gd">
+        <name>Statements Shareholder Equity, IFRS, GOOD</name>
+        <description>Basic Shareholder Equity with some restated facts, IFRS, GOOD</description>
+        <reference specification="18153"></reference>
+        <data>
+            <parameter name="ELOparams" value='{"periodOfReport": "12-31-2016", "submissionType": "6-K/A"}'></parameter>
+            <instance readMeFirst="true">004gd/r15004gd-20081231.xml</instance>
+            <linkbase>004gd/r15004gd-20081231_pre.xml</linkbase>
+            <linkbase>004gd/r15004gd-20081231_lab.xml</linkbase>
+            <linkbase>004gd/r15004gd-20081231_def.xml</linkbase>
+            <linkbase>004gd/r15004gd-20081231_cal.xml</linkbase>
+            <schema>004gd/r15004gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid"></result>
+    </variation>
+</testcase>

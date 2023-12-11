@@ -1,0 +1,1577 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xbrl xmlns="http://www.xbrl.org/2003/instance" xmlns:dei="http://xbrl.sec.gov/dei/2023" xmlns:edgar="http://edgar/20101231" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:iso="http://www.xbrl.org/2003/iso4217" xmlns:local="local" xmlns:utr="http://www.xbrl.org/2009/utr">
+    <link:schemaRef xlink:href="edgar-20101231.xsd" xlink:type="simple"></link:schemaRef>
+    <context id="_">
+        <entity>
+            <identifier scheme="http://www.sec.gov/CIK">9876543210</identifier>
+        </entity>
+        <period>
+            <startDate>2008-01-31</startDate>
+            <endDate>2008-12-31</endDate>
+        </period>
+    </context>
+    <DocumentType xmlns="http://xbrl.sec.gov/dei/2023" contextRef="_">8-K</DocumentType>
+    <AmendmentFlag xmlns="http://xbrl.sec.gov/dei/2023" contextRef="_">false</AmendmentFlag>
+    <EntityRegistrantName xmlns="http://xbrl.sec.gov/dei/2023" contextRef="_">ng__</EntityRegistrantName>
+    <EntityCentralIndexKey xmlns="http://xbrl.sec.gov/dei/2023" contextRef="_">9876543210</EntityCentralIndexKey>
+    <DocumentPeriodEndDate xmlns="http://xbrl.sec.gov/dei/2023" contextRef="_">2008-12-31</DocumentPeriodEndDate>
+    <EntityEmergingGrowthCompany xmlns="http://xbrl.sec.gov/dei/2023" contextRef="_">false</EntityEmergingGrowthCompany>
+    <unit id="acre">
+        <measure>utr:acre</measure>
+    </unit>
+    <unit id="sqft">
+        <measure>utr:sqft</measure>
+    </unit>
+    <unit id="sqmi">
+        <measure>utr:sqmi</measure>
+    </unit>
+    <unit id="sqyd">
+        <measure>utr:sqyd</measure>
+    </unit>
+    <unit id="ha">
+        <measure>utr:ha</measure>
+    </unit>
+    <unit id="sqkm">
+        <measure>utr:sqkm</measure>
+    </unit>
+    <unit id="sqm">
+        <measure>utr:sqm</measure>
+    </unit>
+    <unit id="A">
+        <measure>utr:A</measure>
+    </unit>
+    <unit id="Boe">
+        <measure>utr:Boe</measure>
+    </unit>
+    <unit id="Btu">
+        <measure>utr:Btu</measure>
+    </unit>
+    <unit id="ft_lb">
+        <measure>utr:ft_lb</measure>
+    </unit>
+    <unit id="MBoe">
+        <measure>utr:MBoe</measure>
+    </unit>
+    <unit id="Mcfe">
+        <measure>utr:Mcfe</measure>
+    </unit>
+    <unit id="MMBoe">
+        <measure>utr:MMBoe</measure>
+    </unit>
+    <unit id="MMBTU">
+        <measure>utr:MMBTU</measure>
+    </unit>
+    <unit id="Cal">
+        <measure>utr:Cal</measure>
+    </unit>
+    <unit id="J">
+        <measure>utr:J</measure>
+    </unit>
+    <unit id="kJ">
+        <measure>utr:kJ</measure>
+    </unit>
+    <unit id="kWh">
+        <measure>utr:kWh</measure>
+    </unit>
+    <unit id="mJ">
+        <measure>utr:mJ</measure>
+    </unit>
+    <unit id="MWh">
+        <measure>utr:MWh</measure>
+    </unit>
+    <unit id="GWh">
+        <measure>utr:GWh</measure>
+    </unit>
+    <unit id="TWh">
+        <measure>utr:TWh</measure>
+    </unit>
+    <unit id="MMcfe">
+        <measure>utr:MMcfe</measure>
+    </unit>
+    <unit id="Bcfe">
+        <measure>utr:Bcfe</measure>
+    </unit>
+    <unit id="Tcfe">
+        <measure>utr:Tcfe</measure>
+    </unit>
+    <unit id="MWM">
+        <measure>utr:MWM</measure>
+    </unit>
+    <unit id="GWM">
+        <measure>utr:GWM</measure>
+    </unit>
+    <unit id="V">
+        <measure>utr:V</measure>
+    </unit>
+    <unit id="kV">
+        <measure>utr:kV</measure>
+    </unit>
+    <unit id="MV">
+        <measure>utr:MV</measure>
+    </unit>
+    <unit id="GV">
+        <measure>utr:GV</measure>
+    </unit>
+    <unit id="Hz">
+        <measure>utr:Hz</measure>
+    </unit>
+    <unit id="ft">
+        <measure>utr:ft</measure>
+    </unit>
+    <unit id="in">
+        <measure>utr:in</measure>
+    </unit>
+    <unit id="mi">
+        <measure>utr:mi</measure>
+    </unit>
+    <unit id="nmi">
+        <measure>utr:nmi</measure>
+    </unit>
+    <unit id="yd">
+        <measure>utr:yd</measure>
+    </unit>
+    <unit id="cm">
+        <measure>utr:cm</measure>
+    </unit>
+    <unit id="dm">
+        <measure>utr:dm</measure>
+    </unit>
+    <unit id="km">
+        <measure>utr:km</measure>
+    </unit>
+    <unit id="m">
+        <measure>utr:m</measure>
+    </unit>
+    <unit id="mm">
+        <measure>utr:mm</measure>
+    </unit>
+    <unit id="lb">
+        <measure>utr:lb</measure>
+    </unit>
+    <unit id="oz">
+        <measure>utr:oz</measure>
+    </unit>
+    <unit id="ozt">
+        <measure>utr:ozt</measure>
+    </unit>
+    <unit id="T">
+        <measure>utr:T</measure>
+    </unit>
+    <unit id="t">
+        <measure>utr:t</measure>
+    </unit>
+    <unit id="g">
+        <measure>utr:g</measure>
+    </unit>
+    <unit id="kg">
+        <measure>utr:kg</measure>
+    </unit>
+    <unit id="kT">
+        <measure>utr:kT</measure>
+    </unit>
+    <unit id="MT">
+        <measure>utr:MT</measure>
+    </unit>
+    <unit id="GT">
+        <measure>utr:GT</measure>
+    </unit>
+    <unit id="kt">
+        <measure>utr:kt</measure>
+    </unit>
+    <unit id="Mt">
+        <measure>utr:Mt</measure>
+    </unit>
+    <unit id="Gt">
+        <measure>utr:Gt</measure>
+    </unit>
+    <unit id="B">
+        <measure>utr:B</measure>
+    </unit>
+    <unit id="GB">
+        <measure>utr:GB</measure>
+    </unit>
+    <unit id="kB">
+        <measure>utr:kB</measure>
+    </unit>
+    <unit id="MB">
+        <measure>utr:MB</measure>
+    </unit>
+    <unit id="TB">
+        <measure>utr:TB</measure>
+    </unit>
+    <unit id="AED">
+        <measure>iso:AED</measure>
+    </unit>
+    <unit id="AFN">
+        <measure>iso:AFN</measure>
+    </unit>
+    <unit id="ALL">
+        <measure>iso:ALL</measure>
+    </unit>
+    <unit id="AMD">
+        <measure>iso:AMD</measure>
+    </unit>
+    <unit id="ANG">
+        <measure>iso:ANG</measure>
+    </unit>
+    <unit id="AOA">
+        <measure>iso:AOA</measure>
+    </unit>
+    <unit id="ARS">
+        <measure>iso:ARS</measure>
+    </unit>
+    <unit id="AUD">
+        <measure>iso:AUD</measure>
+    </unit>
+    <unit id="AWG">
+        <measure>iso:AWG</measure>
+    </unit>
+    <unit id="AZN">
+        <measure>iso:AZN</measure>
+    </unit>
+    <unit id="BAM">
+        <measure>iso:BAM</measure>
+    </unit>
+    <unit id="BBD">
+        <measure>iso:BBD</measure>
+    </unit>
+    <unit id="BDT">
+        <measure>iso:BDT</measure>
+    </unit>
+    <unit id="BGN">
+        <measure>iso:BGN</measure>
+    </unit>
+    <unit id="BHD">
+        <measure>iso:BHD</measure>
+    </unit>
+    <unit id="BIF">
+        <measure>iso:BIF</measure>
+    </unit>
+    <unit id="BMD">
+        <measure>iso:BMD</measure>
+    </unit>
+    <unit id="BND">
+        <measure>iso:BND</measure>
+    </unit>
+    <unit id="BOB">
+        <measure>iso:BOB</measure>
+    </unit>
+    <unit id="BOV">
+        <measure>iso:BOV</measure>
+    </unit>
+    <unit id="BRL">
+        <measure>iso:BRL</measure>
+    </unit>
+    <unit id="BSD">
+        <measure>iso:BSD</measure>
+    </unit>
+    <unit id="BTN">
+        <measure>iso:BTN</measure>
+    </unit>
+    <unit id="BWP">
+        <measure>iso:BWP</measure>
+    </unit>
+    <unit id="BYR">
+        <measure>iso:BYR</measure>
+    </unit>
+    <unit id="BZD">
+        <measure>iso:BZD</measure>
+    </unit>
+    <unit id="CAD">
+        <measure>iso:CAD</measure>
+    </unit>
+    <unit id="CDF">
+        <measure>iso:CDF</measure>
+    </unit>
+    <unit id="CHE">
+        <measure>iso:CHE</measure>
+    </unit>
+    <unit id="CHF">
+        <measure>iso:CHF</measure>
+    </unit>
+    <unit id="CHW">
+        <measure>iso:CHW</measure>
+    </unit>
+    <unit id="CLF">
+        <measure>iso:CLF</measure>
+    </unit>
+    <unit id="CLP">
+        <measure>iso:CLP</measure>
+    </unit>
+    <unit id="CNY">
+        <measure>iso:CNY</measure>
+    </unit>
+    <unit id="COP">
+        <measure>iso:COP</measure>
+    </unit>
+    <unit id="COU">
+        <measure>iso:COU</measure>
+    </unit>
+    <unit id="CRC">
+        <measure>iso:CRC</measure>
+    </unit>
+    <unit id="CUC">
+        <measure>iso:CUC</measure>
+    </unit>
+    <unit id="CUP">
+        <measure>iso:CUP</measure>
+    </unit>
+    <unit id="CVE">
+        <measure>iso:CVE</measure>
+    </unit>
+    <unit id="CZK">
+        <measure>iso:CZK</measure>
+    </unit>
+    <unit id="DJF">
+        <measure>iso:DJF</measure>
+    </unit>
+    <unit id="DKK">
+        <measure>iso:DKK</measure>
+    </unit>
+    <unit id="DOP">
+        <measure>iso:DOP</measure>
+    </unit>
+    <unit id="DZD">
+        <measure>iso:DZD</measure>
+    </unit>
+    <unit id="EEK">
+        <measure>iso:EEK</measure>
+    </unit>
+    <unit id="EGP">
+        <measure>iso:EGP</measure>
+    </unit>
+    <unit id="ERN">
+        <measure>iso:ERN</measure>
+    </unit>
+    <unit id="ETB">
+        <measure>iso:ETB</measure>
+    </unit>
+    <unit id="EUR">
+        <measure>iso:EUR</measure>
+    </unit>
+    <unit id="FJD">
+        <measure>iso:FJD</measure>
+    </unit>
+    <unit id="FKP">
+        <measure>iso:FKP</measure>
+    </unit>
+    <unit id="GBP">
+        <measure>iso:GBP</measure>
+    </unit>
+    <unit id="GEL">
+        <measure>iso:GEL</measure>
+    </unit>
+    <unit id="GHS">
+        <measure>iso:GHS</measure>
+    </unit>
+    <unit id="GIP">
+        <measure>iso:GIP</measure>
+    </unit>
+    <unit id="GMD">
+        <measure>iso:GMD</measure>
+    </unit>
+    <unit id="GNF">
+        <measure>iso:GNF</measure>
+    </unit>
+    <unit id="GTQ">
+        <measure>iso:GTQ</measure>
+    </unit>
+    <unit id="GYD">
+        <measure>iso:GYD</measure>
+    </unit>
+    <unit id="HKD">
+        <measure>iso:HKD</measure>
+    </unit>
+    <unit id="HNL">
+        <measure>iso:HNL</measure>
+    </unit>
+    <unit id="HRK">
+        <measure>iso:HRK</measure>
+    </unit>
+    <unit id="HTG">
+        <measure>iso:HTG</measure>
+    </unit>
+    <unit id="HUF">
+        <measure>iso:HUF</measure>
+    </unit>
+    <unit id="IDR">
+        <measure>iso:IDR</measure>
+    </unit>
+    <unit id="ILS">
+        <measure>iso:ILS</measure>
+    </unit>
+    <unit id="INR">
+        <measure>iso:INR</measure>
+    </unit>
+    <unit id="IQD">
+        <measure>iso:IQD</measure>
+    </unit>
+    <unit id="IRR">
+        <measure>iso:IRR</measure>
+    </unit>
+    <unit id="ISK">
+        <measure>iso:ISK</measure>
+    </unit>
+    <unit id="JMD">
+        <measure>iso:JMD</measure>
+    </unit>
+    <unit id="JOD">
+        <measure>iso:JOD</measure>
+    </unit>
+    <unit id="JPY">
+        <measure>iso:JPY</measure>
+    </unit>
+    <unit id="KES">
+        <measure>iso:KES</measure>
+    </unit>
+    <unit id="KGS">
+        <measure>iso:KGS</measure>
+    </unit>
+    <unit id="KHR">
+        <measure>iso:KHR</measure>
+    </unit>
+    <unit id="KMF">
+        <measure>iso:KMF</measure>
+    </unit>
+    <unit id="KPW">
+        <measure>iso:KPW</measure>
+    </unit>
+    <unit id="KRW">
+        <measure>iso:KRW</measure>
+    </unit>
+    <unit id="KWD">
+        <measure>iso:KWD</measure>
+    </unit>
+    <unit id="KYD">
+        <measure>iso:KYD</measure>
+    </unit>
+    <unit id="KZT">
+        <measure>iso:KZT</measure>
+    </unit>
+    <unit id="LAK">
+        <measure>iso:LAK</measure>
+    </unit>
+    <unit id="LBP">
+        <measure>iso:LBP</measure>
+    </unit>
+    <unit id="LKR">
+        <measure>iso:LKR</measure>
+    </unit>
+    <unit id="LRD">
+        <measure>iso:LRD</measure>
+    </unit>
+    <unit id="LSL">
+        <measure>iso:LSL</measure>
+    </unit>
+    <unit id="LTL">
+        <measure>iso:LTL</measure>
+    </unit>
+    <unit id="LVL">
+        <measure>iso:LVL</measure>
+    </unit>
+    <unit id="LYD">
+        <measure>iso:LYD</measure>
+    </unit>
+    <unit id="MAD">
+        <measure>iso:MAD</measure>
+    </unit>
+    <unit id="MDL">
+        <measure>iso:MDL</measure>
+    </unit>
+    <unit id="MGA">
+        <measure>iso:MGA</measure>
+    </unit>
+    <unit id="MKD">
+        <measure>iso:MKD</measure>
+    </unit>
+    <unit id="MMK">
+        <measure>iso:MMK</measure>
+    </unit>
+    <unit id="MNT">
+        <measure>iso:MNT</measure>
+    </unit>
+    <unit id="MOP">
+        <measure>iso:MOP</measure>
+    </unit>
+    <unit id="MRO">
+        <measure>iso:MRO</measure>
+    </unit>
+    <unit id="MUR">
+        <measure>iso:MUR</measure>
+    </unit>
+    <unit id="MVR">
+        <measure>iso:MVR</measure>
+    </unit>
+    <unit id="MWK">
+        <measure>iso:MWK</measure>
+    </unit>
+    <unit id="MXN">
+        <measure>iso:MXN</measure>
+    </unit>
+    <unit id="MXV">
+        <measure>iso:MXV</measure>
+    </unit>
+    <unit id="MYR">
+        <measure>iso:MYR</measure>
+    </unit>
+    <unit id="MZN">
+        <measure>iso:MZN</measure>
+    </unit>
+    <unit id="NAD">
+        <measure>iso:NAD</measure>
+    </unit>
+    <unit id="NGN">
+        <measure>iso:NGN</measure>
+    </unit>
+    <unit id="NIO">
+        <measure>iso:NIO</measure>
+    </unit>
+    <unit id="NOK">
+        <measure>iso:NOK</measure>
+    </unit>
+    <unit id="NPR">
+        <measure>iso:NPR</measure>
+    </unit>
+    <unit id="NZD">
+        <measure>iso:NZD</measure>
+    </unit>
+    <unit id="OMR">
+        <measure>iso:OMR</measure>
+    </unit>
+    <unit id="PAB">
+        <measure>iso:PAB</measure>
+    </unit>
+    <unit id="PEN">
+        <measure>iso:PEN</measure>
+    </unit>
+    <unit id="PGK">
+        <measure>iso:PGK</measure>
+    </unit>
+    <unit id="PHP">
+        <measure>iso:PHP</measure>
+    </unit>
+    <unit id="PKR">
+        <measure>iso:PKR</measure>
+    </unit>
+    <unit id="PLN">
+        <measure>iso:PLN</measure>
+    </unit>
+    <unit id="PYG">
+        <measure>iso:PYG</measure>
+    </unit>
+    <unit id="QAR">
+        <measure>iso:QAR</measure>
+    </unit>
+    <unit id="RON">
+        <measure>iso:RON</measure>
+    </unit>
+    <unit id="RSD">
+        <measure>iso:RSD</measure>
+    </unit>
+    <unit id="RUB">
+        <measure>iso:RUB</measure>
+    </unit>
+    <unit id="RWF">
+        <measure>iso:RWF</measure>
+    </unit>
+    <unit id="SAR">
+        <measure>iso:SAR</measure>
+    </unit>
+    <unit id="SBD">
+        <measure>iso:SBD</measure>
+    </unit>
+    <unit id="SCR">
+        <measure>iso:SCR</measure>
+    </unit>
+    <unit id="SDG">
+        <measure>iso:SDG</measure>
+    </unit>
+    <unit id="SEK">
+        <measure>iso:SEK</measure>
+    </unit>
+    <unit id="SGD">
+        <measure>iso:SGD</measure>
+    </unit>
+    <unit id="SHP">
+        <measure>iso:SHP</measure>
+    </unit>
+    <unit id="SLL">
+        <measure>iso:SLL</measure>
+    </unit>
+    <unit id="SOS">
+        <measure>iso:SOS</measure>
+    </unit>
+    <unit id="SRD">
+        <measure>iso:SRD</measure>
+    </unit>
+    <unit id="STD">
+        <measure>iso:STD</measure>
+    </unit>
+    <unit id="SYP">
+        <measure>iso:SYP</measure>
+    </unit>
+    <unit id="SZL">
+        <measure>iso:SZL</measure>
+    </unit>
+    <unit id="THB">
+        <measure>iso:THB</measure>
+    </unit>
+    <unit id="TJS">
+        <measure>iso:TJS</measure>
+    </unit>
+    <unit id="TMT">
+        <measure>iso:TMT</measure>
+    </unit>
+    <unit id="TND">
+        <measure>iso:TND</measure>
+    </unit>
+    <unit id="TOP">
+        <measure>iso:TOP</measure>
+    </unit>
+    <unit id="TRY">
+        <measure>iso:TRY</measure>
+    </unit>
+    <unit id="TTD">
+        <measure>iso:TTD</measure>
+    </unit>
+    <unit id="TWD">
+        <measure>iso:TWD</measure>
+    </unit>
+    <unit id="TZS">
+        <measure>iso:TZS</measure>
+    </unit>
+    <unit id="UAH">
+        <measure>iso:UAH</measure>
+    </unit>
+    <unit id="UGX">
+        <measure>iso:UGX</measure>
+    </unit>
+    <unit id="USD">
+        <measure>iso:USD</measure>
+    </unit>
+    <unit id="USN">
+        <measure>iso:USN</measure>
+    </unit>
+    <unit id="USS">
+        <measure>iso:USS</measure>
+    </unit>
+    <unit id="UYU">
+        <measure>iso:UYU</measure>
+    </unit>
+    <unit id="UZS">
+        <measure>iso:UZS</measure>
+    </unit>
+    <unit id="VEB">
+        <measure>iso:VEB</measure>
+    </unit>
+    <unit id="VEF">
+        <measure>iso:VEF</measure>
+    </unit>
+    <unit id="VND">
+        <measure>iso:VND</measure>
+    </unit>
+    <unit id="VUV">
+        <measure>iso:VUV</measure>
+    </unit>
+    <unit id="WST">
+        <measure>iso:WST</measure>
+    </unit>
+    <unit id="XAF">
+        <measure>iso:XAF</measure>
+    </unit>
+    <unit id="XAG">
+        <measure>iso:XAG</measure>
+    </unit>
+    <unit id="XAU">
+        <measure>iso:XAU</measure>
+    </unit>
+    <unit id="XBA">
+        <measure>iso:XBA</measure>
+    </unit>
+    <unit id="XBB">
+        <measure>iso:XBB</measure>
+    </unit>
+    <unit id="XBC">
+        <measure>iso:XBC</measure>
+    </unit>
+    <unit id="XBD">
+        <measure>iso:XBD</measure>
+    </unit>
+    <unit id="XCD">
+        <measure>iso:XCD</measure>
+    </unit>
+    <unit id="XDR">
+        <measure>iso:XDR</measure>
+    </unit>
+    <unit id="XFU">
+        <measure>iso:XFU</measure>
+    </unit>
+    <unit id="XOF">
+        <measure>iso:XOF</measure>
+    </unit>
+    <unit id="XPD">
+        <measure>iso:XPD</measure>
+    </unit>
+    <unit id="XPF">
+        <measure>iso:XPF</measure>
+    </unit>
+    <unit id="XPT">
+        <measure>iso:XPT</measure>
+    </unit>
+    <unit id="YER">
+        <measure>iso:YER</measure>
+    </unit>
+    <unit id="ZAR">
+        <measure>iso:ZAR</measure>
+    </unit>
+    <unit id="ZMK">
+        <measure>iso:ZMK</measure>
+    </unit>
+    <unit id="ZWL">
+        <measure>iso:ZWL</measure>
+    </unit>
+    <unit id="AED_shares">
+        <divide>
+            <unitNumerator>
+                <measure>iso:AED</measure>
+            </unitNumerator>
+            <unitDenominator>
+                <measure>xbrli:shares</measure>
+            </unitDenominator>
+        </divide>
+    </unit>
+    <unit id="HKD_shares">
+        <divide>
+            <unitNumerator>
+                <measure>iso:HKD</measure>
+            </unitNumerator>
+            <unitDenominator>
+                <measure>xbrli:shares</measure>
+            </unitDenominator>
+        </divide>
+    </unit>
+    <unit id="QAR_shares">
+        <divide>
+            <unitNumerator>
+                <measure>iso:QAR</measure>
+            </unitNumerator>
+            <unitDenominator>
+                <measure>xbrli:shares</measure>
+            </unitDenominator>
+        </divide>
+    </unit>
+    <unit id="AED_u1">
+        <divide>
+            <unitNumerator>
+                <measure>iso:AED</measure>
+            </unitNumerator>
+            <unitDenominator>
+                <measure>local:u1</measure>
+            </unitDenominator>
+        </divide>
+    </unit>
+    <unit id="AED_pure">
+        <divide>
+            <unitNumerator>
+                <measure>iso:AED</measure>
+            </unitNumerator>
+            <unitDenominator>
+                <measure>xbrli:pure</measure>
+            </unitDenominator>
+        </divide>
+    </unit>
+    <unit id="AED_USD">
+        <divide>
+            <unitNumerator>
+                <measure>iso:AED</measure>
+            </unitNumerator>
+            <unitDenominator>
+                <measure>iso:USD</measure>
+            </unitDenominator>
+        </divide>
+    </unit>
+    <unit id="HKD_u1">
+        <divide>
+            <unitNumerator>
+                <measure>iso:HKD</measure>
+            </unitNumerator>
+            <unitDenominator>
+                <measure>local:u1</measure>
+            </unitDenominator>
+        </divide>
+    </unit>
+    <unit id="HKD_pure">
+        <divide>
+            <unitNumerator>
+                <measure>iso:HKD</measure>
+            </unitNumerator>
+            <unitDenominator>
+                <measure>xbrli:pure</measure>
+            </unitDenominator>
+        </divide>
+    </unit>
+    <unit id="HKD_USD">
+        <divide>
+            <unitNumerator>
+                <measure>iso:HKD</measure>
+            </unitNumerator>
+            <unitDenominator>
+                <measure>iso:USD</measure>
+            </unitDenominator>
+        </divide>
+    </unit>
+    <unit id="QAR_u1">
+        <divide>
+            <unitNumerator>
+                <measure>iso:QAR</measure>
+            </unitNumerator>
+            <unitDenominator>
+                <measure>local:u1</measure>
+            </unitDenominator>
+        </divide>
+    </unit>
+    <unit id="QAR_pure">
+        <divide>
+            <unitNumerator>
+                <measure>iso:QAR</measure>
+            </unitNumerator>
+            <unitDenominator>
+                <measure>xbrli:pure</measure>
+            </unitDenominator>
+        </divide>
+    </unit>
+    <unit id="QAR_USD">
+        <divide>
+            <unitNumerator>
+                <measure>iso:QAR</measure>
+            </unitNumerator>
+            <unitDenominator>
+                <measure>iso:USD</measure>
+            </unitDenominator>
+        </divide>
+    </unit>
+    <unit id="hp">
+        <measure>utr:hp</measure>
+    </unit>
+    <unit id="GW">
+        <measure>utr:GW</measure>
+    </unit>
+    <unit id="kW">
+        <measure>utr:kW</measure>
+    </unit>
+    <unit id="MW">
+        <measure>utr:MW</measure>
+    </unit>
+    <unit id="TW">
+        <measure>utr:TW</measure>
+    </unit>
+    <unit id="W">
+        <measure>utr:W</measure>
+    </unit>
+    <unit id="pure">
+        <measure>xbrli:pure</measure>
+    </unit>
+    <unit id="Rate">
+        <measure>utr:Rate</measure>
+    </unit>
+    <unit id="AED_FJD">
+        <divide>
+            <unitNumerator>
+                <measure>iso:AED</measure>
+            </unitNumerator>
+            <unitDenominator>
+                <measure>iso:FJD</measure>
+            </unitDenominator>
+        </divide>
+    </unit>
+    <unit id="FJD_MVR">
+        <divide>
+            <unitNumerator>
+                <measure>iso:FJD</measure>
+            </unitNumerator>
+            <unitDenominator>
+                <measure>iso:MVR</measure>
+            </unitDenominator>
+        </divide>
+    </unit>
+    <unit id="MVR_USN">
+        <divide>
+            <unitNumerator>
+                <measure>iso:MVR</measure>
+            </unitNumerator>
+            <unitDenominator>
+                <measure>iso:USN</measure>
+            </unitDenominator>
+        </divide>
+    </unit>
+    <unit id="shares">
+        <measure>xbrli:shares</measure>
+    </unit>
+    <unit id="bbl">
+        <measure>utr:bbl</measure>
+    </unit>
+    <unit id="ft3">
+        <measure>utr:ft3</measure>
+    </unit>
+    <unit id="gal">
+        <measure>utr:gal</measure>
+    </unit>
+    <unit id="MBbls">
+        <measure>utr:MBbls</measure>
+    </unit>
+    <unit id="Mcf">
+        <measure>utr:Mcf</measure>
+    </unit>
+    <unit id="MMBbls">
+        <measure>utr:MMBbls</measure>
+    </unit>
+    <unit id="MMcf">
+        <measure>utr:MMcf</measure>
+    </unit>
+    <unit id="l">
+        <measure>utr:l</measure>
+    </unit>
+    <unit id="m3">
+        <measure>utr:m3</measure>
+    </unit>
+    <unit id="bu">
+        <measure>utr:bu</measure>
+    </unit>
+    <unit id="aft">
+        <measure>utr:aft</measure>
+    </unit>
+    <unit id="Bcf">
+        <measure>utr:Bcf</measure>
+    </unit>
+    <unit id="Tcf">
+        <measure>utr:Tcf</measure>
+    </unit>
+    <unit id="bbl_Y">
+        <divide>
+            <unitNumerator>
+                <measure>utr:bbl</measure>
+            </unitNumerator>
+            <unitDenominator>
+                <measure>utr:Y</measure>
+            </unitDenominator>
+        </divide>
+    </unit>
+    <unit id="bbl_S">
+        <divide>
+            <unitNumerator>
+                <measure>utr:bbl</measure>
+            </unitNumerator>
+            <unitDenominator>
+                <measure>utr:S</measure>
+            </unitDenominator>
+        </divide>
+    </unit>
+    <unit id="MMBbls_Y">
+        <divide>
+            <unitNumerator>
+                <measure>utr:MMBbls</measure>
+            </unitNumerator>
+            <unitDenominator>
+                <measure>utr:Y</measure>
+            </unitDenominator>
+        </divide>
+    </unit>
+    <unit id="MMBbls_S">
+        <divide>
+            <unitNumerator>
+                <measure>utr:MMBbls</measure>
+            </unitNumerator>
+            <unitDenominator>
+                <measure>utr:S</measure>
+            </unitDenominator>
+        </divide>
+    </unit>
+    <unit id="aft_Y">
+        <divide>
+            <unitNumerator>
+                <measure>utr:aft</measure>
+            </unitNumerator>
+            <unitDenominator>
+                <measure>utr:Y</measure>
+            </unitDenominator>
+        </divide>
+    </unit>
+    <unit id="aft_S">
+        <divide>
+            <unitNumerator>
+                <measure>utr:aft</measure>
+            </unitNumerator>
+            <unitDenominator>
+                <measure>utr:S</measure>
+            </unitDenominator>
+        </divide>
+    </unit>
+    <edgar:AreaItemTypeConcept contextRef="_" unitRef="acre" xsi:nil="true"></edgar:AreaItemTypeConcept>
+    <edgar:DerivedAreaItemTypeConcept contextRef="_" unitRef="acre" xsi:nil="true"></edgar:DerivedAreaItemTypeConcept>
+    <edgar:AreaItemTypeConcept contextRef="_" unitRef="sqft" xsi:nil="true"></edgar:AreaItemTypeConcept>
+    <edgar:DerivedAreaItemTypeConcept contextRef="_" unitRef="sqft" xsi:nil="true"></edgar:DerivedAreaItemTypeConcept>
+    <edgar:AreaItemTypeConcept contextRef="_" unitRef="sqmi" xsi:nil="true"></edgar:AreaItemTypeConcept>
+    <edgar:DerivedAreaItemTypeConcept contextRef="_" unitRef="sqmi" xsi:nil="true"></edgar:DerivedAreaItemTypeConcept>
+    <edgar:AreaItemTypeConcept contextRef="_" unitRef="sqyd" xsi:nil="true"></edgar:AreaItemTypeConcept>
+    <edgar:DerivedAreaItemTypeConcept contextRef="_" unitRef="sqyd" xsi:nil="true"></edgar:DerivedAreaItemTypeConcept>
+    <edgar:AreaItemTypeConcept contextRef="_" unitRef="ha" xsi:nil="true"></edgar:AreaItemTypeConcept>
+    <edgar:DerivedAreaItemTypeConcept contextRef="_" unitRef="ha" xsi:nil="true"></edgar:DerivedAreaItemTypeConcept>
+    <edgar:AreaItemTypeConcept contextRef="_" unitRef="sqkm" xsi:nil="true"></edgar:AreaItemTypeConcept>
+    <edgar:DerivedAreaItemTypeConcept contextRef="_" unitRef="sqkm" xsi:nil="true"></edgar:DerivedAreaItemTypeConcept>
+    <edgar:AreaItemTypeConcept contextRef="_" unitRef="sqm" xsi:nil="true"></edgar:AreaItemTypeConcept>
+    <edgar:DerivedAreaItemTypeConcept contextRef="_" unitRef="sqm" xsi:nil="true"></edgar:DerivedAreaItemTypeConcept>
+    <edgar:ElectricCurrentItemTypeConcept contextRef="_" unitRef="A" xsi:nil="true"></edgar:ElectricCurrentItemTypeConcept>
+    <edgar:DerivedElectricCurrentItemTypeConcept contextRef="_" unitRef="A" xsi:nil="true"></edgar:DerivedElectricCurrentItemTypeConcept>
+    <edgar:EnergyItemTypeConcept contextRef="_" unitRef="Boe" xsi:nil="true"></edgar:EnergyItemTypeConcept>
+    <edgar:DerivedEnergyItemTypeConcept contextRef="_" unitRef="Boe" xsi:nil="true"></edgar:DerivedEnergyItemTypeConcept>
+    <edgar:EnergyItemTypeConcept contextRef="_" unitRef="Btu" xsi:nil="true"></edgar:EnergyItemTypeConcept>
+    <edgar:DerivedEnergyItemTypeConcept contextRef="_" unitRef="Btu" xsi:nil="true"></edgar:DerivedEnergyItemTypeConcept>
+    <edgar:EnergyItemTypeConcept contextRef="_" unitRef="ft_lb" xsi:nil="true"></edgar:EnergyItemTypeConcept>
+    <edgar:DerivedEnergyItemTypeConcept contextRef="_" unitRef="ft_lb" xsi:nil="true"></edgar:DerivedEnergyItemTypeConcept>
+    <edgar:EnergyItemTypeConcept contextRef="_" unitRef="MBoe" xsi:nil="true"></edgar:EnergyItemTypeConcept>
+    <edgar:DerivedEnergyItemTypeConcept contextRef="_" unitRef="MBoe" xsi:nil="true"></edgar:DerivedEnergyItemTypeConcept>
+    <edgar:EnergyItemTypeConcept contextRef="_" unitRef="Mcfe" xsi:nil="true"></edgar:EnergyItemTypeConcept>
+    <edgar:DerivedEnergyItemTypeConcept contextRef="_" unitRef="Mcfe" xsi:nil="true"></edgar:DerivedEnergyItemTypeConcept>
+    <edgar:EnergyItemTypeConcept contextRef="_" unitRef="MMBoe" xsi:nil="true"></edgar:EnergyItemTypeConcept>
+    <edgar:DerivedEnergyItemTypeConcept contextRef="_" unitRef="MMBoe" xsi:nil="true"></edgar:DerivedEnergyItemTypeConcept>
+    <edgar:EnergyItemTypeConcept contextRef="_" unitRef="MMBTU" xsi:nil="true"></edgar:EnergyItemTypeConcept>
+    <edgar:DerivedEnergyItemTypeConcept contextRef="_" unitRef="MMBTU" xsi:nil="true"></edgar:DerivedEnergyItemTypeConcept>
+    <edgar:EnergyItemTypeConcept contextRef="_" unitRef="Cal" xsi:nil="true"></edgar:EnergyItemTypeConcept>
+    <edgar:DerivedEnergyItemTypeConcept contextRef="_" unitRef="Cal" xsi:nil="true"></edgar:DerivedEnergyItemTypeConcept>
+    <edgar:EnergyItemTypeConcept contextRef="_" unitRef="J" xsi:nil="true"></edgar:EnergyItemTypeConcept>
+    <edgar:DerivedEnergyItemTypeConcept contextRef="_" unitRef="J" xsi:nil="true"></edgar:DerivedEnergyItemTypeConcept>
+    <edgar:EnergyItemTypeConcept contextRef="_" unitRef="kJ" xsi:nil="true"></edgar:EnergyItemTypeConcept>
+    <edgar:DerivedEnergyItemTypeConcept contextRef="_" unitRef="kJ" xsi:nil="true"></edgar:DerivedEnergyItemTypeConcept>
+    <edgar:EnergyItemTypeConcept contextRef="_" unitRef="kWh" xsi:nil="true"></edgar:EnergyItemTypeConcept>
+    <edgar:DerivedEnergyItemTypeConcept contextRef="_" unitRef="kWh" xsi:nil="true"></edgar:DerivedEnergyItemTypeConcept>
+    <edgar:EnergyItemTypeConcept contextRef="_" unitRef="mJ" xsi:nil="true"></edgar:EnergyItemTypeConcept>
+    <edgar:DerivedEnergyItemTypeConcept contextRef="_" unitRef="mJ" xsi:nil="true"></edgar:DerivedEnergyItemTypeConcept>
+    <edgar:EnergyItemTypeConcept contextRef="_" unitRef="MWh" xsi:nil="true"></edgar:EnergyItemTypeConcept>
+    <edgar:DerivedEnergyItemTypeConcept contextRef="_" unitRef="MWh" xsi:nil="true"></edgar:DerivedEnergyItemTypeConcept>
+    <edgar:EnergyItemTypeConcept contextRef="_" unitRef="GWh" xsi:nil="true"></edgar:EnergyItemTypeConcept>
+    <edgar:DerivedEnergyItemTypeConcept contextRef="_" unitRef="GWh" xsi:nil="true"></edgar:DerivedEnergyItemTypeConcept>
+    <edgar:EnergyItemTypeConcept contextRef="_" unitRef="TWh" xsi:nil="true"></edgar:EnergyItemTypeConcept>
+    <edgar:DerivedEnergyItemTypeConcept contextRef="_" unitRef="TWh" xsi:nil="true"></edgar:DerivedEnergyItemTypeConcept>
+    <edgar:EnergyItemTypeConcept contextRef="_" unitRef="MMcfe" xsi:nil="true"></edgar:EnergyItemTypeConcept>
+    <edgar:DerivedEnergyItemTypeConcept contextRef="_" unitRef="MMcfe" xsi:nil="true"></edgar:DerivedEnergyItemTypeConcept>
+    <edgar:EnergyItemTypeConcept contextRef="_" unitRef="Bcfe" xsi:nil="true"></edgar:EnergyItemTypeConcept>
+    <edgar:DerivedEnergyItemTypeConcept contextRef="_" unitRef="Bcfe" xsi:nil="true"></edgar:DerivedEnergyItemTypeConcept>
+    <edgar:EnergyItemTypeConcept contextRef="_" unitRef="Tcfe" xsi:nil="true"></edgar:EnergyItemTypeConcept>
+    <edgar:DerivedEnergyItemTypeConcept contextRef="_" unitRef="Tcfe" xsi:nil="true"></edgar:DerivedEnergyItemTypeConcept>
+    <edgar:EnergyItemTypeConcept contextRef="_" unitRef="MWM" xsi:nil="true"></edgar:EnergyItemTypeConcept>
+    <edgar:DerivedEnergyItemTypeConcept contextRef="_" unitRef="MWM" xsi:nil="true"></edgar:DerivedEnergyItemTypeConcept>
+    <edgar:EnergyItemTypeConcept contextRef="_" unitRef="GWM" xsi:nil="true"></edgar:EnergyItemTypeConcept>
+    <edgar:DerivedEnergyItemTypeConcept contextRef="_" unitRef="GWM" xsi:nil="true"></edgar:DerivedEnergyItemTypeConcept>
+    <edgar:VoltageItemTypeConcept contextRef="_" unitRef="V" xsi:nil="true"></edgar:VoltageItemTypeConcept>
+    <edgar:DerivedVoltageItemTypeConcept contextRef="_" unitRef="V" xsi:nil="true"></edgar:DerivedVoltageItemTypeConcept>
+    <edgar:VoltageItemTypeConcept contextRef="_" unitRef="kV" xsi:nil="true"></edgar:VoltageItemTypeConcept>
+    <edgar:DerivedVoltageItemTypeConcept contextRef="_" unitRef="kV" xsi:nil="true"></edgar:DerivedVoltageItemTypeConcept>
+    <edgar:VoltageItemTypeConcept contextRef="_" unitRef="MV" xsi:nil="true"></edgar:VoltageItemTypeConcept>
+    <edgar:DerivedVoltageItemTypeConcept contextRef="_" unitRef="MV" xsi:nil="true"></edgar:DerivedVoltageItemTypeConcept>
+    <edgar:VoltageItemTypeConcept contextRef="_" unitRef="GV" xsi:nil="true"></edgar:VoltageItemTypeConcept>
+    <edgar:DerivedVoltageItemTypeConcept contextRef="_" unitRef="GV" xsi:nil="true"></edgar:DerivedVoltageItemTypeConcept>
+    <edgar:FrequencyItemTypeConcept contextRef="_" unitRef="Hz" xsi:nil="true"></edgar:FrequencyItemTypeConcept>
+    <edgar:DerivedFrequencyItemTypeConcept contextRef="_" unitRef="Hz" xsi:nil="true"></edgar:DerivedFrequencyItemTypeConcept>
+    <edgar:LengthItemTypeConcept contextRef="_" unitRef="ft" xsi:nil="true"></edgar:LengthItemTypeConcept>
+    <edgar:DerivedLengthItemTypeConcept contextRef="_" unitRef="ft" xsi:nil="true"></edgar:DerivedLengthItemTypeConcept>
+    <edgar:LengthItemTypeConcept contextRef="_" unitRef="in" xsi:nil="true"></edgar:LengthItemTypeConcept>
+    <edgar:DerivedLengthItemTypeConcept contextRef="_" unitRef="in" xsi:nil="true"></edgar:DerivedLengthItemTypeConcept>
+    <edgar:LengthItemTypeConcept contextRef="_" unitRef="mi" xsi:nil="true"></edgar:LengthItemTypeConcept>
+    <edgar:DerivedLengthItemTypeConcept contextRef="_" unitRef="mi" xsi:nil="true"></edgar:DerivedLengthItemTypeConcept>
+    <edgar:LengthItemTypeConcept contextRef="_" unitRef="nmi" xsi:nil="true"></edgar:LengthItemTypeConcept>
+    <edgar:DerivedLengthItemTypeConcept contextRef="_" unitRef="nmi" xsi:nil="true"></edgar:DerivedLengthItemTypeConcept>
+    <edgar:LengthItemTypeConcept contextRef="_" unitRef="yd" xsi:nil="true"></edgar:LengthItemTypeConcept>
+    <edgar:DerivedLengthItemTypeConcept contextRef="_" unitRef="yd" xsi:nil="true"></edgar:DerivedLengthItemTypeConcept>
+    <edgar:LengthItemTypeConcept contextRef="_" unitRef="cm" xsi:nil="true"></edgar:LengthItemTypeConcept>
+    <edgar:DerivedLengthItemTypeConcept contextRef="_" unitRef="cm" xsi:nil="true"></edgar:DerivedLengthItemTypeConcept>
+    <edgar:LengthItemTypeConcept contextRef="_" unitRef="dm" xsi:nil="true"></edgar:LengthItemTypeConcept>
+    <edgar:DerivedLengthItemTypeConcept contextRef="_" unitRef="dm" xsi:nil="true"></edgar:DerivedLengthItemTypeConcept>
+    <edgar:LengthItemTypeConcept contextRef="_" unitRef="km" xsi:nil="true"></edgar:LengthItemTypeConcept>
+    <edgar:DerivedLengthItemTypeConcept contextRef="_" unitRef="km" xsi:nil="true"></edgar:DerivedLengthItemTypeConcept>
+    <edgar:LengthItemTypeConcept contextRef="_" unitRef="m" xsi:nil="true"></edgar:LengthItemTypeConcept>
+    <edgar:DerivedLengthItemTypeConcept contextRef="_" unitRef="m" xsi:nil="true"></edgar:DerivedLengthItemTypeConcept>
+    <edgar:LengthItemTypeConcept contextRef="_" unitRef="mm" xsi:nil="true"></edgar:LengthItemTypeConcept>
+    <edgar:DerivedLengthItemTypeConcept contextRef="_" unitRef="mm" xsi:nil="true"></edgar:DerivedLengthItemTypeConcept>
+    <edgar:MassItemTypeConcept contextRef="_" unitRef="lb" xsi:nil="true"></edgar:MassItemTypeConcept>
+    <edgar:DerivedMassItemTypeConcept contextRef="_" unitRef="lb" xsi:nil="true"></edgar:DerivedMassItemTypeConcept>
+    <edgar:MassItemTypeConcept contextRef="_" unitRef="oz" xsi:nil="true"></edgar:MassItemTypeConcept>
+    <edgar:DerivedMassItemTypeConcept contextRef="_" unitRef="oz" xsi:nil="true"></edgar:DerivedMassItemTypeConcept>
+    <edgar:MassItemTypeConcept contextRef="_" unitRef="ozt" xsi:nil="true"></edgar:MassItemTypeConcept>
+    <edgar:DerivedMassItemTypeConcept contextRef="_" unitRef="ozt" xsi:nil="true"></edgar:DerivedMassItemTypeConcept>
+    <edgar:MassItemTypeConcept contextRef="_" unitRef="T" xsi:nil="true"></edgar:MassItemTypeConcept>
+    <edgar:DerivedMassItemTypeConcept contextRef="_" unitRef="T" xsi:nil="true"></edgar:DerivedMassItemTypeConcept>
+    <edgar:MassItemTypeConcept contextRef="_" unitRef="t" xsi:nil="true"></edgar:MassItemTypeConcept>
+    <edgar:DerivedMassItemTypeConcept contextRef="_" unitRef="t" xsi:nil="true"></edgar:DerivedMassItemTypeConcept>
+    <edgar:MassItemTypeConcept contextRef="_" unitRef="g" xsi:nil="true"></edgar:MassItemTypeConcept>
+    <edgar:DerivedMassItemTypeConcept contextRef="_" unitRef="g" xsi:nil="true"></edgar:DerivedMassItemTypeConcept>
+    <edgar:MassItemTypeConcept contextRef="_" unitRef="kg" xsi:nil="true"></edgar:MassItemTypeConcept>
+    <edgar:DerivedMassItemTypeConcept contextRef="_" unitRef="kg" xsi:nil="true"></edgar:DerivedMassItemTypeConcept>
+    <edgar:MassItemTypeConcept contextRef="_" unitRef="kT" xsi:nil="true"></edgar:MassItemTypeConcept>
+    <edgar:DerivedMassItemTypeConcept contextRef="_" unitRef="kT" xsi:nil="true"></edgar:DerivedMassItemTypeConcept>
+    <edgar:MassItemTypeConcept contextRef="_" unitRef="MT" xsi:nil="true"></edgar:MassItemTypeConcept>
+    <edgar:DerivedMassItemTypeConcept contextRef="_" unitRef="MT" xsi:nil="true"></edgar:DerivedMassItemTypeConcept>
+    <edgar:MassItemTypeConcept contextRef="_" unitRef="GT" xsi:nil="true"></edgar:MassItemTypeConcept>
+    <edgar:DerivedMassItemTypeConcept contextRef="_" unitRef="GT" xsi:nil="true"></edgar:DerivedMassItemTypeConcept>
+    <edgar:MassItemTypeConcept contextRef="_" unitRef="kt" xsi:nil="true"></edgar:MassItemTypeConcept>
+    <edgar:DerivedMassItemTypeConcept contextRef="_" unitRef="kt" xsi:nil="true"></edgar:DerivedMassItemTypeConcept>
+    <edgar:MassItemTypeConcept contextRef="_" unitRef="Mt" xsi:nil="true"></edgar:MassItemTypeConcept>
+    <edgar:DerivedMassItemTypeConcept contextRef="_" unitRef="Mt" xsi:nil="true"></edgar:DerivedMassItemTypeConcept>
+    <edgar:MassItemTypeConcept contextRef="_" unitRef="Gt" xsi:nil="true"></edgar:MassItemTypeConcept>
+    <edgar:DerivedMassItemTypeConcept contextRef="_" unitRef="Gt" xsi:nil="true"></edgar:DerivedMassItemTypeConcept>
+    <edgar:MemoryItemTypeConcept contextRef="_" unitRef="B" xsi:nil="true"></edgar:MemoryItemTypeConcept>
+    <edgar:DerivedMemoryItemTypeConcept contextRef="_" unitRef="B" xsi:nil="true"></edgar:DerivedMemoryItemTypeConcept>
+    <edgar:MemoryItemTypeConcept contextRef="_" unitRef="GB" xsi:nil="true"></edgar:MemoryItemTypeConcept>
+    <edgar:DerivedMemoryItemTypeConcept contextRef="_" unitRef="GB" xsi:nil="true"></edgar:DerivedMemoryItemTypeConcept>
+    <edgar:MemoryItemTypeConcept contextRef="_" unitRef="kB" xsi:nil="true"></edgar:MemoryItemTypeConcept>
+    <edgar:DerivedMemoryItemTypeConcept contextRef="_" unitRef="kB" xsi:nil="true"></edgar:DerivedMemoryItemTypeConcept>
+    <edgar:MemoryItemTypeConcept contextRef="_" unitRef="MB" xsi:nil="true"></edgar:MemoryItemTypeConcept>
+    <edgar:DerivedMemoryItemTypeConcept contextRef="_" unitRef="MB" xsi:nil="true"></edgar:DerivedMemoryItemTypeConcept>
+    <edgar:MemoryItemTypeConcept contextRef="_" unitRef="TB" xsi:nil="true"></edgar:MemoryItemTypeConcept>
+    <edgar:DerivedMemoryItemTypeConcept contextRef="_" unitRef="TB" xsi:nil="true"></edgar:DerivedMemoryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="AED" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="AED" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="AFN" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="AFN" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="ALL" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="ALL" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="AMD" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="AMD" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="ANG" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="ANG" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="AOA" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="AOA" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="ARS" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="ARS" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="AUD" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="AUD" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="AWG" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="AWG" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="AZN" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="AZN" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="BAM" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="BAM" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="BBD" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="BBD" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="BDT" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="BDT" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="BGN" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="BGN" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="BHD" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="BHD" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="BIF" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="BIF" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="BMD" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="BMD" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="BND" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="BND" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="BOB" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="BOB" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="BOV" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="BOV" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="BRL" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="BRL" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="BSD" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="BSD" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="BTN" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="BTN" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="BWP" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="BWP" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="BYR" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="BYR" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="BZD" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="BZD" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="CAD" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="CAD" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="CDF" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="CDF" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="CHE" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="CHE" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="CHF" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="CHF" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="CHW" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="CHW" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="CLF" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="CLF" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="CLP" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="CLP" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="CNY" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="CNY" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="COP" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="COP" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="COU" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="COU" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="CRC" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="CRC" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="CUC" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="CUC" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="CUP" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="CUP" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="CVE" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="CVE" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="CZK" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="CZK" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="DJF" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="DJF" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="DKK" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="DKK" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="DOP" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="DOP" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="DZD" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="DZD" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="EEK" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="EEK" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="EGP" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="EGP" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="ERN" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="ERN" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="ETB" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="ETB" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="EUR" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="EUR" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="FJD" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="FJD" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="FKP" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="FKP" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="GBP" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="GBP" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="GEL" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="GEL" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="GHS" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="GHS" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="GIP" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="GIP" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="GMD" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="GMD" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="GNF" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="GNF" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="GTQ" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="GTQ" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="GYD" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="GYD" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="HKD" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="HKD" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="HNL" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="HNL" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="HRK" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="HRK" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="HTG" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="HTG" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="HUF" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="HUF" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="IDR" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="IDR" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="ILS" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="ILS" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="INR" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="INR" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="IQD" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="IQD" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="IRR" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="IRR" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="ISK" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="ISK" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="JMD" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="JMD" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="JOD" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="JOD" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="JPY" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="JPY" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="KES" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="KES" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="KGS" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="KGS" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="KHR" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="KHR" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="KMF" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="KMF" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="KPW" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="KPW" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="KRW" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="KRW" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="KWD" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="KWD" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="KYD" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="KYD" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="KZT" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="KZT" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="LAK" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="LAK" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="LBP" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="LBP" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="LKR" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="LKR" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="LRD" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="LRD" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="LSL" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="LSL" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="LTL" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="LTL" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="LVL" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="LVL" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="LYD" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="LYD" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="MAD" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="MAD" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="MDL" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="MDL" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="MGA" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="MGA" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="MKD" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="MKD" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="MMK" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="MMK" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="MNT" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="MNT" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="MOP" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="MOP" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="MRO" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="MRO" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="MUR" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="MUR" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="MVR" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="MVR" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="MWK" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="MWK" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="MXN" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="MXN" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="MXV" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="MXV" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="MYR" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="MYR" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="MZN" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="MZN" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="NAD" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="NAD" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="NGN" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="NGN" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="NIO" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="NIO" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="NOK" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="NOK" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="NPR" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="NPR" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="NZD" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="NZD" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="OMR" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="OMR" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="PAB" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="PAB" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="PEN" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="PEN" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="PGK" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="PGK" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="PHP" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="PHP" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="PKR" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="PKR" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="PLN" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="PLN" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="PYG" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="PYG" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="QAR" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="QAR" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="RON" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="RON" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="RSD" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="RSD" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="RUB" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="RUB" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="RWF" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="RWF" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="SAR" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="SAR" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="SBD" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="SBD" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="SCR" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="SCR" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="SDG" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="SDG" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="SEK" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="SEK" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="SGD" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="SGD" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="SHP" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="SHP" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="SLL" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="SLL" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="SOS" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="SOS" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="SRD" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="SRD" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="STD" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="STD" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="SYP" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="SYP" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="SZL" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="SZL" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="THB" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="THB" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="TJS" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="TJS" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="TMT" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="TMT" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="TND" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="TND" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="TOP" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="TOP" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="TRY" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="TRY" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="TTD" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="TTD" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="TWD" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="TWD" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="TZS" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="TZS" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="UAH" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="UAH" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="UGX" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="UGX" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="USD" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="USD" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="USN" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="USN" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="USS" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="USS" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="UYU" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="UYU" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="UZS" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="UZS" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="VEB" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="VEB" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="VEF" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="VEF" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="VND" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="VND" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="VUV" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="VUV" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="WST" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="WST" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="XAF" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="XAF" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="XAG" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="XAG" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="XAU" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="XAU" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="XBA" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="XBA" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="XBB" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="XBB" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="XBC" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="XBC" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="XBD" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="XBD" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="XCD" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="XCD" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="XDR" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="XDR" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="XFU" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="XFU" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="XOF" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="XOF" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="XPD" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="XPD" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="XPF" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="XPF" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="XPT" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="XPT" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="YER" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="YER" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="ZAR" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="ZAR" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="ZMK" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="ZMK" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:MonetaryItemTypeConcept contextRef="_" unitRef="ZWL" xsi:nil="true"></edgar:MonetaryItemTypeConcept>
+    <edgar:DerivedMonetaryItemTypeConcept contextRef="_" unitRef="ZWL" xsi:nil="true"></edgar:DerivedMonetaryItemTypeConcept>
+    <edgar:PerShareItemTypeConcept contextRef="_" unitRef="AED_shares" xsi:nil="true"></edgar:PerShareItemTypeConcept>
+    <edgar:DerivedPerShareItemTypeConcept contextRef="_" unitRef="AED_shares" xsi:nil="true"></edgar:DerivedPerShareItemTypeConcept>
+    <edgar:PerShareItemTypeConcept contextRef="_" unitRef="HKD_shares" xsi:nil="true"></edgar:PerShareItemTypeConcept>
+    <edgar:DerivedPerShareItemTypeConcept contextRef="_" unitRef="HKD_shares" xsi:nil="true"></edgar:DerivedPerShareItemTypeConcept>
+    <edgar:PerShareItemTypeConcept contextRef="_" unitRef="QAR_shares" xsi:nil="true"></edgar:PerShareItemTypeConcept>
+    <edgar:DerivedPerShareItemTypeConcept contextRef="_" unitRef="QAR_shares" xsi:nil="true"></edgar:DerivedPerShareItemTypeConcept>
+    <edgar:PerUnitItemTypeConcept contextRef="_" unitRef="AED_u1" xsi:nil="true"></edgar:PerUnitItemTypeConcept>
+    <edgar:DerivedPerUnitItemTypeConcept contextRef="_" unitRef="AED_u1" xsi:nil="true"></edgar:DerivedPerUnitItemTypeConcept>
+    <edgar:PerUnitItemTypeConcept contextRef="_" unitRef="AED_shares" xsi:nil="true"></edgar:PerUnitItemTypeConcept>
+    <edgar:DerivedPerUnitItemTypeConcept contextRef="_" unitRef="AED_shares" xsi:nil="true"></edgar:DerivedPerUnitItemTypeConcept>
+    <edgar:PerUnitItemTypeConcept contextRef="_" unitRef="AED_pure" xsi:nil="true"></edgar:PerUnitItemTypeConcept>
+    <edgar:DerivedPerUnitItemTypeConcept contextRef="_" unitRef="AED_pure" xsi:nil="true"></edgar:DerivedPerUnitItemTypeConcept>
+    <edgar:PerUnitItemTypeConcept contextRef="_" unitRef="AED_USD" xsi:nil="true"></edgar:PerUnitItemTypeConcept>
+    <edgar:DerivedPerUnitItemTypeConcept contextRef="_" unitRef="AED_USD" xsi:nil="true"></edgar:DerivedPerUnitItemTypeConcept>
+    <edgar:PerUnitItemTypeConcept contextRef="_" unitRef="HKD_u1" xsi:nil="true"></edgar:PerUnitItemTypeConcept>
+    <edgar:DerivedPerUnitItemTypeConcept contextRef="_" unitRef="HKD_u1" xsi:nil="true"></edgar:DerivedPerUnitItemTypeConcept>
+    <edgar:PerUnitItemTypeConcept contextRef="_" unitRef="HKD_shares" xsi:nil="true"></edgar:PerUnitItemTypeConcept>
+    <edgar:DerivedPerUnitItemTypeConcept contextRef="_" unitRef="HKD_shares" xsi:nil="true"></edgar:DerivedPerUnitItemTypeConcept>
+    <edgar:PerUnitItemTypeConcept contextRef="_" unitRef="HKD_pure" xsi:nil="true"></edgar:PerUnitItemTypeConcept>
+    <edgar:DerivedPerUnitItemTypeConcept contextRef="_" unitRef="HKD_pure" xsi:nil="true"></edgar:DerivedPerUnitItemTypeConcept>
+    <edgar:PerUnitItemTypeConcept contextRef="_" unitRef="HKD_USD" xsi:nil="true"></edgar:PerUnitItemTypeConcept>
+    <edgar:DerivedPerUnitItemTypeConcept contextRef="_" unitRef="HKD_USD" xsi:nil="true"></edgar:DerivedPerUnitItemTypeConcept>
+    <edgar:PerUnitItemTypeConcept contextRef="_" unitRef="QAR_u1" xsi:nil="true"></edgar:PerUnitItemTypeConcept>
+    <edgar:DerivedPerUnitItemTypeConcept contextRef="_" unitRef="QAR_u1" xsi:nil="true"></edgar:DerivedPerUnitItemTypeConcept>
+    <edgar:PerUnitItemTypeConcept contextRef="_" unitRef="QAR_shares" xsi:nil="true"></edgar:PerUnitItemTypeConcept>
+    <edgar:DerivedPerUnitItemTypeConcept contextRef="_" unitRef="QAR_shares" xsi:nil="true"></edgar:DerivedPerUnitItemTypeConcept>
+    <edgar:PerUnitItemTypeConcept contextRef="_" unitRef="QAR_pure" xsi:nil="true"></edgar:PerUnitItemTypeConcept>
+    <edgar:DerivedPerUnitItemTypeConcept contextRef="_" unitRef="QAR_pure" xsi:nil="true"></edgar:DerivedPerUnitItemTypeConcept>
+    <edgar:PerUnitItemTypeConcept contextRef="_" unitRef="QAR_USD" xsi:nil="true"></edgar:PerUnitItemTypeConcept>
+    <edgar:DerivedPerUnitItemTypeConcept contextRef="_" unitRef="QAR_USD" xsi:nil="true"></edgar:DerivedPerUnitItemTypeConcept>
+    <edgar:PowerItemTypeConcept contextRef="_" unitRef="hp" xsi:nil="true"></edgar:PowerItemTypeConcept>
+    <edgar:DerivedPowerItemTypeConcept contextRef="_" unitRef="hp" xsi:nil="true"></edgar:DerivedPowerItemTypeConcept>
+    <edgar:PowerItemTypeConcept contextRef="_" unitRef="GW" xsi:nil="true"></edgar:PowerItemTypeConcept>
+    <edgar:DerivedPowerItemTypeConcept contextRef="_" unitRef="GW" xsi:nil="true"></edgar:DerivedPowerItemTypeConcept>
+    <edgar:PowerItemTypeConcept contextRef="_" unitRef="kW" xsi:nil="true"></edgar:PowerItemTypeConcept>
+    <edgar:DerivedPowerItemTypeConcept contextRef="_" unitRef="kW" xsi:nil="true"></edgar:DerivedPowerItemTypeConcept>
+    <edgar:PowerItemTypeConcept contextRef="_" unitRef="MW" xsi:nil="true"></edgar:PowerItemTypeConcept>
+    <edgar:DerivedPowerItemTypeConcept contextRef="_" unitRef="MW" xsi:nil="true"></edgar:DerivedPowerItemTypeConcept>
+    <edgar:PowerItemTypeConcept contextRef="_" unitRef="TW" xsi:nil="true"></edgar:PowerItemTypeConcept>
+    <edgar:DerivedPowerItemTypeConcept contextRef="_" unitRef="TW" xsi:nil="true"></edgar:DerivedPowerItemTypeConcept>
+    <edgar:PowerItemTypeConcept contextRef="_" unitRef="W" xsi:nil="true"></edgar:PowerItemTypeConcept>
+    <edgar:DerivedPowerItemTypeConcept contextRef="_" unitRef="W" xsi:nil="true"></edgar:DerivedPowerItemTypeConcept>
+    <edgar:PureItemTypeConcept contextRef="_" unitRef="pure" xsi:nil="true"></edgar:PureItemTypeConcept>
+    <edgar:DerivedPureItemTypeConcept contextRef="_" unitRef="pure" xsi:nil="true"></edgar:DerivedPureItemTypeConcept>
+    <edgar:PureItemTypeConcept contextRef="_" unitRef="Rate" xsi:nil="true"></edgar:PureItemTypeConcept>
+    <edgar:DerivedPureItemTypeConcept contextRef="_" unitRef="Rate" xsi:nil="true"></edgar:DerivedPureItemTypeConcept>
+    <edgar:PureItemTypeConcept contextRef="_" unitRef="AED_FJD" xsi:nil="true"></edgar:PureItemTypeConcept>
+    <edgar:DerivedPureItemTypeConcept contextRef="_" unitRef="AED_FJD" xsi:nil="true"></edgar:DerivedPureItemTypeConcept>
+    <edgar:PureItemTypeConcept contextRef="_" unitRef="FJD_MVR" xsi:nil="true"></edgar:PureItemTypeConcept>
+    <edgar:DerivedPureItemTypeConcept contextRef="_" unitRef="FJD_MVR" xsi:nil="true"></edgar:DerivedPureItemTypeConcept>
+    <edgar:PureItemTypeConcept contextRef="_" unitRef="MVR_USN" xsi:nil="true"></edgar:PureItemTypeConcept>
+    <edgar:DerivedPureItemTypeConcept contextRef="_" unitRef="MVR_USN" xsi:nil="true"></edgar:DerivedPureItemTypeConcept>
+    <edgar:SharesItemTypeConcept contextRef="_" unitRef="shares" xsi:nil="true"></edgar:SharesItemTypeConcept>
+    <edgar:DerivedSharesItemTypeConcept contextRef="_" unitRef="shares" xsi:nil="true"></edgar:DerivedSharesItemTypeConcept>
+    <edgar:VolumeItemTypeConcept contextRef="_" unitRef="bbl" xsi:nil="true"></edgar:VolumeItemTypeConcept>
+    <edgar:DerivedVolumeItemTypeConcept contextRef="_" unitRef="bbl" xsi:nil="true"></edgar:DerivedVolumeItemTypeConcept>
+    <edgar:VolumeItemTypeConcept contextRef="_" unitRef="ft3" xsi:nil="true"></edgar:VolumeItemTypeConcept>
+    <edgar:DerivedVolumeItemTypeConcept contextRef="_" unitRef="ft3" xsi:nil="true"></edgar:DerivedVolumeItemTypeConcept>
+    <edgar:VolumeItemTypeConcept contextRef="_" unitRef="gal" xsi:nil="true"></edgar:VolumeItemTypeConcept>
+    <edgar:DerivedVolumeItemTypeConcept contextRef="_" unitRef="gal" xsi:nil="true"></edgar:DerivedVolumeItemTypeConcept>
+    <edgar:VolumeItemTypeConcept contextRef="_" unitRef="MBbls" xsi:nil="true"></edgar:VolumeItemTypeConcept>
+    <edgar:DerivedVolumeItemTypeConcept contextRef="_" unitRef="MBbls" xsi:nil="true"></edgar:DerivedVolumeItemTypeConcept>
+    <edgar:VolumeItemTypeConcept contextRef="_" unitRef="Mcf" xsi:nil="true"></edgar:VolumeItemTypeConcept>
+    <edgar:DerivedVolumeItemTypeConcept contextRef="_" unitRef="Mcf" xsi:nil="true"></edgar:DerivedVolumeItemTypeConcept>
+    <edgar:VolumeItemTypeConcept contextRef="_" unitRef="MMBbls" xsi:nil="true"></edgar:VolumeItemTypeConcept>
+    <edgar:DerivedVolumeItemTypeConcept contextRef="_" unitRef="MMBbls" xsi:nil="true"></edgar:DerivedVolumeItemTypeConcept>
+    <edgar:VolumeItemTypeConcept contextRef="_" unitRef="MMcf" xsi:nil="true"></edgar:VolumeItemTypeConcept>
+    <edgar:DerivedVolumeItemTypeConcept contextRef="_" unitRef="MMcf" xsi:nil="true"></edgar:DerivedVolumeItemTypeConcept>
+    <edgar:VolumeItemTypeConcept contextRef="_" unitRef="l" xsi:nil="true"></edgar:VolumeItemTypeConcept>
+    <edgar:DerivedVolumeItemTypeConcept contextRef="_" unitRef="l" xsi:nil="true"></edgar:DerivedVolumeItemTypeConcept>
+    <edgar:VolumeItemTypeConcept contextRef="_" unitRef="m3" xsi:nil="true"></edgar:VolumeItemTypeConcept>
+    <edgar:DerivedVolumeItemTypeConcept contextRef="_" unitRef="m3" xsi:nil="true"></edgar:DerivedVolumeItemTypeConcept>
+    <edgar:VolumeItemTypeConcept contextRef="_" unitRef="bu" xsi:nil="true"></edgar:VolumeItemTypeConcept>
+    <edgar:DerivedVolumeItemTypeConcept contextRef="_" unitRef="bu" xsi:nil="true"></edgar:DerivedVolumeItemTypeConcept>
+    <edgar:VolumeItemTypeConcept contextRef="_" unitRef="aft" xsi:nil="true"></edgar:VolumeItemTypeConcept>
+    <edgar:DerivedVolumeItemTypeConcept contextRef="_" unitRef="aft" xsi:nil="true"></edgar:DerivedVolumeItemTypeConcept>
+    <edgar:VolumeItemTypeConcept contextRef="_" unitRef="Bcf" xsi:nil="true"></edgar:VolumeItemTypeConcept>
+    <edgar:DerivedVolumeItemTypeConcept contextRef="_" unitRef="Bcf" xsi:nil="true"></edgar:DerivedVolumeItemTypeConcept>
+    <edgar:VolumeItemTypeConcept contextRef="_" unitRef="Tcf" xsi:nil="true"></edgar:VolumeItemTypeConcept>
+    <edgar:DerivedVolumeItemTypeConcept contextRef="_" unitRef="Tcf" xsi:nil="true"></edgar:DerivedVolumeItemTypeConcept>
+    <edgar:FlowItemTypeConcept contextRef="_" unitRef="bbl_Y" xsi:nil="true"></edgar:FlowItemTypeConcept>
+    <edgar:DerivedFlowItemTypeConcept contextRef="_" unitRef="bbl_Y" xsi:nil="true"></edgar:DerivedFlowItemTypeConcept>
+    <edgar:FlowItemTypeConcept contextRef="_" unitRef="bbl_S" xsi:nil="true"></edgar:FlowItemTypeConcept>
+    <edgar:DerivedFlowItemTypeConcept contextRef="_" unitRef="bbl_S" xsi:nil="true"></edgar:DerivedFlowItemTypeConcept>
+    <edgar:FlowItemTypeConcept contextRef="_" unitRef="MMBbls_Y" xsi:nil="true"></edgar:FlowItemTypeConcept>
+    <edgar:DerivedFlowItemTypeConcept contextRef="_" unitRef="MMBbls_Y" xsi:nil="true"></edgar:DerivedFlowItemTypeConcept>
+    <edgar:FlowItemTypeConcept contextRef="_" unitRef="MMBbls_S" xsi:nil="true"></edgar:FlowItemTypeConcept>
+    <edgar:DerivedFlowItemTypeConcept contextRef="_" unitRef="MMBbls_S" xsi:nil="true"></edgar:DerivedFlowItemTypeConcept>
+    <edgar:FlowItemTypeConcept contextRef="_" unitRef="aft_Y" xsi:nil="true"></edgar:FlowItemTypeConcept>
+    <edgar:DerivedFlowItemTypeConcept contextRef="_" unitRef="aft_Y" xsi:nil="true"></edgar:DerivedFlowItemTypeConcept>
+    <edgar:FlowItemTypeConcept contextRef="_" unitRef="aft_S" xsi:nil="true"></edgar:FlowItemTypeConcept>
+    <edgar:DerivedFlowItemTypeConcept contextRef="_" unitRef="aft_S" xsi:nil="true"></edgar:DerivedFlowItemTypeConcept>
+</xbrl>

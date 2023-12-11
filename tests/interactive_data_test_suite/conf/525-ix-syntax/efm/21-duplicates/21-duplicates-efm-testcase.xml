@@ -1,0 +1,138 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet  type="text/xsl" href="../../../../lib/test.xsl"?>
+<testcase xmlns="http://edgar/2009/conformance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://edgar/2009/conformance ../../../../lib/test.xsd">
+    <creator>
+        <name>SEC Office of Structured Disclosure</name>
+        <email>StructuredData@sec.gov</email>
+    </creator>
+    <number>525-21</number>
+    <name>EDGAR Filer Manual v68d 5.2.5</name>
+    <description>
+        <a href="https://www.sec.gov/files/edgar/filermanual/archive/edgarfm-vol2-v68-draft.pdf#5.2.5 Inline XBRL Documents">Refer to EFM: 5.2.5 Inline XBRL Documents</a>
+    </description>
+    <variation id="_200gd">
+        <name>GOOD</name>
+        <description>Consolidation of test cases e60512009gd and e60512011gd, with a mix of consolidated facts in the html body and in the ix:hidden element.</description>
+        <reference efmspec="5.02.05"></reference>
+        <reference efmspec="5.12.11"></reference>
+        <reference efmspec="6.24.5"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i21200gd/i21200gd-20081231.htm</instance>
+            <linkbase>i21200gd/i21200gd-20081231_pre.xml</linkbase>
+            <linkbase>i21200gd/i21200gd-20081231_lab.xml</linkbase>
+            <schema>i21200gd/i21200gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid">
+
+</result>
+    </variation>
+    <variation id="_201gd">
+        <name>GOOD</name>
+        <description>Variations on zero should all be equivalent, GOOD</description>
+        <reference efmspec="5.02.05"></reference>
+        <reference efmspec="5.12.11"></reference>
+        <reference efmspec="6.24.5"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i21201gd/i21201gd-20081231.htm</instance>
+            <linkbase>i21201gd/i21201gd-20081231_pre.xml</linkbase>
+            <linkbase>i21201gd/i21201gd-20081231_lab.xml</linkbase>
+            <schema>i21201gd/i21201gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid">
+
+</result>
+    </variation>
+    <variation id="_301ng">
+        <name>NOGOOD</name>
+        <description>Comparison of a zerodash to a null, which at one time caused some confusion.</description>
+        <reference efmspec="5.02.05"></reference>
+        <reference efmspec="5.12.11"></reference>
+        <reference efmspec="6.24.5"></reference>
+        <reference efmspec="6.5.12"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i21301ng/i21301ng-20081231.htm</instance>
+            <linkbase>i21301ng/i21301ng-20081231_pre.xml</linkbase>
+            <linkbase>i21301ng/i21301ng-20081231_lab.xml</linkbase>
+            <schema>i21301ng/i21301ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60512" name="Duplicate-Facts" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_401gd">
+        <name>GOOD</name>
+        <description>Set of consistent duplicates. All are consistent with interval as noted in 6.5.12 and in XBRL.org WGN:  http://www.xbrl.org/WGN/xbrl-duplicates/WGN-2018-04-19/xbrl-duplicates-WGN-2018-04-19.html.</description>
+        <reference efmspec="6.5.12"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i21401gd/i21401gd-20081231.htm</instance>
+            <linkbase>i21401gd/i21401gd-20081231_pre.xml</linkbase>
+            <linkbase>i21401gd/i21401gd-20081231_lab.xml</linkbase>
+            <schema>i21401gd/i21401gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid">
+    </result>
+    </variation>
+    <variation id="_402ng">
+        <name>NOGOOD</name>
+        <description>Set of inconsistent duplicates. Two have different values for same decimals.</description>
+        <reference efmspec="6.5.12"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i21402ng/i21402ng-20081231.htm</instance>
+            <linkbase>i21402ng/i21402ng-20081231_pre.xml</linkbase>
+            <linkbase>i21402ng/i21402ng-20081231_lab.xml</linkbase>
+            <schema>i21402ng/i21402ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60512" name="Duplicate-Facts" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_403gd">
+        <name>GOOD</name>
+        <description>Consistent string duplicates considering xml:lang attribute.</description>
+        <reference efmspec="6.5.12"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i21403gd/i21403gd-20081231.htm</instance>
+            <linkbase>i21403gd/i21403gd-20081231_pre.xml</linkbase>
+            <linkbase>i21403gd/i21403gd-20081231_lab.xml</linkbase>
+            <schema>i21403gd/i21403gd-20081231.xsd</schema>
+        </data>
+        <result expected="valid">
+    </result>
+    </variation>
+    <variation id="_404ng">
+        <name>NOGOOD</name>
+        <description>Inconsistent string duplicates considering xml:lang attribute.</description>
+        <reference efmspec="6.5.12"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i21404ng/i21404ng-20081231.htm</instance>
+            <linkbase>i21404ng/i21404ng-20081231_pre.xml</linkbase>
+            <linkbase>i21404ng/i21404ng-20081231_lab.xml</linkbase>
+            <schema>i21404ng/i21404ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60512" name="Duplicate-Facts" frd="du"></assert>
+        </result>
+    </variation>
+    <variation id="_405ng">
+        <name>NOGOOD</name>
+        <description>Inconsistent token duplicates, not using xml:lang attribute.</description>
+        <reference efmspec="6.5.12"></reference>
+        <data>
+            <parameter name="ELOparams" value='{ "periodOfReport" : "12-31-2008", "emergingGrowthCompanyFlag" : false, "submissionType" : "8-K" }'></parameter>
+            <instance readMeFirst="true">i21405ng/i21405ng-20081231.htm</instance>
+            <linkbase>i21405ng/i21405ng-20081231_pre.xml</linkbase>
+            <linkbase>i21405ng/i21405ng-20081231_lab.xml</linkbase>
+            <schema>i21405ng/i21405ng-20081231.xsd</schema>
+        </data>
+        <result>
+            <assert severity="err" num="60512" name="Duplicate-Facts" frd="du"></assert>
+        </result>
+    </variation>
+</testcase>
