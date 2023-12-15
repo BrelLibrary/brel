@@ -17,10 +17,10 @@ import requests
 import validators
 from io import BytesIO
 
-from brel.parsers.dts import ISchemaManager
+from brel.parsers.dts import IFileManager
 from brel import QName
 
-class XMLSchemaManager(ISchemaManager):
+class XMLFileManager(IFileManager):
     """
     Class for downloading and caching XBRL taxonomies
     """
@@ -87,23 +87,21 @@ class XMLSchemaManager(ISchemaManager):
         @param schema_filename: The filename of the schema.
         @return: The schema as an lxml.etree._ElementTree.
         """
+        
+        schema_filename = self.url_to_filename(schema_uri)
 
-        # if validators.url(schema_uri):
-            # schema_uri = self.url_to_filename(schema_uri)
-        schema_uri = self.url_to_filename(schema_uri)
+        if populate_namelist and schema_filename not in self.__schema_names:
+            self.__schema_names.append(schema_filename)
 
-        if populate_namelist and schema_uri not in self.__schema_names:
-            self.__schema_names.append(schema_uri)
-
-        if  schema_uri not in self.__schema_names:
-            raise ValueError(f"The schema {schema_uri} is not in the dts")
+        if  schema_filename not in self.__schema_names:
+            raise ValueError(f"The schema {schema_filename} is not in the dts")
 
         # check schema cache
-        if schema_uri in self.__xbrl_schema_cache:
-            schema_xml = self.__xbrl_schema_cache[schema_uri]
+        if schema_filename in self.__xbrl_schema_cache:
+            schema_xml = self.__xbrl_schema_cache[schema_filename]
         else:
-            schema_xml = lxml.etree.parse(self.cache_location + schema_uri, self.__parser)
-            self.__xbrl_schema_cache[schema_uri] = schema_xml
+            schema_xml = lxml.etree.parse(self.cache_location + schema_filename, self.__parser)
+            self.__xbrl_schema_cache[schema_filename] = schema_xml
         
         return schema_xml
     

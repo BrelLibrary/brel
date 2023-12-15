@@ -5,7 +5,7 @@ import lxml.etree
 from brel.reportelements import IReportElement
 from brel import QName, Fact, Component, QNameNSMap
 from brel.parsers import IFilingParser
-from brel.parsers.dts import XMLSchemaManager
+from brel.parsers.dts import XMLFileManager
 from brel.networks import INetwork
 from brel.parsers.utils.lxml_utils import get_all_nsmaps
 from brel.parsers.XML.xml_namespace_normalizer import normalize_nsmap
@@ -53,7 +53,7 @@ class XMLFilingParser(IFilingParser):
         # load the schema and all its dependencies
         if DEBUG:  # pragma: no cover
             self.__print("Resolving DTS...")
-        self.__schema_manager = XMLSchemaManager("brel/dts_cache/", self.__filing_location, schema_filename, self.__parser)
+        self.__schema_manager = XMLFileManager("brel/dts_cache/", self.__filing_location, schema_filename, self.__parser)
 
         if DEBUG:  # pragma: no cover
             self.__print("Loading Networks...")
@@ -156,7 +156,7 @@ class XMLFilingParser(IFilingParser):
         @return: A dictionary of all the networks in the filing.
         """
         return networks_from_xmls(
-            self.__xbrl_networks + self.__schema_manager.get_all_schemas(),
+            self.__xbrl_networks + self.__schema_manager.get_all_schemas() + [self.xbrl_instance],
             self.__nsmap,
             report_elements
         )

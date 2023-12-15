@@ -26,7 +26,7 @@ class IResource(ABC):
         raise NotImplementedError
     
     @abstractmethod
-    def get_content(self) -> dict:
+    def get_content(self) -> dict | list | str | None:
         """
         Get the content of the resource
         @return: the content of the resource as a dict

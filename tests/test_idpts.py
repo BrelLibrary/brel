@@ -2,12 +2,13 @@
 This module runs the interactive data test suite created by the SEC.
 
 @author: Robin Schmidiger
-@version: 0.0.2
-@date: 13 December 2023
+@version: 0.0.3
+@date: 15 December 2023
 """
 
 import lxml
 import lxml.etree
+from rich import print
 
 from brel import Filing
 
@@ -55,6 +56,7 @@ for testcase_filename in testcase_filenames:
         variation_name = variation.find("{*}name")
         print(f"variation: {variation_name.text} ({variation_id})")
 
+        # get filenames relevant for this variation
         data = variation.find("{*}data")
 
         instance_filename = data.find("{*}instance").text
@@ -70,10 +72,24 @@ for testcase_filename in testcase_filenames:
         instance_filename = prepend_path_prefix(instance_filename)
         linkbase_filenames = [prepend_path_prefix(linkbase_filename) for linkbase_filename in linkbase_filenames]
 
+        # get the expected results
+        result = variation.find("{*}result")
+        expected_result = result.get("expected", "error")
+        
+        # run the test
+        text_exception: Exception | None = None
+
         try:
             filing = Filing.open(instance_filename, linkbases=linkbase_filenames)
+            print(f"> No exception raised.")
         except Exception as e:
-            print(f"Exception: {e}")
-            continue
+            # print(f"Exception: {e}")
+            print(f"> Exception raised: {e}")
+            text_exception = e
+
+        if expected_result == "error" and text_exception is None:
+            print(f"[bold red][!!! FAIL !!!][/bold red]", f"expected error, but none was raised.")
+        elif expected_result ==  "valid" and text_exception is not None:
+            print(f"[bold red][!!! FAIL !!!][/bold red]", f"expected no error, but got {text_exception}")
 
 

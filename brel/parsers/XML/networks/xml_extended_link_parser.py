@@ -9,7 +9,7 @@ from brel.resource import *
 from typing import cast
 from collections import defaultdict
 
-from brel.parsers.XML.networks import IXMLNetworkFactory, PresentationNetworkFactory, CalculationNetworkFactory, PhysicalDefinitionNetworkFactory, LogicalDefinitionNetworkFactory, LabelNetworkFactory, ReferenceNetworkFactory
+from brel.parsers.XML.networks import IXMLNetworkFactory, PresentationNetworkFactory, CalculationNetworkFactory, PhysicalDefinitionNetworkFactory, LogicalDefinitionNetworkFactory, LabelNetworkFactory, ReferenceNetworkFactory, FootnoteNetworkFactory
 
 def get_object_from_reference(
         referenced_element: lxml.etree._Element, 
@@ -34,8 +34,10 @@ def get_object_from_reference(
         
         to_element: IReportElement | IResource | None = None
 
+        # get the prefix of the namespace that the referenced element is in
+        prefix = referenced_element.prefix
+
         # turn the href into a QName
-        # TODO: make more robust
         href = cast(str, referenced_element.get(f"{{{nsmap['xlink']}}}href", ""))
         report_element_qname = QName.from_xpointer(href, qname_nsmap)
 
@@ -96,6 +98,8 @@ def parse_xml_link(
         network_factories.append(LabelNetworkFactory(qname_nsmap))
     elif xml_link_element.tag == f"{{{nsmap['link']}}}referenceLink":
         network_factories.append(ReferenceNetworkFactory(qname_nsmap))
+    elif xml_link_element.tag == f"{{{nsmap['link']}}}footnoteLink":
+        network_factories.append(FootnoteNetworkFactory(qname_nsmap))
     else:
         raise NotImplementedError(f"the link element {xml_link_element.tag} is not supported")
         
@@ -127,6 +131,11 @@ def parse_xml_link(
                     raise ValueError(f"the arc element {xml_arc.tag} does not have a xlink:to attribute")
                 if not isinstance(arc_to, str):
                     raise TypeError(f"the xlink:to attribute on the arc element {xml_arc.tag} is not a string")
+                
+                if (arc_from, arc_to) in edges:
+                    # the edge already exists. The SEC XBRL Filing Manual says that this is an error.
+                    raise ValueError(f"the arc element with from='{arc_from}' and to='{arc_to}' is a duplicate")
+                    
 
                 edges.add((arc_from, arc_to))
             

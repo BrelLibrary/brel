@@ -7,14 +7,14 @@ It parses XBRL in the XML syntax.
 @date: 13 December 2023
 """
 
-from ..dts import ISchemaManager
+from ..dts import IFileManager
 from brel.reportelements import IReportElement, Dimension
 from brel import QName, QNameNSMap
 
 from .xml_report_element_factory import XMLReportElementFactory
 
 def parse_report_elements_xml(
-        schema_manager: ISchemaManager,
+        schema_manager: IFileManager,
         qname_nsmap: QNameNSMap
         ):
     """

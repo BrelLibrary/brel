@@ -41,26 +41,26 @@ class PresentationNetworkFactory(IXMLNetworkFactory):
 
         if xml_arc is None:
             # the node is not connected to any other node
-            preferred_label_role = BrelLabelRole.STANDARD_LABEL
+            preferred_label_role = None
             arc_role = "unknown"
             order = 1
             arc_qname = QName.from_string("link:unknown", self.get_qname_nsmap())
         elif xml_arc.get(f"{{{nsmap['xlink']}}}from", None) == label:
             # the node is a root
-            preferred_label_role = BrelLabelRole.STANDARD_LABEL
+            preferred_label_role = None
             arc_role = xml_arc.attrib.get("{" + nsmap["xlink"] + "}arcrole")
             order = 1
             arc_qname = QName.from_string(xml_arc.tag, self.get_qname_nsmap())
         elif xml_arc.get(f"{{{nsmap['xlink']}}}to", None) == label:
             # the node is an inner node
             preferred_label = xml_arc.attrib.get("preferredLabel")
-            if preferred_label is None:
-                # The preferredLabel attribute is optional. If it is not present, the preferred label role is the standard label
-                preferred_label = BrelLabelRole.STANDARD_LABEL.value
-            if not isinstance(preferred_label, str):
-                raise TypeError("preferred_label must be a string")
+            if not isinstance(preferred_label, str) and preferred_label is not None:
+                raise TypeError(f"preferredLabel attribute on arc element {xml_arc} is not a string. It is {type(preferred_label)}")
             
-            preferred_label_role = BrelLabelRole.from_url(preferred_label)
+            if preferred_label is None:
+                preferred_label_role = None
+            else:
+                preferred_label_role = BrelLabelRole.from_url(preferred_label)
             arc_role = xml_arc.attrib.get("{" + nsmap["xlink"] + "}arcrole")
             order = float(xml_arc.attrib.get("order") or 1)
             arc_qname = QName.from_string(xml_arc.tag, self.get_qname_nsmap())

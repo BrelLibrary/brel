@@ -22,7 +22,7 @@ class PresentationNetworkNode(INetworkNode):
             arc_name: QName,
             link_role: str,
             link_name: QName,
-            preferred_label_role: BrelLabelRole = BrelLabelRole.STANDARD_LABEL,
+            preferred_label_role: BrelLabelRole | None,
             order: int = 1
             ):
         self.__report_element = report_element
@@ -33,6 +33,11 @@ class PresentationNetworkNode(INetworkNode):
         self.__link_name = link_name
         self.__preferred_label_role = preferred_label_role
         self.__order = order
+
+        # check if there is a label that matches the preferred label role
+        # if not, raise an error
+        if preferred_label_role is not None and not report_element.has_label(preferred_label_role):
+            raise ValueError(f"report element {report_element} does not have a label with role {preferred_label_role}")
     
     # First class citizens
     def get_report_element(self) -> IReportElement:
@@ -64,7 +69,7 @@ class PresentationNetworkNode(INetworkNode):
 
         return cast(list['INetworkNode'], self.__children)
 
-    def get_preferred_label_role(self) -> BrelLabelRole:
+    def get_preferred_label_role(self) -> BrelLabelRole | None:
         """
         Returns the preferred label role of this node
         @return: str containing the preferred label role of this node

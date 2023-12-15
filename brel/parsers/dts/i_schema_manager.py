@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 import lxml
 import lxml.etree
 
-class ISchemaManager(ABC):
+class IFileManager(ABC):
     @abstractmethod
     def __init__(self, cache_location: str, filing_location: str) -> None:
         raise NotImplementedError
