@@ -1,4 +1,4 @@
-from .qname import QName
+from .qname import QName, QNameNSMap
 from .resource import BrelLabel, BrelLabelRole
 
 from .reportelements import *

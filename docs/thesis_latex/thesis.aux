@@ -60,7 +60,6 @@
 \newlabel{sec:implementation@cref}{{[chapter][3][]3}{[1][7][]7}}
 \@writefile{toc}{\contentsline {section}{\numberline {3.1}Overview}{7}{section.3.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {3.2}Facts}{7}{section.3.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.1}Facts in the XBRL Taxonomy}{8}{subsection.3.2.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {3.3}Implementation of Facts}{8}{section.3.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}Overview}{8}{subsection.3.3.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3.2}Facts in XBRL}{8}{subsection.3.3.2}\protected@file@percent }
@@ -70,19 +69,51 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3.6}Facts in Brel}{10}{subsection.3.3.6}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {3.4}Report Elements}{10}{section.3.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {3.5}QNames}{10}{section.3.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.1}Namespace normalization}{12}{subsection.3.5.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.2}Limitations of namespace normalization}{13}{subsection.3.5.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces The us-gaap:Assets QName}}{11}{figure.3.1}\protected@file@percent }
+\newlabel{fig:qname_us_gaap_assets}{{3.1}{11}{The us-gaap:Assets QName}{figure.3.1}{}}
+\newlabel{fig:qname_us_gaap_assets@cref}{{[figure][1][3]3.1}{[1][11][]11}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.6}Implementation of QNames and namespace normalization}{11}{section.3.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6.1}Overview}{11}{subsection.3.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6.2}Namespace hierarchy notation}{12}{subsection.3.6.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces Example of an XML snippet where namespace bindings are defined on a per-element basis}}{12}{figure.3.2}\protected@file@percent }
+\newlabel{fig:xml_namespace_notation_example}{{3.2}{12}{Example of an XML snippet where namespace bindings are defined on a per-element basis}{figure.3.2}{}}
+\newlabel{fig:xml_namespace_notation_example@cref}{{[figure][2][3]3.2}{[1][12][]12}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces Example of the same XML snippet in our custom notation}}{13}{figure.3.3}\protected@file@percent }
+\newlabel{fig:custom_namespace_notation_example}{{3.3}{13}{Example of the same XML snippet in our custom notation}{figure.3.3}{}}
+\newlabel{fig:custom_namespace_notation_example@cref}{{[figure][3][3]3.3}{[1][12][]13}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6.3}Flattening namespace bindings}{13}{subsection.3.6.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces Example of the same XML snippet in our custom notation, flattened}}{13}{figure.3.4}\protected@file@percent }
+\newlabel{fig:custom_namespace_notation_example_flattened}{{3.4}{13}{Example of the same XML snippet in our custom notation, flattened}{figure.3.4}{}}
+\newlabel{fig:custom_namespace_notation_example_flattened@cref}{{[figure][4][3]3.4}{[1][13][]13}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6.4}Collisions in namespace bindings}{13}{subsection.3.6.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.5}{\ignorespaces List of namespace bindings extracted from the flattened namespace hierarchy}}{14}{figure.3.5}\protected@file@percent }
+\newlabel{fig:custom_namespace_notation_example_flattened_extracted}{{3.5}{14}{List of namespace bindings extracted from the flattened namespace hierarchy}{figure.3.5}{}}
+\newlabel{fig:custom_namespace_notation_example_flattened_extracted@cref}{{[figure][5][3]3.5}{[1][13][]14}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6.5}Types of collisions}{14}{subsection.3.6.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Version collision}{14}{section*.9}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.6}{\ignorespaces Example of a version collision}}{14}{figure.3.6}\protected@file@percent }
+\newlabel{fig:version_collision_example}{{3.6}{14}{Example of a version collision}{figure.3.6}{}}
+\newlabel{fig:version_collision_example@cref}{{[figure][6][3]3.6}{[1][14][]14}}
+\@writefile{toc}{\contentsline {subsubsection}{Prefix collision}{15}{section*.10}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.7}{\ignorespaces Example of a prefix collision}}{15}{figure.3.7}\protected@file@percent }
+\newlabel{fig:prefix_collision_example}{{3.7}{15}{Example of a prefix collision}{figure.3.7}{}}
+\newlabel{fig:prefix_collision_example@cref}{{[figure][7][3]3.7}{[1][15][]15}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.8}{\ignorespaces Example of a resolved prefix collision}}{15}{figure.3.8}\protected@file@percent }
+\newlabel{fig:prefix_collision_example_renamed}{{3.8}{15}{Example of a resolved prefix collision}{figure.3.8}{}}
+\newlabel{fig:prefix_collision_example_renamed@cref}{{[figure][8][3]3.8}{[1][15][]15}}
+\@writefile{toc}{\contentsline {subsubsection}{Namespace URI collision}{15}{section*.11}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.9}{\ignorespaces Example of a namespace URI collision}}{16}{figure.3.9}\protected@file@percent }
+\newlabel{fig:namespace_uri_collision_example}{{3.9}{16}{Example of a namespace URI collision}{figure.3.9}{}}
+\newlabel{fig:namespace_uri_collision_example@cref}{{[figure][9][3]3.9}{[1][15][]16}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.10}{\ignorespaces Example of a resolved namespace URI collision}}{16}{figure.3.10}\protected@file@percent }
+\newlabel{fig:namespace_uri_collision_example_renamed}{{3.10}{16}{Example of a resolved namespace URI collision}{figure.3.10}{}}
+\newlabel{fig:namespace_uri_collision_example_renamed@cref}{{[figure][10][3]3.10}{[1][16][]16}}
 \bibstyle{bibliography/IEEEtranN}
 \bibdata{bibliography/references}
-\@writefile{toc}{\contentsline {chapter}{Bibliography}{15}{lstnumber.-10.11}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {A}Irgendwas}{15}{appendix.A}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{Bibliography}{17}{figure.3.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {A}Irgendwas}{17}{appendix.A}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{sec:irgendwas}{{A}{15}{Irgendwas}{appendix.A}{}}
-\newlabel{sec:irgendwas@cref}{{[appendix][1][2147483647]A}{[1][15][]15}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {B}Datasheets}{17}{appendix.B}\protected@file@percent }
-\@writefile{lof}{\addvspace {10\p@ }}
-\@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{sec:datasheets}{{B}{17}{Datasheets}{appendix.B}{}}
-\newlabel{sec:datasheets@cref}{{[appendix][2][2147483647]B}{[1][17][]17}}
-\gdef \@abspage@last{29}
+\newlabel{sec:irgendwas}{{A}{17}{Irgendwas}{appendix.A}{}}
+\newlabel{sec:irgendwas@cref}{{[appendix][1][2147483647]A}{[1][17][]17}}
+\gdef \@abspage@last{27}

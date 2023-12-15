@@ -1,16 +1,27 @@
-import os
+"""
+This module contains the function to parse the facts from the xbrl instance.
+It parses XBRL in the XML syntax.
+
+@author: Robin Schmidiger
+@version: 0.3
+@date: 13 December 2023
+"""
+
 import lxml
 import lxml.etree
 
 from brel.reportelements import IReportElement, Concept
 from brel.characteristics import ConceptCharacteristic, UnitCharacteristic
-from brel import QName, Context, Fact
+from brel import QName, QNameNSMap, Context, Fact
 from typing import cast
+
+from .xml_context_parser import parse_context_xml
 
 
 def parse_facts_xml(
         xbrl_instance: lxml.etree._ElementTree,
-        report_elements: dict[QName, IReportElement]
+        report_elements: dict[QName, IReportElement],
+        qname_nsmap: QNameNSMap
         ) -> list[Fact]:
     """
     Parse the facts.
@@ -48,14 +59,14 @@ def parse_facts_xml(
                 unit_characteristic = unit_cache[unit_id]
             else:
                 xml_unit = xbrl_instance.find(f"{{*}}unit[@id='{unit_id}']")
-                unit_characteristic = UnitCharacteristic.from_xml(xml_unit)
+                unit_characteristic = UnitCharacteristic.from_xml(xml_unit, qname_nsmap)
                 unit_cache[unit_id] = unit_characteristic
             
             characteristics.append(unit_characteristic)
 
         # get the concept name              
         concept_name = xml_fact.tag                
-        concept_qname = QName.from_string(concept_name)
+        concept_qname = QName.from_string(concept_name, qname_nsmap)
 
         if concept_qname in concept_cache:
             concept_characteristic = concept_cache[concept_qname]
@@ -82,7 +93,7 @@ def parse_facts_xml(
         characteristics.append(concept_characteristic)
 
         # then parse the context
-        context = Context.from_xml(xml_context, characteristics, report_elements)
+        context = parse_context_xml(xml_context, characteristics, report_elements, qname_nsmap)
 
         # create the fact
         fact = Fact.from_xml(xml_fact, context)

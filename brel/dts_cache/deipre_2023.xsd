@@ -1,0 +1,333 @@
+<!-- This schema was created by staff of the U.S. Securities and Exchange Commission. --><!-- Data and content created by government employees within the scope of their employment --><!-- are not subject to domestic copyright protection. 17 U.S.C. 105. --><xs:schema xmlns:dei-pre="http://xbrl.sec.gov/dei-pre/2023" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink" targetNamespace="http://xbrl.sec.gov/dei-pre/2023" elementFormDefault="qualified">
+<xs:import namespace="http://xbrl.sec.gov/dei/2023" schemaLocation="dei-2023.xsd"/>
+<xs:import namespace="http://www.xbrl.org/2003/linkbase" schemaLocation="http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd"/>
+<xs:annotation>
+<xs:appinfo>
+<link:linkbase id="lnk">
+<link:roleRef roleURI="http://xbrl.sec.gov/dei/role/document/Cover" xlink:type="simple" xlink:href="dei-2023.xsd#cover"/>
+<link:roleRef roleURI="http://xbrl.sec.gov/dei/role/document/AuditInformation" xlink:type="simple" xlink:href="dei-2023.xsd#ai"/>
+<link:presentationLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/dei/role/document/Cover">
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_CoverAbstract" xlink:label="CoverAbstract"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_DocumentInformationTable" xlink:label="DocumentInformationTable"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="CoverAbstract" xlink:to="DocumentInformationTable" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_DocumentInformationDocumentAxis" xlink:label="DocumentInformationDocumentAxis"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationTable" xlink:to="DocumentInformationDocumentAxis" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_DocumentDomain" xlink:label="DocumentDomain"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationDocumentAxis" xlink:to="DocumentDomain" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_DocumentInformationLineItems" xlink:label="DocumentInformationLineItems"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationTable" xlink:to="DocumentInformationLineItems" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_DocumentType" xlink:label="DocumentType"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="DocumentType" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_DocumentRegistrationStatement" xlink:label="DocumentRegistrationStatement"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="DocumentRegistrationStatement" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_PreEffectiveAmendment" xlink:label="PreEffectiveAmendment"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="PreEffectiveAmendment" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_PreEffectiveAmendmentNumber" xlink:label="PreEffectiveAmendmentNumber"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="PreEffectiveAmendmentNumber" order="4.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_PostEffectiveAmendment" xlink:label="PostEffectiveAmendment"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="PostEffectiveAmendment" order="5.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_InvestmentCompanyActRegistration" xlink:label="InvestmentCompanyActRegistration"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="InvestmentCompanyActRegistration" order="8.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_InvestmentCompanyRegistrationAmendment" xlink:label="InvestmentCompanyRegistrationAmendment"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="InvestmentCompanyRegistrationAmendment" order="9.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_InvestmentCompanyRegistrationAmendmentNumber" xlink:label="InvestmentCompanyRegistrationAmendmentNumber"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="InvestmentCompanyRegistrationAmendmentNumber" order="10.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_RegistrationStatementAmendmentNumber" xlink:label="RegistrationStatementAmendmentNumber"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="RegistrationStatementAmendmentNumber" order="7.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_PostEffectiveAmendmentNumber" xlink:label="PostEffectiveAmendmentNumber"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="PostEffectiveAmendmentNumber" order="6.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_DocumentAnnualReport" xlink:label="DocumentAnnualReport"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="DocumentAnnualReport" order="11.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_DocumentQuarterlyReport" xlink:label="DocumentQuarterlyReport"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="DocumentQuarterlyReport" order="12.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_DocumentTransitionReport" xlink:label="DocumentTransitionReport"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="DocumentTransitionReport" order="13.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_DocumentPeriodStartDate" xlink:label="DocumentPeriodStartDate"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="DocumentPeriodStartDate" order="14.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_DocumentFinStmtErrorCorrectionFlag" xlink:label="DocumentFinStmtErrorCorrectionFlag"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="DocumentFinStmtErrorCorrectionFlag" order="15.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_DocumentFinStmtRestatementRecoveryAnalysisFlag" xlink:label="DocumentFinStmtRestatementRecoveryAnalysisFlag"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="DocumentFinStmtRestatementRecoveryAnalysisFlag" order="16.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_DocumentShellCompanyReport" xlink:label="DocumentShellCompanyReport"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="DocumentShellCompanyReport" order="17.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EntityInteractiveDataCurrent" xlink:label="EntityInteractiveDataCurrent"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="EntityInteractiveDataCurrent" order="19.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_DocumentShellCompanyEventDate" xlink:label="DocumentShellCompanyEventDate"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="DocumentShellCompanyEventDate" order="18.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_AnnualInformationForm" xlink:label="AnnualInformationForm"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="AnnualInformationForm" order="20.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_AuditedAnnualFinancialStatements" xlink:label="AuditedAnnualFinancialStatements"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="AuditedAnnualFinancialStatements" order="21.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_DocumentAccountingStandard" xlink:label="DocumentAccountingStandard"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="DocumentAccountingStandard" order="22.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_OtherReportingStandardItemNumber" xlink:label="OtherReportingStandardItemNumber"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="OtherReportingStandardItemNumber" order="23.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_DividendOrInterestReinvestmentPlanOnly" xlink:label="DividendOrInterestReinvestmentPlanOnly"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="DividendOrInterestReinvestmentPlanOnly" order="24.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_DelayedOrContinuousOffering" xlink:label="DelayedOrContinuousOffering"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="DelayedOrContinuousOffering" order="25.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EffectiveUponFiling462e" xlink:label="EffectiveUponFiling462e"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="EffectiveUponFiling462e" order="26.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_AdditionalSecuritiesEffective413b" xlink:label="AdditionalSecuritiesEffective413b"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="AdditionalSecuritiesEffective413b" order="27.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EffectiveWhenDeclaredSection8c" xlink:label="EffectiveWhenDeclaredSection8c"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="EffectiveWhenDeclaredSection8c" order="28.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EffectiveUponFiling486b" xlink:label="EffectiveUponFiling486b"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="EffectiveUponFiling486b" order="29.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EffectiveOnSetDate486b" xlink:label="EffectiveOnSetDate486b"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="EffectiveOnSetDate486b" order="30.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EffectiveOnDate486b" xlink:label="EffectiveOnDate486b"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="EffectiveOnDate486b" order="31.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EffectiveAfter60Days486a" xlink:label="EffectiveAfter60Days486a"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="EffectiveAfter60Days486a" order="32.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EffectiveOnSetDate486a" xlink:label="EffectiveOnSetDate486a"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="EffectiveOnSetDate486a" order="33.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EffectiveOnDate486a" xlink:label="EffectiveOnDate486a"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="EffectiveOnDate486a" order="34.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_NewEffectiveDateForPreviousFiling" xlink:label="NewEffectiveDateForPreviousFiling"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="NewEffectiveDateForPreviousFiling" order="35.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_AdditionalSecurities462b" xlink:label="AdditionalSecurities462b"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="AdditionalSecurities462b" order="36.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_AdditionalSecurities462bFileNumber" xlink:label="AdditionalSecurities462bFileNumber"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="AdditionalSecurities462bFileNumber" order="37.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_NoSubstantiveChanges462c" xlink:label="NoSubstantiveChanges462c"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="NoSubstantiveChanges462c" order="38.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_NoSubstantiveChanges462cFileNumber" xlink:label="NoSubstantiveChanges462cFileNumber"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="NoSubstantiveChanges462cFileNumber" order="39.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_ExhibitsOnly462d" xlink:label="ExhibitsOnly462d"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="ExhibitsOnly462d" order="40.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_WrittenCommunications" xlink:label="WrittenCommunications"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="WrittenCommunications" order="43.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_SolicitingMaterial" xlink:label="SolicitingMaterial"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="SolicitingMaterial" order="44.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_PreCommencementTenderOffer" xlink:label="PreCommencementTenderOffer"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="PreCommencementTenderOffer" order="45.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_PreCommencementIssuerTenderOffer" xlink:label="PreCommencementIssuerTenderOffer"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="PreCommencementIssuerTenderOffer" order="46.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EntityBankruptcyProceedingsReportingCurrent" xlink:label="EntityBankruptcyProceedingsReportingCurrent"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="EntityBankruptcyProceedingsReportingCurrent" order="47.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_AmendmentFlag" xlink:label="AmendmentFlag"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="AmendmentFlag" order="49.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_AmendmentDescription" xlink:label="AmendmentDescription"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="AmendmentDescription" order="50.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_DocumentDescription" xlink:label="DocumentDescription"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="DocumentDescription" order="51.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_DocumentCreationDate" xlink:label="DocumentCreationDate"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="DocumentCreationDate" order="52.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_DocumentEffectiveDate" xlink:label="DocumentEffectiveDate"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="DocumentEffectiveDate" order="53.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_DocumentPeriodEndDate" xlink:label="DocumentPeriodEndDate"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="DocumentPeriodEndDate" order="54.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_DocumentFiscalYearFocus" xlink:label="DocumentFiscalYearFocus"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="DocumentFiscalYearFocus" order="55.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_DocumentFiscalPeriodFocus" xlink:label="DocumentFiscalPeriodFocus"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="DocumentFiscalPeriodFocus" order="56.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_DocumentVersion" xlink:label="DocumentVersion"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="DocumentVersion" order="57.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_DocumentCopyrightInformation" xlink:label="DocumentCopyrightInformation"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="DocumentCopyrightInformation" order="58.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_DocumentName" xlink:label="DocumentName"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="DocumentName" order="59.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_DocumentTitle" xlink:label="DocumentTitle"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="DocumentTitle" order="60.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_DocumentSubtitle" xlink:label="DocumentSubtitle"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="DocumentSubtitle" order="61.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_DocumentSynopsis" xlink:label="DocumentSynopsis"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="DocumentSynopsis" order="62.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_ContainedFileInformationFileName" xlink:label="ContainedFileInformationFileName"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="ContainedFileInformationFileName" order="63.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_ContainedFileInformationFileDescription" xlink:label="ContainedFileInformationFileDescription"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="ContainedFileInformationFileDescription" order="64.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_ContainedFileInformationFileType" xlink:label="ContainedFileInformationFileType"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="ContainedFileInformationFileType" order="65.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_ContainedFileInformationFileNumber" xlink:label="ContainedFileInformationFileNumber"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="ContainedFileInformationFileNumber" order="66.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_ApproximateDateOfCommencementOfProposedSaleToThePublic" xlink:label="ApproximateDateOfCommencementOfProposedSaleToThePublic"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="ApproximateDateOfCommencementOfProposedSaleToThePublic" order="42.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_IcfrAuditorAttestationFlag" xlink:label="IcfrAuditorAttestationFlag"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="IcfrAuditorAttestationFlag" order="48.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_DocumentsIncorporatedByReferenceTextBlock" xlink:label="DocumentsIncorporatedByReferenceTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="DocumentsIncorporatedByReferenceTextBlock" order="67.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_DocumentInformationTextBlock" xlink:label="DocumentInformationTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="DocumentInformationTextBlock" order="68.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_ExhibitsOnly462dFileNumber" xlink:label="ExhibitsOnly462dFileNumber"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DocumentInformationLineItems" xlink:to="ExhibitsOnly462dFileNumber" order="41.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EntitiesTable" xlink:label="EntitiesTable"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="CoverAbstract" xlink:to="EntitiesTable" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_LegalEntityAxis" xlink:label="LegalEntityAxis"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntitiesTable" xlink:to="LegalEntityAxis" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EntityDomain" xlink:label="EntityDomain"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="LegalEntityAxis" xlink:to="EntityDomain" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EntityInformationLineItems" xlink:label="EntityInformationLineItems"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntitiesTable" xlink:to="EntityInformationLineItems" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EntityRegistrantName" xlink:label="EntityRegistrantName"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityInformationLineItems" xlink:to="EntityRegistrantName" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EntityCentralIndexKey" xlink:label="EntityCentralIndexKey"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityInformationLineItems" xlink:to="EntityCentralIndexKey" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EntityTaxIdentificationNumber" xlink:label="EntityTaxIdentificationNumber"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityInformationLineItems" xlink:to="EntityTaxIdentificationNumber" order="6.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EntityAccountingStandard" xlink:label="EntityAccountingStandard"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityInformationLineItems" xlink:to="EntityAccountingStandard" order="7.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EntityNumberOfEmployees" xlink:label="EntityNumberOfEmployees"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityInformationLineItems" xlink:to="EntityNumberOfEmployees" order="9.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_CurrentFiscalYearEndDate" xlink:label="CurrentFiscalYearEndDate"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityInformationLineItems" xlink:to="CurrentFiscalYearEndDate" order="10.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_FormerFiscalYearEndDate" xlink:label="FormerFiscalYearEndDate"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityInformationLineItems" xlink:to="FormerFiscalYearEndDate" order="11.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EntityWellKnownSeasonedIssuer" xlink:label="EntityWellKnownSeasonedIssuer"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityInformationLineItems" xlink:to="EntityWellKnownSeasonedIssuer" order="12.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EntityVoluntaryFilers" xlink:label="EntityVoluntaryFilers"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityInformationLineItems" xlink:to="EntityVoluntaryFilers" order="13.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EntityCurrentReportingStatus" xlink:label="EntityCurrentReportingStatus"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityInformationLineItems" xlink:to="EntityCurrentReportingStatus" order="14.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EntityFilerCategory" xlink:label="EntityFilerCategory"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityInformationLineItems" xlink:to="EntityFilerCategory" order="16.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EntityPublicFloat" xlink:label="EntityPublicFloat"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityInformationLineItems" xlink:to="EntityPublicFloat" order="20.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_LegalEntityIdentifier" xlink:label="LegalEntityIdentifier"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityInformationLineItems" xlink:to="LegalEntityIdentifier" order="23.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EntityFileNumber" xlink:label="EntityFileNumber"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityInformationLineItems" xlink:to="EntityFileNumber" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EntityShellCompany" xlink:label="EntityShellCompany"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityInformationLineItems" xlink:to="EntityShellCompany" order="15.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EntityEmergingGrowthCompany" xlink:label="EntityEmergingGrowthCompany"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityInformationLineItems" xlink:to="EntityEmergingGrowthCompany" order="18.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EntityExTransitionPeriod" xlink:label="EntityExTransitionPeriod"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityInformationLineItems" xlink:to="EntityExTransitionPeriod" order="19.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EntitySmallBusiness" xlink:label="EntitySmallBusiness"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityInformationLineItems" xlink:to="EntitySmallBusiness" order="17.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EntityInvCompanyType" xlink:label="EntityInvCompanyType"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityInformationLineItems" xlink:to="EntityInvCompanyType" order="22.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EntityPrimarySicNumber" xlink:label="EntityPrimarySicNumber"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityInformationLineItems" xlink:to="EntityPrimarySicNumber" order="5.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EntityLegalForm" xlink:label="EntityLegalForm"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityInformationLineItems" xlink:to="EntityLegalForm" order="24.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EntityHomeCountryISOCode" xlink:label="EntityHomeCountryISOCode"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityInformationLineItems" xlink:to="EntityHomeCountryISOCode" order="25.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_ParentEntityLegalName" xlink:label="ParentEntityLegalName"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityInformationLineItems" xlink:to="ParentEntityLegalName" order="26.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EntityReportingCurrencyISOCode" xlink:label="EntityReportingCurrencyISOCode"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityInformationLineItems" xlink:to="EntityReportingCurrencyISOCode" order="27.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EntityIncorporationDateOfIncorporation" xlink:label="EntityIncorporationDateOfIncorporation"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityInformationLineItems" xlink:to="EntityIncorporationDateOfIncorporation" order="28.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EntityInformationFormerLegalOrRegisteredName" xlink:label="EntityInformationFormerLegalOrRegisteredName"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityInformationLineItems" xlink:to="EntityInformationFormerLegalOrRegisteredName" order="21.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EntityIncorporationStateCountryCode" xlink:label="EntityIncorporationStateCountryCode"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityInformationLineItems" xlink:to="EntityIncorporationStateCountryCode" order="8.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_InvestmentCompanyActFileNumber" xlink:label="InvestmentCompanyActFileNumber"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityInformationLineItems" xlink:to="InvestmentCompanyActFileNumber" order="4.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EntityTextBlock" xlink:label="EntityTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityInformationLineItems" xlink:to="EntityTextBlock" order="29.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EntityAddressesTable" xlink:label="EntityAddressesTable"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="CoverAbstract" xlink:to="EntityAddressesTable" order="3.0"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityAddressesTable" xlink:to="LegalEntityAxis" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EntityAddressesAddressTypeAxis" xlink:label="EntityAddressesAddressTypeAxis"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityAddressesTable" xlink:to="EntityAddressesAddressTypeAxis" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_AddressTypeDomain" xlink:label="AddressTypeDomain"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityAddressesAddressTypeAxis" xlink:to="AddressTypeDomain" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_BusinessContactMember" xlink:label="BusinessContactMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AddressTypeDomain" xlink:to="BusinessContactMember" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_OtherAddressMember" xlink:label="OtherAddressMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AddressTypeDomain" xlink:to="OtherAddressMember" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_FormerAddressMember" xlink:label="FormerAddressMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AddressTypeDomain" xlink:to="FormerAddressMember" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EntityAddressesLineItems" xlink:label="EntityAddressesLineItems"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityAddressesTable" xlink:to="EntityAddressesLineItems" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EntityAddressAddressDescription" xlink:label="EntityAddressAddressDescription"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityAddressesLineItems" xlink:to="EntityAddressAddressDescription" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EntityAddressAddressLine1" xlink:label="EntityAddressAddressLine1"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityAddressesLineItems" xlink:to="EntityAddressAddressLine1" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EntityAddressAddressLine2" xlink:label="EntityAddressAddressLine2"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityAddressesLineItems" xlink:to="EntityAddressAddressLine2" order="4.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EntityAddressCityOrTown" xlink:label="EntityAddressCityOrTown"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityAddressesLineItems" xlink:to="EntityAddressCityOrTown" order="6.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EntityAddressStateOrProvince" xlink:label="EntityAddressStateOrProvince"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityAddressesLineItems" xlink:to="EntityAddressStateOrProvince" order="7.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EntityAddressCountry" xlink:label="EntityAddressCountry"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityAddressesLineItems" xlink:to="EntityAddressCountry" order="8.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EntityAddressPostalZipCode" xlink:label="EntityAddressPostalZipCode"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityAddressesLineItems" xlink:to="EntityAddressPostalZipCode" order="9.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EntityPhoneFaxNumbersLineItems" xlink:label="EntityPhoneFaxNumbersLineItems"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityAddressesLineItems" xlink:to="EntityPhoneFaxNumbersLineItems" order="10.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_CountryRegion" xlink:label="CountryRegion"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityPhoneFaxNumbersLineItems" xlink:to="CountryRegion" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_CityAreaCode" xlink:label="CityAreaCode"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityPhoneFaxNumbersLineItems" xlink:to="CityAreaCode" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_LocalPhoneNumber" xlink:label="LocalPhoneNumber"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityPhoneFaxNumbersLineItems" xlink:to="LocalPhoneNumber" order="4.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_Extension" xlink:label="Extension"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityPhoneFaxNumbersLineItems" xlink:to="Extension" order="5.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_PhoneFaxNumberDescription" xlink:label="PhoneFaxNumberDescription"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityPhoneFaxNumbersLineItems" xlink:to="PhoneFaxNumberDescription" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EntityContactPersonnelLineItems" xlink:label="EntityContactPersonnelLineItems"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityAddressesLineItems" xlink:to="EntityContactPersonnelLineItems" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_ContactPersonnelName" xlink:label="ContactPersonnelName"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityContactPersonnelLineItems" xlink:to="ContactPersonnelName" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_ContactPersonnelEmailAddress" xlink:label="ContactPersonnelEmailAddress"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityContactPersonnelLineItems" xlink:to="ContactPersonnelEmailAddress" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_ContactPersonnelFaxNumber" xlink:label="ContactPersonnelFaxNumber"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityContactPersonnelLineItems" xlink:to="ContactPersonnelFaxNumber" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EntityAddressAddressLine3" xlink:label="EntityAddressAddressLine3"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityAddressesLineItems" xlink:to="EntityAddressAddressLine3" order="5.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EntityListingsTable" xlink:label="EntityListingsTable"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="CoverAbstract" xlink:to="EntityListingsTable" order="4.0"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityListingsTable" xlink:to="LegalEntityAxis" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EntityListingsLineItems" xlink:label="EntityListingsLineItems"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityListingsTable" xlink:to="EntityListingsLineItems" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_TradingSymbol" xlink:label="TradingSymbol"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityListingsLineItems" xlink:to="TradingSymbol" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EntityListingPrimary" xlink:label="EntityListingPrimary"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityListingsLineItems" xlink:to="EntityListingPrimary" order="9.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EntityListingForeign" xlink:label="EntityListingForeign"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityListingsLineItems" xlink:to="EntityListingForeign" order="10.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EntityListingDepositoryReceiptRatio" xlink:label="EntityListingDepositoryReceiptRatio"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityListingsLineItems" xlink:to="EntityListingDepositoryReceiptRatio" order="11.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EntityListingDescription" xlink:label="EntityListingDescription"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityListingsLineItems" xlink:to="EntityListingDescription" order="12.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EntityListingSecurityTradingCurrency" xlink:label="EntityListingSecurityTradingCurrency"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityListingsLineItems" xlink:to="EntityListingSecurityTradingCurrency" order="13.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EntityListingParValuePerShare" xlink:label="EntityListingParValuePerShare"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityListingsLineItems" xlink:to="EntityListingParValuePerShare" order="7.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EntityCommonStockSharesOutstanding" xlink:label="EntityCommonStockSharesOutstanding"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityListingsLineItems" xlink:to="EntityCommonStockSharesOutstanding" order="8.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_Security12bTitle" xlink:label="Security12bTitle"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityListingsLineItems" xlink:to="Security12bTitle" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_Security12gTitle" xlink:label="Security12gTitle"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityListingsLineItems" xlink:to="Security12gTitle" order="5.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_NoTradingSymbolFlag" xlink:label="NoTradingSymbolFlag"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityListingsLineItems" xlink:to="NoTradingSymbolFlag" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_SecurityExchangeName" xlink:label="SecurityExchangeName"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityListingsLineItems" xlink:to="SecurityExchangeName" order="4.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_SecurityReportingObligation" xlink:label="SecurityReportingObligation"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityListingsLineItems" xlink:to="SecurityReportingObligation" order="6.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EntityListingsExchangeAxis" xlink:label="EntityListingsExchangeAxis"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityListingsTable" xlink:to="EntityListingsExchangeAxis" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_ExchangeDomain" xlink:label="ExchangeDomain"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="EntityListingsExchangeAxis" xlink:to="ExchangeDomain" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_NameChangeEventTable" xlink:label="NameChangeEventTable"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="CoverAbstract" xlink:to="NameChangeEventTable" order="5.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_NameChangeEventDateAxis" xlink:label="NameChangeEventDateAxis"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="NameChangeEventTable" xlink:to="NameChangeEventDateAxis" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_NameChangeEventLineItems" xlink:label="NameChangeEventLineItems"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="NameChangeEventTable" xlink:to="NameChangeEventLineItems" order="2.0"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="NameChangeEventLineItems" xlink:to="EntityInformationFormerLegalOrRegisteredName" order="1.0"/>
+</link:presentationLink>
+<link:presentationLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/dei/role/document/AuditInformation">
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_LegalEntityAxis" xlink:label="LegalEntityAxis"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_EntityDomain" xlink:label="EntityDomain"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="LegalEntityAxis" xlink:to="EntityDomain" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_AuditorLineItems" xlink:label="AuditorLineItems"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_AuditorTable" xlink:label="AuditorTable"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AuditorLineItems" xlink:to="AuditorTable" order="1.0"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AuditorTable" xlink:to="LegalEntityAxis" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_AuditorName" xlink:label="AuditorName"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AuditorLineItems" xlink:to="AuditorName" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_AuditorFirmId" xlink:label="AuditorFirmId"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AuditorLineItems" xlink:to="AuditorFirmId" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="dei-2023.xsd#dei_AuditorLocation" xlink:label="AuditorLocation"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AuditorLineItems" xlink:to="AuditorLocation" order="4.0"/>
+</link:presentationLink>
+</link:linkbase>
+</xs:appinfo>
+</xs:annotation>
+</xs:schema>

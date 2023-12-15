@@ -1,7 +1,7 @@
 import lxml.etree
 import itertools
 
-from brel import QName
+from brel import QName, QNameNSMap
 from brel.networks import *
 from brel.reportelements import *
 from brel.resource import *
@@ -11,7 +11,10 @@ from collections import defaultdict
 
 from brel.parsers.XML.networks import IXMLNetworkFactory, PresentationNetworkFactory, CalculationNetworkFactory, PhysicalDefinitionNetworkFactory, LogicalDefinitionNetworkFactory, LabelNetworkFactory, ReferenceNetworkFactory
 
-def get_object_from_reference(referenced_element: lxml.etree._Element, report_elements: dict[QName, IReportElement]) -> IResource|IReportElement:
+def get_object_from_reference(
+        referenced_element: lxml.etree._Element, 
+        qname_nsmap: QNameNSMap,
+        report_elements: dict[QName, IReportElement]) -> IResource|IReportElement:
     """
     Get the object from a XML reference. The reference can be a locator or a resource.
     For resources, currently only label and reference resources are supported.
@@ -21,7 +24,7 @@ def get_object_from_reference(referenced_element: lxml.etree._Element, report_el
     @raise ValueError: If the referenced element does not have a xlink:type attribute with value 'locator' or 'resource'.
     """
 
-    nsmap = QName.get_nsmap()
+    nsmap = qname_nsmap.get_nsmap()
     referenced_element_type = referenced_element.get(f"{{{nsmap['xlink']}}}type", "")
 
     if referenced_element_type == "locator":
@@ -34,19 +37,8 @@ def get_object_from_reference(referenced_element: lxml.etree._Element, report_el
         # turn the href into a QName
         # TODO: make more robust
         href = cast(str, referenced_element.get(f"{{{nsmap['xlink']}}}href", ""))
-        report_element_qname = QName.from_xpointer(href)
-        # print(href)
-        # url, postfix = href.split("#")
-        # url = url.rsplit("/", 1)[0]
-        # prefix, local_name = postfix.split("_", 1)
-        
-        # # href = href.split("#")[1]
-        # # href = href.replace("_", ":")
-        # # report_element_qname = QName.from_string(href)
-        # if url.endswith(".xsd"):
-        #     report_element_qname = QName.from_string(f"{prefix}:{local_name}")
-        # else:
-        #     report_element_qname = QName.from_string(f"{{{url}}}{local_name}")
+        report_element_qname = QName.from_xpointer(href, qname_nsmap)
+
         if report_element_qname not in report_elements:
             raise ValueError(f"the referenced element {report_element_qname.__str__()} could not be found")
         to_element = report_elements[report_element_qname]
@@ -56,9 +48,9 @@ def get_object_from_reference(referenced_element: lxml.etree._Element, report_el
         # currently, only label and reference resources are supported
         if referenced_element.tag == f"{{{nsmap['link']}}}label":
             # TODO: get the labels from the report elements instead of creating new ones
-            to_element = BrelLabel.from_xml(referenced_element)
+            to_element = BrelLabel.from_xml(referenced_element, qname_nsmap)
         elif referenced_element.tag == f"{{{nsmap['link']}}}reference":
-            to_element = BrelReference.from_xml(referenced_element)
+            to_element = BrelReference.from_xml(referenced_element, qname_nsmap)
         else:
             raise NotImplementedError(f"the referenced element {referenced_element.tag} is not supported")
     else:
@@ -70,7 +62,11 @@ def get_object_from_reference(referenced_element: lxml.etree._Element, report_el
     return to_element
 
 
-def parse_xml_link(xml_link_element: lxml.etree._Element, report_elements: dict[QName, IReportElement]) -> tuple[list[INetwork], dict[QName, IReportElement]]: 
+def parse_xml_link(
+        xml_link_element: lxml.etree._Element, 
+        qname_nsmap: QNameNSMap,
+        report_elements: dict[QName, IReportElement]
+        ) -> tuple[list[INetwork], dict[QName, IReportElement]]: 
     """
     Create a Network from an lxml.etree._Element. Note that this method also returns a dict containing all report elements.
     This is because networks may change the internal representation of the report elements. More specifically, it may promote
@@ -79,7 +75,7 @@ def parse_xml_link(xml_link_element: lxml.etree._Element, report_elements: dict[
     @param component: Component to which the network belongs.
     @return: An instance of INetwork. can be either a PresentationNetwork, CalculationNetwork, or any other kind of network.
     """
-    nsmap = QName.get_nsmap()
+    nsmap = qname_nsmap.get_nsmap()
 
     networks: list[INetwork] = []
     
@@ -89,17 +85,17 @@ def parse_xml_link(xml_link_element: lxml.etree._Element, report_elements: dict[
     network_factories: list[IXMLNetworkFactory] = []
 
     if xml_link_element.tag == f"{{{nsmap['link']}}}presentationLink":
-        network_factories.append(PresentationNetworkFactory())
+        network_factories.append(PresentationNetworkFactory(qname_nsmap))
     elif xml_link_element.tag == f"{{{nsmap['link']}}}calculationLink":
-        network_factories.append(CalculationNetworkFactory())
+        network_factories.append(CalculationNetworkFactory(qname_nsmap))
     elif xml_link_element.tag == f"{{{nsmap['link']}}}definitionLink":
         # for definition networks we need to create both a physical and a logical network
-        network_factories.append(PhysicalDefinitionNetworkFactory())
-        network_factories.append(LogicalDefinitionNetworkFactory())
+        network_factories.append(PhysicalDefinitionNetworkFactory(qname_nsmap))
+        network_factories.append(LogicalDefinitionNetworkFactory(qname_nsmap))
     elif xml_link_element.tag == f"{{{nsmap['link']}}}labelLink":
-        network_factories.append(LabelNetworkFactory())
+        network_factories.append(LabelNetworkFactory(qname_nsmap))
     elif xml_link_element.tag == f"{{{nsmap['link']}}}referenceLink":
-        network_factories.append(ReferenceNetworkFactory())
+        network_factories.append(ReferenceNetworkFactory(qname_nsmap))
     else:
         raise NotImplementedError(f"the link element {xml_link_element.tag} is not supported")
         
@@ -143,7 +139,7 @@ def parse_xml_link(xml_link_element: lxml.etree._Element, report_elements: dict[
                 if not isinstance(label, str):
                     raise TypeError(f"the xlink:label attribute on the resource/locator element {xml_resource.tag} is not a string")
 
-                to_object = get_object_from_reference(xml_resource, report_elements)
+                to_object = get_object_from_reference(xml_resource, qname_nsmap, report_elements)
 
                 # try finding an arc where 'to' points to the current resource/locator
                 xpath_query = f".//*[@xlink:to='{label}' and @xlink:type='arc']"
@@ -225,7 +221,7 @@ def parse_xml_link(xml_link_element: lxml.etree._Element, report_elements: dict[
                         # get the element the arc points to
                         referenced_element = xml_link_element.find(f".//*[@{{{nsmap['xlink']}}}label='{arc_from}']", namespaces=nsmap)
                         referenced_element = cast(lxml.etree._Element, referenced_element)
-                        to_object = get_object_from_reference(referenced_element, report_elements)
+                        to_object = get_object_from_reference(referenced_element, qname_nsmap, report_elements)
 
                         # create the root node
                         root_node = network_factory.create_node(xml_link_element, referenced_element, xml_arc, to_object)

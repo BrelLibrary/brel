@@ -1,7 +1,7 @@
 import lxml
 import lxml.etree
 from typing import cast
-from brel import QName
+from brel import QName, QNameNSMap
 from brel.networks import INetwork, INetworkNode, DefinitionNetworkNode, DefinitionNetwork
 from brel.reportelements import *
 from brel.resource import IResource
@@ -9,11 +9,14 @@ from brel.resource import IResource
 from .i_xml_network_factory import IXMLNetworkFactory
 
 class PhysicalDefinitionNetworkFactory(IXMLNetworkFactory):
+    def __init__(self, qname_nsmap: QNameNSMap) -> None:
+        super().__init__(qname_nsmap)
+
     def create_network(self, xml_link: lxml.etree._Element, roots: list[INetworkNode]) -> INetwork:
-        nsmap = QName.get_nsmap()
+        nsmap = self.get_qname_nsmap().get_nsmap()
 
         link_role = xml_link.get(f"{{{nsmap['xlink']}}}role", None)
-        link_qname = QName.from_string(xml_link.tag)
+        link_qname = QName.from_string(xml_link.tag, self.get_qname_nsmap())
 
         if len(roots) == 0:
             raise ValueError("roots must not be empty")
@@ -27,7 +30,7 @@ class PhysicalDefinitionNetworkFactory(IXMLNetworkFactory):
         return DefinitionNetwork(roots_cast, link_role, link_qname, True)
     
     def create_node(self, xml_link: lxml.etree._Element, xml_referenced_element: lxml.etree._Element, xml_arc: lxml.etree._Element | None, points_to: IReportElement|IResource) -> INetworkNode:
-        nsmap = QName.get_nsmap()
+        nsmap = self.get_qname_nsmap().get_nsmap()
 
         label = xml_referenced_element.attrib.get(f"{{{nsmap['xlink']}}}label", None)
         if label is None:
@@ -37,22 +40,22 @@ class PhysicalDefinitionNetworkFactory(IXMLNetworkFactory):
             # the node is not connected to any other node
             arc_role = "unknown"
             order = 0.0
-            arc_qname = QName.from_string("link:unknown")
+            arc_qname = QName.from_string("link:unknown", self.get_qname_nsmap())
         elif xml_arc.get(f"{{{nsmap['xlink']}}}from", None) == label:
             # the node is a root
             arc_role = xml_arc.attrib.get("{" + nsmap["xlink"] + "}arcrole")
             order = 0.0 # TODO: ask ghislain why this is different from the calculation network and definition network
-            arc_qname = QName.from_string(xml_arc.tag)
+            arc_qname = QName.from_string(xml_arc.tag, self.get_qname_nsmap())
         elif xml_arc.get(f"{{{nsmap['xlink']}}}to", None) == label:
             # the node is an inner node
             arc_role = xml_arc.attrib.get("{" + nsmap["xlink"] + "}arcrole")
             order = float(xml_arc.attrib.get("order") or 0.0)
-            arc_qname = QName.from_string(xml_arc.tag)
+            arc_qname = QName.from_string(xml_arc.tag, self.get_qname_nsmap())
         else:
             raise ValueError(f"referenced element {xml_referenced_element} is not connected to arc {xml_arc}")
 
         link_role = xml_link.attrib.get("{" + nsmap["xlink"] + "}role")
-        link_name = QName.from_string(xml_link.tag)
+        link_name = QName.from_string(xml_link.tag, self.get_qname_nsmap())
 
         if arc_role is None:
             raise ValueError(f"arcrole attribute not found on arc element {xml_arc}")
@@ -84,10 +87,10 @@ class PhysicalDefinitionNetworkFactory(IXMLNetworkFactory):
 
 class LogicalDefinitionNetworkFactory(IXMLNetworkFactory):
     def create_network(self, xml_link: lxml.etree._Element, roots: list[INetworkNode]) -> INetwork:
-        nsmap = QName.get_nsmap()
+        nsmap = self.get_qname_nsmap().get_nsmap()
 
         link_role = xml_link.get(f"{{{nsmap['xlink']}}}role", None)
-        link_qname = QName.from_string(xml_link.tag)
+        link_qname = QName.from_string(xml_link.tag, self.get_qname_nsmap())
 
         if len(roots) == 0:
             raise ValueError("roots must not be empty")
@@ -101,7 +104,7 @@ class LogicalDefinitionNetworkFactory(IXMLNetworkFactory):
         return DefinitionNetwork(roots_cast, link_role, link_qname, False)
     
     def create_node(self, xml_link: lxml.etree._Element, xml_referenced_element: lxml.etree._Element, xml_arc: lxml.etree._Element | None, points_to: IReportElement|IResource) -> INetworkNode:
-        nsmap = QName.get_nsmap()
+        nsmap = self.get_qname_nsmap().get_nsmap()
 
         label = xml_referenced_element.attrib.get(f"{{{nsmap['xlink']}}}label", None)
         if label is None:
@@ -111,20 +114,20 @@ class LogicalDefinitionNetworkFactory(IXMLNetworkFactory):
             # the node is not connected to any other node
             arc_role = "unknown"
             order = 0
-            arc_qname = QName.from_string("link:unknown")
+            arc_qname = QName.from_string("link:unknown", self.get_qname_nsmap())
         elif xml_arc.get(f"{{{nsmap['xlink']}}}from", None) == label:
             arc_role = xml_arc.attrib.get("{" + nsmap["xlink"] + "}arcrole")
             order = 0 # TODO: ask ghislain why this is different from the calculation network and definition network
-            arc_qname = QName.from_string(xml_arc.tag)
+            arc_qname = QName.from_string(xml_arc.tag, self.get_qname_nsmap())
         elif xml_arc.get(f"{{{nsmap['xlink']}}}to", None) == label:
             arc_role = xml_arc.attrib.get("{" + nsmap["xlink"] + "}arcrole")
             order = float(xml_arc.attrib.get("order") or 0.0).__round__()
-            arc_qname = QName.from_string(xml_arc.tag)
+            arc_qname = QName.from_string(xml_arc.tag, self.get_qname_nsmap())
         else:
             raise ValueError(f"referenced element {xml_referenced_element} is not connected to arc {xml_arc}")
 
         link_role = xml_link.attrib.get("{" + nsmap["xlink"] + "}role")
-        link_name = QName.from_string(xml_link.tag)
+        link_name = QName.from_string(xml_link.tag, self.get_qname_nsmap())
 
         # check if the arc role is valid
         if arc_role is None:

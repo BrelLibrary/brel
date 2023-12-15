@@ -1,7 +1,7 @@
 import lxml
 import lxml.etree
 
-from brel import QName
+from brel import QName, QNameNSMap
 from brel.characteristics import BrelAspect, ICharacteristic
 
 class UnitCharacteristic(ICharacteristic):
@@ -78,7 +78,7 @@ class UnitCharacteristic(ICharacteristic):
         
 
     @classmethod
-    def from_xml(cls, xml_element: lxml.etree._Element) -> "UnitCharacteristic":
+    def from_xml(cls, xml_element: lxml.etree._Element, qname_nsmap: QNameNSMap) -> "UnitCharacteristic":
         """
         Create a Unit from an xml subtree.
         @param xml_element: the xml subtree from which the Unit is created
@@ -92,7 +92,7 @@ class UnitCharacteristic(ICharacteristic):
         # Turn the unit id into a QName
         unit_id_str = xml_element.attrib["id"]
 
-        nsmap = QName.get_nsmap()
+        nsmap = qname_nsmap.get_nsmap()
 
         # TODO: This feels a bit hacky. Improve this.
         if ":" in unit_id_str:
@@ -113,7 +113,7 @@ class UnitCharacteristic(ICharacteristic):
         numerators = []
         denominators = []
 
-        unit_qname = QName.from_string(f"{unit_prefix}:{unit_id}")
+        unit_qname = QName.from_string(f"{unit_prefix}:{unit_id}", qname_nsmap)
 
         if unit_qname in cls.__unit_cache:
             return cls.__unit_cache[unit_qname]

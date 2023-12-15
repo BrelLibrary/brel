@@ -2,28 +2,18 @@ import os
 import lxml
 import lxml.etree
 
-# import BytesIO
-from io import BytesIO
-
-from brel.reportelements import IReportElement, Dimension, Concept
-from brel.characteristics import ConceptCharacteristic, UnitCharacteristic
-from brel import QName, BrelLabel, Context, Fact, Component
+from brel.reportelements import IReportElement
+from brel import QName, Fact, Component, QNameNSMap
 from brel.parsers import IFilingParser
-from brel.parsers.dts import XMLSchemaManager, ISchemaManager
+from brel.parsers.dts import XMLSchemaManager
 from brel.networks import INetwork
 from brel.parsers.utils.lxml_utils import get_all_nsmaps
 from brel.parsers.XML.xml_namespace_normalizer import normalize_nsmap
-from collections import defaultdict
 
 from .XML.xml_component_parser import parse_components_xml
 from .XML.xml_report_element_parser import parse_report_elements_xml
 from .XML.xml_facts_parser import parse_facts_xml
 from .XML.networks.xml_networks_parser import networks_from_xmls
-
-import requests
-
-
-from typing import cast
 
 DEBUG = False
 
@@ -76,13 +66,13 @@ class XMLFilingParser(IFilingParser):
         # normalize and bootstrap the QName nsmap
         if DEBUG:  # pragma: no cover
             self.__print("Normalizing nsmap...")
-        self.__bootstrap_qname_nsmap()
+        self.__nsmap = self.__create_nsmap()
 
         if DEBUG:  # pragma: no cover
             self.__print("XMLFilingParser initialized!")
             print("-"*50)
     
-    def __bootstrap_qname_nsmap(self):
+    def __create_nsmap(self) -> QNameNSMap:
         if self.xbrl_instance is None:
             raise ValueError("Instance not loaded")
         
@@ -102,22 +92,36 @@ class XMLFilingParser(IFilingParser):
         redirects = normalizer_result["redirects"]
         renames = normalizer_result["renames"]
 
+        qname_nsmap = QNameNSMap()
+
         if DEBUG:  # pragma: no cover
             print("[QName] Prefix mappings:")
         for prefix, url in nsmap.items():
-            QName.add_to_nsmap(url, prefix)
+            # QName.add_to_nsmap(url, prefix)
+            qname_nsmap.add_to_nsmap(url, prefix)
             if DEBUG:  # pragma: no cover
                 print(f"> {prefix:20} -> {url}")
         
         if DEBUG:  # pragma: no cover
             print("[QName] Prefix redirects:")
         for redirect_from, redirect_to in redirects.items():
-            QName.set_redirect(redirect_from, redirect_to)
+            # QName.set_redirect(redirect_from, redirect_to)
+            qname_nsmap.add_redirect(redirect_from, redirect_to)
             if DEBUG:  # pragma: no cover
                 print(f"> {redirect_from:10} -> {redirect_to}")
         
         if DEBUG:  # pragma: no cover
+            print("[QName] Prefix renames:")
+        for rename_to, rename_from in renames.items():
+            # QName.set_rename(rename_from, rename_to)
+            qname_nsmap.add_rename(rename_from, rename_to)
+            if DEBUG:
+                print(f"> {rename_from:10} -> {rename_to}")
+        
+        if DEBUG:  # pragma: no cover
             print("Note: Prefix redirects are not recommended.")
+        
+        return qname_nsmap
 
     
     def __print(self, output: str):
@@ -132,7 +136,7 @@ class XMLFilingParser(IFilingParser):
         Parse the concepts.
         @return: A list of all the concepts in the filing, even those that are not reported.
         """
-        return parse_report_elements_xml(self.__schema_manager)
+        return parse_report_elements_xml(self.__schema_manager, self.__nsmap)
     
 
     def parse_facts(self, report_elements: dict[QName, IReportElement]) -> list[Fact]:
@@ -141,7 +145,8 @@ class XMLFilingParser(IFilingParser):
         """
         return parse_facts_xml(
             self.xbrl_instance,
-            report_elements
+            report_elements,
+            self.__nsmap
         )
     
     def parse_networks(self, report_elements: dict[QName, IReportElement]) -> dict[str, list[INetwork]]:
@@ -152,6 +157,7 @@ class XMLFilingParser(IFilingParser):
         """
         return networks_from_xmls(
             self.__xbrl_networks + self.__schema_manager.get_all_schemas(),
+            self.__nsmap,
             report_elements
         )
 
@@ -172,7 +178,8 @@ class XMLFilingParser(IFilingParser):
         return parse_components_xml(
             self.__schema_manager.get_all_schemas(),
             networks,
-            report_elements
+            report_elements,
+            self.__nsmap
         )
         
     def get_filing_type(self) -> str:

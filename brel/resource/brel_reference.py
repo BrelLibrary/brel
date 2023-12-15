@@ -1,6 +1,6 @@
 import lxml
 import lxml.etree
-from brel import QName
+from brel import QName, QNameNSMap
 from brel.resource import IResource
 
 class BrelReference(IResource):
@@ -32,11 +32,11 @@ class BrelReference(IResource):
     
     # internal methods
     @classmethod
-    def from_xml(cls, xml_element: lxml.etree._Element):
+    def from_xml(cls, xml_element: lxml.etree._Element, qname_nsmap: QNameNSMap) -> "BrelReference":
         """
         Create a BrelResource from an lxml.etree._Element.
         """
-        nsmap = QName.get_nsmap()
+        nsmap = qname_nsmap.get_nsmap()
 
         # get the label
         label = xml_element.attrib.get(f"{{{nsmap['xlink']}}}label")

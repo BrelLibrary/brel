@@ -1,7 +1,7 @@
 import lxml
 import lxml.etree
 from typing import cast
-from brel import QName, BrelLabelRole
+from brel import QName, BrelLabelRole, QNameNSMap
 from brel.reportelements import IReportElement, Abstract, Hypercube, LineItems
 from brel.networks import INetwork, INetworkNode, PresentationNetwork, PresentationNetworkNode
 from brel.resource import IResource
@@ -10,9 +10,12 @@ from brel.resource import IResource
 from .i_xml_network_factory import IXMLNetworkFactory
 
 class PresentationNetworkFactory(IXMLNetworkFactory):
+    def __init__(self, qname_nsmap: QNameNSMap) -> None:
+        super().__init__(qname_nsmap)
+
     def create_network(self, xml_link_element: lxml.etree._Element, roots: list[INetworkNode]) -> INetwork:
         # TODO: make assertions
-        nsmap = QName.get_nsmap()
+        nsmap = self.get_qname_nsmap().get_nsmap()
 
         if len(roots) != 1:
             raise ValueError("roots must have exactly one element")
@@ -21,7 +24,7 @@ class PresentationNetworkFactory(IXMLNetworkFactory):
 
         root = roots[0]
         link_role = xml_link_element.get(f"{{{nsmap['xlink']}}}role", None)
-        link_name = QName.from_string(xml_link_element.tag)
+        link_name = QName.from_string(xml_link_element.tag, self.get_qname_nsmap())
 
 
         if link_role is None:
@@ -30,7 +33,7 @@ class PresentationNetworkFactory(IXMLNetworkFactory):
         return PresentationNetwork(root, link_role, link_name)
     
     def create_node(self, xml_link: lxml.etree._Element, xml_referenced_element: lxml.etree._Element, xml_arc: lxml.etree._Element | None, points_to: IReportElement|IResource) -> INetworkNode:
-        nsmap = QName.get_nsmap()
+        nsmap = self.get_qname_nsmap().get_nsmap()
 
         label = xml_referenced_element.attrib.get(f"{{{nsmap['xlink']}}}label", None)
         if label is None:
@@ -41,13 +44,13 @@ class PresentationNetworkFactory(IXMLNetworkFactory):
             preferred_label_role = BrelLabelRole.STANDARD_LABEL
             arc_role = "unknown"
             order = 1
-            arc_qname = QName.from_string("link:unknown")
+            arc_qname = QName.from_string("link:unknown", self.get_qname_nsmap())
         elif xml_arc.get(f"{{{nsmap['xlink']}}}from", None) == label:
             # the node is a root
             preferred_label_role = BrelLabelRole.STANDARD_LABEL
             arc_role = xml_arc.attrib.get("{" + nsmap["xlink"] + "}arcrole")
             order = 1
-            arc_qname = QName.from_string(xml_arc.tag)
+            arc_qname = QName.from_string(xml_arc.tag, self.get_qname_nsmap())
         elif xml_arc.get(f"{{{nsmap['xlink']}}}to", None) == label:
             # the node is an inner node
             preferred_label = xml_arc.attrib.get("preferredLabel")
@@ -60,14 +63,14 @@ class PresentationNetworkFactory(IXMLNetworkFactory):
             preferred_label_role = BrelLabelRole.from_url(preferred_label)
             arc_role = xml_arc.attrib.get("{" + nsmap["xlink"] + "}arcrole")
             order = float(xml_arc.attrib.get("order") or 1)
-            arc_qname = QName.from_string(xml_arc.tag)
+            arc_qname = QName.from_string(xml_arc.tag, self.get_qname_nsmap())
         else:
             raise ValueError(f"referenced element {xml_referenced_element} is not connected to arc {xml_arc}")
             
 
 
         link_role = xml_link.attrib.get("{" + nsmap["xlink"] + "}role")
-        link_name = QName.from_string(xml_link.tag)
+        link_name = QName.from_string(xml_link.tag, self.get_qname_nsmap())
 
         if arc_role is None:
             raise ValueError(f"arcrole attribute not found on arc element {xml_arc}")

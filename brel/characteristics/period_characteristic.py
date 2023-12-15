@@ -2,7 +2,7 @@ import lxml
 import lxml.etree
 import dateutil.parser
 
-from brel import QName
+from brel import QName, QNameNSMap
 from brel.characteristics import BrelAspect, ICharacteristic
 
 class PeriodCharacteristic(ICharacteristic):
@@ -145,11 +145,11 @@ class PeriodCharacteristic(ICharacteristic):
         return period_instance
 
     @classmethod
-    def from_xml(cls, xml_element: lxml.etree._Element) -> "PeriodCharacteristic":
+    def from_xml(cls, xml_element: lxml.etree._Element, qname_nsmap: QNameNSMap) -> "PeriodCharacteristic":
         """
         Create a Period from an lxml.etree._Element.
         """
-        nsmap = QName.get_nsmap()
+        nsmap = qname_nsmap.get_nsmap()
 
         is_instant = xml_element.find("{*}instant", nsmap) is not None
         if is_instant:

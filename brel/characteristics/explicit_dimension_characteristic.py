@@ -1,7 +1,7 @@
 import lxml
 import lxml.etree
 
-from brel import QName
+from brel import QName, QNameNSMap
 from brel.characteristics import BrelAspect, ICharacteristic
 from brel.reportelements import Dimension, Member   
 
@@ -69,7 +69,13 @@ class ExplicitDimensionCharacteristic(ICharacteristic):
 
     # internal methods    
     @classmethod
-    def from_xml(cls, xml_element: lxml.etree._Element, dimension: Dimension, member: Member) -> "ExplicitDimensionCharacteristic":
+    def from_xml(
+        cls, 
+        xml_element: lxml.etree._Element, 
+        dimension: Dimension, 
+        member: Member,
+        qname_nsmap: QNameNSMap
+        ) -> "ExplicitDimensionCharacteristic":
         """
         Create a Dimension from an lxml.etree._Element.
         @param xml_element: the xml subtree from which the Dimension is created
@@ -84,6 +90,6 @@ class ExplicitDimensionCharacteristic(ICharacteristic):
         
         # then parse and create the dimension aspect
         dimension_axis = xml_element.attrib["dimension"]
-        dimension_aspect = BrelAspect.from_QName(QName.from_string(dimension_axis))
+        dimension_aspect = BrelAspect.from_QName(QName.from_string(dimension_axis, qname_nsmap))
 
         return cls(dimension, member, dimension_aspect)

@@ -1,8 +1,18 @@
+"""
+This module contains the Component class.
+Components are used to define the presentation, calculation and definition networks of a filing.
+Intuitively, they function as the chapters of a report or filing.
+
+@author: Robin Schmidiger
+@version: 0.5
+@date: 13 December 2023
+"""
+
 from __future__ import annotations
 import lxml
 import lxml.etree
-from .qname import QName
-from .networks import PresentationNetwork, CalculationNetwork, DefinitionNetwork
+from brel import QName, QNameNSMap
+from brel.networks import PresentationNetwork, CalculationNetwork, DefinitionNetwork
 
 class Component:
     """
@@ -86,16 +96,17 @@ class Component:
     def from_xml(
         cls, 
         xml_element: lxml.etree._Element, 
+        qname_nsmap: QNameNSMap,
         presentation_network: None|PresentationNetwork = None, 
         calculation_network: None|CalculationNetwork = None, 
-        definition_network: None|DefinitionNetwork = None
+        definition_network: None|DefinitionNetwork = None,
     ) -> Component:
         """
         Create a Component from an lxml.etree._Element.
         """
         
         uri = xml_element.get("roleURI", None)
-        nsmap = QName.get_nsmap()
+        nsmap = qname_nsmap.get_nsmap()
 
         if uri is None:
             raise ValueError("The roleURI attribute is missing from the link:roleType element")

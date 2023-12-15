@@ -34,17 +34,11 @@ nsconfig_filename = "nsconfig.json"
 nsconfig_path = "brel/"
 
 default_namespace_mappings: dict[str, str] = {}
-complex_prefixes: list[str] = []
 
 with open(nsconfig_path + nsconfig_filename, "r") as nsconfig_file:
     nsconfig = json.load(nsconfig_file)
     for prefix, re_uri in nsconfig["default_mappings"].items():
         default_namespace_mappings[re_uri] = prefix
-    
-    for prefix in nsconfig["complex_prefixes"]:
-        complex_prefixes.append(prefix)
-
-print(complex_prefixes)
 
 # helper functions
 def get_default_prefix_from_uri(uri: str) -> str | None:
@@ -78,7 +72,17 @@ def generate_alternative_prefixes(prefix: str) -> str:
     @return: A str containing the alternative prefix
     """
     # TODO: make this more robust
-    return prefix + "1"
+    # get the number at the end of the prefix
+    prefix_number = re.findall(r"\d+$", prefix)
+    # if there is a number, increment it. else, set it to 1
+    if len(prefix_number) > 0:
+        prefix_number = int(prefix_number[0]) + 1
+    else:
+        prefix_number = 1
+    
+    # get the prefix without the number
+    prefix = re.sub(r"\d+$", "", prefix)
+    return prefix + str(prefix_number)
 
 def url_remove_version(url: str) -> str:
     """
@@ -226,16 +230,6 @@ def normalize_nsmap(namespace_mappings: list[dict[str, str]]) -> dict[str, dict[
                 unversioned_uri = url_remove_version(uri)
                 components[unversioned_uri][0].add(uri)
                 components[unversioned_uri][1].add(prefix)
-    
-    # check if multiple components share the same prefix
-    compoennt_pairs = itertools.combinations(components.items(), 2)
-    for (uri_a_unversioned, (uris_a, prefixes_a)), (uri_b_unversioned, (uris_b, prefixes_b)) in compoennt_pairs:
-        prefixes_intersection = prefixes_a.intersection(prefixes_b)
-        for prefix in prefixes_intersection:
-            if prefix not in complex_prefixes:
-                raise ValueError(f"The namespace mappings are too complex. The prefix {prefix} maps to multiple urls: {uris_a} and {uris_b}")
-
-
 
     if DEBUG:  # pragma: no cover
         print(f"Found components:")

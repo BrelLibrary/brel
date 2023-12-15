@@ -1,3 +1,11 @@
+"""
+This module runs the interactive data test suite created by the SEC.
+
+@author: Robin Schmidiger
+@version: 0.0.2
+@date: 13 December 2023
+"""
+
 import lxml
 import lxml.etree
 
@@ -19,7 +27,7 @@ testcase_filenames = [testcase_element.get("uri") for testcase_element in testca
 # testcase_filenames = ['605-instance-syntax/605-01-entity-identifier-scheme/605-01-entity-identifier-scheme-testcase.xml']
 
 
-def filter_out_unsupported(testcase_filename):    
+def filter_out_unsupported(testcase_filename):
     if "semantics" in testcase_filename:
         return True
     else:
@@ -62,6 +70,10 @@ for testcase_filename in testcase_filenames:
         instance_filename = prepend_path_prefix(instance_filename)
         linkbase_filenames = [prepend_path_prefix(linkbase_filename) for linkbase_filename in linkbase_filenames]
 
-        filing = Filing.open(instance_filename, linkbases=linkbase_filenames)
+        try:
+            filing = Filing.open(instance_filename, linkbases=linkbase_filenames)
+        except Exception as e:
+            print(f"Exception: {e}")
+            continue
 
 

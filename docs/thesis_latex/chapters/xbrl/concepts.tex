@@ -1,0 +1,27 @@
+\section{Concepts}
+
+In section \ref{sec:facts}, we learned that a fact is the smallest unit of information in an XBRL report. 
+One of the core aspects of a fact is its concept. 
+The concept refers to what is being reported. 
+So for example, if a fact is reporting information about a company's revenue, then the concept of the fact is "Revenue".
+In this section, we will take a closer look at concepts and how they are defined in XBRL.
+
+Concepts are the fundamental building blocks of XBRL and they are defined in the XBRL taxonomy. 
+
+\subsection{Taxonomy}
+
+TODO: the root taxonomy should be called 'txtension taxonomy'
+
+The XBRL taxonomy is a collection of concepts. 
+Each XBRL report defines its own taxonomy inside of a taxonomy schema file.
+This schema file is called the \textbf{root schema} of the taxonomy.
+The root schema is the entry point to the taxonomy and it contains references to all other schemas in the taxonomy.
+By resolving these references, the entire taxonomy can be loaded into memory.
+
+The schemas being referenced include the following:
+
+\begin{itemize}
+    \item \textbf{us-gaap} \footnote[0]{https://xbrl.us/us-gaap/} - Contains concepts for US Generally Accepted Accounting Principles (GAAP).
+    \item \textbf{ifrs} \footnote[1]{https://www.ifrs.org/} - Contains concepts for International Financial Reporting Standards (IFRS).
+    \item \textbf{dei} \footnote[2]{https://www.sec.gov/info/edgar/dei-2019xbrl-taxonomy} - Contains concepts for the SEC's Document and Entity Information (DEI) requirements.
+    \item \textbf{country} \footnote[3]{https://xbrl.fasb.org/us-gaap/2021/elts/us-gaap-country-2021-01-31.xsd} - Contains concepts for country codes.

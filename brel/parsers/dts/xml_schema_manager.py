@@ -1,3 +1,14 @@
+"""
+This module contains the XMLSchemaManager class.
+The XMLSchemaManager class is responsible for downloading and caching XBRL taxonomies.
+
+@author: Robin Schmidiger
+@version: 0.0.5
+@date: 13 December 2023
+"""
+
+DEBUG = False
+
 import os
 from typing import Any
 import lxml
@@ -51,6 +62,8 @@ class XMLSchemaManager(ISchemaManager):
         #         self.__schema_names.append(filename)
         self.__schema_names: list[str] = []
         self.__compute_schema_names_closure(self.__filing_location + self.__main_schema_filename)
+        if DEBUG:  # pragma: no cover
+            print(f"Schema names: {self.__schema_names}")
 
     def url_to_filename(self, url: str) -> str:
         """
@@ -118,10 +131,14 @@ class XMLSchemaManager(ISchemaManager):
         while len(working_set) > 0:
             schema_name = working_set.pop()
             schema = self.get_schema(schema_name, populate_namelist=True)
-            imports = schema.findall("{http://www.w3.org/2001/XMLSchema}import")
+            imports = schema.findall("{http://www.w3.org/2001/XMLSchema}import")            
+
             for xsd_import in imports:
                 schema_location = xsd_import.attrib["schemaLocation"]
-                working_set.append(schema_location)            
+                working_set.append(schema_location)
+
+        # check if each namespace in the nsmap had an import statement
+            
 
     def __download_dts(self, xsd_url, referencing_schema_url="."):
     
@@ -188,4 +205,5 @@ class XMLSchemaManager(ISchemaManager):
             # write the schema to the cache with the updated imports
             with open(self.cache_location + file_name, "wb") as f:
                 f.write(lxml.etree.tostring(xsd_tree))
-            print(f"Loaded schema {xsd_url} into cache")
+            if DEBUG:  # pragma: no cover
+                print(f"Loaded schema {xsd_url} into cache")

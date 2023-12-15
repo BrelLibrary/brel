@@ -1,6 +1,6 @@
 import lxml.etree
 
-from brel import QName
+from brel import QName, QNameNSMap
 from brel.networks import *
 from brel.reportelements import *
 from brel.resource import *
@@ -13,10 +13,11 @@ from .xml_linkbase_parser import parse_xml_link
 
 def networks_from_xmls(
         xml_trees: list[lxml.etree._ElementTree],
+        qname_nsmap: QNameNSMap,
         report_elements: dict[QName, IReportElement]
         ) -> dict[str, list[INetwork]]:
     
-    nsmap = QName.get_nsmap()
+    nsmap = qname_nsmap.get_nsmap()
 
     networks: dict[str, list[INetwork]] = defaultdict(list)
 
@@ -62,7 +63,7 @@ def networks_from_xmls(
 
         for xml_link in xml_links:
             # parse the network and update the report elements
-            link_networks, report_elements = parse_xml_link(xml_link, report_elements)
+            link_networks, report_elements = parse_xml_link(xml_link, qname_nsmap, report_elements)
 
             if link_networks is not None:
                 # get the component name

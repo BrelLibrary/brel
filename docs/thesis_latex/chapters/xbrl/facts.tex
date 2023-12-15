@@ -31,6 +31,9 @@ In this example:
     According to Microsoft's 2022 annual report, the company's revenue for the fiscal year 2022 was around 198 billion US dollars.
 \end{itemize}
 
-\subsection{Facts in the XBRL Taxonomy}
-
-In the context of XBRL, facts are represented as XML elements in an XBRL instance document. 
+The concept, entity, period and unit of a fact are called its \textbf{aspects}. 
+If necessary, additional aspects can be defined for a fact. 
+These additional aspects are called \textbf{dimensions} and will be covered in section TODO.
+The aspects that are not dimensions are called \textbf{core aspects}. 
+Even though the name suggests otherwise, core aspects are not all mandatory for a fact.
+The only mandatory core aspect is the concept.

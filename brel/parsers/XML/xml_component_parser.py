@@ -3,7 +3,7 @@ import lxml
 import lxml.etree
 
 from brel.reportelements import IReportElement
-from brel import QName, Component
+from brel import QName, QNameNSMap, Component
 from brel.networks import PresentationNetwork, CalculationNetwork, DefinitionNetwork, INetwork
 from collections import defaultdict
 
@@ -12,7 +12,8 @@ from collections import defaultdict
 def parse_components_xml(
         schemas: list[lxml.etree._ElementTree],
         networks: dict[str, list[INetwork]],
-        report_elements: dict[QName, IReportElement]
+        report_elements: dict[QName, IReportElement],
+        qname_nsmap: QNameNSMap
         ) -> tuple[list[Component], dict[QName, IReportElement]]:
     """
     Parse the components.
@@ -21,7 +22,7 @@ def parse_components_xml(
         - A dictionary of all the report elements in the filing. These might have been altered by the components.
     """
 
-    nsmap = QName.get_nsmap()
+    nsmap = qname_nsmap.get_nsmap()
         
     components: list[Component] = []
 
@@ -34,6 +35,7 @@ def parse_components_xml(
             # Read the component information from the roleType xml element
             roleURI = roletype.get("roleURI")
             roleID = roletype.get("id")
+            
             definition_element = roletype.find("link:definition", namespaces=nsmap)
             if definition_element is None:
                 raise ValueError(f"The role with roleURI {roleURI} does not have a definition element")
@@ -49,6 +51,12 @@ def parse_components_xml(
             if roleID is None:
                 raise ValueError(f"roleID for role {roleURI} is None")
             
+            # check if the role id is a valid NCName
+            # NCName is defined in https://www.w3.org/TR/xml-names/#NT-NCName
+            # NCNames are similar to python identifiers, except that they might contain '.' and '-' (not in the beginning)
+            roleID_strippped = roleID.replace(".", "").replace("-", "")
+            if not roleID_strippped.isidentifier() or roleID.startswith("-") or roleID.startswith("."):
+                raise ValueError(f"roleID {roleID} is not a valid NCName")
             
             # Find the networks that belong to the component
             presentation_network = next((x for x in networks[roleID] if isinstance(x, PresentationNetwork)), None)
@@ -59,7 +67,7 @@ def parse_components_xml(
             # get the physical definition networks
             definition_network = next((x for x in networks[roleID] if isinstance(x, DefinitionNetwork) and not x.is_physical()), None)
 
-            component = Component.from_xml(roletype, presentation_network, calculation_network, definition_network)
+            component = Component.from_xml(roletype, qname_nsmap, presentation_network, calculation_network, definition_network)
             components.append(component)
 
     return components, report_elements

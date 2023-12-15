@@ -1,6 +1,6 @@
 import lxml
 import lxml.etree
-from brel import QName
+from brel import QName, QNameNSMap
 from brel.characteristics import BrelAspect, ICharacteristic
 from typing import cast
 
@@ -53,7 +53,11 @@ class EntityCharacteristic(ICharacteristic):
     
     # internal methods
     @classmethod
-    def from_xml(cls, xml_element: lxml.etree._Element) -> "EntityCharacteristic":
+    def from_xml(
+        cls, 
+        xml_element: lxml.etree._Element,
+        qname_nsmap: QNameNSMap
+        ) -> "EntityCharacteristic":
         """
         Create a Entity from an lxml.etree._Element.
         This is used for parsing characteristcs from an XBRL instance in XML format.
@@ -88,9 +92,10 @@ class EntityCharacteristic(ICharacteristic):
         if entity_prefix is None:
             raise ValueError(f"Could not find prefix for entity URL: {entity_url}")
         
-        QName.add_to_nsmap(entity_url, entity_prefix)
+        # QName.add_to_nsmap(entity_url, entity_prefix)
+        qname_nsmap.add_to_nsmap(entity_url, entity_prefix)
         
-        entity_qname = QName.from_string(f"{entity_prefix}:{entity_id}")
+        entity_qname = QName.from_string(f"{entity_prefix}:{entity_id}", qname_nsmap)
 
         if entity_id in cls.__entity_cache:
             return cls.__entity_cache[entity_qname]
