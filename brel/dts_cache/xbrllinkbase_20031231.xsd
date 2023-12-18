@@ -1,3 +1,4 @@
+<?xml version="1.0"?>
 <!-- (c) XBRL International.  See www.xbrl.org/legal  
  
 This version is non-normative - it should be identical to the normative
@@ -16,7 +17,13 @@ http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd
 
 http://www.xbrl.org/2003/2008-07-02/xbrl-linkbase-2003-12-31.xsd
 
---><schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xl="http://www.xbrl.org/2003/XLink" xmlns:xlink="http://www.w3.org/1999/xlink" targetNamespace="http://www.xbrl.org/2003/linkbase" elementFormDefault="qualified">
+-->
+<schema targetNamespace="http://www.xbrl.org/2003/linkbase" 
+  xmlns="http://www.w3.org/2001/XMLSchema" 
+  xmlns:link="http://www.xbrl.org/2003/linkbase" 
+  xmlns:xl="http://www.xbrl.org/2003/XLink" 
+  xmlns:xlink="http://www.w3.org/1999/xlink" 
+  elementFormDefault="qualified">
 
   <annotation>
     <documentation>
@@ -24,12 +31,16 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-linkbase-2003-12-31.xsd
     </documentation>
   </annotation>
 
-  <import namespace="http://www.xbrl.org/2003/XLink" schemaLocation="xl-2003-12-31.xsd"/>
+  <import namespace="http://www.xbrl.org/2003/XLink" 
+    schemaLocation="xl-2003-12-31.xsd"/>
 
-  <import namespace="http://www.w3.org/1999/xlink" schemaLocation="xlink-2003-12-31.xsd"/>
+  <import namespace="http://www.w3.org/1999/xlink" 
+    schemaLocation="xlink-2003-12-31.xsd"/>
     
   
-  <element name="documentation" type="xl:documentationType" substitutionGroup="xl:documentation">
+  <element name="documentation"
+    type="xl:documentationType"
+    substitutionGroup="xl:documentation">
     <annotation>
       <documentation>
       Concrete element to use for documentation of 
@@ -195,7 +206,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-linkbase-2003-12-31.xsd
             <element ref="link:loc"/>
             <element ref="link:presentationArc"/>
           </choice>
-          <anyAttribute namespace="http://www.w3.org/XML/1998/namespace" processContents="lax"/>
+          <anyAttribute namespace="http://www.w3.org/XML/1998/namespace" processContents="lax" />
         </restriction>
       </complexContent>
     </complexType>
@@ -216,7 +227,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-linkbase-2003-12-31.xsd
             <element ref="link:loc"/>
             <element ref="link:definitionArc"/>
           </choice>
-          <anyAttribute namespace="http://www.w3.org/XML/1998/namespace" processContents="lax"/>
+          <anyAttribute namespace="http://www.w3.org/XML/1998/namespace" processContents="lax" />
         </restriction>
       </complexContent>
     </complexType>
@@ -237,7 +248,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-linkbase-2003-12-31.xsd
             <element ref="link:loc"/>
             <element ref="link:calculationArc"/>
           </choice>
-          <anyAttribute namespace="http://www.w3.org/XML/1998/namespace" processContents="lax"/>
+          <anyAttribute namespace="http://www.w3.org/XML/1998/namespace" processContents="lax" />
         </restriction>
       </complexContent>
     </complexType>
@@ -259,7 +270,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-linkbase-2003-12-31.xsd
             <element ref="link:labelArc"/>
             <element ref="link:label"/>
           </choice>
-          <anyAttribute namespace="http://www.w3.org/XML/1998/namespace" processContents="lax"/>
+          <anyAttribute namespace="http://www.w3.org/XML/1998/namespace" processContents="lax" />
         </restriction>
       </complexContent>
     </complexType>
@@ -281,7 +292,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-linkbase-2003-12-31.xsd
             <element ref="link:referenceArc"/>
             <element ref="link:reference"/>
           </choice>
-          <anyAttribute namespace="http://www.w3.org/XML/1998/namespace" processContents="lax"/>
+          <anyAttribute namespace="http://www.w3.org/XML/1998/namespace" processContents="lax" />
         </restriction>
       </complexContent>
     </complexType>
@@ -303,7 +314,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-linkbase-2003-12-31.xsd
             <element ref="link:footnoteArc"/>
             <element ref="link:footnote"/>
           </choice>
-          <anyAttribute namespace="http://www.w3.org/XML/1998/namespace" processContents="lax"/>
+          <anyAttribute namespace="http://www.w3.org/XML/1998/namespace" processContents="lax" />
         </restriction>
       </complexContent>
     </complexType>
@@ -348,7 +359,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-linkbase-2003-12-31.xsd
               </documentation>
             </annotation>
           </attribute>
-          <anyAttribute namespace="http://www.w3.org/XML/1998/namespace" processContents="lax"/>
+          <anyAttribute namespace="http://www.w3.org/XML/1998/namespace" processContents="lax" />
         </restriction>
       </complexContent>
     </complexType>

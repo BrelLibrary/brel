@@ -17,4 +17,4 @@ class IReportElement(ABC):
     
     # second class citizens
     def has_label(self, label_role: BrelLabelRole) -> bool:
-        return any(label.get_role() == label_role for label in self.get_labels())
+        return any(label.get_role() == label_role.value for label in self.get_labels())

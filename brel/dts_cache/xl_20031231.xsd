@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!-- (c) XBRL International.  See www.xbrl.org/legal  
  
 This version is non-normative - it should be identical to the normative
@@ -16,7 +17,13 @@ http://www.xbrl.org/2003/xl-2003-12-31.xsd
 
 http://www.xbrl.org/2003/2008-07-02/xl-2003-12-31.xsd
 
---><schema xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xl="http://www.xbrl.org/2003/XLink" xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.xbrl.org/2003/XLink" elementFormDefault="qualified" attributeFormDefault="unqualified">
+-->
+<schema targetNamespace="http://www.xbrl.org/2003/XLink" 
+  xmlns:xlink="http://www.w3.org/1999/xlink" 
+  xmlns:xl="http://www.xbrl.org/2003/XLink" 
+  xmlns="http://www.w3.org/2001/XMLSchema" 
+  elementFormDefault="qualified" 
+  attributeFormDefault="unqualified">
 
   <import namespace="http://www.w3.org/1999/xlink" schemaLocation="xlink-2003-12-31.xsd"/>
 
@@ -94,13 +101,13 @@ http://www.xbrl.org/2003/2008-07-02/xl-2003-12-31.xsd
     <complexContent>
       <restriction base="anyType">
         <sequence>
-          <element ref="xl:title" minOccurs="0" maxOccurs="unbounded"/>
+          <element ref="xl:title" minOccurs="0" maxOccurs="unbounded" />
         </sequence>
 	   <attribute ref="xlink:type" use="required" fixed="locator"/>
-        <attribute ref="xlink:href" use="required"/>
-        <attribute ref="xlink:label" use="required"/>
-        <attribute ref="xlink:role" use="optional"/>
-        <attribute ref="xlink:title" use="optional"/>
+        <attribute ref="xlink:href" use="required" />
+        <attribute ref="xlink:label" use="required" />
+        <attribute ref="xlink:role" use="optional" />
+        <attribute ref="xlink:title" use="optional" />
       </restriction>
     </complexContent>
   </complexType>
@@ -120,8 +127,8 @@ http://www.xbrl.org/2003/2008-07-02/xl-2003-12-31.xsd
       </documentation>
     </annotation>
     <restriction base="NMTOKEN">
-      <enumeration value="optional"/>
-      <enumeration value="prohibited"/>
+      <enumeration value="optional" />
+      <enumeration value="prohibited" />
     </restriction>
   </simpleType>
 
@@ -135,19 +142,19 @@ http://www.xbrl.org/2003/2008-07-02/xl-2003-12-31.xsd
     <complexContent>
       <restriction base="anyType">
         <sequence>
-          <element ref="xl:title" minOccurs="0" maxOccurs="unbounded"/>
+          <element ref="xl:title" minOccurs="0" maxOccurs="unbounded" />
         </sequence>
         <attribute ref="xlink:type" use="required" fixed="arc"/>
-        <attribute ref="xlink:from" use="required"/>
-        <attribute ref="xlink:to" use="required"/>
-        <attribute ref="xlink:arcrole" use="required"/>
-        <attribute ref="xlink:title" use="optional"/>
-        <attribute ref="xlink:show" use="optional"/>
-        <attribute ref="xlink:actuate" use="optional"/>
-        <attribute name="order" type="decimal" use="optional"/>
-        <attribute name="use" type="xl:useEnum" use="optional"/>
-        <attribute name="priority" type="integer" use="optional"/>
-        <anyAttribute namespace="##other" processContents="lax"/>
+        <attribute ref="xlink:from" use="required" />
+        <attribute ref="xlink:to" use="required" />
+        <attribute ref="xlink:arcrole" use="required" />
+        <attribute ref="xlink:title" use="optional" />
+        <attribute ref="xlink:show" use="optional" />
+        <attribute ref="xlink:actuate" use="optional" />
+        <attribute name="order" type="decimal" use="optional" />
+        <attribute name="use" type="xl:useEnum" use="optional" />
+        <attribute name="priority" type="integer" use="optional" />
+        <anyAttribute namespace="##other" processContents="lax" />
       </restriction>
     </complexContent>
   </complexType>
@@ -168,10 +175,10 @@ http://www.xbrl.org/2003/2008-07-02/xl-2003-12-31.xsd
     <complexContent mixed="true">
       <restriction base="anyType">  
 	   <attribute ref="xlink:type" use="required" fixed="resource"/>
-        <attribute ref="xlink:label" use="required"/>
-        <attribute ref="xlink:role" use="optional"/>
-        <attribute ref="xlink:title" use="optional"/>
-        <attribute name="id" type="ID" use="optional"/>
+        <attribute ref="xlink:label" use="required" />
+        <attribute ref="xlink:role" use="optional" />
+        <attribute ref="xlink:title" use="optional" />
+        <attribute name="id" type="ID" use="optional" />
       </restriction>
     </complexContent>
   </complexType>
@@ -192,16 +199,16 @@ http://www.xbrl.org/2003/2008-07-02/xl-2003-12-31.xsd
     <complexContent>
       <restriction base="anyType">
         <choice minOccurs="0" maxOccurs="unbounded">
-          <element ref="xl:title"/>
-          <element ref="xl:documentation"/>
-          <element ref="xl:locator"/>
-          <element ref="xl:arc"/>
-          <element ref="xl:resource"/>
+          <element ref="xl:title" />
+          <element ref="xl:documentation" />
+          <element ref="xl:locator" />
+          <element ref="xl:arc" />
+          <element ref="xl:resource" />
         </choice>
 	   <attribute ref="xlink:type" use="required" fixed="extended"/>
-        <attribute ref="xlink:role" use="required"/>
-        <attribute ref="xlink:title" use="optional"/>
-        <attribute name="id" type="ID" use="optional"/>
+        <attribute ref="xlink:role" use="required" />
+        <attribute ref="xlink:title" use="optional" />
+        <attribute name="id" type="ID" use="optional" />
         <anyAttribute namespace="http://www.w3.org/XML/1998/namespace" processContents="lax"/>
       </restriction>
     </complexContent>
@@ -223,12 +230,12 @@ http://www.xbrl.org/2003/2008-07-02/xl-2003-12-31.xsd
     <complexContent>
       <restriction base="anyType">
         <attribute ref="xlink:type" use="required" fixed="simple"/>
-        <attribute ref="xlink:href" use="required"/>
-        <attribute ref="xlink:arcrole" use="optional"/>
-        <attribute ref="xlink:role" use="optional"/>
-        <attribute ref="xlink:title" use="optional"/>
-        <attribute ref="xlink:show" use="optional"/>
-        <attribute ref="xlink:actuate" use="optional"/>
+        <attribute ref="xlink:href" use="required" />
+        <attribute ref="xlink:arcrole" use="optional" />
+        <attribute ref="xlink:role" use="optional" />
+        <attribute ref="xlink:title" use="optional" />
+        <attribute ref="xlink:show" use="optional" />
+        <attribute ref="xlink:actuate" use="optional" />
         <anyAttribute namespace="http://www.w3.org/XML/1998/namespace" processContents="lax"/>
       </restriction>
     </complexContent>

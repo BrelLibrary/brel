@@ -1,3 +1,4 @@
+<?xml version="1.0" ?>
 <!-- (c) XBRL International.  See www.xbrl.org/legal  
  
 This version is non-normative - it should be identical to the normative
@@ -16,7 +17,12 @@ http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd
 
 http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
 
---><schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:link="http://www.xbrl.org/2003/linkbase" targetNamespace="http://www.xbrl.org/2003/instance" elementFormDefault="qualified">
+-->
+<schema targetNamespace="http://www.xbrl.org/2003/instance" 
+  xmlns="http://www.w3.org/2001/XMLSchema" 
+  xmlns:xbrli="http://www.xbrl.org/2003/instance"
+  xmlns:link="http://www.xbrl.org/2003/linkbase" 
+  elementFormDefault="qualified">
 
   <annotation>
     <documentation>
@@ -25,7 +31,8 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
     </documentation>
   </annotation>
 
-  <import namespace="http://www.xbrl.org/2003/linkbase" schemaLocation="xbrl-linkbase-2003-12-31.xsd"/>
+  <import namespace="http://www.xbrl.org/2003/linkbase" 
+    schemaLocation="xbrl-linkbase-2003-12-31.xsd" />
 
   <annotation>
     <documentation>
@@ -41,8 +48,8 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
     </annotation>
     <simpleType>
       <restriction base="token">
-        <enumeration value="instant"/>
-        <enumeration value="duration"/>
+        <enumeration value="instant" />
+        <enumeration value="duration" />
       </restriction>
     </simpleType>
   </attribute>
@@ -55,8 +62,8 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
     </annotation>
     <simpleType>
       <restriction base="token">
-        <enumeration value="debit"/>
-        <enumeration value="credit"/>
+        <enumeration value="debit" />
+        <enumeration value="credit" />
       </restriction>
     </simpleType>
   </attribute>
@@ -76,7 +83,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
       from the ISO 4217 namespace of currencies.
       </documentation>
     </annotation>
-    <restriction base="decimal"/>
+    <restriction base="decimal" />
   </simpleType>
 
   <simpleType name="shares">
@@ -86,7 +93,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
       financial concepts.
       </documentation>
     </annotation>
-    <restriction base="decimal"/>
+    <restriction base="decimal" />
   </simpleType>
 
   <simpleType name="pure">
@@ -97,7 +104,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
       where the numerator and denominator have the same units.
       </documentation>
     </annotation>
-    <restriction base="decimal"/>
+    <restriction base="decimal" />
   </simpleType>
 
   <simpleType name="nonZeroDecimal">
@@ -111,12 +118,12 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
     <union>
       <simpleType>
         <restriction base="decimal">
-          <minExclusive value="0"/>
+          <minExclusive value="0" />
         </restriction>
       </simpleType>
       <simpleType>
         <restriction base="decimal">
-          <maxExclusive value="0"/>
+          <maxExclusive value="0" />
         </restriction>
       </simpleType>
     </union>
@@ -134,7 +141,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
     <union memberTypes="nonNegativeInteger">
       <simpleType>
         <restriction base="string">
-          <enumeration value="INF"/>
+          <enumeration value="INF" />
         </restriction>
       </simpleType>
     </union>
@@ -152,7 +159,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
     <union memberTypes="integer ">
       <simpleType>
         <restriction base="string">
-          <enumeration value="INF"/>
+          <enumeration value="INF" />
         </restriction>
       </simpleType>
     </union>
@@ -164,8 +171,8 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
       Attributes for all items and tuples. 
       </documentation>
     </annotation>
-    <attribute name="id" type="ID" use="optional"/>
-    <anyAttribute namespace="##other" processContents="lax"/>
+    <attribute name="id" type="ID" use="optional" />
+    <anyAttribute namespace="##other" processContents="lax" />
   </attributeGroup>
 
   <attributeGroup name="tupleAttrs">
@@ -174,7 +181,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
       Group of attributes for tuples.
       </documentation>
     </annotation>
-    <attributeGroup ref="xbrli:factAttrs"/>
+    <attributeGroup ref="xbrli:factAttrs" />
   </attributeGroup>
 
   <attributeGroup name="itemAttrs">
@@ -183,8 +190,8 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
       Attributes for all items.
       </documentation>
     </annotation>
-    <attributeGroup ref="xbrli:factAttrs"/>
-    <attribute name="contextRef" type="IDREF" use="required"/>
+    <attributeGroup ref="xbrli:factAttrs" />
+    <attribute name="contextRef" type="IDREF" use="required" />
 </attributeGroup>
 
   <attributeGroup name="essentialNumericItemAttrs">
@@ -193,8 +200,8 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
       Attributes for all numeric items (fractional and non-fractional).
       </documentation>
     </annotation>
-    <attributeGroup ref="xbrli:itemAttrs"/>
-    <attribute name="unitRef" type="IDREF" use="required"/>
+    <attributeGroup ref="xbrli:itemAttrs" />
+    <attribute name="unitRef" type="IDREF" use="required" />
 </attributeGroup>
 
   <attributeGroup name="numericItemAttrs">
@@ -203,9 +210,9 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
       Group of attributes for non-fractional numeric items
       </documentation>
     </annotation>
-    <attributeGroup ref="xbrli:essentialNumericItemAttrs"/>
-    <attribute name="precision" type="xbrli:precisionType" use="optional"/>
-    <attribute name="decimals" type="xbrli:decimalsType" use="optional"/>
+    <attributeGroup ref="xbrli:essentialNumericItemAttrs" />
+    <attribute name="precision" type="xbrli:precisionType" use="optional" />
+    <attribute name="decimals" type="xbrli:decimalsType" use="optional" />
   </attributeGroup>
 
   <attributeGroup name="nonNumericItemAttrs">
@@ -214,7 +221,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
       Group of attributes for non-numeric items
       </documentation>
     </annotation>
-    <attributeGroup ref="xbrli:itemAttrs"/>
+    <attributeGroup ref="xbrli:itemAttrs" />
   </attributeGroup>
 
   <annotation>
@@ -228,7 +235,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
   <complexType name="decimalItemType" final="extension">
     <simpleContent>
       <extension base="decimal">
-        <attributeGroup ref="xbrli:numericItemAttrs"/>
+        <attributeGroup ref="xbrli:numericItemAttrs" />
       </extension>
     </simpleContent>
   </complexType>
@@ -236,7 +243,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
   <complexType name="floatItemType" final="extension">
     <simpleContent>
       <extension base="float">
-        <attributeGroup ref="xbrli:numericItemAttrs"/>
+        <attributeGroup ref="xbrli:numericItemAttrs" />
       </extension>
     </simpleContent>
   </complexType>
@@ -244,7 +251,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
   <complexType name="doubleItemType" final="extension">
     <simpleContent>
       <extension base="double">
-        <attributeGroup ref="xbrli:numericItemAttrs"/>
+        <attributeGroup ref="xbrli:numericItemAttrs" />
       </extension>
     </simpleContent>
   </complexType>
@@ -261,7 +268,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
   <complexType name="monetaryItemType" final="extension">
     <simpleContent>
       <extension base="xbrli:monetary">
-        <attributeGroup ref="xbrli:numericItemAttrs"/>
+        <attributeGroup ref="xbrli:numericItemAttrs" />
       </extension>
     </simpleContent>
   </complexType>
@@ -269,7 +276,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
   <complexType name="sharesItemType" final="extension">
     <simpleContent>
       <extension base="xbrli:shares">
-        <attributeGroup ref="xbrli:numericItemAttrs"/>
+        <attributeGroup ref="xbrli:numericItemAttrs" />
       </extension>
     </simpleContent>
   </complexType>
@@ -277,19 +284,19 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
   <complexType name="pureItemType" final="extension">
     <simpleContent>
       <extension base="xbrli:pure">
-        <attributeGroup ref="xbrli:numericItemAttrs"/>
+        <attributeGroup ref="xbrli:numericItemAttrs" />
       </extension>
     </simpleContent>
   </complexType>
 
-  <element name="numerator" type="decimal"/>
-  <element name="denominator" type="xbrli:nonZeroDecimal"/>
+  <element name="numerator" type="decimal" />
+  <element name="denominator" type="xbrli:nonZeroDecimal" />
   <complexType name="fractionItemType" final="extension">
     <sequence>
-      <element ref="xbrli:numerator"/>
-      <element ref="xbrli:denominator"/>
+      <element ref="xbrli:numerator" />
+      <element ref="xbrli:denominator" />
     </sequence>
-    <attributeGroup ref="xbrli:essentialNumericItemAttrs"/>
+    <attributeGroup ref="xbrli:essentialNumericItemAttrs" />
   </complexType>
 
   <annotation>
@@ -302,7 +309,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
   <complexType name="integerItemType" final="extension">
     <simpleContent>
       <extension base="integer">
-        <attributeGroup ref="xbrli:numericItemAttrs"/>
+        <attributeGroup ref="xbrli:numericItemAttrs" />
       </extension>
     </simpleContent>
   </complexType>
@@ -310,7 +317,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
   <complexType name="nonPositiveIntegerItemType" final="extension">
     <simpleContent>
       <extension base="nonPositiveInteger">
-        <attributeGroup ref="xbrli:numericItemAttrs"/>
+        <attributeGroup ref="xbrli:numericItemAttrs" />
       </extension>
     </simpleContent>
   </complexType>
@@ -318,7 +325,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
   <complexType name="negativeIntegerItemType" final="extension">
     <simpleContent>
       <extension base="negativeInteger">
-        <attributeGroup ref="xbrli:numericItemAttrs"/>
+        <attributeGroup ref="xbrli:numericItemAttrs" />
       </extension>
     </simpleContent>
   </complexType>
@@ -326,7 +333,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
   <complexType name="longItemType" final="extension">
     <simpleContent>
       <extension base="long">
-        <attributeGroup ref="xbrli:numericItemAttrs"/>
+        <attributeGroup ref="xbrli:numericItemAttrs" />
       </extension>
     </simpleContent>
   </complexType>
@@ -334,7 +341,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
   <complexType name="intItemType" final="extension">
     <simpleContent>
       <extension base="int">
-        <attributeGroup ref="xbrli:numericItemAttrs"/>
+        <attributeGroup ref="xbrli:numericItemAttrs" />
       </extension>
     </simpleContent>
   </complexType>
@@ -342,7 +349,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
   <complexType name="shortItemType" final="extension">
     <simpleContent>
       <extension base="short">
-        <attributeGroup ref="xbrli:numericItemAttrs"/>
+        <attributeGroup ref="xbrli:numericItemAttrs" />
       </extension>
     </simpleContent>
   </complexType>
@@ -350,7 +357,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
   <complexType name="byteItemType" final="extension">
     <simpleContent>
       <extension base="byte">
-        <attributeGroup ref="xbrli:numericItemAttrs"/>
+        <attributeGroup ref="xbrli:numericItemAttrs" />
       </extension>
     </simpleContent>
   </complexType>
@@ -358,7 +365,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
   <complexType name="nonNegativeIntegerItemType" final="extension">
     <simpleContent>
       <extension base="nonNegativeInteger">
-        <attributeGroup ref="xbrli:numericItemAttrs"/>
+        <attributeGroup ref="xbrli:numericItemAttrs" />
       </extension>
     </simpleContent>
   </complexType>
@@ -366,7 +373,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
   <complexType name="unsignedLongItemType" final="extension">
     <simpleContent>
       <extension base="unsignedLong">
-        <attributeGroup ref="xbrli:numericItemAttrs"/>
+        <attributeGroup ref="xbrli:numericItemAttrs" />
       </extension>
     </simpleContent>
   </complexType>
@@ -374,7 +381,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
   <complexType name="unsignedIntItemType" final="extension">
     <simpleContent>
       <extension base="unsignedInt">
-        <attributeGroup ref="xbrli:numericItemAttrs"/>
+        <attributeGroup ref="xbrli:numericItemAttrs" />
       </extension>
     </simpleContent>
   </complexType>
@@ -382,7 +389,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
   <complexType name="unsignedShortItemType" final="extension">
     <simpleContent>
       <extension base="unsignedShort">
-        <attributeGroup ref="xbrli:numericItemAttrs"/>
+        <attributeGroup ref="xbrli:numericItemAttrs" />
       </extension>
     </simpleContent>
   </complexType>
@@ -390,7 +397,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
   <complexType name="unsignedByteItemType" final="extension">
     <simpleContent>
       <extension base="unsignedByte">
-        <attributeGroup ref="xbrli:numericItemAttrs"/>
+        <attributeGroup ref="xbrli:numericItemAttrs" />
       </extension>
     </simpleContent>
   </complexType>
@@ -398,7 +405,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
   <complexType name="positiveIntegerItemType" final="extension">
     <simpleContent>
       <extension base="positiveInteger">
-        <attributeGroup ref="xbrli:numericItemAttrs"/>
+        <attributeGroup ref="xbrli:numericItemAttrs" />
       </extension>
     </simpleContent>
   </complexType>
@@ -413,7 +420,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
   <complexType name="stringItemType" final="extension">
     <simpleContent>
       <extension base="string">
-        <attributeGroup ref="xbrli:nonNumericItemAttrs"/>
+        <attributeGroup ref="xbrli:nonNumericItemAttrs" />
       </extension>
     </simpleContent>
   </complexType>
@@ -421,7 +428,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
   <complexType name="booleanItemType" final="extension">
     <simpleContent>
       <extension base="boolean">
-        <attributeGroup ref="xbrli:nonNumericItemAttrs"/>
+        <attributeGroup ref="xbrli:nonNumericItemAttrs" />
       </extension>
     </simpleContent>
   </complexType>
@@ -429,7 +436,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
   <complexType name="hexBinaryItemType" final="extension">
     <simpleContent>
       <extension base="hexBinary">
-        <attributeGroup ref="xbrli:nonNumericItemAttrs"/>
+        <attributeGroup ref="xbrli:nonNumericItemAttrs" />
       </extension>
     </simpleContent>
   </complexType>
@@ -437,7 +444,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
   <complexType name="base64BinaryItemType" final="extension">
     <simpleContent>
       <extension base="base64Binary">
-        <attributeGroup ref="xbrli:nonNumericItemAttrs"/>
+        <attributeGroup ref="xbrli:nonNumericItemAttrs" />
       </extension>
     </simpleContent>
   </complexType>
@@ -445,7 +452,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
   <complexType name="anyURIItemType" final="extension">
     <simpleContent>
       <extension base="anyURI">
-        <attributeGroup ref="xbrli:nonNumericItemAttrs"/>
+        <attributeGroup ref="xbrli:nonNumericItemAttrs" />
       </extension>
     </simpleContent>
   </complexType>
@@ -453,7 +460,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
   <complexType name="QNameItemType" final="extension">
     <simpleContent>
       <extension base="QName">
-        <attributeGroup ref="xbrli:nonNumericItemAttrs"/>
+        <attributeGroup ref="xbrli:nonNumericItemAttrs" />
       </extension>
     </simpleContent>
   </complexType>
@@ -461,7 +468,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
   <complexType name="durationItemType" final="extension">
     <simpleContent>
       <extension base="duration">
-        <attributeGroup ref="xbrli:nonNumericItemAttrs"/>
+        <attributeGroup ref="xbrli:nonNumericItemAttrs" />
       </extension>
     </simpleContent>
   </complexType>
@@ -469,7 +476,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
   <complexType name="dateTimeItemType" final="extension">
     <simpleContent>
       <extension base="xbrli:dateUnion">
-        <attributeGroup ref="xbrli:nonNumericItemAttrs"/>
+        <attributeGroup ref="xbrli:nonNumericItemAttrs" />
       </extension>
     </simpleContent>
   </complexType>
@@ -477,7 +484,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
   <complexType name="timeItemType" final="extension">
     <simpleContent>
       <extension base="time">
-        <attributeGroup ref="xbrli:nonNumericItemAttrs"/>
+        <attributeGroup ref="xbrli:nonNumericItemAttrs" />
       </extension>
     </simpleContent>
   </complexType>
@@ -485,7 +492,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
   <complexType name="dateItemType" final="extension">
     <simpleContent>
       <extension base="date">
-        <attributeGroup ref="xbrli:nonNumericItemAttrs"/>
+        <attributeGroup ref="xbrli:nonNumericItemAttrs" />
       </extension>
     </simpleContent>
   </complexType>
@@ -493,7 +500,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
   <complexType name="gYearMonthItemType" final="extension">
     <simpleContent>
       <extension base="gYearMonth">
-        <attributeGroup ref="xbrli:nonNumericItemAttrs"/>
+        <attributeGroup ref="xbrli:nonNumericItemAttrs" />
       </extension>
     </simpleContent>
   </complexType>
@@ -501,7 +508,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
   <complexType name="gYearItemType" final="extension">
     <simpleContent>
       <extension base="gYear">
-        <attributeGroup ref="xbrli:nonNumericItemAttrs"/>
+        <attributeGroup ref="xbrli:nonNumericItemAttrs" />
       </extension>
     </simpleContent>
   </complexType>
@@ -509,7 +516,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
   <complexType name="gMonthDayItemType" final="extension">
     <simpleContent>
       <extension base="gMonthDay">
-        <attributeGroup ref="xbrli:nonNumericItemAttrs"/>
+        <attributeGroup ref="xbrli:nonNumericItemAttrs" />
       </extension>
     </simpleContent>
   </complexType>
@@ -517,7 +524,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
   <complexType name="gDayItemType" final="extension">
     <simpleContent>
       <extension base="gDay">
-        <attributeGroup ref="xbrli:nonNumericItemAttrs"/>
+        <attributeGroup ref="xbrli:nonNumericItemAttrs" />
       </extension>
     </simpleContent>
   </complexType>
@@ -525,7 +532,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
   <complexType name="gMonthItemType" final="extension">
     <simpleContent>
       <extension base="gMonth">
-        <attributeGroup ref="xbrli:nonNumericItemAttrs"/>
+        <attributeGroup ref="xbrli:nonNumericItemAttrs" />
       </extension>
     </simpleContent>
   </complexType>
@@ -540,7 +547,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
   <complexType name="normalizedStringItemType" final="extension">
     <simpleContent>
       <extension base="normalizedString">
-        <attributeGroup ref="xbrli:nonNumericItemAttrs"/>
+        <attributeGroup ref="xbrli:nonNumericItemAttrs" />
       </extension>
     </simpleContent>
   </complexType>
@@ -548,7 +555,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
   <complexType name="tokenItemType" final="extension">
     <simpleContent>
       <extension base="token">
-        <attributeGroup ref="xbrli:nonNumericItemAttrs"/>
+        <attributeGroup ref="xbrli:nonNumericItemAttrs" />
       </extension>
     </simpleContent>
   </complexType>
@@ -556,7 +563,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
   <complexType name="languageItemType" final="extension">
     <simpleContent>
       <extension base="language">
-        <attributeGroup ref="xbrli:nonNumericItemAttrs"/>
+        <attributeGroup ref="xbrli:nonNumericItemAttrs" />
       </extension>
     </simpleContent>
   </complexType>
@@ -564,7 +571,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
   <complexType name="NameItemType" final="extension">
     <simpleContent>
       <extension base="Name">
-        <attributeGroup ref="xbrli:nonNumericItemAttrs"/>
+        <attributeGroup ref="xbrli:nonNumericItemAttrs" />
       </extension>
     </simpleContent>
   </complexType>
@@ -572,7 +579,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
   <complexType name="NCNameItemType" final="extension">
     <simpleContent>
       <extension base="NCName">
-        <attributeGroup ref="xbrli:nonNumericItemAttrs"/>
+        <attributeGroup ref="xbrli:nonNumericItemAttrs" />
       </extension>
     </simpleContent>
   </complexType>
@@ -586,7 +593,8 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
   <element name="segment">
     <complexType>
       <sequence>
-        <any namespace="##other" processContents="lax" minOccurs="1" maxOccurs="unbounded"/>
+        <any namespace="##other" processContents="lax"
+          minOccurs="1" maxOccurs="unbounded" />
       </sequence>
     </complexType>
   </element>
@@ -606,7 +614,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
               <attribute name="scheme" use="required">
                 <simpleType>
                   <restriction base="anyURI">
-                    <minLength value="1"/>
+                    <minLength value="1" />
                   </restriction>
                 </simpleType>
               </attribute>
@@ -614,7 +622,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
           </simpleContent>
         </complexType>
       </element>
-      <element ref="xbrli:segment" minOccurs="0"/>
+      <element ref="xbrli:segment" minOccurs="0" />
     </sequence>
   </complexType>
 
@@ -624,7 +632,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
       The union of the date and dateTime simple types.
       </documentation>
     </annotation>
-    <union memberTypes="date dateTime "/>
+    <union memberTypes="date dateTime " />
   </simpleType>
 
   <complexType name="contextPeriodType">
@@ -635,12 +643,12 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
     </annotation>
     <choice>
       <sequence>
-        <element name="startDate" type="xbrli:dateUnion"/>
-        <element name="endDate" type="xbrli:dateUnion"/>
+        <element name="startDate" type="xbrli:dateUnion" />
+        <element name="endDate" type="xbrli:dateUnion" />
       </sequence>
-      <element name="instant" type="xbrli:dateUnion"/>
+      <element name="instant" type="xbrli:dateUnion" />
       <element name="forever">
-        <complexType/>
+        <complexType />
       </element>
     </choice>
   </complexType>
@@ -652,7 +660,8 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
       </documentation>
     </annotation>
     <sequence>
-      <any namespace="##other" processContents="lax" minOccurs="1" maxOccurs="unbounded"/>
+      <any namespace="##other" processContents="lax" 
+        minOccurs="1" maxOccurs="unbounded" />
     </sequence>
   </complexType>
 
@@ -664,11 +673,11 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
     </annotation>
     <complexType>
       <sequence>
-        <element name="entity" type="xbrli:contextEntityType"/>
-        <element name="period" type="xbrli:contextPeriodType"/>
-        <element name="scenario" type="xbrli:contextScenarioType" minOccurs="0"/>
+        <element name="entity" type="xbrli:contextEntityType" />
+        <element name="period" type="xbrli:contextPeriodType" />
+        <element name="scenario" type="xbrli:contextScenarioType" minOccurs="0" />
       </sequence>
-      <attribute name="id" type="ID" use="required"/>
+      <attribute name="id" type="ID" use="required" />
     </complexType>
   </element>
 
@@ -678,7 +687,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
     </documentation>
   </annotation>
 
-  <element name="measure" type="QName"/>
+  <element name="measure" type="QName" />
 
   <complexType name="measuresType">
     <annotation>
@@ -687,7 +696,7 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
       </documentation>
     </annotation>
     <sequence>
-      <element ref="xbrli:measure" minOccurs="1" maxOccurs="unbounded"/>
+      <element ref="xbrli:measure" minOccurs="1" maxOccurs="unbounded" />
     </sequence>
   </complexType>
 
@@ -699,8 +708,8 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
     </annotation>
     <complexType>
       <sequence>
-        <element name="unitNumerator" type="xbrli:measuresType"/>
-        <element name="unitDenominator" type="xbrli:measuresType"/>
+        <element name="unitNumerator" type="xbrli:measuresType" />
+        <element name="unitDenominator" type="xbrli:measuresType" />
       </sequence>
     </complexType>
   </element>
@@ -713,10 +722,10 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
     </annotation>
     <complexType>
       <choice>
-        <element ref="xbrli:measure" minOccurs="1" maxOccurs="unbounded"/>
-        <element ref="xbrli:divide"/>
+        <element ref="xbrli:measure" minOccurs="1" maxOccurs="unbounded" />
+        <element ref="xbrli:divide" />
       </choice>
-      <attribute name="id" type="ID" use="required"/>
+      <attribute name="id" type="ID" use="required" />
     </complexType>
   </element>
 
@@ -750,10 +759,10 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
     </annotation>
     <complexType>
       <sequence>
-        <element ref="link:schemaRef" minOccurs="1" maxOccurs="unbounded"/>
-        <element ref="link:linkbaseRef" minOccurs="0" maxOccurs="unbounded"/>
-        <element ref="link:roleRef" minOccurs="0" maxOccurs="unbounded"/>
-        <element ref="link:arcroleRef" minOccurs="0" maxOccurs="unbounded"/>
+        <element ref="link:schemaRef" minOccurs="1" maxOccurs="unbounded" />
+        <element ref="link:linkbaseRef" minOccurs="0" maxOccurs="unbounded" />
+        <element ref="link:roleRef" minOccurs="0" maxOccurs="unbounded" />
+        <element ref="link:arcroleRef" minOccurs="0" maxOccurs="unbounded" />
         <choice minOccurs="0" maxOccurs="unbounded">
           <element ref="xbrli:item"/>
           <element ref="xbrli:tuple"/>
@@ -762,8 +771,8 @@ http://www.xbrl.org/2003/2008-07-02/xbrl-instance-2003-12-31.xsd
           <element ref="link:footnoteLink"/>
         </choice>
       </sequence>
-      <attribute name="id" type="ID" use="optional"/>
-      <anyAttribute namespace="http://www.w3.org/XML/1998/namespace" processContents="lax"/>
+      <attribute name="id" type="ID" use="optional" />
+      <anyAttribute namespace="http://www.w3.org/XML/1998/namespace" processContents="lax" />
     </complexType>
   </element>
 

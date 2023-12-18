@@ -6,8 +6,6 @@ import lxml
 import lxml.etree
 import os
 import requests
-from brel.parsers.dts import XMLFileManager
-
 
 class SchemaResolver(lxml.etree.Resolver):
     def __init__(self, parser) -> None:

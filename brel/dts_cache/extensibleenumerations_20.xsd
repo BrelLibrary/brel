@@ -1,4 +1,12 @@
-<schema xmlns:enum2="http://xbrl.org/2020/extensible-enumerations-2.0" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:dtr="http://www.xbrl.org/dtr/type/2020-01-21" targetNamespace="http://xbrl.org/2020/extensible-enumerations-2.0" elementFormDefault="qualified">
+<?xml version="1.0" encoding="UTF-8"?>
+<schema 
+  targetNamespace="http://xbrl.org/2020/extensible-enumerations-2.0"
+  xmlns:enum2="http://xbrl.org/2020/extensible-enumerations-2.0"
+  elementFormDefault="qualified"
+  xmlns="http://www.w3.org/2001/XMLSchema" 
+  xmlns:xbrli="http://www.xbrl.org/2003/instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+  xmlns:dtr="http://www.xbrl.org/dtr/type/2020-01-21">
   <import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"/>
   <import namespace="http://www.xbrl.org/dtr/type/2020-01-21" schemaLocation="https://www.xbrl.org/dtr/type/2020-01-21/types.xsd"/>
   
@@ -7,7 +15,7 @@
   <attribute name="headUsable" type="boolean" default="false"/>
 
 
-  <complexType name="enumerationItemType" id="enumerationItemType">
+  <complexType name="enumerationItemType" id="enumerationItemType" >
     <annotation>
       <documentation>
         enumerationItemType defines an XBRL item type which takes an XML Name in the format 'namespace-uri#localname' as
@@ -16,14 +24,14 @@
     </annotation>
     <simpleContent>
       <restriction base="dtr:noLangTokenItemType">
-        <pattern value="[A-Za-z][-A-Za-z0-9+-.]*:\S+#[\i-[:]][\c-[:]]*"/>
-        <attributeGroup ref="xbrli:nonNumericItemAttrs"/>
+        <pattern value="[A-Za-z][-A-Za-z0-9+-.]*:\S+#[\i-[:]][\c-[:]]*" />
+        <attributeGroup ref="xbrli:nonNumericItemAttrs" />
       </restriction>
     </simpleContent>
   </complexType>
 
 
-  <complexType name="enumerationSetItemType" id="enumerationSetItemType">
+  <complexType name="enumerationSetItemType" id="enumerationSetItemType" >
     <annotation>
       <documentation>
         enumerationSetItemType is a set equivalent of enumerationItemType.  Its
@@ -34,8 +42,8 @@
     </annotation>
     <simpleContent>
       <restriction base="dtr:noLangTokenItemType">
-        <pattern value="([A-Za-z][-A-Za-z0-9+-.]*:\S+#[\i-[:]][\c-[:]]*( [A-Za-z][-A-Za-z0-9+-.]*:\S+#[\i-[:]][\c-[:]]*)*)?"/>
-        <attributeGroup ref="xbrli:nonNumericItemAttrs"/>
+        <pattern value="([A-Za-z][-A-Za-z0-9+-.]*:\S+#[\i-[:]][\c-[:]]*( [A-Za-z][-A-Za-z0-9+-.]*:\S+#[\i-[:]][\c-[:]]*)*)?" />
+        <attributeGroup ref="xbrli:nonNumericItemAttrs" />
       </restriction>
     </simpleContent>
   </complexType>

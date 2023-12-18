@@ -1,2 +1,2 @@
 from brel.parsers.dts.i_schema_manager import IFileManager
-from brel.parsers.dts.xml_schema_manager import XMLFileManager
+from brel.parsers.dts.xml_file_manager import XMLFileManager

@@ -53,7 +53,7 @@ class XMLFilingParser(IFilingParser):
         # load the schema and all its dependencies
         if DEBUG:  # pragma: no cover
             self.__print("Resolving DTS...")
-        self.__schema_manager = XMLFileManager("brel/dts_cache/", self.__filing_location, schema_filename, self.__parser)
+        self.__schema_manager = XMLFileManager("brel/dts_cache/", self.__filing_location, [schema_filename], self.__parser)
 
         if DEBUG:  # pragma: no cover
             self.__print("Loading Networks...")

@@ -1,8 +1,16 @@
-<schema xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:dtr-types="http://www.xbrl.org/dtr/type/2022-03-31" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:dtr="http://www.xbrl.org/2009/dtr" elementFormDefault="qualified" targetNamespace="http://www.xbrl.org/dtr/type/2022-03-31">
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns:xbrli="http://www.xbrl.org/2003/instance"
+        xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:dtr-types="http://www.xbrl.org/dtr/type/2022-03-31"
+        xmlns:link="http://www.xbrl.org/2003/linkbase"
+        xmlns:dtr="http://www.xbrl.org/2009/dtr"
+        elementFormDefault="qualified"
+        targetNamespace="http://www.xbrl.org/dtr/type/2022-03-31">
   <annotation>
       <documentation>Schema for types from the XBRL Data Types Registry</documentation>
   </annotation>
-  <import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"/>
+  <import namespace="http://www.xbrl.org/2003/instance"
+           schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"/>
   <complexType id="domainItemType" name="domainItemType">
       <annotation>
          <documentation>The domain member item type indicates that an element is a domain member.</documentation>
@@ -312,7 +320,8 @@
         </restriction>
      </simpleContent>
   </complexType>
-  <complexType name="nonNegativeNoDecimalsMonetaryItemType" id="dtr_nonNegativeNoDecimalsMonetaryItemType">
+  <complexType name="nonNegativeNoDecimalsMonetaryItemType"
+                id="dtr_nonNegativeNoDecimalsMonetaryItemType">
      <annotation>
          <documentation>The nonNegativeNoDecimalsMonetaryItemType is a restriction on the xbrli:monetaryItemType in that it does not allow cents or negative values on the monetary value.  Facts using this type MUST have an (inferred) decimals attribute value that is less than or equal to zero, or "INF".</documentation>
          <appinfo>

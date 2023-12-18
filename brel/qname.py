@@ -265,7 +265,8 @@ class QName:
         sections = url.split("/")
         for section in sections:
             section = re.sub(r'[^a-zA-Z]', '', section)
-            section = section.replace("xsd", "")             
+            section = section.replace("xsd", "")
+            section = section.replace("xml", "")           
 
             if len(section) > 0 and "www" not in section:
                 prefix = section
