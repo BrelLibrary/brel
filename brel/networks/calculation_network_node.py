@@ -25,6 +25,9 @@ class CalculationNetworkNode(INetworkNode):
             weight: float = 1.0,
             order: int = 1
             ):
+        if not isinstance(report_element, Concept):
+            raise TypeError(f"report_element must be of type Concept, but is of type {type(report_element)}")
+
         self.__report_element = report_element
         self.__children = children
         self.__arc_role = arc_role
@@ -109,3 +112,21 @@ class CalculationNetworkNode(INetworkNode):
 
         self.__children.append(child)
         self.__children.sort(key=lambda node: node.get_order())
+
+        # sanity check to make sure the weights of the children are legal. The following configurations are illegal:
+        # - self = debit, child = debit, child_weight < 0
+        # - self = debit, child = credit, child_weight > 0
+        # - self = credit, child = debit, child_weight > 0
+        # - self = credit, child = credit, child_weight < 0
+
+        self_balance = self.__report_element.get_balance_type()
+        child_balance = cast(Concept, child.get_report_element()).get_balance_type()
+        child_weight = child.get_weight()
+        if (self_balance == "debit" and child_balance == "debit" and child_weight < 0):
+            raise ValueError(f"the child {child} has a negative weight, but the parent {self} has a debit balance")
+        elif (self_balance == "debit" and child_balance == "credit" and child_weight > 0):
+            raise ValueError(f"the child {child} has a positive weight, but the parent {self} has a debit balance")
+        elif (self_balance == "credit" and child_balance == "debit" and child_weight > 0):
+            raise ValueError(f"the child {child} has a positive weight, but the parent {self} has a credit balance")
+        elif (self_balance == "credit" and child_balance == "credit" and child_weight < 0):
+            raise ValueError(f"the child {child} has a negative weight, but the parent {self} has a credit balance")

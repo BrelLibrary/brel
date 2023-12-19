@@ -6,4 +6,4 @@ from .xml_presentation_network_factory import PresentationNetworkFactory
 from .xml_reference_network_factory import ReferenceNetworkFactory
 from .xml_footnote_network_factory import FootnoteNetworkFactory
 from .xml_extended_link_parser import parse_xml_link
-from .xml_networks_parser import networks_from_xmls
+from .xml_networks_parser import parse_networks_from_xmls

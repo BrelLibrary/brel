@@ -5,7 +5,7 @@ from brel import QName, QNameNSMap
 from brel.networks import INetwork, INetworkNode, FootnoteNetworkNode, FootnoteNetwork
 from brel.reportelements import *
 from brel.reportelements import IReportElement
-from brel.resource import IResource, BreelFootnote
+from brel.resource import IResource, BrelFootnote
 
 from .i_xml_network_factory import IXMLNetworkFactory
 
@@ -77,7 +77,7 @@ class FootnoteNetworkFactory(IXMLNetworkFactory):
         if not isinstance(link_role, str):
             raise TypeError(f"role attribute on link element {xml_link} is not a string")
         
-        if isinstance(points_to, IResource) and not isinstance(points_to, BreelFootnote):
+        if isinstance(points_to, IResource) and not isinstance(points_to, BrelFootnote):
             raise ValueError(f"points_to must be of type BreelFootnote, not {type(points_to)}")
         
         return FootnoteNetworkNode(points_to, [], arc_role, arc_qname, link_role, link_name, order)

@@ -87,7 +87,7 @@ for testcase_filename in testcase_filenames:
             print(f"> Exception raised: {e}")
             text_exception = e
 
-        if expected_result == "error" and text_exception is None:
+        if (expected_result == "error" or expected_result == "invalid") and text_exception is None:
             print(f"[bold red][!!! FAIL !!!][/bold red]", f"expected error, but none was raised.")
         elif expected_result ==  "valid" and text_exception is not None:
             print(f"[bold red][!!! FAIL !!!][/bold red]", f"expected no error, but got {text_exception}")

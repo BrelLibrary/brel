@@ -8,7 +8,7 @@ def example2():
     """
 
     # load the filing
-    filing = Filing.open("reports/coca_cola/")
+    filing = Filing.open("reports/ko/")
 
     # get all of the facts
     facts = filing.get_all_facts()

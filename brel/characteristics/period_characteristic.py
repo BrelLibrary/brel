@@ -1,6 +1,7 @@
 import lxml
 import lxml.etree
 import dateutil.parser
+import datetime
 
 from brel import QName, QNameNSMap
 from brel.characteristics import BrelAspect, ICharacteristic
@@ -15,9 +16,9 @@ class PeriodCharacteristic(ICharacteristic):
 
     def __init__(self) -> None:
         self.__is_instant: bool = False
-        self.instant_date: str|None = None
-        self.start_date: str|None = None
-        self.end_date: str|None = None
+        self.instant_date: datetime.date|None = None
+        self.start_date: datetime.date|None = None
+        self.end_date: datetime.date|None = None
     
     # first class citizens
     def is_instant(self) -> bool:
@@ -26,7 +27,7 @@ class PeriodCharacteristic(ICharacteristic):
         """
         return self.__is_instant
     
-    def get_start_period(self) -> str:
+    def get_start_period(self) -> datetime.date:
         """
         @returns str: the start date of the period.
         @raises ValueError: if the period is an instant. Use 'is_instant' to check if the period is an instant.
@@ -36,7 +37,7 @@ class PeriodCharacteristic(ICharacteristic):
         else:
             raise ValueError("Period is an instant. use 'is_instant' to check if the period is an instant.")
     
-    def get_end_period(self) -> str:
+    def get_end_period(self) -> datetime.date:
         """
         @returns str: the end date of the period.
         @raises ValueError: if the period is an instant. Use 'is_instant' to check if the period is an instant.
@@ -117,7 +118,7 @@ class PeriodCharacteristic(ICharacteristic):
             raise ValueError(f"Instant date '{instant_date}' is not a valid date.")
 
         period_instance = cls()
-        period_instance.instant_date = instant_date
+        period_instance.instant_date = dateutil.parser.parse(instant_date).date()
         period_instance.__is_instant = True
 
         return period_instance
@@ -137,10 +138,14 @@ class PeriodCharacteristic(ICharacteristic):
         if not cls.is_date(end_date):
             raise ValueError(f"End date '{end_date}' is not a valid date.")
 
+
         period_instance = cls()
-        period_instance.start_date = start_date
-        period_instance.end_date = end_date
+        period_instance.start_date = dateutil.parser.parse(start_date).date()
+        period_instance.end_date = dateutil.parser.parse(end_date).date()
         period_instance.__is_instant = False
+
+        if period_instance.start_date > period_instance.end_date:
+            raise ValueError(f"Start date '{start_date}' is after end date '{end_date}'")
 
         return period_instance
 

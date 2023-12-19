@@ -5,7 +5,7 @@ from random import randint
 def sandbox():
 
     # open the filing
-    filing = Filing.open("reports/coca_cola/")
+    filing = Filing.open("reports/ko/")
 
     # example for filtering for a specific concept
     filtered_facts = filing[filing["concept"] == "us-gaap:Revenues"]

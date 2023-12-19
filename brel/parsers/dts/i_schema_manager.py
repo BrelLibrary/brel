@@ -8,13 +8,13 @@ class IFileManager(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def get_schema(self, schema_uri: str) -> lxml.etree._ElementTree:
+    def get_file(self, schema_uri: str) -> lxml.etree._ElementTree:
         raise NotImplementedError
     
     @abstractmethod
-    def get_all_schemas(self) -> list[lxml.etree._ElementTree]:
+    def get_all_files(self) -> list[lxml.etree._ElementTree]:
         raise NotImplementedError
     
     @abstractmethod
-    def get_schema_names(self) -> list[str]:
+    def get_file_names(self) -> list[str]:
         raise NotImplementedError

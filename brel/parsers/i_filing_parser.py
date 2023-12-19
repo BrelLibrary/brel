@@ -52,6 +52,12 @@ class IFilingParser(ABC):
         if DEBUG:  # pragma: no cover
             self.__print(f"took {time() - start_time:.2f} sec")
 
+            self.__print("Parsing Facts")
+        start_time = time()
+        facts = self.parse_facts(report_elements)
+        if DEBUG:
+            self.__print(f"took {time() - start_time:.2f} sec")
+
             self.__print("Parsing Networks")
         start_time = time()
         networks = self.parse_networks(report_elements)
@@ -61,12 +67,6 @@ class IFilingParser(ABC):
             self.__print("Parsing Components")
         start_time = time()
         components, report_elements = self.parse_components(report_elements, networks)
-        if DEBUG:  # pragma: no cover
-            self.__print(f"took {time() - start_time:.2f} sec")
-            
-            self.__print("Parsing Facts")
-        start_time = time()
-        facts = self.parse_facts(report_elements)
         if DEBUG:  # pragma: no cover
             self.__print(f"took {time() - start_time:.2f} sec")
             
@@ -111,7 +111,7 @@ class IFilingParser(ABC):
         raise NotImplementedError
     
     @abstractmethod
-    def parse_networks(self, report_elements: dict[QName, IReportElement]) -> dict[str, list[INetwork]]:
+    def parse_networks(self, report_elements: dict[QName, IReportElement]) -> dict[str|None, list[INetwork]]:
         """
         Parse the networks.
         @param report_elements: A dictionary containing ALL report elements that the networks report against.
@@ -120,7 +120,7 @@ class IFilingParser(ABC):
         raise NotImplementedError
     
     @abstractmethod
-    def parse_components(self, report_elements: dict[QName, IReportElement], networks: dict[str, list[INetwork]]) -> tuple[list[Component], dict[QName, IReportElement]]:
+    def parse_components(self, report_elements: dict[QName, IReportElement], networks: dict[str|None, list[INetwork]]) -> tuple[list[Component], dict[QName, IReportElement]]:
         """
         Parse the components. Update the report elements accordingly.
         @param report_elements: A dictionary containing ALL report elements that the components report against.

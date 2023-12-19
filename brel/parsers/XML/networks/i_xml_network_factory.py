@@ -1,7 +1,7 @@
 import lxml
 import lxml.etree
 from abc import ABC, abstractmethod
-from brel import QName, QNameNSMap
+from brel import QName, QNameNSMap, Fact
 from brel.reportelements import IReportElement
 from brel.resource import IResource
 from brel.networks import INetwork, INetworkNode
@@ -18,7 +18,7 @@ class IXMLNetworkFactory(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def create_node(self, xml_link: lxml.etree._Element, xml_referenced_element: lxml.etree._Element, xml_arc: lxml.etree._Element | None, points_to: IReportElement|IResource) -> INetworkNode:
+    def create_node(self, xml_link: lxml.etree._Element, xml_referenced_element: lxml.etree._Element, xml_arc: lxml.etree._Element | None, points_to: IReportElement|IResource|Fact) -> INetworkNode:
         raise NotImplementedError
     
     @abstractmethod

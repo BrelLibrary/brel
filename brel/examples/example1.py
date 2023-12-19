@@ -9,7 +9,7 @@ def example1():
     # open the filing
     # resolves the DTS and caches it
     # currently only supports local paths pointing towards a directory
-    filing = Filing.open("reports/coca_cola/")
+    filing = Filing.open("reports/ko/")
 
     # get all reported report elements and take a sample of 10 
     all_elements = filing.get_all_reported_concepts()

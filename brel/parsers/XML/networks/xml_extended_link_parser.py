@@ -1,12 +1,24 @@
+"""
+This module parses XML extended links into one or multiple networks.
+Networks are covered in the XBRL Generic Links spec.
+https://www.xbrl.org/specification/gnl/rec-2009-06-22/gnl-rec-2009-06-22.html
+
+@author: Robin Schmidiger
+@version: 0.14
+@date: 2023-12-19
+"""
+
+
 import lxml.etree
 import itertools
 
-from brel import QName, QNameNSMap
+from brel import QName, QNameNSMap, Fact
 from brel.networks import *
 from brel.reportelements import *
 from brel.resource import *
+from brel.parsers import XMLFileManager
 
-from typing import cast
+from typing import cast, Any
 from collections import defaultdict
 
 from brel.parsers.XML.networks import IXMLNetworkFactory, PresentationNetworkFactory, CalculationNetworkFactory, PhysicalDefinitionNetworkFactory, LogicalDefinitionNetworkFactory, LabelNetworkFactory, ReferenceNetworkFactory, FootnoteNetworkFactory
@@ -14,14 +26,16 @@ from brel.parsers.XML.networks import IXMLNetworkFactory, PresentationNetworkFac
 def get_object_from_reference(
         referenced_element: lxml.etree._Element, 
         qname_nsmap: QNameNSMap,
-        report_elements: dict[QName, IReportElement]) -> IResource|IReportElement:
+        id_to_any: dict[str, Any]
+        ) -> IResource|IReportElement|Fact:
     """
-    Get the object from a XML reference. The reference can be a locator or a resource.
-    For resources, currently only label and reference resources are supported.
-    @param referenced_element: The locator or resource element.
-    @param report_elements: The report elements dict.
-    @return: The object that the reference points to. Either a IResource or a IReportElement.
-    @raise ValueError: If the referenced element does not have a xlink:type attribute with value 'locator' or 'resource'.
+    Given a locator or resource element, get the object that the reference points to.
+    :param referenced_element: The locator or resource element.
+    :param qname_nsmap: The QNameNSMap of the filing.
+    :param id_to_any: A dict mapping xml ids to report elements and resources.
+    :returns: The object that the reference points to. 
+    :rtype: IResource|IReportElement|Fact
+    :raises ValueError: If the referenced element does not have a xlink:type attribute with value 'locator' or 'resource'.
     """
 
     nsmap = qname_nsmap.get_nsmap()
@@ -32,18 +46,21 @@ def get_object_from_reference(
         if referenced_element.get(f"{{{nsmap['xlink']}}}type", "") != "locator":
             raise ValueError(f"the locator_xml element {referenced_element.tag} does not have a xlink:type attribute with value 'locator'")
         
-        to_element: IReportElement | IResource | None = None
+        to_element: IReportElement | IResource | Fact | None = None
 
-        # get the prefix of the namespace that the referenced element is in
-        prefix = referenced_element.prefix
-
-        # turn the href into a QName
+        # get the href attribute
         href = cast(str, referenced_element.get(f"{{{nsmap['xlink']}}}href", ""))
-        report_element_qname = QName.from_xpointer(href, qname_nsmap)
 
-        if report_element_qname not in report_elements:
-            raise ValueError(f"the referenced element {report_element_qname.__str__()} could not be found")
-        to_element = report_elements[report_element_qname]
+        if "#" in href:
+            _, elem_id = href.split("#")
+        else:
+            elem_id = href
+        
+        if elem_id not in id_to_any:
+            raise ValueError(f"the referenced element {elem_id} could not be found")
+        report_element = id_to_any[elem_id]
+        
+        to_element = report_element
         
     elif referenced_element_type == "resource":
         # if the referenced element is a resource, create a new resource
@@ -53,6 +70,8 @@ def get_object_from_reference(
             to_element = BrelLabel.from_xml(referenced_element, qname_nsmap)
         elif referenced_element.tag == f"{{{nsmap['link']}}}reference":
             to_element = BrelReference.from_xml(referenced_element, qname_nsmap)
+        elif referenced_element.tag == f"{{{nsmap['link']}}}footnote":
+            to_element = BrelFootnote.from_xml(referenced_element, qname_nsmap)
         else:
             raise NotImplementedError(f"the referenced element {referenced_element.tag} is not supported")
     else:
@@ -67,15 +86,19 @@ def get_object_from_reference(
 def parse_xml_link(
         xml_link_element: lxml.etree._Element, 
         qname_nsmap: QNameNSMap,
+        id_to_any: dict[str, Any],
         report_elements: dict[QName, IReportElement]
         ) -> tuple[list[INetwork], dict[QName, IReportElement]]: 
     """
-    Create a Network from an lxml.etree._Element. Note that this method also returns a dict containing all report elements.
-    This is because networks may change the internal representation of the report elements. More specifically, it may promote
-    abstracts to line items.
-    @param xml_element: lxml.etree._Element to be parsed. This element must be a child of a link:linkbase element and must have a xlink:role attribute.
-    @param component: Component to which the network belongs.
-    @return: An instance of INetwork. can be either a PresentationNetwork, CalculationNetwork, or any other kind of network.
+    Parse an xml link element into one or multiple networks.
+    :param xml_link_element: The xml link element to parse.
+    :param qname_nsmap: The QNameNSMap of the filing.
+    :param id_to_any: A dict mapping xml ids to report elements and resources.
+    :param report_elements: A dict mapping QNames to report elements.
+    :returns: A tuple containing a list of networks and a dict mapping QNames to report elements.
+    :rtype: tuple[list[INetwork], dict[QName, IReportElement]]
+    :raises NotImplementedError: If the link element is not supported.
+    :raises ValueError: If the link is malformed.
     """
     nsmap = qname_nsmap.get_nsmap()
 
@@ -108,7 +131,7 @@ def parse_xml_link(
         edges: set[tuple[str, str]] = set()
         root_names: set[str] = set()
 
-        # first pass. Iterate over all elements in the linkbase create the nodes and edges
+        # first pass. Iterate over all elements in the linkbase, create the nodes and edges
         link_children = xml_link_element.findall(".//*", namespaces=nsmap)
         if len(link_children) == 0:
             continue
@@ -136,7 +159,6 @@ def parse_xml_link(
                     # the edge already exists. The SEC XBRL Filing Manual says that this is an error.
                     raise ValueError(f"the arc element with from='{arc_from}' and to='{arc_to}' is a duplicate")
                     
-
                 edges.add((arc_from, arc_to))
             
             # for resources and locators, create the nodes
@@ -148,7 +170,7 @@ def parse_xml_link(
                 if not isinstance(label, str):
                     raise TypeError(f"the xlink:label attribute on the resource/locator element {xml_resource.tag} is not a string")
 
-                to_object = get_object_from_reference(xml_resource, qname_nsmap, report_elements)
+                to_object = get_object_from_reference(xml_resource, qname_nsmap, id_to_any)
 
                 # try finding an arc where 'to' points to the current resource/locator
                 xpath_query = f".//*[@xlink:to='{label}' and @xlink:type='arc']"
@@ -185,16 +207,16 @@ def parse_xml_link(
                 # TODO: add support for other types of elements in links.
                 pass
         
-        # second pass. Create the tree
+        # second pass. Create the tree by 
         roots: set[tuple[str, INetworkNode]] = set()
         for arc_from, arc_to in edges:
             from_nodes = nodes_lookup[arc_from]
             to_nodes = nodes_lookup[arc_to]
 
-            for from_node, to_node in itertools.product(from_nodes, to_nodes):          
+            for from_node, to_node in itertools.product(from_nodes, to_nodes):
+                # if the from node is a root node, add it to the roots list          
                 if arc_from in root_names:
                     roots.add((arc_from, from_node))
-                    root_names.remove(arc_from)
 
                 if network_factory.is_physical() and from_node.get_arc_role() != to_node.get_arc_role():
                     # in this case, the 'from' node is a root node, since it has a different arcrole than the 'to' node
@@ -230,7 +252,7 @@ def parse_xml_link(
                         # get the element the arc points to
                         referenced_element = xml_link_element.find(f".//*[@{{{nsmap['xlink']}}}label='{arc_from}']", namespaces=nsmap)
                         referenced_element = cast(lxml.etree._Element, referenced_element)
-                        to_object = get_object_from_reference(referenced_element, qname_nsmap, report_elements)
+                        to_object = get_object_from_reference(referenced_element, qname_nsmap, id_to_any)
 
                         # create the root node
                         root_node = network_factory.create_node(xml_link_element, referenced_element, xml_arc, to_object)

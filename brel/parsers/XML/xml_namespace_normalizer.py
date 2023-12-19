@@ -30,12 +30,11 @@ DEBUG = False
 
 # Load the namespace config
 # TODO: make this configurable
-nsconfig_filename = "nsconfig.json"
-nsconfig_path = "brel/"
+nsconfig_path = "brel/config/nsconfig.json"
 
 default_namespace_mappings: dict[str, str] = {}
 
-with open(nsconfig_path + nsconfig_filename, "r") as nsconfig_file:
+with open(nsconfig_path, "r") as nsconfig_file:
     nsconfig = json.load(nsconfig_file)
     for prefix, re_uri in nsconfig["default_mappings"].items():
         default_namespace_mappings[re_uri] = prefix
@@ -44,8 +43,8 @@ with open(nsconfig_path + nsconfig_filename, "r") as nsconfig_file:
 def get_default_prefix_from_uri(uri: str) -> str | None:
     """
     Get the default prefix for a URI.
-    @param uri: The URI to get the prefix for.
-    @return: The prefix.
+    :param uri: The URI to get the prefix for.
+    :return: The prefix.
     """
     longest_match_url = ""
     longest_match_prefix = ""
@@ -68,15 +67,15 @@ def get_default_prefix_from_uri(uri: str) -> str | None:
 def generate_alternative_prefixes(prefix: str) -> str:
     """
     Generate alternative prefixes for a prefix.
-    @param prefix: The prefix to generate an alternative prefix for
-    @return: A str containing the alternative prefix
+    :param prefix: The prefix to generate an alternative prefix for
+    :return: A str containing the alternative prefix
     """
     # TODO: make this more robust
     # get the number at the end of the prefix
-    prefix_number = re.findall(r"\d+$", prefix)
+    prefix_numbers = re.findall(r"\d+$", prefix)
     # if there is a number, increment it. else, set it to 1
-    if len(prefix_number) > 0:
-        prefix_number = int(prefix_number[0]) + 1
+    if len(prefix_numbers) > 0:
+        prefix_number = int(prefix_numbers[0]) + 1
     else:
         prefix_number = 1
     
@@ -87,8 +86,8 @@ def generate_alternative_prefixes(prefix: str) -> str:
 def url_remove_version(url: str) -> str:
     """
     Remove the version from a url.
-    @param url: The url to remove the version from.
-    @return: The url without the version.
+    :param url: The url to remove the version from.
+    :return: The url without the version.
     """
     # strip all numbers and - and _ and dots from the url
     return re.sub(r"[\d\-\_\.]", "", url)
@@ -96,8 +95,8 @@ def url_remove_version(url: str) -> str:
 def are_urls_versions(urls: list[str]) -> bool:
     """
     Check if a list of urls are compatible.
-    @param urls: A list of urls.
-    @return: True if the urls are versions of each other, False otherwise.
+    :param urls: A list of urls.
+    :return: True if the urls are versions of each other, False otherwise.
     """
     if DEBUG:  # pragma: no cover
         print(f"Checking if urls {urls} are versions of each other.")
@@ -125,14 +124,14 @@ def are_urls_versions(urls: list[str]) -> bool:
 def get_latest_url_version(urls: list[str]) -> str:
     """
     Get the latest version of a list of urls.
-    @param urls: A list of urls.
-    @return: The latest version of the urls.
+    :param urls: A list of urls.
+    :return: The latest version of the urls.
     """
     def url_to_value(url:str) -> int:
         """
         Convert a url to a value.
-        @param url: The url to convert.
-        @return: The value.
+        :param url: The url to convert.
+        :return: The value.
         """
         # get all numbers in the url
         numbers = re.findall(r"\d+", url)
@@ -150,14 +149,14 @@ def get_latest_url_version(urls: list[str]) -> str:
 def get_best_prefix(prefixes: list[str]) -> str:
     """
     Get the best prefix from a list of prefixes.
-    @param prefixes: A list of prefixes.
-    @return: The best prefix.
+    :param prefixes: A list of prefixes.
+    :return: The best prefix.
     """
     def prefix_to_value(prefix:str) -> int:
         """
         Convert a prefix to a value.
-        @param prefix: The prefix to convert.
-        @return: The value.
+        :param prefix: The prefix to convert.
+        :return: The value.
         """
         return len(prefix)
     
@@ -171,9 +170,9 @@ def get_best_prefix(prefixes: list[str]) -> str:
 def component_to_nsmap(urls: list[str], prefixes: list[str]) -> tuple[str, str, list[str]]:
     """
     Extract the namespace mappings from a component.
-    @param urls: A list of the urls in the component.
-    @param prefixes: A list of the prefixes in the component.
-    @return: A tuple containing the prefix, the url and the prefixes to be redirected.
+    :param urls: A list of the urls in the component.
+    :param prefixes: A list of the prefixes in the component.
+    :return: A tuple containing the prefix, the url and the prefixes to be redirected.
     """
 
     if DEBUG:  # pragma: no cover
@@ -217,8 +216,8 @@ def normalize_nsmap(namespace_mappings: list[dict[str, str]]) -> dict[str, dict[
     If a prefix maps to multiple versions of an url, then the latest version is chosen.
     If multiple prefixes map to the same url, then a main prefix is chosen, which tends to be the shortest prefix.
     The other prefixes are redirected to the main prefix.
-    @param namespace_mappings: A list of namespace mappings.
-    @return: A tuple containing the normalized namespace mapping and the redirects.
+    :param namespace_mappings: A list of namespace mappings.
+    :return: A tuple containing the normalized namespace mapping and the redirects.
     the namespacemap maps prefix -> uri
     the redirects map prefix -> prefix
     """

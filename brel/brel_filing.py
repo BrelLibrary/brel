@@ -53,21 +53,20 @@ class Filing:
                 raise ValueError(f"{path} is not a valid folder path")
 
             folder_filenames = os.listdir(path)
-            instance_file = next(filter(lambda x: x.endswith("htm.xml"), folder_filenames))
-            networks: list[str] = list(filter(lambda x: x.endswith("xml") and not x.endswith("htm.xml"), folder_filenames))
+            xml_files = list(filter(lambda x: x.endswith("xml"), folder_filenames))
 
             def prepend_path(filename: str) -> str:
                 return path + filename
             
-            networks = list(map(prepend_path, networks))
-            instance_file = prepend_path(instance_file)
+            xml_files = list(map(prepend_path, xml_files))
 
-            parser = XMLFilingParser(instance_file, networks)
+            parser = XMLFilingParser(xml_files)
             return cls(parser)
         elif path.endswith(".xml"):
             instance_file = path
-            networks = kwargs.get("linkbases", [])
-            parser = XMLFilingParser(instance_file, networks)
+            xml_files = kwargs.get("linkbases", [])
+            xml_files.append(instance_file)
+            parser = XMLFilingParser(xml_files)
             return cls(parser)
         else:
             raise ValueError(f"{path} is not a valid folder path")

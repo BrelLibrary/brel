@@ -14,7 +14,7 @@ def get_closest_match(target: str, candidates: list[str]) -> str:
     return min(candidates, key=lambda candidate: edit_distance(target.upper(), candidate.split("/")[-1].upper()))
 
 def example5():
-    filing = Filing.open("reports/coca_cola/")
+    filing = Filing.open("reports/ko/")
 
     # get all components
     components = filing.get_all_components()

@@ -7,7 +7,7 @@ The XMLSchemaManager class is responsible for downloading and caching XBRL taxon
 @date: 18 December 2023
 """
 
-DEBUG = True
+DEBUG = False
 
 import os
 from typing import Any
@@ -20,6 +20,7 @@ from brel.parsers.dts import IFileManager
 from brel import QName
 
 from collections import defaultdict
+from typing import cast
 
 class XMLFileManager(IFileManager):
     """
@@ -39,6 +40,12 @@ class XMLFileManager(IFileManager):
             if filename not in os.listdir(filing_location):
                 raise ValueError(f"{filename} is not a file in the folder {filing_location}")
         
+        if not cache_location.endswith("/"):
+            cache_location += "/"
+        
+        if not filing_location.endswith("/"):
+            filing_location += "/"
+        
         # set class variables
         self.__parser = parser
 
@@ -51,7 +58,7 @@ class XMLFileManager(IFileManager):
 
         # populate the cache
         for filename in filenames:
-            self.__load_dts(self.__filing_location + filename)
+            self.__load_dts(filename)
 
         if DEBUG:  # pragma: no cover
             print(f"filenames: {self.__filenames}")
@@ -79,7 +86,27 @@ class XMLFileManager(IFileManager):
 
         return filename
     
-    def get_schema(self, schema_uri: str) -> lxml.etree._ElementTree:
+    def element_from_xpointer(self, xpointer: str, referencing_uri: str) -> lxml.etree._Element | None:
+        """
+        Get an element from an xpointer.
+        @param xpointer: The xpointer to use.
+        @param referencing_uri: The uri of the schema/instance that is referencing the element.
+        @return: The element.
+        """
+
+        # split the xpointer into its parts
+        if "#" in xpointer:
+            referencing_uri, element_id = xpointer.split("#")
+        else:
+            element_id = xpointer
+        
+        # get the schema
+        schema = self.get_file(referencing_uri)
+        # get the element
+        element = schema.find(f".//*[@id='{element_id}']")
+        return element
+    
+    def get_file(self, schema_uri: str) -> lxml.etree._ElementTree:
         """
         Load a schema, potentially from the cache.
         @param schema_filename: The filename of the schema.
@@ -100,14 +127,14 @@ class XMLFileManager(IFileManager):
         
         return schema_xml
     
-    def get_all_schemas(self) -> list[lxml.etree._ElementTree]:
+    def get_all_files(self) -> list[lxml.etree._ElementTree]:
         """
         Returns all the schemas in the dts
         @return: A list of lxml.etree._ElementTree representing all the schemas in the dts
         """
-        return [self.get_schema(schema_name) for schema_name in self.__filenames]
+        return [self.get_file(schema_name) for schema_name in self.__filenames]
     
-    def get_schema_names(self) -> list[str]:
+    def get_file_names(self) -> list[str]:
         """
         Returns all the schema names in the dts
         @return: A list of str containing the schema names in the dts
@@ -151,7 +178,7 @@ class XMLFileManager(IFileManager):
             return
 
         is_url_remote = uri.startswith("http")
-        is_in_filing = os.path.isfile(uri)
+        is_in_filing = os.path.isfile(self.__filing_location + uri)
         is_cached = file_name in os.listdir(self.cache_location)
 
         if DEBUG:  # pragma: no cover
@@ -172,7 +199,7 @@ class XMLFileManager(IFileManager):
 
         elif is_in_filing:
             # otherwise load it from the current directory
-            with open(uri, "rb") as f:
+            with open(self.__filing_location + uri, "rb") as f:
                 xsd_content = f.read()
 
         else:
@@ -191,11 +218,24 @@ class XMLFileManager(IFileManager):
         # add it to the list of prefixes
         self.__file_prefixes[file_name].append(loaded_under_prefix)
 
-        # check all the imports in the schema
-        imports = xsd_tree.findall("{http://www.w3.org/2001/XMLSchema}import")
-        for xsd_import in imports:
-            # for all imports, load the schema recursively
-            # and add it to the current schema
-            schema_location = xsd_import.attrib["schemaLocation"]
-            self.__load_dts(schema_location, uri)
+        # find all hrefs in the file
+        # TODO: make namespace non-hardcoded
+        href_elems = xsd_tree.findall(".//*[@xlink:href]", namespaces={"xlink": "http://www.w3.org/1999/xlink"})
+        for href_elem in href_elems:
+            # get the href attribute
+            href = href_elem.get("{http://www.w3.org/1999/xlink}href")
+            href = cast(str, href)
+
+            # get the prefix under which the schema is loaded
+            # prefix = href_elem.nsmap
+            # print(f"prefix: {prefix}")
+            if "#" in href:
+                href_uri, _ = href.split("#")
+            else:
+                href_uri = href
+
+            if href_uri != "":
+                # if the href is not a local reference, load the schema
+                # and add it to the current schema
+                self.__load_dts(href_uri, uri)
         

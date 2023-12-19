@@ -1,3 +1,13 @@
+"""
+This module contains the QName class and the QNameNSMap class.
+The QName class represents a qualified name.
+The QNameNSMap class represents a namespace map.
+
+@author: Robin Schmidiger
+@version: 0.5
+@date: 18 December 2023
+"""
+
 import re
 from editdistance import eval as editdistance
 from collections import defaultdict
@@ -286,6 +296,7 @@ class QName:
         @param xpointer: str containing the xpointer
         @return: QName created from the xpointer
         """
+
         if "#" not in xpointer:
             raise ValueError(f"Invalid xpointer: {xpointer}. The xpointer does not contain a '#'")
         

@@ -3,7 +3,7 @@ import lxml.etree
 from brel import QName, QNameNSMap
 from brel.resource import IResource
 
-class BreelFootnote(IResource):
+class BrelFootnote(IResource):
     """ 
     Represents a Reference in XBRL.
     References are used to link to external resources such as legal documents.

@@ -51,7 +51,7 @@ class BrelLabelRole(Enum):
         @param url: str containing the url to the label role
         @return: BrelLabelRole corresponding to the url
         """
-                # get the role
+        # get the role
         role = None
 
         # strip everything before the last slash

@@ -1,3 +1,12 @@
+"""
+This module contains the XMLFilingParser class.
+It is responsible for taking a list of filepaths to XBRL files and parsing them into a brel filing.
+
+@author: Robin Schmidiger
+@version: 0.7
+@date: 18 December 2023
+"""
+
 import os
 import lxml
 import lxml.etree
@@ -8,82 +17,62 @@ from brel.parsers import IFilingParser
 from brel.parsers.dts import XMLFileManager
 from brel.networks import INetwork
 from brel.parsers.utils.lxml_utils import get_all_nsmaps
-from brel.parsers.XML.xml_namespace_normalizer import normalize_nsmap
 
-from .XML.xml_component_parser import parse_components_xml
-from .XML.xml_report_element_parser import parse_report_elements_xml
-from .XML.xml_facts_parser import parse_facts_xml
-from .XML.networks.xml_networks_parser import networks_from_xmls
+from .XML.networks.xml_networks_parser import parse_networks_from_xmls
+from brel.parsers.XML import parse_components_xml, parse_report_elements_xml, parse_facts_xml, normalize_nsmap
+from brel.parsers.XML import check_duplicate_rolerefs, check_roleref_pointers, check_duplicate_arcs
+
+from typing import Any
 
 DEBUG = False
 
 class XMLFilingParser(IFilingParser):
     def __init__(
-            self, 
-            instance_filepaths: str,
-            networks_filepaths: list[str] | None = None,
+            self,
+            filepaths: list[str],
             encoding: str = "utf-8",
             ) -> None:
         
-        if networks_filepaths is None:
-            networks_filepaths = []
+        if len(filepaths) < 1:
+            raise ValueError("No filepaths provided. Make sure to provide at least one filepath.")
 
         self.__filing_type = "XML"
         self.__encoding = encoding
         self.__parser = lxml.etree.XMLParser(encoding=self.__encoding)
-        self.__filing_location = instance_filepaths.rsplit("/", 1)[0] + "/"
+        self.__filing_location = os.path.commonpath(filepaths)
         self.__print_prefix = f"{'[XMLFilingParser]':<20}"
-        
-        # load the instance
-        if DEBUG:  # pragma: no cover
-            self.__print("Loading instance...")
-        self.xbrl_instance = lxml.etree.parse(instance_filepaths, self.__parser)
 
-        schemaref_elem = self.xbrl_instance.find(".//{*}schemaRef")
-        if schemaref_elem is None:
-            raise ValueError("No schemaRef element found in instance")
-        else:
-            # get the xlink:href attribute. I do it in this convoluted way because the namespace map is not generated yet
-            href_attr = next(filter(lambda x: "href" in x, schemaref_elem.attrib.keys()), None)
-            if href_attr is None:
-                raise ValueError("No href attribute found in schemaRef element")
-
-            schema_filename = schemaref_elem.get(href_attr)
+        # mapping from xml ids to report elements, facts, and components
+        # handy for resolving hrefs
+        self.__id_to_any: dict[str, Any] = {}
         
-        # load the schema and all its dependencies
+        # crop the filing location from all filepaths
+        for i in range(len(filepaths)):
+            filepaths[i] = os.path.relpath(filepaths[i], self.__filing_location)
+
+        
+        # load the DTS
         if DEBUG:  # pragma: no cover
             self.__print("Resolving DTS...")
-        self.__schema_manager = XMLFileManager("brel/dts_cache/", self.__filing_location, [schema_filename], self.__parser)
-
-        if DEBUG:  # pragma: no cover
-            self.__print("Loading Networks...")
-        self.__xbrl_networks = []
-        for network_filename in networks_filepaths:
-            # load the network
-            network = lxml.etree.parse(network_filename, self.__parser)
-            self.__xbrl_networks.append(network)
+        self.__file_manager = XMLFileManager("brel/dts_cache/", self.__filing_location, filepaths, self.__parser)
         
         # normalize and bootstrap the QName nsmap
         if DEBUG:  # pragma: no cover
             self.__print("Normalizing nsmap...")
         self.__nsmap = self.__create_nsmap()
 
+        check_duplicate_rolerefs(self.__file_manager, self.__nsmap)
+        check_roleref_pointers(self.__file_manager, self.__nsmap)
+        check_duplicate_arcs(self.__file_manager, self.__nsmap)
+
         if DEBUG:  # pragma: no cover
             self.__print("XMLFilingParser initialized!")
             print("-"*50)
     
-    def __create_nsmap(self) -> QNameNSMap:
-        if self.xbrl_instance is None:
-            raise ValueError("Instance not loaded")
-        
-        instance_xml_trees = [
-            self.xbrl_instance,
-        ] + self.__xbrl_networks
+    def __create_nsmap(self) -> QNameNSMap:        
+        xml_trees = self.__file_manager.get_all_files()
 
-        schema_xml_trees = self.__schema_manager.get_all_schemas()
-
-        nsmaps = get_all_nsmaps(instance_xml_trees)
-        nsmaps.extend(get_all_nsmaps(schema_xml_trees))
+        nsmaps = get_all_nsmaps(xml_trees)
         # add xml namespace to a random nsmap
         nsmaps[0]["xml"] = "http://www.w3.org/XML/1998/namespace"
 
@@ -136,35 +125,56 @@ class XMLFilingParser(IFilingParser):
         Parse the concepts.
         @return: A list of all the concepts in the filing, even those that are not reported.
         """
-        return parse_report_elements_xml(self.__schema_manager, self.__nsmap)
+        xsd_filenames = [filename for filename in self.__file_manager.get_file_names() if filename.endswith(".xsd")]
+        xsd_etrees = [self.__file_manager.get_file(filename) for filename in xsd_filenames]
+
+        report_elems, id_to_report_elem = parse_report_elements_xml(xsd_etrees, self.__nsmap)
+
+        for id, report_elem in id_to_report_elem.items():
+            if id in self.__id_to_any.keys():
+                raise ValueError(f"the id {id} is not unique. It is used by {self.__id_to_any[id]} and {report_elem}")
+            
+            self.__id_to_any[id] = report_elem
+
+        return report_elems
     
 
     def parse_facts(self, report_elements: dict[QName, IReportElement]) -> list[Fact]:
         """
         Parse the facts.
         """
-        return parse_facts_xml(
-            self.xbrl_instance,
-            report_elements,
-            self.__nsmap
-        )
+        all_filenames = self.__file_manager.get_file_names()
+        xml_filenames = list(filter(lambda filename: filename.endswith(".xml"), all_filenames))
+        xml_etrees = [self.__file_manager.get_file(filename) for filename in xml_filenames]
+
+        facts, id_to_fact = parse_facts_xml(xml_etrees, report_elements, self.__nsmap)
+
+        for id, fact in id_to_fact.items():
+            if id in self.__id_to_any.keys():
+                raise ValueError(f"the id {id} is not unique. It is used by {self.__id_to_any[id]} and {fact}")
+            
+            self.__id_to_any[id] = fact
+        
+        return facts
+
     
-    def parse_networks(self, report_elements: dict[QName, IReportElement]) -> dict[str, list[INetwork]]:
+    def parse_networks(self, report_elements: dict[QName, IReportElement]) -> dict[str|None, list[INetwork]]:
         """
         Parse the networks.
         @param report_elements: A dictionary containing ALL report elements that the networks report against.
         @return: A dictionary of all the networks in the filing.
         """
-        return networks_from_xmls(
-            self.__xbrl_networks + self.__schema_manager.get_all_schemas() + [self.xbrl_instance],
+        return parse_networks_from_xmls(
+            self.__file_manager.get_all_files(),
             self.__nsmap,
-            report_elements
+            self.__id_to_any,
+            report_elements,
         )
 
     def parse_components(
             self, 
             report_elements: dict[QName, IReportElement], 
-            networks: dict[str, list[INetwork]]
+            networks: dict[str|None, list[INetwork]]
             ) -> tuple[list[Component], dict[QName, IReportElement]]:
         """
         Parse the components.
@@ -176,7 +186,7 @@ class XMLFilingParser(IFilingParser):
          - A dictionary of all the report elements in the filing. These might have been altered by the components.
         """
         return parse_components_xml(
-            self.__schema_manager.get_all_schemas(),
+            self.__file_manager.get_all_files(),
             networks,
             report_elements,
             self.__nsmap

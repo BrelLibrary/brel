@@ -1,7 +1,7 @@
 from brel import Filing, Component
 
 def example4():
-    filing = Filing.open("reports/coca_cola/")
+    filing = Filing.open("reports/ko/")
 
     components = filing.get_all_components()
 

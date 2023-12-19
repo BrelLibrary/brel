@@ -1,7 +1,7 @@
-from brel.resource import IResource, BreelFootnote
+from brel.resource import IResource, BrelFootnote
 from brel.networks import INetworkNode
 from brel.reportelements import IReportElement
-from brel import QName
+from brel import QName, Fact
 
 from typing import cast
 
@@ -12,7 +12,7 @@ class FootnoteNetworkNode(INetworkNode):
     """
     def __init__(
             self,
-            points_to: BreelFootnote | IReportElement,
+            points_to: BrelFootnote | IReportElement,
             children: list['FootnoteNetworkNode'],
             arc_role: str,
             arc_name: QName,
@@ -45,8 +45,10 @@ class FootnoteNetworkNode(INetworkNode):
             return 'report element'
         elif isinstance(self.__points_to, IResource):
             return 'resource'
+        elif isinstance(self.__points_to, Fact):
+            return 'fact'
         else:
-            raise ValueError(f"The FootnoteNetworkNode with label {self.__points_to.get_label()} does not point to report elements or resources. It points to {self.__points_to}. Use get_report_element() or get_resource() instead")
+            raise ValueError(f"The FootnoteNetworkNode points to an unknown type: {self.__points_to}")
     
     def get_children(self) -> list[INetworkNode]:
         return cast(list[INetworkNode], self.__children)

@@ -3,8 +3,8 @@ from brel.parsers.dts import IFileManager
 import validators
 
 class SchemaResolver(etree.Resolver):
-    def __init__(self, schema_manager: IFileManager) -> None:
-        self.__schema_manager = schema_manager
+    def __init__(self, file_manager: IFileManager) -> None:
+        self.__file_manager = file_manager
     
     def resolve(self, system_url: str, public_id: str):
         print (f"Resolving {system_url}")
