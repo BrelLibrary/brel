@@ -1,5 +1,10 @@
-import lxml
-import lxml.etree
+"""
+Contains the class for representing an XBRL concept characteristic
+
+:author: Robin Schmidiger
+:version: 0.2
+:date: 19 December 2023
+"""
 
 from brel import QName
 

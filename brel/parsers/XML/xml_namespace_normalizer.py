@@ -22,7 +22,6 @@ More precisely, it does the following:
 """
 
 from collections import defaultdict
-import itertools
 import re
 import json
 

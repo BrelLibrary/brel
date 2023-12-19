@@ -1,3 +1,11 @@
+"""
+Contains the class for the Member report element in brel
+
+@author: Robin Schmidiger
+@version: 0.0.2
+@date: 2023-12-06
+"""
+
 from brel import QName, BrelLabel
 from brel.reportelements import IReportElement
 

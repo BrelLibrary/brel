@@ -1,3 +1,11 @@
+"""
+Contains the BrelAspect class.
+
+@author: Robin Schmidiger
+@version: 0.1
+@date: 2023-12-19
+"""
+
 from brel import BrelLabel, QName
 
 class BrelAspect:
@@ -56,8 +64,8 @@ class BrelAspect:
     def from_QName(cls, qname: QName, labels: list[BrelLabel] | None = None) -> "BrelAspect":
         """
         Creates a new aspect from a QName.
-        @param qname: the QName to create the aspect from
-        @param labels: A list of labels for the aspect. If None, an empty list is used.
+        :param qname: the QName to create the aspect from
+        :param labels: A list of labels for the aspect. If None, an empty list is used.
         """
         qname_str = qname.get()
         return cls.from_str(qname_str, labels)
@@ -66,8 +74,8 @@ class BrelAspect:
     def from_str(cls, name: str, labels: list[BrelLabel] | None = None) -> "BrelAspect":
         """
         Creates a new aspect from a string.
-        @param name: the string to create the aspect from
-        @param labels: A list of labels for the aspect. If None, an empty list is used.
+        :param name: the string to create the aspect from
+        :param labels: A list of labels for the aspect. If None, an empty list is used.
         """
         if name in cls.__aspect_cache:
             return cls.__aspect_cache[name]
@@ -114,7 +122,8 @@ BrelAspect.ENTITY = BrelAspect("entity", entity_labels)
 BrelAspect.UNIT = BrelAspect("unit", unit_labels)
 BrelAspect.LANGUAGE = BrelAspect("language", language_labels)
 
-true_func = lambda: True
+def true_func() -> bool:
+    return True
 
 BrelAspect.CONCEPT.is_core = true_func
 BrelAspect.PERIOD.is_core = true_func

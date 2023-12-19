@@ -3,7 +3,7 @@ from brel.networks import DefinitionNetwork, ReferenceNetwork, LabelNetwork
 from brel.utils import pprint_network
 
 def example7():
-    filing = Filing.open("reports/ko/")
+    filing = Filing.open("reports/tsla/")
 
     requested_link_role = "http://xbrl.sec.gov/ecd/role/TabularListsByExecutiveCategory"
 

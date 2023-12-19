@@ -11,7 +11,7 @@ import lxml
 import lxml.etree
 
 from brel.reportelements import IReportElement, Concept
-from brel.characteristics import ConceptCharacteristic, UnitCharacteristic, BrelAspect, ICharacteristic
+from brel.characteristics import *
 from brel import QName, QNameNSMap, Context, Fact
 from typing import cast
 
@@ -72,8 +72,7 @@ def parse_facts_xml(
     :param qname_nsmap: The qname to namespace map
     :return: A list of facts and a mapping from fact ids to facts
     """
-    unit_cache: dict[str, UnitCharacteristic] = {}
-    concept_cache: dict[QName, ConceptCharacteristic] = {}
+    characteristics_cache: dict[str, ICharacteristic|BrelAspect] = {}
 
     facts: list[Fact] = []
     id_to_fact: dict[str, Fact] = {}
@@ -110,15 +109,19 @@ def parse_facts_xml(
             # if there is a unit id, then find the unit xml element, parse it and add it to the characteristics list
             if unit_id:
                 # check cache
-                if unit_id in unit_cache:
-                    unit_characteristic = unit_cache[unit_id]
+                if unit_id in characteristics_cache:
+                    if not isinstance(characteristics_cache[unit_id], UnitCharacteristic):
+                        raise ValueError(f"Unit {unit_id} is not a unit")
+
+                    unit_characteristic: UnitCharacteristic = cast(UnitCharacteristic, characteristics_cache[unit_id])
                 else:
+                    # if not in cache, parse the unit
                     xml_unit = xbrl_instance.find(f"{{*}}unit[@id='{unit_id}']")
                     if xml_unit is None:
                         raise ValueError(f"Unit {unit_id} not found in xbrl instance")
                     
                     unit_characteristic = UnitCharacteristic.from_xml(xml_unit, qname_nsmap)
-                    unit_cache[unit_id] = unit_characteristic
+                    characteristics_cache[unit_id] = unit_characteristic
                 
                 characteristics.append(unit_characteristic)
 
@@ -126,8 +129,12 @@ def parse_facts_xml(
             concept_name = xml_fact.tag                
             concept_qname = QName.from_string(concept_name, qname_nsmap)
 
-            if concept_qname in concept_cache:
-                concept_characteristic = concept_cache[concept_qname]
+            # check cache
+            if concept_qname in characteristics_cache:
+                if not isinstance(characteristics_cache[concept_qname.resolve()], ConceptCharacteristic):
+                    raise ValueError(f"Concept {concept_qname} is not a concept")
+
+                concept_characteristic = cast(ConceptCharacteristic, characteristics_cache[concept_qname.resolve()])
             else:
                 # the concept has to be in the report elements cache. otherwise it does not exist
                 if concept_qname not in report_elements.keys():
@@ -145,13 +152,12 @@ def parse_facts_xml(
                 concept_characteristic = ConceptCharacteristic(concept)
 
                 # add the concept to the cache
-                concept_cache[concept_qname] = concept_characteristic
-
+                characteristics_cache[concept_qname.resolve()] = concept_characteristic
             # add the concept to the characteristic list
             characteristics.append(concept_characteristic)
 
             # then parse the context
-            context = parse_context_xml(xml_context, characteristics, report_elements, qname_nsmap)
+            context = parse_context_xml(xml_context, characteristics, report_elements, qname_nsmap, characteristics_cache)
 
             # create the fact
             fact = parse_fact_from_xml(xml_fact, context)

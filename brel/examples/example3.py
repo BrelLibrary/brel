@@ -6,7 +6,7 @@ def example3():
     Example of how to get some reported concets, get all facts that use those concepts, and print them.
     """
 
-    filing = Filing.open("reports/ko/")
+    filing = Filing.open("reports/aapl/")
 
     # get some concepts
     concepts = filing.get_all_reported_concepts()[:6]

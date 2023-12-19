@@ -56,7 +56,7 @@ def example5():
     # print the selected component's networks
     pprint_network(selected_component.get_presentation())
 
-    pprint_network(selected_component.get_presentation())
+    pprint_network(selected_component.get_definition())
 
     pprint_network(selected_component.get_calculation())
 
