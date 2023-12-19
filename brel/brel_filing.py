@@ -1,4 +1,30 @@
+"""
+Contains the Filing class.
+This class represents an XBRL filing in the Open Information Model.
+
+Example of how to use this class:
+
+'''
+from brel import Filing
+from brel.utils import pprint_facts
+
+# open the filing
+filing = Filing.open("my_filing.zip")
+
+# get all of the facts
+facts = filing.get_all_facts()
+
+# print the first 10 facts
+pprint_facts(facts[:10])
+
+
+@author: Robin Schmidiger
+@version: 0.3
+@date: 2023-12-19
+"""
+
 import os
+import zipfile
 from typing import cast
 
 from brel import Fact, FilingFilter, Component, QName
@@ -7,8 +33,12 @@ from brel.reportelements import IReportElement, Abstract, Concept, Dimension, Hy
 from brel.networks import INetwork
 from brel.parsers import IFilingParser, XMLFilingParser
 
+DEBUG = True
+
 class Filing:
-    """A wrapper class for loading and manipulating a filing"""
+    """
+    Represents an XBRL filing in the Open Information Model.
+    """
     
     def __init__(self, parser: IFilingParser) -> None:
         parser_result = parser.parse()
@@ -17,40 +47,50 @@ class Filing:
         self.__facts: list[Fact] = parser_result["facts"]
         self.__reportelems: list[IReportElement] = parser_result["report elements"]
         self.__components = parser_result["components"]
+        self.__nsmap = parser_result["nsmap"]
     
     # first class citizens
     def get_all_pyhsical_networks(self) -> list[INetwork]:
         """
         Get all physical networks in the filing
+        :return: a list of all physical networks in the filing.
         """
         physical_networks = [network for network in self.__networks if network.is_physical()]
         return physical_networks
     
     def get_all_facts(self) -> list[Fact]:
         """
-        Get all facts in the filing
+        :return: a list of all facts in the filing.
         """
         return self.__facts
     
     def get_all_report_elements(self) -> list[IReportElement]:
         """
-        Get all report elements in the filing
+        :return: a list of all report elements in the filing.
         """
         return self.__reportelems
     
     def get_all_components(self) -> list[Component]:
         """
-        Get all components in the filing
+        :return: a list of all components in the filing.
+        Note: components are sometimes called "roles" in the XBRL specification.
         """
         return self.__components
     
     @classmethod
-    def open(cls, path, **kwargs):
-        """Load a filing from a local folder"""
+    def open(cls, path, *args):
+        """
+        Load a filing from a path.
+        :param path: the path to the filing. This can be a folder, an xml file, or a zip file.
+        :return: a Filing object with the filing loaded.
+        """
+        # check if the path is a folder or a file
+        is_file = os.path.isfile(path)
+        is_dir = os.path.isdir(path)
         
-        if path.endswith("/"):
-            if not os.path.isdir(path):
-                raise ValueError(f"{path} is not a valid folder path")
+        if is_dir:
+            if not path.endswith("/"):
+                path += "/"
 
             folder_filenames = os.listdir(path)
             xml_files = list(filter(lambda x: x.endswith("xml"), folder_filenames))
@@ -62,63 +102,77 @@ class Filing:
 
             parser = XMLFilingParser(xml_files)
             return cls(parser)
-        elif path.endswith(".xml"):
-            instance_file = path
-            xml_files = kwargs.get("linkbases", [])
-            xml_files.append(instance_file)
+        elif is_file and path.endswith(".xml"):
+            xml_files = [path]
+            for arg in args:
+                if os.path.isfile(arg) and arg.endswith(".xml"):
+                    xml_files.append(arg)
             parser = XMLFilingParser(xml_files)
             return cls(parser)
+        elif is_file and path.endswith(".zip"):
+            dir_path = os.path.dirname(path)
+            print(f"Extracting {path} to {dir_path} and loading it")
+            with zipfile.ZipFile(path, "r") as zip_ref:
+                zip_ref.extractall(dir_path)
+                # get all file paths ending in xml
+                xml_files = list(filter(lambda x: x.endswith("xml"), zip_ref.namelist()))
+            print(f"Finished extracting...")
+            
+            return cls.open(*xml_files)
         else:
             raise ValueError(f"{path} is not a valid folder path")
 
-    
     # second class citizens
     def get_all_concepts(self) -> list[Concept]:
         """
-        Get all Concepts in the filing
+        :returns: a list of all concepts in the filing.
+        Note that concepts are defined according to the Open Information Model. They are not the same as abstracts, line items, hypercubes, dimensions, or members.
         """
         return cast(list[Concept], list(filter(lambda x: isinstance(x, Concept), self.__reportelems)))
     
-    # TODO: implement
     def get_all_abstracts(self) -> list[Abstract]:
         """
-        Get all Abstracts in the filing
+        :returns: a list of all abstracts in the filing.
         """
         return cast(list[Abstract], list(filter(lambda x: isinstance(x, Abstract), self.__reportelems)))
     
     def get_all_line_items(self) -> list[LineItems]:
         """
-        Get all LineItems in the filing
+        :returns: a list of all line items in the filing.
         """
         return cast(list[LineItems], list(filter(lambda x: isinstance(x, LineItems), self.__reportelems)))
     
     def get_all_hypercubes(self) -> list[Hypercube]:
         """
-        Get all Hypercubes in the filing
+        :returns: a list of all hypercubes in the filing.
         """
         return cast(list[Hypercube], list(filter(lambda x: isinstance(x, Hypercube), self.__reportelems)))
         
     def get_all_dimensions(self) -> list[Dimension]:
        """
-        Get all Dimensions in the filing
+        :returns: a list of all dimensions in the filing.
         """
        return cast(list[Dimension], list(filter(lambda x: isinstance(x, Dimension), self.__reportelems)))
         
     def get_all_members(self) -> list[Member]:
        """
-        Get all Member in the filing
+        :returns: a list of all members in the filing.
         """
        return cast(list[Member], list(filter(lambda x: isinstance(x, Member), self.__reportelems)))
     
-    def get_report_element_by_name(self, concept_name: QName) -> IReportElement:
-        """Get a concept by its name"""
+    def get_report_element_by_name(self, concept_name: QName|str) -> IReportElement|None:
+        """
+        :param concept_name: the name of the concept to get. This can be a QName or a string in the format "prefix:localname". For example, "us-gaap:Assets".
+        :returns: the report element with the given name. If no report element is found, then None is returned.
+        :raises ValueError: if the QName string is not a valid QName or if the prefix is not found.
+        """
+        if isinstance(concept_name, str):
+            concept_name = QName.from_string(concept_name, self.__nsmap)
+
         name_matches = lambda x: x.get_name() == concept_name
 
-        re: IReportElement = filter(name_matches, self.__reportelems).__next__()
-        
-        if re is None:
-            raise ValueError(f"Concept {concept_name} not found")
-        
+        re: IReportElement = next(filter(name_matches, self.__reportelems), None)
+                
         return re
     
     def get_all_reported_concepts(self) -> list[Concept]:
@@ -146,8 +200,7 @@ class Filing:
         """Get all facts that are associated with a concept"""
         return self.get_facts_by_concept_name(concept.get_name())
     
-    def __getitem__(self, key: str | QName | BrelAspect | FilingFilter | bool) -> list[Fact] | FilingFilter:
-        # TODO: make this typecheck
+    def __getitem__(self, key: str | QName | BrelAspect | FilingFilter) -> list[Fact] | FilingFilter:
 
         # if the key is a filter, filter the facts
         if isinstance(key, FilingFilter):
@@ -155,20 +208,19 @@ class Filing:
         
         # if the key is an aspect, make a filter of that aspect and return the unappied filter
         if isinstance(key, BrelAspect):
-            return FilingFilter.make_aspect_filter(self.__facts, key)
+            return FilingFilter.make_aspect_filter(self.__facts, key, self.__nsmap)
         
         # if the key is a str, but looks like a QName, then turn it into a QName
-        if isinstance(key, str) and QName.is_str_qname(key):
-            key = QName.from_string(key)
+        if isinstance(key, str) and QName.is_str_qname(key, self.__nsmap):
+            key = QName.from_string(key, self.__nsmap)
         
         # if the key is a qname, then it is an additional dimension
         # make a filter of that aspect and return it unapplied
         if isinstance(key, QName):
             aspect = BrelAspect.from_QName(key)
-            return FilingFilter.make_aspect_filter(self.__facts, aspect)
-        
+            return FilingFilter.make_aspect_filter(self.__facts, aspect, self.__nsmap)
+                
         # finally, if the key is one of the core aspects, then make a filter of that aspect and return it unapplied
-        # TODO: add custom aspects as well
         aspect_names = {
             "entity": BrelAspect.ENTITY, 
             "period": BrelAspect.PERIOD, 
@@ -176,9 +228,9 @@ class Filing:
             "concept": BrelAspect.CONCEPT
              }
         
-        if key in aspect_names:
+        if key.lower() in aspect_names:
             key = aspect_names[key]
-            return FilingFilter.make_aspect_filter(self.__facts, key)
+            return FilingFilter.make_aspect_filter(self.__facts, key, self.__nsmap)
         
         # otherwise, raise an error
         raise ValueError(f"Key {key} is not a valid key")

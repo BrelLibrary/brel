@@ -120,6 +120,9 @@ class XMLFilingParser(IFilingParser):
         if DEBUG:  # pragma: no cover
             print(self.__print_prefix, output)
     
+    def get_nsmap(self) -> QNameNSMap:
+        return self.__nsmap
+    
     def parse_report_elements(self) -> dict[QName, IReportElement]:
         """
         Parse the concepts.

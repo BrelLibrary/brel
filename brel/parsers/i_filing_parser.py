@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from time import time
 
-from brel import QName, Fact, Component
+from brel import QName, Fact, Component, QNameNSMap
 from brel.reportelements import IReportElement
 from brel.networks import INetwork
 
@@ -36,6 +36,13 @@ class IFilingParser(ABC):
         if DEBUG:  # pragma: no cover
             print_prefix = "[Parser]"
             print(print_prefix, output)
+    
+    @abstractmethod
+    def get_nsmap(self) -> QNameNSMap:
+        """
+        Get the namespace map.
+        """
+        raise NotImplementedError
 
     @final
     def parse(self) -> dict:
@@ -80,7 +87,8 @@ class IFilingParser(ABC):
             "networks": networks_flattened,
             "components": components,
             "facts": facts,
-            "filing_type": filing_type
+            "filing_type": filing_type,
+            "nsmap": self.get_nsmap(),
         }
 
         return parser_result

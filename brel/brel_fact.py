@@ -4,7 +4,7 @@ This class represents an XBRL fact in the Open Information Model.
 
 @author: Robin Schmidiger
 @version: 0.3
-@date: 2023-12-19
+@date: 19 December 2023
 """
 
 from typing import Any
@@ -107,9 +107,9 @@ class Fact:
         return output
 
     # 2nd class citizens
-    def get_concept(self) -> ConceptCharacteristic | None:
+    def get_concept(self) -> ConceptCharacteristic:
         """
-        :returns: The concept of the fact as a ConceptCharacteristic object. Returns None if the fact does not have a concept.
+        :returns: The concept of the fact as a ConceptCharacteristic object. Facts always have a concept.
         """
         concept: ConceptCharacteristic = cast(ConceptCharacteristic, self.__context.get_characteristic(BrelAspect.CONCEPT))
         return concept

@@ -56,7 +56,7 @@ def parse_fact_from_xml(
     context_concept: ConceptCharacteristic = cast(ConceptCharacteristic, context.get_characteristic(BrelAspect.CONCEPT))
     if fact_concept_name != context_concept.get_value().get_name().resolve():
         raise ValueError(f"Fact {fact_id} has concept {fact_concept_name} but should have concept {context_concept.get_value().get_name().resolve()}")
-
+    
     return Fact(context, fact_value, fact_id)
 
 

@@ -1,7 +1,7 @@
 from __future__ import annotations
 from enum import Enum
 
-from brel import Fact, QName
+from brel import Fact, QName, QNameNSMap
 from brel.characteristics import BrelAspect
 
 class FilingFilterType(Enum):
@@ -15,24 +15,25 @@ class FilingFilterType(Enum):
 
 class FilingFilter:
     """A wrapper class for filtering a list of facts according to a certain criteria"""
-    def __init__(self, filter_list, filter_type: FilingFilterType) -> None:
+    def __init__(self, filter_list, filter_type: FilingFilterType, nsmap: QNameNSMap) -> None:
         self.__filter_list = filter_list
         self.__filter_type = filter_type
+        self.__nsmap = nsmap
 
     def get_filter_type(self) -> FilingFilterType:
         """Get the filter type"""
         return self.__filter_type
     
-    def __eq__(self, other) -> "FilingFilter":
+    def __eq__(self, other) -> "FilingFilter":  # type: ignore
         """Compare the values of the column with a string"""
-        is_qname = QName.is_str_qname(other)
-
+        # force mypy to accept the comparison
+        is_qname = QName.is_str_qname(other, self.__nsmap)
         if is_qname and self.__filter_type == FilingFilterType.CONCEPT:
             filter_list = [current_value == other for current_value in self.__filter_list]
-            return self.__class__(filter_list, FilingFilterType.BOOL_LIST)
+            return self.__class__(filter_list, FilingFilterType.BOOL_LIST, self.__nsmap)
         elif is_qname and self.__filter_type == FilingFilterType.ADDITIONAL_DIMENSION:
             filter_list = [current_value == other for current_value in self.__filter_list]
-            return self.__class__(filter_list, FilingFilterType.BOOL_LIST)
+            return self.__class__(filter_list, FilingFilterType.BOOL_LIST, self.__nsmap)
         else:
             # TODO: implement more than just concept filters
             raise NotImplementedError("Only concept filters are implemented. The other filters are not implemented yet")
@@ -84,18 +85,18 @@ class FilingFilter:
         
     
     @classmethod
-    def make_aspect_filter(cls, facts: list[Fact], aspect: BrelAspect) -> "FilingFilter":
+    def make_aspect_filter(cls, facts: list[Fact], aspect: BrelAspect, nsmap: QNameNSMap) -> "FilingFilter":
         """Make a filter for a specific aspect"""
         # TODO: Implement more than just concept filters and additional dimension filters
         if aspect == BrelAspect.CONCEPT:
             filter_list = []
             for fact in facts:
                 filter_list.append(fact.get_context().get_characteristic(aspect).__str__())
-            return cls(filter_list, FilingFilterType.CONCEPT)
+            return cls(filter_list, FilingFilterType.CONCEPT, nsmap)
         elif not aspect.is_core():
             filter_list = []
             for fact in facts:
                 filter_list.append(fact.get_context().get_characteristic(aspect).__str__())
-            return cls(filter_list, FilingFilterType.ADDITIONAL_DIMENSION)
+            return cls(filter_list, FilingFilterType.ADDITIONAL_DIMENSION, nsmap)
         else:
             raise NotImplementedError("Only concept filters are implemented. The other filters are not implemented yet")
