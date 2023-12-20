@@ -74,6 +74,24 @@ def parse_facts_xml(
     """
     characteristics_cache: dict[str, ICharacteristic|BrelAspect] = {}
 
+    def make_qname(qname_str: str) -> QName:
+        return QName.from_string(qname_str, qname_nsmap)
+    
+    def get_from_cache(key: str) -> ICharacteristic|BrelAspect|None:
+        if key in characteristics_cache:
+            return characteristics_cache[key]
+        else:
+            return None
+    
+    def add_to_cache(key: str, characteristic: ICharacteristic|BrelAspect) -> None:
+        characteristics_cache[key] = characteristic
+    
+    def get_reprot_element(qname: QName) -> IReportElement|None:
+        if qname in report_elements:
+            return report_elements[qname]
+        else:
+            return None
+
     facts: list[Fact] = []
     id_to_fact: dict[str, Fact] = {}
 
@@ -93,7 +111,7 @@ def parse_facts_xml(
             
 
             # the context xml element has the tag context and the id is the context_id
-            xml_context = xbrl_instance.find(f"{{*}}context[@id='{context_id}']", namespaces=nsmap)
+            xml_context = xbrl_instance.find(f"{{*}}context[@id='{context_id}']", namespaces=None)
             if xml_context is None:
                 raise ValueError(f"Context {context_id} not found in xbrl instance")
 
@@ -157,7 +175,8 @@ def parse_facts_xml(
             characteristics.append(concept_characteristic)
 
             # then parse the context
-            context = parse_context_xml(xml_context, characteristics, report_elements, qname_nsmap, characteristics_cache)
+            # context = parse_context_xml(xml_context, characteristics, report_elements, qname_nsmap, characteristics_cache)
+            context = parse_context_xml(xml_context, characteristics, make_qname, get_reprot_element, get_from_cache, add_to_cache)
 
             # create the fact
             fact = parse_fact_from_xml(xml_fact, context)

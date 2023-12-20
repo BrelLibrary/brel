@@ -11,6 +11,7 @@ The QNameNSMap class represents a namespace map.
 import re
 from editdistance import eval as editdistance
 from collections import defaultdict
+from typing import Callable
 
 class QNameNSMap:
     def __init__(self) -> None:

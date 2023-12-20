@@ -17,8 +17,9 @@ class EntityCharacteristic(ICharacteristic):
     Additional information about the company can be found in the entity's segment.
     """
 
-    def __init__(self, qname: QName) -> None:
-        self.__qname = qname
+    def __init__(self, id: str, scheme: str) -> None:
+        self.__id = id
+        self.__scheme = scheme
 
     # first class citizens    
     def get_aspect(self) -> BrelAspect:
@@ -28,20 +29,20 @@ class EntityCharacteristic(ICharacteristic):
         """
         return BrelAspect.ENTITY
     
-    def get_value(self) -> QName:
+    def get_value(self) -> str:
         """
         returns the value of the entity characteristic, which is the entity's qname
         :info: the entity's qname consists of the entity's scheme and the entity's identifier
         :returns: the entity's qname
         """
-        return self.__qname
+        return self.__id
     
     def get_schema(self) -> str:
         """
         :returns: the schema of the entity.
         The scheme is the url of the entity qname
         """
-        return self.__qname.get_URL()
+        return self.__scheme
     
     def __eq__(self, __value: object) -> bool:
         """
@@ -52,11 +53,11 @@ class EntityCharacteristic(ICharacteristic):
         if not isinstance(__value, EntityCharacteristic):
             return False
         else:
-            return self.__qname == __value.__qname
+            return self.__id == __value.__id and self.__scheme == __value.__scheme
     
     def __str__(self) -> str:
         """
         Represents the entity characteristic as a string
         :returns: the entity characteristic's qname as a string. It is the entity scheme and the entity identifier
         """
-        return self.__qname.__str__()
+        return self.__scheme + ":" + self.__id

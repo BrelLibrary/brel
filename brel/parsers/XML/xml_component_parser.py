@@ -13,8 +13,10 @@ from brel.reportelements import IReportElement
 from brel import QName, QNameNSMap, Component
 from brel.networks import PresentationNetwork, CalculationNetwork, DefinitionNetwork, INetwork
 
+from typing import Callable
+
 def parse_component_from_xml(
-    xml_element: lxml.etree._Element, 
+    xml_element: lxml.etree._Element,
     qname_nsmap: QNameNSMap,
     presentation_network: None|PresentationNetwork = None, 
     calculation_network: None|CalculationNetwork = None, 
