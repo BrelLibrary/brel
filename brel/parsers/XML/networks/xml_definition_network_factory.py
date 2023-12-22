@@ -44,7 +44,7 @@ class PhysicalDefinitionNetworkFactory(IXMLNetworkFactory):
         elif xml_arc.get(f"{{{nsmap['xlink']}}}from", None) == label:
             # the node is a root
             arc_role = xml_arc.attrib.get("{" + nsmap["xlink"] + "}arcrole")
-            order = 0.0 # TODO: ask ghislain why this is different from the calculation network and definition network
+            order = 0.0
             arc_qname = QName.from_string(xml_arc.tag, self.get_qname_nsmap())
         elif xml_arc.get(f"{{{nsmap['xlink']}}}to", None) == label:
             # the node is an inner node
@@ -117,7 +117,7 @@ class LogicalDefinitionNetworkFactory(IXMLNetworkFactory):
             arc_qname = QName.from_string("link:unknown", self.get_qname_nsmap())
         elif xml_arc.get(f"{{{nsmap['xlink']}}}from", None) == label:
             arc_role = xml_arc.attrib.get("{" + nsmap["xlink"] + "}arcrole")
-            order = 0 # TODO: ask ghislain why this is different from the calculation network and definition network
+            order = 0
             arc_qname = QName.from_string(xml_arc.tag, self.get_qname_nsmap())
         elif xml_arc.get(f"{{{nsmap['xlink']}}}to", None) == label:
             arc_role = xml_arc.attrib.get("{" + nsmap["xlink"] + "}arcrole")

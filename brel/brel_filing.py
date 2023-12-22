@@ -118,6 +118,7 @@ class Filing:
                 xml_files = list(filter(lambda x: x.endswith("xml"), zip_ref.namelist()))
             print(f"Finished extracting...")
             
+            xml_files = list(map(lambda x: dir_path + "/" + x, xml_files))
             return cls.open(*xml_files)
         else:
             raise ValueError(f"{path} is not a valid folder path")

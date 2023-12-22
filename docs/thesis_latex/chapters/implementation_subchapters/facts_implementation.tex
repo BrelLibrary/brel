@@ -11,9 +11,20 @@ Before we dive into the details of facts in Brel, let us first look at how facts
 In the context of XBRL, facts are represented as XML elements in an XBRL instance document. 
 The following snippet shows an example of a fact in XBRL:
 
-\begin{lstlisting}[language=XML]
-    <us-gaap:ExtinguishmentOfDebtAmount contextRef="c-216" decimals="-6" id="f-727" unitRef="usd">121000000</us-gaap:ExtinguishmentOfDebtAmount>
-\end{lstlisting}\footnote[1]{taken from COCA COLA CO's 2023 Q2 report}
+\begin{figure}[H]
+    \caption{Example of a fact in XBRL}
+    \label{fig:example_fact_xbrl}
+    \begin{lstlisting}[language=XML]
+        <us-gaap:ExtinguishmentOfDebtAmount 
+          contextRef="c-216" 
+          decimals="-6" 
+          id="f-727" 
+          unitRef="usd">
+            121000000
+        </us-gaap:ExtinguishmentOfDebtAmount>
+    \end{lstlisting}\footnote[1]{taken from COCA COLA CO's 2023 Q2 report}
+\end{figure}
+
 
 Thinking back to how we defined facts in chapter TODO,
 we can see that the above example does not contain all the information that we defined as being necessary for a fact.
@@ -29,20 +40,29 @@ Contexts are defined in the instance document using the \texttt{context} element
 
 Going back to our example from above, the context element referenced by the fact is defined as follows:
 
-\begin{lstlisting}[language=XML]
-    <context id="c-216">
-        <entity>
-            <identifier scheme="http://www.sec.gov/CIK">0000021344</identifier>
-            <segment>
-                <xbrldi:explicitMember dimension="dei:LegalEntityAxis">ko:BottlingOperationsInAfricaMember</xbrldi:explicitMember>
-            </segment>
-        </entity>
-        <period>
-            <startDate>2023-01-01</startDate>
-            <endDate>2023-06-30</endDate>
-        </period>
-    </context>
-\end{lstlisting}\footnote[2]{taken from COCA COLA CO's 2023 Q2 report}
+\begin{figure}[H]
+    \caption{Example of the context referenced by the fact in figure \ref{fig:example_fact_xbrl}}
+    \label{fig:example_context_xbrl}
+    \begin{lstlisting}[language=XML]
+        <context id="c-216">
+            <entity>
+                <identifier scheme="http://www.sec.gov/CIK">
+                    0000021344
+                </identifier>
+                <segment>
+                    <xbrldi:explicitMember dimension="dei:LegalEntityAxis">
+                        ko:BottlingOperationsInAfricaMember
+                    </xbrldi:explicitMember>
+                </segment>
+            </entity>
+            <period>
+                <startDate>2023-01-01</startDate>
+                <endDate>2023-06-30</endDate>
+            </period>
+        </context>
+    \end{lstlisting}
+    \footnote[2]{taken from COCA COLA CO's 2023 Q2 report}
+\end{figure}
 
 The XML snippet fills in some of the missing information from the fact, namely:
 

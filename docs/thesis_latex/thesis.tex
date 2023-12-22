@@ -20,7 +20,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % LaTeX preamble
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{preambles/asl_preamble}
+\input{preambles/preamble.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Title page
@@ -37,7 +37,6 @@
 % TODO Add name of the supervisors
 \supervisionA{Ghislain Fourny}
 \supervisionB{Gustavo Alonso}
-%\supervisionC{Supervisor C}
 
 % TODO Change if necessary
 \projectYear{\the\year} % This year
@@ -92,15 +91,20 @@
 % \cleardoublepage
 % ...
 %
+\input{chapters/xbrl.tex}
+\cleardoublepage
 
 \input{chapters/implementation.tex}
 \cleardoublepage
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Bibliography
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\bibliographystyle{bibliography/IEEEtranN}
-\bibliography{bibliography/references}
+% \bibliographystyle{bibliography/IEEEtranN}
+\bibliographystyle{plain}
+% \bibliographystyle{acm}
+\bibliography{references}
 \addcontentsline{toc}{chapter}{Bibliography}
 \cleardoublepage
 

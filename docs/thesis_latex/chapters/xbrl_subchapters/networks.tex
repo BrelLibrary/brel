@@ -1,0 +1,51 @@
+\subsection{Networks}
+
+Up to this point, all concepts in the XBRL taxonomy are treated as independent entities.
+The whole filing can be viewed as an unordered set of facts with no relation between them.
+However, in reality, concepts are not independent of each other.
+Instead, concepts are often related to each other in some way.
+
+For example, the concepts "Assets" and "Liabilities" are related to each other in the sense that they are both part of the concept "Balance Sheet".
+Furthermore, the concept "Assets" can be further divided into the concepts "Current Assets" and "Non-Current Assets".
+The afforementioned relations can be visualized using a directed graph, as shown in figure \ref{fig:example_visualization_network_xbrl}.
+
+\begin{figure}[H]
+    \caption{Example of a relations between concepts in XBRL}
+    \label{fig:example_visualization_network_xbrl}
+    \dirtree{%
+        .1 Balance Sheet.
+        .2 Assets.
+        .3 Current Assets.
+        .3 Non-Current Assets.
+        .2 Liabilities.
+    }
+\end{figure}
+
+Any reader with a basic understanding of computer science will recognize that the above example is a graph, more specifically a tree.
+Graphs are commonly used to represent relations between entities.
+In the context of XBRL, graphs are used to represent all kinds of relations between concepts, facts, and other elements of an XBRL filing.
+From now on, I will refer to graphs that represent relations between concepts as "networks".
+XBRL commonly refers uses the term "Extended Link" to refer to networks or parts of networks.
+
+\subsection{Types of Networks}
+
+The XBRL 2.1 specification defines 6 built in types of networks\cite{xbrl21_terminology}\footnote[1]{The XBRL 2.1 specification is inconsistent about \texttt{link:footNotelink}. Section 1.4 does not list it as a standard extended link, section 3.5.2.4 does. I will assume that it is a standard extended link.}:
+
+\begin{itemize}
+    \item \texttt{link:presentationLink}: A network that represents the hierarchy of concepts in a report. An example of this can be seen in figure \ref{fig:example_visualization_network_xbrl}.
+    \item \texttt{link:calculationLink}: A network that represents how concepts are calculated from other concepts. 
+    For example, in figure \ref{fig:example_visualization_network_xbrl}, the concept "Assets" is calculated as the sum of the concepts "Current Assets" and "Non-Current Assets".
+    \item \texttt{link:definitionLink}: A network that represents the relations between concepts and their definitions. 
+    For example, there might be a concept "TotalAssets" that has the same semantic meaning as the concept "Assets". 
+    A definition network would represent that the two concepts are aliases of each other.
+    \item \texttt{link:labelLink}: A network that associates report elements with human-readable labels.
+    \item \texttt{link:referenceLink}: A network that links report elements to external resources. 
+    For example, the concept "Total Shareholder Return Amount" might have an official definition in the SEC's Code of Federal Regulations (CFR).
+    The reference network would link the concept to the subparagraph \texttt{17 CFR 229.402(v)(2)(iv)}\cite{cfr_total_shareholder_return_amount}.
+    \item \texttt{link:footnoteLink}: A network that links report elements, facts and other elements to footnotes.
+\end{itemize}
+
+XBRL refers to these built in networks as "standard extended links". 
+If needed, XBRL allows users to define their own networks, which are referred to as "custom extended links"\cite{xbrl21_terminology}.
+
+In the subsequent sections, I will describe how networks are implemented in XBRL on a conceptual level. 

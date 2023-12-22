@@ -28,7 +28,6 @@ import json
 DEBUG = False
 
 # Load the namespace config
-# TODO: make this configurable
 nsconfig_path = "brel/config/nsconfig.json"
 
 default_namespace_mappings: dict[str, str] = {}
@@ -69,7 +68,6 @@ def generate_alternative_prefixes(prefix: str) -> str:
     :param prefix: The prefix to generate an alternative prefix for
     :return: A str containing the alternative prefix
     """
-    # TODO: make this more robust
     # get the number at the end of the prefix
     prefix_numbers = re.findall(r"\d+$", prefix)
     # if there is a number, increment it. else, set it to 1

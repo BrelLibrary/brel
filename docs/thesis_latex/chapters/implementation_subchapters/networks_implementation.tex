@@ -1,0 +1,24 @@
+\section{Implementation of Networks}
+
+\subsection{Overview}
+
+In chapter \ref{chapter:xbrl}, we introduced the concept of networks.
+We also looked at the different types of networks that are defined in the XBRL 2.1 specification.
+In this chapter, we will look at how networks are represented in XBRL and how Brel parses them.
+
+As previously mentioned, one of the main goals of Brel is to shield the user from the complexity of the XBRL specification.
+Brel achieves this on two different levels.
+
+First, Brel implements a wrapper around each type of network.
+This wrapper provides a clean interface for some of the most common operations on networks.
+The functionality of the wrapper depends on the type of network.
+
+For example, the wrapper for calculation networks provides functions to validate the calculation network and to calculate the value of a concept.
+
+Second, Brel provides a simple API that allows users to access and traverse networks independent of the type of network.
+This API provides methods for traversing any directed acyclic graph.
+It is intended for advanced users and is useful for debugging networks in a report.
+
+For example, for each network, Brel provides a function that returns all direct children of a node in the network.
+
+

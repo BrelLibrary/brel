@@ -4,16 +4,13 @@ A context is a collection of aspects and their associated values (characteristic
 Contexts are closely modeled after the open information model of XBRL.
 
 @author: Robin Schmidiger
-@version: 0.1.0
-@date: 13 December 2023
+@version: 0.11
+@date: 20 December 2023
 """
 
-import lxml
-import lxml.etree
 from brel.characteristics import BrelAspect
-from brel import QName, QNameNSMap
-from brel.characteristics import *
-from brel.reportelements import Dimension, Member, IReportElement
+from brel import QName
+from brel.characteristics import ICharacteristic, ConceptCharacteristic, PeriodCharacteristic, EntityCharacteristic, UnitCharacteristic
 from typing import cast
 
 class Context:
@@ -37,6 +34,7 @@ class Context:
     def get_aspects(self) -> list[BrelAspect]:
         """
         Get the aspects of the context.
+        :returns: A list of all the aspects of the context.
         """
         return self.__aspects
     
@@ -50,13 +48,27 @@ class Context:
     def has_characteristic(self, aspect: BrelAspect) -> bool:
         """
         Check if the context has a certain aspect.
+        :param aspect: The aspect to check for.
+        :returns: True if the context has the aspect, False otherwise.
         """
-        return any(aspect == aspect for aspect in self.__aspects)
+        return any(aspect == context_aspect for context_aspect in self.__aspects)
     
-    # TODO: implement
     def get_characteristic_as_str(self, aspect: BrelAspect) -> str:
-        raise NotImplementedError()
-    
+        """
+        Get the value of an aspect as a string.
+        This is a convenience function.
+        The representation of aspects as strings is not standardized.
+        If the aspect is not present in the context, an empty string is returned.
+        :param aspect: The aspect to get the value of.
+        :returns: The value of the aspect as a string.
+        """
+        characteristic = self.get_characteristic(aspect)
+        if characteristic is None:
+            return ""
+        else:
+            return characteristic.get_value().__str__()
+
+    # TODO: implement
     def get_characteristic_as_qname(self, aspect: BrelAspect) -> QName:
         raise NotImplementedError()
     
@@ -97,6 +109,8 @@ class Context:
     def _add_characteristic(self, characteristic: ICharacteristic) -> None:
         """
         Add an aspect to the context.
+        This method is for advanced users only.
+        :param characteristic: The characteristic to add.
         """
         aspect = characteristic.get_aspect()
 
@@ -113,7 +127,8 @@ class Context:
         """
         Get the id of the context.
         This is an implementation detail of the underlying XBRL library.
-        It serves as a good sanity check 
+        It serves as a sanity check and is intended for advanced users only.
+        :returns: The id of the context as a string.
         """
         return self.__id
     

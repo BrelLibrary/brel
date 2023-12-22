@@ -36,7 +36,7 @@ def parse_period_from_xml(
             raise ValueError("The instant element has no text")
         
         # check cache
-        period_characteristic = get_from_cache(instant_date)
+        period_characteristic = get_from_cache(f"period {instant_date}")
         if period_characteristic is not None:
             # if the period characteristic is already in the cache, typecheck it and return it
             if not isinstance(period_characteristic, PeriodCharacteristic):
@@ -45,7 +45,7 @@ def parse_period_from_xml(
         else:
             # if the period characteristic is not in the cache, create it and add it to the cache
             period_characteristic = PeriodCharacteristic.instant(instant_date)
-            add_to_cache(instant_date, period_characteristic)
+            add_to_cache(f"period {instant_date}", period_characteristic)
             return period_characteristic
 
 
@@ -65,7 +65,7 @@ def parse_period_from_xml(
             raise ValueError("The endDate element has no text")
         
         # check cache
-        period_characteristic = get_from_cache(f"{start_date} {end_date}")
+        period_characteristic = get_from_cache(f"period {start_date} {end_date}")
         if period_characteristic is not None:
             # if the period characteristic is already in the cache, typecheck it and return it
             if not isinstance(period_characteristic, PeriodCharacteristic):
@@ -74,5 +74,5 @@ def parse_period_from_xml(
         else:
             # if the period characteristic is not in the cache, create it and add it to the cache
             period_characteristic = PeriodCharacteristic.duration(start_date, end_date)
-            add_to_cache(f"{start_date} {end_date}", period_characteristic)
+            add_to_cache(f"period {start_date} {end_date}", period_characteristic)
             return period_characteristic

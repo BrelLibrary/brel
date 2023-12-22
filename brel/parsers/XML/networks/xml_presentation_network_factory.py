@@ -5,16 +5,14 @@ from brel import QName, BrelLabelRole, QNameNSMap
 from brel.reportelements import IReportElement, Abstract, Hypercube, LineItems
 from brel.networks import INetwork, INetworkNode, PresentationNetwork, PresentationNetworkNode
 from brel.resource import IResource
-
-# TODO: change this
-from .i_xml_network_factory import IXMLNetworkFactory
+from brel.parsers.XML.networks import IXMLNetworkFactory
 
 class PresentationNetworkFactory(IXMLNetworkFactory):
     def __init__(self, qname_nsmap: QNameNSMap) -> None:
         super().__init__(qname_nsmap)
 
     def create_network(self, xml_link_element: lxml.etree._Element, roots: list[INetworkNode]) -> INetwork:
-        # TODO: make assertions
+        # TODO: turn this into a get_url)from_prefix and make_qname methods
         nsmap = self.get_qname_nsmap().get_nsmap()
 
         if len(roots) != 1:

@@ -64,9 +64,7 @@ def get_object_from_reference(
         
     elif referenced_element_type == "resource":
         # if the referenced element is a resource, create a new resource
-        # currently, only label and reference resources are supported
         if referenced_element.tag == f"{{{nsmap['link']}}}label":
-            # TODO: get the labels from the report elements instead of creating new ones
             to_element = BrelLabel.from_xml(referenced_element, qname_nsmap)
         elif referenced_element.tag == f"{{{nsmap['link']}}}reference":
             to_element = BrelReference.from_xml(referenced_element, qname_nsmap)

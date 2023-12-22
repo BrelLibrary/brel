@@ -82,11 +82,11 @@ def parse_typed_dimension_from_xml(
         raise ValueError("Dimension value not found in xml element. Please make sure that the dimension value is in the xml element. {xml_dimension}")
     
     # check cache
-    dimension_characteristic = get_from_cache(f"{dimension_axis} {dimension_value}")
+    dimension_characteristic = get_from_cache(f"typed dimension {dimension_axis} {dimension_value}")
     if dimension_characteristic is None:
         # create and add the characteristic
         dimension_characteristic = TypedDimensionCharacteristic(i_report_element, dimension_value, dimension_aspect)
-        add_to_cache(f"{dimension_axis} {dimension_value}", dimension_characteristic)
+        add_to_cache(f"typed dimension {dimension_axis} {dimension_value}", dimension_characteristic)
     else:
         if not isinstance(dimension_characteristic, TypedDimensionCharacteristic):
             raise ValueError("Dimension characteristic is not a typed dimension characteristic")

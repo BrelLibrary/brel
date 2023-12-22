@@ -45,7 +45,7 @@ def parse_entity_from_xml(
     entity_id = cast(str, entity_id)
 
     # check the cache
-    entity_characteristic = get_from_cache(entity_id)
+    entity_characteristic = get_from_cache(f"entity {entity_id}")
     if entity_characteristic is not None:
         # if the entity characteristic is already in the cache, typecheck it and return it
         if not isinstance(entity_characteristic, EntityCharacteristic):
@@ -59,5 +59,5 @@ def parse_entity_from_xml(
 
         # entity_qname = make_qname(f"{entity_prefix}:{entity_id}")
         entity_characteristic = EntityCharacteristic(entity_id, entity_url)
-        add_to_cache(entity_id, entity_characteristic)
+        add_to_cache(f"entity {entity_id}", entity_characteristic)
         return entity_characteristic

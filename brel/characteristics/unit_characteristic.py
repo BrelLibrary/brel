@@ -1,7 +1,13 @@
-import lxml
-import lxml.etree
+"""
+This file contains the UnitCharacteristic class.
+It is used to represent an XBRL unit in brel.
 
-from brel import QName, QNameNSMap
+@author: Robin Schmidiger
+@version: 0.2
+@date: 20 December 2023
+"""
+
+from brel import QName
 from brel.characteristics import BrelAspect, ICharacteristic
 
 class UnitCharacteristic(ICharacteristic):
@@ -75,48 +81,3 @@ class UnitCharacteristic(ICharacteristic):
         @return: True 'IFF' the unit is simple, False otherwise
         """
         return len(self.__numerators) == 1 and len(self.__denominators) == 0
-        
-
-    @classmethod
-    def from_xml(cls, xml_element: lxml.etree._Element, qname_nsmap: QNameNSMap) -> "UnitCharacteristic":
-        """
-        Create a Unit from an xml subtree.
-        @param xml_element: the xml subtree from which the Unit is created
-        @returns Unit: the Unit created from the xml subtree
-        @raises ValueError: if the XML element is malformed
-        """
-        # Check if the xml element has an id attribute
-        if "id" not in xml_element.attrib:
-            raise ValueError("The xml element does not have an id attribute")
-
-        # Turn the unit id into a QName
-        unit_id_str = xml_element.attrib["id"]
-
-        nsmap = qname_nsmap.get_nsmap()
-
-        # TODO: This feels a bit hacky. Improve this.
-        if ":" in unit_id_str:
-            unit_url = unit_id_str.split(":")[0]
-            unit_id = unit_id_str.split(":")[1]
-
-            unit_prefix = ""
-            for prefix, url in nsmap.items():
-                if url == unit_url:
-                    unit_prefix = prefix
-                    break
-        else:
-            unit_prefix = "xbrli"
-            unit_id = unit_id_str
-            unit_url = nsmap.get(unit_prefix)
-        
-        # TODO: Implement parsing numerators and denominators
-        numerators = []
-        denominators = []
-
-        unit_qname = QName.from_string(f"{unit_prefix}:{unit_id}", qname_nsmap)
-
-        if unit_qname in cls.__unit_cache:
-            return cls.__unit_cache[unit_qname]
-
-        return cls(unit_qname, numerators, denominators)
-    

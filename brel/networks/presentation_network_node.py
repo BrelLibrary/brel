@@ -37,9 +37,6 @@ class PresentationNetworkNode(INetworkNode):
         # check if there is a label that matches the preferred label role
         # if not, raise an error
         if preferred_label_role is not None and not report_element.has_label(preferred_label_role):
-            # TODO: remove this
-            for label in report_element.get_labels():
-                print(f"label: {label}, role: {label.get_label_role()}")
             raise ValueError(f"report element {report_element} does not have a label with role {preferred_label_role}")
     
     # First class citizens

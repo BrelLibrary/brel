@@ -5,9 +5,7 @@ from brel import QName, QNameNSMap
 from brel.networks import INetwork, INetworkNode, LabelNetwork, LabelNetworkNode
 from brel.reportelements import IReportElement
 from brel.resource import BrelLabel, IResource
-
-# TODO: change this
-from .i_xml_network_factory import IXMLNetworkFactory
+from brel.parsers.XML.networks import IXMLNetworkFactory
 
 class LabelNetworkFactory(IXMLNetworkFactory):
     def __init__(self, qname_nsmap: QNameNSMap) -> None:

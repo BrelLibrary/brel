@@ -70,11 +70,11 @@ def parse_explicit_dimension_from_xml(
         raise ValueError("Member not found in report elements. Please make sure that the member is in the report elements.")
     
     # check cache
-    dimension_characteristic = get_from_cache(f"{dimension_axis} {dimension_value}")
+    dimension_characteristic = get_from_cache(f"explicit dimension {dimension_axis} {dimension_value}")
     if dimension_characteristic is None:
         # create and add the characteristic
         dimension_characteristic = ExplicitDimensionCharacteristic(report_element, member, dimension_aspect)
-        add_to_cache(f"{dimension_axis} {dimension_value}", dimension_characteristic)
+        add_to_cache(f"explicit dimension {dimension_axis} {dimension_value}", dimension_characteristic)
     else:
         if not isinstance(dimension_characteristic, ExplicitDimensionCharacteristic):
             raise ValueError("Dimension characteristic is not an explicit dimension characteristic")
