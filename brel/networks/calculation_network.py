@@ -1,75 +1,162 @@
-import lxml
-import lxml.etree
+"""
+This module contains the class for representing a calculation network.
+A calculation network is a network of nodes that represent the calculation of a Component.
+Calculation networks also contain helper functions for checking the consistency of the calculation network specifically.
 
-from brel import QName
+@author: Robin Schmidiger
+@version: 0.3
+@date: 29 December 2023
+"""
+
+DEBUG = False
+
+from brel import QName, Fact
 from brel.networks import INetwork, CalculationNetworkNode, INetworkNode
+from brel.characteristics import BrelAspect, ICharacteristic
 from brel.reportelements import *
 
 from typing import cast
+
 
 class CalculationNetwork(INetwork):
     """
     Class for representing a presentation network.
     A presentation network is a network of nodes that represent the presentation of a Component.
     """
-    def __init__(self, roots: list[CalculationNetworkNode], link_role: str, link_name: QName) -> None:
+
+    def __init__(
+        self, roots: list[CalculationNetworkNode], link_role: str, link_name: QName
+    ) -> None:
         roots_copy = [cast(INetworkNode, root) for root in roots]
         super().__init__(roots_copy, link_role, link_name, True)
-    
-    
-    # second class citizens
-    def validate(self, filing) -> bool:
+
+    # second class citizen
+    def is_balance_consisent(self) -> bool:
         """
-        Validate the presentation network against the Filing
-        @param filing: Filing to validate against
-        @return: bool indicating whether the presentation network is valid
+        Returns true if the network is balance consistent.
+        A network is balance consistent iff, for each parent-child relationship
+        - if the two concepts have the same balance (credit/credit or debit/debit), then the child weight must be positive
+        - if the two concepts have different balances (credit/debit or debit/credit), then the child weight must be negative
         """
-        # TODO: make nice
-        # TODO: look at validation of calculation networks again
-        def __validate_subtree(node: CalculationNetworkNode) -> bool:
+
+        def is_subtree_balance_consistent(node: CalculationNetworkNode) -> bool:
             """
-            Validate a subtree of the presentation network
-            @param node: NetworkNode representing the root of the subtree
-            @return: bool indicating whether the subtree is valid
+            Returns true if the subtree rooted at node is balance consistent.
+            Operates recursively.
+            Returns false if
+            - Any parent or child balance is None
+            - The parent and child balances are the same, but the child weight is negative
+            - The parent and child balances are different, but the child weight is positive
+            - Any child subtree is not balance consistent
+            Returns true otherwise
             """
-            # if the node has no children, then it is valid
-            if len(node.get_children()) == 0:
+            # get the balance of the parent
+            parent_balance = node.get_concept().get_balance_type()
+            if parent_balance is None:
+                return False
+
+            # check the balance of the children
+            for child in node.get_children():
+                child = cast(CalculationNetworkNode, child)
+
+                child_balance = child.get_concept().get_balance_type()
+                if child_balance is None:
+                    return False
+
+                if parent_balance == child_balance:
+                    if child.get_weight() < 0:
+                        return False
+                else:
+                    if child.get_weight() > 0:
+                        return False
+
+                # check the balance of the children of the child
+                if not is_subtree_balance_consistent(child):
+                    return False
+
+            return True
+
+        # check the balance of the roots
+        for root in self.get_roots():
+            root = cast(CalculationNetworkNode, root)
+            if not is_subtree_balance_consistent(root):
+                return False
+
+        return True
+
+    def is_aggregation_consistent(self, facts: list[Fact]) -> bool:
+        """
+        A calculation network is aggregation consistent iff for all nodes, all children add up to the parent
+        :returns: True iff the network is aggregation consistent
+        """
+
+        def is_subnetwork_aggregation_consistent(node: CalculationNetworkNode) -> bool:
+            """
+            Returns true if the subtree rooted at node is aggregation consistent.
+            Operates recursively.
+            Returns false if
+            - the sum of all children values does not equal the parent value
+            - any child subtree is not aggregation consistent
+            Returns true otherwise
+            """
+            # if the node is a leaf, it is aggregation consistent
+            # even though this case would be captured by the following code, it is more efficient to short circuit the trivial case without querying the facts
+            if node.is_leaf():
                 return True
 
-            # validate the children
-            for child in node.get_children():
-                if not __validate_subtree(child):
+            concept = node.get_concept()
+            node_facts = list(
+                filter(lambda fact: fact.get_concept().get_value() == concept, facts)
+            )
+
+            for node_fact in node_facts:
+                node_value = node_fact.get_value_as_float()
+
+                # get the sum of the children values
+                children_sum: float = 0
+                for child in node.get_children():
+                    child = cast(CalculationNetworkNode, child)
+                    child_concept = child.get_concept()
+                    child_facts = filter(
+                        lambda fact: fact.get_concept().get_value() == child_concept,
+                        facts,
+                    )
+                    # go over each aspect of the node fact (except the concept) and filter the child facts by that aspect
+                    for node_aspect in node_fact.get_aspects():
+                        if node_aspect != BrelAspect.CONCEPT:
+                            node_characteristic = node_fact.get_characteristic(
+                                node_aspect
+                            )
+                            child_facts = filter(
+                                lambda fact: fact.get_characteristic(node_aspect)
+                                == node_characteristic,
+                                child_facts,
+                            )
+
+                    # there should only be one child fact left
+                    child_fact = next(child_facts)
+                    children_sum += child_fact.get_value_as_float() * child.get_weight()
+
+                if DEBUG:  # pragma: no cover
+                    print(
+                        f"node concept: {concept}, node value: {node_value}, children sum: {children_sum}"
+                    )
+
+                if node_value != children_sum:
                     return False
-            
-            # validate the node itself
-            # get the report element
-            concept = cast(Concept, node.get_report_element())
 
-            # get the fact value associated with the concept
-            facts = filing.get_facts_by_concept(concept)
+                # check the children
+                for child in node.get_children():
+                    child = cast(CalculationNetworkNode, child)
+                    if not is_subnetwork_aggregation_consistent(child):
+                        return False
 
-            for fact in facts:
-                fact_value = float(fact.get_value())
-
-                children_aggregate = 0
-
-                for child_node in node.get_children():
-                    child_concept = cast(Concept, child_node.get_report_element())
-                    child_facts = filing.get_facts_by_concept(child_concept)
-
-                    # get the right fact by comparing the context
-                    # TODO: currently just gets the right context by finding the one where the period is the same. Extend this to also check the entity, unit, etc.
-                    child_fact = next(filter(lambda x: x.get_context() == fact.get_context(), child_facts), None)
-
-                    child_fact_value = float(child_fact.get_value())
-                    child_weight = float(child_node.get_weight())
-
-                    children_aggregate += child_fact_value * child_weight
-                
-                if fact_value != children_aggregate:
-                    return False
-            
             return True
-        
-        return __validate_subtree(self.__roots)
-                
+
+        # check the roots
+        for root in self.get_roots():
+            root = cast(CalculationNetworkNode, root)
+            if not is_subnetwork_aggregation_consistent(root):
+                return False
+
+        return True

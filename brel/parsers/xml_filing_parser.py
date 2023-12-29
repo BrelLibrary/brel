@@ -16,25 +16,36 @@ from brel import QName, Fact, Component, QNameNSMap
 from brel.parsers import IFilingParser
 from brel.parsers.dts import XMLFileManager
 from brel.networks import INetwork
-from brel.parsers.utils.lxml_utils import get_all_nsmaps
+from brel.parsers.utils import get_all_nsmaps
 
 from .XML.networks.xml_networks_parser import parse_networks_from_xmls
-from brel.parsers.XML import parse_components_xml, parse_report_elements_xml, parse_facts_xml, normalize_nsmap
-from brel.parsers.XML import check_duplicate_rolerefs, check_roleref_pointers, check_duplicate_arcs
+from brel.parsers.XML import (
+    parse_components_xml,
+    parse_report_elements_xml,
+    parse_facts_xml,
+    normalize_nsmap,
+)
+from brel.parsers.XML import (
+    check_duplicate_rolerefs,
+    check_roleref_pointers,
+    check_duplicate_arcs,
+)
 
 from typing import Any
 
 DEBUG = False
 
+
 class XMLFilingParser(IFilingParser):
     def __init__(
-            self,
-            filepaths: list[str],
-            encoding: str = "utf-8",
-            ) -> None:
-        
+        self,
+        filepaths: list[str],
+        encoding: str = "utf-8",
+    ) -> None:
         if len(filepaths) < 1:
-            raise ValueError("No filepaths provided. Make sure to provide at least one filepath.")
+            raise ValueError(
+                "No filepaths provided. Make sure to provide at least one filepath."
+            )
 
         self.__filing_type = "XML"
         self.__encoding = encoding
@@ -45,17 +56,18 @@ class XMLFilingParser(IFilingParser):
         # mapping from xml ids to report elements, facts, and components
         # handy for resolving hrefs
         self.__id_to_any: dict[str, Any] = {}
-        
+
         # crop the filing location from all filepaths
         for i in range(len(filepaths)):
             filepaths[i] = os.path.relpath(filepaths[i], self.__filing_location)
 
-        
         # load the DTS
         if DEBUG:  # pragma: no cover
             self.__print("Resolving DTS...")
-        self.__file_manager = XMLFileManager("brel/dts_cache/", self.__filing_location, filepaths, self.__parser)
-        
+        self.__file_manager = XMLFileManager(
+            "brel/dts_cache/", self.__filing_location, filepaths, self.__parser
+        )
+
         # normalize and bootstrap the QName nsmap
         if DEBUG:  # pragma: no cover
             self.__print("Normalizing nsmap...")
@@ -67,9 +79,9 @@ class XMLFilingParser(IFilingParser):
 
         if DEBUG:  # pragma: no cover
             self.__print("XMLFilingParser initialized!")
-            print("-"*50)
-    
-    def __create_nsmap(self) -> QNameNSMap:        
+            print("-" * 50)
+
+    def __create_nsmap(self) -> QNameNSMap:
         xml_trees = self.__file_manager.get_all_files()
 
         nsmaps = get_all_nsmaps(xml_trees)
@@ -90,7 +102,7 @@ class XMLFilingParser(IFilingParser):
             qname_nsmap.add_to_nsmap(url, prefix)
             if DEBUG:  # pragma: no cover
                 print(f"> {prefix:20} -> {url}")
-        
+
         if DEBUG:  # pragma: no cover
             print("[QName] Prefix redirects:")
         for redirect_from, redirect_to in redirects.items():
@@ -98,7 +110,7 @@ class XMLFilingParser(IFilingParser):
             qname_nsmap.add_redirect(redirect_from, redirect_to)
             if DEBUG:  # pragma: no cover
                 print(f"> {redirect_from:10} -> {redirect_to}")
-        
+
         if DEBUG:  # pragma: no cover
             print("[QName] Prefix renames:")
         for rename_to, rename_from in renames.items():
@@ -106,62 +118,77 @@ class XMLFilingParser(IFilingParser):
             qname_nsmap.add_rename(rename_from, rename_to)
             if DEBUG:
                 print(f"> {rename_from:10} -> {rename_to}")
-        
+
         if DEBUG:  # pragma: no cover
             print("Note: Prefix redirects are not recommended.")
-        
+
         return qname_nsmap
 
-    
     def __print(self, output: str):
         """
         Print a message with the prefix [XMLFilingParser].
         """
         if DEBUG:  # pragma: no cover
             print(self.__print_prefix, output)
-    
+
     def get_nsmap(self) -> QNameNSMap:
         return self.__nsmap
-    
+
     def parse_report_elements(self) -> dict[QName, IReportElement]:
         """
         Parse the concepts.
         @return: A list of all the concepts in the filing, even those that are not reported.
         """
-        xsd_filenames = [filename for filename in self.__file_manager.get_file_names() if filename.endswith(".xsd")]
-        xsd_etrees = [self.__file_manager.get_file(filename) for filename in xsd_filenames]
+        xsd_filenames = [
+            filename
+            for filename in self.__file_manager.get_file_names()
+            if filename.endswith(".xsd")
+        ]
+        xsd_etrees = [
+            self.__file_manager.get_file(filename) for filename in xsd_filenames
+        ]
 
-        report_elems, id_to_report_elem = parse_report_elements_xml(xsd_etrees, self.__nsmap)
+        report_elems, id_to_report_elem = parse_report_elements_xml(
+            xsd_etrees, self.__nsmap
+        )
 
         for id, report_elem in id_to_report_elem.items():
             if id in self.__id_to_any.keys():
-                raise ValueError(f"the id {id} is not unique. It is used by {self.__id_to_any[id]} and {report_elem}")
-            
+                raise ValueError(
+                    f"the id {id} is not unique. It is used by {self.__id_to_any[id]} and {report_elem}"
+                )
+
             self.__id_to_any[id] = report_elem
 
         return report_elems
-    
 
     def parse_facts(self, report_elements: dict[QName, IReportElement]) -> list[Fact]:
         """
         Parse the facts.
         """
         all_filenames = self.__file_manager.get_file_names()
-        xml_filenames = list(filter(lambda filename: filename.endswith(".xml"), all_filenames))
-        xml_etrees = [self.__file_manager.get_file(filename) for filename in xml_filenames]
+        xml_filenames = list(
+            filter(lambda filename: filename.endswith(".xml"), all_filenames)
+        )
+        xml_etrees = [
+            self.__file_manager.get_file(filename) for filename in xml_filenames
+        ]
 
         facts, id_to_fact = parse_facts_xml(xml_etrees, report_elements, self.__nsmap)
 
         for id, fact in id_to_fact.items():
             if id in self.__id_to_any.keys():
-                raise ValueError(f"the id {id} is not unique. It is used by {self.__id_to_any[id]} and {fact}")
-            
+                raise ValueError(
+                    f"the id {id} is not unique. It is used by {self.__id_to_any[id]} and {fact}"
+                )
+
             self.__id_to_any[id] = fact
-        
+
         return facts
 
-    
-    def parse_networks(self, report_elements: dict[QName, IReportElement]) -> dict[str|None, list[INetwork]]:
+    def parse_networks(
+        self, report_elements: dict[QName, IReportElement]
+    ) -> dict[str | None, list[INetwork]]:
         """
         Parse the networks.
         @param report_elements: A dictionary containing ALL report elements that the networks report against.
@@ -175,30 +202,25 @@ class XMLFilingParser(IFilingParser):
         )
 
     def parse_components(
-            self, 
-            report_elements: dict[QName, IReportElement], 
-            networks: dict[str|None, list[INetwork]]
-            ) -> tuple[list[Component], dict[QName, IReportElement]]:
+        self,
+        report_elements: dict[QName, IReportElement],
+        networks: dict[str | None, list[INetwork]],
+    ) -> tuple[list[Component], dict[QName, IReportElement]]:
         """
         Parse the components.
         @param report_elements: A dictionary containing ALL report elements that the components report against.
-        @param networks: A dictionary containing ALL networks that the components report against. 
+        @param networks: A dictionary containing ALL networks that the components report against.
         The keys are the component names, the values are lists of networks for that component.
-        @return: 
+        @return:
          - A list of all the components in the filing.
          - A dictionary of all the report elements in the filing. These might have been altered by the components.
         """
         return parse_components_xml(
-            self.__file_manager.get_all_files(),
-            networks,
-            report_elements,
-            self.__nsmap
+            self.__file_manager.get_all_files(), networks, report_elements, self.__nsmap
         )
-        
+
     def get_filing_type(self) -> str:
         """
         Get the filing type. Returns "XML".
         """
         return self.__filing_type
-    
-        

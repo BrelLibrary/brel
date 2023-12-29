@@ -10,8 +10,15 @@ Contexts are closely modeled after the open information model of XBRL.
 
 from brel.characteristics import BrelAspect
 from brel import QName
-from brel.characteristics import ICharacteristic, ConceptCharacteristic, PeriodCharacteristic, EntityCharacteristic, UnitCharacteristic
+from brel.characteristics import (
+    ICharacteristic,
+    ConceptCharacteristic,
+    PeriodCharacteristic,
+    EntityCharacteristic,
+    UnitCharacteristic,
+)
 from typing import cast
+
 
 class Context:
     """
@@ -21,15 +28,15 @@ class Context:
     The only required aspect is the concept
     """
 
-    def __init__(self, context_id, aspects: list[BrelAspect]) -> None:
-        self.__id : str = context_id
+    def __init__(self, context_id) -> None:
+        self.__id: str = context_id
 
         # aspects are the axis, characteristics are the values per axis
-        self.__aspects : list[BrelAspect] = aspects
+        self.__aspects: list[BrelAspect] = []
         self.__characteristics: dict[BrelAspect, ICharacteristic] = {}
 
         self.__aspects.sort(key=lambda aspect: aspect.get_name())
-    
+
     # First class citizens
     def get_aspects(self) -> list[BrelAspect]:
         """
@@ -37,13 +44,13 @@ class Context:
         :returns: A list of all the aspects of the context.
         """
         return self.__aspects
-    
+
     def get_characteristic(self, aspect: BrelAspect) -> ICharacteristic | None:
         """
         Get the value of an aspect.
         """
         return next((c for a, c in self.__characteristics.items() if a == aspect), None)
-    
+
     # Second class citizens
     def has_characteristic(self, aspect: BrelAspect) -> bool:
         """
@@ -52,7 +59,7 @@ class Context:
         :returns: True if the context has the aspect, False otherwise.
         """
         return any(aspect == context_aspect for context_aspect in self.__aspects)
-    
+
     def get_characteristic_as_str(self, aspect: BrelAspect) -> str:
         """
         Get the value of an aspect as a string.
@@ -71,34 +78,34 @@ class Context:
     # TODO: implement
     def get_characteristic_as_qname(self, aspect: BrelAspect) -> QName:
         raise NotImplementedError()
-    
+
     def get_characteristic_as_int(self, aspect: BrelAspect) -> int:
         raise NotImplementedError()
-    
+
     def get_characteristic_as_float(self, aspect: BrelAspect) -> float:
         raise NotImplementedError()
-    
+
     def get_characteristic_as_bool(self, aspect: BrelAspect) -> bool:
         raise NotImplementedError()
-    
+
     def get_concept(self) -> ConceptCharacteristic:
         """
         Get the concept of the context.
         """
         return cast(ConceptCharacteristic, self.get_characteristic(BrelAspect.CONCEPT))
-    
+
     def get_period(self) -> PeriodCharacteristic | None:
         """
         Get the period of the context.
         """
         return cast(PeriodCharacteristic, self.get_characteristic(BrelAspect.PERIOD))
-    
+
     def get_entity(self) -> EntityCharacteristic | None:
         """
         Get the entity of the context.
         """
         return cast(EntityCharacteristic, self.get_characteristic(BrelAspect.ENTITY))
-    
+
     def get_unit(self) -> UnitCharacteristic | None:
         """
         Get the unit of the context.
@@ -122,7 +129,7 @@ class Context:
             self.__aspects.sort(key=lambda aspect: aspect.get_name())
         else:
             pass
-    
+
     def _get_id(self) -> str:
         """
         Get the id of the context.
@@ -131,16 +138,16 @@ class Context:
         :returns: The id of the context as a string.
         """
         return self.__id
-    
+
     def __str__(self) -> str:
         output = ""
         for aspect in self.__aspects:
             output += f"{aspect} "
         return output
-    
+
     def __eq__(self, __value: object) -> bool:
         if not isinstance(__value, Context):
             return False
-        
+
         # TODO: dont use the _id, compare the aspects instead
         return self._get_id() == __value._get_id()

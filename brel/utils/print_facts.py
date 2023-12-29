@@ -1,5 +1,14 @@
-from brel import Fact, BrelAspect, Context, Filing, BrelLabel, QName
+"""
+Module for pretty printing facts as a table to the console.
+
+@author: Robin Schmidiger
+@version: 0.2
+@date: 29 December 2023
+"""
+
+from brel import Fact, BrelAspect
 from prettytable import PrettyTable
+
 
 def pprint_facts(facts: list[Fact]):
     """
@@ -12,7 +21,7 @@ def pprint_facts(facts: list[Fact]):
         context = fact.get_context()
         for aspect in context.get_aspects():
             dimensions.add(aspect)
-    
+
     dimensions = list(dimensions)
 
     # helper function for sorting dimensions
@@ -33,7 +42,7 @@ def pprint_facts(facts: list[Fact]):
             return "4"
         else:
             return "5" + dimension.get_name()
-    
+
     dimensions.sort(key=sort_dimensions)
 
     # initialize the table
@@ -48,17 +57,24 @@ def pprint_facts(facts: list[Fact]):
     rows = []
     for fact in facts:
         context = fact.get_context()
-        row = [fact._get_id()] + [context.get_characteristic(dimension) for dimension in dimensions] + [fact.get_value_as_str()]
-        
+        row = (
+            [fact._get_id()]
+            + [context.get_characteristic(dimension) for dimension in dimensions]
+            + [fact.get_value_as_str()]
+        )
+
         rows.append(row)
-    
-    rows.sort(key=lambda row: int(row[0].split("-")[1]))
+
+    # rows.sort(key=lambda row: int(row[0].split("-")[1]))
+    # sort rows alphabetically by the fact id
+    rows.sort(key=lambda row: row[0])
 
     # add the rows to the table and print it
     for row in rows:
         table.add_row(row)
-    
+
     print(table)
+
 
 def pprint_fact(fact: Fact):
     """
@@ -78,11 +94,11 @@ def pprint_fact(fact: Fact):
     context = fact.get_context()
     for aspect in context.get_aspects():
         rows.append([aspect.get_name(), context.get_characteristic(aspect)])
-    
+
     rows.sort(key=lambda row: row[0])
 
     # add the rows to the table and print it
     for row in rows:
         table.add_row(row)
-    
+
     print(table)

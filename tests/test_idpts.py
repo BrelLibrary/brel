@@ -18,7 +18,9 @@ idpts_testcases_filename = "testcases.xml"
 testcases_etree = lxml.etree.parse(idpts_testcases_folder + idpts_testcases_filename)
 testcase_elements = testcases_etree.xpath("//testcase")
 
-testcase_filenames = [testcase_element.get("uri") for testcase_element in testcase_elements]
+testcase_filenames = [
+    testcase_element.get("uri") for testcase_element in testcase_elements
+]
 
 # def prepend_path_prefix(filename):
 #     return idpts_testcases_folder + filename
@@ -32,8 +34,9 @@ def filter_out_unsupported(testcase_filename):
     if "semantics" in testcase_filename:
         return True
     else:
-        return False    
+        return False
     return True
+
 
 testcase_filenames = list(filter(filter_out_unsupported, testcase_filenames))
 
@@ -65,31 +68,40 @@ for testcase_filename in testcase_filenames:
         testcase_folder = testcase_filename.rsplit("/", 1)[0]
 
         path_prefix = idpts_testcases_folder + testcase_folder + "/"
-        
+
         def prepend_path_prefix(filename):
             return path_prefix + filename
-        
+
         instance_filename = prepend_path_prefix(instance_filename)
-        linkbase_filenames = [prepend_path_prefix(linkbase_filename) for linkbase_filename in linkbase_filenames]
+        linkbase_filenames = [
+            prepend_path_prefix(linkbase_filename)
+            for linkbase_filename in linkbase_filenames
+        ]
 
         # get the expected results
         result = variation.find("{*}result")
         expected_result = result.get("expected", "error")
-        
+
         # run the test
         text_exception: Exception | None = None
 
         try:
-            filing = Filing.open(instance_filename, linkbases=linkbase_filenames)
+            filing = Filing.open(instance_filename, *linkbase_filenames)
             print(f"> No exception raised.")
         except Exception as e:
             # print(f"Exception: {e}")
             print(f"> Exception raised: {e}")
             text_exception = e
 
-        if (expected_result == "error" or expected_result == "invalid") and text_exception is None:
-            print(f"[bold red][!!! FAIL !!!][/bold red]", f"expected error, but none was raised.")
-        elif expected_result ==  "valid" and text_exception is not None:
-            print(f"[bold red][!!! FAIL !!!][/bold red]", f"expected no error, but got {text_exception}")
-
-
+        if (
+            expected_result == "error" or expected_result == "invalid"
+        ) and text_exception is None:
+            print(
+                f"[bold red][!!! FAIL !!!][/bold red]",
+                f"expected error, but none was raised.",
+            )
+        elif expected_result == "valid" and text_exception is not None:
+            print(
+                f"[bold red][!!! FAIL !!!][/bold red]",
+                f"expected no error, but got {text_exception}",
+            )

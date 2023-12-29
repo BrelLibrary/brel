@@ -1,9 +1,10 @@
 from brel import Filing
 from brel.utils import pprint_facts
 
+
 def example1():
     """
-    Example of how to use brel to open a filing and get all reported the report elements and print some of their labels 
+    Example of how to use brel to open a filing and get all reported the report elements and print some of their labels
     """
 
     # open the filing
@@ -12,15 +13,13 @@ def example1():
     filing = Filing.open("reports/aapl.zip")
 
     # get the us-gaap:Assets concept
-    assets_concept = filing.get_report_element_by_name("us-gaap:Assets")
+    assets_concept = filing.get_concept_by_name("us-gaap:Assets")
+
+    if assets_concept is None:
+        raise ValueError("Could not find the concept us-gaap:Assets")
 
     # get all facts that report against the assets concept
     assets_facts = filing.get_facts_by_concept(assets_concept)
 
     # print the facts
-    pprint_facts(assets_facts)
-
-    # alternative version using pandas notation
-    assets_facts = filing[filing["concept"] == "us-gaap:Assets"]
-
     pprint_facts(assets_facts)

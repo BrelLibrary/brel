@@ -1,4 +1,13 @@
-import lxml.etree
+"""
+This module contains the CalculationNetworkNode class.
+CalculationNetworkNodes are used to represent nodes in a calculation network.
+Since a node can have children, nodes can also be viewed as trees.
+Note: the balance consistency check is not implemented here, but in the CalculationNetwork class.
+
+@author: Robin Schmidiger
+@version: 0.8
+@date: 29 December 2023
+"""
 
 from brel.networks import INetworkNode
 from brel.reportelements import IReportElement, Concept
@@ -8,6 +17,7 @@ from typing import cast
 
 from brel.resource import IResource
 
+
 class CalculationNetworkNode(INetworkNode):
     """
     Class for representing a node in a network.
@@ -15,18 +25,20 @@ class CalculationNetworkNode(INetworkNode):
     """
 
     def __init__(
-            self, 
-            report_element: IReportElement, 
-            children: list['CalculationNetworkNode'],
-            arc_role: str,
-            arc_name: QName,
-            link_role: str,
-            link_name: QName,
-            weight: float = 1.0,
-            order: int = 1
-            ):
+        self,
+        report_element: IReportElement,
+        children: list["CalculationNetworkNode"],
+        arc_role: str,
+        arc_name: QName,
+        link_role: str,
+        link_name: QName,
+        weight: float = 1.0,
+        order: int = 1,
+    ):
         if not isinstance(report_element, Concept):
-            raise TypeError(f"report_element must be of type Concept, but is of type {type(report_element)}")
+            raise TypeError(
+                f"report_element must be of type Concept, but is of type {type(report_element)}"
+            )
 
         self.__report_element = report_element
         self.__children = children
@@ -36,7 +48,7 @@ class CalculationNetworkNode(INetworkNode):
         self.__link_name = link_name
         self.__order = order
         self.__weight = weight
-    
+
     # First class citizens
     def get_report_element(self) -> IReportElement:
         """
@@ -44,21 +56,21 @@ class CalculationNetworkNode(INetworkNode):
         @return: IReportElement associated with this node
         """
         return self.__report_element
-    
+
     def get_resource(self) -> IResource:
         """
         Would return the resource associated with this node, but calculation network nodes do not point to resources
         @raises ValueError: CalculationNetworkNode does not point to a resource
         """
         raise ValueError("CalculationNetworkNode does not point to a resource")
-    
+
     def is_a(self) -> str:
         """
         @return: str containing 'report element'
         """
-        return 'report element'
-    
-    def get_children(self) -> list['INetworkNode']:
+        return "report element"
+
+    def get_children(self) -> list["INetworkNode"]:
         """
         Returns the children of this node
         @return: list[NetworkNode] containing the children of this node
@@ -73,26 +85,26 @@ class CalculationNetworkNode(INetworkNode):
         @return: float containing the weight of this node
         """
         return self.__weight
-    
+
     def get_order(self) -> int:
         """
         Returns the order of this node
         @return: int containing the order of this node
         """
         return self.__order
-    
+
     def get_arc_role(self) -> str:
         return self.__arc_role
-    
+
     def get_arc_name(self) -> QName:
         return self.__arc_name
-    
+
     def get_link_role(self) -> str:
         return self.__link_role
-    
+
     def get_link_name(self) -> QName:
         return self.__link_name
-    
+
     def __str__(self) -> str:
         """
         Returns a string representation of this node
@@ -100,7 +112,16 @@ class CalculationNetworkNode(INetworkNode):
         """
 
         return f"NetworkNode(report_element={self.__report_element}, no. children={len(self.__children)}"
-    
+
+    # second class citizens
+    def get_concept(self) -> Concept:
+        """
+        Returns the concept associated with this node
+        CalculationNetworkNodes are only associated with concepts
+        @return: Concept associated with this node
+        """
+        return cast(Concept, self.__report_element)
+
     # Internal methods
     def add_child(self, child: INetworkNode):
         """
@@ -112,21 +133,3 @@ class CalculationNetworkNode(INetworkNode):
 
         self.__children.append(child)
         self.__children.sort(key=lambda node: node.get_order())
-
-        # sanity check to make sure the weights of the children are legal. The following configurations are illegal:
-        # - self = debit, child = debit, child_weight < 0
-        # - self = debit, child = credit, child_weight > 0
-        # - self = credit, child = debit, child_weight > 0
-        # - self = credit, child = credit, child_weight < 0
-
-        self_balance = self.__report_element.get_balance_type()
-        child_balance = cast(Concept, child.get_report_element()).get_balance_type()
-        child_weight = child.get_weight()
-        if (self_balance == "debit" and child_balance == "debit" and child_weight < 0):
-            raise ValueError(f"the child {child} has a negative weight, but the parent {self} has a debit balance")
-        elif (self_balance == "debit" and child_balance == "credit" and child_weight > 0):
-            raise ValueError(f"the child {child} has a positive weight, but the parent {self} has a debit balance")
-        elif (self_balance == "credit" and child_balance == "debit" and child_weight > 0):
-            raise ValueError(f"the child {child} has a positive weight, but the parent {self} has a credit balance")
-        elif (self_balance == "credit" and child_balance == "credit" and child_weight < 0):
-            raise ValueError(f"the child {child} has a negative weight, but the parent {self} has a credit balance")
