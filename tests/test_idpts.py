@@ -12,15 +12,6 @@ from rich import print
 
 from brel import Filing
 
-idpts_testcases_folder = "tests/interactive_data_test_suite/conf/"
-idpts_testcases_filename = "testcases.xml"
-
-testcases_etree = lxml.etree.parse(idpts_testcases_folder + idpts_testcases_filename)
-testcase_elements = testcases_etree.xpath("//testcase")
-
-testcase_filenames = [
-    testcase_element.get("uri") for testcase_element in testcase_elements
-]
 
 # def prepend_path_prefix(filename):
 #     return idpts_testcases_folder + filename
@@ -38,70 +29,89 @@ def filter_out_unsupported(testcase_filename):
     return True
 
 
-testcase_filenames = list(filter(filter_out_unsupported, testcase_filenames))
+def test_idpts():
+    idpts_testcases_folder = "tests/interactive_data_test_suite/conf/"
+    idpts_testcases_filename = "testcases.xml"
 
-for testcase_filename in testcase_filenames:
-    testcase_etree = lxml.etree.parse(idpts_testcases_folder + testcase_filename)
-    testcase_elem = testcase_etree.getroot()
+    testcases_etree = lxml.etree.parse(
+        idpts_testcases_folder + idpts_testcases_filename
+    )
+    testcase_elements = testcases_etree.xpath("//testcase")
 
-    creator = testcase_elem.find("{*}creator")
-    creator_name = creator.find("{*}name")
-    creator_email = creator.find("{*}email")
-    print(f"creator: {creator_name.text} ({creator_email.text})")
+    testcase_filenames = [
+        testcase_element.get("uri") for testcase_element in testcase_elements
+    ]
 
-    test_nr = testcase_elem.find("{*}number")
-    test_name = testcase_elem.find("{*}name")
+    testcase_filenames = list(filter(filter_out_unsupported, testcase_filenames))
 
-    print(f"Running test {test_name.text} ({test_nr.text})")
-    variations = testcase_elem.findall("{*}variation")
-    for variation in variations:
-        variation_id = variation.get("id")
-        variation_name = variation.find("{*}name")
-        print(f"variation: {variation_name.text} ({variation_id})")
+    for testcase_filename in testcase_filenames:
+        testcase_etree = lxml.etree.parse(idpts_testcases_folder + testcase_filename)
+        testcase_elem = testcase_etree.getroot()
 
-        # get filenames relevant for this variation
-        data = variation.find("{*}data")
+        creator = testcase_elem.find("{*}creator")
+        creator_name = creator.find("{*}name")
+        creator_email = creator.find("{*}email")
+        print(f"creator: {creator_name.text} ({creator_email.text})")
 
-        instance_filename = data.find("{*}instance").text
-        linkbase_filenames = [linkbase.text for linkbase in data.findall("{*}linkbase")]
+        test_nr = testcase_elem.find("{*}number")
+        test_name = testcase_elem.find("{*}name")
 
-        testcase_folder = testcase_filename.rsplit("/", 1)[0]
+        print(f"Running test {test_name.text} ({test_nr.text})")
+        variations = testcase_elem.findall("{*}variation")
+        for variation in variations:
+            variation_id = variation.get("id")
+            variation_name = variation.find("{*}name")
+            print(f"variation: {variation_name.text} ({variation_id})")
 
-        path_prefix = idpts_testcases_folder + testcase_folder + "/"
+            # get filenames relevant for this variation
+            data = variation.find("{*}data")
 
-        def prepend_path_prefix(filename):
-            return path_prefix + filename
+            instance_filename = data.find("{*}instance").text
+            linkbase_filenames = [
+                linkbase.text for linkbase in data.findall("{*}linkbase")
+            ]
 
-        instance_filename = prepend_path_prefix(instance_filename)
-        linkbase_filenames = [
-            prepend_path_prefix(linkbase_filename)
-            for linkbase_filename in linkbase_filenames
-        ]
+            testcase_folder = testcase_filename.rsplit("/", 1)[0]
 
-        # get the expected results
-        result = variation.find("{*}result")
-        expected_result = result.get("expected", "error")
+            path_prefix = idpts_testcases_folder + testcase_folder + "/"
 
-        # run the test
-        text_exception: Exception | None = None
+            def prepend_path_prefix(filename):
+                return path_prefix + filename
 
-        try:
-            filing = Filing.open(instance_filename, *linkbase_filenames)
-            print(f"> No exception raised.")
-        except Exception as e:
-            # print(f"Exception: {e}")
-            print(f"> Exception raised: {e}")
-            text_exception = e
+            instance_filename = prepend_path_prefix(instance_filename)
+            linkbase_filenames = [
+                prepend_path_prefix(linkbase_filename)
+                for linkbase_filename in linkbase_filenames
+            ]
 
-        if (
-            expected_result == "error" or expected_result == "invalid"
-        ) and text_exception is None:
-            print(
-                f"[bold red][!!! FAIL !!!][/bold red]",
-                f"expected error, but none was raised.",
-            )
-        elif expected_result == "valid" and text_exception is not None:
-            print(
-                f"[bold red][!!! FAIL !!!][/bold red]",
-                f"expected no error, but got {text_exception}",
-            )
+            # get the expected results
+            result = variation.find("{*}result")
+            expected_result = result.get("expected", "error")
+
+            # run the test
+            text_exception: Exception | None = None
+
+            try:
+                filing = Filing.open(instance_filename, *linkbase_filenames)
+                print(f"> No exception raised.")
+            except Exception as e:
+                # print(f"Exception: {e}")
+                print(f"> Exception raised: {e}")
+                text_exception = e
+
+            if (
+                expected_result == "error" or expected_result == "invalid"
+            ) and text_exception is None:
+                print(
+                    f"[bold red][!!! FAIL !!!][/bold red]",
+                    f"expected error, but none was raised.",
+                )
+            elif expected_result == "valid" and text_exception is not None:
+                print(
+                    f"[bold red][!!! FAIL !!!][/bold red]",
+                    f"expected no error, but got {text_exception}",
+                )
+
+
+if __name__ == "__main__":
+    test_idpts()

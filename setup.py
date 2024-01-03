@@ -39,8 +39,8 @@ setup(
     author="PapediPoo",
     packages=find_packages(exclude=["tests", ".github"]),
     install_requires=read_requirements("requirements.txt"),
-    entry_points={
-        "console_scripts": ["brel = brel.__main__:main"]
-    },
+    entry_points={"console_scripts": ["brel = brel.__main__:main"]},
+    setup_requires=["pytest-runner"],
+    tests_require=["pytest"],
     extras_require={"test": read_requirements("requirements-test.txt")},
 )

@@ -5,8 +5,8 @@ The whole filing can be viewed as an unordered set of facts with no relation bet
 However, in reality, concepts are not independent of each other.
 Instead, concepts are often related to each other in some way.
 
-For example, the concepts "Assets" and "Liabilities" are related to each other in the sense that they are both part of the concept "Balance Sheet".
-Furthermore, the concept "Assets" can be further divided into the concepts "Current Assets" and "Non-Current Assets".
+For example, the concepts \texttt{Assets} and \texttt{Liabilities} are related to each other in the sense that they are both part of the concept \texttt{Balance Sheet}.
+Furthermore, the concept \texttt{Assets} can be further divided into the concepts \texttt{Current Assets} and \texttt{Non-Current Assets}.
 The afforementioned relations can be visualized using a directed graph, as shown in figure \ref{fig:example_visualization_network_xbrl}.
 
 \begin{figure}[H]
@@ -21,11 +21,12 @@ The afforementioned relations can be visualized using a directed graph, as shown
     }
 \end{figure}
 
-Any reader with a basic understanding of computer science will recognize that the above example is a graph, more specifically a tree.
+A reader with a basic understanding of mathematics will recognize that the above example is a directed acyclic graph (DAG).
+More specifically, the above example is a tree.
 Graphs are commonly used to represent relations between entities.
 In the context of XBRL, graphs are used to represent all kinds of relations between concepts, facts, and other elements of an XBRL filing.
-From now on, I will refer to graphs that represent relations between concepts as "networks".
-XBRL commonly refers uses the term "Extended Link" to refer to networks or parts of networks.
+From now on, I will refer to graphs that represent relations between concepts as \texttt{networks}.
+XBRL commonly refers uses the term \texttt{Extended Link} to refer to networks or parts of networks.
 
 \subsection{Types of Networks}
 
@@ -34,18 +35,182 @@ The XBRL 2.1 specification defines 6 built in types of networks\cite{xbrl21_term
 \begin{itemize}
     \item \texttt{link:presentationLink}: A network that represents the hierarchy of concepts in a report. An example of this can be seen in figure \ref{fig:example_visualization_network_xbrl}.
     \item \texttt{link:calculationLink}: A network that represents how concepts are calculated from other concepts. 
-    For example, in figure \ref{fig:example_visualization_network_xbrl}, the concept "Assets" is calculated as the sum of the concepts "Current Assets" and "Non-Current Assets".
+    For example, in figure \ref{fig:example_visualization_network_xbrl}, the concept \texttt{Assets} is calculated as the sum of the concepts "Current Assets" and "Non-Current Assets".
     \item \texttt{link:definitionLink}: A network that represents the relations between concepts and their definitions. 
-    For example, there might be a concept "TotalAssets" that has the same semantic meaning as the concept "Assets". 
+    For example, there might be a concept \texttt{TotalAssets} that has the same semantic meaning as the concept \texttt{Assets}. 
     A definition network would represent that the two concepts are aliases of each other.
     \item \texttt{link:labelLink}: A network that associates report elements with human-readable labels.
     \item \texttt{link:referenceLink}: A network that links report elements to external resources. 
-    For example, the concept "Total Shareholder Return Amount" might have an official definition in the SEC's Code of Federal Regulations (CFR).
+    For example, the concept \texttt{Total Shareholder Return Amount} might have an official definition in the SEC's Code of Federal Regulations (CFR).
     The reference network would link the concept to the subparagraph \texttt{17 CFR 229.402(v)(2)(iv)}\cite{cfr_total_shareholder_return_amount}.
     \item \texttt{link:footnoteLink}: A network that links report elements, facts and other elements to footnotes.
 \end{itemize}
 
-XBRL refers to these built in networks as "standard extended links". 
-If needed, XBRL allows users to define their own networks, which are referred to as "custom extended links"\cite{xbrl21_terminology}.
+XBRL refers to these built in networks as \texttt{standard extended links}. 
+If needed, XBRL allows users to define their own networks, which are referred to as \texttt{custom extended links}\cite{xbrl21_terminology}.
+
+Technically speaking, XBRL does allow networks in XBRL to contain both directed and undirected cycles.
+However, in practice, networks in XBRL are almost always directed acyclic graphs (DAGs).
 
 In the subsequent sections, I will describe how networks are implemented in XBRL on a conceptual level. 
+
+\subsection{presentationLink}
+
+The \texttt{link:presentationLink} network is used to represent the hierarchy of concepts in a report.
+I will describe presentationLinks in more detail compared to the other networks, since the other network types are implemented in a similar way.
+
+XBRL implements all its networks as a set of directed edges called \texttt{arcs}.
+Each arc has a source and a target. Duplicate arcs are not allowed.
+
+Taking the example from figure \ref{fig:example_visualization_network_xbrl}, the presentationLink network would be represented as the following edge list:
+
+% dont use the minted package
+\begin{figure}[H]
+    \caption{Example of a presentationLink network in edge list format}
+    \label{fig:example_visualization_network_xbrl_edge_list}
+    \begin{verbatim}
+        Balance Sheet -> Assets
+        Assets -> Current Assets
+        Assets -> Non-Current Assets
+        Balance Sheet -> Liabilities
+    \end{verbatim}
+\end{figure}
+
+Each arc in the example \ref{fig:example_visualization_network_xbrl_edge_list} is represented as a \texttt{link:presentationArc} element in XBRL.
+Additionally, presentationLinks contain so called "locators" \texttt{link:loc} that represent the nodes in the network.
+In case of a presentaton network, the locators are references to the concepts in the XBRL taxonomy. 
+In other networks, locators can be references to other elements, such as facts.
+
+In case of the XML syntax, the first \texttt{link:presentationArc} "Balance Sheet -> Assets" would be represented as follows:
+
+\begin{figure}[H]
+    \begin{lstlisting}[language=XML]
+        <link:loc 
+            xlink:type="locator" 
+            xlink:href="file_1.xsd#BalanceSheet"
+            xlink:label="BalanceSheet_loc"
+        />
+        <link:loc 
+            xlink:type="locator" 
+            xlink:href="file_1.xsd#Assets"
+            xlink:label="Assets_loc"
+        />
+        <link:presentationArc 
+            xlink:type="arc" 
+            xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" 
+            xlink:from="BalanceSheet_loc" 
+            xlink:to="Assets_loc"
+            order="1"
+        />
+    \end{lstlisting}
+    \caption{Example of a presentationArc in XML syntax}
+    \label{fig:example_presentation_arc_xml}
+\end{figure}
+
+The \texttt{xlink:from} attribute of the \texttt{link:presentationArc} element references the \texttt{xlink:label} attribute of the \texttt{link:loc} element that represents the source of the arc.
+The same applies to the \texttt{xlink:to} attribute of the \texttt{link:presentationArc} element.
+
+Both locators contain a \texttt{xlink:href} attribute that references the concept in the XBRL taxonomy that the locator represents.
+This reference can even point to a different file, as shown in figure \ref{fig:example_presentation_arc_xml}.
+
+The \texttt{xlink:type} on the elements helps the XML parser to determine the type of the element.
+Note that the XML tag \texttt{link:presentationArc} already hints at the fact that this element is a type of arc.
+However, the \texttt{xlink:type} attribute is still required and provides parsers with a more reliable way to determine if an element is an arc, a locator, or something else. 
+
+The \texttt{order} attribute of the \texttt{link:presentationArc} element specifies in which order the children of the source of the arc should be displayed.
+
+Finally, the \texttt{xlink:arcrole} attribute of the \texttt{link:presentationArc} element specifies the kind of relation between the source and the target of the arc.
+In case of a presentationLink, the \texttt{xlink:arcrole} attribute is always set to \texttt{parent-child}.
+For different networks, the \texttt{xlink:arcrole} attribute can be set to different values.
+It can even be set to different values for different arcs in the same network.
+
+XBRL packages the set of arcs and locators into a \texttt{link:presentationLink} element.
+This element contains a \texttt{xlink:role} attribute that specifies the role of the presentationLink.
+Roles are a more advanced concept that I will introduce in section \ref{sec:roles}.
+For now, think of the \texttt{link:presentationLink} element as a container for the arcs and locators.
+
+\subsection{Motivation of Report Elements}
+
+Up to this point, I have only described how presentation networks are implemented in XBRL.
+I also mentioned that presentation networks indroduce a hierarchy of concepts, but this is not entirely true.
+
+I have introduced concepts as the "what"-part of a fact. 
+For example, if the company Foo reports a revenue of 1000 USD in 2019, the concept \texttt{Revenue} is the "what"-part of the fact.
+
+However, if we look at the presentation network in figure \ref{fig:example_visualization_network_xbrl}, not all of the elements in the network can have a fact associated with them.
+For example, the concept \texttt{BalanceSheet} cannot have a fact associated with it.
+In XBRL, concepts that can not have a fact associated with them are called \texttt{Abstract}.
+
+The Open Information Model (OIM) combines abstracts and concepts using the term \texttt{report element}.
+Report elements are, as the name suggests, elements that can appear in a report.
+Some of these report elements are used for facts, namely the concepts.
+Others are used to represent the structure of the report, namely the abstracts.
+There are six types of report elements in total\cite{oim}. 
+I will introduce them as they come up in the subsequent sections.
+
+With the introduction of report elements, our notion of a presentation network changes slightly.
+Instead of introducing a hierarchy of concepts, presentation networks introduce a hierarchy of report elements.
+However, our notion of a fact stays the same.
+A fact is still requires a concept, not a report element.
+
+\subsection{calculationLink}
+
+The \texttt{link:calculationLink} network is used to represent how concepts are calculated from other concepts.
+More specifically, it is used to represent how a concept is the sum of other concepts.
+Under the hood, calculationLinks are implemented in the same way as presentationLinks, but there are a few differences in the semantics.
+
+\begin{enumerate}
+    \item The arcs now have the tag \texttt{link:calculationArc} instead of \texttt{link:presentationArc}.
+    \item The link now has the tag \texttt{link:calculationLink} instead of \texttt{link:presentationLink}.
+    \item The \texttt{xlink:arcrole} attribute of the \texttt{link:calculationArc} element is set to \texttt{summation-item}.
+    \item The \texttt{link:calculationArc} element has an additional attribute called \texttt{weight}.
+    \item All locators in the link are references to concepts, not just report elements.
+\end{enumerate}
+
+Most of these differences are self-explanatory and do not have any semantic implications.
+However, the last two differences are worth explaining in more detail.
+
+The main motivation behind calculation networks is so that XBRL processors can either calculate the value of a concept or check if the value of a concept is computed correctly and consistently.
+In the case of our XBRL processor Brel, the main focus is on the latter. 
+Chapter 6.4 of "The XBRL Book" \cite{fourny2023xbrl} describes the different consistency checks in more detail.
+
+Concepts within a calculation network are computed as a weighted sum of their children.
+The \texttt{weight} attribute of the \texttt{link:calculationArc} element specifies the weight of the child in the sum.
+Additionally, facts can only be associated with concepts, not just any report element.
+Therefore, all locators in a calculation network are references to concepts.
+
+In the section on concepts\ref{sec:concepts}, I have introduced the \texttt{balance} aspect of a concept.
+It specifies if the concept is a debit or a credit.
+The XBRL 2.1 specification enforces some constraints on the \texttt{balance} aspect of concepts in combination with the \texttt{weight} attribute of the \texttt{link:calculationArc} element \cite{xbrl21_concept}.
+If one concept has a \texttt{balance} of \texttt{debit} and another concept has a \texttt{balance} of \texttt{credit}, then their connecting arc must have a negative \texttt{weight}.
+If both concepts have the same \texttt{balance}, then their connecting arc must have a positive \texttt{weight}.
+
+% small table describing the balance and weight constraints
+\begin{figure}[H]
+    \label{fig:balance_weight_constraints}
+    \centering
+    \begin{tabular}{|l|l|l|}
+        \hline
+        \textbf{Concept 1} & \textbf{Concept 2} & \textbf{Connecting edge weight} \\ \hline
+        Debit              & Credit             & $\leq 0$        \\ \hline
+        Credit             & Debit              & $\leq 0$        \\ \hline
+        Debit              & Debit              & $\geq 0$        \\ \hline
+        Credit             & Credit             & $\geq 0$        \\ \hline
+    \end{tabular}
+    \caption{Balance and weight constraints in calculation networks}
+\end{figure}
+
+A network that is consistent with the balance and weight constraints is called a \texttt{balance consistent network}.\cite{fourny2023xbrl}
+
+Balance consistency is not the only kind of consistency that calculation networks can be checked for.
+Another kind of consistency is \texttt{roll-up consistency} which comes in two flavors: \texttt{simple roll-up consistency} and \texttt{general roll-up consistency}. 
+
+\texttt{Simple roll-up consistency} is a weaker form of roll-up consistency.
+It requires a calculation network as well as a presentation network and checks if the structure of the two networks is consistent.
+
+TODO
+
+\section{labelLink}
+
+The \texttt{link:labelLink} network is used to associate report elements with human-readable labels.
+Thus far, 

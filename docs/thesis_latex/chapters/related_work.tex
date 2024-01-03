@@ -1,0 +1,34 @@
+\chapter{Related work}
+\label{sec:related_work}
+
+\section{XBRL}
+As mentioned in section \ref{sec:introduction}, this thesis is based on the XBRL standard\cite{xbrl} originally created by Charles Hoffman.
+The XBRL standard is a complex standard consisting of many different parts.
+The parts of the XBRL standard that are relevant to this thesis are the Open Information Model (OIM)\cite{oim}, 
+the XBRL 2.1 specification\cite{xbrl21}, 
+the extension for dimensional reporting\cite{xbrl_dimensions}
+and the specification for generic links\cite{xbrl_generic_links}.
+The XBRL 2.1 specification and the OIM overlap in some areas, but the OIM is a partial rewrite of the XBRL 2.1 specification.
+It does not contain all the features of the XBRL 2.1 specification, but it is a lot easier to understand.
+The OIM also covers some aspects of XBRL dimensions, but does not contain any features from XBRL generic links.
+
+\section{The XBRL Book}
+To properly understand the XBRL specification, one already needs to have a good understanding of both XML and XBRL.
+This makes it difficult for beginners to get started with XBRL.
+To address this problem, Dr. Ghislain Fourny wrote "The XBRL Book"\cite{fourny2023xbrl}.
+The book is a comprehensive guide to XBRL and covers all the important aspects of the XBRL standard, including the rather recent OIM.
+
+\section{Arelle}
+Arelle\cite{arelle} is an open source XBRL platform written in Python.
+At the time of writing, Arelle is the most complete open source XBRL platform.
+It supports all the features of the XBRL 2.1 specification and the OIM.
+Like Brel, Arelle is also written in Python and is open source.
+Unlike Brel, Arelle is a complete XBRL platform and not just a python library.
+
+\section{Xule}
+Xule\cite{xule} is a rule language for XBRL.
+It is a declarative language that allows users to write rules that can be used to validate XBRL reports.
+Xule is written in Python and is open source.
+It is also part of the Arelle project and is used by Arelle to validate XBRL reports.
+Think of Xule as a domain-specific language for XBRL validation rules.
+Even though Xule is not part of this thesis, Brel should be able to support Xule in the future.
