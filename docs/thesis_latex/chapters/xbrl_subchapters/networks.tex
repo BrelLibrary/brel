@@ -119,6 +119,7 @@ However, the \texttt{xlink:type} attribute is still required and provides parser
 
 The \texttt{order} attribute of the \texttt{link:presentationArc} element specifies in which order the children of the source of the arc should be displayed.
 
+\label{sec:arcrole}
 Finally, the \texttt{xlink:arcrole} attribute of the \texttt{link:presentationArc} element specifies the kind of relation between the source and the target of the arc.
 In case of a presentationLink, the \texttt{xlink:arcrole} attribute is always set to \texttt{parent-child}.
 For different networks, the \texttt{xlink:arcrole} attribute can be set to different values.
@@ -213,4 +214,107 @@ TODO
 \section{labelLink}
 
 The \texttt{link:labelLink} network is used to associate report elements with human-readable labels.
-Thus far, 
+Thus far, we referred to report elements using their QName.
+Obviously, if you open an XBRL report in a viewer such as Arelle, you do not see any QNames for the concepts, abstracts, etc.
+Instead, you see human-readable labels.
+
+The following figure shows an example of the condensed consolidated statement of income of the Coca Cola Company\cite{ko2019q2} of Q2 2019 as displayed in Arelle\cite{arelle}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{images/coca_cola_2019_q2.png}
+    \caption{Statement of income of the Coca Cola Company of Q2 2019}
+    \label{fig:coca_cola_2019_q2}
+\end{figure}
+
+Let us take a closer look at the first concept of the statement of income: Revenue.
+Even though the concept for the revenue is \texttt{us-gaap:Revenues}, Arelle displays it as "Net Operating Revenues".
+
+Arelle achieves this by using the \texttt{link:labelLink} network that is part of the XBRL report. 
+LabelLinks are another type of extended link that associates report elements with human-readable labels.
+They are implemented in the same way as presentationLinks and calculationLinks, but this time they not only contain arcs and locators, but also \texttt{link:label} elements.
+
+From a semantic perspective, labels are different from report elements such as concepts and abstracts.
+Instead, they are a kind of \texttt{resource}.
+Resources are essentially metadata about report elements, facts, and other elements of an XBRL report.
+
+The approach that XBRL takes to labels and other resources is quite interesting.
+Going back to our example in figure \ref{fig:coca_cola_2019_q2}, the definition of the concept \texttt{us-gaap:Revenues} happens independently from any labels that are associated with it.
+The labels are later associated with the concept using the \texttt{link:labelLink} network.
+In fact, each report element can have multiple labels associated with it.
+These labels can be in different languages or can have different roles.
+Roles are a covered later in this chapter.
+We have already seen the \texttt{xlink:arcrole} attribute in the \texttt{link:presentationArc} \ref{sec:arcrole}.
+The role of a label works in a similar way.
+
+In terms of the XML syntax, the \texttt{link:labelLink} network is implemented in the same way as the \texttt{link:presentationLink} network.
+The only addition is the \texttt{link:label} element, which is used to represent a label.
+It contains a few pieces of information:
+
+\begin{enumerate}
+    \item The \texttt{xlink:label} attribute, which is used to reference the arc that the label is associated with.
+    This must not be confused with the text of the label.
+    Think of it as a unique identifier for the label.
+    \item The \texttt{xlink:role} attribute, which specifies the role of the label. More on this later.
+    \item The \texttt{xml:lang} attribute, which specifies the language of the label.
+    \item The \texttt{xlink:type} which is always set to \texttt{resource}.
+    \item The actual label text. This is the human-readable label that is displayed in Arelle.
+\end{enumerate}
+
+For example, for the label "Net Operating Revenues" \ref{fig:coca_cola_2019_q2}, the following XML segment would be used:
+
+\begin{figure}[H]
+    \begin{lstlisting}[language=XML]
+        <link:label 
+          id="1234" 
+          xlink:label="lab_us-gaap_Revenues" 
+          xlink:role="http://www.xbrl.org/2003/role/terseLabel" 
+          xlink:type="resource" 
+          xml:lang="en-US">
+            Net Operating Revenues
+        </link:label>
+
+    \end{lstlisting}
+    \caption{Example of a label in XML syntax}
+    \label{fig:example_label_xml}
+\end{figure}
+
+Note that we have omitted both the connecting arc and the locator in this example.
+Both arcs and locators work in the same way as in the \texttt{link:presentationLink} network.
+
+% % Arc and locator of the example above
+% <link:loc 
+%     xlink:type="locator" 
+%     xlink:label="loc_us-gaap_Revenues" 
+%     xlink:href="us-gaap-2023.xsd#us-gaap_Revenues"/>
+% <link:labelArc 
+%     xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" 
+%     xlink:from="loc_us-gaap_Revenues" 
+%     xlink:to="lab_us-gaap_Revenues" 
+%     xlink:type="arc" 
+%     order="1"/>
+
+The label in figure \ref{fig:example_label_xml} has the role \texttt{http://www.xbrl.org/2003/role/terseLabel}.
+This role is used to indicate that the label is a short, human-readable label.
+XBRL defines a few other roles of which the most important ones are:
+
+\begin{figure}[H]
+    \begin{tabular}{|l|l|}
+        \hline
+        \textbf{Role} & \textbf{Description} \\ \hline
+        \texttt{http://www.xbrl.org/2003/role/label} & The default label role. \\ \hline
+        \texttt{http://www.xbrl.org/2003/role/terseLabel} & A short, human-readable label. \\ \hline
+        \texttt{http://www.xbrl.org/2003/role/verboseLabel} & A long, human-readable label. \\ \hline
+        \texttt{http://www.xbrl.org/2003/role/positiveLabel} & A label for positive values. \\ \hline
+        \texttt{http://www.xbrl.org/2003/role/negativeLabel} & A label for negative values. \\ \hline
+        \texttt{http://www.xbrl.org/2003/role/zeroLabel} & A label for zero values. \\ \hline
+        \texttt{http://www.xbrl.org/2003/role/documentation} & A label for documentation. \\ \hline
+    \end{tabular}
+    \caption{Important label roles}
+    \label{fig:important_label_roles}
+\end{figure}
+
+Note that the list of label roles is not exhaustive.
+There are many more label roles that are used in practice. 
+Users can even define their own label roles.
+For a complete list of standard label roles, refer to the XBRL 2.1 specification\cite{xbrl21_label_roles}.

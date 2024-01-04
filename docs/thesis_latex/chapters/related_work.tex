@@ -1,15 +1,21 @@
 \chapter{Related work}
 \label{sec:related_work}
 
-\section{XBRL}
+The goal of this thesis is to create a new open source XBRL library that is largely based on the OIM.
+When it comes to work related to Brel, there are three main areas of interest.
+First, there is the XBRL specification itself and interpretations of it.
+Second, there are other XBRL libraries and platforms that are similar to Brel. This also includes public databases of XBRL reports.
+Third, there are the requirements set by authorities and other organizations that XBRL processors have to fulfill.
+
+\section{XBRL Specification}
 As mentioned in section \ref{sec:introduction}, this thesis is based on the XBRL standard\cite{xbrl} originally created by Charles Hoffman.
 The XBRL standard is a complex standard consisting of many different parts.
 The parts of the XBRL standard that are relevant to this thesis are the Open Information Model (OIM)\cite{oim}, 
 the XBRL 2.1 specification\cite{xbrl21}, 
 the extension for dimensional reporting\cite{xbrl_dimensions}
 and the specification for generic links\cite{xbrl_generic_links}.
-The XBRL 2.1 specification and the OIM overlap in some areas, but the OIM is a partial rewrite of the XBRL 2.1 specification.
-It does not contain all the features of the XBRL 2.1 specification, but it is a lot easier to understand.
+The XBRL 2.1 specification and the OIM overlap in most areas, but the OIM is a partial rewrite of the XBRL 2.1 specification.
+The OIM does not contain all the features of the XBRL 2.1 specification, but it is a lot easier to understand.
 The OIM also covers some aspects of XBRL dimensions, but does not contain any features from XBRL generic links.
 
 \section{The XBRL Book}
@@ -32,3 +38,37 @@ Xule is written in Python and is open source.
 It is also part of the Arelle project and is used by Arelle to validate XBRL reports.
 Think of Xule as a domain-specific language for XBRL validation rules.
 Even though Xule is not part of this thesis, Brel should be able to support Xule in the future.
+
+\section{EDGAR}
+\label{sec:edgar}
+The SEC (US \texttt{S}ecurities and \texttt{E}xchange \texttt{C}ommission) maintains a system called EDGAR \cite{sec_edgar}. \footnote{not to be confused with the U.S. SEC, which stands for U.S. Soybean Export Council}
+EDGAR is a system that companies can use to submit their financial reports to the SEC.
+EDGAR stands for \textbf{E}lectronic \textbf{D}ata \textbf{G}athering, \textbf{A}nalysis, and \textbf{R}etrieval.
+Filings submitted to EDGAR have to be in XBRL format.
+The SEC provides public access to the filings submitted to EDGAR. \footnote{\url{https://www.sec.gov/edgar/search/}}
+
+\section{ESEF filings}
+The european counterpart to the SEC is called ESMA (\textbf{E}uropean \textbf{S}ecurities and \textbf{M}arkets \textbf{A}uthority).
+It also maintains a database of ESEF filings\cite{esma_database}.
+ESEF stands for \textbf{E}uropean \textbf{S}ingle \textbf{E}lectronic \textbf{F}ormat.
+ESEF is a standard for XBRL reports in the EU.
+Similar to EDGAR, the ESEF database is publicly accessible. \footnote{\url{https://filings.xbrl.org/}}
+An interesting aspect of this database is that it is hosted by XBRL International, the organization that maintains the XBRL standard.
+
+\section{SEC - Interactive Data Public Test Suite}
+\label{sec:idpts}
+To ensure that the XBRL processors that the companies use to create their XBRL reports are compliant with the XBRL standard, the SEC created the Interactive Data Public Test Suite\cite{sec_idpts}.
+This test suite contains an extensive collection of XBRL reports that are used to test XBRL processors.
+The SEC provides this test suite free of charge and it is available on their website.
+
+Brel uses this test suite to test its XBRL processor.
+At the time of writing, Brel does not pass all the tests in the test suite, since Brel does not support all the features of the XBRL standard.
+However, building a processor that passes all the tests is not a feat that can feasibly be accomplished by a single person in the scope of a master's thesis.
+
+\section{ESMA Conformance Suite}
+The European Securities and Markets Authority (ESMA) also maintains a test suite for XBRL processors\cite{esma_conformance_suite}.
+This test suite is similar to the SEC's Interactive Data Public Test Suite, but it is maintained by a different authority.
+Another key difference is that the ESMA Conformance Suite facilitates automated testing of xHTML reports.
+
+Brel does not support xHTML reports, so the ESMA Conformance Suite is not relevant for this thesis.
+However, Brel should be able to support xHTML reports in the future.
