@@ -11,7 +11,7 @@ Note: the balance consistency check is not implemented here, but in the Calculat
 
 from brel.networks import INetworkNode
 from brel.reportelements import IReportElement, Concept
-from brel import BrelLabelRole, QName
+from brel import QName, Fact
 
 from typing import cast
 
@@ -33,7 +33,7 @@ class CalculationNetworkNode(INetworkNode):
         link_role: str,
         link_name: QName,
         weight: float = 1.0,
-        order: int = 1,
+        order: float = 1,
     ):
         if not isinstance(report_element, Concept):
             raise TypeError(
@@ -64,6 +64,13 @@ class CalculationNetworkNode(INetworkNode):
         """
         raise ValueError("CalculationNetworkNode does not point to a resource")
 
+    def get_fact(self) -> Fact:
+        """
+        Would return the fact associated with this node, but calculation network nodes do not point to facts
+        @raises ValueError: CalculationNetworkNode does not point to a fact
+        """
+        raise ValueError("CalculationNetworkNode does not point to a fact")
+
     def is_a(self) -> str:
         """
         @return: str containing 'report element'
@@ -86,10 +93,10 @@ class CalculationNetworkNode(INetworkNode):
         """
         return self.__weight
 
-    def get_order(self) -> int:
+    def get_order(self) -> float:
         """
         Returns the order of this node
-        @return: int containing the order of this node
+        @return: float containing the order of this node
         """
         return self.__order
 

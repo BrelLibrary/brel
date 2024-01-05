@@ -17,7 +17,7 @@ class QNameNSMap:
         self.__url_to_prefix: dict[str, str] = {}
         self.__prefix_to_url: dict[str, str] = {}
         self.__prefix_redirects: dict[str, str] = {}
-        self.__prefix_rename: dict[str, list[str]] = defaultdict(list)
+        self.__prefix_renames: dict[str, list[str]] = defaultdict(list)
 
     def add_to_nsmap(self, url: str, prefix: str):
         """

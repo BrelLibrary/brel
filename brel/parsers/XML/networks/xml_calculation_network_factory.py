@@ -1,7 +1,17 @@
+"""
+This module contains the CalculationNetworkFactory class.
+CalculationNetworkFactories are used to create CalculationNetworks from XML.
+They are used by the XML parsers for networks to build calculation networks.
+
+@author: Robin Schmidiger
+@version: 0.2
+@date: 04 January 2024
+"""
+
 import lxml
 import lxml.etree
 from typing import cast
-from brel import QName, QNameNSMap
+from brel import QName, QNameNSMap, Fact
 from brel.networks import (
     INetwork,
     INetworkNode,
@@ -11,6 +21,7 @@ from brel.networks import (
 from brel.reportelements import IReportElement
 from brel.resource import IResource
 from brel.parsers.XML.networks import IXMLNetworkFactory
+from brel.parsers.utils import get_str
 
 
 class CalculationNetworkFactory(IXMLNetworkFactory):
@@ -43,33 +54,28 @@ class CalculationNetworkFactory(IXMLNetworkFactory):
         xml_link: lxml.etree._Element,
         xml_referenced_element: lxml.etree._Element,
         xml_arc: lxml.etree._Element | None,
-        points_to: IReportElement | IResource,
+        points_to: IReportElement | IResource | Fact,
     ) -> INetworkNode:
         nsmap = self.get_qname_nsmap().get_nsmap()
 
-        label = xml_referenced_element.attrib.get(f"{{{nsmap['xlink']}}}label", None)
-        if label is None:
-            raise ValueError(
-                f"label attribute not found on referenced element {xml_referenced_element}"
-            )
+        label = get_str(xml_referenced_element, f"{{{nsmap['xlink']}}}label")
 
         if xml_arc is None:
             # the node is not connected to any other node
             weight = 0.0
             arc_role = "unknown"
-            order = 1
+            order: float = 1
             arc_qname = QName.from_string("link:unknown", self.get_qname_nsmap())
         elif xml_arc.get(f"{{{nsmap['xlink']}}}from", None) == label:
             # the node is a root
             weight = 0.0
-            arc_role = xml_arc.attrib.get("{" + nsmap["xlink"] + "}arcrole")
+            arc_role = get_str(xml_arc, "{" + nsmap["xlink"] + "}arcrole")
             order = 1
             arc_qname = QName.from_string(xml_arc.tag, self.get_qname_nsmap())
         elif xml_arc.get(f"{{{nsmap['xlink']}}}to", None) == label:
-            # the node is an inner node
             weight = float(xml_arc.attrib.get("weight") or 0.0)
-            arc_role = xml_arc.attrib.get("{" + nsmap["xlink"] + "}arcrole")
-            order = float(xml_arc.attrib.get("order") or 1.0)
+            arc_role = get_str(xml_arc, "{" + nsmap["xlink"] + "}arcrole")
+            order = float(get_str(xml_arc, "order", "1.0"))
             arc_qname = QName.from_string(xml_arc.tag, self.get_qname_nsmap())
         else:
             raise ValueError(
@@ -79,19 +85,8 @@ class CalculationNetworkFactory(IXMLNetworkFactory):
         link_role = xml_link.attrib.get("{" + nsmap["xlink"] + "}role")
         link_name = QName.from_string(xml_link.tag, self.get_qname_nsmap())
 
-        if arc_role is None:
-            raise ValueError(f"arcrole attribute not found on arc element {xml_arc}")
-        if not isinstance(arc_role, str):
-            raise TypeError(
-                f"arcrole attribute on arc element {xml_arc} is not a string"
-            )
-
-        if link_role is None:
-            raise ValueError(f"role attribute not found on link element {xml_link}")
-        if not isinstance(link_role, str):
-            raise TypeError(
-                f"role attribute on link element {xml_link} is not a string"
-            )
+        link_role = get_str(xml_link, "{" + nsmap["xlink"] + "}role")
+        link_name = QName.from_string(xml_link.tag, self.get_qname_nsmap())
 
         # check if 'points_to' is a ReportElement
         if not isinstance(points_to, IReportElement):

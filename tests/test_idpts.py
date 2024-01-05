@@ -19,12 +19,32 @@ from brel import Filing
 # testcase_filenames = list(map(prepend_path_prefix, testcase_filenames))
 
 # testcase_filenames = ['605-instance-syntax/605-01-entity-identifier-scheme/605-01-entity-identifier-scheme-testcase.xml']
+# whitelist: list[str] = [
+#     "603-instance-syntax",
+#     "604-filing-semantics",
+#     "605-instance-syntax",
+#     "607-schema-syntax",
+#     "609-linkbase-syntax",
+#     "610-label-syntax",
+#     "612-presentation-syntax",
+#     "614-calculation-syntax",
+#     "616-definition-syntax",
+#     "618-reference-syntax",
+#     "622-only-supported-locations",
+# ]
+whitelist: list[str] = ["604"]
+
+blacklist: list[str] = []
 
 
-def filter_out_unsupported(testcase_filename):
-    if "semantics" in testcase_filename:
+def filter_testcase_files(testcase_filename):
+    if any(map(lambda x: x in testcase_filename, whitelist)):
         return True
-    else:
+    return False
+
+
+def filter_testcase_by_name(testcase_name: str) -> bool:
+    if any(map(lambda x: x in testcase_name, blacklist)):
         return False
     return True
 
@@ -42,26 +62,36 @@ def test_idpts():
         testcase_element.get("uri") for testcase_element in testcase_elements
     ]
 
-    testcase_filenames = list(filter(filter_out_unsupported, testcase_filenames))
+    testcase_filenames = list(filter(filter_testcase_files, testcase_filenames))
+
+    print("Testcase files")
+    for testcase_filename in testcase_filenames:
+        print(f"> {testcase_filename}")
 
     for testcase_filename in testcase_filenames:
         testcase_etree = lxml.etree.parse(idpts_testcases_folder + testcase_filename)
         testcase_elem = testcase_etree.getroot()
 
-        creator = testcase_elem.find("{*}creator")
-        creator_name = creator.find("{*}name")
-        creator_email = creator.find("{*}email")
-        print(f"creator: {creator_name.text} ({creator_email.text})")
+        # creator = testcase_elem.find("{*}creator")
+        # if creator is not None:
+        #     creator_name = creator.find("{*}name")
+        #     creator_email = creator.find("{*}email")
+        #     if creator_name is not None and creator_email is not None:
+        #         print(f"creator: {creator_name.text} ({creator_email.text})")
 
+        # print the test nr
         test_nr = testcase_elem.find("{*}number")
         test_name = testcase_elem.find("{*}name")
+        if test_nr is not None and test_name is not None:
+            print(f"Running test {test_name.text} ({test_nr.text})")
 
-        print(f"Running test {test_name.text} ({test_nr.text})")
         variations = testcase_elem.findall("{*}variation")
         for variation in variations:
+            # print the variation id and name
             variation_id = variation.get("id")
             variation_name = variation.find("{*}name")
-            print(f"variation: {variation_name.text} ({variation_id})")
+            if variation_name is not None:
+                print(f"variation: {variation_name.text} ({variation_id})")
 
             # get filenames relevant for this variation
             data = variation.find("{*}data")
@@ -70,6 +100,13 @@ def test_idpts():
             linkbase_filenames = [
                 linkbase.text for linkbase in data.findall("{*}linkbase")
             ]
+
+            # skip the testcase if any of the instance of a linkbase is not xml
+            if not instance_filename.endswith(".xml"):
+                continue
+
+            if not all(map(lambda x: x.endswith(".xml"), linkbase_filenames)):
+                continue
 
             testcase_folder = testcase_filename.rsplit("/", 1)[0]
 

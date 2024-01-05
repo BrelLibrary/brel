@@ -149,7 +149,7 @@ class XMLFilingParser(IFilingParser):
         ]
 
         report_elems, id_to_report_elem = parse_report_elements_xml(
-            xsd_etrees, self.__nsmap
+            self.__file_manager, xsd_etrees, self.__nsmap
         )
 
         for id, report_elem in id_to_report_elem.items():

@@ -9,7 +9,7 @@ Also contains some utility methods for working with networks and nodes.
 
 from abc import ABC, abstractmethod
 from brel.reportelements import IReportElement
-from brel import QName
+from brel import QName, Fact
 from brel.resource import IResource
 
 
@@ -41,11 +41,22 @@ class INetworkNode(ABC):
         raise NotImplementedError
 
     @abstractmethod
+    def get_fact(self) -> Fact:
+        """
+        Returns the fact associated with this node.
+        @return: Fact associated with this node.
+        @raises ValueError: if this node does not point to a fact.
+        Use the points_to method to check if this node points to a fact.
+        """
+        raise NotImplementedError
+
+    @abstractmethod
     def is_a(self) -> str:
         """
         Returns
         - 'resource' if this node points to a resource
         - 'report element' if this node points to a report element
+        - 'fact' if this node points to a fact
         @return: str containing 'resource' or 'report element'
         """
         raise NotImplementedError
@@ -81,7 +92,7 @@ class INetworkNode(ABC):
         @return: list[NetworkNode] containing all descendants of this node
         """
         descendants = set()
-        worklist = [self]
+        worklist: list["INetworkNode"] = [self]
         while len(worklist) > 0:
             node = worklist.pop()
             descendants.add(node)

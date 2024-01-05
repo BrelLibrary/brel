@@ -4,8 +4,8 @@ from brel.resource import *
 from brel import BrelLabelRole
 
 ELBOW = "└──"
-PIPE  = "│  "
-TEE   = "├──"
+PIPE = "│  "
+TEE = "├──"
 SPACE = "   "
 
 tag_lookup: dict[type, str] = {
@@ -16,14 +16,14 @@ tag_lookup: dict[type, str] = {
     LineItems: "[LINE ITEMS]",
     Hypercube: "[HYPERCUBE]",
     Concept: "[CONCEPT]",
-    Abstract: "[ABSTRACT]"
+    Abstract: "[ABSTRACT]",
 }
 
 PADDING = max(map(lambda x: len(x), tag_lookup.values()))
 
-def __print_subnetwork(node: INetworkNode, last=True, header='') -> None:
-    output_string = ""
 
+def __print_subnetwork(node: INetworkNode, last=True, header="") -> None:
+    output_string = ""
 
     node_is_a = node.is_a()
     if node_is_a == "resource":
@@ -38,7 +38,7 @@ def __print_subnetwork(node: INetworkNode, last=True, header='') -> None:
             type_str = f"[REFERENCE] {resource.get_content()}"
         else:
             type_str = "[RESOURCE]"
-        
+
         output_string += type_str
     elif node_is_a == "report element":
         re = node.get_report_element()
@@ -47,9 +47,12 @@ def __print_subnetwork(node: INetworkNode, last=True, header='') -> None:
         if hasattr(re, "get_preferred_label_role"):
             label_role = getattr(re, "get_preferred_label_role")()
         else:
-            label_role = BrelLabelRole.STANDARD_LABEL
-        
-        node_preferred_label = next(filter(lambda label: label.get_label_role() == label_role, node_labels), str(re.get_name()))
+            label_role = BrelLabelRole.STANDARD_LABEL.value
+
+        node_preferred_label = next(
+            filter(lambda label: label.get_label_role() == label_role, node_labels),
+            str(re.get_name()),
+        )
         node_as_str = str(node_preferred_label)
 
         if isinstance(re, Dimension):
@@ -66,9 +69,9 @@ def __print_subnetwork(node: INetworkNode, last=True, header='') -> None:
             type_str = "[ABSTRACT]"
         else:
             type_str = "[REPORT ELEMENT]"
-        
+
         output_string += type_str + " " + node_as_str
-    
+
     if hasattr(node, "get_weight"):
         weight = getattr(node, "get_weight")()
         weight_str = f"[W={weight:4}] "
@@ -82,7 +85,7 @@ def __print_subnetwork(node: INetworkNode, last=True, header='') -> None:
         padding_str = ""
 
     output_string = weight_str + padding_str + output_string
-    
+
     print(header + (ELBOW if last else TEE) + output_string)
     children = node.get_children()
     for index, child in enumerate(children):
@@ -90,19 +93,22 @@ def __print_subnetwork(node: INetworkNode, last=True, header='') -> None:
         child_header = header + (SPACE if last else PIPE)
         __print_subnetwork(child, is_last_child, child_header)
 
+
 def pprint_network_node(node: INetworkNode):
-    
     if node is None:
         return
     __print_subnetwork(node)
 
+
 def pprint_network(network: INetwork | None):
     if network is None:
         return
-    
-    print(f"Network (link role: {network.get_link_role()}), link name: {network.get_link_name()}")
+
+    print(
+        f"Network (link role: {network.get_link_role()}), link name: {network.get_link_name()}"
+    )
     print(f"arc roles: {network.get_arc_roles()}, arc name: {network.get_arc_name()}")
-    
+
     for index, root in enumerate(network.get_roots()):
         is_last_root = index == len(network.get_roots()) - 1
         __print_subnetwork(root, is_last_root)

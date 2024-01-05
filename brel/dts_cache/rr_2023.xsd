@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This schema was created by staff of the U.S. Securities and Exchange Commission. -->
+<!-- Data and content created by government employees within the scope of their employment -->
+<!-- are not subject to domestic copyright protection. 17 U.S.C. 105. -->
+<xs:schema targetNamespace="http://xbrl.sec.gov/rr/2023"
+xmlns:rr="http://xbrl.sec.gov/rr/2023"
+xmlns:link="http://www.xbrl.org/2003/linkbase"
+xmlns:dtr-types="http://www.xbrl.org/dtr/type/2022-03-31"
+xmlns:xbrldt="http://xbrl.org/2005/xbrldt"
+xmlns:xbrli="http://www.xbrl.org/2003/instance"
+xmlns:xlink="http://www.w3.org/1999/xlink"
+xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+elementFormDefault="qualified">
+<xs:import schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd" namespace="http://www.xbrl.org/2003/instance" />
+<xs:import schemaLocation="https://www.xbrl.org/dtr/type/2022-03-31/types.xsd" namespace="http://www.xbrl.org/dtr/type/2022-03-31" />
+<xs:import namespace="http://www.xbrl.org/2003/linkbase" schemaLocation="http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd"/>
+<xs:import schemaLocation="http://www.xbrl.org/2005/xbrldt-2005.xsd" namespace="http://xbrl.org/2005/xbrldt" />
+<xs:annotation>
+<xs:appinfo>
+<link:roleType id="RiskReturn" roleURI="http://xbrl.sec.gov/rr/role/RiskReturn">
+<link:definition>010000 - Document - Risk/Return Summary {Unlabeled}</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+</link:roleType>
+<link:roleType id="ShareholderFeesData" roleURI="http://xbrl.sec.gov/rr/role/ShareholderFeesData">
+<link:definition>020010 - Schedule - Shareholder Fees</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+</link:roleType>
+<link:roleType id="OperatingExpensesData" roleURI="http://xbrl.sec.gov/rr/role/OperatingExpensesData">
+<link:definition>020020 - Schedule - Annual Fund Operating Expenses</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+</link:roleType>
+<link:roleType id="ExpenseExample" roleURI="http://xbrl.sec.gov/rr/role/ExpenseExample">
+<link:definition>020030 - Schedule - Expense Example {Transposed}</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+</link:roleType>
+<link:roleType id="ExpenseExampleNoRedemption" roleURI="http://xbrl.sec.gov/rr/role/ExpenseExampleNoRedemption">
+<link:definition>020040 - Schedule - Expense Example, No Redemption {Transposed}</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+</link:roleType>
+<link:roleType id="BarChartData" roleURI="http://xbrl.sec.gov/rr/role/BarChartData">
+<link:definition>020050 - Schedule - Annual Total Returns</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+</link:roleType>
+<link:roleType id="PerformanceTableData" roleURI="http://xbrl.sec.gov/rr/role/PerformanceTableData">
+<link:definition>020060 - Schedule - Average Annual Total Returns {Transposed}</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+</link:roleType>
+<link:roleType id="MarketIndexPerformanceData" roleURI="http://xbrl.sec.gov/rr/role/MarketIndexPerformanceData">
+<link:definition>020070 - Schedule - Market Index Performance {Transposed}</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+</link:roleType>
+<link:roleType id="RiskReturnDetail" roleURI="http://xbrl.sec.gov/rr/role/RiskReturnDetail">
+<link:definition>030000 - Document - Risk/Return Detail {Unlabeled}</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+</link:roleType>
+<link:roleType id="RiskReturnDetailData" roleURI="http://xbrl.sec.gov/rr/role/RiskReturnDetailData">
+<link:definition>040000 - Disclosure - Risk/Return Detail Data {Elements}</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+</link:roleType>
+<link:roleType id="ProspectusOnly" roleURI="http://xbrl.sec.gov/rr/role/Prospectus">
+<link:definition>050000 - Document - Prospectus</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+</link:roleType>
+<link:roleType id="CoregistrantOnly" roleURI="http://xbrl.sec.gov/rr/role/Coregistrant">
+<link:definition>050005 - Document - Coregistrant</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+</link:roleType>
+<link:roleType id="SeriesOnly" roleURI="http://xbrl.sec.gov/rr/role/Series">
+<link:definition>050010 - Document - Series</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+</link:roleType>
+<link:roleType id="ClassOnly" roleURI="http://xbrl.sec.gov/rr/role/Class">
+<link:definition>050020 - Document - Class</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+</link:roleType>
+<link:roleType id="PerformanceMeasureOnly" roleURI="http://xbrl.sec.gov/rr/role/PerformanceMeasure">
+<link:definition>050030 - Document - Performance Measure</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+</link:roleType>
+<link:roleType id="Defaults" roleURI="http://xbrl.sec.gov/rr/role/Defaults">
+<link:definition>060000 - Document - Defaults</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+</link:roleType>
+<link:roleType id="Deprecated" roleURI="http://xbrl.sec.gov/rr/role/Deprecated">
+<link:definition>999000 - Document - Deprecated</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://xbrl.sec.gov/rr/role/Risk" id="RiskOnly">
+<link:definition>050015 - Document - Risk</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+</link:roleType>
+</xs:appinfo>
+</xs:annotation>
+<xs:import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"/>
+<xs:import namespace="http://www.xbrl.org/dtr/type/2022-03-31" schemaLocation="https://www.xbrl.org/dtr/type/2022-03-31/types.xsd"/>
+<xs:import namespace="http://www.xbrl.org/2003/linkbase" schemaLocation="http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd"/>
+<xs:import namespace="http://xbrl.org/2005/xbrldt" schemaLocation="http://www.xbrl.org/2005/xbrldt-2005.xsd"/>
+<xs:element name="ExpenseExampleNoRedemptionAbstract" id="rr_ExpenseExampleNoRedemptionAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ShareholderFeesTableTextBlock" id="rr_ShareholderFeesTableTextBlock" type="dtr-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AnnualFundOperatingExpensesTableTextBlock" id="rr_AnnualFundOperatingExpensesTableTextBlock" type="dtr-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ExpenseExampleWithRedemptionTableTextBlock" id="rr_ExpenseExampleWithRedemptionTableTextBlock" type="dtr-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="BarChartTableTextBlock" id="rr_BarChartTableTextBlock" type="dtr-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="PerformanceTableTextBlock" id="rr_PerformanceTableTextBlock" type="dtr-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ExpenseExampleNoRedemptionNarrativeTextBlock" id="rr_ExpenseExampleNoRedemptionNarrativeTextBlock" type="dtr-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="MarketIndexPerformanceTableTextBlock" id="rr_MarketIndexPerformanceTableTextBlock" type="dtr-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ExpenseExampleNoRedemptionTableTextBlock" id="rr_ExpenseExampleNoRedemptionTableTextBlock" type="dtr-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="RiskReturnDetailTableTextBlock" id="rr_RiskReturnDetailTableTextBlock" type="dtr-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="PerformanceMeasureAxis" id="rr_PerformanceMeasureAxis" type="xbrli:stringItemType" substitutionGroup="xbrldt:dimensionItem" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="PerformanceMeasureDomain" id="rr_PerformanceMeasureDomain" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AfterTaxesOnDistributionsMember" id="rr_AfterTaxesOnDistributionsMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AfterTaxesOnDistributionsAndSalesMember" id="rr_AfterTaxesOnDistributionsAndSalesMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="CoregistrantAxis" id="rr_CoregistrantAxis" type="xbrli:stringItemType" substitutionGroup="xbrldt:dimensionItem" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="CoregistrantDomain" id="rr_CoregistrantDomain" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="RiskReturnHeading" id="rr_RiskReturnHeading" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ObjectiveSectionAbstract" id="rr_ObjectiveSectionAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ObjectiveHeading" id="rr_ObjectiveHeading" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ObjectivePrimaryTextBlock" id="rr_ObjectivePrimaryTextBlock" type="dtr-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ObjectiveSecondaryTextBlock" id="rr_ObjectiveSecondaryTextBlock" type="dtr-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="StrategySectionAbstract" id="rr_StrategySectionAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="StrategyHeading" id="rr_StrategyHeading" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="StrategyNarrativeTextBlock" id="rr_StrategyNarrativeTextBlock" type="dtr-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="StrategyPortfolioConcentration" id="rr_StrategyPortfolioConcentration" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="BarChartAndPerformanceTableHeading" id="rr_BarChartAndPerformanceTableHeading" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="PerformanceNarrativeTextBlock" id="rr_PerformanceNarrativeTextBlock" type="dtr-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="PerformancePastDoesNotIndicateFuture" id="rr_PerformancePastDoesNotIndicateFuture" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="PerformanceInformationIllustratesVariabilityOfReturns" id="rr_PerformanceInformationIllustratesVariabilityOfReturns" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="PerformanceOneYearOrLess" id="rr_PerformanceOneYearOrLess" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="PerformanceAdditionalMarketIndex" id="rr_PerformanceAdditionalMarketIndex" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="BarChartHeading" id="rr_BarChartHeading" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="BarChartNarrativeTextBlock" id="rr_BarChartNarrativeTextBlock" type="dtr-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="BarChartDoesNotReflectSalesLoads" id="rr_BarChartDoesNotReflectSalesLoads" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="BarChartReturnsForClassNotOfferedInProspectus" id="rr_BarChartReturnsForClassNotOfferedInProspectus" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="BarChartReasonSelectedClassDifferentFromImmediatelyPrecedingPeriod" id="rr_BarChartReasonSelectedClassDifferentFromImmediatelyPrecedingPeriod" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AnnualReturnCaption" id="rr_AnnualReturnCaption" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AnnualReturnColumnName" id="rr_AnnualReturnColumnName" type="dtr-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AnnualReturnInceptionDate" id="rr_AnnualReturnInceptionDate" type="xbrli:dateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AnnualReturn1990" id="rr_AnnualReturn1990" type="xbrli:pureItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AnnualReturn1991" id="rr_AnnualReturn1991" type="xbrli:pureItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AnnualReturn1992" id="rr_AnnualReturn1992" type="xbrli:pureItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AnnualReturn1993" id="rr_AnnualReturn1993" type="xbrli:pureItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AnnualReturn1994" id="rr_AnnualReturn1994" type="xbrli:pureItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AnnualReturn1995" id="rr_AnnualReturn1995" type="xbrli:pureItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AnnualReturn1996" id="rr_AnnualReturn1996" type="xbrli:pureItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AnnualReturn1997" id="rr_AnnualReturn1997" type="xbrli:pureItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AnnualReturn1998" id="rr_AnnualReturn1998" type="xbrli:pureItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AnnualReturn1999" id="rr_AnnualReturn1999" type="xbrli:pureItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AnnualReturn2000" id="rr_AnnualReturn2000" type="xbrli:pureItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AnnualReturn2001" id="rr_AnnualReturn2001" type="xbrli:pureItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AnnualReturn2002" id="rr_AnnualReturn2002" type="xbrli:pureItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AnnualReturn2003" id="rr_AnnualReturn2003" type="xbrli:pureItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AnnualReturn2004" id="rr_AnnualReturn2004" type="xbrli:pureItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AnnualReturn2005" id="rr_AnnualReturn2005" type="xbrli:pureItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AnnualReturn2006" id="rr_AnnualReturn2006" type="xbrli:pureItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AnnualReturn2007" id="rr_AnnualReturn2007" type="xbrli:pureItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AnnualReturn2008" id="rr_AnnualReturn2008" type="xbrli:pureItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AnnualReturn2009" id="rr_AnnualReturn2009" type="xbrli:pureItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AnnualReturn2010" id="rr_AnnualReturn2010" type="xbrli:pureItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AnnualReturn2011" id="rr_AnnualReturn2011" type="xbrli:pureItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AnnualReturn2012" id="rr_AnnualReturn2012" type="xbrli:pureItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AnnualReturn2013" id="rr_AnnualReturn2013" type="xbrli:pureItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AnnualReturn2014" id="rr_AnnualReturn2014" type="xbrli:pureItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AnnualReturn2015" id="rr_AnnualReturn2015" type="xbrli:pureItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AnnualReturn2016" id="rr_AnnualReturn2016" type="xbrli:pureItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AnnualReturn2017" id="rr_AnnualReturn2017" type="xbrli:pureItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AnnualReturn2018" id="rr_AnnualReturn2018" type="xbrli:pureItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AnnualReturn2019" id="rr_AnnualReturn2019" type="xbrli:pureItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AnnualReturn2020" id="rr_AnnualReturn2020" type="xbrli:pureItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AnnualReturn2021" id="rr_AnnualReturn2021" type="xbrli:pureItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AnnualReturn2022" id="rr_AnnualReturn2022" type="xbrli:pureItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AnnualReturn2023" id="rr_AnnualReturn2023" type="xbrli:pureItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AnnualReturn2024" id="rr_AnnualReturn2024" type="xbrli:pureItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AnnualReturn2025" id="rr_AnnualReturn2025" type="xbrli:pureItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="YearToDateReturnLabel" id="rr_YearToDateReturnLabel" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="BarChartYearToDateReturn" id="rr_BarChartYearToDateReturn" type="xbrli:pureItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="BarChartYearToDateReturnDate" id="rr_BarChartYearToDateReturnDate" type="xbrli:dateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="HighestQuarterlyReturnLabel" id="rr_HighestQuarterlyReturnLabel" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="BarChartHighestQuarterlyReturn" id="rr_BarChartHighestQuarterlyReturn" type="xbrli:pureItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="BarChartHighestQuarterlyReturnDate" id="rr_BarChartHighestQuarterlyReturnDate" type="xbrli:dateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="LowestQuarterlyReturnLabel" id="rr_LowestQuarterlyReturnLabel" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="BarChartLowestQuarterlyReturn" id="rr_BarChartLowestQuarterlyReturn" type="xbrli:pureItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="BarChartLowestQuarterlyReturnDate" id="rr_BarChartLowestQuarterlyReturnDate" type="xbrli:dateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="BarChartClosingTextBlock" id="rr_BarChartClosingTextBlock" type="dtr-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="PerformanceTableHeading" id="rr_PerformanceTableHeading" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="PerformanceTableNarrativeTextBlock" id="rr_PerformanceTableNarrativeTextBlock" type="dtr-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="PerformanceTableDoesReflectSalesLoads" id="rr_PerformanceTableDoesReflectSalesLoads" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="PerformanceTableMarketIndexChanged" id="rr_PerformanceTableMarketIndexChanged" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="PerformanceTableUsesHighestFederalRate" id="rr_PerformanceTableUsesHighestFederalRate" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="PerformanceTableNotRelevantToTaxDeferred" id="rr_PerformanceTableNotRelevantToTaxDeferred" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="PerformanceTableExplanationAfterTaxHigher" id="rr_PerformanceTableExplanationAfterTaxHigher" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AverageAnnualReturnCaption" id="rr_AverageAnnualReturnCaption" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AverageAnnualReturnColumnName" id="rr_AverageAnnualReturnColumnName" type="dtr-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AverageAnnualReturnLabel" id="rr_AverageAnnualReturnLabel" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AverageAnnualReturnYear01" id="rr_AverageAnnualReturnYear01" type="xbrli:pureItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AverageAnnualReturnYear05" id="rr_AverageAnnualReturnYear05" type="xbrli:pureItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AverageAnnualReturnYear10" id="rr_AverageAnnualReturnYear10" type="xbrli:pureItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AverageAnnualReturnSinceInception" id="rr_AverageAnnualReturnSinceInception" type="xbrli:pureItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AverageAnnualReturnInceptionDate" id="rr_AverageAnnualReturnInceptionDate" type="xbrli:dateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="MoneyMarketSevenDayYieldCaption" id="rr_MoneyMarketSevenDayYieldCaption" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="MoneyMarketSevenDayYieldColumnName" id="rr_MoneyMarketSevenDayYieldColumnName" type="dtr-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="MoneyMarketSevenDayYieldPhone" id="rr_MoneyMarketSevenDayYieldPhone" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="MoneyMarketSevenDayYield" id="rr_MoneyMarketSevenDayYield" type="xbrli:pureItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="MoneyMarketSevenDayTaxEquivalentYield" id="rr_MoneyMarketSevenDayTaxEquivalentYield" type="xbrli:pureItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ThirtyDayYieldCaption" id="rr_ThirtyDayYieldCaption" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ThirtyDayYieldColumnName" id="rr_ThirtyDayYieldColumnName" type="dtr-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ThirtyDayYieldPhone" id="rr_ThirtyDayYieldPhone" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ThirtyDayYield" id="rr_ThirtyDayYield" type="xbrli:pureItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ThirtyDayTaxEquivalentYield" id="rr_ThirtyDayTaxEquivalentYield" type="xbrli:pureItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="PerformanceTableFootnotesTextBlock" id="rr_PerformanceTableFootnotesTextBlock" type="dtr-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="PerformanceTableClosingTextBlock" id="rr_PerformanceTableClosingTextBlock" type="dtr-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="RiskSectionAbstract" id="rr_RiskSectionAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="RiskHeading" id="rr_RiskHeading" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="RiskNarrativeTextBlock" id="rr_RiskNarrativeTextBlock" type="dtr-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="RiskAxis" id="rr_RiskAxis" type="xbrli:stringItemType" substitutionGroup="xbrldt:dimensionItem" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AllRisksMember" id="rr_AllRisksMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="RiskTextBlock" id="rr_RiskTextBlock" type="dtr-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="RiskNondiversifiedStatus" id="rr_RiskNondiversifiedStatus" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="RiskNondiversifiedStatusMember" id="rr_RiskNondiversifiedStatusMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="RiskLoseMoney" id="rr_RiskLoseMoney" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="RiskLoseMoneyMember" id="rr_RiskLoseMoneyMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="RiskMoneyMarketFundPriceFluctuates" id="rr_RiskMoneyMarketFundPriceFluctuates" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="RiskMoneyMarketFundPriceFluctuatesMember" id="rr_RiskMoneyMarketFundPriceFluctuatesMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="RiskMoneyMarketFundMayImposeFeesOrSuspendSales" id="rr_RiskMoneyMarketFundMayImposeFeesOrSuspendSales" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="RiskMoneyMarketFundMayImposeFeesOrSuspendSalesMember" id="rr_RiskMoneyMarketFundMayImposeFeesOrSuspendSalesMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="RiskMoneyMarketFundMayNotPreserveDollar" id="rr_RiskMoneyMarketFundMayNotPreserveDollar" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="RiskMoneyMarketFundMayNotPreserveDollarMember" id="rr_RiskMoneyMarketFundMayNotPreserveDollarMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="RiskMoneyMarketFundSponsorMayNotProvideSupport" id="rr_RiskMoneyMarketFundSponsorMayNotProvideSupport" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="RiskMoneyMarketFundSponsorMayNotProvideSupportMember" id="rr_RiskMoneyMarketFundSponsorMayNotProvideSupportMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="RiskNotInsuredDepositoryInstitution" id="rr_RiskNotInsuredDepositoryInstitution" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="RiskNotInsuredDepositoryInstitutionMember" id="rr_RiskNotInsuredDepositoryInstitutionMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="RiskNotInsured" id="rr_RiskNotInsured" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="RiskNotInsuredMember" id="rr_RiskNotInsuredMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="RiskCaption" id="rr_RiskCaption" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="RiskColumnName" id="rr_RiskColumnName" type="dtr-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="Risk" id="rr_Risk" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="RiskFootnotesTextBlock" id="rr_RiskFootnotesTextBlock" type="dtr-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="RiskClosingTextBlock" id="rr_RiskClosingTextBlock" type="dtr-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ExpenseHeading" id="rr_ExpenseHeading" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ExpenseNarrativeTextBlock" id="rr_ExpenseNarrativeTextBlock" type="dtr-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ExpenseBreakpointDiscounts" id="rr_ExpenseBreakpointDiscounts" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ShareholderFeesCaption" id="rr_ShareholderFeesCaption" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ShareholderFeesColumnName" id="rr_ShareholderFeesColumnName" type="dtr-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="MaximumCumulativeSalesChargeOverOfferingPrice" id="rr_MaximumCumulativeSalesChargeOverOfferingPrice" type="rr:NonNegativePure4Type" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="MaximumCumulativeSalesChargeOverOther" id="rr_MaximumCumulativeSalesChargeOverOther" type="rr:NonNegativePure4Type" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="MaximumSalesChargeImposedOnPurchasesOverOfferingPrice" id="rr_MaximumSalesChargeImposedOnPurchasesOverOfferingPrice" type="rr:NonNegativePure4Type" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="MaximumDeferredSalesChargeOverOther" id="rr_MaximumDeferredSalesChargeOverOther" type="rr:NonNegativePure4Type" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="MaximumDeferredSalesChargeOverOfferingPrice" id="rr_MaximumDeferredSalesChargeOverOfferingPrice" type="rr:NonNegativePure4Type" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="MaximumSalesChargeOnReinvestedDividendsAndDistributionsOverOther" id="rr_MaximumSalesChargeOnReinvestedDividendsAndDistributionsOverOther" type="rr:NonNegativePure4Type" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="RedemptionFeeOverRedemption" id="rr_RedemptionFeeOverRedemption" type="rr:NonPositivePure4Type" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="RedemptionFee" id="rr_RedemptionFee" type="rr:NonPositiveMonetaryType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ExchangeFeeOverRedemption" id="rr_ExchangeFeeOverRedemption" type="rr:NonNegativePure4Type" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ExchangeFee" id="rr_ExchangeFee" type="rr:NonNegativeMonetaryType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="MaximumAccountFeeOverAssets" id="rr_MaximumAccountFeeOverAssets" type="rr:NonNegativePure4Type" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="MaximumAccountFee" id="rr_MaximumAccountFee" type="rr:NonNegativeMonetaryType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ShareholderFeeOther" id="rr_ShareholderFeeOther" type="rr:NonNegativeMonetaryType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="OperatingExpensesCaption" id="rr_OperatingExpensesCaption" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="OperatingExpensesColumnName" id="rr_OperatingExpensesColumnName" type="dtr-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ManagementFeesOverAssets" id="rr_ManagementFeesOverAssets" type="rr:NonNegativePure4Type" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="DistributionAndService12b1FeesOverAssets" id="rr_DistributionAndService12b1FeesOverAssets" type="rr:NonNegativePure4Type" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="DistributionOrSimilarNon12b1FeesOverAssets" id="rr_DistributionOrSimilarNon12b1FeesOverAssets" type="rr:NonNegativePure4Type" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="OtherExpensesOverAssets" id="rr_OtherExpensesOverAssets" type="rr:NonNegativePure4Type" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="Component1OtherExpensesOverAssets" id="rr_Component1OtherExpensesOverAssets" type="rr:NonNegativePure4Type" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="Component2OtherExpensesOverAssets" id="rr_Component2OtherExpensesOverAssets" type="rr:NonNegativePure4Type" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="Component3OtherExpensesOverAssets" id="rr_Component3OtherExpensesOverAssets" type="rr:NonNegativePure4Type" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AcquiredFundFeesAndExpensesOverAssets" id="rr_AcquiredFundFeesAndExpensesOverAssets" type="rr:NonNegativePure4Type" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ExpensesOverAssets" id="rr_ExpensesOverAssets" type="rr:NonNegativePure4Type" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="FeeWaiverOrReimbursementOverAssets" id="rr_FeeWaiverOrReimbursementOverAssets" type="rr:NonPositivePure4Type" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="NetExpensesOverAssets" id="rr_NetExpensesOverAssets" type="rr:NonNegativePure4Type" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ExpensesRepresentBothMasterAndFeeder" id="rr_ExpensesRepresentBothMasterAndFeeder" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ExpensesOtherExpensesHadExtraordinaryExpensesBeenIncluded" id="rr_ExpensesOtherExpensesHadExtraordinaryExpensesBeenIncluded" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ExpensesRestatedToReflectCurrent" id="rr_ExpensesRestatedToReflectCurrent" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ExpenseExampleHeading" id="rr_ExpenseExampleHeading" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ExpenseExampleNarrativeTextBlock" id="rr_ExpenseExampleNarrativeTextBlock" type="dtr-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ExpenseExampleByYearHeading" id="rr_ExpenseExampleByYearHeading" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ExpenseExampleByYearCaption" id="rr_ExpenseExampleByYearCaption" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ExpenseExampleByYearColumnName" id="rr_ExpenseExampleByYearColumnName" type="dtr-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ExpenseExampleYear01" id="rr_ExpenseExampleYear01" type="rr:NonNegativeMonetaryType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ExpenseExampleYear03" id="rr_ExpenseExampleYear03" type="rr:NonNegativeMonetaryType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ExpenseExampleYear05" id="rr_ExpenseExampleYear05" type="rr:NonNegativeMonetaryType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ExpenseExampleYear10" id="rr_ExpenseExampleYear10" type="rr:NonNegativeMonetaryType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ExpenseExampleNoRedemptionByYearCaption" id="rr_ExpenseExampleNoRedemptionByYearCaption" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ExpenseExampleNoRedemptionByYearColumnName" id="rr_ExpenseExampleNoRedemptionByYearColumnName" type="dtr-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ExpenseExampleNoRedemptionYear01" id="rr_ExpenseExampleNoRedemptionYear01" type="rr:NonNegativeMonetaryType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ExpenseExampleNoRedemptionYear03" id="rr_ExpenseExampleNoRedemptionYear03" type="rr:NonNegativeMonetaryType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ExpenseExampleNoRedemptionYear05" id="rr_ExpenseExampleNoRedemptionYear05" type="rr:NonNegativeMonetaryType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ExpenseExampleNoRedemptionYear10" id="rr_ExpenseExampleNoRedemptionYear10" type="rr:NonNegativeMonetaryType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ExpenseExampleClosingTextBlock" id="rr_ExpenseExampleClosingTextBlock" type="dtr-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ProspectusDate" id="rr_ProspectusDate" type="xbrli:dateItemType" substitutionGroup="xbrli:item" abstract="false" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ProspectusTable" id="rr_ProspectusTable" type="xbrli:stringItemType" substitutionGroup="xbrldt:hypercubeItem" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ProspectusShareClassAxis" id="rr_ProspectusShareClassAxis" type="xbrli:stringItemType" substitutionGroup="xbrldt:dimensionItem" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ShareClassDomain" id="rr_ShareClassDomain" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="FormN1aAbstract" id="rr_FormN1aAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ProspectusLineItems" id="rr_ProspectusLineItems" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="RiskReturnAbstract" id="rr_RiskReturnAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="PortfolioTurnoverHeading" id="rr_PortfolioTurnoverHeading" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="false" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="PortfolioTurnoverTextBlock" id="rr_PortfolioTurnoverTextBlock" type="dtr-types:textBlockItemType" substitutionGroup="xbrli:item" abstract="false" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="BarChartAndPerformanceTableSectionAbstract" id="rr_BarChartAndPerformanceTableSectionAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="BarChartNarrativeAbstract" id="rr_BarChartNarrativeAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="BarChartTableAbstract" id="rr_BarChartTableAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="BarChartClosingAbstract" id="rr_BarChartClosingAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AverageAnnualReturnAbstract" id="rr_AverageAnnualReturnAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="MarketIndexReturnAbstract" id="rr_MarketIndexReturnAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="PerformanceNarrativeAbstract" id="rr_PerformanceNarrativeAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="PerformanceTableSectionAbstract" id="rr_PerformanceTableSectionAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="PerformanceTableClosingAbstract" id="rr_PerformanceTableClosingAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ExpensesAbstract" id="rr_ExpensesAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ShareholderFeesAbstract" id="rr_ShareholderFeesAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="OperatingExpensesAbstract" id="rr_OperatingExpensesAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="NetExpensesOverAssetsAbstract" id="rr_NetExpensesOverAssetsAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ExpensesOverAssetsAbstract" id="rr_ExpensesOverAssetsAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="OtherExpensesOverAssetsAbstract" id="rr_OtherExpensesOverAssetsAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ExpenseFootnotesAbstract" id="rr_ExpenseFootnotesAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ExpenseFootnotesTextBlock" id="rr_ExpenseFootnotesTextBlock" type="dtr-types:textBlockItemType" substitutionGroup="xbrli:item" abstract="false" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ExpenseExampleNarrativeAbstract" id="rr_ExpenseExampleNarrativeAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ExpenseExampleAbstract" id="rr_ExpenseExampleAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ExpenseExampleClosingAbstract" id="rr_ExpenseExampleClosingAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ExpenseExampleFootnotesTextBlock" id="rr_ExpenseExampleFootnotesTextBlock" type="dtr-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="PortfolioTurnoverAbstract" id="rr_PortfolioTurnoverAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="FeeWaiverOrReimbursementOverAssetsDateOfTermination" id="rr_FeeWaiverOrReimbursementOverAssetsDateOfTermination" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="false" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="PortfolioTurnoverRate" id="rr_PortfolioTurnoverRate" type="xbrli:pureItemType" substitutionGroup="xbrli:item" abstract="false" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ExpenseBreakpointMinimumInvestmentRequiredAmount" id="rr_ExpenseBreakpointMinimumInvestmentRequiredAmount" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" abstract="false" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="PerformanceTableFootnotesReasonPerformanceInformationForClassDifferentFromImmediatelyPrecedingPeriod" id="rr_PerformanceTableFootnotesReasonPerformanceInformationForClassDifferentFromImmediatelyPrecedingPeriod" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="false" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="BarChartFootnotesTextBlock" id="rr_BarChartFootnotesTextBlock" type="dtr-types:textBlockItemType" substitutionGroup="xbrli:item" abstract="false" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="PerformanceTableOneClassOfAfterTaxShown" id="rr_PerformanceTableOneClassOfAfterTaxShown" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="false" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="OtherExpensesNewFundBasedOnEstimates" id="rr_OtherExpensesNewFundBasedOnEstimates" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="false" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="AcquiredFundFeesAndExpensesBasedOnEstimates" id="rr_AcquiredFundFeesAndExpensesBasedOnEstimates" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="false" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ExpensesDeferredChargesTextBlock" id="rr_ExpensesDeferredChargesTextBlock" type="dtr-types:textBlockItemType" substitutionGroup="xbrli:item" abstract="false" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ExpensesRangeOfExchangeFeesTextBlock" id="rr_ExpensesRangeOfExchangeFeesTextBlock" type="dtr-types:textBlockItemType" substitutionGroup="xbrli:item" abstract="false" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ExpensesNotCorrelatedToRatioDueToAcquiredFundFees" id="rr_ExpensesNotCorrelatedToRatioDueToAcquiredFundFees" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="false" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ExpensesExplanationOfNonrecurringAccountFee" id="rr_ExpensesExplanationOfNonrecurringAccountFee" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="false" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="IndexNoDeductionForFeesExpensesTaxes" id="rr_IndexNoDeductionForFeesExpensesTaxes" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="PerformanceAvailabilityWebSiteAddress" id="rr_PerformanceAvailabilityWebSiteAddress" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="false" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="PerformanceAvailabilityPhone" id="rr_PerformanceAvailabilityPhone" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="false" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="SupplementToProspectusTextBlock" id="rr_SupplementToProspectusTextBlock" type="dtr-types:textBlockItemType" substitutionGroup="xbrli:item" abstract="false" nillable="true" xbrli:periodType="duration"/>
+<xs:complexType name="NonNegativePure4Type">
+<xs:simpleContent>
+<xs:restriction base="xbrli:pureItemType">
+<xs:minInclusive value="0"/>
+<xs:attribute name="id" type="xs:ID" use="optional" />
+<xs:attribute name="contextRef" type="xs:IDREF" use="required" />
+</xs:restriction>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="NonPositivePure4Type">
+<xs:simpleContent>
+<xs:restriction base="xbrli:pureItemType">
+<xs:maxInclusive value="0"/>
+<xs:attribute name="id" type="xs:ID" use="optional" />
+<xs:attribute name="contextRef" type="xs:IDREF" use="required" />
+</xs:restriction>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="NonNegativeMonetaryType">
+<xs:simpleContent>
+<xs:restriction base="xbrli:monetaryItemType">
+<xs:minInclusive value="0"/>
+<xs:attribute name="id" type="xs:ID" use="optional" />
+<xs:attribute name="contextRef" type="xs:IDREF" use="required" />
+</xs:restriction>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="NonPositiveMonetaryType">
+<xs:simpleContent>
+<xs:restriction base="xbrli:monetaryItemType">
+<xs:maxInclusive value="0"/>
+<xs:attribute name="id" type="xs:ID" use="optional" />
+<xs:attribute name="contextRef" type="xs:IDREF" use="required" />
+</xs:restriction>
+</xs:simpleContent>
+</xs:complexType>
+</xs:schema>

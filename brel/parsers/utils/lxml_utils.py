@@ -2,6 +2,7 @@ import lxml
 import lxml.etree
 from typing import cast
 
+
 def compute_connected_components(edges: list[tuple[str, str]]) -> list[list[str]]:
     """
     Given a list of edges, compute the connected components.
@@ -12,7 +13,7 @@ def compute_connected_components(edges: list[tuple[str, str]]) -> list[list[str]
     for edge in edges:
         unvisited.add(edge[0])
         unvisited.add(edge[1])
-    
+
     connected_components: list[list[str]] = []
     while len(unvisited) > 0:
         # pick a random element from unvisited
@@ -30,13 +31,36 @@ def compute_connected_components(edges: list[tuple[str, str]]) -> list[list[str]
                 elif edge[1] == current_node and edge[0] in unvisited:
                     working_set.append(edge[0])
                     unvisited.remove(edge[0])
-        
+
         connected_components.append(connected_component)
-    
+
     return connected_components
 
 
-def get_all_nsmaps(lxml_etrees: list[lxml.etree._ElementTree]) -> list[dict[str,str]]:
+def get_str(
+    element: lxml.etree._Element, attribute: str, default: str | None = None
+) -> str:
+    """
+    Helper function for getting a string attribute from an element. Always returns a string.
+    @param element: lxml.etree._Element to get the attribute from
+    @param attribute: str containing the name of the attribute
+    @param default: str containing the default value to return if the attribute is not found
+    @return: str containing the value of the attribute
+    @raises ValueError: if the attribute is not found and no default value is provided
+    @raises TypeError: if the attribute is not a string
+    """
+    value = element.attrib.get(attribute)
+    if value is None:
+        if default is not None:
+            return default
+
+        raise ValueError(f"{attribute} attribute not found on element {element}")
+    if not isinstance(value, str):
+        raise TypeError(f"{attribute} attribute on element {element} is not a string")
+    return value
+
+
+def get_all_nsmaps(lxml_etrees: list[lxml.etree._ElementTree]) -> list[dict[str, str]]:
     """
     Given a list of lxml etree objects, get all the namespace mappings.
     @param lxml_etrees: A list of lxml etree objects.
@@ -52,5 +76,5 @@ def get_all_nsmaps(lxml_etrees: list[lxml.etree._ElementTree]) -> list[dict[str,
             # create a copy of the nsmap
             nsmap_typecasted = cast(dict[str, str], nsmap)
             nsmaps.append(nsmap_typecasted)
-    
+
     return nsmaps

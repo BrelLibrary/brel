@@ -5,6 +5,7 @@ from brel import QName, QNameNSMap
 from brel.resource import IResource
 from typing import cast
 
+
 class BrelLabelRole(Enum):
     STANDARD_LABEL = "label"
 
@@ -45,7 +46,7 @@ class BrelLabelRole(Enum):
     NEGATED_TOTAL_LABEL = "negatedTotalLabel"
 
     @staticmethod
-    def from_url(url: str) -> 'BrelLabelRole':
+    def from_url(url: str) -> "BrelLabelRole":
         """
         Given an url to a label role, return the corresponding BrelLabelRole.
         @param url: str containing the url to the label role
@@ -62,50 +63,58 @@ class BrelLabelRole(Enum):
             if role_candidate.value == url:
                 role = role_candidate
                 break
-        
+
         # check if the role was found
         if role is None:
             raise ValueError(f"Could not find the role {url}")
-        
+
         return role
 
 
 class BrelLabel(IResource):
-    """ Represents a label in XBRL."""
+    """Represents a label in XBRL."""
 
-    def __init__(self, text: str, label: str, language: str, label_role: BrelLabelRole = BrelLabelRole.STANDARD_LABEL) -> None:
+    def __init__(
+        self,
+        text: str,
+        label: str,
+        language: str,
+        label_role: BrelLabelRole = BrelLabelRole.STANDARD_LABEL,
+    ) -> None:
         self.__text: str = text
         self.__language: str = language
         self.__label_role: BrelLabelRole = label_role
-        # Note: the Brellabel's label is not the same as the Brellabel's text. 
+        # Note: the Brellabel's label is not the same as the Brellabel's text.
         # BrelLabels with different roles can have different texts, but the same label.
         self.__label: str = label
 
     def __str__(self) -> str:
         return self.__text
-    
+
     # first class citizens
     def get_language(self) -> str:
         return self.__language
 
     def get_label_role(self) -> BrelLabelRole:
         return self.__label_role
-    
+
     def get_label(self) -> str:
         return self.__label
-    
-    def get_role(self) -> str | None:
+
+    def get_role(self) -> str:
         return self.__label_role.value
-    
+
     def get_title(self) -> str | None:
         return None
-    
+
     def get_content(self) -> dict:
         return {None: self.__text}
-    
+
     # internal methods
     @classmethod
-    def from_xml(cls, xml_element: lxml.etree._Element, qname_nsmap: QNameNSMap) -> "BrelLabel":
+    def from_xml(
+        cls, xml_element: lxml.etree._Element, qname_nsmap: QNameNSMap
+    ) -> "BrelLabel":
         """
         Create a BrelLabel from an lxml.etree._Element.
         @param xml_element: lxml.etree._Element containing the xml element
@@ -127,7 +136,7 @@ class BrelLabel(IResource):
         while language is None and lang_element is not None:
             language = lang_element.attrib.get(f"{{{nsmap['xml']}}}lang")
             lang_element = lang_element.getparent()
-        
+
         # Language is required. If it is not found, raise an error.
         if language is None:
             raise ValueError(f"Could not find the language for the label {text}")
@@ -148,4 +157,3 @@ class BrelLabel(IResource):
         label = cast(str, label)
 
         return cls(text, label, language, role)
-    
