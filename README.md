@@ -125,3 +125,4 @@ for root in roots:
 Note: Network nodes can either point to Report Elements, Resources or Facts. Use the `Node.points_to` method to check what the node points to.
 
 ### Documentation
+
