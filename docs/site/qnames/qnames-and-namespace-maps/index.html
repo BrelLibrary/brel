@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>QNames and Namespace maps - Brel git repo</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "QNames and Namespace maps";
+        var mkdocs_page_input_path = "qnames/qnames-and-namespace-maps.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Brel git repo
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Brel Filings</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../brel-filings/filings/">Filings</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Facts</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../facts/facts/">Facts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../facts/contexts/">Contexts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../facts/aspects/">Aspects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../facts/characteristics/">Characteristics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../facts/concept-characteristic/">Concept Characteristic</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../facts/entity-characteristic/">Entity Characteristic</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../facts/period-characteristic/">Period Characteristic</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../facts/unit-characteristic/">Unit Characteristic</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../facts/explicit-dimension-characteristic/">Explicit Dimension Characteristic</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../facts/typed-dimension-characteristic/">Typed Dimension Characteristic</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Components</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../components/components/">Components</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../components/networks/">Networks</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../components/network-nodes/">Network Nodes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../components/calculation-networks-and-nodes/">Calculation Networks and Nodes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Report Elements</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../report-elements/report-elements/">Report Elements</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../report-elements/concept/">Concept</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../report-elements/abstract/">Abstract</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../report-elements/line-items/">Line Items</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../report-elements/hypercube/">Hypercube</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../report-elements/dimension/">Dimension</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../report-elements/member/">Member</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">QNames</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">QNames and Namespace maps</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#qname-objects">QName Objects</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#qnamensmap-objects">QNameNSMap Objects</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../namespace-normalization/">Namespace normalization</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Brel git repo</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">QNames</li>
+      <li class="breadcrumb-item active">QNames and Namespace maps</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/PapediPoo/Brel/edit/master/docs/qnames/qnames-and-namespace-maps.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p><a id="brel.qname"></a></p>
+<h1 id="brelqname">brel.qname</h1>
+<p>This module contains the QName class and the QNameNSMap class.
+The QName class represents a qualified name.
+The QNameNSMap class represents a namespace map.</p>
+<p>====================</p>
+<ul>
+<li>author: Robin Schmidiger</li>
+<li>version: 0.6</li>
+<li>date: 06 January 2024</li>
+</ul>
+<p>====================</p>
+<p><a id="brel.qname.QName"></a></p>
+<h2 id="qname-objects">QName Objects</h2>
+<pre><code class="language-python">class QName()
+</code></pre>
+<p>This class represents a qualified name. Qualified names are used in XML and XBRL to identify elements.
+Brel re-uses qualified names to identify report elements, types, etc. in the report.
+A qualified name consists of a URI, a prefix and a local name.</p>
+<ul>
+<li>The URI identifies the namespace of the element.</li>
+<li>The prefix is a short string that is used to identify the namespace.</li>
+<li>The local name is the name of the element within the namespace.</li>
+</ul>
+<p>An example of a qualified name is us-gaap:Assets.</p>
+<ul>
+<li>The URI is http://fasb.org/us-gaap/2019-01-31</li>
+<li>The prefix is us-gaap and acts as an abbreviation for the URI</li>
+<li>The local name is Assets</li>
+</ul>
+<p>The <a href="#brel.qname.QName"><code>QName</code></a> class is closely related to the <a href="#brel.qname.QNameNSMap"><code>QNameNSMap</code></a> class. The QNameNSMap class is used to map prefixes to URIs and vice versa.
+When creating a QName, sometimes either the prefix or the URI is unknown. In this case, the QNameNSMap class is used to find the missing information.
+There is usually only one QNameNSMap object per report. It is created when the report is created and then passed to the QName constructor.</p>
+<p><a id="brel.qname.QNameNSMap"></a></p>
+<h2 id="qnamensmap-objects">QNameNSMap Objects</h2>
+<pre><code class="language-python">class QNameNSMap()
+</code></pre>
+<p>This class represents a namespace map used to map prefixes to URIs and vice versa.
+It is used by the <a href="#brel.qname.QName"><code>QName</code></a> class to create QNames from strings.
+It requires a 1:1 mapping between prefixes and URIs.</p>
+<p>A QNameNSMap introduces two concepts to achieve this: prefix redirects and prefix renames.</p>
+<p><strong>Prefix redirects</strong></p>
+<p>For many reports, it is possible that the same namespace is used with different prefixes.
+For example, the namespace http://fasb.org/us-gaap/2020 is used with the prefixes us-gaap and us-gaap-ci.
+This is not allowed in Brel. So one of the prefixes must be redirected to the other.
+In case of the example above, the prefix us-gaap-ci must be redirected to us-gaap.
+This can be done as follows:</p>
+<pre><code>nsmap.add_redirect(&quot;us-gaap-ci&quot;, &quot;us-gaap&quot;)
+</code></pre>
+<p><strong>Prefix renames</strong></p>
+<p>Sometimes, the same prefix is used for different namespaces.
+For example, the prefix 'types' is used for the namespaces http://fasb.org/us-types/2020 and http://fasb.org/uk-types/2020.
+This is not allowed in Brel. So one of the prefixes must be renamed.
+In case of the example above, the prefix 'types' could be renamed to 'us-types' or 'uk-types'.
+This can be done as follows:</p>
+<pre><code>nsmap.rename(&quot;http://fasb.org/us-types/2020&quot;, &quot;us-types&quot;)
+</code></pre>
+<p>Now whenever a QName is created with the prefix 'namespaces', the prefix will be replaced with 'us-types'.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../report-elements/member/" class="btn btn-neutral float-left" title="Member"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../namespace-normalization/" class="btn btn-neutral float-right" title="Namespace normalization">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/PapediPoo/Brel" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../../report-elements/member/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../namespace-normalization/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

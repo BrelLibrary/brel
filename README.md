@@ -126,3 +126,4 @@ Note: Network nodes can either point to Report Elements, Resources or Facts. Use
 
 ### Documentation
 
+The documentation of the Brel API is available on GitHub Pages [here](https://papedipoo.github.io/Brel/).

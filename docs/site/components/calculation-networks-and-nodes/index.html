@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Calculation Networks and Nodes - Brel git repo</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Calculation Networks and Nodes";
+        var mkdocs_page_input_path = "components/calculation-networks-and-nodes.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Brel git repo
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Brel Filings</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../brel-filings/filings/">Filings</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Facts</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../facts/facts/">Facts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../facts/contexts/">Contexts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../facts/aspects/">Aspects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../facts/characteristics/">Characteristics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../facts/concept-characteristic/">Concept Characteristic</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../facts/entity-characteristic/">Entity Characteristic</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../facts/period-characteristic/">Period Characteristic</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../facts/unit-characteristic/">Unit Characteristic</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../facts/explicit-dimension-characteristic/">Explicit Dimension Characteristic</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../facts/typed-dimension-characteristic/">Typed Dimension Characteristic</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Components</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../components/">Components</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../networks/">Networks</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../network-nodes/">Network Nodes</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Calculation Networks and Nodes</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#calculationnetworknode-objects">CalculationNetworkNode Objects</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#get_report_element">get_report_element</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_resource">get_resource</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_fact">get_fact</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#points_to">points_to</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_weight">get_weight</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_concept">get_concept</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Report Elements</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../report-elements/report-elements/">Report Elements</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../report-elements/concept/">Concept</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../report-elements/abstract/">Abstract</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../report-elements/line-items/">Line Items</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../report-elements/hypercube/">Hypercube</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../report-elements/dimension/">Dimension</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../report-elements/member/">Member</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">QNames</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../qnames/qnames-and-namespace-maps/">QNames and Namespace maps</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../qnames/namespace-normalization/">Namespace normalization</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Brel git repo</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Components</li>
+      <li class="breadcrumb-item active">Calculation Networks and Nodes</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/PapediPoo/Brel/edit/master/docs/components/calculation-networks-and-nodes.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p><a id="brel.networks.calculation_network_node"></a></p>
+<h1 id="brelnetworkscalculation_network_node">brel.networks.calculation_network_node</h1>
+<p>This module contains the CalculationNetworkNode class.
+CalculationNetworkNodes are used to represent nodes in a calculation network.
+Since a node can have children, nodes can also be viewed as trees.
+Note: the balance consistency check is not implemented here, but in the CalculationNetwork class.
+CalculationNetworkNodes implement the INetworkNode interface, but they add the methods <code>get_concept()</code> and <code>get_weight()</code>.</p>
+<p>Note that this documentation omits the methods inherited from the INetworkNode interface.
+For more on the methods inherited from the INetworkNode interface, see the <a href="../network-nodes/">INetworkNode documentation</a>.</p>
+<p>=================</p>
+<ul>
+<li>author: Robin Schmidiger</li>
+<li>version: 0.8</li>
+<li>date: 29 December 2023</li>
+</ul>
+<p>=================</p>
+<p><a id="brel.networks.calculation_network_node.CalculationNetworkNode"></a></p>
+<h2 id="calculationnetworknode-objects">CalculationNetworkNode Objects</h2>
+<pre><code class="language-python">class CalculationNetworkNode(INetworkNode)
+</code></pre>
+<p>Class for representing a node in a network.
+Since a node can have children, nodes can also be viewed as trees.</p>
+<p><a id="brel.networks.calculation_network_node.CalculationNetworkNode.get_report_element"></a></p>
+<h4 id="get_report_element">get_report_element</h4>
+<pre><code class="language-python">def get_report_element() -&gt; IReportElement
+</code></pre>
+<p><strong>Returns</strong>:</p>
+<p><code>IReportElement</code>: report element associated with this node.
+Use the <code>points_to()</code> method to check if this node points to a report element.</p>
+<p><a id="brel.networks.calculation_network_node.CalculationNetworkNode.get_resource"></a></p>
+<h4 id="get_resource">get_resource</h4>
+<pre><code class="language-python">def get_resource() -&gt; IResource
+</code></pre>
+<p>Would return the resource associated with this node, but calculation network nodes do not point to resources</p>
+<p><strong>Raises</strong>:</p>
+<ul>
+<li><code>ValueError</code>: CalculationNetworkNode does not point to a resource</li>
+</ul>
+<p><a id="brel.networks.calculation_network_node.CalculationNetworkNode.get_fact"></a></p>
+<h4 id="get_fact">get_fact</h4>
+<pre><code class="language-python">def get_fact() -&gt; Fact
+</code></pre>
+<p>Would return the fact associated with this node, but calculation network nodes do not point to facts</p>
+<p><strong>Raises</strong>:</p>
+<ul>
+<li><code>ValueError</code>: CalculationNetworkNode does not point to a fact</li>
+</ul>
+<p><a id="brel.networks.calculation_network_node.CalculationNetworkNode.points_to"></a></p>
+<h4 id="points_to">points_to</h4>
+<pre><code class="language-python">def points_to() -&gt; str
+</code></pre>
+<p><strong>Returns</strong>:</p>
+<p><code>str</code>: returns 'report element'</p>
+<p><a id="brel.networks.calculation_network_node.CalculationNetworkNode.get_weight"></a></p>
+<h4 id="get_weight">get_weight</h4>
+<pre><code class="language-python">def get_weight() -&gt; float
+</code></pre>
+<p><strong>Returns</strong>:</p>
+<p><code>float</code>: Returns the weight of this node</p>
+<p><a id="brel.networks.calculation_network_node.CalculationNetworkNode.get_concept"></a></p>
+<h4 id="get_concept">get_concept</h4>
+<pre><code class="language-python">def get_concept() -&gt; Concept
+</code></pre>
+<p>CalculationNetworkNodes are only associated with concepts</p>
+<p><strong>Returns</strong>:</p>
+<p><code>Concept</code>: The concept associated with this node</p>
+<p><a id="brel.networks.calculation_network"></a></p>
+<h1 id="brelnetworkscalculation_network">brel.networks.calculation_network</h1>
+<p>This module contains the class for representing a calculation network.
+A calculation network is a network of nodes that represent the calculation of a Component.
+Calculation networks also contain helper functions for checking the consistency of the calculation network specifically.</p>
+<p>====================</p>
+<ul>
+<li>author: Robin Schmidiger</li>
+<li>version: 0.3</li>
+<li>date: 29 December 2023</li>
+</ul>
+<p>====================</p>
+<p><a id="brel.networks.calculation_network.CalculationNetwork"></a></p>
+<h2 id="calculationnetwork-objects">CalculationNetwork Objects</h2>
+<pre><code class="language-python">class CalculationNetwork(INetwork)
+</code></pre>
+<p>The class for representing a calculation network.
+A calculation network is a network of nodes that indicate which concepts are calculated from which other concepts.</p>
+<p><a id="brel.networks.calculation_network.CalculationNetwork.is_balance_consisent"></a></p>
+<h4 id="is_balance_consisent">is_balance_consisent</h4>
+<pre><code class="language-python">def is_balance_consisent() -&gt; bool
+</code></pre>
+<p>Returns true if the network is balance consistent.</p>
+<p>A network is balance consistent iff, for each parent-child relationship
+- if the two concepts have the same balance (credit/credit or debit/debit), then the child weight must be positive
+- if the two concepts have different balances (credit/debit or debit/credit), then the child weight must be negative</p>
+<p><strong>Returns</strong>:</p>
+<p><code>bool</code>: True iff the network is balance consistent</p>
+<p><a id="brel.networks.calculation_network.CalculationNetwork.is_aggregation_consistent"></a></p>
+<h4 id="is_aggregation_consistent">is_aggregation_consistent</h4>
+<pre><code class="language-python">def is_aggregation_consistent(facts: list[Fact]) -&gt; bool
+</code></pre>
+<p>A calculation network is aggregation consistent iff for concepts of nodes, the sum of the fact values of the children equals the fact value of the parent.</p>
+<p>If there are multiple facts for a concept, but the facts have different dates, then aggregation consistency is checked for each date separately.
+This not only holds for the date aspect, but for all aspects of the fact.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>facts</code>: the facts of the filing against which to check the aggregation consistency</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p><code>bool</code>: True iff the network is aggregation consistent</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../network-nodes/" class="btn btn-neutral float-left" title="Network Nodes"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../report-elements/report-elements/" class="btn btn-neutral float-right" title="Report Elements">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/PapediPoo/Brel" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../network-nodes/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../report-elements/report-elements/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

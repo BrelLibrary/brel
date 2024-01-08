@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Entity Characteristic - Brel git repo</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Entity Characteristic";
+        var mkdocs_page_input_path = "facts/entity-characteristic.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Brel git repo
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Brel Filings</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../brel-filings/filings/">Filings</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Facts</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../facts/">Facts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../contexts/">Contexts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../aspects/">Aspects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../characteristics/">Characteristics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../concept-characteristic/">Concept Characteristic</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Entity Characteristic</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#entitycharacteristic-objects">EntityCharacteristic Objects</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#get_aspect">get_aspect</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_value">get_value</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_schema">get_schema</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../period-characteristic/">Period Characteristic</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../unit-characteristic/">Unit Characteristic</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../explicit-dimension-characteristic/">Explicit Dimension Characteristic</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-dimension-characteristic/">Typed Dimension Characteristic</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Components</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../components/components/">Components</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../components/networks/">Networks</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../components/network-nodes/">Network Nodes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../components/calculation-networks-and-nodes/">Calculation Networks and Nodes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Report Elements</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../report-elements/report-elements/">Report Elements</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../report-elements/concept/">Concept</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../report-elements/abstract/">Abstract</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../report-elements/line-items/">Line Items</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../report-elements/hypercube/">Hypercube</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../report-elements/dimension/">Dimension</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../report-elements/member/">Member</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">QNames</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../qnames/qnames-and-namespace-maps/">QNames and Namespace maps</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../qnames/namespace-normalization/">Namespace normalization</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Brel git repo</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Facts</li>
+      <li class="breadcrumb-item active">Entity Characteristic</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/PapediPoo/Brel/edit/master/docs/facts/entity-characteristic.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p><a id="brel.characteristics.entity_characteristic"></a></p>
+<h1 id="brelcharacteristicsentity_characteristic">brel.characteristics.entity_characteristic</h1>
+<p>Contains the class for representing an XBRL entity.</p>
+<p>====================</p>
+<ul>
+<li>author: Robin Schmidiger</li>
+<li>version: 0.5</li>
+<li>date: 07 January 2024</li>
+</ul>
+<p>====================</p>
+<p><a id="brel.characteristics.entity_characteristic.EntityCharacteristic"></a></p>
+<h2 id="entitycharacteristic-objects">EntityCharacteristic Objects</h2>
+<pre><code class="language-python">class EntityCharacteristic(ICharacteristic)
+</code></pre>
+<p>Class for representing an XBRL entity.
+An entity in XBRL is a company. It consists of an identifier. Usually the identifier is the company's CIK.
+Additional information about the company can be found in the entity's segment.</p>
+<p><a id="brel.characteristics.entity_characteristic.EntityCharacteristic.get_aspect"></a></p>
+<h4 id="get_aspect">get_aspect</h4>
+<pre><code class="language-python">def get_aspect() -&gt; Aspect
+</code></pre>
+<p><strong>Returns</strong>:</p>
+<p><code>Aspect</code>: returns <code>Aspect.ENTITY</code></p>
+<p><a id="brel.characteristics.entity_characteristic.EntityCharacteristic.get_value"></a></p>
+<h4 id="get_value">get_value</h4>
+<pre><code class="language-python">def get_value() -&gt; str
+</code></pre>
+<p>returns the value of the entity characteristic, which is the entity's qname in clark notation</p>
+<ul>
+<li>The url of of the QName is the scheme of the entity characteristic.</li>
+<li>The local name of the QName is the id of the entity characteristic.</li>
+</ul>
+<p>Example of an entity characteristic value: {http:www.sec.gov/CIK}0000123456</p>
+<p><strong>Returns</strong>:</p>
+<p><code>str</code>: the entity's QName in clark notation</p>
+<p><a id="brel.characteristics.entity_characteristic.EntityCharacteristic.get_schema"></a></p>
+<h4 id="get_schema">get_schema</h4>
+<pre><code class="language-python">def get_schema() -&gt; str
+</code></pre>
+<p><strong>Returns</strong>:</p>
+<p><code>str</code>: the schema of the entity.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../concept-characteristic/" class="btn btn-neutral float-left" title="Concept Characteristic"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../period-characteristic/" class="btn btn-neutral float-right" title="Period Characteristic">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/PapediPoo/Brel" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../concept-characteristic/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../period-characteristic/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

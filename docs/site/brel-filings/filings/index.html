@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Filings - Brel git repo</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Filings";
+        var mkdocs_page_input_path = "brel-filings/filings.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Brel git repo
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Brel Filings</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Filings</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#filing-objects">Filing Objects</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#open">open</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_all_facts">get_all_facts</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_all_report_elements">get_all_report_elements</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_all_components">get_all_components</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_all_pyhsical_networks">get_all_pyhsical_networks</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_all_concepts">get_all_concepts</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_all_abstracts">get_all_abstracts</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_all_line_items">get_all_line_items</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_all_hypercubes">get_all_hypercubes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_all_dimensions">get_all_dimensions</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_all_members">get_all_members</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_report_element_by_name">get_report_element_by_name</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_concept_by_name">get_concept_by_name</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_all_reported_concepts">get_all_reported_concepts</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_facts_by_concept_name">get_facts_by_concept_name</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_facts_by_concept">get_facts_by_concept</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_all_component_uris">get_all_component_URIs</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_component">get_component</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Facts</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../facts/facts/">Facts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../facts/contexts/">Contexts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../facts/aspects/">Aspects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../facts/characteristics/">Characteristics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../facts/concept-characteristic/">Concept Characteristic</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../facts/entity-characteristic/">Entity Characteristic</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../facts/period-characteristic/">Period Characteristic</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../facts/unit-characteristic/">Unit Characteristic</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../facts/explicit-dimension-characteristic/">Explicit Dimension Characteristic</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../facts/typed-dimension-characteristic/">Typed Dimension Characteristic</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Components</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../components/components/">Components</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../components/networks/">Networks</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../components/network-nodes/">Network Nodes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../components/calculation-networks-and-nodes/">Calculation Networks and Nodes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Report Elements</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../report-elements/report-elements/">Report Elements</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../report-elements/concept/">Concept</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../report-elements/abstract/">Abstract</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../report-elements/line-items/">Line Items</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../report-elements/hypercube/">Hypercube</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../report-elements/dimension/">Dimension</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../report-elements/member/">Member</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">QNames</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../qnames/qnames-and-namespace-maps/">QNames and Namespace maps</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../qnames/namespace-normalization/">Namespace normalization</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Brel git repo</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Brel Filings</li>
+      <li class="breadcrumb-item active">Filings</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/PapediPoo/Brel/edit/master/docs/brel-filings/filings.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p><a id="brel.brel_filing"></a></p>
+<h1 id="brelbrel_filing">brel.brel_filing</h1>
+<p>Brel operates on XBRL filings and represents them as a <a href="#brel.brel_filing.Filing"><code>Filing</code></a> object.
+This module contains the Filing class.</p>
+<p>Filings can be loaded from a folder, a zip file, or one or multiple xml files.</p>
+<ul>
+<li>If a folder is given, then all xml files in the folder are loaded.</li>
+<li>If a zip file is given, then the zip file is extracted to a folder and then all xml files in the folder are loaded.</li>
+<li>If one or more xml files are given, then only those xml files are loaded.</li>
+</ul>
+<p>Example usage:</p>
+<pre><code>from brel import Filing
+
+# open the filing
+filing1 = Filing.open(&quot;my_filing.zip&quot;)
+
+filing2 = Filing.open(&quot;my_folder/&quot;)
+
+filing3 = Filing.open(&quot;my_file.xml&quot;, &quot;my_file2.xml&quot;)
+
+# get the facts reporting agains us-gaap:Assets
+assets_facts = filing1.get_facts_by_concept_name(&quot;us-gaap:Assets&quot;)
+pprint_facts(assets_facts)
+
+</code></pre>
+<p>Note that opening a filing can take <strong>a couple of seconds</strong> depending on the size of the filing.</p>
+<p>Once a filing is loaded, it can be queried for its facts, report elements, networks and components.</p>
+<p>====================</p>
+<ul>
+<li>author: Robin Schmidiger</li>
+<li>version: 0.4</li>
+<li>date: 06 January 2024</li>
+</ul>
+<p>====================</p>
+<p><a id="brel.brel_filing.Filing"></a></p>
+<h2 id="filing-objects">Filing Objects</h2>
+<pre><code class="language-python">class Filing()
+</code></pre>
+<p>Represents an XBRL filing in the Open Information Model.</p>
+<p><a id="brel.brel_filing.Filing.open"></a></p>
+<h4 id="open">open</h4>
+<pre><code class="language-python">@classmethod
+def open(cls, path, *args) -&gt; &quot;Filing&quot;
+</code></pre>
+<p>Opens a <a href="#brel.brel_filing.Filing"><code>Filing</code></a> when given a path. The path can point to one of the following:</p>
+<ul>
+<li>a folder</li>
+<li>a zip file</li>
+<li>an xml file</li>
+<li>multiple xml files</li>
+</ul>
+<p>Notes:</p>
+<ul>
+<li>The args parameter is ignored unless the path points to an xml file.</li>
+<li>Depending on the size of the filing, loading can take <strong>a couple of seconds</strong>.</li>
+</ul>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>path</code>: the path to the filing. This can be a folder, an xml file, or a zip file.</li>
+<li><code>args</code>: additional xml files to load. These are only used if the path is an xml file.</li>
+</ul>
+<p><strong>Raises</strong>:</p>
+<ul>
+<li><code>ValueError</code>: if the path is not a valid path.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p><code>Filing</code>: a <a href="#brel.brel_filing.Filing"><code>Filing</code></a> object with the filing loaded.</p>
+<p><a id="brel.brel_filing.Filing.get_all_facts"></a></p>
+<h4 id="get_all_facts">get_all_facts</h4>
+<pre><code class="language-python">def get_all_facts() -&gt; list[Fact]
+</code></pre>
+<p><strong>Returns</strong>:</p>
+<p><code>list[Fact]</code>: a list of all <a href="../../facts/facts/"><code>Fact</code></a> objects in the filing.</p>
+<p><a id="brel.brel_filing.Filing.get_all_report_elements"></a></p>
+<h4 id="get_all_report_elements">get_all_report_elements</h4>
+<pre><code class="language-python">def get_all_report_elements() -&gt; list[IReportElement]
+</code></pre>
+<p><strong>Returns</strong>:</p>
+<p><code>list[IReportElement]</code>: a list of all <a href="../../report-elements/report-elements/"><code>IReportElement</code></a> objects in the filing.</p>
+<p><a id="brel.brel_filing.Filing.get_all_components"></a></p>
+<h4 id="get_all_components">get_all_components</h4>
+<pre><code class="language-python">def get_all_components() -&gt; list[Component]
+</code></pre>
+<p><strong>Returns</strong>:</p>
+<p><code>list[Component]</code>: a list of all <a href="../../components/components/"><code>Component</code></a> objects in the filing.
+Note: components are sometimes called "roles" in the XBRL specification.</p>
+<p><a id="brel.brel_filing.Filing.get_all_pyhsical_networks"></a></p>
+<h4 id="get_all_pyhsical_networks">get_all_pyhsical_networks</h4>
+<pre><code class="language-python">def get_all_pyhsical_networks() -&gt; list[INetwork]
+</code></pre>
+<p>Get all <a href="../../components/networks/"><code>INetwork</code></a> objects in the filing, where network.is_physical() is True.</p>
+<p><strong>Returns</strong>:</p>
+<p><code>list[INetwork]</code>: a list of all physical networks in the filing.</p>
+<p><a id="brel.brel_filing.Filing.get_all_concepts"></a></p>
+<h4 id="get_all_concepts">get_all_concepts</h4>
+<pre><code class="language-python">def get_all_concepts() -&gt; list[Concept]
+</code></pre>
+<p><strong>Returns</strong>:</p>
+<p><code>list[Concept]</code>: a list of all concepts in the filing.
+Note that concepts are defined according to the Open Information Model. They are not the same as abstracts, line items, hypercubes, dimensions, or members.</p>
+<p><a id="brel.brel_filing.Filing.get_all_abstracts"></a></p>
+<h4 id="get_all_abstracts">get_all_abstracts</h4>
+<pre><code class="language-python">def get_all_abstracts() -&gt; list[Abstract]
+</code></pre>
+<p><strong>Returns</strong>:</p>
+<p><code>list[Abstract]</code>: a list of all abstracts in the filing.</p>
+<p><a id="brel.brel_filing.Filing.get_all_line_items"></a></p>
+<h4 id="get_all_line_items">get_all_line_items</h4>
+<pre><code class="language-python">def get_all_line_items() -&gt; list[LineItems]
+</code></pre>
+<p><strong>Returns</strong>:</p>
+<p><code>list[LineItems]</code>: a list of all line items in the filing.</p>
+<p><a id="brel.brel_filing.Filing.get_all_hypercubes"></a></p>
+<h4 id="get_all_hypercubes">get_all_hypercubes</h4>
+<pre><code class="language-python">def get_all_hypercubes() -&gt; list[Hypercube]
+</code></pre>
+<p><strong>Returns</strong>:</p>
+<p><code>list[Hypercube]</code>: a list of all hypercubes in the filing.</p>
+<p><a id="brel.brel_filing.Filing.get_all_dimensions"></a></p>
+<h4 id="get_all_dimensions">get_all_dimensions</h4>
+<pre><code class="language-python">def get_all_dimensions() -&gt; list[Dimension]
+</code></pre>
+<p><strong>Returns</strong>:</p>
+<p><code>list[Dimension]</code>: a list of all dimensions in the filing.</p>
+<p><a id="brel.brel_filing.Filing.get_all_members"></a></p>
+<h4 id="get_all_members">get_all_members</h4>
+<pre><code class="language-python">def get_all_members() -&gt; list[Member]
+</code></pre>
+<p><strong>Returns</strong>:</p>
+<p><code>list[Member]</code>: a list of all members in the filing.</p>
+<p><a id="brel.brel_filing.Filing.get_report_element_by_name"></a></p>
+<h4 id="get_report_element_by_name">get_report_element_by_name</h4>
+<pre><code class="language-python">def get_report_element_by_name(
+        element_qname: QName | str) -&gt; IReportElement | None
+</code></pre>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>element_qname</code>: the name of the report element to get. This can be a QName or a string in the format "prefix:localname". For example, "us-gaap:Assets".</li>
+</ul>
+<p><strong>Raises</strong>:</p>
+<ul>
+<li><code>ValueError</code>: if the QName string is not a valid QName or if the prefix is not found.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p><code>IReportElement|None</code>: the report element with the given name. If no report element is found, then None is returned.</p>
+<p><a id="brel.brel_filing.Filing.get_concept_by_name"></a></p>
+<h4 id="get_concept_by_name">get_concept_by_name</h4>
+<pre><code class="language-python">def get_concept_by_name(concept_qname: QName | str) -&gt; Concept | None
+</code></pre>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>concept_qname</code>: the name of the concept to get. This can be a QName or a string in the format "prefix:localname". For example, "us-gaap:Assets".</li>
+</ul>
+<p><strong>Raises</strong>:</p>
+<ul>
+<li><code>ValueError</code>: if the QName string is not a valid QName or if the prefix is not found.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p><code>Concept|None</code>: the concept with the given name. If no concept is found, then None is returned.</p>
+<p><a id="brel.brel_filing.Filing.get_all_reported_concepts"></a></p>
+<h4 id="get_all_reported_concepts">get_all_reported_concepts</h4>
+<pre><code class="language-python">def get_all_reported_concepts() -&gt; list[Concept]
+</code></pre>
+<p>Returns all concepts that have at least one fact reporting against them.</p>
+<p><strong>Returns</strong>:</p>
+<p><code>list[Concept]</code>: The list of concepts</p>
+<p><a id="brel.brel_filing.Filing.get_facts_by_concept_name"></a></p>
+<h4 id="get_facts_by_concept_name">get_facts_by_concept_name</h4>
+<pre><code class="language-python">def get_facts_by_concept_name(concept_name: QName | str) -&gt; list[Fact]
+</code></pre>
+<p>Returns all facts that are associated with the concept with name concept_name.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>concept_name</code>: The name of the concept to get facts for. This can be a QName or a string in the format "prefix:localname". For example, "us-gaap:Assets".</li>
+</ul>
+<p><strong>Raises</strong>:</p>
+<ul>
+<li><code>ValueError</code>: if the QName string but is not a valid QName or if the prefix is not found.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p><code>list[Fact]</code>: the list of facts</p>
+<p><a id="brel.brel_filing.Filing.get_facts_by_concept"></a></p>
+<h4 id="get_facts_by_concept">get_facts_by_concept</h4>
+<pre><code class="language-python">def get_facts_by_concept(concept: Concept) -&gt; list[Fact]
+</code></pre>
+<p>Returns all facts that are associated with a concept.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>concept</code>: the concept to get facts for.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p><code>list[Fact]</code>: the list of facts</p>
+<p><a id="brel.brel_filing.Filing.get_all_component_URIs"></a></p>
+<h4 id="get_all_component_uris">get_all_component_URIs</h4>
+<pre><code class="language-python">def get_all_component_URIs() -&gt; list[str]
+</code></pre>
+<p><strong>Returns</strong>:</p>
+<p><code>list[str]</code>: a list of all component URIs in the filing.</p>
+<p><a id="brel.brel_filing.Filing.get_component"></a></p>
+<h4 id="get_component">get_component</h4>
+<pre><code class="language-python">def get_component(URI: str) -&gt; Component | None
+</code></pre>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>URI</code>: the URI of the component to get.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p><code>Component|None</code>: the component with the given URI. None if no component is found.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../.." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../facts/facts/" class="btn btn-neutral float-right" title="Facts">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/PapediPoo/Brel" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../.." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../facts/facts/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

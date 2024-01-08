@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Contexts - Brel git repo</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Contexts";
+        var mkdocs_page_input_path = "facts/contexts.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Brel git repo
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Brel Filings</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../brel-filings/filings/">Filings</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Facts</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../facts/">Facts</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Contexts</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#context-objects">Context Objects</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#get_aspects">get_aspects</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_characteristic">get_characteristic</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#has_characteristic">has_characteristic</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_characteristic_as_str">get_characteristic_as_str</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_characteristic_as_int">get_characteristic_as_int</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_characteristic_as_float">get_characteristic_as_float</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_characteristic_as_bool">get_characteristic_as_bool</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_concept">get_concept</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_period">get_period</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_entity">get_entity</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_unit">get_unit</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../aspects/">Aspects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../characteristics/">Characteristics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../concept-characteristic/">Concept Characteristic</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../entity-characteristic/">Entity Characteristic</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../period-characteristic/">Period Characteristic</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../unit-characteristic/">Unit Characteristic</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../explicit-dimension-characteristic/">Explicit Dimension Characteristic</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../typed-dimension-characteristic/">Typed Dimension Characteristic</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Components</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../components/components/">Components</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../components/networks/">Networks</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../components/network-nodes/">Network Nodes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../components/calculation-networks-and-nodes/">Calculation Networks and Nodes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Report Elements</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../report-elements/report-elements/">Report Elements</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../report-elements/concept/">Concept</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../report-elements/abstract/">Abstract</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../report-elements/line-items/">Line Items</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../report-elements/hypercube/">Hypercube</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../report-elements/dimension/">Dimension</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../report-elements/member/">Member</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">QNames</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../qnames/qnames-and-namespace-maps/">QNames and Namespace maps</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../qnames/namespace-normalization/">Namespace normalization</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Brel git repo</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Facts</li>
+      <li class="breadcrumb-item active">Contexts</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/PapediPoo/Brel/edit/master/docs/facts/contexts.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p><a id="brel.brel_context"></a></p>
+<h1 id="brelbrel_context">brel.brel_context</h1>
+<p>This module contains the Context class.</p>
+<p>Contexts are what puts facts into context.
+For example, take the following fact:</p>
+<ul>
+<li>The Foo Corporation had a Total Revenue of 1'000'000 USD in 2020.</li>
+</ul>
+<p>The context of this fact would be:</p>
+<ul>
+<li>Entity: Foo Corporation</li>
+<li>Period: 2020</li>
+<li>Concept: Total Revenue</li>
+<li>Unit: USD</li>
+</ul>
+<p>Note that the value 1000000 is not part of the context. It is the value of the fact.</p>
+<p>Contexts consist of aspects and their associated characteristics.
+In the example above, the aspects are Entity, Period, Concept and Unit.
+Characteristics are aspect-value pairs.
+So for example, the characteristic of the Entity aspect would be "Foo Corporation".</p>
+<p>Read more about Aspects and Characteristics in </p>
+<p>====================</p>
+<ul>
+<li>author: Robin Schmidiger</li>
+<li>version: 0.12</li>
+<li>date: 07 January 2024</li>
+</ul>
+<p>====================</p>
+<p><a id="brel.brel_context.Context"></a></p>
+<h2 id="context-objects">Context Objects</h2>
+<pre><code class="language-python">class Context()
+</code></pre>
+<p>Class for representing an XBRL context.
+an XBRL context is a collection of aspects and characteristics.
+There are different types of aspects: concept, period, entity, unit and dimensions
+The only required aspect is the concept.
+All aspects can only be present once.
+Dimensions are custom aspects, so they can be present multiple times as long as they represent different dimensions.</p>
+<p><a id="brel.brel_context.Context.get_aspects"></a></p>
+<h4 id="get_aspects">get_aspects</h4>
+<pre><code class="language-python">def get_aspects() -&gt; list[Aspect]
+</code></pre>
+<p>Get all aspects of the context.</p>
+<p><strong>Returns</strong>:</p>
+<p><code>list[Aspect]</code>: The aspects of the context.</p>
+<p><a id="brel.brel_context.Context.get_characteristic"></a></p>
+<h4 id="get_characteristic">get_characteristic</h4>
+<pre><code class="language-python">def get_characteristic(aspect: Aspect) -&gt; ICharacteristic | None
+</code></pre>
+<p>Get the value of an aspect.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>aspect</code>: The aspect to get the value of.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p><code>Aspect|None</code>: The value of the aspect. None if the aspect is not present in the context.</p>
+<p><a id="brel.brel_context.Context.has_characteristic"></a></p>
+<h4 id="has_characteristic">has_characteristic</h4>
+<pre><code class="language-python">def has_characteristic(aspect: Aspect) -&gt; bool
+</code></pre>
+<p>Check if the context has a certain aspect.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>aspect</code>: The aspect to check for.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p><code>bool</code>: True if the context has the aspect, False otherwise.</p>
+<p><a id="brel.brel_context.Context.get_characteristic_as_str"></a></p>
+<h4 id="get_characteristic_as_str">get_characteristic_as_str</h4>
+<pre><code class="language-python">def get_characteristic_as_str(aspect: Aspect) -&gt; str
+</code></pre>
+<p>Get the value of an aspect as a string.</p>
+<p>This is a convenience function.
+The representation of aspects as strings is not standardized.
+If the aspect is not present in the context, an empty string is returned.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>aspect</code>: The aspect to get the value of.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p><code>str</code>: The value of the aspect as a string.</p>
+<p><a id="brel.brel_context.Context.get_characteristic_as_int"></a></p>
+<h4 id="get_characteristic_as_int">get_characteristic_as_int</h4>
+<pre><code class="language-python">def get_characteristic_as_int(aspect: Aspect) -&gt; int
+</code></pre>
+<p>Get the value of an aspect as an int.</p>
+<p>This is a convenience function.
+If the aspect is not present in the context, 0 is returned.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>aspect</code>: The aspect to get the value of.</li>
+</ul>
+<p><strong>Raises</strong>:</p>
+<ul>
+<li><code>ValueError</code>: If the aspect is present, but the value cannot be converted to an int.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p><code>int</code>: The value of the aspect as an int.</p>
+<p><a id="brel.brel_context.Context.get_characteristic_as_float"></a></p>
+<h4 id="get_characteristic_as_float">get_characteristic_as_float</h4>
+<pre><code class="language-python">def get_characteristic_as_float(aspect: Aspect) -&gt; float
+</code></pre>
+<p>Get the value of an aspect as a float.</p>
+<p>This is a convenience function.
+If the aspect is not present in the context, 0.0 is returned.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>aspect</code>: The aspect to get the value of.</li>
+</ul>
+<p><strong>Raises</strong>:</p>
+<ul>
+<li><code>ValueError</code>: If the aspect is present, but the value cannot be converted to a float.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p><code>float</code>: The value of the aspect as a float.</p>
+<p><a id="brel.brel_context.Context.get_characteristic_as_bool"></a></p>
+<h4 id="get_characteristic_as_bool">get_characteristic_as_bool</h4>
+<pre><code class="language-python">def get_characteristic_as_bool(aspect: Aspect) -&gt; bool
+</code></pre>
+<p>Get the value of an aspect as a bool.</p>
+<p>This is a convenience function.
+If the aspect is not present in the context, False is returned.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>aspect</code>: The aspect to get the value of.</li>
+</ul>
+<p><strong>Raises</strong>:</p>
+<ul>
+<li><code>ValueError</code>: If the aspect is present, but the value cannot be converted to a bool.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p><code>bool</code>: The value of the aspect as a bool.</p>
+<p><a id="brel.brel_context.Context.get_concept"></a></p>
+<h4 id="get_concept">get_concept</h4>
+<pre><code class="language-python">def get_concept() -&gt; ConceptCharacteristic
+</code></pre>
+<p>Get the concept of the context.</p>
+<p>This function is equivalent to <code>get_characteristic(Aspect.CONCEPT)</code>.
+It cannot return None, because the concept is a required aspect.</p>
+<p><strong>Returns</strong>:</p>
+<p><code>ConceptCharacteristic</code>: The concept of the context.</p>
+<p><a id="brel.brel_context.Context.get_period"></a></p>
+<h4 id="get_period">get_period</h4>
+<pre><code class="language-python">def get_period() -&gt; PeriodCharacteristic | None
+</code></pre>
+<p>Get the period of the context.</p>
+<p>This function is equivalent to <code>get_characteristic(Aspect.PERIOD)</code>.</p>
+<p><strong>Returns</strong>:</p>
+<p><code>PeriodCharacteristic|None</code>: The period of the context. None if the context does not have a period.</p>
+<p><a id="brel.brel_context.Context.get_entity"></a></p>
+<h4 id="get_entity">get_entity</h4>
+<pre><code class="language-python">def get_entity() -&gt; EntityCharacteristic | None
+</code></pre>
+<p>Get the entity of the context.</p>
+<p>This function is equivalent to <code>get_characteristic(Aspect.ENTITY)</code>.</p>
+<p><strong>Returns</strong>:</p>
+<p><code>EntityCharacteristic|None</code>: The entity of the context. None if the context does not have an entity.</p>
+<p><a id="brel.brel_context.Context.get_unit"></a></p>
+<h4 id="get_unit">get_unit</h4>
+<pre><code class="language-python">def get_unit() -&gt; UnitCharacteristic | None
+</code></pre>
+<p>Get the unit of the context.</p>
+<p>This function is equivalent to <code>get_characteristic(Aspect.UNIT)</code>.</p>
+<p><strong>Returns</strong>:</p>
+<p><code>UnitCharacteristic|None</code>: The unit of the context. None if the context does not have a unit.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../facts/" class="btn btn-neutral float-left" title="Facts"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../aspects/" class="btn btn-neutral float-right" title="Aspects">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/PapediPoo/Brel" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../facts/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../aspects/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

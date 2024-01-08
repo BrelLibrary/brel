@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Networks - Brel git repo</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Networks";
+        var mkdocs_page_input_path = "components/networks.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Brel git repo
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Brel Filings</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../brel-filings/filings/">Filings</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Facts</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../facts/facts/">Facts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../facts/contexts/">Contexts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../facts/aspects/">Aspects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../facts/characteristics/">Characteristics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../facts/concept-characteristic/">Concept Characteristic</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../facts/entity-characteristic/">Entity Characteristic</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../facts/period-characteristic/">Period Characteristic</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../facts/unit-characteristic/">Unit Characteristic</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../facts/explicit-dimension-characteristic/">Explicit Dimension Characteristic</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../facts/typed-dimension-characteristic/">Typed Dimension Characteristic</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Components</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../components/">Components</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Networks</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#inetwork-objects">INetwork Objects</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#get_roots">get_roots</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_link_role">get_link_role</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_link_name">get_link_name</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#is_physical">is_physical</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_arc_roles">get_arc_roles</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_arc_name">get_arc_name</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_root">get_root</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_all_nodes">get_all_nodes</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../network-nodes/">Network Nodes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../calculation-networks-and-nodes/">Calculation Networks and Nodes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Report Elements</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../report-elements/report-elements/">Report Elements</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../report-elements/concept/">Concept</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../report-elements/abstract/">Abstract</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../report-elements/line-items/">Line Items</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../report-elements/hypercube/">Hypercube</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../report-elements/dimension/">Dimension</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../report-elements/member/">Member</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">QNames</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../qnames/qnames-and-namespace-maps/">QNames and Namespace maps</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../qnames/namespace-normalization/">Namespace normalization</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Brel git repo</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Components</li>
+      <li class="breadcrumb-item active">Networks</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/PapediPoo/Brel/edit/master/docs/components/networks.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p><a id="brel.networks.i_network"></a></p>
+<h1 id="brelnetworksi_network">brel.networks.i_network</h1>
+<p>Networks in XBRL are used to define relationships between different things in a filing.
+For example</p>
+<ul>
+<li>Presentation networks define a hierarchy of report elements</li>
+<li>Calculation networks define which concepts should be the sum of which other concepts</li>
+<li>Definition networks define what the relationship between the types of the report elements are</li>
+<li>Label networks establish relationships between report elements and human readable labels</li>
+<li>Reference networks establish a link between report elements and other resources such as websites or documents</li>
+</ul>
+<p>All networks in brel are represented by the INetwork interface.</p>
+<p>Since only the calculation network has any special functionality thus far, the other networks are not part of this documentation.</p>
+<p>====================</p>
+<ul>
+<li>author: Robin Schmidiger</li>
+<li>version: 0.6</li>
+<li>date: 07 January 2024</li>
+</ul>
+<p>====================</p>
+<p><a id="brel.networks.i_network.INetwork"></a></p>
+<h2 id="inetwork-objects">INetwork Objects</h2>
+<pre><code class="language-python">class INetwork(ABC)
+</code></pre>
+<p>Interface for representing networks in Brel.
+The networks are defined according to the XBRL Generic Links 1.0 specification
+available <a href="https://www.xbrl.org/specification/gnl/rec-2009-06-22/gnl-rec-2009-06-22.html">HERE</a></p>
+<p><a id="brel.networks.i_network.INetwork.get_roots"></a></p>
+<h4 id="get_roots">get_roots</h4>
+<pre><code class="language-python">def get_roots() -&gt; list[INetworkNode]
+</code></pre>
+<p>Get all root nodes of the network</p>
+<p><strong>Returns</strong>:</p>
+<p><code>list[NetworkNode]</code>: representing the root nodes of the network.</p>
+<p><a id="brel.networks.i_network.INetwork.get_link_role"></a></p>
+<h4 id="get_link_role">get_link_role</h4>
+<pre><code class="language-python">def get_link_role() -&gt; str
+</code></pre>
+<p>Get the link role of the network</p>
+<p><strong>Returns</strong>:</p>
+<p><code>str</code>: containing the link role of the network.
+Note: This returns the same as <code>get_URL()</code> on the parent component</p>
+<p><a id="brel.networks.i_network.INetwork.get_link_name"></a></p>
+<h4 id="get_link_name">get_link_name</h4>
+<pre><code class="language-python">def get_link_name() -&gt; QName
+</code></pre>
+<p>Get the link name of the network</p>
+<p><strong>Returns</strong>:</p>
+<p><code>QName</code>: link name of the network. e.g. for presentation networks this is usually "link:presentationLink"</p>
+<p><a id="brel.networks.i_network.INetwork.is_physical"></a></p>
+<h4 id="is_physical">is_physical</h4>
+<pre><code class="language-python">def is_physical() -&gt; bool
+</code></pre>
+<p>Check if the network is a physical network</p>
+<p>Physical networks must have the same link/arc role/name across all nodes</p>
+<p><strong>Returns</strong>:</p>
+<p><code>bool</code>: indicating if the network is a physical network</p>
+<p><a id="brel.networks.i_network.INetwork.get_arc_roles"></a></p>
+<h4 id="get_arc_roles">get_arc_roles</h4>
+<pre><code class="language-python">def get_arc_roles() -&gt; list[str]
+</code></pre>
+<p>Get all the arc roles that are used by nodes in the network</p>
+<p><strong>Returns</strong>:</p>
+<p><code>list[str]</code>: list of all arc roles that are used by nodes in the network</p>
+<p><a id="brel.networks.i_network.INetwork.get_arc_name"></a></p>
+<h4 id="get_arc_name">get_arc_name</h4>
+<pre><code class="language-python">def get_arc_name() -&gt; QName | None
+</code></pre>
+<p>Get the arc name of all the arcs in the network. All arcs in the network have the same arc name.</p>
+<p><strong>Returns</strong>:</p>
+<p><code>QName|None</code>: The arc name of all the arcs in the network. Returns None if the network is empty.</p>
+<p><a id="brel.networks.i_network.INetwork.get_root"></a></p>
+<h4 id="get_root">get_root</h4>
+<pre><code class="language-python">def get_root() -&gt; INetworkNode
+</code></pre>
+<p>Get the root node of the network if the network has only one root.</p>
+<p>Note that each network must have at least one root node.</p>
+<p><strong>Raises</strong>:</p>
+<ul>
+<li><code>ValueError</code>: if the network has multiple roots</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p><code>NetworkNode</code>: representing the root node of the network.</p>
+<p><a id="brel.networks.i_network.INetwork.get_all_nodes"></a></p>
+<h4 id="get_all_nodes">get_all_nodes</h4>
+<pre><code class="language-python">def get_all_nodes() -&gt; list[INetworkNode]
+</code></pre>
+<p>Get all nodes in the network as a list</p>
+<p><strong>Returns</strong>:</p>
+<p><code>list[NetworkNode]</code>: containing all nodes in the network</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../components/" class="btn btn-neutral float-left" title="Components"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../network-nodes/" class="btn btn-neutral float-right" title="Network Nodes">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/PapediPoo/Brel" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../components/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../network-nodes/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
