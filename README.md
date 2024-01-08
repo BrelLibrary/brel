@@ -1,107 +1,127 @@
-# Flask Project Template
+# Brel
 
-A full feature Flask project template.
+Brel is a python library for XBRL.
+It provides a simple API for extracting data from XBRL reports.
 
-See also 
-- [Python-Project-Template](https://github.com/rochacbruno/python-project-template/) for a lean, low dependency Python app.
-- [FastAPI-Project-Template](https://github.com/rochacbruno/fastapi-project-template/) The base to start an openapi project featuring: SQLModel, Typer, FastAPI, JWT Token Auth, Interactive Shell, Management Commands.
+Brel stands for Business Report Extensible Library.
 
-### HOW TO USE THIS TEMPLATE
+## Features
 
-> **DO NOT FORK** this is meant to be used from **[Use this template](https://github.com/rochacbruno/flask-project-template/generate)** feature.
+- [x] XBRL filings in XML format.
+- [x] XBRL filings in XML format as zip files.
+- [ ] XBRL filings in JSON format.
+- [ ] XBRL filings in Inline XBRL format.
+- [ ] XBRL filings in CSV format.
+- [x] Resolve the Discoverable Taxonomy Set (DTS).
+- [x] DTS caching.
+- [x] Parse XBRL facts as python objects.
+- [x] Parse XBRL networks as python objects.
+- [x] Parse XBRL roles as python objects.
 
-1. Click on **[Use this template](https://github.com/rochacbruno/flask-project-template/generate)**
-3. Give a name to your project  
-   (e.g. `my_awesome_project` recommendation is to use all lowercase and underscores separation for repo names.)
-3. Wait until the first run of CI finishes  
-   (Github Actions will process the template and commit to your new repo)
-4. If you want [codecov](https://about.codecov.io/sign-up/) Reports and Automatic Release to [PyPI](https://pypi.org)  
-  On the new repository `settings->secrets` add your `PIPY_API_TOKEN` and `CODECOV_TOKEN` (get the tokens on respective websites)
-4. Read the file [CONTRIBUTING.md](CONTRIBUTING.md)
-5. Then clone your new project and happy coding!
-
-> **NOTE**: **WAIT** until first CI run on github actions before cloning your new project.
-
-### What is included on this template?
-
-- 🍾 A full feature Flask application with CLI, API, Admin interface, web UI and modular configuration.
-- 📦 A basic [setup.py](setup.py) file to provide installation, packaging and distribution for your project.  
-  Template uses setuptools because it's the de-facto standard for Python packages, you can run `make switch-to-poetry` later if you want.
-- 🤖 A [Makefile](Makefile) with the most useful commands to install, test, lint, format and release your project.
-- 📃 Documentation structure using [mkdocs](http://www.mkdocs.org)
-- 💬 Auto generation of change log using **gitchangelog** to keep a HISTORY.md file automatically based on your commit history on every release.
-- 🐋 A simple [Containerfile](Containerfile) to build a container image for your project.  
-  `Containerfile` is a more open standard for building container images than Dockerfile, you can use buildah or docker with this file.
-- 🧪 Testing structure using [pytest](https://docs.pytest.org/en/latest/)
-- ✅ Code linting using [flake8](https://flake8.pycqa.org/en/latest/)
-- 📊 Code coverage reports using [codecov](https://about.codecov.io/sign-up/)
-- 🛳️ Automatic release to [PyPI](https://pypi.org) using [twine](https://twine.readthedocs.io/en/latest/) and github actions.
-- 🎯 Entry points to execute your program using `python -m <brel>` or `$ brel` with basic CLI argument parsing.
-- 🔄 Continuous integration using [Github Actions](.github/workflows/) with jobs to lint, test and release your project on Linux, Mac and Windows environments.
-
-> Curious about architectural decisions on this template? read [ABOUT_THIS_TEMPLATE.md](ABOUT_THIS_TEMPLATE.md)  
-> If you want to contribute to this template please open an [issue](https://github.com/rochacbruno/flask-project-template/issues) or fork and send a PULL REQUEST.
-
-<!--  DELETE THE LINES ABOVE THIS AND WRITE YOUR PROJECT README BELOW -->
-
----
-# brel Flask Application
-
-Awesome brel created by 
 
 ## Installation
 
-From source:
+To install Brel:
 
-```bash
-git clone https://github.com//brel brel
-cd brel
-make install
+1. Clone the repository `git clone https://github.com/PapediPoo/Brel.git`
+2. Change your working directory to the repository using `cd path/to/brel`
+3. Run `python setup.py install` 
+
+## Usage
+
+### Importing
+To use Brel, import the library and create a `Filing` using the `Filing.open` method:
+
+```python
+from brel import Filing, pprint_facts
+filing = Filing.open("path/to/filing.zip")
+
+# or
+
+filing = Filing.open("path/to/filing.xml", "path/to/linkbase.xml")
+
+# or
+
+filing = Filing.open("path/to/filing/folder")
 ```
 
-From pypi:
+The `Filing` object provides access to everything in the filing, including the `Fact`s, `Component`s, 
 
-```bash
-pip install brel
+
+### Facts
+
+To print all the facts in the filing, use the `File.get_all_facts()` and `pprint_facts` functions:
+
+```python
+all_facts = filing.get_all_facts()
+pprint_facts(all_facts)
 ```
 
-## Executing
+since `Filing.get_all_facts()` returns a `list[Fact]`, we can iterate over it or use any standard list methods.
 
-This application has a CLI interface that extends the Flask CLI.
+Assume you want to print all the facts in the filing where the Concept is "us-gaap:Assets".
 
-Just run:
-
-```bash
-$ brel
+```python
+assets_concept = filing.get_concept("us-gaap:Assets")
+if assets_concept is not None:
+    assets_facts = filing.get_facts_by_concept(assets_concept)
+    pprint_facts(assets_facts)
 ```
 
-or
+You could also use python's built-in `filter` function:
+    
+```python
+assets_facts = filter(lambda fact: fact.get_concept() == assets_concept, all_facts)
 
-```bash
-$ python -m brel
+# or
+
+assets_facts = filter(lambda fact: str(fact.get_concept()) == "us-gaap:Assets", all_facts)
 ```
 
-To see the help message and usage instructions.
+You can do the same for all the other aspects as well:
 
-## First run
-
-```bash
-brel create-db   # run once
-brel populate-db  # run once (optional)
-brel add-user -u admin -p 1234  # ads a user
-brel run
+```python
+# Gets all facts that report on the 31 Decemver 2018 and are in U.S Dollars.
+usd_silvester_facts = filter(lambda fact: str(fact.get_unit()) == "usd" and str(fact.get_period()) == "on 2018-12-31", all_facts)
 ```
 
-Go to:
+### Components/Components
 
-- Website: http://localhost:5000
-- Admin: http://localhost:5000/admin/
-  - user: admin, senha: 1234
-- API GET:
-  - http://localhost:5000/api/v1/product/
-  - http://localhost:5000/api/v1/product/1
-  - http://localhost:5000/api/v1/product/2
-  - http://localhost:5000/api/v1/product/3
+Note: What brel calls 'Components', XBRL calls 'Roles'.
 
+Components are what contains all the networks of a filing.
 
-> **Note**: You can also use `flask run` to run the application.
+For example, to get the cover page component of a filing:
+
+```python
+cover_page = filing.get_component("http://foocompany.com/role/coverpage")
+
+# in case you dont know the URI of the component, you can use the get_all_component_URIs method
+component_uris = filing.get_all_component_URIs()
+```
+
+To get the presentation, calculation and definition networks of a component, use the `Component.get_presentation_network()`, `Component.get_calculation_network()` and `Component.get_definition_network()` methods respectively.
+You can print them using the `pprint_network` function:
+
+```python
+presentation_network = cover_page.get_presentation_network()
+calculation_network = cover_page.get_calculation_network()
+definition_network = cover_page.get_definition_network()
+pprint_network(presentation_network)
+```
+
+You can even navigate the networks yourself using the `Network.get_roots()` and `Node.get_children()` methods.
+This code snippet gets the first child of all roots and prints the report element that the child points to:
+
+```python
+
+roots = presentation_network.get_roots()
+for root in roots:
+    first_child = root.get_children()[0]
+    report_element = first_child.get_report_element()
+    print(report_element)
+```
+
+Note: Network nodes can either point to Report Elements, Resources or Facts. Use the `Node.points_to` method to check what the node points to.
+
+### Documentation

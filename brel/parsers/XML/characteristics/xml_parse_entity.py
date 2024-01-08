@@ -9,13 +9,14 @@ It parses XBRL in the XML syntax.
 
 import lxml.etree
 from typing import Callable, cast
-from brel.characteristics import BrelAspect, ICharacteristic, EntityCharacteristic
+from brel.characteristics import Aspect, ICharacteristic, EntityCharacteristic
+
 
 def parse_entity_from_xml(
     xml_element: lxml.etree._Element,
-    get_from_cache: Callable[[str],ICharacteristic|BrelAspect|None],
-    add_to_cache: Callable[[str, ICharacteristic|BrelAspect],None]
-    ) -> EntityCharacteristic:
+    get_from_cache: Callable[[str], ICharacteristic | Aspect | None],
+    add_to_cache: Callable[[str, ICharacteristic | Aspect], None],
+) -> EntityCharacteristic:
     """
     Create a Entity from an lxml.etree._Element.
     This is used for parsing characteristcs from an XBRL instance in XML format.
@@ -31,11 +32,10 @@ def parse_entity_from_xml(
 
     if identifier_element is None:
         raise ValueError("Could not find identifier element in entity characteristic")
-    
+
     # then check if there is a scheme attribute
     if "scheme" not in identifier_element.attrib:
         raise ValueError("Could not find scheme attribute in identifier element")
-    
 
     entity_id_elem = xml_element.find("{*}identifier", namespaces=None)
     # The identifier element is guaranteed according to the XBRL 2.1 specification to have a text element

@@ -115,7 +115,7 @@ class XMLFilingParser(IFilingParser):
             print("[QName] Prefix renames:")
         for rename_to, rename_from in renames.items():
             # QName.set_rename(rename_from, rename_to)
-            qname_nsmap.add_rename(rename_from, rename_to)
+            qname_nsmap.rename(rename_from, rename_to)
             if DEBUG:
                 print(f"> {rename_from:10} -> {rename_to}")
 

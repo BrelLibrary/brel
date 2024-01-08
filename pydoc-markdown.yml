@@ -1,20 +1,83 @@
 loaders:
   - type: python
+    search_path: [ "/home/robin/Documents/Brel" ]
+    packages: [ brel ]
 processors:
   - type: filter
   - type: smart
   - type: crossref
 renderer:
   type: mkdocs
+  output_directory: docs
   pages:
     - title: Home
       name: index
-      source: README.md
-    - title: API Documentation
+      source: docs/README.md
+    - title: Brel Filings
       children:
-        - title: my_project
-          contents: [ my_project, my_project.* ]
+      - title: Filings
+        contents: [ brel.brel_filing.Filing.* ]
+    
+    - title: Facts
+      children:
+      - title: Facts
+        contents: [ brel.brel_fact.Fact.* ]
+      - title: Contexts
+        contents: [ brel.brel_context.Context.* ]
+      - title: Aspects
+        contents: [ brel.characteristics.brel_aspect.Aspect.* ]
+      - title: Characteristics
+        contents: [ brel.characteristics.i_characteristic.* ]
+      - title: Concept Characteristic
+        contents: [ brel.characteristics.concept_characteristic.ConceptCharacteristic.* ]
+      - title: Entity Characteristic
+        contents: [ brel.characteristics.entity_characteristic.EntityCharacteristic.* ]
+      - title: Period Characteristic
+        contents: [ brel.characteristics.period_characteristic.PeriodCharacteristic.* ]
+      - title: Unit Characteristic
+        contents: [ brel.characteristics.unit_characteristic.UnitCharacteristic.* ]
+      - title: Explicit Dimension Characteristic
+        contents: [ brel.characteristics.explicit_dimension_characteristic.ExplicitDimensionCharacteristic.* ]
+      - title: Typed Dimension Characteristic
+        contents: [ brel.characteristics.typed_dimension_characteristic.TypedDimensionCharacteristic.* ]
+    
+    - title: Components
+      children:
+      - title: Components
+        contents: [ brel.brel_component.Component.* ]
+      - title: Networks
+        contents: [ brel.networks.i_network.*]
+      - title: Network Nodes
+        contents: [ brel.networks.i_network_node.* ]
+      - title: Calculation Networks and Nodes
+        contents: [ brel.networks.calculation_network.*, brel.networks.calculation_network_node.* ]
+    
+    - title: Report Elements
+      children:
+      - title: Report Elements
+        contents: [ brel.reportelements.i_report_element.* ]
+      - title: Concept
+        contents: [ brel.reportelements.concept.* ]
+      - title: Abstract
+        contents: [ brel.reportelements.abstract.* ]
+      - title: Line Items
+        contents: [ brel.reportelements.lineitems.* ]
+      - title: Hypercube
+        contents: [ brel.reportelements.hypercube.* ]
+      - title: Dimension
+        contents: [ brel.reportelements.dimension.* ]
+      - title: Member
+        contents: [ brel.reportelements.member.* ]
+
+        
+    
+    - title: QNames
+      children:
+      - title: QNames and Namespace maps
+        contents: [ brel.qname.QName, brel.qname.QNameNSMap ]
+      - title: Namespace normalization
+        contents: [ brel.parsers.XML.xml_namespace_normalizer.normalize_nsmap ]
   mkdocs_config:
-    site_name: My Project
+    site_name: Brel git repo
     theme: readthedocs
-    repo_url: https://github.com/Me/my-project
+    repo_url: https://github.com/PapediPoo/Brel

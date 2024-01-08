@@ -6,7 +6,7 @@ Module for pretty printing facts as a table to the console.
 @date: 29 December 2023
 """
 
-from brel import Fact, BrelAspect
+from brel import Fact, Aspect
 from prettytable import PrettyTable
 
 
@@ -31,14 +31,14 @@ def pprint_facts(facts: list[Fact]):
     # 3. entity
     # 4. unit
     # 5. additional dimensions in alphabetical order
-    def sort_dimensions(dimension: BrelAspect) -> str:
-        if dimension == BrelAspect.CONCEPT:
+    def sort_dimensions(dimension: Aspect) -> str:
+        if dimension == Aspect.CONCEPT:
             return "1"
-        elif dimension == BrelAspect.PERIOD:
+        elif dimension == Aspect.PERIOD:
             return "2"
-        elif dimension == BrelAspect.ENTITY:
+        elif dimension == Aspect.ENTITY:
             return "3"
-        elif dimension == BrelAspect.UNIT:
+        elif dimension == Aspect.UNIT:
             return "4"
         else:
             return "5" + dimension.get_name()

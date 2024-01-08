@@ -52,7 +52,7 @@ class ReferenceNetworkNode(INetworkNode):
     def get_fact(self) -> Fact:
         raise ValueError("ReferenceNetworkNodes do not point to facts")
 
-    def is_a(self) -> str:
+    def points_to(self) -> str:
         if isinstance(self.__points_to, IReportElement):
             return "report element"
         elif isinstance(self.__points_to, IResource):
@@ -81,7 +81,7 @@ class ReferenceNetworkNode(INetworkNode):
         return self.__link_name
 
     # Internal methods
-    def add_child(self, child: INetworkNode):
+    def _add_child(self, child: INetworkNode):
         if not isinstance(child, ReferenceNetworkNode):
             raise ValueError("Child must be of type ReferenceNetworkNode")
 

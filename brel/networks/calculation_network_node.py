@@ -3,10 +3,18 @@ This module contains the CalculationNetworkNode class.
 CalculationNetworkNodes are used to represent nodes in a calculation network.
 Since a node can have children, nodes can also be viewed as trees.
 Note: the balance consistency check is not implemented here, but in the CalculationNetwork class.
+CalculationNetworkNodes implement the INetworkNode interface, but they add the methods `get_concept()` and `get_weight()`.
 
-@author: Robin Schmidiger
-@version: 0.8
-@date: 29 December 2023
+Note that this documentation omits the methods inherited from the INetworkNode interface.
+For more on the methods inherited from the INetworkNode interface, see the [INetworkNode documentation](./network-nodes.md). 
+
+=================
+
+- author: Robin Schmidiger
+- version: 0.8
+- date: 29 December 2023
+
+=================
 """
 
 from brel.networks import INetworkNode
@@ -52,52 +60,43 @@ class CalculationNetworkNode(INetworkNode):
     # First class citizens
     def get_report_element(self) -> IReportElement:
         """
-        Returns the report element associated with this node
-        @return: IReportElement associated with this node
+        :returns IReportElement: report element associated with this node.
+        Use the `points_to()` method to check if this node points to a report element.
         """
         return self.__report_element
 
     def get_resource(self) -> IResource:
         """
         Would return the resource associated with this node, but calculation network nodes do not point to resources
-        @raises ValueError: CalculationNetworkNode does not point to a resource
+        :raises ValueError: CalculationNetworkNode does not point to a resource
         """
         raise ValueError("CalculationNetworkNode does not point to a resource")
 
     def get_fact(self) -> Fact:
         """
         Would return the fact associated with this node, but calculation network nodes do not point to facts
-        @raises ValueError: CalculationNetworkNode does not point to a fact
+        :raises ValueError: CalculationNetworkNode does not point to a fact
         """
         raise ValueError("CalculationNetworkNode does not point to a fact")
 
-    def is_a(self) -> str:
+    def points_to(self) -> str:
         """
-        @return: str containing 'report element'
+        :returns str: returns 'report element'
         """
         return "report element"
 
     def get_children(self) -> list["INetworkNode"]:
-        """
-        Returns the children of this node
-        @return: list[NetworkNode] containing the children of this node
-        """
         # return lsitself.__children
 
         return list(map(lambda x: cast(INetworkNode, x), self.__children))
 
     def get_weight(self) -> float:
         """
-        Returns the weight of this node
-        @return: float containing the weight of this node
+        :return float: Returns the weight of this node
         """
         return self.__weight
 
     def get_order(self) -> float:
-        """
-        Returns the order of this node
-        @return: float containing the order of this node
-        """
         return self.__order
 
     def get_arc_role(self) -> str:
@@ -113,27 +112,21 @@ class CalculationNetworkNode(INetworkNode):
         return self.__link_name
 
     def __str__(self) -> str:
-        """
-        Returns a string representation of this node
-        @return: str containing a string representation of this node
-        """
-
         return f"NetworkNode(report_element={self.__report_element}, no. children={len(self.__children)}"
 
     # second class citizens
     def get_concept(self) -> Concept:
         """
-        Returns the concept associated with this node
         CalculationNetworkNodes are only associated with concepts
-        @return: Concept associated with this node
+        :returns Concept: The concept associated with this node
         """
         return cast(Concept, self.__report_element)
 
     # Internal methods
-    def add_child(self, child: INetworkNode):
+    def _add_child(self, child: INetworkNode):
         """
         Add a child to this node
-        @param child: NetworkNode to be added as a child
+        :param child: NetworkNode to be added as a child
         """
         if not isinstance(child, CalculationNetworkNode):
             raise TypeError("child must be of type CalculationNetworkNode")

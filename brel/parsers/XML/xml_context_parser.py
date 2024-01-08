@@ -22,8 +22,8 @@ def parse_context_xml(
     characteristics: list[UnitCharacteristic | ConceptCharacteristic],
     make_qname: Callable[[str], QName],
     get_report_element: Callable[[QName], IReportElement | None],
-    get_from_cache: Callable[[str], ICharacteristic | BrelAspect | None],
-    add_to_cache: Callable[[str, ICharacteristic | BrelAspect], None],
+    get_from_cache: Callable[[str], ICharacteristic | Aspect | None],
+    add_to_cache: Callable[[str, ICharacteristic | Aspect], None],
 ) -> "Context":
     """
     Creates a Context from an lxml.etree._Element.

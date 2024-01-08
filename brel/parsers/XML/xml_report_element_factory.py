@@ -14,9 +14,14 @@ from brel.reportelements import *
 
 from typing import cast
 
-class XMLReportElementFactory():
+
+class XMLReportElementFactory:
     @staticmethod
-    def create(xml_element: lxml.etree._Element, report_element_name: QName, labels: list[BrelLabel]) -> tuple[str | None, IReportElement] | None:
+    def create(
+        xml_element: lxml.etree._Element,
+        report_element_name: QName,
+        labels: list[BrelLabel],
+    ) -> tuple[str | None, IReportElement] | None:
         """
         Creates a report element from an lxml.etree._Element.
         The kind of report element created depends on the structure of the lxml.etree._Element.
@@ -41,12 +46,11 @@ class XMLReportElementFactory():
 
         id = xml_element.get("id", None)
 
-
         # TODO: think if this is robust enough. maybe I cannot just toss the namespace away
         report_element: None | IReportElement = None
 
         if not is_abstract and is_item:
-            report_element = Concept.from_xml(xml_element, report_element_name, labels)
+            report_element = Concept._from_xml(xml_element, report_element_name, labels)
         elif is_abstract and is_hypercube_item:
             report_element = Hypercube(report_element_name, labels)
         elif is_abstract and is_dimension_item:
@@ -57,6 +61,6 @@ class XMLReportElementFactory():
             report_element = Abstract(report_element_name, labels)
         else:
             return None
-                
+
         report_element = cast(IReportElement, report_element)
         return id, report_element

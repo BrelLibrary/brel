@@ -2,7 +2,7 @@ from __future__ import annotations
 from enum import Enum
 
 from brel import Fact, QName, QNameNSMap
-from brel.characteristics import BrelAspect
+from brel.characteristics import Aspect
 
 
 class FilingFilterType(Enum):
@@ -113,11 +113,11 @@ class FilingFilter:
 
     @classmethod
     def make_aspect_filter(
-        cls, facts: list[Fact], aspect: BrelAspect, nsmap: QNameNSMap
+        cls, facts: list[Fact], aspect: Aspect, nsmap: QNameNSMap
     ) -> "FilingFilter":
         """Make a filter for a specific aspect"""
         # TODO: Implement more than just concept filters and additional dimension filters
-        if aspect == BrelAspect.CONCEPT:
+        if aspect == Aspect.CONCEPT:
             filter_list = []
             for fact in facts:
                 filter_list.append(

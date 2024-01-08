@@ -1,4 +1,4 @@
-from .aspect import BrelAspect
+from .brel_aspect import Aspect
 
 from .i_characteristic import ICharacteristic
 

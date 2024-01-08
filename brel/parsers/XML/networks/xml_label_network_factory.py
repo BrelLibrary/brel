@@ -95,14 +95,14 @@ class LabelNetworkFactory(IXMLNetworkFactory):
         for root in label_network.get_roots():
             if not isinstance(root, LabelNetworkNode):
                 raise TypeError("roots must all be of type LabelNetworkNode")
-            if not root.is_a() == "report element":
+            if not root.points_to() == "report element":
                 raise ValueError(f"root {root} is not a report element")
 
             report_element = root.get_report_element()
             for label_node in root.get_children():
                 if not isinstance(label_node, LabelNetworkNode):
                     raise TypeError("children must all be of type LabelNetworkNode")
-                if not label_node.is_a() == "resource":
+                if not label_node.points_to() == "resource":
                     raise ValueError(f"child {label_node} is not a resource")
 
                 label = label_node.get_resource()

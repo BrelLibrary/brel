@@ -1,83 +1,89 @@
 """
-This file contains the UnitCharacteristic class.
-It is used to represent an XBRL unit in brel.
+This module contains the class for representing xbrl unit characteristics.
+A unit characteristic associates the aspect Aspect.UNIT with a value.
+In case of the UnitCharacteristic class, the value is a string.
 
-@author: Robin Schmidiger
-@version: 0.2
-@date: 20 December 2023
+However, the UnitCharacteristic can also handle more complex units consisting of numerators and denominators.
+
+====================
+
+- author: Robin Schmidiger
+- version: 0.2
+- date: 07 January 2024
+
+====================
 """
 
 from brel import QName
-from brel.characteristics import BrelAspect, ICharacteristic
+from brel.characteristics import Aspect, ICharacteristic
+
 
 class UnitCharacteristic(ICharacteristic):
     """
-    Class for representing an XBRL unit.
-    It consists of and some stuff that I have not implemented yet
+    Class for representing an XBRL unit characteristic.
+    A unit characteristic associates the aspect Aspect.UNIT with a value and implements the ICharacteristic interface.
+
+    A unit can be identified by its name, which usually indicates how the unit is composed.
+
+    Examples: "usd", "sharesPerUSD", "shares"
+
+    A unit consists of numerators and denominators, which are lists of QNames.
+
+    Most units are simple and consist of a single QName.
+    You can use the `is_simple()` method to check if the unit is simple.
+
+    You can get the numerators and denominators of the unit using the `get_numerators()` and `get_denominators()` methods respectively.
+
+    The unit characteristic does have a connection to the concept characteristic.
+    Namely, if the concept characteristic's concept is a monetary concept, the unit's numerators and denominators must be defined in the iso4217 namespace.
     """
-    __unit_cache: dict[QName, 'UnitCharacteristic'] = {}
 
-    def __init__(self, name: QName, numerators: list[QName], denominators: list[QName]) -> None:
-        """
-        Create a Unit.
-        @param name: the name of the unit given as a QName
-        @param numerators: the numerators of the unit given as a list of QNames
-        @param denominators: the denominators of the unit given as a list of QNames
-        """
-
-        self.__name: QName = name
+    def __init__(
+        self, name: str, numerators: list[QName], denominators: list[QName]
+    ) -> None:
+        self.__name: str = name
         self.__numerators = numerators
         self.__denominators = denominators
 
-        self.__unit_cache[name] = self
-    
     # first class citizens
-    def get_aspect(self) -> BrelAspect:
+    def get_aspect(self) -> Aspect:
         """
-        @returns Aspect: returns Aspect.UNIT
+        :returns Aspect: returns Aspect.UNIT
         """
-        return BrelAspect.UNIT
-    
+        return Aspect.UNIT
+
     def get_numerators(self) -> list[QName]:
         """
-        @returns list[QName]: the numerators of the unit
+        :returns list[QName]: all numerators of the unit
         """
         return self.__numerators
-    
+
     def get_denominators(self) -> list[QName]:
         """
-        @returns list[QName]: the denominators of the unit
+        :returns list[QName]: all denominators of the unit
         """
         return self.__denominators
-    
-    def get_value(self) -> QName:
+
+    def get_value(self) -> str:
         """
-        @returns QName: the name of the unit
-        @info: this is different from the numerators/denominators of the unit
+        info: this is different from the numerators/denominators of the unit. It is the name of the unit.
+        :returns str: the name of the unit
         """
         return self.__name
-    
+
     # second class citizens
     def __str__(self) -> str:
-        """
-        @returns str: the local name of the unit
-        """
-        # return self.__name.__str__()
-        # it's probably better to just return the localname of the unit
-        return self.__name.__str__()
-    
+        return self.get_value()
+
     def __eq__(self, __value: object) -> bool:
-        """
-        @returns bool: True 'IFF' the unit is equal to the given value
-        """
         if not isinstance(__value, UnitCharacteristic):
             return False
-        
+
         return self.__name == __value.__name
-    
+
     def is_simple(self) -> bool:
         """
         A unit is simple if it has exactly one numerator and no denominators
-        @return: True 'IFF' the unit is simple, False otherwise
+        :returns bool: True 'IFF' the unit is simple, False otherwise
         """
         return len(self.__numerators) == 1 and len(self.__denominators) == 0

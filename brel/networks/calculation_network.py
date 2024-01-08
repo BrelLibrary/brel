@@ -3,16 +3,20 @@ This module contains the class for representing a calculation network.
 A calculation network is a network of nodes that represent the calculation of a Component.
 Calculation networks also contain helper functions for checking the consistency of the calculation network specifically.
 
-@author: Robin Schmidiger
-@version: 0.3
-@date: 29 December 2023
+====================
+
+- author: Robin Schmidiger
+- version: 0.3
+- date: 29 December 2023
+
+====================
 """
 
 DEBUG = False
 
 from brel import QName, Fact
 from brel.networks import INetwork, CalculationNetworkNode, INetworkNode
-from brel.characteristics import BrelAspect, ICharacteristic
+from brel.characteristics import Aspect, ICharacteristic
 from brel.reportelements import *
 
 from typing import cast
@@ -20,8 +24,8 @@ from typing import cast
 
 class CalculationNetwork(INetwork):
     """
-    Class for representing a presentation network.
-    A presentation network is a network of nodes that represent the presentation of a Component.
+    The class for representing a calculation network.
+    A calculation network is a network of nodes that indicate which concepts are calculated from which other concepts.
     """
 
     def __init__(
@@ -37,6 +41,8 @@ class CalculationNetwork(INetwork):
         A network is balance consistent iff, for each parent-child relationship
         - if the two concepts have the same balance (credit/credit or debit/debit), then the child weight must be positive
         - if the two concepts have different balances (credit/debit or debit/credit), then the child weight must be negative
+
+        :returns bool: True iff the network is balance consistent
         """
 
         def is_subtree_balance_consistent(node: CalculationNetworkNode) -> bool:
@@ -49,6 +55,9 @@ class CalculationNetwork(INetwork):
             - The parent and child balances are different, but the child weight is positive
             - Any child subtree is not balance consistent
             Returns true otherwise
+
+            :param node: the root of the subtree to check
+            :returns: True iff the subtree rooted at node is balance consistent
             """
             # get the balance of the parent
             parent_balance = node.get_concept().get_balance_type()
@@ -86,8 +95,12 @@ class CalculationNetwork(INetwork):
 
     def is_aggregation_consistent(self, facts: list[Fact]) -> bool:
         """
-        A calculation network is aggregation consistent iff for all nodes, all children add up to the parent
-        :returns: True iff the network is aggregation consistent
+        A calculation network is aggregation consistent iff for concepts of nodes, the sum of the fact values of the children equals the fact value of the parent.
+
+        If there are multiple facts for a concept, but the facts have different dates, then aggregation consistency is checked for each date separately.
+        This not only holds for the date aspect, but for all aspects of the fact.
+        :param facts: the facts of the filing against which to check the aggregation consistency
+        :returns bool: True iff the network is aggregation consistent
         """
 
         def is_subnetwork_aggregation_consistent(node: CalculationNetworkNode) -> bool:
@@ -123,7 +136,7 @@ class CalculationNetwork(INetwork):
                     )
                     # go over each aspect of the node fact (except the concept) and filter the child facts by that aspect
                     for node_aspect in node_fact.get_aspects():
-                        if node_aspect != BrelAspect.CONCEPT:
+                        if node_aspect != Aspect.CONCEPT:
                             node_characteristic = node_fact.get_characteristic(
                                 node_aspect
                             )

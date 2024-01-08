@@ -1,12 +1,15 @@
 """
 This module contains the Concept class. A Concept is a data item that can be reported on.
 Concepts in BREL reports are the same as concepts in XBRL reports.
-For more information on concepts, see the XBRL 2.1 specification.
-https://specifications.xbrl.org/work-product-index-group-base-spec-base-spec.html
+For more information on concepts, see the [**XBRL 2.1 specification**](https://specifications.xbrl.org/work-product-index-group-base-spec-base-spec.html)
 
-@author: Robin Schmidiger
-@version: 0.0.1
-@date: 2023-12-04
+====================
+
+- author: Robin Schmidiger
+- version: 0.5
+- date: 04 December 2023
+
+====================
 """
 
 import lxml
@@ -22,12 +25,14 @@ class Concept(IReportElement):
     Concepts in BREL reports are the same as concepts in XBRL reports.
     For more information on concepts, see the XBRL 2.1 specification.
     A short summary of the most important attributes of a concept:
+
     - It is defined in the XBRL taxonomy. So in the .xsd files in the DTS.
     - It has a name, which is a QName. This has to be unique in the DTS.
     - It has a data type, which is a QName.
     - It has a period type, which can be either instant or duration.
     - (optional) It has a balance type, which can be either credit or debit.
     - (optional) It can be nillable, which is either true or false. If the attribute is not present, it defaults to false.
+
     """
 
     def __init__(
@@ -56,54 +61,54 @@ class Concept(IReportElement):
     def get_name(self) -> QName:
         """
         Get the name of the concept.
-        @return: QName containing the name of the concept
+        :returns QName: the QName of the concept
         """
         return self.__name
 
     def get_labels(self) -> list[BrelLabel]:
         """
         Get the labels of the concept.
-        @return: list[Label] containing the labels of the concept
+        :returns list[Label]: all labels of the concept
         """
         return self.__labels
 
     def _add_label(self, label: BrelLabel) -> None:
         """
         Add a label to the concept.
-        @param label: the label to add to the concept
+        :param label: the label to add to the concept
         """
         self.__labels.append(label)
 
     def get_period_type(self) -> str:
         """
         Get the period type of the concept.
-        @return: str containing the period type of the concept
+        :returns str: the period type of the concept
         """
         return self.__period_type
 
     def get_data_type(self) -> str:
         """
         Get the data type of the concept.
-        @return: str containing the data type of the concept
+        :returns str: the data type of the concept
         """
         return self.__data_type
 
     def get_balance_type(self) -> str | None:
         """
         Get the balance type of the concept.
-        @return: str containing the balance type of the concept
+        :returns str|None: the balance type of the concept. None if the concept has no balance type.
         """
         return self.__balance_type
 
     def is_nillable(self) -> bool:
         """
         Check if the concept is nillable.
-        @return: True 'IFF' the concept is nillable, False otherwise
+        :returns bool: True 'IFF' the concept is nillable, False otherwise
         """
         return self.__nillable
 
     @classmethod
-    def from_xml(
+    def _from_xml(
         cls,
         xml_element: lxml.etree._Element,
         concept_qname: QName,
@@ -111,9 +116,9 @@ class Concept(IReportElement):
     ) -> "Concept":
         """
         Create a Concept from an lxml.etree._Element.
-        @param xml_element: lxml.etree._Element. The lxml.etree._Element to create the Concept from.
-        @param concept_qname: QName. The QName of the concept.
-        @return: Concept. The Concept created from the lxml.etree._Element.
+        :param xml_element: lxml.etree._Element. The lxml.etree._Element to create the Concept from.
+        :param concept_qname: QName. The QName of the concept.
+        :returns Concept: The Concept created from the lxml.etree._Element.
         """
         nsmap = xml_element.nsmap
 

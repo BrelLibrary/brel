@@ -45,7 +45,7 @@ class PresentationNetworkNode(INetworkNode):
 
         # check if there is a label that matches the preferred label role
         # if not, raise an error
-        if preferred_label_role is not None and not report_element.has_label(
+        if preferred_label_role is not None and not report_element.has_label_with_role(
             preferred_label_role
         ):
             raise ValueError(
@@ -74,7 +74,7 @@ class PresentationNetworkNode(INetworkNode):
         """
         raise ValueError("PresentationNetworkNode does not point to a fact")
 
-    def is_a(self) -> str:
+    def points_to(self) -> str:
         """
         @return: str containing 'report element'
         """
@@ -125,7 +125,7 @@ class PresentationNetworkNode(INetworkNode):
         return f"NetworkNode(report_element={self.__report_element}, no. children={len(self.__children)}"
 
     # Internal methods
-    def add_child(self, child: INetworkNode):
+    def _add_child(self, child: INetworkNode):
         """
         Add a child to this node
         @param child: NetworkNode to be added as a child

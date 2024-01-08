@@ -9,13 +9,14 @@ It parses XBRL in the XML syntax.
 
 import lxml.etree
 from typing import Callable, cast
-from brel.characteristics import BrelAspect, ICharacteristic, PeriodCharacteristic
+from brel.characteristics import Aspect, ICharacteristic, PeriodCharacteristic
+
 
 def parse_period_from_xml(
     xml_element: lxml.etree._Element,
-    get_from_cache: Callable[[str],ICharacteristic|BrelAspect|None],
-    add_to_cache: Callable[[str, ICharacteristic|BrelAspect],None]
-    ) -> PeriodCharacteristic:
+    get_from_cache: Callable[[str], ICharacteristic | Aspect | None],
+    add_to_cache: Callable[[str, ICharacteristic | Aspect], None],
+) -> PeriodCharacteristic:
     """
     Create a Period from an lxml.etree._Element.
     :param xml_element: the lxml.etree._Element from which the PeriodCharacteristic is created
@@ -34,7 +35,7 @@ def parse_period_from_xml(
         instant_date = instant_date_elem.text
         if instant_date is None:
             raise ValueError("The instant element has no text")
-        
+
         # check cache
         period_characteristic = get_from_cache(f"period {instant_date}")
         if period_characteristic is not None:
@@ -44,26 +45,27 @@ def parse_period_from_xml(
             return cast(PeriodCharacteristic, period_characteristic)
         else:
             # if the period characteristic is not in the cache, create it and add it to the cache
-            period_characteristic = PeriodCharacteristic.instant(instant_date)
+            period_characteristic = PeriodCharacteristic._instant(instant_date)
             add_to_cache(f"period {instant_date}", period_characteristic)
             return period_characteristic
-
 
     else:
         start_date_elem = xml_element.find("{*}startDate", namespaces=None)
         if start_date_elem is None:
-            raise ValueError("Could not find startDate element in period characteristic")
+            raise ValueError(
+                "Could not find startDate element in period characteristic"
+            )
         start_date = start_date_elem.text
         if start_date is None:
             raise ValueError("The startDate element has no text")
-        
+
         end_date_elem = xml_element.find("{*}endDate", namespaces=None)
         if end_date_elem is None:
             raise ValueError("Could not find endDate element in period characteristic")
         end_date = end_date_elem.text
         if end_date is None:
             raise ValueError("The endDate element has no text")
-        
+
         # check cache
         period_characteristic = get_from_cache(f"period {start_date} {end_date}")
         if period_characteristic is not None:
@@ -73,6 +75,6 @@ def parse_period_from_xml(
             return cast(PeriodCharacteristic, period_characteristic)
         else:
             # if the period characteristic is not in the cache, create it and add it to the cache
-            period_characteristic = PeriodCharacteristic.duration(start_date, end_date)
+            period_characteristic = PeriodCharacteristic._duration(start_date, end_date)
             add_to_cache(f"period {start_date} {end_date}", period_characteristic)
             return period_characteristic

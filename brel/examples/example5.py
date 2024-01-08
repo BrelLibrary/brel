@@ -29,9 +29,9 @@ def example5():
     # print all component names
     print("Component names:")
     for component in components:
-        pre_network = component.get_presentation()
-        cal_network = component.get_calculation()
-        def_network = component.get_definition()
+        pre_network = component.get_presentation_network()
+        cal_network = component.get_calculation_network()
+        def_network = component.get_definition_network()
 
         total_network_size = ""
 
@@ -66,8 +66,8 @@ def example5():
         return
 
     # print the selected component's networks
-    pprint_network(selected_component.get_presentation())
+    pprint_network(selected_component.get_presentation_network())
 
-    pprint_network(selected_component.get_definition())
+    pprint_network(selected_component.get_definition_network())
 
-    pprint_network(selected_component.get_calculation())
+    pprint_network(selected_component.get_calculation_network())

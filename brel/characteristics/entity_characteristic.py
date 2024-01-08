@@ -1,14 +1,19 @@
 """
 Contains the class for representing an XBRL entity.
 
-:author: Robin Schmidiger
-:version: 0.4
-:date: 19 December 2023
+====================
+
+- author: Robin Schmidiger
+- version: 0.5
+- date: 07 January 2024
+
+====================
 """
 
 from brel import QName
-from brel.characteristics import BrelAspect, ICharacteristic
+from brel.characteristics import Aspect, ICharacteristic
 from typing import cast
+
 
 class EntityCharacteristic(ICharacteristic):
     """
@@ -21,43 +26,36 @@ class EntityCharacteristic(ICharacteristic):
         self.__id = id
         self.__scheme = scheme
 
-    # first class citizens    
-    def get_aspect(self) -> BrelAspect:
+    # first class citizens
+    def get_aspect(self) -> Aspect:
         """
-        returns the aspect of the entity characteristic, which is Aspect.ENTITY
-        :returns: Aspect.ENTITY
+        :returns Aspect: returns `Aspect.ENTITY`
         """
-        return BrelAspect.ENTITY
-    
+        return Aspect.ENTITY
+
     def get_value(self) -> str:
         """
-        returns the value of the entity characteristic, which is the entity's qname
-        :info: the entity's qname consists of the entity's scheme and the entity's identifier
-        :returns: the entity's qname
+        returns the value of the entity characteristic, which is the entity's qname in clark notation
+
+        - The url of of the QName is the scheme of the entity characteristic.
+        - The local name of the QName is the id of the entity characteristic.
+
+        Example of an entity characteristic value: {http:www.sec.gov/CIK}0000123456
+        :returns str: the entity's QName in clark notation
         """
-        return self.__id
-    
+        return "{" + self.__scheme + "}" + self.__id
+
     def get_schema(self) -> str:
         """
-        :returns: the schema of the entity.
-        The scheme is the url of the entity qname
+        :returns str: the schema of the entity.
         """
         return self.__scheme
-    
+
     def __eq__(self, __value: object) -> bool:
-        """
-        compares the entity characteristic to another entity characteristic
-        :param __value: the entity characteristic to compare to
-        :returns: True if the entity characteristics are equal, False otherwise
-        """
         if not isinstance(__value, EntityCharacteristic):
             return False
         else:
             return self.__id == __value.__id and self.__scheme == __value.__scheme
-    
+
     def __str__(self) -> str:
-        """
-        Represents the entity characteristic as a string
-        :returns: the entity characteristic's qname as a string. It is the entity scheme and the entity identifier
-        """
-        return self.__scheme + ":" + self.__id
+        return self.get_value()

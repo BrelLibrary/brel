@@ -13,3 +13,5 @@ from .brel_component import Component
 from .brel_filing_filter import FilingFilter
 
 from .brel_filing import Filing
+
+from brel.utils import *

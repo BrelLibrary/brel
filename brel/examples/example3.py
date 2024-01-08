@@ -1,8 +1,9 @@
-from brel import Filing, BrelAspect
+from brel import Filing, Aspect
 from brel.utils import pprint_facts
 
+
 def example3():
-    """ 
+    """
     Example of how to get some reported concets, get all facts that use those concepts, and print them.
     """
 
@@ -15,6 +16,6 @@ def example3():
     facts = []
     for concept in concepts:
         facts += filing.get_facts_by_concept(concept)
-    
+
     # pretty print them
     pprint_facts(facts)

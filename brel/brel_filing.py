@@ -1,26 +1,43 @@
 """
-Contains the Filing class.
-This class represents an XBRL filing in the Open Information Model.
 
-Example of how to use this class:
+Brel operates on XBRL filings and represents them as a #Filing object.
+This module contains the Filing class.
 
-'''
+Filings can be loaded from a folder, a zip file, or one or multiple xml files.
+
+- If a folder is given, then all xml files in the folder are loaded.
+- If a zip file is given, then the zip file is extracted to a folder and then all xml files in the folder are loaded.
+- If one or more xml files are given, then only those xml files are loaded.
+
+Example usage:
+
+```
 from brel import Filing
-from brel.utils import pprint_facts
 
 # open the filing
-filing = Filing.open("my_filing.zip")
+filing1 = Filing.open("my_filing.zip")
 
-# get all of the facts
-facts = filing.get_all_facts()
+filing2 = Filing.open("my_folder/")
 
-# print the first 10 facts
-pprint_facts(facts[:10])
+filing3 = Filing.open("my_file.xml", "my_file2.xml")
 
+# get the facts reporting agains us-gaap:Assets
+assets_facts = filing1.get_facts_by_concept_name("us-gaap:Assets")
+pprint_facts(assets_facts)
 
-@author: Robin Schmidiger
-@version: 0.3
-@date: 2023-12-19
+```
+
+Note that opening a filing can take **a couple of seconds** depending on the size of the filing.
+
+Once a filing is loaded, it can be queried for its facts, report elements, networks and components.
+
+====================
+
+- author: Robin Schmidiger
+- version: 0.4
+- date: 06 January 2024
+
+====================
 """
 
 import os
@@ -28,7 +45,7 @@ import zipfile
 from typing import cast, Callable, TypeGuard
 
 from brel import Fact, FilingFilter, Component, QName
-from brel.characteristics import BrelAspect
+from brel.characteristics import Aspect
 from brel.reportelements import (
     IReportElement,
     Abstract,
@@ -49,51 +66,24 @@ class Filing:
     Represents an XBRL filing in the Open Information Model.
     """
 
-    def __init__(self, parser: IFilingParser) -> None:
-        parser_result = parser.parse()
-
-        self.__networks: list[INetwork] = parser_result["networks"]
-        self.__facts: list[Fact] = parser_result["facts"]
-        self.__reportelems: list[IReportElement] = parser_result["report elements"]
-        self.__components = parser_result["components"]
-        self.__nsmap = parser_result["nsmap"]
-
-    # first class citizens
-    def get_all_pyhsical_networks(self) -> list[INetwork]:
-        """
-        Get all physical networks in the filing
-        :return: a list of all physical networks in the filing.
-        """
-        physical_networks = [
-            network for network in self.__networks if network.is_physical()
-        ]
-        return physical_networks
-
-    def get_all_facts(self) -> list[Fact]:
-        """
-        :return: a list of all facts in the filing.
-        """
-        return self.__facts
-
-    def get_all_report_elements(self) -> list[IReportElement]:
-        """
-        :return: a list of all report elements in the filing.
-        """
-        return self.__reportelems
-
-    def get_all_components(self) -> list[Component]:
-        """
-        :return: a list of all components in the filing.
-        Note: components are sometimes called "roles" in the XBRL specification.
-        """
-        return self.__components
-
     @classmethod
     def open(cls, path, *args) -> "Filing":
         """
-        Load a filing from a path.
+        Opens a #Filing when given a path. The path can point to one of the following:
+        - a folder
+        - a zip file
+        - an xml file
+        - multiple xml files
+
+        Notes:
+
+        - The args parameter is ignored unless the path points to an xml file.
+        - Depending on the size of the filing, loading can take **a couple of seconds**.
+
         :param path: the path to the filing. This can be a folder, an xml file, or a zip file.
-        :return: a Filing object with the filing loaded.
+        :param args: additional xml files to load. These are only used if the path is an xml file.
+        :returns Filing: a #Filing object with the filing loaded.
+        :raises ValueError: if the path is not a valid path.
         """
         # check if the path is a folder or a file
         is_file = os.path.isfile(path)
@@ -134,12 +124,51 @@ class Filing:
             xml_files = list(map(lambda x: dir_path + "/" + x, xml_files))
             return cls.open(*xml_files)
         else:
-            raise ValueError(f"{path} is not a valid folder path")
+            raise ValueError(f"{path} is not a valid path")
+
+    def __init__(self, parser: IFilingParser) -> None:
+        parser_result = parser.parse()
+
+        self.__networks: list[INetwork] = parser_result["networks"]
+        self.__facts: list[Fact] = parser_result["facts"]
+        self.__reportelems: list[IReportElement] = parser_result["report elements"]
+        self.__components: list[Component] = parser_result["components"]
+        self.__nsmap = parser_result["nsmap"]
+
+    # first class citizens
+    def get_all_facts(self) -> list[Fact]:
+        """
+        :return list[Fact]: a list of all [`Fact`](../facts/facts.md) objects in the filing.
+        """
+        return self.__facts
+
+    def get_all_report_elements(self) -> list[IReportElement]:
+        """
+        :return list[IReportElement]: a list of all [`IReportElement`](../report-elements/report-elements.md) objects in the filing.
+        """
+        return self.__reportelems
+
+    def get_all_components(self) -> list[Component]:
+        """
+        :return list[Component]: a list of all [`Component`](../components/components.md) objects in the filing.
+        Note: components are sometimes called "roles" in the XBRL specification.
+        """
+        return self.__components
+
+    def get_all_pyhsical_networks(self) -> list[INetwork]:
+        """
+        Get all [`INetwork`](../components/networks.md) objects in the filing, where network.is_physical() is True.
+        :return list[INetwork]: a list of all physical networks in the filing.
+        """
+        physical_networks = [
+            network for network in self.__networks if network.is_physical()
+        ]
+        return physical_networks
 
     # second class citizens
     def get_all_concepts(self) -> list[Concept]:
         """
-        :returns: a list of all concepts in the filing.
+        :returns list[Concept]: a list of all concepts in the filing.
         Note that concepts are defined according to the Open Information Model. They are not the same as abstracts, line items, hypercubes, dimensions, or members.
         """
         return cast(
@@ -149,7 +178,7 @@ class Filing:
 
     def get_all_abstracts(self) -> list[Abstract]:
         """
-        :returns: a list of all abstracts in the filing.
+        :returns list[Abstract]: a list of all abstracts in the filing.
         """
         return cast(
             list[Abstract],
@@ -158,7 +187,7 @@ class Filing:
 
     def get_all_line_items(self) -> list[LineItems]:
         """
-        :returns: a list of all line items in the filing.
+        :returns list[LineItems]: a list of all line items in the filing.
         """
         return cast(
             list[LineItems],
@@ -167,7 +196,7 @@ class Filing:
 
     def get_all_hypercubes(self) -> list[Hypercube]:
         """
-        :returns: a list of all hypercubes in the filing.
+        :returns list[Hypercube]: a list of all hypercubes in the filing.
         """
         return cast(
             list[Hypercube],
@@ -176,7 +205,7 @@ class Filing:
 
     def get_all_dimensions(self) -> list[Dimension]:
         """
-        :returns: a list of all dimensions in the filing.
+        :returns list[Dimension]: a list of all dimensions in the filing.
         """
         return cast(
             list[Dimension],
@@ -185,7 +214,7 @@ class Filing:
 
     def get_all_members(self) -> list[Member]:
         """
-        :returns: a list of all members in the filing.
+        :returns list[Member]: a list of all members in the filing.
         """
         return cast(
             list[Member],
@@ -197,7 +226,7 @@ class Filing:
     ) -> IReportElement | None:
         """
         :param element_qname: the name of the report element to get. This can be a QName or a string in the format "prefix:localname". For example, "us-gaap:Assets".
-        :returns: the report element with the given name. If no report element is found, then None is returned.
+        :returns IReportElement|None: the report element with the given name. If no report element is found, then None is returned.
         :raises ValueError: if the QName string is not a valid QName or if the prefix is not found.
         """
         if isinstance(element_qname, str):
@@ -212,7 +241,7 @@ class Filing:
     def get_concept_by_name(self, concept_qname: QName | str) -> Concept | None:
         """
         :param concept_qname: the name of the concept to get. This can be a QName or a string in the format "prefix:localname". For example, "us-gaap:Assets".
-        :returns: the concept with the given name. If no concept is found, then None is returned.
+        :returns Concept|None: the concept with the given name. If no concept is found, then None is returned.
         :raises ValueError: if the QName string is not a valid QName or if the prefix is not found.
         """
         if isinstance(concept_qname, str):
@@ -228,7 +257,10 @@ class Filing:
         return concept
 
     def get_all_reported_concepts(self) -> list[Concept]:
-        """Get all concepts that are reported in the filing"""
+        """
+        Returns all concepts that have at least one fact reporting against them.
+        :returns list[Concept]: The list of concepts
+        """
         reported_concepts = []
         for fact in self.__facts:
             concept = fact.get_concept().get_value()
@@ -237,8 +269,16 @@ class Filing:
 
         return reported_concepts
 
-    def get_facts_by_concept_name(self, concept_name: QName) -> list[Fact]:
-        """Get all facts that are associated with a concept"""
+    def get_facts_by_concept_name(self, concept_name: QName | str) -> list[Fact]:
+        """
+        Returns all facts that are associated with the concept with name concept_name.
+        :param concept_name: The name of the concept to get facts for. This can be a QName or a string in the format "prefix:localname". For example, "us-gaap:Assets".
+        :returns list[Fact]: the list of facts
+        :raises ValueError: if the QName string but is not a valid QName or if the prefix is not found.
+        """
+        if isinstance(concept_name, str):
+            concept_name = QName.from_string(concept_name, self.__nsmap)
+
         filtered_facts = []
         for fact in self.__facts:
             concept = fact.get_concept().get_value()
@@ -249,18 +289,22 @@ class Filing:
         return filtered_facts
 
     def get_facts_by_concept(self, concept: Concept) -> list[Fact]:
-        """Get all facts that are associated with a concept"""
+        """
+        Returns all facts that are associated with a concept.
+        :param concept: the concept to get facts for.
+        :returns list[Fact]: the list of facts
+        """
         return self.get_facts_by_concept_name(concept.get_name())
 
     def __getitem__(
-        self, key: str | QName | BrelAspect | FilingFilter
+        self, key: str | QName | Aspect | FilingFilter
     ) -> list[Fact] | FilingFilter:
         # if the key is a filter, filter the facts
         if isinstance(key, FilingFilter):
             return key.filter(self.__facts)
 
         # if the key is an aspect, make a filter of that aspect and return the unappied filter
-        if isinstance(key, BrelAspect):
+        if isinstance(key, Aspect):
             return FilingFilter.make_aspect_filter(self.__facts, key, self.__nsmap)
 
         # if the key is a str, but looks like a QName, then turn it into a QName
@@ -270,15 +314,15 @@ class Filing:
         # if the key is a qname, then it is an additional dimension
         # make a filter of that aspect and return it unapplied
         if isinstance(key, QName):
-            aspect = BrelAspect.from_QName(key)
+            aspect = Aspect.from_QName(key)
             return FilingFilter.make_aspect_filter(self.__facts, aspect, self.__nsmap)
 
         # finally, if the key is one of the core aspects, then make a filter of that aspect and return it unapplied
         aspect_names = {
-            "entity": BrelAspect.ENTITY,
-            "period": BrelAspect.PERIOD,
-            "unit": BrelAspect.UNIT,
-            "concept": BrelAspect.CONCEPT,
+            "entity": Aspect.ENTITY,
+            "period": Aspect.PERIOD,
+            "unit": Aspect.UNIT,
+            "concept": Aspect.CONCEPT,
         }
 
         if key.lower() in aspect_names:
@@ -287,3 +331,16 @@ class Filing:
 
         # otherwise, raise an error
         raise ValueError(f"Key {key} is not a valid key")
+
+    def get_all_component_URIs(self) -> list[str]:
+        """
+        :return list[str]: a list of all component URIs in the filing.
+        """
+        return [component.get_URI() for component in self.__components]
+
+    def get_component(self, URI: str) -> Component | None:
+        """
+        :param URI: the URI of the component to get.
+        :return Component|None: the component with the given URI. None if no component is found.
+        """
+        return next(filter(lambda x: x.get_URI() == URI, self.__components), None)

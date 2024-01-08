@@ -105,15 +105,15 @@ def test_calculation_validation_GD():
         create_node(concepts[9], 1, 2),
     ]
 
-    nodes[0].add_child(nodes[1])
-    nodes[1].add_child(nodes[2])
-    nodes[1].add_child(nodes[3])
-    nodes[3].add_child(nodes[4])
-    nodes[3].add_child(nodes[5])
-    nodes[3].add_child(nodes[6])
-    nodes[0].add_child(nodes[7])
-    nodes[7].add_child(nodes[8])
-    nodes[7].add_child(nodes[9])
+    nodes[0]._add_child(nodes[1])
+    nodes[1]._add_child(nodes[2])
+    nodes[1]._add_child(nodes[3])
+    nodes[3]._add_child(nodes[4])
+    nodes[3]._add_child(nodes[5])
+    nodes[3]._add_child(nodes[6])
+    nodes[0]._add_child(nodes[7])
+    nodes[7]._add_child(nodes[8])
+    nodes[7]._add_child(nodes[9])
 
     facts = [
         fact_from_concept(concepts[0], "100"),
@@ -155,8 +155,8 @@ def test_calculation_validation_NG_balance():
         create_node(concepts[5], 1, 1),
     ]
 
-    nodes[0].add_child(nodes[1])
-    nodes[0].add_child(nodes[2])
+    nodes[0]._add_child(nodes[1])
+    nodes[0]._add_child(nodes[2])
 
     network = CalculationNetwork([nodes[0]], link_role, link_name)
 
@@ -181,8 +181,8 @@ def test_calculation_validation_NG_balance():
         create_node(concepts[2], 1, 1),
     ]
 
-    nodes[0].add_child(nodes[1])
-    nodes[1].add_child(nodes[2])
+    nodes[0]._add_child(nodes[1])
+    nodes[1]._add_child(nodes[2])
 
     network = CalculationNetwork([nodes[0]], link_role, link_name)
 
@@ -234,9 +234,9 @@ def test_calculation_validation_NG_aggregation():
         create_node(concepts[3], 1, 1),
     ]
 
-    nodes[0].add_child(nodes[1])
-    nodes[1].add_child(nodes[2])
-    nodes[1].add_child(nodes[3])
+    nodes[0]._add_child(nodes[1])
+    nodes[1]._add_child(nodes[2])
+    nodes[1]._add_child(nodes[3])
 
     facts = [
         fact_from_concept(concepts[0], "100"),

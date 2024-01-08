@@ -52,7 +52,7 @@ class DefinitionNetworkNode(INetworkNode):
     def get_fact(self) -> Fact:
         raise ValueError("DefinitionNetworkNode does not point to a fact")
 
-    def is_a(self) -> str:
+    def points_to(self) -> str:
         return "report element"
 
     def get_children(self) -> list[INetworkNode]:
@@ -74,7 +74,7 @@ class DefinitionNetworkNode(INetworkNode):
         return self.__link_name
 
     # Internal methods
-    def add_child(self, child: INetworkNode):
+    def _add_child(self, child: INetworkNode):
         if not isinstance(child, DefinitionNetworkNode):
             raise ValueError("Child must be of type DefinitionNetworkNode")
 

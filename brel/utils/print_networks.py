@@ -25,7 +25,7 @@ PADDING = max(map(lambda x: len(x), tag_lookup.values()))
 def __print_subnetwork(node: INetworkNode, last=True, header="") -> None:
     output_string = ""
 
-    node_is_a = node.is_a()
+    node_is_a = node.points_to()
     if node_is_a == "resource":
         resource = node.get_resource()
         if isinstance(resource, BrelLabel):

@@ -62,7 +62,7 @@ class FootnoteNetworkNode(INetworkNode):
             )
         return self.__points_to
 
-    def is_a(self) -> str:
+    def points_to(self) -> str:
         if isinstance(self.__points_to, IReportElement):
             return "report element"
         elif isinstance(self.__points_to, IResource):
@@ -93,7 +93,7 @@ class FootnoteNetworkNode(INetworkNode):
         return self.__link_name
 
     # Internal methods
-    def add_child(self, child: INetworkNode):
+    def _add_child(self, child: INetworkNode):
         """
         Add a child to the node.
         @param child: the child to add
