@@ -53,6 +53,10 @@ class XMLFilingParser(IFilingParser):
         self.__filing_location = os.path.commonpath(filepaths)
         self.__print_prefix = f"{'[XMLFilingParser]':<20}"
 
+        # if the filing location is a file, crop the filename
+        if not os.path.isdir(self.__filing_location):
+            self.__filing_location = os.path.dirname(self.__filing_location)
+
         # mapping from xml ids to report elements, facts, and components
         # handy for resolving hrefs
         self.__id_to_any: dict[str, Any] = {}
@@ -115,9 +119,9 @@ class XMLFilingParser(IFilingParser):
             print("[QName] Prefix renames:")
         for rename_to, rename_from in renames.items():
             # QName.set_rename(rename_from, rename_to)
-            qname_nsmap.rename(rename_from, rename_to)
             if DEBUG:
                 print(f"> {rename_from:10} -> {rename_to}")
+            qname_nsmap.rename(rename_from, rename_to)
 
         if DEBUG:  # pragma: no cover
             print("Note: Prefix redirects are not recommended.")

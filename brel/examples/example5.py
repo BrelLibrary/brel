@@ -1,5 +1,5 @@
 from brel import Filing, BrelLabelRole
-from brel.utils import pprint_network
+from brel.utils import pprint
 from random import sample
 from editdistance import eval as edit_distance
 
@@ -21,7 +21,7 @@ def get_closest_match(target: str, candidates: list[str]) -> str:
 
 
 def example5():
-    filing = Filing.open("reports/ko/")
+    filing = Filing.open("reports/aapl/")
 
     # get all components
     components = filing.get_all_components()
@@ -47,9 +47,26 @@ def example5():
 
         print(f"[Size: {total_network_size}] {component.get_URI()}")
 
+    non_root_lineitems = []
+    for component in components:
+        defi_network = component.get_definition_network()
+        if defi_network is None:
+            continue
+
+        for node in defi_network.get_all_nodes():
+            if (
+                "LineItems"
+                in node.get_report_element().get_name().resolve()
+                # and node != defi_network.get_root()
+            ):
+                non_root_lineitems.append(node)
+
+    print("Non root lineitems:" + str(len(non_root_lineitems)))
+
     # read the user input
     print()
-    user_input = input("Enter a component name: \n")
+    # user_input = input("Enter a component name: \n")
+    user_input = "SummaryofSignificantAccountingPoliciesAdditionalInformationDetails"
 
     component_names = [component.get_URI() for component in components]
     selected_component_name = get_closest_match(user_input, component_names)
@@ -66,8 +83,8 @@ def example5():
         return
 
     # print the selected component's networks
-    pprint_network(selected_component.get_presentation_network())
+    pprint(selected_component.get_presentation_network())
 
-    pprint_network(selected_component.get_definition_network())
+    pprint(selected_component.get_definition_network())
 
-    pprint_network(selected_component.get_calculation_network())
+    # pprint(selected_component.get_calculation_network())

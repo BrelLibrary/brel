@@ -43,6 +43,10 @@
                 <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
                 </li>
               </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a>
+                </li>
+              </ul>
               <p class="caption"><span class="caption-text">Brel Filings</span></p>
               <ul class="current">
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Filings</a>
@@ -74,6 +78,8 @@
     <li class="toctree-l3"><a class="reference internal" href="#get_report_element_by_name">get_report_element_by_name</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#get_concept_by_name">get_concept_by_name</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_concept">get_concept</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#get_all_reported_concepts">get_all_reported_concepts</a>
     </li>
@@ -332,6 +338,11 @@ Note that concepts are defined according to the Open Information Model. They are
 </ul>
 <p><strong>Returns</strong>:</p>
 <p><code>Concept|None</code>: the concept with the given name. If no concept is found, then None is returned.</p>
+<p><a id="brel.brel_filing.Filing.get_concept"></a></p>
+<h4 id="get_concept">get_concept</h4>
+<pre><code class="language-python">def get_concept(concept_qname: QName | str) -&gt; Concept | None
+</code></pre>
+<p>Alias of <code>filing.get_concept_by_name(concept_qname)</code>.</p>
 <p><a id="brel.brel_filing.Filing.get_all_reported_concepts"></a></p>
 <h4 id="get_all_reported_concepts">get_all_reported_concepts</h4>
 <pre><code class="language-python">def get_all_reported_concepts() -&gt; list[Concept]
@@ -385,7 +396,7 @@ Note that concepts are defined according to the Open Information Model. They are
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../.." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../examples/" class="btn btn-neutral float-left" title="Examples"><span class="icon icon-circle-arrow-left"></span> Previous</a>
         <a href="../../facts/facts/" class="btn btn-neutral float-right" title="Facts">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
@@ -413,7 +424,7 @@ Note that concepts are defined according to the Open Information Model. They are
         </span>
     
     
-      <span><a href="../.." style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../../examples/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
       <span><a href="../../facts/facts/" style="color: #fcfcfc">Next &raquo;</a></span>

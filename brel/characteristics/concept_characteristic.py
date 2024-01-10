@@ -26,12 +26,6 @@ class ConceptCharacteristic(ICharacteristic):
     __concept_cache: dict[QName, "ConceptCharacteristic"] = {}
 
     def __init__(self, concept: Concept) -> None:
-        """
-        Create a ConceptCharacteristic.
-        :param concept: the concept of the characteristic
-        :returns ConceptCharacteristic: the ConceptCharacteristic
-        :raises ValueError: if concept argument is not a Concept instance
-        """
         # check if the concept is actually a Concept instance
         if not isinstance(concept, Concept):
             raise ValueError(f"concept is not a Concept instance: {concept}")
@@ -40,11 +34,7 @@ class ConceptCharacteristic(ICharacteristic):
         self.__concept_cache[concept.get_name()] = self
 
     def __str__(self) -> str:
-        """
-        Returns the name of the concept.
-        :returns str: the name of the concept
-        """
-        return self.__concept.get_name().__str__()
+        return str(self.__concept.get_name())
 
     def get_value(self) -> Concept:
         """

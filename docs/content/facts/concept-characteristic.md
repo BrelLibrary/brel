@@ -23,42 +23,6 @@ class ConceptCharacteristic(ICharacteristic)
 Class for representing a concept characteristic.
 The concept characteristic links the `Aspect.CONCEPT` aspect to a concept.
 
-<a id="brel.characteristics.concept_characteristic.ConceptCharacteristic.__init__"></a>
-
-#### \_\_init\_\_
-
-```python
-def __init__(concept: Concept) -> None
-```
-
-Create a ConceptCharacteristic.
-
-**Arguments**:
-
-- `concept`: the concept of the characteristic
-
-**Raises**:
-
-- `ValueError`: if concept argument is not a Concept instance
-
-**Returns**:
-
-`ConceptCharacteristic`: the ConceptCharacteristic
-
-<a id="brel.characteristics.concept_characteristic.ConceptCharacteristic.__str__"></a>
-
-#### \_\_str\_\_
-
-```python
-def __str__() -> str
-```
-
-Returns the name of the concept.
-
-**Returns**:
-
-`str`: the name of the concept
-
 <a id="brel.characteristics.concept_characteristic.ConceptCharacteristic.get_value"></a>
 
 #### get\_value

@@ -1,5 +1,5 @@
 from brel import Filing, Aspect
-from brel.utils import pprint_facts
+from brel.utils import pprint
 
 
 def example3():
@@ -18,4 +18,4 @@ def example3():
         facts += filing.get_facts_by_concept(concept)
 
     # pretty print them
-    pprint_facts(facts)
+    pprint(facts)

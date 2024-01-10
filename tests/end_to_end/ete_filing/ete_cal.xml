@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8'?>
+<link:linkbase xmlns:ete="http://ete/2024" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xbrldt="http://xbrl.org/2005/xbrldt" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd">
+    <link:roleRef roleURI="http://foo/role/balance" xlink:href="ete.xsd#Balance" xlink:type="simple"></link:roleRef>
+    <link:calculationLink xlink:type="extended" xlink:role="http://foo/role/balance">
+        <link:loc xlink:href="ete.xsd#ete_balance_sheet" xlink:label="ete_balance_sheet" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="ete.xsd#ete_assets" xlink:label="ete_assets" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="ete.xsd#ete_cash" xlink:label="ete_cash" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="ete.xsd#ete_receivables" xlink:label="ete_receivables" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="ete.xsd#ete_liabilities" xlink:label="ete_liabilities" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="ete.xsd#ete_accounts_payable" xlink:label="ete_accounts_payable" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="ete.xsd#ete_line_of_credit" xlink:label="ete_line_of_credit" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="ete.xsd#ete_long_term_debt" xlink:label="ete_long_term_debt" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="ete.xsd#ete_equity" xlink:label="ete_equity" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="ete.xsd#ete_common_stock" xlink:label="ete_common_stock" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="ete.xsd#ete_additional_paid_in_capital" xlink:label="ete_additional_paid_in_capital" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="ete.xsd#ete_retained_earnings" xlink:label="ete_retained_earnings" xlink:type="locator"></link:loc>
+
+        <link:calculationArc xlink:type="arc" weight="1.0" order="1.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" xlink:from="ete_balance_sheet" xlink:to="ete_assets"></link:calculationArc>
+        <link:calculationArc xlink:type="arc" weight="1.0" order="1.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" xlink:from="ete_assets" xlink:to="ete_cash"></link:calculationArc>
+        <link:calculationArc xlink:type="arc" weight="1.0" order="2.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" xlink:from="ete_assets" xlink:to="ete_receivables"></link:calculationArc>
+        <link:calculationArc xlink:type="arc" weight="-1.0" order="2.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" xlink:from="ete_balance_sheet" xlink:to="ete_liabilities"></link:calculationArc>
+        <link:calculationArc xlink:type="arc" weight="1.0" order="1.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" xlink:from="ete_liabilities" xlink:to="ete_accounts_payable"></link:calculationArc>
+        <link:calculationArc xlink:type="arc" weight="1.0" order="2.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" xlink:from="ete_liabilities" xlink:to="ete_line_of_credit"></link:calculationArc>
+        <link:calculationArc xlink:type="arc" weight="1.0" order="3.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" xlink:from="ete_liabilities" xlink:to="ete_long_term_debt"></link:calculationArc>
+        <link:calculationArc xlink:type="arc" weight="-1.0" order="3.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" xlink:from="ete_balance_sheet" xlink:to="ete_equity"></link:calculationArc>
+        <link:calculationArc xlink:type="arc" weight="1.0" order="1.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" xlink:from="ete_equity" xlink:to="ete_common_stock"></link:calculationArc>
+        <link:calculationArc xlink:type="arc" weight="1.0" order="2.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" xlink:from="ete_equity" xlink:to="ete_additional_paid_in_capital"></link:calculationArc>
+        <link:calculationArc xlink:type="arc" weight="1.0" order="3.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" xlink:from="ete_equity" xlink:to="ete_retained_earnings"></link:calculationArc>
+        
+    </link:calculationLink>
+
+</link:linkbase>

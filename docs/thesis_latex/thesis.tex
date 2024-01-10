@@ -1,17 +1,12 @@
 %==============================================================================
-% ETHASL - Template for student projects at the ASL
-% 2013.10: Péter Fankhauser
-% This template is based on the IMRT Latex template by Eric A. Mueller.
+% Author: Robin Schmidiger
+% Date: 10 January 2023
 %==============================================================================
 
 \documentclass[10pt,twoside,a4paper]{report}
 
-% ETHASL package
-% TODO Choose options according to your project
-% som/bt/st/mt: Studies on Mechatronics, Bachelor Thesis, Semester Thesis, Master Thesis
-% fs/hs: Spring term, Autumn term
-% german/english: German/English 
-\usepackage[mt,hs,english]{packages/ethasl}
+\usepackage[masterthesis]{systems-cover}
+
 
 % Activate for german language
 %\usepackage{german}
@@ -20,6 +15,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % LaTeX preamble
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\covernum{478}
+\covertitle{Brel - A python library for XBRL}
+\coverauthor{Robin Schmidiger}
+\coversupervisedby{Prof.\ Gustavo Alonso, Dr.\ Ghislain Fourny}
+\coverdate{September 2023 -- March 2024}
+
 \input{preambles/preamble.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -27,73 +29,45 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
-% TODO Add your title
-\title{Brel}
-%\subtitle{bla bla bla}
-
-% TODO Add name of the authors
-\studentA{Robin Schmidiger}
-
-% TODO Add name of the supervisors
-\supervisionA{Ghislain Fourny}
-\supervisionB{Gustavo Alonso}
-
-% TODO Change if necessary
-\projectYear{\the\year} % This year
-%\projectYear{\advance\year by -1 \the\year\advance\year by 1} % Last year
-
-\maketitle
-\pagestyle{plain}
-\pagenumbering{roman}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Declaration of originality
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\pagestyle{empty}
 
-% TODO Modify placeholders in declaration.tex
 \input{chapters/declaration}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Table on contents
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Table of Contents depth (TODO change if necessary)
-\setcounter{tocdepth}{2}
+% % Table of Contents depth (TODO change if necessary)
+% \setcounter{tocdepth}{2}
 
 \tableofcontents
-\cleardoublepage
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Chapters standard
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{chapters/preface}
-\cleardoublepage
-\input{chapters/abstract}
-\cleardoublepage
-% \input{chapters/symbols}
 % \cleardoublepage
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Chapters custom
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\pagestyle{fancy}
-\pagenumbering{arabic}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % Chapters standard
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{chapters/preface}
+\clearpage
+\input{chapters/abstract}
+\clearpage
 
-% TODO Add your own chapters here
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % Chapters custom
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \pagestyle{fancy}
+% \pagenumbering{arabic}
+
+% % TODO Add your own chapters here
 \input{chapters/introduction}
 \cleardoublepage
 
 \input{chapters/related_work}
 \cleardoublepage
-% \input{chapters/chapter}
-% \cleardoublepage
-% \input{}
-% \cleardoublepage
-% \input{}
-% \cleardoublepage
-% ...
-%
+
+
 \input{chapters/xbrl.tex}
 \cleardoublepage
 
@@ -101,20 +75,20 @@
 \cleardoublepage
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Bibliography
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % Bibliography
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \bibliographystyle{bibliography/IEEEtranN}
 \bibliographystyle{plain}
 % \bibliographystyle{acm}
 \bibliography{references}
 \addcontentsline{toc}{chapter}{Bibliography}
-\cleardoublepage
+% \cleardoublepage
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Appendix
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\appendix
-\input{chapters/appendix_text}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % Appendix
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \appendix
+% \input{chapters/appendix_text}
 
 \end{document}

@@ -43,6 +43,10 @@
                 <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
                 </li>
               </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a>
+                </li>
+              </ul>
               <p class="caption"><span class="caption-text">Brel Filings</span></p>
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../../brel-filings/filings/">Filings</a>
@@ -62,10 +66,6 @@
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#conceptcharacteristic-objects">ConceptCharacteristic Objects</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#__init__">__init__</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#__str__">__str__</a>
-    </li>
     <li class="toctree-l3"><a class="reference internal" href="#get_value">get_value</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#get_aspect">get_aspect</a>
@@ -161,28 +161,6 @@
 </code></pre>
 <p>Class for representing a concept characteristic.
 The concept characteristic links the <code>Aspect.CONCEPT</code> aspect to a concept.</p>
-<p><a id="brel.characteristics.concept_characteristic.ConceptCharacteristic.__init__"></a></p>
-<h4 id="__init__">__init__</h4>
-<pre><code class="language-python">def __init__(concept: Concept) -&gt; None
-</code></pre>
-<p>Create a ConceptCharacteristic.</p>
-<p><strong>Arguments</strong>:</p>
-<ul>
-<li><code>concept</code>: the concept of the characteristic</li>
-</ul>
-<p><strong>Raises</strong>:</p>
-<ul>
-<li><code>ValueError</code>: if concept argument is not a Concept instance</li>
-</ul>
-<p><strong>Returns</strong>:</p>
-<p><code>ConceptCharacteristic</code>: the ConceptCharacteristic</p>
-<p><a id="brel.characteristics.concept_characteristic.ConceptCharacteristic.__str__"></a></p>
-<h4 id="__str__">__str__</h4>
-<pre><code class="language-python">def __str__() -&gt; str
-</code></pre>
-<p>Returns the name of the concept.</p>
-<p><strong>Returns</strong>:</p>
-<p><code>str</code>: the name of the concept</p>
 <p><a id="brel.characteristics.concept_characteristic.ConceptCharacteristic.get_value"></a></p>
 <h4 id="get_value">get_value</h4>
 <pre><code class="language-python">def get_value() -&gt; Concept

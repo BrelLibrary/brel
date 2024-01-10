@@ -19,7 +19,7 @@ from brel.networks import INetwork, CalculationNetworkNode, INetworkNode
 from brel.characteristics import Aspect, ICharacteristic
 from brel.reportelements import *
 
-from typing import cast
+from typing import cast, Iterable
 
 
 class CalculationNetwork(INetwork):
@@ -125,32 +125,68 @@ class CalculationNetwork(INetwork):
             for node_fact in node_facts:
                 node_value = node_fact.get_value_as_float()
 
+                if DEBUG:  # pragma: no cover
+                    print(f"{node_fact._get_id()}: {node_value} = ", end=" ")
+
                 # get the sum of the children values
                 children_sum: float = 0
                 for child in node.get_children():
                     child = cast(CalculationNetworkNode, child)
                     child_concept = child.get_concept()
-                    child_facts = filter(
-                        lambda fact: fact.get_concept().get_value() == child_concept,
-                        facts,
-                    )
-                    # go over each aspect of the node fact (except the concept) and filter the child facts by that aspect
+
+                    # child facts are all facts with the same characteristics as the node fact, except for the concept
+                    child_facts: Iterable[Fact] = facts
                     for node_aspect in node_fact.get_aspects():
-                        if node_aspect != Aspect.CONCEPT:
+                        # if the aspect is the concept, then get all fact with the child_concept as the concept characteristic
+                        if node_aspect == Aspect.CONCEPT:
+                            child_facts = list(
+                                filter(
+                                    lambda fact: fact.get_concept().get_value()
+                                    == child_concept,
+                                    child_facts,
+                                )
+                            )
+                        else:
+                            # otherwise, get all facts with the same characteristic as the node fact
                             node_characteristic = node_fact.get_characteristic(
                                 node_aspect
                             )
-                            child_facts = filter(
-                                lambda fact: fact.get_characteristic(node_aspect)
-                                == node_characteristic,
-                                child_facts,
+                            child_facts = list(
+                                filter(
+                                    lambda fact: fact.get_characteristic(node_aspect)
+                                    == node_characteristic,
+                                    child_facts,
+                                )
                             )
 
                     # there should only be one child fact left
-                    child_fact = next(child_facts)
+                    all_child_facts = list(child_facts)
+                    parent_characteristics = [
+                        str(node_fact.get_characteristic(aspect))
+                        for aspect in node_fact.get_aspects()
+                        if aspect != Aspect.CONCEPT
+                    ]
+                    if len(all_child_facts) == 0:
+                        raise ValueError(
+                            f"Could not find a fact for concept {child_concept} with characteristics {parent_characteristics}"
+                        )
+                    elif len(all_child_facts) > 1:
+                        raise ValueError(
+                            f"Found more than one fact for concept {child_concept} with characteristics {parent_characteristics}"
+                        )
+
+                    child_fact = all_child_facts[0]
+
                     children_sum += child_fact.get_value_as_float() * child.get_weight()
 
+                    if DEBUG:  # pragma: no cover
+                        print(
+                            f"+ {child_fact._get_id()}: {child_fact.get_value_as_float()} * {child.get_weight()}",
+                            end=" ",
+                        )
+
                 if DEBUG:  # pragma: no cover
+                    print()
                     print(
                         f"node concept: {concept}, node value: {node_value}, children sum: {children_sum}"
                     )

@@ -2,9 +2,13 @@
 This module contains the XMLSchemaManager class.
 The XMLSchemaManager class is responsible for downloading and caching XBRL taxonomies.
 
-@author: Robin Schmidiger
-@version: 0.0.5
-@date: 18 December 2023
+=================
+
+- author: Robin Schmidiger
+- version: 0.6
+- date: 09 Januar 2024
+
+=================
 """
 
 DEBUG = False
@@ -269,6 +273,9 @@ class XMLFileManager(IFileManager):
             xsd_content = self.__download_and_store(uri, file_name)
 
         # parse the schema
+        if DEBUG:  # pragma: no cover
+            print(f"[File Manager] parsing {file_name}")
+
         xsd_tree = lxml.etree.parse(BytesIO(xsd_content), parser=self.__parser)
         # load it into the cache
         self.__file_cache[file_name] = xsd_tree

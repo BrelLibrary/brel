@@ -1,16 +1,17 @@
 from brel import Filing
 from brel.networks import ReferenceNetwork, CalculationNetwork
-from brel.utils import pprint_network
+from brel.utils import pprint
 
 import lxml
 import lxml.etree
 import os
 import requests
 
+
 class SchemaResolver(lxml.etree.Resolver):
     def __init__(self, parser) -> None:
         self.cache_location = "brel/dts_cache/"
-    
+
     def url_to_filename(self, url: str) -> str:
         """
         Convert a url to a filename.
@@ -20,7 +21,7 @@ class SchemaResolver(lxml.etree.Resolver):
         result = url.split("/")[-2:]
         result_str = "_".join(result)
         return result_str
-    
+
     def resolve(self, system_url: str = "", public_id: str = "", context=None):
         # print (f"Resolving {system_url}")
         # if system_url.startswith("http"):
@@ -41,14 +42,12 @@ class SchemaResolver(lxml.etree.Resolver):
             filepath = self.cache_location + self.url_to_filename(system_url)
             print(f"Filepath: {filepath}")
             print(f"system_url: {system_url}")
-            return self.resolve_file(open(filepath, "rb"), context, base_url=system_url, close=True)
+            return self.resolve_file(
+                open(filepath, "rb"), context, base_url=system_url, close=True
+            )
         else:
             # return super().resolve(system_url, public_id, context)
-            print("asdfasdf")
             raise ValueError(f"system_url: {system_url} is not a valid schema url")
-
-
-
 
 
 def example6():
@@ -67,16 +66,13 @@ def example6():
 
     parser.resolvers.add(SchemaResolver(parser))
 
-    
     schema_tree = lxml.etree.parse("brel/dts_cache/2020-01-21_types.xsd")
     # schema = lxml.etree.XMLSchema(schema_tree)
 
     # schema_tree = lxml.etree.parse("ko-20230630.xsd", parser)
     schema = lxml.etree.XMLSchema(schema_tree)
 
-
     print(schema)
-
 
     # filing = Filing.open("reports/coca_cola/")
 

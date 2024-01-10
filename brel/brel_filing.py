@@ -58,7 +58,7 @@ from brel.reportelements import (
 from brel.networks import INetwork
 from brel.parsers import IFilingParser, XMLFilingParser
 
-DEBUG = True
+DEBUG = False
 
 
 class Filing:
@@ -88,6 +88,9 @@ class Filing:
         # check if the path is a folder or a file
         is_file = os.path.isfile(path)
         is_dir = os.path.isdir(path)
+
+        if not is_file and not is_dir:
+            raise ValueError(f"{path} is not a valid path")
 
         if is_dir:
             if not path.endswith("/"):
@@ -255,6 +258,12 @@ class Filing:
         )
 
         return concept
+
+    def get_concept(self, concept_qname: QName | str) -> Concept | None:
+        """
+        Alias of `filing.get_concept_by_name(concept_qname)`.
+        """
+        return self.get_concept_by_name(concept_qname)
 
     def get_all_reported_concepts(self) -> list[Concept]:
         """

@@ -1,11 +1,13 @@
 from brel import Filing
-from brel.networks import DefinitionNetwork, ReferenceNetwork, LabelNetwork 
-from brel.utils import pprint_network
+from brel.networks import DefinitionNetwork, ReferenceNetwork, LabelNetwork
+from brel.utils import pprint
+
 
 def example7():
-    filing = Filing.open("reports/tsla/")
+    filing = Filing.open("reports/aapl.zip")
 
-    requested_link_role = "http://xbrl.sec.gov/ecd/role/TabularListsByExecutiveCategory"
+    # requested_link_role = "http://xbrl.sec.gov/ecd/role/TabularListsByExecutiveCategory"
+    requested_link_role = "http://www.apple.com/role/SummaryofSignificantAccountingPoliciesAdditionalInformationDetails"
 
     # get all pyhsical networks
     physical_networks = filing.get_all_pyhsical_networks()
@@ -28,7 +30,7 @@ def example7():
     #     pprint_network(component.get_definition())
     # else:
     #     print("Component not found")
-    
+
     # # get the physical label networks
     # physical_label_networks = filter(lambda network: isinstance(network, LabelNetwork), physical_networks)
 
@@ -37,11 +39,12 @@ def example7():
     # for label_network in physical_label_networks:
     #     pprint_network(label_network)
 
-
     # get the physical reference networks
-    physical_reference_networks = filter(lambda network: isinstance(network, ReferenceNetwork), physical_networks)
+    # physical_reference_networks = filter(
+    #     lambda network: isinstance(network, ReferenceNetwork), physical_networks
+    # )
 
-    # print the reference networks
-    print("-" * 10, "PHYSICAL REFERENCE NETWORKS", "-" * 10)
-    for reference_network in physical_reference_networks:
-        pprint_network(reference_network)
+    # # print the reference networks
+    # print("-" * 10, "PHYSICAL REFERENCE NETWORKS", "-" * 10)
+    # for reference_network in physical_reference_networks:
+    #     pprint(reference_network)

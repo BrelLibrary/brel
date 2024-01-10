@@ -33,7 +33,7 @@ To install Brel:
 To use Brel, import the library and create a `Filing` using the `Filing.open` method:
 
 ```python
-from brel import Filing, pprint_facts
+from brel import Filing, pprint
 filing = Filing.open("path/to/filing.zip")
 
 # or
@@ -50,11 +50,14 @@ The `Filing` object provides access to everything in the filing, including the `
 
 ### Facts
 
-To print all the facts in the filing, use the `File.get_all_facts()` and `pprint_facts` functions:
+To print all the facts in the filing and print a list of facts, use the `File.get_all_facts()` and `pprint` functions:
+
+Note that printing all the will give you a lot of output, so it is recommended to print only a few facts.
 
 ```python
 all_facts = filing.get_all_facts()
-pprint_facts(all_facts)
+first_10_facts = all_facts[:10]
+pprint(first_10_facts)
 ```
 
 since `Filing.get_all_facts()` returns a `list[Fact]`, we can iterate over it or use any standard list methods.
@@ -65,24 +68,38 @@ Assume you want to print all the facts in the filing where the Concept is "us-ga
 assets_concept = filing.get_concept("us-gaap:Assets")
 if assets_concept is not None:
     assets_facts = filing.get_facts_by_concept(assets_concept)
-    pprint_facts(assets_facts)
+    pprint(assets_facts)
 ```
+<!-- 
+The object `assets_concept` is a `Concept` object that represents the concept "us-gaap:Assets".
+It contains all the information about the concept, including its name, its labels, its type, etc. -->
 
 You could also use python's built-in `filter` function:
     
 ```python
-assets_facts = filter(lambda fact: fact.get_concept() == assets_concept, all_facts)
-
+assets_facts = list(
+    filter(lambda fact: fact.get_concept().get_value() == assets_concept, all_facts)
+)
 # or
 
-assets_facts = filter(lambda fact: str(fact.get_concept()) == "us-gaap:Assets", all_facts)
+assets_facts = list(
+    filter(
+        lambda fact: str(fact.get_concept()) == "us-gaap:Assets", all_facts
+    )
+)
 ```
 
 You can do the same for all the other aspects as well:
 
 ```python
 # Gets all facts that report on the 31 Decemver 2018 and are in U.S Dollars.
-usd_silvester_facts = filter(lambda fact: str(fact.get_unit()) == "usd" and str(fact.get_period()) == "on 2018-12-31", all_facts)
+usd_silvester_facts = list(
+    filter(
+        lambda fact: str(fact.get_unit()) == "usd"
+        and str(fact.get_period()) == "on 2018-12-31",
+        all_facts,
+    )
+)
 ```
 
 ### Components/Components
@@ -98,28 +115,40 @@ cover_page = filing.get_component("http://foocompany.com/role/coverpage")
 
 # in case you dont know the URI of the component, you can use the get_all_component_URIs method
 component_uris = filing.get_all_component_URIs()
+print(component_uris)
+
 ```
 
 To get the presentation, calculation and definition networks of a component, use the `Component.get_presentation_network()`, `Component.get_calculation_network()` and `Component.get_definition_network()` methods respectively.
-You can print them using the `pprint_network` function:
+You can print them using the same `pprint` function as before:
 
 ```python
+# Get all the networks of the cover page component
 presentation_network = cover_page.get_presentation_network()
 calculation_network = cover_page.get_calculation_network()
 definition_network = cover_page.get_definition_network()
-pprint_network(presentation_network)
+
+# If they exist, print them
+if presentation_network is not None:
+    pprint(presentation_network)
+if calculation_network is not None:
+    pprint(calculation_network)
+if definition_network is not None:
+    pprint(definition_network)
+```
 ```
 
 You can even navigate the networks yourself using the `Network.get_roots()` and `Node.get_children()` methods.
-This code snippet gets the first child of all roots and prints the report element that the child points to:
+This code snipped prints the first child of the first root of the presentation network:
 
 ```python
 
 roots = presentation_network.get_roots()
-for root in roots:
-    first_child = root.get_children()[0]
-    report_element = first_child.get_report_element()
-    print(report_element)
+first_root = roots[0]
+first_root_children = first_root.get_children()
+first_child = first_root_children[0]
+
+pprint(first_child)
 ```
 
 Note: Network nodes can either point to Report Elements, Resources or Facts. Use the `Node.points_to` method to check what the node points to.

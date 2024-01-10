@@ -67,7 +67,8 @@ def pprint_facts(facts: list[Fact]):
 
     # rows.sort(key=lambda row: int(row[0].split("-")[1]))
     # sort rows alphabetically by the fact id
-    rows.sort(key=lambda row: row[0])
+    # rows.sort(key=lambda row: row[0])
+    rows.sort(key=lambda row: row[0] if isinstance(row[0], str) else "")
 
     # add the rows to the table and print it
     for row in rows:
@@ -95,10 +96,12 @@ def pprint_fact(fact: Fact):
     for aspect in context.get_aspects():
         rows.append([aspect.get_name(), context.get_characteristic(aspect)])
 
-    rows.sort(key=lambda row: row[0])
+    rows.sort(key=lambda row: row[0] if isinstance(row[0], str) else "")
 
     # add the rows to the table and print it
     for row in rows:
         table.add_row(row)
+
+    table.add_row(["value", fact.get_value_as_str()])
 
     print(table)

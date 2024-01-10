@@ -36,6 +36,10 @@ class XMLReportElementFactory:
         # if there is an "abstract" attribute and the type attribute is "dtr-types1:domainItemType", then it is a Member
         # else it is an Abstract
         # TODO: Think about how to differentiate between LineItems and Abstracts. For now, we just return an Abstract.
+
+        # if xml_element.get("abstract", None) is None:
+        #     return None
+
         is_abstract = xml_element.get("abstract", "false") == "true"
 
         is_item = "item" in xml_element.get("substitutionGroup", "")

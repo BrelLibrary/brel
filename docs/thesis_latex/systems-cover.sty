@@ -1,0 +1,218 @@
+% systems-cover.sty
+%
+% Generate cover pages for Master's Theses and Technical Reports
+% in the Systems Group at ETH Zurich (following the design created
+% by Jena).
+%
+% Jens Teubner <jens.teubner@inf.ethz.ch>, March 18, 2011
+%
+% Short How-To:
+%
+%  -- Include this package via
+%
+%       \usepackage[options]{systems-cover}
+%
+%     where `options' is one of `techreport', `masterthesis', or
+%     `bachelorthesis' (depending on the type of document that you are
+%     preparing).
+%
+%  -- Set necessary fields for your document:
+%
+%       \covernum{ <enter the number that you got from Jena or D-INFK >}
+%       \covertitle{ <title of your work> }
+%       \coverauthor{ <author name/list> }
+%       \coverdate{ < date (for technical reports) or time period >}
+%
+%     Depending on your document you might also need:
+%
+%       \coversupervisedby{ <list of your supervisors> }
+%       \coverincollaboration{ <name of the industry partner> }
+%       \coverlogo{ <LaTeX code to produce the partner's logo> }
+%
+% That should be it!
+%
+% Example:
+%
+%   \documentclass{article}
+% 
+%   \usepackage[masterthesis]{systems-cover}
+% 
+%   \covernum{42}
+%   \covertitle{A Very Cool Master Thesis}
+%   \coverauthor{John Doe}
+%   \coversupervisedby{Prof.\ Foo Bar}
+%   \coverdate{March 1999--June 1999}
+%   \coverincollaboration{Foo Bar Inc.}
+%   \coverlogo{\includegraphics[height=10mm]{foo-logo}}
+%
+%
+% Installation:
+%
+% Simply put
+%
+%    ethlogo_black.eps
+%    ethlogo_black.pdf
+%    inf-logo.eps
+%    inf-logo.pdf
+%    systems-cover.sty
+%    systemslogo-3colour-blacktext.eps
+%    systemslogo-3colour-blacktext.pdf
+%
+% into a directory where LaTeX can find it.  E.g., on a Mac and with
+% MacTeX 2010, put this all into
+%
+%    $HOME/Library/texmf/tex/latex/systems-cover
+%
+% (simply create the directory if it does not yet exist).
+%
+% Have fun!
+%
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{systems-cover}
+
+\PassOptionsToPackage{scaled}{helvet}
+\RequirePackage{helvet}
+\RequirePackage{graphicx}
+
+\RequirePackage{etoolbox}
+
+% default: Master's Thesis
+\def\SystemsCover@type{Master's Thesis}
+\def\SystemsCover@date{}
+
+\DeclareOption{masterthesis}{%
+  \def\SystemsCover@type{Master's Thesis}%
+  \def\SystemsCover@date{}}
+\DeclareOption{bachelorthesis}{%
+  \def\SystemsCover@type{Bachelor's Thesis}%
+  \def\SystemsCover@date{}}
+\DeclareOption{techreport}{%
+  \def\SystemsCover@type{Technical Report}%
+  \def\SystemsCover@date{\today}}
+
+\ProcessOptions\relax
+
+% %%%%%%%%%% set some sizes %%%%%%%%%%%
+
+%
+% This is an ugly hack to deal with class files that do not properly
+% set \paperwidth (such as sig-alternate.cls ...)
+%
+\ifdim \paperwidth <10mm
+  \setlength{\paperwidth}{210mm}
+\fi
+\ifdim \paperheight <10mm
+  \setlength{\paperheight}{297mm}
+\fi
+% end of hack
+
+\newdimen\SystemsCover@PageWidth
+\newdimen\SystemsCover@PageHeight
+
+\SystemsCover@PageWidth=\paperwidth
+\SystemsCover@PageHeight=\paperheight
+
+\advance\SystemsCover@PageWidth by -1.7in
+\advance\SystemsCover@PageHeight by -2.5in
+
+% %%%%%%%%%% font declarations %%%%%%%%%%
+\newcommand{\SystemsCover@typefnt}{\sffamily\fontsize{16.84}{16.84}\bfseries}
+\newcommand{\SystemsCover@groupfnt}{\sffamily\fontsize{12.63}{12.63}\selectfont}
+\newcommand{\SystemsCover@incollaborationfnt}{\sffamily\fontsize{10.52}{10.52}\selectfont}
+\newcommand{\SystemsCover@titlefnt}{\sffamily\fontsize{12.63}{12.63}\selectfont}
+\newcommand{\SystemsCover@authorfnt}{\sffamily\fontsize{12.63}{12.63}\selectfont}
+\newcommand{\SystemsCover@datefnt}{\sffamily\fontsize{12.63}{1.632}\selectfont}
+
+% %%%%%%%%%%% commands to populate fields %%%%%%%%%
+\def\SystemsCover@nr{nr undefined}
+\def\covernum#1{\def\SystemsCover@nr{#1}}
+
+\def\SystemsCover@title{title undefined}
+\def\covertitle#1{\def\SystemsCover@title{#1}}
+
+\def\SystemsCover@author{author undefined}
+\def\coverauthor#1{\def\SystemsCover@author{#1}}
+
+\def\SystemsCover@incollaboration{}
+\def\coverincollaboration#1{\def\SystemsCover@incollaboration{%
+  \vspace*{4mm}
+  {\SystemsCover@incollaborationfnt in collaboration with \par
+  \vspace*{3mm}
+  \SystemsCover@groupfnt{#1}\par}}}
+
+\def\SystemsCover@supervisedby{}
+\def\coversupervisedby#1{\def\SystemsCover@supervisedby{%
+  \vspace*{8mm}
+  {\SystemsCover@authorfnt Supervised by \par
+  \vspace*{3mm}
+  \SystemsCover@authorfnt{#1}\par}}}
+
+\def\coverdate#1{\def\SystemsCover@date{#1}}
+
+\def\SystemsCover@logo{}
+\def\coverlogo#1{\def\SystemsCover@logo{#1}}
+
+% %%%%%%%%%%% produce the actual title page %%%%%%%%%%%
+
+\newcommand{\SystemsCover@PrintCoverPage}{%
+  \bgroup\global\setbox255\vbox{%
+  \rlap{%
+    \begin{minipage}[t][\SystemsCover@PageHeight][c]{\SystemsCover@PageWidth}%
+      {\SystemsCoverPageHeader}%
+      \vfill
+      {\SystemsCoverPageBody}%
+      \vfill
+      {\SystemsCoverPageFooter}%
+    \end{minipage}}%
+}\egroup\shipout\box255}
+
+% \AtBeginDocument{\SystemsCover@PrintCoverPage}
+\AfterEndPreamble{\SystemsCover@PrintCoverPage}
+
+\usepackage{afterpage} % to insert empty page at the beginning
+
+\newcommand\blankpage{%
+	\null
+	\thispagestyle{empty}%
+	\addtocounter{page}{-1}%
+	\newpage}
+
+% \AtBeginDocument{\blankpage}
+\AfterEndPreamble{\blankpage}
+
+\newcommand{\SystemsCoverPageHeader}{%
+  \parbox{\linewidth}{%
+    \includegraphics[height=18mm]{systems-cover/ethlogo_black}%
+    \hfill%
+    \includegraphics[height=16mm]{systems-cover/systemslogo-3colour-blacktext}%
+  }
+}
+
+\newcommand{\SystemsCoverPageBody}{%
+  \parbox{\linewidth}{%
+    \centering%
+    {\SystemsCover@typefnt\SystemsCover@type~Nr.~\SystemsCover@nr\par}
+    \vspace*{5mm}
+    {\SystemsCover@groupfnt Systems Group, Department of Computer
+      Science, ETH Zurich\par}
+    {\SystemsCover@incollaboration}
+    \vspace*{16mm}
+    {\SystemsCover@titlefnt\SystemsCover@title\par}
+    \vspace*{20mm}
+    {\SystemsCover@authorfnt by\par}
+    \vspace*{3mm}
+    {\SystemsCover@authorfnt\SystemsCover@author\par}
+    {\SystemsCover@authorfnt\SystemsCover@supervisedby\par}
+    \vspace*{15mm}
+    {\SystemsCover@datefnt\SystemsCover@date\par}
+  }%
+}
+
+\newcommand{\SystemsCoverPageFooter}{%
+  \parbox{\linewidth}{%
+    \includegraphics[height=6.5mm]{systems-cover/dinfk-logo}%
+    \hfill%
+    {\SystemsCover@logo}
+  }
+}

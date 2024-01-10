@@ -35,7 +35,12 @@ class PresentationNetworkFactory(IXMLNetworkFactory):
         nsmap = self.get_qname_nsmap().get_nsmap()
 
         if len(roots) != 1:
-            raise ValueError("roots must have exactly one element")
+            root_report_element_names = list(
+                map(lambda x: str(x.get_report_element().get_name()), roots)
+            )
+            raise ValueError(
+                f"roots must have length 1, not {len(roots)}. The network has the roots {root_report_element_names}"
+            )
         if not isinstance(roots[0], PresentationNetworkNode):
             raise TypeError("roots must be of type PresentationNetworkNode")
 

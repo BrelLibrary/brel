@@ -1,5 +1,5 @@
 from brel import Filing
-from brel.utils import pprint_facts
+from brel.utils import pprint
 
 
 def example1():
@@ -22,4 +22,4 @@ def example1():
     assets_facts = filing.get_facts_by_concept(assets_concept)
 
     # print the facts
-    pprint_facts(assets_facts)
+    pprint(assets_facts)

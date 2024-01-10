@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8'?>
+<link:linkbase xmlns:ete="http://ete/2024" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xbrldt="http://xbrl.org/2005/xbrldt" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd">
+    <link:roleRef roleURI="http://foo/role/hypercube" xlink:href="ete.xsd#Hypercube" xlink:type="simple"></link:roleRef>
+    <link:arcroleRef xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#all" xlink:type="simple" arcroleURI="http://xbrl.org/int/dim/arcrole/all"></link:arcroleRef>
+    <link:arcroleRef xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#dimension-default" xlink:type="simple" arcroleURI="http://xbrl.org/int/dim/arcrole/dimension-default"></link:arcroleRef>
+    <link:arcroleRef xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#dimension-domain" xlink:type="simple" arcroleURI="http://xbrl.org/int/dim/arcrole/dimension-domain"></link:arcroleRef>
+    <link:arcroleRef xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#domain-member" xlink:type="simple" arcroleURI="http://xbrl.org/int/dim/arcrole/domain-member"></link:arcroleRef>
+    <link:arcroleRef xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#hypercube-dimension" xlink:type="simple" arcroleURI="http://xbrl.org/int/dim/arcrole/hypercube-dimension"></link:arcroleRef>
+    <link:definitionLink xlink:type="extended" xlink:role="http://foo/role/hypercube">
+        <link:loc xlink:href="ete.xsd#ete_line_items" xlink:label="ete_line_items_loc" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="ete.xsd#ete_hypercube" xlink:label="ete_hypercube_loc" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="ete.xsd#ete_concept1" xlink:label="ete_concept1_loc" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="ete.xsd#ete_concept2" xlink:label="ete_concept2_loc" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="ete.xsd#ete_concept3" xlink:label="ete_concept3_loc" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="ete.xsd#ete_additional_explicit_dimension" xlink:label="ete_additional_explicit_dimension_loc" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="ete.xsd#ete_foo_member" xlink:label="ete_foo_loc" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="ete.xsd#ete_foo_member" xlink:label="ete_foo_default_loc" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="ete.xsd#ete_bar_member" xlink:label="ete_bar_loc" xlink:type="locator"></link:loc>
+
+        
+        <link:definitionArc xlink:arcrole="http://www.xbrl.org/int/dim/arcrole/all" xlink:from="ete_line_items_loc" xlink:to="ete_hypercube_loc" xlink:type="arc"></link:definitionArc>
+        <link:definitionArc xlink:arcrole="http://www.xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="ete_hypercube_loc" xlink:to="ete_additional_explicit_dimension_loc" xlink:type="arc"></link:definitionArc>
+        <link:definitionArc xlink:arcrole="http://www.xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="ete_additional_explicit_dimension_loc" xlink:to="ete_foo_loc" xlink:type="arc"></link:definitionArc>
+        <link:definitionArc xlink:arcrole="http://www.xbrl.org/int/dim/arcrole/dimension-default" xlink:from="ete_additional_explicit_dimension_loc" xlink:to="ete_foo_default_loc" xlink:type="arc"></link:definitionArc>
+        <link:definitionArc xlink:arcrole="http://www.xbrl.org/int/dim/arcrole/domain-member" xlink:from="ete_foo_loc" xlink:to="ete_bar_loc" xlink:type="arc"></link:definitionArc>
+
+        <link:definitionArc xlink:arcrole="http://www.xbrl.org/int/dim/arcrole/domain-member" xlink:from="ete_line_items_loc" xlink:to="ete_concept1_loc" xlink:type="arc"></link:definitionArc>
+        <link:definitionArc xlink:arcrole="http://www.xbrl.org/int/dim/arcrole/domain-member" xlink:from="ete_line_items_loc" xlink:to="ete_concept2_loc" xlink:type="arc"></link:definitionArc>
+        <link:definitionArc xlink:arcrole="http://www.xbrl.org/int/dim/arcrole/domain-member" xlink:from="ete_line_items_loc" xlink:to="ete_concept3_loc" xlink:type="arc"></link:definitionArc>
+    
+    </link:definitionLink>
+</link:linkbase>

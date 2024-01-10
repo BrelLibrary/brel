@@ -45,6 +45,7 @@ class PresentationNetworkNode(INetworkNode):
 
         # check if there is a label that matches the preferred label role
         # if not, raise an error
+
         if preferred_label_role is not None and not report_element.has_label_with_role(
             preferred_label_role
         ):

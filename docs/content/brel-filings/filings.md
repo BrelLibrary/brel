@@ -250,6 +250,16 @@ def get_concept_by_name(concept_qname: QName | str) -> Concept | None
 
 `Concept|None`: the concept with the given name. If no concept is found, then None is returned.
 
+<a id="brel.brel_filing.Filing.get_concept"></a>
+
+#### get\_concept
+
+```python
+def get_concept(concept_qname: QName | str) -> Concept | None
+```
+
+Alias of `filing.get_concept_by_name(concept_qname)`.
+
 <a id="brel.brel_filing.Filing.get_all_reported_concepts"></a>
 
 #### get\_all\_reported\_concepts
