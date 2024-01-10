@@ -11,6 +11,7 @@ For example
 All networks in brel are represented by the INetwork interface.
 
 Since only the calculation network has any special functionality thus far, the other networks are not part of this documentation.
+They are all implemented in the same way as the calculation network and can be inspected using their shared interface INetwork.
 
 ====================
 

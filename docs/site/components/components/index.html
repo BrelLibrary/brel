@@ -184,8 +184,10 @@ The most notable kind of networks are the presentation, calculation and definiti
 <li>get the <a href="#./networks/definition_network.md"><code>DefinitionNetwork</code></a> using the <code>Component.get_definition_network()</code> method.</li>
 </ul>
 <p>You can print them using the <code>pprint_network</code> function in the <code>brel</code> module:</p>
-<pre><code class="language-python">calculation_network = my_component.get_calculation_network()
-brel.pprint_network(calculation_network)
+<pre><code class="language-python">from brel import pprint
+
+calculation_network = my_component.get_calculation_network()
+pprint(calculation_network)
 </code></pre>
 <p>====================</p>
 <ul>

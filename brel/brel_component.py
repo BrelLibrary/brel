@@ -28,8 +28,10 @@ The most notable kind of networks are the presentation, calculation and definiti
 You can print them using the `pprint_network` function in the `brel` module:
 
 ```python
+from brel import pprint
+
 calculation_network = my_component.get_calculation_network()
-brel.pprint_network(calculation_network)
+pprint(calculation_network)
 ```
 
 ====================

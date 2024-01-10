@@ -7,7 +7,7 @@ This module contains the Fact class.
 Facts in Brel are the atomic pieces of information. They consist of a value, a context and an id.
 They closely resemble the facts in XBRL in the Open Information Model.
 
-To print a fact to the console, use the `pprint_fact` function in the `brel` module.
+To print a fact to the console, use the `pprint` function in the `brel` module.
 
 ====================
 

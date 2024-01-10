@@ -2,7 +2,7 @@
 
 # brel.characteristics.i\_characteristic
 
-Contains the interface for a characteristic.
+This module contains the interface for a characteristic.
 Characteristics are what makes up the context of a fact.
 They are a binding between an aspect and a value.
 
