@@ -2,9 +2,13 @@
 This module contains the XMLFilingParser class.
 It is responsible for taking a list of filepaths to XBRL files and parsing them into a brel filing.
 
-@author: Robin Schmidiger
-@version: 0.7
-@date: 18 December 2023
+====================
+
+- author: Robin Schmidiger
+- version: 0.7
+- date: 18 December 2023
+
+====================
 """
 
 import os
@@ -40,7 +44,6 @@ class XMLFilingParser(IFilingParser):
     def __init__(
         self,
         filepaths: list[str],
-        encoding: str = "utf-8",
     ) -> None:
         if len(filepaths) < 1:
             raise ValueError(
@@ -48,8 +51,7 @@ class XMLFilingParser(IFilingParser):
             )
 
         self.__filing_type = "XML"
-        self.__encoding = encoding
-        self.__parser = lxml.etree.XMLParser(encoding=self.__encoding)
+        self.__parser = lxml.etree.XMLParser()
         self.__filing_location = os.path.commonpath(filepaths)
         self.__print_prefix = f"{'[XMLFilingParser]':<20}"
 
