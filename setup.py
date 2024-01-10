@@ -33,7 +33,7 @@ setup(
     name="brel",
     version=read("brel", "VERSION"),
     description="An XBRL parser for Python",
-    url="https://github.com/PapediPoo/brel/",
+    url="https://github.com/BrelLibrary/brel/",
     long_description=read("README.md"),
     long_description_content_type="text/markdown",
     author="PapediPoo",
