@@ -1,4 +1,4 @@
-from brel import Filing, BrelLabelRole
+from brel import Filing
 from brel.utils import pprint
 from random import sample
 from editdistance import eval as edit_distance
@@ -21,7 +21,11 @@ def get_closest_match(target: str, candidates: list[str]) -> str:
 
 
 def example5():
-    filing = Filing.open("reports/aapl/")
+    # MAKE SURE TO CHANGE THIS TO THE PATH OF THE FILING YOU WANT TO USE
+    print(
+        "MAKE SURE TO CHANGE THE PATH IN EXAMPLE1.PY TO THE PATH OF THE FILING YOU WANT TO USE"
+    )
+    filing = Filing.open("reports/report.zip")
 
     # get all components
     components = filing.get_all_components()
@@ -65,8 +69,7 @@ def example5():
 
     # read the user input
     print()
-    # user_input = input("Enter a component name: \n")
-    user_input = "SummaryofSignificantAccountingPoliciesAdditionalInformationDetails"
+    user_input = input("Enter a component name: \n")
 
     component_names = [component.get_URI() for component in components]
     selected_component_name = get_closest_match(user_input, component_names)
@@ -83,8 +86,18 @@ def example5():
         return
 
     # print the selected component's networks
-    pprint(selected_component.get_presentation_network())
+    if selected_component.get_presentation_network() is not None:
+        print("Presentation Network:")
+        pprint(selected_component.get_presentation_network())
 
-    pprint(selected_component.get_definition_network())
+    if selected_component.get_definition_network() is not None:
+        print("Definition Network:")
+        pprint(selected_component.get_definition_network())
 
-    # pprint(selected_component.get_calculation_network())
+    if selected_component.get_calculation_network() is not None:
+        print("Calculation Network:")
+        pprint(selected_component.get_calculation_network())
+
+
+if __name__ == "__main__":
+    example5()

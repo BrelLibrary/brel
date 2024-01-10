@@ -7,7 +7,11 @@ def example3():
     Example of how to get some reported concets, get all facts that use those concepts, and print them.
     """
 
-    filing = Filing.open("reports/aapl/")
+    # MAKE SURE TO CHANGE THIS TO THE PATH OF THE FILING YOU WANT TO USE
+    print(
+        "MAKE SURE TO CHANGE THE PATH IN EXAMPLE1.PY TO THE PATH OF THE FILING YOU WANT TO USE"
+    )
+    filing = Filing.open("reports/report.zip")
 
     # get some concepts
     concepts = filing.get_all_reported_concepts()[:6]
@@ -19,3 +23,7 @@ def example3():
 
     # pretty print them
     pprint(facts)
+
+
+if __name__ == "__main__":
+    example3()

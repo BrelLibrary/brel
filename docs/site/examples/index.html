@@ -52,6 +52,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#example-3-loading-the-cover-page-of-a-filing-and-printing-its-presentation-network">Example 3: Loading the cover page of a filing and printing its presentation network</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#additional-examples">Additional Examples</a>
+    </li>
     </ul>
                 </li>
               </ul>
@@ -144,6 +146,15 @@
               
                 <h1 id="brel-examples">Brel Examples</h1>
 <p>This page contains examples of how to use Brel.</p>
+<p>Note: Brel does not contain any filings. You will have to download them yourself. You can find some example filings <a href="https://www.sec.gov/edgar/searchedgar/companysearch">here</a>.</p>
+<p>The following steps are required to download a filing and load it into Brel:</p>
+<ol>
+<li>Search for the filing on the SEC website.</li>
+<li>Under the "10-K (Annual Report) and 10-Q (Quarterly Report)" click on the "Filing" button.</li>
+<li>In the "Data Files" section, download all the ".xsd" and ".xml" files and place them in a folder (e.g. "path/to/filing").</li>
+<li>Start python and import Brel.</li>
+<li>Load the filing using <code>Filing.open("path/to/filing")</code>.</li>
+</ol>
 <h2 id="example-1-loading-a-filing-and-printing-its-facts">Example 1: Loading a filing and printing its facts</h2>
 <pre><code class="language-python">from brel import Filing, pprint
 
@@ -191,6 +202,9 @@ presentation_network = cover_page_component.get_presentation_network()
 if presentation_network is not None:
     pprint(presentation_network)
 </code></pre>
+<h2 id="additional-examples">Additional Examples</h2>
+<p>You can find additional examples in the <a href="https://github.com/PapediPoo/Brel/tree/main/examples">"examples" folder of the repository</a>.</p>
+<p>Make sure that in the examples, you replace the paths to the filings with the paths to your filings.</p>
               
             </div>
           </div><footer>

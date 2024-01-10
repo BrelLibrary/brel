@@ -10,7 +10,12 @@ def example1():
     # open the filing
     # resolves the DTS and caches it
     # currently only supports local paths pointing towards a directory
-    filing = Filing.open("reports/aapl.zip")
+
+    # MAKE SURE TO CHANGE THIS TO THE PATH OF THE FILING YOU WANT TO USE
+    print(
+        "MAKE SURE TO CHANGE THE PATH IN EXAMPLE1.PY TO THE PATH OF THE FILING YOU WANT TO USE"
+    )
+    filing = Filing.open("reports/report.zip")
 
     # get the us-gaap:Assets concept
     assets_concept = filing.get_concept_by_name("us-gaap:Assets")
@@ -23,3 +28,7 @@ def example1():
 
     # print the facts
     pprint(assets_facts)
+
+
+if __name__ == "__main__":
+    example1()

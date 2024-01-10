@@ -55,7 +55,7 @@ class IFilingParser(ABC):
         parser_start_time = time()
 
         if LOADING_INFO:  # pragma: no cover
-            self.__print(f"Loading the filing. This may take a couple of seconds...")
+            print(f"Loading the filing. This may take a couple of seconds...")
 
         if DEBUG:  # pragma: no cover
             self.__print("Parsing Report Elements")

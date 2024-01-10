@@ -8,8 +8,11 @@ def example2():
     Example of how to get all of the facts from a filing and print one of them.
     """
 
-    # load the filing
-    filing = Filing.open("reports/tsla")
+    # MAKE SURE TO CHANGE THIS TO THE PATH OF THE FILING YOU WANT TO USE
+    print(
+        "MAKE SURE TO CHANGE THE PATH IN EXAMPLE1.PY TO THE PATH OF THE FILING YOU WANT TO USE"
+    )
+    filing = Filing.open("reports/report.zip")
 
     # get all of the facts
     facts = filing.get_all_facts()
@@ -25,3 +28,7 @@ def example2():
 
     # count the number of components in the filing
     print("Number of components: {}".format(len(filing.get_all_components())))
+
+
+if __name__ == "__main__":
+    example2()

@@ -2,6 +2,16 @@
 
 This page contains examples of how to use Brel.
 
+Note: Brel does not contain any filings. You will have to download them yourself. You can find some example filings [here](https://www.sec.gov/edgar/searchedgar/companysearch).
+
+The following steps are required to download a filing and load it into Brel:
+
+1. Search for the filing on the SEC website.
+2. Under the "10-K (Annual Report) and 10-Q (Quarterly Report)" click on the "Filing" button.
+3. In the "Data Files" section, download all the ".xsd" and ".xml" files and place them in a folder (e.g. "path/to/filing").
+4. Start python and import Brel.
+5. Load the filing using `Filing.open("path/to/filing")`.
+
 ## Example 1: Loading a filing and printing its facts
 
 ```python
@@ -57,3 +67,9 @@ presentation_network = cover_page_component.get_presentation_network()
 if presentation_network is not None:
     pprint(presentation_network)
 ```
+
+## Additional Examples
+
+You can find additional examples in the ["examples" folder of the repository](https://github.com/PapediPoo/Brel/tree/main/examples).
+
+Make sure that in the examples, you replace the paths to the filings with the paths to your filings.
