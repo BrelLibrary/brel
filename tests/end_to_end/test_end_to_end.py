@@ -23,7 +23,7 @@ def test_end_to_end():
             pprint(definition)
 
     # print all physical networks
-    for physical_network in filing.get_all_pyhsical_networks():
+    for physical_network in filing.get_all_physical_networks():
         pprint(physical_network)
 
     # check the report elements

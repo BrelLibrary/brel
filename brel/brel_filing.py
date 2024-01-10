@@ -158,7 +158,7 @@ class Filing:
         """
         return self.__components
 
-    def get_all_pyhsical_networks(self) -> list[INetwork]:
+    def get_all_physical_networks(self) -> list[INetwork]:
         """
         Get all [`INetwork`](../components/networks.md) objects in the filing, where network.is_physical() is True.
         :return list[INetwork]: a list of all physical networks in the filing.

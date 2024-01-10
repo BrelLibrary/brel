@@ -27,6 +27,6 @@ for i in range(len(linkbase_filenames)):
 
 filing = Filing.open(filing_path + instance_filename, *linkbase_filenames)
 
-for network in filing.get_all_pyhsical_networks():
+for network in filing.get_all_physical_networks():
     if isinstance(network, FootnoteNetwork):
         print_networks.pprint_network(network)

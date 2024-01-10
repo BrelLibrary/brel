@@ -14,20 +14,11 @@ def example2():
     )
     filing = Filing.open("reports/report.zip")
 
-    # get all of the facts
-    facts = filing.get_all_facts()
+    networks = filing.get_all_physical_networks()
+    some_networks = sample(networks, 3)
 
-    # get some random facts
-    random_fact = facts[randint(0, len(facts) - 1)]
-
-    # pretty print a single fact
-    pprint(random_fact)
-
-    # pretty print 10 random facts
-    pprint(sample(facts, 10))
-
-    # count the number of components in the filing
-    print("Number of components: {}".format(len(filing.get_all_components())))
+    for network in some_networks:
+        pprint(network)
 
 
 if __name__ == "__main__":
