@@ -130,7 +130,8 @@ This element contains a \texttt{xlink:role} attribute that specifies the role of
 Roles are a more advanced concept that I will introduce in section \ref{sec:roles}.
 For now, think of the \texttt{link:presentationLink} element as a container for the arcs and locators.
 
-\subsection{Motivation of Report Elements}
+\subsection{Motivation for Report Elements}
+\label{sec:report_elements_motivation}
 
 Up to this point, I have only described how presentation networks are implemented in XBRL.
 I also mentioned that presentation networks indroduce a hierarchy of concepts, but this is not entirely true.
@@ -206,10 +207,16 @@ A network that is consistent with the balance and weight constraints is called a
 Balance consistency is not the only kind of consistency that calculation networks can be checked for.
 Another kind of consistency is \texttt{roll-up consistency} which comes in two flavors: \texttt{simple roll-up consistency} and \texttt{general roll-up consistency}. 
 
-\texttt{Simple roll-up consistency} is a weaker form of roll-up consistency.
-It requires a calculation network as well as a presentation network and checks if the structure of the two networks is consistent.
+\texttt{Roll-up consistency} requires a calculation network as well as a presentation network and checks if the structure of the two networks is consistent.
+For example, if the calculation network contains the arc \texttt{Assets -> Cash}, then the presentation network must also contain the arc \texttt{Assets [Abstract] -> Cash}.
+Remember that the calculation networks only contain concepts, not abstracts. 
+So the report element \texttt{Assets} in the calculation network and the report element \texttt{Assets [Abstract]} in the presentation network are not the same.
+So how does XBRL know that they are related?
 
-TODO
+The answer is that the two report elements are related by the presentation network.
+It contains the arc \texttt{Assets [Abstract] -> Assets}.
+
+TODO: strict roll up consistency
 
 \section{labelLink}
 
@@ -318,3 +325,54 @@ Note that the list of label roles is not exhaustive.
 There are many more label roles that are used in practice. 
 Users can even define their own label roles.
 For a complete list of standard label roles, refer to the XBRL 2.1 specification\cite{xbrl21_label_roles}.
+
+\section{referenceLink}
+
+The \texttt{link:referenceLink} network is used to link report elements to external resources.
+For example, the concept \texttt{us-gaap:Revenues} might have an official definition in the SEC's Code of Federal Regulations (CFR).
+The reference establishes a link between the concept and external resource such as the CFR.
+Intuitively, think of the reference as a citation in a scientific paper.
+
+Structurally, referenceLinks are implemented in the same way as LabelLinks - they contain arcs, locators, and resources.
+The only difference is that the resources are references to external resources, not labels.
+Whereas labels are mostly just text, references are take the form of dictionaries.
+
+The following figure shows an example of a reference in the XML syntax with an accompanying locator and arc.
+
+\begin{figure}[H]
+    \begin{lstlisting}[language=XML]
+        <link:loc 
+            xlink:type="locator" 
+            xlink:href="#ecd_CoSelectedMeasureName" 
+            xlink:label="CoSelectedMeasureName"
+        />
+        
+        <link:reference xlink:type="resource" xlink:label="SECRegulationS-K229402v2vi" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+            <ref:Publisher>SEC</ref:Publisher>
+            <ref:Name>Regulation S-K</ref:Name>
+            <ref:Number>229</ref:Number>
+            <ref:Section>402</ref:Section>
+            <ref:Subsection>v</ref:Subsection>
+            <ref:Paragraph>2</ref:Paragraph>
+            <ref:Subparagraph>vi</ref:Subparagraph>
+        </link:reference>
+        
+        <link:referenceArc 
+            xlink:type="arc" 
+            xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" 
+            xlink:from="CoSelectedMeasureName" 
+            xlink:to="SECRegulationS-K229402v2vi" 
+            priority="10"
+        />
+    \end{lstlisting}
+    \caption{Example of a reference for the concept \texttt{edc:CoSelectedMeasureName}}
+    \label{fig:example_reference_xml}
+\end{figure}
+
+We are already familiar with the \texttt{link:loc} and \texttt{link:referenceArc} elements. 
+The only notworthy change to the \texttt{link:referenceArc} element is the \texttt{xlink:arcrole} attribute, which is set to \texttt{concept-reference}.
+
+However, our main focus is on the \texttt{link:reference} element, more specifically, its children.
+The children of the \texttt{link:reference} element form a dictionary that describes the external resource that the reference points to.
+
+In the example \ref{fig:example_reference_xml}, the reference points to a subparagraph of the SEC's Code of Federal Regulations (CFR).
