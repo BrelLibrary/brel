@@ -38,6 +38,7 @@ setup(
     long_description_content_type="text/markdown",
     author="PapediPoo",
     packages=find_packages(exclude=["tests", ".github"]),
+    package_data={"brel": ["config/*.json"]},
     install_requires=read_requirements("requirements.txt"),
     entry_points={"console_scripts": ["brel = brel.__main__:main"]},
     setup_requires=["pytest-runner"],
