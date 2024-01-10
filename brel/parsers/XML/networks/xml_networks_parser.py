@@ -21,17 +21,17 @@ import re
 import os
 
 from brel.parsers.XML.networks import parse_xml_link
+from importlib.resources import path
 
-CONFIG_PATH = "brel/config/linkconfig.json"
+# CONFIG_PATH = "brel/config/linkconfig.json"
 
-if not os.path.exists(CONFIG_PATH):
-    raise FileNotFoundError(f"the config file {CONFIG_PATH} does not exist")
 
-with open(CONFIG_PATH, "r") as f:
-    LINK_CONFIG = json.load(f)
-    STANDARD_LINK_NAMES: list[str] = LINK_CONFIG["standard_link_names"]
-    STANDARD_RESOURCE_ROLES: list[str] = LINK_CONFIG["standard_resource_roles"]
-    STANDARD_LINK_ROLES: list[str] = LINK_CONFIG["standard_link_roles"]
+with path("brel.config", "linkconfig.json") as config_path:
+    with open(config_path, "r") as f:
+        LINK_CONFIG = json.load(f)
+        STANDARD_LINK_NAMES: list[str] = LINK_CONFIG["standard_link_names"]
+        STANDARD_RESOURCE_ROLES: list[str] = LINK_CONFIG["standard_resource_roles"]
+        STANDARD_LINK_ROLES: list[str] = LINK_CONFIG["standard_link_roles"]
 
 
 def parse_networks_from_xmls(

@@ -32,18 +32,20 @@ More precisely, it does the following:
 from collections import defaultdict
 import re
 import json
+from importlib.resources import path
 
 DEBUG = False
 
 # Load the namespace config
-nsconfig_path = "brel/config/nsconfig.json"
+# nsconfig_path = "brel/config/nsconfig.json"
 
 default_namespace_mappings: dict[str, str] = {}
 
-with open(nsconfig_path, "r") as nsconfig_file:
-    nsconfig = json.load(nsconfig_file)
-    for prefix, re_uri in nsconfig["default_mappings"].items():
-        default_namespace_mappings[re_uri] = prefix
+with path("brel.config", "nsconfig.json") as nsconfig_path:
+    with open(nsconfig_path, "r") as nsconfig_file:
+        nsconfig = json.load(nsconfig_file)
+        for prefix, re_uri in nsconfig["default_mappings"].items():
+            default_namespace_mappings[re_uri] = prefix
 
 
 # helper functions

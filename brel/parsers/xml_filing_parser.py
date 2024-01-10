@@ -69,7 +69,7 @@ class XMLFilingParser(IFilingParser):
         if DEBUG:  # pragma: no cover
             self.__print("Resolving DTS...")
         self.__file_manager = XMLFileManager(
-            "brel/dts_cache/", self.__filing_location, filepaths, self.__parser
+            "dts_cache/", self.__filing_location, filepaths, self.__parser
         )
 
         # normalize and bootstrap the QName nsmap

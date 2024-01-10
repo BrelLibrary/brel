@@ -41,7 +41,11 @@ class XMLFileManager(IFileManager):
     ) -> None:
         # check if all the paths are valid
         if not os.path.isdir(cache_location):
-            raise ValueError(f"{cache_location} is not a valid folder path")
+            # raise ValueError(f"{cache_location} is not a valid folder path")
+
+            # create a cache folder if it does not exist
+            print(f"Creating DTS cache folder at {cache_location}")
+            os.makedirs(cache_location)
 
         if not os.path.isdir(filing_location):
             raise ValueError(f"{filing_location} is not a valid folder path")
@@ -70,6 +74,7 @@ class XMLFileManager(IFileManager):
         self.__file_prefixes: dict[str, list[str]] = defaultdict(list)
 
         # populate the cache
+        print("Populating DTS cache...")
         for filename in filenames:
             self.__load_dts(filename)
 
