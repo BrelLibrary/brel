@@ -53,6 +53,10 @@ class XMLFilingParser(IFilingParser):
         self.__filing_location = os.path.commonpath(filepaths)
         self.__print_prefix = f"{'[XMLFilingParser]':<20}"
 
+        # if the commonpath is empty, the filing location is the current folder
+        if self.__filing_location == "":
+            self.__filing_location = "."
+
         # if the filing location is a file, crop the filename
         if not os.path.isdir(self.__filing_location):
             self.__filing_location = os.path.dirname(self.__filing_location)
