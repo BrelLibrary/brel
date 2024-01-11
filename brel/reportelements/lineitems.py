@@ -1,10 +1,11 @@
 from brel import BrelLabel, QName
 from brel.reportelements import IReportElement
 
+
 class LineItems(IReportElement):
     def __init__(self, name: QName, labels: list[BrelLabel]):
         self.__name = name
-        self.__labels = labels 
+        self.__labels = labels
 
     def get_name(self) -> QName:
         """
@@ -17,7 +18,7 @@ class LineItems(IReportElement):
         @return list[BrelLabel]: the labels of the line items
         """
         return self.__labels
-    
+
     def _add_label(self, label: BrelLabel):
         """
         Add a label to the line items. This method is used by the parser and should not be used by the user.
@@ -25,7 +26,7 @@ class LineItems(IReportElement):
         @param label: the label to add to the line items
         """
         self.__labels.append(label)
-    
+
     def __str__(self) -> str:
         """
         @return str: the name of the line items as a string

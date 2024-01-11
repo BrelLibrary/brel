@@ -95,7 +95,9 @@ def parse_explicit_dimension_from_xml(
             dimension_characteristic,
         )
     else:
-        if not isinstance(dimension_characteristic, ExplicitDimensionCharacteristic):
+        if not isinstance(
+            dimension_characteristic, ExplicitDimensionCharacteristic
+        ):
             raise ValueError(
                 "Dimension characteristic is not an explicit dimension characteristic"
             )

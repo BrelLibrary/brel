@@ -53,7 +53,9 @@ class IReportElement(ABC):
         @param label_role: the role of the label to check
         @return: True if the report element has a label with the given role, False otherwise
         """
-        return any(label.get_role() == label_role.value for label in self.get_labels())
+        return any(
+            label.get_role() == label_role.value for label in self.get_labels()
+        )
 
     def has_label_with_language(self, language: str) -> bool:
         """
@@ -61,4 +63,6 @@ class IReportElement(ABC):
         @param language: the language of the label to check
         @return: True if the report element has a label with the given language, False otherwise
         """
-        return any(label.get_language() == language for label in self.get_labels())
+        return any(
+            label.get_language() == language for label in self.get_labels()
+        )

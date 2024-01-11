@@ -13,7 +13,9 @@ import sys
 
 def main():  # pragma: no cover
     print("Brel is a Python library for working with XBRL filings.")
-    print("For documentation on how to use brel, see https://papedipoo.github.io/Brel/")
+    print(
+        "For documentation on how to use brel, see https://papedipoo.github.io/Brel/"
+    )
 
     # create the top-level parser
     parser = argparse.ArgumentParser(
@@ -26,7 +28,9 @@ def main():  # pragma: no cover
 
     # create the parser for the "load" command
     parser_load = subparsers.add_parser("load", help="load help")
-    parser_load.add_argument("path", type=str, help="Path to the XBRL filing to load.")
+    parser_load.add_argument(
+        "path", type=str, help="Path to the XBRL filing to load."
+    )
 
     # if the user wants to load a filing, do so
     if len(sys.argv) > 1 and sys.argv[1] == "load":

@@ -10,9 +10,7 @@ Contains the class for representing an XBRL entity.
 ====================
 """
 
-from brel import QName
 from brel.characteristics import Aspect, ICharacteristic
-from typing import cast
 
 
 class EntityCharacteristic(ICharacteristic):
@@ -22,8 +20,8 @@ class EntityCharacteristic(ICharacteristic):
     Additional information about the company can be found in the entity's segment.
     """
 
-    def __init__(self, id: str, scheme: str) -> None:
-        self.__id = id
+    def __init__(self, entity_id: str, scheme: str) -> None:
+        self.__id = entity_id
         self.__scheme = scheme
 
     # first class citizens
@@ -35,7 +33,8 @@ class EntityCharacteristic(ICharacteristic):
 
     def get_value(self) -> str:
         """
-        returns the value of the entity characteristic, which is the entity's qname in clark notation
+        returns the value of the entity characteristic,
+        which is the entity's qname in clark notation
 
         - The url of of the QName is the scheme of the entity characteristic.
         - The local name of the QName is the id of the entity characteristic.
@@ -51,11 +50,11 @@ class EntityCharacteristic(ICharacteristic):
         """
         return self.__scheme
 
-    def __eq__(self, __value: object) -> bool:
-        if not isinstance(__value, EntityCharacteristic):
+    def __eq__(self, __other: object) -> bool:
+        if not isinstance(__other, EntityCharacteristic):
             return False
         else:
-            return self.__id == __value.__id and self.__scheme == __value.__scheme
+            return self.get_value() == __other.get_value()
 
     def __str__(self) -> str:
         return self.get_value()

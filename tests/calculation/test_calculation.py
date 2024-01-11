@@ -48,7 +48,9 @@ concepts = [
 arc_role = "http://www.xbrl.org/2003/arcrole/summation-item"
 arc_name = QName.from_string("link:calculationLink", nsmap)
 link_role = "CONDENSEDCONSOLIDATEDSTATEMENTSOFINCOME"
-link_name = QName.from_string("us-gaap:CondensedConsolidatedStatementsOfIncome", nsmap)
+link_name = QName.from_string(
+    "us-gaap:CondensedConsolidatedStatementsOfIncome", nsmap
+)
 
 
 def create_node(concept: Concept, weight: int, order: int):

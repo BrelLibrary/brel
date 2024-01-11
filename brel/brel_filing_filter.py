@@ -38,12 +38,19 @@ class FilingFilter:
             filter_list = [
                 current_value == other for current_value in self.__filter_list
             ]
-            return self.__class__(filter_list, FilingFilterType.BOOL_LIST, self.__nsmap)
-        elif is_qname and self.__filter_type == FilingFilterType.ADDITIONAL_DIMENSION:
+            return self.__class__(
+                filter_list, FilingFilterType.BOOL_LIST, self.__nsmap
+            )
+        elif (
+            is_qname
+            and self.__filter_type == FilingFilterType.ADDITIONAL_DIMENSION
+        ):
             filter_list = [
                 current_value == other for current_value in self.__filter_list
             ]
-            return self.__class__(filter_list, FilingFilterType.BOOL_LIST, self.__nsmap)
+            return self.__class__(
+                filter_list, FilingFilterType.BOOL_LIST, self.__nsmap
+            )
         else:
             # TODO: implement more than just concept filters
             raise NotImplementedError(
@@ -77,7 +84,9 @@ class FilingFilter:
             operator(self.__filter_list[i], other_filter[i])
             for i in range(len(self.__filter_list))
         ]
-        return self.__class__(filter_list, FilingFilterType.BOOL_LIST, self.__nsmap)
+        return self.__class__(
+            filter_list, FilingFilterType.BOOL_LIST, self.__nsmap
+        )
 
     def __and__(self, other: "FilingFilter" | list[bool]) -> "FilingFilter":
         """Combine two filters with an and"""
@@ -103,7 +112,9 @@ class FilingFilter:
             )
 
         filter_list = [
-            other[i] for i in range(len(self.__filter_list)) if self.__filter_list[i]
+            other[i]
+            for i in range(len(self.__filter_list))
+            if self.__filter_list[i]
         ]
         return filter_list
 
@@ -130,7 +141,9 @@ class FilingFilter:
                 filter_list.append(
                     fact.get_context().get_characteristic(aspect).__str__()
                 )
-            return cls(filter_list, FilingFilterType.ADDITIONAL_DIMENSION, nsmap)
+            return cls(
+                filter_list, FilingFilterType.ADDITIONAL_DIMENSION, nsmap
+            )
         else:
             raise NotImplementedError(
                 "Only concept filters are implemented. The other filters are not implemented yet"

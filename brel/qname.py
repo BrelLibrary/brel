@@ -37,7 +37,9 @@ class QName:
     There is usually only one QNameNSMap object per report. It is created when the report is created and then passed to the QName constructor.
     """
 
-    def __init__(self, uri: str, prefix: str, local_name: str, nsmap: "QNameNSMap"):
+    def __init__(
+        self, uri: str, prefix: str, local_name: str, nsmap: "QNameNSMap"
+    ):
         """
         Creates a QName object.
         Note that this constructor changes the prefix if there is a prefix redirect in the #QNameNSMap.
@@ -300,12 +302,18 @@ class QNameNSMap:
 
         # check if the prefix is already in the namespace map
         if url in self.__url_to_prefix or prefix in self.__prefix_to_url:
-            if prefix in self.__prefix_to_url and self.__prefix_to_url[prefix] != url:
+            if (
+                prefix in self.__prefix_to_url
+                and self.__prefix_to_url[prefix] != url
+            ):
                 # the prefix is already in the namespace map, but it is mapped to a different URL
                 raise ValueError(
                     f"The prefix {prefix} is already mapped to {self.__prefix_to_url[prefix]}, but you are trying to map it to {url}"
                 )
-            elif url in self.__url_to_prefix and self.__url_to_prefix[url] != prefix:
+            elif (
+                url in self.__url_to_prefix
+                and self.__url_to_prefix[url] != prefix
+            ):
                 # the URL is already in the namespace map, but it is mapped to a different prefix
                 raise ValueError(
                     f"The URL {url} is already in the namespace map, but it is mapped to a different namespace.\nOld namespace: {self.__url_to_prefix[url]}\nNew namespace: {prefix}"

@@ -79,15 +79,21 @@ class IFilingParser(ABC):
 
             self.__print("Parsing Components")
         start_time = time()
-        components, report_elements = self.parse_components(report_elements, networks)
+        components, report_elements = self.parse_components(
+            report_elements, networks
+        )
         if DEBUG:  # pragma: no cover
             self.__print(f"took {time() - start_time:.2f} sec")
 
-            self.__print(f"Done Parsing (took {time() - parser_start_time:.2f} sec)")
+            self.__print(
+                f"Done Parsing (took {time() - parser_start_time:.2f} sec)"
+            )
         filing_type = self.get_filing_type()
 
         networks_flattened = [
-            network for networks_list in networks.values() for network in networks_list
+            network
+            for networks_list in networks.values()
+            for network in networks_list
         ]
 
         parser_result = {
@@ -117,7 +123,9 @@ class IFilingParser(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def parse_facts(self, report_elements: dict[QName, IReportElement]) -> list[Fact]:
+    def parse_facts(
+        self, report_elements: dict[QName, IReportElement]
+    ) -> list[Fact]:
         """
         Parse the facts.
         @param report_elements: A dictionary containing ALL report elements that the facts report against.

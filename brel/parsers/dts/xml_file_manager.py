@@ -227,7 +227,10 @@ class XMLFileManager(IFileManager):
         return xsd_content
 
     def __load_dts(
-        self, uri, referencing_schema_url: str = ".", loaded_under_prefix: str = ""
+        self,
+        uri,
+        referencing_schema_url: str = ".",
+        loaded_under_prefix: str = "",
     ):
         """
         Download a schema and all of its dependencies
@@ -292,7 +295,8 @@ class XMLFileManager(IFileManager):
         # find all hrefs in the file
         # TODO: make namespace non-hardcoded
         href_elems = xsd_tree.findall(
-            ".//*[@xlink:href]", namespaces={"xlink": "http://www.w3.org/1999/xlink"}
+            ".//*[@xlink:href]",
+            namespaces={"xlink": "http://www.w3.org/1999/xlink"},
         )
         for href_elem in href_elems:
             # get the href attribute

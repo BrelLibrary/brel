@@ -8,7 +8,8 @@ This module contains the Filing class.
 Filings can be loaded from a folder, a zip file, or one or multiple xml files.
 
 - If a folder is given, then all xml files in the folder are loaded.
-- If a zip file is given, then the zip file is extracted to a folder and then all xml files in the folder are loaded.
+- If a zip file is given, then the zip file is extracted to a folder 
+and then all xml files in the folder are loaded.
 - If one or more xml files are given, then only those xml files are loaded.
 
 Example usage:
@@ -122,12 +123,12 @@ def get_all_components() -> list[Component]
 `list[Component]`: a list of all [`Component`](../components/components.md) objects in the filing.
 Note: components are sometimes called "roles" in the XBRL specification.
 
-<a id="brel.brel_filing.Filing.get_all_pyhsical_networks"></a>
+<a id="brel.brel_filing.Filing.get_all_physical_networks"></a>
 
-#### get\_all\_pyhsical\_networks
+#### get\_all\_physical\_networks
 
 ```python
-def get_all_pyhsical_networks() -> list[INetwork]
+def get_all_physical_networks() -> list[INetwork]
 ```
 
 Get all [`INetwork`](../components/networks.md) objects in the filing, where network.is_physical() is True.
@@ -314,12 +315,12 @@ Returns all facts that are associated with a concept.
 
 `list[Fact]`: the list of facts
 
-<a id="brel.brel_filing.Filing.get_all_component_URIs"></a>
+<a id="brel.brel_filing.Filing.get_all_component_uris"></a>
 
-#### get\_all\_component\_URIs
+#### get\_all\_component\_uris
 
 ```python
-def get_all_component_URIs() -> list[str]
+def get_all_component_uris() -> list[str]
 ```
 
 **Returns**:
@@ -331,7 +332,7 @@ def get_all_component_URIs() -> list[str]
 #### get\_component
 
 ```python
-def get_component(URI: str) -> Component | None
+def get_component(uri: str) -> Component | None
 ```
 
 **Arguments**:

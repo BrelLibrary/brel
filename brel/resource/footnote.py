@@ -44,16 +44,24 @@ class BrelFootnote(IResource):
         # get the label
         label = xml_element.attrib.get(f"{{{nsmap['xlink']}}}label")
         if label is None:
-            raise ValueError(f"Could not find the label of the resource {xml_element}")
+            raise ValueError(
+                f"Could not find the label of the resource {xml_element}"
+            )
         if not isinstance(label, str):
-            raise ValueError(f"The label of the resource {xml_element} is not a string")
+            raise ValueError(
+                f"The label of the resource {xml_element} is not a string"
+            )
 
         # get the role
         role = xml_element.attrib.get(f"{{{nsmap['xlink']}}}role")
         if role is None:
-            raise ValueError(f"Could not find the role of the resource {xml_element}")
+            raise ValueError(
+                f"Could not find the role of the resource {xml_element}"
+            )
         if not isinstance(role, str):
-            raise ValueError(f"The role of the resource {xml_element} is not a string")
+            raise ValueError(
+                f"The role of the resource {xml_element} is not a string"
+            )
 
         # get the content. it might be a str or xhtml. If its xhtml, we need to convert it to str
         content = xml_element.text

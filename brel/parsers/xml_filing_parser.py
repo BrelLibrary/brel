@@ -69,7 +69,9 @@ class XMLFilingParser(IFilingParser):
 
         # crop the filing location from all filepaths
         for i in range(len(filepaths)):
-            filepaths[i] = os.path.relpath(filepaths[i], self.__filing_location)
+            filepaths[i] = os.path.relpath(
+                filepaths[i], self.__filing_location
+            )
 
         # load the DTS
         if DEBUG:  # pragma: no cover
@@ -155,7 +157,8 @@ class XMLFilingParser(IFilingParser):
             if filename.endswith(".xsd")
         ]
         xsd_etrees = [
-            self.__file_manager.get_file(filename) for filename in xsd_filenames
+            self.__file_manager.get_file(filename)
+            for filename in xsd_filenames
         ]
 
         report_elems, id_to_report_elem = parse_report_elements_xml(
@@ -172,7 +175,9 @@ class XMLFilingParser(IFilingParser):
 
         return report_elems
 
-    def parse_facts(self, report_elements: dict[QName, IReportElement]) -> list[Fact]:
+    def parse_facts(
+        self, report_elements: dict[QName, IReportElement]
+    ) -> list[Fact]:
         """
         Parse the facts.
         """
@@ -181,10 +186,13 @@ class XMLFilingParser(IFilingParser):
             filter(lambda filename: filename.endswith(".xml"), all_filenames)
         )
         xml_etrees = [
-            self.__file_manager.get_file(filename) for filename in xml_filenames
+            self.__file_manager.get_file(filename)
+            for filename in xml_filenames
         ]
 
-        facts, id_to_fact = parse_facts_xml(xml_etrees, report_elements, self.__nsmap)
+        facts, id_to_fact = parse_facts_xml(
+            xml_etrees, report_elements, self.__nsmap
+        )
 
         for id, fact in id_to_fact.items():
             if id in self.__id_to_any.keys():
@@ -226,7 +234,10 @@ class XMLFilingParser(IFilingParser):
          - A dictionary of all the report elements in the filing. These might have been altered by the components.
         """
         return parse_components_xml(
-            self.__file_manager.get_all_files(), networks, report_elements, self.__nsmap
+            self.__file_manager.get_all_files(),
+            networks,
+            report_elements,
+            self.__nsmap,
         )
 
     def get_filing_type(self) -> str:

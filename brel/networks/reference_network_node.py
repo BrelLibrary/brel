@@ -41,7 +41,9 @@ class ReferenceNetworkNode(INetworkNode):
     # First class citizens
     def get_report_element(self) -> IReportElement:
         if not isinstance(self.__points_to, IReportElement):
-            raise ValueError("ReferenceNetworkNodes do not point to report elements")
+            raise ValueError(
+                "ReferenceNetworkNodes do not point to report elements"
+            )
         return self.__points_to
 
     def get_resource(self) -> IResource:

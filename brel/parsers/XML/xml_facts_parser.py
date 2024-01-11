@@ -102,7 +102,9 @@ def parse_facts_xml(
         else:
             return None
 
-    def add_to_cache(key: str, characteristic: ICharacteristic | Aspect) -> None:
+    def add_to_cache(
+        key: str, characteristic: ICharacteristic | Aspect
+    ) -> None:
         characteristics_cache[key] = characteristic
 
     # the same is true for report elements and qnames. Instead of passing dicts and nsmaps around, we use these functions
@@ -133,7 +135,9 @@ def parse_facts_xml(
             # Not all of the characteristics of a context are part of the "syntactic context" xml element
             # These characteristics need to be searched for in the xbrl instance, parsed separately and added to the context
             # These characteristics are the concept (mandatory) and the unit (optional)
-            characteristics: list[UnitCharacteristic | ConceptCharacteristic] = []
+            characteristics: list[
+                UnitCharacteristic | ConceptCharacteristic
+            ] = []
 
             # ======== PARSE THE CONCEPT ========
             # get the concept name
@@ -161,8 +165,12 @@ def parse_facts_xml(
                 add_to_cache(f"concept {concept_name}", concept_characteristic)
             else:
                 # if the concept is in the cache, type check it
-                if not isinstance(concept_characteristic, ConceptCharacteristic):
-                    raise ValueError(f"Concept {concept_name} is not a concept")
+                if not isinstance(
+                    concept_characteristic, ConceptCharacteristic
+                ):
+                    raise ValueError(
+                        f"Concept {concept_name} is not a concept"
+                    )
 
                 concept_characteristic = cast(
                     ConceptCharacteristic, concept_characteristic
@@ -182,12 +190,20 @@ def parse_facts_xml(
                 unit_characteristic = get_from_cache(unit_id)
                 if unit_characteristic is None:
                     # create the unit if it is not in the cache
-                    unit_xml = xbrl_instance.find(f"{{*}}unit[@id='{unit_id}']")
+                    unit_xml = xbrl_instance.find(
+                        f"{{*}}unit[@id='{unit_id}']"
+                    )
                     if unit_xml is None:
-                        raise ValueError(f"Unit {unit_id} not found in xbrl instance")
+                        raise ValueError(
+                            f"Unit {unit_id} not found in xbrl instance"
+                        )
 
                     unit_characteristic = parse_unit_from_xml(
-                        unit_xml, concept, make_qname, get_from_cache, add_to_cache
+                        unit_xml,
+                        concept,
+                        make_qname,
+                        get_from_cache,
+                        add_to_cache,
                     )
                     add_to_cache(unit_id, unit_characteristic)
                 else:
@@ -203,14 +219,18 @@ def parse_facts_xml(
             # This attribute is mandatory according to the XBRL specification
             context_id = xml_fact.get("contextRef")
             if context_id is None:
-                raise ValueError(f"Fact {xml_fact} has no contextRef attribute")
+                raise ValueError(
+                    f"Fact {xml_fact} has no contextRef attribute"
+                )
 
             # the context xml element has the tag context and the id is the context_id
             xml_context = xbrl_instance.find(
                 f"{{*}}context[@id='{context_id}']", namespaces=None
             )
             if xml_context is None:
-                raise ValueError(f"Context {context_id} not found in xbrl instance")
+                raise ValueError(
+                    f"Context {context_id} not found in xbrl instance"
+                )
 
             # then parse the context
             context = parse_context_xml(

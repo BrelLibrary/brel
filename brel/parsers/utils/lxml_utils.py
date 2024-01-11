@@ -3,7 +3,9 @@ import lxml.etree
 from typing import cast
 
 
-def compute_connected_components(edges: list[tuple[str, str]]) -> list[list[str]]:
+def compute_connected_components(
+    edges: list[tuple[str, str]]
+) -> list[list[str]]:
     """
     Given a list of edges, compute the connected components.
     @param edges: The edges. These are tuples of the form (node1, node2).
@@ -54,13 +56,19 @@ def get_str(
         if default is not None:
             return default
 
-        raise ValueError(f"{attribute} attribute not found on element {element}")
+        raise ValueError(
+            f"{attribute} attribute not found on element {element}"
+        )
     if not isinstance(value, str):
-        raise TypeError(f"{attribute} attribute on element {element} is not a string")
+        raise TypeError(
+            f"{attribute} attribute on element {element} is not a string"
+        )
     return value
 
 
-def get_all_nsmaps(lxml_etrees: list[lxml.etree._ElementTree]) -> list[dict[str, str]]:
+def get_all_nsmaps(
+    lxml_etrees: list[lxml.etree._ElementTree],
+) -> list[dict[str, str]]:
     """
     Given a list of lxml etree objects, get all the namespace mappings.
     @param lxml_etrees: A list of lxml etree objects.

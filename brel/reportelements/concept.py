@@ -161,7 +161,12 @@ class Concept(IReportElement):
             )
 
         return cls(
-            concept_qname, labels, period_type, balance_type, nillable, data_type
+            concept_qname,
+            labels,
+            period_type,
+            balance_type,
+            nillable,
+            data_type,
         )
 
     def __str__(self) -> str:

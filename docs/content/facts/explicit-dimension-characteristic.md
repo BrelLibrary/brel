@@ -24,7 +24,8 @@ class ExplicitDimensionCharacteristic(ICharacteristic)
 Class for representing an explicit dimension characteristic.
 An explicit dimension characteristic assigns a dimension a member.
 
-The dimension is both a dimension report element as well as an aspect with the same QName as the dimension report element.
+The dimension is both a dimension report element as well as an aspect with the same QName as
+the dimension report element.
 
 The member is a member report element and the value of the explicit dimension characteristic.
 
@@ -36,7 +37,9 @@ The member is a member report element and the value of the explicit dimension ch
 def get_aspect() -> Aspect
 ```
 
-Info: Both typed and explicit dimension characteristics are not statically bound to an aspect.
+Info: Both typed and explicit dimension characteristics are not statically bound to an
+
+aspect.
 
 **Returns**:
 

@@ -42,7 +42,9 @@ class PhysicalDefinitionNetworkFactory(IXMLNetworkFactory):
         if not all(isinstance(root, DefinitionNetworkNode) for root in roots):
             raise TypeError("roots must all be of type DefinitionNetworkNode")
         if link_role is None:
-            raise ValueError(f"linkrole attribute not found on link element {xml_link}")
+            raise ValueError(
+                f"linkrole attribute not found on link element {xml_link}"
+            )
 
         roots_cast = cast(list[DefinitionNetworkNode], roots)
 
@@ -63,7 +65,9 @@ class PhysicalDefinitionNetworkFactory(IXMLNetworkFactory):
             # the node is not connected to any other node
             arc_role = "unknown"
             order = 0.0
-            arc_qname = QName.from_string("link:unknown", self.get_qname_nsmap())
+            arc_qname = QName.from_string(
+                "link:unknown", self.get_qname_nsmap()
+            )
         elif xml_arc.get(f"{{{nsmap['xlink']}}}from", None) == label:
             # the node is a root
             arc_role = get_str(xml_arc, "{" + nsmap["xlink"] + "}arcrole")
@@ -121,7 +125,9 @@ class LogicalDefinitionNetworkFactory(IXMLNetworkFactory):
         if not all(isinstance(root, DefinitionNetworkNode) for root in roots):
             raise TypeError("roots must all be of type DefinitionNetworkNode")
         if link_role is None:
-            raise ValueError(f"linkrole attribute not found on link element {xml_link}")
+            raise ValueError(
+                f"linkrole attribute not found on link element {xml_link}"
+            )
 
         roots_cast = cast(list[DefinitionNetworkNode], roots)
 
@@ -142,7 +148,9 @@ class LogicalDefinitionNetworkFactory(IXMLNetworkFactory):
             # the node is not connected to any other node
             arc_role = "unknown"
             order = 0
-            arc_qname = QName.from_string("link:unknown", self.get_qname_nsmap())
+            arc_qname = QName.from_string(
+                "link:unknown", self.get_qname_nsmap()
+            )
         elif xml_arc.get(f"{{{nsmap['xlink']}}}from", None) == label:
             arc_role = get_str(xml_arc, "{" + nsmap["xlink"] + "}arcrole")
             order = 0

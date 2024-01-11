@@ -2,7 +2,8 @@
 This module contains the Component class.
 Components are used to define the presentation, calculation and definition networks of a filing.
 
-Intuitively, they function as the chapters of a report or filing. Note that XBRL sometimes calls components 'roles'.
+Intuitively, they function as the chapters of a report or filing. Note that XBRL sometimes calls 
+components 'roles'.
 
 Given a report, you can get all the components using the `Filing.get_all_components()` method.
 
@@ -21,9 +22,12 @@ my_component = filing.get_component(my_component_name)
 Components act as wrappers for the [`Network`s](#.networks/index.md) of a filing. 
 The most notable kind of networks are the presentation, calculation and definition networks.
 
-- get the [`PresentationNetwork`](#./networks/presentation_network.md) using the `Component.get_presentation_network()` method.
-- get the [`CalculationNetwork`](#./networks/calculation_network.md) using the `Component.get_calculation_network()` method.
-- get the [`DefinitionNetwork`](#./networks/definition_network.md) using the `Component.get_definition_network()` method.
+- get the [`PresentationNetwork`](#./networks/presentation_network.md) using the 
+`Component.get_presentation_network()` method.
+- get the [`CalculationNetwork`](#./networks/calculation_network.md) using the 
+`Component.get_calculation_network()` method.
+- get the [`DefinitionNetwork`](#./networks/definition_network.md) using the 
+`Component.get_definition_network()` method.
 
 You can print them using the `pprint_network` function in the `brel` module:
 
@@ -44,7 +48,11 @@ pprint(calculation_network)
 """
 
 from brel import Fact
-from brel.networks import PresentationNetwork, CalculationNetwork, DefinitionNetwork
+from brel.networks import (
+    PresentationNetwork,
+    CalculationNetwork,
+    DefinitionNetwork,
+)
 
 
 class Component:
@@ -56,8 +64,10 @@ class Component:
     A component consists of the following:
 
     - a URI, also called the roleURI. This is the identifier of the component.
-    - an info, also called the definition. This is a string that describes the component. It is optional.
-    - a set of networks. The most notable kind of networks are the presentation, calculation and definition networks.
+    - an info, also called the definition. This is a string that describes the component.
+    It is optional.
+    - a set of networks. The most notable kind of networks are the presentation, calculation and
+    definition networks.
 
     """
 
@@ -90,19 +100,22 @@ class Component:
 
     def get_presentation_network(self) -> PresentationNetwork | None:
         """
-        :returns PresentationNetwork: the presentation network of the component. None if the component has no presentation network or if the network is empty.
+        :returns PresentationNetwork: the presentation network of the component. None if the
+        component has no presentation network or if the network is empty.
         """
         return self.__presentation_network
 
     def get_calculation_network(self) -> CalculationNetwork | None:
         """
-        :returns CalculationNetwork: the calculation network of the component. None if the component has no calculation network or if the network is empty.
+        :returns CalculationNetwork: the calculation network of the component. None if the
+        component has no calculation network or if the network is empty.
         """
         return self.__calculation_network
 
     def get_definition_network(self) -> DefinitionNetwork | None:
         """
-        :returns DefinitionNetwork: the definition network of the component. None if the component has no definition network or if the network is empty.
+        :returns DefinitionNetwork: the definition network of the component. None if the component
+        has no definition network or if the network is empty.
         """
         return self.__definition_network
 

@@ -85,8 +85,13 @@ release:          ## Create a new tag for release.
 .PHONY: docs
 docs:             ## Build the documentation.
 	@echo "building documentation ..."
+	@$(ENV_PREFIX)pydoc-markdown
 	@$(ENV_PREFIX)mkdocs build
-	URL="site/index.html"; xdg-open $$URL || sensible-browser $$URL || x-www-browser $$URL || gnome-open $$URL
+
+.PHONY: serve-docs
+serve-docs:       ## Serve the documentation.
+	make docs
+	@$(ENV_PREFIX)mkdocs gh-deploy
 
 .PHONY: init
 init:             ## Initialize the project based on an application template.
