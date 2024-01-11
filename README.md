@@ -8,7 +8,7 @@ It is being developed at ETH Zurich by Robin Schmidiger in a Master's thesis sup
 
 Its installation and use is straightforward as it is available as a pip package.
 
-This is an early version still under development, at this stage we warmly welcome feedback and bug reports.
+This is an early version still under development, at this stage we warmly welcome feedback and bug reports. For the moment, we focus on reports with open taxonomies: SEC's EDGAR filings, European Single Electronic Format (ESEF), etc. The Data Point Model (DPM, used by the European Banking Authority) will be supported in a later stage.
 
 Brel stands for Business Report Extensible Library.
 
