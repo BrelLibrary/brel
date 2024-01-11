@@ -30,7 +30,9 @@ with path("brel.config", "linkconfig.json") as config_path:
     with open(config_path, "r") as f:
         LINK_CONFIG = json.load(f)
         STANDARD_LINK_NAMES: list[str] = LINK_CONFIG["standard_link_names"]
-        STANDARD_RESOURCE_ROLES: list[str] = LINK_CONFIG["standard_resource_roles"]
+        STANDARD_RESOURCE_ROLES: list[str] = LINK_CONFIG[
+            "standard_resource_roles"
+        ]
         STANDARD_LINK_ROLES: list[str] = LINK_CONFIG["standard_link_roles"]
 
 
@@ -65,7 +67,9 @@ def parse_networks_from_xmls(
         )
 
     links.sort(
-        key=lambda link: is_standard_role(link.get("{" + nsmap["xlink"] + "}role", "")),
+        key=lambda link: is_standard_role(
+            link.get("{" + nsmap["xlink"] + "}role", "")
+        ),
         reverse=True,
     )
 
@@ -102,9 +106,9 @@ def parse_networks_from_xmls(
         # For default links, the component name is 'None'.
         component_name = None
 
-        link_role_elems = xml_link.findall(".//*[@xlink:role]", namespaces=nsmap) + [
-            xml_link
-        ]
+        link_role_elems = xml_link.findall(
+            ".//*[@xlink:role]", namespaces=nsmap
+        ) + [xml_link]
         for link_role_elem in link_role_elems:
             role = link_role_elem.get(f"{{{nsmap['xlink']}}}role", None)
             if role is None:
@@ -138,7 +142,9 @@ def parse_networks_from_xmls(
             # check if the link name is a standard link name
             if any(
                 map(
-                    lambda standard_link_name: re.match(standard_link_name, link_name),
+                    lambda standard_link_name: re.match(
+                        standard_link_name, link_name
+                    ),
                     STANDARD_LINK_NAMES,
                 )
             ):

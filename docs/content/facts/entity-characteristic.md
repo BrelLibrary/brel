@@ -44,7 +44,9 @@ def get_aspect() -> Aspect
 def get_value() -> str
 ```
 
-returns the value of the entity characteristic, which is the entity's qname in clark notation
+returns the value of the entity characteristic,
+
+which is the entity's qname in clark notation
 
 - The url of of the QName is the scheme of the entity characteristic.
 - The local name of the QName is the id of the entity characteristic.

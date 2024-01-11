@@ -12,7 +12,12 @@ import lxml
 import lxml.etree
 from typing import cast
 from brel import QName, QNameNSMap, Fact
-from brel.networks import INetwork, INetworkNode, LabelNetwork, LabelNetworkNode
+from brel.networks import (
+    INetwork,
+    INetworkNode,
+    LabelNetwork,
+    LabelNetworkNode,
+)
 from brel.reportelements import IReportElement
 from brel.resource import BrelLabel, IResource
 
@@ -30,7 +35,9 @@ class LabelNetworkFactory(IXMLNetworkFactory):
         nsmap = self.get_qname_nsmap().get_nsmap()
 
         link_role = get_str(xml_link_element, f"{{{nsmap['xlink']}}}role")
-        link_qname = QName.from_string(xml_link_element.tag, self.get_qname_nsmap())
+        link_qname = QName.from_string(
+            xml_link_element.tag, self.get_qname_nsmap()
+        )
 
         if len(roots) == 0:
             raise ValueError("roots must not be empty")
@@ -55,7 +62,9 @@ class LabelNetworkFactory(IXMLNetworkFactory):
         if xml_arc is None:
             # the node is not connected to any other node
             arc_role = "unknown"
-            arc_qname = QName.from_string("link:unknown", self.get_qname_nsmap())
+            arc_qname = QName.from_string(
+                "link:unknown", self.get_qname_nsmap()
+            )
         elif xml_arc.get(f"{{{nsmap['xlink']}}}from", None) == label:
             # the node is a root
             arc_role = get_str(xml_arc, f"{{{nsmap['xlink']}}}arcrole")
@@ -79,10 +88,14 @@ class LabelNetworkFactory(IXMLNetworkFactory):
                 f"'points_to' must be of type BrelLabel or IReportElement, not {type(points_to)}"
             )
 
-        return LabelNetworkNode(points_to, arc_role, arc_qname, link_role, link_name)
+        return LabelNetworkNode(
+            points_to, arc_role, arc_qname, link_role, link_name
+        )
 
     def update_report_elements(
-        self, report_elements: dict[QName, IReportElement], label_network: INetwork
+        self,
+        report_elements: dict[QName, IReportElement],
+        label_network: INetwork,
     ) -> dict[QName, IReportElement]:
         """
         Label networks add the labels to the report elements
@@ -101,7 +114,9 @@ class LabelNetworkFactory(IXMLNetworkFactory):
             report_element = root.get_report_element()
             for label_node in root.get_children():
                 if not isinstance(label_node, LabelNetworkNode):
-                    raise TypeError("children must all be of type LabelNetworkNode")
+                    raise TypeError(
+                        "children must all be of type LabelNetworkNode"
+                    )
                 if not label_node.points_to() == "resource":
                     raise ValueError(f"child {label_node} is not a resource")
 

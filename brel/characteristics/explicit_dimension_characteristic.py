@@ -20,12 +20,15 @@ class ExplicitDimensionCharacteristic(ICharacteristic):
     Class for representing an explicit dimension characteristic.
     An explicit dimension characteristic assigns a dimension a member.
 
-    The dimension is both a dimension report element as well as an aspect with the same QName as the dimension report element.
+    The dimension is both a dimension report element as well as an aspect with the same QName as
+    the dimension report element.
 
     The member is a member report element and the value of the explicit dimension characteristic.
     """
 
-    def __init__(self, dimension: Dimension, member: Member, aspect: Aspect) -> None:
+    def __init__(
+        self, dimension: Dimension, member: Member, aspect: Aspect
+    ) -> None:
         self.__dimension = dimension
         self.__member = member
         self.__aspect = aspect
@@ -33,7 +36,8 @@ class ExplicitDimensionCharacteristic(ICharacteristic):
     # first class citizens
     def get_aspect(self) -> Aspect:
         """
-        Info: Both typed and explicit dimension characteristics are not statically bound to an aspect.
+        Info: Both typed and explicit dimension characteristics are not statically bound to an
+        aspect.
         :returns Aspect: the aspect of the explicit dimension characteristic.
         """
         return self.__aspect
@@ -70,4 +74,7 @@ class ExplicitDimensionCharacteristic(ICharacteristic):
     def __eq__(self, __value: object) -> bool:
         if not isinstance(__value, ExplicitDimensionCharacteristic):
             return False
-        return self.__member == __value.__member and self.__aspect == __value.__aspect
+        return (
+            self.get_member() == __value.get_member()
+            and self.get_aspect() == __value.get_aspect()
+        )

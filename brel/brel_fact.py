@@ -132,7 +132,8 @@ class Fact:
         Equivalent to calling `fact.get_context().get_concept()`
         """
         concept: ConceptCharacteristic = cast(
-            ConceptCharacteristic, self.__context.get_characteristic(Aspect.CONCEPT)
+            ConceptCharacteristic,
+            self.__context.get_characteristic(Aspect.CONCEPT),
         )
         return concept
 
@@ -152,7 +153,8 @@ class Fact:
         Equivalent to calling `fact.get_context().get_period()`
         """
         period: PeriodCharacteristic = cast(
-            PeriodCharacteristic, self.__context.get_characteristic(Aspect.PERIOD)
+            PeriodCharacteristic,
+            self.__context.get_characteristic(Aspect.PERIOD),
         )
         return period
 

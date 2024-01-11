@@ -62,14 +62,18 @@ def test_idpts():
         testcase_element.get("uri") for testcase_element in testcase_elements
     ]
 
-    testcase_filenames = list(filter(filter_testcase_files, testcase_filenames))
+    testcase_filenames = list(
+        filter(filter_testcase_files, testcase_filenames)
+    )
 
     print("Testcase files")
     for testcase_filename in testcase_filenames:
         print(f"> {testcase_filename}")
 
     for testcase_filename in testcase_filenames:
-        testcase_etree = lxml.etree.parse(idpts_testcases_folder + testcase_filename)
+        testcase_etree = lxml.etree.parse(
+            idpts_testcases_folder + testcase_filename
+        )
         testcase_elem = testcase_etree.getroot()
 
         # creator = testcase_elem.find("{*}creator")

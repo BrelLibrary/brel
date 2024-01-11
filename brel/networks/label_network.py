@@ -4,6 +4,7 @@ from brel.reportelements import *
 
 from typing import cast
 
+
 class LabelNetwork(INetwork):
     """
     Class for representing a label network.
@@ -12,7 +13,8 @@ class LabelNetwork(INetwork):
     the label network is not associated with a component.
     """
 
-    def __init__(self, roots: list[LabelNetworkNode], link_role: str, link_name: QName) -> None:
+    def __init__(
+        self, roots: list[LabelNetworkNode], link_role: str, link_name: QName
+    ) -> None:
         roots_copy = [cast(INetworkNode, root) for root in roots]
         super().__init__(roots_copy, link_role, link_name, True)
-    

@@ -42,7 +42,9 @@ def check_duplicate_rolerefs(
     for xml_tree in xml_trees:
         rolerefs = xml_tree.findall(".//link:roleRef", namespaces=nsmap)
 
-        def get_parent(roleref: lxml.etree._Element) -> lxml.etree._Element | None:
+        def get_parent(
+            roleref: lxml.etree._Element,
+        ) -> lxml.etree._Element | None:
             return roleref.getparent()
 
         def filter_none(
@@ -88,7 +90,9 @@ def check_roleref_pointers(
     for role_ref in role_refs:
         href = role_ref.get(f"{{{nsmap['xlink']}}}href")
         if href is None:
-            raise ValueError(f"the roleref {role_ref} does not have a href attribute")
+            raise ValueError(
+                f"the roleref {role_ref} does not have a href attribute"
+            )
 
         if "#" in href:
             filename, id = href.split("#")
@@ -133,7 +137,9 @@ def check_duplicate_arcs(
     # for each link, get all arcs and check if there are duplicates
     for extended_link in extended_links:
         arcs = extended_link.findall(".//link:arc", namespaces=nsmap)
-        arc_from_to = list(map(lambda arc: (arc.get("from"), arc.get("to")), arcs))
+        arc_from_to = list(
+            map(lambda arc: (arc.get("from"), arc.get("to")), arcs)
+        )
         if len(arc_from_to) != len(set(arc_from_to)):
             raise ValueError(
                 f"the link {extended_link} has duplicate arcs. All arcs must have a unique from and to attribute."

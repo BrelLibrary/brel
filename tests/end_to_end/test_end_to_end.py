@@ -5,7 +5,7 @@ from typing import cast
 
 
 def test_end_to_end():
-    filing = Filing.open("tests/end_to_end/ete_filing/ete_htm.xml")
+    filing = Filing.open("tests/end_to_end/ete_filing")
 
     report_elements = filing.get_all_report_elements()
 
@@ -23,7 +23,7 @@ def test_end_to_end():
             pprint(definition)
 
     # print all physical networks
-    for physical_network in filing.get_all_pyhsical_networks():
+    for physical_network in filing.get_all_physical_networks():
         pprint(physical_network)
 
     # check the report elements
@@ -31,7 +31,8 @@ def test_end_to_end():
     for report_element in report_elements:
         re_name = report_element.get_name()
         assert (
-            len([re for re in report_elements if re.get_name() == re_name]) == 1
+            len([re for re in report_elements if re.get_name() == re_name])
+            == 1
         ), f"Duplicate report element name: {re_name}"
 
     # go over all report elements and check that they have the correct type

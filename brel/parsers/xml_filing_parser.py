@@ -2,9 +2,13 @@
 This module contains the XMLFilingParser class.
 It is responsible for taking a list of filepaths to XBRL files and parsing them into a brel filing.
 
-@author: Robin Schmidiger
-@version: 0.7
-@date: 18 December 2023
+====================
+
+- author: Robin Schmidiger
+- version: 0.7
+- date: 18 December 2023
+
+====================
 """
 
 import os
@@ -40,7 +44,6 @@ class XMLFilingParser(IFilingParser):
     def __init__(
         self,
         filepaths: list[str],
-        encoding: str = "utf-8",
     ) -> None:
         if len(filepaths) < 1:
             raise ValueError(
@@ -48,10 +51,13 @@ class XMLFilingParser(IFilingParser):
             )
 
         self.__filing_type = "XML"
-        self.__encoding = encoding
-        self.__parser = lxml.etree.XMLParser(encoding=self.__encoding)
+        self.__parser = lxml.etree.XMLParser()
         self.__filing_location = os.path.commonpath(filepaths)
         self.__print_prefix = f"{'[XMLFilingParser]':<20}"
+
+        # if the commonpath is empty, the filing location is the current folder
+        if self.__filing_location == "":
+            self.__filing_location = "."
 
         # if the filing location is a file, crop the filename
         if not os.path.isdir(self.__filing_location):
@@ -63,7 +69,9 @@ class XMLFilingParser(IFilingParser):
 
         # crop the filing location from all filepaths
         for i in range(len(filepaths)):
-            filepaths[i] = os.path.relpath(filepaths[i], self.__filing_location)
+            filepaths[i] = os.path.relpath(
+                filepaths[i], self.__filing_location
+            )
 
         # load the DTS
         if DEBUG:  # pragma: no cover
@@ -149,7 +157,8 @@ class XMLFilingParser(IFilingParser):
             if filename.endswith(".xsd")
         ]
         xsd_etrees = [
-            self.__file_manager.get_file(filename) for filename in xsd_filenames
+            self.__file_manager.get_file(filename)
+            for filename in xsd_filenames
         ]
 
         report_elems, id_to_report_elem = parse_report_elements_xml(
@@ -166,7 +175,9 @@ class XMLFilingParser(IFilingParser):
 
         return report_elems
 
-    def parse_facts(self, report_elements: dict[QName, IReportElement]) -> list[Fact]:
+    def parse_facts(
+        self, report_elements: dict[QName, IReportElement]
+    ) -> list[Fact]:
         """
         Parse the facts.
         """
@@ -175,10 +186,13 @@ class XMLFilingParser(IFilingParser):
             filter(lambda filename: filename.endswith(".xml"), all_filenames)
         )
         xml_etrees = [
-            self.__file_manager.get_file(filename) for filename in xml_filenames
+            self.__file_manager.get_file(filename)
+            for filename in xml_filenames
         ]
 
-        facts, id_to_fact = parse_facts_xml(xml_etrees, report_elements, self.__nsmap)
+        facts, id_to_fact = parse_facts_xml(
+            xml_etrees, report_elements, self.__nsmap
+        )
 
         for id, fact in id_to_fact.items():
             if id in self.__id_to_any.keys():
@@ -220,7 +234,10 @@ class XMLFilingParser(IFilingParser):
          - A dictionary of all the report elements in the filing. These might have been altered by the components.
         """
         return parse_components_xml(
-            self.__file_manager.get_all_files(), networks, report_elements, self.__nsmap
+            self.__file_manager.get_all_files(),
+            networks,
+            report_elements,
+            self.__nsmap,
         )
 
     def get_filing_type(self) -> str:

@@ -62,23 +62,37 @@ def parse_component_from_xml(
 
     # check the usedOn elements
     used_ons = [
-        used_on.text for used_on in xml_element.findall("link:usedOn", namespaces=nsmap)
+        used_on.text
+        for used_on in xml_element.findall("link:usedOn", namespaces=nsmap)
     ]
-    if presentation_network is not None and "link:presentationLink" not in used_ons:
+    if (
+        presentation_network is not None
+        and "link:presentationLink" not in used_ons
+    ):
         raise ValueError(
             f"A presentation network is not allowed for the component with id '{uri}', but one was passed."
         )
-    if calculation_network is not None and "link:calculationLink" not in used_ons:
+    if (
+        calculation_network is not None
+        and "link:calculationLink" not in used_ons
+    ):
         raise ValueError(
             f"A calculation network is not allowed for the component with id '{uri}', but one was passed."
         )
-    if definition_network is not None and "link:definitionLink" not in used_ons:
+    if (
+        definition_network is not None
+        and "link:definitionLink" not in used_ons
+    ):
         raise ValueError(
             f"A definition network is not allowed for the component with id '{uri}', but one was passed."
         )
 
     return Component(
-        uri, info, presentation_network, calculation_network, definition_network
+        uri,
+        info,
+        presentation_network,
+        calculation_network,
+        definition_network,
     )
 
 
@@ -111,7 +125,9 @@ def parse_components_xml(
             roleURI = roletype.get("roleURI")
             roleID = roletype.get("id")
 
-            definition_element = roletype.find("link:definition", namespaces=nsmap)
+            definition_element = roletype.find(
+                "link:definition", namespaces=nsmap
+            )
             if definition_element is None:
                 raise ValueError(
                     f"The role with roleURI {roleURI} does not have a definition element"
@@ -143,11 +159,20 @@ def parse_components_xml(
             # Maybe a component has more than just presentation, definition and calculation networks
             # Find the networks that belong to the component
             presentation_network = next(
-                (x for x in networks[roleID] if isinstance(x, PresentationNetwork)),
+                (
+                    x
+                    for x in networks[roleID]
+                    if isinstance(x, PresentationNetwork)
+                ),
                 None,
             )
             calculation_network = next(
-                (x for x in networks[roleID] if isinstance(x, CalculationNetwork)), None
+                (
+                    x
+                    for x in networks[roleID]
+                    if isinstance(x, CalculationNetwork)
+                ),
+                None,
             )
             # definition_network = next((x for x in networks[roleID] if isinstance(x, DefinitionNetwork)), None)
 

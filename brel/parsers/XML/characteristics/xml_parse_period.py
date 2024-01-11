@@ -31,7 +31,9 @@ def parse_period_from_xml(
     if is_instant:
         instant_date_elem = xml_element.find("{*}instant", namespaces=None)
         if instant_date_elem is None:
-            raise ValueError("Could not find instant element in period characteristic")
+            raise ValueError(
+                "Could not find instant element in period characteristic"
+            )
         instant_date = instant_date_elem.text
         if instant_date is None:
             raise ValueError("The instant element has no text")
@@ -41,7 +43,9 @@ def parse_period_from_xml(
         if period_characteristic is not None:
             # if the period characteristic is already in the cache, typecheck it and return it
             if not isinstance(period_characteristic, PeriodCharacteristic):
-                raise ValueError("Period characteristic is not a period characteristic")
+                raise ValueError(
+                    "Period characteristic is not a period characteristic"
+                )
             return cast(PeriodCharacteristic, period_characteristic)
         else:
             # if the period characteristic is not in the cache, create it and add it to the cache
@@ -61,20 +65,30 @@ def parse_period_from_xml(
 
         end_date_elem = xml_element.find("{*}endDate", namespaces=None)
         if end_date_elem is None:
-            raise ValueError("Could not find endDate element in period characteristic")
+            raise ValueError(
+                "Could not find endDate element in period characteristic"
+            )
         end_date = end_date_elem.text
         if end_date is None:
             raise ValueError("The endDate element has no text")
 
         # check cache
-        period_characteristic = get_from_cache(f"period {start_date} {end_date}")
+        period_characteristic = get_from_cache(
+            f"period {start_date} {end_date}"
+        )
         if period_characteristic is not None:
             # if the period characteristic is already in the cache, typecheck it and return it
             if not isinstance(period_characteristic, PeriodCharacteristic):
-                raise ValueError("Period characteristic is not a period characteristic")
+                raise ValueError(
+                    "Period characteristic is not a period characteristic"
+                )
             return cast(PeriodCharacteristic, period_characteristic)
         else:
             # if the period characteristic is not in the cache, create it and add it to the cache
-            period_characteristic = PeriodCharacteristic._duration(start_date, end_date)
-            add_to_cache(f"period {start_date} {end_date}", period_characteristic)
+            period_characteristic = PeriodCharacteristic._duration(
+                start_date, end_date
+            )
+            add_to_cache(
+                f"period {start_date} {end_date}", period_characteristic
+            )
             return period_characteristic

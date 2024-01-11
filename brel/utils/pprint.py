@@ -1,4 +1,9 @@
-from brel.utils import pprint_fact, pprint_facts, pprint_network, pprint_network_node
+from brel.utils import (
+    pprint_fact,
+    pprint_facts,
+    pprint_network,
+    pprint_network_node,
+)
 from brel import Fact
 from brel.networks import INetwork, INetworkNode
 

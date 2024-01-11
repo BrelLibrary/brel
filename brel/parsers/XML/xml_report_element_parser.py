@@ -106,7 +106,9 @@ def parse_report_elements_xml(
                         ref_type = get_str(ref_xml, "type")
 
                         # convert to QName
-                        ref_type_qname = QName.from_string(ref_type, qname_nsmap)
+                        ref_type_qname = QName.from_string(
+                            ref_type, qname_nsmap
+                        )
 
                         # set the type of the dimension
                         # TODO: ref_type is a str. It should be a QName or type

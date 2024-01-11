@@ -80,7 +80,9 @@ def parse_typed_dimension_from_xml(
     # get the dimension value from the xml element
     children = list(xml_element)
     if len(children) != 1:
-        raise ValueError("Typed dimension characteristic has more than one child")
+        raise ValueError(
+            "Typed dimension characteristic has more than one child"
+        )
 
     value_element = children[0]
     dimension_value = value_element.text
@@ -103,7 +105,9 @@ def parse_typed_dimension_from_xml(
             dimension_characteristic,
         )
     else:
-        if not isinstance(dimension_characteristic, TypedDimensionCharacteristic):
+        if not isinstance(
+            dimension_characteristic, TypedDimensionCharacteristic
+        ):
             raise ValueError(
                 "Dimension characteristic is not a typed dimension characteristic"
             )

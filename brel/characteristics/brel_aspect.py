@@ -49,6 +49,7 @@ class Aspect:
     def __init__(self, name: str, labels: list[BrelLabel]) -> None:
         self.__name = name
         self.__labels = labels
+        self.__is_core = False
 
     # first class citizens
     def get_name(self) -> str:
@@ -61,7 +62,13 @@ class Aspect:
         """
         Check if the aspect is a core aspect.
         """
-        return False
+        return self.__is_core
+
+    def _make_core(self) -> None:
+        """
+        Make the aspect a core aspect.
+        """
+        self.__is_core = True
 
     def get_labels(self) -> list[BrelLabel]:
         """
@@ -96,7 +103,9 @@ class Aspect:
         return cls.from_str(qname_str, labels)
 
     @classmethod
-    def from_str(cls, name: str, labels: list[BrelLabel] | None = None) -> "Aspect":
+    def from_str(
+        cls, name: str, labels: list[BrelLabel] | None = None
+    ) -> "Aspect":
         """
         Creates a new aspect from a string.
         To access the core aspects, use the class attributes
@@ -143,12 +152,7 @@ Aspect.PERIOD = Aspect("period", period_labels)
 Aspect.ENTITY = Aspect("entity", entity_labels)
 Aspect.UNIT = Aspect("unit", unit_labels)
 
-
-def true_func() -> bool:
-    return True
-
-
-Aspect.CONCEPT.is_core = true_func
-Aspect.PERIOD.is_core = true_func
-Aspect.ENTITY.is_core = true_func
-Aspect.UNIT.is_core = true_func
+Aspect.CONCEPT._make_core()  # pylint: disable=protected-access
+Aspect.PERIOD._make_core()  # pylint: disable=protected-access
+Aspect.ENTITY._make_core()  # pylint: disable=protected-access
+Aspect.UNIT._make_core()  # pylint: disable=protected-access

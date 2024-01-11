@@ -6,7 +6,8 @@ This module contains the Filing class.
 Filings can be loaded from a folder, a zip file, or one or multiple xml files.
 
 - If a folder is given, then all xml files in the folder are loaded.
-- If a zip file is given, then the zip file is extracted to a folder and then all xml files in the folder are loaded.
+- If a zip file is given, then the zip file is extracted to a folder 
+and then all xml files in the folder are loaded.
 - If one or more xml files are given, then only those xml files are loaded.
 
 Example usage:
@@ -97,7 +98,9 @@ class Filing:
                 path += "/"
 
             folder_filenames = os.listdir(path)
-            xml_files = list(filter(lambda x: x.endswith("xml"), folder_filenames))
+            xml_files = list(
+                filter(lambda x: x.endswith("xml"), folder_filenames)
+            )
 
             def prepend_path(filename: str) -> str:
                 return path + filename
@@ -134,7 +137,9 @@ class Filing:
 
         self.__networks: list[INetwork] = parser_result["networks"]
         self.__facts: list[Fact] = parser_result["facts"]
-        self.__reportelems: list[IReportElement] = parser_result["report elements"]
+        self.__reportelems: list[IReportElement] = parser_result[
+            "report elements"
+        ]
         self.__components: list[Component] = parser_result["components"]
         self.__nsmap = parser_result["nsmap"]
 
@@ -158,7 +163,7 @@ class Filing:
         """
         return self.__components
 
-    def get_all_pyhsical_networks(self) -> list[INetwork]:
+    def get_all_physical_networks(self) -> list[INetwork]:
         """
         Get all [`INetwork`](../components/networks.md) objects in the filing, where network.is_physical() is True.
         :return list[INetwork]: a list of all physical networks in the filing.
@@ -185,7 +190,9 @@ class Filing:
         """
         return cast(
             list[Abstract],
-            list(filter(lambda x: isinstance(x, Abstract), self.__reportelems)),
+            list(
+                filter(lambda x: isinstance(x, Abstract), self.__reportelems)
+            ),
         )
 
     def get_all_line_items(self) -> list[LineItems]:
@@ -194,7 +201,9 @@ class Filing:
         """
         return cast(
             list[LineItems],
-            list(filter(lambda x: isinstance(x, LineItems), self.__reportelems)),
+            list(
+                filter(lambda x: isinstance(x, LineItems), self.__reportelems)
+            ),
         )
 
     def get_all_hypercubes(self) -> list[Hypercube]:
@@ -203,7 +212,9 @@ class Filing:
         """
         return cast(
             list[Hypercube],
-            list(filter(lambda x: isinstance(x, Hypercube), self.__reportelems)),
+            list(
+                filter(lambda x: isinstance(x, Hypercube), self.__reportelems)
+            ),
         )
 
     def get_all_dimensions(self) -> list[Dimension]:
@@ -212,7 +223,9 @@ class Filing:
         """
         return cast(
             list[Dimension],
-            list(filter(lambda x: isinstance(x, Dimension), self.__reportelems)),
+            list(
+                filter(lambda x: isinstance(x, Dimension), self.__reportelems)
+            ),
         )
 
     def get_all_members(self) -> list[Member]:
@@ -235,13 +248,18 @@ class Filing:
         if isinstance(element_qname, str):
             element_qname = QName.from_string(element_qname, self.__nsmap)
 
-        name_matches = lambda x: x.get_name() == element_qname
+        def name_matches(x: IReportElement) -> TypeGuard[IReportElement]:
+            return x.get_name() == element_qname
 
-        re: IReportElement | None = next(filter(name_matches, self.__reportelems), None)
+        re: IReportElement | None = next(
+            filter(name_matches, self.__reportelems), None
+        )
 
         return re
 
-    def get_concept_by_name(self, concept_qname: QName | str) -> Concept | None:
+    def get_concept_by_name(
+        self, concept_qname: QName | str
+    ) -> Concept | None:
         """
         :param concept_qname: the name of the concept to get. This can be a QName or a string in the format "prefix:localname". For example, "us-gaap:Assets".
         :returns Concept|None: the concept with the given name. If no concept is found, then None is returned.
@@ -278,7 +296,9 @@ class Filing:
 
         return reported_concepts
 
-    def get_facts_by_concept_name(self, concept_name: QName | str) -> list[Fact]:
+    def get_facts_by_concept_name(
+        self, concept_name: QName | str
+    ) -> list[Fact]:
         """
         Returns all facts that are associated with the concept with name concept_name.
         :param concept_name: The name of the concept to get facts for. This can be a QName or a string in the format "prefix:localname". For example, "us-gaap:Assets".
@@ -314,7 +334,9 @@ class Filing:
 
         # if the key is an aspect, make a filter of that aspect and return the unappied filter
         if isinstance(key, Aspect):
-            return FilingFilter.make_aspect_filter(self.__facts, key, self.__nsmap)
+            return FilingFilter.make_aspect_filter(
+                self.__facts, key, self.__nsmap
+            )
 
         # if the key is a str, but looks like a QName, then turn it into a QName
         if isinstance(key, str) and QName.is_str_qname(key, self.__nsmap):
@@ -324,7 +346,9 @@ class Filing:
         # make a filter of that aspect and return it unapplied
         if isinstance(key, QName):
             aspect = Aspect.from_QName(key)
-            return FilingFilter.make_aspect_filter(self.__facts, aspect, self.__nsmap)
+            return FilingFilter.make_aspect_filter(
+                self.__facts, aspect, self.__nsmap
+            )
 
         # finally, if the key is one of the core aspects, then make a filter of that aspect and return it unapplied
         aspect_names = {
@@ -336,20 +360,25 @@ class Filing:
 
         if key.lower() in aspect_names:
             key = aspect_names[key]
-            return FilingFilter.make_aspect_filter(self.__facts, key, self.__nsmap)
+            return FilingFilter.make_aspect_filter(
+                self.__facts, key, self.__nsmap
+            )
 
         # otherwise, raise an error
         raise ValueError(f"Key {key} is not a valid key")
 
-    def get_all_component_URIs(self) -> list[str]:
+    def get_all_component_uris(self) -> list[str]:
         """
         :return list[str]: a list of all component URIs in the filing.
         """
         return [component.get_URI() for component in self.__components]
 
-    def get_component(self, URI: str) -> Component | None:
+    def get_component(self, uri: str) -> Component | None:
         """
         :param URI: the URI of the component to get.
         :return Component|None: the component with the given URI. None if no component is found.
         """
-        return next(filter(lambda x: x.get_URI() == URI, self.__components), None)
+        for component in self.__components:
+            if component.get_URI() == uri:
+                return component
+        return None

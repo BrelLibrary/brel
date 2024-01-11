@@ -25,7 +25,9 @@ To install Brel:
 
 1. Clone the repository `git clone https://github.com/PapediPoo/Brel.git`
 2. Change your working directory to the repository using `cd path/to/brel`
-3. Run `python setup.py install` 
+3. Run `python setup.py install`
+
+Note: You really need to `cd` into the repository. Running `python Brel/setup.py install` will not work.
 
 ## Usage
 

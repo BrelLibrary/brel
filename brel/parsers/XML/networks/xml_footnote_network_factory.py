@@ -13,7 +13,12 @@ import lxml
 import lxml.etree
 from typing import cast
 from brel import QName, QNameNSMap, Fact
-from brel.networks import INetwork, INetworkNode, FootnoteNetworkNode, FootnoteNetwork
+from brel.networks import (
+    INetwork,
+    INetworkNode,
+    FootnoteNetworkNode,
+    FootnoteNetwork,
+)
 from brel.reportelements import *
 from brel.reportelements import IReportElement
 from brel.resource import IResource, BrelFootnote
@@ -59,7 +64,9 @@ class FootnoteNetworkFactory(IXMLNetworkFactory):
             # the node is not connected to any other node
             arc_role: str = "unknown"
             order = 1.0
-            arc_qname = QName.from_string("link:unknown", self.get_qname_nsmap())
+            arc_qname = QName.from_string(
+                "link:unknown", self.get_qname_nsmap()
+            )
         elif xml_arc.get(f"{{{nsmap['xlink']}}}from", None) == label:
             # the node is a root
             arc_role = get_str(xml_arc, f"{{{nsmap['xlink']}}}arcrole")
@@ -78,7 +85,9 @@ class FootnoteNetworkFactory(IXMLNetworkFactory):
         link_role = get_str(xml_link, f"{{{nsmap['xlink']}}}role")
         link_name = QName.from_string(xml_link.tag, self.get_qname_nsmap())
 
-        if isinstance(points_to, IResource) and not isinstance(points_to, BrelFootnote):
+        if isinstance(points_to, IResource) and not isinstance(
+            points_to, BrelFootnote
+        ):
             raise ValueError(
                 f"points_to must be of type BreelFootnote, not {type(points_to)}"
             )

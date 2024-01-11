@@ -29,7 +29,10 @@ class CalculationNetwork(INetwork):
     """
 
     def __init__(
-        self, roots: list[CalculationNetworkNode], link_role: str, link_name: QName
+        self,
+        roots: list[CalculationNetworkNode],
+        link_role: str,
+        link_name: QName,
     ) -> None:
         roots_copy = [cast(INetworkNode, root) for root in roots]
         super().__init__(roots_copy, link_role, link_name, True)
@@ -45,7 +48,9 @@ class CalculationNetwork(INetwork):
         :returns bool: True iff the network is balance consistent
         """
 
-        def is_subtree_balance_consistent(node: CalculationNetworkNode) -> bool:
+        def is_subtree_balance_consistent(
+            node: CalculationNetworkNode,
+        ) -> bool:
             """
             Returns true if the subtree rooted at node is balance consistent.
             Operates recursively.
@@ -103,7 +108,9 @@ class CalculationNetwork(INetwork):
         :returns bool: True iff the network is aggregation consistent
         """
 
-        def is_subnetwork_aggregation_consistent(node: CalculationNetworkNode) -> bool:
+        def is_subnetwork_aggregation_consistent(
+            node: CalculationNetworkNode,
+        ) -> bool:
             """
             Returns true if the subtree rooted at node is aggregation consistent.
             Operates recursively.
@@ -119,7 +126,10 @@ class CalculationNetwork(INetwork):
 
             concept = node.get_concept()
             node_facts = list(
-                filter(lambda fact: fact.get_concept().get_value() == concept, facts)
+                filter(
+                    lambda fact: fact.get_concept().get_value() == concept,
+                    facts,
+                )
             )
 
             for node_fact in node_facts:
@@ -153,7 +163,9 @@ class CalculationNetwork(INetwork):
                             )
                             child_facts = list(
                                 filter(
-                                    lambda fact: fact.get_characteristic(node_aspect)
+                                    lambda fact: fact.get_characteristic(
+                                        node_aspect
+                                    )
                                     == node_characteristic,
                                     child_facts,
                                 )
@@ -177,7 +189,9 @@ class CalculationNetwork(INetwork):
 
                     child_fact = all_child_facts[0]
 
-                    children_sum += child_fact.get_value_as_float() * child.get_weight()
+                    children_sum += (
+                        child_fact.get_value_as_float() * child.get_weight()
+                    )
 
                     if DEBUG:  # pragma: no cover
                         print(

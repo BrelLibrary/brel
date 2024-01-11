@@ -11,7 +11,12 @@ import lxml
 import lxml.etree
 from typing import cast
 from brel import QName, QNameNSMap, Fact
-from brel.networks import INetwork, INetworkNode, ReferenceNetworkNode, ReferenceNetwork
+from brel.networks import (
+    INetwork,
+    INetworkNode,
+    ReferenceNetworkNode,
+    ReferenceNetwork,
+)
 from brel.reportelements import *
 from brel.resource import BrelReference, IResource
 
@@ -60,7 +65,9 @@ class ReferenceNetworkFactory(IXMLNetworkFactory):
             # the node is not connected to any other node
             arc_role = "unknown"
             order = 1.0
-            arc_qname = QName.from_string("link:unknown", self.get_qname_nsmap())
+            arc_qname = QName.from_string(
+                "link:unknown", self.get_qname_nsmap()
+            )
         elif xml_arc.get(f"{{{nsmap['xlink']}}}from", None) == label:
             # the node is a root
             arc_role = get_str(xml_arc, f"{{{nsmap['xlink']}}}arcrole")

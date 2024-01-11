@@ -42,9 +42,9 @@ def parse_context_xml(
 
     # check if the supplied list of characteristics only contains units and concepts
     for characteristic in characteristics:
-        if not isinstance(characteristic, UnitCharacteristic) and not isinstance(
-            characteristic, ConceptCharacteristic
-        ):
+        if not isinstance(
+            characteristic, UnitCharacteristic
+        ) and not isinstance(characteristic, ConceptCharacteristic):
             raise ValueError(
                 f"Context id {context_id} contains a characteristic that is not a unit or a concept. Please make sure that the list of characteristics only contains units and concepts."
             )
@@ -82,22 +82,26 @@ def parse_context_xml(
         for xml_dimension in segment:
             # if it is an explicit dimension, the tag is xbrli:explicitMember
             if "explicitMember" in xml_dimension.tag:
-                explicit_dimension_characteristic = parse_explicit_dimension_from_xml(
-                    xml_dimension,
-                    get_report_element,
-                    make_qname,
-                    get_from_cache,
-                    add_to_cache,
+                explicit_dimension_characteristic = (
+                    parse_explicit_dimension_from_xml(
+                        xml_dimension,
+                        get_report_element,
+                        make_qname,
+                        get_from_cache,
+                        add_to_cache,
+                    )
                 )
                 context._add_characteristic(explicit_dimension_characteristic)
             # if it is a typed dimension, the tag is xbrli:typedMember
             elif "typedMember" in xml_dimension.tag:
-                typed_dimension_characteristic = parse_typed_dimension_from_xml(
-                    xml_dimension,
-                    get_report_element,
-                    make_qname,
-                    get_from_cache,
-                    add_to_cache,
+                typed_dimension_characteristic = (
+                    parse_typed_dimension_from_xml(
+                        xml_dimension,
+                        get_report_element,
+                        make_qname,
+                        get_from_cache,
+                        add_to_cache,
+                    )
                 )
                 context._add_characteristic(typed_dimension_characteristic)
 

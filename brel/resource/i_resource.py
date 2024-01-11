@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 
+
 class IResource(ABC):
     @abstractmethod
     def get_label(self) -> str:
@@ -8,7 +9,7 @@ class IResource(ABC):
         @return: the label of the resource as a string
         """
         raise NotImplementedError
-    
+
     @abstractmethod
     def get_role(self) -> str | None:
         """
@@ -16,7 +17,7 @@ class IResource(ABC):
         @return: the role of the resource as a string
         """
         raise NotImplementedError
-    
+
     @abstractmethod
     def get_title(self) -> str | None:
         """
@@ -24,7 +25,7 @@ class IResource(ABC):
         @return: the title of the resource as a string
         """
         raise NotImplementedError
-    
+
     @abstractmethod
     def get_content(self) -> dict | list | str | None:
         """

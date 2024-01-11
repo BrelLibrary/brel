@@ -20,7 +20,10 @@ class ReferenceNetwork(INetwork):
     """
 
     def __init__(
-        self, roots: list[ReferenceNetworkNode], link_role: str, link_name: QName
+        self,
+        roots: list[ReferenceNetworkNode],
+        link_role: str,
+        link_name: QName,
     ) -> None:
         roots_copy = [cast(INetworkNode, root) for root in roots]
         super().__init__(roots_copy, link_role, link_name, True)

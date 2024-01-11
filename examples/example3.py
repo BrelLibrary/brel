@@ -13,15 +13,16 @@ def example3():
     )
     filing = Filing.open("reports/report.zip")
 
-    # get some concepts
-    concepts = filing.get_all_reported_concepts()[:6]
+    concept = filing.get_concept_by_name("us-gaap:Assets")
+    facts = filing.get_all_facts()
+    facts = list(
+        filter(
+            lambda fact: str(fact.get_characteristic(Aspect.UNIT)) == "usd"
+            and str(fact.get_characteristic(Aspect.CONCEPT)) == "us-gaap:Assets",
+            facts,
+        )
+    )
 
-    # get all facts that use those concepts
-    facts = []
-    for concept in concepts:
-        facts += filing.get_facts_by_concept(concept)
-
-    # pretty print them
     pprint(facts)
 
 

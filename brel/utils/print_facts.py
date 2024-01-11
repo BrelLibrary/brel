@@ -6,8 +6,8 @@ Module for pretty printing facts as a table to the console.
 @date: 29 December 2023
 """
 
-from brel import Fact, Aspect
 from prettytable import PrettyTable
+from brel import Fact, Aspect
 
 
 def pprint_facts(facts: list[Fact]):
@@ -16,13 +16,13 @@ def pprint_facts(facts: list[Fact]):
     """
 
     # first extract all the dimensions from the facts
-    dimensions = set()
+    dimension_set = set()
     for fact in facts:
         context = fact.get_context()
         for aspect in context.get_aspects():
-            dimensions.add(aspect)
+            dimension_set.add(aspect)
 
-    dimensions = list(dimensions)
+    dimensions = list(dimension_set)
 
     # helper function for sorting dimensions
     # sorts in the following order
@@ -46,11 +46,12 @@ def pprint_facts(facts: list[Fact]):
     dimensions.sort(key=sort_dimensions)
 
     # initialize the table
-    columns = ["id"] + [dimension.get_name() for dimension in dimensions] + ["value"]
+    columns = (
+        ["id"] + [dimension.get_name() for dimension in dimensions] + ["value"]
+    )
 
     table = PrettyTable(columns)
     table.align = "r"
-    table.align["value"] = "l"
     table.title = "Facts Table"
 
     # extract the rows from the facts
@@ -58,8 +59,11 @@ def pprint_facts(facts: list[Fact]):
     for fact in facts:
         context = fact.get_context()
         row = (
-            [fact._get_id()]
-            + [context.get_characteristic(dimension) for dimension in dimensions]
+            [fact._get_id()]  # pylint: disable=protected-access
+            + [
+                context.get_characteristic(dimension)
+                for dimension in dimensions
+            ]
             + [fact.get_value_as_str()]
         )
 
@@ -85,9 +89,11 @@ def pprint_fact(fact: Fact):
     # initialize the table
     columns = ["aspect", "value"]
 
-    table = PrettyTable(columns)
-    table.align = "r"
-    table.align["value"] = "l"
+    alignment = ["r"] * (len(columns) - 1) + ["l"]
+
+    table = PrettyTable(columns, align=alignment)
+    # table.align = "r"
+    # table.align["value"] = "l"
     table.title = "Fact Table"
 
     # extract the rows from the fact
