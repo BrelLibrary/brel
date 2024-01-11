@@ -6,7 +6,8 @@ This module contains the Filing class.
 Filings can be loaded from a folder, a zip file, or one or multiple xml files.
 
 - If a folder is given, then all xml files in the folder are loaded.
-- If a zip file is given, then the zip file is extracted to a folder and then all xml files in the folder are loaded.
+- If a zip file is given, then the zip file is extracted to a folder 
+and then all xml files in the folder are loaded.
 - If one or more xml files are given, then only those xml files are loaded.
 
 Example usage:
@@ -235,7 +236,8 @@ class Filing:
         if isinstance(element_qname, str):
             element_qname = QName.from_string(element_qname, self.__nsmap)
 
-        name_matches = lambda x: x.get_name() == element_qname
+        def name_matches(x: IReportElement) -> TypeGuard[IReportElement]:
+            return x.get_name() == element_qname
 
         re: IReportElement | None = next(filter(name_matches, self.__reportelems), None)
 
@@ -341,15 +343,18 @@ class Filing:
         # otherwise, raise an error
         raise ValueError(f"Key {key} is not a valid key")
 
-    def get_all_component_URIs(self) -> list[str]:
+    def get_all_component_uris(self) -> list[str]:
         """
         :return list[str]: a list of all component URIs in the filing.
         """
         return [component.get_URI() for component in self.__components]
 
-    def get_component(self, URI: str) -> Component | None:
+    def get_component(self, uri: str) -> Component | None:
         """
         :param URI: the URI of the component to get.
         :return Component|None: the component with the given URI. None if no component is found.
         """
-        return next(filter(lambda x: x.get_URI() == URI, self.__components), None)
+        for component in self.__components:
+            if component.get_URI() == uri:
+                return component
+        return None

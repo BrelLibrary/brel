@@ -84,7 +84,9 @@ class PresentationNetworkFactory(IXMLNetworkFactory):
         elif xml_arc.get(f"{{{nsmap['xlink']}}}to", None) == label:
             # the node is an inner node
             # preferred_label = xml_arc.attrib.get("preferredLabel")
-            preferred_label = get_str(xml_arc, "preferredLabel")
+            preferred_label = get_str(
+                xml_arc, "preferredLabel", BrelLabelRole.STANDARD_LABEL.value
+            )
             if not isinstance(preferred_label, str) and preferred_label is not None:
                 raise TypeError(
                     f"preferredLabel attribute on arc element {xml_arc} is not a string. It is {type(preferred_label)}"
