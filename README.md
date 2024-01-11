@@ -1,8 +1,8 @@
 # Brel
 
-Brel is a python library for XBRL.
+Brel is a Python library for XBRL.
 
-It provides a simple API for extracting data from XBRL reports, respects the Open Information Model, follows Charles Hoffman's vision on XBRL, and shields you from the XML syntax.
+It provides a simple API for extracting data from XBRL reports with Python, respects the Open Information Model, follows Charles Hoffman's vision on XBRL, understands dimensions and cubes, and shields you from the XML syntax.
 
 It is being developed at ETH Zurich by Robin Schmidiger in a Master's thesis supervised by Ghislain Fourny and Gustavo Alonso.
 
