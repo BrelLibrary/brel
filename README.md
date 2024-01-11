@@ -118,8 +118,8 @@ For example, to get the cover page component of a filing:
 ```python
 cover_page = filing.get_component("http://foocompany.com/role/coverpage")
 
-# in case you dont know the URI of the component, you can use the get_all_component_URIs method
-component_uris = filing.get_all_component_URIs()
+# in case you dont know the URI of the component, you can use the get_all_component_uris method
+component_uris = filing.get_all_component_uris()
 print(component_uris)
 
 ```
