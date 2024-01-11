@@ -12,6 +12,10 @@ This is an early version still under development, at this stage we warmly welcom
 
 Brel stands for Business Report Extensible Library.
 
+### Documentation
+
+The documentation of the Brel API is available on GitHub Pages [here](https://papedipoo.github.io/Brel/). Below we give a few examples to get you started.
+
 ## (Un)implemented features
 
 - [x] XBRL filings in XML format.
@@ -158,6 +162,4 @@ pprint(first_child)
 
 Note: Network nodes can either point to Report Elements, Resources or Facts. Use the `Node.points_to` method to check what the node points to.
 
-### Documentation
 
-The documentation of the Brel API is available on GitHub Pages [here](https://papedipoo.github.io/Brel/).
