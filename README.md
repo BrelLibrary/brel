@@ -74,7 +74,7 @@ filing = Filing.open("path/to/filing/folder")
 
 The `Filing` object provides access to everything in the filing, including the `Fact`s, `Component`s, 
 
-If you do not have a report, you could for example download all the files under "Data Files" of the [latest annual report (10-K) by Apple](https://www.sec.gov/Archives/edgar/data/320193/000032019322000108/0000320193-22-000108-index.html) into a folder, and then pass this folder to Filing.open():
+If you do not have a report, you could for example download all the files under "Data Files" of the [latest annual report (10-K) by Apple](https://www.sec.gov/Archives/edgar/data/320193/000032019323000106/0000320193-23-000106-index.htm) into a folder, and then pass this folder to Filing.open():
 
 ```python
 from brel import Filing, pprint
