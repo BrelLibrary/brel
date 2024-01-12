@@ -30,7 +30,7 @@ def read_requirements(path):
 
 
 setup(
-    name="brel",
+    name="brel-xbrl",
     version=read("brel", "VERSION"),
     python_requires=">=3.10",
     description="An XBRL parser for Python",
@@ -39,7 +39,7 @@ setup(
     long_description_content_type="text/markdown",
     author="PapediPoo, ghislainfourny",
     packages=find_packages(exclude=["tests", ".github"]),
-    package_data={"brel": ["config/*.json"]},
+    package_data={"brel-xbrl": ["config/*.json"]},
     install_requires=read_requirements("requirements.txt"),
     entry_points={"console_scripts": ["brel = brel.__main__:main"]},
     setup_requires=["pytest-runner"],
