@@ -1,36 +1,44 @@
 
-\section{Implementation of QNames and namespace normalization}
+\section{QNames and namespace normalization}
 \label{sec:qnames_implementation}
 
 \subsection{Overview}
 
-As mentioned in chapter TODO, Brel leverages QNames to identify various elements across the XBRL taxonomy. 
+As mentioned in chapter \ref{chapter:xbrl}, Brel leverages QNames to identify various elements across the XBRL report.
 QNames are a concept that is widely used in XML and XML-based languages, such as XBRL.
-Thus, for most QNames in Brel, the necessary information can be directly extracted from the corresponding XML elements in the XBRL taxonomy.
+Thus, for most QNames in Brel, the necessary information can be directly extracted from the corresponding XML elements in both the XBRL taxonomy and the XBRL filing.
 However, there is an important difference between QNames in XML and QNames in Brel - Namespace bindings.
+
+Namespace bindings are the mappings between prefixes and namespace URIs.
+For example, the prefix \texttt{us-gaap} might be bound to the namespace URI \texttt{http://fasb.org/us-gaap/2023}.
 
 In XML documents, namespace bindings can be defined on a per-element basis. 
 Child elements inherit the namespace bindings of their parent elements, unless they define their own namespace bindings. 
 This allows for the construction of complex namespace hierarchies, where each element can have its own namespace bindings.
 In Brel, however, namespace bindings are flat and defined on a global level.
 
-The process of converting this hierarchical structure of namespace bindings into a flat structure is called namespace normalization.
+The process of converting this hierarchical structure of namespace bindings into a flat structure is called \textbf{namespace normalization}.
 Namespace normalization not only flattens the namespace hierarchy, but also resolves collisions in namespace bindings.
 
 The motivation for having a flat structure of namespace bindings is that it makes it easier for users to search concepts, types, etc. in an XBRL filing using QNames.
-Lets say a user wants to search for all facts that are associated with the concept \texttt{us-gaap:Assets} in the US GAAP taxonomy.
+Lets say a user wants to search for all facts that are associated with the concept \texttt{us-gaap:Assets}.
+
+In XML, the prefix \texttt{us-gaap} might be bound to a different namespace URI in each element.
+So there are no guarantees that the prefix \texttt{us-gaap} is bound to just one namespace URI in the entire XBRL filing.
+A good XBRL parser will find all namespace bindings for the prefix \texttt{us-gaap} and search all of them for the concept \texttt{Assets}.
+However, this is not guaranteed and depends on the XBRL parser.
+
+Furthermore, the filer of the XBRL report might choose to use the prefix \texttt{us-gaap1} instead of \texttt{us-gaap} in some sections to refer to the same namespace URI.
+So there might not be a concept called \texttt{us-gaap:Assets}, but a concept called \texttt{us-gaap1:Assets} instead.
+
+The user could simply search both for \texttt{us-gaap} and \texttt{us-gaap1} to find the concept \texttt{Assets}.
+Obviously, this is extremely cumbersome and a suboptimal fix for the problem.
+It also insufficiantly shields users from the complexity of XML and XML-based languages, such as XBRL, 
+since they need to be aware of the structure of the underlying namespace hierarchy.
 
 In Brel, the user can simply search for the QName \texttt{us-gaap:Assets} and will find all facts that are associated with this concept.
 Brel will automatically resolve the prefix \texttt{us-gaap} to the corresponding namespace URI.
 If the report uses the prefix \texttt{us-gaap1} instead of \texttt{us-gaap}, Brel will still be able to resolve the prefix to the correct namespace URI.
-
-In XML, however, the prefix \texttt{us-gaap} might be bound to a different namespace URI in each element. 
-Furthermore, the filer of the XBRL might choose to use the prefix \texttt{us-gaap1} in some sections of the XBRL taxonomy.
-So if the user wants to search for all facts that are associated with the concept \texttt{us-gaap:Assets} in the US GAAP taxonomy, 
-they would have to supply a context in which the prefix \texttt{us-gaap} is bound to the namespace URI of the US GAAP taxonomy.
-But in another context, the same concept might be called \texttt{us-gaap1:Assets} instead.
-This is extremely cumbersome for users and makes it very difficult to search for concepts, types, etc. in an XBRL filing using QNames.
-It also insufficiantly shields users from the complexity of XML and XML-based languages, such as XBRL.
 
 \subsection{Namespace hierarchy notation}
 
@@ -57,12 +65,18 @@ Take the following XML snippet as an example:
     \caption{Example of an XML snippet where namespace bindings are defined on a per-element basis}
     \label{fig:xml_namespace_notation_example}
     \begin{lstlisting}[language=XML]
-        <element1 xmlns:foo = "http://foo.com" color = "red">
+        <element1 
+          xmlns:foo = "http://foo.com" 
+          color = "red"
+        >
             <element2 xmlns:bar = "http://bar.com"/>
                 <element3 color = "blue">
             </element2>
         </element1>
-        <element4 xmlns:baz = "http://baz.com" xmlns:foo = "http://other-foo.com">
+        <element4 
+          xmlns:baz = "http://baz.com" 
+          xmlns:foo = "http://other-foo.com"
+        >
     \end{lstlisting}
 \end{figure}
 
@@ -298,3 +312,6 @@ If, for example, the XBRL filing contains a namespace binding \texttt{foo = "htt
 then the prefix \texttt{xsi} will be picked as the preferred prefix and all occurences of \texttt{foo} will be renamed to \texttt{xsi}.
 
 The special prefixes and the corresponding namespace URIs can be configured in in the \texttt{nsconfig.json} file.
+
+With this knowledge of QNames and namespace normalization, we can now move on to the next section which explains how Facts are implemented in Brel.
+Facts use QNames for a few of their characteristics, most notably their concept characteristic.

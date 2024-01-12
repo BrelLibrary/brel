@@ -1,9 +1,13 @@
 """
 This module runs the interactive data test suite created by the SEC.
 
-@author: Robin Schmidiger
-@version: 0.0.3
-@date: 15 December 2023
+====================
+
+- author: Robin Schmidiger
+- version: 0.0.3
+- date: 12 Januar 2024
+
+====================
 """
 
 import lxml

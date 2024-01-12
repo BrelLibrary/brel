@@ -3,9 +3,13 @@ This module contains the FootnoteNetworkNode class.
 FootnoteNetworkNodes are used to represent nodes in a footnote network.
 Since a node can have children, nodes can also be viewed as trees.
 
-@author: Robin Schmidiger
-@version: 0.3
-@date: 04 January 2024
+====================
+
+- author: Robin Schmidiger
+- version: 0.3
+- date: 04 January 2024
+
+====================
 """
 
 from brel.resource import IResource, BrelFootnote
@@ -96,7 +100,7 @@ class FootnoteNetworkNode(INetworkNode):
     def _add_child(self, child: INetworkNode):
         """
         Add a child to the node.
-        @param child: the child to add
+        :param child: the child to add
         """
         if not isinstance(child, FootnoteNetworkNode):
             raise ValueError(f"The child {child} is not a FootnoteNetworkNode")
@@ -106,6 +110,6 @@ class FootnoteNetworkNode(INetworkNode):
     def _set_report_element(self, report_element: IReportElement):
         """
         Set the report element of this node
-        @param report_element: IReportElement to be set as the report element
+        :param report_element: IReportElement to be set as the report element
         """
         self.__points_to = report_element

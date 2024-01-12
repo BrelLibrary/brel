@@ -3,9 +3,13 @@ This module contains the PresentationNetworkNode class.
 PresentationNetworkNodes are used to represent nodes in a presentation network.
 Since a node can have children, nodes can also be viewed as trees.
 
-@author: Robin Schmidiger
-@version: 0.9
-@date: 04 January 2024
+====================
+
+- author: Robin Schmidiger
+- version: 0.9
+- date: 04 January 2024
+
+====================
 """
 
 from brel.networks import INetworkNode
@@ -46,9 +50,8 @@ class PresentationNetworkNode(INetworkNode):
         # check if there is a label that matches the preferred label role
         # if not, raise an error
 
-        if (
-            preferred_label_role is not None
-            and not report_element.has_label_with_role(preferred_label_role)
+        if preferred_label_role is not None and not report_element.has_label_with_role(
+            preferred_label_role
         ):
             raise ValueError(
                 f"report element {report_element} does not have a label with role {preferred_label_role}"
@@ -57,37 +60,35 @@ class PresentationNetworkNode(INetworkNode):
     # First class citizens
     def get_report_element(self) -> IReportElement:
         """
-        Returns the report element associated with this node
-        @return: IReportElement associated with this node
+        :return: IReportElement associated with this node
         """
         return self.__report_element
 
     def get_resource(self) -> IResource:
         """
-        @raises ValueError: if this node does not point to a resource.
+        Presentation network nodes do not point to resources, only to report elements.
+        :raises ValueError: if this node does not point to a resource.
         Use the points_to method to check if this node points to a resource.
         """
-        raise ValueError(
-            "PresentationNetworkNode does not point to a resource"
-        )
+        raise ValueError("PresentationNetworkNode does not point to a resource")
 
     def get_fact(self) -> Fact:
         """
-        @raises ValueError: if this node does not point to a fact.
+        Presentation network nodes do not point to facts, only to report elements.
+        :raises ValueError: if this node does not point to a fact.
         Use the points_to method to check if this node points to a fact.
         """
         raise ValueError("PresentationNetworkNode does not point to a fact")
 
     def points_to(self) -> str:
         """
-        @return: str containing 'report element'
+        :return: str containing 'report element'
         """
         return "report element"
 
     def get_children(self) -> list["INetworkNode"]:
         """
-        Returns the children of this node
-        @return: list[NetworkNode] containing the children of this node
+        :returns list[NetworkNode]: containing the children of this node
         """
         # return lsitself.__children
 
@@ -96,14 +97,14 @@ class PresentationNetworkNode(INetworkNode):
     def get_preferred_label_role(self) -> BrelLabelRole | None:
         """
         Returns the preferred label role of this node
-        @return: str containing the preferred label role of this node
+        :returns str: containing the preferred label role of this node
         """
         return self.__preferred_label_role
 
     def get_order(self) -> float:
         """
         Returns the order of this node
-        @return: int containing the order of this node
+        :returns int: containing the order of this node
         """
         return self.__order
 
@@ -122,8 +123,7 @@ class PresentationNetworkNode(INetworkNode):
 
     def __str__(self) -> str:
         """
-        Returns a string representation of this node
-        @return: str containing a string representation of this node
+        :return str: A string reporesentation of this node
         """
 
         return f"NetworkNode(report_element={self.__report_element}, no. children={len(self.__children)}"
@@ -132,7 +132,8 @@ class PresentationNetworkNode(INetworkNode):
     def _add_child(self, child: INetworkNode):
         """
         Add a child to this node
-        @param child: NetworkNode to be added as a child
+        :param child: The child node to be added
+        :raises TypeError: if child is not of type PresentationNetworkNode
         """
         if not isinstance(child, PresentationNetworkNode):
             raise TypeError("child must be of type PresentationNetworkNode")
@@ -143,6 +144,6 @@ class PresentationNetworkNode(INetworkNode):
     def _set_report_element(self, report_element: IReportElement):
         """
         Set the report element of this node
-        @param report_element: IReportElement to be set as the report element
+        :param report_element: IReportElement to be set as the report element
         """
         self.__report_element = report_element

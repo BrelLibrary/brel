@@ -165,7 +165,7 @@ class XMLFileManager(IFileManager):
         # get the schema
         schema = self.get_file(referencing_uri)
         # get the element
-        element = schema.find(f".//*[@id='{element_id}']")
+        element = schema.find(f".//*[@id='{element_id}']", namespaces=None)
         return element
 
     def get_file(self, schema_uri: str) -> lxml.etree._ElementTree:

@@ -4,9 +4,13 @@ DefinitionNetworkNodes are used to represent nodes in a definition network.
 Since a node can have children, nodes can also be viewed as trees.
 Note: the balance consistency check is not implemented here, but in the DefinitionNetwork class.
 
-@author: Robin Schmidiger
-@version: 0.5
-@date: 04 January 2024
+====================
+
+- author: Robin Schmidiger
+- version: 0.5
+- date: 04 January 2024
+
+====================
 """
 
 from brel.networks import INetworkNode
@@ -75,6 +79,10 @@ class DefinitionNetworkNode(INetworkNode):
 
     # Internal methods
     def _add_child(self, child: INetworkNode):
+        """
+        Adds a child to this node.
+        :param child: INetworkNode to be added as a child
+        """
         if not isinstance(child, DefinitionNetworkNode):
             raise ValueError("Child must be of type DefinitionNetworkNode")
 
@@ -83,7 +91,7 @@ class DefinitionNetworkNode(INetworkNode):
 
     def _set_report_element(self, report_element: IReportElement):
         """
-        Set the report element of this node
-        @param report_element: IReportElement to be set as the report element
+        Set the report element of this node to another report element.
+        :param report_element: IReportElement to be set as the report element
         """
         self.__report_element = report_element

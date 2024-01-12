@@ -3,17 +3,19 @@ Contains the class for representing a label network node in a label network.
 Label networks are what associates labels with report elements.
 A label network node are references to either the report elements or the labels in the label linkbase.
 
-@author: Robin Schmidiger
-@version: 0.7
-@date: 04 January 2024
+====================
+
+- author: Robin Schmidiger
+- version: 0.7
+- date: 04 January 2024
+
+====================
 """
 
 from brel.resource import BrelLabel
 from brel.networks import INetworkNode
 from brel.reportelements import IReportElement
 from brel import QName, Fact
-
-from brel.resource import IResource
 
 DEBUG = False
 
@@ -42,9 +44,7 @@ class LabelNetworkNode(INetworkNode):
     # First class citizens
     def get_report_element(self) -> IReportElement:
         if not isinstance(self.__points_to, IReportElement):
-            raise ValueError(
-                "LabelNetworkNodes do not point to report elements"
-            )
+            raise ValueError("LabelNetworkNodes do not point to report elements")
         return self.__points_to
 
     def get_resource(self) -> BrelLabel:
@@ -85,4 +85,8 @@ class LabelNetworkNode(INetworkNode):
 
     # Internal methods
     def _add_child(self, child: INetworkNode):
+        """
+        Adds a child to this node.
+        :param child: INetworkNode to be added as a child
+        """
         self.__children.append(child)

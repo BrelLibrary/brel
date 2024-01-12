@@ -1,0 +1,32 @@
+\section{Overview}
+
+The creation of brel could be divided into three main parts 
+The design of the API, the implementation of the API and testing of the API.
+The bulk of both the API design and testing will be discussed in chapter \ref{chapter:results}.
+This chapter will focus on the implementation of the API.
+
+The implementation of the API was done in the programming language Python.
+Python was chosen because it is a high level language and one of the most popular programming languages in the world.
+Python is quite popular outside of the programming community as well.
+Its simplicity and readability makes it a good choice for beginners and non-programmers.
+
+Brel parses XBRL reports, which are used by companies to report their financial information.
+So the target audience of brel are accountants and financial analysts.
+These people are not necessarily programmers, 
+so using a language that is easy to read and understand is just as creating an API that is easy to read and understand.
+
+Chapter \ref{chapter:xbrl} already discussed the structure of XBRL reports. 
+In summary, XBRL reports are XML documents that contain the following information:
+
+\begin{itemize}
+    \item A flat list of facts
+    \item A list of report elements, many of which are created by external taxonomies
+    \item A system for identifying different report elements, and other objects in the report.
+    Brel uses QNames.
+    \item Components which form the chapters of the report.
+    \item Networks which link report elements together to model relationships between them.
+\end{itemize}
+
+This chapter will cover all the aforementioned elements of XBRL reports in their own section.
+It will discuss the difficulties of parsing these elements and how brel solves these difficulties.
+The first section is about QNames, which are used extensively throughout XBRL reports.

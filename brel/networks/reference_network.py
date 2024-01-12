@@ -1,9 +1,13 @@
 """
 Contains the ReferenceNetwork class, which acts as a wrapper for reference network nodes.
 
-@author: Robin Schmidiger
-@version: 0.1
-@date: 04 January 2024
+====================
+
+- author: Robin Schmidiger
+- version: 0.1
+- date: 04 January 2024
+
+====================
 """
 
 from brel import QName
