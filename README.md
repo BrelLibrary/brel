@@ -1,10 +1,26 @@
 # Brel
 
-Brel is a Python library for XBRL.
+Brel is a Python library for reading and analyzing financial reports, such as balance sheets, income statements, cash flow statements, as well as sustainability repots.
 
-It provides a simple API for extracting data from XBRL reports with Python, respects the Open Information Model, follows Charles Hoffman's vision on XBRL, understands dimensions and cubes, and shields you from the XML syntax.
+## A bit of history and context
 
-It is being developed at ETH Zurich by Robin Schmidiger in a Master's thesis supervised by Ghislain Fourny and Gustavo Alonso.
+Accounting has existed for thousands of years. Until 20 years ago, most reports were simply printed and distributed in books, or shared as PDF files. Many countries require that public companies listed on stock exchanges submit such quarterly financial reports including among others a balance sheet, an income statement, a cash flow statement.
+
+Around 15 years ago, some authorities (in the U.S., in Japan) started requesting that these reports be submitted in a machine-readable format. A very large number of countries then followed, and the standard commonly adopted for machine readability is XBRL, which stands for eXtensible Business Reporting Language.
+
+XBRL reports are based on a data cube model, where each piece of data (called fact) is submitted with dimensions (e.g., Assets, for Coca Cola, fiscal year 2023, in USD). The facts are then organized in cubes called components (balance sheet, income statement, etc) and can be presented to the user in a format similar to what accountants are used to, with hierarchies of line items (assets, liabilities, equity, profit/loss, revenue, etc). The metadata is taxonomy-oriented, meaning that a report is accompanied with a list of concepts to report, together with references to legal documentation, translation in multiple languages, calculation and validation rules, etc. This makes the standard robust, professional. More recently, it has become common to neatly nest ("tag") the facts inside fancy-looking HTML documents, but the data model remains the same.
+
+One of the immediate benefits of machine-readable formats is that most authorities are now able to immediately reject reports containing validation errors on their submission portal (e.g., EDGAR for the U.S. Securities and Exchange Commission), while it used to be weeks or months for doing so as it was done by humans.
+
+## The Brel API
+
+It is often heard that XBRL is complicated, because the syntax involves some complex XML. But did you know that Excel and Word files do as well involve complex XML? Yet most people are not aware of this, because they use the fancy Excel and Word user interfaces. The same goes with XBRL: while the ecosystem is still being developed, XBRL users should work with a higher-level, logical view; this idea was called Data Independence by Edgar Codd in 1970, when relational databases were designed.
+
+Brel provides a simple API for extracting data from XBRL reports with Python, respects the Open Information Model, follows Charles Hoffman's vision on XBRL, understands dimensions and cubes, and shields you from the XML syntax.
+
+Brel is not a UI, it is an API. But it is designed in such a way that UIs can be built on top of its API.
+
+It is being developed at ETH Zurich by Robin Schmidiger in a Master's thesis supervised by Ghislain Fourny.
 
 Its installation and use is straightforward as it is available as a pip package.
 
@@ -162,4 +178,8 @@ pprint(first_child)
 
 Note: Network nodes can either point to Report Elements, Resources or Facts. Use the `Node.points_to` method to check what the node points to.
 
+### Credits
 
+Brel is available with an Apache License 2.0 license.
+
+© 2023-2024 Robin Schmidiger, Ghislain Fourny, Gustavo Alonso
