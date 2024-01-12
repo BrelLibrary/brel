@@ -12,6 +12,8 @@ XBRL reports are based on a data cube model, where each piece of data (called fa
 
 One of the immediate benefits of machine-readable formats is that most authorities are now able to immediately reject reports containing validation errors on their submission portal (e.g., EDGAR for the U.S. Securities and Exchange Commission), while it used to be weeks or months for doing so as it was done by humans.
 
+Another benefit is that analysts can open the reports and analyse with their favorite Data Science libraries and database systems.
+
 ## The Brel API
 
 It is often heard that XBRL is complicated, because the syntax involves some complex XML. But did you know that Excel and Word files do as well involve complex XML? Yet most people are not aware of this, because they use the fancy Excel and Word user interfaces. The same goes with XBRL: while the ecosystem is still being developed, XBRL users should work with a higher-level, logical view; this idea was called Data Independence by Edgar Codd in 1970, when relational databases were designed.
@@ -55,7 +57,7 @@ To install Brel:
 ## Usage
 
 ### Importing
-To use Brel, import the library and create a `Filing` using the `Filing.open` method:
+To use Brel, import the library and create a `Filing` using the `Filing.open` method.
 
 ```python
 from brel import Filing, pprint
@@ -72,6 +74,7 @@ filing = Filing.open("path/to/filing/folder")
 
 The `Filing` object provides access to everything in the filing, including the `Fact`s, `Component`s, 
 
+If you do not have a report, you could for example download all the files under "Data Files" of the [latest annual report (10-K) by Apple](https://www.sec.gov/Archives/edgar/data/320193/000032019322000108/0000320193-22-000108-index.html) into a folder, and then pass this folder to Filing.open().
 
 ### Facts
 
