@@ -9,7 +9,7 @@ Instead, they are related to each other in some way.
 
 For example, the concepts \texttt{Assets} and \texttt{Liabilities} are related to each other in the sense that they are both part of the concept \texttt{Balance Sheet}.
 Furthermore, the concept \texttt{Assets} can be further divided into the concepts \texttt{Current Assets} and \texttt{Non-Current Assets}.
-The afforementioned relations can be visualized using a directed graph, as shown in figure \ref{fig:example_visualization_network_xbrl}.
+The aforementioned relations can be visualized using a directed graph, as shown in figure \ref{fig:example_visualization_network_xbrl}.
 
 \begin{figure}[H]
     \caption{Example of a relations between concepts in XBRL}
@@ -82,7 +82,7 @@ Each arc has a source and a target. Duplicate arcs are not allowed.
 
 Taking the example from figure \ref{fig:example_visualization_network_xbrl}, the presentationLink network would be represented as the following edge list:
 
-% dont use the minted package
+% don't use the minted package
 \begin{figure}[H]
     \caption{Example of a presentationLink network in edge list format}
     \label{fig:example_visualization_network_xbrl_edge_list}
@@ -96,7 +96,7 @@ Taking the example from figure \ref{fig:example_visualization_network_xbrl}, the
 
 Each arc in the example \ref{fig:example_visualization_network_xbrl_edge_list} is represented as a \texttt{link:presentationArc} element in XBRL.
 Besides presentationArcs, presentationLinks contain so called "locators" \texttt{link:loc} that represent the nodes in the network.
-In case of a presentaton network, the locators are references to the concepts in the XBRL taxonomy. 
+In case of a presentation network, the locators are references to the concepts in the XBRL taxonomy. 
 In other networks, locators can be references to other elements, such as facts.
 
 % In case of the XML syntax, the first \texttt{link:presentationArc} "Balance Sheet -> Assets" would be represented as follows:
@@ -135,7 +135,7 @@ The arc represents the edge between the two nodes.
 Let us look at the XML snippet \ref{fig:example_presentation_arc_xml} step by step.
 
 \begin{itemize}
-    \item \texttt{Specify types}: The \texttt{xlink:type} attribute specifes the types for both the locators and the arc.
+    \item \texttt{Specify types}: The \texttt{xlink:type} attribute specifies the types for both the locators and the arc.
     For the former, the type is \texttt{locator}, whereas for the latter, the type is \texttt{arc}.
     \item \texttt{Connect nodes and edges}: Both locators contain an \texttt{xlink:label} attribute that uniquely identifies the locator.
     The arc links the two locators together using the \texttt{xlink:from} and \texttt{xlink:to} attributes.
@@ -507,7 +507,7 @@ Whereas labels are mostly just text, references are take the form of dictionarie
 The following figure shows an example of a reference in the XML syntax.
 Both the accompanying arc and locator are omitted for brevity.
 The only noteworthy changes to the arc are the tag \texttt{link:referenceArc} and the \texttt{xlink:arcrole} attribute, which is set to \texttt{concept-reference}.
-% The only noteworth change
+% The only noteworthy change
 
 \begin{figure}[H]
     \begin{lstlisting}[language=XML]
@@ -530,7 +530,7 @@ The only noteworthy changes to the arc are the tag \texttt{link:referenceArc} an
 \end{figure}
 
 % We are already familiar with the \texttt{link:loc} and \texttt{link:referenceArc} elements. 
-% The only notworthy change to the \texttt{link:referenceArc} element is the \texttt{xlink:arcrole} attribute, which is set to \texttt{concept-reference}.
+% The only noteworthy change to the \texttt{link:referenceArc} element is the \texttt{xlink:arcrole} attribute, which is set to \texttt{concept-reference}.
 
 % However, our main focus is on the \texttt{link:reference} element, more specifically, its children.
 The children of the \texttt{link:reference} element form a dictionary that describes the external resource that the reference points to.
