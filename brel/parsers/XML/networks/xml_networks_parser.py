@@ -7,21 +7,20 @@ This module parses multiple etrees into a dict of networks.
 """
 
 
+import json
+import os
+import re
+from collections import defaultdict
+from importlib.resources import path
+from typing import Any, cast
+
 import lxml.etree
 
 from brel import QName, QNameNSMap
 from brel.networks import *
+from brel.parsers.XML.networks import parse_xml_link
 from brel.reportelements import *
 from brel.resource import *
-
-from typing import cast, Any
-from collections import defaultdict
-import json
-import re
-import os
-
-from brel.parsers.XML.networks import parse_xml_link
-from importlib.resources import path
 
 # CONFIG_PATH = "brel/config/linkconfig.json"
 

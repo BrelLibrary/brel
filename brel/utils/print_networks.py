@@ -1,7 +1,7 @@
+from brel import BrelLabelRole
 from brel.networks import *
 from brel.reportelements import *
 from brel.resource import *
-from brel import BrelLabelRole
 
 ELBOW = "└──"
 PIPE = "│  "

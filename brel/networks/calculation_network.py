@@ -14,12 +14,12 @@ Calculation networks also contain helper functions for checking the consistency 
 
 DEBUG = False
 
-from brel import QName, Fact
-from brel.networks import INetwork, CalculationNetworkNode, INetworkNode
-from brel.characteristics import Aspect, ICharacteristic
-from brel.reportelements import *
+from typing import Iterable, cast
 
-from typing import cast, Iterable
+from brel import Fact, QName
+from brel.characteristics import Aspect, ICharacteristic
+from brel.networks import CalculationNetworkNode, INetwork, INetworkNode
+from brel.reportelements import *
 
 
 class CalculationNetwork(INetwork):

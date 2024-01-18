@@ -1,1 +1,1 @@
-from .lxml_utils import get_all_nsmaps, compute_connected_components, get_str
+from .lxml_utils import compute_connected_components, get_all_nsmaps, get_str

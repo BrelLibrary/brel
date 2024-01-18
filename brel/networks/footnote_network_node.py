@@ -12,12 +12,12 @@ Since a node can have children, nodes can also be viewed as trees.
 ====================
 """
 
-from brel.resource import IResource, BrelFootnote
+from typing import cast
+
+from brel import Fact, QName
 from brel.networks import INetworkNode
 from brel.reportelements import IReportElement
-from brel import QName, Fact
-
-from typing import cast
+from brel.resource import BrelFootnote, IResource
 
 
 class FootnoteNetworkNode(INetworkNode):

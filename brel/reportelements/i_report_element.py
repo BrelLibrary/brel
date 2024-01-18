@@ -16,7 +16,8 @@ Depending on the kind of report element, there might be more information availab
 """
 
 from abc import ABC, abstractmethod
-from brel import QName, BrelLabel, BrelLabelRole
+
+from brel import BrelLabel, BrelLabelRole, QName
 
 
 class IReportElement(ABC):

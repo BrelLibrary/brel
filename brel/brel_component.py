@@ -49,9 +49,9 @@ pprint(calculation_network)
 
 from brel import Fact
 from brel.networks import (
-    PresentationNetwork,
     CalculationNetwork,
     DefinitionNetwork,
+    PresentationNetwork,
 )
 
 

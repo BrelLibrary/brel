@@ -15,17 +15,16 @@ To print a fact to the console, use the `pprint` function in the `brel` module.
 ====================
 """
 
-from typing import Any
+from typing import Any, cast
 
 from brel import Context, QName
 from brel.characteristics import (
-    ConceptCharacteristic,
-    UnitCharacteristic,
-    PeriodCharacteristic,
     Aspect,
+    ConceptCharacteristic,
     ICharacteristic,
+    PeriodCharacteristic,
+    UnitCharacteristic,
 )
-from typing import cast
 
 
 class Fact:

@@ -45,8 +45,9 @@ The type aspect is the 'salary per month' aspect, is an integer.
 """
 
 from abc import ABC, abstractmethod
-from brel.characteristics import Aspect
 from typing import Any
+
+from brel.characteristics import Aspect
 
 
 class ICharacteristic(ABC):

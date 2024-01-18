@@ -1,6 +1,7 @@
+from typing import cast
+
 import lxml
 import lxml.etree
-from typing import cast
 
 
 def compute_connected_components(

@@ -16,8 +16,9 @@ A duration consists of two `datetime.date` instances, a start date and an end da
 ====================
 """
 
-import dateutil.parser
 import datetime
+
+import dateutil.parser
 
 from brel.characteristics import Aspect, ICharacteristic
 
@@ -133,16 +134,22 @@ class PeriodCharacteristic(ICharacteristic):
         :raises ValueError: if the instant_date is not a valid date.
         """
         if not cls._is_date(instant_date):
-            raise ValueError(f"Instant date '{instant_date}' is not a valid date.")
+            raise ValueError(
+                f"Instant date '{instant_date}' is not a valid date."
+            )
 
         period_instance = cls()
-        period_instance.__instant_date = dateutil.parser.parse(instant_date).date()
+        period_instance.__instant_date = dateutil.parser.parse(
+            instant_date
+        ).date()
         period_instance.__is_instant = True
 
         return period_instance
 
     @classmethod
-    def _duration(cls, start_date: str, end_date: str) -> "PeriodCharacteristic":
+    def _duration(
+        cls, start_date: str, end_date: str
+    ) -> "PeriodCharacteristic":
         """
         Create a duration Period.
         :param start_date: the start date of the duration
@@ -161,7 +168,10 @@ class PeriodCharacteristic(ICharacteristic):
         period_instance.__end_date = dateutil.parser.parse(end_date).date()
         period_instance.__is_instant = False
 
-        if period_instance.__start_date is None or period_instance.__end_date is None:
+        if (
+            period_instance.__start_date is None
+            or period_instance.__end_date is None
+        ):
             raise ValueError(
                 f"Start date '{start_date}' or end date '{end_date}' is None."
             )

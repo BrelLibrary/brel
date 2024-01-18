@@ -1,11 +1,10 @@
 from abc import ABC, abstractmethod
 from time import time
-
-from brel import QName, Fact, Component, QNameNSMap
-from brel.reportelements import IReportElement
-from brel.networks import INetwork
-
 from typing import final
+
+from brel import Component, Fact, QName, QNameNSMap
+from brel.networks import INetwork
+from brel.reportelements import IReportElement
 
 DEBUG = False
 LOADING_INFO = True

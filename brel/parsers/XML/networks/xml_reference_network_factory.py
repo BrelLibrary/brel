@@ -7,21 +7,22 @@ ReferenceNetworkFactories are used to create ReferenceNetworks from XML.
 @date: 04 January 2024
 """
 
+from typing import cast
+
 import lxml
 import lxml.etree
-from typing import cast
-from brel import QName, QNameNSMap, Fact
+
+from brel import Fact, QName, QNameNSMap
 from brel.networks import (
     INetwork,
     INetworkNode,
-    ReferenceNetworkNode,
     ReferenceNetwork,
+    ReferenceNetworkNode,
 )
+from brel.parsers.utils import get_str
+from brel.parsers.XML.networks import IXMLNetworkFactory
 from brel.reportelements import *
 from brel.resource import BrelReference, IResource
-
-from brel.parsers.XML.networks import IXMLNetworkFactory
-from brel.parsers.utils import get_str
 
 
 class ReferenceNetworkFactory(IXMLNetworkFactory):

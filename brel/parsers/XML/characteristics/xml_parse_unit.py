@@ -10,11 +10,13 @@ This module contains the function for parsing an xml subtree into a Unit charact
 ====================
 """
 
-import lxml.etree
-from brel import QName, QNameNSMap
-from brel.characteristics import UnitCharacteristic, ICharacteristic, Aspect
-from brel.reportelements import Concept
 from typing import Callable, cast
+
+import lxml.etree
+
+from brel import QName, QNameNSMap
+from brel.characteristics import Aspect, ICharacteristic, UnitCharacteristic
+from brel.reportelements import Concept
 
 
 def parse_unit_measure_from_xml(

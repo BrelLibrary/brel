@@ -8,13 +8,14 @@ It only parses the syntactic context, therefore the Unit and Concept characteris
 @date: 19 December 2023
 """
 
-import lxml.etree
-from brel import QName, Context
-from brel.characteristics import *
-from brel.reportelements import *
-from brel.parsers.XML.characteristics import *
+from typing import Callable, cast
 
-from typing import cast, Callable
+import lxml.etree
+
+from brel import Context, QName
+from brel.characteristics import *
+from brel.parsers.XML.characteristics import *
+from brel.reportelements import *
 
 
 def parse_context_xml(

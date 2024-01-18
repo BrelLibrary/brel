@@ -2,11 +2,11 @@
 This module contains the PresentationNetwork class.
 """
 
+from typing import cast
+
 from brel import QName
 from brel.networks import INetwork, INetworkNode, PresentationNetworkNode
 from brel.reportelements import *
-
-from typing import cast
 
 
 class PresentationNetwork(INetwork):

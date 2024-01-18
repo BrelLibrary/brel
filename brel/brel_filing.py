@@ -43,21 +43,21 @@ Once a filing is loaded, it can be queried for its facts, report elements, netwo
 
 import os
 import zipfile
-from typing import cast, Callable, TypeGuard
+from typing import Callable, TypeGuard, cast
 
-from brel import Fact, FilingFilter, Component, QName
+from brel import Component, Fact, FilingFilter, QName
 from brel.characteristics import Aspect
+from brel.networks import INetwork
+from brel.parsers import IFilingParser, XMLFilingParser
 from brel.reportelements import (
-    IReportElement,
     Abstract,
     Concept,
     Dimension,
     Hypercube,
+    IReportElement,
     LineItems,
     Member,
 )
-from brel.networks import INetwork
-from brel.parsers import IFilingParser, XMLFilingParser
 
 DEBUG = False
 

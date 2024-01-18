@@ -1,10 +1,12 @@
+from abc import ABC, abstractmethod
+
 import lxml
 import lxml.etree
-from abc import ABC, abstractmethod
-from brel import QName, QNameNSMap, Fact
+
+from brel import Fact, QName, QNameNSMap
+from brel.networks import INetwork, INetworkNode
 from brel.reportelements import IReportElement
 from brel.resource import IResource
-from brel.networks import INetwork, INetworkNode
 
 
 class IXMLNetworkFactory(ABC):

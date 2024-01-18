@@ -8,12 +8,13 @@ It parses XBRL in the XML syntax.
 """
 
 import lxml.etree
-from ..dts import IFileManager
-from brel.reportelements import IReportElement, Dimension
-from brel import QName, QNameNSMap
 
-from .xml_report_element_factory import XMLReportElementFactory
+from brel import QName, QNameNSMap
 from brel.parsers.utils import get_str
+from brel.reportelements import Dimension, IReportElement
+
+from ..dts import IFileManager
+from .xml_report_element_factory import XMLReportElementFactory
 
 
 def parse_report_elements_xml(

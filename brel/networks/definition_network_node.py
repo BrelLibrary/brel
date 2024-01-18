@@ -13,12 +13,11 @@ Note: the balance consistency check is not implemented here, but in the Definiti
 ====================
 """
 
-from brel.networks import INetworkNode
-from brel.reportelements import IReportElement
-from brel import Fact, QName
-
 from typing import cast
 
+from brel import Fact, QName
+from brel.networks import INetworkNode
+from brel.reportelements import IReportElement
 from brel.resource import IResource
 
 

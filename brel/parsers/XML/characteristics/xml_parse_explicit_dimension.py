@@ -6,12 +6,17 @@ Contains the xml parser for parsing an explicit dimension characteristic from an
 :date: 19 December 2023
 """
 
-import lxml.etree
 from typing import Callable, cast
+
+import lxml.etree
+
 from brel import QName
-from brel.characteristics import Aspect, ICharacteristic
-from brel.reportelements import Dimension, Member, IReportElement
-from brel.characteristics import ExplicitDimensionCharacteristic
+from brel.characteristics import (
+    Aspect,
+    ExplicitDimensionCharacteristic,
+    ICharacteristic,
+)
+from brel.reportelements import Dimension, IReportElement, Member
 
 
 def parse_explicit_dimension_from_xml(

@@ -7,8 +7,10 @@ It parses XBRL in the XML syntax.
 @date: 20 December 2023
 """
 
-import lxml.etree
 from typing import Callable, cast
+
+import lxml.etree
+
 from brel.characteristics import Aspect, ICharacteristic, PeriodCharacteristic
 
 

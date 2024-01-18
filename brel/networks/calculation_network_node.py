@@ -17,12 +17,11 @@ For more on the methods inherited from the INetworkNode interface, see the [INet
 =================
 """
 
-from brel.networks import INetworkNode
-from brel.reportelements import IReportElement, Concept
-from brel import QName, Fact
-
 from typing import cast
 
+from brel import Fact, QName
+from brel.networks import INetworkNode
+from brel.reportelements import Concept, IReportElement
 from brel.resource import IResource
 
 

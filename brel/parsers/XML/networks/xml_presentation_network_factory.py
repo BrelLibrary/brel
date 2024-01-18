@@ -8,20 +8,22 @@ This module is usedc by the XML network parser to build presentation networks.
 @date: 04 January 2024
 """
 
+from typing import cast
+
 import lxml
 import lxml.etree
-from typing import cast
-from brel import QName, BrelLabelRole, QNameNSMap, Fact
-from brel.reportelements import IReportElement, Abstract, Hypercube, LineItems
+
+from brel import BrelLabelRole, Fact, QName, QNameNSMap
 from brel.networks import (
     INetwork,
     INetworkNode,
     PresentationNetwork,
     PresentationNetworkNode,
 )
-from brel.resource import IResource
-from brel.parsers.XML.networks import IXMLNetworkFactory
 from brel.parsers.utils import get_str
+from brel.parsers.XML.networks import IXMLNetworkFactory
+from brel.reportelements import Abstract, Hypercube, IReportElement, LineItems
+from brel.resource import IResource
 
 
 class PresentationNetworkFactory(IXMLNetworkFactory):

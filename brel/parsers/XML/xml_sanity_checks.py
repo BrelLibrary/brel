@@ -12,10 +12,12 @@ It includes the following checks:
 @date: 04 January 2024
 """
 
+from typing import TypeGuard
+
 import lxml.etree
+
 from brel import QNameNSMap
 from brel.parsers.dts import XMLFileManager
-from typing import TypeGuard
 
 
 def check_duplicate_rolerefs(

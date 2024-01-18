@@ -1,9 +1,9 @@
-from brel import QName
-from brel.networks import INetwork, INetworkNode, DefinitionNetworkNode
-from brel.reportelements import *
 from collections import defaultdict
-
 from typing import cast
+
+from brel import QName
+from brel.networks import DefinitionNetworkNode, INetwork, INetworkNode
+from brel.reportelements import *
 
 
 class DefinitionNetwork(INetwork):

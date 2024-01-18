@@ -13,8 +13,9 @@ The network node interface also contains some utility methods for working with n
 """
 
 from abc import ABC, abstractmethod
+
+from brel import Fact, QName
 from brel.reportelements import IReportElement
-from brel import QName, Fact
 from brel.resource import IResource
 
 

@@ -12,10 +12,10 @@ A label network node are references to either the report elements or the labels 
 ====================
 """
 
-from brel.resource import BrelLabel
+from brel import Fact, QName
 from brel.networks import INetworkNode
 from brel.reportelements import IReportElement
-from brel import QName, Fact
+from brel.resource import BrelLabel
 
 DEBUG = False
 
@@ -44,7 +44,9 @@ class LabelNetworkNode(INetworkNode):
     # First class citizens
     def get_report_element(self) -> IReportElement:
         if not isinstance(self.__points_to, IReportElement):
-            raise ValueError("LabelNetworkNodes do not point to report elements")
+            raise ValueError(
+                "LabelNetworkNodes do not point to report elements"
+            )
         return self.__points_to
 
     def get_resource(self) -> BrelLabel:

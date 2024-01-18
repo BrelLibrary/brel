@@ -7,12 +7,17 @@ It parses XBRL in the XML syntax.
 @date: 20 December 2023
 """
 
-import lxml.etree
 from typing import Callable, cast
+
+import lxml.etree
+
 from brel import QName
-from brel.characteristics import Aspect, ICharacteristic
-from brel.reportelements import Dimension, Member, IReportElement
-from brel.characteristics import TypedDimensionCharacteristic
+from brel.characteristics import (
+    Aspect,
+    ICharacteristic,
+    TypedDimensionCharacteristic,
+)
+from brel.reportelements import Dimension, IReportElement, Member
 
 
 def parse_typed_dimension_from_xml(

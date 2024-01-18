@@ -10,12 +10,12 @@ Contains the class ReferenceNetworkNode, which represents a reference network no
 ====================
 """
 
-from brel.resource import BrelReference, IResource
+from typing import cast
+
+from brel import Fact, QName
 from brel.networks import INetworkNode
 from brel.reportelements import IReportElement
-from brel import Fact, QName
-
-from typing import cast
+from brel.resource import BrelReference, IResource
 
 
 class ReferenceNetworkNode(INetworkNode):
@@ -45,7 +45,9 @@ class ReferenceNetworkNode(INetworkNode):
     # First class citizens
     def get_report_element(self) -> IReportElement:
         if not isinstance(self.__points_to, IReportElement):
-            raise ValueError("ReferenceNetworkNodes do not point to report elements")
+            raise ValueError(
+                "ReferenceNetworkNodes do not point to report elements"
+            )
         return self.__points_to
 
     def get_resource(self) -> IResource:

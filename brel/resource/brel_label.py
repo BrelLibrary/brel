@@ -1,9 +1,11 @@
+from enum import Enum
+from typing import cast
+
 import lxml
 import lxml.etree
-from enum import Enum
+
 from brel import QName, QNameNSMap
 from brel.resource import IResource
-from typing import cast
 
 
 class BrelLabelRole(Enum):

@@ -6,13 +6,13 @@ This module contains the XMLReportElementFactory class. It is responsible for cr
 @date: 18 December 2023
 """
 
+from typing import cast
+
 import lxml
 import lxml.etree
 
-from brel import QName, BrelLabel
+from brel import BrelLabel, QName
 from brel.reportelements import *
-
-from typing import cast
 
 
 class XMLReportElementFactory:

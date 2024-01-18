@@ -1,8 +1,8 @@
+from typing import cast
+
 from brel import QName
 from brel.networks import INetwork, INetworkNode, LabelNetworkNode
 from brel.reportelements import *
-
-from typing import cast
 
 
 class LabelNetwork(INetwork):

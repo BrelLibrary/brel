@@ -10,7 +10,7 @@ This module contains the Abstract class. An abstract a kind of report element th
 ====================
 """
 
-from brel import QName, BrelLabel
+from brel import BrelLabel, QName
 from brel.reportelements import IReportElement
 
 

@@ -1,5 +1,6 @@
 import lxml
 import lxml.etree
+
 from brel import QName, QNameNSMap
 from brel.resource import IResource
 

@@ -1,8 +1,8 @@
-from brel import QName
-from brel.networks import INetwork, INetworkNode, FootnoteNetworkNode
-from brel.reportelements import *
-
 from typing import cast
+
+from brel import QName
+from brel.networks import FootnoteNetworkNode, INetwork, INetworkNode
+from brel.reportelements import *
 
 
 class FootnoteNetwork(INetwork):

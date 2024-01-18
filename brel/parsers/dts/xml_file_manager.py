@@ -15,16 +15,15 @@ DEBUG = False
 
 import os
 import re
-from typing import Any
+from collections import defaultdict
+from io import BytesIO
+from typing import Any, cast
+
 import lxml
 import lxml.etree
 import requests
-from io import BytesIO
 
 from brel.parsers.dts import IFileManager
-
-from collections import defaultdict
-from typing import cast
 
 
 class XMLFileManager(IFileManager):

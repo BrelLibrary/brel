@@ -9,22 +9,23 @@ At the time of writing, footnote nodes are the only nodes that can point to fact
 @date: 04 January 2024
 """
 
+from typing import cast
+
 import lxml
 import lxml.etree
-from typing import cast
-from brel import QName, QNameNSMap, Fact
+
+from brel import Fact, QName, QNameNSMap
 from brel.networks import (
+    FootnoteNetwork,
+    FootnoteNetworkNode,
     INetwork,
     INetworkNode,
-    FootnoteNetworkNode,
-    FootnoteNetwork,
 )
+from brel.parsers.utils import get_str
+from brel.parsers.XML.networks import IXMLNetworkFactory
 from brel.reportelements import *
 from brel.reportelements import IReportElement
-from brel.resource import IResource, BrelFootnote
-
-from brel.parsers.XML.networks import IXMLNetworkFactory
-from brel.parsers.utils import get_str
+from brel.resource import BrelFootnote, IResource
 
 
 class FootnoteNetworkFactory(IXMLNetworkFactory):

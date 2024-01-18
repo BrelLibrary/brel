@@ -7,16 +7,16 @@ It parses XBRL in the XML syntax.
 @date: 20 December 2023
 """
 
+from typing import cast
+
 import lxml
 import lxml.etree
 
-from brel.reportelements import IReportElement, Concept
+from brel import Context, Fact, QName, QNameNSMap
 from brel.characteristics import *
-from brel import QName, QNameNSMap, Context, Fact
-from typing import cast
-
 from brel.parsers.XML import parse_context_xml
 from brel.parsers.XML.characteristics import parse_unit_from_xml
+from brel.reportelements import Concept, IReportElement
 
 
 def parse_fact_from_xml(

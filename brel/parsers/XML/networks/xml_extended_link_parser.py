@@ -9,28 +9,27 @@ https://www.xbrl.org/specification/gnl/rec-2009-06-22/gnl-rec-2009-06-22.html
 """
 
 
-import lxml.etree
 import itertools
+from collections import defaultdict
+from typing import Any, cast
 
-from brel import QName, QNameNSMap, Fact
+import lxml.etree
+
+from brel import Fact, QName, QNameNSMap
 from brel.networks import *
+from brel.parsers import XMLFileManager
+from brel.parsers.XML.networks import (
+    CalculationNetworkFactory,
+    FootnoteNetworkFactory,
+    IXMLNetworkFactory,
+    LabelNetworkFactory,
+    LogicalDefinitionNetworkFactory,
+    PhysicalDefinitionNetworkFactory,
+    PresentationNetworkFactory,
+    ReferenceNetworkFactory,
+)
 from brel.reportelements import *
 from brel.resource import *
-from brel.parsers import XMLFileManager
-
-from typing import cast, Any
-from collections import defaultdict
-
-from brel.parsers.XML.networks import (
-    IXMLNetworkFactory,
-    PresentationNetworkFactory,
-    CalculationNetworkFactory,
-    PhysicalDefinitionNetworkFactory,
-    LogicalDefinitionNetworkFactory,
-    LabelNetworkFactory,
-    ReferenceNetworkFactory,
-    FootnoteNetworkFactory,
-)
 
 
 def get_object_from_reference(

@@ -31,15 +31,16 @@ Read more about Aspects and Characteristics in
 ====================
 """
 
-from brel.characteristics import Aspect
+from typing import cast
+
 from brel.characteristics import (
-    ICharacteristic,
+    Aspect,
     ConceptCharacteristic,
-    PeriodCharacteristic,
     EntityCharacteristic,
+    ICharacteristic,
+    PeriodCharacteristic,
     UnitCharacteristic,
 )
-from typing import cast
 
 
 class Context:

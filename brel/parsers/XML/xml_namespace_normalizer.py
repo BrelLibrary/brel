@@ -29,9 +29,9 @@ More precisely, it does the following:
 ====================
 """
 
-from collections import defaultdict
-import re
 import json
+import re
+from collections import defaultdict
 from importlib.resources import path
 
 DEBUG = False

@@ -7,9 +7,11 @@ It parses XBRL in the XML syntax.
 @date: 20 December 2023
 """
 
-import lxml.etree
 from typing import Callable, cast
-from brel.characteristics import Aspect, ICharacteristic, EntityCharacteristic
+
+import lxml.etree
+
+from brel.characteristics import Aspect, EntityCharacteristic, ICharacteristic
 
 
 def parse_entity_from_xml(

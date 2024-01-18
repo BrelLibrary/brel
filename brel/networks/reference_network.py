@@ -10,11 +10,11 @@ Contains the ReferenceNetwork class, which acts as a wrapper for reference netwo
 ====================
 """
 
+from typing import cast
+
 from brel import QName
 from brel.networks import INetwork, INetworkNode, ReferenceNetworkNode
 from brel.reportelements import *
-
-from typing import cast
 
 
 class ReferenceNetwork(INetwork):

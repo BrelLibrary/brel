@@ -8,21 +8,22 @@ This module is usedc by the XML network parser to build physical label networks.
 @date: 04 January 2024
 """
 
+from typing import cast
+
 import lxml
 import lxml.etree
-from typing import cast
-from brel import QName, QNameNSMap, Fact
+
+from brel import Fact, QName, QNameNSMap
 from brel.networks import (
     INetwork,
     INetworkNode,
     LabelNetwork,
     LabelNetworkNode,
 )
+from brel.parsers.utils import get_str
+from brel.parsers.XML.networks import IXMLNetworkFactory
 from brel.reportelements import IReportElement
 from brel.resource import BrelLabel, IResource
-
-from brel.parsers.XML.networks import IXMLNetworkFactory
-from brel.parsers.utils import get_str
 
 
 class LabelNetworkFactory(IXMLNetworkFactory):

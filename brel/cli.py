@@ -2,13 +2,13 @@
 CLI interface for brel project.
 """
 
-import os
 import argparse
-from brel import *
-
+import os
 
 # import argparser
 import sys
+
+from brel import *
 
 
 def main():  # pragma: no cover

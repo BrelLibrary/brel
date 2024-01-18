@@ -12,30 +12,28 @@ It is responsible for taking a list of filepaths to XBRL files and parsing them 
 """
 
 import os
+from typing import Any
+
 import lxml
 import lxml.etree
 
-from brel.reportelements import IReportElement
-from brel import QName, Fact, Component, QNameNSMap
+from brel import Component, Fact, QName, QNameNSMap
+from brel.networks import INetwork
 from brel.parsers import IFilingParser
 from brel.parsers.dts import XMLFileManager
-from brel.networks import INetwork
 from brel.parsers.utils import get_all_nsmaps
-
-from .XML.networks.xml_networks_parser import parse_networks_from_xmls
 from brel.parsers.XML import (
-    parse_components_xml,
-    parse_report_elements_xml,
-    parse_facts_xml,
-    normalize_nsmap,
-)
-from brel.parsers.XML import (
+    check_duplicate_arcs,
     check_duplicate_rolerefs,
     check_roleref_pointers,
-    check_duplicate_arcs,
+    normalize_nsmap,
+    parse_components_xml,
+    parse_facts_xml,
+    parse_report_elements_xml,
 )
+from brel.reportelements import IReportElement
 
-from typing import Any
+from .XML.networks.xml_networks_parser import parse_networks_from_xmls
 
 DEBUG = False
 

@@ -7,7 +7,8 @@ Module for pretty printing facts as a table to the console.
 """
 
 from prettytable import PrettyTable
-from brel import Fact, Aspect
+
+from brel import Aspect, Fact
 
 
 def pprint_facts(facts: list[Fact]):

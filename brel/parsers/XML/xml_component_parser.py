@@ -10,19 +10,19 @@ It does not parse the networks, but it links components to networks.
 
 =================
 """
+from typing import Callable
+
 import lxml
 import lxml.etree
 
-from brel.reportelements import IReportElement
-from brel import QName, QNameNSMap, Component
+from brel import Component, QName, QNameNSMap
 from brel.networks import (
-    PresentationNetwork,
     CalculationNetwork,
     DefinitionNetwork,
     INetwork,
+    PresentationNetwork,
 )
-
-from typing import Callable
+from brel.reportelements import IReportElement
 
 
 def parse_component_from_xml(

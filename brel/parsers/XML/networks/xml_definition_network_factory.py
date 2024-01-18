@@ -8,21 +8,22 @@ This module is usedc by the XML network parser to build physical definition netw
 @date: 04 January 2024
 """
 
+from typing import cast
+
 import lxml
 import lxml.etree
-from typing import cast
-from brel import QName, QNameNSMap, Fact
+
+from brel import Fact, QName, QNameNSMap
 from brel.networks import (
+    DefinitionNetwork,
+    DefinitionNetworkNode,
     INetwork,
     INetworkNode,
-    DefinitionNetworkNode,
-    DefinitionNetwork,
 )
+from brel.parsers.utils import get_str
+from brel.parsers.XML.networks import IXMLNetworkFactory
 from brel.reportelements import *
 from brel.resource import IResource
-
-from brel.parsers.XML.networks import IXMLNetworkFactory
-from brel.parsers.utils import get_str
 
 
 class PhysicalDefinitionNetworkFactory(IXMLNetworkFactory):
