@@ -1,4 +1,17 @@
-from brel import BrelLabel, QName
+"""
+This module contains the LineItems class.
+
+=================
+
+- author: Robin Schmidiger
+- version: 0.2
+- date: 18 January 2024
+
+=================
+"""
+
+from brel import QName
+from brel.resource import BrelLabel
 from brel.reportelements import IReportElement
 
 
@@ -9,13 +22,13 @@ class LineItems(IReportElement):
 
     def get_name(self) -> QName:
         """
-        @return QName: the name of the line items as a QName
+        :returns QName: the name of the line items as a QName
         """
         return self.__name
 
     def get_labels(self) -> list[BrelLabel]:
         """
-        @return list[BrelLabel]: the labels of the line items
+        :returns list[BrelLabel]: the labels of the line items
         """
         return self.__labels
 
@@ -23,12 +36,12 @@ class LineItems(IReportElement):
         """
         Add a label to the line items. This method is used by the parser and should not be used by the user.
         However, if you want to add a label to a line items, you can use this method.
-        @param label: the label to add to the line items
+        :param label: the label to add to the line items
         """
         self.__labels.append(label)
 
     def __str__(self) -> str:
         """
-        @return str: the name of the line items as a string
+        :returns str: the name of the line items as a string
         """
         return self.__name.__str__()

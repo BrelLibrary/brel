@@ -15,7 +15,8 @@ For more information on concepts, see the [**XBRL 2.1 specification**](https://s
 import lxml
 import lxml.etree
 
-from brel import BrelLabel, QName
+from brel import QName
+from brel.resource import BrelLabel
 from brel.reportelements import IReportElement
 
 

@@ -23,14 +23,15 @@ and together they form the namespace \texttt{us-gaap}.
     \end{itemize}
 \end{figure}
 
-QNames are used in the XBRL taxonomy to identify concepts, facts and other elements. Since they provide a robust and easy way to identify elements,
+QNames are used in XBRL to identify concepts, facts and other elements. Since they provide a robust and easy way for identifying elements,
 we decided to use them in our API as well. However, there is one important difference between our QNames and the QNames used in the XBRL taxonomy:
 Currently, most XBRL filings are based on XML, where namespace prefixes are defined on a per-element basis.
 Therefore, the mapping from namespace prefixes to namespace URIs depends on where the QName is used. 
 
 In our API, there is a fixed, global mapping from namespace prefixes to namespace URIs.
 The motivation behind this decision is that it makes the API easier to use.
-The how and why of this mapping will be explained in section \ref{sec:qnames_implementation}.
+% The how and why of this mapping will be explained in section \ref{sec:qnames_implementation}.
+More details about this mapping will be explained in section \ref{sec:qnames_implementation}.
 
 
 % Example of us-gaap and how it points to 2021 at one point and to 2022 at another point

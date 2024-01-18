@@ -4,7 +4,8 @@
 Up to this point, all concepts in the XBRL taxonomy are treated as independent entities.
 The whole filing can be viewed as an unordered set of facts with no relation between them.
 However, in reality, concepts are not independent of each other.
-Instead, concepts are often related to each other in some way.
+Instead, they are related to each other in some way.
+% Instead, concepts are often related to each other in some way.
 
 For example, the concepts \texttt{Assets} and \texttt{Liabilities} are related to each other in the sense that they are both part of the concept \texttt{Balance Sheet}.
 Furthermore, the concept \texttt{Assets} can be further divided into the concepts \texttt{Current Assets} and \texttt{Non-Current Assets}.
@@ -26,9 +27,9 @@ A reader with a basic understanding of mathematics will recognize that the above
 More specifically, the above example is a tree.
 Graphs are commonly used to represent relations between entities.
 In the context of XBRL, graphs are used to represent all kinds of relations between concepts, facts, and other elements of an XBRL filing.
-From now on, I will refer to graphs that represent relations between concepts as \texttt{networks}.
+From now on, I will refer to graphs that represent relations between XBRL elements as \texttt{networks}.
 
-XBRL commonly refers uses the term \texttt{Extended Link} or \texttt{Link} to refer to networks or parts of networks.
+XBRL commonly uses the term \texttt{Extended Link} or \texttt{Link} to refer to networks or parts of networks.
 I will use the term \texttt{network} throughout this thesis, since it is more intuitive and less ambiguous.
 When I refer to a \texttt{link}, I am referring to something specific in the XBRL specification.
 When I refer to a \texttt{network}, I am referring to the general concept of a network.
@@ -45,9 +46,8 @@ The XBRL 2.1 specification defines 6 built in types of networks\cite{xbrl21_term
     \item \texttt{link:presentationLink}: A network that represents the hierarchy of concepts in a report. An example of this can be seen in figure \ref{fig:example_visualization_network_xbrl}.
     \item \texttt{link:calculationLink}: A network that represents how concepts are calculated from other concepts. 
     For example, in figure \ref{fig:example_visualization_network_xbrl}, the concept \texttt{Assets} is calculated as the sum of the concepts "Current Assets" and "Non-Current Assets".
-    \item \texttt{link:definitionLink}: A network that represents the relations between concepts and their definitions. 
-    For example, there might be a concept \texttt{TotalAssets} that has the same semantic meaning as the concept \texttt{Assets}. 
-    A definition network would represent that the two concepts are aliases of each other.
+    \item \texttt{link:definitionLink}: A network that represents the typing relations between concepts.
+    The meaning of this network will become clearer in section \ref{sec:definitionLink}.
     \item \texttt{link:labelLink}: A network that associates report elements with human-readable labels.
     \item \texttt{link:referenceLink}: A network that links report elements to external resources. 
     For example, the concept \texttt{Total Shareholder Return Amount} might have an official definition in the SEC's Code of Federal Regulations (CFR).
@@ -63,14 +63,21 @@ However, in practice, networks in XBRL are almost always directed acyclic graphs
 
 In the subsequent sections, I will describe how networks are implemented in XBRL on a conceptual level. 
 
-TODO: add a simple explanation of labels since I use them throughout this chapter
+% TODO: add a simple explanation of labels since I use them throughout this chapter
+Even though labels will be covered in more detail in section \ref{sec:labelLink}, I will already use them throughout this chapter.
+Labels are used to associate report elements with human-readable labels.
+For example, the concept \texttt{us-gaap:CurrentAssets} might have the label "Current Assets" in the English language.
+The main motivation behind this editorial decision is that it makes the chapter easier to read.
+
+
 
 \subsection{presentationLink}
 
 The \texttt{link:presentationLink} network is used to represent the hierarchy of concepts in a report.
-I will describe presentationLinks in more detail compared to the other networks, since the other network types are implemented in a similar way.
+I will describe presentationLinks in more detail compared to the other networks, 
+since all other network types are implemented in a similar fashion as presentationLinks.
 
-XBRL implements all its networks as a set of directed edges called \texttt{arcs}.
+XBRL implements all its networks as a list of directed edges called \texttt{arcs}.
 Each arc has a source and a target. Duplicate arcs are not allowed.
 
 Taking the example from figure \ref{fig:example_visualization_network_xbrl}, the presentationLink network would be represented as the following edge list:
@@ -92,9 +99,12 @@ Besides presentationArcs, presentationLinks contain so called "locators" \texttt
 In case of a presentaton network, the locators are references to the concepts in the XBRL taxonomy. 
 In other networks, locators can be references to other elements, such as facts.
 
-In case of the XML syntax, the first \texttt{link:presentationArc} "Balance Sheet -> Assets" would be represented as follows:
+% In case of the XML syntax, the first \texttt{link:presentationArc} "Balance Sheet -> Assets" would be represented as follows:
+Going back to the example in figure \ref{fig:example_visualization_network_xbrl_edge_list}, 
+the first arc \texttt{Balance Sheet -> Assets} would be represented as follows in XML syntax:
 
 \begin{figure}[H]
+    \centering
     \begin{lstlisting}[language=XML]
         <link:loc 
             xlink:type="locator" 
@@ -118,28 +128,53 @@ In case of the XML syntax, the first \texttt{link:presentationArc} "Balance Shee
     \label{fig:example_presentation_arc_xml}
 \end{figure}
 
-The \texttt{xlink:from} attribute of the \texttt{link:presentationArc} element references the \texttt{xlink:label} attribute of the \texttt{link:loc} element that represents the source of the arc.
-The same applies to the \texttt{xlink:to} attribute of the \texttt{link:presentationArc} element.
+The XML snippet in figure \ref{fig:example_presentation_arc_xml} contains two locators and one arc.
+The two locators represent the nodes of the arc, referencing the concepts \texttt{BalanceSheet} and \texttt{Assets} respectively.
+The arc represents the edge between the two nodes.
 
-Both locators contain a \texttt{xlink:href} attribute that references the concept in the XBRL taxonomy that the locator represents.
-This reference can even point to a different file, as shown in figure \ref{fig:example_presentation_arc_xml}.
+Let us look at the XML snippet \ref{fig:example_presentation_arc_xml} step by step.
 
-The \texttt{xlink:type} on the elements helps the XML parser to determine the type of the element.
-Note that the XML tag \texttt{link:presentationArc} already hints at the fact that this element is a type of arc.
-However, the \texttt{xlink:type} attribute is still required and provides parsers with a more reliable way to determine if an element is an arc, a locator, or something else. 
+\begin{itemize}
+    \item \texttt{Specify types}: The \texttt{xlink:type} attribute specifes the types for both the locators and the arc.
+    For the former, the type is \texttt{locator}, whereas for the latter, the type is \texttt{arc}.
+    \item \texttt{Connect nodes and edges}: Both locators contain an \texttt{xlink:label} attribute that uniquely identifies the locator.
+    The arc links the two locators together using the \texttt{xlink:from} and \texttt{xlink:to} attributes.
+    \item \texttt{Order of edges}: The outgoing edges of a node are ordered using the \texttt{order} attribute of the arc.
+    \item \texttt{Specify arcrole}: The \texttt{xlink:arcrole} attribute of the arc specifies the kind of relation between the source and the target of the arc.
+    In case of a presentationLink, the \texttt{xlink:arcrole} attribute is always set to \texttt{parent-child}.\label{sec:arcrole}
+\end{itemize}
 
-The \texttt{order} attribute of the \texttt{link:presentationArc} element specifies in which order the children of the source of the arc should be displayed.
+Locators and arcs form the basic building blocks of all networks in XBRL, notably presentationLinks.
+A presentationLink is just a container for locators and arcs.
+To build a fully featured presentation network such as in figure \ref{fig:example_visualization_network_xbrl},
+we need to add more locators and arcs to the presentationLink.
+To avoid cluttering the chapter with XML snippets, I will only describe the XML syntax for the first arc in the network.
 
-\label{sec:arcrole}
-Finally, the \texttt{xlink:arcrole} attribute of the \texttt{link:presentationArc} element specifies the kind of relation between the source and the target of the arc.
-In case of a presentationLink, the \texttt{xlink:arcrole} attribute is always set to \texttt{parent-child}.
-For different networks, the \texttt{xlink:arcrole} attribute can be set to different values.
-It can even be set to different values for different arcs in the same network.
+% The \texttt{xlink:from} attribute of the \texttt{link:presentationArc} element references the \texttt{xlink:label} attribute of the \texttt{link:loc} element that represents the source of the arc.
+% The same applies to the \texttt{xlink:to} attribute of the \texttt{link:presentationArc} element.
 
-XBRL packages the set of arcs and locators into a \texttt{link:presentationLink} element.
-This element contains a \texttt{xlink:role} attribute that specifies the role of the presentationLink.
-Roles are a more advanced concept that I will introduce in section \ref{sec:roles}.
-For now, think of the \texttt{link:presentationLink} element as a container for the arcs and locators.
+% Both locators contain a \texttt{xlink:href} attribute that references the concept in the XBRL taxonomy that the locator represents.
+% This reference can even point to a different file, as shown in figure \ref{fig:example_presentation_arc_xml}.
+
+% The \texttt{xlink:type} on the elements helps the XML parser to determine the type of the element.
+% Note that the XML tag \texttt{link:presentationArc} already hints at the fact that this element is a type of arc.
+% However, the \texttt{xlink:type} attribute is still required and provides parsers with a more reliable way to determine if an element is an arc, a locator, or something else. 
+
+% The \texttt{order} attribute of the \texttt{link:presentationArc} element specifies in which order the children of the source of the arc should be displayed.
+
+
+% \section{Arcroles}
+% \label{sec:arcrole}
+% The \texttt{xlink:arcrole} attribute of the \texttt{link:presentationArc} element specifies the kind of relation between the source and the target of the arc.
+% % In case of a presentationLink, the \texttt{xlink:arcrole} attribute is always set to \texttt{parent-child}.
+% Even though presentationLinks only allow the \texttt{parent-child} arcrole, other networks allow different arcroles.
+% % For different networks, the \texttt{xlink:arcrole} attribute can be set to different values.
+% It can even be set to different values for different arcs in the same network.
+
+% XBRL packages the set of arcs and locators into a \texttt{link:presentationLink} element.
+% This element contains a \texttt{xlink:role} attribute that specifies the role of the presentationLink.
+% Roles are a more advanced concept that I will introduce in section \ref{sec:roles}.
+% For now, think of the \texttt{link:presentationLink} element as a container for the arcs and locators.
 
 \subsection{Motivation for Report Elements}
 \label{sec:report_elements_motivation}
@@ -151,7 +186,8 @@ I have introduced concepts as the "what"-part of a fact.
 For example, if the company Foo reports a revenue of 1000 USD in 2019, the concept \texttt{Revenue} is the "what"-part of the fact.
 
 However, if we look at the presentation network in figure \ref{fig:example_visualization_network_xbrl}, not all of the elements in the network can have a fact associated with them.
-For example, the concept \texttt{BalanceSheet} cannot have a fact associated with it.
+% For example, the concept \texttt{BalanceSheet} cannot have a fact associated with it.
+An example of this is the concept \texttt{BalanceSheet}.
 In XBRL, concepts that can not have a fact associated with them are called \texttt{Abstract}.
 
 The Open Information Model (OIM) combines abstracts and concepts using the term \texttt{report element}.
@@ -187,7 +223,7 @@ The main motivation behind calculation networks is so that XBRL processors can e
 In the case of our XBRL processor Brel, the main focus is on the latter. 
 Chapter 6.4 of "The XBRL Book" \cite{fourny2023xbrl} describes the different consistency checks in more detail.
 
-Concepts within a calculation network are computed as a weighted sum of their children.
+Facts that have a concept within a calculation network are computed as a weighted sum of their children.
 The \texttt{weight} attribute of the \texttt{link:calculationArc} element specifies the weight of the child in the sum.
 Additionally, facts can only be associated with concepts, not just any report element.
 Therefore, all locators in a calculation network are references to concepts.
@@ -215,6 +251,7 @@ If both concepts have the same \texttt{balance}, then their connecting arc must 
 
 A network that is consistent with the balance and weight constraints is called a \texttt{balance consistent network}.\cite{fourny2023xbrl}
 
+\label{sec:roll_up_consistency}
 Balance consistency is not the only kind of consistency that calculation networks can be checked for.
 Another kind of consistency is \texttt{roll-up consistency} which comes in two flavors: \texttt{simple roll-up consistency} and \texttt{nested roll-up consistency}. 
 
@@ -237,7 +274,10 @@ It contains the arc \texttt{Assets [Abstract] -> Assets}.
 
 Let us visualize this example in figure \ref{fig:example_roll_up_consistency}, 
 which shows the calculation network and the presentation network side by side.
-The example is expanded a bit and also contains the concepts \texttt{UBS Savings Account}, \texttt{Raiffeisen Savings Account} and \texttt{Liabilities}.
+The two networks are roll-up consistent with each other.
+The example is expanded a bit and also contains the concepts \texttt{UBS Savings Account}, 
+\texttt{Raiffeisen Savings Account} and \texttt{Liabilities}.
+Note that the calculation network contains weights for the arcs, but the presentation network does not.
 
 \begin{figure}[H]
     \caption{Example of nested roll-up consistency}
@@ -284,7 +324,7 @@ To check for aggregation consistency, we need to know the values of the facts th
 So aggregation consistency checks a list of facts against a calculation network.
 
 Aggregation consistency is best explained using an example.
-Consider the following list of facts for the calculation network in figure \ref{fig:example_roll_up_consistency}:
+Consider the following list of facts \ref{fig:example_facts_aggregation_consistency} for the calculation network in figure \ref{fig:example_roll_up_consistency}:
 
 % \begin{figure}[H]
 %     \caption{List of facts for the calculation network in figure \ref{fig:example_roll_up_consistency}}
@@ -320,7 +360,7 @@ Consider the following list of facts for the calculation network in figure \ref{
     \end{tabular}
 \end{figure}
 
-The list of facts in figure \ref{fig:example_facts_aggregation_consistency} can be checked for aggregation consistency against the calculation network in figure \ref{fig:example_roll_up_consistency}.
+% The list of facts in figure \ref{fig:example_facts_aggregation_consistency} can be checked for aggregation consistency against the calculation network in figure \ref{fig:example_roll_up_consistency}.
 As you can see, there are two facts reported against each concept, one for 2022 and one for 2023.
 
 If there are multiple facts reported against a concept, then we iterate over them and "pin" all aspects except for the concept.
@@ -335,6 +375,7 @@ However, the list of facts is not aggregation consistent for the year 2023.
 The reason being that the value of the Savings Accounts minus the value of the Liabilities concept does not result in the value of the Assets concept.
 
 \subsection{definitionLink}
+\label{sec:definitionLink}
 
 TODO
 
@@ -343,8 +384,10 @@ TODO
 
 The \texttt{link:labelLink} network is used to associate report elements with human-readable labels.
 Thus far, we referred to report elements using their QName.
-Obviously, if you open an XBRL report in a viewer such as Arelle, you do not see any QNames for the concepts, abstracts, etc.
-Instead, you see human-readable labels.
+% Obviously, if we open an XBRL report in a viewer such as Arelle, we do not see any QNames for the concepts, abstracts, etc.
+% Instead, we see human-readable labels.
+Obviously, if we were to open an XBRL report in a viewer such as Arelle, we would not be greeted with QNames for the concepts, abstracts, etc.
+Instead, we would see nicely formatted human-readable labels.
 
 The following figure shows an example of the condensed consolidated statement of income of the Coca Cola Company\cite{ko2019q2} of Q2 2019 as displayed in Arelle\cite{arelle}.
 
@@ -359,7 +402,7 @@ Let us take a closer look at the first concept of the statement of income: Reven
 Even though the concept for the revenue is \texttt{us-gaap:Revenues}, Arelle displays it as "Net Operating Revenues".
 
 Arelle achieves this by using the \texttt{link:labelLink} network that is part of the XBRL report. 
-LabelLinks are another type of extended link that associates report elements with human-readable labels.
+LabelLinks are another type of extended link that associates report elements with strings.
 They are implemented in the same way as presentationLinks and calculationLinks, but this time they not only contain arcs and locators, but also \texttt{link:label} elements.
 
 From a semantic perspective, labels are different from report elements such as concepts and abstracts.
@@ -369,9 +412,11 @@ Resources are essentially metadata about report elements, facts, and other eleme
 The approach that XBRL takes to labels and other resources is quite interesting.
 Going back to our example in figure \ref{fig:coca_cola_2019_q2}, the definition of the concept \texttt{us-gaap:Revenues} happens independently from any labels that are associated with it.
 The labels are later associated with the concept using the \texttt{link:labelLink} network.
-In fact, each report element can have multiple labels associated with it.
-These labels can be in different languages or can have different roles.
-Roles are a covered later in this chapter.
+% In fact, each report element can have multiple labels associated with it.
+In fact, each report element can potentially have multiple labels in different languages or different degrees of verbosity.
+% These labels can be in different languages or can have different roles.
+To categorize labels, XBRL uses the concept of \texttt{roles}, which are covered in more detail later in this chapter.
+% Roles are a covered later in this chapter.
 We have already seen the \texttt{xlink:arcrole} attribute in the \texttt{link:presentationArc} \ref{sec:arcrole}.
 The role of a label works in a similar way.
 
@@ -386,7 +431,7 @@ It contains a few pieces of information:
     \item The \texttt{xlink:role} attribute, which specifies the role of the label. More on this later.
     \item The \texttt{xml:lang} attribute, which specifies the language of the label.
     \item The \texttt{xlink:type} which is always set to \texttt{resource}.
-    \item The actual label text. This is the human-readable label that is displayed in Arelle.
+    \item The actual label text. This is the human-readable label that Arelle displayed in figure \ref{fig:coca_cola_2019_q2}.
 \end{enumerate}
 
 For example, for the label "Net Operating Revenues" \ref{fig:coca_cola_2019_q2}, the following XML segment would be used:
@@ -407,8 +452,9 @@ For example, for the label "Net Operating Revenues" \ref{fig:coca_cola_2019_q2},
     \label{fig:example_label_xml}
 \end{figure}
 
-Note that we have omitted both the connecting arc and the locator in this example.
-Both arcs and locators work in the same way as in the \texttt{link:presentationLink} network.
+Note that we have omitted both the connecting arc and the locator in this example, 
+as they work in the same way as in all other networks.
+% Both arcs and locators work in the same way as in the \texttt{link:presentationLink} network.
 
 % % Arc and locator of the example above
 % <link:loc 
@@ -423,7 +469,7 @@ Both arcs and locators work in the same way as in the \texttt{link:presentationL
 %     order="1"/>
 
 The label in figure \ref{fig:example_label_xml} has the role \texttt{http://www.xbrl.org/2003/role/terseLabel}.
-This role is used to indicate that the label is a short, human-readable label.
+This role is used to indicate that the label text is short and concise.
 XBRL defines a few other roles of which the most important ones are:
 
 \begin{figure}[H]
@@ -442,7 +488,7 @@ XBRL defines a few other roles of which the most important ones are:
     \label{fig:important_label_roles}
 \end{figure}
 
-Note that the list of label roles is not exhaustive.
+Note that the \ref{fig:important_label_roles} is not exhaustive.
 There are many more label roles that are used in practice. 
 Users can even define their own label roles.
 For a complete list of standard label roles, refer to the XBRL 2.1 specification\cite{xbrl21_label_roles}.
@@ -458,17 +504,18 @@ Structurally, referenceLinks are implemented in the same way as LabelLinks - the
 The only difference is that the resources are references to external resources, not labels.
 Whereas labels are mostly just text, references are take the form of dictionaries.
 
-The following figure shows an example of a reference in the XML syntax with an accompanying locator and arc.
+The following figure shows an example of a reference in the XML syntax.
+Both the accompanying arc and locator are omitted for brevity.
+The only noteworthy changes to the arc are the tag \texttt{link:referenceArc} and the \texttt{xlink:arcrole} attribute, which is set to \texttt{concept-reference}.
+% The only noteworth change
 
 \begin{figure}[H]
     \begin{lstlisting}[language=XML]
-        <link:loc 
-            xlink:type="locator" 
-            xlink:href="#ecd_CoSelectedMeasureName" 
-            xlink:label="CoSelectedMeasureName"
-        />
-        
-        <link:reference xlink:type="resource" xlink:label="SECRegulationS-K229402v2vi" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+        <link:reference 
+          xlink:type="resource" 
+          xlink:label="SECRegulationS-K229402v2vi" 
+          xlink:role="http://www.xbrl.org/2003/role/presentationRef"
+        >
             <ref:Publisher>SEC</ref:Publisher>
             <ref:Name>Regulation S-K</ref:Name>
             <ref:Number>229</ref:Number>
@@ -477,26 +524,20 @@ The following figure shows an example of a reference in the XML syntax with an a
             <ref:Paragraph>2</ref:Paragraph>
             <ref:Subparagraph>vi</ref:Subparagraph>
         </link:reference>
-        
-        <link:referenceArc 
-            xlink:type="arc" 
-            xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" 
-            xlink:from="CoSelectedMeasureName" 
-            xlink:to="SECRegulationS-K229402v2vi" 
-            priority="10"
-        />
     \end{lstlisting}
     \caption{Example of a reference for the concept \texttt{edc:CoSelectedMeasureName}}
     \label{fig:example_reference_xml}
 \end{figure}
 
-We are already familiar with the \texttt{link:loc} and \texttt{link:referenceArc} elements. 
-The only notworthy change to the \texttt{link:referenceArc} element is the \texttt{xlink:arcrole} attribute, which is set to \texttt{concept-reference}.
+% We are already familiar with the \texttt{link:loc} and \texttt{link:referenceArc} elements. 
+% The only notworthy change to the \texttt{link:referenceArc} element is the \texttt{xlink:arcrole} attribute, which is set to \texttt{concept-reference}.
 
-However, our main focus is on the \texttt{link:reference} element, more specifically, its children.
+% However, our main focus is on the \texttt{link:reference} element, more specifically, its children.
 The children of the \texttt{link:reference} element form a dictionary that describes the external resource that the reference points to.
 
-In the example \ref{fig:example_reference_xml}, the reference points to a subparagraph of the SEC's Code of Federal Regulations (CFR).
+In the example \ref{fig:example_reference_xml}, the reference points \texttt{17 CFR 229.402(v)(2)(vi)}
+\cite{cfr_229_402_17}
+\footnote{CFR stands for Code of Federal Regulations.}.
 References can point to any kind of external resource, not just the CFR.
 They can point to other XBRL reports, PDFs, websites, etc.
 

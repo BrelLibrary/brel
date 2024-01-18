@@ -5,13 +5,14 @@ Members are used to represent the possible values of an explicit dimension.
 ====================
 
 - author: Robin Schmidiger
-- version: 0.2
-- date: 06 December 2023
+- version: 0.3
+- date: 18 January 2023
 
 ====================
 """
 
-from brel import BrelLabel, QName
+from brel import QName
+from brel.resource import BrelLabel
 from brel.reportelements import IReportElement
 
 

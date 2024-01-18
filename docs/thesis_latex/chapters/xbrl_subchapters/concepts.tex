@@ -2,8 +2,9 @@
 \label{sec:concepts}
 
 In section \ref{sec:facts}, we learned that a fact is the smallest unit of information in an XBRL report. 
-One of the core aspects of a fact is its concept. 
-The concept refers to what is being reported. 
+One of the core aspects of a fact is its concept,
+which refers to what is being reported.
+% The concept refers to what is being reported. 
 
 So for example, if a fact is reporting information about a company's revenue, then the concept of the fact is "Revenue".
 In this section, we will take a closer look at concepts and how they are defined in XBRL.
@@ -33,7 +34,8 @@ Some taxonomies commonly found in a report's DTS are:
     \item \textbf{iso4217} \footnote{https://www.iso.org/iso-4217-currency-codes.html} - Contains concepts for currency codes.
 \end{itemize}
 
-Since a lot of DTSs from different reports share a lot of the same taxonomies, it makes sense to cache the taxonomies locally.
+Since a lot of DTSs from different reports share a lot of the same taxonomies, it makes sense to cache the taxonomies locally, 
+instead of downloading them every time they are needed.
 
 \subsection{Concepts}
 
@@ -47,7 +49,13 @@ Some examples of the QNames of concepts are:
     \item \texttt{us-gaap:Assets}
     \item \texttt{ko:IncrementalTaxAndInterestLiability}
     \item \texttt{dei:EntityCommonStockSharesOutstanding}
-    \item \texttt{us-gaap:ElementNameAndStandardLabelInMaturityNumericLowerEndToNumericHigherEndDateMeasureMemberOrMaturityGreaterThanLowEndNumericValueDateMeasureMemberOrMaturityLessThanHighEndNumericValueDateMeasureMemberFormatsGuidance}
+    \item \texttt{us-gaap:ElementNameAndStandardLabelInMaturityNumericLowerEndTo-} 
+    
+    \texttt{NumericHigherEndDateMeasureMemberOrMaturityGreaterThanLowEnd-}
+    
+    \texttt{NumericValueDateMeasureMemberOrMaturityLessThanHighEndNumeric-}
+    
+    \texttt{ValueDateMeasureMemberFormatsGuidance}
 \end{itemize}
 
 But concepts do not only consist of a QName.
@@ -55,16 +63,20 @@ They also constrain some of the aspects and values of the facts that reference t
 Going back to our running example from section \ref{sec:facts}, the concept \texttt{us-gaap:Revenue} introduces some constraints.
 
 For example, it constrains the value to be a \texttt{monetaryItemType}.
-This means that the value of the fact must be a number and not just any arbitrary string.\footnote{The \texttt{monetaryItemType} has additional constraints besides being an integer, but we will ignore them for now.}
+This means that the value of the fact must be a number, 
+not just any arbitrary string.\footnote{The \texttt{monetaryItemType} has additional constraints besides being an integer, but we will ignore them for now.}
+%  and not just any arbitrary string.\footnote{The \texttt{monetaryItemType} has additional constraints besides being an integer, but we will ignore them for now.}
 It also constrains the unit to be a currency defined in the ISO 4217 standard.\cite{eba2018filingrules}
-Moreover, monetary facts have to be labeled as either "debit" or "credit" using the \texttt{balance} aspect.
-In this case, the concept constrains the fact to have a "debit" balance, since the company's revenue is an asset.
+Moreover, monetary facts have to be labeled as either "debit" or "credit" using the \texttt{balance} attribute.
+In this case, the concept \texttt{us-gaap:Revenue} constrains the fact to have a "debit" balance, since the company's revenue is an asset.
 
 The concept \texttt{us-gaap:Revenue} also constrains the period of the fact to be of type "duration".
 This means that the period of the fact has to be a duration of time, such as a fiscal year or a quarter.
 Alternatively, the period could be of type "instant", which means that the period refers to a specific point in time.
 
-Finally, the concept \texttt{us-gaap:Revenue} allows the fact to be null, which means that there does not have to be a fact for the concept \texttt{us-gaap:Revenue}.
+Finally, the concept \texttt{us-gaap:Revenue} allows the fact to be null, 
+% which means that there does not have to be a fact for the concept \texttt{us-gaap:Revenue}.
+which means that it is optional for a report to contain a fact for the concept \texttt{us-gaap:Revenue}.
 The vast majority of concepts allow facts to be null.
 
 This wraps up our discussion about concepts in XBRL.

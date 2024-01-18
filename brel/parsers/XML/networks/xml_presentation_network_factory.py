@@ -3,9 +3,13 @@ This module contains the XMLPresentationNetworkFactory class.
 XMLPresentationNetworkFactories are used to create PresentationNetworks from XML.
 This module is usedc by the XML network parser to build presentation networks.
 
-@author: Robin Schmidiger
-@version: 0.4
-@date: 04 January 2024
+====================
+
+- author: Robin Schmidiger
+- version: 0.5
+- date: 18 January 2024
+
+====================
 """
 
 from typing import cast
@@ -13,7 +17,8 @@ from typing import cast
 import lxml
 import lxml.etree
 
-from brel import BrelLabelRole, Fact, QName, QNameNSMap
+from brel import Fact, QName, QNameNSMap
+from brel.resource import BrelLabelRole
 from brel.networks import (
     INetwork,
     INetworkNode,
@@ -48,9 +53,7 @@ class PresentationNetworkFactory(IXMLNetworkFactory):
 
         root = roots[0]
         link_role = get_str(xml_link_element, f"{{{nsmap['xlink']}}}role")
-        link_name = QName.from_string(
-            xml_link_element.tag, self.get_qname_nsmap()
-        )
+        link_name = QName.from_string(xml_link_element.tag, self.get_qname_nsmap())
 
         if link_role is None:
             raise ValueError("link_role must not be None")
@@ -78,9 +81,7 @@ class PresentationNetworkFactory(IXMLNetworkFactory):
             preferred_label_role = None
             arc_role = "unknown"
             order: float = 1
-            arc_qname = QName.from_string(
-                "link:unknown", self.get_qname_nsmap()
-            )
+            arc_qname = QName.from_string("link:unknown", self.get_qname_nsmap())
         elif xml_arc.get(f"{{{nsmap['xlink']}}}from", None) == label:
             # the node is a root
             preferred_label_role = None
@@ -93,10 +94,7 @@ class PresentationNetworkFactory(IXMLNetworkFactory):
             preferred_label = get_str(
                 xml_arc, "preferredLabel", BrelLabelRole.STANDARD_LABEL.value
             )
-            if (
-                not isinstance(preferred_label, str)
-                and preferred_label is not None
-            ):
+            if not isinstance(preferred_label, str) and preferred_label is not None:
                 raise TypeError(
                     f"preferredLabel attribute on arc element {xml_arc} is not a string. It is {type(preferred_label)}"
                 )
@@ -119,17 +117,13 @@ class PresentationNetworkFactory(IXMLNetworkFactory):
         link_name = QName.from_string(xml_link.tag, self.get_qname_nsmap())
 
         if arc_role is None:
-            raise ValueError(
-                f"arcrole attribute not found on arc element {xml_arc}"
-            )
+            raise ValueError(f"arcrole attribute not found on arc element {xml_arc}")
         if not isinstance(arc_role, str):
             raise TypeError(
                 f"arcrole attribute on arc element {xml_arc} is not a string"
             )
         if link_role is None:
-            raise ValueError(
-                f"role attribute not found on link element {xml_link}"
-            )
+            raise ValueError(f"role attribute not found on link element {xml_link}")
         if not isinstance(link_role, str):
             raise TypeError(
                 f"role attribute on link element {xml_link} is not a string"
@@ -169,9 +163,7 @@ class PresentationNetworkFactory(IXMLNetworkFactory):
         nodes = cast(list[PresentationNetworkNode], network.get_all_nodes())
         for node in nodes:
             if isinstance(node.get_report_element(), Abstract):
-                parent = next(
-                    filter(lambda x: node in x.get_children(), nodes), None
-                )
+                parent = next(filter(lambda x: node in x.get_children(), nodes), None)
 
                 # promote if the node is abstract and the parent is a hypercube
                 if parent is not None and isinstance(
@@ -181,9 +173,7 @@ class PresentationNetworkFactory(IXMLNetworkFactory):
 
                 hypercube_children = list(
                     filter(
-                        lambda x: isinstance(
-                            x.get_report_element(), Hypercube
-                        ),
+                        lambda x: isinstance(x.get_report_element(), Hypercube),
                         node.get_children(),
                     )
                 )

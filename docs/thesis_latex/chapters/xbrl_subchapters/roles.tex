@@ -1,2 +1,64 @@
 \label{sec:roles}
 \section{Roles}
+
+Even though the networks introduced in the previous section \ref{sec:xbrl_networks} provide a good foundation for structuring XBRL reports, 
+they are not sufficient to create a comprehensive overview of the report whole report, only individual sections of it.
+Moreover, the roll-up consistency of calculation networks\ref{sec:roll_up_consistency} introduced the notion of having networks related to each other.
+With our current understanding of XBRL, there is no way to express this relationship.
+This is where \texttt{Roles} come into play. 
+
+Roles are a way to group networks together into a what is essentially a chapter of a report.
+Each set of networks is assigned a unique URI and potentially a label.
+% They fill in the gap of ...
+
+For example, a report might have a role for the cover page, one for the balance sheet, one for the income statement, and so on.
+The balance sheet would only contain a presentation network, while the income statement would contain a presentation network, a calculation network, and potentially a definition network.
+
+A role usually contains a presentation network, a calculation network, and a definition network.
+The other types of networks are not commonly used in roles.
+Rather, they belong to the report as a whole.
+An example of this would be a label network that contains all the labels for the entire report.
+
+Roles in the XBRL XML syntax follow a simple structure, which I will explain using an example of a balance sheet role.
+
+% \begin{figure}[H]
+%     \caption{Example of the component "Inventory" in XBRL from Tesla Inc.'s 2023 Q3 report\cite{tesla_10q_2023_q3}}
+%     \label{fig:example_component_xbrl}
+%     % make the text size smaller
+%     \begin{lstlisting}[language=XML,basicstyle=\fontsize{7}{10}\selectfont\ttfamily]
+%       <link:roleType id="Inventory" roleURI="http://www.tesla.com/role/Inventory">
+%         <link:definition>0000010 - Disclosure - Inventory</link:definition>
+%         <link:usedOn>link:presentationLink</link:usedOn>
+%         <link:usedOn>link:calculationLink</link:usedOn>
+%         <link:usedOn>link:definitionLink</link:usedOn>
+%       </link:roleType>
+%     \end{lstlisting}
+% \end{figure}
+\begin{figure}[H]
+    \caption{Example of the role "Balance Sheet" expressed in XBRL XML syntax}
+    \label{fig:example_role_xbrl}
+    \begin{lstlisting}[language=XML,basicstyle=\fontsize{7}{10}\selectfont\ttfamily]
+        <link:roleType id="BalanceSheet" roleURI="http://www.foocompany.com/role/BalanceSheet">
+            <link:definition>Foo balance</link:definition>
+            <link:usedOn>link:presentationLink</link:usedOn>
+            <link:usedOn>link:calculationLink</link:usedOn>
+        </link:roleType>
+    \end{lstlisting}
+\end{figure}
+
+The role in figure \ref{fig:example_role_xbrl} has the following properties:
+
+\begin{itemize}
+    \item \texttt{roleURI} (required): The URI of the role. This URI is used to reference the role from other elements in the XBRL taxonomy. It is the primary identifier of the role.
+    \item \texttt{definition} (optional): A human-readable description of the role.
+    \item \texttt{usedOn}: A list of links that the role can be used in.
+\end{itemize}
+
+The networks that are associated with the role are not defined in the role itself.
+Rather, each link that uses the role has to declare the role in the \texttt{role} property,
+which is used to reference the role from the link.
+
+Whenever a link references a role, the role must have a \texttt{usedOn} property that contains the type of the link.
+Going back to figure \ref{fig:example_role_xbrl}, if a definition network would reference the balance sheet role, 
+a conformant XBRL processor would throw an error.
+This is because the balance sheet role does not declare the \texttt{definitionLink} type in its \texttt{usedOn} property.

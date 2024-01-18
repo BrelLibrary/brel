@@ -16,7 +16,8 @@ Custom aspects are all other aspects that are not core aspects.
 ====================
 """
 
-from brel import BrelLabel, QName
+from brel import QName
+from brel.resource import BrelLabel
 
 
 class Aspect:
@@ -103,9 +104,7 @@ class Aspect:
         return cls.from_str(qname_str, labels)
 
     @classmethod
-    def from_str(
-        cls, name: str, labels: list[BrelLabel] | None = None
-    ) -> "Aspect":
+    def from_str(cls, name: str, labels: list[BrelLabel] | None = None) -> "Aspect":
         """
         Creates a new aspect from a string.
         To access the core aspects, use the class attributes

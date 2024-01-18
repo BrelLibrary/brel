@@ -6,15 +6,16 @@ Since a node can have children, nodes can also be viewed as trees.
 ====================
 
 - author: Robin Schmidiger
-- version: 0.9
-- date: 04 January 2024
+- version: 0.10
+- date: 18 January 2024
 
 ====================
 """
 
 from typing import cast
 
-from brel import BrelLabelRole, Fact, QName
+from brel import Fact, QName
+from brel.resource import BrelLabelRole
 from brel.networks import INetworkNode
 from brel.reportelements import IReportElement
 from brel.resource import IResource
@@ -49,9 +50,8 @@ class PresentationNetworkNode(INetworkNode):
         # check if there is a label that matches the preferred label role
         # if not, raise an error
 
-        if (
-            preferred_label_role is not None
-            and not report_element.has_label_with_role(preferred_label_role)
+        if preferred_label_role is not None and not report_element.has_label_with_role(
+            preferred_label_role
         ):
             raise ValueError(
                 f"report element {report_element} does not have a label with role {preferred_label_role}"
@@ -70,9 +70,7 @@ class PresentationNetworkNode(INetworkNode):
         :raises ValueError: if this node does not point to a resource.
         Use the points_to method to check if this node points to a resource.
         """
-        raise ValueError(
-            "PresentationNetworkNode does not point to a resource"
-        )
+        raise ValueError("PresentationNetworkNode does not point to a resource")
 
     def get_fact(self) -> Fact:
         """

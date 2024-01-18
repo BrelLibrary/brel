@@ -13,7 +13,9 @@ The XBRL standard is a complex standard consisting of many different parts.
 The parts of the XBRL standard that are relevant to this thesis are the Open Information Model (OIM)\cite{oim}, 
 the XBRL 2.1 specification\cite{xbrl21}, 
 the extension for dimensional reporting\cite{xbrl_dimensions}
-and the specification for generic links\cite{xbrl_generic_links}.
+and the specification for generic links\cite{xbrl_generic_links}, 
+all of which will be covered in chapter \ref{chapter:xbrl}.
+
 The XBRL 2.1 specification and the OIM overlap in most areas, but the OIM is a partial rewrite of the XBRL 2.1 specification.
 The OIM does not contain all the features of the XBRL 2.1 specification, but it is a lot easier to understand.
 The OIM also covers some aspects of XBRL dimensions, but does not contain any features from XBRL generic links.
@@ -22,27 +24,28 @@ The OIM also covers some aspects of XBRL dimensions, but does not contain any fe
 To properly understand the XBRL specification, one already needs to have a good understanding of both XML and XBRL.
 This makes it difficult for beginners to get started with XBRL.
 To address this problem, Dr. Ghislain Fourny wrote "The XBRL Book"\cite{fourny2023xbrl}.
-The book is a comprehensive guide to XBRL and covers all the important aspects of the XBRL standard, including the rather recent OIM.
+The book is a comprehensive guide for XBRL and covers all the important aspects of the XBRL standard, including the rather recent OIM.
 
 \section{Arelle}
-Arelle\cite{arelle} is an open source XBRL platform written in Python.
-At the time of writing, Arelle is the most complete open source XBRL platform.
+Arelle\cite{arelle} is an open source XBRL platform.
+At the time of writing, Arelle is the most fully open source platform of its kind.
 It supports all the features of the XBRL 2.1 specification and the OIM.
 Like Brel, Arelle is also written in Python and is open source.
 Unlike Brel, Arelle is a complete XBRL platform and not just a python library.
+Think of Arelle as "Excel for XBRL".
 
 \section{Xule}
 Xule\cite{xule} is a rule language for XBRL.
-It is a declarative language that allows users to write rules that can be used to validate XBRL reports.
-Xule is written in Python and is open source.
-It is also part of the Arelle project and is used by Arelle to validate XBRL reports.
+It is a declarative language that allows users to write rules for validating XBRL reports.
+It is part of the Arelle project and is used by Arelle to validate reports.
 Think of Xule as a domain-specific language for XBRL validation rules.
 Even though Xule is not part of this thesis, Brel should be able to support Xule in the future.
 
 \section{EDGAR}
 \label{sec:edgar}
 The SEC (US \texttt{S}ecurities and \texttt{E}xchange \texttt{C}ommission) maintains a system called EDGAR \cite{sec_edgar}. \footnote{not to be confused with the U.S. SEC, which stands for U.S. Soybean Export Council}
-EDGAR is a system that companies can use to submit their financial reports to the SEC.
+% EDGAR is a system that companies can use to submit their financial reports to the SEC.
+EDGAR is a database of financial reports submitted to the SEC.
 EDGAR stands for \textbf{E}lectronic \textbf{D}ata \textbf{G}athering, \textbf{A}nalysis, and \textbf{R}etrieval.
 Filings submitted to EDGAR have to be in XBRL format.
 The SEC provides public access to the filings submitted to EDGAR. \footnote{\url{https://www.sec.gov/edgar/search/}}
@@ -50,8 +53,8 @@ The SEC provides public access to the filings submitted to EDGAR. \footnote{\url
 \section{ESEF filings}
 The european counterpart to the SEC is called ESMA (\textbf{E}uropean \textbf{S}ecurities and \textbf{M}arkets \textbf{A}uthority).
 It also maintains a database of ESEF filings\cite{esma_database}.
-ESEF stands for \textbf{E}uropean \textbf{S}ingle \textbf{E}lectronic \textbf{F}ormat.
-ESEF is a standard for XBRL reports in the EU.
+ESEF stands for \textbf{E}uropean \textbf{S}ingle \textbf{E}lectronic \textbf{F}ormat,
+which is a standard for XBRL reports in the EU.
 Similar to EDGAR, the ESEF database is publicly accessible. \footnote{\url{https://filings.xbrl.org/}}
 An interesting aspect of this database is that it is hosted by XBRL International, the organization that maintains the XBRL standard.
 
@@ -63,7 +66,8 @@ The SEC provides this test suite free of charge and it is available on their web
 
 Brel uses this test suite to test its XBRL processor.
 At the time of writing, Brel does not pass all the tests in the test suite, since Brel does not support all the features of the XBRL standard.
-However, building a processor that passes all the tests is not a feat that can feasibly be accomplished by a single person in the scope of a master's thesis.
+% However, building a processor that passes all the tests is not a feat that can feasibly be accomplished in the scope of a master's thesis.
+However, building a processor that passes all the tests is not a feat that can feasibly be accomplished in the scope of this thesis.
 
 \section{ESMA Conformance Suite}
 The European Securities and Markets Authority (ESMA) also maintains a test suite for XBRL processors\cite{esma_conformance_suite}.

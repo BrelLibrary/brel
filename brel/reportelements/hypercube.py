@@ -1,4 +1,18 @@
-from brel import BrelLabel, QName
+"""
+This module contains the Hypercube class.
+
+=================
+
+- author: Robin Schmidiger
+- version: 0.2
+- date: 18 January 2024
+
+=================
+"""
+
+
+from brel import QName
+from brel.resource import BrelLabel
 from brel.reportelements import IReportElement
 
 

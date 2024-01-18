@@ -18,9 +18,9 @@ Microsoft chose to report this information as follows:
     \cite{microsoft2022ar}
 \end{figure}
 
-This table contains multiple facts about Microsoft for the fiscal years 20201 and 2022 as seen by the horizontal axis.
-The vertical axis describes what is being reported. The "what is being reported" is called the \textbf{concept} of a fact.
-It reports the values for the concepts "Revenue", "Cost of revenue", \dots for both fiscal years.
+This table contains multiple facts about Microsoft for both fiscal years 2021 and 2022, as seen by the horizontal axis.
+The vertical axis describes what is being reported. The "what is being reported" part is called the \textbf{concept} of a fact.
+It reports the values for the concepts "Revenue", "Gross margin", "Operating income", \dots for both fiscal years.
 In summary, the table contains 14 facts across 7 concepts for 2 fiscal years.
 
 For now, let us focus on the top left fact, which reports the company's revenue for the fiscal year 2022.
@@ -42,20 +42,20 @@ In this example:
     \item The \textbf{entity} refers to \textit{who} is reporting. 
     In the case of our example, the entity is "Microsoft Coorporation". 
     In our example this is implicit, since we are looking at Microsoft's annual report.
-    However, this has to be explicitly stated in an XBRL report.
+    However, the entity of a fact has to be explicitly stated in an XBRL report.
     \item The \textbf{period} refers to \textit{when} the information is being reported.
     The period is defined as the fiscal year 2022.
-    Again, this information is implicit in our example.
+    This is indicated by the column header "2022" in the table.
     \item The \textbf{unit} refers to \textit{how} the information is being reported.
     In this example, the unit is "USD", which indicates that the information is being reported in US dollars.
-    This is indicated by the dollar sign \$ in the table.
+    The unit is indicated by the dollar sign \$ in the table.
     \item The \textbf{value} refers to \textit{how much} is being reported.
     According to Microsoft's 2022 annual report, the company's revenue for the fiscal year 2022 was around 198 billion US dollars.
 \end{itemize}
 
 The concept, entity, period and unit of a fact are called its \textbf{aspects}. 
 If necessary, additional aspects can be defined for a fact. 
-These additional aspects are called \textbf{dimensions} and will be covered in section TODO.
+These additional aspects are called \textbf{dimensions} and will be covered in section \ref{sec:hypercubes}
 The aspects that are not dimensions are called \textbf{core aspects}. 
 Even though the name suggests otherwise, core aspects are not all mandatory for a fact.
 The only mandatory core aspect is the concept.

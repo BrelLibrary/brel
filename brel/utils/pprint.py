@@ -1,4 +1,3 @@
-from brel import Fact
 from brel.networks import INetwork, INetworkNode
 from brel.utils import (
     pprint_fact,
@@ -6,6 +5,7 @@ from brel.utils import (
     pprint_network,
     pprint_network_node,
 )
+from brel import Fact
 
 
 def pprint(to_print):

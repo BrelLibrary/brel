@@ -8,11 +8,11 @@
 % Write an introduction to your thesis here.
 
 In the era of data-driven decision making, the ability to efficiently interpret and analyze business reports is becoming increasingly important.
-Until 20 years ago, most business reports were published in paper form.
+Until around 20 years ago, most business reports were published in paper form.
 This made it difficult for computers to automatically process the information contained in the reports.
-However, this changed with the introduction of the eXtensible Business Reporting Language (XBRL) in 2003.
-XBRL is a standardized format for business reports that is both human-readable and machine-readable.
-Originally designed for financial reports, XBRL is now used in a wide variety of business reports.
+However, this changed with the introduction of the eXtensible Business Reporting Language (XBRL) in 2000\cite{aicpa_xbrl_story}\footnote{Marks the release of XBRL 1.0}.
+XBRL is a standardized format for business reports that is both machine-readable and can produce human-readable reports.
+Originally designed for financial reports, XBRL is now used in a wide variety of business reports.\cite{xbrl_about}
 Initially, XBRL was based on XML, but it has since been extended to support other formats such as JSON and CSV.
 
 Back in the day, XBRL was a niche technology that was only used by a handful of companies.
@@ -21,11 +21,11 @@ Reporting authorities such as the US Securities and Exchange Commission (SEC) an
 In the private sector, XBRL is used by companies such as JP Morgan Chase, Microsoft, and Hitachi to automate their financial reporting processes.\cite{pwc2002thejournal}
 
 However, XBRL is not without its problems.
-As a standard, XBRL is very complex and difficult to understand.
-Also, many of its intricacies are a result of legacy design decisions and make working with XBRL unnecessarily difficult.
-On top of that XBRLs design is closely tied to the XML format.
+As a standard, XBRL is very complex.
+Many of its intricacies are a result of legacy design decisions and make working with XBRL unnecessarily difficult.
+On top of that XBRLs design is closely tied to the XML format, even though standard is not strictly tied to XML anymore.
 
-Since XBRL is a tool primarily designed for non-technical users, it is important that it is easy to use.
+Since XBRL is a tool primarily designed for non-technical users, ease of use is paramount.
 However, the current state of XBRL is far from ideal.
 There are lots of different XBRL tools, most of which are proprietary and closed-source.
 Some open source tools exist, but apart from the XBRL platform Arelle\cite{arelle}, they are either incomplete or poorly documented.
@@ -33,24 +33,25 @@ Some open source tools exist, but apart from the XBRL platform Arelle\cite{arell
 In 2021, XBRL International published a partial rewrite of the XBRL standard called Open Information Model (OIM)\cite{oim}.
 The goal of OIM is to learn from the mistakes of the past and to make XBRL more accessible to both developers and non-developers.
 Compared to the original XBRL standard, the OIM is not strictly tied to the XML format.
-The OIM is a major step in the right direction, but it is still in its infancy and only reworks the core XBRL concepts.
+The OIM is a major step in the right direction, but it is still in its infancy and only reworks some of the core XBRL concepts.
 Also, at the time of writing, the design of the OIM is not yet finalized.
 
 \section{Goals of this thesis}
 
-The goal of this thesis is to create a new open source XBRL library that is based on the OIM.
+The goal of this thesis is to create a new open source XBRL library that is based on the XBRL, notably the OIM.
 The name of the library is \texttt{Brel} (short for \textbf{B}usiness \textbf{R}eporting \textbf{E}xtensible \textbf{L}ibrary) and it is written in the Python programming language.
 The library should be easy to use and well documented.
 It should provide a simple python API that allows developers to easily read XBRL reports and extract information from them.
+Fundamentally, the library should act as a pythonic wrapper around all elements of an XBRL report.
 The library should also provide basic functionality for validating XBRL reports.
-Finally, the library should support XBRL reports in XML, but should also be able to support other formats such as JSON and CSV in the future.
+Finally, the library should support XBRL reports in XML, but it should be designed in a way that allows it to support other formats in the future.
 
 The research questions that this thesis aims to answer are:
 
 \begin{itemize}
-    \item How can the OIM be translated into an easy-to-use python API?
-    \item How should the non-OIM sections of XBRL be converted into a python API that is consistent with the OIM?
-    \item How can the library be designed to support multiple formats in the future?
+    \item How can the OIM be translated into an easy-to-use python API?\label{itm:research_question_1}
+    \item How should the non-OIM sections of XBRL be converted into a python API that is consistent with the OIM?\label{itm:research_question_2}
+    \item How can the library be designed to support multiple formats in the future?\label{itm:research_question_3}
 \end{itemize}
 
 \section{Structure of this thesis}
@@ -60,13 +61,24 @@ Therefore, chapter \ref{chapter:xbrl} will give a brief introduction to XBRL.
 It will introduce the core concepts of XBRL in the OIM and move on to the non-OIM sections of XBRL.
 It will not dive deep into the technical details of the XBRL standard, but instead focus on the concepts that are relevant for this thesis.
 
-Next, chapter \ref{sec:implementation} will describe both the design and the implementation of the library.
-It will explain how the OIM is translated into a python API and how the non-OIM sections of XBRL are converted into a python API that is consistent with the OIM.
-Furthermore, it will cover the complexities of translating XBRL reports in XML format into python objects.
-Finally, it will explain how the library is designed to support multiple formats in the future.
+The next chapter \ref{chapter:api} will introduce the API of Brel.
+This chapter is already part of the result of this thesis, but it makes more sense to introduce the API before its implementation.
+The API chapter will anser research question \ref{itm:research_question_1} and \ref{itm:research_question_2}.
 
-In the results chapter \ref{sec:results}, the library will be evaluated based on the goals set out in the introduction.
-This chapter will also give a comprehensive overview of the library's features and limitations.
+Chapter \ref{sec:implementation} details the implementation of the Brel library, 
+linking the API described in Chapter \ref{chapter:api} with the XBRL standard outlined in Chapter \ref{chapter:xbrl}. 
+Due to Brel's extensive and complex structure, this chapter will only focus on key aspects of its implementation. 
+While most XBRL to Python translations are straightforward, certain cases are more complex. 
+The chapter will focus primarily on the latter, and explain how Brel handles them. 
+The chapter will also discuss the library's design, specifically its capability to support various formats in future versions, 
+addressing Research Question \ref{itm:research_question_3}.
+
+
+The second part of the results chapter \ref{chapter:results} will evaluate the library based on the goals set out in the introduction.
+This chapter will also give a comprehensive overview of how brel performs in terms of various XBRL conformance suites.
 Additionally, it will give examples of how the library can be used to read and validate XBRL reports.
+% In the se results chapter \ref{chapter:results}, the library will be evaluated based on the goals set out in the introduction.
+% This chapter will also give a comprehensive overview of the library's features and limitations.
+% Additionally, it will give examples of how the library can be used to read and validate XBRL reports.
 
-Lastly, chapter \ref{sec:conclusion} will summarize the results of this thesis and give an outlook on future work.
+Lastly, chapter \ref{chapter:conclusion} will summarize the results of this thesis and give an outlook on future work.

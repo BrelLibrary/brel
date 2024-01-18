@@ -10,7 +10,6 @@ Contains the class for representing an XBRL concept characteristic
 =================
 """
 
-from brel import QName
 from brel.characteristics import Aspect, ICharacteristic
 from brel.reportelements import Concept
 

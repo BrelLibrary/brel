@@ -1,5 +1,13 @@
 """
 This module contains the PresentationNetwork class.
+
+=================
+
+- author: Robin Schmidiger
+- version: 0.3
+- date: 18 January 2024
+
+=================
 """
 
 from typing import cast

@@ -1,0 +1,110 @@
+\section{Hypercubes}
+\label{sec:hypercubes}
+
+One key observation that can be made when looking at the facts of an XBRL report is that they are often structured like a hypercube.
+The aspects of a fact can be seen as the dimensions of a hypercube, whereas the value of the fact is the value of the hypercube at the given dimensions.
+
+\begin{figure}[H]
+    \caption{Example of a hypercube}
+    % create a figure with side by side images
+    % the first is a table representing a XBRL hypercube.
+    % It has 3 dimensions: "Period", "Entity", and "Concept".
+    % The second image is a 3D representation of the hypercube.
+    \label{fig:example_hypercube}
+    \subfigure{
+        \begin{tabular}{|c|c|c|c|}
+            \hline
+            Period & Entity & Concept & Value \\
+            \hline
+            2020 & Foo & Sales & 100\$ \\
+            \hline
+            2020 & Foo & Costs & 50\$ \\
+            \hline
+            2020 & Bar & Sales & 200\$ \\
+            \hline
+            2020 & Bar & Costs & 100\$ \\
+            \hline
+            2021 & Foo & Sales & 150\$ \\
+            \hline
+            2021 & Foo & Costs & 75\$ \\
+            \hline
+            2021 & Bar & Sales & 250\$ \\
+            \hline
+            2021 & Bar & Costs & 125\$ \\
+            \hline
+        \end{tabular}
+    }
+    \subfigure{
+        TODO: 3D image of hypercube
+    %     \includegraphics[width=0.5\textwidth]{images/hypercube.png}
+    }
+\end{figure}
+
+Hypercubes are a common way to structure data nowadays.
+Yet, back when XBRL was created, they were not as prevalent as they are today.
+In fact, the early versions of XBRL did not support hypercubes at all.
+They were retrofitted into the XBRL specification in 2006.\cite{xbrl_dimensions}.
+
+\subsection{Dimensions}
+
+When viewing facts as hypercubes, the cube ends up having four built in dimensions.
+These correspond to the four core aspects of a fact: \texttt{Period}, \texttt{Entity}, \texttt{Concept}, and \texttt{Unit}.
+XBRL allows for the creation of custom dimensions, which come in two flavors: explicit and typed.
+
+\subsection{Explicit dimensions}
+
+Explicit dimensions are dimensions that have a predefined set of possible values.
+For example, let us assume that the Foo Company has two subsidiaries: Foo United States and Foo Europe.
+The Foo Company could then create a dimension called \texttt{Subsidiary} with the two possible values \texttt{Foo United States} and \texttt{Foo Europe}.
+The possible values of an explicit dimension are called \texttt{members}.
+
+Both dimensions and members are defined using report elements, just like concepts and abstracts before them.
+To symbolize that a member belongs to a dimension, the member is defined as a child of the dimension in the definition network.
+
+The members of a dimension can also have even more child members themselves.
+For example, the Subsidiary Foo Europe could have two subsidiaries: Foo Switzerland and Foo EU.
+
+\begin{figure}[H]
+    \label{fig:example_explicit_dimension}
+    \caption{Visualisation of the explicit dimension "Subsidiary"}
+    \dirtree{%
+        .1 [Dimension] Subsidiary.
+        .2 [Member] Foo United States.
+        .2 [Member] Foo Europe.
+        .3 [Member] Foo Switzerland.
+        .3 [Member] Foo EU.
+    }
+\end{figure}
+
+\subsection{Typed dimensions}
+
+Typed dimensions are dimensions that do not have a predefined set of possible values.
+Instead, the values of a typed dimension are constrained by a data type.
+For example, a dimension could be constrained to only allow values of the type \texttt{xs:integer}.
+
+Similar to explicit dimensions, typed dimensions are defined using report elements.
+Unlike explicit dimensions, typed dimensions do not have members.
+They consist solely of the dimension report element, which defines the data type of the dimension.
+
+\subsection{Line items and hypercubes}
+
+With our current understanding of hybercubes, we can only view the whole report as a single, gigantic hypercube.
+Especially when considering the additional dimensions, most facts will use only a small subset of the possible dimensions.
+This makes the resulting hypercube high dimensional, with most of the dimensions being unused.
+Using the large hypercube as a basis for analysis would be very inefficient.
+% This is rarely desirable, since the sheer size of the hypercube makes it hard to work with.
+
+To solve this problem, XBRL introduces the \texttt{hypercube} report element.
+Conceptually, a hypercube is a sub-hypercube of the whole report hypercube.
+Hypercube report elements are usually defined an a per-role basis as part of a definition network.
+It picks a subset of the dimensions of the whole report hypercube.
+This subset is determined in the definition network, where "hypercube-dimension" arcs specify which dimensions are part of the hypercube.
+
+Besides the hypercube report element, XBRL also introduces the \texttt{lineItems} report element.
+LineItems are used to specify which concepts are part of the hypercube.
+Reports can specify tens of thousands of concepts, but only a few of them are relevant for a particular role.
+The LineItems report element specifies the relevant concepts by listing them as children in the definition network.
+
+If understanding lineItems proves to be difficult, consider the following: 
+LineItems are to concepts what dimensions are to members.
+
