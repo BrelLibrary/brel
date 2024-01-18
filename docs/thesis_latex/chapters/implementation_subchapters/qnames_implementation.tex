@@ -43,8 +43,8 @@ If the report uses the prefix \texttt{us-gaap1} instead of \texttt{us-gaap}, Bre
 \subsection{Namespace hierarchy notation}
 
 This section exclusively focuses on the implementation of QNames in Brel and namespace bindings in particular. 
-Since XML documents tend to be very verbose and contain a lot of information that is not relevant for namespace bindings,
-we will use a custom notation to represent namespace bindings in this section. 
+Since XML documents tend to be verbose and contain a lot of information that is not relevant for namespace bindings,
+I will use a custom notation to represent namespace bindings in this section. 
 I will refer to this notation as the \textit{namespace hierarchy notation} and describe it using an example.
 
 The namespace hierarchy notation works as follows:
@@ -107,14 +107,14 @@ Thus, we need to flatten the namespace hierarchy of the XBRL taxonomy into a fla
 
 The process of flattening a tree structure into a flat structure is a common problem in computer science.
 One of the most common approaches to this problem is to use a depth-first search algorithm.
-This is also the approach that we use in Brel to flatten the namespace hierarchy of the XBRL taxonomy.
+This is also the approach that I use in Brel to flatten the namespace hierarchy of the XBRL taxonomy.
 
 Remember that in XML, child elements inherit the namespace bindings of their parent elements.
 Thus, when flattening the namespace hierarchy, we need to make sure that
 all the namespace bindings of a parent are also present in its children, 
 unless the children define their own namespace bindings.
 
-To give an example of flattening, let us flatten the namespace hierarchy from the previous figure TODO.
+To give an example of flattening, let us flatten the namespace hierarchy from the previous figure \ref{fig:custom_namespace_notation_example}
 
 % Example of the same XML snippet where namespace bindings are defined on a per-level basis
 \begin{figure}[H]
@@ -129,7 +129,9 @@ To give an example of flattening, let us flatten the namespace hierarchy from th
 }
 \end{figure}
 
-As we can see, the namespace hierarchy has been flattened into a flat structure, meaning that all elements are on the same level.
+As we can see, the namespace hierarchy has been flattened into a flat structure
+\footnote{Technically, the namespace hierarchy is not completely flat, since the root element is still present. However, the root element does not contain any namespace bindings, so it does not affect the namespace hierarchy.}
+, meaning that all elements are on the same level.
 The order of the elements is determined by the depth-first search algorithm.
 
 Each child element inherits the namespace bindings of its parent element.
@@ -138,7 +140,7 @@ Thus, the \texttt{element2} and \texttt{element3} elements inherit the namespace
 To extract the namespace bindings of this flat structure, we can simply iterate over the elements and extract the namespace bindings of each element.
 For our example, this would result in the following list of namespace bindings:
 
-\begin{figure}
+\begin{figure}[H]
     \caption{List of namespace bindings extracted from the flattened namespace hierarchy}
     \label{fig:custom_namespace_notation_example_flattened_extracted}
     \begin{lstlisting}[language=XML]
@@ -154,18 +156,20 @@ For our example, this would result in the following list of namespace bindings:
 An observant reader might have noticed that the list of namespace bindings from the previous section contains two bindings for the \texttt{foo} prefix.
 The first binding is defined as \texttt{foo = "http://foo.com"}, whereas the second binding is defined as \texttt{foo = "http://other-foo.com"}.
 
-This is called a collision and is not allowed in Brel.
+This is called a collision. Brel prohibits most collisions in namespace bindings, but allows some of them.
 The following section describes the different types of collisions and how they are handled in Brel.
 
-\subsection{Types of collisions}
+\subsection{Types of namespace collisions}
 
-There are three types of collisions that can occur in Brel:
+There are three types of namespace collisions that can occur in Brel:
 
 \begin{itemize}
     \item \textbf{Version collision}: Two namespace bindings have the same prefix and the same namespace URI, but different versions of it.
+    The version is defined as the numbers and dashes in the namespace URI that indicate if the URI is more recent than another URI.
     
     Example: \texttt{foo = "http://foo.com/2022"} and \texttt{foo = "http://foo.com/2023"}
     \item \textbf{Prefix collision}: Two namespace bindings have the same prefix, but different \textit{unversioned} namespace URIs.
+    A unversioned namespace URI is a namespace URI with all version information removed.
     
     Example: \texttt{foo = "http://foo.com"} and \texttt{foo = "http://other-foo.com"}
     \item \textbf{Namespace URI collision}: Two namespace bindings have the same \textit{unversioned} namespace URI, but different prefixes.
@@ -304,7 +308,26 @@ The following prefixes are considered special:
         \item \texttt{xs = "http://www.w3.org/<year>/XMLSchema"}
         \item \texttt{xsi = "http://www.w3.org/<year>/XMLSchema-instance"}
         \item \texttt{xbrli = "http://www.xbrl.org/<year>/instance"}
-        \item TODO
+        \item \texttt{xbrldt = "http://xbrl.org/<year>/xbrldt"}
+        \item \texttt{link = "http://www.xbrl.org/<year>/linkbase"}
+        \item \texttt{xl = "http://www.xbrl.org/<year>/XLink"}
+        \item \texttt{iso4217 = "http://www.xbrl.org/<year>/iso4217"}
+        \item \texttt{utr = "http://www.xbrl.org/<year>/utr"}
+        \item \texttt{nonnum = "http://www.xbrl.org/dtr/type/non-numeric"}
+        \item \texttt{num = "http://www.xbrl.org/dtr/type/numeric"}
+        \item \texttt{enum = "http://www.xbrl.org/year/extensible-enumerations"}
+        \item \texttt{enum2 = "http://www.xbrl.org/PR/<date>/extensible-enumerations-2.0"}
+        \item \texttt{formula = "http://www.xbrl.org/<year>/formula"}
+        \item \texttt{gen = "http://www.xbrl.org/<year>/generic"}
+        \item \texttt{table = "http://www.xbrl.org/<year>/table"}
+        \item \texttt{cf = "http://www.xbrl.org/<year>/filter/concept"}
+        \item \texttt{df = "http://www.xbrl.org/<year>/filter/dimension"}
+        \item \texttt{ef = "http://www.xbrl.org/<year>/filter/entity"}
+        \item \texttt{pf = "http://www.xbrl.org/<year>/filter/period"}
+        \item \texttt{uf = "http://www.xbrl.org/<year>/filter/unit"}
+        \item \texttt{ix = "http://www.xbrl.org/<year>/inlineXBRL"}
+        \item \texttt{ixt = "http://www.xbrl.org/inlineXBRL/transformation/<date>"}
+        \item \texttt{entities = "http://xbrl.org/entities"}
     \end{itemize}
 \end{figure}
 

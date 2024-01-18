@@ -1,0 +1,18 @@
+digraph "classes_brel_networks" {
+rankdir=BT
+charset="utf-8"
+"brel.networks.calculation_network_node.CalculationNetworkNode" [color="black", fontcolor="black", label=<{CalculationNetworkNode| ... }>, shape="record", style="solid"];
+"brel.networks.definition_network_node.DefinitionNetworkNode" [color="black", fontcolor="black", label=<{DefinitionNetworkNode| ... }>, shape="record", style="solid"];
+"brel.networks.footnote_network_node.FootnoteNetworkNode" [color="black", fontcolor="black", label=<{FootnoteNetworkNode| ... }>, shape="record", style="solid"];
+"brel.networks.i_network_node.INetworkNode" [color="black", fontcolor="black", label=<{INetworkNode| ... }>, shape="record", style="solid"];
+"brel.networks.label_network_node.LabelNetworkNode" [color="black", fontcolor="black", label=<{LabelNetworkNode| ... }>, shape="record", style="solid"];
+"brel.networks.presentation_network_node.PresentationNetworkNode" [color="black", fontcolor="black", label=<{PresentationNetworkNode| ... }>, shape="record", style="solid"];
+"brel.networks.reference_network_node.ReferenceNetworkNode" [color="black", fontcolor="black", label=<{ReferenceNetworkNode| ... }>, shape="record", style="solid"];
+"brel.networks.calculation_network_node.CalculationNetworkNode" -> "brel.networks.i_network_node.INetworkNode" [arrowhead="empty", arrowtail="none"];
+"brel.networks.definition_network_node.DefinitionNetworkNode" -> "brel.networks.i_network_node.INetworkNode" [arrowhead="empty", arrowtail="none"];
+"brel.networks.footnote_network_node.FootnoteNetworkNode" -> "brel.networks.i_network_node.INetworkNode" [arrowhead="empty", arrowtail="none"];
+"brel.networks.label_network_node.LabelNetworkNode" -> "brel.networks.i_network_node.INetworkNode" [arrowhead="empty", arrowtail="none"];
+"brel.networks.presentation_network_node.PresentationNetworkNode" -> "brel.networks.i_network_node.INetworkNode" [arrowhead="empty", arrowtail="none"];
+"brel.networks.reference_network_node.ReferenceNetworkNode" -> "brel.networks.i_network_node.INetworkNode" [arrowhead="empty", arrowtail="none"];
+
+}

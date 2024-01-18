@@ -23,7 +23,7 @@ class ConceptCharacteristic(ICharacteristic):
 
     """
 
-    __concept_cache: dict[QName, "ConceptCharacteristic"] = {}
+    __concept_cache: dict = {}
 
     def __init__(self, concept: Concept) -> None:
         # check if the concept is actually a Concept instance

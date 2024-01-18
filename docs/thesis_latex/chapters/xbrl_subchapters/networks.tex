@@ -1,4 +1,5 @@
-\subsection{Networks}
+\section{Networks}
+\label{sec:xbrl_networks}
 
 Up to this point, all concepts in the XBRL taxonomy are treated as independent entities.
 The whole filing can be viewed as an unordered set of facts with no relation between them.
@@ -26,7 +27,15 @@ More specifically, the above example is a tree.
 Graphs are commonly used to represent relations between entities.
 In the context of XBRL, graphs are used to represent all kinds of relations between concepts, facts, and other elements of an XBRL filing.
 From now on, I will refer to graphs that represent relations between concepts as \texttt{networks}.
-XBRL commonly refers uses the term \texttt{Extended Link} to refer to networks or parts of networks.
+
+XBRL commonly refers uses the term \texttt{Extended Link} or \texttt{Link} to refer to networks or parts of networks.
+I will use the term \texttt{network} throughout this thesis, since it is more intuitive and less ambiguous.
+When I refer to a \texttt{link}, I am referring to something specific in the XBRL specification.
+When I refer to a \texttt{network}, I am referring to the general concept of a network.
+
+XBRL groups multiple links together into so called \texttt{linkbases}.
+From a semantic perspective, linkbases do not have any meaning.
+From a technical perspective, linkbases are just XML elements that have children that are links. 
 
 \subsection{Types of Networks}
 
@@ -54,6 +63,8 @@ However, in practice, networks in XBRL are almost always directed acyclic graphs
 
 In the subsequent sections, I will describe how networks are implemented in XBRL on a conceptual level. 
 
+TODO: add a simple explanation of labels since I use them throughout this chapter
+
 \subsection{presentationLink}
 
 The \texttt{link:presentationLink} network is used to represent the hierarchy of concepts in a report.
@@ -77,7 +88,7 @@ Taking the example from figure \ref{fig:example_visualization_network_xbrl}, the
 \end{figure}
 
 Each arc in the example \ref{fig:example_visualization_network_xbrl_edge_list} is represented as a \texttt{link:presentationArc} element in XBRL.
-Additionally, presentationLinks contain so called "locators" \texttt{link:loc} that represent the nodes in the network.
+Besides presentationArcs, presentationLinks contain so called "locators" \texttt{link:loc} that represent the nodes in the network.
 In case of a presentaton network, the locators are references to the concepts in the XBRL taxonomy. 
 In other networks, locators can be references to other elements, such as facts.
 
@@ -205,20 +216,130 @@ If both concepts have the same \texttt{balance}, then their connecting arc must 
 A network that is consistent with the balance and weight constraints is called a \texttt{balance consistent network}.\cite{fourny2023xbrl}
 
 Balance consistency is not the only kind of consistency that calculation networks can be checked for.
-Another kind of consistency is \texttt{roll-up consistency} which comes in two flavors: \texttt{simple roll-up consistency} and \texttt{general roll-up consistency}. 
+Another kind of consistency is \texttt{roll-up consistency} which comes in two flavors: \texttt{simple roll-up consistency} and \texttt{nested roll-up consistency}. 
+
+Simple roll-up is roll-up consistency without any nested concepts. 
+So the calculation network can only have a depth of 1.
+
+Nested roll-up consistency is roll-up consistency with nested concepts.
+So the calculation network can have a depth of more than 1.
 
 \texttt{Roll-up consistency} requires a calculation network as well as a presentation network and checks if the structure of the two networks is consistent.
-For example, if the calculation network contains the arc \texttt{Assets -> Cash}, then the presentation network must also contain the arc \texttt{Assets [Abstract] -> Cash}.
-Remember that the calculation networks only contain concepts, not abstracts. 
+For example, if the calculation network contains the arc \texttt{Assets -> Savings Accounts}, 
+then the presentation network must also contain the arc \texttt{Assets [Abstract] -> Savings Accounts}.
+
+Remember that calculation networks can only contain concepts, not abstracts. 
 So the report element \texttt{Assets} in the calculation network and the report element \texttt{Assets [Abstract]} in the presentation network are not the same.
-So how does XBRL know that they are related?
+But how does XBRL know that they are related?
 
 The answer is that the two report elements are related by the presentation network.
 It contains the arc \texttt{Assets [Abstract] -> Assets}.
 
-TODO: strict roll up consistency
+Let us visualize this example in figure \ref{fig:example_roll_up_consistency}, 
+which shows the calculation network and the presentation network side by side.
+The example is expanded a bit and also contains the concepts \texttt{UBS Savings Account}, \texttt{Raiffeisen Savings Account} and \texttt{Liabilities}.
 
-\section{labelLink}
+\begin{figure}[H]
+    \caption{Example of nested roll-up consistency}
+    \label{fig:example_roll_up_consistency}
+    % draw the calculation- and presentation network side by side
+    \begin{minipage}{0.8\textwidth}
+        \dirtree{%
+            .1 Assets (weight: 1).
+            .2 Savings Accounts (weight: 1).
+            .3 UBS Savings Account (weight: 1).
+            .3 Raiffeisen Savings Account (weight: 1).
+            .2 Liabilities (weight: -1).
+        }
+        \caption{Calculation network}
+    \end{minipage}
+    \begin{minipage}{0.8\textwidth}
+        \dirtree{%
+            .1 Assets [Abstract].
+            .2 Savings Accounts [Abstract].
+            .3 UBS Savings Account.
+            .3 Raiffeisen Savings Account.
+            .3 Savings Accounts.
+            .2 Assets.
+            .2 Liabilities.
+        }
+        \caption{Presentation network}
+    \end{minipage}
+\end{figure}
+
+The presentation network in figure \ref{fig:example_roll_up_consistency} is roll-up consistent with the calculation network.
+It contains the two abstracts \texttt{Assets [Abstract]} and \texttt{Savings Accounts [Abstract]}, 
+which are not present in the calculation network. 
+They take the role of the concepts \texttt{Assets} and \texttt{Savings Accounts} in the calculation network.
+
+Besides roll-up and balance consistency, there is a third kind of consistency. 
+XBRL does not have a name for it, but I will refer to it as \texttt{aggregation consistency}.
+It checks if in a calculation network, for each concept, the child concepts add up to their parent concept.
+Going back to our example in figure \ref{fig:example_roll_up_consistency},
+the values of the UBS Savings Account and the Raiffeisen Savings Account should add up to the value of the Savings Accounts concept.
+Aggregation consistency uses weighted sums to add up the values of the child concepts, 
+where the weight of a child concept is the weight of the connecting arc.
+
+To check for aggregation consistency, we need to know the values of the facts that are associated with the concepts.
+So aggregation consistency checks a list of facts against a calculation network.
+
+Aggregation consistency is best explained using an example.
+Consider the following list of facts for the calculation network in figure \ref{fig:example_roll_up_consistency}:
+
+% \begin{figure}[H]
+%     \caption{List of facts for the calculation network in figure \ref{fig:example_roll_up_consistency}}
+%     \label{fig:example_facts}
+%     \begin{tabular}{|r|r|r|r|l|}
+%         \hline
+%         \textbf{Concept} & \textbf{Entity} & \textbf{Period} & \textbf{Unit} & \textbf{Value} \\ \hline
+%         UBS Savings Account & Alice & 2019 & USD & 1000 \\ \hline
+%         Raiffeisen Savings Account & Alice & 2019 & USD & 2000 \\ \hline
+%         Savings Accounts & Alice & 2019 & USD & 3000 \\ \hline
+%         Liability & Alice & 2019 & USD & 500 \\ \hline
+%         Assets & Alice & 2019 & USD & 2500 \\ \hline
+%         UBs Savings Account & Alice & 2020 & USD & 2000 \\ \hline
+%         Raiffeisen Savings Account & Alice & 2020 & USD & 3000 \\ \hline
+%         Savings Accounts & Alice & 2020 & USD & 5000 \\ \hline
+%         Liability & Alice & 2020 & USD & 1000 \\ \hline
+%         Assets & Alice & 2020 & USD & 3999 \\ \hline
+%     \end{tabular}
+% \end{figure}
+
+\begin{figure}[H]
+    \caption{Alice's savings accounts and liabilities in CHF}
+    \label{fig:example_facts_aggregation_consistency}
+    \centering 
+    \begin{tabular}{|r|r|r|}
+        \hline
+        \textbf{Concept} & \textbf{2022} & \textbf{2023} \\ \hline
+        UBS Savings Account & 1000 & 1000 \\ \hline
+        Raiffeisen Savings Account & 2000 & 3000 \\ \hline
+        Savings Accounts & 3000 & 4000 \\ \hline
+        Liability & 500 & 500 \\ \hline
+        Assets & 2500 & 3499 \\ \hline
+    \end{tabular}
+\end{figure}
+
+The list of facts in figure \ref{fig:example_facts_aggregation_consistency} can be checked for aggregation consistency against the calculation network in figure \ref{fig:example_roll_up_consistency}.
+As you can see, there are two facts reported against each concept, one for 2022 and one for 2023.
+
+If there are multiple facts reported against a concept, then we iterate over them and "pin" all aspects except for the concept.
+Next, we go to the list of all facts and filter out all facts that have the same pinned aspects.
+Finally, we check for aggregation consistency using the filtered list of facts and the calculation network.
+
+In our example, we would first check all facts for 2022, then all facts for 2023.
+The list of facts is aggregation consistent for the year 2022, since the values of the UBS Savings Account and the Raiffeisen Savings Account add up to the value of the Savings Accounts concept.
+Also, the value of the Savings Accounts minus the value of the Liabilities concept adds up to the value of the Assets concept.
+
+However, the list of facts is not aggregation consistent for the year 2023.
+The reason being that the value of the Savings Accounts minus the value of the Liabilities concept does not result in the value of the Assets concept.
+
+\subsection{definitionLink}
+
+TODO
+
+\subsection{labelLink}
+\label{sec:labelLink}
 
 The \texttt{link:labelLink} network is used to associate report elements with human-readable labels.
 Thus far, we referred to report elements using their QName.
@@ -326,7 +447,7 @@ There are many more label roles that are used in practice.
 Users can even define their own label roles.
 For a complete list of standard label roles, refer to the XBRL 2.1 specification\cite{xbrl21_label_roles}.
 
-\section{referenceLink}
+\subsection{referenceLink}
 
 The \texttt{link:referenceLink} network is used to link report elements to external resources.
 For example, the concept \texttt{us-gaap:Revenues} might have an official definition in the SEC's Code of Federal Regulations (CFR).
@@ -376,3 +497,15 @@ However, our main focus is on the \texttt{link:reference} element, more specific
 The children of the \texttt{link:reference} element form a dictionary that describes the external resource that the reference points to.
 
 In the example \ref{fig:example_reference_xml}, the reference points to a subparagraph of the SEC's Code of Federal Regulations (CFR).
+References can point to any kind of external resource, not just the CFR.
+They can point to other XBRL reports, PDFs, websites, etc.
+
+Usually, an XBRL report contains only one referenceLink, 
+which is used to link the concepts in the report to the concepts to the underlying code of regulations.
+
+\subsection{footnoteLink}
+
+The \texttt{link:footnoteLink}, just like the \texttt{link:referenceLink} and the \texttt{link:labelLink}, is used to associate report elements with resources.
+One difference is that the resources are footnotes, not labels or references, which is a surface level difference.
+The other difference is that the locators in the footnoteLink can also reference facts, not just report elements.
+Other than that, footnoteLinks are implemented in the same way as the other networks.
