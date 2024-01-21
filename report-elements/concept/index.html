@@ -91,6 +91,24 @@
                   <li class="toctree-l1"><a class="reference internal" href="../report-elements/">Report Elements</a>
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Concept</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#concept-objects">Concept Objects</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#get_name">get_name</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_labels">get_labels</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_period_type">get_period_type</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_data_type">get_data_type</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_balance_type">get_balance_type</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#is_nillable">is_nillable</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../abstract/">Abstract</a>
                   </li>
@@ -135,7 +153,76 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                
+                <p><a id="brel.reportelements.concept"></a></p>
+<h1 id="brelreportelementsconcept">brel.reportelements.concept</h1>
+<p>This module contains the Concept class. A Concept is a data item that can be reported on.
+Concepts in BREL reports are the same as concepts in XBRL reports.
+For more information on concepts, see the <a href="https://specifications.xbrl.org/work-product-index-group-base-spec-base-spec.html"><strong>XBRL 2.1 specification</strong></a></p>
+<p>====================</p>
+<ul>
+<li>author: Robin Schmidiger</li>
+<li>version: 0.5</li>
+<li>date: 04 December 2023</li>
+</ul>
+<p>====================</p>
+<p><a id="brel.reportelements.concept.Concept"></a></p>
+<h2 id="concept-objects">Concept Objects</h2>
+<pre><code class="language-python">class Concept(IReportElement)
+</code></pre>
+<p>Class representing a concept in a BREL report. A concept is a data item that can be reported on.
+Concepts in BREL reports are the same as concepts in XBRL reports.
+For more information on concepts, see the XBRL 2.1 specification.
+A short summary of the most important attributes of a concept:</p>
+<ul>
+<li>It is defined in the XBRL taxonomy. So in the .xsd files in the DTS.</li>
+<li>It has a name, which is a QName. This has to be unique in the DTS.</li>
+<li>It has a data type, which is a QName.</li>
+<li>It has a period type, which can be either instant or duration.</li>
+<li>(optional) It has a balance type, which can be either credit or debit.</li>
+<li>(optional) It can be nillable, which is either true or false. If the attribute is not present, it defaults to false.</li>
+</ul>
+<p><a id="brel.reportelements.concept.Concept.get_name"></a></p>
+<h4 id="get_name">get_name</h4>
+<pre><code class="language-python">def get_name() -&gt; QName
+</code></pre>
+<p>Get the name of the concept.</p>
+<p><strong>Returns</strong>:</p>
+<p><code>QName</code>: the QName of the concept</p>
+<p><a id="brel.reportelements.concept.Concept.get_labels"></a></p>
+<h4 id="get_labels">get_labels</h4>
+<pre><code class="language-python">def get_labels() -&gt; list[BrelLabel]
+</code></pre>
+<p>Get the labels of the concept.</p>
+<p><strong>Returns</strong>:</p>
+<p><code>list[Label]</code>: all labels of the concept</p>
+<p><a id="brel.reportelements.concept.Concept.get_period_type"></a></p>
+<h4 id="get_period_type">get_period_type</h4>
+<pre><code class="language-python">def get_period_type() -&gt; str
+</code></pre>
+<p>Get the period type of the concept.</p>
+<p><strong>Returns</strong>:</p>
+<p><code>str</code>: the period type of the concept</p>
+<p><a id="brel.reportelements.concept.Concept.get_data_type"></a></p>
+<h4 id="get_data_type">get_data_type</h4>
+<pre><code class="language-python">def get_data_type() -&gt; str
+</code></pre>
+<p>Get the data type of the concept.</p>
+<p><strong>Returns</strong>:</p>
+<p><code>str</code>: the data type of the concept</p>
+<p><a id="brel.reportelements.concept.Concept.get_balance_type"></a></p>
+<h4 id="get_balance_type">get_balance_type</h4>
+<pre><code class="language-python">def get_balance_type() -&gt; str | None
+</code></pre>
+<p>Get the balance type of the concept.</p>
+<p><strong>Returns</strong>:</p>
+<p><code>str|None</code>: the balance type of the concept. None if the concept has no balance type.</p>
+<p><a id="brel.reportelements.concept.Concept.is_nillable"></a></p>
+<h4 id="is_nillable">is_nillable</h4>
+<pre><code class="language-python">def is_nillable() -&gt; bool
+</code></pre>
+<p>Check if the concept is nillable.</p>
+<p><strong>Returns</strong>:</p>
+<p><code>bool</code>: True 'IFF' the concept is nillable, False otherwise</p>
               
             </div>
           </div><footer>

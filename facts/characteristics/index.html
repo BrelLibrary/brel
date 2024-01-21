@@ -61,6 +61,16 @@
                   <li class="toctree-l1"><a class="reference internal" href="../aspects/">Aspects</a>
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Characteristics</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#icharacteristic-objects">ICharacteristic Objects</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#get_value">get_value</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_aspect">get_aspect</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../concept-characteristic/">Concept Characteristic</a>
                   </li>
@@ -135,7 +145,66 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                
+                <p><a id="brel.characteristics.i_characteristic"></a></p>
+<h1 id="brelcharacteristicsi_characteristic">brel.characteristics.i_characteristic</h1>
+<p>This module contains the interface for a characteristic.
+Characteristics are what makes up the context of a fact.
+They are a binding between an aspect and a value.</p>
+<p>There are characteristics for the 5 core aspects.</p>
+<ul>
+<li><a href="../concept-characteristic/"><code>ConceptCharacteristic</code></a> for <code>Aspect.CONCEPT</code></li>
+<li><a href="../period-characteristic/"><code>PeriodCharacteristic</code></a> for <code>Aspect.PERIOD</code></li>
+<li><a href="../entity-characteristic/"><code>EntityCharacteristic</code></a> for <code>Aspect.ENTITY</code></li>
+<li><a href="../unit-characteristic/"><code>UnitCharacteristic</code></a> for <code>Aspect.UNIT</code></li>
+</ul>
+<p>There are also characteristics for custom aspects. Custom aspects can either be typed or explicit.
+A explicit aspect is an aspect where the characteristic value is one option from a list of options.</p>
+<p>For example, consider the following facts:</p>
+<ul>
+<li>The Foo Company has a revenue of 1000 USD in 2020 in the region North America.</li>
+<li>The Foo Company has a revenue of 2000 USD in 2020 in the region Europe.</li>
+</ul>
+<p>The region aspect is an explicit aspect since the options that the region aspect can take are limited to North America and Europe.</p>
+<p>A typed aspect is an aspect where the characteristic value is a value of a certain type.
+Brel simplifies this by making the value a string and the type a QName.</p>
+<p>For example, consider the following facts:</p>
+<ul>
+<li>The Bar Company has 8 employees that earn 1000 USD per month in 2020.</li>
+<li>The Bar Company has 2 employees that earn 2000 USD per month in 2020.</li>
+</ul>
+<p>In this case value of the fact is the number of employees.
+The type aspect is the 'salary per month' aspect, is an integer.</p>
+<ul>
+<li><a href="../explicit-dimension-characteristic/"><code>ExplicitDimensionCharacteristic</code></a> for explicit dimensions.</li>
+<li><a href="../typed-dimension-characteristic/"><code>TypedDimensionCharacteristic</code></a> for typed dimensions.</li>
+</ul>
+<p>=================</p>
+<ul>
+<li>author: Robin Schmidiger</li>
+<li>version: 0.1</li>
+<li>date: 2023-12-06</li>
+</ul>
+<p>=================</p>
+<p><a id="brel.characteristics.i_characteristic.ICharacteristic"></a></p>
+<h2 id="icharacteristic-objects">ICharacteristic Objects</h2>
+<pre><code class="language-python">class ICharacteristic(ABC)
+</code></pre>
+<p>The Interface for a characteristic.
+A characteristic is a binding between an aspect and a value.</p>
+<p><a id="brel.characteristics.i_characteristic.ICharacteristic.get_value"></a></p>
+<h4 id="get_value">get_value</h4>
+<pre><code class="language-python">@abstractmethod
+def get_value() -&gt; Any
+</code></pre>
+<p><strong>Returns</strong>:</p>
+<p><code>Any</code>: the value of the characteristic.</p>
+<p><a id="brel.characteristics.i_characteristic.ICharacteristic.get_aspect"></a></p>
+<h4 id="get_aspect">get_aspect</h4>
+<pre><code class="language-python">@abstractmethod
+def get_aspect() -&gt; Aspect
+</code></pre>
+<p><strong>Returns</strong>:</p>
+<p><code>Aspect</code>: the aspect of the characteristic.</p>
               
             </div>
           </div><footer>

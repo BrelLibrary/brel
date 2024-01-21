@@ -95,6 +95,18 @@
                   <li class="toctree-l1"><a class="reference internal" href="../abstract/">Abstract</a>
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Line Items</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#lineitems-objects">LineItems Objects</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#get_name">get_name</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_labels">get_labels</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#__str__">__str__</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../hypercube/">Hypercube</a>
                   </li>
@@ -135,7 +147,38 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                
+                <p><a id="brel.reportelements.lineitems"></a></p>
+<h1 id="brelreportelementslineitems">brel.reportelements.lineitems</h1>
+<p>This module contains the LineItems class.</p>
+<p>=================</p>
+<ul>
+<li>author: Robin Schmidiger</li>
+<li>version: 0.2</li>
+<li>date: 18 January 2024</li>
+</ul>
+<p>=================</p>
+<p><a id="brel.reportelements.lineitems.LineItems"></a></p>
+<h2 id="lineitems-objects">LineItems Objects</h2>
+<pre><code class="language-python">class LineItems(IReportElement)
+</code></pre>
+<p><a id="brel.reportelements.lineitems.LineItems.get_name"></a></p>
+<h4 id="get_name">get_name</h4>
+<pre><code class="language-python">def get_name() -&gt; QName
+</code></pre>
+<p><strong>Returns</strong>:</p>
+<p><code>QName</code>: the name of the line items as a QName</p>
+<p><a id="brel.reportelements.lineitems.LineItems.get_labels"></a></p>
+<h4 id="get_labels">get_labels</h4>
+<pre><code class="language-python">def get_labels() -&gt; list[BrelLabel]
+</code></pre>
+<p><strong>Returns</strong>:</p>
+<p><code>list[BrelLabel]</code>: the labels of the line items</p>
+<p><a id="brel.reportelements.lineitems.LineItems.__str__"></a></p>
+<h4 id="__str__">__str__</h4>
+<pre><code class="language-python">def __str__() -&gt; str
+</code></pre>
+<p><strong>Returns</strong>:</p>
+<p><code>str</code>: the name of the line items as a string</p>
               
             </div>
           </div><footer>

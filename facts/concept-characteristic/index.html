@@ -63,6 +63,16 @@
                   <li class="toctree-l1"><a class="reference internal" href="../characteristics/">Characteristics</a>
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Concept Characteristic</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#conceptcharacteristic-objects">ConceptCharacteristic Objects</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#get_value">get_value</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_aspect">get_aspect</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../entity-characteristic/">Entity Characteristic</a>
                   </li>
@@ -135,7 +145,34 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                
+                <p><a id="brel.characteristics.concept_characteristic"></a></p>
+<h1 id="brelcharacteristicsconcept_characteristic">brel.characteristics.concept_characteristic</h1>
+<p>Contains the class for representing an XBRL concept characteristic</p>
+<p>=================</p>
+<ul>
+<li>author: Robin Schmidiger</li>
+<li>version: 0.2</li>
+<li>date: 19 December 2023</li>
+</ul>
+<p>=================</p>
+<p><a id="brel.characteristics.concept_characteristic.ConceptCharacteristic"></a></p>
+<h2 id="conceptcharacteristic-objects">ConceptCharacteristic Objects</h2>
+<pre><code class="language-python">class ConceptCharacteristic(ICharacteristic)
+</code></pre>
+<p>Class for representing a concept characteristic.
+The concept characteristic links the <code>Aspect.CONCEPT</code> aspect to a concept.</p>
+<p><a id="brel.characteristics.concept_characteristic.ConceptCharacteristic.get_value"></a></p>
+<h4 id="get_value">get_value</h4>
+<pre><code class="language-python">def get_value() -&gt; Concept
+</code></pre>
+<p><strong>Returns</strong>:</p>
+<p><code>Concept</code>: the concept of the characteristic</p>
+<p><a id="brel.characteristics.concept_characteristic.ConceptCharacteristic.get_aspect"></a></p>
+<h4 id="get_aspect">get_aspect</h4>
+<pre><code class="language-python">def get_aspect() -&gt; Aspect
+</code></pre>
+<p><strong>Returns</strong>:</p>
+<p><code>Aspect</code>: returns the <code>Aspect.CONCEPT</code> aspect</p>
               
             </div>
           </div><footer>

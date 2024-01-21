@@ -67,6 +67,24 @@
                   <li class="toctree-l1"><a class="reference internal" href="../entity-characteristic/">Entity Characteristic</a>
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Period Characteristic</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#periodcharacteristic-objects">PeriodCharacteristic Objects</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#is_instant">is_instant</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_start_period">get_start_period</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_end_period">get_end_period</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_instant_period">get_instant_period</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_value">get_value</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_aspect">get_aspect</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../unit-characteristic/">Unit Characteristic</a>
                   </li>
@@ -135,7 +153,79 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                
+                <p><a id="brel.characteristics.period_characteristic"></a></p>
+<h1 id="brelcharacteristicsperiod_characteristic">brel.characteristics.period_characteristic</h1>
+<p>This module contains the PeriodCharacteristic class, which represents an XBRL period characteristic.
+A period characteristic associates the aspect Aspect.PERIOD with a value.
+This value can be an instant or a duration.</p>
+<p>An instant consists of a single <code>datetime.date</code> instance.</p>
+<p>A duration consists of two <code>datetime.date</code> instances, a start date and an end date.</p>
+<p>====================</p>
+<ul>
+<li>author: Robin Schmidiger</li>
+<li>version: 0.5</li>
+<li>date: 08 Jan 2024</li>
+</ul>
+<p>====================</p>
+<p><a id="brel.characteristics.period_characteristic.PeriodCharacteristic"></a></p>
+<h2 id="periodcharacteristic-objects">PeriodCharacteristic Objects</h2>
+<pre><code class="language-python">class PeriodCharacteristic(ICharacteristic)
+</code></pre>
+<p>Class for representing an XBRL period characteristic.
+A period characteristic is either a duration or an instant.
+Use the <code>is_instant()</code> method to check if the period is an instant or a duration.</p>
+<p>If the period is an instant, use the <code>get_instant_period()</code> method to get the instant date as a <code>datetime.date</code> instance.</p>
+<p>if the period is a duration, use the <code>get_start_period()</code> and <code>get_end_period()</code> methods to get the start and end dates as <code>datetime.date</code> instances.</p>
+<p>A quirk of the <code>PeriodCharacteristic.get_value()</code> method is that it returns the period characteristic itself.</p>
+<p>This is because the standard python package <code>datetime</code> does not have a class for representing a period as specified by XBRL.</p>
+<p><a id="brel.characteristics.period_characteristic.PeriodCharacteristic.is_instant"></a></p>
+<h4 id="is_instant">is_instant</h4>
+<pre><code class="language-python">def is_instant() -&gt; bool
+</code></pre>
+<p><strong>Returns</strong>:</p>
+<p><code>bool</code>: True if the period is an instant, False otherwise</p>
+<p><a id="brel.characteristics.period_characteristic.PeriodCharacteristic.get_start_period"></a></p>
+<h4 id="get_start_period">get_start_period</h4>
+<pre><code class="language-python">def get_start_period() -&gt; datetime.date
+</code></pre>
+<p><strong>Raises</strong>:</p>
+<ul>
+<li><code>ValueError</code>: if the period is an instant. Use 'is_instant' to check if the period is an instant.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p><code>datetime.date</code>: the start date of the period as a <code>datetime.date</code> instance.</p>
+<p><a id="brel.characteristics.period_characteristic.PeriodCharacteristic.get_end_period"></a></p>
+<h4 id="get_end_period">get_end_period</h4>
+<pre><code class="language-python">def get_end_period() -&gt; datetime.date
+</code></pre>
+<p><strong>Raises</strong>:</p>
+<ul>
+<li><code>ValueError</code>: if the period is an instant. Use 'is_instant' to check if the period is an instant.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p><code>datetime.date</code>: the end date of the period as a <code>datetime.date</code> instance.</p>
+<p><a id="brel.characteristics.period_characteristic.PeriodCharacteristic.get_instant_period"></a></p>
+<h4 id="get_instant_period">get_instant_period</h4>
+<pre><code class="language-python">def get_instant_period() -&gt; datetime.date
+</code></pre>
+<p><strong>Raises</strong>:</p>
+<ul>
+<li><code>ValueError</code>: if the period is a duration. Use 'is_instant' to check if the period is an instant.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p><code>datetime.date</code>: the instant date of the period as a <code>datetime.date</code> instance.</p>
+<p><a id="brel.characteristics.period_characteristic.PeriodCharacteristic.get_value"></a></p>
+<h4 id="get_value">get_value</h4>
+<pre><code class="language-python">def get_value() -&gt; &quot;PeriodCharacteristic&quot;
+</code></pre>
+<p><strong>Returns</strong>:</p>
+<p><code>PeriodCharacteristic</code>: the period characteristic itself</p>
+<p><a id="brel.characteristics.period_characteristic.PeriodCharacteristic.get_aspect"></a></p>
+<h4 id="get_aspect">get_aspect</h4>
+<pre><code class="language-python">def get_aspect() -&gt; Aspect
+</code></pre>
+<p><strong>Returns</strong>:</p>
+<p><code>Aspect</code>: the aspect of the period characteristic, which is <code>Aspect.PERIOD</code></p>
               
             </div>
           </div><footer>

@@ -78,6 +78,32 @@
               <p class="caption"><span class="caption-text">Components</span></p>
               <ul class="current">
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Components</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#component-objects">Component Objects</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#get_uri">get_URI</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_info">get_info</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_presentation_network">get_presentation_network</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_calculation_network">get_calculation_network</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_definition_network">get_definition_network</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#has_presentation_network">has_presentation_network</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#has_calculation_network">has_calculation_network</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#has_definition_network">has_definition_network</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#__str__">__str__</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#is_aggregation_consistent">is_aggregation_consistent</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../networks/">Networks</a>
                   </li>
@@ -135,7 +161,127 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                
+                <p><a id="brel.brel_component"></a></p>
+<h1 id="brelbrel_component">brel.brel_component</h1>
+<p>This module contains the Component class.
+Components are used to define the presentation, calculation and definition networks of a filing.</p>
+<p>Intuitively, they function as the chapters of a report or filing. Note that XBRL sometimes calls 
+components 'roles'.</p>
+<p>Given a report, you can get all the components using the <code>Filing.get_all_components()</code> method.</p>
+<p>If you are looking for a specific component, consider the following:</p>
+<pre><code class="language-python">all_component_URIs = filing.get_all_component_URIs()
+
+# select one of the component names from the list
+my_component_name = all_component_URIs[0]
+
+# get the component
+my_component = filing.get_component(my_component_name)
+</code></pre>
+<p>Components act as wrappers for the <a href="#.networks/index.md"><code>Network</code>s</a> of a filing. 
+The most notable kind of networks are the presentation, calculation and definition networks.</p>
+<ul>
+<li>get the <a href="#./networks/presentation_network.md"><code>PresentationNetwork</code></a> using the 
+<code>Component.get_presentation_network()</code> method.</li>
+<li>get the <a href="#./networks/calculation_network.md"><code>CalculationNetwork</code></a> using the 
+<code>Component.get_calculation_network()</code> method.</li>
+<li>get the <a href="#./networks/definition_network.md"><code>DefinitionNetwork</code></a> using the 
+<code>Component.get_definition_network()</code> method.</li>
+</ul>
+<p>You can print them using the <code>pprint_network</code> function in the <code>brel</code> module:</p>
+<pre><code class="language-python">from brel import pprint
+
+calculation_network = my_component.get_calculation_network()
+pprint(calculation_network)
+</code></pre>
+<p>====================</p>
+<ul>
+<li>author: Robin Schmidiger</li>
+<li>version: 0.6</li>
+<li>date: 07 January 2024</li>
+</ul>
+<p>====================</p>
+<p><a id="brel.brel_component.Component"></a></p>
+<h2 id="component-objects">Component Objects</h2>
+<pre><code class="language-python">class Component()
+</code></pre>
+<p>This class implements XBRL components, which are sometimes also called roles.
+Components are used to define the presentation, calculation and definition networks of a filing.
+Intuitively, they function as the chapters of a report or filing.</p>
+<p>A component consists of the following:</p>
+<ul>
+<li>a URI, also called the roleURI. This is the identifier of the component.</li>
+<li>an info, also called the definition. This is a string that describes the component.
+It is optional.</li>
+<li>a set of networks. The most notable kind of networks are the presentation, calculation and
+definition networks.</li>
+</ul>
+<p><a id="brel.brel_component.Component.get_URI"></a></p>
+<h4 id="get_uri">get_URI</h4>
+<pre><code class="language-python">def get_URI() -&gt; str
+</code></pre>
+<p><strong>Returns</strong>:</p>
+<p><code>str</code>: the URI of the component</p>
+<p><a id="brel.brel_component.Component.get_info"></a></p>
+<h4 id="get_info">get_info</h4>
+<pre><code class="language-python">def get_info() -&gt; str
+</code></pre>
+<p><strong>Returns</strong>:</p>
+<p><code>str</code>: the info/definition of the component.</p>
+<p><a id="brel.brel_component.Component.get_presentation_network"></a></p>
+<h4 id="get_presentation_network">get_presentation_network</h4>
+<pre><code class="language-python">def get_presentation_network() -&gt; PresentationNetwork | None
+</code></pre>
+<p><strong>Returns</strong>:</p>
+<p><code>PresentationNetwork</code>: the presentation network of the component. None if the
+component has no presentation network or if the network is empty.</p>
+<p><a id="brel.brel_component.Component.get_calculation_network"></a></p>
+<h4 id="get_calculation_network">get_calculation_network</h4>
+<pre><code class="language-python">def get_calculation_network() -&gt; CalculationNetwork | None
+</code></pre>
+<p><strong>Returns</strong>:</p>
+<p><code>CalculationNetwork</code>: the calculation network of the component. None if the
+component has no calculation network or if the network is empty.</p>
+<p><a id="brel.brel_component.Component.get_definition_network"></a></p>
+<h4 id="get_definition_network">get_definition_network</h4>
+<pre><code class="language-python">def get_definition_network() -&gt; DefinitionNetwork | None
+</code></pre>
+<p><strong>Returns</strong>:</p>
+<p><code>DefinitionNetwork</code>: the definition network of the component. None if the component
+has no definition network or if the network is empty.</p>
+<p><a id="brel.brel_component.Component.has_presentation_network"></a></p>
+<h4 id="has_presentation_network">has_presentation_network</h4>
+<pre><code class="language-python">def has_presentation_network() -&gt; bool
+</code></pre>
+<p><strong>Returns</strong>:</p>
+<p><code>bool</code>: True if the component has a presentation network, False otherwise</p>
+<p><a id="brel.brel_component.Component.has_calculation_network"></a></p>
+<h4 id="has_calculation_network">has_calculation_network</h4>
+<pre><code class="language-python">def has_calculation_network() -&gt; bool
+</code></pre>
+<p><strong>Returns</strong>:</p>
+<p><code>bool</code>: True if the component has a calculation network, False otherwise</p>
+<p><a id="brel.brel_component.Component.has_definition_network"></a></p>
+<h4 id="has_definition_network">has_definition_network</h4>
+<pre><code class="language-python">def has_definition_network() -&gt; bool
+</code></pre>
+<p><strong>Returns</strong>:</p>
+<p><code>bool</code>: True if the component has a definition network, False otherwise</p>
+<p><a id="brel.brel_component.Component.__str__"></a></p>
+<h4 id="__str__">__str__</h4>
+<pre><code class="language-python">def __str__() -&gt; str
+</code></pre>
+<p><strong>Returns</strong>:</p>
+<p><code>str</code>: a string representation of the component</p>
+<p><a id="brel.brel_component.Component.is_aggregation_consistent"></a></p>
+<h4 id="is_aggregation_consistent">is_aggregation_consistent</h4>
+<pre><code class="language-python">def is_aggregation_consistent(facts: list[Fact]) -&gt; bool
+</code></pre>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>facts</code>: the facts of the filing</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p><code>bool</code>: True if and only if the component is aggregation consistent against the given facts</p>
               
             </div>
           </div><footer>

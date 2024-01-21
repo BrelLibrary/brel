@@ -93,6 +93,16 @@
                   <li class="toctree-l1"><a class="reference internal" href="../concept/">Concept</a>
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Abstract</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#abstract-objects">Abstract Objects</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#get_name">get_name</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_labels">get_labels</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../line-items/">Line Items</a>
                   </li>
@@ -135,7 +145,37 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                
+                <p><a id="brel.reportelements.abstract"></a></p>
+<h1 id="brelreportelementsabstract">brel.reportelements.abstract</h1>
+<p>This module contains the Abstract class. An abstract a kind of report element that is used to group other report elements.</p>
+<p>====================</p>
+<ul>
+<li>author: Robin Schmidiger</li>
+<li>version: 0.2</li>
+<li>date: 30 October 2023</li>
+</ul>
+<p>====================</p>
+<p><a id="brel.reportelements.abstract.Abstract"></a></p>
+<h2 id="abstract-objects">Abstract Objects</h2>
+<pre><code class="language-python">class Abstract(IReportElement)
+</code></pre>
+<p>Class representing an abstract in a BREL report. An abstract is a kind of report element that is used to group other report elements.
+They are often used in presentation networks to build a hierarchy of concepts.</p>
+<p>The Abstract class implements the IReportElement interface.</p>
+<p><a id="brel.reportelements.abstract.Abstract.get_name"></a></p>
+<h4 id="get_name">get_name</h4>
+<pre><code class="language-python">def get_name() -&gt; QName
+</code></pre>
+<p>Get the name of the abstract element.</p>
+<p><strong>Returns</strong>:</p>
+<p><code>QName</code>: containing the name of the abstract element</p>
+<p><a id="brel.reportelements.abstract.Abstract.get_labels"></a></p>
+<h4 id="get_labels">get_labels</h4>
+<pre><code class="language-python">def get_labels() -&gt; list[BrelLabel]
+</code></pre>
+<p>Get the labels of the abstract element.</p>
+<p><strong>Returns</strong>:</p>
+<p><code>list[Label]</code>: contains the labels of the abstract element</p>
               
             </div>
           </div><footer>

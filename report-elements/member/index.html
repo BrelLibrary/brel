@@ -101,6 +101,16 @@
                   <li class="toctree-l1"><a class="reference internal" href="../dimension/">Dimension</a>
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Member</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#member-objects">Member Objects</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#get_name">get_name</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_labels">get_labels</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">QNames</span></p>
@@ -135,7 +145,35 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                
+                <p><a id="brel.reportelements.member"></a></p>
+<h1 id="brelreportelementsmember">brel.reportelements.member</h1>
+<p>This module contains the class for the Member report element in Brel.
+Members are used to represent the possible values of an explicit dimension.</p>
+<p>====================</p>
+<ul>
+<li>author: Robin Schmidiger</li>
+<li>version: 0.3</li>
+<li>date: 18 January 2023</li>
+</ul>
+<p>====================</p>
+<p><a id="brel.reportelements.member.Member"></a></p>
+<h2 id="member-objects">Member Objects</h2>
+<pre><code class="language-python">class Member(IReportElement)
+</code></pre>
+<p>Class representing a member in a BREL report. A member is a kind of report element that is used to represent the possible values of an explicit dimension.
+It implements the IReportElement interface.</p>
+<p><a id="brel.reportelements.member.Member.get_name"></a></p>
+<h4 id="get_name">get_name</h4>
+<pre><code class="language-python">def get_name() -&gt; QName
+</code></pre>
+<p><strong>Returns</strong>:</p>
+<p><code>QName</code>: the name of the member as a QName</p>
+<p><a id="brel.reportelements.member.Member.get_labels"></a></p>
+<h4 id="get_labels">get_labels</h4>
+<pre><code class="language-python">def get_labels() -&gt; list[BrelLabel]
+</code></pre>
+<p><strong>Returns</strong>:</p>
+<p><code>list[BrelLabel]</code>: the labels of the member</p>
               
             </div>
           </div><footer>

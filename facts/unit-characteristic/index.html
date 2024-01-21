@@ -69,6 +69,22 @@
                   <li class="toctree-l1"><a class="reference internal" href="../period-characteristic/">Period Characteristic</a>
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Unit Characteristic</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#unitcharacteristic-objects">UnitCharacteristic Objects</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#get_aspect">get_aspect</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_numerators">get_numerators</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_denominators">get_denominators</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_value">get_value</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#is_simple">is_simple</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../explicit-dimension-characteristic/">Explicit Dimension Characteristic</a>
                   </li>
@@ -135,7 +151,65 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                
+                <p><a id="brel.characteristics.unit_characteristic"></a></p>
+<h1 id="brelcharacteristicsunit_characteristic">brel.characteristics.unit_characteristic</h1>
+<p>This module contains the class for representing xbrl unit characteristics.
+A unit characteristic associates the aspect Aspect.UNIT with a value.
+In case of the UnitCharacteristic class, the value is a string.</p>
+<p>However, the UnitCharacteristic can also handle more complex units consisting of numerators and denominators.</p>
+<p>====================</p>
+<ul>
+<li>author: Robin Schmidiger</li>
+<li>version: 0.2</li>
+<li>date: 07 January 2024</li>
+</ul>
+<p>====================</p>
+<p><a id="brel.characteristics.unit_characteristic.UnitCharacteristic"></a></p>
+<h2 id="unitcharacteristic-objects">UnitCharacteristic Objects</h2>
+<pre><code class="language-python">class UnitCharacteristic(ICharacteristic)
+</code></pre>
+<p>Class for representing an XBRL unit characteristic.
+A unit characteristic associates the aspect Aspect.UNIT with a value and implements the ICharacteristic interface.</p>
+<p>A unit can be identified by its name, which usually indicates how the unit is composed.</p>
+<p>Examples: "usd", "sharesPerUSD", "shares"</p>
+<p>A unit consists of numerators and denominators, which are lists of QNames.</p>
+<p>Most units are simple and consist of a single QName.
+You can use the <code>is_simple()</code> method to check if the unit is simple.</p>
+<p>You can get the numerators and denominators of the unit using the <code>get_numerators()</code> and <code>get_denominators()</code> methods respectively.</p>
+<p>The unit characteristic does have a connection to the concept characteristic.
+Namely, if the concept characteristic's concept is a monetary concept, the unit's numerators and denominators must be defined in the iso4217 namespace.</p>
+<p><a id="brel.characteristics.unit_characteristic.UnitCharacteristic.get_aspect"></a></p>
+<h4 id="get_aspect">get_aspect</h4>
+<pre><code class="language-python">def get_aspect() -&gt; Aspect
+</code></pre>
+<p><strong>Returns</strong>:</p>
+<p><code>Aspect</code>: returns Aspect.UNIT</p>
+<p><a id="brel.characteristics.unit_characteristic.UnitCharacteristic.get_numerators"></a></p>
+<h4 id="get_numerators">get_numerators</h4>
+<pre><code class="language-python">def get_numerators() -&gt; list[QName]
+</code></pre>
+<p><strong>Returns</strong>:</p>
+<p><code>list[QName]</code>: all numerators of the unit</p>
+<p><a id="brel.characteristics.unit_characteristic.UnitCharacteristic.get_denominators"></a></p>
+<h4 id="get_denominators">get_denominators</h4>
+<pre><code class="language-python">def get_denominators() -&gt; list[QName]
+</code></pre>
+<p><strong>Returns</strong>:</p>
+<p><code>list[QName]</code>: all denominators of the unit</p>
+<p><a id="brel.characteristics.unit_characteristic.UnitCharacteristic.get_value"></a></p>
+<h4 id="get_value">get_value</h4>
+<pre><code class="language-python">def get_value() -&gt; str
+</code></pre>
+<p>info: this is different from the numerators/denominators of the unit. It is the name of the unit.</p>
+<p><strong>Returns</strong>:</p>
+<p><code>str</code>: the name of the unit</p>
+<p><a id="brel.characteristics.unit_characteristic.UnitCharacteristic.is_simple"></a></p>
+<h4 id="is_simple">is_simple</h4>
+<pre><code class="language-python">def is_simple() -&gt; bool
+</code></pre>
+<p>A unit is simple if it has exactly one numerator and no denominators</p>
+<p><strong>Returns</strong>:</p>
+<p><code>bool</code>: True 'IFF' the unit is simple, False otherwise</p>
               
             </div>
           </div><footer>

@@ -97,6 +97,18 @@
                   <li class="toctree-l1"><a class="reference internal" href="../line-items/">Line Items</a>
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Hypercube</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#hypercube-objects">Hypercube Objects</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#get_name">get_name</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_labels">get_labels</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#__str__">__str__</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../dimension/">Dimension</a>
                   </li>
@@ -135,7 +147,35 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                
+                <p><a id="brel.reportelements.hypercube"></a></p>
+<h1 id="brelreportelementshypercube">brel.reportelements.hypercube</h1>
+<p>This module contains the Hypercube class.</p>
+<p>=================</p>
+<ul>
+<li>author: Robin Schmidiger</li>
+<li>version: 0.2</li>
+<li>date: 18 January 2024</li>
+</ul>
+<p>=================</p>
+<p><a id="brel.reportelements.hypercube.Hypercube"></a></p>
+<h2 id="hypercube-objects">Hypercube Objects</h2>
+<pre><code class="language-python">class Hypercube(IReportElement)
+</code></pre>
+<p><a id="brel.reportelements.hypercube.Hypercube.get_name"></a></p>
+<h4 id="get_name">get_name</h4>
+<pre><code class="language-python">def get_name() -&gt; QName
+</code></pre>
+<p>@return QName: the name of the hypercube as a QName</p>
+<p><a id="brel.reportelements.hypercube.Hypercube.get_labels"></a></p>
+<h4 id="get_labels">get_labels</h4>
+<pre><code class="language-python">def get_labels() -&gt; list[BrelLabel]
+</code></pre>
+<p>@return list[BrelLabel]: the labels of the hypercube</p>
+<p><a id="brel.reportelements.hypercube.Hypercube.__str__"></a></p>
+<h4 id="__str__">__str__</h4>
+<pre><code class="language-python">def __str__() -&gt; str
+</code></pre>
+<p>@return str: the name of the hypercube as a string</p>
               
             </div>
           </div><footer>

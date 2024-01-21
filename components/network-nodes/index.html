@@ -82,6 +82,36 @@
                   <li class="toctree-l1"><a class="reference internal" href="../networks/">Networks</a>
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Network Nodes</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#inetworknode-objects">INetworkNode Objects</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#get_report_element">get_report_element</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_resource">get_resource</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_fact">get_fact</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#points_to">points_to</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_children">get_children</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_arc_role">get_arc_role</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_arc_name">get_arc_name</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_link_role">get_link_role</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_link_name">get_link_name</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_all_descendants">get_all_descendants</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#is_leaf">is_leaf</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_order">get_order</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../calculation-networks-and-nodes/">Calculation Networks and Nodes</a>
                   </li>
@@ -135,7 +165,145 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                
+                <p><a id="brel.networks.i_network_node"></a></p>
+<h1 id="brelnetworksi_network_node">brel.networks.i_network_node</h1>
+<p>This module contains the interface for a node in a network.
+All nodes in a network are built on a common interface that allows for some basic navigation of the network.
+The network node interface also contains some utility methods for working with networks and nodes.</p>
+<p>====================</p>
+<ul>
+<li>author: Robin Schmidiger</li>
+<li>version: 0.3</li>
+<li>date: 2023-12-29</li>
+</ul>
+<p>====================</p>
+<p><a id="brel.networks.i_network_node.INetworkNode"></a></p>
+<h2 id="inetworknode-objects">INetworkNode Objects</h2>
+<pre><code class="language-python">class INetworkNode(ABC)
+</code></pre>
+<p>Interface for representing a node in a network.
+Since a node can have children, nodes can also be viewed as trees.</p>
+<p>Each node in a network can point to one of the following:</p>
+<ul>
+<li>A report element <a href="#./reportelements/i_report_element.md">IReportElement</a>: use <code>node.get_report_element()</code></li>
+<li>A resource<a href="#./resource/i_resource.md">IResource</a>: use <code>node.get_resource()</code></li>
+<li>A fact<a href="#./facts/fact.md">Fact</a>:</li>
+</ul>
+<p>The getter methods above will raise a ValueError if the node does not point to the requested type.
+Use the <code>points_to()</code> method to check if the node points to a report element, resource or fact.</p>
+<ul>
+<li>If the node points to a report element, <code>points_to()</code> will return 'report element'</li>
+<li>If the node points to a resource, <code>points_to()</code> will return 'resource'</li>
+<li>If the node points to a fact, <code>points_to()</code> will return 'fact'</li>
+</ul>
+<p>To navigate the network, use the <code>get_children()</code> method to get the children of a node.</p>
+<p>Each node also has an order attribute which can be accessed using the <code>get_order()</code> method.
+The children of a node are ordered by their order attribute.</p>
+<p><a id="brel.networks.i_network_node.INetworkNode.get_report_element"></a></p>
+<h4 id="get_report_element">get_report_element</h4>
+<pre><code class="language-python">@abstractmethod
+def get_report_element() -&gt; IReportElement
+</code></pre>
+<p><strong>Raises</strong>:</p>
+<ul>
+<li><code>ValueError</code>: if this node does not point to a report element.
+Use the <code>points_to()</code> method to check if this node points to a report element.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p><code>IReportElement</code>: report element associated with this node.</p>
+<p><a id="brel.networks.i_network_node.INetworkNode.get_resource"></a></p>
+<h4 id="get_resource">get_resource</h4>
+<pre><code class="language-python">@abstractmethod
+def get_resource() -&gt; IResource
+</code></pre>
+<p><strong>Raises</strong>:</p>
+<ul>
+<li><code>ValueError</code>: if this node does not point to a resource.
+Use the <code>points_to()</code> method to check if this node points to a resource.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p><code>IResource</code>: resource associated with this node.</p>
+<p><a id="brel.networks.i_network_node.INetworkNode.get_fact"></a></p>
+<h4 id="get_fact">get_fact</h4>
+<pre><code class="language-python">@abstractmethod
+def get_fact() -&gt; Fact
+</code></pre>
+<p><strong>Raises</strong>:</p>
+<ul>
+<li><code>ValueError</code>: if this node does not point to a fact.
+Use the <code>points_to()</code> method to check if this node points to a fact.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p><code>Fact</code>: fact associated with this node.</p>
+<p><a id="brel.networks.i_network_node.INetworkNode.points_to"></a></p>
+<h4 id="points_to">points_to</h4>
+<pre><code class="language-python">@abstractmethod
+def points_to() -&gt; str
+</code></pre>
+<p>Returns</p>
+<ul>
+<li>'resource' if this node points to a resource</li>
+<li>'report element' if this node points to a report element</li>
+<li>'fact' if this node points to a fact</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p><code>str</code>: containing 'resource', 'report element' or 'fact'</p>
+<p><a id="brel.networks.i_network_node.INetworkNode.get_children"></a></p>
+<h4 id="get_children">get_children</h4>
+<pre><code class="language-python">@abstractmethod
+def get_children() -&gt; list[&quot;INetworkNode&quot;]
+</code></pre>
+<p>Returns all children of this node</p>
+<p><strong>Returns</strong>:</p>
+<p><code>list[NetworkNode]</code>: list containing the children of this node</p>
+<p><a id="brel.networks.i_network_node.INetworkNode.get_arc_role"></a></p>
+<h4 id="get_arc_role">get_arc_role</h4>
+<pre><code class="language-python">@abstractmethod
+def get_arc_role() -&gt; str
+</code></pre>
+<p><strong>Returns</strong>:</p>
+<p><code>str</code>: the arc role of this node. There can be nodes with different arc roles in the same network.</p>
+<p><a id="brel.networks.i_network_node.INetworkNode.get_arc_name"></a></p>
+<h4 id="get_arc_name">get_arc_name</h4>
+<pre><code class="language-python">@abstractmethod
+def get_arc_name() -&gt; QName
+</code></pre>
+<p><strong>Returns</strong>:</p>
+<p><code>QName</code>: the arc name of this node. All nodes in the same network have the same arc name.</p>
+<p><a id="brel.networks.i_network_node.INetworkNode.get_link_role"></a></p>
+<h4 id="get_link_role">get_link_role</h4>
+<pre><code class="language-python">@abstractmethod
+def get_link_role() -&gt; str
+</code></pre>
+<p><strong>Returns</strong>:</p>
+<p><code>str</code>: the link role of this node. This is the same as the link role of the network that the node is in.</p>
+<p><a id="brel.networks.i_network_node.INetworkNode.get_link_name"></a></p>
+<h4 id="get_link_name">get_link_name</h4>
+<pre><code class="language-python">@abstractmethod
+def get_link_name() -&gt; QName
+</code></pre>
+<p><strong>Returns</strong>:</p>
+<p><code>QName</code>: the link name of this node. This is the same as the link name of the network that the node is in.</p>
+<p><a id="brel.networks.i_network_node.INetworkNode.get_all_descendants"></a></p>
+<h4 id="get_all_descendants">get_all_descendants</h4>
+<pre><code class="language-python">def get_all_descendants() -&gt; list[&quot;INetworkNode&quot;]
+</code></pre>
+<p>Returns all descendants of the current node</p>
+<p><strong>Returns</strong>:</p>
+<p><code>list[NetworkNode]</code>: list containing all descendants of this node</p>
+<p><a id="brel.networks.i_network_node.INetworkNode.is_leaf"></a></p>
+<h4 id="is_leaf">is_leaf</h4>
+<pre><code class="language-python">def is_leaf() -&gt; bool
+</code></pre>
+<p><strong>Returns</strong>:</p>
+<p><code>bool</code>: True if this node is a leaf, False otherwise</p>
+<p><a id="brel.networks.i_network_node.INetworkNode.get_order"></a></p>
+<h4 id="get_order">get_order</h4>
+<pre><code class="language-python">@abstractmethod
+def get_order() -&gt; float
+</code></pre>
+<p><strong>Returns</strong>:</p>
+<p><code>float</code>: The order of this node. Nodes are ordered by their order attribute.</p>
               
             </div>
           </div><footer>

@@ -99,6 +99,22 @@
                   <li class="toctree-l1"><a class="reference internal" href="../hypercube/">Hypercube</a>
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Dimension</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#dimension-objects">Dimension Objects</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#get_name">get_name</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_labels">get_labels</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#is_explicit">is_explicit</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_type">get_type</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#make_typed">make_typed</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../member/">Member</a>
                   </li>
@@ -135,7 +151,69 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                
+                <p><a id="brel.reportelements.dimension"></a></p>
+<h1 id="brelreportelementsdimension">brel.reportelements.dimension</h1>
+<p>This module contains the Dimension class. A dimension is a kind of report element that is used to present additional aspects for the context of a fact.</p>
+<p>Facts in Brel can already be viewed as a form of hypercube. Dimensions build on top of that and allow for custom dimensions to be added to the hypercube besides the already existing ones.
+The already existing dimensions are the core aspects of a fact, namely the period, the entity, the unit and the concept.</p>
+<p>====================</p>
+<ul>
+<li>author: Robin Schmidiger</li>
+<li>version: 0.3</li>
+<li>date: 30 October 2023</li>
+</ul>
+<p>====================</p>
+<p><a id="brel.reportelements.dimension.Dimension"></a></p>
+<h2 id="dimension-objects">Dimension Objects</h2>
+<pre><code class="language-python">class Dimension(IReportElement)
+</code></pre>
+<p>Class representing a dimension in a BREL report. A dimension is a kind of report element that is used to present additional aspects for the context of a fact.</p>
+<p>All dimensions are either explicit or typed.
+A new dimension is explicit by default.
+If you want to make a dimension typed, you have to call <code>make_typed(dim_type: QName)</code> on it.</p>
+<p><a id="brel.reportelements.dimension.Dimension.get_name"></a></p>
+<h4 id="get_name">get_name</h4>
+<pre><code class="language-python">def get_name() -&gt; QName
+</code></pre>
+<p>Get the name of the dimension.</p>
+<p><strong>Returns</strong>:</p>
+<p><code>QName</code>: the name of the dimension as a QName</p>
+<p><a id="brel.reportelements.dimension.Dimension.get_labels"></a></p>
+<h4 id="get_labels">get_labels</h4>
+<pre><code class="language-python">def get_labels() -&gt; list[BrelLabel]
+</code></pre>
+<p>Get the labels of the dimension.</p>
+<p><strong>Returns</strong>:</p>
+<p><code>list[Label]</code>: all labels of the dimension</p>
+<p><a id="brel.reportelements.dimension.Dimension.is_explicit"></a></p>
+<h4 id="is_explicit">is_explicit</h4>
+<pre><code class="language-python">def is_explicit() -&gt; bool
+</code></pre>
+<p>Check if the dimension is explicit.</p>
+<p>Use the <code>make_typed(dim_type: QName)</code> method to make a dimension typed.</p>
+<p><strong>Returns</strong>:</p>
+<p><code>bool</code>: True 'IFF' the dimension is explicit, False otherwise</p>
+<p><a id="brel.reportelements.dimension.Dimension.get_type"></a></p>
+<h4 id="get_type">get_type</h4>
+<pre><code class="language-python">def get_type() -&gt; QName
+</code></pre>
+<p>Get the type of the dimension.</p>
+<p><strong>Raises</strong>:</p>
+<ul>
+<li><code>ValueError</code>: if the dimension is explicit and has no type
+Use <code>is_explicit()</code> to check if the dimension is explicit.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p><code>QName</code>: type of the dimension</p>
+<p><a id="brel.reportelements.dimension.Dimension.make_typed"></a></p>
+<h4 id="make_typed">make_typed</h4>
+<pre><code class="language-python">def make_typed(dim_type: QName)
+</code></pre>
+<p>Turn the dimension into a typed dimension.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>dim_type</code>: the type of the dimension. Has to be a QName</li>
+</ul>
               
             </div>
           </div><footer>

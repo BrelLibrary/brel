@@ -89,6 +89,20 @@
               <p class="caption"><span class="caption-text">Report Elements</span></p>
               <ul class="current">
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Report Elements</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#ireportelement-objects">IReportElement Objects</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#get_name">get_name</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_labels">get_labels</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#has_label_with_role">has_label_with_role</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#has_label_with_language">has_label_with_language</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../concept/">Concept</a>
                   </li>
@@ -135,7 +149,64 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                
+                <p><a id="brel.reportelements.i_report_element"></a></p>
+<h1 id="brelreportelementsi_report_element">brel.reportelements.i_report_element</h1>
+<p>This module contains the interface for all report elements.
+Report elements are the building blocks of a report and are used by a lot of other classes.
+Therefore, it is important to have a common interface for all report elements.</p>
+<p>Report have a unique name and can have multiple human readable labels representing the same name.
+Depending on the kind of report element, there might be more information available.</p>
+<p>====================</p>
+<ul>
+<li>author: Robin Schmidiger</li>
+<li>version: 0.2</li>
+<li>date: 21 January 2024</li>
+</ul>
+<p>====================</p>
+<p><a id="brel.reportelements.i_report_element.IReportElement"></a></p>
+<h2 id="ireportelement-objects">IReportElement Objects</h2>
+<pre><code class="language-python">class IReportElement(ABC)
+</code></pre>
+<p>Interface for all report elements.
+Each report element must have a name and can have multiple labels.</p>
+<p><a id="brel.reportelements.i_report_element.IReportElement.get_name"></a></p>
+<h4 id="get_name">get_name</h4>
+<pre><code class="language-python">@abstractmethod
+def get_name() -&gt; QName
+</code></pre>
+<p>Get the name of the report element.</p>
+<p><strong>Returns</strong>:</p>
+<p>QName containing the name of the report element</p>
+<p><a id="brel.reportelements.i_report_element.IReportElement.get_labels"></a></p>
+<h4 id="get_labels">get_labels</h4>
+<pre><code class="language-python">@abstractmethod
+def get_labels() -&gt; list[BrelLabel]
+</code></pre>
+<p>Get all labels of the report element.</p>
+<p><strong>Returns</strong>:</p>
+<p><code>list[Label]</code>: containing the labels of the report element</p>
+<p><a id="brel.reportelements.i_report_element.IReportElement.has_label_with_role"></a></p>
+<h4 id="has_label_with_role">has_label_with_role</h4>
+<pre><code class="language-python">def has_label_with_role(label_role: str) -&gt; bool
+</code></pre>
+<p>Check if the report element has a label with the given role.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>label_role</code>: the role of the label to check</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p><code>bool</code>: True if the report element has a label with the given role, False otherwise</p>
+<p><a id="brel.reportelements.i_report_element.IReportElement.has_label_with_language"></a></p>
+<h4 id="has_label_with_language">has_label_with_language</h4>
+<pre><code class="language-python">def has_label_with_language(language: str) -&gt; bool
+</code></pre>
+<p>Check if the report element has a label with the given language.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>language</code>: the language of the label to check</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p><code>bool</code>: True if the report element has a label with the given language, False otherwise</p>
               
             </div>
           </div><footer>

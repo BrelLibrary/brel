@@ -106,6 +106,56 @@
               <p class="caption"><span class="caption-text">QNames</span></p>
               <ul class="current">
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">QNames and Namespace maps</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#qname-objects">QName Objects</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#__init__">__init__</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_url">get_URL</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_prefix">get_prefix</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_local_name">get_local_name</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_nsmap">get_nsmap</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get">get</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#__str__">__str__</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#__eq__">__eq__</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#__hash__">__hash__</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#resolve">resolve</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#from_string">from_string</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#is_str_qname">is_str_qname</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#qnamensmap-objects">QNameNSMap Objects</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#__init___1">__init__</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#add_to_nsmap">add_to_nsmap</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#add_redirect">add_redirect</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_redirect">get_redirect</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#rename">rename</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_prefix_1">get_prefix</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_url_1">get_url</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_nsmap_1">get_nsmap</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../namespace-normalization/">Namespace normalization</a>
                   </li>
@@ -135,7 +185,270 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                
+                <p><a id="brel.qname"></a></p>
+<h1 id="brelqname">brel.qname</h1>
+<p>This module contains the QName class and the QNameNSMap class.
+The QName class represents a qualified name.
+The QNameNSMap class represents a namespace map.</p>
+<p>====================</p>
+<ul>
+<li>author: Robin Schmidiger</li>
+<li>version: 0.6</li>
+<li>date: 06 January 2024</li>
+</ul>
+<p>====================</p>
+<p><a id="brel.qname.QName"></a></p>
+<h2 id="qname-objects">QName Objects</h2>
+<pre><code class="language-python">class QName()
+</code></pre>
+<p>This class represents a qualified name. Qualified names are used in XML and XBRL to identify elements.
+Brel re-uses qualified names to identify report elements, types, etc. in the report.
+A qualified name consists of a URI, a prefix and a local name.</p>
+<ul>
+<li>The URI identifies the namespace of the element.</li>
+<li>The prefix is a short string that is used to identify the namespace.</li>
+<li>The local name is the name of the element within the namespace.</li>
+</ul>
+<p>An example of a qualified name is us-gaap:Assets.</p>
+<ul>
+<li>The URI is http://fasb.org/us-gaap/2019-01-31</li>
+<li>The prefix is us-gaap and acts as an abbreviation for the URI</li>
+<li>The local name is Assets</li>
+</ul>
+<p>The <a href="#brel.qname.QName"><code>QName</code></a> class is closely related to the <a href="#brel.qname.QNameNSMap"><code>QNameNSMap</code></a> class. The QNameNSMap class is used to map prefixes to URIs and vice versa.
+When creating a QName, sometimes either the prefix or the URI is unknown. In this case, the QNameNSMap class is used to find the missing information.
+There is usually only one QNameNSMap object per report. It is created when the report is created and then passed to the QName constructor.</p>
+<p><a id="brel.qname.QName.__init__"></a></p>
+<h4 id="__init__">__init__</h4>
+<pre><code class="language-python">def __init__(uri: str, prefix: str, local_name: str, nsmap: &quot;QNameNSMap&quot;)
+</code></pre>
+<p>Creates a QName object.</p>
+<p>Note that this constructor changes the prefix if there is a prefix redirect in the <a href="#brel.qname.QNameNSMap"><code>QNameNSMap</code></a>.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>uri</code>: str containing the URI. Must be a valid URL</li>
+<li><code>prefix</code>: str containing the prefix</li>
+<li><code>local_name</code>: str containing the local name</li>
+<li><code>nsmap</code>: QNameNSMap containing the namespace map</li>
+</ul>
+<p><strong>Raises</strong>:</p>
+<ul>
+<li><code>ValueError</code>: if there is a conflict with the namespace map</li>
+</ul>
+<p><a id="brel.qname.QName.get_URL"></a></p>
+<h4 id="get_url">get_URL</h4>
+<pre><code class="language-python">def get_URL() -&gt; str
+</code></pre>
+<p><strong>Returns</strong>:</p>
+<p><code>str</code>: containing the URI</p>
+<p><a id="brel.qname.QName.get_prefix"></a></p>
+<h4 id="get_prefix">get_prefix</h4>
+<pre><code class="language-python">def get_prefix() -&gt; str
+</code></pre>
+<p><strong>Returns</strong>:</p>
+<p><code>str</code>: containing the prefix</p>
+<p><a id="brel.qname.QName.get_local_name"></a></p>
+<h4 id="get_local_name">get_local_name</h4>
+<pre><code class="language-python">def get_local_name() -&gt; str
+</code></pre>
+<p><strong>Returns</strong>:</p>
+<p><code>str</code>: containing the local name</p>
+<p><a id="brel.qname.QName.get_nsmap"></a></p>
+<h4 id="get_nsmap">get_nsmap</h4>
+<pre><code class="language-python">def get_nsmap() -&gt; &quot;QNameNSMap&quot;
+</code></pre>
+<p><strong>Returns</strong>:</p>
+<p><code>QNameNSMap</code>: containing the namespace map.</p>
+<p><a id="brel.qname.QName.get"></a></p>
+<h4 id="get">get</h4>
+<pre><code class="language-python">def get() -&gt; str
+</code></pre>
+<p><strong>Returns</strong>:</p>
+<p><code>str</code>: representation of the qualified name.
+it does not substitute the prefix with the URI.</p>
+<p>example: us-gaap:Assets</p>
+<p><a id="brel.qname.QName.__str__"></a></p>
+<h4 id="__str__">__str__</h4>
+<pre><code class="language-python">def __str__() -&gt; str
+</code></pre>
+<p><strong>Returns</strong>:</p>
+<p><code>str</code>: representation of the qualified name.
+Functionally equivalent to QName.get()</p>
+<p><a id="brel.qname.QName.__eq__"></a></p>
+<h4 id="__eq__">__eq__</h4>
+<pre><code class="language-python">def __eq__(__value: object) -&gt; bool
+</code></pre>
+<p>Checks if the QName self is equal to the QName __value.</p>
+<p>Two QNames are equal if
+- the local name is equal
+- the prefix is equal</p>
+<p>Note that the URI is not considered when checking for equality.
+This is because Brel does not allow two completely different URIs to map to the same prefix.
+Two URIs are completely different if they are not versions of the same URI.
+Example:
+- http://www.xbrl.org/2003/instance and http://www.xbrl.org/2020/instance are versions of the same URI.
+- http://www.xbrl.org/2003/instance and http://www.xbrl.org/2003/taxonomy are not versions of the same URI.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>__value</code>: object containing the QName to compare with.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p><code>bool</code>: True if __value is a QName and it is equal to self, False otherwise.</p>
+<p><a id="brel.qname.QName.__hash__"></a></p>
+<h4 id="__hash__">__hash__</h4>
+<pre><code class="language-python">def __hash__() -&gt; int
+</code></pre>
+<p><strong>Returns</strong>:</p>
+<p><code>int</code>: containing the hash of the QName</p>
+<p><a id="brel.qname.QName.resolve"></a></p>
+<h4 id="resolve">resolve</h4>
+<pre><code class="language-python">def resolve() -&gt; str
+</code></pre>
+<p>produces the clark notation of the qualified name</p>
+<p>it substitutes the prefix with the URI</p>
+<p>example: {http://www.xbrl.org/2003/instance}Assets</p>
+<p><strong>Returns</strong>:</p>
+<p><code>str</code>: containing the clark notation of the qualified name</p>
+<p><a id="brel.qname.QName.from_string"></a></p>
+<h4 id="from_string">from_string</h4>
+<pre><code class="language-python">@classmethod
+def from_string(cls, qname_string: str, nsmap: &quot;QNameNSMap&quot;) -&gt; &quot;QName&quot;
+</code></pre>
+<p>Creates a QName from a string representation of a QName</p>
+<p>The string representation must be in one of the following formats:
+- {URL}local_name
+- prefix:local_name
+Furthermore, The prefix and the URL must be known. So there must be an entry in the namespace map for the prefix and the URL.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>qname_string</code>: str containing the string representation of the QName</li>
+<li><code>nsmap</code>: QNameNSMap containing the namespace map</li>
+</ul>
+<p><strong>Raises</strong>:</p>
+<ul>
+<li><code>ValueError</code>: if the string representation is not valid or if the prefix or the URL is not known</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p><code>QName</code>: the QName created from the string representation</p>
+<p><a id="brel.qname.QName.is_str_qname"></a></p>
+<h4 id="is_str_qname">is_str_qname</h4>
+<pre><code class="language-python">@classmethod
+def is_str_qname(cls, qname_string: str, nsmap: &quot;QNameNSMap&quot;) -&gt; bool
+</code></pre>
+<p>Checks if a string represents a QName and could be parsed by QName.from_string()</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>qname_string</code>: str containing the string representation of the QName</li>
+<li><code>nsmap</code>: QNameNSMap containing the namespace map</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p><code>bool</code>: True if the string represents a QName, False otherwise</p>
+<p><a id="brel.qname.QNameNSMap"></a></p>
+<h2 id="qnamensmap-objects">QNameNSMap Objects</h2>
+<pre><code class="language-python">class QNameNSMap()
+</code></pre>
+<p>This class represents a namespace map used to map prefixes to URIs and vice versa.
+It is used by the <a href="#brel.qname.QName"><code>QName</code></a> class to create QNames from strings.
+It requires a 1:1 mapping between prefixes and URIs.</p>
+<p>A QNameNSMap introduces two concepts to achieve this: prefix redirects and prefix renames.</p>
+<p><strong>Prefix redirects</strong></p>
+<p>For many reports, it is possible that the same namespace is used with different prefixes.
+For example, the namespace http://fasb.org/us-gaap/2020 is used with the prefixes us-gaap and us-gaap-ci.
+This is not allowed in Brel. So one of the prefixes must be redirected to the other.
+In case of the example above, the prefix us-gaap-ci must be redirected to us-gaap.
+This can be done as follows:</p>
+<pre><code>nsmap.add_redirect(&quot;us-gaap-ci&quot;, &quot;us-gaap&quot;)
+</code></pre>
+<p><strong>Prefix renames</strong></p>
+<p>Sometimes, the same prefix is used for different namespaces.
+For example, the prefix 'types' is used for the namespaces http://fasb.org/us-types/2020 and http://fasb.org/uk-types/2020.
+This is not allowed in Brel. So one of the prefixes must be renamed.
+In case of the example above, the prefix 'types' could be renamed to 'us-types' or 'uk-types'.
+This can be done as follows:</p>
+<pre><code>nsmap.rename(&quot;http://fasb.org/us-types/2020&quot;, &quot;us-types&quot;)
+</code></pre>
+<p>Now whenever a QName is created with the prefix 'namespaces', the prefix will be replaced with 'us-types'.</p>
+<p><a id="brel.qname.QNameNSMap.__init__"></a></p>
+<h4 id="__init___1">__init__</h4>
+<pre><code class="language-python">def __init__() -&gt; None
+</code></pre>
+<p>Creates a QNameNSMap object</p>
+<p><a id="brel.qname.QNameNSMap.add_to_nsmap"></a></p>
+<h4 id="add_to_nsmap">add_to_nsmap</h4>
+<pre><code class="language-python">def add_to_nsmap(url: str, prefix: str) -&gt; None
+</code></pre>
+<p>Adds a prefix to the namespace map</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>url</code>: str containing the URL</li>
+<li><code>prefix</code>: str containing the prefix</li>
+</ul>
+<p><strong>Raises</strong>:</p>
+<ul>
+<li><code>ValueError</code>: if the URL/prefix is already in the namespace map, but mapped to a different prefix/URL than the one provided</li>
+</ul>
+<p><a id="brel.qname.QNameNSMap.add_redirect"></a></p>
+<h4 id="add_redirect">add_redirect</h4>
+<pre><code class="language-python">def add_redirect(redirect_from: str, redirect_to: str) -&gt; None
+</code></pre>
+<p>Adds a prefix redirect to the namespace map.</p>
+<p>When creating a new QName, the redirect_from prefix will be replaced with the redirect_to prefix.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>redirect_from</code>: str containing the prefix that should be redirected</li>
+<li><code>redirect_to</code>: str containing the prefix that should be redirected to</li>
+</ul>
+<p><strong>Raises</strong>:</p>
+<ul>
+<li><code>ValueError</code>: if the redirect destination does not exist in the namespace map or if the redirect source already exists in the namespace map</li>
+</ul>
+<p><a id="brel.qname.QNameNSMap.get_redirect"></a></p>
+<h4 id="get_redirect">get_redirect</h4>
+<pre><code class="language-python">def get_redirect(redirect_from: str) -&gt; str | None
+</code></pre>
+<p>Gets the redirect destination for a prefix redirect</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>redirect_from</code>: str containing the prefix that should be redirected</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p><code>str</code>: containing the prefix that should be redirected to</p>
+<p><a id="brel.qname.QNameNSMap.rename"></a></p>
+<h4 id="rename">rename</h4>
+<pre><code class="language-python">def rename(rename_uri: str, rename_prefix: str) -&gt; None
+</code></pre>
+<p>Given a URI and a prefix, changes the mapping of the URI to the prefix.</p>
+<p>When creating a new QName and only the URI is known, the prefix will be replaced with the rename_prefix.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>rename_uri</code>: str containing the URI</li>
+<li><code>rename_prefix</code>: str containing the prefix</li>
+</ul>
+<p><strong>Raises</strong>:</p>
+<ul>
+<li><code>ValueError</code>: if the URI does not exist in the namespace map</li>
+</ul>
+<p><a id="brel.qname.QNameNSMap.get_prefix"></a></p>
+<h4 id="get_prefix_1">get_prefix</h4>
+<pre><code class="language-python">def get_prefix(url: str) -&gt; str | None
+</code></pre>
+<p>Gets the prefix for a URL</p>
+<p>:param url: str containing the URL.
+:return str | None: The prefix for the URL. None if the URL is not in the namespace map</p>
+<p><a id="brel.qname.QNameNSMap.get_url"></a></p>
+<h4 id="get_url_1">get_url</h4>
+<pre><code class="language-python">def get_url(prefix: str) -&gt; str | None
+</code></pre>
+<p>Gets the URL for a prefix</p>
+<p>:param prefix: str containing the prefix
+:return str | None: The URL for the prefix. None if the prefix is not in the namespace map</p>
+<p><a id="brel.qname.QNameNSMap.get_nsmap"></a></p>
+<h4 id="get_nsmap_1">get_nsmap</h4>
+<pre><code class="language-python">def get_nsmap() -&gt; dict[str, str]
+</code></pre>
+<p>Returns the namespace map as a dict.</p>
+<p>This is deprecated. Use QNameNSMap.get_prefix()
+:return dict[str, str]: containing the namespace map</p>
               
             </div>
           </div><footer>
