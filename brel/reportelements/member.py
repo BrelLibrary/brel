@@ -12,8 +12,8 @@ Members are used to represent the possible values of an explicit dimension.
 """
 
 from brel import QName
-from brel.resource import BrelLabel
 from brel.reportelements import IReportElement
+from brel.resource import BrelLabel
 
 
 class Member(IReportElement):

@@ -90,7 +90,9 @@ class BrelLabel(IResource):
 
         # Language is required. If it is not found, raise an error.
         if language is None:
-            raise ValueError(f"Could not find the language for the label {text}")
+            raise ValueError(
+                f"Could not find the language for the label {text}"
+            )
         language = cast(str, language)
 
         # get the role. If the role is not specified, it is assumed to be a standard label.
@@ -104,7 +106,9 @@ class BrelLabel(IResource):
         # get the label. This attribute is required.
         label = xml_element.attrib.get(f"{{{nsmap['xlink']}}}label")
         if label is None:
-            raise ValueError(f"label attribute not found on element {xml_element}")
+            raise ValueError(
+                f"label attribute not found on element {xml_element}"
+            )
         label = cast(str, label)
 
         return cls(text, label, language, role)

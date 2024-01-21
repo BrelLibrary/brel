@@ -49,8 +49,9 @@ class PresentationNetworkNode(INetworkNode):
         # check if there is a label that matches the preferred label role
         # if not, raise an error
 
-        if preferred_label_role is not None and not report_element.has_label_with_role(
-            preferred_label_role
+        if (
+            preferred_label_role is not None
+            and not report_element.has_label_with_role(preferred_label_role)
         ):
             raise ValueError(
                 f"report element {report_element} does not have a label with role {preferred_label_role}"
@@ -69,7 +70,9 @@ class PresentationNetworkNode(INetworkNode):
         :raises ValueError: if this node does not point to a resource.
         Use the points_to method to check if this node points to a resource.
         """
-        raise ValueError("PresentationNetworkNode does not point to a resource")
+        raise ValueError(
+            "PresentationNetworkNode does not point to a resource"
+        )
 
     def get_fact(self) -> Fact:
         """

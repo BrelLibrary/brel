@@ -12,8 +12,8 @@ Module for pretty printing facts as a table to the console.
 
 from prettytable import PrettyTable
 
-from brel.characteristics import Aspect
 from brel import Fact
+from brel.characteristics import Aspect
 
 
 def pprint_facts(facts: list[Fact]):
@@ -52,7 +52,9 @@ def pprint_facts(facts: list[Fact]):
     dimensions.sort(key=sort_dimensions)
 
     # initialize the table
-    columns = ["id"] + [dimension.get_name() for dimension in dimensions] + ["value"]
+    columns = (
+        ["id"] + [dimension.get_name() for dimension in dimensions] + ["value"]
+    )
 
     table = PrettyTable(columns)
     table.align = "r"
@@ -64,7 +66,10 @@ def pprint_facts(facts: list[Fact]):
         context = fact.get_context()
         row = (
             [fact._get_id()]  # pylint: disable=protected-access
-            + [context.get_characteristic(dimension) for dimension in dimensions]
+            + [
+                context.get_characteristic(dimension)
+                for dimension in dimensions
+            ]
             + [fact.get_value_as_str()]
         )
 

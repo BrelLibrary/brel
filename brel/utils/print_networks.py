@@ -11,10 +11,10 @@ which can be used to print a brel network to the console.
 ====================
 """
 
-from brel.resource import BrelLabel
 from brel.networks import *
 from brel.reportelements import *
 from brel.resource import *
+from brel.resource import BrelLabel
 
 ELBOW = "└──"
 PIPE = "│  "
@@ -46,7 +46,9 @@ def __print_subnetwork(node: INetworkNode, last=True, header="") -> None:
             label_role_str = label_role.split("/")[-1]
             label_language = resource.get_language()
             label_content = resource.get_content()[None]
-            type_str = f"[LABEL] ({label_role_str} {label_language}) {label_content}"
+            type_str = (
+                f"[LABEL] ({label_role_str} {label_language}) {label_content}"
+            )
         elif isinstance(resource, BrelReference):
             type_str = f"[REFERENCE] {resource.get_content()}"
         else:
@@ -63,7 +65,9 @@ def __print_subnetwork(node: INetworkNode, last=True, header="") -> None:
             label_role = BrelLabel.STANDARD_LABEL_ROLE
 
         node_preferred_label = next(
-            filter(lambda label: label.get_label_role() == label_role, node_labels),
+            filter(
+                lambda label: label.get_label_role() == label_role, node_labels
+            ),
             str(re.get_name()),
         )
         node_as_str = str(node_preferred_label)
@@ -120,7 +124,9 @@ def pprint_network(network: INetwork | None):
     print(
         f"Network (link role: {network.get_link_role()}), link name: {network.get_link_name()}"
     )
-    print(f"arc roles: {network.get_arc_roles()}, arc name: {network.get_arc_name()}")
+    print(
+        f"arc roles: {network.get_arc_roles()}, arc name: {network.get_arc_name()}"
+    )
 
     for index, root in enumerate(network.get_roots()):
         is_last_root = index == len(network.get_roots()) - 1

@@ -104,7 +104,9 @@ class Aspect:
         return cls.from_str(qname_str, labels)
 
     @classmethod
-    def from_str(cls, name: str, labels: list[BrelLabel] | None = None) -> "Aspect":
+    def from_str(
+        cls, name: str, labels: list[BrelLabel] | None = None
+    ) -> "Aspect":
         """
         Creates a new aspect from a string.
         To access the core aspects, use the class attributes

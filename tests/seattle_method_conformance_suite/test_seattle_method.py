@@ -101,7 +101,9 @@ for testcase_xml in index_etree.findall("testcase"):
         total_skipped += 1
         continue
 
-    variation_xml = testcase_etree.find(f"{{{testcase_etree.nsmap[None]}}}variation")
+    variation_xml = testcase_etree.find(
+        f"{{{testcase_etree.nsmap[None]}}}variation"
+    )
     # get the data child of variation
     data_xml = variation_xml.find(f"{{{variation_xml.nsmap[None]}}}data")
 
@@ -157,7 +159,9 @@ rich.print(
     f"[green]{bar_symbol * total_correct}[yellow]{bar_symbol * false_positives}[red]{bar_symbol * false_negatives}[grey37]{bar_symbol * total_skipped}"
 )
 
-test_accuracy = total_correct / (total_correct + false_positives + false_negatives)
+test_accuracy = total_correct / (
+    total_correct + false_positives + false_negatives
+)
 rich.print(f"Test accuracy: {test_accuracy:.2%}")
 
 test_precision = total_correct / (total_correct + false_positives)

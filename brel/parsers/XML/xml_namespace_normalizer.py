@@ -290,7 +290,9 @@ def normalize_nsmap(
     if DEBUG:  # pragma: no cover
         print(f"Found components:")
         for uri_a_unversioned, (uris_a, prefixes_a) in components.items():
-            print(f"{uri_a_unversioned} -> {uris_a} with prefixes {prefixes_a}")
+            print(
+                f"{uri_a_unversioned} -> {uris_a} with prefixes {prefixes_a}"
+            )
 
     nsmap: dict[str, str] = {}
     redirects: dict[str, str] = {}
@@ -311,7 +313,9 @@ def normalize_nsmap(
         # if so, create an alternative prefix and add it to renames
         # the rename is of the form: component_url -> (old_component_prefix, new_component_prefix)
         if component_prefix in nsmap:
-            new_component_prefix = generate_alternative_prefixes(component_prefix)
+            new_component_prefix = generate_alternative_prefixes(
+                component_prefix
+            )
             renames[component_url] = (component_prefix, new_component_prefix)
             component_prefix = new_component_prefix
 
@@ -321,6 +325,8 @@ def normalize_nsmap(
             redirects[redirect] = component_prefix
 
     if DEBUG:  # pragma: no cover
-        print(f"Normalized namespace mappings: {nsmap} with redirects {redirects}")
+        print(
+            f"Normalized namespace mappings: {nsmap} with redirects {redirects}"
+        )
 
     return {"nsmap": nsmap, "redirects": redirects, "renames": renames}

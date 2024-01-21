@@ -11,8 +11,8 @@ This module contains the Abstract class. An abstract a kind of report element th
 """
 
 from brel import QName
-from brel.resource import BrelLabel
 from brel.reportelements import IReportElement
+from brel.resource import BrelLabel
 
 
 class Abstract(IReportElement):

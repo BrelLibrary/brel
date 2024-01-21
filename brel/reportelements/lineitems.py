@@ -11,8 +11,8 @@ This module contains the LineItems class.
 """
 
 from brel import QName
-from brel.resource import BrelLabel
 from brel.reportelements import IReportElement
+from brel.resource import BrelLabel
 
 
 class LineItems(IReportElement):

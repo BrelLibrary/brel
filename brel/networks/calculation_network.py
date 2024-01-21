@@ -164,7 +164,9 @@ class CalculationNetwork(INetwork):
                             )
                             child_facts = list(
                                 filter(
-                                    lambda fact: fact.get_characteristic(node_aspect)
+                                    lambda fact: fact.get_characteristic(
+                                        node_aspect
+                                    )
                                     == node_characteristic,
                                     child_facts,
                                 )
@@ -188,7 +190,9 @@ class CalculationNetwork(INetwork):
 
                     child_fact = all_child_facts[0]
 
-                    children_sum += child_fact.get_value_as_float() * child.get_weight()
+                    children_sum += (
+                        child_fact.get_value_as_float() * child.get_weight()
+                    )
 
                     if DEBUG:  # pragma: no cover
                         print(
