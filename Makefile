@@ -23,7 +23,6 @@ install:          ## Install the project in dev mode.
 
 .PHONY: fmt
 fmt:              ## Format code using black & isort.
-	$(ENV_PREFIX)isort brel/
 	$(ENV_PREFIX)black -l 79 brel/
 	$(ENV_PREFIX)black -l 79 tests/
 
