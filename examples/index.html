@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Examples - Brel git repo</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Examples";
+        var mkdocs_page_input_path = "examples.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Brel git repo
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Examples</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#example-1-loading-a-filing-and-printing-its-facts">Example 1: Loading a filing and printing its facts</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#example-2-loading-a-filing-and-printing-its-facts-where-the-concept-is-us-gaapassets">Example 2: Loading a filing and printing its facts where the concept is "us-gaap:Assets"</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#example-3-loading-the-cover-page-of-a-filing-and-printing-its-presentation-network">Example 3: Loading the cover page of a filing and printing its presentation network</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#additional-examples">Additional Examples</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Brel Filings</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../brel-filings/filings/">Filings</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Facts</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../facts/facts/">Facts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../facts/contexts/">Contexts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../facts/aspects/">Aspects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../facts/characteristics/">Characteristics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../facts/concept-characteristic/">Concept Characteristic</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../facts/entity-characteristic/">Entity Characteristic</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../facts/period-characteristic/">Period Characteristic</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../facts/unit-characteristic/">Unit Characteristic</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../facts/explicit-dimension-characteristic/">Explicit Dimension Characteristic</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../facts/typed-dimension-characteristic/">Typed Dimension Characteristic</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Components</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../components/components/">Components</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../components/networks/">Networks</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../components/network-nodes/">Network Nodes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../components/calculation-networks-and-nodes/">Calculation Networks and Nodes</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Report Elements</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../report-elements/report-elements/">Report Elements</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../report-elements/concept/">Concept</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../report-elements/abstract/">Abstract</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../report-elements/line-items/">Line Items</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../report-elements/hypercube/">Hypercube</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../report-elements/dimension/">Dimension</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../report-elements/member/">Member</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">QNames</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../qnames/qnames-and-namespace-maps/">QNames and Namespace maps</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../qnames/namespace-normalization/">Namespace normalization</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Brel git repo</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Examples</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/PapediPoo/Brel/edit/master/docs/examples.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="brel-examples">Brel Examples</h1>
+<p>This page contains examples of how to use Brel.</p>
+<p>Note: Brel does not contain any filings. You will have to download them yourself. You can find some example filings <a href="https://www.sec.gov/edgar/searchedgar/companysearch">here</a>.</p>
+<p>The following steps are required to download a filing and load it into Brel:</p>
+<ol>
+<li>Search for the filing on the SEC website.</li>
+<li>Under the "10-K (Annual Report) and 10-Q (Quarterly Report)" click on the "Filing" button.</li>
+<li>In the "Data Files" section, download all the ".xsd" and ".xml" files and place them in a folder (e.g. "path/to/filing").</li>
+<li>Start python and import Brel.</li>
+<li>Load the filing using <code>Filing.open("path/to/filing")</code>.</li>
+</ol>
+<h2 id="example-1-loading-a-filing-and-printing-its-facts">Example 1: Loading a filing and printing its facts</h2>
+<pre><code class="language-python">from brel import Filing, pprint
+
+# Load a filing from a file. In this case, the file is called &quot;filing.xml&quot;.
+filing = Filing.from_file(&quot;path/to/filing.xml&quot;)
+
+# Get all the facts in the filing. Take the first 10 facts.
+facts = filing.get_all_facts()
+first_10_facts = facts[:10]
+
+# Print the facts.
+pprint(first_10_facts)
+</code></pre>
+<h2 id="example-2-loading-a-filing-and-printing-its-facts-where-the-concept-is-us-gaapassets">Example 2: Loading a filing and printing its facts where the concept is "us-gaap:Assets"</h2>
+<pre><code class="language-python">from brel import Filing, pprint
+
+# Load a filing from a file. In this case, the file is called &quot;filing.xml&quot;.
+filing = Filing.from_file(&quot;path/to/filing.xml&quot;)
+
+# Get the concept &quot;us-gaap:Assets&quot;.
+assets_concept = filing.get_concept(&quot;us-gaap:Assets&quot;)
+
+# Get all the facts in the filing where the concept is &quot;us-gaap:Assets&quot;.
+assets_facts = filing.get_facts_by_concept(assets_concept)
+
+# Print the facts.
+pprint(assets_facts)
+</code></pre>
+<h2 id="example-3-loading-the-cover-page-of-a-filing-and-printing-its-presentation-network">Example 3: Loading the cover page of a filing and printing its presentation network</h2>
+<pre><code class="language-python">from brel import Filing, pprint
+
+# Load a filing from a file. In this case, the file is called &quot;filing.zip&quot;.
+# Note that the zip file contains the filing's instance as well as its linkbases.
+filing = Filing.from_zip(&quot;path/to/filing.zip&quot;)
+
+# Get the cover page component.
+cover_page_uri = &quot;http://www.mycompany.com/roles/coverpage&quot;
+cover_page_component = filing.get_component(cover_page_uri)
+
+if cover_page_component is None:
+    raise Exception(f&quot;Could not find component with URI {cover_page_uri}&quot;)
+
+# Get the presentation network of the cover page component and print it.
+presentation_network = cover_page_component.get_presentation_network()
+if presentation_network is not None:
+    pprint(presentation_network)
+</code></pre>
+<h2 id="additional-examples">Additional Examples</h2>
+<p>You can find additional examples in the <a href="https://github.com/PapediPoo/Brel/tree/main/examples">"examples" folder of the repository</a>.</p>
+<p>Make sure that in the examples, you replace the paths to the filings with the paths to your filings.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../brel-filings/filings/" class="btn btn-neutral float-right" title="Filings">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/PapediPoo/Brel" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../brel-filings/filings/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
