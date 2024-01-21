@@ -1,6 +1,6 @@
 loaders:
   - type: python
-    search_path: [ "/home/robin/Documents/Brel" ]
+    search_path: [ "/home/robin/Documents/brel" ]
     packages: [ brel ]
 processors:
   - type: filter
@@ -79,7 +79,7 @@ renderer:
     - title: QNames
       children:
       - title: QNames and Namespace maps
-        contents: [ brel.qname.QName, brel.qname.QNameNSMap ]
+        contents: [ brel.qname.QName.*, brel.qname.QNameNSMap.* ]
       - title: Namespace normalization
         contents: [ brel.parsers.XML.xml_namespace_normalizer.normalize_nsmap ]
   mkdocs_config:

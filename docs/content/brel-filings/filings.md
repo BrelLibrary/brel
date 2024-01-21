@@ -37,8 +37,8 @@ Once a filing is loaded, it can be queried for its facts, report elements, netwo
 ====================
 
 - author: Robin Schmidiger
-- version: 0.4
-- date: 06 January 2024
+- version: 0.5
+- date: 18 January 2024
 
 ====================
 

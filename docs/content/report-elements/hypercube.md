@@ -2,6 +2,16 @@
 
 # brel.reportelements.hypercube
 
+This module contains the Hypercube class.
+
+=================
+
+- author: Robin Schmidiger
+- version: 0.2
+- date: 18 January 2024
+
+=================
+
 <a id="brel.reportelements.hypercube.Hypercube"></a>
 
 ## Hypercube Objects

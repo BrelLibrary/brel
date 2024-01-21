@@ -12,7 +12,6 @@ There are characteristics for the 5 core aspects.
 - [`PeriodCharacteristic`](./period-characteristic.md) for `Aspect.PERIOD`
 - [`EntityCharacteristic`](./entity-characteristic.md) for `Aspect.ENTITY`
 - [`UnitCharacteristic`](./unit-characteristic.md) for `Aspect.UNIT`
-- [`LanguageCharacteristic`](./language-characteristic.md) for `Aspect.LANGUAGE`
 
 There are also characteristics for custom aspects. Custom aspects can either be typed or explicit.
 A explicit aspect is an aspect where the characteristic value is one option from a list of options.
@@ -35,8 +34,8 @@ For example, consider the following facts:
 In this case value of the fact is the number of employees.
 The type aspect is the 'salary per month' aspect, is an integer.
 
-- [`ExplicitDimensionCharacteristic`](./explicit_dimension_characteristic.md) for explicit dimensions.
-- [`TypedDimensionCharacteristic`](./typed_dimension_characteristic.md) for typed dimensions.
+- [`ExplicitDimensionCharacteristic`](./explicit-dimension-characteristic.md) for explicit dimensions.
+- [`TypedDimensionCharacteristic`](./typed-dimension-characteristic.md) for typed dimensions.
 
 =================
 

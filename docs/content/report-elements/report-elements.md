@@ -12,8 +12,8 @@ Depending on the kind of report element, there might be more information availab
 ====================
 
 - author: Robin Schmidiger
-- version: 0.1
-- date: 26 October 2023
+- version: 0.2
+- date: 21 January 2024
 
 ====================
 
@@ -38,7 +38,10 @@ def get_name() -> QName
 ```
 
 Get the name of the report element.
-@return: QName containing the name of the report element
+
+**Returns**:
+
+QName containing the name of the report element
 
 <a id="brel.reportelements.i_report_element.IReportElement.get_labels"></a>
 
@@ -50,7 +53,10 @@ def get_labels() -> list[BrelLabel]
 ```
 
 Get all labels of the report element.
-@return: list[Label] containing the labels of the report element
+
+**Returns**:
+
+`list[Label]`: containing the labels of the report element
 
 <a id="brel.reportelements.i_report_element.IReportElement.has_label_with_role"></a>
 
@@ -61,8 +67,14 @@ def has_label_with_role(label_role: str) -> bool
 ```
 
 Check if the report element has a label with the given role.
-@param label_role: the role of the label to check
-@return: True if the report element has a label with the given role, False otherwise
+
+**Arguments**:
+
+- `label_role`: the role of the label to check
+
+**Returns**:
+
+`bool`: True if the report element has a label with the given role, False otherwise
 
 <a id="brel.reportelements.i_report_element.IReportElement.has_label_with_language"></a>
 
@@ -73,6 +85,12 @@ def has_label_with_language(language: str) -> bool
 ```
 
 Check if the report element has a label with the given language.
-@param language: the language of the label to check
-@return: True if the report element has a label with the given language, False otherwise
+
+**Arguments**:
+
+- `language`: the language of the label to check
+
+**Returns**:
+
+`bool`: True if the report element has a label with the given language, False otherwise
 
