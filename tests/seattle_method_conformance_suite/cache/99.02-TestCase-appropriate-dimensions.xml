@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created by Charles Hoffman, CPA 2023-07-15 -->
+<!-- Public domain dedication: https://creativecommons.org/publicdomain/zero/1.0/ -->
+<!-- XBRL-based Digital Financial Reporting Conformance Suite -->
+<?xml-stylesheet type="text/xsl" href="testcase.xsl"?>
+<testcase
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xbrldte="http://xbrl.org/2005/xbrldt/errors"
+	xmlns="http://xbrl.org/2005/conformance"
+	name="99.02-TestCase-appropriate-dimensions"
+	description="Rule of thumb: If a dimension is added to a fact and the value does not change then do not add the dimension. This report model and report is XBRL valid and the use of dimensions is appropriate."
+	outpath="out"
+	owner="charles.hoffman@me.com"
+	minimal="true"
+	xsi:schemaLocation="">
+
+
+<variation id="V-99.01" name="appropriate-dimensions">
+	  <description>Rule of thumb: If a dimension is added to a fact and the value does not change then do not add the dimension. This report model and report is XBRL valid and the use of dimensions is appropriate.</description>
+	  <data>
+	          <instance readMeFirst="true">appropriate-dimensions/instance.xml</instance>
+	          <xsd readMeFirst="false">appropriate-dimensions/report.xsd</xsd>
+	          <linkbase readMeFirst="false">appropriate-dimensions/report-lab.xml</linkbase>
+	          <linkbase readMeFirst="false">appropriate-dimensions/report-ref.xml</linkbase>
+	          <linkbase readMeFirst="false">appropriate-dimensions/report-pre.xml</linkbase>
+						<linkbase readMeFirst="false">appropriate-dimensions/report-cal.xml</linkbase>
+						<linkbase readMeFirst="false">appropriate-dimensions/report-def.xml</linkbase>
+						<linkbase readMeFirst="false">appropriate-dimensions/report-for.xml</linkbase>
+
+	  </data>
+		<result expected='valid'>
+
+	  </result>
+</variation>
+</testcase>

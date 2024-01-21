@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created by Charles Hoffman, CPA 2023-07-15 -->
+<!-- Public domain dedication: https://creativecommons.org/publicdomain/zero/1.0/ -->
+<!-- XBRL-based Digital Financial Reporting Conformance Suite -->
+<?xml-stylesheet type="text/xsl" href="testcase.xsl"?>
+<testcase
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xbrldte="http://xbrl.org/2005/xbrldt/errors"
+	xmlns="http://xbrl.org/2005/conformance"
+	name="03-TestCase-datatypes"
+	description="Valid report and report model which provides facts with each of the allowed fundamental datatypes.  Note that custom data types can be defined based on these core types. Note that all data types resolve to XML Schema PART 2 Data types."
+	outpath="out"
+	owner="charles.hoffman@me.com"
+	minimal="true"
+	xsi:schemaLocation="">
+
+
+<variation id="V-03" name="datatypes">
+	  <description>Valid report and report model which provides facts with each of the allowed fundamental datatypes.  Note that custom data types can be defined based on these core types. Note that all data types resolve to XML Schema PART 2 Data types.</description>
+	  <data>
+	          <instance readMeFirst="true">datatypes/instance.xml</instance>
+	          <xsd readMeFirst="false">datatypes/report.xsd</xsd>
+	          <linkbase readMeFirst="false">datatypes/report-lab.xml</linkbase>
+	          <linkbase readMeFirst="false">datatypes/report-ref.xml</linkbase>
+	          <linkbase readMeFirst="false">datatypes/report-pre.xml</linkbase>
+						<linkbase readMeFirst="false">datatypes/report-cal.xml</linkbase>
+						<linkbase readMeFirst="false">datatypes/report-def.xml</linkbase>
+						<linkbase readMeFirst="false">datatypes/report-for.xml</linkbase>
+	  </data>
+		<result expected='valid'>
+
+	  </result>
+</variation>
+</testcase>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created by Charles Hoffman, CPA 2023-07-15 -->
+<!-- Public domain dedication: https://creativecommons.org/publicdomain/zero/1.0/ -->
+<!-- XBRL-based Digital Financial Reporting Conformance Suite -->
+<?xml-stylesheet type="text/xsl" href="testcase.xsl"?>
+<testcase
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xbrldte="http://xbrl.org/2005/xbrldt/errors"
+	xmlns="http://xbrl.org/2005/conformance"
+	name="11-TestCase-tick-and-tie"
+	description="Valid report and report model which shows facts which add across and also add up and down."
+	outpath="out"
+	owner="charles.hoffman@me.com"
+	minimal="true"
+	xsi:schemaLocation="">
+
+
+<variation id="V-11" name="tick-and-tie">
+	  <description>Valid report and report model which shows facts which add across and also add up and down.</description>
+	  <data>
+	          <instance readMeFirst="true">tick-and-tie/instance.xml</instance>
+	          <xsd readMeFirst="false">tick-and-tie/report.xsd</xsd>
+	          <linkbase readMeFirst="false">tick-and-tie/report-lab.xml</linkbase>
+	          <linkbase readMeFirst="false">tick-and-tie/report-ref.xml</linkbase>
+	          <linkbase readMeFirst="false">tick-and-tie/report-pre.xml</linkbase>
+						<linkbase readMeFirst="false">tick-and-tie/report-cal.xml</linkbase>
+						<linkbase readMeFirst="false">tick-and-tie/report-def.xml</linkbase>
+						<linkbase readMeFirst="false">tick-and-tie/report-for.xml</linkbase>
+	  </data>
+		<result expected='valid'>
+
+	  </result>
+</variation>
+</testcase>

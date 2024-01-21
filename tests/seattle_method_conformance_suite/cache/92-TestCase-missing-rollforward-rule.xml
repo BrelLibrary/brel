@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created by Charles Hoffman, CPA 2023-07-15 -->
+<!-- Public domain dedication: https://creativecommons.org/publicdomain/zero/1.0/ -->
+<!-- XBRL-based Digital Financial Reporting Conformance Suite -->
+<?xml-stylesheet type="text/xsl" href="testcase.xsl"?>
+<testcase
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xbrldte="http://xbrl.org/2005/xbrldt/errors"
+	xmlns="http://xbrl.org/2005/conformance"
+	name="92-TestCase-missing-rollforward-rule"
+	description="Valid XBRL but invalid report and report model because the rule that describes the mathematical relationship between roll forward concepts is missing."
+	outpath="out"
+	owner="charles.hoffman@me.com"
+	minimal="true"
+	xsi:schemaLocation="">
+
+
+<variation id="V-92" name="missing-rollforward-rule">
+	  <description>Valid XBRL but invalid report and report model because the rule that describes the mathematical relationship between roll forward concepts is missing.</description>
+	  <data>
+	          <instance readMeFirst="true">missing-rollforward-rule/instance.xml</instance>
+	          <xsd readMeFirst="false">missing-rollforward-rule/report.xsd</xsd>
+	          <linkbase readMeFirst="false">missing-rollforward-rule/report-lab.xml</linkbase>
+	          <linkbase readMeFirst="false">missing-rollforward-rule/report-ref.xml</linkbase>
+	          <linkbase readMeFirst="false">missing-rollforward-rule/report-pre.xml</linkbase>
+						<linkbase readMeFirst="false">missing-rollforward-rule/report-cal.xml</linkbase>
+						<linkbase readMeFirst="false">missing-rollforward-rule/report-def.xml</linkbase>
+						<linkbase readMeFirst="false">missing-rollforward-rule/report-for.xml</linkbase>
+	  </data>
+		<result expected='invalid'>
+
+	  </result>
+</variation>
+</testcase>

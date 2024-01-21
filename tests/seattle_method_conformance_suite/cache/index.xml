@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="testcases.xsl"?>
+<!-- Created by Charles Hoffman, CPA 2023-07-15 -->
+<!-- Public domain dedication: https://creativecommons.org/publicdomain/zero/1.0/ -->
+<!-- XBRL-based Digital Financial Reporting Conformance Suite -->
+
+<testcases name="XBRL-based Digital Financial Reporting Conformance Suite 1.0" date="2023-07-15" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd">
+
+		  <!-- Basic, general tests -->
+        <testcase uri="01-TestCase-billions.xml"/>
+        <testcase uri="02-TestCase-trillions.xml"/>
+        <testcase uri="03-TestCase-datatypes.xml"/>
+        <testcase uri="04-TestCase-units.xml"/>
+        <testcase uri="05-TestCase-many-currencies.xml"/>
+        <testcase uri="06-TestCase-many-periods.xml"/>
+        <testcase uri="07-TestCase-many-entities.xml"/>
+        <testcase uri="08-TestCase-balance-sheet.xml"/>
+        <testcase uri="09-TestCase-basic-dimensions.xml"/>
+        <testcase uri="10-TestCase-helloworld-using-dim.xml"/>
+        <testcase uri="11-TestCase-tick-and-tie.xml"/>
+        <testcase uri="12-TestCase-lorem-ipsum-all-patterns.xml"/>
+        <testcase uri="13-TestCase-intersections.xml"/>
+        <testcase uri="14-TestCase-dimensions-ppe.xml"/>
+        <testcase uri="15-TestCase-dimensional-rollforward.xml"/>
+        <testcase uri="16-TestCase-logic.xml"/>
+
+        <!-- Concept Arrangment Patterns -->
+        <testcase uri="21-TestCase-set.xml"/>
+        <testcase uri="22-TestCase-rollup.xml"/>
+        <testcase uri="23-TestCase-rollforward.xml"/>
+        <testcase uri="24-TestCase-arithmetic.xml"/>
+        <testcase uri="25-TestCase-member-aggregation.xml"/>
+        <testcase uri="26-TestCase-member-nonaggregation.xml"/>
+        <testcase uri="27-TestCase-variance.xml"/>
+        <testcase uri="28-TestCase-adjustment.xml"/>
+        <testcase uri="29-TestCase-textblock.xml"/>
+        <testcase uri="30-TestCase-rollforwardinfo.xml"/>
+
+
+		  <!-- Prototype Reports Making Use of Financial Reporting Scheme-->
+      <testcase uri="70-TestCase-ae-BS1.xml"/>
+      <testcase uri="71-TestCase-sfac6-BS1-IS1.xml"/>
+      <testcase uri="72-TestCase-sfac8-reference.xml"/>
+      <testcase uri="73-TestCase-common-reference.xml"/>
+      <testcase uri="74-TestCase-mini-reference.xml"/>
+      <testcase uri="75-TestCase-proof-reference.xml"/>
+      <testcase uri="76-TestCase-xasb-reference.xml"/>
+      <testcase uri="77-TestCase-aasb1060-reference.xml"/>
+
+
+
+		  <!-- Other -->
+      <testcase uri="81-TestCase-helloworld.xml"/>
+
+
+      <!-- Invalid -->
+      <testcase uri="91-TestCase-run-together-blocks.xml"/>
+      <testcase uri="92-TestCase-missing-rollforward-rule.xml"/>
+      <testcase uri="93-TestCase-model-structure-flaw.xml"/>
+      <testcase uri="94-TestCase-fundamental-inconsistency.xml"/>
+
+
+      <!-- Accounting Equation States -->
+      <testcase uri="95.0-TestCase-ae-state1.xml"/>
+      <testcase uri="95.1-TestCase-ae-state2.xml"/>
+      <testcase uri="95.2-TestCase-ae-state3.xml"/>
+      <testcase uri="95.3-TestCase-ae-state4.xml"/>
+      <testcase uri="95.4-TestCase-ae-state5.xml"/>
+      <testcase uri="95.5-TestCase-ae-state6.xml"/>
+      <testcase uri="95.6-TestCase-ae-state7.xml"/>
+      <testcase uri="95.7-TestCase-ae-state7a.xml"/>
+      <testcase uri="95.8-TestCase-ae-state9.xml"/>
+      <testcase uri="95.9-TestCase-ae-state9a.xml"/>
+      <testcase uri="95.10-TestCase-ae-state10.xml"/>
+      <testcase uri="95.11-TestCase-ae-state11.xml"/>
+
+
+
+      <!-- Rules of Thumb -->
+      <testcase uri="99.10-TestCase-hypercube-explicit.xml"/>
+      <testcase uri="99.11-TestCase-hypercube-implied.xml"/>
+      <testcase uri="99.12-TestCase-hypercube-polymorphic.xml"/>
+      <testcase uri="99.01-TestCase-excess-dimensions.xml"/>
+      <testcase uri="99.02-TestCase-appropriate-dimensions.xml"/>
+      <testcase uri="07-TestCase-many-entities.xml"/>
+      <testcase uri="13-TestCase-intersections.xml"/>
+      <testcase uri="21-TestCase-set.xml"/>
+      <testcase uri="27-TestCase-variance.xml"/>
+      <testcase uri="91-TestCase-run-together-blocks.xml"/>
+      <testcase uri="99.21-TestCase-run-together-blocks-fixed.xml"/>
+      <testcase uri="99.22-TestCase-run-together-blocks-best.xml"/>
+      <testcase uri="99.23-TestCase-accounting-concepts-dimensional.xml"/>
+      <testcase uri="99.24-TestCase-accounting-concepts-lineitems.xml"/>
+      <testcase uri="99.31-TestCase-dimensions-independent.xml"/>
+      <testcase uri="99.32-TestCase-dimensions-dependent.xml"/>
+      <testcase uri="99.41-TestCase-articulation.xml"/>
+      <testcase uri="99.51-TestCase-marbles.xml"/>
+
+
+      <!-- Additions -->
+      <testcase uri="99.61-TestCase-empty-xbrl.xml"/>
+      <testcase uri="99.62-TestCase-core-noncore-dimensions.xml"/>
+      <testcase uri="99.63-TestCase-hypercube-sparse.xml"/>
+      <testcase uri="99.64-TestCase-hypercube-sparse-not.xml"/>
+      <testcase uri="99.65-TestCase-proof-new.xml"/>
+      <testcase uri="99.66-TestCase-spreadsheet.xml"/>
+      <testcase uri="99.67-TestCase-workbook.xml"/>
+      <testcase uri="99.68-TestCase-logical-twin.xml"/>
+
+
+
+</testcases>

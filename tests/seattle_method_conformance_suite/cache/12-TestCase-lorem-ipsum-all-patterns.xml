@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created by Charles Hoffman, CPA 2023-07-15 -->
+<!-- Public domain dedication: https://creativecommons.org/publicdomain/zero/1.0/ -->
+<!-- XBRL-based Digital Financial Reporting Conformance Suite -->
+<?xml-stylesheet type="text/xsl" href="testcase.xsl"?>
+<testcase
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xbrldte="http://xbrl.org/2005/xbrldt/errors"
+	xmlns="http://xbrl.org/2005/conformance"
+	name="12-TestCase-lorem-ipsum-all-patterns"
+	description="Valid report and report model contain 100% of core information patterns."
+	outpath="out"
+	owner="charles.hoffman@me.com"
+	minimal="true"
+	xsi:schemaLocation="">
+
+
+<variation id="V-12" name="lorem-ipsum-all-patterns">
+	  <description>Valid report and report model contain 100% of core information patterns.</description>
+	  <data>
+	          <instance readMeFirst="true">lorem-ipsum-all-patterns/instance.xml</instance>
+	          <xsd readMeFirst="false">lorem-ipsum-all-patterns/report.xsd</xsd>
+	          <linkbase readMeFirst="false">lorem-ipsum-all-patterns/report-lab.xml</linkbase>
+	          <linkbase readMeFirst="false">lorem-ipsum-all-patterns/report-ref.xml</linkbase>
+	          <linkbase readMeFirst="false">lorem-ipsum-all-patterns/report-pre.xml</linkbase>
+						<linkbase readMeFirst="false">lorem-ipsum-all-patterns/report-cal.xml</linkbase>
+						<linkbase readMeFirst="false">lorem-ipsum-all-patterns/report-def.xml</linkbase>
+						<linkbase readMeFirst="false">lorem-ipsum-all-patterns/report-for.xml</linkbase>
+	  </data>
+		<result expected='valid'>
+
+	  </result>
+</variation>
+</testcase>

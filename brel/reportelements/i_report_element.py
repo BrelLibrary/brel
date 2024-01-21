@@ -9,8 +9,8 @@ Depending on the kind of report element, there might be more information availab
 ====================
 
 - author: Robin Schmidiger
-- version: 0.1
-- date: 26 October 2023
+- version: 0.2
+- date: 21 January 2024
 
 ====================
 """
@@ -18,7 +18,7 @@ Depending on the kind of report element, there might be more information availab
 from abc import ABC, abstractmethod
 
 from brel import QName
-from brel.resource import BrelLabel, BrelLabelRole
+from brel.resource import BrelLabel
 
 
 class IReportElement(ABC):
@@ -32,7 +32,7 @@ class IReportElement(ABC):
     def get_name(self) -> QName:
         """
         Get the name of the report element.
-        @return: QName containing the name of the report element
+        :returns: QName containing the name of the report element
         """
         raise NotImplementedError
 
@@ -40,7 +40,7 @@ class IReportElement(ABC):
     def get_labels(self) -> list[BrelLabel]:
         """
         Get all labels of the report element.
-        @return: list[Label] containing the labels of the report element
+        :returns list[Label]: containing the labels of the report element
         """
         raise NotImplementedError
 
@@ -49,18 +49,18 @@ class IReportElement(ABC):
         raise NotImplementedError
 
     # second class citizens
-    def has_label_with_role(self, label_role: BrelLabelRole) -> bool:
+    def has_label_with_role(self, label_role: str) -> bool:
         """
         Check if the report element has a label with the given role.
-        @param label_role: the role of the label to check
-        @return: True if the report element has a label with the given role, False otherwise
+        :param label_role: the role of the label to check
+        :returns bool: True if the report element has a label with the given role, False otherwise
         """
-        return any(label.get_role() == label_role.value for label in self.get_labels())
+        return any(label.get_label_role() == label_role for label in self.get_labels())
 
     def has_label_with_language(self, language: str) -> bool:
         """
         Check if the report element has a label with the given language.
-        @param language: the language of the label to check
-        @return: True if the report element has a label with the given language, False otherwise
+        :param language: the language of the label to check
+        :returns bool: True if the report element has a label with the given language, False otherwise
         """
         return any(label.get_language() == language for label in self.get_labels())

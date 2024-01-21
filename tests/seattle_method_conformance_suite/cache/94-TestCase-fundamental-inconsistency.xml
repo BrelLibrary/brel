@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created by Charles Hoffman, CPA 2023-07-15 -->
+<!-- Public domain dedication: https://creativecommons.org/publicdomain/zero/1.0/ -->
+<!-- XBRL-based Digital Financial Reporting Conformance Suite -->
+<?xml-stylesheet type="text/xsl" href="testcase.xsl"?>
+<testcase
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xbrldte="http://xbrl.org/2005/xbrldt/errors"
+	xmlns="http://xbrl.org/2005/conformance"
+	name="94-TestCase-fundamental-inconsistency"
+	description="Valid report model but their is a fundamental flaw in the reported information which is inconsistent with the fundamental rules of the financial reporting scheme."
+	outpath="out"
+	owner="charles.hoffman@me.com"
+	minimal="true"
+	xsi:schemaLocation="">
+
+
+<variation id="V-94" name="fundamental-inconsistency">
+	  <description>Valid report model but their is a fundamental flaw in the reported information which is inconsistent with the fundamental rules of the financial reporting scheme.</description>
+	  <data>
+	          <instance readMeFirst="true">fundamental-inconsistency/instance.xml</instance>
+	          <xsd readMeFirst="false">fundamental-inconsistency/report.xsd</xsd>
+	          <linkbase readMeFirst="false">fundamental-inconsistency/report-lab.xml</linkbase>
+	          <linkbase readMeFirst="false">fundamental-inconsistency/report-ref.xml</linkbase>
+	          <linkbase readMeFirst="false">fundamental-inconsistency/report-pre.xml</linkbase>
+						<linkbase readMeFirst="false">fundamental-inconsistency/report-cal.xml</linkbase>
+						<linkbase readMeFirst="false">fundamental-inconsistency/report-def.xml</linkbase>
+						<linkbase readMeFirst="false">fundamental-inconsistency/report-for.xml</linkbase>
+
+						<xsd readMeFirst="false">http://xbrlsite.com/seattlemethod/platinum/ae/fac.xsd</xsd>
+
+
+	  </data>
+		<result expected='valid'>
+
+	  </result>
+</variation>
+</testcase>

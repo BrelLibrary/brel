@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created by Charles Hoffman, CPA 2023-07-15 -->
+<!-- Public domain dedication: https://creativecommons.org/publicdomain/zero/1.0/ -->
+<!-- XBRL-based Digital Financial Reporting Conformance Suite -->
+<?xml-stylesheet type="text/xsl" href="testcase.xsl"?>
+<testcase
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xbrldte="http://xbrl.org/2005/xbrldt/errors"
+	xmlns="http://xbrl.org/2005/conformance"
+	name="72-TestCase-sfac8-reference"
+	description="Valid report and report model for SFAC8 prototype financial reporting scheme, reporting style code 'sfac8-reference'."
+	outpath="out"
+	owner="charles.hoffman@me.com"
+	minimal="true"
+	xsi:schemaLocation="">
+
+
+<variation id="V-72" name="sfac8-reference">
+	  <description>Valid report and report model for SFAC8 prototype financial reporting scheme, reporting style code 'sfac8-reference'.</description>
+	  <data>
+	          <instance readMeFirst="true">sfac8-reference/instance.xml</instance>
+	          <xsd readMeFirst="false">sfac8-reference/report.xsd</xsd>
+	          <linkbase readMeFirst="false">sfac8-reference/report-lab.xml</linkbase>
+	          <linkbase readMeFirst="false">sfac8-reference/report-ref.xml</linkbase>
+	          <linkbase readMeFirst="false">sfac8-reference/report-pre.xml</linkbase>
+						<linkbase readMeFirst="false">sfac8-reference/report-cal.xml</linkbase>
+						<linkbase readMeFirst="false">sfac8-reference/report-def.xml</linkbase>
+						<linkbase readMeFirst="false">sfac8-reference/report-for.xml</linkbase>
+
+						<linkbase readMeFirst="false">http://xbrlsite.com/seattlemethod/cm/model-structure-rules-strict-def.xml</linkbase>
+						<xsd readMeFirst="false">http://www.xbrlsite.com/seattlemethod/platinum/sfac8/dm.xsd</xsd>
+						<xsd readMeFirst="false">http://www.xbrlsite.com/seattlemethod/platinum/sfac8/fac/NA1-IS3/reportingstyle.xsd</xsd>
+						<linkbase readMeFirst="false">http://www.xbrlsite.com/seattlemethod/platinum/sfac8/dr-rules-def.xml</linkbase>
+						<linkbase readMeFirst="false">http://www.xbrlsite.com/seattlemethod/platinum/sfac8/typeSubtype-rules-def.xml</linkbase>
+
+	  </data>
+		<result expected='valid'>
+
+	  </result>
+</variation>
+</testcase>

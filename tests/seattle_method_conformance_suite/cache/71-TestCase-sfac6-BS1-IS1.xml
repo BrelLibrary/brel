@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created by Charles Hoffman, CPA 2023-07-15 -->
+<!-- Public domain dedication: https://creativecommons.org/publicdomain/zero/1.0/ -->
+<!-- XBRL-based Digital Financial Reporting Conformance Suite -->
+<?xml-stylesheet type="text/xsl" href="testcase.xsl"?>
+<testcase
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xbrldte="http://xbrl.org/2005/xbrldt/errors"
+	xmlns="http://xbrl.org/2005/conformance"
+	name="71-TestCase-sfac6-BS1-IS1"
+	description="Valid report and report model for SFAC6 prototype financial reporting scheme, reporting style code 'sfac6-BS1-IS1'."
+	outpath="out"
+	owner="charles.hoffman@me.com"
+	minimal="true"
+	xsi:schemaLocation="">
+
+
+<variation id="V-71" name="sfac6-BS1-IS1">
+	  <description>Valid report and report model for SFAC6 prototype financial reporting scheme, reporting style code 'sfac6-BS1-IS1'.</description>
+	  <data>
+	          <instance readMeFirst="true">sfac6-BS1-IS1/instance.xml</instance>
+	          <xsd readMeFirst="false">sfac6-BS1-IS1/report.xsd</xsd>
+	          <linkbase readMeFirst="false">sfac6-BS1-IS1/report-lab.xml</linkbase>
+	          <linkbase readMeFirst="false">sfac6-BS1-IS1/report-ref.xml</linkbase>
+	          <linkbase readMeFirst="false">sfac6-BS1-IS1/report-pre.xml</linkbase>
+						<linkbase readMeFirst="false">sfac6-BS1-IS1/report-cal.xml</linkbase>
+						<linkbase readMeFirst="false">sfac6-BS1-IS1/report-def.xml</linkbase>
+						<linkbase readMeFirst="false">sfac6-BS1-IS1/report-for.xml</linkbase>
+
+						<linkbase readMeFirst="false">http://xbrlsite.com/seattlemethod/cm/model-structure-rules-strict-def.xml</linkbase>
+						<xsd readMeFirst="false">http://www.xbrlsite.com/seattlemethod/platinum/sfac6/dm.xsd</xsd>
+						<xsd readMeFirst="false">http://www.xbrlsite.com/seattlemethod/platinum/sfac6/fac.xsd</xsd>
+						<linkbase readMeFirst="false">http://www.xbrlsite.com/seattlemethod/platinum/sfac6/dr-rules-def.xml</linkbase>
+						<linkbase readMeFirst="false">http://www.xbrlsite.com/seattlemethod/platinum/sfac6/types-BS1-IS1-rules-def.xml</linkbase>
+
+
+	  </data>
+		<result expected='valid'>
+
+	  </result>
+</variation>
+</testcase>

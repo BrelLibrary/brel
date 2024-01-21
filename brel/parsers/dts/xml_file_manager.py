@@ -73,7 +73,8 @@ class XMLFileManager(IFileManager):
         self.__file_prefixes: dict[str, list[str]] = defaultdict(list)
 
         # populate the cache
-        print("Populating DTS cache...")
+        if DEBUG:  # pragma: no cover
+            print("Populating DTS cache...")
         for filename in filenames:
             self.__load_dts(filename)
 

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created by Charles Hoffman, CPA 2023-07-15 -->
+<!-- Public domain dedication: https://creativecommons.org/publicdomain/zero/1.0/ -->
+<!-- XBRL-based Digital Financial Reporting Conformance Suite -->
+<?xml-stylesheet type="text/xsl" href="testcase.xsl"?>
+<testcase
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xbrldte="http://xbrl.org/2005/xbrldt/errors"
+	xmlns="http://xbrl.org/2005/conformance"
+	name="77-TestCase-aasb1060-reference"
+	description="Valid report and report model for AASB 1060 financial reporting scheme prototype, reporting style code 'aasb1060-reference'."
+	outpath="out"
+	owner="charles.hoffman@me.com"
+	minimal="true"
+	xsi:schemaLocation="">
+
+
+<variation id="V-77" name="aasb1060-reference">
+	  <description>Valid report and report model for AASB 1060 financial reporting scheme prototype, reporting style code 'aasb1060-reference'.</description>
+	  <data>
+	          <instance readMeFirst="true">aasb1060-reference/instance.xml</instance>
+	          <xsd readMeFirst="false">aasb1060-reference/report.xsd</xsd>
+	          <linkbase readMeFirst="false">aasb1060-reference/report-lab.xml</linkbase>
+	          <linkbase readMeFirst="false">aasb1060-reference/report-ref.xml</linkbase>
+	          <linkbase readMeFirst="false">aasb1060-reference/report-pre.xml</linkbase>
+						<linkbase readMeFirst="false">aasb1060-reference/report-cal.xml</linkbase>
+						<linkbase readMeFirst="false">aasb1060-reference/report-def.xml</linkbase>
+						<linkbase readMeFirst="false">aasb1060-reference/report-for.xml</linkbase>
+
+						<linkbase readMeFirst="false">http://xbrlsite.com/seattlemethod/cm/model-structure-rules-strict-def.xml</linkbase>
+						<xsd readMeFirst="false">http://xbrlsite.azurewebsites.net/2021/reporting-scheme/aasb1060/disclosure-mechanics/disclosure-mechanics.xsd</xsd>
+						<xsd readMeFirst="false">http://xbrlsite.azurewebsites.net/2021/reporting-scheme/aasb1060/fac/reporting-styles/AASB1060-BSN-ISN-CF1_schema.xsd</xsd>
+						<linkbase readMeFirst="false">http://xbrlsite.azurewebsites.net/2021/reporting-scheme/aasb1060/reporting-checklist/reporting-checklist-rules-def.xml</linkbase>
+						<xsd readMeFirst="false">http://xbrlsite.azurewebsites.net/2021/reporting-scheme/aasb1060/type-subtype/type-subtype2.xsd</xsd>
+
+
+	  </data>
+		<result expected='valid'>
+
+	  </result>
+</variation>
+</testcase>

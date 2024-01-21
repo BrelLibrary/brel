@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created by Charles Hoffman, CPA 2023-07-15 -->
+<!-- Public domain dedication: https://creativecommons.org/publicdomain/zero/1.0/ -->
+<!-- XBRL-based Digital Financial Reporting Conformance Suite -->
+<?xml-stylesheet type="text/xsl" href="testcase.xsl"?>
+<testcase
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xbrldte="http://xbrl.org/2005/xbrldt/errors"
+	xmlns="http://xbrl.org/2005/conformance"
+	name="76-TestCase-xasb-reference"
+	description="Valid report and report model for PROOF financial reporting scheme prototype, reporting style code 'xasb-reference'."
+	outpath="out"
+	owner="charles.hoffman@me.com"
+	minimal="true"
+	xsi:schemaLocation="">
+
+
+<variation id="V-76" name="xasb-reference">
+	  <description>Valid report and report model for PROOF financial reporting scheme prototype, reporting style code 'xasb-reference'.</description>
+	  <data>
+	          <instance readMeFirst="true">xasb-reference/instance.xml</instance>
+	          <xsd readMeFirst="false">xasb-reference/report.xsd</xsd>
+	          <linkbase readMeFirst="false">xasb-reference/report-lab.xml</linkbase>
+	          <linkbase readMeFirst="false">xasb-reference/report-ref.xml</linkbase>
+	          <linkbase readMeFirst="false">xasb-reference/report-pre.xml</linkbase>
+						<linkbase readMeFirst="false">xasb-reference/report-cal.xml</linkbase>
+						<linkbase readMeFirst="false">xasb-reference/report-def.xml</linkbase>
+						<linkbase readMeFirst="false">xasb-reference/report-for.xml</linkbase>
+
+						<linkbase readMeFirst="false">http://xbrlsite.com/seattlemethod/cm/model-structure-rules-strict-def.xml</linkbase>
+						<xsd readMeFirst="false">http://www.xbrlsite.com/seattlemethod/golden/xasb/disclosure-mechanics/disclosure-mechanics.xsd</xsd>
+						<xsd readMeFirst="false">http://www.xbrlsite.com/seattlemethod/golden/xasb/fac/ReportingStyles/COMID-BSC-CF1-ISM-IEMIB-OILY-SPEC6_schema.xsd</xsd>
+						<linkbase readMeFirst="false">http://www.xbrlsite.com/seattlemethod/golden/xasb/reporting-checklist/reporting-checklist-rules-def.xml</linkbase>
+						<xsd readMeFirst="false">http://www.xbrlsite.com/seattlemethod/golden/xasb/type-subtype/type-subtype.xsd</xsd>
+
+
+	  </data>
+		<result expected='valid'>
+
+	  </result>
+</variation>
+</testcase>

@@ -1,4 +1,17 @@
-from brel.resource import BrelLabelRole
+"""
+This module contains the pprint_network and pprint_network_node functions,
+which can be used to print a brel network to the console.
+
+====================
+
+- author: Robin Schmidiger
+- version: 0.8
+- date: 21 January 2024
+
+====================
+"""
+
+from brel.resource import BrelLabel
 from brel.networks import *
 from brel.reportelements import *
 from brel.resource import *
@@ -47,7 +60,7 @@ def __print_subnetwork(node: INetworkNode, last=True, header="") -> None:
         if hasattr(re, "get_preferred_label_role"):
             label_role = getattr(re, "get_preferred_label_role")()
         else:
-            label_role = BrelLabelRole.STANDARD_LABEL.value
+            label_role = BrelLabel.STANDARD_LABEL_ROLE
 
         node_preferred_label = next(
             filter(lambda label: label.get_label_role() == label_role, node_labels),

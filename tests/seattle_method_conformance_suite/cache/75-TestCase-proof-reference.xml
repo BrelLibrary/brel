@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created by Charles Hoffman, CPA 2023-07-15 -->
+<!-- Public domain dedication: https://creativecommons.org/publicdomain/zero/1.0/ -->
+<!-- XBRL-based Digital Financial Reporting Conformance Suite -->
+<?xml-stylesheet type="text/xsl" href="testcase.xsl"?>
+<testcase
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xbrldte="http://xbrl.org/2005/xbrldt/errors"
+	xmlns="http://xbrl.org/2005/conformance"
+	name="75-TestCase-proof-reference"
+	description="Valid report and report model for PROOF financial reporting scheme prototype, reporting style code 'proof-reference'."
+	outpath="out"
+	owner="charles.hoffman@me.com"
+	minimal="true"
+	xsi:schemaLocation="">
+
+
+<variation id="V-75" name="proof-reference">
+	  <description>Valid report and report model for PROOF financial reporting scheme prototype, reporting style code 'proof-reference'.</description>
+	  <data>
+	          <instance readMeFirst="true">proof-reference/instance.xml</instance>
+	          <xsd readMeFirst="false">proof-reference/report.xsd</xsd>
+	          <linkbase readMeFirst="false">proof-reference/report-lab.xml</linkbase>
+	          <linkbase readMeFirst="false">proof-reference/report-ref.xml</linkbase>
+	          <linkbase readMeFirst="false">proof-reference/report-pre.xml</linkbase>
+						<linkbase readMeFirst="false">proof-reference/report-cal.xml</linkbase>
+						<linkbase readMeFirst="false">proof-reference/report-def.xml</linkbase>
+						<linkbase readMeFirst="false">proof-reference/report-for.xml</linkbase>
+
+						<linkbase readMeFirst="false">http://xbrlsite.com/seattlemethod/cm/model-structure-rules-strict-def.xml</linkbase>
+						<xsd readMeFirst="false">http://www.xbrlsite.com/seattlemethod/platinum/proof/disclosure-mechanics/disclosure-mechanics.xsd</xsd>
+						<xsd readMeFirst="false">http://www.xbrlsite.com/seattlemethod/platinum/proof/fac/reporting-styles/BSC-IS01-CF1_schema.xsd</xsd>
+						<linkbase readMeFirst="false">http://www.xbrlsite.com/seattlemethod/platinum/proof/reporting-checklist/reporting-checklist-rules-def.xml</linkbase>
+						<xsd readMeFirst="false">http://www.xbrlsite.com/seattlemethod/platinum/proof/type-subtype/type-subtype.xsd</xsd>
+
+
+	  </data>
+		<result expected='valid'>
+
+	  </result>
+</variation>
+</testcase>

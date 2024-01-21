@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created by Charles Hoffman, CPA 2023-07-15 -->
+<!-- Public domain dedication: https://creativecommons.org/publicdomain/zero/1.0/ -->
+<!-- XBRL-based Digital Financial Reporting Conformance Suite -->
+<?xml-stylesheet type="text/xsl" href="testcase.xsl"?>
+<testcase
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xbrldte="http://xbrl.org/2005/xbrldt/errors"
+	xmlns="http://xbrl.org/2005/conformance"
+	name="99.12-TestCase-hypercube-polymorphic"
+	description="Rule of thumb: Hypercubes should be explicitly provided. This report model and report is XBRL valid but the hypercube provided is not unique (can be used to represent multiple disclosures) and therefore extracting information using hypercube is impossible."
+	outpath="out"
+	owner="charles.hoffman@me.com"
+	minimal="true"
+	xsi:schemaLocation="">
+
+
+<variation id="V-99.12" name="hypercube-polymorphic">
+	  <description>Rule of thumb: Hypercubes should be explicitly provided. This report model and report is XBRL valid but the hypercube provided is not unique (can be used to represent multiple disclosures) and therefore extracting information using hypercube is impossible.</description>
+	  <data>
+	          <instance readMeFirst="true">hypercube-polymorphic/instance.xml</instance>
+	          <xsd readMeFirst="false">hypercube-polymorphic/report.xsd</xsd>
+	          <linkbase readMeFirst="false">hypercube-polymorphic/report-lab.xml</linkbase>
+	          <linkbase readMeFirst="false">hypercube-polymorphic/report-ref.xml</linkbase>
+	          <linkbase readMeFirst="false">hypercube-polymorphic/report-pre.xml</linkbase>
+						<linkbase readMeFirst="false">hypercube-polymorphic/report-cal.xml</linkbase>
+						<linkbase readMeFirst="false">hypercube-polymorphic/report-def.xml</linkbase>
+						<linkbase readMeFirst="false">hypercube-polymorphic/report-for.xml</linkbase>
+
+	  </data>
+		<result expected='valid'>
+
+	  </result>
+</variation>
+</testcase>

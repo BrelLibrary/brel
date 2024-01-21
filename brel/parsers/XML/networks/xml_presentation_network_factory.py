@@ -7,7 +7,7 @@ This module is usedc by the XML network parser to build presentation networks.
 
 - author: Robin Schmidiger
 - version: 0.5
-- date: 18 January 2024
+- date: 21 January 2024
 
 ====================
 """
@@ -18,13 +18,13 @@ import lxml
 import lxml.etree
 
 from brel import Fact, QName, QNameNSMap
-from brel.resource import BrelLabelRole
 from brel.networks import (
     INetwork,
     INetworkNode,
     PresentationNetwork,
     PresentationNetworkNode,
 )
+from brel.resource import BrelLabel
 from brel.parsers.utils import get_str
 from brel.parsers.XML.networks import IXMLNetworkFactory
 from brel.reportelements import Abstract, Hypercube, IReportElement, LineItems
@@ -92,7 +92,7 @@ class PresentationNetworkFactory(IXMLNetworkFactory):
             # the node is an inner node
             # preferred_label = xml_arc.attrib.get("preferredLabel")
             preferred_label = get_str(
-                xml_arc, "preferredLabel", BrelLabelRole.STANDARD_LABEL.value
+                xml_arc, "preferredLabel", BrelLabel.STANDARD_LABEL_ROLE
             )
             if not isinstance(preferred_label, str) and preferred_label is not None:
                 raise TypeError(
@@ -102,7 +102,7 @@ class PresentationNetworkFactory(IXMLNetworkFactory):
             if preferred_label is None:
                 preferred_label_role = None
             else:
-                preferred_label_role = BrelLabelRole.from_url(preferred_label)
+                preferred_label_role = preferred_label
             # arc_role = xml_arc.attrib.get("{" + nsmap["xlink"] + "}arcrole")
             arc_role = get_str(xml_arc, f"{{{nsmap['xlink']}}}arcrole")
             # order = float(xml_arc.attrib.get("order") or 1)

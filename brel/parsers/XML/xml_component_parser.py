@@ -15,6 +15,9 @@ from typing import Callable
 import lxml
 import lxml.etree
 
+# TODO: remove
+from brel.utils import pprint_network
+
 from brel import Component, QName, QNameNSMap
 from brel.networks import (
     CalculationNetwork,
@@ -62,27 +65,20 @@ def parse_component_from_xml(
 
     # check the usedOn elements
     used_ons = [
-        used_on.text
-        for used_on in xml_element.findall("link:usedOn", namespaces=nsmap)
+        used_on.text for used_on in xml_element.findall("link:usedOn", namespaces=nsmap)
     ]
-    if (
-        presentation_network is not None
-        and "link:presentationLink" not in used_ons
-    ):
+    if presentation_network is not None and "link:presentationLink" not in used_ons:
+        # TODO: remove
+        print(used_ons)
+        pprint_network(presentation_network)
         raise ValueError(
             f"A presentation network is not allowed for the component with id '{uri}', but one was passed."
         )
-    if (
-        calculation_network is not None
-        and "link:calculationLink" not in used_ons
-    ):
+    if calculation_network is not None and "link:calculationLink" not in used_ons:
         raise ValueError(
             f"A calculation network is not allowed for the component with id '{uri}', but one was passed."
         )
-    if (
-        definition_network is not None
-        and "link:definitionLink" not in used_ons
-    ):
+    if definition_network is not None and "link:definitionLink" not in used_ons:
         raise ValueError(
             f"A definition network is not allowed for the component with id '{uri}', but one was passed."
         )
@@ -98,14 +94,14 @@ def parse_component_from_xml(
 
 def parse_components_xml(
     schemas: list[lxml.etree._ElementTree],
-    networks: dict[str | None, list[INetwork]],
+    networks: dict[str, list[INetwork]],
     report_elements: dict[QName, IReportElement],
     qname_nsmap: QNameNSMap,
 ) -> tuple[list[Component], dict[QName, IReportElement]]:
     """
     Parse the components.
     :param schemas: The xbrl schema xml trees
-    :param networks: The networks as a dictionary of roleID -> list of networks. Networks that belong to the default role have roleID None.
+    :param networks: The networks as a dictionary of roleURI -> list of networks. Networks that belong to the default role have roleID None.
     :param report_elements: The report elements as a dictionary of QName -> IReportElement
     :param qname_nsmap: The QNameNSMap
     :return: a tuple containing:
@@ -125,18 +121,14 @@ def parse_components_xml(
             roleURI = roletype.get("roleURI")
             roleID = roletype.get("id")
 
-            definition_element = roletype.find(
-                "link:definition", namespaces=nsmap
-            )
+            definition_element = roletype.find("link:definition", namespaces=nsmap)
             if definition_element is None:
-                raise ValueError(
-                    f"The role with roleURI {roleURI} does not have a definition element"
-                )
-
-            definition = definition_element.text
-
-            if definition is None:
                 definition = ""
+            else:
+                definition = definition_element.text
+
+                if definition is None:
+                    definition = ""
 
             if roleURI is None:
                 raise ValueError(f"roleURI for role {roleID} is None")
@@ -159,19 +151,11 @@ def parse_components_xml(
             # Maybe a component has more than just presentation, definition and calculation networks
             # Find the networks that belong to the component
             presentation_network = next(
-                (
-                    x
-                    for x in networks[roleID]
-                    if isinstance(x, PresentationNetwork)
-                ),
+                (x for x in networks[roleURI] if isinstance(x, PresentationNetwork)),
                 None,
             )
             calculation_network = next(
-                (
-                    x
-                    for x in networks[roleID]
-                    if isinstance(x, CalculationNetwork)
-                ),
+                (x for x in networks[roleURI] if isinstance(x, CalculationNetwork)),
                 None,
             )
             # definition_network = next((x for x in networks[roleID] if isinstance(x, DefinitionNetwork)), None)
@@ -181,7 +165,7 @@ def parse_components_xml(
             definition_network = next(
                 (
                     x
-                    for x in networks[roleID]
+                    for x in networks[roleURI]
                     if isinstance(x, DefinitionNetwork) and not x.is_physical()
                 ),
                 None,

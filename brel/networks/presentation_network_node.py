@@ -7,7 +7,7 @@ Since a node can have children, nodes can also be viewed as trees.
 
 - author: Robin Schmidiger
 - version: 0.10
-- date: 18 January 2024
+- date: 21 January 2024
 
 ====================
 """
@@ -15,7 +15,6 @@ Since a node can have children, nodes can also be viewed as trees.
 from typing import cast
 
 from brel import Fact, QName
-from brel.resource import BrelLabelRole
 from brel.networks import INetworkNode
 from brel.reportelements import IReportElement
 from brel.resource import IResource
@@ -35,7 +34,7 @@ class PresentationNetworkNode(INetworkNode):
         arc_name: QName,
         link_role: str,
         link_name: QName,
-        preferred_label_role: BrelLabelRole | None,
+        preferred_label_role: str | None,
         order: float = 1,
     ):
         self.__report_element = report_element
@@ -94,7 +93,7 @@ class PresentationNetworkNode(INetworkNode):
 
         return cast(list["INetworkNode"], self.__children)
 
-    def get_preferred_label_role(self) -> BrelLabelRole | None:
+    def get_preferred_label_role(self) -> str | None:
         """
         Returns the preferred label role of this node
         :returns str: containing the preferred label role of this node

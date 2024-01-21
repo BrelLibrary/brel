@@ -5,8 +5,8 @@ It is responsible for taking a list of filepaths to XBRL files and parsing them 
 ====================
 
 - author: Robin Schmidiger
-- version: 0.7
-- date: 18 December 2023
+- version: 0.8
+- date: 21 January 2024
 
 ====================
 """
@@ -67,9 +67,7 @@ class XMLFilingParser(IFilingParser):
 
         # crop the filing location from all filepaths
         for i in range(len(filepaths)):
-            filepaths[i] = os.path.relpath(
-                filepaths[i], self.__filing_location
-            )
+            filepaths[i] = os.path.relpath(filepaths[i], self.__filing_location)
 
         # load the DTS
         if DEBUG:  # pragma: no cover
@@ -123,11 +121,11 @@ class XMLFilingParser(IFilingParser):
 
         if DEBUG:  # pragma: no cover
             print("[QName] Prefix renames:")
-        for rename_to, rename_from in renames.items():
-            # QName.set_rename(rename_from, rename_to)
+        for rename_uri, rename_prefixes in renames.items():
+            old_prefix, new_prefix = rename_prefixes
             if DEBUG:
-                print(f"> {rename_from:10} -> {rename_to}")
-            qname_nsmap.rename(rename_from, rename_to)
+                print(f"> {old_prefix:10} -> {new_prefix}")
+            qname_nsmap.rename(rename_uri, new_prefix)
 
         if DEBUG:  # pragma: no cover
             print("Note: Prefix redirects are not recommended.")
@@ -137,6 +135,7 @@ class XMLFilingParser(IFilingParser):
     def __print(self, output: str):
         """
         Print a message with the prefix [XMLFilingParser].
+        :param output: The message to print.
         """
         if DEBUG:  # pragma: no cover
             print(self.__print_prefix, output)
@@ -147,7 +146,7 @@ class XMLFilingParser(IFilingParser):
     def parse_report_elements(self) -> dict[QName, IReportElement]:
         """
         Parse the concepts.
-        @return: A list of all the concepts in the filing, even those that are not reported.
+        :returns: A list of all the concepts in the filing, even those that are not reported.
         """
         xsd_filenames = [
             filename
@@ -155,8 +154,7 @@ class XMLFilingParser(IFilingParser):
             if filename.endswith(".xsd")
         ]
         xsd_etrees = [
-            self.__file_manager.get_file(filename)
-            for filename in xsd_filenames
+            self.__file_manager.get_file(filename) for filename in xsd_filenames
         ]
 
         report_elems, id_to_report_elem = parse_report_elements_xml(
@@ -173,24 +171,21 @@ class XMLFilingParser(IFilingParser):
 
         return report_elems
 
-    def parse_facts(
-        self, report_elements: dict[QName, IReportElement]
-    ) -> list[Fact]:
+    def parse_facts(self, report_elements: dict[QName, IReportElement]) -> list[Fact]:
         """
         Parse the facts.
+        :param report_elements: A dictionary containing ALL report elements that the facts report against.
+        :returns list[Fact]: A list of all the facts in the filing.
         """
         all_filenames = self.__file_manager.get_file_names()
         xml_filenames = list(
             filter(lambda filename: filename.endswith(".xml"), all_filenames)
         )
         xml_etrees = [
-            self.__file_manager.get_file(filename)
-            for filename in xml_filenames
+            self.__file_manager.get_file(filename) for filename in xml_filenames
         ]
 
-        facts, id_to_fact = parse_facts_xml(
-            xml_etrees, report_elements, self.__nsmap
-        )
+        facts, id_to_fact = parse_facts_xml(xml_etrees, report_elements, self.__nsmap)
 
         for id, fact in id_to_fact.items():
             if id in self.__id_to_any.keys():
@@ -207,8 +202,8 @@ class XMLFilingParser(IFilingParser):
     ) -> dict[str | None, list[INetwork]]:
         """
         Parse the networks.
-        @param report_elements: A dictionary containing ALL report elements that the networks report against.
-        @return: A dictionary of all the networks in the filing.
+        :param report_elements: A dictionary containing ALL report elements that the networks report against.
+        :returns dict: A dictionary of all the networks in the filing.
         """
         return parse_networks_from_xmls(
             self.__file_manager.get_all_files(),
@@ -220,14 +215,14 @@ class XMLFilingParser(IFilingParser):
     def parse_components(
         self,
         report_elements: dict[QName, IReportElement],
-        networks: dict[str | None, list[INetwork]],
+        networks: dict[str, list[INetwork]],
     ) -> tuple[list[Component], dict[QName, IReportElement]]:
         """
         Parse the components.
-        @param report_elements: A dictionary containing ALL report elements that the components report against.
-        @param networks: A dictionary containing ALL networks that the components report against.
+        :param dict[QName, IReportElement]: A dictionary containing ALL report elements that the components report against.
+        :param networks: A dictionary containing ALL networks that the components report against.
         The keys are the component names, the values are lists of networks for that component.
-        @return:
+        :returns:
          - A list of all the components in the filing.
          - A dictionary of all the report elements in the filing. These might have been altered by the components.
         """
@@ -240,6 +235,6 @@ class XMLFilingParser(IFilingParser):
 
     def get_filing_type(self) -> str:
         """
-        Get the filing type. Returns "XML".
+        :returns str: The filing type.
         """
         return self.__filing_type

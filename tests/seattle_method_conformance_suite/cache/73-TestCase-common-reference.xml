@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created by Charles Hoffman, CPA 2023-07-15 -->
+<!-- Public domain dedication: https://creativecommons.org/publicdomain/zero/1.0/ -->
+<!-- XBRL-based Digital Financial Reporting Conformance Suite -->
+<?xml-stylesheet type="text/xsl" href="testcase.xsl"?>
+<testcase
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xbrldte="http://xbrl.org/2005/xbrldt/errors"
+	xmlns="http://xbrl.org/2005/conformance"
+	name="73-TestCase-common-reference"
+	description="Valid report and report model for Common Elements of Financial Report (common) prototype financial reporting scheme, reporting style code 'common-reference'."
+	outpath="out"
+	owner="charles.hoffman@me.com"
+	minimal="true"
+	xsi:schemaLocation="">
+
+
+<variation id="V-73" name="common-reference">
+	  <description>Valid report and report model for Common Elements of Financial Report (common) prototype financial reporting scheme, reporting style code 'common-reference'.</description>
+	  <data>
+	          <instance readMeFirst="true">common-reference/instance.xml</instance>
+	          <xsd readMeFirst="false">common-reference/report.xsd</xsd>
+	          <linkbase readMeFirst="false">common-reference/report-lab.xml</linkbase>
+	          <linkbase readMeFirst="false">common-reference/report-ref.xml</linkbase>
+	          <linkbase readMeFirst="false">common-reference/report-pre.xml</linkbase>
+						<linkbase readMeFirst="false">common-reference/report-cal.xml</linkbase>
+						<linkbase readMeFirst="false">common-reference/report-def.xml</linkbase>
+						<linkbase readMeFirst="false">common-reference/report-for.xml</linkbase>
+
+						<linkbase readMeFirst="false">http://xbrlsite.com/seattlemethod/cm/model-structure-rules-strict-def.xml</linkbase>
+						<xsd readMeFirst="false">http://www.xbrlsite.com/seattlemethod/platinum/common/disclosure-mechanics/dm.xsd</xsd>
+						<xsd readMeFirst="false">http://www.xbrlsite.com/seattlemethod/platinum/common/fac/REFERENCE/fac.xsd</xsd>
+						<linkbase readMeFirst="false">http://www.xbrlsite.com/seattlemethod/platinum/common/reporting-checklist/dr-rules-def.xml</linkbase>
+						<linkbase readMeFirst="false">http://www.xbrlsite.com/seattlemethod/platinum/common/type-subtype/typeSubtype-rules-def.xml</linkbase>
+
+
+	  </data>
+		<result expected='valid'>
+
+	  </result>
+</variation>
+</testcase>

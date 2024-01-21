@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created by Charles Hoffman, CPA 2023-07-15 -->
+<!-- Public domain dedication: https://creativecommons.org/publicdomain/zero/1.0/ -->
+<!-- XBRL-based Digital Financial Reporting Conformance Suite -->
+<?xml-stylesheet type="text/xsl" href="testcase.xsl"?>
+<testcase
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xbrldte="http://xbrl.org/2005/xbrldt/errors"
+	xmlns="http://xbrl.org/2005/conformance"
+	name="29-TestCase-textblock"
+	description="Valid report and report model which provides an example of a 'textblock' concept arrangment pattern."
+	outpath="out"
+	owner="charles.hoffman@me.com"
+	minimal="true"
+	xsi:schemaLocation="">
+
+
+<variation id="V-29" name="textblock">
+	  <description>Valid report and report model which provides an example of a 'textblock' concept arrangment pattern.</description>
+	  <data>
+	          <instance readMeFirst="true">textblock/instance.xml</instance>
+	          <xsd readMeFirst="false">textblock/report.xsd</xsd>
+	          <linkbase readMeFirst="false">textblock/report-lab.xml</linkbase>
+	          <linkbase readMeFirst="false">textblock/report-ref.xml</linkbase>
+	          <linkbase readMeFirst="false">textblock/report-pre.xml</linkbase>
+						<linkbase readMeFirst="false">textblock/report-cal.xml</linkbase>
+						<linkbase readMeFirst="false">textblock/report-def.xml</linkbase>
+						<linkbase readMeFirst="false">textblock/report-for.xml</linkbase>
+	  </data>
+		<result expected='valid'>
+
+	  </result>
+</variation>
+</testcase>

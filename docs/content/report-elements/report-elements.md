@@ -57,7 +57,7 @@ Get all labels of the report element.
 #### has\_label\_with\_role
 
 ```python
-def has_label_with_role(label_role: BrelLabelRole) -> bool
+def has_label_with_role(label_role: str) -> bool
 ```
 
 Check if the report element has a label with the given role.

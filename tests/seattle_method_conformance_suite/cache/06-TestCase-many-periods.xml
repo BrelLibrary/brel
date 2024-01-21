@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created by Charles Hoffman, CPA 2023-07-15 -->
+<!-- Public domain dedication: https://creativecommons.org/publicdomain/zero/1.0/ -->
+<!-- XBRL-based Digital Financial Reporting Conformance Suite -->
+<?xml-stylesheet type="text/xsl" href="testcase.xsl"?>
+<testcase
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xbrldte="http://xbrl.org/2005/xbrldt/errors"
+	xmlns="http://xbrl.org/2005/conformance"
+	name="06-TestCase-many-periods"
+	description="Valid report and report model which shows that a report might contain any number of calendar periods for which informaiton is reported. This is referred to as a 'period comparison'."
+	outpath="out"
+	owner="charles.hoffman@me.com"
+	minimal="true"
+	xsi:schemaLocation="">
+
+
+<variation id="V-06" name="many-periods">
+	  <description>Valid report and report model which shows that a report might contain any number of calendar periods for which informaiton is reported. This is referred to as a 'period comparison'.</description>
+	  <data>
+	          <instance readMeFirst="true">many-periods/instance.xml</instance>
+	          <xsd readMeFirst="false">many-periods/report.xsd</xsd>
+	          <linkbase readMeFirst="false">many-periods/report-lab.xml</linkbase>
+	          <linkbase readMeFirst="false">many-periods/report-ref.xml</linkbase>
+	          <linkbase readMeFirst="false">many-periods/report-pre.xml</linkbase>
+						<linkbase readMeFirst="false">many-periods/report-cal.xml</linkbase>
+						<linkbase readMeFirst="false">many-periods/report-def.xml</linkbase>
+						<linkbase readMeFirst="false">many-periods/report-for.xml</linkbase>
+	  </data>
+		<result expected='valid'>
+
+	  </result>
+</variation>
+</testcase>
