@@ -1,0 +1,67 @@
+digraph "classes_brel_reoprt_elements" {
+rankdir=BT
+charset="utf-8"
+// Nodes
+"brel.reportelements.abstract.Abstract" [color="black", fontcolor="black", label=<{
+Abstract
+|
+get_labels(): list[BrelLabel]<br ALIGN="LEFT"/>
+get_name(): QName<br ALIGN="LEFT"/>
+}>, shape="record", style="solid"];
+
+"brel.reportelements.concept.Concept" [color="black", fontcolor="black", label=<{
+Concept
+|
+get_labels(): list[BrelLabel]<br ALIGN="LEFT"/>
+get_name(): QName<br ALIGN="LEFT"/>
+get_balance_type(): str \| None<br ALIGN="LEFT"/>
+get_data_type(): str<br ALIGN="LEFT"/>
+get_period_type(): str<br ALIGN="LEFT"/>
+is_nillable(): bool<br ALIGN="LEFT"/>
+}>, shape="record", style="solid"];
+
+"brel.reportelements.dimension.Dimension" [color="black", fontcolor="black", label=<{
+Dimension
+|
+get_labels(): list[BrelLabel]<br ALIGN="LEFT"/>
+get_name(): QName<br ALIGN="LEFT"/>
+get_type(): QName<br ALIGN="LEFT"/>
+is_explicit(): bool<br ALIGN="LEFT"/>
+}>, shape="record", style="solid"];
+
+"brel.reportelements.hypercube.Hypercube" [color="black", fontcolor="black", label=<{
+Hypercube
+|
+get_labels(): list[BrelLabel]<br ALIGN="LEFT"/>
+get_name(): QName<br ALIGN="LEFT"/>
+}>, shape="record", style="solid"];
+
+"brel.reportelements.i_report_element.IReportElement" [color="black", fontcolor="black", label=<{
+IReportElement
+|
+<I>get_labels</I>(): list[BrelLabel]<br ALIGN="LEFT"/>
+<I>get_name</I>(): QName<br ALIGN="LEFT"/>
+}>, shape="record", style="solid"];
+
+"brel.reportelements.lineitems.LineItems" [color="black", fontcolor="black", label=<{
+LineItems
+|
+get_labels(): list[BrelLabel]<br ALIGN="LEFT"/>
+get_name(): QName<br ALIGN="LEFT"/>
+}>, shape="record", style="solid"];
+
+"brel.reportelements.member.Member" [color="black", fontcolor="black", label=<{
+Member
+|
+get_labels(): list[BrelLabel]<br ALIGN="LEFT"/>
+get_name(): QName<br ALIGN="LEFT"/>
+}>, shape="record", style="solid"];
+
+// Edges
+"brel.reportelements.abstract.Abstract" -> "brel.reportelements.i_report_element.IReportElement" [arrowhead="empty", arrowtail="none"];
+"brel.reportelements.concept.Concept" -> "brel.reportelements.i_report_element.IReportElement" [arrowhead="empty", arrowtail="none"];
+"brel.reportelements.dimension.Dimension" -> "brel.reportelements.i_report_element.IReportElement" [arrowhead="empty", arrowtail="none"];
+"brel.reportelements.hypercube.Hypercube" -> "brel.reportelements.i_report_element.IReportElement" [arrowhead="empty", arrowtail="none"];
+"brel.reportelements.lineitems.LineItems" -> "brel.reportelements.i_report_element.IReportElement" [arrowhead="empty", arrowtail="none"];
+"brel.reportelements.member.Member" -> "brel.reportelements.i_report_element.IReportElement" [arrowhead="empty", arrowtail="none"];
+}
