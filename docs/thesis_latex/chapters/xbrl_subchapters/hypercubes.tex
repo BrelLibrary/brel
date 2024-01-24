@@ -3,6 +3,8 @@
 
 One key observation that can be made when looking at the facts of an XBRL report is that they are often structured like a hypercube.
 The aspects of a fact can be seen as the dimensions of a hypercube, whereas the value of the fact is the value of the hypercube at the given dimensions.
+Unlike networks, hypercubes are part of the OIM
+\footnote{Hypercubes are the reason why the OIM does not only cover the XBRL 2.1 core specification, but also the XBRL Dimensions 1.0 specification.}.
 
 \begin{figure}[H]
     \caption{Example of a hypercube}
@@ -50,6 +52,9 @@ They were retrofitted into the XBRL specification in 2006.\cite{xbrl_dimensions}
 When viewing facts as hypercubes, the cube ends up having four built in dimensions.
 These correspond to the four core aspects of a fact: \texttt{Period}, \texttt{Entity}, \texttt{Concept}, and \texttt{Unit}.
 XBRL allows for the creation of custom dimensions, which come in two flavors: explicit and typed.
+
+Unfortunately, XBRL overloads the term "dimension".
+It refers to both the dimensions of a hypercube, as well as the two custom dimension types. 
 
 \subsection{Explicit dimensions}
 

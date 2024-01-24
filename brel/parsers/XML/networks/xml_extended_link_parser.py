@@ -48,16 +48,11 @@ def get_object_from_reference(
     """
 
     nsmap = qname_nsmap.get_nsmap()
-    referenced_element_type = referenced_element.get(
-        f"{{{nsmap['xlink']}}}type", ""
-    )
+    referenced_element_type = referenced_element.get(f"{{{nsmap['xlink']}}}type", "")
 
     if referenced_element_type == "locator":
         # if the referenced element is a locator, get the referenced element from the report elements
-        if (
-            referenced_element.get(f"{{{nsmap['xlink']}}}type", "")
-            != "locator"
-        ):
+        if referenced_element.get(f"{{{nsmap['xlink']}}}type", "") != "locator":
             raise ValueError(
                 f"the locator_xml element {referenced_element.tag} does not have a xlink:type attribute with value 'locator'"
             )
@@ -65,9 +60,7 @@ def get_object_from_reference(
         to_element: IReportElement | IResource | Fact | None = None
 
         # get the href attribute
-        href = cast(
-            str, referenced_element.get(f"{{{nsmap['xlink']}}}href", "")
-        )
+        href = cast(str, referenced_element.get(f"{{{nsmap['xlink']}}}href", ""))
 
         if "#" in href:
             _, elem_id = href.split("#")
@@ -75,9 +68,7 @@ def get_object_from_reference(
             elem_id = href
 
         if elem_id not in id_to_any:
-            raise ValueError(
-                f"the referenced element {elem_id} could not be found"
-            )
+            raise ValueError(f"the referenced element {elem_id} could not be found")
         report_element = id_to_any[elem_id]
 
         to_element = report_element
@@ -87,9 +78,7 @@ def get_object_from_reference(
         if referenced_element.tag == f"{{{nsmap['link']}}}label":
             to_element = BrelLabel.from_xml(referenced_element, qname_nsmap)
         elif referenced_element.tag == f"{{{nsmap['link']}}}reference":
-            to_element = BrelReference.from_xml(
-                referenced_element, qname_nsmap
-            )
+            to_element = BrelReference.from_xml(referenced_element, qname_nsmap)
         elif referenced_element.tag == f"{{{nsmap['link']}}}footnote":
             to_element = BrelFootnote.from_xml(referenced_element, qname_nsmap)
         else:
@@ -217,9 +206,7 @@ def parse_xml_link(
                 )
 
                 # try finding an arc where 'to' points to the current resource/locator
-                xpath_query = (
-                    f".//*[@xlink:to='{label}' and @xlink:type='arc']"
-                )
+                xpath_query = f".//*[@xlink:to='{label}' and @xlink:type='arc']"
                 arcs_to = xml_link_element.xpath(xpath_query, namespaces=nsmap)
                 if not isinstance(arcs_to, list):
                     raise TypeError(
@@ -227,12 +214,8 @@ def parse_xml_link(
                     )
 
                 # if no arc is found, try again, but look for an arc with 'from' pointing to the current resource/locator
-                xpath_query = (
-                    f".//*[@xlink:from='{label}' and @xlink:type='arc']"
-                )
-                arcs_from = xml_link_element.xpath(
-                    xpath_query, namespaces=nsmap
-                )
+                xpath_query = f".//*[@xlink:from='{label}' and @xlink:type='arc']"
+                arcs_from = xml_link_element.xpath(xpath_query, namespaces=nsmap)
                 if not isinstance(arcs_from, list):
                     raise TypeError(
                         f"the xpath query {xpath_query} did not return a list"
@@ -271,7 +254,7 @@ def parse_xml_link(
                 # TODO: add support for other types of elements in links.
                 pass
 
-        # second pass. Create the tree by
+        # second pass. Create the tree by iterating over the edges and adding the edge's 'to' node as a child to the edge's 'from' node
         roots: set[tuple[str, INetworkNode]] = set()
         for arc_from, arc_to in edges:
             from_nodes = nodes_lookup[arc_from]
@@ -305,13 +288,9 @@ def parse_xml_link(
                         # it also has to have the same 'from' and 'to' attributes as the current arc
                         xpath_query = f".//*[@xlink:from='{arc_from}'"
                         xpath_query += f" and @xlink:to='{arc_to}'"
-                        xpath_query += (
-                            f" and @xlink:arcrole='{to_node.get_arc_role()}'"
-                        )
+                        xpath_query += f" and @xlink:arcrole='{to_node.get_arc_role()}'"
                         xpath_query += "]"
-                        xml_arcs = xml_link_element.xpath(
-                            xpath_query, namespaces=nsmap
-                        )
+                        xml_arcs = xml_link_element.xpath(xpath_query, namespaces=nsmap)
 
                         # check if you found such an arc
                         if not isinstance(xml_arcs, list):
@@ -365,9 +344,7 @@ def parse_xml_link(
             continue
 
         if network_factory.is_physical():
-            present_arc_roles = set(
-                map(lambda root: root[1].get_arc_role(), roots)
-            )
+            present_arc_roles = set(map(lambda root: root[1].get_arc_role(), roots))
             for arc_role in present_arc_roles:
                 # filter the roots by arcrole
 
@@ -396,9 +373,7 @@ def parse_xml_link(
         else:
             # create a network with all the roots
             root_nodes = list(map(lambda root: root[1], roots))
-            network = network_factory.create_network(
-                xml_link_element, root_nodes
-            )
+            network = network_factory.create_network(xml_link_element, root_nodes)
             # update the report elements
             report_elements = network_factory.update_report_elements(
                 report_elements, network

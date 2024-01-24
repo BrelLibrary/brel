@@ -1,12 +1,15 @@
 digraph "classes_brel_resources" {
 rankdir=BT
 charset="utf-8"
+splines="ortho"
+
 "brel.resource.footnote.BrelFootnote" [color="black", fontcolor="black", label=<{
 BrelFootnote
 |
 get_content(): str<br ALIGN="LEFT"/>
 get_role(): str<br ALIGN="LEFT"/>
 get_title(): str \| None<br ALIGN="LEFT"/>
+get_language(): str<br ALIGN="LEFT"/>
 }>, shape="record", style="solid"];
 
 "brel.resource.brel_label.BrelLabel" [color="black", fontcolor="black", label=<{
@@ -24,15 +27,15 @@ get_language(): str<br ALIGN="LEFT"/>
 BrelReference
 |
 get_content(): dict<br ALIGN="LEFT"/>
-get_role(): str \| None<br ALIGN="LEFT"/>
+get_role(): str<br ALIGN="LEFT"/>
 get_title(): str \| None<br ALIGN="LEFT"/>
 }>, shape="record", style="solid"];
 
-"brel.resource.i_resource.IResource" [color="black", fontcolor="black", label=<{
+"brel.resource.i_resource.IResource" [color="darkgoldenrod", fontcolor="black", label=<{
 IResource
 |
-<I>get_content</I>(): dict \| str \| None<br ALIGN="LEFT"/>
-<I>get_role</I>(): str \| None<br ALIGN="LEFT"/>
+<I>get_content</I>(): str \| dict<br ALIGN="LEFT"/>
+<I>get_role</I>(): str<br ALIGN="LEFT"/>
 <I>get_title</I>(): str \| None<br ALIGN="LEFT"/>
 }>, shape="record", style="solid"];
 

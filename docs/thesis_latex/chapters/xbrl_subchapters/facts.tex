@@ -3,9 +3,10 @@
 
 A fact is the smallest unit of information in an XBRL report. 
 The word "Fact" is a term used to describe an individual piece of financial of business information within an XBRL instance document. 
+This section aims to represent facts and its supporting concepts in a way that is in line with the OIM.
 
 Lets consider a simplified example involving a financial report of Microsoft Corporation for the fiscal year 2022.
-Microsoft's annual report can be found on the company's website\footnote[0]{https://www.microsoft.com/investor/reports/ar22/index.html}.
+Microsoft's annual report can be found on the company's website\footnote{https://www.microsoft.com/investor/reports/ar22/index.html}.
 It contains a lot of information about the company's financial situation, as well as information about the company's business activities.
 For this example, we will only consider the company's revenue for the fiscal year 2022.
 Microsoft chose to report this information as follows:
@@ -29,9 +30,9 @@ In XBRL, a corresponding fact would be represented as follows:
 \begin{itemize}
     \item \textbf{Concept:} Revenue
     \item \textbf{Entity:} Microsoft Corporation
-    \item \textbf{Period:} from 2022-04-01 to 2023-03-31 \footnote[0]{Refers to the fiscal year 2022, which starts on April 1, 2022 and ends on March 31, 2023}
+    \item \textbf{Period:} from 2022-04-01 to 2023-03-31 \footnote{Refers to the fiscal year 2022, which starts on April 1, 2022 and ends on March 31, 2023}
     \item \textbf{Unit:} USD
-    \item \textbf{Value:} 198'270'000 \footnote[1]{https://www.microsoft.com/investor/reports/ar22/index.html}
+    \item \textbf{Value:} 198'270'000 \footnote{https://www.microsoft.com/investor/reports/ar22/index.html}
 \end{itemize}
 
 In this example:

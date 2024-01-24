@@ -1,0 +1,152 @@
+\section{Characteristics}
+\label{sec:characteristics}
+
+Characteristics are used to describe the position of a fact along a dimension.
+Some of them rely on report elements for description, while others introduce new concepts. 
+All characteristics share a common interface \texttt{ICharacteristic}.
+Each characteristic acts as a aspect-value pair, 
+where the aspect characterizes the dimension's axis and the value details the position of the fact along the axis.
+The interplay between aspect and characteristics classes is illustrated in figure \ref{fig:characteristics}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{images/brel_characteristics_classes.png}
+    \caption{The interplay between aspects and characteristics}
+    \label{fig:characteristics}
+\end{figure}
+
+The \texttt{ICharacteristic} interface is integral to the Brel API, which is why it is described first.
+Next up is the Aspect class, followed by the different types of characteristics.
+
+\subsection{ICharacteristic}
+
+As I have pointed out in the previous section, characteristics are used to describe the position of a fact along a dimension using an aspect-value pair.
+An aspect is a description of the dimension's axis, while the value details the position of the fact along the axis.
+
+The \texttt{ICharacteristic} interface follows this definition directly by providing the methods \texttt{get\_aspect} and \texttt{get\_value}.
+
+\subsection{Aspect}
+
+Aspects are used to describe the axis of a dimension.
+Each instance of the \texttt{Aspect} class represents a single aspect.
+The core aspects - Concept, Entity, Period and Unit - are all instances of the \texttt{Aspect} class.
+In addition, the core aspects are statically available as public constants of the \texttt{Aspect} class.
+The fields in question are \texttt{Aspect.CONCEPT}, \texttt{Aspect.ENTITY}, \texttt{Aspect.PERIOD} and \texttt{Aspect.UNIT}.
+
+The \texttt{Aspect} class provides a method for getting the name of the aspect, called \texttt{get\_name}.
+The name of an aspect is a string instead of the QName class.
+The main reason for this is that the core aspects are available globally without the use of namespaces.
+Most facts exclusively use the core aspects.
+So the namespaces of QNames would only add unnecessary clutter.
+The only exception to this rule are dimensions, where the name of the dimension is a QName.
+Still, QNames can just be emulated by using strings using their expanded name format.
+\footnote{The expended name format of a QName is \texttt{namespace\_prefix:local\_name}.\cite{w3_expanded_names}}
+\cite{w3_qnames}
+
+Similar to the \texttt{IReportElement} interface, the \texttt{Aspect} class also provides a method for getting the label of the aspect.
+The \texttt{get\_labels} method returns a list of labels, since an aspect can have multiple labels.
+
+Finally, the \texttt{is\_core} method returns whether the aspect is a core aspect or not.
+
+\subsection{Concept Characteristic}
+
+The \texttt{ConceptCharacteristic} indicates which concept a fact uses.
+From the perspective of hypercubes, the \texttt{Aspect.CONCEPT} aspect is a dimension of concepts 
+and the actual \texttt{Concept} report element is a point along that dimension.
+The dimension characteristic is the only characteristic that every context has to have.
+
+The \texttt{ConceptCharacteristic} implements \texttt{ICharacteristic} as one would expect.
+\texttt{get\_aspect} returns \texttt{Aspect.CONCEPT} and \texttt{get\_value} returns the concept that the characteristic describes.
+
+\subsection{Entity Characteristic}
+
+The \texttt{EntityCharacteristic} dictates which entity a fact belongs to.
+From the perspective of hypercubes, the \texttt{Aspect.ENTITY} aspect is a dimension of entities
+An entity is a legal entity, such as a company and
+can be identified by a tag and a scheme\footnote{Schemes tend to be URLs.} that acts as the namespace of the tag.
+% Entities are uniquely identified by an identifier and the scheme\footnote{Schemes tend to be URLs.} that defines the identifier.
+Both of these values are combined into a single string using the notation \texttt{\{scheme\}tag}.\footnote{The notation is similar to the Clark notation for QNames.\cite{w3_qnames}}
+
+The \texttt{EntityCharacteristic} implements the \texttt{ICharacteristic} interface,
+where \texttt{get\_aspect} returns \texttt{Aspect.ENTITY} and \texttt{get\_value} gives the string representation of the entity as described above.
+
+\subsection{Period Characteristic}
+
+The \texttt{PeriodCharacteristic} describes the period of a fact.
+Periods can be either instant or duration, which can be checked using the \texttt{is\_instant} method.
+
+The methods \texttt{get\_start\_date} and \texttt{get\_end\_date} return the start and end date of the period respectively.
+If the period is instant, the methods raise an exception, since instant periods do not have a start or end date.
+Conversely, the method \texttt{get\_instant} returns the instant of the period.
+If the period is duration, the method raises an exception, since duration periods do not have an instant.
+All three methods return a date of type \texttt{datetime.date}, which is a standard Python class for representing dates.
+
+Again, period characteristics implement the \texttt{ICharacteristic} interface.
+\texttt{get\_aspect} returns \texttt{Aspect.PERIOD} and \texttt{get\_value} returns the period characteristic itself.
+The reason why \texttt{get\_value} returns itself is that there is no basic type for representing XBRL periods in python.
+The python \texttt{datetime} module, which is the de-facto standard for representing dates in python, 
+does not provide a class for representing both instant and duration periods in a single class. 
+
+\subsection{Unit Characteristic}
+
+The \texttt{UnitCharacteristic} describes the unit of a fact.
+Like all other characteristics before it, the \texttt{UnitCharacteristic} represents a point along the unit dimension 
+and it implements the \texttt{ICharacteristic} interface.
+From a semantic point of view, the unit characteristic also defines the type of the fact's value.
+A fact with a unit of \texttt{USD} has a value of type \texttt{decimal} and a fact with a unit of \texttt{date} has a value representing a date.
+
+Units come in one of two forms - simple and complex.
+Simple units are atomic units, such as \texttt{USD} or \texttt{shares}.
+Complex units are composed of multiple simple units, such as \texttt{USD per share}.
+All complex units are formed by dividing one or more simple units by zero or more simple units.
+
+\begin{figure}[H]
+    \centering
+    \caption{Schematic of composition of complex units}
+    $$\frac{num\_unit_1 \cdot num\_unit_2 \cdot ...}{1 \cdot denom\_unit_1 \cdot denom\_unit_2 \cdot ...}$$
+    \label{fig:complex_unit}
+\end{figure}
+
+Brel represents the complex unit in figure \ref{fig:complex_unit} using two lists of simple units.
+The method \texttt{get\_numerators} returns the list of simple units in the numerator, \texttt{get\_denominators} returns the denominators.\footnote{The returned list of denominators does not contain the implicit denominator of 1.}
+
+Similar to the \texttt{PeriodCharacteristic}, the \texttt{UnitCharacteristic} does not have a basic type for representing XBRL units.
+Instead, it returns itself when \texttt{get\_value} is called.
+The method \texttt{get\_aspect} returns \texttt{Aspect.UNIT} as expected.
+% TODO: Make unit characteristic get_value return itself in code base
+
+\subsection{Dimension Characteristics}
+
+There are two categories of dimension characteristics in XBRL - typed and explicit.
+
+Typed dimension characteristics are used to describe a custom axis, along which a fact is positioned.
+The kind of values along this custom axis are of a specific type.
+Like every other characteristic, typed dimension characteristics implement the \texttt{ICharacteristic} interface.
+
+As we have seen in section \ref{sec:api_report_elements}, custom dimensions are represented as a \texttt{Dimension} report element in Brel.
+So the aspect of a typed dimension characteristic should represent a \texttt{Dimension} report element.
+Luckily, \texttt{Dimension} objects are essentially just a name, which is represented by a QName.
+Therefore, the \texttt{get\_aspect} method of the \texttt{TypedDimensionCharacteristic} class returns the QName of the dimension as a string.
+
+% Of course, the characteristic should also provide access to the \texttt{Dimension} object itself, 
+% which is why the \texttt{get\_dimension} exists. 
+The characteristic also provides direct access to the \texttt{Dimension} object itself via the \texttt{get\_dimension} method.
+Think of \texttt{get\_dimension} as a more complete version of \texttt{get\_aspect}.
+
+As the name suggests, the value of a typed dimension characteristic is of a specific type.
+The \texttt{get\_value} method should reflect this accordingly.
+It should return the value in a type that encompasses all possible values of the dimension.
+The most general type of any value in XBRL is a string.
+
+The actual type of the value is determined by the \texttt{get\_type} method of the \texttt{Dimension} element.
+\footnote{The \texttt{Dimension} object returned by \texttt{get\_dimension} is guaranteed to be a typed dimension with \texttt{is\_explicit} returning \texttt{False}.}
+Naturally, Brel provides helper methods for converting the value into the type that most appropriately represents the value.
+These helper methods are not part of the minimal API described in this chapter, but they are part of the full API.
+
+Explicit dimensions are the second category of custom characteristic.
+They are extremely similar to typed dimensions, but they do not have a type.
+Instead of a type, they have a set of possible values.
+
+The \texttt{ExplicitDimensionCharacteristic} class is almost identical to the \texttt{TypedDimensionCharacteristic} class.
+The main difference between the two is that \texttt{get\_value} returns a \texttt{Member} object instead of a string.
+

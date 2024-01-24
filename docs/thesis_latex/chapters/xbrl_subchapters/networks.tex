@@ -1,10 +1,14 @@
 \section{Networks}
 \label{sec:xbrl_networks}
 
-Up to this point, all concepts in the XBRL taxonomy are treated as independent entities.
+This section marks the point where the OIM ends and the non-OIM parts of XBRL begin.
+Since XBRL is heavily based on XML, the remainder of this chapter will use XML syntax more heavily.
+
+Up to now, all concepts in the XBRL taxonomy are treated as independent entities.
 The whole filing can be viewed as an unordered set of facts with no relation between them.
 However, in reality, concepts are not independent of each other.
 Instead, they are related to each other in some way.
+
 % Instead, concepts are often related to each other in some way.
 
 For example, the concepts \texttt{Assets} and \texttt{Liabilities} are related to each other in the sense that they are both part of the concept \texttt{Balance Sheet}.
@@ -40,7 +44,7 @@ From a technical perspective, linkbases are just XML elements that have children
 
 \subsection{Types of Networks}
 
-The XBRL 2.1 specification defines 6 built in types of networks\cite{xbrl21_terminology}\footnote[1]{The XBRL 2.1 specification is inconsistent about \texttt{link:footNotelink}. Section 1.4 does not list it as a standard extended link, section 3.5.2.4 does. I will assume that it is a standard extended link.}:
+The XBRL 2.1 specification defines 6 built in types of networks\cite{xbrl21_terminology}\footnote{The XBRL 2.1 specification is inconsistent about \texttt{link:footNotelink}. Section 1.4 does not list it as a standard extended link, section 3.5.2.4 does. I will assume that it is a standard extended link.}:
 
 \begin{itemize}
     \item \texttt{link:presentationLink}: A network that represents the hierarchy of concepts in a report. An example of this can be seen in figure \ref{fig:example_visualization_network_xbrl}.
@@ -135,12 +139,12 @@ The arc represents the edge between the two nodes.
 Let us look at the XML snippet \ref{fig:example_presentation_arc_xml} step by step.
 
 \begin{itemize}
-    \item \texttt{Specify types}: The \texttt{xlink:type} attribute specifies the types for both the locators and the arc.
+    \item \textbf{Type}: The \texttt{xlink:type} attribute specifies the types for both the locators and the arc.
     For the former, the type is \texttt{locator}, whereas for the latter, the type is \texttt{arc}.
-    \item \texttt{Connect nodes and edges}: Both locators contain an \texttt{xlink:label} attribute that uniquely identifies the locator.
+    \item \textbf{Connect nodes and edges}: Both locators contain an \texttt{xlink:label} attribute that uniquely identifies the locator.
     The arc links the two locators together using the \texttt{xlink:from} and \texttt{xlink:to} attributes.
-    \item \texttt{Order of edges}: The outgoing edges of a node are ordered using the \texttt{order} attribute of the arc.
-    \item \texttt{Specify arcrole}: The \texttt{xlink:arcrole} attribute of the arc specifies the kind of relation between the source and the target of the arc.
+    \item \textbf{Edge order}: The outgoing edges of a node are ordered using the \texttt{order} attribute of the arc.
+    \item \textbf{Arcrole}: The \texttt{xlink:arcrole} attribute of the arc specifies the kind of relation between the source and the target of the arc.
     In case of a presentationLink, the \texttt{xlink:arcrole} attribute is always set to \texttt{parent-child}.\label{sec:arcrole}
 \end{itemize}
 
@@ -190,7 +194,7 @@ However, if we look at the presentation network in figure \ref{fig:example_visua
 An example of this is the concept \texttt{BalanceSheet}.
 In XBRL, concepts that can not have a fact associated with them are called \texttt{Abstract}.
 
-The Open Information Model (OIM) combines abstracts and concepts using the term \texttt{report element}.
+XBRL combines abstracts and concepts under the umbrella term "report element".
 Report elements are, as the name suggests, elements that can appear in a report.
 Some of these report elements are used for facts, namely the concepts.
 Others are used to represent the structure of the report, namely the abstracts.
@@ -206,11 +210,13 @@ A fact is still requires a concept, not a report element.
 
 The \texttt{link:calculationLink} network is used to represent how concepts are calculated from other concepts.
 More specifically, it is used to represent how a concept is the sum of other concepts.
-Under the hood, calculationLinks are implemented in the same way as presentationLinks, but there are a few differences in the semantics.
+Under the hood, calculationLinks are implemented in the same way as presentationLinks, but there are a few differences:
 
 \begin{enumerate}
-    \item The arcs now have the tag \texttt{link:calculationArc} instead of \texttt{link:presentationArc}.
-    \item The link now has the tag \texttt{link:calculationLink} instead of \texttt{link:presentationLink}.
+    % \item The arcs now have the tag \texttt{link:calculationArc} instead of \texttt{link:presentationArc}.
+    \item Arcs are now called \texttt{link:calculationArc}.
+    \item Links are \texttt{link:calculationLink}.
+    % \item The link now has the tag \texttt{link:calculationLink} instead of \texttt{link:presentationLink}.
     \item The \texttt{xlink:arcrole} attribute of the \texttt{link:calculationArc} element is set to \texttt{summation-item}.
     \item The \texttt{link:calculationArc} element has an additional attribute called \texttt{weight}.
     \item All locators in the link are references to concepts, not just report elements.
@@ -228,7 +234,7 @@ The \texttt{weight} attribute of the \texttt{link:calculationArc} element specif
 Additionally, facts can only be associated with concepts, not just any report element.
 Therefore, all locators in a calculation network are references to concepts.
 
-In the section on concepts\ref{sec:concepts}, I have introduced the \texttt{balance} aspect of a concept.
+In the section on concepts \ref{sec:concepts}, I have introduced the \texttt{balance} aspect of a concept.
 It specifies if the concept is a debit or a credit.
 The XBRL 2.1 specification enforces some constraints on the \texttt{balance} aspect of concepts in combination with the \texttt{weight} attribute of the \texttt{link:calculationArc} element \cite{xbrl21_concept}.
 If one concept has a \texttt{balance} of \texttt{debit} and another concept has a \texttt{balance} of \texttt{credit}, then their connecting arc must have a negative \texttt{weight}.

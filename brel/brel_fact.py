@@ -106,7 +106,7 @@ class Fact:
                 f"Fact {self.__id} does not have a bool value. It has value {self.__value}, which does not resolve to a bool"
             )
 
-    def get_value(self) -> Any:
+    def get_value(self) -> str:
         """
         :returns Any: The value of the fact. The type of the value depends on the type of the fact.
         """

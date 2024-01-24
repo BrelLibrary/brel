@@ -3,6 +3,7 @@ import lxml.etree
 
 from brel import QName, QNameNSMap
 from brel.resource import IResource
+from typing import cast
 
 
 class BrelFootnote(IResource):
@@ -11,9 +12,10 @@ class BrelFootnote(IResource):
     References are used to link to external resources such as legal documents.
     """
 
-    def __init__(self, label: str, role: str, content: str) -> None:
+    def __init__(self, label: str, language: str, role: str, content: str) -> None:
         self.__content: str = content
         self.__role: str = role
+        self.__language: str = language
         self.__label: str = label
 
     def __str__(self) -> str:
@@ -32,6 +34,9 @@ class BrelFootnote(IResource):
     def get_content(self) -> str:
         return self.__content
 
+    def get_language(self) -> str:
+        return self.__language
+
     # internal methods
     @classmethod
     def from_xml(
@@ -42,27 +47,32 @@ class BrelFootnote(IResource):
         """
         nsmap = qname_nsmap.get_nsmap()
 
+        # In xml, the language of an element is inherited from its parent if it is not specified.
+        lang_element: lxml.etree._Element | None = xml_element
+        language: str | bytes | None = None
+        # Step up the tree until the language is found or the root is reached.
+        while language is None and lang_element is not None:
+            language = lang_element.attrib.get(f"{{{nsmap['xml']}}}lang")
+            lang_element = lang_element.getparent()
+
+        # Language is required. If it is not found, raise an error.
+        if language is None:
+            raise ValueError(f"Could not find the language for the label {text}")
+        language = cast(str, language)
+
         # get the label
         label = xml_element.attrib.get(f"{{{nsmap['xlink']}}}label")
         if label is None:
-            raise ValueError(
-                f"Could not find the label of the resource {xml_element}"
-            )
+            raise ValueError(f"Could not find the label of the resource {xml_element}")
         if not isinstance(label, str):
-            raise ValueError(
-                f"The label of the resource {xml_element} is not a string"
-            )
+            raise ValueError(f"The label of the resource {xml_element} is not a string")
 
         # get the role
         role = xml_element.attrib.get(f"{{{nsmap['xlink']}}}role")
         if role is None:
-            raise ValueError(
-                f"Could not find the role of the resource {xml_element}"
-            )
+            raise ValueError(f"Could not find the role of the resource {xml_element}")
         if not isinstance(role, str):
-            raise ValueError(
-                f"The role of the resource {xml_element} is not a string"
-            )
+            raise ValueError(f"The role of the resource {xml_element} is not a string")
 
         # get the content. it might be a str or xhtml. If its xhtml, we need to convert it to str
         content = xml_element.text
@@ -75,4 +85,4 @@ class BrelFootnote(IResource):
                 f"The content of the resource {xml_element} is not a string"
             )
 
-        return cls(label, role, content)
+        return cls(label, language, role, content)

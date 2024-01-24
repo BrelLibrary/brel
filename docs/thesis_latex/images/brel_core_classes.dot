@@ -1,45 +1,19 @@
 digraph "classes_brel_filing" {
 rankdir=BT
 charset="utf-8"
+splines="ortho"
 
-"brel.characteristics.brel_aspect.Aspect" [color="black", fontcolor="black", label=<{
-Aspect
-|
-CONCEPT : Aspect<br ALIGN="LEFT"/>
-ENTITY : Aspect<br ALIGN="LEFT"/>
-PERIOD : Aspect<br ALIGN="LEFT"/>
-UNIT : Aspect   <br ALIGN="LEFT"/>
-|
-get_name(): str<br ALIGN="LEFT"/>
-get_labels(): list[BrelLabel]<br ALIGN="LEFT"/>
-is_core(): bool<br ALIGN="LEFT"/>
-}>, 
-shape="record", style="solid"];
-
-"brel.brel_component.Component" [color="black", fontcolor="black", label=<{
-Component
-|
-get_URI(): str<br ALIGN="LEFT"/>
-get_info(): str<br ALIGN="LEFT"/>
-get_calculation_network(): CalculationNetwork \| None<br ALIGN="LEFT"/>
-get_definition_network(): DefinitionNetwork \| None<br ALIGN="LEFT"/>
-get_presentation_network(): PresentationNetwork \| None<br ALIGN="LEFT"/>
-}>, shape="record", style="solid"];
-
-"brel.brel_context.Context" [color="black", fontcolor="black", label=<{
-Context
-|
-get_aspects(): list[Aspect]<br ALIGN="LEFT"/>
-get_characteristic(aspect: Aspect): ICharacteristic \| None<br ALIGN="LEFT"/>
-has_characteristic(aspect: Aspect): bool<br ALIGN="LEFT"/>
-}>, shape="record", style="solid"];
-
-"brel.brel_fact.Fact" [color="black", fontcolor="black", label=<{
-Fact
-|
-get_context(): Context<br ALIGN="LEFT"/>
-get_value(): Any<br ALIGN="LEFT"/>
-}>, shape="record", style="solid"];
+# Dieter Rams Palette
+# Red
+#AF2E1B
+# Orange
+#CC6324
+# Blue
+#3B4B59
+# Beige
+#BFA07A
+# Off white
+#D9C3B0
 
 "brel.brel_filing.Filing" [color="black", fontcolor="black", label=<{
 Filing
@@ -51,21 +25,75 @@ get_all_physical_networks(): list[INetwork]<br ALIGN="LEFT"/>
 get_all_report_elements(): list[IReportElement]<br ALIGN="LEFT"/>
 }>, shape="record", style="solid"];
 
-"brel.characteristics.i_characteristic.ICharacteristic" [color="black", fontcolor="black", label=<{
+"brel.brel_fact.Fact" [color="black", fontcolor="black", label=<{
+Fact
+|
+get_context(): Context<br ALIGN="LEFT"/>
+get_value(): str<br ALIGN="LEFT"/>
+}>, shape="record", style="solid"];
+
+"brel.brel_context.Context" [color="black", fontcolor="black", label=<{
+Context
+|
+get_aspects(): list[Aspect]<br ALIGN="LEFT"/>
+get_characteristic(aspect: Aspect): ICharacteristic \| None<br ALIGN="LEFT"/>
+}>, shape="record", style="solid"];
+
+"brel.brel_component.Component" [color="black", fontcolor="black", label=<{
+Component
+|
+get_URI(): str<br ALIGN="LEFT"/>
+get_info(): str<br ALIGN="LEFT"/>
+get_calculation_network(): CalculationNetwork \| None<br ALIGN="LEFT"/>
+get_definition_network(): DefinitionNetwork \| None<br ALIGN="LEFT"/>
+get_presentation_network(): PresentationNetwork \| None<br ALIGN="LEFT"/>
+}>, shape="record", style="solid"];
+
+// TODO: change the green
+"brel.characteristics.i_characteristic.ICharacteristic" [color="darkseagreen", fontcolor="black", label=<{
 ICharacteristic
 |
 <I>get_aspect</I>(): Aspect<br ALIGN="LEFT"/>
 <I>get_value</I>(): Any<br ALIGN="LEFT"/>
 }>, shape="record", style="solid"];
 
-"brel.networks.i_network.INetwork" [color="black", fontcolor="black", label=<{
+"brel.characteristics.brel_aspect.Aspect" [color="darkseagreen", fontcolor="black", label=<{
+Aspect
+|
+...
+}>, 
+shape="record", style="solid"];
+
+// "brel.characteristics.brel_aspect.Aspect" [color="#AF2E1B", fontcolor="#AF2E1B", label=<{
+// Aspect
+// |
+// CONCEPT : Aspect<br ALIGN="LEFT"/>
+// ENTITY : Aspect<br ALIGN="LEFT"/>
+// PERIOD : Aspect<br ALIGN="LEFT"/>
+// UNIT : Aspect   <br ALIGN="LEFT"/>
+// |
+// get_name(): str<br ALIGN="LEFT"/>
+// get_labels(): list[BrelLabel]<br ALIGN="LEFT"/>
+// is_core(): bool<br ALIGN="LEFT"/>
+// }>, 
+// shape="record", style="solid"];
+
+// "brel.networks.i_network.INetwork" [color="black", fontcolor="black", label=<{
+// INetwork
+// |
+// get_link_role(): str<br ALIGN="LEFT"/>
+// get_link_name(): QName<br ALIGN="LEFT"/>
+// get_roots(): list[INetworkNode]<br ALIGN="LEFT"/>
+// is_physical(): bool<br ALIGN="LEFT"/>
+// }>, shape="record", style="solid"];
+
+
+
+"brel.networks.i_network.INetwork" [color="red", fontcolor="black", label=<{
 INetwork
 |
-get_link_role(): str<br ALIGN="LEFT"/>
-get_link_name(): QName<br ALIGN="LEFT"/>
-get_roots(): list[INetworkNode]<br ALIGN="LEFT"/>
-is_physical(): bool<br ALIGN="LEFT"/>
-}>, shape="record", style="solid"];
+...
+}>, shape="record", style="solid"]
 
 // "brel.networks.i_network_node.INetworkNode" [color="black", fontcolor="black", label=<{
 // INetworkNode
@@ -91,39 +119,53 @@ get_prefix(): str<br ALIGN="LEFT"/>
 }>, shape="record", style="solid"];
 
 
+// Create a node for report elements
+"brel.reportelements.i_report_element.IReportElement" [color="dodgerblue", fontcolor="black", label=<{
+IReportElement
+|
+...
+}>, shape="record", style="solid"]
+
 
 // Add a solid odiamond edge from filing to fact. make the edge label="contains"
 // the source has the label="n", the target has the label="1"
-"brel.brel_fact.Fact" -> "brel.brel_filing.Filing" [arrowhead="odiamond", arrowtail="none", fontcolor="green", label="n:1", style="solid"];
+"brel.brel_fact.Fact" -> "brel.brel_filing.Filing" [arrowhead="odiamond", arrowtail="none", fontcolor="dimgrey", headlabel="1  ", taillabel="n  ", style="solid",];
 
 // Add a solid odiamond edge from context to fact. make label="1:1" 
-"brel.brel_context.Context" -> "brel.brel_fact.Fact" [arrowhead="odiamond", arrowtail="none", fontcolor="green", label="1:1", style="solid"];
+"brel.brel_context.Context" -> "brel.brel_fact.Fact" [arrowhead="odiamond", arrowtail="none", fontcolor="dimgrey", headlabel="1  ", taillabel="1  ", style="solid"];
 
 // Add a solid odiamond edge from icharacteristic to context. make label="1:n"
-"brel.characteristics.i_characteristic.ICharacteristic" -> "brel.brel_context.Context" [arrowhead="odiamond", arrowtail="none", fontcolor="green", label="1:n", style="solid"];
+"brel.characteristics.i_characteristic.ICharacteristic" -> "brel.brel_context.Context" [arrowhead="odiamond", arrowtail="none", fontcolor="dimgrey", headlabel="n  ", taillabel="1  ", style="solid"];
 
 // Make both edges odiamond
 // aspect -> icharacteristic and aspect -> context
 // the icharacteristic edge is 1:1, the context edge is 1:n
-"brel.characteristics.brel_aspect.Aspect" -> "brel.characteristics.i_characteristic.ICharacteristic" [arrowhead="odiamond", arrowtail="none", fontcolor="green", label="1:1", style="solid"];
-"brel.characteristics.brel_aspect.Aspect" -> "brel.brel_context.Context" [arrowhead="odiamond", arrowtail="none", fontcolor="green", label="1:n", style="solid"];
+"brel.characteristics.brel_aspect.Aspect" -> "brel.characteristics.i_characteristic.ICharacteristic" [arrowhead="odiamond", arrowtail="none", fontcolor="dimgrey", headlabel="1  ", taillabel="1  ", style="solid"];
+"brel.characteristics.brel_aspect.Aspect" -> "brel.brel_context.Context" [arrowhead="odiamond", arrowtail="none", fontcolor="dimgrey", headlabel="n  ", taillabel="1  ", style="solid"];
 
 // Add an edge from component to filing. same style as fact to filing
-"brel.brel_component.Component" -> "brel.brel_filing.Filing" [arrowhead="odiamond", arrowtail="none", fontcolor="green", label="1:1", style="solid"];
+"brel.brel_component.Component" -> "brel.brel_filing.Filing" [arrowhead="odiamond", arrowtail="none", fontcolor="dimgrey", headlabel="1  ", taillabel="1  ", style="solid"];
 
 // Add edges network -> filing and network -> component
 // both edges are 1:n
-"brel.networks.i_network.INetwork" -> "brel.brel_filing.Filing" [arrowhead="odiamond", arrowtail="none", fontcolor="green", label="1:n", style="solid"];
-"brel.networks.i_network.INetwork" -> "brel.brel_component.Component" [arrowhead="odiamond", arrowtail="none", fontcolor="green", label="1:n", style="solid"];
+"brel.networks.i_network.INetwork" -> "brel.brel_filing.Filing" [arrowhead="odiamond", arrowtail="none", fontcolor="dimgrey", headlabel="n  ", taillabel="1  ", style="solid"];
+"brel.networks.i_network.INetwork" -> "brel.brel_component.Component" [arrowhead="odiamond", arrowtail="none", fontcolor="dimgrey", headlabel="n  ", taillabel="1  ", style="solid"];
 
 // Add the following edges with the usual style
 // qname -> network
 // the relationship is 1:1
-"brel.qname.QName" -> "brel.networks.i_network.INetwork" [arrowhead="odiamond", arrowtail="none", fontcolor="green", label="1:1", style="solid"];
+// "brel.qname.QName" -> "brel.networks.i_network.INetwork" [arrowhead="odiamond", arrowtail="none", fontcolor="green", label="1:1", style="solid"];
 
 // Add the inetworknode -> inetwork edge
 // the relationship is 1:n
 // "brel.networks.i_network_node.INetworkNode" -> "brel.networks.i_network.INetwork" [arrowhead="odiamond", arrowtail="none", fontcolor="green", label="1:n", style="solid"];
+
+// Add the edges ireportelement -> filing and ireportelement -> icharacteristic
+// the first edge is n:1, the second is 1:n
+// "brel.reportelements.i_report_element.IReportElement" -> "brel.brel_filing.Filing" [arrowhead="odiamond", arrowtail="none", fontcolor="green", xlabel="n:1", style="solid"];
+"brel.reportelements.i_report_element.IReportElement" -> "brel.brel_filing.Filing" [arrowhead="odiamond", arrowtail="none", fontcolor="dimgrey", headlabel="1  ", taillabel="n  ", style="solid"];
+// "brel.reportelements.i_report_element.IReportElement" -> "brel.characteristics.i_characteristic.ICharacteristic" [arrowhead="odiamond", arrowtail="none", fontcolor="green", xlabel="1:n", style="solid"];
+"brel.reportelements.i_report_element.IReportElement" -> "brel.characteristics.i_characteristic.ICharacteristic" [arrowhead="odiamond", arrowtail="none", fontcolor="dimgrey", headlabel="n  ", taillabel="1  ", style="solid"];
 
 
 }

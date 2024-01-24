@@ -1,6 +1,8 @@
 digraph "classes_brel_reoprt_elements" {
 rankdir=BT
 charset="utf-8"
+splines="ortho"
+
 // Nodes
 "brel.reportelements.abstract.Abstract" [color="black", fontcolor="black", label=<{
 Abstract
@@ -15,7 +17,7 @@ Concept
 get_labels(): list[BrelLabel]<br ALIGN="LEFT"/>
 get_name(): QName<br ALIGN="LEFT"/>
 get_balance_type(): str \| None<br ALIGN="LEFT"/>
-get_data_type(): str<br ALIGN="LEFT"/>
+get_data_type(): QName<br ALIGN="LEFT"/>
 get_period_type(): str<br ALIGN="LEFT"/>
 is_nillable(): bool<br ALIGN="LEFT"/>
 }>, shape="record", style="solid"];
@@ -36,11 +38,12 @@ get_labels(): list[BrelLabel]<br ALIGN="LEFT"/>
 get_name(): QName<br ALIGN="LEFT"/>
 }>, shape="record", style="solid"];
 
-"brel.reportelements.i_report_element.IReportElement" [color="black", fontcolor="black", label=<{
+"brel.reportelements.i_report_element.IReportElement" [color="dodgerblue", fontcolor="black", label=<{
 IReportElement
 |
 <I>get_labels</I>(): list[BrelLabel]<br ALIGN="LEFT"/>
 <I>get_name</I>(): QName<br ALIGN="LEFT"/>
+                                                                                                                          
 }>, shape="record", style="solid"];
 
 "brel.reportelements.lineitems.LineItems" [color="black", fontcolor="black", label=<{
@@ -57,6 +60,8 @@ get_labels(): list[BrelLabel]<br ALIGN="LEFT"/>
 get_name(): QName<br ALIGN="LEFT"/>
 }>, shape="record", style="solid"];
 
+"dummy" [color="white", fontcolor="white", shape="record", style="invis" label=""];
+
 // Edges
 "brel.reportelements.abstract.Abstract" -> "brel.reportelements.i_report_element.IReportElement" [arrowhead="empty", arrowtail="none"];
 "brel.reportelements.concept.Concept" -> "brel.reportelements.i_report_element.IReportElement" [arrowhead="empty", arrowtail="none"];
@@ -64,4 +69,22 @@ get_name(): QName<br ALIGN="LEFT"/>
 "brel.reportelements.hypercube.Hypercube" -> "brel.reportelements.i_report_element.IReportElement" [arrowhead="empty", arrowtail="none"];
 "brel.reportelements.lineitems.LineItems" -> "brel.reportelements.i_report_element.IReportElement" [arrowhead="empty", arrowtail="none"];
 "brel.reportelements.member.Member" -> "brel.reportelements.i_report_element.IReportElement" [arrowhead="empty", arrowtail="none"];
+
+// Invisible Edges to make the arrangement nicer
+// dummy -> abstract
+"brel.reportelements.abstract.Abstract" -> "dummy" [arrowhead="empty", arrowtail="none", style="invis"];
+// dummy -> ireportelement
+"brel.reportelements.i_report_element.IReportElement" -> "dummy" [arrowhead="empty", arrowtail="none", style="invis"];
+// dummy -> member
+"brel.reportelements.member.Member" -> "dummy" [arrowhead="empty", arrowtail="none", style="invis"];
+
+// member -> dimension
+"brel.reportelements.dimension.Dimension" -> "brel.reportelements.member.Member" [arrowhead="empty", arrowtail="none", style="invis"];
+
+// abstract -> concept
+"brel.reportelements.concept.Concept" -> "brel.reportelements.abstract.Abstract" [arrowhead="empty", arrowtail="none", style="invis"];
+
+// hypercube -> lineitems
+"brel.reportelements.lineitems.LineItems" -> "brel.reportelements.hypercube.Hypercube" [arrowhead="empty", arrowtail="none", style="invis"];
+
 }

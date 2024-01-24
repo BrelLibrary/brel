@@ -1,0 +1,53 @@
+\section{Answering research question 1}
+\label{sec:answer_research_question_1}
+
+The Open Information Model (OIM) is a conceptual model for XBRL.\cite{oim}
+% It acts as a partial rewrite of the XBRL 2.1 specification and the XBRL Dimensions 1.0 specification.
+Unlike the XBRL specification, the OIM is not a standard.
+% It merely describes the concepts of XBRL in a more abstract way.
+% Think of it as a implementation agnostic description of the XBRL specification.
+% This agnosticism untangles XBRL from its XML roots and allows for a more flexible implementation.
+% The OIM is not tied to any specific programming language or implementation, notably XML.
+% Chapter \ref{chapter:xbrl} already covered the OIM from an intuitive point of view.
+Chapter \ref{chapter:xbrl} already gave an intuition of the OIM.
+% For its examples, it used the XML implementation of XBRL, which is the de-facto standard.
+The chapter only diverged from the OIM once it reached parts of XBRL that are not yet covered by the OIM.
+
+Since the OIM is already quite tidy, the Brel API does not deviate much from it.
+Just like the OIM, the Brel API is not tied to any specific format for its underlying XBRL reports.
+It provides Reports, Facts, Concept-, Entity-, Period-, Unit and Dimension characteristics, which are all part of the OIM.
+\footnote{The OIM does not use "characteristic" suffix. Brel uses it to avoid confusion with similarly named report elements.}
+
+\begin{itemize}
+    \item \textbf{Report} - The \texttt{Filing} class represents a single XBRL report. 
+    Just like the OIM, it acts as a wrapper around a list of facts.
+    Aside from facts, a report also contains a taxonomy, which is a set of report elements, which are also accessible through the \texttt{Filing} class.
+    \item \textbf{Fact} - The \texttt{Fact} and \texttt{Context} class represents a single XBRL fact.
+    Just like the OIM, a fact consists of a value and a set of characteristics that describe what the value represents.
+    \item \textbf{Characteristics} - Brel implements all of the characteristics described in the OIM as classes - 
+    concepts, entities, periods, units, explicit- and typed dimensions
+    \footnote{The OIM also introduces the language- and Note ID core dimensions. They are not yet implemented in Brel, but can be emulated using the typed dimension characteristic. They are rarely used in practice, which is why they are not yet implemented.}
+\end{itemize}
+
+Therefore, the first half of this chapter offers a constructive answer to research question \ref{itm:research_question_1} 
+by providing a python API that is based on the OIM.
+
+Where the Brel API differs from the OIM so far is in its introduction of report elements.
+Yes, the OIM introduces concepts, dimensions and members, but it does not categorize them under a common umbrella term
+\footnote{The OIM would technically group concepts and members under the term "dimension", 
+but it overloads the term "dimension" so many times that it is not clear what it refers to in any given context.}.
+In the OIM, these three terms describe three completely unrelated things, and they are unrelated if one only considers the OIM.
+However, the Brel API also aims to cover the parts of XBRL that are not yet covered by the OIM.
+The non-OIM parts of XBRL are networks, components and resources.
+Networks require elements like concepts, dimensions and members to be treated in a homogeneous way.
+The exact reasoning behind this will be explained in the second half of this chapter.
+
+The way Brel bridges the gap between the OIM and the non-OIM parts of XBRL is by introducing characteristics and report elements.
+Characteristics are used for facts, while report elements are used for networks.
+This is the reason why Brel uses \texttt{ConceptCharacteristic} instead of \texttt{Concept} when talking about the concept characteristic of a fact.
+Sure, a \texttt{ConceptCharacteristic} is in essence a wrapper around a \texttt{Concept}, 
+but the two classes are used in different contexts.
+
+The second half of this chapter will answer research question \ref{itm:research_question_2} 
+by providing a python API that is based on the non-OIM parts of XBRL.
+

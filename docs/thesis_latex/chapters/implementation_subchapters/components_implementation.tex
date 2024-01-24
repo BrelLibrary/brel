@@ -5,14 +5,14 @@
 Chapter \ref{chapter:xbrl} introduced the concept of components in XBRL.
 To recap, components act as chapters of a report and link together facts that belong to the same chapter.
 In this chapter, we will look at how components are implemented in Brel.\cite{tesla_10q_2023_q3}
-Brel closely follows the XBRL definition of components.\footnote[1]{At the time of writing, the Open Information Model (OIM) does not define components.}
+Brel closely follows the XBRL definition of components.\footnote{At the time of writing, the Open Information Model (OIM) does not define components.}
 Throughout this chapter, we will use a running example to illustrate the concepts introduced in this chapter.
 
 The XBRL specification uses the term "role" while Brel uses the term "component" to refer to the same concept. 
 
 \subsection{Components in XBRL}
 
-Components in XBRL are defined using the \texttt{link:roleType}\footnote[2]{The prefix "link" commonly refers to the linkbase namespace 'http://xbrl.org/2003/linkbase'.} element. 
+Components in XBRL are defined using the \texttt{link:roleType}\footnote{The prefix "link" commonly refers to the linkbase namespace 'http://xbrl.org/2003/linkbase'.} element. 
 The following snippet shows an example of a component in XBRL:
 
 \begin{figure}[H]
@@ -38,12 +38,12 @@ The Inventory component has the following properties:
   \item \texttt{roleURI} (required): The URI of the Inventory component. This URI is used to reference the component from other elements in the XBRL taxonomy. It is the primary identifier of the component. 
   The roleURI has to be unique on a per-taxonomy basis.\cite{xbrl21_custom_roles}
   \item \texttt{id} (optional): The id of the component, which is commonly used to reference the component from other elements in the XBRL report.
-  \footnote[3]{Even though the id is optional, it is recommended to provide an id for each component.\cite{xbrl21_custom_roles}}
-  \footnote[4]{Similar to the roleURI, the id has to be unique on a per-taxonomy basis.\cite{xml_id}}
+  \footnote{Even though the id is optional, it is recommended to provide an id for each component.\cite{xbrl21_custom_roles}}
+  \footnote{Similar to the roleURI, the id has to be unique on a per-taxonomy basis.\cite{xml_id}}
   \item \texttt{definition} (optional): A human-readable description of the component. 
   \item \texttt{usedOn}: A list of links that the component is used in. 
   Whenever a link uses a component, it must declare the component in the \texttt{usedOn} property.
-  \footnote[5]{The \texttt{usedOn} property is only required for standard extended links and standard resource elements.\cite{xbrl21_custom_roles}}
+  \footnote{The \texttt{usedOn} property is only required for standard extended links and standard resource elements.\cite{xbrl21_custom_roles}}
   Therefore, the \texttt{usedOn} property can be interpreted as a list of possible links that can use the component.
   However, even though the Invenory component indicates the use of e.g. a presentation link, it does not mean that any presentation ;oml is defined for the component.
 \end{itemize}

@@ -31,7 +31,9 @@ Some open source tools exist, but apart from the XBRL platform Arelle\cite{arell
 
 In 2021, XBRL International published a partial rewrite of the XBRL standard called Open Information Model (OIM)\cite{oim}.
 The goal of OIM is to learn from the mistakes of the past and to make XBRL more accessible to both developers and non-developers.
-Compared to the original XBRL standard, the OIM is not strictly tied to the XML format.
+In fact, the OIM is not a specification at all.
+It is merely a syntax independent conceptual model for XBRL reports.
+Therefore, compared to the original XBRL standard, the OIM is not strictly tied to the XML format.
 The OIM is a major step in the right direction, but it is still in its infancy and only reworks some of the core XBRL concepts.
 Also, at the time of writing, the design of the OIM is not yet finalized.
 
@@ -53,6 +55,29 @@ The research questions that this thesis aims to answer are:
     \item How can the library be designed to support multiple formats in the future?\label{itm:research_question_3}
 \end{itemize}
 
+\section{Limitations of this thesis}
+
+The XBRL standard is very complex, too complex to be covered in its entirety in a single thesis.
+Since its inception in 2000, the standard did not only grow in size, but also in complexity.
+It has grown to a point where it is no longer feasible to implement a complete XBRL library within the scope of a single thesis.
+The first two limitations of this thesis are therefore, the library will only support XBRL reports in XML format.
+The library will also only support reading XBRL reports, not creating or modifying them.
+The third limitation of Brel is a matter of report semantics.
+
+Similar to how the source code of a program can be interpreted in terms of syntax and semantics, XBRL reports can be viewed through the same lens.
+A syntactically correct XBRL report conforms to the XBRL specification, but it does not necessarily make sense.
+A semantically correct report is both syntactically correct and is also logically consistent.
+
+Semantical correctness started bleeding into the XBRL specification through supporting documents.
+This thesis will not cover the semantics of XBRL reports.
+
+% Through the Brel API, it is possible to semantically validate XBRL reports to be in line with the XBRL supporting documents.
+By using the Brel API, it is possible to semantically validate XBRL reports.
+However, this thesis will not cover the semantics of XBRL reports in order to keep the scope of the thesis manageable.
+At this point, think of Brel as a syntactic wrapper around XBRL reports.
+
+Some of the limitations discussed in this section will be addressed in chapter \ref{chapter:conclusion}.
+
 \section{Structure of this thesis}
 
 Since this thesis is about XBRL, it is important to first understand what XBRL is and how it works.
@@ -60,7 +85,7 @@ Therefore, chapter \ref{chapter:xbrl} will give a brief introduction to XBRL.
 It will introduce the core concepts of XBRL in the OIM and move on to the non-OIM sections of XBRL.
 It will not dive deep into the technical details of the XBRL standard, but instead focus on the concepts that are relevant for this thesis.
 
-The next chapter \ref{chapter:api} will introduce the API of Brel.
+Next, chapter \ref{chapter:api} will introduce the API of Brel.
 This chapter is already part of the result of this thesis, but it makes more sense to introduce the API before its implementation.
 The API chapter will answer research question \ref{itm:research_question_1} and \ref{itm:research_question_2}.
 
@@ -71,7 +96,6 @@ While most XBRL to Python translations are straightforward, certain cases are mo
 The chapter will focus primarily on the latter, and explain how Brel handles them. 
 The chapter will also discuss the library's design, specifically its capability to support various formats in future versions, 
 addressing Research Question \ref{itm:research_question_3}.
-
 
 The second part of the results chapter \ref{chapter:results} will evaluate the library based on the goals set out in the introduction.
 This chapter will also give a comprehensive overview of how brel performs in terms of various XBRL conformance suites.

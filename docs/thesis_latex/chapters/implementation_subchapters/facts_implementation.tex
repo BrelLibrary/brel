@@ -22,7 +22,7 @@ The following snippet shows an example of a fact in XBRL:
           unitRef="usd">
             121000000
         </us-gaap:ExtinguishmentOfDebtAmount>
-    \end{lstlisting}\footnote[1]{taken from COCA COLA CO's 2023 Q2 report}
+    \end{lstlisting}\footnote{taken from COCA COLA CO's 2023 Q2 report}
 \end{figure}
 
 
@@ -61,7 +61,7 @@ Going back to our example from above, the context element referenced by the fact
             </period>
         </context>
     \end{lstlisting}
-    \footnote[2]{taken from COCA COLA CO's 2023 Q2 report}
+    \footnote{taken from COCA COLA CO's 2023 Q2 report}
 \end{figure}
 
 The XML snippet fills in some of the missing information from the fact, namely:
@@ -116,7 +116,7 @@ Going back to our example from above, the unit element referenced by the fact is
     <unit id="usd">
         <measure>iso4217:USD</measure>
     </unit>
-\end{lstlisting}\footnote[3]{taken from COCA COLA CO's 2023 Q2 report}
+\end{lstlisting}\footnote{taken from COCA COLA CO's 2023 Q2 report}
 
 This XML snippet connects our intuitive understanding of the unit "usd" with a formal definition of the unit.
 It does so by referencing the official ISO 4217 currency code for the US dollar.
@@ -134,7 +134,7 @@ The following snippet shows the definition of the concept in the US GAAP taxonom
 
 \begin{lstlisting}[language=XML]
     <xs:element id="us-gaap_ExtinguishmentOfDebtAmount" name="ExtinguishmentOfDebtAmount" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="debit" xbrli:periodType="duration"/>
-\end{lstlisting}\footnote[4]{taken from the US GAAP taxonomy}
+\end{lstlisting}\footnote{taken from the US GAAP taxonomy}
 
 The main purpose of this snippet is to provide a formal definition of the concept and to constrain the values that are allowed for the concept.
 In particular, it tells us that the concept is a monetary item, that it has a debit balance, and that it has a duration period type.
