@@ -250,64 +250,93 @@
 \@writefile{toc}{\contentsline {section}{\numberline {5.7}Networks}{44}{section.5.7}\protected@file@percent }
 \newlabel{sec:api_networks}{{5.7}{44}{Networks}{section.5.7}{}}
 \newlabel{sec:api_networks@cref}{{[section][7][5]5.7}{[1][44][]44}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {6}Implementation}{45}{chapter.6}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.6}{\ignorespaces UML diagram of the \texttt  {INetwork} and \texttt  {INetworkNode} interfaces}}{44}{figure.caption.24}\protected@file@percent }
+\newlabel{fig:brel_network_interfaces}{{5.6}{44}{UML diagram of the \texttt {INetwork} and \texttt {INetworkNode} interfaces}{figure.caption.24}{}}
+\newlabel{fig:brel_network_interfaces@cref}{{[figure][6][5]5.6}{[1][44][]44}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.7.1}INetwork and INetworkNode}{44}{subsection.5.7.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.7.2}Different network types}{45}{subsection.5.7.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {5.1}{\ignorespaces Network types and their corresponding classes}}{45}{table.caption.25}\protected@file@percent }
+\newlabel{tab:network_types}{{5.1}{45}{Network types and their corresponding classes}{table.caption.25}{}}
+\newlabel{tab:network_types@cref}{{[table][1][5]5.1}{[1][45][]45}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.7}{\ignorespaces UML diagram of the network classes}}{45}{figure.caption.26}\protected@file@percent }
+\newlabel{fig:brel_network_classes}{{5.7}{45}{UML diagram of the network classes}{figure.caption.26}{}}
+\newlabel{fig:brel_network_classes@cref}{{[figure][7][5]5.7}{[1][45][]45}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.8}{\ignorespaces UML diagram of the node classes}}{46}{figure.caption.27}\protected@file@percent }
+\newlabel{fig:brel_network_node_classes}{{5.8}{46}{UML diagram of the node classes}{figure.caption.27}{}}
+\newlabel{fig:brel_network_node_classes@cref}{{[figure][8][5]5.8}{[1][45][]46}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.8}Answering research question 2}{47}{section.5.8}\protected@file@percent }
+\newlabel{sec:answer_research_question_2}{{5.8}{47}{Answering research question 2}{section.5.8}{}}
+\newlabel{sec:answer_research_question_2@cref}{{[section][8][5]5.8}{[1][47][]47}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.9}{\ignorespaces The interplay between characteristics and report elements}}{47}{figure.caption.28}\protected@file@percent }
+\newlabel{fig:brel_combine_api}{{5.9}{47}{The interplay between characteristics and report elements}{figure.caption.28}{}}
+\newlabel{fig:brel_combine_api@cref}{{[figure][9][5]5.9}{[1][47][]47}}
+\citation{stack_overflow_2020}
+\@writefile{toc}{\contentsline {chapter}{\numberline {6}Implementation}{49}{chapter.6}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{sec:implementation}{{6}{45}{Implementation}{chapter.6}{}}
-\newlabel{sec:implementation@cref}{{[chapter][6][]6}{[1][45][]45}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.1}Overview}{45}{section.6.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6.2}QNames and namespace normalization}{45}{section.6.2}\protected@file@percent }
-\newlabel{sec:qnames_implementation}{{6.2}{45}{QNames and namespace normalization}{section.6.2}{}}
-\newlabel{sec:qnames_implementation@cref}{{[section][2][6]6.2}{[1][45][]45}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.1}Overview}{45}{subsection.6.2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.2}Namespace hierarchy notation}{46}{subsection.6.2.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {6.1}{\ignorespaces Example of an XML snippet where namespace bindings are defined on a per-element basis}}{47}{figure.caption.24}\protected@file@percent }
-\newlabel{fig:xml_namespace_notation_example}{{6.1}{47}{Example of an XML snippet where namespace bindings are defined on a per-element basis}{figure.caption.24}{}}
-\newlabel{fig:xml_namespace_notation_example@cref}{{[figure][1][6]6.1}{[1][47][]47}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.2}{\ignorespaces Example of the same XML snippet in our custom notation}}{47}{figure.caption.25}\protected@file@percent }
-\newlabel{fig:custom_namespace_notation_example}{{6.2}{47}{Example of the same XML snippet in our custom notation}{figure.caption.25}{}}
-\newlabel{fig:custom_namespace_notation_example@cref}{{[figure][2][6]6.2}{[1][47][]47}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.3}Flattening namespace bindings}{47}{subsection.6.2.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {6.3}{\ignorespaces Example of the same XML snippet in our custom notation, flattened}}{48}{figure.caption.26}\protected@file@percent }
-\newlabel{fig:custom_namespace_notation_example_flattened}{{6.3}{48}{Example of the same XML snippet in our custom notation, flattened}{figure.caption.26}{}}
-\newlabel{fig:custom_namespace_notation_example_flattened@cref}{{[figure][3][6]6.3}{[1][48][]48}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.4}{\ignorespaces List of namespace bindings extracted from the flattened namespace hierarchy}}{48}{figure.caption.27}\protected@file@percent }
-\newlabel{fig:custom_namespace_notation_example_flattened_extracted}{{6.4}{48}{List of namespace bindings extracted from the flattened namespace hierarchy}{figure.caption.27}{}}
-\newlabel{fig:custom_namespace_notation_example_flattened_extracted@cref}{{[figure][4][6]6.4}{[1][48][]48}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.4}Collisions in namespace bindings}{48}{subsection.6.2.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.5}Types of namespace collisions}{48}{subsection.6.2.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Version collision}{49}{section*.28}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {6.5}{\ignorespaces Example of a version collision}}{49}{figure.caption.29}\protected@file@percent }
-\newlabel{fig:version_collision_example}{{6.5}{49}{Example of a version collision}{figure.caption.29}{}}
-\newlabel{fig:version_collision_example@cref}{{[figure][5][6]6.5}{[1][49][]49}}
-\@writefile{toc}{\contentsline {subsubsection}{Prefix collision}{49}{section*.30}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {6.6}{\ignorespaces Example of a prefix collision}}{50}{figure.caption.31}\protected@file@percent }
-\newlabel{fig:prefix_collision_example}{{6.6}{50}{Example of a prefix collision}{figure.caption.31}{}}
-\newlabel{fig:prefix_collision_example@cref}{{[figure][6][6]6.6}{[1][49][]50}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.7}{\ignorespaces Example of a resolved prefix collision}}{50}{figure.caption.32}\protected@file@percent }
-\newlabel{fig:prefix_collision_example_renamed}{{6.7}{50}{Example of a resolved prefix collision}{figure.caption.32}{}}
-\newlabel{fig:prefix_collision_example_renamed@cref}{{[figure][7][6]6.7}{[1][50][]50}}
-\@writefile{toc}{\contentsline {subsubsection}{Namespace URI collision}{50}{section*.33}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {6.8}{\ignorespaces Example of a namespace URI collision}}{50}{figure.caption.34}\protected@file@percent }
-\newlabel{fig:namespace_uri_collision_example}{{6.8}{50}{Example of a namespace URI collision}{figure.caption.34}{}}
-\newlabel{fig:namespace_uri_collision_example@cref}{{[figure][8][6]6.8}{[1][50][]50}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.9}{\ignorespaces Example of a resolved namespace URI collision}}{50}{figure.caption.35}\protected@file@percent }
-\newlabel{fig:namespace_uri_collision_example_renamed}{{6.9}{50}{Example of a resolved namespace URI collision}{figure.caption.35}{}}
-\newlabel{fig:namespace_uri_collision_example_renamed@cref}{{[figure][9][6]6.9}{[1][50][]50}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.3}Implementation of Facts}{52}{section.6.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.1}Overview}{52}{subsection.6.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.2}Facts in XBRL}{52}{subsection.6.3.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {6.10}{\ignorespaces Example of a fact in XBRL}}{52}{figure.caption.37}\protected@file@percent }
-\newlabel{fig:example_fact_xbrl}{{6.10}{52}{Example of a fact in XBRL}{figure.caption.37}{}}
-\newlabel{fig:example_fact_xbrl@cref}{{[figure][10][6]6.10}{[1][52][]52}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.3}Contexts in XBRL}{52}{subsection.6.3.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {6.11}{\ignorespaces Example of the context referenced by the fact in figure \ref {fig:example_fact_xbrl}}}{53}{figure.caption.38}\protected@file@percent }
-\newlabel{fig:example_context_xbrl}{{6.11}{53}{Example of the context referenced by the fact in figure \ref {fig:example_fact_xbrl}}{figure.caption.38}{}}
-\newlabel{fig:example_context_xbrl@cref}{{[figure][11][6]6.11}{[1][52][]53}}
+\newlabel{sec:implementation}{{6}{49}{Implementation}{chapter.6}{}}
+\newlabel{sec:implementation@cref}{{[chapter][6][]6}{[1][49][]49}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.1}General implementation}{49}{section.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.1}Parsing report elements}{49}{subsection.6.1.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {6.1}{\ignorespaces Determining the type of report element}}{50}{table.caption.29}\protected@file@percent }
+\newlabel{tab:determining_report_element_type}{{6.1}{50}{Determining the type of report element}{table.caption.29}{}}
+\newlabel{tab:determining_report_element_type@cref}{{[table][1][6]6.1}{[1][50][]50}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.2}Parsing facts}{50}{subsection.6.1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.3}Parsing Components}{51}{subsection.6.1.3}\protected@file@percent }
+\newlabel{sec:implementation_components}{{6.1.3}{51}{Parsing Components}{subsection.6.1.3}{}}
+\newlabel{sec:implementation_components@cref}{{[subsection][3][6,1]6.1.3}{[1][51][]51}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.2}QNames and namespace normalization}{51}{section.6.2}\protected@file@percent }
+\newlabel{sec:qnames_implementation}{{6.2}{51}{QNames and namespace normalization}{section.6.2}{}}
+\newlabel{sec:qnames_implementation@cref}{{[section][2][6]6.2}{[1][51][]51}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.1}Overview}{51}{subsection.6.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.2}Namespace hierarchy notation}{52}{subsection.6.2.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6.1}{\ignorespaces Example of an XML snippet where namespace bindings are defined on a per-element basis}}{53}{figure.caption.30}\protected@file@percent }
+\newlabel{fig:xml_namespace_notation_example}{{6.1}{53}{Example of an XML snippet where namespace bindings are defined on a per-element basis}{figure.caption.30}{}}
+\newlabel{fig:xml_namespace_notation_example@cref}{{[figure][1][6]6.1}{[1][52][]53}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.2}{\ignorespaces Example of the same XML snippet in our custom notation}}{53}{figure.caption.31}\protected@file@percent }
+\newlabel{fig:custom_namespace_notation_example}{{6.2}{53}{Example of the same XML snippet in our custom notation}{figure.caption.31}{}}
+\newlabel{fig:custom_namespace_notation_example@cref}{{[figure][2][6]6.2}{[1][53][]53}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.3}Flattening namespace bindings}{53}{subsection.6.2.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6.3}{\ignorespaces Example of the same XML snippet in our custom notation, flattened}}{54}{figure.caption.32}\protected@file@percent }
+\newlabel{fig:custom_namespace_notation_example_flattened}{{6.3}{54}{Example of the same XML snippet in our custom notation, flattened}{figure.caption.32}{}}
+\newlabel{fig:custom_namespace_notation_example_flattened@cref}{{[figure][3][6]6.3}{[1][53][]54}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.4}{\ignorespaces List of namespace bindings extracted from the flattened namespace hierarchy}}{54}{figure.caption.33}\protected@file@percent }
+\newlabel{fig:custom_namespace_notation_example_flattened_extracted}{{6.4}{54}{List of namespace bindings extracted from the flattened namespace hierarchy}{figure.caption.33}{}}
+\newlabel{fig:custom_namespace_notation_example_flattened_extracted@cref}{{[figure][4][6]6.4}{[1][54][]54}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.4}Collisions in namespace bindings}{54}{subsection.6.2.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.5}Types of namespace collisions}{54}{subsection.6.2.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Version collision}{55}{section*.34}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6.5}{\ignorespaces Example of a version collision}}{55}{figure.caption.35}\protected@file@percent }
+\newlabel{fig:version_collision_example}{{6.5}{55}{Example of a version collision}{figure.caption.35}{}}
+\newlabel{fig:version_collision_example@cref}{{[figure][5][6]6.5}{[1][55][]55}}
+\@writefile{toc}{\contentsline {subsubsection}{Prefix collision}{55}{section*.36}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6.6}{\ignorespaces Example of a prefix collision}}{56}{figure.caption.37}\protected@file@percent }
+\newlabel{fig:prefix_collision_example}{{6.6}{56}{Example of a prefix collision}{figure.caption.37}{}}
+\newlabel{fig:prefix_collision_example@cref}{{[figure][6][6]6.6}{[1][55][]56}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.7}{\ignorespaces Example of a resolved prefix collision}}{56}{figure.caption.38}\protected@file@percent }
+\newlabel{fig:prefix_collision_example_renamed}{{6.7}{56}{Example of a resolved prefix collision}{figure.caption.38}{}}
+\newlabel{fig:prefix_collision_example_renamed@cref}{{[figure][7][6]6.7}{[1][56][]56}}
+\@writefile{toc}{\contentsline {subsubsection}{Namespace URI collision}{56}{section*.39}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6.8}{\ignorespaces Example of a namespace URI collision}}{56}{figure.caption.40}\protected@file@percent }
+\newlabel{fig:namespace_uri_collision_example}{{6.8}{56}{Example of a namespace URI collision}{figure.caption.40}{}}
+\newlabel{fig:namespace_uri_collision_example@cref}{{[figure][8][6]6.8}{[1][56][]56}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.9}{\ignorespaces Example of a resolved namespace URI collision}}{56}{figure.caption.41}\protected@file@percent }
+\newlabel{fig:namespace_uri_collision_example_renamed}{{6.9}{56}{Example of a resolved namespace URI collision}{figure.caption.41}{}}
+\newlabel{fig:namespace_uri_collision_example_renamed@cref}{{[figure][9][6]6.9}{[1][56][]56}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.3}Implementation of Facts}{58}{section.6.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.1}Overview}{58}{subsection.6.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.2}Facts in XBRL}{58}{subsection.6.3.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6.10}{\ignorespaces Example of a fact in XBRL}}{58}{figure.caption.43}\protected@file@percent }
+\newlabel{fig:example_fact_xbrl}{{6.10}{58}{Example of a fact in XBRL}{figure.caption.43}{}}
+\newlabel{fig:example_fact_xbrl@cref}{{[figure][10][6]6.10}{[1][58][]58}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.3}Contexts in XBRL}{58}{subsection.6.3.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6.11}{\ignorespaces Example of the context referenced by the fact in figure \ref {fig:example_fact_xbrl}}}{59}{figure.caption.44}\protected@file@percent }
+\newlabel{fig:example_context_xbrl}{{6.11}{59}{Example of the context referenced by the fact in figure \ref {fig:example_fact_xbrl}}{figure.caption.44}{}}
+\newlabel{fig:example_context_xbrl@cref}{{[figure][11][6]6.11}{[1][58][]59}}
 \citation{tesla_10q_2023_q3}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.4}Units in XBRL}{54}{subsection.6.3.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.5}Concepts in XBRL}{54}{subsection.6.3.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.6}Facts in Brel}{54}{subsection.6.3.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.4}Units in XBRL}{60}{subsection.6.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.5}Concepts in XBRL}{60}{subsection.6.3.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.6}Facts in Brel}{60}{subsection.6.3.6}\protected@file@percent }
 \citation{tesla_10q_2023_q3}
 \citation{tesla_10q_2023_q3}
 \citation{xbrl21_custom_roles}
@@ -315,46 +344,48 @@
 \citation{xml_id}
 \citation{xbrl21_custom_roles}
 \citation{tesla_10q_2023_q3}
-\@writefile{toc}{\contentsline {section}{\numberline {6.4}Components Implementation}{55}{section.6.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.1}Overview}{55}{subsection.6.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.2}Components in XBRL}{55}{subsection.6.4.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {6.12}{\ignorespaces Example of the component "Inventory" in XBRL from Tesla Inc.'s 2023 Q3 report\cite  {tesla_10q_2023_q3}}}{55}{figure.caption.39}\protected@file@percent }
-\newlabel{fig:example_component_xbrl}{{6.12}{55}{Example of the component "Inventory" in XBRL from Tesla Inc.'s 2023 Q3 report\cite {tesla_10q_2023_q3}}{figure.caption.39}{}}
-\newlabel{fig:example_component_xbrl@cref}{{[figure][12][6]6.12}{[1][55][]55}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.3}Components in Brel}{56}{subsection.6.4.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {6.13}{\ignorespaces UML diagram of the \texttt  {Component} class}}{56}{figure.caption.40}\protected@file@percent }
-\newlabel{fig:uml_component}{{6.13}{56}{UML diagram of the \texttt {Component} class}{figure.caption.40}{}}
-\newlabel{fig:uml_component@cref}{{[figure][13][6]6.13}{[1][56][]56}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.5}Implementation of Networks}{56}{section.6.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.5.1}Overview}{56}{subsection.6.5.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.5.2}Common Interface}{57}{subsection.6.5.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {6.14}{\ignorespaces Class diagram of the \texttt  {INetwork} and \texttt  {INetworkNode} classes}}{58}{figure.caption.41}\protected@file@percent }
-\newlabel{fig:inetwork_class_diagram}{{6.14}{58}{Class diagram of the \texttt {INetwork} and \texttt {INetworkNode} classes}{figure.caption.41}{}}
-\newlabel{fig:inetwork_class_diagram@cref}{{[figure][14][6]6.14}{[1][57][]58}}
-\@writefile{toc}{\contentsline {subsubsection}{INetwork}{58}{section*.42}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{INetworkNode}{59}{section*.43}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.4}Components Implementation}{61}{section.6.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.1}Overview}{61}{subsection.6.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.2}Components in XBRL}{61}{subsection.6.4.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6.12}{\ignorespaces Example of the component "Inventory" in XBRL from Tesla Inc.'s 2023 Q3 report\cite  {tesla_10q_2023_q3}}}{61}{figure.caption.45}\protected@file@percent }
+\newlabel{fig:example_component_xbrl}{{6.12}{61}{Example of the component "Inventory" in XBRL from Tesla Inc.'s 2023 Q3 report\cite {tesla_10q_2023_q3}}{figure.caption.45}{}}
+\newlabel{fig:example_component_xbrl@cref}{{[figure][12][6]6.12}{[1][61][]61}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.3}Components in Brel}{62}{subsection.6.4.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6.13}{\ignorespaces UML diagram of the \texttt  {Component} class}}{62}{figure.caption.46}\protected@file@percent }
+\newlabel{fig:uml_component}{{6.13}{62}{UML diagram of the \texttt {Component} class}{figure.caption.46}{}}
+\newlabel{fig:uml_component@cref}{{[figure][13][6]6.13}{[1][62][]62}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.5}Implementation of Networks}{62}{section.6.5}\protected@file@percent }
+\newlabel{sec:implementation_networks}{{6.5}{62}{Implementation of Networks}{section.6.5}{}}
+\newlabel{sec:implementation_networks@cref}{{[section][5][6]6.5}{[1][62][]62}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5.1}Overview}{62}{subsection.6.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5.2}Common Interface}{63}{subsection.6.5.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6.14}{\ignorespaces Class diagram of the \texttt  {INetwork} and \texttt  {INetworkNode} classes}}{64}{figure.caption.47}\protected@file@percent }
+\newlabel{fig:inetwork_class_diagram}{{6.14}{64}{Class diagram of the \texttt {INetwork} and \texttt {INetworkNode} classes}{figure.caption.47}{}}
+\newlabel{fig:inetwork_class_diagram@cref}{{[figure][14][6]6.14}{[1][63][]64}}
+\@writefile{toc}{\contentsline {subsubsection}{INetwork}{64}{section*.48}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{INetworkNode}{65}{section*.49}\protected@file@percent }
 \citation{w3_xpointer}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.5.3}Parsing Links into Networks}{60}{subsection.6.5.3}\protected@file@percent }
-\newlabel{enum:network_parsing}{{6.5.3}{60}{Parsing Links into Networks}{subsection.6.5.3}{}}
-\newlabel{enum:network_parsing@cref}{{[subsection][3][6,5]6.5.3}{[1][59][]60}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.15}{\ignorespaces Inheritance diagram of the different network and node classes}}{60}{figure.caption.44}\protected@file@percent }
-\newlabel{fig:network_inheritance_diagram}{{6.15}{60}{Inheritance diagram of the different network and node classes}{figure.caption.44}{}}
-\newlabel{fig:network_inheritance_diagram@cref}{{[figure][15][6]6.15}{[1][60][]60}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.5.4}Resolving Locators}{60}{subsection.6.5.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.5.5}Parsing Resources}{61}{subsection.6.5.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.5.6}Implications of Networks}{61}{subsection.6.5.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.5.7}Add Labels to Report Elements}{61}{subsection.6.5.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.5.8}LineItems Promoting}{61}{subsection.6.5.8}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {7}Results}{63}{chapter.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5.3}Parsing Links into Networks}{66}{subsection.6.5.3}\protected@file@percent }
+\newlabel{enum:network_parsing}{{6.5.3}{66}{Parsing Links into Networks}{subsection.6.5.3}{}}
+\newlabel{enum:network_parsing@cref}{{[subsection][3][6,5]6.5.3}{[1][65][]66}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.15}{\ignorespaces Inheritance diagram of the different network and node classes}}{66}{figure.caption.50}\protected@file@percent }
+\newlabel{fig:network_inheritance_diagram}{{6.15}{66}{Inheritance diagram of the different network and node classes}{figure.caption.50}{}}
+\newlabel{fig:network_inheritance_diagram@cref}{{[figure][15][6]6.15}{[1][66][]66}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5.4}Resolving Locators}{66}{subsection.6.5.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5.5}Parsing Resources}{67}{subsection.6.5.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5.6}Implications of Networks}{67}{subsection.6.5.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5.7}Add Labels to Report Elements}{67}{subsection.6.5.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5.8}LineItems Promoting}{67}{subsection.6.5.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {7}Results}{69}{chapter.7}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{chapter:results}{{7}{63}{Results}{chapter.7}{}}
-\newlabel{chapter:results@cref}{{[chapter][7][]7}{[1][63][]63}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {8}Conclusion}{65}{chapter.8}\protected@file@percent }
+\newlabel{chapter:results}{{7}{69}{Results}{chapter.7}{}}
+\newlabel{chapter:results@cref}{{[chapter][7][]7}{[1][69][]69}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {8}Conclusion}{71}{chapter.8}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{chapter:conclusion}{{8}{65}{Conclusion}{chapter.8}{}}
-\newlabel{chapter:conclusion@cref}{{[chapter][8][]8}{[1][65][]65}}
+\newlabel{chapter:conclusion}{{8}{71}{Conclusion}{chapter.8}{}}
+\newlabel{chapter:conclusion@cref}{{[chapter][8][]8}{[1][71][]71}}
 \bibstyle{plain}
 \bibdata{references}
 \bibcite{eba2018filingrules}{{1}{}{{}}{{}}}
@@ -376,20 +407,21 @@
 \bibcite{oim}{{17}{}{{}}{{}}}
 \bibcite{aicpa_xbrl_story}{{18}{}{{}}{{}}}
 \bibcite{arelle}{{19}{}{{}}{{}}}
-\bibcite{brel_api}{{20}{}{{}}{{}}}
-\bibcite{brel_source}{{21}{}{{}}{{}}}
-\bibcite{esma_database}{{22}{}{{}}{{}}}
-\bibcite{esma_conformance_suite}{{23}{}{{}}{{}}}
-\bibcite{sec_idpts}{{24}{}{{}}{{}}}
-\bibcite{sec_edgar}{{25}{}{{}}{{}}}
-\bibcite{cfr_229_402_17}{{26}{}{{}}{{}}}
-\bibcite{sec_ixbrl}{{27}{}{{}}{{}}}
-\bibcite{cfr_total_shareholder_return_amount}{{28}{}{{}}{{}}}
-\bibcite{xule}{{29}{}{{}}{{}}}
-\bibcite{w3_xpointer}{{30}{}{{}}{{}}}
-\bibcite{w3_qnames}{{31}{}{{}}{{}}}
-\bibcite{xml_id}{{32}{}{{}}{{}}}
-\bibcite{w3_expanded_names}{{33}{}{{}}{{}}}
+\bibcite{stack_overflow_2020}{{20}{}{{}}{{}}}
+\bibcite{brel_api}{{21}{}{{}}{{}}}
+\bibcite{brel_source}{{22}{}{{}}{{}}}
+\bibcite{esma_database}{{23}{}{{}}{{}}}
+\bibcite{esma_conformance_suite}{{24}{}{{}}{{}}}
+\bibcite{sec_idpts}{{25}{}{{}}{{}}}
+\bibcite{sec_edgar}{{26}{}{{}}{{}}}
+\bibcite{cfr_229_402_17}{{27}{}{{}}{{}}}
+\bibcite{sec_ixbrl}{{28}{}{{}}{{}}}
+\bibcite{cfr_total_shareholder_return_amount}{{29}{}{{}}{{}}}
+\bibcite{xule}{{30}{}{{}}{{}}}
+\bibcite{w3_xpointer}{{31}{}{{}}{{}}}
+\bibcite{w3_qnames}{{32}{}{{}}{{}}}
+\bibcite{xml_id}{{33}{}{{}}{{}}}
+\bibcite{w3_expanded_names}{{34}{}{{}}{{}}}
 \providecommand\NAT@force@numbers{}\NAT@force@numbers
-\@writefile{toc}{\contentsline {chapter}{Bibliography}{69}{chapter*.45}\protected@file@percent }
-\gdef \@abspage@last{71}
+\@writefile{toc}{\contentsline {chapter}{Bibliography}{75}{chapter*.51}\protected@file@percent }
+\gdef \@abspage@last{77}

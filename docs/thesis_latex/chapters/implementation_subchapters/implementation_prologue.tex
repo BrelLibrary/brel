@@ -1,32 +1,49 @@
-\section{Overview}
+% \section{Overview}
 
-The creation of brel could be divided into three main parts 
-The design of the API, the implementation of the API and testing of the API.
-The bulk of both the API design and testing will be discussed in chapter \ref{chapter:results}.
-This chapter will focus on the implementation of the API.
+% The creation of brel could be divided into three main parts 
+% The design of the API, the implementation of the API and testing of the API.
+% The bulk of both the API design and testing will be discussed in chapter \ref{chapter:results}.
+% This chapter will focus on the implementation of the API.
 
-The implementation of the API was done in the programming language Python.
-We chose python because it is a high level language and one of the most popular programming languages in the world.
-Python is also quite popular outside of the computer science and software engineering communities as well.
-Its simplicity and readability makes it a good choice for beginners and non-programmers.
+% The implementation of the API was done in the programming language Python.
+% We chose python because it is a high level language and one of the most popular programming languages in the world.
+% Python is also quite popular outside of the computer science and software engineering communities as well.
+% Its simplicity and readability makes it a good choice for beginners and non-programmers.
 
-Brel parses XBRL reports, which are used by companies to report their financial information.
-So the target audience of brel are accountants and financial analysts.
-These people are not necessarily programmers, 
-so using a language that is easy to read and understand is just as creating an API that is easy to read and understand.
+% Brel parses XBRL reports, which are used by companies to report their financial information.
+% So the target audience of brel are accountants and financial analysts.
+% These people are not necessarily programmers, 
+% so using a language that is easy to read and understand is just as creating an API that is easy to read and understand.
 
-Chapter \ref{chapter:xbrl} already discussed the structure of XBRL reports. 
-In summary, XBRL reports are XML documents that contain the following information:
+% Chapter \ref{chapter:xbrl} already discussed the structure of XBRL reports. 
+% In summary, XBRL reports are XML documents that contain the following information:
 
-\begin{itemize}
-    \item A flat list of facts
-    \item A list of report elements, many of which are created by external taxonomies
-    \item A system for identifying different report elements, and other objects in the report.
-    Brel uses QNames.
-    \item Components which form the chapters of the report.
-    \item Networks which link report elements together to model relationships between them.
-\end{itemize}
+% \begin{itemize}
+%     \item A flat list of facts
+%     \item A list of report elements, many of which are created by external taxonomies
+%     \item A system for identifying different report elements, and other objects in the report.
+%     Brel uses QNames.
+%     \item Components which form the chapters of the report.
+%     \item Networks which link report elements together to model relationships between them.
+% \end{itemize}
 
-This chapter will cover all the aforementioned elements of XBRL reports in their own section.
-It will discuss the difficulties of parsing these elements and how brel solves these difficulties.
-The first section is about QNames, which are used extensively throughout XBRL reports.
+% This chapter will cover all the aforementioned elements of XBRL reports in their own section.
+% It will discuss the difficulties of parsing these elements and how brel solves these difficulties.
+% The first section is about QNames, which are used extensively throughout XBRL reports.
+
+The implementation of the API closely follows the design of the API introduced in chapter \ref{chapter:api}.
+% The implementation of the API is done in the programming language Python.
+Brel is implemented in the programming language Python.
+Python is a high level language and one of the most popular programming languages in the world.
+Python is also popular outside of the computer science and software engineering communities as well.
+According to the 2020 Stack Overflow Developer Survey, Python is the fourth most popular programming language among all respondents, 
+not just professional developers \cite{stack_overflow_2020}.
+
+The reader may view the implementation of Brel as a translation from XBRL reports to python objects.
+Most of the translations from the design to the implementation are straightforward and will only be mentioned briefly, 
+which the first section of this chapter will cover.
+
+There are three key areas where the Brel's implementation differs from the underlying XBRL standard - DTS caching, namespace normalization and networks.
+Each area has its own dedicated section in this chapter.
+
+This chapter exclusively focuses on XBRL reports in XML format.

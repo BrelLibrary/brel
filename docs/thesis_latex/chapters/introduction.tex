@@ -51,7 +51,8 @@ The research questions that this thesis aims to answer are:
 
 \begin{itemize}
     \item How can the OIM be translated into an easy-to-use python API?\label{itm:research_question_1}
-    \item How should the non-OIM sections of XBRL be converted into a python API that is consistent with the OIM?\label{itm:research_question_2}
+    % \item How should the non-OIM sections of XBRL be converted into a python API that is consistent with the OIM?\label{itm:research_question_2}
+    \item How can the non-OIM sections of XBRL be converted into an easy-to-use python API that is consistent with the OIM?\label{itm:research_question_2}
     \item How can the library be designed to support multiple formats in the future?\label{itm:research_question_3}
 \end{itemize}
 
@@ -75,6 +76,8 @@ This thesis will not cover the semantics of XBRL reports.
 By using the Brel API, it is possible to semantically validate XBRL reports.
 However, this thesis will not cover the semantics of XBRL reports in order to keep the scope of the thesis manageable.
 At this point, think of Brel as a syntactic wrapper around XBRL reports.
+The only exception to this rule is in calculation networks, which will be explained in chapter \ref{chapter:xbrl}.
+Think of them as a proof of concept for how Brel could be extended to support semantic validation in the future.
 
 Some of the limitations discussed in this section will be addressed in chapter \ref{chapter:conclusion}.
 

@@ -1,0 +1,73 @@
+\section{Answering research question 2}
+\label{sec:answer_research_question_2}
+
+The second half of this chapter introduced Brel's representation of networks and resources, 
+both of which are not yet covered by the OIM.
+Therefore, a lot of the design decisions in this half of the chapter are not based on the OIM.
+
+Research question \ref{itm:research_question_2} consists of two parts.
+
+\begin{itemize}
+    \item First, the question asks how the non-OIM parts of XBRL can be converted into a python API.
+    \item Second, it asks how this API can be made consistent with the OIM.
+\end{itemize}
+
+The first part of the question is answered by the second half of this chapter in a constructive fashion.
+This chapter an API for networks and resources, which break down the non-OIM parts of XBRL into their core components.
+
+Answering the second part of the question requires a more abstract approach. 
+In short terms, Brel marries the OIM and the non-OIM parts of XBRL by introducing report elements and characteristics.
+
+The first half of this chapter already introduced a python API that is based on the OIM.
+The OIM's main goal was to report facts.
+Each fact has characteristics such as concepts, explicit dimensions, entities, etc.
+
+The second half of this chapter was mostly concerned with networks and resources.
+Networks point to report elements among other things.
+
+However, report elements were already introduced as part of the OIM, 
+even though they are not strictly necessary for reporting facts.
+In fact, apart from concepts, dimensions and members, the OIM never even mentions any report elements.
+
+The bridge between the two halves are characteristics and report elements, more specifically, 
+there are three types of characteristics that are just wrappers around report elements.
+These characteristics are the concept characteristic, the explicit dimension characteristic and the typed dimension characteristic.
+The interplay between characteristics and report elements is illustrated in figure \ref{fig:brel_combine_api}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/brel_combine_api.png}
+    \caption{The interplay between characteristics and report elements}
+    \label{fig:brel_combine_api}
+\end{figure}
+
+Where the OIM uses the characteristics to describe facts, networks use the report elements inside the characteristics.
+Of course, the class \texttt{Concept} for example could have just implemented both the \texttt{IReportElement} and the \texttt{ICharacteristic} interface.
+However, concepts in facts and concepts in networks are used in different contexts, and they should not be used interchangeably.
+Therefore, Brel uses two different classes for the two different use cases.
+% However, Brel's API took a detour from the OIM when it introduced report elements.
+% % Where the Brel API differs from the OIM so far is in its introduction of report elements.
+% Yes, the OIM introduces concepts, dimensions and members, but it does not categorize them under a common umbrella term
+% \footnote{The OIM would technically group concepts and members under the term "dimension", 
+% but it overloads the term "dimension" so many times that it is not clear what it refers to in any given context.
+% This grouping is also different from report elements semantics-wise.}.
+% In the OIM, these three terms describe three completely unrelated things, and they are unrelated if one only considers the OIM.
+% % Brel simply takes the liberty of grouping them under the term "report element".
+% % However, the Brel API also aims to cover the parts of XBRL that are not yet covered by the OIM.
+% % The non-OIM parts of XBRL are networks, components and resources.
+% % Networks require elements like concepts, dimensions and members to be treated in a homogeneous way.
+% % The exact reasoning behind this will be explained in the second half of this chapter.
+% Brel simply takes the liberty of grouping them under the term "report element".
+% It then renames the report elements by introducing the "characteristic" suffix.
+% So instead of "concept", Brel uses "concept characteristic", which is a different class in the Brel API.
+% % The way Brel bridges the gap between the OIM and the non-OIM parts of XBRL is by introducing characteristics and report elements.
+
+% Characteristics are used for facts, while report elements are used for networks.
+% This is the reason why Brel uses \texttt{ConceptCharacteristic} instead of \texttt{Concept} when talking about the concept characteristic of a fact.
+% Sure, a \texttt{ConceptCharacteristic} is in essence a wrapper around a \texttt{Concept}, 
+% but the two classes are used in different contexts.
+
+This concludes the chapter on the Brel API.
+It covered both the OIM and the non-OIM parts of XBRL.
+It also explained how the two parts can be combined into a single API, in turn answering both research questions \ref{itm:research_question_1} and \ref{itm:research_question_2}.
+With both the API and the underlying XBRL standard covered, the next chapter will introduce the implementation of the Brel API.
