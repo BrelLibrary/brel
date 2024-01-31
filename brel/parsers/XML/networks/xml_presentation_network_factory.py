@@ -1,18 +1,18 @@
 """
 This module contains the XMLPresentationNetworkFactory class.
 XMLPresentationNetworkFactories are used to create PresentationNetworks from XML.
-This module is usedc by the XML network parser to build presentation networks.
+This module is used by the XML network parser to build presentation networks.
 
 ====================
 
 - author: Robin Schmidiger
-- version: 0.5
-- date: 21 January 2024
+- version: 0.6
+- date: 30 January 2024
 
 ====================
 """
 
-from typing import cast
+from typing import cast, Mapping
 
 import lxml
 import lxml.etree
@@ -24,9 +24,9 @@ from brel.networks import (
     PresentationNetwork,
     PresentationNetworkNode,
 )
+from brel.reportelements import IReportElement
 from brel.parsers.utils import get_str
 from brel.parsers.XML.networks import IXMLNetworkFactory
-from brel.reportelements import Abstract, Hypercube, IReportElement, LineItems
 from brel.resource import BrelLabel, IResource
 
 
@@ -52,14 +52,12 @@ class PresentationNetworkFactory(IXMLNetworkFactory):
 
         root = roots[0]
         link_role = get_str(xml_link_element, f"{{{nsmap['xlink']}}}role")
-        link_name = QName.from_string(
-            xml_link_element.tag, self.get_qname_nsmap()
-        )
+        link_name = QName.from_string(xml_link_element.tag, self.get_qname_nsmap())
 
         if link_role is None:
             raise ValueError("link_role must not be None")
 
-        return PresentationNetwork(root, link_role, link_name)
+        return PresentationNetwork(root, link_role, link_name, self.is_physical())
 
     def create_node(
         self,
@@ -82,9 +80,7 @@ class PresentationNetworkFactory(IXMLNetworkFactory):
             preferred_label_role = None
             arc_role = "unknown"
             order: float = 1
-            arc_qname = QName.from_string(
-                "link:unknown", self.get_qname_nsmap()
-            )
+            arc_qname = QName.from_string("link:unknown", self.get_qname_nsmap())
         elif xml_arc.get(f"{{{nsmap['xlink']}}}from", None) == label:
             # the node is a root
             preferred_label_role = None
@@ -97,10 +93,7 @@ class PresentationNetworkFactory(IXMLNetworkFactory):
             preferred_label = get_str(
                 xml_arc, "preferredLabel", BrelLabel.STANDARD_LABEL_ROLE
             )
-            if (
-                not isinstance(preferred_label, str)
-                and preferred_label is not None
-            ):
+            if not isinstance(preferred_label, str) and preferred_label is not None:
                 raise TypeError(
                     f"preferredLabel attribute on arc element {xml_arc} is not a string. It is {type(preferred_label)}"
                 )
@@ -123,17 +116,13 @@ class PresentationNetworkFactory(IXMLNetworkFactory):
         link_name = QName.from_string(xml_link.tag, self.get_qname_nsmap())
 
         if arc_role is None:
-            raise ValueError(
-                f"arcrole attribute not found on arc element {xml_arc}"
-            )
+            raise ValueError(f"arcrole attribute not found on arc element {xml_arc}")
         if not isinstance(arc_role, str):
             raise TypeError(
                 f"arcrole attribute on arc element {xml_arc} is not a string"
             )
         if link_role is None:
-            raise ValueError(
-                f"role attribute not found on link element {xml_link}"
-            )
+            raise ValueError(f"role attribute not found on link element {xml_link}")
         if not isinstance(link_role, str):
             raise TypeError(
                 f"role attribute on link element {xml_link} is not a string"
@@ -157,57 +146,15 @@ class PresentationNetworkFactory(IXMLNetworkFactory):
         )
 
     def update_report_elements(
-        self, report_elements: dict[QName, IReportElement], network: INetwork
-    ) -> dict[QName, IReportElement]:
+        self, report_elements: Mapping[QName, IReportElement], network: INetwork
+    ):
         """
         Promote abstracts to line items
-        @param report_elements: dict[QName, IReportElement] containing all report elements
-        @param network: INetwork containing the network. Must be a PresentationNetwork
-        @return: dict[QName, IReportElement] containing all report elements, some of which may have been promoted to line items.
+        :param report_elements: dict[QName, IReportElement] containing all report elements
+        :param network: INetwork containing the network. Must be a PresentationNetwork
+        :return: dict[QName, IReportElement] containing all report elements, some of which may have been promoted to line items.
         """
-        if not isinstance(network, PresentationNetwork):
-            raise TypeError("network must be of type PresentationNetwork")
-
-        # find the nodes to promote
-        nodes_to_promote: list[PresentationNetworkNode] = []
-        nodes = cast(list[PresentationNetworkNode], network.get_all_nodes())
-        for node in nodes:
-            if isinstance(node.get_report_element(), Abstract):
-                parent = next(
-                    filter(lambda x: node in x.get_children(), nodes), None
-                )
-
-                # promote if the node is abstract and the parent is a hypercube
-                if parent is not None and isinstance(
-                    parent.get_report_element(), Hypercube
-                ):
-                    nodes_to_promote.append(node)
-
-                hypercube_children = list(
-                    filter(
-                        lambda x: isinstance(
-                            x.get_report_element(), Hypercube
-                        ),
-                        node.get_children(),
-                    )
-                )
-
-                # promote if the node is abstract, it is the root and it has no hypercube children
-                if parent is None and len(hypercube_children) == 0:
-                    nodes_to_promote.append(node)
-
-        # then promote the nodes
-        for node in nodes_to_promote:
-            abstract = cast(Abstract, node.get_report_element())
-            line_items = LineItems(abstract.get_name(), abstract.get_labels())
-
-            # update the report elements dict
-            report_elements[line_items.get_name()] = line_items
-
-            # update the node in the network
-            node._set_report_element(line_items)
-
-        return report_elements
+        pass
 
     def is_physical(self) -> bool:
-        return True
+        return False

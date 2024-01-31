@@ -6,8 +6,8 @@ Since a node can have children, nodes can also be viewed as trees.
 ====================
 
 - author: Robin Schmidiger
-- version: 0.3
-- date: 04 January 2024
+- version: 0.4
+- date: 30 January 2024
 
 ====================
 """
@@ -50,6 +50,7 @@ class FootnoteNetworkNode(INetworkNode):
             raise ValueError(
                 f"The FootnoteNetworkNode points to a resource. Use get_resource() instead"
             )
+
         return self.__points_to
 
     def get_resource(self) -> IResource:
@@ -106,10 +107,3 @@ class FootnoteNetworkNode(INetworkNode):
             raise ValueError(f"The child {child} is not a FootnoteNetworkNode")
         self.__children.append(child)
         self.__children.sort(key=lambda x: x.get_order())
-
-    def _set_report_element(self, report_element: IReportElement):
-        """
-        Set the report element of this node
-        :param report_element: IReportElement to be set as the report element
-        """
-        self.__points_to = report_element

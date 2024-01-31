@@ -12,7 +12,7 @@ It is responsible for taking a list of filepaths to XBRL files and parsing them 
 """
 
 import os
-from typing import Any
+from typing import Any, Callable, Mapping, Tuple, Iterable
 
 import lxml
 import lxml.etree
@@ -50,33 +50,21 @@ class XMLFilingParser(IFilingParser):
 
         self.__filing_type = "XML"
         self.__parser = lxml.etree.XMLParser()
-        self.__filing_location = os.path.commonpath(filepaths)
         self.__print_prefix = f"{'[XMLFilingParser]':<20}"
-
-        # if the commonpath is empty, the filing location is the current folder
-        if self.__filing_location == "":
-            self.__filing_location = "."
-
-        # if the filing location is a file, crop the filename
-        if not os.path.isdir(self.__filing_location):
-            self.__filing_location = os.path.dirname(self.__filing_location)
 
         # mapping from xml ids to report elements, facts, and components
         # handy for resolving hrefs
         self.__id_to_any: dict[str, Any] = {}
 
-        # crop the filing location from all filepaths
-        for i in range(len(filepaths)):
-            filepaths[i] = os.path.relpath(
-                filepaths[i], self.__filing_location
-            )
+        # Make cache_path work for windows, mac and linux
+        # also make it hidden
+        # cache_path = os.path.join(os.path.expanduser("~"), ".brel", "dts_cache")
+        cache_path = os.path.join(os.getcwd(), "dts_cache")
 
         # load the DTS
         if DEBUG:  # pragma: no cover
             self.__print("Resolving DTS...")
-        self.__file_manager = XMLFileManager(
-            "dts_cache/", self.__filing_location, filepaths, self.__parser
-        )
+        self.__file_manager = XMLFileManager(cache_path, filepaths, self.__parser)
 
         # normalize and bootstrap the QName nsmap
         if DEBUG:  # pragma: no cover
@@ -124,9 +112,9 @@ class XMLFilingParser(IFilingParser):
         if DEBUG:  # pragma: no cover
             print("[QName] Prefix renames:")
         for rename_uri, rename_prefixes in renames.items():
-            old_prefix, new_prefix = rename_prefixes
+            new_prefix = rename_prefixes
             if DEBUG:
-                print(f"> {old_prefix:10} -> {new_prefix}")
+                print(f"> {rename_uri} -> {new_prefix}")
             qname_nsmap.rename(rename_uri, new_prefix)
 
         if DEBUG:  # pragma: no cover
@@ -156,8 +144,7 @@ class XMLFilingParser(IFilingParser):
             if filename.endswith(".xsd")
         ]
         xsd_etrees = [
-            self.__file_manager.get_file(filename)
-            for filename in xsd_filenames
+            self.__file_manager.get_file(filename) for filename in xsd_filenames
         ]
 
         report_elems, id_to_report_elem = parse_report_elements_xml(
@@ -175,8 +162,8 @@ class XMLFilingParser(IFilingParser):
         return report_elems
 
     def parse_facts(
-        self, report_elements: dict[QName, IReportElement]
-    ) -> list[Fact]:
+        self, report_elements: Mapping[QName, IReportElement]
+    ) -> Iterable[Fact]:
         """
         Parse the facts.
         :param report_elements: A dictionary containing ALL report elements that the facts report against.
@@ -187,13 +174,10 @@ class XMLFilingParser(IFilingParser):
             filter(lambda filename: filename.endswith(".xml"), all_filenames)
         )
         xml_etrees = [
-            self.__file_manager.get_file(filename)
-            for filename in xml_filenames
+            self.__file_manager.get_file(filename) for filename in xml_filenames
         ]
 
-        facts, id_to_fact = parse_facts_xml(
-            xml_etrees, report_elements, self.__nsmap
-        )
+        facts, id_to_fact = parse_facts_xml(xml_etrees, report_elements, self.__nsmap)
 
         for id, fact in id_to_fact.items():
             if id in self.__id_to_any.keys():
@@ -206,12 +190,12 @@ class XMLFilingParser(IFilingParser):
         return facts
 
     def parse_networks(
-        self, report_elements: dict[QName, IReportElement]
-    ) -> dict[str | None, list[INetwork]]:
+        self, report_elements: Mapping[QName, IReportElement]
+    ) -> Mapping[str, Iterable[INetwork]]:
         """
-        Parse the networks.
+        Parse the networks. Alter the report elements accordingly.
         :param report_elements: A dictionary containing ALL report elements that the networks report against.
-        :returns dict: A dictionary of all the networks in the filing.
+        :returns: A mapping from component names to a list of networks for that component.
         """
         return parse_networks_from_xmls(
             self.__file_manager.get_all_files(),
@@ -222,22 +206,17 @@ class XMLFilingParser(IFilingParser):
 
     def parse_components(
         self,
-        report_elements: dict[QName, IReportElement],
-        networks: dict[str, list[INetwork]],
-    ) -> tuple[list[Component], dict[QName, IReportElement]]:
+        networks: Mapping[str, Iterable[INetwork]],
+    ) -> Iterable[Component]:
         """
         Parse the components.
-        :param dict[QName, IReportElement]: A dictionary containing ALL report elements that the components report against.
         :param networks: A dictionary containing ALL networks that the components report against.
         The keys are the component names, the values are lists of networks for that component.
-        :returns:
-         - A list of all the components in the filing.
-         - A dictionary of all the report elements in the filing. These might have been altered by the components.
+        :returns Iterable[Component]: A list of all the components in the filing.
         """
         return parse_components_xml(
             self.__file_manager.get_all_files(),
             networks,
-            report_elements,
             self.__nsmap,
         )
 

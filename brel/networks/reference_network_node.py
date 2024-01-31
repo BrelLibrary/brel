@@ -4,8 +4,8 @@ Contains the class ReferenceNetworkNode, which represents a reference network no
 ====================
 
 - author: Robin Schmidiger
-- version: 0.2
-- date: 04 January 2024
+- version: 0.3
+- date: 30 January 2024
 
 ====================
 """
@@ -45,9 +45,8 @@ class ReferenceNetworkNode(INetworkNode):
     # First class citizens
     def get_report_element(self) -> IReportElement:
         if not isinstance(self.__points_to, IReportElement):
-            raise ValueError(
-                "ReferenceNetworkNodes do not point to report elements"
-            )
+            raise ValueError("ReferenceNetworkNodes do not point to report elements")
+
         return self.__points_to
 
     def get_resource(self) -> IResource:
@@ -93,10 +92,3 @@ class ReferenceNetworkNode(INetworkNode):
 
         self.__children.append(child)
         self.__children.sort(key=lambda node: node.get_order())
-
-    def _set_report_element(self, report_element: IReportElement):
-        """
-        Set the report element of this node
-        :param report_element: IReportElement to be set as the report element
-        """
-        self.__points_to = report_element

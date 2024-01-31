@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 
 import lxml
 import lxml.etree
+from typing import Mapping, Iterable, Tuple
 
 from brel import Fact, QName, QNameNSMap
 from brel.networks import INetwork, INetworkNode
@@ -34,8 +35,8 @@ class IXMLNetworkFactory(ABC):
 
     @abstractmethod
     def update_report_elements(
-        self, report_elements: dict[QName, IReportElement], network: INetwork
-    ) -> dict[QName, IReportElement]:
+        self, report_elements: Mapping[QName, IReportElement], network: INetwork
+    ):
         raise NotImplementedError
 
     @abstractmethod

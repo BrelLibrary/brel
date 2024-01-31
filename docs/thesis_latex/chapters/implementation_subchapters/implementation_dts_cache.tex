@@ -1,0 +1,60 @@
+\section{DTS Cache}
+\label{sec:implementation_dts_cache}
+
+The second key assumption that section \ref{sec:implementation_general} makes is that 
+every file of both the taxonomy set and the XBRL report is stored locally on the user's computer.
+In reality, this assumption does not hold true.
+In the most common case, only the XBRL report is stored locally on the user's computer.
+The taxonomy file within the XBRL report points to other taxonomy files, which are not stored locally.
+As mentioned in section \ref{sec:concepts}, taxonomies may refer to other taxonomies.
+Brel needs to resolve and download the transitive closure of all taxonomy references in order to parse the XBRL report.
+Brel refers to this process as DTS caching.
+
+\subsection{Discovery}
+
+The letter D in DTS caching stands for "discoverable".
+It suggests that Brel first needs to discover all taxonomy files that the XBRL report refers to.
+Brel's approach is to parse the taxonomy file within the XBRL report and extract all taxonomy references from it.
+% Brel then fetches all taxonomy files that are referenced by the taxonomy file within the XBRL report.
+% It repeats this process until it has fetched all taxonomy files that the XBRL report refers to.
+A taxonomy file might refer to other taxonomy files different ways.
+
+\begin{itemize}
+    \item \textbf{schemaRef} - The most common way is to refer to other taxonomy files using the \texttt{schemaRef} element.
+    The \texttt{schemaRef} XML element contains a \texttt{href} attribute, which contains a URL that points to another taxonomy file.
+    \item \textbf{linkbaseRef} - A taxonomy file may also refer to other taxonomy files using the \texttt{linkbaseRef} element.
+    Like the \texttt{schemaRef} element, the \texttt{linkbaseRef} element contains a \texttt{href} attribute.
+    \item \textbf{import} - A taxonomy file may also refer to other taxonomy files using the \texttt{import} element.
+    The \texttt{import} element contains a \texttt{schemaLocation} attribute containing an URI that points to another taxonomy file.
+    \item \textbf{include} - A taxonomy file may also refer to other taxonomy files using the \texttt{include} element.
+    Similar to the \texttt{import} element, the \texttt{include} element contains a \texttt{schemaLocation} attribute containing an URI that points to another taxonomy file.
+\end{itemize}
+
+Whenever Brel parses a taxonomy file, it extracts all taxonomy references from it and adds them to a working set of taxonomy references.
+Once Brel has parsed the current taxonomy file, it fetches the first taxonomy reference from the working set.
+Brel then repeats the process of parsing the taxonomy file and extracting all taxonomy references from it.
+The reader can think of this process as a breadth-first search of the taxonomy reference graph.
+If Brel has already parsed a taxonomy file, then it does not need to parse it again.
+
+\subsection{Downloading taxonomies}
+
+Given a URI, downloading the taxonomy file that the URI points to is trivial for most URIs.
+However, some URIs are relative URIs, 
+which means that the URI indicates the location of the other taxonomy file relative to the current taxonomy file\cite{w3_relative_uri}.
+Brel infers the domain name of relative URIs by remembering the domain name of the taxonomy file that the relative URI was referenced from.
+It concatenates the domain name of the taxonomy file with the relative URI to form an absolute URI.
+
+Relative URIs introduce another problem - File names for taxonomy files.
+Since Brel downloads taxonomy files from the internet, it needs to store them locally on the user's computer.
+Brel chooses to store taxonomy files in a directory called \texttt{dts\_cache} without using any subdirectories.
+This means that Brel needs to ensure that all taxonomy files have unique file names.
+The natural choice for file names is the local name of the taxonomy file's URI, which is not necessarily unique.
+The next option is to use the URI itself as the file name. 
+Since URIs may be relative, there might be multiple URIs that point to the same taxonomy file.
+Additionally, tend to be very long and contain characters that are not allowed in file names.
+The approach that Brel chooses is to generate a unique file name based on the absolute URI of the taxonomy file.
+Brel strips the URI of all illegal characters to form a valid file name.
+
+Using both the discovery and download mechanism, Brel is able to download all taxonomy files that the XBRL report refers to.
+Brel stores the taxonomy files in the \texttt{dts\_cache} directory, 
+which resolves the second key assumption that section \ref{sec:implementation_general} makes.

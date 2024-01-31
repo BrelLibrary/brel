@@ -1,4 +1,5 @@
 \section{General implementation}
+\label{sec:implementation_general}
 
 Brel parses XBRL reports using an eager bottom-up approach
 It starts with the smallest building blocks of XBRL reports - report elements.
@@ -15,6 +16,7 @@ The bottom-up approach ensures that all report elements are parsed before they a
 In the next four sections, this chapter will briefly cover the four stages of Brel's bottom-up approach.
 
 \subsection{Parsing report elements}
+\label{sec:implementation_report_elements}
 
 Report elements are the smallest building blocks of XBRL reports.
 Therefore, they do not rely on any other XBRL elements and can be parsed first.

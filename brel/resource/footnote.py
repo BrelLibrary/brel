@@ -57,7 +57,7 @@ class BrelFootnote(IResource):
 
         # Language is required. If it is not found, raise an error.
         if language is None:
-            raise ValueError(f"Could not find the language for the label {text}")
+            raise ValueError(f"Could not find the language for the label {xml_element}")
         language = cast(str, language)
 
         # get the label
@@ -74,8 +74,15 @@ class BrelFootnote(IResource):
         if not isinstance(role, str):
             raise ValueError(f"The role of the resource {xml_element} is not a string")
 
-        # get the content. it might be a str or xhtml. If its xhtml, we need to convert it to str
+        # get the content.
         content = xml_element.text
+        # if the content is None, try getting the embedded content
+        if content is None:
+            # parse the children as xhtml
+            content = ""
+            for child in xml_element:
+                content += lxml.etree.tostring(child, encoding="unicode")
+
         if content is None:
             raise ValueError(
                 f"Could not find the content of the resource {xml_element}"

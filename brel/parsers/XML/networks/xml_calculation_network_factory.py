@@ -3,12 +3,16 @@ This module contains the CalculationNetworkFactory class.
 CalculationNetworkFactories are used to create CalculationNetworks from XML.
 They are used by the XML parsers for networks to build calculation networks.
 
-@author: Robin Schmidiger
-@version: 0.2
-@date: 04 January 2024
+====================
+
+- author: Robin Schmidiger
+- version: 0.3
+- date: 30 January 2024
+
+====================
 """
 
-from typing import cast
+from typing import cast, Mapping
 
 import lxml
 import lxml.etree
@@ -36,9 +40,7 @@ class CalculationNetworkFactory(IXMLNetworkFactory):
         nsmap = self.get_qname_nsmap().get_nsmap()
 
         link_role = xml_link_element.get(f"{{{nsmap['xlink']}}}role", None)
-        link_qname = QName.from_string(
-            xml_link_element.tag, self.get_qname_nsmap()
-        )
+        link_qname = QName.from_string(xml_link_element.tag, self.get_qname_nsmap())
 
         if len(roots) == 0:
             raise ValueError("roots must not be empty")
@@ -51,7 +53,7 @@ class CalculationNetworkFactory(IXMLNetworkFactory):
 
         roots_cast = cast(list[CalculationNetworkNode], roots)
 
-        return CalculationNetwork(roots_cast, link_role, link_qname)
+        return CalculationNetwork(roots_cast, link_role, link_qname, self.is_physical())
 
     def create_node(
         self,
@@ -69,9 +71,7 @@ class CalculationNetworkFactory(IXMLNetworkFactory):
             weight = 0.0
             arc_role = "unknown"
             order: float = 1
-            arc_qname = QName.from_string(
-                "link:unknown", self.get_qname_nsmap()
-            )
+            arc_qname = QName.from_string("link:unknown", self.get_qname_nsmap())
         elif xml_arc.get(f"{{{nsmap['xlink']}}}from", None) == label:
             # the node is a root
             weight = 0.0
@@ -102,9 +102,7 @@ class CalculationNetworkFactory(IXMLNetworkFactory):
 
         # also, all calculation network nodes have to point to a concept
         if not isinstance(points_to, IReportElement):
-            raise TypeError(
-                f"points_to must be of type Concept, not {type(points_to)}"
-            )
+            raise TypeError(f"points_to must be of type Concept, not {type(points_to)}")
 
         return CalculationNetworkNode(
             points_to,
@@ -118,15 +116,9 @@ class CalculationNetworkFactory(IXMLNetworkFactory):
         )
 
     def update_report_elements(
-        self, report_elements: dict[QName, IReportElement], _: INetwork
-    ) -> dict[QName, IReportElement]:
-        """
-        Calculation networks do not change the report elements
-        @param report_elements: dict[QName, IReportElement] containing all report elements
-        @param network: INetwork containing the network. Must be a CalculationNetwork
-        @return: dict[QName, IReportElement] containing all report elements. same as the report_elements parameter
-        """
-        return report_elements
+        self, report_elements: Mapping[QName, IReportElement], _: INetwork
+    ):
+        pass
 
     def is_physical(self) -> bool:
-        return True
+        return False

@@ -3,12 +3,16 @@ This module contains the XMLDefinitionNetworkFactory class
 XMLDefinitionNetworkFactories are used to create physical DefinitionNetworks from XML.
 This module is usedc by the XML network parser to build physical definition networks.
 
-@author: Robin Schmidiger
-@version: 0.4
-@date: 04 January 2024
+====================
+
+- author: Robin Schmidiger
+- version: 0.5
+- date: 30 January 2024
+
+====================
 """
 
-from typing import cast
+from typing import cast, Mapping
 
 import lxml
 import lxml.etree
@@ -43,13 +47,11 @@ class PhysicalDefinitionNetworkFactory(IXMLNetworkFactory):
         if not all(isinstance(root, DefinitionNetworkNode) for root in roots):
             raise TypeError("roots must all be of type DefinitionNetworkNode")
         if link_role is None:
-            raise ValueError(
-                f"linkrole attribute not found on link element {xml_link}"
-            )
+            raise ValueError(f"linkrole attribute not found on link element {xml_link}")
 
         roots_cast = cast(list[DefinitionNetworkNode], roots)
 
-        return DefinitionNetwork(roots_cast, link_role, link_qname, True)
+        return DefinitionNetwork(roots_cast, link_role, link_qname, self.is_physical())
 
     def create_node(
         self,
@@ -66,9 +68,7 @@ class PhysicalDefinitionNetworkFactory(IXMLNetworkFactory):
             # the node is not connected to any other node
             arc_role = "unknown"
             order = 0.0
-            arc_qname = QName.from_string(
-                "link:unknown", self.get_qname_nsmap()
-            )
+            arc_qname = QName.from_string("link:unknown", self.get_qname_nsmap())
         elif xml_arc.get(f"{{{nsmap['xlink']}}}from", None) == label:
             # the node is a root
             arc_role = get_str(xml_arc, "{" + nsmap["xlink"] + "}arcrole")
@@ -98,13 +98,13 @@ class PhysicalDefinitionNetworkFactory(IXMLNetworkFactory):
         )
 
     def update_report_elements(
-        self, report_elements: dict[QName, IReportElement], network: INetwork
-    ) -> dict[QName, IReportElement]:
+        self, report_elements: Mapping[QName, IReportElement], network: INetwork
+    ) -> Mapping[QName, IReportElement]:
         """
         Definition networks do not change the report elements
-        @param report_elements: dict[QName, IReportElement] containing all report elements
-        @param network: INetwork containing the network. Must be a DefinitionNetwork
-        @return: dict[QName, IReportElement] containing all report elements. Some report elements might differ in type from the report_elements parameter
+        :param report_elements: Mapping[QName, IReportElement] containing all report elements
+        :param network: INetwork containing the network. Must be a DefinitionNetwork
+        :return: Mapping[QName, IReportElement] containing all report elements. Some report elements might differ in type from the report_elements parameter
         """
         return report_elements
 
@@ -126,13 +126,11 @@ class LogicalDefinitionNetworkFactory(IXMLNetworkFactory):
         if not all(isinstance(root, DefinitionNetworkNode) for root in roots):
             raise TypeError("roots must all be of type DefinitionNetworkNode")
         if link_role is None:
-            raise ValueError(
-                f"linkrole attribute not found on link element {xml_link}"
-            )
+            raise ValueError(f"linkrole attribute not found on link element {xml_link}")
 
         roots_cast = cast(list[DefinitionNetworkNode], roots)
 
-        return DefinitionNetwork(roots_cast, link_role, link_qname, False)
+        return DefinitionNetwork(roots_cast, link_role, link_qname, self.is_physical())
 
     def create_node(
         self,
@@ -149,9 +147,7 @@ class LogicalDefinitionNetworkFactory(IXMLNetworkFactory):
             # the node is not connected to any other node
             arc_role = "unknown"
             order = 0
-            arc_qname = QName.from_string(
-                "link:unknown", self.get_qname_nsmap()
-            )
+            arc_qname = QName.from_string("link:unknown", self.get_qname_nsmap())
         elif xml_arc.get(f"{{{nsmap['xlink']}}}from", None) == label:
             arc_role = get_str(xml_arc, "{" + nsmap["xlink"] + "}arcrole")
             order = 0
@@ -179,27 +175,9 @@ class LogicalDefinitionNetworkFactory(IXMLNetworkFactory):
         )
 
     def update_report_elements(
-        self, report_elements: dict[QName, IReportElement], network: INetwork
-    ) -> dict[QName, IReportElement]:
-        """
-        Definition networks do not change the report elements
-        @param report_elements: dict[QName, IReportElement] containing all report elements
-        @param network: INetwork containing the network. Must be a DefinitionNetwork
-        @return: dict[QName, IReportElement] containing all report elements. Some report elements might differ in type from the report_elements parameter
-        """
-        # TODO: Implement
-        # for node in network.get_all_nodes():
-        #     arc_role = node.get_arc_role()
-        #     report_element = node.get_report_element()
-        #     if "all" in arc_role and not isinstance(report_element, Hypercube):
-        #         print(f"Warning: report element {report_element.get_name()} is not a Hypercube")
-        #     elif "hypercube-dimension" in arc_role and not isinstance(report_element, Dimension):
-        #         print(f"Warning: report element {report_element.get_name()} is not a Dimension")
-        #     elif "dimension-domain" in arc_role and not isinstance(report_element, Member):
-        #         print(f"Warning: report element {report_element.get_name()} is not a Member")
-        #     elif "dimension-domain" in arc_role and not isinstance(report_element, Member):
-        #         print(f"Warning: report element {report_element.get_name()} is not a Member")
-        return report_elements
+        self, report_elements: Mapping[QName, IReportElement], network: INetwork
+    ):
+        pass
 
     def is_physical(self) -> bool:
         return False

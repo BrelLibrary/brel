@@ -1,15 +1,19 @@
 """
 This module contains the XMLFootnoteNetworkFactory class.
 XMLFootnoteNetworkFactories are used to create physical FootnoteNetworks from XML.
-This module is usedc by the XML network parser to build physical footnote networks.
+This module is used by the XML network parser to build physical footnote networks.
 At the time of writing, footnote nodes are the only nodes that can point to facts.
 
-@author: Robin Schmidiger
-@version: 0.4
-@date: 04 January 2024
+====================
+
+- author: Robin Schmidiger
+- version: 0.5
+- date: 30 January 2024
+
+====================
 """
 
-from typing import cast
+from typing import cast, Mapping
 
 import lxml
 import lxml.etree
@@ -48,7 +52,7 @@ class FootnoteNetworkFactory(IXMLNetworkFactory):
 
         roots_cast = cast(list[FootnoteNetworkNode], roots)
 
-        return FootnoteNetwork(roots_cast, link_role, link_qname)
+        return FootnoteNetwork(roots_cast, link_role, link_qname, self.is_physical())
 
     def create_node(
         self,
@@ -65,9 +69,7 @@ class FootnoteNetworkFactory(IXMLNetworkFactory):
             # the node is not connected to any other node
             arc_role: str = "unknown"
             order = 1.0
-            arc_qname = QName.from_string(
-                "link:unknown", self.get_qname_nsmap()
-            )
+            arc_qname = QName.from_string("link:unknown", self.get_qname_nsmap())
         elif xml_arc.get(f"{{{nsmap['xlink']}}}from", None) == label:
             # the node is a root
             arc_role = get_str(xml_arc, f"{{{nsmap['xlink']}}}arcrole")
@@ -86,9 +88,7 @@ class FootnoteNetworkFactory(IXMLNetworkFactory):
         link_role = get_str(xml_link, f"{{{nsmap['xlink']}}}role")
         link_name = QName.from_string(xml_link.tag, self.get_qname_nsmap())
 
-        if isinstance(points_to, IResource) and not isinstance(
-            points_to, BrelFootnote
-        ):
+        if isinstance(points_to, IResource) and not isinstance(points_to, BrelFootnote):
             raise ValueError(
                 f"points_to must be of type BreelFootnote, not {type(points_to)}"
             )
@@ -98,9 +98,9 @@ class FootnoteNetworkFactory(IXMLNetworkFactory):
         )
 
     def update_report_elements(
-        self, report_elements: dict[QName, IReportElement], network: INetwork
-    ) -> dict[QName, IReportElement]:
-        return report_elements
+        self, report_elements: Mapping[QName, IReportElement], network: INetwork
+    ):
+        pass
 
     def is_physical(self) -> bool:
         return True

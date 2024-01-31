@@ -80,22 +80,6 @@ def example5():
 
         print(f"[Size: {total_network_size}] {component.get_URI()}")
 
-    non_root_lineitems = []
-    for component in components:
-        defi_network = component.get_definition_network()
-        if defi_network is None:
-            continue
-
-        for node in defi_network.get_all_nodes():
-            if (
-                "LineItems"
-                in node.get_report_element().get_name().resolve()
-                # and node != defi_network.get_root()
-            ):
-                non_root_lineitems.append(node)
-
-    print("Non root lineitems:" + str(len(non_root_lineitems)))
-
     # read the user input
     print()
     user_input = input("Enter a component name: \n")

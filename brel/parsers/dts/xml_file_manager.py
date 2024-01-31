@@ -5,8 +5,8 @@ The XMLSchemaManager class is responsible for downloading and caching XBRL taxon
 =================
 
 - author: Robin Schmidiger
-- version: 0.6
-- date: 09 Januar 2024
+- version: 0.7
+- date: 29 Januar 2024
 
 =================
 """
@@ -22,6 +22,7 @@ from typing import Any, cast
 import lxml
 import lxml.etree
 import requests
+import time
 
 from brel.parsers.dts import IFileManager
 
@@ -34,7 +35,6 @@ class XMLFileManager(IFileManager):
     def __init__(
         self,
         cache_location: str,
-        filing_location: str,
         filenames: list[str],
         parser: lxml.etree.XMLParser,
     ) -> None:
@@ -46,26 +46,12 @@ class XMLFileManager(IFileManager):
             print(f"Creating DTS cache folder at {cache_location}")
             os.makedirs(cache_location)
 
-        if not os.path.isdir(filing_location):
-            raise ValueError(f"{filing_location} is not a valid folder path")
-
-        # check if all the schema filenames are in the filing location
-        for filename in filenames:
-            if filename not in os.listdir(filing_location):
-                raise ValueError(
-                    f"{filename} is not a file in the folder {filing_location}"
-                )
-
         if not cache_location.endswith("/"):
             cache_location += "/"
-
-        if not filing_location.endswith("/"):
-            filing_location += "/"
 
         # set class variables
         self.__parser = parser
 
-        self.__filing_location = filing_location
         self.cache_location = cache_location
 
         self.__filenames: list[str] = []
@@ -84,8 +70,8 @@ class XMLFileManager(IFileManager):
     def uri_to_filename(self, url: str) -> str:
         """
         Convert a url to a filename.
-        @param url: The url to convert.
-        @return: The filename.
+        :param url: The url to convert.
+        :returns: The filename.
         """
 
         def get_version_from_url(url: str) -> str | None:
@@ -146,33 +132,11 @@ class XMLFileManager(IFileManager):
 
         return filename
 
-    def element_from_xpointer(
-        self, xpointer: str, referencing_uri: str
-    ) -> lxml.etree._Element | None:
-        """
-        Get an element from an xpointer.
-        @param xpointer: The xpointer to use.
-        @param referencing_uri: The uri of the schema/instance that is referencing the element.
-        @return: The element.
-        """
-
-        # split the xpointer into its parts
-        if "#" in xpointer:
-            referencing_uri, element_id = xpointer.split("#")
-        else:
-            element_id = xpointer
-
-        # get the schema
-        schema = self.get_file(referencing_uri)
-        # get the element
-        element = schema.find(f".//*[@id='{element_id}']", namespaces=None)
-        return element
-
     def get_file(self, schema_uri: str) -> lxml.etree._ElementTree:
         """
         Load a schema, potentially from the cache.
-        @param schema_filename: The filename of the schema.
-        @return: The schema as an lxml.etree._ElementTree.
+        :param schema_filename: The filename of the schema.
+        :returns: The schema as an lxml.etree._ElementTree.
         """
 
         schema_filename = self.uri_to_filename(schema_uri)
@@ -193,8 +157,7 @@ class XMLFileManager(IFileManager):
 
     def get_all_files(self) -> list[lxml.etree._ElementTree]:
         """
-        Returns all the schemas in the dts
-        @return: A list of lxml.etree._ElementTree representing all the schemas in the dts
+        :returns: A list of lxml.etree._ElementTree representing all the schemas in the dts
         """
         return [self.get_file(schema_name) for schema_name in self.__filenames]
 
@@ -208,12 +171,19 @@ class XMLFileManager(IFileManager):
     def __download_and_store(self, uri: str, file_name: str) -> bytes:
         """
         Download a schema and store it in the cache. Returns the downloaded content as a string.
-        @param uri: The uri of the schema to download.
-        @param file_name: The name of the file to store the schema in.
-        @return: The downloaded content as a string.
+        :param uri: The uri of the schema to download.
+        :param file_name: The name of the file to store the schema in.
+        :returns: The downloaded content as a string.
         """
         try:
-            response = requests.get(uri)
+            # response = requests.get(uri)
+            # TODO: make this less hacky
+            # this is essentially a spoof of a user agent
+            # The SEC blocks bots that are trying to scrape their data
+            response = requests.get(uri, headers={"User-Agent": "Mozilla/5.0"})
+            # sleep for 0.1 second to avoid getting blocked by the SEC
+            if "sec.gov" in uri:
+                time.sleep(0.1)
         except ConnectionError:
             raise Exception(
                 f"Could not connect to {uri}. Are you connected to the internet?"
@@ -229,16 +199,14 @@ class XMLFileManager(IFileManager):
     def __load_dts(
         self,
         uri,
-        referencing_schema_url: str = ".",
-        loaded_under_prefix: str = "",
+        referencing_uri: str = ".",
     ):
         """
         Download a schema and all of its dependencies
         Stores them in the cache and adds them to the list of filenames
         Note: the referencing_schema_url is necessary to resolve relative paths
-        @param uri: The uri of the schema to download. Can be a url or a local file path.
-        @param referencing_schema_url: The url of the schema that is referencing the schema to download.
-        @param loaded_under_prefix: The prefix under which the schema is loaded.
+        :param uri: The uri of the schema to download. Can be a url or a local file path.
+        :param referencing_schema_url: The url of the schema that is referencing the schema to download.
         """
 
         file_name = self.uri_to_filename(uri)
@@ -248,13 +216,12 @@ class XMLFileManager(IFileManager):
         if file_name in self.__filenames:
             return
 
-        is_url_remote = uri.startswith("http")
-        is_in_filing = os.path.isfile(self.__filing_location + uri)
+        is_uri_remote = uri.startswith("http") or referencing_uri.startswith("http")
         is_cached = file_name in os.listdir(self.cache_location)
 
         if DEBUG:  # pragma: no cover
             print(f"[File Manager] uri: {uri}, file_name: {file_name}")
-            if is_cached or is_in_filing:
+            if is_cached:
                 print(f"[File Manager] file is local")
             else:
                 print(f"[File Manager] file is remote")
@@ -264,21 +231,26 @@ class XMLFileManager(IFileManager):
             with open(self.cache_location + file_name, "rb") as f:
                 xsd_content: bytes = f.read()
 
-        elif is_url_remote:
+        elif is_uri_remote:
             # if the file is online, load it from the url
+            # if the uri is a local file path, but the referencing uri is online, then build the absolute uri from the two
+            if not uri.startswith("http"):
+                uri_directory = os.path.dirname(referencing_uri)
+                uri = os.path.join(uri_directory, uri)
+
             xsd_content = self.__download_and_store(uri, file_name)
-
-        elif is_in_filing:
-            # otherwise load it from the current directory
-            with open(self.__filing_location + uri, "rb") as f:
-                xsd_content = f.read()
-
         else:
-            # if the file is not cached, online or in the filing, then it must be in the file system of the
-            # schema that is referencing it
-            # so I transform the xsd_url from a local file path to a url
-            uri = referencing_schema_url.rsplit("/", 1)[0] + "/" + uri
-            xsd_content = self.__download_and_store(uri, file_name)
+            # otherwise the file is local and we can load it directly
+            uri_directory = os.path.dirname(referencing_uri)
+            uri = os.path.join(uri_directory, uri)
+
+            if not os.path.isfile(uri):
+                raise ValueError(
+                    f"Could not find file {uri}, even though the XBRL report refers to it."
+                )
+
+            with open(uri, "rb") as f:
+                xsd_content = f.read()
 
         # parse the schema
         if DEBUG:  # pragma: no cover
@@ -290,28 +262,43 @@ class XMLFileManager(IFileManager):
         # add it to the list of filenames
         self.__filenames.append(file_name)
         # add it to the list of prefixes
-        self.__file_prefixes[file_name].append(loaded_under_prefix)
 
+        reference_uris: list[str] = []
         # find all hrefs in the file
         # TODO: make namespace non-hardcoded
-        href_elems = xsd_tree.findall(
-            ".//*[@xlink:href]",
-            namespaces={"xlink": "http://www.w3.org/1999/xlink"},
-        )
-        for href_elem in href_elems:
+        for href_elem in xsd_tree.findall(
+            ".//*[@xlink:href]", namespaces={"xlink": "http://www.w3.org/1999/xlink"}
+        ):
             # get the href attribute
-            href = href_elem.get("{http://www.w3.org/1999/xlink}href")
+            href = href_elem.get("{http://www.w3.org/1999/xlink}href", "")
             href = cast(str, href)
 
             # get the prefix under which the schema is loaded
-            # prefix = href_elem.nsmap
-            # print(f"prefix: {prefix}")
             if "#" in href:
                 href_uri, _ = href.split("#")
             else:
                 href_uri = href
 
             if href_uri != "":
-                # if the href is not a local reference, load the schema
-                # and add it to the current schema
-                self.__load_dts(href_uri, uri)
+                reference_uris.append(href_uri)
+
+        # find all schemaLocations in the file
+        # TODO: make namespace non-hardcoded
+        for schemaLocation_elem in xsd_tree.findall(
+            ".//*[@schemaLocation]",
+            namespaces={"xsi": "http://www.w3.org/2001/XMLSchema-instance"},
+        ):
+            # get the schemaLocation attribute
+            schemaLocation = schemaLocation_elem.get(
+                "{http://www.w3.org/2001/XMLSchema-instance}schemaLocation", ""
+            )
+
+            schemaLocation = cast(str, schemaLocation)
+            # split the schemaLocation by whitespace
+
+            if schemaLocation != "":
+                reference_uris.append(schemaLocation)
+
+        for reference_uri in reference_uris:
+            # load the schema
+            self.__load_dts(reference_uri, referencing_uri=uri)

@@ -7,8 +7,8 @@ Note: the balance consistency check is not implemented here, but in the Definiti
 ====================
 
 - author: Robin Schmidiger
-- version: 0.5
-- date: 04 January 2024
+- version: 0.6
+- date: 30 January 2024
 
 ====================
 """
@@ -87,10 +87,3 @@ class DefinitionNetworkNode(INetworkNode):
 
         self.__children.append(child)
         self.__children.sort(key=lambda node: node.get_order())
-
-    def _set_report_element(self, report_element: IReportElement):
-        """
-        Set the report element of this node to another report element.
-        :param report_element: IReportElement to be set as the report element
-        """
-        self.__report_element = report_element

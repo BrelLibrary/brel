@@ -33,9 +33,10 @@ class CalculationNetwork(INetwork):
         roots: list[CalculationNetworkNode],
         link_role: str,
         link_name: QName,
+        is_physical: bool,
     ) -> None:
         roots_copy = [cast(INetworkNode, root) for root in roots]
-        super().__init__(roots_copy, link_role, link_name, True)
+        super().__init__(roots_copy, link_role, link_name, is_physical)
 
     # second class citizen
     def is_balance_consisent(self) -> bool:
@@ -164,9 +165,7 @@ class CalculationNetwork(INetwork):
                             )
                             child_facts = list(
                                 filter(
-                                    lambda fact: fact.get_characteristic(
-                                        node_aspect
-                                    )
+                                    lambda fact: fact.get_characteristic(node_aspect)
                                     == node_characteristic,
                                     child_facts,
                                 )
@@ -190,9 +189,7 @@ class CalculationNetwork(INetwork):
 
                     child_fact = all_child_facts[0]
 
-                    children_sum += (
-                        child_fact.get_value_as_float() * child.get_weight()
-                    )
+                    children_sum += child_fact.get_value_as_float() * child.get_weight()
 
                     if DEBUG:  # pragma: no cover
                         print(

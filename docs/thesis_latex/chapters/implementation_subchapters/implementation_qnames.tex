@@ -2,14 +2,15 @@
 \section{QNames and namespace normalization}
 \label{sec:qnames_implementation}
 
-\subsection{Overview}
-
-As mentioned in chapter \ref{chapter:xbrl}, Brel leverages QNames to identify various elements across the XBRL report.
+% As mentioned in chapter \ref{chapter:xbrl}, Brel leverages QNames to identify various elements across the XBRL report.
+Both chapters \ref{chapter:xbrl} and \ref{chapter:api} disclose that Brel leverages QNames to identify various elements across the XBRL report.
 QNames are a concept that is widely used in XML and XML-based languages, such as XBRL.
 Thus, for most QNames in Brel, the necessary information can be directly extracted from the corresponding XML elements in both the XBRL taxonomy and the XBRL filing.
 However, there is an important difference between QNames in XML and QNames in Brel - Namespace bindings.
 
 Namespace bindings are the mappings between prefixes and namespace URIs.
+In XBRL, the URI often points to a taxonomy file.
+The prefix is used to refer to the namespace URI in the XBRL filing in a compact way.
 For example, the prefix \texttt{us-gaap} might be bound to the namespace URI \texttt{http://fasb.org/us-gaap/2023}.
 
 In XML documents, namespace bindings can be defined on a per-element basis. 

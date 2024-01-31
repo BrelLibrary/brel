@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 from time import time
-from typing import final
+from typing import final, Iterable, Tuple
+from collections.abc import Mapping
 
 from brel import Component, Fact, QName, QNameNSMap
 from brel.networks import INetwork
@@ -21,11 +22,7 @@ class IFilingParser(ABC):
     - parse_concepts() -> Iterator[Concept]
     """
 
-    def __init__(
-        self,
-        instance_filename: str,
-        networks_filenames: list[str],
-    ) -> None:
+    def __init__(self) -> None:
         """
         Initialize the parser.
         """
@@ -59,6 +56,7 @@ class IFilingParser(ABC):
         if DEBUG:  # pragma: no cover
             self.__print("Parsing Report Elements")
         start_time = time()
+
         report_elements = self.parse_report_elements()
 
         if DEBUG:  # pragma: no cover
@@ -66,37 +64,40 @@ class IFilingParser(ABC):
 
             self.__print("Parsing Facts")
         start_time = time()
+
         facts = self.parse_facts(report_elements)
+
         if DEBUG:
             self.__print(f"took {time() - start_time:.2f} sec")
 
             self.__print("Parsing Networks")
         start_time = time()
+
         networks = self.parse_networks(report_elements)
+
         if DEBUG:  # pragma: no cover
             self.__print(f"took {time() - start_time:.2f} sec")
 
             self.__print("Parsing Components")
         start_time = time()
-        components, report_elements = self.parse_components(
-            report_elements, networks
-        )
+
+        components = self.parse_components(networks)
+
         if DEBUG:  # pragma: no cover
             self.__print(f"took {time() - start_time:.2f} sec")
 
-            self.__print(
-                f"Done Parsing (took {time() - parser_start_time:.2f} sec)"
-            )
+            self.__print(f"Done Parsing (took {time() - parser_start_time:.2f} sec)")
         filing_type = self.get_filing_type()
 
+        # networks_flattened = list(networks.values())
         networks_flattened = [
             network
-            for networks_list in networks.values()
-            for network in networks_list
+            for component_networks in networks.values()
+            for network in component_networks
         ]
 
         parser_result = {
-            "report elements": report_elements.values(),
+            "report elements": list(report_elements.values()),
             "networks": networks_flattened,
             "components": components,
             "facts": facts,
@@ -114,46 +115,45 @@ class IFilingParser(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def parse_report_elements(self) -> dict[QName, IReportElement]:
+    def parse_report_elements(
+        self,
+    ) -> Mapping[QName, IReportElement]:
         """
         Parse the report elements.
-        @return: A dictionary that associates ALL report element QNames with a report element object.
+        :returns: A lookup that, given a QName, returns the report element with that QName.
         """
         raise NotImplementedError
 
     @abstractmethod
     def parse_facts(
-        self, report_elements: dict[QName, IReportElement]
-    ) -> list[Fact]:
+        self, report_elements: Mapping[QName, IReportElement]
+    ) -> Iterable[Fact]:
         """
         Parse the facts.
-        @param report_elements: A dictionary containing ALL report elements that the facts report against.
-        @return: A list of facts.
-        @hint: for each key,value pair in report_elements, key == value.get_name() MUST hold.
+        :param report_elements: A lookup function that, given a QName, returns the associated report element.
+        :returns Iterable[Fact]: A list of facts.
         """
         raise NotImplementedError
 
     @abstractmethod
     def parse_networks(
-        self, report_elements: dict[QName, IReportElement]
-    ) -> dict[str, list[INetwork]]:
+        self, report_elements: Mapping[QName, IReportElement]
+    ) -> Mapping[str, Iterable[INetwork]]:
         """
-        Parse the networks.
-        @param report_elements: A dictionary containing ALL report elements that the networks report against.
-        @return: A dictionary that associates the component name with a list of networks.
+        Parse the networks and updates the report element lookup function accordingly.
+        :param report_elements: A lookup function that, given a QName, returns the associated report element.
+        :returns: A lookup function that, given a role uri, returns a list of networks with that uri.
         """
         raise NotImplementedError
 
     @abstractmethod
     def parse_components(
         self,
-        report_elements: dict[QName, IReportElement],
-        networks: dict[str, list[INetwork]],
-    ) -> tuple[list[Component], dict[QName, IReportElement]]:
+        networks: Mapping[str, Iterable[INetwork]],
+    ) -> Iterable[Component]:
         """
-        Parse the components. Update the report elements accordingly.
-        @param report_elements: A dictionary containing ALL report elements that the components report against.
-        @return: A tuple containing a list of components and a dictionary containing the updated report elements.
-        @hint: LineItems report elements only become LineItems if they are in LineItems positions in the components.
+        Parse the components.
+        :param networks: A lookup function that, given a role uri, returns a list of networks with that uri.
+        :returns Iterable[Component]: A list of components.
         """
         raise NotImplementedError

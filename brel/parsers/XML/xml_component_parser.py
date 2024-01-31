@@ -5,12 +5,12 @@ It does not parse the networks, but it links components to networks.
 =================
 
 - author: Robin Schmidiger
-- version: 0.5
-- date: 07 January 2024
+- version: 0.7
+- date: 31 January 2024
 
 =================
 """
-from typing import Callable
+from typing import Callable, Mapping, Iterable
 
 import lxml
 import lxml.etree
@@ -31,9 +31,7 @@ from brel.utils import pprint_network
 def parse_component_from_xml(
     xml_element: lxml.etree._Element,
     qname_nsmap: QNameNSMap,
-    presentation_network: None | PresentationNetwork = None,
-    calculation_network: None | CalculationNetwork = None,
-    definition_network: None | DefinitionNetwork = None,
+    networks: Iterable[INetwork],
 ) -> Component:
     """
     Creates a single Component from an lxml.etree._Element.
@@ -65,58 +63,42 @@ def parse_component_from_xml(
 
     # check the usedOn elements
     used_ons = [
-        used_on.text
-        for used_on in xml_element.findall("link:usedOn", namespaces=nsmap)
+        used_on.text for used_on in xml_element.findall("link:usedOn", namespaces=nsmap)
     ]
-    if (
-        presentation_network is not None
-        and "link:presentationLink" not in used_ons
+
+    if "link:presentationLink" not in used_ons and any(
+        map(lambda n: isinstance(n, PresentationNetwork), networks)
     ):
-        # TODO: remove
-        print(used_ons)
-        pprint_network(presentation_network)
         raise ValueError(
-            f"A presentation network is not allowed for the component with id '{uri}', but one was passed."
+            f"Component {uri} has presentation networks, but no appropriate usedOn element"
         )
-    if (
-        calculation_network is not None
-        and "link:calculationLink" not in used_ons
+    if "link:calculationLink" not in used_ons and any(
+        map(lambda n: isinstance(n, CalculationNetwork), networks)
     ):
         raise ValueError(
-            f"A calculation network is not allowed for the component with id '{uri}', but one was passed."
+            f"Component {uri} has calculation networks, but no appropriate usedOn element"
         )
-    if (
-        definition_network is not None
-        and "link:definitionLink" not in used_ons
+    if "link:definitionLink" not in used_ons and any(
+        map(lambda n: isinstance(n, DefinitionNetwork), networks)
     ):
         raise ValueError(
-            f"A definition network is not allowed for the component with id '{uri}', but one was passed."
+            f"Component {uri} has definition networks, but no appropriate usedOn element"
         )
 
-    return Component(
-        uri,
-        info,
-        presentation_network,
-        calculation_network,
-        definition_network,
-    )
+    return Component(uri, info, list(networks))
 
 
 def parse_components_xml(
-    schemas: list[lxml.etree._ElementTree],
-    networks: dict[str, list[INetwork]],
-    report_elements: dict[QName, IReportElement],
+    schemas: Iterable[lxml.etree._ElementTree],
+    networks: Mapping[str, Iterable[INetwork]],
     qname_nsmap: QNameNSMap,
-) -> tuple[list[Component], dict[QName, IReportElement]]:
+) -> list[Component]:
     """
     Parse the components.
     :param schemas: The xbrl schema xml trees
     :param networks: The networks as a dictionary of roleURI -> list of networks. Networks that belong to the default role have roleID None.
-    :param report_elements: The report elements as a dictionary of QName -> IReportElement
     :param qname_nsmap: The QNameNSMap
-    :return: a tuple containing:
-        - A list of all the components in the filing.
-        - A dictionary of all the report elements in the filing. These might have been altered by the components. More specifically, some abstracts might have been promoted to line items.
+    :return list[Component]: All the components in the filing.
     """
     nsmap = qname_nsmap.get_nsmap()
 
@@ -131,17 +113,6 @@ def parse_components_xml(
             roleURI = roletype.get("roleURI")
             roleID = roletype.get("id")
 
-            definition_element = roletype.find(
-                "link:definition", namespaces=nsmap
-            )
-            if definition_element is None:
-                definition = ""
-            else:
-                definition = definition_element.text
-
-                if definition is None:
-                    definition = ""
-
             if roleURI is None:
                 raise ValueError(f"roleURI for role {roleID} is None")
 
@@ -151,53 +122,19 @@ def parse_components_xml(
             # check if the role id is a valid NCName
             # NCName is defined in https://www.w3.org/TR/xml-names/#NT-NCName
             # NCNames are similar to python identifiers, except that they might contain '.' and '-' (not in the beginning)
-            roleID_strippped = roleID.replace(".", "").replace("-", "")
+            roleID_stripped = roleID.replace(".", "").replace("-", "")
             if (
-                not roleID_strippped.isidentifier()
+                not roleID_stripped.isidentifier()
                 or roleID.startswith("-")
                 or roleID.startswith(".")
             ):
                 raise ValueError(f"roleID {roleID} is not a valid NCName")
 
-            # TODO: give all the networks associated with a component to the component instead of pre-filtering them here
-            # Maybe a component has more than just presentation, definition and calculation networks
-            # Find the networks that belong to the component
-            presentation_network = next(
-                (
-                    x
-                    for x in networks[roleURI]
-                    if isinstance(x, PresentationNetwork)
-                ),
-                None,
-            )
-            calculation_network = next(
-                (
-                    x
-                    for x in networks[roleURI]
-                    if isinstance(x, CalculationNetwork)
-                ),
-                None,
-            )
-            # definition_network = next((x for x in networks[roleID] if isinstance(x, DefinitionNetwork)), None)
-
-            # reconstruct the definition network from the physical definition networks
-            # get the physical definition networks
-            definition_network = next(
-                (
-                    x
-                    for x in networks[roleURI]
-                    if isinstance(x, DefinitionNetwork) and not x.is_physical()
-                ),
-                None,
-            )
-
             component = parse_component_from_xml(
                 roletype,
                 qname_nsmap,
-                presentation_network,
-                calculation_network,
-                definition_network,
+                networks[roleURI],
             )
             components.append(component)
 
-    return components, report_elements
+    return components
