@@ -37,7 +37,7 @@ subsequent developments have enabled its compatibility with additional formats s
 % In the private sector, XBRL is used by companies such as JP Morgan Chase, Microsoft, and Hitachi to automate their financial reporting processes.\cite{pwc2002thejournal}
 Previously, XBRL was a specialized technology utilized by a select group of companies.
 Presently, XBRL is witnessing increased adoption across both public and private sectors.
-Regulatory bodies such as the US Securities and Exchange Commission (SEC) and the European Banking Authority (EBA)\cite{eba_reporting_frameworks} are progressively mandating the submission of reports in XBRL format.\cite{sec_ixbrl}
+Regulatory bodies such as the US Securities and Exchange Commission (SEC)\cite{sec_ixbrl} and the European Banking Authority (EBA)\cite{eba_reporting_frameworks} are progressively mandating the submission of reports in XBRL format.
 In the corporate domain, entities like JP Morgan Chase, Microsoft, and Hitachi are leveraging XBRL to streamline their financial reporting mechanisms.\cite{pwc2002thejournal}
 
 % However, XBRL is not without its problems.
@@ -45,9 +45,11 @@ In the corporate domain, entities like JP Morgan Chase, Microsoft, and Hitachi a
 % Many of its intricacies are a result of legacy design decisions and make working with XBRL unnecessarily difficult.
 % % On top of that XBRLs design is closely tied to the XML format, even though standard is not strictly tied to XML anymore.
 % In addition, XBRL is closely tied to the XML format, even though the standard is not strictly tied to XML anymore.
-Nonetheless, XBRL encompasses certain complexities.
-As a framework, XBRL embodies considerable intricacy,
-with many complexities stemming from historical design choices that contribute to its challenging usability.
+% Nonetheless, XBRL encompasses certain complexities.
+% As a framework, XBRL embodies considerable intricacy,
+% with many complexities stemming from historical design choices that contribute to its challenging usability.
+Nonetheless, XBRL encompasses certain complexities,
+many of which are stemming from historical design choices.
 Moreover, despite XBRL's evolution beyond its initial XML foundations,
 the association with XML format persists.
 
@@ -60,8 +62,9 @@ Given XBRL's primary audience of non-technical users, its accessibility is cruci
 % its usability is of utmost importance.
 Nevertheless,
 the present status of XBRL does not fully align with this requirement.
+This gave rise to a diverse landscape of XBRL tools,
 % The XBRL ecosystem encompasses a diverse array of tools,
-The XBRL landscape is characterized by a diverse array of tools,
+% The XBRL landscape is characterized by a diverse array of tools,
 with a majority being proprietary and not openly accessible.
 While there are open-source alternatives available,
 they are limited in number.
@@ -95,10 +98,10 @@ The OIM is not yet finalized and does not cover all aspects of XBRL.
 \section{Goals of this thesis}
 \label{sec:goals}
 
-The goal of this thesis is to create a new open source XBRL library that is based on the XBRL, notably the OIM.
+The goal of this thesis is to create a new open source XBRL library that is based on the XBRL standard, notably the OIM.
 % The name of the library is \texttt{Brel} (short for \textbf{B}usiness \textbf{R}eporting \textbf{E}xtensible \textbf{L}ibrary) and it is written in the Python programming language.
 % The library should be easy to use and well documented.
-The library is called \texttt{Brel} (short for \textbf{B}usiness \textbf{R}eporting \textbf{E}xtensible \textbf{L}ibrary) and is written in the Python programming language.
+The library is called \texttt{Brel} (short for Business Reporting Extensible Library) and is written in the Python programming language.
 % It is designed to be easy to use and well documented.
 It should be easy to use and well documented.
 % It should provide a simple python API that allows developers to easily read XBRL reports and extract information from them.
@@ -122,9 +125,12 @@ The research questions that this thesis aims to answer are:
 % The XBRL standard is very complex, too complex to be covered in its entirety in a single thesis.
 % Since its inception in 2000, the standard did not only grow in size, but also in complexity.
 The XBRL standard has grown in size and complexity since its inception in 2000.
+% In its current form, implementing a complete XBRL library is not feasible within the scope of a single thesis.
 In its current form, implementing a complete XBRL library is not feasible within the scope of a single thesis.
 % It has grown to a point where it is no longer feasible to implement a complete XBRL library within the scope of a single thesis.
-Therefore, the implementation of Brel will have to make some compromises.
+% Therefore, the implementation of Brel will have to make some compromises.
+Therefore, Brel will have to make some compromises.
+
 % The first two limitations of this thesis are therefore, the library will only support XBRL reports in XML format.
 The first limitation of this thesis is that the library will only support XBRL reports in XML format.
 Secondly, the library will only support reading XBRL reports, not creating or modifying them.
@@ -132,21 +138,26 @@ Secondly, the library will only support reading XBRL reports, not creating or mo
 % The third limitation of Brel is a matter of report semantics.
 Third, Brel will not semantically validate XBRL reports.
 
-Whereas the first two limitations are self-explanatory, the third limitation requires some explanation.
+% Whereas the first two limitations are self-explanatory, the third limitation requires some explanation.
+While the initial two limitations are straightforward, the third limitation necessitates further clarification.
 % Similar to how the source code of a program can be interpreted in terms of syntax and semantics, XBRL reports can be viewed through the same lens.
 XBRL reports can be interpreted in terms of syntax and semantics, similar to the source code of a program.
-A syntactically correct XBRL report conforms to the XBRL specification, but it does not necessarily make sense
+% A syntactically correct XBRL report conforms to the XBRL specification, but it does not necessarily make sense
+An XBRL report that is syntactically accurate adheres to the XBRL specifications, yet it may not always be logically coherent
 \footnote{The XBRL specification does sometimes branch out into the realm of semantics. Brel ignores these parts of the specification.}.
-A semantically correct report is both syntactically correct and is also logically consistent.
+A semantically correct report is both syntactically correct and logically coherent.
 % Semantical correctness started bleeding into the XBRL specification through supporting documents.
 % This thesis will not cover the semantics of XBRL reports.
-This thesis will not cover the semantics of XBRL reports, which are not strictly defined by the XBRL specification, but rather through supporting documents.
+% This thesis will not cover the semantics of XBRL reports, which are not strictly defined by the XBRL specification, but rather through supporting documents.
+This thesis will not address the semantics of XBRL reports, 
+as they are not explicitly detailed in the XBRL specification but are outlined in supplementary documents.
 
 % Through the Brel API, it is possible to semantically validate XBRL reports to be in line with the XBRL supporting documents.
 % By using the Brel API, it is possible to semantically validate XBRL reports.
-However, by using the Brel API, one can semantically validate XBRL reports.
-The functionality for semantic validation is not part of the Brel library, but can be implemented on top of the Brel API.
-The reader can think of Brel as a syntactic wrapper around XBRL reports.
+% However, by using the Brel API, one can semantically validate XBRL reports.
+Nonetheless, semantic validation of XBRL reports can be achieved through the use of the Brel API.
+% The functionality for semantic validation is not part of the Brel library, but can be implemented on top of the Brel API.
+% The reader can think of Brel as a syntactic wrapper around XBRL reports.
 % However, this thesis will not cover the semantics of XBRL reports in order to keep the scope of the thesis manageable.
 % At this point, think of Brel as a syntactic wrapper around XBRL reports.
 % The only exception to this rule is in calculation networks, which will be explained in chapter \ref{chapter:xbrl}.
@@ -156,16 +167,22 @@ The reader can think of Brel as a syntactic wrapper around XBRL reports.
 \section{Structure of this thesis}
 
 % Since this thesis is about XBRL, it is important to first understand what XBRL is and how it works.
-To properly understand how Brel implements a pythonic API for XBRL reports, it is important to first understand the underlying XBRL standard.
-Therefore, chapter \ref{chapter:xbrl} will give a brief introduction to XBRL. 
+% To properly understand how Brel implements a pythonic API for XBRL reports, it is important to first understand the underlying XBRL standard.
+Grasping the underlying XBRL standard is essential to understand how Brel provides a pythonic API for XBRL reports.
+% Therefore, chapter \ref{chapter:xbrl} will give a brief introduction to XBRL. 
+Hence, Chapter \ref{chapter:xbrl} will offer a concise introduction to XBRL.
 % It will introduce the core concepts of XBRL in the OIM and move on to the non-OIM sections of XBRL.
-It will introduce the core concepts of XBRL in the OIM, followed by the non-OIM sections of XBRL.
+% It will introduce the core concepts of XBRL in the OIM, followed by the non-OIM sections of XBRL.
+The chapter will present the fundamental concepts of XBRL within the OIM framework, followed by an exploration of the non-OIM aspects of XBRL.
 % It will not dive deep into the technical details of the XBRL standard, but instead focus on the concepts that are relevant for this thesis.
-The chapter will not delve into the technical details of the XBRL standard, but rather focus on the concepts relevant for this thesis.
+% The chapter will not delve into the technical details of the XBRL standard, but rather focus on the concepts relevant for this thesis.
+This chapter will concentrate on the concepts pertinent to this thesis, rather than delving into the technical specifics of the XBRL standard.
 
-Next, chapter \ref{chapter:api} will introduce the API of Brel.
+Subsequently, Chapter \ref{chapter:api} will introduce the API of Brel.
+% Next, chapter \ref{chapter:api} will introduce the API of Brel.
 % This chapter is already part of the result of this thesis, but it makes more sense to introduce the API before its implementation.
-This chapter, while constituting a portion of the thesis outcomes, is positioned prior to the implementation of the API.
+% This chapter, while constituting a portion of the thesis outcomes, is positioned prior to the implementation of the API.
+This chapter, which forms part of the thesis results, is positioned prior to the implementation of the API.
 The reason for this deviation from the conventional structure is that it is more logical to introduce the API before its implementation.
 The API chapter will answer research question \ref{itm:research_question_1} and \ref{itm:research_question_2}.
 
@@ -178,12 +195,18 @@ The API chapter will answer research question \ref{itm:research_question_1} and 
 % it will primarily focus on the aspects of the implementation which are more involved.
 % The chapter will also discuss the library's design, specifically its capability to support various formats in future versions, 
 % addressing Research Question \ref{itm:research_question_3}.
-Chapter \ref{sec:implementation} outlines the Brel library's implementation,
-connecting the API from Chapter \ref{chapter:api} with the XBRL standards in Chapter \ref{chapter:xbrl}.
+% Chapter \ref{sec:implementation} outlines the Brel API's implementation,
+% connecting the API from Chapter \ref{chapter:api} with the XBRL standards in Chapter \ref{chapter:xbrl}.
+Chapter \ref{sec:implementation} details the implementation of the Brel API, 
+linking the API discussed in Chapter \ref{chapter:api} with the XBRL standards explored in Chapter \ref{chapter:xbrl}.
+% While aiming for a comprehensive overview,
+% the chapter will particularly emphasize the more involved aspects of the implementation.
 While aiming for a comprehensive overview,
 the chapter will particularly emphasize the more involved aspects of the implementation.
-It will also discuss the library's design and its potential to support various formats in future versions,
-addressing Research Question \ref{itm:research_question_3}.
+% It will also discuss the library's design and its potential to support various formats in future versions,
+% addressing Research Question \ref{itm:research_question_3}.
+Additionally, the chapter will explore the design of the library and its capability to accommodate different formats in future iterations, 
+thereby addressing Research Question \ref{itm:research_question_3}.
 
 % The Results chapter \ref{chapter:results} will evaluate the library based on the goals set out in the introduction.
 % This chapter will also give a comprehensive overview of how Brel performs in terms of various XBRL conformance suites.
@@ -193,9 +216,15 @@ addressing Research Question \ref{itm:research_question_3}.
 % % Additionally, it will give examples of how the library can be used to read and validate XBRL reports.
 
 % Lastly, chapter \ref{chapter:conclusion} will summarize the results of this thesis and give an outlook on future work.
-Chapter \ref{chapter:results}, the Results chapter, assesses the library's performance against the objectives established in the introduction.
-This chapter provides a detailed analysis of Brel's compatibility with various XBRL conformance suites.
-It also illustrates practical applications of the library, demonstrating how Brel can be utilized for reading and validating XBRL reports.
+% Chapter \ref{chapter:results}, the Results chapter, assesses the library's performance against the objectives established in the introduction.
+% This chapter provides a detailed analysis of Brel's compatibility with various XBRL conformance suites.
+% It also illustrates practical applications of the library, demonstrating how Brel can be utilized for reading and validating XBRL reports.
+Chapter \ref{chapter:results}, known as the Results chapter, 
+evaluates the library's effectiveness in meeting the goals set out in the introduction. 
+This chapter offers an in-depth examination of Brel's alignment with different XBRL conformance suites. 
+Additionally, it showcases real-world uses of the library, 
+highlighting how Brel can be employed for reading and verifying XBRL reports.
 
-Chapter \ref{chapter:conclusion}, the final chapter, will recapitulate the key findings of this thesis.
-It will also provide perspectives on potential directions for future research and development regarding Brel.
+Chapter \ref{chapter:conclusion}, the concluding chapter,
+will reiterate the main discoveries of this thesis.
+It will also offer insights into possible avenues for further research and development related to Brel.
