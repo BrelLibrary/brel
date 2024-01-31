@@ -57,6 +57,7 @@ class XMLFileManager(IFileManager):
         self.__filenames: list[str] = []
         self.__file_cache: dict[str, lxml.etree._ElementTree] = {}
         self.__file_prefixes: dict[str, list[str]] = defaultdict(list)
+        self.__session = requests.Session()
 
         # populate the cache
         if DEBUG:  # pragma: no cover
@@ -176,17 +177,21 @@ class XMLFileManager(IFileManager):
         :returns: The downloaded content as a string.
         """
         try:
-            # response = requests.get(uri)
             # TODO: make this less hacky
             # this is essentially a spoof of a user agent
             # The SEC blocks bots that are trying to scrape their data
-            response = requests.get(uri, headers={"User-Agent": "Mozilla/5.0"})
+            response = self.__session.get(uri, headers={"User-Agent": "Mozilla/5.0"})
             # sleep for 0.1 second to avoid getting blocked by the SEC
             if "sec.gov" in uri:
                 time.sleep(0.1)
         except ConnectionError:
             raise Exception(
                 f"Could not connect to {uri}. Are you connected to the internet?"
+            )
+
+        if response.status_code != 200:
+            raise Exception(
+                f"Failed to download {uri}. The server responded with status code {response.status_code}"
             )
         xsd_content = response.content
 
@@ -220,11 +225,13 @@ class XMLFileManager(IFileManager):
         is_cached = file_name in os.listdir(self.cache_location)
 
         if DEBUG:  # pragma: no cover
-            print(f"[File Manager] uri: {uri}, file_name: {file_name}")
-            if is_cached:
-                print(f"[File Manager] file is local")
-            else:
-                print(f"[File Manager] file is remote")
+            print(
+                f"[File Manager] uri: {uri}, file_name: {file_name}, is_cached: {is_cached}, is_uri_remote: {is_uri_remote}, referencing_uri: {referencing_uri}"
+            )
+
+        if is_uri_remote and not uri.startswith("http"):
+            uri_directory = os.path.dirname(referencing_uri)
+            uri = os.path.join(uri_directory, uri)
 
         if is_cached:
             # load the schema from the cache
@@ -234,42 +241,44 @@ class XMLFileManager(IFileManager):
         elif is_uri_remote:
             # if the file is online, load it from the url
             # if the uri is a local file path, but the referencing uri is online, then build the absolute uri from the two
-            if not uri.startswith("http"):
-                uri_directory = os.path.dirname(referencing_uri)
-                uri = os.path.join(uri_directory, uri)
-
             xsd_content = self.__download_and_store(uri, file_name)
         else:
             # otherwise the file is local and we can load it directly
-            uri_directory = os.path.dirname(referencing_uri)
-            uri = os.path.join(uri_directory, uri)
-
-            if not os.path.isfile(uri):
-                raise ValueError(
-                    f"Could not find file {uri}, even though the XBRL report refers to it."
-                )
-
-            with open(uri, "rb") as f:
-                xsd_content = f.read()
+            raise ValueError(
+                f"Could not find file {uri}, even though the XBRL report refers to it.\n The referencing file is {referencing_uri}"
+            )
 
         # parse the schema
         if DEBUG:  # pragma: no cover
             print(f"[File Manager] parsing {file_name}")
 
-        xsd_tree = lxml.etree.parse(BytesIO(xsd_content), parser=self.__parser)
+        try:
+            xsd_tree = lxml.etree.parse(BytesIO(xsd_content), parser=self.__parser)
+        except lxml.etree.XMLSyntaxError:
+            raise ValueError(
+                f"Failed to parse {uri} as an XML file. The file is not a valid XML file."
+            )
+
+        if not isinstance(xsd_tree, lxml.etree._ElementTree):
+            raise ValueError(
+                f"Failed to parse {uri} as an XML file. The file is not a valid XML file."
+            )
         # load it into the cache
         self.__file_cache[file_name] = xsd_tree
         # add it to the list of filenames
         self.__filenames.append(file_name)
         # add it to the list of prefixes
 
-        reference_uris: list[str] = []
+        reference_uris: set[str] = set()
         # find all hrefs in the file
         # TODO: make namespace non-hardcoded
         for href_elem in xsd_tree.findall(
             ".//*[@xlink:href]", namespaces={"xlink": "http://www.w3.org/1999/xlink"}
         ):
             # get the href attribute
+            if not isinstance(href_elem, lxml.etree._Element):
+                continue
+
             href = href_elem.get("{http://www.w3.org/1999/xlink}href", "")
             href = cast(str, href)
 
@@ -280,24 +289,23 @@ class XMLFileManager(IFileManager):
                 href_uri = href
 
             if href_uri != "":
-                reference_uris.append(href_uri)
+                reference_uris.add(href_uri)
 
         # find all schemaLocations in the file
-        # TODO: make namespace non-hardcoded
-        for schemaLocation_elem in xsd_tree.findall(
-            ".//*[@schemaLocation]",
-            namespaces={"xsi": "http://www.w3.org/2001/XMLSchema-instance"},
-        ):
+        for schemaLocation_elem in xsd_tree.xpath("//*[@schemaLocation]"):
+            if not isinstance(schemaLocation_elem, lxml.etree._Element):
+                continue
             # get the schemaLocation attribute
-            schemaLocation = schemaLocation_elem.get(
-                "{http://www.w3.org/2001/XMLSchema-instance}schemaLocation", ""
-            )
+            schemaLocation = schemaLocation_elem.get("schemaLocation", "")
 
             schemaLocation = cast(str, schemaLocation)
             # split the schemaLocation by whitespace
 
             if schemaLocation != "":
-                reference_uris.append(schemaLocation)
+                reference_uris.add(schemaLocation)
+
+        if DEBUG:  # pragma: no cover
+            print(f"[File Manager] uri {uri} references {reference_uris}")
 
         for reference_uri in reference_uris:
             # load the schema
