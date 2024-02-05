@@ -52,9 +52,7 @@ def pprint_facts(facts: list[Fact]):
     dimensions.sort(key=sort_dimensions)
 
     # initialize the table
-    columns = (
-        ["id"] + [dimension.get_name() for dimension in dimensions] + ["value"]
-    )
+    columns = ["id"] + [dimension.get_name() for dimension in dimensions] + ["value"]
 
     table = PrettyTable(columns)
     table.align = "r"
@@ -66,10 +64,7 @@ def pprint_facts(facts: list[Fact]):
         context = fact.get_context()
         row = (
             [fact._get_id()]  # pylint: disable=protected-access
-            + [
-                context.get_characteristic(dimension)
-                for dimension in dimensions
-            ]
+            + [context.get_characteristic(dimension) for dimension in dimensions]
             + [fact.get_value_as_str()]
         )
 
@@ -95,7 +90,9 @@ def pprint_fact(fact: Fact):
     # initialize the table
     columns = ["aspect", "value"]
 
-    alignment = ["r"] * (len(columns) - 1) + ["l"]
+    # alignment = ["r"] * (len(columns) - 1) + ["l"]
+    alignment = "l"
+    # print(alignment)
 
     table = PrettyTable(columns, align=alignment)
     # table.align = "r"

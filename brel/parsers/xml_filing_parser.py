@@ -5,8 +5,8 @@ It is responsible for taking a list of filepaths to XBRL files and parsing them 
 ====================
 
 - author: Robin Schmidiger
-- version: 0.8
-- date: 21 January 2024
+- version: 0.9
+- date: 05 February 2024
 
 ====================
 """
@@ -133,11 +133,17 @@ class XMLFilingParser(IFilingParser):
     def get_nsmap(self) -> QNameNSMap:
         return self.__nsmap
 
-    def parse_report_elements(self) -> dict[QName, IReportElement]:
+    def parse_report_elements(
+        self,
+    ) -> Tuple[Mapping[QName, IReportElement], Iterable[Exception]]:
         """
-        Parse the concepts.
-        :returns: A list of all the concepts in the filing, even those that are not reported.
+        Parse the report elements. Even those that are not part of any network or fact.
+        :returns:
+        - A lookup that, given a QName, returns the report element with that QName.
+        - A list of errors that occurred during parsing.
         """
+        errors: list[Exception] = []
+
         xsd_filenames = [
             filename
             for filename in self.__file_manager.get_file_names()
@@ -147,28 +153,38 @@ class XMLFilingParser(IFilingParser):
             self.__file_manager.get_file(filename) for filename in xsd_filenames
         ]
 
-        report_elems, id_to_report_elem = parse_report_elements_xml(
-            self.__file_manager, xsd_etrees, self.__nsmap
-        )
+        (
+            report_elements,
+            id_to_report_elem,
+            report_element_errors,
+        ) = parse_report_elements_xml(self.__file_manager, xsd_etrees, self.__nsmap)
+
+        errors.extend(report_element_errors)
 
         for id, report_elem in id_to_report_elem.items():
             if id in self.__id_to_any.keys():
-                raise ValueError(
-                    f"the id {id} is not unique. It is used by {self.__id_to_any[id]} and {report_elem}"
+                errors.append(
+                    ValueError(
+                        f"the id {id} is not unique. It is used by {self.__id_to_any[id]} and {report_elem}"
+                    )
                 )
 
             self.__id_to_any[id] = report_elem
 
-        return report_elems
+        return report_elements, errors
 
     def parse_facts(
         self, report_elements: Mapping[QName, IReportElement]
-    ) -> Iterable[Fact]:
+    ) -> Tuple[Iterable[Fact], Iterable[Exception]]:
         """
         Parse the facts.
-        :param report_elements: A dictionary containing ALL report elements that the facts report against.
-        :returns list[Fact]: A list of all the facts in the filing.
+        :param report_elements: A lookup function that, given a QName, returns the associated report element.
+        :returns
+        - Iterable[Fact]: A list of facts.
+        - Iterable[Exception]: A list of errors that occurred during parsing.
         """
+        errors: list[Exception] = []
+
         all_filenames = self.__file_manager.get_file_names()
         xml_filenames = list(
             filter(lambda filename: filename.endswith(".xml"), all_filenames)
@@ -177,25 +193,32 @@ class XMLFilingParser(IFilingParser):
             self.__file_manager.get_file(filename) for filename in xml_filenames
         ]
 
-        facts, id_to_fact = parse_facts_xml(xml_etrees, report_elements, self.__nsmap)
+        facts, id_to_fact, facts_errors = parse_facts_xml(
+            xml_etrees, report_elements, self.__nsmap
+        )
+        errors.extend(facts_errors)
 
         for id, fact in id_to_fact.items():
             if id in self.__id_to_any.keys():
-                raise ValueError(
-                    f"the id {id} is not unique. It is used by {self.__id_to_any[id]} and {fact}"
+                errors.append(
+                    ValueError(
+                        f"the id {id} is not unique. It is used by {self.__id_to_any[id]} and {fact}"
+                    )
                 )
 
             self.__id_to_any[id] = fact
 
-        return facts
+        return facts, errors
 
     def parse_networks(
         self, report_elements: Mapping[QName, IReportElement]
-    ) -> Mapping[str, Iterable[INetwork]]:
+    ) -> Tuple[Mapping[str, Iterable[INetwork]], Iterable[Exception]]:
         """
-        Parse the networks. Alter the report elements accordingly.
-        :param report_elements: A dictionary containing ALL report elements that the networks report against.
-        :returns: A mapping from component names to a list of networks for that component.
+        Parse the networks and updates the report element lookup function accordingly.
+        :param report_elements: A lookup function that, given a QName, returns the associated report element.
+        :returns:
+        - Mapping[str, Iterable[INetwork]]: A lookup function that, given a role uri, returns a list of networks with that uri.
+        - Iterable[Exception]: A list of errors that occurred during parsing.
         """
         return parse_networks_from_xmls(
             self.__file_manager.get_all_files(),
@@ -207,12 +230,13 @@ class XMLFilingParser(IFilingParser):
     def parse_components(
         self,
         networks: Mapping[str, Iterable[INetwork]],
-    ) -> Iterable[Component]:
+    ) -> Tuple[Iterable[Component], Iterable[Exception]]:
         """
         Parse the components.
-        :param networks: A dictionary containing ALL networks that the components report against.
-        The keys are the component names, the values are lists of networks for that component.
-        :returns Iterable[Component]: A list of all the components in the filing.
+        :param networks: A lookup function that, given a role uri, returns a list of networks with that uri.
+        :returns:
+        - Iterable[Component]: A list of components.
+        - Iterable[Exception]: A list of errors that occurred during parsing.
         """
         return parse_components_xml(
             self.__file_manager.get_all_files(),

@@ -1,91 +1,55 @@
 
-\section{QNames and namespace normalization}
+\section{Namespace Normalization}
 \label{sec:qnames_implementation}
 
 % As mentioned in chapter \ref{chapter:xbrl}, Brel leverages QNames to identify various elements across the XBRL report.
-Both chapters \ref{chapter:xbrl} and \ref{chapter:api} disclose that Brel leverages QNames to identify various elements across the XBRL report.
-QNames are a concept that is widely used in XML and XML-based languages, such as XBRL.
-Thus, for most QNames in Brel, the necessary information can be directly extracted from the corresponding XML elements in both the XBRL taxonomy and the XBRL filing.
-However, there is an important difference between QNames in XML and QNames in Brel - Namespace bindings.
+% Both chapters \ref{chapter:xbrl} and \ref{chapter:api} disclose that Brel leverages QNames to identify various elements across the XBRL report.
+% QNames are a concept that is widely used in XML and XML-based languages, such as XBRL.
+% Thus, for most QNames in Brel, the necessary information can be directly extracted from the corresponding XML elements in both the XBRL taxonomy and the XBRL filing.
+% However, there is an important difference between QNames in XML and QNames in Brel - Namespace bindings.
 
-Namespace bindings are the mappings between prefixes and namespace URIs.
-In XBRL, the URI often points to a taxonomy file.
-The prefix is used to refer to the namespace URI in the XBRL filing in a compact way.
-For example, the prefix \texttt{us-gaap} might be bound to the namespace URI \texttt{http://fasb.org/us-gaap/2023}.
+% Namespace bindings are the mappings between prefixes and namespace URIs.
+% In XBRL, the URI often points to a taxonomy file.
+% The prefix is used to refer to the namespace URI in the XBRL filing in a compact way.
+% For example, the prefix \texttt{us-gaap} might be bound to the namespace URI \texttt{http://fasb.org/us-gaap/2023}.
 
-In XML documents, namespace bindings can be defined on a per-element basis. 
-Child elements inherit the namespace bindings of their parent elements, unless they define their own namespace bindings. 
-This allows for the construction of complex namespace hierarchies, where each element can have its own namespace bindings.
-In Brel, however, namespace bindings are flat and defined on a global level.
+% In XML documents, namespace bindings can be defined on a per-element basis.
+% Child elements inherit the namespace bindings of their parent elements, unless they define their own namespace bindings.
+% This allows for the construction of complex namespace hierarchies, where each element can have its own namespace bindings.
+% % In Brel, however, namespace bindings are flat and defined on a global level.
+% In contrast to XML, namespace bindings in Brel are flat and defined on a global level.
 
-The process of converting this hierarchical structure of namespace bindings into a flat structure is called \textbf{namespace normalization}.
-Namespace normalization not only flattens the namespace hierarchy, but also resolves collisions in namespace bindings.
+% The process of converting this hierarchical structure of namespace bindings into a flat structure is called \textbf{namespace normalization}.
+% Namespace normalization not only flattens the namespace hierarchy, but also resolves collisions in namespace bindings that might occur during the flattening process.
 
-The motivation for having a flat structure of namespace bindings is that it makes it easier for users to search concepts, types, etc. in an XBRL filing using QNames.
-Lets say a user wants to search for all facts that are associated with the concept \texttt{us-gaap:Assets}.
+% The motivation for having a flat structure of namespace bindings is the reduction of complexity for the user.
+Both chapters \ref{chapter:xbrl} and \ref{chapter:api} reveal that Brel utilizes QNames to identify various elements within the XBRL report.
+QNames are a fundamental concept in XML and XML-based languages, like XBRL.
+As such, for most QNames in Brel, the necessary information is directly retrievable from the corresponding XML elements in both the XBRL taxonomy and the XBRL filing.
+However, a key distinction exists between QNames in XML and those in Brel, particularly in terms of Namespace bindings.
 
-In XML, the prefix \texttt{us-gaap} might be bound to a different namespace URI in each element.
-So there are no guarantees that the prefix \texttt{us-gaap} is bound to just one namespace URI in the entire XBRL filing.
-A good XBRL parser will find all namespace bindings for the prefix \texttt{us-gaap} and search all of them for the concept \texttt{Assets}.
-However, this is not guaranteed and depends on the XBRL parser.
+Namespace bindings represent the associations between prefixes and namespace URIs.
+In XBRL, a URI typically links to a taxonomy file.
+The prefix is employed to succinctly reference the namespace URI within the XBRL filing.
+For instance, the prefix \texttt{us-gaap} might be bound to the namespace URI \texttt{http://fasb.org/us-gaap/2023}.
 
-Furthermore, the filer of the XBRL report might choose to use the prefix \texttt{us-gaap1} instead of \texttt{us-gaap} in some sections to refer to the same namespace URI.
-So there might not be a concept called \texttt{us-gaap:Assets}, but a concept called \texttt{us-gaap1:Assets} instead.
+In XML documents, these namespace bindings can be specified for individual elements.
+Child elements inherit their parent elements' namespace bindings, except when they establish their own.
+This flexibility allows the creation of intricate namespace hierarchies, where each element can possess unique namespace bindings.
+Conversely, Brel's approach to namespace bindings is more simplified, maintaining a flat and globally defined structure.
 
-The user could simply search both for \texttt{us-gaap} and \texttt{us-gaap1} to find the concept \texttt{Assets}.
-Obviously, this is extremely cumbersome and a suboptimal fix for the problem.
-It also insufficiantly shields users from the complexity of XML and XML-based languages, such as XBRL, 
-since they need to be aware of the structure of the underlying namespace hierarchy.
-
-In Brel, the user can simply search for the QName \texttt{us-gaap:Assets} and will find all facts that are associated with this concept.
-Brel will automatically resolve the prefix \texttt{us-gaap} to the corresponding namespace URI.
-If the report uses the prefix \texttt{us-gaap1} instead of \texttt{us-gaap}, Brel will still be able to resolve the prefix to the correct namespace URI.
-
-\subsection{Namespace hierarchy notation}
-
-This section exclusively focuses on the implementation of QNames in Brel and namespace bindings in particular. 
-Since XML documents tend to be verbose and contain a lot of information that is not relevant for namespace bindings,
-I will use a custom notation to represent namespace bindings in this section. 
-I will refer to this notation as the \textit{namespace hierarchy notation} and describe it using an example.
-
-The namespace hierarchy notation works as follows:
-
-\begin{itemize}
-    \item Each level of the namespace hierarchy is represented as a single line.
-    \item Depending on the level of the namespace hierarchy, the element name has a different indentation.
-    \item The name of the element is followed by a list of namespace bindings, separated by commas.
-    \item Each namespace binding is represented as a key-value pair, where the key is the prefix of the namespace binding and the value is the namespace URI.
-    \item If an element does not define any namespace bindings, the list of namespace bindings is omitted.
-    \item XML attributes that are not namespace bindings are omitted in this notation.
-\end{itemize}
-
-Take the following XML snippet as an example:
-
-% Example of an XML snipped where namespace bindings are defined on a per-element basis
-\begin{figure}[H]
-    \caption{Example of an XML snippet where namespace bindings are defined on a per-element basis}
-    \label{fig:xml_namespace_notation_example}
-    \begin{lstlisting}[language=XML]
-        <element1 
-          xmlns:foo = "http://foo.com" 
-          color = "red"
-        >
-            <element2 xmlns:bar = "http://bar.com"/>
-                <element3 color = "blue">
-            </element2>
-        </element1>
-        <element4 
-          xmlns:baz = "http://baz.com" 
-          xmlns:foo = "http://other-foo.com"
-        >
-    \end{lstlisting}
-\end{figure}
-
-Using the namespace hierarchy notation, we can represent the same namespace hierarchy as follows:
+This section is devoted to discussing the implementation of QNames in Brel, focusing particularly on namespace bindings.
+Given that XML documents include information irrelevant to namespace bindings,
+the figures in this section omit any extraneous information that is not relevant to namespace bindings and their hierarchical structure.
+% a custom notation is used to represent namespace bindings in this section.
+% This notation keeps the hierarchical structure of namespace bindings intact, but omits any extraneous information.
+% An example of this notation is provided below.
+% An example of this is provided below.
+An example figure is provided below.
 
 % Example of the same XML snippet where namespace bindings are defined on a per-level basis
 \begin{figure}[H]
-    \caption{Example of the same XML snippet in our custom notation}
+    \caption{Example of namespace bindings defined on a per-level basis}
     \label{fig:custom_namespace_notation_example}
     \dirtree{%
     .1 root.
@@ -96,30 +60,229 @@ Using the namespace hierarchy notation, we can represent the same namespace hier
 }
 \end{figure}
 
-As we can see, the namespace hierarchy notation is much more compact than the XML snippet.
-The \texttt{color} attribute of \texttt{element1} and \texttt{element3} is omitted, since it is not a namespace binding.
+The term \textbf{namespace normalization} refers to the process of converting a hierarchical structure such as \ref{fig:custom_namespace_notation_example} into a flat structure.
+% \textbf{Namespace normalization} refers to the transformation of this hierarchical namespace binding structure into a flat one.
+This process not only simplifies the namespace hierarchy but also addresses potential conflicts in namespace bindings that may arise during the simplification process.
+The rationale behind adopting a flat structure for namespace bindings in Brel is to reduce complexity for the user.
 
-\subsection{Flattening namespace bindings}
+% The motivation for having a flat structure of namespace bindings is that it makes it easier for users to search concepts, types, etc. in an XBRL filing using QNames.
 
-As mentioned in the previous section, namespace bindings in XML are defined on a per-element basis,
-which is arranged in a tree structure.
-In Brel, however, namespace bindings are defined on a global level, which is arranged in a flat structure.
-Thus, we need to flatten the namespace hierarchy of the XBRL taxonomy into a flat structure.
+% Lets say a user wants to search for all facts that are associated with the concept \texttt{us-gaap:Assets}.
 
-The process of flattening a tree structure into a flat structure is a common problem in computer science.
-One of the most common approaches to this problem is to use a depth-first search algorithm.
-This is also the approach that I use in Brel to flatten the namespace hierarchy of the XBRL taxonomy.
+% In XML, the prefix \texttt{us-gaap} might be bound to a different namespace URI in each element.
+% So there are no guarantees that the prefix \texttt{us-gaap} is bound to just one namespace URI in the entire XBRL filing.
+% A good XBRL parser will find all namespace bindings for the prefix \texttt{us-gaap} and search all of them for the concept \texttt{Assets}.
+% However, this is not guaranteed and depends on the XBRL parser.
 
-Remember that in XML, child elements inherit the namespace bindings of their parent elements.
-Thus, when flattening the namespace hierarchy, we need to make sure that
-all the namespace bindings of a parent are also present in its children, 
-unless the children define their own namespace bindings.
+% Furthermore, the filer of the XBRL report might choose to use the prefix \texttt{us-gaap1} instead of \texttt{us-gaap} in some sections to refer to the same namespace URI.
+% So there might not be a concept called \texttt{us-gaap:Assets}, but a concept called \texttt{us-gaap1:Assets} instead.
 
-To give an example of flattening, let us flatten the namespace hierarchy from the previous figure \ref{fig:custom_namespace_notation_example}
+% The user could simply search both for \texttt{us-gaap} and \texttt{us-gaap1} to find the concept \texttt{Assets}.
+% Obviously, this is extremely cumbersome and a suboptimal fix for the problem.
+% It also insufficiantly shields users from the complexity of XML and XML-based languages, such as XBRL,
+% since they need to be aware of the structure of the underlying namespace hierarchy.
 
-% Example of the same XML snippet where namespace bindings are defined on a per-level basis
+% In Brel, the user can simply search for the QName \texttt{us-gaap:Assets} and will find all facts that are associated with this concept.
+% Brel will automatically resolve the prefix \texttt{us-gaap} to the corresponding namespace URI.
+% If the report uses the prefix \texttt{us-gaap1} instead of \texttt{us-gaap}, Brel will still be able to resolve the prefix to the correct namespace URI.
+
+% \subsection{Namespace hierarchy notation}
+
+% This section exclusively focuses on the implementation of QNames in Brel and namespace bindings in particular.
+% Since XML documents tend to be verbose and contain a lot of information that is not relevant for namespace bindings,
+% I will use a custom notation to represent namespace bindings in this section.
+% I will refer to this notation as the \textit{namespace hierarchy notation} and describe it using an example.
+
+% The namespace hierarchy notation works as follows:
+
+% \begin{itemize}
+%     \item Each level of the namespace hierarchy is represented as a single line.
+%     \item Depending on the level of the namespace hierarchy, the element name has a different indentation.
+%     \item The name of the element is followed by a list of namespace bindings, separated by commas.
+%     \item Each namespace binding is represented as a key-value pair, where the key is the prefix of the namespace binding and the value is the namespace URI.
+%     \item If an element does not define any namespace bindings, the list of namespace bindings is omitted.
+%     \item XML attributes that are not namespace bindings are omitted in this notation.
+% \end{itemize}
+
+% Take the following XML snippet as an example:
+
+% % Example of an XML snipped where namespace bindings are defined on a per-element basis
+% \begin{figure}[H]
+%     \caption{Example of an XML snippet where namespace bindings are defined on a per-element basis}
+%     \label{fig:xml_namespace_notation_example}
+%     \begin{lstlisting}[language=XML]
+%         <element1
+%           xmlns:foo = "http://foo.com"
+%           color = "red"
+%         >
+%             <element2 xmlns:bar = "http://bar.com"/>
+%                 <element3 color = "blue">
+%             </element2>
+%         </element1>
+%         <element4
+%           xmlns:baz = "http://baz.com"
+%           xmlns:foo = "http://other-foo.com"
+%         >
+%     \end{lstlisting}
+% \end{figure}
+
+% Using the namespace hierarchy notation, we can represent the same namespace hierarchy as follows:
+
+% % Example of the same XML snippet where namespace bindings are defined on a per-level basis
+% \begin{figure}[H]
+%     \caption{Example of the same XML snippet in our custom notation}
+%     \label{fig:custom_namespace_notation_example}
+%     \dirtree{%
+%     .1 root.
+%     .2 element1 foo = "http://foo.com".
+%     .3 element2 bar = "http://bar.com".
+%     .4 element3.
+%     .2 element4 baz = "http://baz.com", foo = "http://other-foo.com".
+% }
+% \end{figure}
+
+% As we can see, the namespace hierarchy notation is much more compact than the XML snippet.
+% The \texttt{color} attribute of \texttt{element1} and \texttt{element3} is omitted, since it is not a namespace binding.
+
+% \subsection{Notation for Namespace Hierarchy}
+
+% This section is devoted to discussing the implementation of QNames in Brel, focusing particularly on namespace bindings.
+% Given that XML documents include information irrelevant to namespace bindings,
+% a custom notation is used to represent namespace bindings in this section.
+% This notation keeps the hierarchical structure of namespace bindings intact, but omits any extraneous information.
+
+% This section will employ a bespoke notation, referred to as the \textit{namespace hierarchy notation}, to depict namespace bindings.
+% This notation is akin to the "tree" command which is available on most Unix-like operating systems.
+% It follows the same structure as the tree command, but instead of directories and files, it depicts namespace bindings and elements.
+% It omits XML attributes that are not namespace bindings.
+
+% I will employ a bespoke notation, referred to as the \textit{namespace hierarchy notation}, to depict namespace bindings here.
+% This notation will be illustrated using an example.
+
+% The namespace hierarchy notation operates as follows:
+
+% \begin{itemize}
+%     \item Each tier of the namespace hierarchy is depicted as a separate line.
+%     \item The element's name is indented differently based on its level within the namespace hierarchy.
+%     \item Following the name of the element is a series of namespace bindings, delineated by commas.
+%     \item Each namespace binding is shown as a key-value pair, where the key is the namespace binding's prefix and the value is the namespace URI.
+%     \item If an element does not define any namespace bindings, then the namespace bindings list is not included.
+%     \item XML attributes unrelated to namespace bindings are excluded in this notation.
+% \end{itemize}
+
+% Consider the example XML snippet below:
+
+% % Example of an XML snippet with per-element defined namespace bindings
+% \begin{figure}[H]
+%     \caption{Example XML snippet illustrating per-element defined namespace bindings}
+%     \label{fig:xml_namespace_notation_example}
+%     \begin{lstlisting}[language=XML]
+%         <element1
+%           xmlns:foo = "http://foo.com"
+%           color = "red"
+%         >
+%             <element2 xmlns:bar = "http://bar.com"/>
+%                 <element3 color = "blue">
+%             </element2>
+%         </element1>
+%         <element4
+%           xmlns:baz = "http://baz.com"
+%           xmlns:foo = "http://other-foo.com"
+%         >
+%     \end{lstlisting}
+% \end{figure}
+
+% Using the namespace hierarchy notation, this XML snippet's namespace hierarchy can be represented as:
+
+% % Example of the same XML snippet depicted with per-level defined namespace bindings
+% \begin{figure}[H]
+%     \caption{Example of the same XML snippet represented in our custom notation}
+%     \label{fig:custom_namespace_notation_example}
+%     \dirtree{%
+%     .1 root.
+%     .2 element1 foo = "http://foo.com".
+%     .3 element2 bar = "http://bar.com".
+%     .4 element3.
+%     .2 element4 baz = "http://baz.com", foo = "http://other-foo.com".
+% }
+% \end{figure}
+
+% As observed, the namespace hierarchy notation offers a concise representation compared to the XML snippet.
+% Attributes like \texttt{color} in \texttt{element1} and \texttt{element3}, which are not namespace bindings, are omitted.
+
+% \subsection{Flattening namespace bindings}
+
+% As mentioned in the previous section, namespace bindings in XML are defined on a per-element basis,
+% which is arranged in a tree structure.
+% In Brel, however, namespace bindings are defined on a global level, which is arranged in a flat structure.
+% Thus, we need to flatten the namespace hierarchy of the XBRL taxonomy into a flat structure.
+
+% The process of flattening a tree structure into a flat structure is a common problem in computer science.
+% One of the most common approaches to this problem is to use a depth-first search algorithm.
+% This is also the approach that I use in Brel to flatten the namespace hierarchy of the XBRL taxonomy.
+
+% Remember that in XML, child elements inherit the namespace bindings of their parent elements.
+% Thus, when flattening the namespace hierarchy, we need to make sure that
+% all the namespace bindings of a parent are also present in its children,
+% unless the children define their own namespace bindings.
+
+% To give an example of flattening, let us flatten the namespace hierarchy from the previous figure \ref{fig:custom_namespace_notation_example}
+
+% % Example of the same XML snippet where namespace bindings are defined on a per-level basis
+% \begin{figure}[H]
+%     \caption{Example of the same XML snippet in our custom notation, flattened}
+%     \label{fig:custom_namespace_notation_example_flattened}
+%     \dirtree{%
+%     .1 root.
+%     .2 element1 foo = "http://foo.com".
+%     .2 element2 foo = "http://foo.com", bar = "http://bar.com".
+%     .2 element3 foo = "http://foo.com", bar = "http://bar.com".
+%     .2 element4 baz = "http://baz.com", foo = "http://other-foo.com".
+% }
+% \end{figure}
+
+% As we can see, the namespace hierarchy has been flattened into a flat structure
+% \footnote{Technically, the namespace hierarchy is not completely flat, since the root element is still present. However, the root element does not contain any namespace bindings, so it does not affect the namespace hierarchy.}
+% , meaning that all elements are on the same level.
+% The order of the elements is determined by the depth-first search algorithm.
+
+% Each child element inherits the namespace bindings of its parent element.
+% Thus, the \texttt{element2} and \texttt{element3} elements inherit the namespace bindings of the \texttt{element1} element.
+
+% To extract the namespace bindings of this flat structure, we can simply iterate over the elements and extract the namespace bindings of each element.
+% For our example, this would result in the following list of namespace bindings:
+
+% \begin{figure}[H]
+%     \caption{List of namespace bindings extracted from the flattened namespace hierarchy}
+%     \label{fig:custom_namespace_notation_example_flattened_extracted}
+%     \begin{lstlisting}[language=XML]
+%         foo = "http://foo.com"
+%         bar = "http://bar.com"
+%         baz = "http://baz.com"
+%         foo = "http://other-foo.com"
+%     \end{lstlisting}
+% \end{figure}
+
+\subsection{Flattening Namespace Bindings}
+
+% As noted in the previous section, XML features namespace bindings defined on a per-element basis within a tree structure.
+% Conversely, Brel employs a global level for defining namespace bindings, resulting in a flat structure.
+% Therefore, it is necessary to convert the hierarchical namespace structure from the XBRL taxonomy into a flat one.
+
+Flattening a tree structure into a flat one is a common challenge in computer science.
+A popular solution is the use of a depth-first search algorithm,
+which is the method employed in Brel to flatten the XBRL taxonomy's namespace hierarchy.
+
+It is important to remember that in XML, child elements inherit their parent elements' namespace bindings.
+Consequently, when flattening the namespace hierarchy,
+it is crucial to ensure that all parent namespace bindings are also present in the children,
+except where the children define their own namespace bindings.
+
+To illustrate this process, the following figure depicts a flattening of the namespace hierarchy shown previously in figure \ref{fig:custom_namespace_notation_example}:
+
+% Example of the same XML snippet with flattened namespace bindings
 \begin{figure}[H]
-    \caption{Example of the same XML snippet in our custom notation, flattened}
+    \caption{Flattened version of the XML snippet using our custom notation}
     \label{fig:custom_namespace_notation_example_flattened}
     \dirtree{%
     .1 root.
@@ -130,19 +293,20 @@ To give an example of flattening, let us flatten the namespace hierarchy from th
 }
 \end{figure}
 
-As we can see, the namespace hierarchy has been flattened into a flat structure
-\footnote{Technically, the namespace hierarchy is not completely flat, since the root element is still present. However, the root element does not contain any namespace bindings, so it does not affect the namespace hierarchy.}
-, meaning that all elements are on the same level.
-The order of the elements is determined by the depth-first search algorithm.
+In this representation, the namespace hierarchy is transformed into a flat structure
+\footnote{Technically, the namespace hierarchy is not entirely flat due to the presence of the root element.
+However, since the root element does not contain any namespace bindings, it has no impact on the namespace hierarchy.}.
+All elements are positioned on the same level, and the sequence of elements is determined by the depth-first search algorithm.
 
-Each child element inherits the namespace bindings of its parent element.
-Thus, the \texttt{element2} and \texttt{element3} elements inherit the namespace bindings of the \texttt{element1} element.
+Each child element inherits the namespace bindings from its parent.
+Therefore, \texttt{element2} and \texttt{element3} inherit the namespace bindings from \texttt{element1}.
 
-To extract the namespace bindings of this flat structure, we can simply iterate over the elements and extract the namespace bindings of each element.
-For our example, this would result in the following list of namespace bindings:
+To extract the namespace bindings from this flat structure,
+one can simply iterate over the elements and record the namespace bindings of each.
+For the example provided, the extracted list of namespace bindings would be as follows:
 
 \begin{figure}[H]
-    \caption{List of namespace bindings extracted from the flattened namespace hierarchy}
+    \caption{Extracted namespace bindings from the flattened hierarchy}
     \label{fig:custom_namespace_notation_example_flattened_extracted}
     \begin{lstlisting}[language=XML]
         foo = "http://foo.com"
@@ -152,190 +316,341 @@ For our example, this would result in the following list of namespace bindings:
     \end{lstlisting}
 \end{figure}
 
-\subsection{Collisions in namespace bindings}
+% \subsection{Collisions in namespace bindings}
 
-An observant reader might have noticed that the list of namespace bindings from the previous section contains two bindings for the \texttt{foo} prefix.
-The first binding is defined as \texttt{foo = "http://foo.com"}, whereas the second binding is defined as \texttt{foo = "http://other-foo.com"}.
+% An observant reader might have noticed that the list of namespace bindings from the previous section contains two bindings for the \texttt{foo} prefix.
+% The first binding is defined as \texttt{foo = "http://foo.com"}, whereas the second binding is defined as \texttt{foo = "http://other-foo.com"}.
 
-This is called a collision. Brel prohibits most collisions in namespace bindings, but allows some of them.
-The following section describes the different types of collisions and how they are handled in Brel.
+% This is called a collision. Brel prohibits most collisions in namespace bindings, but allows some of them.
+% The following section describes the different types of collisions and how they are handled in Brel.
 
-\subsection{Types of namespace collisions}
+% \subsection{Types of namespace collisions}
 
-There are three types of namespace collisions that can occur in Brel:
+% There are three types of namespace collisions that can occur in Brel:
+
+% \begin{itemize}
+%     \item \textbf{Version collision}: Two namespace bindings have the same prefix and the same namespace URI, but different versions of it.
+%     The version is defined as the numbers and dashes in the namespace URI that indicate if the URI is more recent than another URI.
+
+%     Example: \texttt{foo = "http://foo.com/2022"} and \texttt{foo = "http://foo.com/2023"}
+%     \item \textbf{Prefix collision}: Two namespace bindings have the same prefix, but different \textit{unversioned} namespace URIs.
+%     A unversioned namespace URI is a namespace URI with all version information removed.
+
+%     Example: \texttt{foo = "http://foo.com"} and \texttt{foo = "http://other-foo.com"}
+%     \item \textbf{Namespace URI collision}: Two namespace bindings have the same \textit{unversioned} namespace URI, but different prefixes.
+
+%     Example: \texttt{foo = "http://foo.com"} and \texttt{bar = "http://foo.com"}
+% \end{itemize}
+
+\subsection{Handling Namespace Binding Collisions}
+
+It may have been noted by the attentive reader that the list of namespace bindings from the previous section includes two bindings for the \texttt{foo} prefix.
+The first binding is \texttt{foo = "http://foo.com"}, while the second is \texttt{foo = "http://other-foo.com"}.
+
+Such a scenario is referred to as a collision.
+While Brel generally prohibits and resolves most collisions in namespace bindings, there are exceptions.
+The subsequent section details the various types of collisions and Brel's approach to managing them.
+In Brel, three kinds of namespace collisions can occur:
 
 \begin{itemize}
-    \item \textbf{Version collision}: Two namespace bindings have the same prefix and the same namespace URI, but different versions of it.
-    The version is defined as the numbers and dashes in the namespace URI that indicate if the URI is more recent than another URI.
-    
-    Example: \texttt{foo = "http://foo.com/2022"} and \texttt{foo = "http://foo.com/2023"}
-    \item \textbf{Prefix collision}: Two namespace bindings have the same prefix, but different \textit{unversioned} namespace URIs.
-    A unversioned namespace URI is a namespace URI with all version information removed.
-    
-    Example: \texttt{foo = "http://foo.com"} and \texttt{foo = "http://other-foo.com"}
-    \item \textbf{Namespace URI collision}: Two namespace bindings have the same \textit{unversioned} namespace URI, but different prefixes.
-    
-    Example: \texttt{foo = "http://foo.com"} and \texttt{bar = "http://foo.com"}
+\item \textbf{Version Collision}: This occurs when two namespace bindings share the same prefix and namespace URI, differing only in the version specified within the URI.
+The version is identified by the numbers and dashes in the namespace URI, indicating its relative recency.
+
+Example: \texttt{foo = "http://foo.com/2022"} and \texttt{foo = "http://foo.com/2023"}
+\item \textbf{Prefix Collision}: This type of collision happens when two namespace bindings share the same prefix but point to different \textit{unversioned} namespace URIs.
+An unversioned namespace URI is one without any version-related details.
+
+Example: \texttt{foo = "http://foo.com"} and \texttt{foo = "http://other-foo.com"}
+\item \textbf{Namespace URI Collision}: This collision occurs when two namespace bindings have identical \textit{unversioned} namespace URIs but utilize different prefixes.
+
+Example: \texttt{foo = "http://foo.com"} and \texttt{bar = "http://foo.com"}
 \end{itemize}
 
-\subsubsection{Version collision}
+% \subsection{Version collision}
 
-Version collisions occur when two namespace bindings have the same prefix and the same namespace URI, but different versions of it.
+% Version collisions occur when two namespace bindings have the same prefix and the same namespace URI, but different versions of it.
+% % Version collisions are allowed in Brel, but they do raise an interesting question:
+% % Lets say the creates a QName \texttt{foo:bar} to search for a concept in the taxonomy.
+% % Also assume that the XBRL filing contains the following namespace bindings:
+% Assume that the XBRL filing contains the following namespace bindings:
 
-Version collisions are allowed in brel, but they do raise an interesting question:
-Lets say the creates a QName \texttt{foo:bar} to search for a concept in the taxonomy. 
-Also assume that the XBRL filing contains the following namespace bindings:
+% \begin{figure}[H]
+%     \caption{Example of a version collision}
+%     \label{fig:version_collision_example}
+%     \dirtree{%
+%     .1 root.
+%     .2 element1 foo = "http://foo.com/01-01-2022".
+%     .3 foo:bar.
+%     .2 element2 foo = "http://foo.com/01-01-2023".
+%     .3 foo:bar.
+% }
+% \end{figure}
+
+% The scenario above illustrates a version collision.
+% Version collisions are permitted in Brel, since different versions of the same namespace URI often coexist in the same XBRL filing.
+% In case a user searches for a QName \texttt{foo:bar}, Brel will automatically search for the \texttt{bar} element in both versions of the namespace URI.
+% Which namespace URI should be used for the QName \texttt{foo:bar}?
+
+% The mechanism that Brel implements is straightforward: Use the newest version.
+
+% First, Brel will remove all digits, dashes and dots from the URI versions.
+% If the two URI versions are equal after this step, then they are considered the same URI with different versions.
+% In our example, both URI versions transform into \texttt{http://foo.com/}.
+
+% Second, for each URI version, Brel will extract all numbers and compute their sum. The URI version with the higher sum is considered the newer version.
+% For our example, the sum of the first URI version is 2024, whereas the sum of the second URI version is 2025.
+% Thus, the second URI version is considered the newer version.
+% So if the user searches for the QName \texttt{foo:bar}, the URI version \texttt{http://foo.com/01-01-2023} will be used.
+
+% Even though this mechanism is straightforward, it does have some drawbacks.
+% Namely, theoretically it is easy to trick the mechanism into using an older version of a namespace URI.
+% For example, the URI version \texttt{http://foo.com/31-12-2021} would be considered newer than \texttt{http://foo.com/01-01-2023}.
+
+% However, this is not a problem in practice since version collisions tend to be rare.
+% On top of that, most taxonomies are released on a yearly basis and their URI just contains the year of the release.
+% If the URI only contains the year, then the mechanism works as expected.
+
+% Furthermore, the mechanism used for searching and comparing QNames in Brel only uses the prefix and the local name of the QName.
+% Therefore, even if the mechanism would be tricked into using an older version of a namespace URI, it would not affect the search results.
+
+\subsection{Resolving Version Collisions}
+
+Version collisions arise when two namespace bindings share the same prefix and namespace URI, but differ in their respective versions.
+
+Consider an XBRL filing with the following namespace bindings, which exemplifies a version collision:
 
 \begin{figure}[H]
-    \caption{Example of a version collision}
-    \label{fig:version_collision_example}
-    \dirtree{%
-    .1 root.
-    .2 element1 foo = "http://foo.com/01-01-2022".
-    .3 foo:bar.
-    .2 element2 foo = "http://foo.com/01-01-2023".
-    .3 foo:baz.
+\caption{Illustration of a Version Collision}
+\label{fig:version_collision_example}
+\dirtree{%
+.1 root.
+.2 element1 foo = "http://foo.com/01-01-2022".
+.3 foo:bar.
+.2 element2 foo = "http://foo.com/01-01-2023".
+.3 foo:bar.
 }
 \end{figure}
 
-Which namespace URI should be used for the QName \texttt{foo:bar}?
+The example above demonstrates a version collision.
+In Brel, version collisions are permissible, as different versions of the same namespace URI often coexist within a single XBRL filing.
+If a user seeks a QName \texttt{foo:bar}, Brel will automatically search the \texttt{bar} element under both versions of the namespace URI.
 
-The mechanism that Brel implements is straightforward: Use the newest version.
+% \subsection{Prefix collision}
 
-First, Brel will remove all digits, dashes and dots from the URI versions. 
-If the two URI versions are equal after this step, then they are considered the same URI with different versions.
-In our example, both URI versions transform into \texttt{http://foo.com/}.
+% A prefix collision occurs when two namespace bindings have the same prefix, but different \textit{unversioned} namespace URIs.
+% The following figure shows an example of a prefix collision:
 
-Second, for each URI version, Brel will extract all numbers and compute their sum. The URI version with the higher sum is considered the newer version.
-For our example, the sum of the first URI version is 2024, whereas the sum of the second URI version is 2025. 
-Thus, the second URI version is considered the newer version. 
-So if the user searches for the QName \texttt{foo:bar}, the URI version \texttt{http://foo.com/01-01-2023} will be used.
+% \begin{figure}[H]
+%     \caption{Example of a prefix collision}
+%     \label{fig:prefix_collision_example}
+%     \dirtree{%
+%     .1 root.
+%     .2 element1 foo = "http://foo.com".
+%     .3 foo:bar.
+%     .2 element2 foo = "http://other-foo.com".
+%     .3 foo:baz.
+% }
+% \end{figure}
 
-Even though this mechanism is straightforward, it does have some drawbacks. 
-Namely, theoretically it is easy to trick the mechanism into using an older version of a namespace URI.
-For example, the URI version \texttt{http://foo.com/31-12-2021} would be considered newer than \texttt{http://foo.com/01-01-2023}.
+% Prefix collisions are not allowed in Brel. Brel will rename one of the prefixes to avoid the collision.
+% In the case of our example above, Brel will \texttt{element2}'s binding to \texttt{foo1 = "http://other-foo.com"} and will replace all appropriate QNames with the new prefix.
+% Brel will indicate that the prefix \texttt{foo} has been renamed to \texttt{foo1}.
 
-However, this is not a problem in practice since version collisions tend to be rare.
-On top of that, most taxonomies are released on a yearly basis and their URI just contains the year of the release.
-If the URI only contains the year, then the mechanism works as expected.
+% \begin{figure}[H]
+%     \caption{Example of a resolved prefix collision}
+%     \label{fig:prefix_collision_example_renamed}
+%     \dirtree{%
+%     .1 root.
+%     .2 element1 foo = "http://foo.com".
+%     .3 foo:bar.
+%     .2 element2 foo1 = "http://other-foo.com".
+%     .3 foo1:baz.
+% }
+% \end{figure}
 
-Furthermore, the mechanism used for searching and comparing QNames in Brel only uses the prefix and the local name of the QName.
-Therefore, even if the mechanism would be tricked into using an older version of a namespace URI, it would not affect the search results.
+\subsection{Resolving Prefix Collisions}
 
-\subsubsection{Prefix collision}
-
-A prefix collision occurs when two namespace bindings have the same prefix, but different \textit{unversioned} namespace URIs.
-The following figure shows an example of a prefix collision:
+A prefix collision arises when two namespace bindings use the same prefix but are linked to different \textit{unversioned} namespace URIs.
+An example of a prefix collision is depicted in the following figure:
 
 \begin{figure}[H]
-    \caption{Example of a prefix collision}
+    \caption{Illustration of a Prefix Collision}
     \label{fig:prefix_collision_example}
     \dirtree{%
     .1 root.
     .2 element1 foo = "http://foo.com".
     .3 foo:bar.
     .2 element2 foo = "http://other-foo.com".
-    .3 foo:baz.
+    .3 foo:bar.
 }
 \end{figure}
 
-Prefix collisions are not allowed in Brel. Brel will rename one of the prefixes to avoid the collision.
-% In the case of our example above, Brel will rename the mapping \texttt{foo -> http://other-foo.com} to \texttt{foo1 -> http://other-foo.com} and will replace all appropriate QNames with the new prefix.
-In the case of our example above, Brel will \texttt{element2}'s binding to \texttt{foo1 = "http://other-foo.com"} and will replace all appropriate QNames with the new prefix.
+% In Brel, prefix collisions are not permitted since they can lead to ambiguity.
+% For instance, two unrelated taxonomies can define the report element \texttt{bar}, once as a concept and once as a hypercube.
+% If the filing uses the same prefix \texttt{foo} for both taxonomies, then Brel would not be able to distinguish between the two report elements.
+In Brel, prefix collisions are not permitted since they can lead to ambiguity.
+For example, two separate taxonomies might both include the report element \texttt{bar}, defined in one as a concept and in the other as a hypercube.
+Should the filing employ the identical prefix \texttt{foo} for these taxonomies, Brel would face challenges in differentiating between the two distinct report elements.
+
+To resolve such a collision, Brel will rename one of the conflicting prefixes.
+For instance, in the example above,
+Brel will change \texttt{element2}'s binding from \texttt{foo = "http://other-foo.com"} to \texttt{foo1 = "http://other-foo.com"} and update all relevant QNames with the new prefix.
+Brel will also indicate that the binding \texttt{foo = "http://other-foo.com"} has been modified to \texttt{foo1}.
+
+% Here is how the example looks after resolving the prefix collision:
+Figure \ref{fig:prefix_collision_example_renamed} depicts the figure \ref{fig:prefix_collision_example} after resolving the prefix collision.
 
 \begin{figure}[H]
-    \caption{Example of a resolved prefix collision}
+    \caption{Representation of a Resolved Prefix Collision}
     \label{fig:prefix_collision_example_renamed}
     \dirtree{%
     .1 root.
     .2 element1 foo = "http://foo.com".
     .3 foo:bar.
     .2 element2 foo1 = "http://other-foo.com".
-    .3 foo1:baz.
+    .3 foo1:bar.
 }
 \end{figure}
 
-If the user searches for a QName \texttt{foo:bar}, Brel will both search for \texttt{foo:bar} and \texttt{foo1:bar}.
+% If the user searches for a QName \texttt{foo:bar}, Brel will both search for \texttt{foo:bar} and \texttt{foo1:bar}.
 
-\subsubsection{Namespace URI collision}
+% \subsection{Namespace URI collision}
 
-A namespace URI collision occurs when two namespace bindings have the same \textit{unversioned} namespace URI, 
-but different prefixes.
-% An example of this would be the namespace bindings \texttt{foo = "http://foo.com/2022"} and \texttt{bar = "http://foo.com/2023"}.
-An example of a namespace URI collision is shown in the following figure:
+% A namespace URI collision occurs when two namespace bindings have the same \textit{unversioned} namespace URI,
+% but different prefixes.
+% % An example of this would be the namespace bindings \texttt{foo = "http://foo.com/2022"} and \texttt{bar = "http://foo.com/2023"}.
+% An example of a namespace URI collision is shown in the following figure:
+
+% \begin{figure}[H]
+%     \caption{Example of a namespace URI collision}
+%     \label{fig:namespace_uri_collision_example}
+%     \dirtree{%
+%     .1 root.
+%     .2 element1 foo = "http://foo.com".
+%     .3 foo:bar.
+%     .2 element2 bar = "http://foo.com".
+%     .3 bar:baz.
+% }
+% \end{figure}
+
+% Namespace URI collisions are not allowed in Brel.
+% Brel will pick one of the two prefixes as the preferred prefix and will rename the other prefix to avoid the collision.
+% In general, Brel will pick the shorter prefix as the preferred prefix.
+% If both have the same length, Brel will pick the prefix that comes first alphabetically.
+
+% % In the case of our example, brel will pick the prefix \texttt{bar} as the preferred prefix and will rename all occurences of \texttt{foo} to \texttt{bar}.
+% % Even if the user searches for the QName \texttt{foo:baz}, Brel will search for \texttt{bar:baz} instead.
+% In the case of our example, \texttt{bar} will be picked as the preferred prefix.
+% Brel will rename the prefix \texttt{foo} along with all occurrences to \texttt{bar}.
+
+% \begin{figure}[H]
+%     \caption{Example of a resolved namespace URI collision}
+%     \label{fig:namespace_uri_collision_example_renamed}
+%     \dirtree{%
+%     .1 root.
+%     .2 element1 bar = "http://foo.com".
+%     .3 bar:bar.
+%     .2 element2 bar = "http://foo.com".
+%     .3 bar:baz.
+% }
+% \end{figure}
+
+% There are some prefixes that are considered special and will always be picked as the preferred prefix, regardless of their length or alphabetical order.
+% These special prefixes do not even have to be defined in the XBRL taxonomy.
+% If there is a namespace binding that points to the same namespace URI as one of the special prefixes, the special prefix will be picked as the preferred prefix.
+
+% The following prefixes are considered special:
+
+\subsection{Resolving Namespace URI Collisions}
+
+A namespace URI collision occurs when two namespace bindings share the same \textit{unversioned} namespace URI but have different prefixes.
+The figure below exemplifies a namespace URI collision:
 
 \begin{figure}[H]
-    \caption{Example of a namespace URI collision}
-    \label{fig:namespace_uri_collision_example}
-    \dirtree{%
-    .1 root.
-    .2 element1 foo = "http://foo.com".
-    .3 foo:bar.
-    .2 element2 bar = "http://foo.com".
-    .3 bar:baz.
+\caption{Illustration of a Namespace URI Collision}
+\label{fig:namespace_uri_collision_example}
+\dirtree{%
+.1 root.
+.2 element1 foo = "http://foo.com".
+.3 foo:bar.
+.2 element2 bar = "http://foo.com".
+.3 bar:baz.
 }
 \end{figure}
 
-Namespace URI collisions are not allowed in Brel. Brel will pick one of the two prefixes as the preferred prefix and will rename the other prefix to avoid the collision.
-In general, Brel will pick the shorter prefix as the preferred prefix. If both have the same length, Brel will pick the prefix that comes first alphabetically.
+% In Brel, namespace URI collisions are prohibited as they can lead to not-found errors.
+% For example, if the user searches for a QName \texttt{foo:baz} in the example above, Brel will not be able to find it.
+% However, both prefixes \texttt{foo} and \texttt{bar} are bound to the same namespace URI, so Brel should be able to find the QName \texttt{bar:baz}.
+% This is why namespace URI collisions are not allowed in Brel.
+In Brel, namespace URI collisions are not permitted because they can cause errors where elements are not found.
+For instance, consider the scenario where a user searches for the QName \texttt{foo:baz} in the previously mentioned example. Brel would fail to locate it.
+However, since both \texttt{foo} and \texttt{bar} are linked to the identical namespace URI, Brel should be capable of finding the QName \texttt{bar:baz}.
+This rationale underpins the prohibition of namespace URI collisions in Brel.
 
-% In the case of our example, brel will pick the prefix \texttt{bar} as the preferred prefix and will rename all occurences of \texttt{foo} to \texttt{bar}.
-% Even if the user searches for the QName \texttt{foo:baz}, Brel will search for \texttt{bar:baz} instead.
-In the case of our example, \texttt{bar} will be picked as the preferred prefix. 
-Brel will rename the prefix \texttt{foo} along with all occurences to \texttt{bar}.
+To resolve such collisions, Brel selects one prefix as the preferred option and renames the other to eliminate the conflict
+Brel opts for the shorter prefix as the preferred one.
+If both prefixes are of equal length, the choice is based on alphabetical precedence.
+
+In our example, \texttt{bar} is chosen as the preferred prefix.
+Consequently, Brel will rename the \texttt{foo} prefix, along with all its occurrences, to \texttt{bar}.
+
+% Here's how the example looks after resolving the namespace URI collision:
+Figure \ref{fig:namespace_uri_collision_example_renamed} depicts the figure \ref{fig:namespace_uri_collision_example} after resolving the namespace URI collision.
 
 \begin{figure}[H]
-    \caption{Example of a resolved namespace URI collision}
-    \label{fig:namespace_uri_collision_example_renamed}
-    \dirtree{%
-    .1 root.
-    .2 element1 bar = "http://foo.com".
-    .3 bar:bar.
-    .2 element2 bar = "http://foo.com".
-    .3 bar:baz.
+\caption{Representation of a Resolved Namespace URI Collision}
+\label{fig:namespace_uri_collision_example_renamed}
+\dirtree{%
+.1 root.
+.2 element1 bar = "http://foo.com".
+.3 bar:bar.
+.2 element2 bar = "http://foo.com".
+.3 bar:baz.
 }
 \end{figure}
 
-There are some prefixes that are considered special and will always be picked as the preferred prefix, regardless of their length or alphabetical order.
-These special prefixes do not even have to be defined in the XBRL taxonomy. 
-If there is a namespace binding that points to the same namespace URI as one of the special prefixes, the special prefix will be picked as the preferred prefix.
+Certain prefixes are deemed special and are always chosen as the preferred prefix, regardless of their length or alphabetical order.
+These special prefixes need not be explicitly defined in the XBRL taxonomy.
+If a namespace binding corresponds to the same namespace URI as a special prefix, that special prefix will automatically be selected as the preferred one.
 
-The following prefixes are considered special:
+The special prefixes include:
 
+% Make a table of only the prefixes, make it 5x5
 \begin{figure}[H]
-    \begin{itemize}
-        \item \texttt{xml = "http://www.w3.org/XML/<year>/namespace"}
-        \item \texttt{xlink = "http://www.w3.org/<year>/xlink"}
-        \item \texttt{xs = "http://www.w3.org/<year>/XMLSchema"}
-        \item \texttt{xsi = "http://www.w3.org/<year>/XMLSchema-instance"}
-        \item \texttt{xbrli = "http://www.xbrl.org/<year>/instance"}
-        \item \texttt{xbrldt = "http://xbrl.org/<year>/xbrldt"}
-        \item \texttt{link = "http://www.xbrl.org/<year>/linkbase"}
-        \item \texttt{xl = "http://www.xbrl.org/<year>/XLink"}
-        \item \texttt{iso4217 = "http://www.xbrl.org/<year>/iso4217"}
-        \item \texttt{utr = "http://www.xbrl.org/<year>/utr"}
-        \item \texttt{nonnum = "http://www.xbrl.org/dtr/type/non-numeric"}
-        \item \texttt{num = "http://www.xbrl.org/dtr/type/numeric"}
-        \item \texttt{enum = "http://www.xbrl.org/year/extensible-enumerations"}
-        \item \texttt{enum2 = "http://www.xbrl.org/PR/<date>/extensible-enumerations-2.0"}
-        \item \texttt{formula = "http://www.xbrl.org/<year>/formula"}
-        \item \texttt{gen = "http://www.xbrl.org/<year>/generic"}
-        \item \texttt{table = "http://www.xbrl.org/<year>/table"}
-        \item \texttt{cf = "http://www.xbrl.org/<year>/filter/concept"}
-        \item \texttt{df = "http://www.xbrl.org/<year>/filter/dimension"}
-        \item \texttt{ef = "http://www.xbrl.org/<year>/filter/entity"}
-        \item \texttt{pf = "http://www.xbrl.org/<year>/filter/period"}
-        \item \texttt{uf = "http://www.xbrl.org/<year>/filter/unit"}
-        \item \texttt{ix = "http://www.xbrl.org/<year>/inlineXBRL"}
-        \item \texttt{ixt = "http://www.xbrl.org/inlineXBRL/transformation/<date>"}
-        \item \texttt{entities = "http://xbrl.org/entities"}
-    \end{itemize}
+    \centering
+    \begin{tabular}{|l|l|l|l|l|}
+        \hline
+        xml & xlink & xs & xsi & xbrli \\
+        \hline
+        xbrldt & link & xl & iso4217 & utr \\
+        \hline
+        nonnum & num & enum & enum2 & formula \\
+        \hline
+        gen & table & cf & df & ef \\
+        \hline
+        pf & uf & ix & ixt & entities \\
+        \hline
+    \end{tabular}
+    \caption{Table containing all special prefixes}
+    \label{fig:special_prefixes}
 \end{figure}
 
-If, for example, the XBRL filing contains a namespace binding \texttt{foo = "http://www.w3.org/2001/XMLSchema-instance"},
-then the prefix \texttt{xsi} will be picked as the preferred prefix and all occurences of \texttt{foo} will be renamed to \texttt{xsi}.
+% All of the prefixes in figure \ref{fig:special_prefixes} have a corresponding namespace URI.
+% In case of the prefix \texttt{xsi}, the namespace URI is \texttt{http://www.w3.org/2001/XMLSchema-instance}.
+% If, for example, the XBRL filing contains a namespace binding \texttt{foo = "http://www.w3.org/2001/XMLSchema-instance"},
+% then the prefix \texttt{xsi} will be picked as the preferred prefix and all occurences of \texttt{foo} will be renamed to \texttt{xsi}.
+Each prefix in figure \ref{fig:special_prefixes} is associated with a specific namespace URI.
+For example, the prefix \texttt{xsi} corresponds to the namespace URI \texttt{http://www.w3.org/2001/XMLSchema-instance}.
+Should an XBRL filing include a namespace binding like \texttt{foo = "http://www.w3.org/2001/XMLSchema-instance"},
+then \texttt{xsi} will be selected as the preferred prefix. Consequently, all instances of \texttt{foo} will be renamed to \texttt{xsi}.
 
-The special prefixes and the corresponding namespace URIs can be configured in in the \texttt{nsconfig.json} file.
+% The special prefixes and their corresponding namespace URIs can be adjusted in the \texttt{nsconfig.json} file.
 
-With this knowledge of QNames and namespace normalization, we can now move on to the next section which explains how Facts are implemented in Brel.
-Facts use QNames for a few of their characteristics, most notably their concept characteristic.
+% The special prefixes and the corresponding namespace URIs can be configured in in the \texttt{nsconfig.json} file.
+
+% With this knowledge of QNames and namespace normalization, we can now move on to the next section which explains how Facts are implemented in Brel.
+% Facts use QNames for a few of their characteristics, most notably their concept characteristic.
+% With this knowledge of namespace normalization, we have resolved one of the key assumptions made in section \ref{sec:implementation_general}.
+% However, there is still one more assumption to be addressed.
+Having grasped the concept of namespace normalization, we have now addressed one assumption highlighted in section \ref{sec:implementation_general}.
+Yet, there remains another assumption that needs to be tackled.

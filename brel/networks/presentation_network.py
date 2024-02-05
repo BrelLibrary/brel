@@ -4,8 +4,8 @@ This module contains the PresentationNetwork class.
 =================
 
 - author: Robin Schmidiger
-- version: 0.3
-- date: 18 January 2024
+- version: 0.4
+- date: 02 February 2024
 
 =================
 """
@@ -25,10 +25,10 @@ class PresentationNetwork(INetwork):
 
     def __init__(
         self,
-        root: PresentationNetworkNode,
+        roots: list[PresentationNetworkNode],
         link_role: str,
         link_name: QName,
         is_physical: bool,
     ) -> None:
-        roots_copy = [cast(INetworkNode, root)]
+        roots_copy = [cast(INetworkNode, root) for root in roots]
         super().__init__(roots_copy, link_role, link_name, is_physical)

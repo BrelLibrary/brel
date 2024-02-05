@@ -40,24 +40,18 @@ class PresentationNetworkFactory(IXMLNetworkFactory):
         # TODO: turn this into a get_url)from_prefix and make_qname methods
         nsmap = self.get_qname_nsmap().get_nsmap()
 
-        if len(roots) != 1:
-            root_report_element_names = list(
-                map(lambda x: str(x.get_report_element().get_name()), roots)
-            )
-            raise ValueError(
-                f"roots must have length 1, not {len(roots)}. The network has the roots {root_report_element_names}"
-            )
-        if not isinstance(roots[0], PresentationNetworkNode):
+        if not all(isinstance(root, PresentationNetworkNode) for root in roots):
             raise TypeError("roots must be of type PresentationNetworkNode")
 
-        root = roots[0]
+        roots_cast = cast(list[PresentationNetworkNode], roots)
+
         link_role = get_str(xml_link_element, f"{{{nsmap['xlink']}}}role")
         link_name = QName.from_string(xml_link_element.tag, self.get_qname_nsmap())
 
         if link_role is None:
             raise ValueError("link_role must not be None")
 
-        return PresentationNetwork(root, link_role, link_name, self.is_physical())
+        return PresentationNetwork(roots_cast, link_role, link_name, self.is_physical())
 
     def create_node(
         self,

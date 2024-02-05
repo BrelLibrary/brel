@@ -26,9 +26,7 @@ class ExplicitDimensionCharacteristic(ICharacteristic):
     The member is a member report element and the value of the explicit dimension characteristic.
     """
 
-    def __init__(
-        self, dimension: Dimension, member: Member, aspect: Aspect
-    ) -> None:
+    def __init__(self, dimension: Dimension, member: Member, aspect: Aspect) -> None:
         self.__dimension = dimension
         self.__member = member
         self.__aspect = aspect

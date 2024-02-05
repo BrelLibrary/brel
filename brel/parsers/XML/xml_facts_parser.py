@@ -5,8 +5,8 @@ It parses XBRL in the XML syntax.
 ====================
 
 @author: Robin Schmidiger
-@version: 0.7
-@date: 30 January 2024
+@version: 0.8
+@date: 05 February 2024
 
 ====================
 """
@@ -87,13 +87,16 @@ def parse_facts_xml(
     etrees: Iterable[lxml.etree._ElementTree],
     report_elements: Mapping[QName, IReportElement],
     qname_nsmap: QNameNSMap,
-) -> Tuple[Iterable[Fact], Mapping[str, Fact]]:
+) -> Tuple[list[Fact], dict[str, Fact], list[Exception]]:
     """
     Parse the facts.
     :param etrees: The xbrl instance xml trees
     :param report_elements: The report elements
     :param qname_nsmap: The qname to namespace map
-    :return: A list of facts and a mapping from fact ids to facts
+    :returns:
+    - list[Fact]: The parsed facts
+    - dict[str, Fact]: The id to fact mapping
+    - list[Exception]: The exceptions that occurred during parsing
     """
 
     # Since many facts share the same characteristics, we cache the characteristics and reuse them.
@@ -128,6 +131,8 @@ def parse_facts_xml(
     # So we need to have a mapping from id -> fact to be able to resolve these locators
     id_to_fact: dict[str, Fact] = {}
 
+    errors: list[Exception] = []
+
     for xbrl_instance in etrees:
         # get all xml elements in the instance that have a contextRef attribute
         xml_facts = xbrl_instance.findall(".//*[@contextRef]", namespaces=None)
@@ -139,11 +144,14 @@ def parse_facts_xml(
             # These characteristics are the concept (mandatory) and the unit (optional)
             characteristics: list[UnitCharacteristic | ConceptCharacteristic] = []
 
+            fact_id = xml_fact.get("id")
+
             # ======== PARSE THE CONCEPT ========
             # get the concept name
             concept_name = xml_fact.tag
             if concept_name is None:
-                raise ValueError(f"Fact {xml_fact} has no tag")
+                errors.append(ValueError(f"Fact with id {fact_id} has no tag"))
+                continue
 
             # check cache for concept
             concept_characteristic = get_from_cache(f"concept {concept_name}")
@@ -152,21 +160,33 @@ def parse_facts_xml(
                 concept_qname = make_qname(concept_name)
                 concept = get_report_element(concept_qname)
                 if concept is None:
-                    raise ValueError(
-                        f"Concept {concept_qname} not found in report elements"
+                    errors.append(
+                        ValueError(
+                            f"Concept {concept_qname} not found in report elements"
+                        )
                     )
+                    continue
 
                 if not isinstance(concept, Concept):
-                    raise ValueError(
-                        f"Concept {concept_qname} is not a concept. It is a {type(concept)}"
+                    errors.append(
+                        ValueError(
+                            f"Concept {concept_qname} is not a concept. It is a {type(concept)}"
+                        )
                     )
+                    continue
 
                 concept_characteristic = ConceptCharacteristic(concept)
                 add_to_cache(f"concept {concept_name}", concept_characteristic)
             else:
                 # if the concept is in the cache, type check it
                 if not isinstance(concept_characteristic, ConceptCharacteristic):
-                    raise ValueError(f"Concept {concept_name} is not a concept")
+                    # raise ValueError(f"Concept {concept_name} is not a concept")
+                    errors.append(
+                        ValueError(
+                            f"Concept {concept_name} is not a concept. It is a {type(concept_characteristic)}"
+                        )
+                    )
+                    continue
 
                 concept_characteristic = cast(
                     ConceptCharacteristic, concept_characteristic
@@ -190,18 +210,29 @@ def parse_facts_xml(
                     if unit_xml is None:
                         raise ValueError(f"Unit {unit_id} not found in xbrl instance")
 
-                    unit_characteristic = parse_unit_from_xml(
-                        unit_xml,
-                        concept,
-                        make_qname,
-                        get_from_cache,
-                        add_to_cache,
-                    )
-                    add_to_cache(unit_id, unit_characteristic)
+                    try:
+                        unit_characteristic = parse_unit_from_xml(
+                            unit_xml,
+                            concept,
+                            make_qname,
+                            get_from_cache,
+                            add_to_cache,
+                        )
+                        add_to_cache(unit_id, unit_characteristic)
+                    except Exception as e:
+                        errors.append(e)
+                        continue
+
                 else:
                     # if the unit is in the cache, type check it
                     if not isinstance(unit_characteristic, UnitCharacteristic):
-                        raise ValueError(f"Unit {unit_id} is not a unit")
+                        # raise ValueError(f"Unit {unit_id} is not a unit")
+                        errors.append(
+                            ValueError(
+                                f"Unit {unit_id} is not a unit. It is a {type(unit_characteristic)}"
+                            )
+                        )
+                        continue
 
                 characteristics.append(unit_characteristic)
 
@@ -211,33 +242,47 @@ def parse_facts_xml(
             # This attribute is mandatory according to the XBRL specification
             context_id = xml_fact.get("contextRef")
             if context_id is None:
-                raise ValueError(f"Fact {xml_fact} has no contextRef attribute")
+                # raise ValueError(f"Fact {xml_fact} has no contextRef attribute")
+                errors.append(
+                    ValueError(f"Fact with id {fact_id} has no contextRef attribute")
+                )
+                continue
 
             # the context xml element has the tag context and the id is the context_id
             xml_context = xbrl_instance.find(
                 f"{{*}}context[@id='{context_id}']", namespaces=None
             )
             if xml_context is None:
-                raise ValueError(f"Context {context_id} not found in xbrl instance")
+                # raise ValueError(f"Context {context_id} not found in xbrl instance")
+                errors.append(
+                    ValueError(f"Context {context_id} not found in xbrl instance")
+                )
+                continue
 
             # then parse the context
-            context = parse_context_xml(
-                xml_context,
-                characteristics,
-                make_qname,
-                get_report_element,
-                get_from_cache,
-                add_to_cache,
-            )
+            try:
+                context = parse_context_xml(
+                    xml_context,
+                    characteristics,
+                    make_qname,
+                    get_report_element,
+                    get_from_cache,
+                    add_to_cache,
+                )
+            except Exception as e:
+                errors.append(e)
+                continue
 
             # create the fact
-            fact = parse_fact_from_xml(xml_fact, context)
+            try:
+                fact = parse_fact_from_xml(xml_fact, context)
 
-            facts.append(fact)
+                facts.append(fact)
 
-            # add the fact to the id_to_fact mapping if it has an id
-            fact_id = xml_fact.get("id")
-            if fact_id:
-                id_to_fact[fact_id] = fact
+                # add the fact to the id_to_fact mapping if it has an id
+                if fact_id:
+                    id_to_fact[fact_id] = fact
+            except Exception as e:
+                errors.append(e)
 
-    return facts, id_to_fact
+    return facts, id_to_fact, errors

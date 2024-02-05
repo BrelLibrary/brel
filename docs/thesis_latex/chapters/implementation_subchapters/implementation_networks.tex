@@ -1,10 +1,6 @@
 \section{Implementation of Networks}
 \label{sec:implementation_networks}
 
-\subsection{Overview}
-
-In chapter \ref{chapter:xbrl} we introduced the concept of networks,
-followed by Brel's interpretation of networks in chapter \ref{chapter:api}.
 % We also looked at the different types of networks that are defined in the XBRL 2.1 specification.
 % In this chapter, we will look at how networks are represented in XBRL and how Brel parses them.
 % As previously mentioned, one of the main goals of Brel is to shield the user from the complexity of the XBRL specification.
@@ -20,24 +16,44 @@ followed by Brel's interpretation of networks in chapter \ref{chapter:api}.
 % We will first look at the common interface for all networks.
 % Then, we will look at the different types of networks and see how they diverge from the common interface.
 % \subsection{Common Interface}
-A network in Brel comprises of two different classes: \texttt{INetwork} and \texttt{INetworkNode}.
-% Python does not support interfaces, so we used abstract base classes to define the interface of networks in Brel.
 
-A network in Brel is a directed acyclic graph.
-\footnote{The XBRL specification does allow cycles in networks, but Brel does not support them.}
-Each node in the graph has an ordered list of children and at most one parent.
-The network does not necessarily have to be connected, i.e. there can be multiple disconnected subgraphs in the network.
+% In chapter \ref{chapter:xbrl} we introduced the concept of networks,
+% followed by Brel's interpretation of networks in chapter \ref{chapter:api}.
+% A network in Brel comprises of two different classes: \texttt{INetwork} and \texttt{INetworkNode}.
 
-Technically speaking, a network in Brel is just a set of root nodes.
-These nodes point to their children, which in turn point to their children, and so on.
-So, to traverse a network, we only need to know the root nodes of the network.
-The \texttt{INetwork} class provides a method to get all root nodes of the network
-and the \texttt{INetworkNode} class provides a method to get all children of a node,
-which allows us to traverse the network.
+% A network in Brel is a directed acyclic graph.
+% \footnote{The XBRL specification does allow cycles in networks, but Brel does not support them.}
+% Each node in the graph has an ordered list of children and at most one parent.
+% The network does not necessarily have to be connected, i.e. there can be multiple disconnected subgraphs in the network.
 
-One implementation detail of networks in Brel is that they cannot be empty.
-They have to contain at least one node.
-The functionality of an "empty" network can still be achieved by letting the component of the network point to \texttt{None}.
+% Technically speaking, a network in Brel is just a set of root nodes.
+% These nodes point to their children, which in turn point to their children, and so on.
+% So, to traverse a network, we only need to know the root nodes of the network.
+% The \texttt{INetwork} class provides a method to get all root nodes of the network
+% and the \texttt{INetworkNode} class provides a method to get all children of a node,
+% which allows us to traverse the network.
+
+% One implementation detail of networks in Brel is that they cannot be empty.
+% They have to contain at least one node.
+% The functionality of an "empty" network can still be achieved by letting the component of the network point to \texttt{None}.
+In Chapter \ref{chapter:xbrl}, the concept of networks was introduced, which was then further explored in Brel's context in Chapter \ref{chapter:api}.
+In Brel, a network consists of two distinct classes: \texttt{INetwork} and \texttt{INetworkNode}.
+
+A Brel network is structured as a directed acyclic graph.
+\footnote{While the XBRL specification permits cycles within networks, Brel does not support this feature.}
+Each node within this graph maintains an ordered list of children and can have, at most, one parent.
+It is not mandatory for the network to be connected; hence, it may contain several disjoint subgraphs.
+
+Technically, a network in Brel is a collection of root nodes.
+These root nodes are linked to their respective children, who then connect to their own children, and so forth.
+Thus, to navigate through a network, knowledge of its root nodes is sufficient.
+The \texttt{INetwork} class offers a method to access all the network's root nodes,
+and the \texttt{INetworkNode} class provides a method to retrieve the children of a node,
+enabling the traversal of the network.
+
+An important aspect of Brel’s network implementation is that networks cannot be devoid of nodes.
+They must contain at least one node.
+% However, the concept of an "empty" network is still achievable by assigning the network's component to \texttt{None}.
 
 % The following UML diagram shows the class diagram of the \texttt{INetwork} class. 
 % The classes \texttt{QName}, \texttt{IReportElement}, \texttt{IResource}, and \texttt{Fact} are depicted in a simplified form.
@@ -103,126 +119,222 @@ The functionality of an "empty" network can still be achieved by letting the com
 
 % Given these two interfaces, we can now discuss how Brel parses links into networks.
 
-\subsection{Parsing Links into Networks}
+% \subsection{Parsing Links into Networks}
 
-Section \ref{sec:xbrl_networks} introduced the different types of networks, and how they are all just a collection of arcs, locators and resources.
-It also explained how locators and resources represent nodes and how arcs represent edges in a network.
-So parsing a link into a network is just a matter of converting a list of nodes and edges into a graph.
-Brel's algorithm for parsing links consists of four steps:
+% Section \ref{sec:xbrl_networks} introduced the different types of networks, and how they are all just a collection of arcs, locators and resources.
+% It also explained how locators and resources represent nodes and how arcs represent edges in a network.
+% So parsing a link into a network is just a matter of converting a list of nodes and edges into a graph.
+% Brel's algorithm for parsing links consists of four steps:
+
+% \begin{enumerate}\label{enum:network_parsing}
+%     \item First, it iterates over all elements of the link. 
+%     If the element is a locator or a resource, it creates an instance of the \texttt{INetworkNode} class.
+%     If the element is an arc, Brel stores the from and to attributes of the arc in an edge list.
+%     \item For the second step, Brel can assume that all nodes have been created.
+%     So, it iterates over the edge list and adds adds the to-node as a child to the from-node.
+%     \item Next, Brel iterates over all nodes and adds all nodes that do not have a parent to the root list of the network.
+%     The root list is then wrapped into a \texttt{INetwork} instance.
+%     \item Finally, if the network has any implications on the report as a whole, Brel will apply these implications to the report.
+%     For example, if the label network adds a label to a concept, Brel will add the label to the concept in the report.
+%     The exact implications depend on the type of network.
+% \end{enumerate}
+
+% % So far, we have only looked at the common interface of networks.
+% % In reality, there are different types of networks that have different functionality.
+% Chapter \ref{chapter:api} introduced the different types of networks.
+% For each type of network, Brel provides both a node class and a network class, 
+% all of which inherit from the \texttt{INetwork} and \texttt{INetworkNode} classes respectively.
+% % There exists a factory method for each type of network or node that returns the correct network or node class for the given link.
+% Brel uses the factory pattern to create the correct network and node instances for a given link.
+% Each type of network has its own factory.
+% The factories are used by the algorithm \ref{enum:network_parsing} to create the correct network and node instances.
+\subsection{Transforming Links into Networks}
+
+Section \ref{sec:xbrl_networks} outlined various network types, illustrating how each consists of a collection of arcs, locators, and resources.
+It also clarified how locators and resources symbolize nodes, and arcs represent edges within a network.
+Thus, converting a link into a network essentially involves translating a list of nodes and edges into a graph.
+Brel follows a four-step algorithm to parse links:
 
 \begin{enumerate}\label{enum:network_parsing}
-    \item First, it iterates over all elements of the link. 
-    If the element is a locator or a resource, it creates an instance of the \texttt{INetworkNode} class.
-    If the element is an arc, Brel stores the from and to attributes of the arc in an edge list.
-    \item For the second step, Brel can assume that all nodes have been created.
-    So, it iterates over the edge list and adds adds the to-node as a child to the from-node.
-    \item Next, Brel iterates over all nodes and adds all nodes that do not have a parent to the root list of the network.
-    The root list is then wrapped into a \texttt{INetwork} instance.
-    \item Finally, if the network has any implications on the report as a whole, Brel will apply these implications to the report.
-    For example, if the label network adds a label to a concept, Brel will add the label to the concept in the report.
-    The exact implications depend on the type of network.
+    \item Initially, it examines all elements within the link. 
+    For elements identified as locators or resources, Brel generates an \texttt{INetworkNode} class instance.
+    In the case of an arc element, Brel notes the arc's from and to attributes in an edge list.
+    \item In the second step, with all nodes already established, Brel sifts through the edge list, appending the to-node as a child of the from-node.
+    \item Subsequently, Brel reviews each node, adding those without a parent to the network's root list. This root list is encapsulated in an \texttt{INetwork} instance.
+    \item Finally, Brel applies any overarching implications of the network to the report.
+    For instance, if a label network assigns a label to a concept, Brel incorporates this label into the report's concept.
+    The specific implications vary based on the network type.
 \end{enumerate}
 
-% So far, we have only looked at the common interface of networks.
-% In reality, there are different types of networks that have different functionality.
-Chapter \ref{chapter:api} introduced the different types of networks.
-For each type of network, Brel provides both a node class and a network class, 
-all of which inherit from the \texttt{INetwork} and \texttt{INetworkNode} classes respectively.
-% There exists a factory method for each type of network or node that returns the correct network or node class for the given link.
-Brel uses the factory pattern to create the correct network and node instances for a given link.
-Each type of network has its own factory.
-The factories are used by the algorithm \ref{enum:network_parsing} to create the correct network and node instances.
+Chapter \ref{chapter:api} introduced the diverse network types.
+For each network variant, Brel provides corresponding node and network classes, all derived from the \texttt{INetwork} and \texttt{INetworkNode} classes.
+Brel employs the factory pattern to generate appropriate network and node instances for a given link.
+Each network type has its dedicated factory, which is utilized in the algorithm \ref{enum:network_parsing} to create the relevant network and node instances.
 
-\subsection{Resolving Locators}
 
-As mentioned in section \ref{sec:xbrl_networks}, locators are used to point to report elements or facts.
-This section will explain how Brel resolves locators.
+% \subsection{Resolving Locators}
 
-XBRL locators use XPointer\cite{w3_xpointer} expressions to reference other XML elements, which are potentially defined in other XML documents.
-The XPointers XBRL uses are of the form \texttt{filename\#id},
-where \texttt{filename} is the name of the XML document and \texttt{id} is the id of the XML element.
-% XPointers use the "id" attribute of XML elements to reference them.
-% So, to resolve a locator, Brel first needs to find the XML element that the locator points to.
-To resolve a locator, Brel first needs to find the XML element that the locator points to.
-Then, it needs to resolve the XML element into a report element or a fact.
+% As mentioned in section \ref{sec:xbrl_networks}, locators are used to point to report elements or facts.
+% This section will explain how Brel resolves locators.
 
-Brel does this by remembering the id of each fact and report element that it has parsed.
-It builds a lookup table that maps ids to facts and report elements.
-Whenever Brel encounters a locator during the parsing process, it resolves the locator by looking up the id of the locator in the lookup table.
-% It builds a dictionary that maps ids to facts and report elements.
-% Then, when it encounters a locator, it uses the id of the locator to look up the fact or report element that the locator points to.
+% XBRL locators use XPointer\cite{w3_xpointer} expressions to reference other XML elements, which are potentially defined in other XML documents.
+% The XPointers XBRL uses are of the form \texttt{filename\#id},
+% where \texttt{filename} is the name of the XML document and \texttt{id} is the id of the XML element.
+% To resolve a locator, Brel first needs to find the XML element that the locator points to.
+% Then, it needs to resolve the XML element into a report element or a fact.
+
+% Brel does this by remembering the id of each fact and report element that it has parsed.
+% It builds a lookup table that maps ids to facts and report elements.
+% Whenever Brel encounters a locator during the parsing process, it resolves the locator by looking up the id of the locator in the lookup table.
+
+\subsection{Parsing Locators}
+
+As indicated in section \ref{sec:xbrl_networks}, locators serve to reference report elements or facts.
+This section details the method Brel uses to interpret locators.
+
+XBRL locators utilize XPointer\cite{w3_xpointer} expressions for referencing other XML elements, potentially from different XML documents.
+These XPointers in XBRL take the form \texttt{filename\#id},
+where \texttt{filename} denotes the XML document's URI and \texttt{id} is the id of the XML element.
+To interpret a locator, Brel first identifies the targeted XML element.
+Subsequently, it translates this XML element into a report element or a fact.
+
+Brel accomplishes this by tracking the id of each fact and report element it parses.
+It constructs a lookup table mapping ids to their corresponding facts and report elements.
+Whenever Brel encounters a locator during parsing, it interprets the locator by consulting the lookup table with the locator's id.
+
+% \subsection{Parsing Resources}
+  
+% Resources are the other type of element that can be referenced by arcs.
+% Unlike locators, resources are not used to point to other elements in the report.
+% Instead, they directly contain the value of the element that they represent.
+
+% The current specification of XBRL 2.1 defines three built-in types of resources: label, reference and footnote.
+% Custom resources are also possible.
+
+% Resources consist of three elements: a role, a label and a value.
+
+% The role is a URI that identifies the type of resource.
+% For example, the role \texttt{http://www.xbrl.org/2003/role/terseLabel} identifies a label resource that contains a short label for a concept, 
+% whereas the role \texttt{http://www.xbrl.org/2003/role/footnote} identifies a footnote resource that contains a footnote for a concept.
+
+% The label acts as an identifier for the resource.
+% The label is used by arcs to reference the resource.
+% Do not confuse the label of a resource with a human readable label for a concept.
+
+% The value of a resource contains the actual resource.
+% For labels, the value is the text of the label.
+% For references, this is the dictionary that points to some exteral resource like an article in the SEC's Code of Federal Regulations.
+
+% Since resources have all the information that is needed to parse them, Brel does not need to resolve any references to parse them.
+% Therefore, parsing them is very straightforward.
 
 \subsection{Parsing Resources}
 
-Resources are the other type of element that can be referenced by arcs.
-Unlike locators, resources are not used to point to other elements in the report.
-Instead, they directly contain the value of the element that they represent.
+Resources, the alternate type of element referable by arcs, do not point to other elements within the report.
+Instead, they directly encapsulate the value of the element they signify.
 
-The current specification of XBRL 2.1 defines three built-in types of resources: label, reference and footnote.
-Custom resources are also possible.
+The current XBRL 2.1 specification outlines three inherent resource types: label, reference, and footnote, though custom resources are feasible.
 
-Resources consist of three elements: a role, a label and a value.
+Resources comprise three components: a role, a label, and a value.
 
-The role is a URI that identifies the type of resource.
-For example, the role \texttt{http://www.xbrl.org/2003/role/terseLabel} identifies a label resource that contains a short label for a concept, 
-whereas the role \texttt{http://www.xbrl.org/2003/role/footnote} identifies a footnote resource that contains a footnote for a concept.
+The role is a URI defining the resource's type.
+For instance, the role \texttt{http://www.xbrl.org/2003/role/terseLabel} denotes a label resource offering a concise label for a concept,
+while \texttt{http://www.xbrl.org/2003/role/footnote} indicates a footnote resource associated with a concept.
 
-The label acts as an identifier for the resource.
-The label is used by arcs to reference the resource.
-Do not confuse the label of a resource with a human readable label for a concept.
+The label functions as an identifier for the resource, utilized by arcs to reference the resource.
+This label should not be mistaken for a concept's human-readable label.
 
-The value of a resource contains the actual resource.
-For labels, the value is the text of the label.
-For references, this is the dictionary that points to some exteral resource like an article in the SEC's Code of Federal Regulations.
+The resource's value embodies the actual resource content.
+For labels, this means the label text itself.
+For references, it is typically a dictionary pointing to an external resource, like an article in the SEC's Code of Federal Regulations.
 
-Since resources have all the information that is needed to parse them, Brel does not need to resolve any references to parse them.
-Therefore, parsing them is very straightforward.
+Given that resources contain all necessary information for parsing, Brel does not need to resolve external references to analyze them.
+Hence, their parsing is straightforward.
 
-\subsection{Implications of Networks}
+% \subsection{Implications of networks}
 
-As mentioned in section \ref{enum:network_parsing}, networks can have implications on the report as a whole.
-There are two implications that are common to all networks: Labels and LineItems promoting.
+% As mentioned in section \ref{enum:network_parsing}, networks can have implications on the report as a whole.
+% There are two implications that are common to all networks: Labels and LineItems promoting.
 
-\subsection{Add Labels to Report Elements}
+% Labels are used to provide human-readable names for report elements.
+% They are created using the label network \texttt{link:labelLink}.
+% Labellinks are described in more detail in section \ref{sec:labelLink}.
+% Brel parses report elements before it parses networks, since many networks contain locators that point to report elements.
+% So, when Brel parses a label network, it already knows all report elements that are referenced by the locators in the network.
 
-Labels are used to provide human-readable names for report elements.
-They are created using the label network \texttt{link:labelLink}.
-Labellinks are described in more detail in section \ref{sec:labelLink}.
-Brel parses report elements before it parses networks, since many networks contain locators that point to report elements.
-So, when Brel parses a label network, it already knows all report elements that are referenced by the locators in the network.
+% Once the label network has been parsed, Brel iterates over all labels in the network.
+% It then adds the label to the report element that the locator of the label points to.
 
-Once the label network has been parsed, Brel iterates over all labels in the network.
-It then adds the label to the report element that the locator of the label points to.
+% Report elements are defined in the taxonomy and there six different types: concepts, abstracts, lineitems, members, dimensions and hypercubes.
+% When looking at an XML element in the taxonomy, it is not always clear what type of report element it represents.
+% Both abstracts and lineitems are represented by a structurally identical XML element.
+% There are two approaches to tell them apart: 
 
-\subsection{LineItems Promoting}
+% \begin{enumerate}
+%     \item The first approach is to look at the QName of the element.
+%     Lineitems often have the substring "LineItems" in their QName.
+%     The problem with this approach is that this is more of a convention than a rule.
+%     There is no guarantee that the QName of a lineitem will contain the substring "LineItems".
+%     \item The second approach is to look at how the element is used in networks.
+%     specifically, definition networks define the relationships between report elements.
+%     The arc role \texttt{hypercube-dimension} is used to define the relationship between a hypercube report element and a dimension report element.
+%     Similarly, the arc role \texttt{all} is used to define the relationship between a hypercube report element and a lineitem report element.
+% \end{enumerate}
 
-Report elements are defined in the taxonomy and there six different types: concepts, abstracts, lineitems, members, dimensions and hypercubes.
-When looking at an XML element in the taxonomy, it is not always clear what type of report element it represents.
-Both abstracts and lineitems are represented by a structurally identical XML element.
-There are two approaches to tell them apart: 
+% Brel uses the second approach to tell lineitems and abstracts apart.
+% Initially, Brel assumes that all report elements are abstracts.
+% Then, when it parses a definition network, it looks at the arc roles of the arcs in the network.
+% If the network contains an arc with the arc role \texttt{all} and the arc lies between a hypercube and an abstract, Brel assumes that the abstract is a lineitem.
+
+
+% This concludes the chapter on the implementation of networks.
+% Together with previous sections of this chapter, it covered all parts of XBRL and how Brel parses them.
+% However, section \ref{sec:implementation_report_elements} made a key assumption about taxonomies that is not always true.
+% Each taxonomy can import other taxonomies under a prefix-URI pair.
+% The assumption was that all taxonomies agree on the prefix-URI pair of each taxonomy.
+% This assumption is not always true.
+% The next section will explain how Brel handles this situation. 
+
+\subsection{Consequences of Networks}
+
+As previously noted in section \ref{enum:network_parsing}, networks can influence the entire report.
+Two widespread outcomes associated with all networks are labels and line items promotion.
+
+Labels serve to assign human-readable titles to report elements, generated via the label network \texttt{link:labelLink}.
+The intricacies of label links are elaborated in section \ref{sec:labelLink}.
+Brel processes report elements before networks because many networks include locators pointing to report elements.
+Thus, when Brel interprets a label network, it is already aware of all report elements referenced in the network.
+
+After parsing the label network, Brel examines each label within it.
+% It then attaches the label to the report element indicated by the label's locator.
+If the network contains an edge between a label and a report element, Brel adds the label to the report element.
+
+The other implication of networks is the promotion of line items.
+Report elements, defined in the taxonomy, come in six varieties: concepts, abstracts, line items, members, dimensions, and hypercubes.
+Determining the exact type of a report element from its XML element in the taxonomy is not always straightforward.
+Abstracts and line items are represented by structurally similar XML elements.
+Two methods are employed to distinguish them:
 
 \begin{enumerate}
-    \item The first approach is to look at the QName of the element.
-    Lineitems often have the substring "LineItems" in their QName.
-    The problem with this approach is that this is more of a convention than a rule.
-    There is no guarantee that the QName of a lineitem will contain the substring "LineItems".
-    \item The second approach is to look at how the element is used in networks.
-    specifically, definition networks define the relationships between report elements.
-    The arc role \texttt{hypercube-dimension} is used to define the relationship between a hypercube report element and a dimension report element.
-    Similarly, the arc role \texttt{all} is used to define the relationship between a hypercube report element and a lineitem report element.
+\item The first method involves examining the QName of the element.
+"LineItems" often appears within the QName of line items.
+However, this is a convention rather than a rule.
+% Therefore not guaranteed that every line item's QName will contain "LineItems".
+Thus, it is not guaranteed that every line item's QName will contain "LineItems".
+\item The second method assesses the element's role in networks, particularly in definition networks that outline relationships between report elements.
+For instance, the arc role \texttt{hypercube-dimension} defines the link between a hypercube report element and a dimension report element.
+Likewise, the arc role \texttt{all} denotes the connection between a hypercube report element and a line items report element.
 \end{enumerate}
 
-Brel uses the second approach to tell lineitems and abstracts apart.
-Initially, Brel assumes that all report elements are abstracts.
-Then, when it parses a definition network, it looks at the arc roles of the arcs in the network.
-If the network contains an arc with the arc role \texttt{all} and the arc lies between a hypercube and an abstract, Brel assumes that the abstract is a lineitem.
+Brel adopts the second strategy to differentiate line items from abstracts.
+Initially, it treats all report elements as abstracts.
+Then, during the parsing of a definition network, it considers the arc roles within the network.
+If an arc with the role \texttt{all} connects a hypercube to an abstract, Brel classifies the abstract as a lineitem.
 
-
-This concludes the chapter on the implementation of networks.
-Together with previous sections of this chapter, it covered all parts of XBRL and how Brel parses them.
-However, section \ref{sec:implementation_report_elements} made a key assumption about taxonomies that is not always true.
-% It assumed that all taxonomies agree on how each 
-Each taxonomy can import other taxonomies under a prefix-URI pair.
-The assumption was that all taxonomies agree on the prefix-URI pair of each taxonomy.
-This assumption is not always true.
-The next section will explain how Brel handles this situation. 
+This section concludes the discussion on the implementation of networks.
+Combined with the previous segments of this chapter, it encompasses the entirety of XBRL and Brel's parsing methodology.
+However, section \ref{sec:implementation_report_elements} made an assumption about taxonomies that is not always accurate.
+Each taxonomy can incorporate other taxonomies under a specific prefix-URI pair.
+The presumption was that there is a universal agreement on the prefix-URI pair for each taxonomy.
+This presumption does not always hold true.
+The upcoming section will detail Brel's approach in handling such scenarios.

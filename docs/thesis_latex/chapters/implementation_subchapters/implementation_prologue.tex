@@ -31,19 +31,32 @@
 % It will discuss the difficulties of parsing these elements and how brel solves these difficulties.
 % The first section is about QNames, which are used extensively throughout XBRL reports.
 
-The implementation of the API closely follows the design of the API introduced in chapter \ref{chapter:api}.
-% The implementation of the API is done in the programming language Python.
-Brel is implemented in the programming language Python.
-Python is a high level language and one of the most popular programming languages in the world.
-Python is also popular outside of the computer science and software engineering communities as well.
-According to the 2020 Stack Overflow Developer Survey, Python is the fourth most popular programming language among all respondents, 
-not just professional developers \cite{stack_overflow_2020}.
+% The implementation of the API closely follows the design of the API introduced in chapter \ref{chapter:api}.
+% Brel is implemented in the programming language Python.
+% Python is a high level language and one of the most popular programming languages in the world.
+% Python is also popular outside of the computer science and software engineering communities as well.
+% According to the 2020 Stack Overflow Developer Survey, Python is the fourth most popular programming language among all respondents, 
+% not just professional developers \cite{stack_overflow_2020}.
 
-The reader may view the implementation of Brel as a translation from XBRL reports to python objects.
-Most of the translations from the design to the implementation are straightforward and will only be mentioned briefly, 
-which the first section of this chapter will cover.
+% The reader may view the implementation of Brel as a translation from XBRL reports to python objects.
+% Most of the translations from the design to the implementation are straightforward and will only be mentioned briefly, 
+% which the first section of this chapter will cover.
 
-There are three key areas where the Brel's implementation differs from the underlying XBRL standard - DTS caching, namespace normalization and networks.
-Each area has its own dedicated section in this chapter.
+% There are three key areas where the Brel's implementation differs from the underlying XBRL standard - DTS caching, namespace normalization and networks.
+% Each area has its own dedicated section in this chapter.
 
-This chapter exclusively focuses on XBRL reports in XML format.
+% This chapter exclusively focuses on XBRL reports in XML format.
+
+The development of the API aligns closely with the API's design presented in Chapter \ref{chapter:api}.
+Brel is created using the Python programming language.
+Python, a high-level language, is among the most favored programming languages globally.
+It also enjoys popularity beyond the realms of computer science and software engineering.
+The 2020 Stack Overflow Developer Survey ranks Python as the fourth most favored programming language among all participants, not limited to professional developers \cite{stack_overflow_2020}.
+
+Readers can interpret Brel's implementation as converting XBRL reports into Python objects.
+% The majority of these conversions from design to implementation are direct and will be briefly discussed, as covered in the initial section of this chapter.
+The majority of these conversions from design to implementation are direct and will be briefly discussed in the initial section of this chapter.
+
+Brel's implementation diverges from the standard XBRL in three main aspects: DTS caching, namespace normalization, and networks. Each aspect is detailed in its own section within this chapter.
+
+This chapter is exclusively concerned with XBRL reports in the XML format.

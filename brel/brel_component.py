@@ -55,7 +55,6 @@ from brel.networks import (
     PresentationNetwork,
     INetwork,
 )
-from brel.utils import pprint_network
 
 
 class Component:
@@ -203,3 +202,16 @@ class Component:
         """
         # TODO: implement
         raise NotImplemented
+
+    def get_networks(self) -> list[INetwork]:
+        """
+        :returns list[INetwork]: the networks of the component
+        """
+        networks = []
+        if self.__presentation_network is not None:
+            networks.append(self.__presentation_network)
+        if self.__calculation_network is not None:
+            networks.append(self.__calculation_network)
+        if self.__definition_network is not None:
+            networks.append(self.__definition_network)
+        return networks

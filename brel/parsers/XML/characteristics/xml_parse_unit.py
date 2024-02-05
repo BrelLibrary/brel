@@ -50,9 +50,7 @@ def parse_unit_measure_from_xml(
         )
 
     # according to the xbrl spec, if the concept type is 'sharesItemType', the unit must be the qname xbrli:shares
-    if concept_type == "sharesItemType" and child_qname != make_qname(
-        "xbrli:shares"
-    ):
+    if concept_type == "sharesItemType" and child_qname != make_qname("xbrli:shares"):
         raise ValueError(f"The measure {child_qname} is not xbrli:shares")
 
     return child_qname
@@ -76,9 +74,7 @@ def parse_unit_from_xml(
     # Check if the xml element has an id attribute. This is mandatory according to the XBRL specification.
     unit_id_str = xml_element.get("id", None)
     if unit_id_str is None:
-        raise ValueError(
-            f"The unit {xml_element} does not have an id attribute"
-        )
+        raise ValueError(f"The unit {xml_element} does not have an id attribute")
 
     # check the cache for the unit. If it is already in the cache, return it.
     unit_characteristic = get_from_cache(f"unit {unit_id_str}")
@@ -146,8 +142,6 @@ def parse_unit_from_xml(
         )
 
     # create the unit characteristic, add it to the cache and return it
-    unit_characteristic = UnitCharacteristic(
-        unit_id_str, numerators, denominators
-    )
+    unit_characteristic = UnitCharacteristic(unit_id_str, numerators, denominators)
     add_to_cache(f"unit {unit_id_str}", unit_characteristic)
     return unit_characteristic

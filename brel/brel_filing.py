@@ -170,6 +170,7 @@ class Filing:
         self.__reportelems: list[IReportElement] = parser_result["report elements"]
         self.__components: list[Component] = parser_result["components"]
         self.__nsmap = parser_result["nsmap"]
+        self.__errors = parser_result["errors"]
 
     # first class citizens
     def get_all_facts(self) -> list[Fact]:
@@ -200,6 +201,12 @@ class Filing:
             network for network in self.__networks if network.is_physical()
         ]
         return physical_networks
+
+    def get_errors(self) -> list[Exception]:
+        """
+        :return list[Exception]: a list of all errors that occurred during parsing.
+        """
+        return self.__errors
 
     # second class citizens
     def get_all_concepts(self) -> list[Concept]:

@@ -10,7 +10,7 @@ It does not parse the networks, but it links components to networks.
 
 =================
 """
-from typing import Callable, Mapping, Iterable
+from typing import Callable, Mapping, Iterable, Tuple
 
 import lxml
 import lxml.etree
@@ -23,6 +23,7 @@ from brel.networks import (
     PresentationNetwork,
 )
 from brel.reportelements import IReportElement
+from brel.parsers.utils import get_str
 
 # TODO: remove
 from brel.utils import pprint_network
@@ -92,17 +93,20 @@ def parse_components_xml(
     schemas: Iterable[lxml.etree._ElementTree],
     networks: Mapping[str, Iterable[INetwork]],
     qname_nsmap: QNameNSMap,
-) -> list[Component]:
+) -> Tuple[list[Component], list[Exception]]:
     """
     Parse the components.
     :param schemas: The xbrl schema xml trees
     :param networks: The networks as a dictionary of roleURI -> list of networks. Networks that belong to the default role have roleID None.
     :param qname_nsmap: The QNameNSMap
-    :return list[Component]: All the components in the filing.
+    :returns:
+    - list[Component]: All the components in the filing.
+    - list[Exception]: All the exceptions that occurred during parsing.
     """
     nsmap = qname_nsmap.get_nsmap()
 
     components: list[Component] = []
+    errors: list[Exception] = []
 
     # Iterate over all files that may contain components. Components are defined in the schemas
     for schema in schemas:
@@ -110,14 +114,20 @@ def parse_components_xml(
         roletypes = schema.findall(".//link:roleType", namespaces=nsmap)
         for roletype in roletypes:
             # Read the component information from the roleType xml element
-            roleURI = roletype.get("roleURI")
-            roleID = roletype.get("id")
+            # roleURI = roletype.get("roleURI")
+            # roleID = roletype.get("id")
 
-            if roleURI is None:
-                raise ValueError(f"roleURI for role {roleID} is None")
+            # if roleURI is None:
+            #     raise ValueError(f"roleURI for role {roleID} is None")
 
-            if roleID is None:
-                raise ValueError(f"roleID for role {roleURI} is None")
+            # if roleID is None:
+            #     raise ValueError(f"roleID for role {roleURI} is None")
+            try:
+                roleURI = get_str(roletype, "roleURI")
+                roleID = get_str(roletype, "id")
+            except Exception as e:
+                errors.append(e)
+                continue
 
             # check if the role id is a valid NCName
             # NCName is defined in https://www.w3.org/TR/xml-names/#NT-NCName
@@ -128,13 +138,18 @@ def parse_components_xml(
                 or roleID.startswith("-")
                 or roleID.startswith(".")
             ):
-                raise ValueError(f"roleID {roleID} is not a valid NCName")
+                # raise ValueError(f"roleID {roleID} is not a valid NCName")
+                errors.append(ValueError(f"roleID {roleID} is not a valid NCName"))
+                continue
 
-            component = parse_component_from_xml(
-                roletype,
-                qname_nsmap,
-                networks[roleURI],
-            )
-            components.append(component)
+            try:
+                component = parse_component_from_xml(
+                    roletype,
+                    qname_nsmap,
+                    networks[roleURI],
+                )
+                components.append(component)
+            except Exception as e:
+                errors.append(e)
 
-    return components
+    return components, errors

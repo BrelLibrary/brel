@@ -76,9 +76,7 @@ class Context:
         :param aspect: The aspect to get the value of.
         :returns Aspect|None: The value of the aspect. None if the aspect is not present in the context.
         """
-        return next(
-            (c for a, c in self.__characteristics.items() if a == aspect), None
-        )
+        return next((c for a, c in self.__characteristics.items() if a == aspect), None)
 
     # Second class citizens
     def has_characteristic(self, aspect: Aspect) -> bool:
@@ -87,9 +85,7 @@ class Context:
         :param aspect: The aspect to check for.
         :returns bool: True if the context has the aspect, False otherwise.
         """
-        return any(
-            aspect == context_aspect for context_aspect in self.__aspects
-        )
+        return any(aspect == context_aspect for context_aspect in self.__aspects)
 
     def get_characteristic_as_str(self, aspect: Aspect) -> str:
         """
@@ -167,9 +163,7 @@ class Context:
         It cannot return None, because the concept is a required aspect.
         :returns ConceptCharacteristic: The concept of the context.
         """
-        return cast(
-            ConceptCharacteristic, self.get_characteristic(Aspect.CONCEPT)
-        )
+        return cast(ConceptCharacteristic, self.get_characteristic(Aspect.CONCEPT))
 
     def get_period(self) -> PeriodCharacteristic | None:
         """
@@ -177,9 +171,7 @@ class Context:
         This function is equivalent to `get_characteristic(Aspect.PERIOD)`.
         :returns PeriodCharacteristic|None: The period of the context. None if the context does not have a period.
         """
-        return cast(
-            PeriodCharacteristic, self.get_characteristic(Aspect.PERIOD)
-        )
+        return cast(PeriodCharacteristic, self.get_characteristic(Aspect.PERIOD))
 
     def get_entity(self) -> EntityCharacteristic | None:
         """
@@ -187,9 +179,7 @@ class Context:
         This function is equivalent to `get_characteristic(Aspect.ENTITY)`.
         :returns EntityCharacteristic|None: The entity of the context. None if the context does not have an entity.
         """
-        return cast(
-            EntityCharacteristic, self.get_characteristic(Aspect.ENTITY)
-        )
+        return cast(EntityCharacteristic, self.get_characteristic(Aspect.ENTITY))
 
     def get_unit(self) -> UnitCharacteristic | None:
         """

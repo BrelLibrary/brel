@@ -4,8 +4,8 @@ This module parses multiple etrees into a dict of networks.
 =================
 
 - author: Robin Schmidiger
-- version: 0.18
-- date: 31 January 2024
+- version: 0.19
+- date: 05 February 2024
 
 =================
 """
@@ -48,8 +48,19 @@ def parse_networks_from_xmls(
     qname_nsmap: QNameNSMap,
     id_to_any: Mapping[str, Any],
     report_elements: Mapping[QName, IReportElement],
-) -> Mapping[str, list[INetwork]]:
+) -> Tuple[Mapping[str, list[INetwork]], list[Exception]]:
+    """
+    Parse the networks from a list of xml trees.
+    :param xml_trees: The xml trees to parse the networks from.
+    :param qname_nsmap: The QNameNSMap to use for parsing.
+    :param id_to_any: A mapping from xml ids to report elements, facts, and components.
+    :param report_elements: The report elements to use for parsing.
+    :return:
+    - Mapping[str, list[INetwork]]: A mapping from link role to a list of networks.
+    - list[Exception]: A list of exceptions that occurred during parsing.
+    """
     nsmap = qname_nsmap.get_nsmap()
+    errors: list[Exception] = []
 
     # first, we want to get all extended links in all xml trees
     # we do this by going over all xml trees and getting all extended links
@@ -94,13 +105,22 @@ def parse_networks_from_xmls(
             start_time = time.time()
 
         # get the link role
-        link_role = get_str(xml_link, f"{{{nsmap['xlink']}}}role")
+        try:
+            link_role = get_str(xml_link, f"{{{nsmap['xlink']}}}role")
+        except Exception as e:
+            errors.append(e)
+            continue
 
         # get the link name
         link_name = xml_link.tag
         if not isinstance(link_name, str):
-            raise ValueError(
-                f"the link element {xml_link} has an invalid tag name '{link_name}'. The tag name must be a string."
+            # raise ValueError(
+            #     f"the link element {xml_link} has an invalid tag name '{link_name}'. The tag name must be a string."
+            # )
+            errors.append(
+                Exception(
+                    f"the link element {xml_link} has an invalid tag name '{link_name}'. The tag name must be a string."
+                )
             )
 
         # According to the XBRL Generic Links spec, if the xlink:role is not the default link role,
@@ -121,17 +141,11 @@ def parse_networks_from_xmls(
         if DEBUG:  # pragma: no cover
             print(f"The link has {len(link_role_elems)} elements")
         for link_role_elem in link_role_elems:
-            role = link_role_elem.get(f"{{{nsmap['xlink']}}}role", None)
-            if role is None:
-                raise ValueError(
-                    f"the element {link_role_elem} does not have a xlink:role attribute"
-                )
-            if not isinstance(role, str):
-                raise ValueError(
-                    f"the element {link_role_elem} has an invalid xlink:role attribute '{role}'. The xlink:role attribute must be a string."
-                )
-
-            role = cast(str, role)
+            try:
+                role = get_str(link_role_elem, f"{{{nsmap['xlink']}}}role")
+            except Exception as e:
+                errors.append(e)
+                continue
 
             # check if the role is a standard role
             if any(standard_role in role for standard_role in STANDARD_LINK_ROLES):
@@ -155,9 +169,15 @@ def parse_networks_from_xmls(
                     linkbase = linkbase.getparent()
 
                 if linkbase is None:
-                    raise ValueError(
-                        f"the element {link_role_elem} does not have a parent linkbase. All elements with an xlink:role must be in a linkbase."
+                    # raise ValueError(
+                    #     f"the element {link_role_elem} does not have a parent linkbase. All elements with an xlink:role must be in a linkbase."
+                    # )
+                    errors.append(
+                        ValueError(
+                            f"the element {link_role_elem} does not have a parent linkbase. All elements with an xlink:role must be in a linkbase."
+                        )
                     )
+                    continue
 
                 # find the roleRef in the linkbase
                 role_ref = linkbase.find(
@@ -172,14 +192,23 @@ def parse_networks_from_xmls(
                 # read the component name from the xlink:href of the roleRef
                 href = role_ref.get(f"{{{nsmap['xlink']}}}href", None)
                 if href is None:
-                    raise ValueError(
-                        f"the roleRef {role_ref} does not have a href attribute. All roleRefs must have a href attribute."
+                    # raise ValueError(
+                    #     f"the roleRef {role_ref} does not have a href attribute. All roleRefs must have a href attribute."
+                    # )
+                    errors.append(
+                        ValueError(
+                            f"the roleRef {role_ref} does not have a href attribute. All roleRefs must have a href attribute."
+                        )
                     )
 
         # parse the network and update the report elements
-        link_networks = parse_xml_link(
-            xml_link, qname_nsmap, id_to_any, report_elements
-        )
+        try:
+            link_networks = parse_xml_link(
+                xml_link, qname_nsmap, id_to_any, report_elements
+            )
+        except Exception as e:
+            errors.append(e)
+            continue
 
         if DEBUG:  # pragma: no cover
             end_time = time.time()
@@ -209,4 +238,4 @@ def parse_networks_from_xmls(
 
         combined_networks[role] = combined_network_list
 
-    return combined_networks
+    return combined_networks, errors

@@ -1,49 +1,88 @@
-\section{General implementation}
+\section{General Implementation}
 \label{sec:implementation_general}
 
-Brel parses XBRL reports using an eager bottom-up approach
-It starts with the smallest building blocks of XBRL reports - report elements.
-After all report elements have been parsed, Brel moves on to parsing facts and their associated characteristics.
-Next, Brel parses all networks and their associated resources.
-Finally, Brel parses the components of the report.
+% Brel parses XBRL reports using an eager bottom-up approach
+% It starts with the smallest building blocks of XBRL reports - report elements.
+% After all report elements have been parsed, Brel moves on to parsing facts and their associated characteristics.
+% Next, Brel parses all networks and their associated resources.
+% Finally, Brel parses the components of the report.
 
-Brel chooses this bottom-up approach because both networks and facts depend on report elements.
-Networks depend on report elements since their nodes can point to report elements.
-Facts depend on report elements since their characteristics can refer to concepts, dimensions and members.
-Networks and facts often refer to the same report elements.
-Therefore, their python classes should share the same report element instances.
-The bottom-up approach ensures that all report elements are parsed before they are used by networks and facts.
-In the next four sections, this chapter will briefly cover the four stages of Brel's bottom-up approach.
+% Brel chooses this bottom-up approach because both networks and facts depend on report elements.
+% Networks depend on report elements since their nodes can point to report elements.
+% Facts depend on report elements since their characteristics can refer to concepts, dimensions and members.
+% Networks and facts often refer to the same report elements.
+% Therefore, their python classes should share the same report element instances.
+% The bottom-up approach ensures that all report elements are parsed before they are used by networks and facts.
+% In the next four sections, this chapter will briefly cover the four stages of Brel's bottom-up approach.
+Brel systematically processes XBRL reports using an eager bottom-up strategy.
+The process begins with the fundamental units of XBRL reports - the report elements.
+Once every report element is parsed, Brel progresses to interpreting facts and their related characteristics.
+Subsequently, Brel examines all networks along with their connected resources.
+Finally, Brel analyzes the components of the report.
 
-\subsection{Parsing report elements}
+The rationale for this bottom-up method is the reliance of both networks and facts on report elements.
+Networks require report elements as their nodes may link to these elements.
+Similarly, facts need report elements because their attributes can be associated with concepts, dimensions, and members.
+It is common for both networks and facts to reference identical report elements.
+Hence, their corresponding Python classes should utilize the same instances of report elements.
+Adopting a bottom-up approach guarantees that all report elements are fully parsed prior to their utilization in networks and facts.
+The subsequent four sections of this chapter will briefly discuss each phase of Brel's bottom-up parsing approach.
+
+\subsection{Parsing Report Elements}
 \label{sec:implementation_report_elements}
 
-Report elements are the smallest building blocks of XBRL reports.
-Therefore, they do not rely on any other XBRL elements and can be parsed first.
-Report elements are defined in the taxonomy set of the XBRL report, which is a collection of \texttt{.xsd} files in the XML format.
-These files are all stored locally on the user's computer.
-Even though XBRL does not require the taxonomy set to be stored locally, Brel does.
-However, Brel automatically downloads the taxonomy set from the internet if it is not already stored locally.
-The mechanism for downloading the taxonomy set is discussed in section \ref{sec:implementation_dts_caching}.
+% Report elements are the smallest building blocks of XBRL reports.
+% Therefore, they do not rely on any other XBRL elements and can be parsed first.
+% Report elements are defined in the taxonomy set of the XBRL report, which is a collection of \texttt{.xsd} files in the XML format.
+% These files are all stored locally on the user's computer.
+% Even though XBRL does not require the taxonomy set to be stored locally, Brel does.
+% However, Brel automatically downloads the taxonomy set from the internet if it is not already stored locally.
+% The mechanism for downloading the taxonomy set is discussed in section \ref{sec:implementation_dts_caching}.
 
-Taxonomies contain three types of elements - linkbases, roles and report elements.
-Linkbases are discussed in section \ref{sec:implementation_networks}.
-Roles are discussed in section \ref{sec:implementation_components}.
-Report elements are discussed in this section.
+% Taxonomies contain three types of elements - linkbases, roles and report elements.
+% Linkbases are discussed in section \ref{sec:implementation_networks}.
+% Roles are discussed in section \ref{sec:implementation_components}.
+% Report elements are discussed in this section.
 
-In XBRL, a taxonomy can refer to other taxonomies and associate them with a namespace prefix.
-% In most instances, different taxonomies agree on which namespace prefix and URI a given taxonomy should use.
-For now, the reader can assume that different taxonomies agree on which namespace prefix and URI a given taxonomy should use.
-Brel ensures that this assumption holds true in a process called namespace normalization, which is discussed in section \ref{sec:implementation_namespace_normalization}.
-If all taxonomies agree on a prefix and URI for a given taxonomy, 
-then all report elements defined in that taxonomy inherit the same prefix and URI as part of their QName.
+% In XBRL, a taxonomy can refer to other taxonomies and associate them with a namespace prefix.
+% % In most instances, different taxonomies agree on which namespace prefix and URI a given taxonomy should use.
+% For now, the reader can assume that different taxonomies agree on which namespace prefix and URI a given taxonomy should use.
+% Brel ensures that this assumption holds true in a process called namespace normalization, which is discussed in section \ref{sec:implementation_namespace_normalization}.
+% If all taxonomies agree on a prefix and URI for a given taxonomy, 
+% then all report elements defined in that taxonomy inherit the same prefix and URI as part of their QName.
 
-Report elements within a taxonomy are organized in a flat list of XML elements
-Each XML element has a unique name attribute, which represents the local name of the report element's QName.
-Since the Brel API lists six different types of report elements, Brel needs to decide which type of report element each XML element represents.
-There is no single attribute in the XML element that indicates the type of report element.
-Instead, Brel uses a combination of different attributes to determine the type of report element.
-The process of determining the type of report element is outlined in the following table:
+% Report elements within a taxonomy are organized in a flat list of XML elements
+% Each XML element has a unique name attribute, which represents the local name of the report element's QName.
+% Since the Brel API lists six different types of report elements, Brel needs to decide which type of report element each XML element represents.
+% There is no single attribute in the XML element that indicates the type of report element.
+% Instead, Brel uses a combination of different attributes to determine the type of report element.
+% The process of determining the type of report element is outlined in the following table:
+
+Report elements represent the most fundamental components of XBRL reports.
+% As such, they are independent of other XBRL elements and are parsed initially.
+As such, they do not rely on other XBRL elements and are parsed first.
+These elements are specified in the XBRL report's taxonomy set, which consists of a series of \texttt{.xsd} files in XML format.
+% All these files reside locally on the user's computer.
+For now the reader can assume that all files are stored locally on the user's computer.
+While XBRL does not mandate local storage of the taxonomy set, Brel requires it.
+However, Brel is designed to automatically download the taxonomy set from the internet if it is not already available locally.
+Details about this downloading process are in section \ref{sec:implementation_dts_cache}.
+
+Taxonomies comprise three element types: linkbases, roles, and report elements.
+Linkbases are covered in section \ref{sec:implementation_networks}.
+Roles are addressed in section \ref{sec:implementation_components}.
+This section focuses on report elements.
+
+In XBRL, a taxonomy can reference other taxonomies and assign them a namespace prefix.
+For the moment, it is assumed that different taxonomies concur on the namespace prefix and URI for a given taxonomy.
+Brel validates this assumption through a procedure known as namespace normalization, discussed in section \ref{sec:qnames_implementation}.
+When there is consensus on a prefix and URI for a taxonomy, all report elements defined within inherit the same prefix and URI as part of their QName.
+
+Within a taxonomy, report elements are arranged as a flat list of XML elements.
+Each XML element is uniquely identified by a name attribute, which denotes the local name of the report element's QName.
+Given that the Brel API identifies six distinct types of report elements, Brel must determine the specific type for each XML element.
+This decision is not based on a single attribute in the XML element but rather on a combination of various attributes.
+The methodology used to ascertain the type of each report element is detailed in the following table:
 
 \begin{table}[H]
     \centering
@@ -66,70 +105,130 @@ The process of determining the type of report element is outlined in the followi
     \label{tab:determining_report_element_type}
 \end{table}
 
-Brel uses the table \ref{tab:determining_report_element_type} above to determine the type of report element.
-It traverses the table from top to bottom and selects the first row where all conditions are met.
-If a cell in the table is empty, then Brel ignores that condition. 
+% Brel uses the table \ref{tab:determining_report_element_type} above to determine the type of report element.
+% It traverses the table from top to bottom and selects the first row where all conditions are met.
+% If a cell in the table is empty, then Brel ignores that condition. 
 
-The table above does not contain a row for the type "LineItems".
-The reason for this is that line items and abstracts can not be distinguished by their XML attributes.
-They can only be distinguished by their position within a definition network.
-Therefore, Brel parses line items and abstracts as abstracts.
-Brel later uses the definition network to determine which abstracts are line items, and fixes the type of these abstracts accordingly.
-This process is discussed in section \ref{sec:implementation_networks}.
+% The table above does not contain a row for the type "LineItems".
+% The reason for this is that line items and abstracts can not be distinguished by their XML attributes.
+% They can only be distinguished by their position within a definition network.
+% Therefore, Brel parses line items and abstracts as abstracts.
+% Brel later uses the definition network to determine which abstracts are line items, and fixes the type of these abstracts accordingly.
+% This process is discussed in section \ref{sec:implementation_networks}.
 
-Once all report elements have been parsed, Brel creates a lookup table for report elements.
-Given a QName, the lookup table returns the corresponding report element instance.
-This lookup table is used throughout the rest of the parsing process.
+% Once all report elements have been parsed, Brel creates a lookup table for report elements.
+% Given a QName, the lookup table returns the corresponding report element instance.
+% This lookup table is used throughout the rest of the parsing process.
 
-\subsection{Parsing facts}
+% Brel employs the table \ref{tab:determining_report_element_type} to identify the type of each report element.
+Brel implements the procedure outlined in table \ref{tab:determining_report_element_type} to identify the type of each report element.
+It examines the table from the top to the bottom, choosing the first row that fulfills all the specified conditions.
+If a cell in the table is blank, Brel disregards that particular condition.
 
-Brel parses facts directly after parsing report elements.
-Facts are parsed before networks because footnote networks can point to facts.
+The table does not include a row for the "LineItems" type.
+This is because line items and abstracts are indistinguishable based on their XML attributes alone.
+They can be differentiated only through their placement within a definition network.
+As a result, Brel initially categorizes both line items and abstracts as abstracts.
+Later, within the context of the definition network, Brel determines which abstracts are actually line items and adjusts their types accordingly.
+This procedure is further elaborated in section \ref{sec:implementation_networks}.
 
-Facts are exclusively defined in the instance document of the XBRL report.
-The instance document is an XML which contains a flat list of facts, syntactic contexts and units, which are represented by XML elements.
-It may also contain a list of footnotes, which are discussed in section \ref{sec:implementation_networks}.
+After parsing all report elements, Brel establishes a lookup table for these elements.
+This table, when provided with a QName, returns the corresponding instance of the report element.
+Brel utilizes this lookup table extensively in the subsequent stages of the parsing process.
 
-\textbf{Fact} XML elements contain the value of the fact as well as references to the syntactic context and unit.
-The tag of the XML element is the QName of the concept of the fact. 
+\subsection{Parsing Facts}
 
-\textbf{Syntactic context} XML elements describe a subset of the characteristics of a fact.
-They are different from \texttt{Context}s as defined by the Brel API.
-A \texttt{Context} in Brel contains all the characteristics of a fact, whereas a syntactic context only contains the period, entity and dimensions of a fact.
-During parsing, Brel uses syntactic contexts as a starting point for creating \texttt{Context} instances.
-It then adds the remaining characteristics - the concept and the unit - to the \texttt{Context} instance.
+% Brel parses facts directly after parsing report elements.
+% Facts are parsed before networks because footnote networks can point to facts.
 
-\textbf{Unit} XML elements define, as the name suggests, the unit of a fact.
+% Facts are exclusively defined in the instance document of the XBRL report.
+% The instance document is an XML which contains a flat list of facts, syntactic contexts and units, which are represented by XML elements.
+% It may also contain a list of footnotes, which are discussed in section \ref{sec:implementation_networks}.
 
-The reason why XBRL separates facts, syntactic contexts and units into three different XML elements is to reduce redundancy.
-Facts can share the same syntactic context and unit.
+% \textbf{Fact} XML elements contain the value of the fact as well as references to the syntactic context and unit.
+% The tag of the XML element is the QName of the concept of the fact. 
 
-Brel parses all facts by finding all fact XML elements and resolving their references to syntactic contexts and units.
-It re-uses units, entities and dimensions across different facts. 
+% \textbf{Syntactic context} XML elements describe a subset of the characteristics of a fact.
+% They are different from \texttt{Context}s as defined by the Brel API.
+% A \texttt{Context} in Brel contains all the characteristics of a fact, whereas a syntactic context only contains the period, entity and dimensions of a fact.
+% During parsing, Brel uses syntactic contexts as a starting point for creating \texttt{Context} instances.
+% It then adds the remaining characteristics - the concept and the unit - to the \texttt{Context} instance.
+
+% \textbf{Unit} XML elements define, as the name suggests, the unit of a fact.
+
+% The reason why XBRL separates facts, syntactic contexts and units into three different XML elements is to reduce redundancy.
+% Facts can share the same syntactic context and unit.
+
+% Brel parses all facts by finding all fact XML elements and resolving their references to syntactic contexts and units.
+% It re-uses units, entities and dimensions across different facts. 
+
+Brel processes facts immediately following the parsing of report elements.
+Facts are analyzed prior to networks because footnote networks may reference facts.
+
+Facts are solely defined in the instance document of the XBRL report.
+This document is an XML file containing a straightforward list of facts, syntactic contexts, and units, represented as XML elements.
+It might also include a list of footnotes, which are detailed in section \ref{sec:implementation_networks}.
+
+\textbf{Fact} XML elements hold the fact's value and references to both the syntactic context and unit.
+The XML element's tag represents the QName of the concept associated with the fact.
+
+\textbf{Syntactic context} XML elements outline a part of a fact's characteristics.
+They differ from \texttt{Contexts} as defined in the Brel API.
+A \texttt{Context} in Brel encompasses all characteristics of a fact, while a syntactic context includes only the period, entity, and dimensions of a fact.
+During parsing, Brel initially uses syntactic contexts to create \texttt{Context} instances.
+Subsequently, it supplements the \texttt{Context} with the remaining characteristics - the concept and the unit.
+
+\textbf{Unit} XML elements, as their name implies, define the unit of a fact.
+
+The rationale for XBRL segregating facts, syntactic contexts, and units into distinct XML elements is to minimize redundancy.
+Multiple facts can share the same syntactic context and unit.
+
+Brel parses all facts by identifying all fact XML elements and resolving their links to syntactic contexts and units.
+It reutilizes units, entities, and dimensions across various facts.
 
 \subsection{Parsing Components}
 \label{sec:implementation_components}
 
-Components are the last section of the XBRL report that Brel parses.
-Before parsing components, Brel has already parsed all report elements, facts and networks.
-So far, this chapter has not discussed networks.
-Since parsing networks is complex, it is discussed in its own section - section \ref{sec:implementation_networks}.
-For now, the reader can assume that Brel has already parsed all networks, and that there is a lookup table for networks.
+Components represent the final aspect of the XBRL report that Brel parses.
+By this stage, Brel has already processed all report elements, facts, and networks.
+This chapter has not yet delved into networks due to their complexity, which is addressed in a separate section, section \ref{sec:implementation_networks}.
+% For the moment, it is assumed that Brel has successfully parsed all networks and a network lookup table is in place.
+For the moment, the reader can assume that Brel has successfully parsed all networks and a network lookup table is in place.
 
-Components, like report elements, are defined in the taxonomy set of the XBRL report.
-XBRL chooses to call them "roleTypes" instead of "components".
-To parse all components, Brel scans all taxonomy files for roleType XML elements.
-The roleType XML elements contain a three elements - A role URI, an optional description and a list of used-on elements.
-\texttt{Component}s in Brel directly read both the role URI and the description from the roleType XML element.
-To get the networks that are associated with a component, Brel indexes the lookup table for networks by the role URI.
+Components, akin to report elements, are specified in the XBRL report's taxonomy set.
+In XBRL terminology, these are referred to as "roleTypes" rather than "components".
+To parse all components, Brel examines every taxonomy file for roleType XML elements.
+These roleType XML elements encompass three elements: a role URI, an optional description, and a list of used-on elements.
+\texttt{Component}s in Brel directly extract both the role URI and the description from the roleType XML element.
+To identify the networks associated with a component, Brel searches the network lookup table using the role URI.
 
-The used-on elements are a list of network types that are permitted to use the component.
-For example, if the network lookup returns a \texttt{PresentationNetwork} instance, 
-then the roleType XML element must contain "presentationLink" in its list of used-on elements.
+The used-on elements denote a list of network types authorized to utilize the component.
+For instance, if the network lookup yields a \texttt{PresentationNetwork} instance, the roleType XML element must include "presentationLink" in its used-on elements list.
 
-This concludes the section on the general implementation of Brel.
-Apart from networks, this section covered every part of XBRL and how Brel parses it.
-The next section will discuss network parsing in detail.
+This segment concludes the discussion on Brel's general implementation.
+Excluding networks, this section has encompassed every aspect of XBRL and Brel's method of parsing it.
+The ensuing section will delve into the intricacies of network parsing.
+
+% Components are the last section of the XBRL report that Brel parses.
+% Before parsing components, Brel has already parsed all report elements, facts and networks.
+% So far, this chapter has not discussed networks.
+% Since parsing networks is complex, it is discussed in its own section - section \ref{sec:implementation_networks}.
+% For now, the reader can assume that Brel has already parsed all networks, and that there is a lookup table for networks.
+
+% Components, like report elements, are defined in the taxonomy set of the XBRL report.
+% XBRL chooses to call them "roleTypes" instead of "components".
+% To parse all components, Brel scans all taxonomy files for roleType XML elements.
+% The roleType XML elements contain a three elements - A role URI, an optional description and a list of used-on elements.
+% \texttt{Component}s in Brel directly read both the role URI and the description from the roleType XML element.
+% To get the networks that are associated with a component, Brel indexes the lookup table for networks by the role URI.
+
+% The used-on elements are a list of network types that are permitted to use the component.
+% For example, if the network lookup returns a \texttt{PresentationNetwork} instance, 
+% then the roleType XML element must contain "presentationLink" in its list of used-on elements.
+
+% This concludes the section on the general implementation of Brel.
+% Apart from networks, this section covered every part of XBRL and how Brel parses it.
+% The next section will discuss network parsing in detail.
 
 % In many places, the Brel API relies on composition over inheritance, which is a common design pattern in object oriented programming.
 % It refers to a "has-a" relationship between classes, where one class points to another class using a field.

@@ -244,9 +244,16 @@ class XMLFileManager(IFileManager):
             xsd_content = self.__download_and_store(uri, file_name)
         else:
             # otherwise the file is local and we can load it directly
-            raise ValueError(
-                f"Could not find file {uri}, even though the XBRL report refers to it.\n The referencing file is {referencing_uri}"
-            )
+            referencing_dir = os.path.dirname(referencing_uri)
+            uri = os.path.join(referencing_dir, uri)
+
+            if not os.path.isfile(uri):
+                raise ValueError(
+                    f"Could not find file {uri}, even though the XBRL report refers to it.\n The referencing file is {referencing_uri}"
+                )
+
+            with open(uri, "rb") as f:
+                xsd_content = f.read()
 
         # parse the schema
         if DEBUG:  # pragma: no cover
