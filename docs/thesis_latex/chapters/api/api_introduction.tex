@@ -1,34 +1,58 @@
-This chapter describes the Brel API.
-It serves as a top-down overview of what Brel is capable of.
-The API differs from the underlying XBRL standard in key areas and aims to abstract and simplify XBRL,
-while still providing access to the full power of XBRL when needed.
+% This chapter describes the Brel API.
+% It serves as a top-down overview of what Brel is capable of.
+% The API differs from the underlying XBRL standard in key areas and aims to abstract and simplify XBRL,
+% while still providing access to the full power of XBRL when needed.
+This chapter provides an overview of the Brel API, 
+illustrating its capabilities and how it simplifies and abstracts the XBRL standard, 
+while still offering comprehensive access to XBRL's functionality as required.
 
-The chapter is not intended to be a complete reference.
-Brel contains various helper functions and classes not described in this chapter.
-A complete reference of the Brel API can be found in the Brel API documentation\cite{brel_api}.
-% The classes and methods described in this chapter serve as the minimal set of functionality needed to fully access all of Brel's features.
-The classes and methods described in this chapter define the minimal set of functionality needed to fully access all of Brel's features.
-They are designed to cover the underlying XBRL standard in a way that is easy to use and understand.
-% All of the helper functions and classes in Brel can be implemented using the API described in this chapter.
-Every additional feature of Brel could be implemented using the API described in this chapter.
-\footnote{Obviously, some of the helpers directly access the underlying XBRL standard and are not implemented using the API to avoid unnecessary overhead.}
-The API of Brel can be divided into different parts, all of which are described in this chapter.
+% The chapter is not intended to be a complete reference.
+% Brel contains various helper functions and classes not described in this chapter.
+% A complete reference of the Brel API can be found in the Brel API documentation\cite{brel_api}.
+% The classes and methods described in this chapter define the minimal set of functionality needed to fully access all of Brel's features.
+% They are designed to cover the underlying XBRL standard in a way that is easy to use and understand.
+% Every additional feature of Brel could be implemented using the API described in this chapter.
+% \footnote{Obviously, some of the helpers directly access the underlying XBRL standard and are not implemented using the API to avoid unnecessary overhead.}
+% The API of Brel can be divided into different parts, all of which are described in this chapter.
+The content here does not serve as an exhaustive guide. 
+Brel includes a variety of helper functions and classes not detailed in this section. 
+For a thorough reference, consult the Brel API documentation\cite{brel_api}. 
+The elements outlined here represent the essential functionality required to access all Brel features.
+% designed for ease of use and comprehension of the XBRL framework. 
+% All additional Brel features can be developed using the API discussed here.
+\footnote{Some helper functions directly interact with the XBRL standard, bypassing the API to reduce overhead.}
+The Brel API is segmented into various components, each discussed in this section:
 
+% \begin{enumerate}
+%     \item \textbf{Core} - The first part describes the \texttt{Core} of Brel, which consists of Filings, Facts, Components and QNames.
+%     \item \textbf{Characteristics} - The second part describes the \texttt{Characteristics} of Brel, which covers Concepts, Entities, Periods, Units and Dimensions.
+%     \item \textbf{Report Elements} - The third part covers \texttt{Report Elements}, specifically Concepts, Members, Dimensions, Line Items, Hypercubes and Abstracts.
+%     \item \textbf{Resources} - The fourth part covers \texttt{Resources}, specifically Labels, References and Footnotes.
+%     \item \textbf{Networks} - Finally, the \texttt{Networks} part describes how networks and their nodes are represented in Brel.
+% \end{enumerate}
 \begin{enumerate}
-    \item \textbf{Core} - The first part describes the \texttt{Core} of Brel, which consists of Filings, Facts, Components and QNames.
-    \item \textbf{Characteristics} - The second part describes the \texttt{Characteristics} of Brel, which covers Concepts, Entities, Periods, Units and Dimensions.
-    \item \textbf{Report Elements} - The third part covers \texttt{Report Elements}, specifically Concepts, Members, Dimensions, Line Items, Hypercubes and Abstracts.
-    \item \textbf{Resources} - The fourth part covers \texttt{Resources}, specifically Labels, References and Footnotes.
-    \item \textbf{Networks} - Finally, the \texttt{Networks} part describes how networks and their nodes are represented in Brel.
+    \item \textbf{Core} - Introduces Brel's core components, including Filings, Facts, Components, and QNames.
+    \item \textbf{Characteristics} - Explores Brel's characteristics, such as Concepts, Entities, Periods, Units, and Dimensions.
+    \item \textbf{Report Elements} - Discusses Report Elements, specifically Concepts, Members, Dimensions, Line Items, Hypercubes, and Abstracts.
+    \item \textbf{Resources} - Details Resources like Labels, References, and Footnotes.
+    \item \textbf{Networks} - Describes the representation of networks and nodes in Brel.
 \end{enumerate}
 
-All of these parts should sound very familiar, since they were extensively discussed in chapter \ref{chapter:xbrl}.
-Even though the previous chapter was already light on XML implementation details, 
-the API described completely abstracts away the underlying XML structure.
-\footnote{The only exception is the \texttt{QName} class, which is an almost direct representation of the XML QName type.}
-This chapter will answer research questions \ref{itm:research_question_1} and \ref{itm:research_question_2}.
+% All of these parts should sound very familiar, since they were extensively discussed in chapter \ref{chapter:xbrl}.
+% Even though the previous chapter was already light on XML implementation details, 
+% the API described completely abstracts away the underlying XML structure.
+% \footnote{The only exception is the \texttt{QName} class, which is an almost direct representation of the XML QName type.}
+% This chapter will answer research questions \ref{itm:research_question_1} and \ref{itm:research_question_2}.
+These components should be familiar, as they were thoroughly examined in chapter \ref{chapter:xbrl}. 
+While the preceding chapter minimized details on XML implementation, this API abstracts the XML structure entirely.
+\footnote{The \texttt{QName} class is an exception, closely mirroring the XML QName type.}
+This section addresses research questions \ref{itm:research_question_1} and \ref{itm:research_question_2}.
 
-Again, the current implementation of Brel is not complete.
-It does not allow for the creation of new filings, facts, components, etc.
-Its main purpose is to provide a way to access and analyze existing filings.
-Brel also does not analyze the semantics of the underlying reports.
+% Again, the current implementation of Brel is not complete.
+% It does not allow for the creation of new filings, facts, components, etc.
+% Its main purpose is to provide a way to access and analyze existing filings.
+% Brel also does not analyze the semantics of the underlying reports.
+Note that Brel's current version is not finalized. 
+It does not support the creation of new filings, facts, components, etc., 
+focusing instead on accessing and analyzing existing filings. 
+Brel also does not interpret the semantics of the reports it analyzes.

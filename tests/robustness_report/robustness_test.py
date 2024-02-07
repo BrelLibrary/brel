@@ -168,7 +168,7 @@ success_per_cik: dict[str, int] = defaultdict(int)
 cik_to_name: dict[str, str] = defaultdict(str)
 
 # crop the cik list for testing
-# ciks = ciks[:20]
+ciks = ciks[15:20]
 
 for cik in ciks:
     # Get SEC Metadata from edgar for CIK
