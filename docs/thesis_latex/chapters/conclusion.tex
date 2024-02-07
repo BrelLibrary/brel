@@ -128,6 +128,15 @@ As discussed in chapter \ref{sec:limitations}, Brel does not utilize XBRL's sema
 Currently, Brel processes XBRL reports without interpreting the data, such as not identifying logical inconsistencies like negative asset values.
 Future versions of Brel could detect and report these errors, potentially suggesting corrections.
 
+% As mentioned in section \ref{sec:hypercube}, Brel could also support open hypercubes, 
+% which are hypercubes that have dimensions with members that are not known in advance.
+% In fact, hypercubes in XBRL contain a lot of semantic information\footnote{See \url{https://www.xbrl.org/WGN/dimensions-use/WGN-2015-03-25/dimensions-use-WGN-2015-03-25.html}}.
+% Brel could use this semantic information to provide more advanced analysis of XBRL reports.
+As noted in section \ref{sec:hypercubes}, Brel has the capability to support open hypercubes,
+which are defined by having dimensions with members that are yet to be identified.
+It is important to note that XBRL hypercubes encompass semantic information\footnote{See \url{https://www.xbrl.org/WGN/dimensions-use/WGN-2015-03-25/dimensions-use-WGN-2015-03-25.html}}.
+By leveraging this semantic data, Brel can significantly enhance the analysis process of XBRL reports.
+
 % \subsection{Performance}
 
 % The performance of Brel is not part of the requirements set by this thesis, but it still serves as an important metric.

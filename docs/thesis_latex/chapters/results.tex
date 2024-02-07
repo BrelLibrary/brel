@@ -1,36 +1,56 @@
 \chapter{Results}
 \label{chapter:results}
 
-After covering XBRL, the Brel API and its implementation, we can now evaluate Brel against the requirements that we defined in section \ref{sec:goals}.
-We will evaluate Brel based on correctness first and performance second.
-This chapter will also cover Brel's robustness and usability in a qualitative manner.
+% After covering XBRL, the Brel API and its implementation, we can now evaluate Brel against the requirements that we defined in section \ref{sec:goals}.
+% We will evaluate Brel based on correctness first and performance second.
+% This chapter will also cover Brel's robustness and usability in a qualitative manner.
 
-Even though Brel's performance is not part of the requirements set by this thesis,
-it still serves as an important metric.
-It will enable future versions of Brel to compare their performance against this initial version of Brel.
+% The usability of Brel will be evaluated by using it to implement a simple CLI XBRL report viewer.
+% It will cover every feature of the Brel API and serve as a proof of concept for the Brel API.
 
-For testing Brels correctness, we will use XBRL conformance suites.
-Additionally, we will look at hand-picked XBRL reports and compare the structures that Brel extracts from them against the structures that the XBRL specification prescribes.
+% Even though Brel's performance is not part of the requirements set by this thesis,
+% it still serves as an important metric.
+% It will enable future versions of Brel to compare their performance against this initial version of Brel.
 
-The usability of Brel will be evaluated by using it to implement a simple CLI XBRL report viewer.
-It will cover every feature of the Brel API and serve as a proof of concept for the Brel API.
+% For testing Brel's correctness, we will use XBRL conformance suites.
+% Additionally, we will look at the at a hand-picked XBRL report and compare the structure that Brel extracts
+% from it against the results that the XBRL viewer Arelle produces.
+% This serves as a qualitative measure of correctness.
 
-Robustness is a qualitative metric that is hard to measure.
-We will evaluate Brel's robustness by loading the 10K and 10Q reports of the 30 largest US companies by market capitalization at the time of writing.
-This will give us a good idea of how robust Brel is in practice.
-The list of companies that we will use is
+% Robustness is a qualitative metric that is hard to measure.
+% We will evaluate Brel's robustness by loading the 8K and 10Q reports of the 30 largest US companies by market capitalization at the time of writing.
+% This will give us a good idea of how robust Brel is in practice.
 
-\section{Correctness}
-\label{sec:correctness}
+Following the discussion on XBRL, the Brel API, and its implementation, 
+we are now in a position to assess Brel in light of the objectives outlined in section \ref{sec:goals}. 
+The evaluation will prioritize correctness and performance, in that order. 
+Additionally, this chapter will qualitatively discuss Brel's robustness and usability.
 
-TODO: Write this chapter
+The usability of Brel will be assessed through the development of a simple CLI tool for viewing XBRL reports. 
+This tool will demonstrate the capabilities of the Brel API and act as a practical example of its application.
+
+Although this thesis does not explicitly list Brel's performance as a requirement, 
+it remains a crucial aspect of the evaluation. 
+Assessing Brel's performance will provide a benchmark for future versions of the software, 
+facilitating performance comparisons over time.
+
+The assessment of Brel's correctness will involve the use of XBRL conformance suites. 
+Furthermore, we will conduct an analysis of a selected component of an XBRL report, 
+comparing the structure Brel extracts with that produced by the XBRL viewer Arelle. 
+This comparison will offer a qualitative evaluation of Brel's accuracy.
+
+Robustness, being a qualitative metric, presents challenges in measurement. 
+However, by loading the 10K and 10Q reports of the 50 largest US companies by market capitalization as of the date of this analysis, 
+we can gain valuable insights into Brel's practical robustness.
+
+\input{chapters/results/usability.tex}
+
+\input{chapters/results/correctness.tex}
 
 \section{Performance}
 \label{sec:performance}
 
 TODO: Write this chapter
-
-\input{chapters/results/usability.tex}
 
 \input{chapters/results/robustness.tex}
 

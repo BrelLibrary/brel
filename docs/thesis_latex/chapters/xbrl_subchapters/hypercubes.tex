@@ -113,3 +113,20 @@ The LineItems report element specifies the relevant concepts by listing them as 
 If understanding lineItems proves to be difficult, consider the following: 
 LineItems are to concepts what dimensions are to members.
 
+\subsection{Open Hypercubes}
+
+So far, we have only considered hypercubes that are fully defined.
+Each member of each dimension is a known report element defined in the taxonomy.
+This is known as a closed hypercube.
+
+However, XBRL also supports open hypercubes.
+Open hypercubes are hypercubes that have dimensions with members that are not known in advance.
+So the hypercubes might reference members that are not defined in the taxonomy.
+
+The current implementation of Brel does not support open hypercubes, but it is a feature that is planned for the future.
+Section \ref{sec:implementation} will cover why open hypercubes are not supported for now.
+% Even though open hypercubes are part of the XBRL specification, 
+% As we will see in section \ref{sec:implementation}, the Brel API does support open hypercubes,
+% but its implementation is not complete.
+% Therefore, 
+

@@ -27,6 +27,10 @@ the XBRL 2.1 specification\cite{xbrl21},
 the extension for dimensional reporting\cite{xbrl_dimensions}, 
 and the specification for generic links\cite{xbrl_generic_links}.
 Chapter \ref{chapter:xbrl} will delve into these components in detail.
+% Besides the XBRL standard, Charles Hoffman also maintains a personal website\cite{seattle_method}
+% that contains a wealth of information about XBRL and good practices for working with it.
+In addition to the XBRL standard, Charles Hoffman manages a personal website\cite{seattle_method},
+which offers information about XBRL and good practices for its utilization.
 
 % Whilst the XBRL 2.1 specification and the OIM overlap in numerous areas, the OIM does not encompass all the features of the XBRL 2.1 specification.
 % The OIM does not contain all the features of the XBRL 2.1 specification, but it is a lot easier to understand.
@@ -113,9 +117,13 @@ It is noteworthy that the SEC offers this test suite at no cost, and it can be a
 % Brel uses this test suite to test its XBRL processor.
 % At the time of writing, Brel does not pass all the tests in the test suite, since Brel does not support all the features of the XBRL standard.
 % However, building a processor that passes all the tests is not a feat that can feasibly be accomplished in the scope of this thesis.
-Brel employs the aforementioned test suite to evaluate its XBRL processor. 
-Currently, Brel does not successfully pass all the tests contained within the suite, 
-primarily due to its lack of support for certain features within the XBRL standard.
+% Brel employs the aforementioned test suite to evaluate its XBRL processor. 
+% Currently, Brel does not successfully pass all the tests contained within the suite, 
+% primarily due to its lack of support for certain features within the XBRL standard.
+Brel does not employ the aforementioned test suite to evaluate its XBRL processor.
+% Since this suite contains test cases which are tailored to EDGAR specific features,
+% Most of the test cases in the suite cover features that are either specific to EDGAR or features that Brel does not support currently.
+The majority of the test cases within the suite focus on functionalities that are unique to EDGAR or on features that Brel presently does not support.
 
 \section{ESMA Conformance Suite}
 % The European Securities and Markets Authority (ESMA) also maintains a test suite for XBRL processors\cite{esma_conformance_suite}.

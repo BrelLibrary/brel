@@ -4,26 +4,28 @@ import lxml
 import lxml.etree
 import os.path
 import rich
+from collections import defaultdict
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib
 
 index_uri = "http://xbrlsite.com/seattlemethod/platinum-testcases/index.xml"
 
-blacklist = [
-    "helloworld-using-dim",  # Contains html
-    "lorem-ipsum-all-patterns",  # Contains html
-    "dimensions-ppe",  # Contains html
-    "TestCase-logic",  # Contains html
-    "TestCase-ae-BS1",  # Contains html
-    "TestCase-sfac6-BS1-IS1",  # Contains html
-    "TestCase-sfac8-reference",  # Contains html
-    "TestCase-common-reference",  # Contains html
-    "TestCase-mini-reference",  # Contains html
-    "TestCase-proof-reference",  # Contains html
-    "TestCase-xasb-reference",  # Contains html
-    "TestCase-aasb1060-reference",  # Contains html
-    "TestCase-helloworld",  # Contains html
-    "95",  # Contains html,
-    "TestCase-fundamental-inconsistency",  # Contains html
+blacklist: list[str] = [
+    "99.63",
+    "99.61",
 ]
+
+categories = {
+    "Basic, General Tests": 16,
+    "Concept Arrangement Patterns": 10,
+    "Reporting Styles": 8,
+    "Other": 1,
+    "Invalid Logic": 4,
+    "Accounting Equation States": 12,
+    "Logic Rules of Thumb": 18,
+    "Edge Cases": 10,
+}
 
 
 def make_cache_dir():
@@ -64,23 +66,28 @@ def get_etree_from_uri(uri: str) -> lxml.etree._ElementTree:
         with open(file_path, "wb") as f:
             f.write(response.content)
     # return the etree
-    etree = lxml.etree.parse(file_path)
-    return etree
+    try:
+        etree = lxml.etree.parse(file_path)
+        return etree
+    except lxml.etree.XMLSyntaxError:
+        raise Exception(f"Error parsing {uri} as XML")
 
 
-# index_response = requests.get(index_uri)
-# index_etree: lxml.etree._Element = lxml.etree.fromstring(index_response.content)
 index_etree = get_etree_from_uri(index_uri).getroot()
 
-total_tests = 0
-total_correct = 0
-total_skipped = 0
-false_positives = 0
-false_negatives = 0
-correct = 0
+total_per_category = defaultdict(int)
+correct_per_category = defaultdict(int)
+false_positives_per_category = defaultdict(int)
+false_negatives_per_category = defaultdict(int)
 
+category_counter = 0
+category_index = 0
 for testcase_xml in index_etree.findall("testcase"):
-    total_tests += 1
+    if category_counter >= list(categories.values())[category_index]:
+        category_index += 1
+        category_counter = 0
+
+    category = list(categories.keys())[category_index]
 
     uri = testcase_xml.get("uri")
 
@@ -98,45 +105,41 @@ for testcase_xml in index_etree.findall("testcase"):
     # check if there is a blacklist-item that is part of the uri
     if any([item in uri for item in blacklist]):
         rich.print("[yellow]SKIPPED[/yellow]")
-        total_skipped += 1
         continue
 
-    variation_xml = testcase_etree.find(
-        f"{{{testcase_etree.nsmap[None]}}}variation"
-    )
+    variation_xml = testcase_etree.find(f"{{{testcase_etree.nsmap[None]}}}variation")
     # get the data child of variation
     data_xml = variation_xml.find(f"{{{variation_xml.nsmap[None]}}}data")
 
     # go through all children in the variation
     file_names: list[str] = []
+    instance_uri = None
+
     for child in data_xml:
         # get the uri. the uri is the relative path to the index uri joined with the tag text
-        file_uri = os.path.join(index_dir, child.text)
+        if "http" in child.text:
+            file_uri = child.text
+        else:
+            file_uri = os.path.join(index_dir, child.text)
         # download the file
-        get_etree_from_uri(file_uri)
 
-        # check if the tag is linkbase or instance
-        if "linkbase" in child.tag or "instance" in child.tag:
-            # add the filename to the list
-            # prepend the file name if the "readMeFirst" attribute is set "true"
-            if child.get("readMeFirst") == "true":
-                file_names.insert(0, file_name_from_uri(file_uri))
-            else:
-                file_names.append(file_name_from_uri(file_uri))
+        if "instance" in child.tag:
+            instance_uri = file_uri
 
-    # get the expected result
     result_xml = variation_xml.find(f"{{{variation_xml.nsmap[None]}}}result")
     expected_result = result_xml.get("expected")
 
     try:
-        filing = brel.Filing.open(*file_names)
+        print(instance_uri)
+        filing = brel.Filing.open(instance_uri)
         actual_result = "valid"
     except Exception as e:
         actual_result = "invalid"
+        print(e)
 
     if expected_result == actual_result:
         rich.print("[green]PASS[/green]")
-        total_correct += 1
+        correct_per_category[category] += 1
 
     else:
         rich.print("[red]FAIL[/red]")
@@ -144,28 +147,80 @@ for testcase_xml in index_etree.findall("testcase"):
         rich.print(f"expected: {expected_result}")
         rich.print(f"actual: {actual_result}")
         if actual_result == "invalid":
-            false_negatives += 1
+            false_negatives_per_category[category] += 1
         else:
-            false_positives += 1
+            false_positives_per_category[category] += 1
 
-rich.print("[bold]Summary[/bold]")
-rich.print(f"Total tests: {total_tests}")
-rich.print(
-    f"[green]Correct, [yellow]False Positives, [red]False Negatives, [grey37]Skipped"
-)
+    total_per_category[category] += 1
+    category_counter += 1
 
+# print summary
 bar_symbol = "█"
+rich.print("[bold]Summary[/bold]")
+rich.print(f"[green]Correct, [yellow]False Positives, [red]False Negatives")
+
+total_cases = sum(total_per_category.values())
+total_correct = sum(correct_per_category.values())
+total_false_positives = sum(false_positives_per_category.values())
+total_false_negatives = sum(false_negatives_per_category.values())
+
 rich.print(
-    f"[green]{bar_symbol * total_correct}[yellow]{bar_symbol * false_positives}[red]{bar_symbol * false_negatives}[grey37]{bar_symbol * total_skipped}"
+    f"Total cases: {total_cases}, Correct: {total_correct}, False Positives: {total_false_positives}, False Negatives: {total_false_negatives}"
 )
 
-test_accuracy = total_correct / (
-    total_correct + false_positives + false_negatives
+for category in categories.keys():
+    total = total_per_category[category]
+    correct = correct_per_category[category]
+    false_positives = false_positives_per_category[category]
+    false_negatives = false_negatives_per_category[category]
+    rich.print(f"[bold]{category}[/bold]")
+    rich.print(f"Total: {total}")
+    rich.print(
+        f"[green]{bar_symbol * correct}[yellow]{bar_symbol * false_positives}[red]{bar_symbol * false_negatives}"
+    )
+
+# plot the results as a bar chart
+plot_categories = [
+    "Basic, General Tests",
+    "Concept Arrangement Patterns",
+    "Reporting Styles",
+    "Invalid Logic",
+    "Logic Rules of Thumb",
+    "Edge Cases",
+]
+category_names = plot_categories
+df_dict = {
+    "correct": [correct_per_category[category] for category in category_names],
+    "false positives": [
+        false_positives_per_category[category] for category in category_names
+    ],
+    "false negatives": [
+        false_negatives_per_category[category] for category in category_names
+    ],
+}
+
+df = pd.DataFrame(df_dict, index=category_names)
+
+plt.style.use("seaborn-v0_8-darkgrid")
+df.plot(
+    kind="bar",
+    stacked=True,
+    color=["#2ca02c", "#ff7f0e", "#d62728"],
+    figsize=(10, 5),
 )
-rich.print(f"Test accuracy: {test_accuracy:.2%}")
 
-test_precision = total_correct / (total_correct + false_positives)
-rich.print(f"Test precision: {test_precision:.2%}")
+plt.xticks(rotation=90)
+# make the y-ticks integers
+plt.yticks(range(0, 21, 2))
 
-test_recall = total_correct / (total_correct + false_negatives)
-rich.print(f"Test recall: {test_recall:.2%}")
+# plt.title("Seattle Method Test Results")
+plt.title("Conformance Suite Test Results")
+plt.xlabel("Category")
+plt.ylabel("Test case count")
+# plt.legend(loc="center left", bbox_to_anchor=(1.0, 0.5))
+
+# plt.gca().yaxis.set_major_formatter(matplotlib.ticker.StrMethodFormatter("{x:,.0f}"))
+
+plt.tight_layout()
+plt.savefig("docs/thesis_latex/images/seattle_method_test_results.png")
+plt.show()

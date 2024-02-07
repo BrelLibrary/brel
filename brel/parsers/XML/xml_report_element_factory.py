@@ -48,14 +48,17 @@ class XMLReportElementFactory:
 
         report_element: None | IReportElement = None
 
-        if not is_abstract and is_item:
+        if is_domain_item_type:
+            report_element = Member(report_element_name, labels)
+        # if not is_abstract and is_item:
+        elif not is_abstract and is_item:
             report_element = Concept._from_xml(xml_element, report_element_name, labels)
         elif is_abstract and is_hypercube_item:
             report_element = Hypercube(report_element_name, labels)
         elif is_abstract and is_dimension_item:
             report_element = Dimension(report_element_name, labels)
-        elif is_abstract and is_domain_item_type and is_item:
-            report_element = Member(report_element_name, labels)
+        # elif is_abstract and is_domain_item_type and is_item:
+        # report_element = Member(report_element_name, labels)
         elif is_abstract and is_line_items:
             report_element = LineItems(report_element_name, labels)
         elif is_abstract:

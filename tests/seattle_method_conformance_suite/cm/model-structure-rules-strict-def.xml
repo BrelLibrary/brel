@@ -1,0 +1,312 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!-- Created by Charles Hoffman, CPA -->
+<!-- Modified 2019-01-15 -->
+<link:linkbase xmlns='http://www.xbrl.org/2003/linkbase' xmlns:xbrldt='http://xbrl.org/2005/xbrldt' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:link='http://www.xbrl.org/2003/linkbase' xsi:schemaLocation='http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd'>
+
+   <link:arcroleRef xlink:type='simple' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm-arcroles.xsd#class-subClass' arcroleURI='http://www.xbrlsite.com/seattlemethod/conceptual-model/arcrole/class-subClass'/>
+   <link:arcroleRef xlink:type='simple' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm-arcroles.xsd#parentCategory-allowedChildCategory' arcroleURI='http://www.xbrlsite.com/seattlemethod/conceptual-model/arcrole/parentCategory-allowedChildCategory'/>
+   <link:arcroleRef xlink:type='simple' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm-arcroles.xsd#parentCategory-disallowedChildCategory' arcroleURI='http://www.xbrlsite.com/seattlemethod/conceptual-model/arcrole/parentCategory-disallowedChildCategory'/>
+   <link:arcroleRef xlink:type='simple' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm-arcroles.xsd#parentCategory-discouragedChildCategory' arcroleURI='http://www.xbrlsite.com/seattlemethod/conceptual-model/arcrole/parentCategory-discouragedChildCategory'/>
+
+   <link:definitionLink xlink:type='extended' xlink:role='http://www.xbrl.org/2003/role/link' xlink:title=''>
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Network' xlink:label='cm_Network' />
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Abstract' xlink:label='cm_Abstract' />
+      <link:definitionArc xlink:type='arc' xlink:arcrole='http://www.xbrlsite.com/seattlemethod/conceptual-model/arcrole/parentCategory-allowedChildCategory' xlink:to='cm_Abstract' xlink:from='cm_Network' order='1' use='optional' />
+   </link:definitionLink>
+
+
+   <link:definitionLink xlink:type='extended' xlink:role='http://www.xbrl.org/2003/role/link' xlink:title=''>
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Network' xlink:label='cm_Network' />
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Hypercube' xlink:label='cm_Hypercube' />
+      <link:definitionArc xlink:type='arc' xlink:arcrole='http://www.xbrlsite.com/seattlemethod/conceptual-model/arcrole/parentCategory-allowedChildCategory' xlink:to='cm_Hypercube' xlink:from='cm_Network' order='3' use='optional' />
+   </link:definitionLink>
+
+
+   <link:definitionLink xlink:type='extended' xlink:role='http://www.xbrl.org/2003/role/link' xlink:title=''>
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Network' xlink:label='cm_Network' />
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Network' xlink:label='cm_Network' />
+      <link:definitionArc xlink:type='arc' xlink:arcrole='http://www.xbrlsite.com/seattlemethod/conceptual-model/arcrole/parentCategory-disallowedChildCategory' xlink:to='cm_Network' xlink:from='cm_Network' order='5' use='optional' />
+   </link:definitionLink>
+
+
+   <link:definitionLink xlink:type='extended' xlink:role='http://www.xbrl.org/2003/role/link' xlink:title=''>
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Network' xlink:label='cm_Network' />
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Dimension' xlink:label='cm_Dimension' />
+      <link:definitionArc xlink:type='arc' xlink:arcrole='http://www.xbrlsite.com/seattlemethod/conceptual-model/arcrole/parentCategory-disallowedChildCategory' xlink:to='cm_Dimension' xlink:from='cm_Network' order='7' use='optional' />
+   </link:definitionLink>
+
+
+
+   <link:definitionLink xlink:type='extended' xlink:role='http://www.xbrl.org/2003/role/link' xlink:title=''>
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Network' xlink:label='cm_Network' />
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_LineItems' xlink:label='cm_LineItems' />
+      <link:definitionArc xlink:type='arc' xlink:arcrole='http://www.xbrlsite.com/seattlemethod/conceptual-model/arcrole/parentCategory-disallowedChildCategory' xlink:to='cm_LineItems' xlink:from='cm_Network' order='10' use='optional' />
+   </link:definitionLink>
+
+   <link:definitionLink xlink:type='extended' xlink:role='http://www.xbrl.org/2003/role/link' xlink:title=''>
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Network' xlink:label='cm_Network' />
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Member' xlink:label='cm_Member' />
+      <link:definitionArc xlink:type='arc' xlink:arcrole='http://www.xbrlsite.com/seattlemethod/conceptual-model/arcrole/parentCategory-disallowedChildCategory' xlink:to='cm_Member' xlink:from='cm_Network' order='11' use='optional' />
+   </link:definitionLink>
+
+
+
+   <link:definitionLink xlink:type='extended' xlink:role='http://www.xbrl.org/2003/role/link' xlink:title=''>
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Network' xlink:label='cm_Network' />
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Concept' xlink:label='cm_Concept' />
+      <link:definitionArc xlink:type='arc' xlink:arcrole='http://www.xbrlsite.com/seattlemethod/conceptual-model/arcrole/parentCategory-disallowedChildCategory' xlink:to='cm_Concept' xlink:from='cm_Network' order='14' use='optional' />
+   </link:definitionLink>
+
+   <link:definitionLink xlink:type='extended' xlink:role='http://www.xbrl.org/2003/role/link' xlink:title=''>
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Hypercube' xlink:label='cm_Hypercube' />
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Abstract' xlink:label='cm_Abstract' />
+      <link:definitionArc xlink:type='arc' xlink:arcrole='http://www.xbrlsite.com/seattlemethod/conceptual-model/arcrole/parentCategory-disallowedChildCategory' xlink:to='cm_Abstract' xlink:from='cm_Hypercube' order='15' use='optional' />
+   </link:definitionLink>
+
+   <link:definitionLink xlink:type='extended' xlink:role='http://www.xbrl.org/2003/role/link' xlink:title=''>
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Hypercube' xlink:label='cm_Hypercube' />
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Hypercube' xlink:label='cm_Hypercube' />
+      <link:definitionArc xlink:type='arc' xlink:arcrole='http://www.xbrlsite.com/seattlemethod/conceptual-model/arcrole/parentCategory-disallowedChildCategory' xlink:to='cm_Hypercube' xlink:from='cm_Hypercube' order='16' use='optional' />
+   </link:definitionLink>
+
+   <link:definitionLink xlink:type='extended' xlink:role='http://www.xbrl.org/2003/role/link' xlink:title=''>
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Hypercube' xlink:label='cm_Hypercube' />
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Network' xlink:label='cm_Network' />
+      <link:definitionArc xlink:type='arc' xlink:arcrole='http://www.xbrlsite.com/seattlemethod/conceptual-model/arcrole/parentCategory-disallowedChildCategory' xlink:to='cm_Network' xlink:from='cm_Hypercube' order='17' use='optional' />
+   </link:definitionLink>
+
+   <link:definitionLink xlink:type='extended' xlink:role='http://www.xbrl.org/2003/role/link' xlink:title=''>
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Hypercube' xlink:label='cm_Hypercube' />
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Dimension' xlink:label='cm_Dimension' />
+      <link:definitionArc xlink:type='arc' xlink:arcrole='http://www.xbrlsite.com/seattlemethod/conceptual-model/arcrole/parentCategory-allowedChildCategory' xlink:to='cm_Dimension' xlink:from='cm_Hypercube' order='18' use='optional' />
+   </link:definitionLink>
+
+   <link:definitionLink xlink:type='extended' xlink:role='http://www.xbrl.org/2003/role/link' xlink:title=''>
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Hypercube' xlink:label='cm_Hypercube' />
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_LineItems' xlink:label='cm_LineItems' />
+      <link:definitionArc xlink:type='arc' xlink:arcrole='http://www.xbrlsite.com/seattlemethod/conceptual-model/arcrole/parentCategory-allowedChildCategory' xlink:to='cm_LineItems' xlink:from='cm_Hypercube' order='19' use='optional' />
+   </link:definitionLink>
+
+   <link:definitionLink xlink:type='extended' xlink:role='http://www.xbrl.org/2003/role/link' xlink:title=''>
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Hypercube' xlink:label='cm_Hypercube' />
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Member' xlink:label='cm_Member' />
+      <link:definitionArc xlink:type='arc' xlink:arcrole='http://www.xbrlsite.com/seattlemethod/conceptual-model/arcrole/parentCategory-disallowedChildCategory' xlink:to='cm_Member' xlink:from='cm_Hypercube' order='20' use='optional' />
+   </link:definitionLink>
+
+   <link:definitionLink xlink:type='extended' xlink:role='http://www.xbrl.org/2003/role/link' xlink:title=''>
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Hypercube' xlink:label='cm_Hypercube' />
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Concept' xlink:label='cm_Concept' />
+      <link:definitionArc xlink:type='arc' xlink:arcrole='http://www.xbrlsite.com/seattlemethod/conceptual-model/arcrole/parentCategory-disallowedChildCategory' xlink:to='cm_Concept' xlink:from='cm_Hypercube' order='21' use='optional' />
+   </link:definitionLink>
+
+   <link:definitionLink xlink:type='extended' xlink:role='http://www.xbrl.org/2003/role/link' xlink:title=''>
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Dimension' xlink:label='cm_Dimension' />
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Abstract' xlink:label='cm_Abstract' />
+      <link:definitionArc xlink:type='arc' xlink:arcrole='http://www.xbrlsite.com/seattlemethod/conceptual-model/arcrole/parentCategory-disallowedChildCategory' xlink:to='cm_Abstract' xlink:from='cm_Dimension' order='22' use='optional' />
+   </link:definitionLink>
+
+   <link:definitionLink xlink:type='extended' xlink:role='http://www.xbrl.org/2003/role/link' xlink:title=''>
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Dimension' xlink:label='cm_Dimension' />
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Hypercube' xlink:label='cm_Hypercube' />
+      <link:definitionArc xlink:type='arc' xlink:arcrole='http://www.xbrlsite.com/seattlemethod/conceptual-model/arcrole/parentCategory-disallowedChildCategory' xlink:to='cm_Hypercube' xlink:from='cm_Dimension' order='23' use='optional' />
+   </link:definitionLink>
+
+   <link:definitionLink xlink:type='extended' xlink:role='http://www.xbrl.org/2003/role/link' xlink:title=''>
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Dimension' xlink:label='cm_Dimension' />
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Network' xlink:label='cm_Network' />
+      <link:definitionArc xlink:type='arc' xlink:arcrole='http://www.xbrlsite.com/seattlemethod/conceptual-model/arcrole/parentCategory-disallowedChildCategory' xlink:to='cm_Network' xlink:from='cm_Dimension' order='24' use='optional' />
+   </link:definitionLink>
+
+   <link:definitionLink xlink:type='extended' xlink:role='http://www.xbrl.org/2003/role/link' xlink:title=''>
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Dimension' xlink:label='cm_Dimension' />
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Dimension' xlink:label='cm_Dimension' />
+      <link:definitionArc xlink:type='arc' xlink:arcrole='http://www.xbrlsite.com/seattlemethod/conceptual-model/arcrole/parentCategory-disallowedChildCategory' xlink:to='cm_Dimension' xlink:from='cm_Dimension' order='25' use='optional' />
+   </link:definitionLink>
+
+   <link:definitionLink xlink:type='extended' xlink:role='http://www.xbrl.org/2003/role/link' xlink:title=''>
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Dimension' xlink:label='cm_Dimension' />
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_LineItems' xlink:label='cm_LineItems' />
+      <link:definitionArc xlink:type='arc' xlink:arcrole='http://www.xbrlsite.com/seattlemethod/conceptual-model/arcrole/parentCategory-disallowedChildCategory' xlink:to='cm_LineItems' xlink:from='cm_Dimension' order='26' use='optional' />
+   </link:definitionLink>
+
+   <link:definitionLink xlink:type='extended' xlink:role='http://www.xbrl.org/2003/role/link' xlink:title=''>
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Dimension' xlink:label='cm_Dimension' />
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Member' xlink:label='cm_Member' />
+      <link:definitionArc xlink:type='arc' xlink:arcrole='http://www.xbrlsite.com/seattlemethod/conceptual-model/arcrole/parentCategory-allowedChildCategory' xlink:to='cm_Member' xlink:from='cm_Dimension' order='27' use='optional' />
+   </link:definitionLink>
+
+   <link:definitionLink xlink:type='extended' xlink:role='http://www.xbrl.org/2003/role/link' xlink:title=''>
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Dimension' xlink:label='cm_Dimension' />
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Concept' xlink:label='cm_Concept' />
+      <link:definitionArc xlink:type='arc' xlink:arcrole='http://www.xbrlsite.com/seattlemethod/conceptual-model/arcrole/parentCategory-disallowedChildCategory' xlink:to='cm_Concept' xlink:from='cm_Dimension' order='28' use='optional' />
+   </link:definitionLink>
+
+   <link:definitionLink xlink:type='extended' xlink:role='http://www.xbrl.org/2003/role/link' xlink:title=''>
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Member' xlink:label='cm_Member' />
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Abstract' xlink:label='cm_Abstract' />
+      <link:definitionArc xlink:type='arc' xlink:arcrole='http://www.xbrlsite.com/seattlemethod/conceptual-model/arcrole/parentCategory-disallowedChildCategory' xlink:to='cm_Abstract' xlink:from='cm_Member' order='29' use='optional' />
+   </link:definitionLink>
+
+   <link:definitionLink xlink:type='extended' xlink:role='http://www.xbrl.org/2003/role/link' xlink:title=''>
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Member' xlink:label='cm_Member' />
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Hypercube' xlink:label='cm_Hypercube' />
+      <link:definitionArc xlink:type='arc' xlink:arcrole='http://www.xbrlsite.com/seattlemethod/conceptual-model/arcrole/parentCategory-disallowedChildCategory' xlink:to='cm_Hypercube' xlink:from='cm_Member' order='30' use='optional' />
+   </link:definitionLink>
+
+   <link:definitionLink xlink:type='extended' xlink:role='http://www.xbrl.org/2003/role/link' xlink:title=''>
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Member' xlink:label='cm_Member' />
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Network' xlink:label='cm_Network' />
+      <link:definitionArc xlink:type='arc' xlink:arcrole='http://www.xbrlsite.com/seattlemethod/conceptual-model/arcrole/parentCategory-disallowedChildCategory' xlink:to='cm_Network' xlink:from='cm_Member' order='31' use='optional' />
+   </link:definitionLink>
+
+   <link:definitionLink xlink:type='extended' xlink:role='http://www.xbrl.org/2003/role/link' xlink:title=''>
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Member' xlink:label='cm_Member' />
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Dimension' xlink:label='cm_Dimension' />
+      <link:definitionArc xlink:type='arc' xlink:arcrole='http://www.xbrlsite.com/seattlemethod/conceptual-model/arcrole/parentCategory-disallowedChildCategory' xlink:to='cm_Dimension' xlink:from='cm_Member' order='32' use='optional' />
+   </link:definitionLink>
+
+   <link:definitionLink xlink:type='extended' xlink:role='http://www.xbrl.org/2003/role/link' xlink:title=''>
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Member' xlink:label='cm_Member' />
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_LineItems' xlink:label='cm_LineItems' />
+      <link:definitionArc xlink:type='arc' xlink:arcrole='http://www.xbrlsite.com/seattlemethod/conceptual-model/arcrole/parentCategory-disallowedChildCategory' xlink:to='cm_LineItems' xlink:from='cm_Member' order='33' use='optional' />
+   </link:definitionLink>
+
+   <link:definitionLink xlink:type='extended' xlink:role='http://www.xbrl.org/2003/role/link' xlink:title=''>
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Member' xlink:label='cm_Member' />
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Member' xlink:label='cm_Member' />
+      <link:definitionArc xlink:type='arc' xlink:arcrole='http://www.xbrlsite.com/seattlemethod/conceptual-model/arcrole/parentCategory-allowedChildCategory' xlink:to='cm_Member' xlink:from='cm_Member' order='34' use='optional' />
+   </link:definitionLink>
+
+   <link:definitionLink xlink:type='extended' xlink:role='http://www.xbrl.org/2003/role/link' xlink:title=''>
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Member' xlink:label='cm_Member' />
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Concept' xlink:label='cm_Concept' />
+      <link:definitionArc xlink:type='arc' xlink:arcrole='http://www.xbrlsite.com/seattlemethod/conceptual-model/arcrole/parentCategory-disallowedChildCategory' xlink:to='cm_Concept' xlink:from='cm_Member' order='35' use='optional' />
+   </link:definitionLink>
+
+   <link:definitionLink xlink:type='extended' xlink:role='http://www.xbrl.org/2003/role/link' xlink:title=''>
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_LineItems' xlink:label='cm_LineItems' />
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Abstract' xlink:label='cm_Abstract' />
+      <link:definitionArc xlink:type='arc' xlink:arcrole='http://www.xbrlsite.com/seattlemethod/conceptual-model/arcrole/parentCategory-allowedChildCategory' xlink:to='cm_Abstract' xlink:from='cm_LineItems' order='36' use='optional' />
+   </link:definitionLink>
+
+   <link:definitionLink xlink:type='extended' xlink:role='http://www.xbrl.org/2003/role/link' xlink:title=''>
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_LineItems' xlink:label='cm_LineItems' />
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Hypercube' xlink:label='cm_Hypercube' />
+      <link:definitionArc xlink:type='arc' xlink:arcrole='http://www.xbrlsite.com/seattlemethod/conceptual-model/arcrole/parentCategory-disallowedChildCategory' xlink:to='cm_Hypercube' xlink:from='cm_LineItems' order='37' use='optional' />
+   </link:definitionLink>
+
+   <link:definitionLink xlink:type='extended' xlink:role='http://www.xbrl.org/2003/role/link' xlink:title=''>
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_LineItems' xlink:label='cm_LineItems' />
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Network' xlink:label='cm_Network' />
+      <link:definitionArc xlink:type='arc' xlink:arcrole='http://www.xbrlsite.com/seattlemethod/conceptual-model/arcrole/parentCategory-disallowedChildCategory' xlink:to='cm_Network' xlink:from='cm_LineItems' order='38' use='optional' />
+   </link:definitionLink>
+
+   <link:definitionLink xlink:type='extended' xlink:role='http://www.xbrl.org/2003/role/link' xlink:title=''>
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_LineItems' xlink:label='cm_LineItems' />
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Dimension' xlink:label='cm_Dimension' />
+      <link:definitionArc xlink:type='arc' xlink:arcrole='http://www.xbrlsite.com/seattlemethod/conceptual-model/arcrole/parentCategory-disallowedChildCategory' xlink:to='cm_Dimension' xlink:from='cm_LineItems' order='39' use='optional' />
+   </link:definitionLink>
+
+   <link:definitionLink xlink:type='extended' xlink:role='http://www.xbrl.org/2003/role/link' xlink:title=''>
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_LineItems' xlink:label='cm_LineItems' />
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_LineItems' xlink:label='cm_LineItems' />
+      <link:definitionArc xlink:type='arc' xlink:arcrole='http://www.xbrlsite.com/seattlemethod/conceptual-model/arcrole/parentCategory-disallowedChildCategory' xlink:to='cm_LineItems' xlink:from='cm_LineItems' order='40' use='optional' />
+   </link:definitionLink>
+
+   <link:definitionLink xlink:type='extended' xlink:role='http://www.xbrl.org/2003/role/link' xlink:title=''>
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_LineItems' xlink:label='cm_LineItems' />
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Member' xlink:label='cm_Member' />
+      <link:definitionArc xlink:type='arc' xlink:arcrole='http://www.xbrlsite.com/seattlemethod/conceptual-model/arcrole/parentCategory-disallowedChildCategory' xlink:to='cm_Member' xlink:from='cm_LineItems' order='41' use='optional' />
+   </link:definitionLink>
+
+   <link:definitionLink xlink:type='extended' xlink:role='http://www.xbrl.org/2003/role/link' xlink:title=''>
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_LineItems' xlink:label='cm_LineItems' />
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Concept' xlink:label='cm_Concept' />
+      <link:definitionArc xlink:type='arc' xlink:arcrole='http://www.xbrlsite.com/seattlemethod/conceptual-model/arcrole/parentCategory-allowedChildCategory' xlink:to='cm_Concept' xlink:from='cm_LineItems' order='42' use='optional' />
+   </link:definitionLink>
+
+   <link:definitionLink xlink:type='extended' xlink:role='http://www.xbrl.org/2003/role/link' xlink:title=''>
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Abstract' xlink:label='cm_Abstract' />
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Abstract' xlink:label='cm_Abstract' />
+      <link:definitionArc xlink:type='arc' xlink:arcrole='http://www.xbrlsite.com/seattlemethod/conceptual-model/arcrole/parentCategory-allowedChildCategory' xlink:to='cm_Abstract' xlink:from='cm_Abstract' order='43' use='optional' />
+   </link:definitionLink>
+
+   <link:definitionLink xlink:type='extended' xlink:role='http://www.xbrl.org/2003/role/link' xlink:title=''>
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Abstract' xlink:label='cm_Abstract' />
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Hypercube' xlink:label='cm_Hypercube' />
+      <link:definitionArc xlink:type='arc' xlink:arcrole='http://www.xbrlsite.com/seattlemethod/conceptual-model/arcrole/parentCategory-allowedChildCategory' xlink:to='cm_Hypercube' xlink:from='cm_Abstract' order='44' use='optional' />
+   </link:definitionLink>
+
+   <link:definitionLink xlink:type='extended' xlink:role='http://www.xbrl.org/2003/role/link' xlink:title=''>
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Abstract' xlink:label='cm_Abstract' />
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Network' xlink:label='cm_Network' />
+      <link:definitionArc xlink:type='arc' xlink:arcrole='http://www.xbrlsite.com/seattlemethod/conceptual-model/arcrole/parentCategory-disallowedChildCategory' xlink:to='cm_Network' xlink:from='cm_Abstract' order='45' use='optional' />
+   </link:definitionLink>
+
+   <link:definitionLink xlink:type='extended' xlink:role='http://www.xbrl.org/2003/role/link' xlink:title=''>
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Abstract' xlink:label='cm_Abstract' />
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Dimension' xlink:label='cm_Dimension' />
+      <link:definitionArc xlink:type='arc' xlink:arcrole='http://www.xbrlsite.com/seattlemethod/conceptual-model/arcrole/parentCategory-disallowedChildCategory' xlink:to='cm_Dimension' xlink:from='cm_Abstract' order='46' use='optional' />
+   </link:definitionLink>
+
+   <link:definitionLink xlink:type='extended' xlink:role='http://www.xbrl.org/2003/role/link' xlink:title=''>
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Abstract' xlink:label='cm_Abstract' />
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_LineItems' xlink:label='cm_LineItems' />
+      <link:definitionArc xlink:type='arc' xlink:arcrole='http://www.xbrlsite.com/seattlemethod/conceptual-model/arcrole/parentCategory-disallowedChildCategory' xlink:to='cm_LineItems' xlink:from='cm_Abstract' order='47' use='optional' />
+   </link:definitionLink>
+
+   <link:definitionLink xlink:type='extended' xlink:role='http://www.xbrl.org/2003/role/link' xlink:title=''>
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Abstract' xlink:label='cm_Abstract' />
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Member' xlink:label='cm_Member' />
+      <link:definitionArc xlink:type='arc' xlink:arcrole='http://www.xbrlsite.com/seattlemethod/conceptual-model/arcrole/parentCategory-disallowedChildCategory' xlink:to='cm_Member' xlink:from='cm_Abstract' order='48' use='optional' />
+   </link:definitionLink>
+
+   <link:definitionLink xlink:type='extended' xlink:role='http://www.xbrl.org/2003/role/link' xlink:title=''>
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Abstract' xlink:label='cm_Abstract' />
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Concept' xlink:label='cm_Concept' />
+      <link:definitionArc xlink:type='arc' xlink:arcrole='http://www.xbrlsite.com/seattlemethod/conceptual-model/arcrole/parentCategory-allowedChildCategory' xlink:to='cm_Concept' xlink:from='cm_Abstract' order='49' use='optional' />
+   </link:definitionLink>
+
+   <link:definitionLink xlink:type='extended' xlink:role='http://www.xbrl.org/2003/role/link' xlink:title=''>
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Concept' xlink:label='cm_Concept' />
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Abstract' xlink:label='cm_Abstract' />
+      <link:definitionArc xlink:type='arc' xlink:arcrole='http://www.xbrlsite.com/seattlemethod/conceptual-model/arcrole/parentCategory-discouragedChildCategory' xlink:to='cm_Abstract' xlink:from='cm_Concept' order='50' use='optional' />
+   </link:definitionLink>
+
+   <link:definitionLink xlink:type='extended' xlink:role='http://www.xbrl.org/2003/role/link' xlink:title=''>
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Concept' xlink:label='cm_Concept' />
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Hypercube' xlink:label='cm_Hypercube' />
+      <link:definitionArc xlink:type='arc' xlink:arcrole='http://www.xbrlsite.com/seattlemethod/conceptual-model/arcrole/parentCategory-disallowedChildCategory' xlink:to='cm_Hypercube' xlink:from='cm_Concept' order='51' use='optional' />
+   </link:definitionLink>
+
+   <link:definitionLink xlink:type='extended' xlink:role='http://www.xbrl.org/2003/role/link' xlink:title=''>
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Concept' xlink:label='cm_Concept' />
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Network' xlink:label='cm_Network' />
+      <link:definitionArc xlink:type='arc' xlink:arcrole='http://www.xbrlsite.com/seattlemethod/conceptual-model/arcrole/parentCategory-disallowedChildCategory' xlink:to='cm_Network' xlink:from='cm_Concept' order='52' use='optional' />
+   </link:definitionLink>
+
+   <link:definitionLink xlink:type='extended' xlink:role='http://www.xbrl.org/2003/role/link' xlink:title=''>
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Concept' xlink:label='cm_Concept' />
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Dimension' xlink:label='cm_Dimension' />
+      <link:definitionArc xlink:type='arc' xlink:arcrole='http://www.xbrlsite.com/seattlemethod/conceptual-model/arcrole/parentCategory-disallowedChildCategory' xlink:to='cm_Dimension' xlink:from='cm_Concept' order='53' use='optional' />
+   </link:definitionLink>
+
+   <link:definitionLink xlink:type='extended' xlink:role='http://www.xbrl.org/2003/role/link' xlink:title=''>
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Concept' xlink:label='cm_Concept' />
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_LineItems' xlink:label='cm_LineItems' />
+      <link:definitionArc xlink:type='arc' xlink:arcrole='http://www.xbrlsite.com/seattlemethod/conceptual-model/arcrole/parentCategory-disallowedChildCategory' xlink:to='cm_LineItems' xlink:from='cm_Concept' order='54' use='optional' />
+   </link:definitionLink>
+
+   <link:definitionLink xlink:type='extended' xlink:role='http://www.xbrl.org/2003/role/link' xlink:title=''>
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Concept' xlink:label='cm_Concept' />
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Member' xlink:label='cm_Member' />
+      <link:definitionArc xlink:type='arc' xlink:arcrole='http://www.xbrlsite.com/seattlemethod/conceptual-model/arcrole/parentCategory-disallowedChildCategory' xlink:to='cm_Member' xlink:from='cm_Concept' order='55' use='optional' />
+   </link:definitionLink>
+
+   <link:definitionLink xlink:type='extended' xlink:role='http://www.xbrl.org/2003/role/link' xlink:title=''>
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Concept' xlink:label='cm_Concept' />
+      <link:loc xlink:type='locator' xlink:href='http://www.xbrlsite.com/seattlemethod/cm/cm.xsd#cm_Concept' xlink:label='cm_Concept' />
+      <link:definitionArc xlink:type='arc' xlink:arcrole='http://www.xbrlsite.com/seattlemethod/conceptual-model/arcrole/parentCategory-discouragedChildCategory' xlink:to='cm_Concept' xlink:from='cm_Concept' order='56' use='optional' />
+   </link:definitionLink>
+
+</link:linkbase>
