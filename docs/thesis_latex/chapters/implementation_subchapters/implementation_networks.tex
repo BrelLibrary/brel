@@ -159,7 +159,7 @@ Brel follows a four-step algorithm to parse links:
     \item Initially, it examines all elements within the link. 
     For elements identified as locators or resources, Brel generates an \texttt{INetworkNode} class instance.
     In the case of an arc element, Brel notes the arc's from and to attributes in an edge list.
-    \item In the second step, with all nodes already established, Brel sifts through the edge list, appending the to-node as a child of the from-node.
+    \item In the second step, with all nodes already instantiated, Brel iterates over the edge list, appending the to-node as a child of the from-node.
     \item Subsequently, Brel reviews each node, adding those without a parent to the network's root list. This root list is encapsulated in an \texttt{INetwork} instance.
     \item Finally, Brel applies any overarching implications of the network to the report.
     For instance, if a label network assigns a label to a concept, Brel incorporates this label into the report's concept.
@@ -167,7 +167,8 @@ Brel follows a four-step algorithm to parse links:
 \end{enumerate}
 
 Chapter \ref{chapter:api} introduced the diverse network types.
-For each network variant, Brel provides corresponding node and network classes, all derived from the \texttt{INetwork} and \texttt{INetworkNode} classes.
+For each network variant, Brel provides corresponding node and network classes, 
+all derived from the \texttt{INetwork} and \texttt{INetworkNode} interfaces.
 Brel employs the factory pattern to generate appropriate network and node instances for a given link.
 Each network type has its dedicated factory, which is utilized in the algorithm \ref{enum:network_parsing} to create the relevant network and node instances.
 
@@ -238,8 +239,10 @@ The current XBRL 2.1 specification outlines three inherent resource types: label
 Resources comprise three components: a role, a label, and a value.
 
 The role is a URI defining the resource's type.
-For instance, the role \texttt{http://www.xbrl.org/2003/role/terseLabel} denotes a label resource offering a concise label for a concept,
-while \texttt{http://www.xbrl.org/2003/role/footnote} indicates a footnote resource associated with a concept.
+For instance, the \texttt{terseLabel} role\footnote{\url{http://www.xbrl.org/2003/role/terseLabel}} 
+denotes a label resource offering a concise label for a concept,
+while \texttt{footnote} role\footnote{\url{http://www.xbrl.org/2003/role/footnote}}
+indicates a footnote resource associated with a concept.
 
 The label functions as an identifier for the resource, utilized by arcs to reference the resource.
 This label should not be mistaken for a concept's human-readable label.

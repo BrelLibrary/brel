@@ -7,8 +7,8 @@
 % % We have also shown that the underlying XML structure of XBRL reports is hidden from the user,
 % We have also shown that the API does not expose the underlying XML structure of XBRL reports to the user.
 This thesis introduces a Python API for processing XBRL reports, designed to abstract the complexities of the XBRL format from the user.
-We have successfully demonstrated that this API covers the Object Information Model (OIM) of XBRL,
-and facilitates straightforward and efficient extraction and analysis of data from XBRL reports.
+We have successfully demonstrated that this API covers XBRL and the Open Information Model (OIM),
+and facilitates straightforward extraction and analysis of data from XBRL reports.
 Moreover, we have shown that this API effectively conceals the XML structure underlying XBRL reports from the end user.
 
 % We have implemented said API in a Python package called \texttt{Brel}, 
@@ -17,14 +17,11 @@ Moreover, we have shown that this API effectively conceals the XML structure und
 % and have shown that in exhibits good robustness when used to interpret XBRL reports from different companies.
 % We have also touched on both the potential and the limitations of the API,
 % which we believe will be useful for future work in this area.
-The API has been developed into a Python package named \texttt{Brel},
-which is accessible on the Python Package Index (PyPI)
-\footnote{Brel can be installed using the command \texttt{pip install brel-xbrl}. This command is compatible with all major operating systems, including Windows, macOS, and Linux.}.
 % and installable via the command \texttt{pip install brel-xbrl}
 % \footnote{This installation command is compatible across major operating systems, including Windows, macOS, and Linux.}.
-We have established its robustness in interpreting XBRL reports from various companies.
-Additionally, we have discussed the capabilities and constraints of the API,
-which could serve as a foundation for the future development of Brel.
+% We have established its robustness in interpreting XBRL reports from various companies.
+% Additionally, we have discussed the capabilities and constraints of the API,
+% which could serve as a foundation for the future development of Brel.
 % which could serve as a foundation for future work in this field.
 
 % This thesis aimed to answer three research questions, all of which have been answered in the previous chapters.
@@ -49,9 +46,12 @@ We have shown that this is possible in Section \ref{sec:answer_research_question
 % Arelle does have a Python API, but since Arelle is a standalone application,
 % it does not occupy the same niche as Brel, which is a Python package that can be used in other Python applications.
 Brel contributes the XBRL domain by offering an open-source Python API specifically for XBRL reports.
-While other similar APIs are available, none prominently feature the Object Information Model (OIM) of XBRL.
+While other similar APIs are available, none prominently feature the OIM.
 Arelle provides a Python API, but as a standalone application, it differs from Brel.
 Brel, being a Python package, integrates seamlessly into other Python applications, distinguishing its role in the field.
+The API has been developed into a Python package named \texttt{Brel},
+which is accessible on the Python Package Index (PyPI)
+\footnote{Brel can be installed using the command \texttt{pip install brel-xbrl}. This command is compatible with all major operating systems, including Windows, macOS, and Linux.}.
 
 % To reflect on the results of this thesis, we can conclude that the API is indeed robust against different XBRL reports 
 % as shown in Section \ref{sec:robustness},
@@ -64,7 +64,8 @@ Brel, being a Python package, integrates seamlessly into other Python applicatio
 % They have to check for logical errors in the reports themselves.
 Reflecting on our results, we conclude that the API is robust across various XBRL reports
 as indicated in Section \ref{sec:robustness},
-and adheres to the XBRL standard, inclusive of the OIM.
+and adheres to the XBRL standard, inclusive of the OIM,
+as demonstrated in chapters \ref{chapter:xbrl} and \ref{chapter:api}.
 A notable limitation of Brel is its inability to semantically interpret data in XBRL reports,
 meaning it cannot autonomously identify logical inconsistencies in the reports.
 While XBRL is primarily designed for machine-readability to facilitate automated processes,
@@ -106,7 +107,7 @@ as addressed in section \ref{sec:limitations}.
 \subsection{Support for Additional XBRL Formats}
 
 Presently, Brel is compatible only with the XML format outlined in the XBRL 2.1 specification \cite{xbrl21}.
-With the introduction of the Object Information Model (OIM), XBRL has expanded to include formats like CSV and JSON.
+With the introduction of the OIM, XBRL has expanded to include formats like CSV and JSON.
 Currently, these formats are not supported by Brel, and their specifications are still under development
 \footnote{The OIM specifications contains a section for footnotes, which are a type of network.}.
 For instance, at this time, the CSV and JSON formats do not accommodate networks, an essential component of XBRL.

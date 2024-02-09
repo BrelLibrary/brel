@@ -13,45 +13,74 @@ Chapter \ref{chapter:xbrl} already gave an intuition of the OIM.
 % For its examples, it used the XML implementation of XBRL, which is the de-facto standard.
 The chapter only diverged from the OIM once it reached parts of XBRL that are not yet covered by the OIM.
 
-Since the OIM is already quite tidy, the Brel API does not deviate much from it.
-Just like the OIM, the Brel API is not tied to any specific format for its underlying XBRL reports.
-It provides Reports, Facts, Concept-, Entity-, Period-, Unit and Dimension characteristics, which are all part of the OIM.
-\footnote{The OIM does not use "characteristic" suffix. Brel uses it to avoid confusion with similarly named report elements.}
+% Since the OIM is already quite tidy, the Brel API does not deviate much from it.
+% Just like the OIM, the Brel API is not tied to any specific format for its underlying XBRL reports.
+% It provides Reports, Facts, Concept-, Entity-, Period-, Unit and Dimension characteristics, which are all part of the OIM.
+% \footnote{The OIM does not use "characteristic" suffix. Brel uses it to avoid confusion with similarly named report elements.}
+Given that the OIM is already organized systematically, the Brel API aligns closely with its structure. 
+Similar to the OIM, the Brel API remains agnostic to the specific format of its underlying XBRL reports. 
+It encompasses Reports, Facts, and the Concept-, Entity-, Period-, Unit-, and Dimension characteristics, 
+all of which are part of the OIM. 
+\footnote{The term "characteristic" is not used by the OIM. Brel adopts this terminology to prevent confusion with report elements that have similar names.}
+
+% \begin{itemize}
+%     \item \textbf{Report} - The \texttt{Filing} class represents a single XBRL report. 
+%     Just like the OIM, it acts as a wrapper around a list of facts.
+%     Aside from facts, a report also contains a taxonomy, which is a set of report elements, which are also accessible through the \texttt{Filing} class.
+%     \item \textbf{Fact} - The \texttt{Fact} and \texttt{Context} class represents a single XBRL fact.
+%     Just like the OIM, a fact consists of a value and a set of characteristics that describe what the value represents.
+%     \item \textbf{Characteristics} - Brel implements all of the characteristics described in the OIM as classes - 
+%     concepts, entities, periods, units, explicit- and typed dimensions
+%     \footnote{The OIM also introduces the language- and Note ID core dimensions. They are not yet implemented in Brel, but can be emulated using the typed dimension characteristic. They are rarely used in practice, which is why they are not yet implemented.}
+% \end{itemize}
 
 \begin{itemize}
-    \item \textbf{Report} - The \texttt{Filing} class represents a single XBRL report. 
-    Just like the OIM, it acts as a wrapper around a list of facts.
-    Aside from facts, a report also contains a taxonomy, which is a set of report elements, which are also accessible through the \texttt{Filing} class.
-    \item \textbf{Fact} - The \texttt{Fact} and \texttt{Context} class represents a single XBRL fact.
-    Just like the OIM, a fact consists of a value and a set of characteristics that describe what the value represents.
-    \item \textbf{Characteristics} - Brel implements all of the characteristics described in the OIM as classes - 
-    concepts, entities, periods, units, explicit- and typed dimensions
-    \footnote{The OIM also introduces the language- and Note ID core dimensions. They are not yet implemented in Brel, but can be emulated using the typed dimension characteristic. They are rarely used in practice, which is why they are not yet implemented.}
+    \item \textbf{Report} - Represented by the \texttt{Filing} class, it encapsulates a single XBRL report.
+    Mirroring the OIM, it functions as a container for facts.
+    Beyond facts, a report comprises a taxonomy, a collection of report elements, accessible through the \texttt{Filing} class.
+    \item \textbf{Fact} - The \texttt{Fact} and \texttt{Context} classes represent a single XBRL fact.
+    Aligning with the OIM, a fact includes a value and various characteristics that define the value's meaning.
+    \item \textbf{Characteristics} - Brel materializes all characteristics listed in the OIM into classes - concepts, entities, periods, units, explicit, and typed dimensions.
+    \footnote{While the OIM mentions language and Note ID core dimensions, Brel has not incorporated these yet but allows for their simulation through the typed dimension characteristic. Their rare usage justifies their current exclusion.}
 \end{itemize}
 
-Therefore, the first half of this chapter offers a constructive answer to research question \ref{itm:research_question_1} 
-by providing a python API that is based on the OIM.
+% Therefore, the first half of this chapter offers a constructive answer to research question \ref{itm:research_question_1} 
+% by providing a python API that is based on the OIM.
+Therefore, the initial section of this chapter provides an answer to 
+research question \ref{itm:research_question_1} by offering a Python API grounded in the OIM.
 
 \begin{displayquote}
     \textbf{RQ1:} How can the OIM be translated into an easy-to-use python API?
 \end{displayquote}
 
-Where the Brel API differs from the OIM so far is in its introduction of report elements.
-Yes, the OIM introduces concepts, dimensions and members, but it does not categorize them under a common umbrella term
-\footnote{The OIM would technically group concepts and members under the term "dimension", 
-but it overloads the term "dimension" so many times that it is not clear what it refers to in any given context.}.
-In the OIM, these three terms describe three completely unrelated things, and they are unrelated if one only considers the OIM.
-However, the Brel API also aims to cover the parts of XBRL that are not yet covered by the OIM.
-The non-OIM parts of XBRL are networks, components and resources.
-Networks require elements like concepts, dimensions and members to be treated in a homogeneous way.
-The exact reasoning behind this will be explained in the second half of this chapter.
+% Where the Brel API differs from the OIM so far is in its introduction of report elements.
+% Yes, the OIM introduces concepts, dimensions and members, but it does not categorize them under a common umbrella term
+% \footnote{The OIM would technically group concepts and members under the term "dimension", 
+% but it overloads the term "dimension" so many times that it is not clear what it refers to in any given context.}.
+% In the OIM, these three terms describe three completely unrelated things, and they are unrelated if one only considers the OIM.
+% However, the Brel API also aims to cover the parts of XBRL that are not yet covered by the OIM.
+% The non-OIM parts of XBRL are networks, components and resources.
+% Networks require elements like concepts, dimensions and members to be treated in a homogeneous way.
+% The exact reasoning behind this will be explained in the second half of this chapter.
+Brel's distinction from the OIM lies in the introduction of report elements.
+While the OIM defines concepts, dimensions, and members, it lacks a collective term for them.
+\footnote{The OIM might categorize concepts and members under "dimension"; however, the term "dimension" is so broadly used it often lacks clear meaning.}
+In the context of the OIM alone, these terms denote unrelated concepts.
+Yet, Brel also addresses XBRL aspects not covered by the OIM, including networks, components, and resources.
+Networks demand a uniform approach to handling elements such as concepts, dimensions, and members.
+The logic for this will be detailed in the latter half of this chapter, which aims to answer research question \ref{itm:research_question_2}.
 
-The way Brel bridges the gap between the OIM and the non-OIM parts of XBRL is by introducing characteristics and report elements.
-Characteristics are used for facts, while report elements are used for networks.
-This is the reason why Brel uses \texttt{ConceptCharacteristic} instead of \texttt{Concept} when talking about the concept characteristic of a fact.
-Sure, a \texttt{ConceptCharacteristic} is in essence a wrapper around a \texttt{Concept}, 
-but the two classes are used in different contexts.
+% The way Brel bridges the gap between the OIM and the non-OIM parts of XBRL is by introducing characteristics and report elements.
+% Characteristics are used for facts, while report elements are used for networks.
+% This is the reason why Brel uses \texttt{ConceptCharacteristic} instead of \texttt{Concept} when talking about the concept characteristic of a fact.
+% Sure, a \texttt{ConceptCharacteristic} is in essence a wrapper around a \texttt{Concept}, 
+% but the two classes are used in different contexts.
+% Brel links the OIM and broader XBRL features by introducing characteristics and report elements.
+% Characteristics apply to facts, while report elements relate to networks.
+% This rationale underpins Brel's use of \texttt{ConceptCharacteristic} over \texttt{Concept} in discussing fact characteristics.
+% For instance, a \texttt{ConceptCharacteristic} serves as a wrapper for a \texttt{Concept}, since the two classes serve different purposes.
 
-The second half of this chapter will answer research question \ref{itm:research_question_2} 
-by providing a python API that is based on the non-OIM parts of XBRL.
-
+% The second half of this chapter will answer research question \ref{itm:research_question_2} 
+% by providing a python API that is based on the non-OIM parts of XBRL.
+% The latter part of this chapter will address research question \ref{itm:research_question_2}
+% by revealing a Python API that integrates the XBRL components beyond the OIM.

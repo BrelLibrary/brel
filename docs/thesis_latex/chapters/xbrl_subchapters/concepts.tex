@@ -2,49 +2,77 @@
 \label{sec:concepts}
 
 In section \ref{sec:facts}, we learned that a fact is the smallest unit of information in an XBRL report. 
-One of the core aspects of a fact is its concept,
-which refers to what is being reported.
-% The concept refers to what is being reported. 
-
-So for example, if a fact is reporting information about a company's revenue, then the concept of the fact is "Revenue".
-In this section, we will take a closer look at concepts and how they are defined in XBRL.
-
-Concepts are the fundamental building blocks of XBRL and they are defined in what is called the \textbf{taxonomy}.
+% One of the core aspects of a fact is its concept,
+% which refers to what is being reported.
+The central aspect of a fact is its concept,
+which details the subject matter of the reported information.
+% So for example, if a fact is reporting information about a company's revenue, then the concept of the fact is "Revenue".
+% In this section, we will take a closer look at concepts and how they are defined in XBRL.
+% Concepts are the fundamental building blocks of XBRL and they are defined in what is called the \textbf{taxonomy}.
+For instance, if a fact conveys data regarding a company's revenue, then "Revenue" is the concept associated with this fact.
+This section aims to delve deeper into concepts and their specification within XBRL.
+Concepts are essential components of XBRL, outlined within what is known as the \textbf{taxonomy}.
 
 \subsection{Taxonomy}
 
-Simply put, the XBRL taxonomy is a collection of concepts and their relationships.
-It is different from the XBRL instance document, which contains the actual facts of a report. 
-Each XBRL report defines its own taxonomy inside of a taxonomy schema file. 
-The taxonomy defined by the report is called the \textbf{extension taxonomy}.
+% Simply put, the XBRL taxonomy is a collection of concepts and their relationships.
+% It is different from the XBRL instance document, which contains the actual facts of a report. 
+% Each XBRL report defines its own taxonomy inside of a taxonomy schema file. 
+% The taxonomy defined by the report is called the \textbf{extension taxonomy}.
+In essence, the XBRL taxonomy is a collection of concepts and the relationships between them.
+It differs from the XBRL instance document, which holds the report's actual data.
+Each XBRL report outlines its taxonomy within a taxonomy schema file,
+referred to as the \textbf{extension taxonomy}.
 
-This extension taxonomy contains references to other taxonomies, which may contain references to even more taxonomies.
-So when a report and its extension taxonomy are loaded into memory, the entire taxonomy is loaded into memory.
+This extension taxonomy contains references to other taxonomies, which, in turn, may link to additional taxonomies.
+Hence, when a report and its extension taxonomy are loaded into memory, the entire span of referenced taxonomies is also loaded.
 The transitive closure of all these references is called the \textbf{DTS} (short for \textbf{D}iscoverable \textbf{T}axonomy \textbf{S}et).
 
-Note that most of the taxonomies in the DTS are not located on the same machine as the report.
-Instead, they are located on the internet and are downloaded on demand.
+% Note that most of the taxonomies in the DTS are not located on the same machine as the report.
+% Instead, they are located on the internet and are downloaded on demand.
 
-Some taxonomies commonly found in a report's DTS are:
+% Some taxonomies commonly found in a report's DTS are:
 
-\begin{itemize}
-    \item \textbf{us-gaap} \footnote{https://xbrl.us/us-gaap/} - Contains concepts for US Generally Accepted Accounting Principles (GAAP).
-    \item \textbf{ifrs} \footnote{https://www.ifrs.org/} - Contains concepts for International Financial Reporting Standards (IFRS).
-    \item \textbf{dei} \footnote{https://www.sec.gov/info/edgar/dei-2019xbrl-taxonomy} - Contains concepts for the SEC's Document and Entity Information (DEI) requirements.
-    \item \textbf{country} \footnote{https://xbrl.fasb.org/us-gaap/2021/elts/us-gaap-country-2021-01-31.xsd} - Contains concepts for country codes.
-    \item \textbf{iso4217} \footnote{https://www.iso.org/iso-4217-currency-codes.html} - Contains concepts for currency codes.
-\end{itemize}
+It's important to note that most taxonomies within the DTS are not stored locally with the report.
+Rather, they are hosted online and fetched as required.
 
-Since a lot of DTSs from different reports share a lot of the same taxonomies, it makes sense to cache the taxonomies locally, 
-instead of downloading them every time they are needed.
+Commonly encountered taxonomies in a report's DTS include 
+\texttt{us-gaap}\footnote{https://xbrl.us/us-gaap/}, which contains concepts for US Generally Accepted Accounting Principles (GAAP),
+\texttt{dei}\footnote{https://www.sec.gov/info/edgar/dei-2019xbrl-taxonomy}, which contains concepts for the SEC's Document and Entity Information (DEI) requirements,
+\texttt{iso4217}\footnote{https://www.iso.org/iso-4217-currency-codes.html}, which contains concepts for currency codes, 
+and many more.
+
+% \begin{itemize}
+%     \item \textbf{us-gaap} \footnote{https://xbrl.us/us-gaap/} - Contains concepts for US Generally Accepted Accounting Principles (GAAP).
+%     \item \textbf{ifrs} \footnote{https://www.ifrs.org/} - Contains concepts for International Financial Reporting Standards (IFRS).
+%     \item \textbf{dei} \footnote{https://www.sec.gov/info/edgar/dei-2019xbrl-taxonomy} - Contains concepts for the SEC's Document and Entity Information (DEI) requirements.
+%     \item \textbf{country} \footnote{https://xbrl.fasb.org/us-gaap/2021/elts/us-gaap-country-2021-01-31.xsd} - Contains concepts for country codes.
+%     \item \textbf{iso4217} \footnote{https://www.iso.org/iso-4217-currency-codes.html} - Contains concepts for currency codes.
+% \end{itemize}
+
+% Since a lot of DTSs from different reports share a lot of the same taxonomies, it makes sense to cache the taxonomies locally, 
+% instead of downloading them every time they are needed.
+
+% \subsection{Concepts}
+
+% Each concept in the DTS is identified by a \textbf{QName}. 
+% The technical intricacies of QNames will be covered in section \ref{sec:qnames}, but for now think of them as a unique identifier for a concept.
+% The QName of a concept tends to be human-readable and self-explanatory. 
+% However, accountants and business analysts tend to go overboard with with their naming conventions.
+% Some examples of the QNames of concepts are:
+
+Given that many DTSs from various reports share numerous identical taxonomies, it is practical to store these taxonomies locally,
+rather than re-downloading them each time they are required.
 
 \subsection{Concepts}
 
-Each concept in the DTS is identified by a \textbf{QName}. 
-The technical intricacies of QNames will be covered in section \ref{sec:qnames}, but for now think of them as a unique identifier for a concept.
-The QName of a concept tends to be human-readable and self-explanatory. 
-However, accountants and business analysts tend to go overboard with with their naming conventions.
-Some examples of the QNames of concepts are:
+Within the DTS, every concept is designated by a \textbf{QName}.
+The complexities of QNames will be explored in section \ref{sec:qnames}. 
+% For the moment, consider them as a unique identifier for each concept.
+For the moment, the reader can think of them as a unique identifier for each concept.
+Typically, the QName of a concept is designed to be both human-readable and self-explanatory.
+Nevertheless, it's common for accountants and business analysts to employ elaborate naming conventions.
+Here are some examples of QNames for concepts:
 
 \begin{itemize}
     \item \texttt{us-gaap:Assets}
@@ -59,27 +87,43 @@ Some examples of the QNames of concepts are:
     \texttt{ValueDateMeasureMemberFormatsGuidance}
 \end{itemize}
 
-But concepts do not only consist of a QName.
-They also constrain some of the aspects and values of the facts that reference them.
-Going back to our running example from section \ref{sec:facts}, the concept \texttt{us-gaap:Revenue} introduces some constraints.
+% But concepts do not only consist of a QName.
+% They also constrain some of the aspects and values of the facts that reference them.
+% Going back to our running example from section \ref{sec:facts}, the concept \texttt{us-gaap:Revenue} introduces some constraints.
+Concepts in XBRL extend beyond merely possessing a QName.
+They also impose restrictions on certain aspects and values of the facts that reference these concepts.
+Using our ongoing example from section \ref{sec:facts}, the concept \texttt{us-gaap:Revenue} sets forth specific constraints.
 
-For example, it constrains the value to be a \texttt{monetaryItemType}.
-This means that the value of the fact must be a number, 
-not just any arbitrary string.\footnote{The \texttt{monetaryItemType} has additional constraints besides being an integer, but we will ignore them for now.}
-%  and not just any arbitrary string.\footnote{The \texttt{monetaryItemType} has additional constraints besides being an integer, but we will ignore them for now.}
-It also constrains the unit to be a currency defined in the ISO 4217 standard.\cite{eba2018filingrules}
-Moreover, monetary facts have to be labeled as either "debit" or "credit" using the \texttt{balance} attribute.
-In this case, the concept \texttt{us-gaap:Revenue} constrains the fact to have a "debit" balance, since the company's revenue is an asset.
+% For instance, it restricts the value to a \texttt{monetaryItemType}.
+It restricts the value to a \texttt{monetaryItemType},
+% This designation mandates that the fact's value must be numerical,
+which mandates that the fact's value must be numerical,
+as opposed to any arbitrary string.\footnote{The \texttt{monetaryItemType} encompasses additional restrictions beyond being numerical, but these will be set aside for now.}
+It further limits the unit to currencies recognized by the ISO 4217 standard.\cite{eba2018filingrules}
+Moreover, monetary facts must be identified as either "debit" or "credit" through the \texttt{balance} attribute.
+In the context of \texttt{us-gaap:Revenue}, this stipulation means the fact should reflect a "debit" balance, attributing revenue as an asset.
 
-The concept \texttt{us-gaap:Revenue} also constrains the period of the fact to be of type "duration".
-This means that the period of the fact has to be a duration of time, such as a fiscal year or a quarter.
-Alternatively, the period could be of type "instant", which means that the period refers to a specific point in time.
+% For example, it constrains the value to be a \texttt{monetaryItemType}.
+% This means that the value of the fact must be a number, 
+% not just any arbitrary string.\footnote{The \texttt{monetaryItemType} has additional constraints besides being an integer, but we will ignore them for now.}
+% It also constrains the unit to be a currency defined in the ISO 4217 standard.\cite{eba2018filingrules}
+% Moreover, monetary facts have to be labeled as either "debit" or "credit" using the \texttt{balance} attribute.
+% In this case, the concept \texttt{us-gaap:Revenue} constrains the fact to have a "debit" balance, since the company's revenue is an asset.
 
-Finally, the concept \texttt{us-gaap:Revenue} allows the fact to be null, 
-% which means that there does not have to be a fact for the concept \texttt{us-gaap:Revenue}.
-which means that it is optional for a report to contain a fact for the concept \texttt{us-gaap:Revenue}.
-The vast majority of concepts allow facts to be null.
+% The concept \texttt{us-gaap:Revenue} also constrains the period of the fact to be of type "duration".
+% This means that the period of the fact has to be a duration of time, such as a fiscal year or a quarter.
+% Alternatively, the period could be of type "instant", which means that the period refers to a specific point in time.
+The concept \texttt{us-gaap:Revenue} also specifies that the fact's period should be of the "duration" type.
+This indicates that the period must span a certain time frame, such as a fiscal year or quarter,
+or it could be of the "instant" type, referring to a specific moment in time.
 
-This wraps up our discussion about concepts in XBRL.
-In the next section, we will take a look at QNames and how they are used in XBRL.
-Together with the knowledge about concepts and facts, this will give us a solid foundation to understand the core parts of the XBRL standard.
+% Finally, the concept \texttt{us-gaap:Revenue} allows the fact to be null, 
+% which means that it is optional for a report to contain a fact for the concept \texttt{us-gaap:Revenue}.
+% The vast majority of concepts allow facts to be null.
+
+% This wraps up our discussion about concepts in XBRL.
+% In the next section, we will take a look at QNames and how they are used in XBRL.
+% Together with the knowledge about concepts and facts, this will give us a solid foundation to understand the core parts of the XBRL standard.
+This concludes our exploration of concepts in XBRL.
+The forthcoming section will delve into QNames and their role within XBRL,
+complementing our understanding of concepts and facts to solidify our grasp of XBRL's fundamental components.

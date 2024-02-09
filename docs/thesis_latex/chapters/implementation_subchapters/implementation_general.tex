@@ -86,6 +86,7 @@ The methodology used to ascertain the type of each report element is detailed in
 
 \begin{table}[H]
     \centering
+    \scalebox{0.85}{
     \begin{tabular}{|l|l|l|l|l|}
         \hline
         \makecell[l]{\textbf{Report element} \\ \textbf{type}}  & 
@@ -101,6 +102,7 @@ The methodology used to ascertain the type of each report element is detailed in
         Dimension   & "true"    & "xbrldt:dimensionItem"                &                            \\ \hline
         Abstract    & "true"    & "xbrli:item"                          &                            \\ \hline
     \end{tabular}
+    }
     \caption{Determining the type of report element}
     \label{tab:determining_report_element_type}
 \end{table}
@@ -136,12 +138,12 @@ After parsing all report elements, Brel establishes a lookup table for these ele
 This table, when provided with a QName, returns the corresponding instance of the report element.
 Brel utilizes this lookup table extensively in the subsequent stages of the parsing process.
 
-As mentioned in section \ref{sec:hypercubes}, the current implementation of Brel does not support open hypercubes.
-This is a feature that is planned for the future.
-The reason for this is that open hypercubes can reference report elements that are not defined in the taxonomy.
-Since Brel's parsing process is bottom-up, it requires all report elements to be defined in the taxonomy before it can parse networks and facts.
-This is in direct conflict with the concept of open hypercubes.
-In future versions of Brel, the parsing process will be restructured to support open hypercubes.
+% As mentioned in section \ref{sec:hypercubes}, the current implementation of Brel does not support open hypercubes.
+% This is a feature that is planned for the future.
+% The reason for this is that open hypercubes can reference report elements that are not defined in the taxonomy.
+% Since Brel's parsing process is bottom-up, it requires all report elements to be defined in the taxonomy before it can parse networks and facts.
+% This is in direct conflict with the concept of open hypercubes.
+% In future versions of Brel, the parsing process will be restructured to support open hypercubes.
 
 \subsection{Parsing Facts}
 

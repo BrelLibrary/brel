@@ -8,9 +8,12 @@
 % Third, there are the requirements set by authorities and other organizations that XBRL processors have to fulfill.
 The goal of this thesis is to create a new open-source XBRL library, primarily based on the OIM.
 In the context of Brel, three main areas of interest exist.
-Firstly, it involves considering the XBRL specification and its interpretations.
-Secondly, it encompasses the examination of other XBRL libraries and platforms similar to Brel, including public databases of XBRL reports.
-Lastly, it involves reviewing the requirements set by authorities and other organizations that XBRL processors must fulfill.
+% Firstly, it involves considering the XBRL specification and its interpretations.
+The first area involves examining the XBRL specification and its interpretations.
+% Secondly, it encompasses the examination of other XBRL libraries and platforms similar to Brel, including public databases of XBRL reports.
+The second encompasses the examination of other XBRL libraries and platforms similar to Brel, including public databases of XBRL reports.
+% Lastly, it involves reviewing the requirements set by authorities and other organizations that XBRL processors must fulfill.
+The third area covers reviewing the requirements set by authorities and other organizations that XBRL processors must fulfill.
 
 \section{XBRL Specification}
 % As mentioned in section \ref{sec:introduction}, this thesis is based on the XBRL standard\cite{xbrl} originally created by Charles Hoffman.
@@ -20,7 +23,7 @@ Lastly, it involves reviewing the requirements set by authorities and other orga
 % the extension for dimensional reporting\cite{xbrl_dimensions}
 % and the specification for generic links\cite{xbrl_generic_links}, 
 % all of which will be covered in chapter \ref{chapter:xbrl}.
-As indicated in Section \ref{sec:introduction}, this thesis builds upon the XBRL standard originally authored by Charles Hoffman\cite{xbrl}.
+As indicated in Section \ref{sec:introduction}, this thesis builds upon the XBRL standard originally created by Charles Hoffman\cite{xbrl}.
 The XBRL standard comprises numerous components, and this thesis specifically focuses on the following components: 
 the Open Information Model (OIM)\cite{oim}, 
 the XBRL 2.1 specification\cite{xbrl21}, 
@@ -48,7 +51,7 @@ which serves as a comprehensive guide to XBRL. This book covers all important as
 making it an invaluable resource for those looking to learn about XBRL.
 
 \section{Arelle}
-Arelle\cite{arelle} stands as an open-source XBRL platform. 
+Arelle\cite{arelle} is an open-source XBRL platform. 
 As of the current writing, Arelle holds the distinction of being the most comprehensive open-source platform in its category. 
 It provides support for all features found in the XBRL 2.1 specification and the OIM. 
 Similar to Brel, Arelle is implemented in Python and is available as open-source software. 
@@ -69,9 +72,9 @@ The reader can think of Arelle as the "Excel for XBRL."
 % Think of Xule as a domain-specific language for XBRL validation rules.
 % Even though Xule is not part of this thesis, Brel should be able to support Xule in the future.
 Xule\cite{xule} serves as a rule language tailored for XBRL. 
-This declarative language empowers users to craft rules for the validation of XBRL reports. 
+This declarative language empowers users to create rules for the validation of XBRL reports. 
 The Arelle project employs Xule to validate reports. 
-Conceptually, Xule can be likened to a domain-specific language designed specifically for XBRL validation rules. 
+% Xule can be likened to a domain-specific language designed specifically for XBRL validation rules. 
 While Xule is not directly incorporated into this thesis, it is worth noting that Brel has the potential to offer support for Xule in the future.
 
 
@@ -82,7 +85,8 @@ While Xule is not directly incorporated into this thesis, it is worth noting tha
 % EDGAR stands for \textbf{E}lectronic \textbf{D}ata \textbf{G}athering, \textbf{A}nalysis, and \textbf{R}etrieval.
 % Filings submitted to EDGAR have to be in XBRL format.
 % The SEC provides public access to the filings submitted to EDGAR. \footnote{\url{https://www.sec.gov/edgar/search/}}
-The SEC, known as the U.S. Securities and Exchange Commission, 
+The U.S. Securities and Exchange Commission, known as the SEC
+\footnote{not to be confused with the U.S.SEC, which stands for U.S. Soybean Export Council},
 operates a system referred to as EDGAR (Electronic Data Gathering, Analysis, and Retrieval) \cite{sec_edgar}. 
 This EDGAR system serves as a public repository for XBRL reports submitted to the SEC\footnote{\url{https://www.sec.gov/edgar/search/}}.
 % To be accepted by EDGAR, filings must be in the XBRL format. 
@@ -102,7 +106,7 @@ ESEF stands for European Single Electronic Format,
 a standardized format for XBRL reports within the European Union.
 
 Much like EDGAR, the ESEF database is accessible to the public\footnote{\url{https://filings.xbrl.org/}}. 
-An intriguing aspect of this database is its hosting by XBRL International, the organization responsible for maintaining the XBRL standard.
+An interesting aspect of this database is its hosting by XBRL International, the organization responsible for maintaining the XBRL standard.
 
 \section{SEC - Interactive Data Public Test Suite}
 \label{sec:idpts}

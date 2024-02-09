@@ -152,16 +152,14 @@ Nonetheless, it encountered warnings or errors in 0.76\% of these reports,
 specifically from companies like Procter \& Gamble and Qualcomm. 
 These issues arose from reports where dimensions referenced concepts rather than explicit members. 
 While the XBRL specification technically permits dimensions to reference concepts, logically, 
-employing line items rather than dimensions is deemed more appropriate for modeling dimensions that refer to concepts. 
+% employing line items rather than dimensions is deemed more appropriate for modeling dimensions that refer to concepts.
+a correct approach for modeling dimensions that reference concepts is to create a copy of the concept as a member. 
 Hence, Brel issues warnings for such reports.
 
 The variation in the number of reports evaluated per company is attributed to limitations within the SEC's report retrieval API, 
 which lacks the functionality to filter reports by format. 
 Consequently, the API returns reports in either XML or HTML format, but Brel is only equipped to process XML-formatted reports.
 
-This robustness evaluation underscores Brel's capacity to handle real-world XBRL reports effectively. 
+% This robustness evaluation underscores Brel's capacity to handle real-world XBRL reports effectively. 
 Despite logging warnings or errors for a small fraction of the reports, 
-Brel's ability to load all reports demonstrates its robustness. 
-With future enhancements to support open hypercubes, 
-Brel is expected to achieve 100\% loading success without any warnings or errors, 
-affirming its robustness in processing real-world XBRL reports.
+Brel's ability to load all reports demonstrates its robustness in processing real-world XBRL reports.

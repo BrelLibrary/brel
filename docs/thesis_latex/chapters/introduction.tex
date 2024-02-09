@@ -77,11 +77,11 @@ However, the current state of XBRL does not entirely meet this requirement.
 This situation has led to the emergence of a varied range of XBRL tools,
 most of which are proprietary and not freely available.
 Although there are some open-source alternatives,
-they are relatively few.
-One significant exception is Arelle, a well-known tool in the XBRL field\cite{arelle}.
-Other open-source python libraries, like \texttt{python-xbrl}\cite{git_python_xbrl}, \texttt{pysec}\cite{git_pysec}, and \texttt{py-xbrl}\cite{git_py_xbrl}, 
+they are relatively few in number and often limited in scope.
+One significant exception is Arelle\cite{arelle}, a well-known tool in the XBRL field.
+% Other open-source python libraries, like \texttt{python-xbrl}\cite{git_python_xbrl}, \texttt{pysec}\cite{git_pysec}, and \texttt{py-xbrl}\cite{git_py_xbrl}, 
 % often have a limited range of functions and do not support the latest XBRL features.
-are often limited in scope and do not support XBRL's latest key feature.
+% are often limited in scope and do not support XBRL's latest key feature.
 % Notably, none of these libraries apart from Arelle support the latest XBRL features.
 
 % In 2021, XBRL International published a partial rewrite of the XBRL standard called Open Information Model (OIM)\cite{oim}.
@@ -127,10 +127,10 @@ Lastly, the library should support XBRL reports in XML, but its design should be
 The research questions that this thesis aims to answer are:
 
 \begin{itemize}
-    \item How can the OIM be translated into an easy-to-use python API?\label{itm:research_question_1}
+    \item \textbf{RQ1} How can the OIM be translated into an easy-to-use python API?\label{itm:research_question_1}
     % \item How should the non-OIM sections of XBRL be converted into a python API that is consistent with the OIM?\label{itm:research_question_2}
-    \item How can the non-OIM sections of XBRL be converted into an easy-to-use python API that is consistent with the OIM?\label{itm:research_question_2}
-    \item How can the library be designed to support multiple formats in the future?\label{itm:research_question_3}
+    \item \textbf{RQ2} How can the non-OIM sections of XBRL be converted into an easy-to-use python API that is consistent with the OIM?\label{itm:research_question_2}
+    \item \textbf{RQ3} How can the library be designed to support multiple formats in the future?\label{itm:research_question_3}
 \end{itemize}
 
 \section{Limitations of this thesis}
@@ -164,7 +164,9 @@ A semantically correct report is both syntactically correct and logically cohere
 % This thesis will not cover the semantics of XBRL reports.
 % This thesis will not cover the semantics of XBRL reports, which are not strictly defined by the XBRL specification, but rather through supporting documents.
 This thesis will not address the semantics of XBRL reports, 
-as they are not explicitly detailed in the XBRL specification but are outlined in supplementary documents.
+as they are rarely detailed in the XBRL specification,
+%  but are outlined in supplementary documents.
+but are instead outlined in supporting documents.
 
 % Through the Brel API, it is possible to semantically validate XBRL reports to be in line with the XBRL supporting documents.
 % By using the Brel API, it is possible to semantically validate XBRL reports.
@@ -187,10 +189,10 @@ Grasping the underlying XBRL standard is essential to understand how Brel provid
 Hence, Chapter \ref{chapter:xbrl} will offer a concise introduction to XBRL.
 % It will introduce the core concepts of XBRL in the OIM and move on to the non-OIM sections of XBRL.
 % It will introduce the core concepts of XBRL in the OIM, followed by the non-OIM sections of XBRL.
-The chapter will present the fundamental concepts of XBRL within the OIM framework, followed by an exploration of the non-OIM aspects of XBRL.
+The chapter will present the fundamental concepts of XBRL within the framework of the OIM, followed by an exploration of the non-OIM aspects of XBRL.
 % It will not dive deep into the technical details of the XBRL standard, but instead focus on the concepts that are relevant for this thesis.
 % The chapter will not delve into the technical details of the XBRL standard, but rather focus on the concepts relevant for this thesis.
-This chapter will concentrate on the concepts pertinent to this thesis, rather than delving into the technical specifics of the XBRL standard.
+This chapter will focus on the concepts relevant to this thesis, rather than delving deep into the technical specifics of the XBRL standard.
 
 Subsequently, Chapter \ref{chapter:api} will introduce the API of Brel.
 % Next, chapter \ref{chapter:api} will introduce the API of Brel.

@@ -306,14 +306,15 @@ one can simply iterate over the elements and record the namespace bindings of ea
 For the example provided, the extracted list of namespace bindings would be as follows:
 
 \begin{figure}[H]
+    \centering
     \caption{Extracted namespace bindings from the flattened hierarchy}
     \label{fig:custom_namespace_notation_example_flattened_extracted}
-    \begin{lstlisting}[language=XML]
-        foo = "http://foo.com"
-        bar = "http://bar.com"
-        baz = "http://baz.com"
-        foo = "http://other-foo.com"
-    \end{lstlisting}
+    \begin{lstlisting}[language=XML, basicstyle=\small\ttfamily]
+foo = "http://foo.com"
+bar = "http://bar.com"
+baz = "http://baz.com"
+foo = "http://other-foo.com"
+\end{lstlisting}
 \end{figure}
 
 % \subsection{Collisions in namespace bindings}

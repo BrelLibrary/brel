@@ -45,8 +45,9 @@ The design of the Brel API is largely format-independent.
 Its first segment is grounded in the OIM, which is a logical data model and thus inherently format-agnostic.
 The latter half of the Brel API, while based on the XBRL XML syntax, largely abstracts away the specifics of this format. 
 
-The only exceptions are the \texttt{get\_link\_role} and \texttt{get\_link\_name} methods in the \texttt{INetwork} interface, 
-as well as the \texttt{get\_arc\_role} and \texttt{get\_arc\_name} methods in the \texttt{INetworkNode} interface. 
+% The only exceptions are the \texttt{get\_link\_role} and \texttt{get\_link\_name} methods in the \texttt{INetwork} interface, 
+% as well as the \texttt{get\_arc\_role} and \texttt{get\_arc\_name} methods in the \texttt{INetworkNode} interface. 
+The only exceptions are the \texttt{get\_link\_role}, \texttt{get\_link\_name}, \texttt{get\_arc\_role}, and \texttt{get\_arc\_name} methods.
 These methods return attributes bearing the same names in XML, primarily serving debugging purposes.
 They are not essential to the API's functionality.
 % Therefore, the se Brel API is almost entirely format-agnostic, with the exception 

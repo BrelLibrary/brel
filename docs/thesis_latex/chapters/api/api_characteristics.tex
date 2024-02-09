@@ -111,14 +111,15 @@ As expected, the \texttt{ConceptCharacteristic} adheres to the \texttt{ICharacte
 The \texttt{EntityCharacteristic} identifies the entity associated with a fact.
 % Within hypercube structures, the \texttt{Aspect.ENTITY} aspect categorizes dimensions of entities,
 An entity, such as a corporation, is distinguished by a tag and a scheme\footnote{Schemes are typically URLs.} serving as the tag's namespace.
-These identifiers are merged into a singular string format \texttt{\{scheme\}tag},\footnote{This format mirrors the Clark notation used for QNames.\cite{w3_qnames}}
+These identifiers are merged into a singular string format \texttt{\{scheme\}tag},
+\footnote{This format mirrors the Clark notation used for QNames.\cite{w3_qnames}}
 
 Implementing the \texttt{ICharacteristic} framework,
 \texttt{get\_aspect} returns \texttt{Aspect.ENTITY} and \texttt{get\_value} provides the entity's string representation as previously mentioned.
 
 \subsection{Period Characteristic}
 
-The \texttt{PeriodCharacteristic} delineatesthe time frame of a fact.
+The \texttt{PeriodCharacteristic} specifies the time frame of a fact.
 Periods can be either instant or duration, which can be checked using the \texttt{is\_instant} method.
 
 The methods \texttt{get\_start\_date} and \texttt{get\_end\_date} return the start and end date of a duration period respectively.
@@ -184,7 +185,7 @@ Similar to the \texttt{PeriodCharacteristic}, the method \texttt{get\_value} of 
 \subsection{Dimension Characteristics}
 
 % There are two categories of dimension characteristics in XBRL - typed and explicit.
-XBRL delineates dimension characteristics into two types: typed and explicit.
+XBRL differentiates between two types of dimension characteristics: typed and explicit.
 The two types are represented by the \texttt{TypedDimensionCharacteristic} and \texttt{ExplicitDimensionCharacteristic} classes respectively.
 % Typed dimension characteristics are used to describe a custom axis, along which a fact is positioned.
 % The kind of values along this custom axis are of a specific type.

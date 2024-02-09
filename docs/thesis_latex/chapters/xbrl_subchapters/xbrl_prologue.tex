@@ -4,31 +4,39 @@ The content of this thesis is largely based on the XBRL standard\cite{xbrl} crea
 Since the thesis builds on the foundation laid by the two, it is important to understand the ground work that they have done.
 This chapter will give a brief introduction to XBRL.
 % Think of it as a crash course in XBRL.Both the term "report" and "filing" are used to describe the documents that are represented in XBRL and are used interchangeably in this thesis.
-The terms "report" and "filing" are used interchangeably in this thesis.
 
-In essence, XBRL is a standardized format for representing reports.
+In essence, XBRL is a standardized format for representing reports
+\footnote{Both the term "report" and "filing" are used to describe the documents that are represented in XBRL and are used interchangeably in this thesis.}.
 After all, XBRL stands for \textbf{eXtensible Business Reporting Language}.\cite{xbrl}
 
 As Ghislain Fourny has put it in \textit{the XBRL Book} \cite{fourny2023xbrl}:
 \begin{displayquote}
-    If XBRL could be summarized in one single definition, it would be this:
-    XBRL is about reporting facts.
+    "If XBRL could be summarized in one single definition, it would be this:
+    XBRL is about reporting facts."
 \end{displayquote}
 
 % Keeping this in mind, chapter will first introduce the basic concepts of XBRL, namely facts, concepts and QNames.
 Keeping this in mind, the subsequent sections will first introduce the basic concepts of XBRL, namely facts, concepts and QNames.
 % Then, we will introduce the more advanced concepts that are about putting facts into relation with each other, namely roles, networks, and report elements.
-Afterwards, I will introduce the more advanced concepts that are about putting facts into relation with each other, namely roles, networks, and report elements.
-The first half roughly corresponds to the OIM, while the second half covers the non-OIM parts of XBRL.
+% Afterwards, I will introduce the more advanced concepts that are about putting facts into relation with each other, namely roles, networks, and report elements.
+% The first half roughly corresponds to the OIM, while the second half covers the non-OIM parts of XBRL.
+Subsequently, the discussion will shift to more involved concepts that put facts and other elements into relation with each other, 
+specifically through roles, networks, and report elements.
+The initial segment aligns with the OIM framework, whereas the latter part delves into aspects of XBRL not covered by the OIM.
 
 Armed with this fundamental knowledge about XBRL, 
-you will then be able to understand how Brel implements the core parts of the standard and how it hides a lot of the complexity of XBRL behind a simple Python API.
+you will then be able to understand how Brel implements the core parts of the standard and how it hides a lot of the complexity of XBRL behind a Python API.
 
 This chapter will not cover the XBRL specification in its entirety.
 It will also gloss over a lot of the details of the specification.
 It is more focused on giving the reader a high-level overview of the contents of the XBRL specification.
 
-Furthermore, a lot of concepts in XBRL require knowledge of other XBRL concepts.
-There are also a few circular dependencies between the concepts, which makes it hard to explain them in a linear fashion.
-Therefore, there are a few sections in this chapter that will redefine concepts that have already been introduced.
-This is done to gradually introduce the reader to the more complex concepts of XBRL.
+% Furthermore, a lot of concepts in XBRL require knowledge of other XBRL concepts.
+% There are also a few circular dependencies between the concepts, which makes it hard to explain them in a linear fashion.
+% Therefore, there are a few sections in this chapter that will redefine concepts that have already been introduced.
+% This is done to gradually introduce the reader to the more complex concepts of XBRL.
+Moreover, understanding many XBRL concepts requires familiarity with other XBRL concepts.
+Circular dependencies among these concepts complicate their explanation in a sequential manner.
+% Therefore, this chapter will revisit certain concepts previously introduced,
+Therefore, this chapter will revisit certain concepts that it has already introduced,
+aiming to progressively acclimate the reader to the more intricate aspects of XBRL.

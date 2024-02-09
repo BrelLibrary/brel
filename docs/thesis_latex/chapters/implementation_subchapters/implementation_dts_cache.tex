@@ -97,16 +97,17 @@ However, certain URIs are relative,
 meaning the URI specifies the location of another taxonomy file in relation to the current one\cite{w3_relative_uri}.
 Brel deduces the domain of relative URIs by recalling the domain from which the relative URI was referenced.
 It then merges the domain of the current taxonomy file with the relative URI to create a complete URI.
-
-Relative URIs bring up an additional issue - the naming of taxonomy files.
-As Brel downloads these files from the internet, it must save them locally.
-Brel opts to store taxonomy files in a folder named \texttt{dts\_cache}, without subfolders.
-Hence, Brel needs to ensure each taxonomy file has a distinct name.
-The initial option for naming is to use the local name from the taxonomy file's URI, but this may not be unique.
-Another possibility is to utilize the URI itself as the file name.
-However, since URIs can be relative and typically long, including characters unsuitable for file names, this is impractical.
-Brel's chosen solution is to create a unique file name derived from the complete URI of the taxonomy file,
-removing any characters that are invalid for file names.
+% Relative URIs bring up an additional issue - the naming of taxonomy files.
+% As Brel downloads these files from the internet, it must save them locally.
+% Brel opts to store taxonomy files in a folder named \texttt{dts\_cache}, without subfolders.
+% Hence, Brel needs to ensure each taxonomy file has a distinct name.
+% The initial option for naming is to use the local name from the taxonomy file's URI, but this may not be unique.
+% Another possibility is to utilize the URI itself as the file name.
+% However, since URIs can be relative and typically long, including characters unsuitable for file names, this is impractical.
+% Brel's chosen solution is to create a unique file name derived from the complete URI of the taxonomy file,
+% removing any characters that are invalid for file names.
+When storing taxonomy files, Brel names them based on their absolute URIs, ensuring each file has a unique name.
+Since URI-based file names are not always valid, Brel removes any illegal characters to form a valid file name.
 
 By employing the discovery and downloading mechanisms,
 Brel successfully retrieves all taxonomy files referenced by the XBRL report.
