@@ -1,6 +1,51 @@
-\chapter*{Abstract}
-\addcontentsline{toc}{chapter}{Abstract}
-%\chapter*{Zusammenfassung}
+\section{Abstract}
+% \addcontentsline{toc}{chapter}{Preface}
 %\addcontentsline{toc}{chapter}{Zusammenfassung}
 
-TODO: Write the abstract
+% TODO: Write the abstract
+
+% XBRL is a standard for financial reporting that is both human and machine-readable.
+% Regulatory bodies, such as the United States Securities and Exchange Commission (SEC), 
+% require companies to submit their financial reports in XBRL format.
+% Despite the standard's widespread adoption, there is a lack of tools for working with XBRL reports.
+% Furthermore, the standard recently underwent a major update,
+% introducing a format-agnostic approach to XBRL reporting called the Open Information Model (OIM).
+
+% This thesis presents Brel, a Python library for working with XBRL reports.
+% It provides a high-level interface for extracting and querying data from XBRL reports.
+% The thesis outlines both the design and implementation of Brel.
+% Brel is designed to be easy to use and to abstract away the complexities of the XBRL standard.
+% Whilst Brel is designed to work with the OIM and the XML-based XBRL format,
+% it is also designed to be extensible to support future XBRL formats.
+% The library is evaluated based on its correctness, robustness, performance, usability,
+% and how it measures up to comparable tools.
+% The evaluation shows that Brel is a robust and accurate tool for working with XBRL reports.
+
+% XBRL, a standard for financial reporting, is readable by both humans and machines.
+XBRL is a standard for financial reporting that is both human and machine-readable\cite{xbrl}.
+The United States Securities and Exchange Commission (SEC)\cite{sec_ixbrl}, among other regulatory bodies,  
+% mandates the submission of financial reports in XBRL format.
+mandates all public companies to file their financial reports in XBRL format.
+Despite the widespread use of XBRL, there is a shortage of tools for handling XBRL reports,
+especially in the area of open-source software.
+Additionally, the standard has been recently updated,  
+introducing the format-independent Open Information Model (OIM)\cite{oim}, 
+which acts as a logical, syntax-agnostic model for XBRL reporting.
+
+This thesis introduces Brel, a Python library for XBRL report processing.  
+It offers an API for data extraction data from XBRL reports.
+% The thesis details Brel's design and development,
+% with the first half focusing on the XBRL standard and the Brel API's design.
+The first part of the thesis discusses the XBRL standard and the design of the Brel API.
+Brel aims to simplify usage of the XBRL standard.
+While Brel supports both OIM and XML-based XBRL formats,  
+its design allows for future XBRL format adaptability.
+
+% The second half of the thesis focuses on Brel's implementation and evaluation.
+The latter half of the thesis delves into Brel's implementation and evaluation.
+% The evaluation of the library focuses on its correctness, robustness, performance, user-friendliness,  
+% and comparison with similar tools.
+The library's evaluation emphasizes its correctness, robustness, performance, ease of use,
+and its standing relative to a comparable tool.
+% The evaluation demonstrates that Brel is a reliable and precise tool for working with XBRL reports.
+This assessment confirms Brel's reliability and precision in processing XBRL reports.

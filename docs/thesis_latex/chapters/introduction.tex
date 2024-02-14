@@ -20,7 +20,7 @@ the predominant medium for publishing business reports was paper.
 % This format posed challenges for the automated processing of the information encapsulated in the reports by computers.
 This format posed challenges for automated processing of reports by computers. 
 Nevertheless,
-the advent of the eXtensible Business Reporting Language (XBRL) in 2000 marked a significant shift in this domain\cite{aicpa_xbrl_story}.
+the advent of the eXtensible Business Reporting Language (XBRL) in the year 2000 marked a significant shift in this domain\cite{aicpa_xbrl_story}.
 % XBRL offers a standardized schema for business reports,
 % facilitating both machine-readability and the generation of reports comprehensible by humans.
 XBRL is a standardized format for business reports that is both machine-readable and can produce human-readable reports.
@@ -49,8 +49,8 @@ In the corporate domain, entities like JP Morgan Chase, Microsoft, and Hitachi a
 % As a framework, XBRL embodies considerable intricacy,
 % with many complexities stemming from historical design choices that contribute to its challenging usability.
 Nonetheless, XBRL encompasses certain complexities,
-many of which are stemming from historical design choices.
-Moreover, despite XBRL's evolution beyond its initial XML foundations,
+many of which are stemming from legacy design decisions.
+Moreover, despite XBRL's evolution beyond its XML roots,
 the association with XML format persists.
 
 Given XBRL's primary audience of non-technical users, its accessibility is crucial.
@@ -60,7 +60,6 @@ Given XBRL's primary audience of non-technical users, its accessibility is cruci
 % With the exception of the XBRL platform Arelle\cite{arelle}, these tools are often either underdeveloped or inadequately documented.
 % Given that XBRL is primarily tailored for users without a technical background,
 % its usability is of utmost importance.
-
 % Nevertheless,
 % the present status of XBRL does not fully align with this requirement.
 % This gave rise to a diverse landscape of XBRL tools,
@@ -126,11 +125,11 @@ Lastly, the library should support XBRL reports in XML, but its design should be
 
 The research questions that this thesis aims to answer are:
 
+
 \begin{itemize}
-    \item \textbf{RQ1} How can the OIM be translated into an easy-to-use python API?\label{itm:research_question_1}
-    % \item How should the non-OIM sections of XBRL be converted into a python API that is consistent with the OIM?\label{itm:research_question_2}
-    \item \textbf{RQ2} How can the non-OIM sections of XBRL be converted into an easy-to-use python API that is consistent with the OIM?\label{itm:research_question_2}
-    \item \textbf{RQ3} How can the library be designed to support multiple formats in the future?\label{itm:research_question_3}
+    \item \textbf{\customlabel{RQ1}{RQ1}} How can the OIM be translated into an easy-to-use python API?
+    \item \textbf{\customlabel{RQ2}{RQ2}} How can the non-OIM sections of XBRL be converted into an easy-to-use python API that is consistent with the OIM?
+    \item \textbf{\customlabel{RQ3}{RQ3}} How can the library be designed to support multiple formats in the future?
 \end{itemize}
 
 \section{Limitations of this thesis}
@@ -157,7 +156,7 @@ While the initial two limitations are straightforward, the third limitation nece
 % Similar to how the source code of a program can be interpreted in terms of syntax and semantics, XBRL reports can be viewed through the same lens.
 XBRL reports can be interpreted in terms of syntax and semantics, similar to the source code of a program.
 % A syntactically correct XBRL report conforms to the XBRL specification, but it does not necessarily make sense
-An XBRL report that is syntactically accurate adheres to the XBRL specifications, yet it may not always be logically coherent
+An XBRL report that is syntactically correct adheres to the XBRL specifications, yet it may not necessarily be logically coherent
 \footnote{The XBRL specification does sometimes branch out into the realm of semantics. Brel ignores these parts of the specification.}.
 A semantically correct report is both syntactically correct and logically coherent.
 % Semantical correctness started bleeding into the XBRL specification through supporting documents.
@@ -200,7 +199,7 @@ Subsequently, Chapter \ref{chapter:api} will introduce the API of Brel.
 % This chapter, while constituting a portion of the thesis outcomes, is positioned prior to the implementation of the API.
 This chapter, which forms part of the thesis results, is positioned prior to the implementation of the API.
 The reason for this deviation from the conventional structure is that it is more logical to introduce the API before its implementation.
-The API chapter will answer research question \ref{itm:research_question_1} and \ref{itm:research_question_2}.
+The API chapter will answer research questions \ref{RQ1} and \ref{RQ2}.
 
 % Chapter \ref{sec:implementation} details the implementation of the Brel library, 
 % linking the API described in chapter \ref{chapter:api} with the XBRL standard outlined in chapter \ref{chapter:xbrl}. 
@@ -210,7 +209,7 @@ The API chapter will answer research question \ref{itm:research_question_1} and 
 % Even though this chapter aims to provide a comprehensive overview of Brel's implementation,
 % it will primarily focus on the aspects of the implementation which are more involved.
 % The chapter will also discuss the library's design, specifically its capability to support various formats in future versions, 
-% addressing Research Question \ref{itm:research_question_3}.
+% addressing Research Question \ref{RQ3}.
 % Chapter \ref{sec:implementation} outlines the Brel API's implementation,
 % connecting the API from Chapter \ref{chapter:api} with the XBRL standards in Chapter \ref{chapter:xbrl}.
 Chapter \ref{sec:implementation} details the implementation of the Brel API, 
@@ -220,9 +219,9 @@ linking the API discussed in Chapter \ref{chapter:api} with the XBRL standards e
 While aiming for a comprehensive overview,
 the chapter will particularly emphasize the more involved aspects of the implementation.
 % It will also discuss the library's design and its potential to support various formats in future versions,
-% addressing Research Question \ref{itm:research_question_3}.
+% addressing Research Question \ref{RQ3}.
 Additionally, the chapter will explore the design of the library and its capability to accommodate different formats in future iterations, 
-thereby addressing Research Question \ref{itm:research_question_3}.
+thereby addressing Research Question \ref{RQ3}.
 
 % The Results chapter \ref{chapter:results} will evaluate the library based on the goals set out in the introduction.
 % This chapter will also give a comprehensive overview of how Brel performs in terms of various XBRL conformance suites.
@@ -237,7 +236,10 @@ thereby addressing Research Question \ref{itm:research_question_3}.
 % It also illustrates practical applications of the library, demonstrating how Brel can be utilized for reading and validating XBRL reports.
 Chapter \ref{chapter:results}, known as the Results chapter, 
 evaluates the library's effectiveness in meeting the goals set out in the introduction. 
-This chapter offers an in-depth examination of Brel's alignment with different XBRL conformance suites. 
+% This chapter offers an in-depth examination of Brel's alignment with different XBRL conformance suites. 
+This chapter examines Brel's alignment with an XBRL conformance suite.
+It will evaluate the library based on its performance compared to Arelle, 
+as well as its robustness in handling various XBRL reports.
 Additionally, it showcases real-world uses of the library, 
 highlighting how Brel can be employed for reading and verifying XBRL reports.
 

@@ -59,7 +59,7 @@ whereas Brel will consistently use the term \texttt{network} to avoid ambiguity.
 % For clarity and to avoid ambiguity in this thesis, the term \texttt{network} will be consistently used.
 % The term \texttt{link} will denote a specific element within the XBRL specification,
 % whereas \texttt{network} will encompass the broader notion of a network.
-We exclusively use the term \texttt{Link} to refer to a specific element within the XBRL specification,
+We exclusively use the term \texttt{Link} to refer to a specific element within the XBRL specification.
 XBRL groups multiple links into entities known as \texttt{linkbases}.
 % Semantically, linkbases do not convey any inherent meaning.
 % Technically, linkbases are XML elements that encapsulate child elements identified as links.
@@ -72,11 +72,11 @@ The XBRL 2.1 specification defines six built in types of networks\cite{xbrl21_te
     % \item \texttt{link:presentationLink}: A network that represents the hierarchy of concepts in a report. 
     \item \texttt{link:presentationLink}: This network depicts the hierarchy of concepts.
     % An example of this can be seen in figure \ref{fig:example_visualization_network_xbrl}.
-    Figure \ref{fig:example_visualization_network_xbrl} illustrates this.
+    Figure \ref{fig:example_visualization_network_xbrl} illustrates this such a network.
     % Example: \ref{fig:example_visualization_network_xbrl}.
     \item \texttt{link:calculationLink}: This network shows the calculation relationships between concepts.
     For instance, as shown in Figure \ref{fig:example_visualization_network_xbrl}, 
-    the \texttt{Assets} concept results from adding \texttt{Current Assets} to \texttt{Non-Current Assets}.
+    \texttt{Assets} results from adding \texttt{Current Assets} to \texttt{Non-Current Assets}.
     \item \texttt{link:definitionLink}: This network outlines connections beyond those in other networks.
     The \texttt{definitionLink} is detailed in Section \ref{sec:definitionLink}.
     \item \texttt{link:labelLink}: A network that associates report elements with human-readable labels.
@@ -121,7 +121,7 @@ The following sections will delve into the conceptual implementation of networks
 
 % Taking the example from figure \ref{fig:example_visualization_network_xbrl}, the presentationLink network would be represented as the following edge list:
 The \texttt{link:presentationLink} network represents concept hierarchies within a report.
-I will offer a more detailed exploration of presentationLinks than other networks,
+I will offer a more detailed exploration of presentationLinks compared to other network types,
 as the implementation of all other network types mirrors that of presentationLinks.
 
 XBRL structures its networks through a sequence of directed edges, referred to as \texttt{arcs}.
@@ -320,7 +320,8 @@ Although built similarly to presentationLinks, calculationLinks exhibit notable 
     \item All locators within the link refer exclusively to concepts.  
 \end{enumerate}  
 
-While the initial distinctions are direct and bear no semantic impact,  
+% While the initial distinctions are direct and bear no semantic impact, 
+While the first three distinctions bear no semantic impact,  
 the addition of the \texttt{weight} attribute and the locator's exclusive reference to concepts are pivotal aspects that warrant further explanation.
 
 % The main motivation behind calculation networks is so that XBRL processors can either calculate the value of a concept or check if the value of a concept is computed correctly and consistently.
@@ -337,7 +338,7 @@ the addition of the \texttt{weight} attribute and the locator's exclusive refere
 % The XBRL 2.1 specification enforces some constraints on the \texttt{balance} aspect of concepts in combination with the \texttt{weight} attribute of the \texttt{link:calculationArc} element \cite{xbrl21_concept}.
 % If one concept has a \texttt{balance} of \texttt{debit} and another concept has a \texttt{balance} of \texttt{credit}, then their connecting arc must have a negative \texttt{weight}.
 % If both concepts have the same \texttt{balance}, then their connecting arc must have a positive \texttt{weight}.
-Calculation networks in XBRL are designed to enable processors to calculate or verify the correctness and consistency of a concept's value.  
+Calculation networks in XBRL are designed to enable processors to calculate or verify the correctness and consistency of a fact's value.  
 For the XBRL processor Brel, the emphasis is on verification.  
 "The XBRL Book" delves into various consistency checks in Chapter 6.4 \cite{fourny2023xbrl}.  
 
@@ -468,8 +469,10 @@ In Figure \ref{fig:example_roll_up_consistency}, the presentation network is rol
 It includes two abstracts, \texttt{Assets [Abstract]} and \texttt{Savings Accounts [Abstract]}, which do not appear in the calculation network.  
 These abstracts act as placeholders for the concepts \texttt{Assets} and \texttt{Savings Accounts} in the calculation network.
 
-Beyond roll-up and balance consistency, there exists a third form of consistency, unnamed by XBRL, which I will term \texttt{aggregation consistency}.  
-This type of consistency ensures that within a calculation network, the sum of child concepts accurately contributes to the value of their parent concept.  
+% Beyond roll-up and balance consistency, there exists a third form of consistency, unnamed by XBRL, which I will term \texttt{aggregation consistency}.  
+% This type of consistency ensures that within a calculation network, the sum of child concepts accurately contributes to the value of their parent concept.  
+Beyond roll-up and balance consistency, calculation networks should ensure that the sum of child concept's facts accurately contributes to the value of their parent concept's fact.
+We will refer to this as \texttt{aggregation consistency}.
 Referring to our example in Figure \ref{fig:example_roll_up_consistency},  
 the values for \texttt{UBS Savings Account} and \texttt{Raiffeisen Savings Account} should aggregate to match the \texttt{Savings Accounts} concept's total value.  
 Aggregation consistency relies on the weighted sums of child concepts, with each weight determined by the arc's weight.
@@ -572,7 +575,7 @@ with a few syntactic distinctions:
 \begin{enumerate}  
     \item Arcs are denoted as \texttt{link:definitionArc}  
     \item The network itself is referred to as \texttt{link:definitionLink}  
-    \item The \texttt{xlink:arcrole} attribute for \texttt{link:definitionArc} encompasses a range of values, varying across the network  
+    \item The \texttt{xlink:arcrole} attribute for \texttt{link:definitionArc} encompasses a range of values, varying within and across networks. 
 \end{enumerate}  
 
 The naming conventions for links and arcs are straightforward and carry no inherent semantic significance.  
@@ -582,7 +585,7 @@ For example, the \texttt{essence-alias} arcrole indicates that one report elemen
 while \texttt{hypercube-dimension} signifies the association of a "dimension" report element with a "hypercube" report element.  
 Further details on hypercubes and dimensions will be explored in Section \ref{sec:hypercubes}.  
 
-Definition networks extend beyond these roles, aiming to document relationships unaddressed by other network types.  
+Definition networks extend beyond these two arc roles, aiming to document relationships unaddressed by other network types.  
 They are instrumental in clarifying the classification of report elements,  
 with hypercubes, discussed further in Section \ref{sec:hypercubes}, relying heavily on definition networks.
 
@@ -597,7 +600,7 @@ with hypercubes, discussed further in Section \ref{sec:hypercubes}, relying heav
 % The following figure shows an example of the condensed consolidated statement of income of the Coca Cola Company\cite{ko2019q2} of Q2 2019 as displayed in Arelle\cite{arelle}.
 
 The \texttt{link:labelLink} network serves to connect report elements with labels that are readable and understandable by humans.
-Instead of presenting users with the QName of report elements, applications like Arelle display friendly, human-readable labels.
+Instead of presenting users with the QName of report elements, applications like Arelle display human-readable labels.
 
 For example, in the Coca Cola Company's condensed consolidated statement of income for Q2 2019,
 the concept identified as \texttt{us-gaap:Revenues} is shown in Arelle as "Net Operating Revenues",
@@ -663,7 +666,7 @@ Label elements contain several pieces of information:
 
 % For example, for the label "Net Operating Revenues" \ref{fig:coca_cola_2019_q2}, the following XML segment would be used:
 
-In the \texttt{link:labelLink} network, labels are detailed through specific attributes in their XML representation:
+% In the \texttt{link:labelLink} network, labels are detailed through specific attributes in their XML representation:
 
 \begin{enumerate}
     \item The \texttt{xlink:label} attribute acts as a unique identifier for the label, linking it to its corresponding arc.  

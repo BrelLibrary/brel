@@ -1,3 +1,4 @@
+# /* cSpell:disable */
 import os
 import json
 import pandas as pd
@@ -42,12 +43,48 @@ def plot_robustness_graph(robustness_df, title, xlabel, ylabel, save_path):
 
     plt.tight_layout()
     plt.savefig(save_path)
-    plt.show()
+    # plt.show()
+
+    # make 2 subplots, each containing half of the names
+    robustness_df.iloc[: len(robustness_df) // 2].plot(
+        kind="bar",
+        stacked=True,
+        color=["#2ca02c", "#ff7f0e", "#d62728"],
+        figsize=(10, 5),
+    )
+    plt.xticks(rotation=90)
+    plt.title(title + f" (Total reports: {total_reports})")
+    plt.xlabel(xlabel)
+    plt.ylabel(ylabel)
+    plt.legend(loc="center left", bbox_to_anchor=(1.0, 0.5))
+    plt.gca().yaxis.set_major_formatter(
+        matplotlib.ticker.StrMethodFormatter("{x:,.0f}")
+    )
+    plt.tight_layout()
+    plt.savefig(save_path.replace(".png", "_1.png"))
+
+    robustness_df.iloc[len(robustness_df) // 2 :].plot(
+        kind="bar",
+        stacked=True,
+        color=["#2ca02c", "#ff7f0e", "#d62728"],
+        figsize=(10, 5),
+    )
+    plt.xticks(rotation=90)
+    # plt.title(title + f" (Total reports: {total_reports})")
+    plt.xlabel(xlabel)
+    plt.ylabel(ylabel)
+    plt.legend(loc="center left", bbox_to_anchor=(1.0, 0.5))
+    plt.gca().yaxis.set_major_formatter(
+        matplotlib.ticker.StrMethodFormatter("{x:,.0f}")
+    )
+    plt.tight_layout()
+    plt.savefig(save_path.replace(".png", "_2.png"))
+    # plt.show()
 
 
 def load_results_dataframe():
     current_dir = os.path.dirname(__file__)
-    results_path = os.path.join(current_dir, "results.json")
+    results_path = os.path.join(current_dir, "robustness_results.json")
     results = json.load(open(results_path, "r"))
     crashes_per_cik = results["crashes_per_cik"]
     errors_per_cik = results["errors_per_cik"]
@@ -67,8 +104,12 @@ def load_results_dataframe():
     # robustness_df = pd.DataFrame(columns=["company", "reports", "success", "errors", "crashes", "success rate"])
     robustness_dict = defaultdict(list)
     names = []
-    for cik, name in cik_to_name.items():
+    ciks = list(cik_to_name.keys())
+    # ciks = ciks[]
+
+    for cik in ciks:
         # robustness_dict["company"].append(name)
+        name = cik_to_name.get(cik, "Unknown")
         names.append(name)
         robustness_dict["success"].append(success_per_cik.get(cik, 0))
         robustness_dict["errors"].append(errors_per_cik.get(cik, 0))

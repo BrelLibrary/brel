@@ -10,41 +10,75 @@ The characteristics of a fact act as the hypercube's dimensions, with the fact's
 Contrary to networks, hypercubes are included within the OIM
 \footnote{This inclusion of hypercubes extends the OIM's scope beyond the XBRL 2.1 core specification to encompass the XBRL Dimensions 1.0 specification as well.}.
 
+% \newfloatcommand{capbtabbox}{table}[][\FBwidth]
+
+% \begin{figure}[H]
+%     \caption{Example of a hypercube}
+%     % create a figure with side by side images
+%     % the first is a table representing a XBRL hypercube.
+%     % It has 3 dimensions: "Period", "Entity", and "Concept".
+%     % The second image is a 3D representation of the hypercube.
+%     \label{fig:example_hypercube}
+%     \begin{center}
+%         \begin{tabular*}{5cm}{@{\extracolsep{\fill}}|c|c|c|c|}
+%             \hline
+%             Period & Entity & Concept & Value \\
+%             \hline
+%             2020 & Foo & Sales & 100\$ \\
+%             \hline
+%             2020 & Foo & Costs & 50\$ \\
+%             \hline
+%             2020 & Bar & Sales & 200\$ \\
+%             \hline
+%             2020 & Bar & Costs & 100\$ \\
+%             \hline
+%             2021 & Foo & Sales & 150\$ \\
+%             \hline
+%             2021 & Foo & Costs & 75\$ \\
+%             \hline
+%             2021 & Bar & Sales & 250\$ \\
+%             \hline
+%             2021 & Bar & Costs & 125\$ \\
+%             \hline
+%         \end{tabular*}
+%         % TODO: 3D image of hypercube
+%         % make it the same height as the table
+%         \includegraphics[height=5cm]
+%         {images/hypercube_visualization.png}
+%     \end{center}
+% \end{figure}
+
 \begin{figure}[H]
-    \caption{Example of a hypercube}
-    % create a figure with side by side images
-    % the first is a table representing a XBRL hypercube.
-    % It has 3 dimensions: "Period", "Entity", and "Concept".
-    % The second image is a 3D representation of the hypercube.
+    \centering
+    % \includegraphics[width=4.6cm]{images/hypercube_visualization.png}
+    % \qquad
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        Period & Entity & Concept & Value \\
+        \hline
+        2020 & Foo & Sales & 100\$ \\
+        \hline
+        2020 & Foo & Costs & 50\$ \\
+        \hline
+        2020 & Bar & Sales & 200\$ \\
+        \hline
+        2020 & Bar & Costs & 100\$ \\
+        \hline
+        2021 & Foo & Sales & 150\$ \\
+        \hline
+        2021 & Foo & Costs & 75\$ \\
+        \hline
+        2021 & Bar & Sales & 250\$ \\
+        \hline
+        2021 & Bar & Costs & 125\$ \\
+        \hline
+    \end{tabular}
+    \caption{Example of a hypercube expressed as a table}
     \label{fig:example_hypercube}
-    \subfigure{
-        \begin{tabular}{|c|c|c|c|}
-            \hline
-            Period & Entity & Concept & Value \\
-            \hline
-            2020 & Foo & Sales & 100\$ \\
-            \hline
-            2020 & Foo & Costs & 50\$ \\
-            \hline
-            2020 & Bar & Sales & 200\$ \\
-            \hline
-            2020 & Bar & Costs & 100\$ \\
-            \hline
-            2021 & Foo & Sales & 150\$ \\
-            \hline
-            2021 & Foo & Costs & 75\$ \\
-            \hline
-            2021 & Bar & Sales & 250\$ \\
-            \hline
-            2021 & Bar & Costs & 125\$ \\
-            \hline
-        \end{tabular}
-    }
-    \subfigure{
-        TODO: 3D image of hypercube
-    %     \includegraphics[width=0.5\textwidth]{images/hypercube.png}
-    }
 \end{figure}
+
+Figure \ref{fig:example_hypercube} depicts a hypercube with three dimensions: \texttt{Period}, \texttt{Entity}, and \texttt{Concept}.
+Each combination of dimensions corresponds to a fact, with the fact's value representing the hypercube's value at those dimensions.
 
 % Hypercubes are a common way to structure data nowadays.
 % Yet, back when XBRL was created, they were not as prevalent as they are today.
@@ -93,7 +127,7 @@ For instance, consider the Foo Company operates two branches: Foo United States 
 The company could establish a \texttt{Subsidiary} dimension featuring \texttt{Foo United States} and \texttt{Foo Europe} as possible values.
 These predefined values are referred to as \texttt{members}.
 
-Both dimensions and members are designated through report elements, akin to concepts and abstracts.
+Both \texttt{dimensions} and \texttt{members} are designated through report elements, akin to concepts and abstracts.
 A member is depicted as part of a dimension by positioning it as a dimension's child within the definition network.
 
 Moreover, members within a dimension may possess their own subordinate members.
@@ -149,12 +183,12 @@ Instead, the scope of values for a typed dimension is defined by a specific data
 For instance, a dimension may be restricted to accept only \texttt{xs:integer} type values.
 
 Just like explicit dimensions, typed dimensions are also delineated through report elements.
-However, unlike explicit dimensions, typed dimensions do not include members but consist only of the dimension report element, which stipulates the dimension's data type.
+However, unlike explicit dimensions, typed dimensions do not include members but consist only of the dimension report element, which contains the dimension's data type.
 
 \subsection{Line Items and Hypercubes}
 
 Given our understanding of hypercubes, it's apparent that the entire report could be viewed as a large hypercube.
-Particularly with the addition of extra dimensions, it's likely that most facts will engage just a fraction of the available dimensions.
+Particularly with the addition of extra dimensions, it's likely that most facts will use just a fraction of the available dimensions.
 This scenario results in a highly dimensional hypercube, with many dimensions remaining unutilized.
 Analyzing the report based on this large hypercube would be inefficient.
 
@@ -170,7 +204,7 @@ Although a report might detail tens of thousands of concepts, only a select numb
 The line items report element identifies these relevant concepts by listing them as children within the definition network.
 
 % For a clearer understanding, think of lineItems in relation to concepts as dimensions are related to members.
-The reader may find it helpful to think of the relationship between line items and concepts as akin to that between dimensions and members.
+The reader may think of the relationship between line items and concepts as akin to that between dimensions and members.
 
 % \subsection{Open Hypercubes}
 
