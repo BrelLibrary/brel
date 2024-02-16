@@ -101,6 +101,8 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#is_aggregation_consistent">is_aggregation_consistent</a>
     </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_networks">get_networks</a>
+    </li>
         </ul>
     </li>
     </ul>
@@ -196,8 +198,8 @@ pprint(calculation_network)
 <p>====================</p>
 <ul>
 <li>author: Robin Schmidiger</li>
-<li>version: 0.6</li>
-<li>date: 07 January 2024</li>
+<li>version: 0.7</li>
+<li>date: 30 January 2024</li>
 </ul>
 <p>====================</p>
 <p><a id="brel.brel_component.Component"></a></p>
@@ -282,6 +284,12 @@ has no definition network or if the network is empty.</p>
 </ul>
 <p><strong>Returns</strong>:</p>
 <p><code>bool</code>: True if and only if the component is aggregation consistent against the given facts</p>
+<p><a id="brel.brel_component.Component.get_networks"></a></p>
+<h4 id="get_networks">get_networks</h4>
+<pre><code class="language-python">def get_networks() -&gt; list[INetwork]
+</code></pre>
+<p><strong>Returns</strong>:</p>
+<p><code>list[INetwork]</code>: the networks of the component</p>
               
             </div>
           </div><footer>

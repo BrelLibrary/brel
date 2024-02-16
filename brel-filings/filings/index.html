@@ -63,6 +63,8 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#get_all_physical_networks">get_all_physical_networks</a>
     </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_errors">get_errors</a>
+    </li>
     <li class="toctree-l3"><a class="reference internal" href="#get_all_concepts">get_all_concepts</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#get_all_abstracts">get_all_abstracts</a>
@@ -211,7 +213,7 @@ pprint_facts(assets_facts)
 <ul>
 <li>author: Robin Schmidiger</li>
 <li>version: 0.5</li>
-<li>date: 18 January 2024</li>
+<li>date: 29 January 2024</li>
 </ul>
 <p>====================</p>
 <p><a id="brel.brel_filing.Filing"></a></p>
@@ -273,6 +275,12 @@ Note: components are sometimes called "roles" in the XBRL specification.</p>
 <p>Get all <a href="../../components/networks/"><code>INetwork</code></a> objects in the filing, where network.is_physical() is True.</p>
 <p><strong>Returns</strong>:</p>
 <p><code>list[INetwork]</code>: a list of all physical networks in the filing.</p>
+<p><a id="brel.brel_filing.Filing.get_errors"></a></p>
+<h4 id="get_errors">get_errors</h4>
+<pre><code class="language-python">def get_errors() -&gt; list[Exception]
+</code></pre>
+<p><strong>Returns</strong>:</p>
+<p><code>list[Exception]</code>: a list of all errors that occurred during parsing.</p>
 <p><a id="brel.brel_filing.Filing.get_all_concepts"></a></p>
 <h4 id="get_all_concepts">get_all_concepts</h4>
 <pre><code class="language-python">def get_all_concepts() -&gt; list[Concept]
