@@ -29,7 +29,7 @@ It checks for conformance to the XBRL specification from both a syntactic and a 
 
 Since Brel only deals with the syntactic part of the XBRL specification, 
 it will be unable to check the logical part of the conformance suite.
-Therefore reports that are syntactically correct, but semantically incorrect, will be considered correct by Brel.
+Therefore, reports that are syntactically correct, but semantically incorrect, will be considered correct by Brel.
 
 Figure \ref{fig:conformance_suite} shows the results of running the conformance suite on Brel.
 
@@ -43,7 +43,7 @@ Figure \ref{fig:conformance_suite} shows the results of running the conformance 
 The conformance suite contains 77 test cases, of which 22 are considered logical checks.
 Of the 22 logical checks, Brel passes 10 and fails 12.
 Since Brel only deals with the syntactic part of the XBRL specification,
-the test cases it passed it passed by coincidence.
+it passed some semantic tests by coincident.
 We still list the results for completeness.
 
 Of the 55 syntactic checks, Brel passes all of them.
@@ -64,9 +64,8 @@ It closely follows the XBRL specification, including the OIM.
 % The hand-picked XBRL reports are:
 
 % A report from the SEC's EDGAR database \cite{sec_edgar}. 
-The hand picked report is from the SEC's EDGAR database \cite{sec_edgar}.
-In this case we will use Microsoft's 10K report for the fiscal year 2022.
-\footnote{Available at \url{https://www.sec.gov/ixviewer/ix.html?doc=/Archives/edgar/data/789019/000095017023035122/msft-20230630.htm}}
+The hand-picked report is from the SEC's EDGAR database \cite{sec_edgar}.
+In this case we will use Microsoft's 10K report for the fiscal year 2022\cite{microsoft_edgar}.
 This report will be loaded directly from the EDGAR database by providing the URL of the report to Brel.
 % A report from the ESMA's ESEF database hosted by the XBRL Foundation\cite{esma_database}.
 % In this case we will use Novo Nordisk's 2023 financial report covering the first three quarters of 2023.
@@ -77,7 +76,7 @@ This report will be loaded directly from the EDGAR database by providing the URL
 % It acts as a cover page for the report and contains information about the company, the report, and the auditor.
 % Its presentation network is a good starting point, since the information in it is understandable by non-accountants.
 % Furthermore, Brel employs the same network parsing algorithm for all networks, so the results of this evaluation will be representative of Brel's correctness.
-We will look at the \texttt{ComprehenisveIncomeStatement} component and all facts associated with the concepts within its presentation network.
+We will look at the \texttt{ComprehensiveIncomeStatement} component and all facts associated with the concepts within its presentation network.
 Its presentation network acts as a good sanity check, since the information in it is understandable by non-accountants.
 Furthermore, Brel employs the same network parsing algorithm for all networks, so the results of this evaluation will be representative of Brel's correctness.
 
@@ -90,16 +89,24 @@ First, let us look at the comprehensive income statement as it is presented in A
   \centering
 %   \includegraphics[width=1\textwidth]{images/msft_coverpage_arelle.png}
     \includegraphics[width=1\textwidth]{images/msft_income_statement_arelle.png}
-    \caption{Microsoft's 10K report cover page in Arelle}
+    \caption{Microsoft's 10K report income statement in Arelle}
     \label{fig:msft_income_statement_arelle}
 \end{figure}
 
 % The figure \ref{fig:msft_coverpage_arelle} shows the cover page of Microsoft's 10K report in Arelle.
-The figure \ref{fig:msft_income_statement_arelle} shows the comprehensive income statement of Microsoft's 10K report in Arelle.
-Brel works different from Arelle, as it does not visualize the network and its facts in a graphical manner.
-However, using the \texttt{viewer.py} script we have written in section \ref{sec:usability}, 
-we can visualize the cover page in a textual manner.
-The figure \ref{fig:msft_income_statement_network} shows the hierarchy of cover page of Microsoft's 10K report in Brel.
+% The figure \ref{fig:msft_income_statement_arelle} shows the comprehensive income statement of Microsoft's 10K report in Arelle.
+% Brel works different from Arelle, as it does not visualize the network and its facts in a graphical manner.
+% However, using the \texttt{viewer.py} script we have written in section \ref{sec:usability}, 
+% we can visualize the income statement in a textual manner.
+% The figure \ref{fig:msft_income_statement_network} shows the hierarchy of the income statement of Microsoft's 10K report in Brel.
+
+Figure \ref{fig:msft_income_statement_arelle} presents the comprehensive income statement from Microsoft's 10K report as visualized in Arelle.  
+Brel operates differently from Arelle, particularly in its approach to displaying the network and associated facts; Brel does not provide a graphical representation.  
+However, with the \texttt{viewer.py} script, introduced in section \ref{sec:usability},  
+we can generate a text-based visualization of the income statement.
+
+Figure \ref{fig:msft_income_statement_network} illustrates the hierarchical structure of Microsoft's 10K report's income statement as processed by Brel.  
+This figure demonstrates Brel's method of representing the report's structure, highlighting the differences in presentation between Brel and Arelle.
 
 \begin{figure}[H]
     \begin{lstlisting}[basicstyle=\small\ttfamily]
@@ -117,22 +124,35 @@ arc roles: ['.../parent-child'], arc name: link:presentationArc
     │  └──[CONCEPT] Other comprehensive income (loss)
     └──[CONCEPT] Comprehensive Income (Loss), Net of Tax, Attributable to Parent
     \end{lstlisting}
-    \caption{Microsoft's 10K presentation network in Brel}
+    \caption{Microsoft's 10K presentation network in Brel\cite{microsoft_edgar}}
     \label{fig:msft_income_statement_network}
 \end{figure}
 
-The figure \ref{fig:msft_income_statement_network} shows the hierarchy of the comprehensive income statement of Microsoft's 10K report in Brel.
-Note that the labels between the two figures are different, since Arelle might use different label roles from the ones used in Brel.
-The only difference between the content of the two figures is the fact that Arelle includes the facts associated with the concepts in the network, 
-while Brel only includes the report elements and their relationships.
+% The figure \ref{fig:msft_income_statement_network} shows the hierarchy of the comprehensive income statement of Microsoft's 10K report in Brel.
+% Note that the labels between the two figures are different, since Arelle might use different label roles from the ones used in Brel.
+% The only difference between the content of the two figures is the fact that Arelle includes the facts associated with the concepts in the network, 
+% while Brel only includes the report elements and their relationships.
 
-Luckily, we can use the \texttt{viewer.py} and filter all facts that have concepts present in figure \ref{fig:msft_income_statement_network}
-to visualize the facts associated with the concepts in the network.
-The output of the \texttt{viewer.py} script is shown in figure \ref{fig:msft_income_statement_facts}.
-Note that the output has been truncated.
-Also note that XBRL reports can contain duplicate facts, as they can be reported in different contexts.
-Arelle does not show duplicate facts, while Brel does.
+% Luckily, we can use the \texttt{viewer.py} and filter all facts that have concepts present in figure \ref{fig:msft_income_statement_network}
+% to visualize the facts associated with the concepts in the network.
+% The output of the \texttt{viewer.py} script is shown in figure \ref{fig:msft_income_statement_facts}.
+% Note that the output has been truncated.
+% Also note that XBRL reports can contain duplicate facts, as they can be reported in different contexts.
+% Arelle does not show duplicate facts, while Brel does.
 
+Figure \ref{fig:msft_income_statement_network} illustrates the structure of Microsoft's 10K report's comprehensive income statement as processed by Brel.  
+It's important to note that the labels in the two figures may differ because Arelle could use different label roles compared to those used in Brel.  
+The primary distinction between the two figures lies in the content representation: Arelle incorporates the facts associated with each concept in the network,  
+whereas Brel displays only the report elements and their interconnections.
+
+Fortunately, the \texttt{viewer.py} tool can be employed to filter and display facts corresponding to the concepts shown in figure \ref{fig:msft_income_statement_network}.  
+The outcome of running the \texttt{viewer.py} script is presented in figure \ref{fig:msft_income_statement_facts},  
+although it should be noted that this output is truncated and uses a slightly modified viewer script that enables searching for multiple concepts at once.
+
+Additionally, it's crucial to recognize that XBRL reports may contain duplicate facts, as they can be reported in varying contexts.  
+While Arelle typically does not display these duplicates, Brel does, showcasing all instances of reported facts.
+
+% cSpell: disable
 \begin{figure}[H]
   \begin{lstlisting}[basicstyle=\tiny\ttfamily]
 +-------------------------------------------------------------------------------------------------------------------------+
@@ -160,22 +180,39 @@ Arelle does not show duplicate facts, while Brel does.
 |                  us-gaap:ComprehensiveIncomeNetOfTax | from 2022-07-01 to 2023-06-30 | 0000789019 |  USD  | 70696000000 |
 +------------------------------------------------------+-------------------------------+------------+-------+-------------+
     \end{lstlisting}
-    \caption{Microsoft's 10K facts in Brel}
+    \caption{Microsoft's 10K facts in Brel\cite{microsoft_edgar}}
     \label{fig:msft_income_statement_facts}
 \end{figure}
+% cSpell: enable
 
-The figure \ref{fig:msft_income_statement_facts} clearly shows that Brel is able to extract the facts from the comprehensive income statement of Microsoft's 10K report correctly.
-All facts present in figure \ref{fig:msft_income_statement_arelle} are also present in figure \ref{fig:msft_income_statement_facts} and vice versa.
-Each individual fact is also correct, as it is associated with the correct concept, period, entity, unit, and value.
-Brel represents these characteristics differently from Arelle.
-For example, Arelle visualizes concepts using their labels, while Brel visualizes concepts using their QNames.
-However, the values themselves represent the same information.
-The only difference is between the representation of the facts, as Arelle visualizes the facts as a table, where the rows are the concepts and the columns are the periods.
-Brel visualizes the facts as a table representing a hypercube.
+% The figure \ref{fig:msft_income_statement_facts} clearly shows that Brel is able to extract the facts from the comprehensive income statement of Microsoft's 10K report correctly.
+% All facts present in figure \ref{fig:msft_income_statement_arelle} are also present in figure \ref{fig:msft_income_statement_facts} and vice versa.
+% Each individual fact is also correct, as it is associated with the correct concept, period, entity, unit, and value.
+% Brel represents these characteristics differently from Arelle.
+% For example, Arelle visualizes concepts using their labels, while Brel visualizes concepts using their QNames.
+% However, the values themselves represent the same information.
+% The only difference is between the representation of the facts, as Arelle visualizes the facts as a table, where the rows are the concepts and the columns are the periods.
+% Brel visualizes the facts as a table representing a hypercube.
 
-We can conclude that Brel is able to extract the structures from the comprehensive income statement of Microsoft's 10K report correctly.
-This is a good result, as it shows that Brel is able to parse XBRL reports correctly.
-However, it is important to note that this evaluation only covers a single component within the report.
-It does not cover the full range of Brel's functionality or its correctness.
-This example serves as a vertical slice of Brel's correctness.
-Together with the conformance suite, it gives us a good idea of Brel's correctness.
+% We can conclude that Brel is able to extract the structures from the comprehensive income statement of Microsoft's 10K report correctly.
+% This is a good result, as it shows that Brel is able to parse XBRL reports correctly.
+% However, it is important to note that this evaluation only covers a single component within the report.
+% It does not cover the full range of Brel's functionality or its correctness.
+% This example serves as a vertical slice of Brel's correctness.
+% Together with the conformance suite, it gives us a good idea of Brel's correctness.
+Figure \ref{fig:msft_income_statement_facts} effectively demonstrates Brel's capability to accurately extract facts from Microsoft's 10K comprehensive income statement.  
+The facts displayed in figure \ref{fig:msft_income_statement_arelle} are also mirrored in figure \ref{fig:msft_income_statement_facts}, and vice versa.  
+Furthermore, each fact is accurately aligned with its corresponding concept, period, entity, unit, and value.  
+Brel's representation of these characteristics varies from Arelle's.  
+For instance, while Arelle represents concepts using their labels, Brel uses their QNames.  
+Nonetheless, the underlying information conveyed is identical.
+
+The distinction lies in the presentation of facts; Arelle displays them in a table with concepts as rows and periods as columns,  
+whereas Brel presents them in a table that depicts a hypercube.
+
+It can be concluded that Brel successfully extracts and structures information from Microsoft's comprehensive income statement in the 10K report.  
+This outcome indicates Brel's efficiency in parsing XBRL reports.  
+However, it is important to recognize that this assessment focuses solely on one component of the report.  
+It does not encompass the full breadth of Brel's functionalities or its overall correctness.  
+This analysis serves as a specific example of Brel's accuracy.  
+Combined with the results from the conformance suite, it offers a comprehensive understanding of Brel's accuracy.

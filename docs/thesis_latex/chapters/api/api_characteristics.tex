@@ -7,10 +7,11 @@
 % Each characteristic acts as a aspect-value pair, 
 % where the aspect characterizes the dimension's axis and the value details the position of the fact along the axis.
 % The interplay between aspect and characteristics classes is illustrated in figure \ref{fig:characteristics}.
-Characteristics serve to pinpoint a fact's location within a dimension. 
-They utilize report elements for their descriptions or introduce novel, separate characteristics.
-All characteristics are unified under the \texttt{ICharacteristic} interface. 
-Every characteristic functions as an aspect-value duo, 
+Characteristics serve to pinpoint a fact's location along a dimension. 
+% They use report elements for their descriptions or introduce novel, separate characteristics.
+Some characteristics rely on report elements.
+All characteristics are unified under the interface \texttt{ICharacteristic}. 
+Every characteristic functions as an aspect-value pair, 
 with the aspect defining the dimension's axis and the value specifying the fact's location on that axis. 
 The dynamic between aspects and characteristics is depicted in figure \ref{fig:characteristics}.
 
@@ -29,7 +30,7 @@ The dynamic between aspects and characteristics is depicted in figure \ref{fig:c
 % As I have pointed out in the previous section, characteristics are used to describe the position of a fact along a dimension using an aspect-value pair.
 % An aspect is a description of the dimension's axis, while the value details the position of the fact along the axis.
 As mentioned earlier, characteristics describe a fact's dimensional location through an aspect-value combination.
-Here, the aspect describes the dimension's axis, and the value conveys the fact's precise location on the axis.
+Here, the aspect describes the dimension's axis, and the value conveys the fact's location on the axis.
 
 % The \texttt{ICharacteristic} interface follows this definition directly by providing the methods \texttt{get\_aspect} and \texttt{get\_value}.
 Directly aligning with this concept, 
@@ -53,7 +54,7 @@ the \texttt{ICharacteristic} interface offers the methods \texttt{get\_aspect} a
 
 Aspects define the axes of dimensions.
 Each \texttt{Aspect} class instance corresponds to a unique aspect.
-The primary aspects - Concept, Entity, Period, and Unit - are represented as instances of the \texttt{Aspect} class.
+The core aspects - Concept, Entity, Period, and Unit - are represented as instances of the \texttt{Aspect} class.
 Moreover, these core aspects are accessible as public constants within the \texttt{Aspect} class,
 specifically through the fields \texttt{Aspect.CONCEPT}, \texttt{Aspect.ENTITY}, \texttt{Aspect.PERIOD}, and \texttt{Aspect.UNIT}.
 
@@ -112,10 +113,10 @@ The \texttt{EntityCharacteristic} identifies the entity associated with a fact.
 % Within hypercube structures, the \texttt{Aspect.ENTITY} aspect categorizes dimensions of entities,
 An entity, such as a corporation, is distinguished by a tag and a scheme\footnote{Schemes are typically URLs.} serving as the tag's namespace.
 These identifiers are merged into a singular string format \texttt{\{scheme\}tag},
-\footnote{This format mirrors the Clark notation used for QNames.\cite{w3_qnames}}
+\footnote{This format mirrors the Clark notation used for QNames\cite{w3_qnames}.}
 
 Implementing the \texttt{ICharacteristic} framework,
-\texttt{get\_aspect} returns \texttt{Aspect.ENTITY} and \texttt{get\_value} provides the entity's string representation as previously mentioned.
+\texttt{get\_aspect} returns the instance \texttt{Aspect.ENTITY} and \texttt{get\_value} provides the entity's string representation as previously mentioned.
 
 \subsection{Period Characteristic}
 
@@ -153,7 +154,7 @@ does not offer a class that represents both instant and duration periods togethe
 % Simple units are atomic units, such as \texttt{USD} or \texttt{shares}.
 % Complex units are composed of multiple simple units, such as \texttt{USD per share}.
 % All complex units are formed by dividing one or more simple units by zero or more simple units.
-The \texttt{UnitCharacteristic} specifies the unit of a fact and adheres to the \texttt{ICharacteristic} interface.
+The \texttt{UnitCharacteristic} specifies the unit of a fact whilst implementing the \texttt{ICharacteristic} interface.
 Semantically, the unit characteristic further determines the fact's value type.
 A fact assigned with a \texttt{USD} unit is of the \texttt{decimal} type, whereas a fact with a \texttt{date} unit signifies a date value.
 
@@ -172,10 +173,9 @@ Each complex unit is constructed by dividing one or more simple units by another
 % Brel represents the complex unit in figure \ref{fig:complex_unit} using two lists of simple units.
 % The method \texttt{get\_numerators} returns the list of simple units in the numerator, \texttt{get\_denominators} returns the denominators.\footnote{The returned list of denominators does not contain the implicit denominator of 1.}
 Brel depicts the complex unit in figure \ref{fig:complex_unit} through a pair of lists containing simple units.
-The function \texttt{get\_numerators} delivers the numerator's list of simple units, while \texttt{get\_denominators} yields the list of denominators
-\footnote{The list of denominators provided excludes the implicit denominator of 1.}.
+The function \texttt{get\_numerators} delivers the numerator's list of simple units, while \texttt{get\_denominators} yields the list of denominators\footnote{The list of denominators provided excludes the implicit denominator of 1.}.
 
-Similar to the \texttt{PeriodCharacteristic}, the method \texttt{get\_value} of the \texttt{UnitCharacteristic} returns the characteristic itself.
+Similar to the \texttt{PeriodCharacteristic} class, the method \texttt{get\_value} of the class \texttt{UnitCharacteristic} returns the characteristic itself.
 
 % Similar to the \texttt{PeriodCharacteristic}, the \texttt{UnitCharacteristic} does not have a basic type for representing XBRL units.
 % Instead, it returns itself when \texttt{get\_value} is called.
@@ -195,7 +195,9 @@ Like every other characteristic, both implement the \texttt{ICharacteristic} int
 As discussed in section \ref{sec:api_report_elements}, Brel models custom dimensions as \texttt{Dimension} report elements.
 Accordingly, the aspect of a dimension characteristic should represent a \texttt{Dimension} report element.
 % Luckily, \texttt{Dimension} objects are essentially just a name, which is represented by a QName.
-Therefore, the \texttt{get\_aspect} method of both classes returns the QName of the \texttt{Dimension} instance as a string.
+% Therefore, the \texttt{get\_aspect} method of both classes returns the QName of the \texttt{Dimension} instance as a string.
+Therefore, the \texttt{get\_aspect} method returns a new instance of the \texttt{Aspect} class.
+The name of the aspect is the QName of the \texttt{Dimension} instance, represented as a string.
 
 % The characteristic also provides direct access to the \texttt{Dimension} object itself via the \texttt{get\_dimension} method.
 % Think of \texttt{get\_dimension} as a more complete version of \texttt{get\_aspect}.
@@ -215,9 +217,9 @@ Brel includes auxiliary methods designed to convert the value into the format th
 While these helper methods are not included within the minimal API outlined in this chapter, they are part to the comprehensive API.
 
 Explicit dimensions are the second category of custom characteristic.
-They are extremely similar to typed dimensions, but they do not have a type.
+They are similar to typed dimensions, but they do not have a type.
 Instead of a type, they have a set of possible values.
 
-The \texttt{ExplicitDimensionCharacteristic} class is almost identical to the \texttt{TypedDimensionCharacteristic} class.
+The \texttt{ExplicitDimensionCharacteristic} class is almost identical to the aforementioned \texttt{TypedDimensionCharacteristic} class.
 The main difference between the two is that \texttt{get\_value} returns a \texttt{Member} object instead of a string.
 

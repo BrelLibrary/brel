@@ -32,7 +32,9 @@
 % As a general rule of thumb, we designed Brel's inheritance hierarchy to be as flat as possible.
 % Since all report elements share a common interface, the next section covers the interface first.
 % The subsequent sections then describe the different types of report elements.
-Given that characteristics incorporate report elements, we first discuss report elements.
+Given that characteristics incorporate report elements, 
+% we first discuss report elements.
+we discuss report elements first.
 They were introduced previously in chapter \ref{chapter:xbrl}.
 Brel categorizes several types of report elements, each represented by distinct classes but unified under the \texttt{IReportElement} interface.
 We categorize six principal types of report elements as follows:
@@ -62,7 +64,7 @@ Following the introduction of the common interface, detailed discussions on each
 \subsection{IReportElement}
 
 The \texttt{IReportElement} interface defines the common interface that all report elements share.
-In essence, a report element is an just a name, 
+In essence, a report element is a name which can be retrieved using the \texttt{get\_name} method.
 % in this case a QName.
 
 % Since QNames are not completely human-readable and do not support multiple languages,
@@ -136,6 +138,7 @@ The \texttt{get\_type} method discloses the dimension's type for typed dimension
 Merging typed and explicit dimensions into a singular class reflects their semantic alignment,
 despite minor operational variances.
 These differences are largely inconsequential from the user standpoint.
+They also occupy the same position within networks, with only slight behavioral distinctions.
 
 % \subsection{Abstract, Hypercube, LineItems, and Member}
 

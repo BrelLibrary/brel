@@ -23,18 +23,13 @@
 
 Following the discussion on XBRL, the Brel API, and its implementation, 
 we are now in a position to assess Brel in light of the objectives outlined in section \ref{sec:goals}. 
-The evaluation will prioritize correctness and performance, in that order. 
-Additionally, this chapter will qualitatively discuss Brel's robustness and usability.
+The evaluation will prioritize usability, correctness, robustness and performance.
+% Additionally, this chapter will qualitatively discuss Brel's robustness and usability.
 
 The usability of Brel will be assessed through the development of a simple CLI tool for viewing XBRL reports. 
 This tool will demonstrate the capabilities of the Brel API and act as a practical example of its application.
 
-Although this thesis does not explicitly list Brel's performance as a requirement, 
-it remains a crucial aspect of the evaluation. 
-Assessing Brel's performance will provide a benchmark for future versions of the software, 
-facilitating performance comparisons over time.
-
-The assessment of Brel's correctness will involve the use of XBRL conformance suites. 
+The assessment of Brel's correctness will involve the use of an XBRL conformance suite. 
 Furthermore, we will conduct an analysis of a selected component of an XBRL report, 
 comparing the structure Brel extracts with that produced by the XBRL viewer Arelle. 
 This comparison will offer a qualitative evaluation of Brel's accuracy.
@@ -42,6 +37,11 @@ This comparison will offer a qualitative evaluation of Brel's accuracy.
 Robustness, being a qualitative metric, presents challenges in measurement. 
 However, by loading the 10K and 10Q reports of the 50 largest US companies by market capitalization as of the date of this analysis, 
 we can gain valuable insights into Brel's practical robustness.
+
+Although this thesis does not explicitly list Brel's performance as a requirement, 
+it remains a crucial aspect of the evaluation. 
+Assessing Brel's performance will provide a benchmark for future versions of the software, 
+facilitating performance comparisons over time.
 
 \input{chapters/results/usability.tex}
 

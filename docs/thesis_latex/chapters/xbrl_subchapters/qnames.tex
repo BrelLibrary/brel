@@ -20,15 +20,16 @@ QNames serve as unique identifiers for XML elements or attributes,
 comprising three components: a namespace prefix, a namespace URI, and a local name.
 The prefix is a shorthand representation of the namespace URI, which we will refer to as a namespace binding.
 
-For instance, the QName \texttt{us-gaap:Assets} signifies the element \texttt{Assets} within the \texttt{us-gaap} namespace.
-In this example, the namespace prefix \texttt{us-gaap} stands in for the namespace URI \texttt{https://xbrl.fasb.org/us-gaap/2022/elts/us-gaap-2022.xsd},
+For instance, the QName \texttt{us-gaap:Assets}, as defined by the Financial Accounting Standards Board (FASB)\cite{fasb},
+signifies the element \texttt{Assets} within the \texttt{us-gaap} namespace.
+In this example, the namespace prefix \texttt{us-gaap} stands in for the URI \texttt{https://xbrl.fasb.org/us-gaap/2022/elts/us-gaap-2022.xsd}\cite{fasb}.
 
 \begin{figure}[H]
     \caption{The us-gaap:Assets QName}
     \label{fig:qname_us_gaap_assets}
     \begin{itemize}
         \item Namespace prefix: \texttt{us-gaap}
-        \item Namespace URI: \texttt{https://xbrl.fasb.org/us-gaap/2022/elts/us-gaap-2022.xsd}
+        \item URI: \texttt{https://xbrl.fasb.org/us-gaap/2022/elts/us-gaap-2022.xsd}
         \item Local name: \texttt{Assets}
     \end{itemize}
 \end{figure}

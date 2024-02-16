@@ -1,4 +1,3 @@
-
 \section{Namespace Normalization}
 \label{sec:qnames_implementation}
 
@@ -31,7 +30,7 @@ However, a key distinction exists between QNames in XML and those in Brel, parti
 Namespace bindings represent the associations between prefixes and namespace URIs.
 In XBRL, a URI typically links to a taxonomy file.
 The prefix is employed to succinctly reference the namespace URI within the XBRL filing.
-For instance, the prefix \texttt{us-gaap} might be bound to the namespace URI \texttt{http://fasb.org/us-gaap/2023}.
+For instance, the prefix \texttt{us-gaap} might be bound to the URI \texttt{http://fasb.org/us-gaap/2023}.
 
 In XML documents, these namespace bindings can be specified for individual elements.
 Child elements inherit their parent elements' namespace bindings, except when they establish their own.
@@ -49,7 +48,7 @@ An example figure is provided below.
 
 % Example of the same XML snippet where namespace bindings are defined on a per-level basis
 \begin{figure}[H]
-    \caption{Example of namespace bindings defined on a per-level basis}
+    \caption{Example of namespace bindings defined on a per-element basis}
     \label{fig:custom_namespace_notation_example}
     \dirtree{%
     .1 root.
@@ -79,7 +78,7 @@ The rationale behind adopting a flat structure for namespace bindings in Brel is
 
 % The user could simply search both for \texttt{us-gaap} and \texttt{us-gaap1} to find the concept \texttt{Assets}.
 % Obviously, this is extremely cumbersome and a suboptimal fix for the problem.
-% It also insufficiantly shields users from the complexity of XML and XML-based languages, such as XBRL,
+% It also insufficiently shields users from the complexity of XML and XML-based languages, such as XBRL,
 % since they need to be aware of the structure of the underlying namespace hierarchy.
 
 % In Brel, the user can simply search for the QName \texttt{us-gaap:Assets} and will find all facts that are associated with this concept.
@@ -355,16 +354,16 @@ In Brel, three kinds of namespace collisions can occur:
 
 \begin{itemize}
 \item \textbf{Version Collision}: This occurs when two namespace bindings share the same prefix and namespace URI, differing only in the version specified within the URI.
-The version is identified by the numbers and dashes in the namespace URI, indicating its relative recency.
+The version is identified by the digits, dashes and dots in the namespace URI, indicating its relative recency.
 
-Example: \texttt{foo = "http://foo.com/2022"} and \texttt{foo = "http://foo.com/2023"}
+Example: \texttt{foo="http://foo.com/2022"} and \texttt{foo="http://foo.com/2023"}
 \item \textbf{Prefix Collision}: This type of collision happens when two namespace bindings share the same prefix but point to different \textit{unversioned} namespace URIs.
 An unversioned namespace URI is one without any version-related details.
 
-Example: \texttt{foo = "http://foo.com"} and \texttt{foo = "http://other-foo.com"}
+Example: \texttt{foo="http://foo.com"} and \texttt{foo="http://other-foo.com"}
 \item \textbf{Namespace URI Collision}: This collision occurs when two namespace bindings have identical \textit{unversioned} namespace URIs but utilize different prefixes.
 
-Example: \texttt{foo = "http://foo.com"} and \texttt{bar = "http://foo.com"}
+Example: \texttt{foo="http://foo.com"} and \texttt{bar="http://foo.com"}
 \end{itemize}
 
 % \subsection{Version collision}
@@ -539,7 +538,7 @@ Figure \ref{fig:prefix_collision_example_renamed} depicts the figure \ref{fig:pr
 % In general, Brel will pick the shorter prefix as the preferred prefix.
 % If both have the same length, Brel will pick the prefix that comes first alphabetically.
 
-% % In the case of our example, brel will pick the prefix \texttt{bar} as the preferred prefix and will rename all occurences of \texttt{foo} to \texttt{bar}.
+% % In the case of our example, brel will pick the prefix \texttt{bar} as the preferred prefix and will rename all occurrences of \texttt{foo} to \texttt{bar}.
 % % Even if the user searches for the QName \texttt{foo:baz}, Brel will search for \texttt{bar:baz} instead.
 % In the case of our example, \texttt{bar} will be picked as the preferred prefix.
 % Brel will rename the prefix \texttt{foo} along with all occurrences to \texttt{bar}.
@@ -617,6 +616,7 @@ If a namespace binding corresponds to the same namespace URI as a special prefix
 The special prefixes include:
 
 % Make a table of only the prefixes, make it 5x5
+% cSpell: disable
 \begin{figure}[H]
     \centering
     \begin{tabular}{|l|l|l|l|l|}
@@ -635,16 +635,20 @@ The special prefixes include:
     \caption{Table containing all special prefixes}
     \label{fig:special_prefixes}
 \end{figure}
+% cSpell: enable
 
 % All of the prefixes in figure \ref{fig:special_prefixes} have a corresponding namespace URI.
 % In case of the prefix \texttt{xsi}, the namespace URI is \texttt{http://www.w3.org/2001/XMLSchema-instance}.
 % If, for example, the XBRL filing contains a namespace binding \texttt{foo = "http://www.w3.org/2001/XMLSchema-instance"},
-% then the prefix \texttt{xsi} will be picked as the preferred prefix and all occurences of \texttt{foo} will be renamed to \texttt{xsi}.
+% then the prefix \texttt{xsi} will be picked as the preferred prefix and all occurrences of \texttt{foo} will be renamed to \texttt{xsi}.
 Each prefix in figure \ref{fig:special_prefixes} is associated with a specific namespace URI.
-For example, the prefix \texttt{xsi} corresponds to the namespace URI \texttt{http://www.w3.org/2001/XMLSchema-instance}.
-Should an XBRL filing include a namespace binding like \texttt{foo = "http://www.w3.org/2001/XMLSchema-instance"},
+For example, the prefix \texttt{xsi} refers to \texttt{http://www.w3.org/2001/XMLSchema-instance}\cite{w3_schema_instance}.
+Should an XBRL filing include a namespace binding like 
+
+\texttt{foo = "http://www.w3.org/2001/XMLSchema-instance"},
 then \texttt{xsi} will be selected as the preferred prefix. Consequently, all instances of \texttt{foo} will be renamed to \texttt{xsi}.
 
+% cSpell: disable
 % The special prefixes and their corresponding namespace URIs can be adjusted in the \texttt{nsconfig.json} file.
 
 % The special prefixes and the corresponding namespace URIs can be configured in in the \texttt{nsconfig.json} file.
@@ -653,5 +657,6 @@ then \texttt{xsi} will be selected as the preferred prefix. Consequently, all in
 % Facts use QNames for a few of their characteristics, most notably their concept characteristic.
 % With this knowledge of namespace normalization, we have resolved one of the key assumptions made in section \ref{sec:implementation_general}.
 % However, there is still one more assumption to be addressed.
+% cSpell: enable
 Having grasped the concept of namespace normalization, we have now addressed one assumption highlighted in section \ref{sec:implementation_general}.
 Yet, there remains another assumption that needs to be tackled.

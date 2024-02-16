@@ -69,7 +69,7 @@ Despite each having its dedicated class, they are functionally similar from an A
 % Unlike their common interface, labels and footnotes have an additional method called \texttt{get\_language}.
 % The \texttt{get\_language} method returns the language of the resource.
 Both implement the \texttt{IResource} interface,
-with the \texttt{get\_role}, \texttt{get\_title}, and \texttt{get\_content} methods operating in a similar manner across both.
+with the \texttt{get\_role}, the \texttt{get\_title}, and the \texttt{get\_content} methods operating similarly across both.
 Diverging from their shared interface, labels and footnotes introduce an additional method: \texttt{get\_language},
 which returns the resource's language.
 % The \texttt{get_language} method specifies the resource's language.
@@ -83,7 +83,7 @@ which returns the resource's language.
 % Another difference is that the content of a reference is a dictionary instead of a string.
 
 % Now that we have covered resources, we can finally introduce networks.
-References constitute the third resource category within XBRL
+Reference elements constitute the third resource category within XBRL
 and links XBRL reports to external resources.
 Like labels and footnotes, references implement the \texttt{IResource} interface.
 However, they lack a \texttt{get\_language} method, unlike labels and footnotes.

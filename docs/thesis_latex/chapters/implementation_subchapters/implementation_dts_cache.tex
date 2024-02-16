@@ -96,7 +96,8 @@ Retrieving the taxonomy file from a given URI is straightforward for most URIs.
 However, certain URIs are relative,
 meaning the URI specifies the location of another taxonomy file in relation to the current one\cite{w3_relative_uri}.
 Brel deduces the domain of relative URIs by recalling the domain from which the relative URI was referenced.
-It then merges the domain of the current taxonomy file with the relative URI to create a complete URI.
+It then merges the domain of the current taxonomy file with the relative URI to create an absolute URI.
+% cSpell: disable
 % Relative URIs bring up an additional issue - the naming of taxonomy files.
 % As Brel downloads these files from the internet, it must save them locally.
 % Brel opts to store taxonomy files in a folder named \texttt{dts\_cache}, without subfolders.
@@ -106,6 +107,7 @@ It then merges the domain of the current taxonomy file with the relative URI to 
 % However, since URIs can be relative and typically long, including characters unsuitable for file names, this is impractical.
 % Brel's chosen solution is to create a unique file name derived from the complete URI of the taxonomy file,
 % removing any characters that are invalid for file names.
+% cSpell: enable
 When storing taxonomy files, Brel names them based on their absolute URIs, ensuring each file has a unique name.
 Since URI-based file names are not always valid, Brel removes any illegal characters to form a valid file name.
 

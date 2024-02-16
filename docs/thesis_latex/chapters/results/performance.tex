@@ -29,7 +29,7 @@ provides a valuable benchmark for future Brel versions.
 To assess Brel's performance, the same XBRL reports used in the robustness evaluation will be employed.
 We will compare the time required to load these reports in Brel
 with that of the XBRL viewer Arelle\cite{arelle}.
-Arelle, a mature and widely-used XBRL viewer also written in Python,
+Arelle, which is also written in Python,
 offers a reliable basis for comparison with Brel.
 To eliminate network latency, both Brel and Arelle will process only local files.
 Each tool will run eleven times on each report, with the average time of the last ten runs being recorded.
@@ -40,7 +40,8 @@ the loading time effectively represents the data extraction time.
 
 Both Brel and Arelle will be run on the same computer,
 with its specifications summarized in table \ref{tab:machine-specs}.
-Complete details of the machine are available on the Dell website\footnote{\url{https://www.dell.com/en-in/shop/laptops-2-in-1-pcs/xps-15-laptop/spd/xps-15-9560-laptop}}.
+Complete details of the machine are available on the Dell website\cite{dell_xps_9560_specs}.
+% \footnote{\url{https://www.dell.com/en-in/shop/laptops-2-in-1-pcs/xps-15-laptop/spd/xps-15-9560-laptop}}.
 
 \begin{table}[H]
     \centering
@@ -55,7 +56,7 @@ Complete details of the machine are available on the Dell website\footnote{\url{
         OS & EndeavourOS 2023.08.05 Linux 6.1.55-1-lts \\
         \hline
     \end{tabular}
-    \caption{Machine specifications}
+    \caption{Machine specifications\cite{dell_xps_9560_specs}}
     \label{tab:machine-specs}
 \end{table}
 
@@ -82,7 +83,7 @@ The table \ref{tab:software-versions} shows the versions of the software used in
         \textbf{Software} & \textbf{Version} \\
         \hline
         Brel & 0.8.0a8 \\
-        Arelle & 2.15.0 \footnote{\footnote{\url{https://github.com/Arelle/Arelle/releases/tag/2.15.0}}} \\
+        Arelle & 2.15.0 \\
         Python & 3.11.5 \\
         \hline
     \end{tabular}
@@ -90,7 +91,7 @@ The table \ref{tab:software-versions} shows the versions of the software used in
     \label{tab:software-versions}
 \end{table}
 
-Both Brel and Arelle will be run with the same configuration in separate shells.
+Both Brel and Arelle\footnote{\url{https://github.com/Arelle/Arelle/releases/tag/2.15.0}} will be run with the same configuration in separate shells.
 Arelle will be run with the following command:
 
 \begin{lstlisting}[language=bash, basicstyle=\ttfamily\small]
@@ -144,7 +145,8 @@ Both Brel and Arelle exhibit a standard deviation in loading times of 0.05 secon
 This consistency in loading times is evident across different runs for both tools.
 The standard deviation remains constant across various reports, with a few exceptions.
 These outliers are likely due to background processes on the machine and do not significantly impact Brel's or Arelle's overall performance.
-The loading time difference between Brel and Arelle is statistically significant\footnote{Based on a p-value of 0.05}.
+% The loading time difference between Brel and Arelle is statistically significant\footnote{Based on a p-value of 0.05}.
+Based on a p-value of 0.05, we can statistically confirm the significant difference in loading times between Brel and Arelle.
 
 % \subsection{Discussion}
 
@@ -159,7 +161,7 @@ The loading time difference between Brel and Arelle is statistically significant
 % This discussion on download times is deliberately kept vague, as download times are highly dependent on the user's internet connection and the size of the report.
 
 From a qualitative standpoint, the loading times for both Brel and Arelle are acceptable,
-being much quicker than the time required to download the necessary files for report loading.
+being significantly shorter than the time required to download the necessary files for report loading.
 % Typically, the download phase is the more time-consuming aspect of loading an XBRL report.
 Typically, the download phase more significantly impacts the loading process of an XBRL report.
 While download durations often span tens of seconds, loading times are generally within a few seconds.

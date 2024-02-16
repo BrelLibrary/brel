@@ -31,10 +31,10 @@ The Brel API is segmented into various components, each discussed in this sectio
 %     \item \textbf{Networks} - Finally, the \texttt{Networks} part describes how networks and their nodes are represented in Brel.
 % \end{enumerate}
 \begin{enumerate}
-    \item \textbf{Core} - Introduces Brel's core components, including Filings, Facts, Components, and QNames.
-    \item \textbf{Characteristics} - Explores Brel's characteristics, such as Concepts, Entities, Periods, Units, and Dimensions.
-    \item \textbf{Report Elements} - Discusses Report Elements, specifically Concepts, Members, Dimensions, Line Items, Hypercubes, and Abstracts.
-    \item \textbf{Resources} - Details Resources like Labels, References, and Footnotes.
+    \item \textbf{Core} - Introduces Brel's core components, including filings, facts, components, and QNames.
+    \item \textbf{Characteristics} - Explores Brel's characteristics, such as concepts, entities, periods, units, and dimensions.
+    \item \textbf{Report Elements} - Discusses report elements, specifically concepts, members, dimensions, line items, hypercubes, and abstracts.
+    \item \textbf{Resources} - Details resources like labels, references, and footnotes.
     \item \textbf{Networks} - Describes the representation of networks and nodes in Brel.
 \end{enumerate}
 
@@ -43,16 +43,19 @@ The Brel API is segmented into various components, each discussed in this sectio
 % the API described completely abstracts away the underlying XML structure.
 % \footnote{The only exception is the \texttt{QName} class, which is an almost direct representation of the XML QName type.}
 % This chapter will answer research questions \ref{RQ1} and \ref{RQ2}.
-These components should be familiar, as they were thoroughly examined in chapter \ref{chapter:xbrl}. 
+These components should be familiar, as they were thoroughly examined in chapter \ref{chapter:xbrl},
+albeit with some slightly different terminology. 
+For instance, XBRL "roleTypes" are referred to as "components" in Brel.
 While the preceding chapter minimized details on XML implementation, this API abstracts the XML structure entirely.
 \footnote{The \texttt{QName} class is an exception, closely mirroring the XML QName type.}
 This section addresses research questions \ref{RQ1} and \ref{RQ2}.
-
 % Again, the current implementation of Brel is not complete.
 % It does not allow for the creation of new filings, facts, components, etc.
 % Its main purpose is to provide a way to access and analyze existing filings.
 % Brel also does not analyze the semantics of the underlying reports.
-Note that Brel's current version is not finalized. 
-It does not support the creation of new filings, facts, components, etc., 
-focusing instead on accessing and analyzing existing filings. 
-Brel also does not interpret the semantics of the reports it analyzes.
+% Note that Brel's current version is not finalized. 
+% It does not support the creation of new filings, facts, components, etc., 
+% focusing instead on accessing and analyzing existing filings. 
+% Brel also does not interpret the semantics of the reports it analyzes.
+Note that Brel does not semantically interpret reports, 
+nor does it support the creation and modification of reports.

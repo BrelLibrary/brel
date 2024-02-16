@@ -195,13 +195,13 @@ This section details the method Brel uses to interpret locators.
 
 XBRL locators utilize XPointer\cite{w3_xpointer} expressions for referencing other XML elements, potentially from different XML documents.
 These XPointers in XBRL take the form \texttt{filename\#id},
-where \texttt{filename} denotes the XML document's URI and \texttt{id} is the id of the XML element.
+where \texttt{filename} denotes the XML document's URI and \texttt{ID} is the ID of the XML element.
 To interpret a locator, Brel first identifies the targeted XML element.
 Subsequently, it translates this XML element into a report element or a fact.
 
-Brel accomplishes this by tracking the id of each fact and report element it parses.
-It constructs a lookup table mapping ids to their corresponding facts and report elements.
-Whenever Brel encounters a locator during parsing, it interprets the locator by consulting the lookup table with the locator's id.
+Brel accomplishes this by tracking the ID of each fact and report element it parses.
+It constructs a lookup table mapping IDs to their corresponding facts and report elements.
+Whenever Brel encounters a locator during parsing, it interprets the locator by consulting the lookup table with the locator's ID.
 
 % \subsection{Parsing Resources}
   

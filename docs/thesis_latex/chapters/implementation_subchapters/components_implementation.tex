@@ -31,15 +31,15 @@ The following snippet shows an example of a component in XBRL:
 
 I will refer to the component in figure \ref{fig:example_component_xbrl} as the "Inventory" component.
 All properties of XBRL components are either required or optional.
-I will use the notation \texttt{(required)} and \texttt{(optional)} to indicate the requiredness of a property.
+I will use the notation \texttt{(required)} and \texttt{(optional)} to indicate that a property is required or optional, respectively.
 The Inventory component has the following properties:
 
 \begin{itemize}
   \item \texttt{roleURI} (required): The URI of the Inventory component. This URI is used to reference the component from other elements in the XBRL taxonomy. It is the primary identifier of the component. 
   The roleURI has to be unique on a per-taxonomy basis.\cite{xbrl21_custom_roles}
-  \item \texttt{id} (optional): The id of the component, which is commonly used to reference the component from other elements in the XBRL report.
-  \footnote{Even though the id is optional, it is recommended to provide an id for each component.\cite{xbrl21_custom_roles}}
-  \footnote{Similar to the roleURI, the id has to be unique on a per-taxonomy basis.\cite{xml_id}}
+  \item \texttt{ID} (optional): The ID of the component, which is commonly used to reference the component from other elements in the XBRL report.
+  \footnote{Even though the ID is optional, it is recommended to provide an ID for each component.\cite{xbrl21_custom_roles}}
+  \footnote{Similar to the roleURI, the ID has to be unique on a per-taxonomy basis.\cite{xml_id}}
   \item \texttt{definition} (optional): A human-readable description of the component. 
   \item \texttt{usedOn}: A list of links that the component is used in. 
   Whenever a link uses a component, it must declare the component in the \texttt{usedOn} property.

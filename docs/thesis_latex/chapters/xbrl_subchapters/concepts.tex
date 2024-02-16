@@ -5,7 +5,7 @@ In section \ref{sec:facts}, we learned that a fact is the smallest unit of infor
 % One of the core aspects of a fact is its concept,
 % which refers to what is being reported.
 The central aspect of a fact is its concept,
-which details the subject matter of the reported information.
+which details the subject of the reported information.
 % So for example, if a fact is reporting information about a company's revenue, then the concept of the fact is "Revenue".
 % In this section, we will take a closer look at concepts and how they are defined in XBRL.
 % Concepts are the fundamental building blocks of XBRL and they are defined in what is called the \textbf{taxonomy}.
@@ -26,7 +26,7 @@ referred to as the \textbf{extension taxonomy}.
 
 This extension taxonomy contains references to other taxonomies, which, in turn, may link to additional taxonomies.
 Hence, when a report and its extension taxonomy are loaded into memory, the entire span of referenced taxonomies is also loaded.
-The transitive closure of all these references is called the \textbf{DTS} (short for \textbf{D}iscoverable \textbf{T}axonomy \textbf{S}et).
+The transitive closure of all these references is called the \textbf{DTS} (short for Discoverable Taxonomy Set).
 
 % Note that most of the taxonomies in the DTS are not located on the same machine as the report.
 % Instead, they are located on the internet and are downloaded on demand.
@@ -41,14 +41,6 @@ Commonly encountered taxonomies in a report's DTS include
 \texttt{dei}\footnote{https://www.sec.gov/info/edgar/dei-2019xbrl-taxonomy}, which contains concepts for the SEC's Document and Entity Information (DEI) requirements,
 \texttt{iso4217}\footnote{https://www.iso.org/iso-4217-currency-codes.html}, which contains concepts for currency codes, 
 and many more.
-
-% \begin{itemize}
-%     \item \textbf{us-gaap} \footnote{https://xbrl.us/us-gaap/} - Contains concepts for US Generally Accepted Accounting Principles (GAAP).
-%     \item \textbf{ifrs} \footnote{https://www.ifrs.org/} - Contains concepts for International Financial Reporting Standards (IFRS).
-%     \item \textbf{dei} \footnote{https://www.sec.gov/info/edgar/dei-2019xbrl-taxonomy} - Contains concepts for the SEC's Document and Entity Information (DEI) requirements.
-%     \item \textbf{country} \footnote{https://xbrl.fasb.org/us-gaap/2021/elts/us-gaap-country-2021-01-31.xsd} - Contains concepts for country codes.
-%     \item \textbf{iso4217} \footnote{https://www.iso.org/iso-4217-currency-codes.html} - Contains concepts for currency codes.
-% \end{itemize}
 
 % Since a lot of DTSs from different reports share a lot of the same taxonomies, it makes sense to cache the taxonomies locally, 
 % instead of downloading them every time they are needed.
@@ -73,7 +65,7 @@ which will be discussed in detail in section \ref{sec:qnames}.
 For the moment, the reader can think of them as a unique identifier for each concept.
 Typically, the QName of a concept is designed to be both human-readable and self-explanatory.
 Nevertheless, it's common for accountants and business analysts to employ elaborate naming conventions.
-Here are some examples of QNames for concepts:
+Here are some examples of QNames for concepts, all of which are extracted Coca-Cola's 2019 Q2 report\cite{ko2019q2}:
 
 \begin{itemize}
     \item \texttt{us-gaap:Assets}

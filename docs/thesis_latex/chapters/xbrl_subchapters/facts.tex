@@ -2,7 +2,8 @@
 \label{sec:facts}
 
 A fact is the smallest unit of information in an XBRL report. 
-The word "Fact" is a term used to describe an individual piece of financial of business information within an XBRL instance document. 
+According to the XBRL glossary, a fact is a term used to describe an individual piece of financial or business information within an XBRL instance document\cite{xbrl_glossary}.
+% The word "Fact" is a term used to describe an individual piece of financial of business information within an XBRL instance document\cite{xbrl_glossary}.
 This section aims to represent facts and its supporting concepts in a way that is in line with the OIM.
 
 % Lets consider a simplified example involving a financial report of Microsoft Corporation for the fiscal year 2022.
@@ -19,9 +20,8 @@ as reported by Microsoft in the following manner:
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\textwidth]{images/microsoft_annual_report_2022.png}
-    \caption{Microsoft's summary results of operations for the fiscal year 2021 and 2022}
+\caption{Microsoft's summary results of operations for the fiscal year 2021 and 2022\cite{microsoft2022ar}}
     \label{fig:microsoft_annual_report_2022}
-    \cite{microsoft2022ar}
 \end{figure}
 
 % This table contains multiple facts about Microsoft for both fiscal years 2021 and 2022, as seen by the horizontal axis.
@@ -42,7 +42,7 @@ In XBRL terminology, this specific fact would be represented in the following wa
 \begin{itemize}
     \item \textbf{Concept:} Revenue
     \item \textbf{Entity:} Microsoft Corporation
-    \item \textbf{Period:} from 2022-04-01 to 2023-03-31 \footnote{Refers to the fiscal year 2022, which starts on April 1, 2022 and ends on March 31, 2023}
+    \item \textbf{Period:} from 2022-04-01 to 2023-03-31 \footnote{Refers to the fiscal year 2022, which starts on April 1, 2022, and ends on March 31, 2023}
     \item \textbf{Unit:} USD
     \item \textbf{Value:} 198'270'000 \footnote{https://www.microsoft.com/investor/reports/ar22/index.html}
 \end{itemize}

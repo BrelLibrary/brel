@@ -36,7 +36,7 @@ This thesis aimed to answer three research questions, all of which have been ans
 The first question was whether it is possible to create a Python API that encompasses the OIM of the XBRL format.
 We have shown that it is indeed possible to create such an API in Section \ref{sec:answer_research_question_1}.
 % The second question was whether the non-OIM parts of the XBRL format can be handled in a similar way.
-The second question was whether the non-OIM sections of the XBRL format can be managed in a similar manner.
+The second question was whether the non-OIM sections of the XBRL format can be managed similarly.
 We have shown that this is indeed possible in Section \ref{sec:answer_research_question_2}.
 The third question was how Brel can be implemented in a way that allows for XBRL reports in both CSV and JSON format to be used as input.
 We have shown that this is possible in Section \ref{sec:answer_research_question_3}.
@@ -50,8 +50,7 @@ While other similar APIs are available, none prominently feature the OIM.
 Arelle provides a Python API, but as a standalone application, it differs from Brel.
 Brel, being a Python package, integrates seamlessly into other Python applications, distinguishing its role in the field.
 The API has been developed into a Python package named \texttt{Brel},
-which is accessible on the Python Package Index (PyPI)
-\footnote{Brel can be installed using the command \texttt{pip install brel-xbrl}. This command is compatible with all major operating systems, including Windows, macOS, and Linux.}.
+which is accessible on the Python Package Index (PyPI)\footnote{Brel can be installed using the command \texttt{pip install brel-xbrl}. This command is compatible with all major operating systems, including Windows, macOS, and Linux.}.
 
 % To reflect on the results of this thesis, we can conclude that the API is indeed robust against different XBRL reports 
 % as shown in Section \ref{sec:robustness},
@@ -108,8 +107,7 @@ as addressed in section \ref{sec:limitations}.
 
 Presently, Brel is compatible only with the XML format outlined in the XBRL 2.1 specification \cite{xbrl21}.
 With the introduction of the OIM, XBRL has expanded to include formats like CSV and JSON.
-Currently, these formats are not supported by Brel, and their specifications are still under development
-\footnote{The OIM specifications contains a section for footnotes, which are a type of network.}.
+Currently, these formats are not supported by Brel, and their specifications are still under development\footnote{The OIM specifications contains a section for footnotes, which are a type of network.}.
 For instance, at this time, the CSV and JSON formats do not accommodate networks, an essential component of XBRL.
 
 In addition to CSV and JSON, XBRL also endorses the Inline XBRL (iXBRL) format, merging XBRL with HTML.
@@ -135,7 +133,7 @@ Future versions of Brel could detect and report these errors, potentially sugges
 % Brel could use this semantic information to provide more advanced analysis of XBRL reports.
 As noted in section \ref{sec:hypercubes}, Brel has the capability to support open hypercubes,
 which are defined by having dimensions with members that are yet to be identified.
-It is important to note that XBRL hypercubes encompass semantic information\footnote{See \url{https://www.xbrl.org/WGN/dimensions-use/WGN-2015-03-25/dimensions-use-WGN-2015-03-25.html}}.
+It is important to note that XBRL hypercubes encompass semantic information\cite{xbrl_dimensions_technical_considerations}
 By leveraging this semantic data, Brel can significantly enhance the analysis process of XBRL reports.
 
 % \subsection{Performance}
@@ -177,8 +175,10 @@ Such a study would also identify Brel's strengths and weaknesses, enabling more 
 
 \section{Acknowledgements}
 
-I would like to express my gratitude to my supervisor, Dr. Ghislain Fourny, 
-for his support and guidance throughout the development of Brel and the writing of this thesis.
+% I would like to express my gratitude to my supervisor, Dr. Ghislain Fourny,
+I would like to thank my supervisor, Dr. Ghislain Fourny, 
+% for his support and guidance throughout the development of Brel and the writing of this thesis.
+for supporting me throughout the development of Brel and the writing of this thesis.
 Without his expertise and encouragement, this project would not have been possible.
 
 I am also grateful to Prof. Dr. Gustavo Alonso for supervising this thesis and letting me work on this project
@@ -188,8 +188,10 @@ Both the development of Brel and the writing of this thesis have been aided by a
 Handling XML and HTTP requests in Python would have been much more difficult without the help of the \texttt{lxml} and \texttt{requests} libraries.
 They have been invaluable in the development of Brel, and I am grateful to their developers for their hard work.
 
-I would also like to thank OpenAI for developing ChatGPT\footnote{\url{https://chat.openai.com/}} 
-, and GitHub for publishing Copilot\footnote{https://github.com/features/copilot}.
+% I would also like to thank OpenAI for developing ChatGPT\footnote{\url{https://chat.openai.com/}} 
+% , and GitHub for publishing Copilot\footnote{https://github.com/features/copilot}.
+I would also like to acknowledge the usage of ChatGPT\footnote{\url{https://chat.openai.com/}} by OpenAI 
+and Copilot\footnote{\url{https://github.com/features/copilot}} by GitHub.
 I am not a writer, I am a programmer.
 My writing skills do sometimes leave something to be desired, and ChatGPT has been a great help in improving the quality of my writing and expressing my thoughts in a more formal manner.
 ChatGPT does generate text with many logical errors, but when used correctly, it can provide an alternative perspective on a text that can be very helpful. 
@@ -203,19 +205,22 @@ as it has helped me generate examples for libraries that I have never used befor
 and has helped me find the right functions to use in many cases.
 Similar to ChatGPT, GitHub Copilot does not necessarily generate correct code, 
 but it can speed up the mundane parts of programming significantly.
-Copilot was used for two purposes: to generate examples for libraries that I have never used before, 
+Copilot was used for three purposes: to generate examples for libraries that I have never used before, 
 to speed up repetitive tasks in programming like creating getters and setters, 
 % and to provide insight into how to name certain methods and classes.
 and to give alternatives for how to name certain methods and classes.
 
 % I would also like to thank my friends who have supported me throughout my studies at ETH Zurich,
-Apart from these tools, I would like to thank my friends for their support during my studies at ETH Zurich, 
+% Apart from these tools, I would like to thank my friends for their support during my studies at ETH Zurich, 
+Apart from these tools, I would like to thank my friends and colleagues for their support during my studies at ETH Zurich,
 especially Pascal Strebel, who has been a great friend all throughout my ETH journey.
 I hope that we will continue to be friends for many years to come and that we will continue to support each other, no matter where life takes us.
+I would also like to thank my girlfriend Ebruli for taking my mind off of my studies when I needed it the most and
+for brightening my days. 
+Her baked goodies always kept my spirits high.
 
-I would like to thank my family for their unwavering support and encouragement.
+% I would like to thank my family for their unwavering support and encouragement.
+Special thanks to my family for their unwavering support and having my back.
 I know that I did not always have time for them during my studies, 
 but I hope that they know that I love them and that I am grateful for everything that they have done for me.
 
-And last but not least, I would like to thank you, the reader, for taking the time to read this thesis.
-I hope that you have found it interesting and that you have learned something new from it.

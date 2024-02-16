@@ -5,7 +5,7 @@
 % QNames are used all across Brel, which is why they are considered part of the core.
 % The following UML diagram shows the core of Brel.
 The foundation of Brel is built upon filings, facts, components, and QNames, where each component is encapsulated within one or more classes.
-At its core, every filing is comprised of numerous facts and components.
+At its core, every filing consists of numerous facts and components.
 QNames are extensively employed throughout Brel, highlighting their importance as a core element.
 The UML diagram provided below illustrates the core components of Brel.
 
@@ -36,7 +36,7 @@ It also ensures the rejection of any inputs that are not valid.
 % The order of the facts and components is not guaranteed.
 % Brel does provide helper methods for getting specific facts and components,
 % but their functionality can be easily implemented using the \texttt{get\_all\_facts} and \texttt{get\_all\_components} methods.
-Following this, the methods \texttt{Filing.get\_all\_facts} and \texttt{Filing.get\_all\_components} are available to retrieve all facts and components of a filing, respectively.
+Following this, the \texttt{Filing.get\_all\_facts} and \texttt{Filing.get\_all\_components} methods are available to retrieve all facts and components of a filing, respectively.
 These are returned as lists of \texttt{Fact} and \texttt{Component} objects, though the order of the facts and components is arbitrary.
 While Brel offers helper methods for accessing specific facts and components, the aforementioned methods can be used to achieve similar outcomes.
 
@@ -44,7 +44,7 @@ While Brel offers helper methods for accessing specific facts and components, th
 % These networks cannot be accessed indirectly through Components, 
 % which is why the \texttt{Filing} class also provides a method for getting all physical networks.
 % This method is aptly named \texttt{Filing.get\_all\_physical\_networks}.
-Moreover, there are certain networks, termed \texttt{physical networks}, which do not belong to any Component.
+Moreover, there are certain networks, termed \texttt{physical networks}, which do not belong to any component.
 Direct access to these networks through Components is not possible, 
 hence the \texttt{Filing} class provides a \texttt{Filing.get\_all\_physical\_networks} method for retrieving all physical networks.
 
@@ -53,7 +53,7 @@ hence the \texttt{Filing} class provides a \texttt{Filing.get\_all\_physical\_ne
 % The method \texttt{Filing.get\_all\_report\_elements} returns all report elements of the filing,
 % including both report elements that are referenced by facts or networks and those that are not.
 Additionally, the \texttt{Filing} class caters to report elements that are neither associated with any network nor fact.
-The \texttt{Filing.get\_all\_report\_elements} method returns all such report elements within a filing, 
+The \texttt{Filing.get\_all\_report\_elements} method returns all report elements within a filing, 
 % encompassing those linked to facts or networks and those without any association.
 including those not referenced by facts or networks.
 
@@ -90,7 +90,7 @@ The final segments will focus on the \texttt{Component} class and its associated
 \subsection{QName}
 \label{subsec:qname}
 
-The \texttt{QName} class signifies a qualified name, merging a namespace with a local name.  
+The \texttt{QName} class signifies a qualified name, merging a namespace binding with a local name.  
 This element is the singular link to XBRL's XML background found in the Brel API.  
 Its effectiveness in identifying elements across various namespaces led to its inclusion in the API.  
 
@@ -109,8 +109,12 @@ Therefore, the \texttt{QName} class provides methods to retrieve these component
 % In other terms, each fact occupies a position in a multi-dimensional space, where each characteristic represents a point along one dimension.
 The \texttt{Fact} class symbolizes a single XBRL fact, encapsulating a value along with various characteristics that give context to the value.
 The method \texttt{Fact.get\_value} returns the value as a string.
-Characteristics defining a fact are accessible through the \texttt{Fact.get\_context} method, which consists of a set of characteristics that describe the fact.
-Essentially, each fact is situated within a multi-dimensional space, with each characteristic pinpointing one dimension's coordinate.
+% Characteristics defining a fact are accessible through the \texttt{Fact.get\_context} method, which consists of a set of characteristics that describe the fact.
+% Essentially, each fact is situated within a multi-dimensional space, with each characteristic pinpointing one dimension's coordinate.
+As described in chapter /ref{chapter:xbrl}, facts possess characteristics such as a concept, a period, etc.
+All these characteristics are represented by the \texttt{Context} class, 
+which can be retrieved using the \texttt{Fact.get\_context} method.
+Essentially, each fact occupies a position in a multidimensional space, where each characteristic represents a point along one dimension.
 
 % One design decision that seems questionable at first is the \texttt{Fact.get\_value} method, which returns the value as a string.
 % Not all values in XBRL are strings.
@@ -121,7 +125,8 @@ Essentially, each fact is situated within a multi-dimensional space, with each c
 % since it is the most general representation of the value.
 At first glance, the choice to return fact values as strings via \texttt{Fact.get\_value} might raise questions, 
 given that XBRL values encompass a range of types, including integers, decimals, dates, etc.
-This approach stems from the understanding that facts possess a unit characteristic, which categorizes the value's type.
+This approach stems from the understanding that facts possess a unit characteristic, 
+which categorizes the value's type.
 Units in XBRL thus act as a contextual dimension for a fact.
 The string format for all values ensures a universal representation, considering strings can encapsulate any XBRL fact value.
 
@@ -140,26 +145,56 @@ These methods assess the fact's unit to convert the string value into a more sui
 % The \texttt{Context.get\_aspects} method returns a list of all aspects for which the context has a characteristic.
 % The \texttt{Context.get\_characteristic} method returns the characteristic of the context for a given aspect.
 % If the context does not have a characteristic for the given aspect, the method returns \texttt{None}.
-Contexts, as outlined in section \ref{subsec:fact}, constitute sets of attributes that describe what a fact represents.
-The \texttt{Context} class embodies an individual context, with each fact possessing a unique context, and every context being linked to a singular fact.
-\footnote{Although there may be multiple contexts with the same characteristics, they are treated as distinct entities.}
-Contexts offer two methods for characteristic retrieval.
-The \texttt{Context.get\_aspects} method yields a list of all aspects associated with characteristics within the context.
-For instance, most contexts in XBRL have the aspects entity, period, unit and concept.
+Contexts, as outlined in section \ref{chapter:xbrl}, describe what a fact represents.
+% For instance, for the fact "Foo Inc.'s net income for the year 2020 was 1000 USD",
+% the context would include the entity "Foo Inc.", the period "2020", the unit "USD", and the concept "net income".
+Take, for example, the fact "Foo Inc.'s net income for the year 2020 was 1000 USD"; \label{point:foo_net_income}
+its context would include "Foo Inc." as the entity, "2020" as the period, "USD" as the unit, and "net income" as the concept.
+
+When viewing all facts as a hypercube, the context of a fact represents the position of the fact within this hypercube.
+Contexts offer two methods - 
+one for obtaining all dimensions of the hypercube, and another for retrieving the position of the fact along a specific dimension.
+
+Brel describes contexts as a set of characteristics.
+Each characteristic is an aspect-value pair.
+In chapter \ref{chapter:xbrl}, we introduced the core aspects of XBRL, which are entity, period, unit, and concept.
+We also introduced user defined aspects, which are either explicit dimensions or typed dimensions.
+Aspects represent the dimensions of the hypercube, and their values represent the position of the fact along the dimension.
+
+% The \texttt{Context} class embodies an individual context, 
+% with a 1:1 relationship between facts and contexts.
+% \footnote{Although there may be multiple contexts with the same characteristics, they are treated as distinct entities.}
+% The class offers two methods - \texttt{Context.get\_aspects} and \texttt{Context.get\_characteristic}.
+% The former returns a list of all aspects for which the context has a characteristic.
+% The latter returns the characteristic of the context for a given aspect, or \texttt{None} if the context lacks a characteristic for the aspect.
+The \texttt{Context} class represents a single context,
+maintaining a one-to-one relationship with facts.
+\footnote{Despite potentially multiple contexts sharing identical characteristics, they are treated as separate entities.}
+This class provides two methods: \texttt{Context.get\_aspects} and \texttt{Context.get\_characteristic}.
+\texttt{Context.get\_aspects} yields a list of all aspects for which the context holds a characteristic.
+\texttt{Context.get\_characteristic} retrieves the context's characteristic for a specified aspect, or \texttt{None} if the aspect lacks a characteristic in the context.
+
+% Aspects are 
+% The \texttt{Context.get\_aspects} method yields a list of all aspects associated with characteristics within the context.
+% Aspects are the dimensions along which characteristics are positioned, and their API will be covered in section \ref{sec:characteristics}.
+% Most contexts in XBRL have the aspects entity, period, unit and concept.
 % The \texttt{Context.get\_characteristic} method returns the specific characteristic of the context for a designated aspect, returning \texttt{None} if the context lacks a characteristic for that aspect.
-Given an aspect, the \texttt{Context.get\_characteristic} method returns the corresponding characteristic.
-For example, the unit aspect of a context might return the characteristic "USD".
-The API of both Aspects and Characteristics will be covered in section \ref{sec:characteristics}.
+
+% Characteristics are a point along an aspect-dimension, and their API will be covered in section \ref{sec:characteristics}.
+% Given an aspect, the \texttt{Context.get\_characteristic} method returns the corresponding characteristic.
+% For example, the unit aspect of a context might return the characteristic "USD".
+% The API of both Aspects and Characteristics will be covered in section \ref{sec:characteristics}.
 
 % To reiterate, a characteristic represents a point along a dimension single dimension.
 % Multiple characteristics can be combined to form a point in a multi-dimensional space.
-To elaborate, a characteristic denotes a coordinate along a singular dimension, 
-and aggregating multiple characteristics constructs a coordinate within a multi-dimensional framework.
+% To elaborate, a characteristic denotes a coordinate along a singular dimension, 
+% and aggregating multiple characteristics constructs a coordinate within a multi-dimensional framework.
 
-One such point might be "Foo Inc.'s net income for the year 2020 in USD".\label{point:foo_net_income}
-Another point might be "Bar Corp.'s net income for the year 2021 in CHF".
-Each represents a position within a four-dimensional hypercube
-\footnote{The dimensions in these instances are entity, period, unit, and concept.}.
+% To elaborate, a context describes a point in a multi-dimensional space, with each characteristic representing a coordinate along a singular dimension.
+% One such point might be "Foo Inc.'s net income for the year 2020 in USD".\label{point:foo_net_income}
+% Another point might be "Bar Corp.'s net income for the year 2021 in CHF".
+% Each represents a position within a four-dimensional hypercube
+% \footnote{The dimensions in these instances are entity, period, unit, and concept.}.
 % Both points point to values in a four-dimensional hypercube.
 % \footnote{In these examples, the four dimensions are entity, period, unit and concept.}
 
@@ -189,7 +224,8 @@ Referring back to the example in \ref{point:foo_net_income}, the "net income" co
 % Given the variety of report elements, the \texttt{IReportElement} interface includes a method to ascertain the type of the report element.
 % A more detailed discussion on report elements is scheduled in section \ref{sec:report_elements}, to be addressed later in this chapter.
 Given the diversity of report elements, the \texttt{IReportElement} interface includes a method for getting the type of the report element.
-A more detailed discussion on report elements is scheduled in section \ref{sec:api_report_elements}, to be addressed later in this chapter.
+A more detailed discussion on report elements is scheduled in section \ref{sec:api_report_elements} later in this chapter.
+% to be addressed later in this chapter.
 
 \subsection{Component}
 
@@ -202,6 +238,7 @@ A more detailed discussion on report elements is scheduled in section \ref{sec:a
 % Additionally, a component can have an optional human-readable description of what the component represents.
 Transitioning to the \texttt{Component} class, as illustrated on the opposite end of figure \ref{fig:brel_core_classes}, 
 it symbolizes the chapters within a filing and represents a structure not covered by the OIM.
+Components are what XBRL refers to as "roleTypes" in the XBRL XML syntax.
 
 Each component is characterized by a series of networks and an identifier.
 Components can contain no more than one network of each type.
@@ -211,17 +248,18 @@ A component may also feature an optional, human-readable description elucidating
 % The \texttt{Component.get\_calculation\_network}, \texttt{Component.get\_presentation\_network} and \texttt{Component.get\_definition\_network} methods
 % return the calculation, presentation and definition network of the component, respectively.
 % Each of these methods can return \texttt{None}, if the component does not have a network of the requested type.
-The methods \texttt{Component.get\_calculation\_network}, \texttt{Component.get\_presentation\_network}, 
-and \texttt{Component.get\_definition\_network} respectively retrieve the component's calculation, presentation, and definition networks.
-Each method may return \texttt{None} if the component lacks a network of the specified type.
-
+% The methods \texttt{Component.get\_calculation\_network}, \texttt{Component.get\_presentation\_network}, 
+% and \texttt{Component.get\_definition\_network} respectively retrieve the component's calculation, presentation, and definition networks.
+% The \texttt{Component} class provides the methods \texttt{Component.get\_calculation\_network}, \texttt{Component.get\_presentation\_network},
+% and \texttt{Component.get\_definition\_network} to retrieve the component's calculation, presentation, and definition networks, respectively.
+% Each method may return \texttt{None} if the component lacks a network of the specified type.
+The class offers three methods to retrieve the component's calculation, presentation, and definition networks,
+aptly named \texttt{Component.get\_calculation\_network}, \texttt{Component.get\_presentation\_network}, and \texttt{Component.get\_definition\_network}.
 % The \texttt{Component.get\_uri} method returns the identifier of the component,
 % which is a URI that uniquely identifies the component within the filing.
-
 % The \texttt{Component.get\_info} method returns the human-readable description of the component, if it exists.
 % If the component does not have a description, the method returns an empty string.
 The \texttt{Component.get\_uri} method yields the component's identifier, a URI that distinctively identifies the component within the filing.
-
 Moreover, \texttt{Component.get\_info} delivers the component's human-readable description when available, or an empty string if absent.
 
 % The networks that are part of a component are represented by the \texttt{Network} class.

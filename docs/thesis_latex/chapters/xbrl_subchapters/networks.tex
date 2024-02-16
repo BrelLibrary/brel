@@ -24,7 +24,7 @@ Moreover, the \texttt{Assets} concept is subdividable into \texttt{Current Asset
 Such relationships can be depicted through a directed graph, as illustrated in figure \ref{fig:example_visualization_network_xbrl}.
 
 \begin{figure}[H]
-    \caption{Example of a relations between concepts in XBRL}
+    \caption{Example of relations between concepts in XBRL}
     \label{fig:example_visualization_network_xbrl}
     \dirtree{%
         .1 Balance Sheet.
@@ -66,7 +66,7 @@ XBRL groups multiple links into entities known as \texttt{linkbases}.
 
 \subsection{Types of Networks}
 
-The XBRL 2.1 specification defines six built in types of networks\cite{xbrl21_terminology}\footnote{The XBRL 2.1 specification is inconsistent about \texttt{link:footNotelink}. Section 1.4 does not list it as a standard extended link, section 3.5.2.4 does. I will assume that it is a standard extended link.}:
+The XBRL 2.1 specification defines six built in types of networks\cite{xbrl21_terminology}\footnote{The XBRL 2.1 specification is inconsistent about \texttt{link:footnoteLink}. Section 1.4 does not list it as a standard extended link, section 3.5.2.4 does. I will assume that it is a standard extended link.}:
 
 \begin{itemize}
     % \item \texttt{link:presentationLink}: A network that represents the hierarchy of concepts in a report. 
@@ -104,8 +104,7 @@ XBRL does permit both directed and undirected cycles within networks.
 Yet, networks within XBRL predominantly take the form of directed acyclic graphs (DAGs).
 
 Although labels will receive a more thorough examination in Section \ref{sec:labelLink}, they will be used throughout this chapter for the sake of readability.
-Labels assign human-readable descriptions to report elements.
-For instance, the concept \texttt{us-gaap:CurrentAssets} may be labeled as "Current Assets" in English.
+Labels assign human-readable descriptions to report elements. For instance, \texttt{us-gaap:CurrentAssets} may be labeled as "Current Assets" in English.
 The following sections will delve into the conceptual implementation of networks within XBRL.
 
 % This approach is adopted to enhance the readability of the chapter.
@@ -149,7 +148,7 @@ the presentationLink network would manifest as the following list of edges:
 % Going back to the example in figure \ref{fig:example_visualization_network_xbrl_edge_list}, 
 % the first arc \texttt{Balance Sheet -> Assets} would be represented as follows in XML syntax:
 In Figure \ref{fig:example_visualization_network_xbrl_edge_list}, every arc is denoted by a \texttt{link:presentationArc} element within XBRL.
-PresentationLinks, in addition to presentationArcs, include "locators" (\texttt{link:loc}) indicating network nodes.
+PresentationLinks, in addition to presentationArcs, include "locators" indicating network nodes.
 For presentation networks, locators point to XBRL taxonomy concepts.
 % Locators in other networks may refer to different elements, like facts.
 Referring to the example in Figure \ref{fig:example_visualization_network_xbrl_edge_list},
@@ -209,7 +208,7 @@ The breakdown of the XML snippet \ref{fig:example_presentation_arc_xml} is as fo
 
 \begin{itemize}
     \item \textbf{Type}: The attribute \texttt{xlink:type} defines the roles of locators and the arc, labeling locators as \texttt{locator} and the arc as \texttt{arc}.
-    \item \textbf{Connecting nodes to edges}: Each locator has an \texttt{xlink:label} attribute for identification, while the arc uses \texttt{xlink:from} and \texttt{xlink:to} attributes to connect the locators.
+    \item \textbf{Connecting nodes to edges}: Each locator has a \texttt{xlink:label} attribute for identification, while the arc uses \texttt{xlink:from} and \texttt{xlink:to} attributes to connect the locators.
     \item \textbf{Ordering edges}: The \texttt{order} attribute on the arc dictates the sequence of outgoing edges from a node.
     \item \textbf{Arcrole}: The arc's \texttt{xlink:arcrole} attribute clarifies the relationship between the arc's source and target, set to \texttt{parent-child} for presentationLinks.
 \end{itemize}
@@ -602,14 +601,14 @@ with hypercubes, discussed further in Section \ref{sec:hypercubes}, relying heav
 The \texttt{link:labelLink} network serves to connect report elements with labels that are readable and understandable by humans.
 Instead of presenting users with the QName of report elements, applications like Arelle display human-readable labels.
 
-For example, in the Coca Cola Company's condensed consolidated statement of income for Q2 2019,
+For example, in the Coca-Cola Company's condensed consolidated statement of income for Q2 2019\cite{ko2019q2},
 the concept identified as \texttt{us-gaap:Revenues} is shown in Arelle as "Net Operating Revenues",
 thanks to the \texttt{link:labelLink} network included in the XBRL report.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{images/coca_cola_2019_q2.png}
-    \caption{Statement of income of the Coca Cola Company of Q2 2019}
+    \caption{Statement of income of the Coca-Cola Company of Q2 2019}
     \label{fig:coca_cola_2019_q2}
 \end{figure}
 
@@ -679,12 +678,13 @@ Label elements contain several pieces of information:
 
 For the "Net Operating Revenues" label depicted in figure \ref{fig:coca_cola_2019_q2}, 
 % an XML segment corresponding to the above elements would be structured to represent this label accurately.
-the following XML snippet illustrates how the label is represented:
+% the following XML snippet illustrates how the label is represented:
+The following XML snippet illustrates how Coca Cola\cite{ko2019q2} chooses to represent the label:
 
 \begin{figure}[H]
     \begin{lstlisting}[language=XML, basicstyle=\ttfamily\small]
 <link:label 
-    id="1234" 
+    id="[...]" 
     xlink:label="lab_us-gaap_Revenues" 
     xlink:role="http://www.xbrl.org/2003/role/terseLabel" 
     xlink:type="resource" 
@@ -704,10 +704,14 @@ The label in figure \ref{fig:example_label_xml} has the role \texttt{http://www.
 % This role is used to indicate that the label text is short and concise.
 which signifies that the label text is brief and succinct.
 % XBRL defines a few other roles of which the most important ones are:
-XBRL defines several other roles, with the most significant ones including:
+% XBRL defines several other roles, with the most significant ones including:
+The XBRL 2.1 specification/cite{xbrl21} outlines various roles, with the most notable ones including:
 
 \begin{figure}[H]
+    \small
+    \centering
     \begin{tabular}{|l|l|}
+        % make text scriptsize
         \hline
         \textbf{Role} & \textbf{Description} \\ \hline
         \texttt{http://www.xbrl.org/2003/role/label} & The default label role. \\ \hline
@@ -753,7 +757,9 @@ While labels typically consist of text, references are structured as a dictionar
 % An XML syntax example would illustrate a reference, excluding the arc and locator for simplicity.  
 % The primary modifications in the arc for references would be the use of the tag \texttt{link:referenceArc} and the specification of the \texttt{xlink:arcrole} attribute as \texttt{concept-reference},  
 % highlighting its purpose to connect report elements directly with external definitions or documentation.
-Figure \ref{fig:example_reference_xml} presents an example of a reference in XML syntax, excluding the accompanying arc and locator for brevity.
+% Figure \ref{fig:example_reference_xml} presents an example of a reference in XML syntax, excluding the accompanying arc and locator for brevity.
+Figure \ref{fig:example_reference_xml} depicts how the SEC chooses to represent a reference in XML syntax in their EDC taxonomy\cite{sec_edc}.
+The accompanying arc and locator are omitted for brevity.
 
 \begin{figure}[H]
     \begin{lstlisting}[language=XML, basicstyle=\ttfamily\small]
