@@ -85,12 +85,12 @@ release:          ## Create a new tag for release.
 docs:             ## Build the documentation.
 	@echo "building documentation ..."
 	@$(ENV_PREFIX)pydoc-markdown
-	@$(ENV_PREFIX)mkdocs build -f docs/mkdocs.yml
+	@$(ENV_PREFIX)mkdocs build -f docs/mkdocs.yml -d ../site
 
 .PHONY: serve-docs
 serve-docs:       ## Serve the documentation.
 	make docs
-	@$(ENV_PREFIX)mkdocs gh-deploy -f docs/mkdocs.yml
+	@$(ENV_PREFIX)mkdocs gh-deploy -f docs/mkdocs.yml -d ../site
 
 .PHONY: init
 init:             ## Initialize the project based on an application template.
