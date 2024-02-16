@@ -44,8 +44,8 @@ pprint(calculation_network)
 ====================
 
 - author: Robin Schmidiger
-- version: 0.6
-- date: 07 January 2024
+- version: 0.7
+- date: 30 January 2024
 
 ====================
 
@@ -195,4 +195,16 @@ def is_aggregation_consistent(facts: list[Fact]) -> bool
 **Returns**:
 
 `bool`: True if and only if the component is aggregation consistent against the given facts
+
+<a id="brel.brel_component.Component.get_networks"></a>
+
+#### get\_networks
+
+```python
+def get_networks() -> list[INetwork]
+```
+
+**Returns**:
+
+`list[INetwork]`: the networks of the component
 

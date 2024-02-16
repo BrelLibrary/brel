@@ -120,7 +120,7 @@ def get_value_as_bool() -> bool
 #### get\_value
 
 ```python
-def get_value() -> Any
+def get_value() -> str
 ```
 
 **Returns**:

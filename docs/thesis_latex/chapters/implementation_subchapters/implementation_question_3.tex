@@ -62,5 +62,6 @@ Notably, both the JSON\cite{xbrl_json} and CSV\cite{xbrl_csv} specifications of 
 rendering the \texttt{QName} class format-neutral.
 
 Given the API's format-agnostic design, the aspect of Brel that relies on the XBRL XML syntax is exclusively the parser. 
-Brel's parser is encapsulated in a distinct module, named \texttt{brel.parser.XML}. 
+% Brel's parser is encapsulated in a distinct module, named \texttt{brel.parser.XML}. 
+The parser outlined in this chapter is encapsulated in a distinct module, named \texttt{brel.parser.XML}
 To support different formats, only this parser module needs modification, allowing the rest of Brel to remain as is.

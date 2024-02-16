@@ -14,8 +14,8 @@ For more on the methods inherited from the INetworkNode interface, see the [INet
 =================
 
 - author: Robin Schmidiger
-- version: 0.8
-- date: 29 December 2023
+- version: 0.9
+- date: 30 December 2023
 
 =================
 

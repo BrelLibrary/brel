@@ -38,7 +38,7 @@ Once a filing is loaded, it can be queried for its facts, report elements, netwo
 
 - author: Robin Schmidiger
 - version: 0.5
-- date: 18 January 2024
+- date: 29 January 2024
 
 ====================
 
@@ -136,6 +136,18 @@ Get all [`INetwork`](../components/networks.md) objects in the filing, where net
 **Returns**:
 
 `list[INetwork]`: a list of all physical networks in the filing.
+
+<a id="brel.brel_filing.Filing.get_errors"></a>
+
+#### get\_errors
+
+```python
+def get_errors() -> list[Exception]
+```
+
+**Returns**:
+
+`list[Exception]`: a list of all errors that occurred during parsing.
 
 <a id="brel.brel_filing.Filing.get_all_concepts"></a>
 
