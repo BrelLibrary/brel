@@ -43,7 +43,6 @@ Once a filing is loaded, it can be queried for its facts, report elements, netwo
 
 import os
 import zipfile
-import requests
 from typing import Callable, TypeGuard, cast
 
 from brel import Component, Fact, FilingFilter, QName
