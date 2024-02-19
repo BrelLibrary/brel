@@ -25,7 +25,6 @@ from brel.parsers.utils import get_all_nsmaps
 from brel.parsers.XML import (
     check_duplicate_arcs,
     check_duplicate_rolerefs,
-    check_roleref_pointers,
     normalize_nsmap,
     parse_components_xml,
     parse_facts_xml,
@@ -72,7 +71,6 @@ class XMLFilingParser(IFilingParser):
         self.__nsmap = self.__create_nsmap()
 
         check_duplicate_rolerefs(self.__file_manager, self.__nsmap)
-        check_roleref_pointers(self.__file_manager, self.__nsmap)
         check_duplicate_arcs(self.__file_manager, self.__nsmap)
 
         if DEBUG:  # pragma: no cover

@@ -2,9 +2,13 @@
 This module contains the function to parse the report elements from the xbrl instance.
 It parses XBRL in the XML syntax.
 
-@author: Robin Schmidiger
-@version: 0.5
-@date: 05 February 2024
+====================
+
+- author: Robin Schmidiger
+- version: 0.5
+- date: 05 February 2024
+
+====================
 """
 
 import lxml.etree

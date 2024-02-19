@@ -1,9 +1,13 @@
 """
 Contains the interface for a file manager
 
-@author: Robin Schmidiger
-@version: 0.2
-@date: 19 December 2023
+====================
+
+- author: Robin Schmidiger
+- version: 0.2
+- date: 19 December 2023
+
+====================
 """
 
 from abc import ABC, abstractmethod

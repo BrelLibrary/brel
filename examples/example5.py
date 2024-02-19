@@ -1,6 +1,5 @@
 from brel import Filing
 from brel.utils import pprint
-from random import sample
 
 
 def edit_distance(s1, s2):

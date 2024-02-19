@@ -56,7 +56,6 @@ class XMLFileManager(IFileManager):
 
         self.__filenames: list[str] = []
         self.__file_cache: dict[str, lxml.etree._ElementTree] = {}
-        self.__file_prefixes: dict[str, list[str]] = defaultdict(list)
         self.__session = requests.Session()
 
         # populate the cache
@@ -68,70 +67,52 @@ class XMLFileManager(IFileManager):
         if DEBUG:  # pragma: no cover
             print(f"filenames: {self.__filenames}")
 
-    def uri_to_filename(self, url: str) -> str:
+    def uri_to_filename(self, uri: str) -> str:
         """
-        Convert a url to a filename.
-        :param url: The url to convert.
-        :returns: The filename.
+        Converts a uri to a filename.
+        The filename is unique as long as the uri is unique.
+        :param uri: the uri to convert
+        :returns str: the filename
         """
 
-        def get_version_from_url(url: str) -> str | None:
-            """
-            Given an URL, this function tries to extract the version from the URL.
-            It splits the URL by "/" and iterates over the sections backwards.
-            It removes all non-numeric characters from the sections and returns the first numeric section.
-
-            :param url: str containing the URL
-            :returns: str containing the version
-            """
-
-            version = ""
-            sections = url.split("/")
-            for section in sections:
-                section = re.sub(r"[^0-9]", "", section)
-                if section.isnumeric():
-                    version = section
-
-            return version
-
-        def get_prefix_from_url(url: str):
-            """
-            Given an URL, this function tries to extract the prefix from the URL.
-            It splits the URL by "/" and iterates over the sections backwards.
-            It removes all non-alphabetic characters from the sections and returns the first alphabetic section.
-            :param url: str containing the URL
-            :returns: str containing the prefix
-            """
-            prefix = ""
-            sections = url.split("/")
-            for section in sections:
-                section = re.sub(r"[^a-zA-Z]", "", section)
-                section = section.replace("xsd", "")
-                section = section.replace("xml", "")
-
-                if len(section) > 0 and "www" not in section:
-                    prefix = section
-
-            return prefix
-
-        prefix = get_prefix_from_url(url)
-        version = get_version_from_url(url)
-
-        if url.endswith(".xsd"):
-            file_format = "xsd"
-        elif url.endswith(".xml"):
-            file_format = "xml"
-        else:
+        # the should be an absolute uri
+        # the file name should be readable, but also unique
+        # taking the whole uri is not a good idea, because it is too long
+        # taking only the last part is not a good idea, because it is not guaranteed to be unique
+        file_format = uri.split(".")[-1]
+        supported_formats = ["xml", "xsd"]
+        if file_format not in supported_formats:
             raise ValueError(
-                f"url: {url} is not a valid schema url. It must end with .xsd or .xml"
+                f"File format {file_format} not supported. Supported formats are {supported_formats}."
             )
 
-        if version is not None:
-            filename = f"{prefix}_{version}.{file_format}"
-        else:
-            filename = f"{prefix}.{file_format}"
+        if not uri.startswith("http"):
+            if "/" in uri:
+                return uri.split("/")[-1]
+            else:
+                return uri
 
-        return filename
+        uri = uri.replace("." + file_format, "")
+
+        if "http" in uri:
+            # remove http and https
+            uri = uri.replace("http://", "")
+            uri = uri.replace("https://", "")
+
+            # replace www. and things like .com, .org, etc.
+            uri = uri.replace("www.", "")
+            # the .com is between the first . and the first /
+            # uri = uri.split(".")[0] + uri.split("/")[1]
+        # replace all / with _
+        uri = uri.replace("/", "_")
+        # replace all : with _
+        uri = uri.replace(":", "_")
+        # replace all ? with _
+        uri = uri.replace("?", "_")
+        # replace all . with _
+        uri = uri.replace(".", "_")
+
+        return uri + "." + file_format
 
     def get_file(self, schema_uri: str) -> lxml.etree._ElementTree:
         """
@@ -165,7 +146,7 @@ class XMLFileManager(IFileManager):
     def get_file_names(self) -> list[str]:
         """
         Returns all the schema names in the dts
-        @return: A list of str containing the schema names in the dts
+        :returns list: All the schema names and instance names in the dts and instance files
         """
         return self.__filenames
 
@@ -214,24 +195,25 @@ class XMLFileManager(IFileManager):
         :param referencing_schema_url: The url of the schema that is referencing the schema to download.
         """
 
+        is_uri_remote = uri.startswith("http") or referencing_uri.startswith("http")
+
+        # if the uri is local and the referencing uri is remote, then build the absolute uri from the two
+        if referencing_uri.startswith("http") and not uri.startswith("http"):
+            uri_directory = os.path.dirname(referencing_uri)
+            uri = os.path.join(uri_directory, uri)
+
         file_name = self.uri_to_filename(uri)
 
         # check if the schema is already in the cache
-        # TODO: add a collision check if two unrelated schemas have the same filename
         if file_name in self.__filenames:
             return
 
-        is_uri_remote = uri.startswith("http") or referencing_uri.startswith("http")
         is_cached = file_name in os.listdir(self.cache_location)
 
         if DEBUG:  # pragma: no cover
             print(
                 f"[File Manager] uri: {uri}, file_name: {file_name}, is_cached: {is_cached}, is_uri_remote: {is_uri_remote}, referencing_uri: {referencing_uri}"
             )
-
-        if is_uri_remote and not uri.startswith("http"):
-            uri_directory = os.path.dirname(referencing_uri)
-            uri = os.path.join(uri_directory, uri)
 
         if is_cached:
             # load the schema from the cache

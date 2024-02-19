@@ -6,5 +6,4 @@ from .xml_report_element_parser import parse_report_elements_xml
 from .xml_sanity_checks import (
     check_duplicate_arcs,
     check_duplicate_rolerefs,
-    check_roleref_pointers,
 )

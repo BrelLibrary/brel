@@ -9,5 +9,7 @@ from .xml_label_network_factory import LabelNetworkFactory
 from .xml_presentation_network_factory import PresentationNetworkFactory
 from .xml_reference_network_factory import ReferenceNetworkFactory
 
+from .xml_resource_parser import parse_xml_resource
+
 from .xml_extended_link_parser import parse_xml_link
 from .xml_networks_parser import parse_networks_from_xmls

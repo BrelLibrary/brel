@@ -4,9 +4,9 @@ It parses XBRL in the XML syntax.
 
 ====================
 
-@author: Robin Schmidiger
-@version: 0.8
-@date: 05 February 2024
+- author: Robin Schmidiger
+- version: 0.8
+- date: 05 February 2024
 
 ====================
 """

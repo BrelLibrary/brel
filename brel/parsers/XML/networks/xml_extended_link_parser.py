@@ -12,11 +12,10 @@ https://www.xbrl.org/specification/gnl/rec-2009-06-22/gnl-rec-2009-06-22.html
 ====================
 """
 
-
 import itertools
 import time
 from collections import defaultdict
-from typing import Any, cast, Mapping, Iterable, Tuple, Callable
+from typing import Any, cast, Mapping, Iterable
 
 import lxml.etree
 
@@ -31,6 +30,7 @@ from brel.parsers.XML.networks import (
     PhysicalDefinitionNetworkFactory,
     PresentationNetworkFactory,
     ReferenceNetworkFactory,
+    parse_xml_resource,
 )
 from brel.parsers.utils import get_str
 from brel.reportelements import *
@@ -78,23 +78,7 @@ def get_object_from_reference(
         to_element = id_to_any.get(elem_id)
 
     elif referenced_element_type == "resource":
-        # if the referenced element is a resource, create a new resource
-        if referenced_element.tag == f"{{{nsmap['link']}}}label":
-            to_element = cast(
-                IResource, BrelLabel.from_xml(referenced_element, qname_nsmap)
-            )
-        elif referenced_element.tag == f"{{{nsmap['link']}}}reference":
-            to_element = cast(
-                IResource, BrelReference.from_xml(referenced_element, qname_nsmap)
-            )
-        elif referenced_element.tag == f"{{{nsmap['link']}}}footnote":
-            to_element = cast(
-                IResource, BrelFootnote.from_xml(referenced_element, qname_nsmap)
-            )
-        else:
-            raise NotImplementedError(
-                f"the referenced element {referenced_element.tag} is not supported"
-            )
+        to_element = parse_xml_resource(referenced_element, qname_nsmap.get_nsmap())
     else:
         raise NotImplementedError(
             f"the referenced element type {referenced_element_type} is not supported"

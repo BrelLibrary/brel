@@ -22,7 +22,7 @@ filing2 = Filing.open("my_folder/")
 
 filing3 = Filing.open("my_file.xml", "my_file2.xml")
 
-# get the facts reporting agains us-gaap:Assets
+# get the facts reporting against us-gaap:Assets
 assets_facts = filing1.get_facts_by_concept_name("us-gaap:Assets")
 pprint_facts(assets_facts)
 

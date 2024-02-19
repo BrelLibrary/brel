@@ -7,9 +7,13 @@ It includes the following checks:
 - check for duplicate rolerefs in linkbases and the instance document
 - check if all rolerefs point to a existing role
 
-@author: Robin Schmidiger
-@version: 0.15
-@date: 04 January 2024
+====================
+
+- author: Robin Schmidiger
+- version: 0.15
+- date: 04 January 2024
+
+====================
 """
 
 from typing import TypeGuard
@@ -71,45 +75,6 @@ def check_duplicate_rolerefs(
             )
 
 
-def check_roleref_pointers(
-    file_manager: XMLFileManager,
-    qname_nsmap: QNameNSMap,
-) -> None:
-    """
-    Checks if all rolerefs point to a role that actually exists.
-    :param file_manager: the file manager that contains the instance document and all linkbases
-    :param qname_nsmap: the QNameNSMap
-    :return: None
-    :raises ValueError: if the pointer leads to a non-existent role.
-    """
-
-    nsmap = qname_nsmap.get_nsmap()
-    xml_trees = file_manager.get_all_files()
-    role_refs: list[lxml.etree._Element] = []
-    for etree in xml_trees:
-        role_refs += etree.findall(".//link:roleRef", namespaces=nsmap)
-
-    for role_ref in role_refs:
-        href = role_ref.get(f"{{{nsmap['xlink']}}}href")
-        if href is None:
-            raise ValueError(
-                f"the roleref {role_ref} does not have a href attribute"
-            )
-
-        if "#" in href:
-            filename, id = href.split("#")
-            etree = file_manager.get_file(filename)
-        else:
-            etree = role_ref.getroottree()
-            id = href
-
-        role = etree.getroot().find(f".//*[@id='{id}']", namespaces=nsmap)
-        if role is None:
-            raise ValueError(
-                f"the roleref {role_ref} points to a non-existent role {href}"
-            )
-
-
 def check_duplicate_arcs(
     file_manager: XMLFileManager,
     qname_nsmap: QNameNSMap,
@@ -139,9 +104,7 @@ def check_duplicate_arcs(
     # for each link, get all arcs and check if there are duplicates
     for extended_link in extended_links:
         arcs = extended_link.findall(".//link:arc", namespaces=nsmap)
-        arc_from_to = list(
-            map(lambda arc: (arc.get("from"), arc.get("to")), arcs)
-        )
+        arc_from_to = list(map(lambda arc: (arc.get("from"), arc.get("to")), arcs))
         if len(arc_from_to) != len(set(arc_from_to)):
             raise ValueError(
                 f"the link {extended_link} has duplicate arcs. All arcs must have a unique from and to attribute."
