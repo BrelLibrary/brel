@@ -10,6 +10,7 @@ It does not parse the networks, but it links components to networks.
 
 =================
 """
+
 from typing import Callable, Mapping, Iterable, Tuple
 
 import lxml
@@ -24,9 +25,6 @@ from brel.networks import (
 )
 from brel.reportelements import IReportElement
 from brel.parsers.utils import get_str
-
-# TODO: remove
-from brel.utils import pprint_network
 
 
 def parse_component_from_xml(

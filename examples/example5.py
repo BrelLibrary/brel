@@ -36,9 +36,9 @@ def get_closest_match(target: str, candidates: list[str]) -> str:
     """
     Finds and returns the candidate with the smallest edit distance to the target
     Note: this function is case insensitive. For the candidates, only the last part of the URI is used.
-    @param target: str containing the target string
-    @param candidates: list[str] containing the candidates
-    @return: str containing the candidate with the smallest edit distance to the target
+    :param target: str containing the target string
+    :param candidates: list[str] containing the candidates
+    :returns str: the candidate with the smallest edit distance to the target
     """
     return min(
         candidates,

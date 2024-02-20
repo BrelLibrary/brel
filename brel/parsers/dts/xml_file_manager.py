@@ -260,7 +260,7 @@ class XMLFileManager(IFileManager):
 
         reference_uris: set[str] = set()
         # find all hrefs in the file
-        # TODO: make namespace non-hardcoded
+        # TODO: maybe make namespace non-hardcoded
         for href_elem in xsd_tree.findall(
             ".//*[@xlink:href]", namespaces={"xlink": "http://www.w3.org/1999/xlink"}
         ):

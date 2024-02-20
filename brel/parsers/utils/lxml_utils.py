@@ -1,12 +1,10 @@
-from typing import cast
+from typing import cast, Mapping
 
 import lxml
 import lxml.etree
 
 
-def compute_connected_components(
-    edges: list[tuple[str, str]]
-) -> list[list[str]]:
+def compute_connected_components(edges: list[tuple[str, str]]) -> list[list[str]]:
     """
     Given a list of edges, compute the connected components.
     @param edges: The edges. These are tuples of the form (node1, node2).
@@ -40,6 +38,18 @@ def compute_connected_components(
     return connected_components
 
 
+def get_clark(prefix: str, local_name: str, prefix_to_url: Mapping[str, str]) -> str:
+    """
+    Given a prefix, a local name and a prefix to URL mapping, return the clark notation.
+    :param prefix: The prefix.
+    :param local_name: The local name.
+    :param prefix_to_url: The prefix to URL mapping.
+    :returns str: The clark notation.
+    """
+    url = prefix_to_url[prefix]
+    return f"{{{url}}}{local_name}"
+
+
 def get_str(
     element: lxml.etree._Element, attribute: str, default: str | None = None
 ) -> str:
@@ -57,13 +67,9 @@ def get_str(
         if default is not None:
             return default
 
-        raise ValueError(
-            f"{attribute} attribute not found on element {element}"
-        )
+        raise ValueError(f"{attribute} attribute not found on element {element}")
     if not isinstance(value, str):
-        raise TypeError(
-            f"{attribute} attribute on element {element} is not a string"
-        )
+        raise TypeError(f"{attribute} attribute on element {element} is not a string")
     return value
 
 

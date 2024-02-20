@@ -12,7 +12,6 @@ https://www.xbrl.org/specification/gnl/rec-2009-06-22/gnl-rec-2009-06-22.html
 ====================
 """
 
-
 import itertools
 import time
 from collections import defaultdict
@@ -235,7 +234,6 @@ def parse_xml_link(
             elif element_type == None:
                 continue
             else:
-                # TODO: add support for other types of elements in links.
                 raise NotImplementedError(
                     f"type='{element_type}' link elements not supported. Use type='resource', type='locator' or type='arc'"
                 )

@@ -37,10 +37,9 @@ class LabelNetworkFactory(IXMLNetworkFactory):
     def create_network(
         self, xml_link_element: lxml.etree._Element, roots: list[INetworkNode]
     ) -> INetwork:
-        nsmap = self.get_qname_nsmap().get_nsmap()
 
-        link_role = get_str(xml_link_element, f"{{{nsmap['xlink']}}}role")
-        link_qname = QName.from_string(xml_link_element.tag, self.get_qname_nsmap())
+        link_role = get_str(xml_link_element, self._clark("xlink", "role"))
+        link_qname = self._make_qname(xml_link_element.tag)
 
         if len(roots) == 0:
             raise ValueError("roots must not be empty")
@@ -58,29 +57,28 @@ class LabelNetworkFactory(IXMLNetworkFactory):
         xml_arc: lxml.etree._Element | None,
         points_to: IReportElement | IResource | Fact,
     ) -> INetworkNode:
-        nsmap = self.get_qname_nsmap().get_nsmap()
 
-        label = get_str(xml_referenced_element, f"{{{nsmap['xlink']}}}label")
+        label = get_str(xml_referenced_element, self._clark("xlink", "label"))
 
         if xml_arc is None:
             # the node is not connected to any other node
             arc_role = "unknown"
-            arc_qname = QName.from_string("link:unknown", self.get_qname_nsmap())
-        elif xml_arc.get(f"{{{nsmap['xlink']}}}from", None) == label:
+            arc_qname = self._make_qname("link:unknown")
+        elif get_str(xml_arc, self._clarl("xlink", "from"), None) == label:
             # the node is a root
-            arc_role = get_str(xml_arc, f"{{{nsmap['xlink']}}}arcrole")
-            arc_qname = QName.from_string(xml_arc.tag, self.get_qname_nsmap())
-        elif xml_arc.get(f"{{{nsmap['xlink']}}}to", None) == label:
+            arc_role = get_str(xml_arc, self._clark)
+            arc_qname = self._make_qname(xml_arc.tag)
+        elif get_str(xml_arc, self._clark("xlink", "to"), None) == label:
             # the node is an inner node
-            arc_role = get_str(xml_arc, f"{{{nsmap['xlink']}}}arcrole")
-            arc_qname = QName.from_string(xml_arc.tag, self.get_qname_nsmap())
+            arc_role = get_str(xml_arc, self._clark("xlink", "arcrole"))
+            arc_qname = self._make_qname(xml_arc.tag)
         else:
             raise ValueError(
                 f"referenced element {xml_referenced_element} is not connected to arc {xml_arc}"
             )
 
-        link_role = get_str(xml_link, f"{{{nsmap['xlink']}}}role")
-        link_name = QName.from_string(xml_link.tag, self.get_qname_nsmap())
+        link_role = get_str(xml_link, self._clark("xlink", "role"))
+        link_name = self._make_qname(xml_link.tag)
 
         if not isinstance(points_to, BrelLabel) and not isinstance(
             points_to, IReportElement

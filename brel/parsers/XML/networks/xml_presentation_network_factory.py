@@ -6,8 +6,8 @@ This module is used by the XML network parser to build presentation networks.
 ====================
 
 - author: Robin Schmidiger
-- version: 0.6
-- date: 30 January 2024
+- version: 0.7
+- date: 19 February 2024
 
 ====================
 """
@@ -25,7 +25,7 @@ from brel.networks import (
     PresentationNetworkNode,
 )
 from brel.reportelements import IReportElement
-from brel.parsers.utils import get_str
+from brel.parsers.utils import get_str, get_clark
 from brel.parsers.XML.networks import IXMLNetworkFactory
 from brel.resource import BrelLabel, IResource
 
@@ -37,16 +37,19 @@ class PresentationNetworkFactory(IXMLNetworkFactory):
     def create_network(
         self, xml_link_element: lxml.etree._Element, roots: list[INetworkNode]
     ) -> INetwork:
-        # TODO: turn this into a get_url)from_prefix and make_qname methods
-        nsmap = self.get_qname_nsmap().get_nsmap()
-
+        """
+        Create a PresentationNetwork from an XML link element and a list of roots.
+        :param xml_link_element: lxml.etree._Element containing the link element
+        :param roots: list[INetworkNode] containing the roots of the network
+        :returns PresentationNetwork: The PresentationNetwork
+        """
         if not all(isinstance(root, PresentationNetworkNode) for root in roots):
             raise TypeError("roots must be of type PresentationNetworkNode")
 
         roots_cast = cast(list[PresentationNetworkNode], roots)
 
-        link_role = get_str(xml_link_element, f"{{{nsmap['xlink']}}}role")
-        link_name = QName.from_string(xml_link_element.tag, self.get_qname_nsmap())
+        link_role = get_str(xml_link_element, self._clark("xlink", "role"))
+        link_name = self._make_qname(xml_link_element.tag)
 
         if link_role is None:
             raise ValueError("link_role must not be None")
@@ -60,45 +63,40 @@ class PresentationNetworkFactory(IXMLNetworkFactory):
         xml_arc: lxml.etree._Element | None,
         points_to: IReportElement | IResource | Fact,
     ) -> INetworkNode:
-        nsmap = self.get_qname_nsmap().get_nsmap()
+        """
+        Create a PresentationNetworkNode from an XML link, an XML referenced element, an XML arc, and a points_to object.
+        :param xml_link: lxml.etree._Element containing the link element
+        :param xml_referenced_element: lxml.etree._Element containing the referenced element
+        :param xml_arc: lxml.etree._Element containing the arc element
+        :param points_to: IReportElement | IResource | Fact containing the object that the node points to
+        :returns PresentationNetworkNode: The PresentationNetworkNode
+        """
 
-        # label = xml_referenced_element.attrib.get(f"{{{nsmap['xlink']}}}label", None)
-        label = get_str(xml_referenced_element, f"{{{nsmap['xlink']}}}label")
-        if label is None:
-            raise ValueError(
-                f"label attribute not found on referenced element {xml_referenced_element}"
-            )
+        label = get_str(xml_referenced_element, self._clark("xlink", "label"))
 
         if xml_arc is None:
             # the node is not connected to any other node
             preferred_label_role = None
             arc_role = "unknown"
             order: float = 1
-            arc_qname = QName.from_string("link:unknown", self.get_qname_nsmap())
-        elif xml_arc.get(f"{{{nsmap['xlink']}}}from", None) == label:
+            arc_qname = self._make_qname("link:unknown")
+        elif get_str(xml_arc, self._clark("xlink", "from"), None) == label:
             # the node is a root
             preferred_label_role = None
-            arc_role = get_str(xml_arc, f"{{{nsmap['xlink']}}}arcrole")
+            arc_role = get_str(xml_arc, self._clark("xlink", "arcrole"))
             order = 1
             arc_qname = QName.from_string(xml_arc.tag, self.get_qname_nsmap())
-        elif xml_arc.get(f"{{{nsmap['xlink']}}}to", None) == label:
+        elif get_str(xml_arc, self._clark("xlink", "to"), None) == label:
             # the node is an inner node
-            # preferred_label = xml_arc.attrib.get("preferredLabel")
             preferred_label = get_str(
                 xml_arc, "preferredLabel", BrelLabel.STANDARD_LABEL_ROLE
             )
-            if not isinstance(preferred_label, str) and preferred_label is not None:
-                raise TypeError(
-                    f"preferredLabel attribute on arc element {xml_arc} is not a string. It is {type(preferred_label)}"
-                )
 
             if preferred_label is None:
                 preferred_label_role = None
             else:
                 preferred_label_role = preferred_label
-            # arc_role = xml_arc.attrib.get("{" + nsmap["xlink"] + "}arcrole")
-            arc_role = get_str(xml_arc, f"{{{nsmap['xlink']}}}arcrole")
-            # order = float(xml_arc.attrib.get("order") or 1)
+            arc_role = get_str(xml_arc, self._clark("xlink", "arcrole"))
             order = float(get_str(xml_arc, "order", "1"))
             arc_qname = QName.from_string(xml_arc.tag, self.get_qname_nsmap())
         else:
@@ -106,21 +104,8 @@ class PresentationNetworkFactory(IXMLNetworkFactory):
                 f"referenced element {xml_referenced_element} is not connected to arc {xml_arc}"
             )
 
-        link_role = xml_link.attrib.get("{" + nsmap["xlink"] + "}role")
-        link_name = QName.from_string(xml_link.tag, self.get_qname_nsmap())
-
-        if arc_role is None:
-            raise ValueError(f"arcrole attribute not found on arc element {xml_arc}")
-        if not isinstance(arc_role, str):
-            raise TypeError(
-                f"arcrole attribute on arc element {xml_arc} is not a string"
-            )
-        if link_role is None:
-            raise ValueError(f"role attribute not found on link element {xml_link}")
-        if not isinstance(link_role, str):
-            raise TypeError(
-                f"role attribute on link element {xml_link} is not a string"
-            )
+        link_role = get_str(xml_link, self._clark("xlink", "role"))
+        link_name = self._make_qname(xml_link.tag)
 
         # check if 'points_to' is a ReportElement
         if not isinstance(points_to, IReportElement):

@@ -42,3 +42,22 @@ class IXMLNetworkFactory(ABC):
     @abstractmethod
     def is_physical(self) -> bool:
         raise NotImplementedError
+
+    # helper methods
+    def _clark(self, prefix: str, local_name: str) -> str:
+        """
+        Given a prefix, a local name, and a prefix to URL mapping, return the clark notation.
+        :param prefix: The prefix.
+        :param local_name: The local name.
+        :returns str: The clark notation.
+        """
+        url = self.__qname_nsmap.get_nsmap()[prefix]
+        return f"{{{url}}}{local_name}"
+
+    def _make_qname(self, qname_str: str) -> QName:
+        """
+        Given a string in clark notation, return a QName object.
+        :param qname_str: The clark notation.
+        :returns QName: The QName object.
+        """
+        return QName.from_string(qname_str, self.__qname_nsmap)

@@ -82,13 +82,7 @@ def parse_explicit_dimension_from_xml(
             f"Member {str(member_qname)} of dimension {str(dimension_qname)} not found in report elements"
         )
     if not isinstance(member, Member):
-        # TODO: Read further into this. Afaik hypercubes do not need to be fully dimensionally valid, so they can have concepts
         # read this: https://www.xbrl.org/WGN/dimensions-use/WGN-2015-03-25/dimensions-use-WGN-2015-03-25.html#sec-open-hypercubes
-        if isinstance(member, Concept):
-            raise NotImplementedError(
-                f"Member {str(member_qname)} of dimension {str(dimension_qname)} is a concept and not a member. This feature requires support for open hypercubes, which Brel currently does not support."
-            )
-
         raise ValueError(
             f"Member {str(member_qname)} of dimension {str(dimension_qname)} is a {type(member)} and not a member."
         )
