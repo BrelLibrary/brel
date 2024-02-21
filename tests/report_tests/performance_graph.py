@@ -70,7 +70,16 @@ def plot_performance_graph(df, save_path):
     # make the x axis log scale with base 2
     plt.xscale("log", base=2)
     # same for y axis
+    # write the ticks on the y axis as decimal numbers
     plt.yscale("log", base=2)
+    # get all y tick,s
+    plt.yticks(ticks=[1, 2, 4], labels=["1", "2", "4"])
+    yticks = plt.yticks()[0]
+    yticks = yticks[0:-1]
+    print(yticks)
+    # write the y ticks as powers of 2. write them as ints
+    # plt.yticks(yticks, [f"{2**x}" for x in yticks])
+    # plt.yticks(yticks, [f"{2**x:.0f}" for x in yticks])
 
     plt.title("Report loading time per number of facts")
     plt.xlabel("Number of facts in report")

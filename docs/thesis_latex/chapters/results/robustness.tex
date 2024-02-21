@@ -71,9 +71,12 @@ The focus on US companies is due to the SEC's requirement for all domestic compa
         Cisco & Abbott Laboratories & T-Mobile US \\
         Danaher & Intel & Intuit \\
         Comcast & Disney & Wells Fargo \\
-        Amgen & IBM & Caterpillar \\
-        ServiceNow & Qualcomm & Nike \\
-        Union Pacific & & \\
+        Verizon & Amgen & IBM \\
+        Caterpillar & ServiceNow & Qualcomm \\
+        Nike & Union Pacific & \\
+        % Amgen & IBM & Caterpillar \\
+        % ServiceNow & Qualcomm & Nike \\
+        % Union Pacific & & \\
         \hline
     \end{tabular}
     \caption{The 50 largest US companies by market capitalization at the time of writing}
@@ -154,7 +157,8 @@ These issues arose from reports where dimensions referenced concepts rather than
 While the XBRL specification technically permits dimensions to reference concepts, logically, 
 % employing line items rather than dimensions is deemed more appropriate for modeling dimensions that refer to concepts.
 a correct approach for modeling dimensions that reference concepts is to create a copy of the concept as a member. 
-Hence, Brel issues warnings for such reports.
+Therefore, this is a modeling error, and Brel issues warnings for such reports.
+% Hence, Brel issues warnings for such reports.
 
 The variation in the number of reports evaluated per company is attributed to limitations within the SEC's report retrieval API, 
 which lacks the functionality to filter reports by format. 

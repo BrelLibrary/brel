@@ -76,7 +76,7 @@ def parse_xml_resource(
             for child in xml_element:
                 text += lxml.etree.tostring(child, encoding="unicode")
         return BrelFootnote(text, label, lang, role)
-    elif "resource" in tag:
+    elif "reference" in tag:
         # the children of a resource form a dict
         # turn the xml children into a dict. strip the namespace from the tag
         content: dict = {}

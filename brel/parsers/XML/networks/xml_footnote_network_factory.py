@@ -68,7 +68,7 @@ class FootnoteNetworkFactory(IXMLNetworkFactory):
             arc_role: str = "unknown"
             order = 1.0
             arc_qname = self._make_qname("link:unknown")
-        elif get_str(xml_arc, self._clarl("xlink", "from"), None) == label:
+        elif get_str(xml_arc, self._clark("xlink", "from"), None) == label:
             # the node is a root
             arc_role = get_str(xml_arc, self._clark("xlink", "arcrole"))
             order = 1.0

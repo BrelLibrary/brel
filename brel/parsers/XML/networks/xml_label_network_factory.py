@@ -64,9 +64,9 @@ class LabelNetworkFactory(IXMLNetworkFactory):
             # the node is not connected to any other node
             arc_role = "unknown"
             arc_qname = self._make_qname("link:unknown")
-        elif get_str(xml_arc, self._clarl("xlink", "from"), None) == label:
+        elif get_str(xml_arc, self._clark("xlink", "from"), None) == label:
             # the node is a root
-            arc_role = get_str(xml_arc, self._clark)
+            arc_role = get_str(xml_arc, self._clark("xlink", "arcrole"))
             arc_qname = self._make_qname(xml_arc.tag)
         elif get_str(xml_arc, self._clark("xlink", "to"), None) == label:
             # the node is an inner node

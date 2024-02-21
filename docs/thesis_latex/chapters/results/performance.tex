@@ -5,7 +5,7 @@
 % This section will evaluate Brel's performance by measuring the time it takes to load and extract data from XBRL reports.
 % The performance of Brel is not part of the requirements set by this thesis.
 % However, it serves as an important metric for future versions of Brel to compare their performance against this initial version of Brel.
-Assessing Brel's performance is a key part of its evaluation.
+Assessing Brel's performance is one aspect of its evaluation.
 This section will gauge Brel's efficiency by timing the loading processes of XBRL reports.
 Although not a primary thesis requirement, this performance analysis
 provides a valuable benchmark for future Brel versions.
@@ -30,7 +30,7 @@ To assess Brel's performance, the same XBRL reports used in the robustness evalu
 We will compare the time required to load these reports in Brel
 with that of the XBRL viewer Arelle\cite{arelle}.
 Arelle, which is also written in Python,
-offers a reliable basis for comparison with Brel.
+offers a reliable basis for comparison with Brel, given its maturity and widespread use.
 To eliminate network latency, both Brel and Arelle will process only local files.
 Each tool will run eleven times on each report, with the average time of the last ten runs being recorded.
 This approach accounts for the caching of the DTSs by both tools,
@@ -45,6 +45,7 @@ Complete details of the machine are available on the Dell website\cite{dell_xps_
 
 \begin{table}[H]
     \centering
+    \small
     \begin{tabular}{|l|l|}
         \hline
         \textbf{Component} & \textbf{Specification} \\
@@ -77,6 +78,7 @@ Complete details of the machine are available on the Dell website\cite{dell_xps_
 The table \ref{tab:software-versions} shows the versions of the software used in the performance evaluation.
 
 \begin{table}[H]
+    \small
     \centering
     \begin{tabular}{|l|l|}
         \hline

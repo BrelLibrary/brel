@@ -207,7 +207,7 @@ class Component:
         """
         :returns list[INetwork]: the networks of the component
         """
-        networks = []
+        networks: list[INetwork] = []
         if self.__presentation_network is not None:
             networks.append(self.__presentation_network)
         if self.__calculation_network is not None:

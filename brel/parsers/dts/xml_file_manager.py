@@ -14,6 +14,7 @@ The XMLSchemaManager class is responsible for downloading and caching XBRL taxon
 DEBUG = False
 
 import os
+import urllib
 import re
 from collections import defaultdict
 from io import BytesIO
@@ -199,8 +200,7 @@ class XMLFileManager(IFileManager):
 
         # if the uri is local and the referencing uri is remote, then build the absolute uri from the two
         if referencing_uri.startswith("http") and not uri.startswith("http"):
-            uri_directory = os.path.dirname(referencing_uri)
-            uri = os.path.join(uri_directory, uri)
+            uri = urllib.parse.urljoin(referencing_uri, uri)
 
         file_name = self.uri_to_filename(uri)
 
@@ -281,7 +281,13 @@ class XMLFileManager(IFileManager):
                 reference_uris.add(href_uri)
 
         # find all schemaLocations in the file
-        for schemaLocation_elem in xsd_tree.xpath("//*[@schemaLocation]"):
+        schemaLocation_elems = xsd_tree.xpath("//*[@schemaLocation]")
+        if not isinstance(schemaLocation_elems, list):
+            raise ValueError(
+                f"schemaLocation_elems is not a list of lxml.etree._Element. It is a {type(schemaLocation_elems)}"
+            )
+
+        for schemaLocation_elem in schemaLocation_elems:
             if not isinstance(schemaLocation_elem, lxml.etree._Element):
                 continue
             # get the schemaLocation attribute

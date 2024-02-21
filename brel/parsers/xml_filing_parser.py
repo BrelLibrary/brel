@@ -57,8 +57,8 @@ class XMLFilingParser(IFilingParser):
 
         # Make cache_path work for windows, mac and linux
         # also make it hidden
-        # cache_path = os.path.join(os.path.expanduser("~"), ".brel", "dts_cache")
-        cache_path = os.path.join(os.getcwd(), "dts_cache")
+        cache_path = os.path.join(os.path.expanduser("~"), ".brel", "dts_cache")
+        # cache_path = os.path.join(os.getcwd(), "dts_cache")
 
         # load the DTS
         if DEBUG:  # pragma: no cover

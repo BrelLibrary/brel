@@ -114,6 +114,10 @@ In addition to CSV and JSON, XBRL also endorses the Inline XBRL (iXBRL) format, 
 Given the SEC's use of iXBRL for financial reporting, its support is critical.
 Considering the structural similarities between HTML and XML, it is feasible to incorporate iXBRL support into Brel by enhancing its existing architecture.
 
+Besides additional formats, Brel does not currently support XML validation against XBRL taxonomies.
+This feature is important for ensuring that the XBRL reports are valid, and should be implemented in future versions of Brel.
+However, since all XBRL reports are required to be validated by regulators such as the SEC, this feature is not as important as the other features that we will discuss in this section.
+
 % \subsection{Semantic layer}
 
 % As we have discussed in chapter \ref{chapter:limitations}, Brel does not take advantage of the semantic layer of XBRL.

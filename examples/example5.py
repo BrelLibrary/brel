@@ -55,6 +55,12 @@ def example5():
     )
     filing = Filing.open("reports/report.zip")
 
+    if len(filing.get_errors()) > 0:
+        print("Errors occurred while opening the filing:")
+        for error in filing.get_errors():
+            print(error)
+        return
+
     # get all components
     components = filing.get_all_components()
 
