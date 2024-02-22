@@ -20,11 +20,12 @@ The viewer is available as an example in the Brel repository\cite{brel_source}.
 Regarding an XBRL report, the viewer will present various types of information:
 
 \begin{itemize}
-    \item The facts in the report, which can be filtered by concept and a dimension.
-    \footnote{Filters for entity, period, and unit are not implemented since most reports have very few entities, periods, and units.}
-    For each fact, the viewer should display all characteristics of the fact in a easy-to-read manner.
+    \item The facts in the report, which can be filtered by concept and a dimension.\footnote{Filters for entity, period, and unit are not implemented since most reports have very few entities, periods, and units.}
+    % For each fact, the viewer should display all characteristics of the fact in a easy-to-read manner.
+    For each fact, the viewer displays all characteristics in a human-readable format.
     \item The components of a report together with their networks.
-    The viewer should be able to display the relationships between report elements in the networks in a human-readable manner.
+    % The viewer should be able to display the relationships between report elements in the networks in a human-readable manner.
+    The viewer presents the relationships between report elements in the networks in a human-readable format.
 \end{itemize}
 
 Before implementing the viewer, we will first install Brel and its dependencies.
@@ -41,13 +42,13 @@ It shows the imports and the command-line interface (CLI) definition of the view
 
 \begin{figure}[H]
     \centering
-    \caption{The implementation of the CLI XBRL report viewer responsible for the CLI.}
-    \label{fig:viewer_1}
     \lstinputlisting[
         language=Python, 
         basicstyle=\scriptsize\ttfamily,
         firstline=1, lastline = 8
     ]{../../examples/cli.py}
+    \caption{The implementation of the CLI XBRL report viewer responsible for the CLI.}
+    \label{fig:viewer_1}
 \end{figure}
 
 
@@ -80,13 +81,13 @@ The following figure illustrates the viewer's second part, focusing on the repor
 \begin{figure}[H]
     \centering
     % \caption{The implementation of the XBRL report viewer responsible for loading the report}
-    \label{fig:viewer_2}
-    \caption={The implementation of the CLI XBRL report viewer responsible for loading the report.}
     \lstinputlisting[
         language=Python, 
         basicstyle=\scriptsize\ttfamily,
         firstline=11, lastline = 12
     ]{../../examples/cli.py}
+    \label{fig:viewer_2}
+    \caption{The implementation of the CLI XBRL report viewer responsible for loading the report.}
 \end{figure}
 
 % The facts portion of the viewer \ref{fig:viewer}, which ranges from lines 12 to 23, uses the Brel methods \texttt{report.get\_all\_facts}, 
@@ -95,27 +96,27 @@ The following figure illustrates the viewer's second part, focusing on the repor
 % For example, \texttt{fact.get\_concept} is an alias of \texttt{fact.get\_characteristic(Aspect.CONCEPT)}.
 % Furthermore, the \texttt{utils.pprint} method is a convenience method that pretty-prints most Brel objects in a human-readable manner.
 % It simply calls both \texttt{fact.get\_aspects} and \texttt{fact.get\_characteristic} for each fact and pretty-prints the result.
-The next section of the implementation should deal with the facts portion of the viewer.
-First, it should get all facts in the report.
-Then, it should filter the facts that either have the concept or dimension that matches the filter.
-Next, it should pretty-print the facts in a human-readable manner.
-We can get all facts in the report using the \texttt{report.get\_all\_facts} method.
+The next section of the implementation deals with the facts portion of the viewer.
+First, it gets all facts in the report.
+Then, it filters the facts that either have the concept or dimension that matches the filter.
+Next, it pretty-prints the facts in a human-readable manner.
+We can get all facts in the report using the method \texttt{report.get\_all\_facts}.
 The \texttt{fact.get\_concept} and \texttt{fact.get\_aspects} methods can be used to get the concept and aspects of each fact.
 Since dimensions are just aspects, we can check all aspects of a fact to see if one of them matches the filter.
 Finally, we can use the \texttt{utils.pprint} method to pretty-print the facts in a human-readable manner.
 \texttt{utils.pprint} is a convenience method that, given a list of facts, it calls both \texttt{fact.get\_aspects} and \texttt{fact.get\_characteristic} for each fact and pretty-prints the result.
-The figure \ref{fig:viewer_3} shows the third part of the implementation of the viewer responsible for displaying the facts in the report.
+Figure \ref{fig:viewer_3} shows the third part of the implementation of the viewer responsible for displaying the facts in the report.
 
 \begin{figure}[H]
     \centering
     % \caption{The implementation of the XBRL report viewer responsible for displaying the facts in the report}
-    \caption{The implementation of the CLI XBRL report viewer responsible for displaying facts.}
-    \label{fig:viewer_3}
     \lstinputlisting[
         language=Python, 
         basicstyle=\scriptsize\ttfamily,
         firstline=13, lastline = 21
     ]{../../examples/cli.py}
+    \caption{The implementation of the CLI XBRL report viewer responsible for displaying facts.}
+    \label{fig:viewer_3}
 \end{figure}
 
 % The components portion of the viewer should be implemented in a similar manner.
@@ -128,10 +129,11 @@ The figure \ref{fig:viewer_3} shows the third part of the implementation of the 
 % \texttt{network.get\_roots} and \texttt{network\_node.get\_children} methods to pretty-print the network in a human-readable manner.
 % It also automatically uses the labels of report elements if they are available.
 % The figure \ref{fig:viewer_4} shows the fourth and final part of the implementation of the viewer responsible for displaying the components in the report.
-The viewer's components section should be implemented following a similar approach.  
-Initially, it needs to retrieve all components in the report by using the method \texttt{report.get\_all\_components}.  
-Next, it should filter those components whose URI contains the specified substring, utilizing \texttt{component.get\_uri} for this purpose.  
-Finally, \texttt{utils.pprint} should be used to format the components in an easily readable format.  
+% The viewer's components section should be implemented following a similar approach.  
+The viewer's components section is implemented in a similar manner.
+Initially, it needs to retrieve all components in the report by using \texttt{report.get\_all\_components}.  
+Next, it filters those components whose URI contains the specified substring, utilizing \texttt{component.get\_uri} for this purpose.  
+Finally, \texttt{utils.pprint} is used to format the components in a human-readable manner.
 The \texttt{utils.pprint} method is versatile, functioning with both fact lists and component lists.  
 For each network within a component, \texttt{utils.pprint} employs a Depth-First Search (DFS) algorithm,  
 applying it to both \texttt{network.get\_roots} and \texttt{network\_node.get\_children} to format the network clearly and coherently.  
@@ -183,7 +185,6 @@ However, the viewer can also load reports from URLs.
 
 \begin{figure}[H]
     \centering
-    \caption{Assets in the Q3 2023 10-Q report of Apple Inc.}
     \begin{lstlisting}[language=bash]
 python viewer.py report.zip --facts us-gaap:Assets
 \end{lstlisting}
@@ -198,6 +199,7 @@ python viewer.py report.zip --facts us-gaap:Assets
 | us-gaap:Assets | on 2022-09-24 | {http://www.sec.gov/CIK}0000320193 |  usd | 352755000000 |
 +----------------+---------------+------------------------------------+------+--------------+
 \end{lstlisting}
+    \caption{Assets in the Q3 2023 10-Q report of Apple Inc.}
     \label{fig:aapl_assets}
 \end{figure}
 
@@ -206,7 +208,6 @@ It clearly shows the concept, period, entity, unit, and value for both facts.
 Neither fact has additional dimensions.
 
 \begin{figure}[H]
-    \caption{Insider trading arrangements in the Q3 2023 10-Q report of Apple Inc. The output is truncated.}
     \begin{lstlisting}[language=bash]
 python viewer.py report.zip --components InsiderTradingArrangements
 \end{lstlisting}
@@ -227,6 +228,8 @@ arc roles: ['.../parent-child'], arc name: link:presentationArc
     │   ...
     └──[CONCEPT] Trading Arrangement, Securities Aggregate Available Amount
 \end{lstlisting}
+\caption{Insider trading arrangements in the Q3 2023 10-Q report of Apple Inc. The output is truncated.}
+
 \label{fig:aapl_insider_trading}
 \end{figure}
 
@@ -244,7 +247,7 @@ arc roles: ['.../parent-child'], arc name: link:presentationArc
 
 As depicted in figure \ref{fig:aapl_insider_trading},  
 the command retrieves the component with the URI \texttt{http://xbrl.sec.gov/ecd/role/InsiderTradingArrangements}.  
-The figure \ref{fig:aapl_insider_trading} shows the URI, label, and networks associated with the component.  
+Figure \ref{fig:aapl_insider_trading} shows the URI, label, and networks associated with the component.  
 These networks are formatted in a user-friendly manner,  
 illustrating the connections between various report elements within the networks.  
 Furthermore, each network includes the link/arc roles and names, providing valuable insights for debugging purposes.

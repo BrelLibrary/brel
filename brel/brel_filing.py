@@ -111,6 +111,11 @@ class Filing:
 
             xml_files = list(map(prepend_path, xml_files))
 
+            if len(xml_files) == 0:
+                raise ValueError(
+                    f"No xml files found in folder {path}. Please provide a folder with at least one xml file."
+                )
+
             parser = XMLFilingParser(xml_files)
             return cls(parser)
         elif is_file and path.endswith(".xml"):
@@ -138,6 +143,11 @@ class Filing:
             xml_files = list(map(lambda x: dir_path + "/" + x, xml_files))
             return cls.open(*xml_files)
         elif is_uri:
+            if not path.endswith(".xml"):
+                raise NotImplementedError(
+                    "Brel currently only supports XBRL filings in the form of XML files"
+                )
+
             if DEBUG:
                 print(f"Opening uri {path}")
             # if the path is a uri, then download the file and place it in a folder

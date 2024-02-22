@@ -73,7 +73,7 @@ Conversely, the \texttt{Component} class and its related entities delve into are
 % Finally, the last subsections are dedicated to the \texttt{Component} class and its associated classes.
 The discussion will proceed with an examination of the \texttt{QName} class, given its utility across numerous other classes.
 Subsequent sections will explore the \texttt{Fact} class along with its related classes.
-The final segments will focus on the \texttt{Component} class and its associated classes.
+The final sections will focus on the \texttt{Component} class and its associated classes.
 
 % \subsection{QName}
 % \label{subsec:qname}
@@ -111,7 +111,7 @@ The \texttt{Fact} class symbolizes a single XBRL fact, encapsulating a value alo
 The method \texttt{Fact.get\_value} returns the value as a string.
 % Characteristics defining a fact are accessible through the \texttt{Fact.get\_context} method, which consists of a set of characteristics that describe the fact.
 % Essentially, each fact is situated within a multi-dimensional space, with each characteristic pinpointing one dimension's coordinate.
-As described in chapter /ref{chapter:xbrl}, facts possess characteristics such as a concept, a period, etc.
+As described in chapter \ref{chapter:xbrl}, facts possess characteristics such as a concept, a period, etc.
 All these characteristics are represented by the \texttt{Context} class, 
 which can be retrieved using the \texttt{Fact.get\_context} method.
 Essentially, each fact occupies a position in a multidimensional space, where each characteristic represents a point along one dimension.
@@ -216,7 +216,7 @@ In figure \ref{fig:brel_core_classes}, the \texttt{IReportElement} interface is 
 % One of the characteristics uses the concept "net income" to describe the position of the fact along the concept dimension.
 % In this case, the characteristic is uses the concept "net income". 
 Characteristics often utilize report elements to denote a fact's position within a dimension.
-Referring back to the example in \ref{point:foo_net_income}, the "net income" concept is employed as a characteristic to define the fact's location along the concept dimension.
+Referring back to the example in section \ref{point:foo_net_income}, the "net income" concept is employed as a characteristic to define the fact's location along the concept dimension.
 
 % Since there are multiple types of report elements, the \texttt{IReportElement} interface provides a method for getting the type of the report element.
 % Report elements have their own dedicated section \ref{sec:report_elements}, which will be covered in a later portion of this chapter.

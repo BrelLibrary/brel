@@ -51,8 +51,10 @@ In the corporate domain, entities like JP Morgan Chase, Microsoft, and Hitachi a
 % with many complexities stemming from historical design choices that contribute to its challenging usability.
 Nonetheless, XBRL encompasses certain complexities,
 many of which are stemming from legacy design decisions.
-Moreover, despite XBRL's evolution beyond its XML roots,
-the association with XML format persists.
+% Moreover, despite XBRL's evolution beyond its XML roots,
+% the association with XML format persists.
+Much of XBRL's design is closely tied to the XML format,
+despite the standard's departure from XML exclusivity.
 
 Given XBRL's primary audience of non-technical users, its accessibility is crucial.
 % Yet, the usability of XBRL in its current form is not optimal.
@@ -80,6 +82,7 @@ Although there are some open-source alternatives,
 % they are relatively few in number and often limited in scope.
 they are often limited in scope.
 One significant exception is Arelle\cite{arelle}, a well-known tool in the XBRL field.
+
 % Other open-source python libraries, like \texttt{python-xbrl}\cite{git_python_xbrl}, \texttt{pysec}\cite{git_pysec}, and \texttt{py-xbrl}\cite{git_py_xbrl}, 
 % often have a limited range of functions and do not support the latest XBRL features.
 % are often limited in scope and do not support XBRL's latest key feature.
@@ -113,10 +116,11 @@ The OIM is not yet finalized and does not cover all aspects of XBRL.
 \label{sec:goals}
 
 % The goal of this thesis is to create a new open source XBRL library that is based on the XBRL standard, notably the OIM.
-This aim of this thesis is to develop an open source XBRL library based on the XBRL standard, particularly the OIM.
+This goal of this thesis is to develop an open source XBRL library based on the XBRL standard, particularly the OIM.
 % The name of the library is \texttt{Brel} (short for Business Reporting Extensible Library) and it is written in the Python programming language.
 % The library should be easy to use and well documented.
-The library is called \texttt{Brel} (short for Business Reporting Extensible Library) and is written in the Python programming language and should be easy to use.
+% The library is called \texttt{Brel} (short for Business Reporting Extensible Library) and is written in the Python programming language and should be easy to use.
+The library, named \texttt{Brel} (short for Business Reporting Extensible Library), is written in the Python programming language.
 % It is designed to be easy to use and well documented. should be easy to use and well documented.
 % It should provide a simple python API that allows developers to easily read XBRL reports and extract information from them.
 Brel should provide a simple python API that allows developers to easily read XBRL reports and extract information from them.
@@ -125,12 +129,17 @@ Fundamentally, the library should act as a pythonic wrapper around all elements 
 % Finally, the library should support XBRL reports in XML, but it should be designed in a way that allows it to support other formats in the future.
 Lastly, the library should support XBRL reports in XML, but its design should be extensible to support other formats in the future.
 
+% Brel is distinct from Arelle.  
+Even though Brel and Arelle both target the XBRL domain, they are distinct from each other.
+While Arelle is a full platform for XBRL, similar to Excel for spreadsheets,  
+Brel is a Python library, integrating smoothly with Python's ecosystem.
+
 The research questions that this thesis aims to answer are:
 
 
 \begin{itemize}
-    \item \textbf{\customlabel{RQ1}{RQ1}} How can the OIM be translated into an easy-to-use python API?
-    \item \textbf{\customlabel{RQ2}{RQ2}} How can the non-OIM sections of XBRL be converted into an easy-to-use python API that is consistent with the OIM?
+    \item \textbf{\customlabel{RQ1}{RQ1}} How can the OIM be translated into a Python API?
+    \item \textbf{\customlabel{RQ2}{RQ2}} How can the non-OIM sections of XBRL be converted into a Python API that is consistent with the OIM?
     \item \textbf{\customlabel{RQ3}{RQ3}} How can the library be designed to support multiple formats in the future?
 \end{itemize}
 
@@ -241,6 +250,8 @@ evaluates the library's effectiveness in meeting the goals set out in the introd
 This chapter examines Brel's alignment with an XBRL conformance suite.
 It will evaluate the library based on its performance compared to Arelle, 
 as well as its robustness in handling various XBRL reports.
+% Brel differs from Arelle, as Arelle is a platform for XBRL reports akin to Excel for spreadsheets.
+% Brel, on the other hand, is a python library that seamlessly integrates into the python ecosystem.
 Additionally, it showcases real-world uses of the library, 
 highlighting how Brel can be employed for reading and verifying XBRL reports.
 

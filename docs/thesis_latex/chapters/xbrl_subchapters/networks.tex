@@ -24,8 +24,6 @@ Moreover, the \texttt{Assets} concept is subdividable into \texttt{Current Asset
 Such relationships can be depicted through a directed graph, as illustrated in figure \ref{fig:example_visualization_network_xbrl}.
 
 \begin{figure}[H]
-    \caption{Example of relations between concepts in XBRL}
-    \label{fig:example_visualization_network_xbrl}
     \dirtree{%
         .1 Balance Sheet.
         .2 Assets.
@@ -33,6 +31,8 @@ Such relationships can be depicted through a directed graph, as illustrated in f
         .3 Non-Current Assets.
         .2 Liabilities.
     }
+    \caption{Example of relations between concepts in XBRL}
+    \label{fig:example_visualization_network_xbrl}
 \end{figure}
 
 % A reader with a basic understanding of mathematics will recognize that the above example is a directed acyclic graph (DAG).
@@ -130,14 +130,14 @@ the presentationLink network would manifest as the following list of edges:
 
 % don't use the minted package
 \begin{figure}[H]
-    \caption{Example of a presentationLink network in edge list format}
-    \label{fig:example_visualization_network_xbrl_edge_list}
     \begin{verbatim}
         Balance Sheet -> Assets
         Assets -> Current Assets
         Assets -> Non-Current Assets
         Balance Sheet -> Liabilities
     \end{verbatim}
+    \caption{Example of a presentationLink network in edge list format}
+    \label{fig:example_visualization_network_xbrl_edge_list}
 \end{figure}
 
 % Each arc in the example \ref{fig:example_visualization_network_xbrl_edge_list} is represented as a \texttt{link:presentationArc} element in XBRL.
@@ -401,9 +401,14 @@ A network that adheres to the specified balance and weight rules is recognized a
 Balance consistency represents just one form of consistency applicable to calculation networks.  
 Another form is \texttt{roll-up consistency}, which is categorized into: \texttt{simple roll-up consistency} and \texttt{nested roll-up consistency}.  
 
-\texttt{Simple roll-up consistency} pertains to networks without nested concepts, limiting the network to a depth of 1.  
+\begin{itemize}
+    \item \texttt{Simple roll-up consistency} pertains to networks without nested concepts, limiting the network to a depth of 1.  
+    \item \texttt{Nested roll-up consistency} involves networks with nested concepts, allowing for a network depth greater than 1.
+\end{itemize}
 
-\texttt{Nested roll-up consistency} involves networks with nested concepts, allowing for a network depth greater than 1.  
+% \texttt{Simple roll-up consistency} pertains to networks without nested concepts, limiting the network to a depth of 1.  
+
+% \texttt{Nested roll-up consistency} involves networks with nested concepts, allowing for a network depth greater than 1.  
 
 \texttt{Roll-up consistency} examines both calculation and presentation networks to ensure their structures align.  
 For instance, if a calculation network includes the arc \texttt{Assets -> Savings Accounts},  
@@ -647,7 +652,8 @@ Taking the earlier example, the definition of the \texttt{us-gaap:Revenues} conc
 which are subsequently linked via the \texttt{link:labelLink} network.
 A single report element may be linked to various labels, available in different languages or levels of detail.
 To manage these labels, XBRL employs the concept of \texttt{roles}, further discussed later in this section.
-Similar to the \texttt{xlink:arcrole} attribute seen in \texttt{link:presentationArc}, labels' roles function comparably.
+% Similar to the \texttt{xlink:arcrole} attribute seen in \texttt{link:presentationArc}, labels' roles function comparably.
+A label's role functions similarly to the \texttt{xlink:arcrole} attribute seen in \texttt{link:presentationArc}.
 
 In XBRL, the \texttt{link:labelLink} network mirrors the \texttt{link:presentationLink} network's setup,
 with the addition of the \texttt{link:label} element to denote a label.
@@ -751,7 +757,7 @@ The \texttt{link:referenceLink} network facilitates the connection of report ele
 For instance, the \texttt{us-gaap:Revenues} concept might be linked to its official definition within the SEC's Code of Federal Regulations (CFR),  
 creating a bridge between the report element and an authoritative external source.  
 
-In terms of structure, referenceLinks mirror the setup of LabelLinks, incorporating arcs, locators, and resources.  
+In terms of structure, referenceLinks mirror the setup of labelLinks, incorporating arcs, locators, and resources.  
 However, the distinction lies in the nature of the resources: referenceLinks point to external resources rather than textual labels.  
 While labels typically consist of text, references are structured as a dictionary.  
 % An XML syntax example would illustrate a reference, excluding the arc and locator for simplicity.  
@@ -816,3 +822,5 @@ The \texttt{link:footnoteLink} network functions similarly to the \texttt{link:r
 The primary distinction lies in the nature of these resources: footnotes rather than labels or external references.  
 Another notable difference is that within the \texttt{link:footnoteLink} network, locators can reference not only report elements but also facts.  
 Apart from these variations, footnoteLinks are structured in much the same manner as the previously discussed networks.
+
+\vspace{8cm}

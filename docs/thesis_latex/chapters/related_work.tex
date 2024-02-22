@@ -1,6 +1,8 @@
 \chapter{Related work}
 \label{sec:related_work}
-
+\definecolor{airforceblue}{rgb}{0.36, 0.54, 0.66}
+\definecolor{tropicalrainforest}{rgb}{0.0, 0.46, 0.37}
+\definecolor{turkishrose}{rgb}{0.71, 0.45, 0.51}
 % The goal of this thesis is to create a new open source XBRL library that is largely based on the OIM.
 % When it comes to work related to Brel, there are three main areas of interest.
 % First, there is the XBRL specification itself and interpretations of it.
@@ -9,11 +11,11 @@
 The goal of this thesis is to create a new open-source XBRL library, primarily based on the OIM.
 In the context of Brel, three main areas of interest exist.
 % Firstly, it involves considering the XBRL specification and its interpretations.
-The first area involves examining the XBRL specification and its interpretations.
+The first area involves examining the \textcolor{airforceblue}{\textbf{XBRL specification and its interpretations}}.
 % Secondly, it encompasses the examination of other XBRL libraries and platforms similar to Brel, including public databases of XBRL reports.
-The second encompasses the examination of other XBRL libraries and platforms similar to Brel, including public databases of XBRL reports.
+The second encompasses the examination of other \textcolor{tropicalrainforest}{\textbf{XBRL libraries and platforms}} similar to Brel, including public databases of XBRL reports.
 % Lastly, it involves reviewing the requirements set by authorities and other organizations that XBRL processors must fulfill.
-The third area covers reviewing the requirements set by authorities and other organizations that XBRL processors must fulfill.
+The third area covers reviewing the \textcolor{turkishrose}{\textbf{requirements set by authorities and other organizations}} that XBRL processors must fulfill.
 
 \section{XBRL Specification}
 % As mentioned in section \ref{sec:introduction}, this thesis is based on the XBRL standard\cite{xbrl} originally created by Charles Hoffman.
@@ -23,17 +25,27 @@ The third area covers reviewing the requirements set by authorities and other or
 % the extension for dimensional reporting\cite{xbrl_dimensions}
 % and the specification for generic links\cite{xbrl_generic_links}, 
 % all of which will be covered in chapter \ref{chapter:xbrl}.
-As indicated in Section \ref{sec:introduction}, this thesis builds upon the XBRL standard originally created by Charles Hoffman\cite{xbrl}.
+As indicated in Section \ref{sec:introduction}, this thesis builds upon the 
+% \XBRL standard
+\textcolor{airforceblue}{\textbf{XBRL standard}}\cite{xbrl} 
+originally created by Charles Hoffman\cite{xbrl}.
 The XBRL standard comprises numerous components, and this thesis specifically focuses on the following components: 
-the Open Information Model (OIM)\cite{oim}, 
-the XBRL 2.1 specification\cite{xbrl21}, 
-the extension for dimensional reporting\cite{xbrl_dimensions}, 
-and the specification for generic links\cite{xbrl_generic_links}.
+% the Open Information Model (OIM)\cite{oim}, 
+the \textcolor{airforceblue}{\textbf{Open Information Model (OIM)}}\cite{oim},
+% the XBRL 2.1 specification\cite{xbrl21}, 
+the \textcolor{airforceblue}{\textbf{XBRL 2.1 specification}}\cite{xbrl21},
+% the extension for dimensional reporting\cite{xbrl_dimensions}, 
+the extension for \textcolor{airforceblue}{\textbf{dimensional reporting}}\cite{xbrl_dimensions},
+% and the specification for generic links\cite{xbrl_generic_links}.
+and the specification for \textcolor{airforceblue}{\textbf{generic links}}\cite{xbrl_generic_links}.
 Chapter \ref{chapter:xbrl} will delve into these components in detail.
 % Besides the XBRL standard, Charles Hoffman also maintains a personal website\cite{seattle_method}
 % that contains a wealth of information about XBRL and good practices for working with it.
-In addition to the XBRL standard, Charles Hoffman manages a personal website\cite{seattle_method},
+In addition to the XBRL standard, Charles Hoffman manages a 
+\textcolor{airforceblue}{\textbf{personal website}}\cite{seattle_method}
+% personal website\cite{seattle_method},
 which offers information about XBRL and good practices for its utilization.
+The website also contains a test suite for XBRL processors, which is used to test Brel.
 
 % Whilst the XBRL 2.1 specification and the OIM overlap in numerous areas, the OIM does not encompass all the features of the XBRL 2.1 specification.
 % The OIM does not contain all the features of the XBRL 2.1 specification, but it is a lot easier to understand.
@@ -46,12 +58,15 @@ Understanding the XBRL specification requires a good grasp of both XML and XBRL.
 % This makes it difficult for beginners to get started with XBRL.
 % To address this problem, Dr. Ghislain Fourny wrote "The XBRL Book"\cite{fourny2023xbrl}.
 % The book is a comprehensive guide for XBRL and covers all the important aspects of the XBRL standard, including the rather recent OIM.
-To help newcomers, Dr. Ghislain Fourny has authored "The XBRL Book" \cite{fourny2023xbrl}, 
+% To help newcomers, Dr. Ghislain Fourny has authored "The XBRL Book" \cite{fourny2023xbrl}, 
+To help newcomers, Dr. Ghislain Fourny authored ``\textcolor{airforceblue}{\textbf{The XBRL Book}}''\cite{fourny2023xbrl},
 which serves as a comprehensive guide to XBRL. This book covers all important aspects of the XBRL standard, including the relatively recent OIM, 
 making it an invaluable resource for those looking to learn about XBRL.
 
 \section{Arelle}
-Arelle\cite{arelle} is an open-source XBRL platform. 
+% Arelle\cite{arelle}
+\textcolor{tropicalrainforest}{\textbf{Arelle}}\cite{arelle} 
+is an open-source XBRL platform. 
 As of the current writing, Arelle holds the distinction of being the most comprehensive open-source platform in its category. 
 It provides support for all features found in the XBRL 2.1 specification and the OIM. 
 Similar to Brel, Arelle is implemented in Python and is available as open-source software. 
@@ -71,7 +86,9 @@ The reader can think of Arelle as the "Excel for XBRL."
 % It is part of the Arelle project and is used by Arelle to validate reports.
 % Think of Xule as a domain-specific language for XBRL validation rules.
 % Even though Xule is not part of this thesis, Brel should be able to support Xule in the future.
-Xule\cite{xule} serves as a rule language tailored for XBRL. 
+% Xule\cite{xule}
+\textcolor{tropicalrainforest}{\textbf{Xule}}\cite{xule} 
+serves as a rule language tailored for XBRL. 
 This declarative language empowers users to create rules for the validation of XBRL reports. 
 The Arelle project employs Xule to validate reports. 
 % Xule can be likened to a domain-specific language designed specifically for XBRL validation rules. 
@@ -88,7 +105,10 @@ While Xule is not directly incorporated into this thesis, it is worth noting tha
 % The SEC provides public access to the filings submitted to EDGAR. \footnote{\url{https://www.sec.gov/edgar/search/}}
 % cSpell: enable
 The U.S. Securities and Exchange Commission, known as the SEC\footnote{Not to be confused with the U.S.SEC, the U.S. Soybean Export Council},
-operates a system referred to as EDGAR (Electronic Data Gathering, Analysis, and Retrieval) \cite{sec_edgar}. 
+operates a system referred to as 
+% EDGAR
+\textcolor{tropicalrainforest}{\textbf{EDGAR}} \cite{sec_edgar}. 
+(Electronic Data Gathering, Analysis, and Retrieval) \cite{sec_edgar}. 
 This EDGAR system serves as a publicly accessible repository for XBRL reports submitted to the SEC\footnote{\url{https://www.sec.gov/edgar/search/}}.
 % To be accepted by EDGAR, filings must be in the XBRL format. 
 % The SEC offers public access to the filings stored within EDGAR\footnote{\url{https://www.sec.gov/edgar/search/}}.
@@ -104,7 +124,9 @@ This EDGAR system serves as a publicly accessible repository for XBRL reports su
 % cSpell: enable
 The European counterpart to the SEC is ESMA, 
 the European Securities and Markets Authority, 
-which operates a database containing ESEF filings \cite{esma_database}. 
+which operates a 
+% database containing ESEF filings\cite{esma_database}.
+\textcolor{tropicalrainforest}{\textbf{database of ESEF filings}}\cite{esma_database}. 
 ESEF stands for European Single Electronic Format, 
 a standardized format for XBRL reports within the European Union.
 
@@ -117,7 +139,9 @@ An interesting aspect of this database is its hosting by XBRL International, the
 % This test suite contains an extensive collection of XBRL reports that are used to test XBRL processors.
 % The SEC provides this test suite free of charge and it is available on their website.
 In order to verify the compliance of XBRL processors utilized by companies for generating XBRL reports, 
-the SEC established the Interactive Data Public Test Suite \cite{sec_idpts}. 
+the SEC established the 
+% Interactive Data Public Test Suite \cite{sec_idpts}. 
+\textcolor{turkishrose}{\textbf{Interactive Data Public Test Suite}}\cite{sec_idpts}.
 This comprehensive test suite comprises a vast assortment of XBRL reports designed to assess the performance of XBRL processors.
 It is noteworthy that the SEC offers this test suite at no cost, and it can be accessed on their official website.
 
@@ -140,7 +164,10 @@ The majority of the test cases within the suite focus on functionalities that ar
 % Brel does not support xHTML reports, so the ESMA Conformance Suite is not relevant for this thesis.
 % However, Brel should be able to support xHTML reports in the future.
 ESMA, the European Securities and Markets Authority, 
-administers a test suite designed for XBRL processors, as well \cite{esma_conformance_suite}. 
+% administers a
+maintains a 
+% test suite designed for XBRL processors, as well \cite{esma_conformance_suite}. 
+\textcolor{turkishrose}{\textbf{test suite for XBRL processors}}\cite{esma_conformance_suite}.
 This test suite shares similarities with the SEC's Interactive Data Public Test Suite, albeit being under the administration of a different regulatory authority. 
 One notable divergence is that the ESMA Conformance Suite is tailored to facilitate automated testing of xHTML reports.
 
