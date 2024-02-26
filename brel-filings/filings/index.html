@@ -195,12 +195,14 @@ This module contains the Filing class.</p>
 <li>If a zip file is given, then the zip file is extracted to a folder 
 and then all xml files in the folder are loaded.</li>
 <li>If one or more xml files are given, then only those xml files are loaded.</li>
+<li>A URI can also be given. In this case, the file is downloaded and cached in a folder.</li>
 </ul>
+<p>Note that Brel currently only supports XBRL filings in the form of XML files.</p>
 <p>Example usage:</p>
 <pre><code>from brel import Filing
 
-# open the filing
-filing1 = Filing.open(&quot;my_filing.zip&quot;)
+# open apples 2023 Q3 10-Q filing
+filing1 = Filing.open(&quot;https://www.sec.gov/Archives/edgar/data/320193/000032019323000077/aapl-20230701_htm.xml&quot;)
 
 filing2 = Filing.open(&quot;my_folder/&quot;)
 

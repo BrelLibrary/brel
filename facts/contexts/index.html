@@ -72,12 +72,6 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#get_characteristic_as_str">get_characteristic_as_str</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#get_characteristic_as_int">get_characteristic_as_int</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#get_characteristic_as_float">get_characteristic_as_float</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#get_characteristic_as_bool">get_characteristic_as_bool</a>
-    </li>
     <li class="toctree-l3"><a class="reference internal" href="#get_concept">get_concept</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#get_period">get_period</a>
@@ -248,57 +242,6 @@ If the aspect is not present in the context, an empty string is returned.</p>
 </ul>
 <p><strong>Returns</strong>:</p>
 <p><code>str</code>: The value of the aspect as a string.</p>
-<p><a id="brel.brel_context.Context.get_characteristic_as_int"></a></p>
-<h4 id="get_characteristic_as_int">get_characteristic_as_int</h4>
-<pre><code class="language-python">def get_characteristic_as_int(aspect: Aspect) -&gt; int
-</code></pre>
-<p>Get the value of an aspect as an int.</p>
-<p>This is a convenience function.
-If the aspect is not present in the context, 0 is returned.</p>
-<p><strong>Arguments</strong>:</p>
-<ul>
-<li><code>aspect</code>: The aspect to get the value of.</li>
-</ul>
-<p><strong>Raises</strong>:</p>
-<ul>
-<li><code>ValueError</code>: If the aspect is present, but the value cannot be converted to an int.</li>
-</ul>
-<p><strong>Returns</strong>:</p>
-<p><code>int</code>: The value of the aspect as an int.</p>
-<p><a id="brel.brel_context.Context.get_characteristic_as_float"></a></p>
-<h4 id="get_characteristic_as_float">get_characteristic_as_float</h4>
-<pre><code class="language-python">def get_characteristic_as_float(aspect: Aspect) -&gt; float
-</code></pre>
-<p>Get the value of an aspect as a float.</p>
-<p>This is a convenience function.
-If the aspect is not present in the context, 0.0 is returned.</p>
-<p><strong>Arguments</strong>:</p>
-<ul>
-<li><code>aspect</code>: The aspect to get the value of.</li>
-</ul>
-<p><strong>Raises</strong>:</p>
-<ul>
-<li><code>ValueError</code>: If the aspect is present, but the value cannot be converted to a float.</li>
-</ul>
-<p><strong>Returns</strong>:</p>
-<p><code>float</code>: The value of the aspect as a float.</p>
-<p><a id="brel.brel_context.Context.get_characteristic_as_bool"></a></p>
-<h4 id="get_characteristic_as_bool">get_characteristic_as_bool</h4>
-<pre><code class="language-python">def get_characteristic_as_bool(aspect: Aspect) -&gt; bool
-</code></pre>
-<p>Get the value of an aspect as a bool.</p>
-<p>This is a convenience function.
-If the aspect is not present in the context, False is returned.</p>
-<p><strong>Arguments</strong>:</p>
-<ul>
-<li><code>aspect</code>: The aspect to get the value of.</li>
-</ul>
-<p><strong>Raises</strong>:</p>
-<ul>
-<li><code>ValueError</code>: If the aspect is present, but the value cannot be converted to a bool.</li>
-</ul>
-<p><strong>Returns</strong>:</p>
-<p><code>bool</code>: The value of the aspect as a bool.</p>
 <p><a id="brel.brel_context.Context.get_concept"></a></p>
 <h4 id="get_concept">get_concept</h4>
 <pre><code class="language-python">def get_concept() -&gt; ConceptCharacteristic
