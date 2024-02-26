@@ -85,7 +85,7 @@ def filter_testcase_by_name(testcase_name: str) -> bool:
     return True
 
 
-def test_idpts():
+def run_idpts():
     load_idpts()
 
     idpts_testcases_folder = "tests/interactive_data_test_suite/conf/"
@@ -189,4 +189,4 @@ def test_idpts():
 
 
 if __name__ == "__main__":
-    test_idpts()
+    run_idpts()
