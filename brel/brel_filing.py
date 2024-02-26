@@ -362,7 +362,7 @@ class Filing:
         if isinstance(key, FilingFilter):
             return key.filter(self.__facts)
 
-        # if the key is an aspect, make a filter of that aspect and return the unappied filter
+        # if the key is an aspect, make a filter of that aspect and return the unapplied filter
         if isinstance(key, Aspect):
             return FilingFilter.make_aspect_filter(self.__facts, key, self.__nsmap)
 
