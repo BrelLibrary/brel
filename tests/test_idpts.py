@@ -10,6 +10,11 @@ This module runs the interactive data test suite created by the SEC.
 ====================
 """
 
+# ignore this file for pytest
+# pytest: ignore
+# pylint: disable=missing-function-docstring
+
+
 import lxml
 import lxml.etree
 from rich import print

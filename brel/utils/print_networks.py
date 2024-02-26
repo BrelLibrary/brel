@@ -42,6 +42,7 @@ def __print_sub_network(node: INetworkNode, last=True, header="") -> None:
     node_is_a = node.points_to()
     if node_is_a == "resource":
         resource = node.get_resource()
+        type_str = ""
         if isinstance(resource, BrelLabel):
             label_role = resource.get_role()
             label_role_str = label_role.split("/")[-1]
@@ -58,8 +59,6 @@ def __print_sub_network(node: INetworkNode, last=True, header="") -> None:
             role_tr = resource.get_role().split("/")[-1]
             text = resource.get_content()
             type_str = f"[{tag_lookup[BrelFootnote]}] ({role_tr}) {text}"
-        else:
-            type_str = f"[RESOURCE] {str(resource)}"
 
         output_string += type_str
     elif node_is_a == "report element":
@@ -77,10 +76,9 @@ def __print_sub_network(node: INetworkNode, last=True, header="") -> None:
         )
         node_as_str = str(node_preferred_label)
 
+        type_str = ""
         if type(re) in tag_lookup:
             type_str = tag_lookup[type(re)]
-        else:
-            type_str = "[REPORT ELEMENT]"
 
         output_string += type_str + " " + node_as_str
 

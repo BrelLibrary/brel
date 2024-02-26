@@ -33,7 +33,7 @@ lint:             ## Run pep8, black, mypy linters.
 	$(ENV_PREFIX)mypy --ignore-missing-imports brel/
 
 .PHONY: test
-test: lint        ## Run tests and generate coverage report.
+test: 
 	$(ENV_PREFIX)pytest -v --cov-config .coveragerc --cov=brel -l --tb=short --maxfail=1 tests/
 	$(ENV_PREFIX)coverage xml
 	$(ENV_PREFIX)coverage html

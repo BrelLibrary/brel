@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<xbrli:xbrl xmlns:dei="http://xbrl.sec.gov/dei/2023" xmlns:iso4217="http://www.xbrl.org/2003/iso4217" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xbrldi="http://xbrl.org/2006/xbrldi" xmlns:xbrldt="http://xbrl.org/2005/xbrldt" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ete="http://ete/2024">
+<xbrli:xbrl xmlns:dei="http://xbrl.sec.gov/dei/2023" xmlns:iso4217="http://www.xbrl.org/2003/iso4217" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xbrldi="http://xbrl.org/2006/xbrldi" xmlns:xbrldt="http://xbrl.org/2005/xbrldt" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ete="http://ete/2024" xmlns:ref="http://www.xbrl.org/2004/ref">
     <link:schemaRef xlink:href="ete.xsd" xlink:type="simple"></link:schemaRef>
 
     <!-- Context definitions -->
@@ -100,4 +100,13 @@
         <link:footnote xml:lang="en-US" xlink:label="footnote" xlink:type="resource" xlink:role="http://www.xbrl.org/2003/role/footnote">Footnote Text.</link:footnote>
         <link:footnoteArc xlink:type="arc" order="1.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/fact-footnote" xlink:from="total_balance_loc" xlink:to="footnote"></link:footnoteArc>
     </link:footnoteLink>
+
+    <link:referenceLink xlink:type="extended" xlink:role="http://www.xbrl.org/2003/role/link">
+        <link:loc xlink:href="ete.xsd#ete_balance_sheet" xlink:label="ete_balance_loc" xlink:type="locator"></link:loc>
+        <link:reference xlink:label="reference" xlink:type="resource" xlink:role="http://www.xbrl.org/2003/role/reference">
+            <ref:Publisher>Robin Schmidiger</ref:Publisher>
+            <ref:PublicationDate>2024-02-26</ref:PublicationDate>
+        </link:reference>
+        <link:referenceArc xlink:type="arc" order="1.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/referencedResource" xlink:from="ete_balance_loc" xlink:to="reference"></link:referenceArc>
+    </link:referenceLink>
 </xbrli:xbrl>

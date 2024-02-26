@@ -208,6 +208,12 @@ def parse_xml_link(
                     )
 
                     for role_type in incoming_role_types.union(outgoing_role_types):
+                        # sort node_arcs such that the arcs with xlink:to == label come first
+                        node_arcs.sort(
+                            key=lambda arc: arc.get(f"{{{nsmap['xlink']}}}to") == label,
+                            reverse=True,
+                        )
+
                         arc = next(
                             (
                                 arc
@@ -235,7 +241,7 @@ def parse_xml_link(
                     roots.add(node)
                     nodes_lookup[label].append(node)
                 else:
-                    arc = arcs_from[0] if len(arcs_from) > 0 else arcs_to[0]
+                    arc = arcs_to[0] if len(arcs_to) > 0 else arcs_from[0]
 
                     node = network_factory.create_node(
                         xml_link_element, link_element, arc, to_object

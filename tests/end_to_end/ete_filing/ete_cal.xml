@@ -29,4 +29,18 @@
         
     </link:calculationLink>
 
+    <link:roleRef roleURI="http://foo/role/bad-balance" xlink:href="ete.xsd#BadBalance" xlink:type="simple"></link:roleRef>
+    <link:calculationLink xlink:type="extended" xlink:role="http://foo/role/bad-balance">
+        <link:loc xlink:href="ete.xsd#ete_balance_sheet" xlink:label="ete_balance_sheet" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="ete.xsd#ete_assets" xlink:label="ete_assets" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="ete.xsd#ete_cash" xlink:label="ete_cash" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="ete.xsd#ete_receivables" xlink:label="ete_receivables" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="ete.xsd#ete_liabilities" xlink:label="ete_liabilities" xlink:type="locator"></link:loc>
+
+        <link:calculationArc xlink:type="arc" weight="1.0" order="1.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" xlink:from="ete_balance_sheet" xlink:to="ete_assets"></link:calculationArc>
+        <link:calculationArc xlink:type="arc" weight="1.0" order="1.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" xlink:from="ete_assets" xlink:to="ete_cash"></link:calculationArc>
+        <link:calculationArc xlink:type="arc" weight="1.0" order="2.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" xlink:from="ete_assets" xlink:to="ete_receivables"></link:calculationArc>
+        <link:calculationArc xlink:type="arc" weight="1.0" order="2.0" xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" xlink:from="ete_balance_sheet" xlink:to="ete_liabilities"></link:calculationArc>
+    </link:calculationLink>
+
 </link:linkbase>

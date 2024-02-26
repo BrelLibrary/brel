@@ -186,7 +186,7 @@ class Component:
         """
         :returns bool: True if the component has a definition network, False otherwise
         """
-        return self.__info != ""
+        return self.__definition_network != None
 
     def __str__(self) -> str:
         """
