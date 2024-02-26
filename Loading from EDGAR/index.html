@@ -168,7 +168,10 @@ Therefore the date "30th of September, 2023" is "2023-09-30".</p>
 Also, the date refers to the date on the report, not the date the report was filed.</p>
 <pre><code class="language-python">from brel.utils import open_edgar, pprint
 
-# Load a filing from EDGAR. In this case, the CIK is 320193, the form is 10-K, and the date is the 30th of September, 2023.
+# Load a filing from EDGAR. 
+# - CIK is 320193
+# - form is 10-K
+# - date is the 30th of September, 2023.
 filing = open_edgar(cik=&quot;320193&quot;, form=&quot;10-K&quot;, date=&quot;2023-09-30&quot;)
 </code></pre>
               
