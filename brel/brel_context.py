@@ -102,60 +102,6 @@ class Context:
         else:
             return characteristic.get_value().__str__()
 
-    def get_characteristic_as_int(self, aspect: Aspect) -> int:
-        """
-        Get the value of an aspect as an int.
-        This is a convenience function.
-        If the aspect is not present in the context, 0 is returned.
-        :param aspect: The aspect to get the value of.
-        :returns int: The value of the aspect as an int.
-        :raises ValueError: If the aspect is present, but the value cannot be converted to an int.
-        """
-        if not self.has_characteristic(aspect):
-            return 0
-        try:
-            return int(self.get_characteristic_as_str(aspect))
-        except ValueError:
-            raise ValueError(
-                f"Aspect {aspect} is present, but the value {self.get_characteristic_as_str(aspect)} cannot be converted to an int"
-            )
-
-    def get_characteristic_as_float(self, aspect: Aspect) -> float:
-        """
-        Get the value of an aspect as a float.
-        This is a convenience function.
-        If the aspect is not present in the context, 0.0 is returned.
-        :param aspect: The aspect to get the value of.
-        :returns float: The value of the aspect as a float.
-        :raises ValueError: If the aspect is present, but the value cannot be converted to a float.
-        """
-        if not self.has_characteristic(aspect):
-            return 0.0
-        try:
-            return float(self.get_characteristic_as_str(aspect))
-        except ValueError:
-            raise ValueError(
-                f"Aspect {aspect} is present, but the value {self.get_characteristic_as_str(aspect)} cannot be converted to a float"
-            )
-
-    def get_characteristic_as_bool(self, aspect: Aspect) -> bool:
-        """
-        Get the value of an aspect as a bool.
-        This is a convenience function.
-        If the aspect is not present in the context, False is returned.
-        :param aspect: The aspect to get the value of.
-        :returns bool: The value of the aspect as a bool.
-        :raises ValueError: If the aspect is present, but the value cannot be converted to a bool.
-        """
-        if not self.has_characteristic(aspect):
-            return False
-        try:
-            return bool(self.get_characteristic_as_str(aspect))
-        except ValueError:
-            raise ValueError(
-                f"Aspect {aspect} is present, but the value {self.get_characteristic_as_str(aspect)} cannot be converted to a bool"
-            )
-
     def get_concept(self) -> ConceptCharacteristic:
         """
         Get the concept of the context.
@@ -219,7 +165,7 @@ class Context:
     def __str__(self) -> str:
         output = ""
         for aspect in self.__aspects:
-            output += f"{aspect} "
+            output += f"{str(self.get_characteristic_as_str(aspect))} "
         return output
 
     def __eq__(self, __value: object) -> bool:

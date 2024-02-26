@@ -202,11 +202,12 @@ df_dict = {
 df = pd.DataFrame(df_dict, index=category_names)
 
 plt.style.use("seaborn-v0_8-darkgrid")
+
 df.plot(
     kind="bar",
     stacked=True,
     color=["#2ca02c", "#ff7f0e", "#d62728"],
-    figsize=(10, 5),
+    figsize=(5, 5),
 )
 
 plt.xticks(rotation=90)
@@ -223,4 +224,4 @@ plt.ylabel("Test case count")
 
 plt.tight_layout()
 plt.savefig("docs/thesis_latex/images/seattle_method_test_results.png")
-plt.show()
+# plt.show()

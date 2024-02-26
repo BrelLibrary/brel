@@ -112,8 +112,7 @@ As expected, the \texttt{ConceptCharacteristic} adheres to the \texttt{ICharacte
 The \texttt{EntityCharacteristic} identifies the entity associated with a fact.
 % Within hypercube structures, the \texttt{Aspect.ENTITY} aspect categorizes dimensions of entities,
 An entity, such as a corporation, is distinguished by a tag and a scheme\footnote{Schemes are typically URLs.} serving as the tag's namespace.
-These identifiers are merged into a singular string format \texttt{\{scheme\}tag},
-\footnote{This format mirrors the Clark notation used for QNames\cite{w3_qnames}.}
+These identifiers are merged into a singular string format \texttt{\{scheme\}tag}\footnote{This format mirrors the Clark notation used for QNames\cite{w3_qnames}.}.
 
 Implementing the \texttt{ICharacteristic} framework,
 \texttt{get\_aspect} returns the instance \texttt{Aspect.ENTITY} and \texttt{get\_value} provides the entity's string representation as previously mentioned.
@@ -161,7 +160,9 @@ A fact assigned with a \texttt{USD} unit is of the \texttt{decimal} type, wherea
 Units are categorized into two types: simple and complex.
 Simple units are indivisible, exemplified by \texttt{USD} or \texttt{shares}.
 Complex units consist of multiple simple units combined, such as \texttt{USD per share}.
-Each complex unit is constructed by dividing one or more simple units by another set of simple units.
+% Each complex unit is constructed by dividing one or more simple units by another set of simple units.
+Each complex unit is a division of one or more simple units by zero or more simple units.
+Per default, the denominators contain an implicit denominator of 1 to avoid division by zero.
 
 \begin{figure}[H]
     \centering

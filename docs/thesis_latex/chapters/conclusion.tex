@@ -6,7 +6,7 @@
 % and that it can be used to extract and analyze data from XBRL reports in a simple and efficient way.
 % % We have also shown that the underlying XML structure of XBRL reports is hidden from the user,
 % We have also shown that the API does not expose the underlying XML structure of XBRL reports to the user.
-This thesis introduces a Python API for processing XBRL reports, designed to abstract the complexities of the XBRL format from the user.
+This thesis introduces a Python API for processing XBRL reports, designed to hide the complexities of the XBRL format from the user.
 We have successfully demonstrated that this API covers XBRL and the Open Information Model (OIM),
 and facilitates straightforward extraction and analysis of data from XBRL reports.
 Moreover, we have shown that this API effectively conceals the XML structure underlying XBRL reports from the end user.
@@ -33,23 +33,41 @@ Moreover, we have shown that this API effectively conceals the XML structure und
 % We have shown that this is possible in Section \ref{sec:answer_research_question_3}.
 
 This thesis aimed to answer three research questions, all of which have been answered in the previous chapters.
-The first question was whether it is possible to create a Python API that encompasses the OIM of the XBRL format.
-We have shown that it is indeed possible to create such an API in Section \ref{sec:answer_research_question_1}.
-% The second question was whether the non-OIM parts of the XBRL format can be handled in a similar way.
-The second question was whether the non-OIM sections of the XBRL format can be managed similarly.
-We have shown that this is indeed possible in Section \ref{sec:answer_research_question_2}.
-The third question was how Brel can be implemented in a way that allows for XBRL reports in both CSV and JSON format to be used as input.
-We have shown that this is possible in Section \ref{sec:answer_research_question_3}.
+
+\begin{enumerate}
+    \item The first question was whether it is possible to create a Python API that encompasses the OIM of the XBRL format.
+    We have shown that it is indeed possible to create such an API in Section \ref{sec:answer_research_question_1}
+    by presenting the Brel API, which encompasses the OIM.
+    % \item The second question was whether the non-OIM sections of the XBRL format can be managed similarly.
+    \item The second question asked whether the non-OIM sections of the XBRL format can be managed similarly.
+    Section \ref{sec:answer_research_question_2} demonstrates that this is indeed possible
+    by introducing the Brel API's representation of networks, resources, roles, and report elements.
+    \item The third question was how Brel can be implemented in a way that allows for XBRL reports in
+    formats such as CSV and JSON to be used as input in future versions.
+    Section \ref{sec:answer_research_question_3} indicates that the Brel API's format-agnostic design
+    and its XML parser's implementation in a separate module enable this capability.
+\end{enumerate}
+% The first question was whether it is possible to create a Python API that encompasses the OIM of the XBRL format.
+% We have shown that it is indeed possible to create such an API in Section \ref{sec:answer_research_question_1}
+% by presenting the Brel API, which encompasses the OIM of the XBRL format.
+% % The second question was whether the non-OIM parts of the XBRL format can be handled in a similar way.
+% The second question was whether the non-OIM sections of the XBRL format can be managed similarly.
+% We have shown that this is indeed possible in Section \ref{sec:answer_research_question_2}
+% by introducing the Brel API's representation of networks, resources, roles and report elements.
+% The third question was how Brel can be implemented in a way that allows for XBRL reports in
+% formats such as CSV and JSON to be used as input.
+% We have shown that this is possible in Section \ref{sec:answer_research_question_3}
+% by virtue of Brel's API design being format-agnostic and by implementing its XML parser in a separate module.
 
 % Brel contributes to the field of XBRL by providing an open source Python API for XBRL reports.
 % Other open source XBRL APIs exist, but no notable ones incorporate the OIM of the XBRL format.
 % Arelle does have a Python API, but since Arelle is a standalone application,
 % it does not occupy the same niche as Brel, which is a Python package that can be used in other Python applications.
-Brel contributes the XBRL domain by offering an open-source Python API specifically for XBRL reports.
+Brel contributes to the XBRL domain by offering an open-source Python API specifically for XBRL reports.
 While other similar APIs are available, none prominently feature the OIM.
 Arelle provides a Python API, but as a standalone application, it differs from Brel.
 Brel, being a Python package, integrates seamlessly into other Python applications, distinguishing its role in the field.
-The API has been developed into a Python package named \texttt{Brel},
+The API has been developed into a Python package named \texttt{brel},
 which is accessible on the Python Package Index (PyPI)\footnote{Brel can be installed using the command \texttt{pip install brel-xbrl}. This command is compatible with all major operating systems, including Windows, macOS, and Linux.}.
 
 % To reflect on the results of this thesis, we can conclude that the API is indeed robust against different XBRL reports 
@@ -65,6 +83,12 @@ Reflecting on our results, we conclude that the API is robust across various XBR
 as indicated in Section \ref{sec:robustness},
 and adheres to the XBRL standard, inclusive of the OIM,
 as demonstrated in chapters \ref{chapter:xbrl} and \ref{chapter:api}.
+
+\section{Limitations}
+
+% Most limitations of Brel stem from the limitations \ref{sec:limitations} set out at the beginning of this thesis.
+Most of Brel's limitations are derived from the constraints outlined in section \ref{sec:limitations} at the beginning of this thesis.
+
 A notable limitation of Brel is its inability to semantically interpret data in XBRL reports,
 meaning it cannot autonomously identify logical inconsistencies in the reports.
 While XBRL is primarily designed for machine-readability to facilitate automated processes,
@@ -81,6 +105,37 @@ Currently, Brel operates predominantly as a syntactic interface for the XBRL for
 Despite this, it simplifies interaction with XBRL reports in Python by masking the technical intricacies of XBRL.
 Looking forward, Brel could integrate a semantic layer over its existing syntactic framework, enabling more sophisticated analyses of XBRL reports.
 
+Besides the semantic layer, Brel does not support other XBRL formats, such as CSV and JSON.
+However, most companies and regulators use the XML format, which is the only format that Brel currently supports.
+% In addition to CSV and JSON, XBRL also endorses the Inline XBRL (iXBRL) format, merging XBRL with HTML.
+Besides standard XML, XBRL also supports the Inline XBRL (iXBRL) format, 
+which is a hybrid format combining XBRL XML with HTML.
+% which combines XBRL with HTML.
+Brel does not currently support iXBRL, but given the SEC's use of iXBRL for financial reporting, its support is critical.
+% Given the SEC's use of iXBRL for financial reporting, its support is critical.
+Whereas the SEC consistently publishes XBRL reports in XML and iXBRL, other regulators often only publish iXBRL reports.
+However, reports in iXBRL format can be converted to XML, which Brel can process.
+Nevertheless, native support for iXBRL in Brel would be beneficial.
+
+Currently, Brel only supports reading XBRL reports, and does not support writing or modifying them.
+This is a limitation, as it means that Brel cannot be used to create XBRL reports.
+Although Brel's primary focus is to read and analyze XBRL reports,
+support for writing and modifying XBRL reports would be a valuable addition.
+
+Even though section \ref{sec:robustness} showed that Brel is robust against different XBRL reports.
+All of these reports shared a common source, the SEC.
+It is therefore not clear how well Brel performs with reports from other regulators.
+% The SEC is the only regulator that consistently publishes XBRL reports in XML, which is the only format that Brel currently supports.
+Even though XBRL reports on EDGAR are created by different companies and are therefore structurally different,
+they all have to adhere to the SEC's guidelines for XBRL reports, 
+% which means that they are more similar than XBRL reports from different regulators.
+which means that they share more similarities than reports from different regulators.
+Therefore, the scope of Brel's robustness testing is limited by the formats that it currently supports.
+
+Brel's performance is not a primary focus of this thesis, but it remains an important metric.
+Section \ref{sec:performance} concluded that is slower than Arelle, which leaves room for optimization.
+% In its current state, Brel
+
 % \section{Future Work}
 
 % The future work of Brel can be divided into two categories:
@@ -89,9 +144,34 @@ Looking forward, Brel could integrate a semantic layer over its existing syntact
 \section{Future Work}
 
 Future developments for Brel can be categorized into two areas: 
-enhancing its current features and expanding its functionalities. 
+\textcolor{airforceblue}{enhancing its current features}
+and 
+\textcolor{turkishrose}{expanding its functionalities}. 
 The improvements and extensions discussed here stem from Brel's limitations, 
 as addressed in section \ref{sec:limitations}.
+
+% \subsection{Semantic layer}
+
+% As we have discussed in chapter \ref{chapter:limitations}, Brel does not take advantage of the semantic layer of XBRL.
+% This means that Brel does parse the XBRL reports, but does not interpret the data in the reports.
+% For example, Brel does not check for logical errors in the reports, such as negative values for assets.
+% In future versions of Brel, it could report these logical errors to the user, and even suggest corrections to the reports.
+
+\subsection{Semantic Layer Integration}
+
+As discussed in chapter \ref{sec:limitations}, Brel does not utilize XBRL's semantic layer.
+Currently, Brel processes XBRL reports without interpreting the data, such as not identifying logical inconsistencies like negative asset values.
+Future versions of Brel could 
+\textcolor{turkishrose}{detect and report these errors, potentially suggesting corrections}.
+
+% As mentioned in section \ref{sec:hypercube}, Brel could also support open hypercubes, 
+% which are hypercubes that have dimensions with members that are not known in advance.
+% In fact, hypercubes in XBRL contain a lot of semantic information\footnote{See \url{https://www.xbrl.org/WGN/dimensions-use/WGN-2015-03-25/dimensions-use-WGN-2015-03-25.html}}.
+% Brel could use this semantic information to provide more advanced analysis of XBRL reports.
+% As noted in section \ref{sec:hypercubes}, Brel has the capability to support open hypercubes,
+% which are defined by having dimensions with members that are yet to be identified.
+% It is important to note that XBRL hypercubes encompass semantic information\cite{xbrl_dimensions_technical_considerations}.
+% By leveraging this semantic data, Brel can significantly enhance the analysis process of XBRL reports.
 
 % \subsection{Support for other XBRL formats}
 
@@ -106,39 +186,24 @@ as addressed in section \ref{sec:limitations}.
 \subsection{Support for Additional XBRL Formats}
 
 Presently, Brel is compatible only with the XML format outlined in the XBRL 2.1 specification \cite{xbrl21}.
-With the introduction of the OIM, XBRL has expanded to include formats like CSV and JSON.
+With the introduction of the OIM, XBRL has expanded to 
+\textcolor{turkishrose}{formats like CSV and JSON}.
 Currently, these formats are not supported by Brel, and their specifications are still under development\footnote{The OIM specifications contains a section for footnotes, which are a type of network.}.
 For instance, at this time, the CSV and JSON formats do not accommodate networks, an essential component of XBRL.
-
-In addition to CSV and JSON, XBRL also endorses the Inline XBRL (iXBRL) format, merging XBRL with HTML.
-Given the SEC's use of iXBRL for financial reporting, its support is critical.
 Considering the structural similarities between HTML and XML, it is feasible to incorporate iXBRL support into Brel by enhancing its existing architecture.
 
-Besides additional formats, Brel does not currently support XML validation against XBRL taxonomies.
+\subsection{Report Writing and Modification}
+
+Since Brel only supports reading XBRL reports, it is unable to create or modify them.
+Therefore, implementing support for 
+\textcolor{turkishrose}{writing and modifying XBRL reports} would be a valuable addition to Brel.
+
+\subsection{XML Schema Validation}
+
+Besides additional formats, Brel does not currently support 
+\textcolor{turkishrose}{XML validation against XBRL taxonomies}.
 This feature is important for ensuring that the XBRL reports are valid, and should be implemented in future versions of Brel.
 However, since all XBRL reports are required to be validated by regulators such as the SEC, this feature is not as important as the other features that we will discuss in this section.
-
-% \subsection{Semantic layer}
-
-% As we have discussed in chapter \ref{chapter:limitations}, Brel does not take advantage of the semantic layer of XBRL.
-% This means that Brel does parse the XBRL reports, but does not interpret the data in the reports.
-% For example, Brel does not check for logical errors in the reports, such as negative values for assets.
-% In future versions of Brel, it could report these logical errors to the user, and even suggest corrections to the reports.
-
-\subsection{Semantic Layer Integration}
-
-As discussed in chapter \ref{sec:limitations}, Brel does not utilize XBRL's semantic layer.
-Currently, Brel processes XBRL reports without interpreting the data, such as not identifying logical inconsistencies like negative asset values.
-Future versions of Brel could detect and report these errors, potentially suggesting corrections.
-
-% As mentioned in section \ref{sec:hypercube}, Brel could also support open hypercubes, 
-% which are hypercubes that have dimensions with members that are not known in advance.
-% In fact, hypercubes in XBRL contain a lot of semantic information\footnote{See \url{https://www.xbrl.org/WGN/dimensions-use/WGN-2015-03-25/dimensions-use-WGN-2015-03-25.html}}.
-% Brel could use this semantic information to provide more advanced analysis of XBRL reports.
-As noted in section \ref{sec:hypercubes}, Brel has the capability to support open hypercubes,
-which are defined by having dimensions with members that are yet to be identified.
-It is important to note that XBRL hypercubes encompass semantic information\cite{xbrl_dimensions_technical_considerations}
-By leveraging this semantic data, Brel can significantly enhance the analysis process of XBRL reports.
 
 % \subsection{Performance}
 
@@ -152,7 +217,8 @@ By leveraging this semantic data, Brel can significantly enhance the analysis pr
 Although not a primary focus of this thesis, Brel's performance remains a vital metric.
 Future iterations can benchmark their performance against this initial version.
 Python, being a high-level language, may not offer optimal speed.
-Part of Brel's parser could be optimized within Python or rewritten in a more efficient language like C or Rust.
+Part of Brel's parser could be 
+\textcolor{airforceblue}{optimized within Python or rewritten in a more efficient language} like C or Rust.
 
 % \subsection{Usability}
 
@@ -162,7 +228,8 @@ Part of Brel's parser could be optimized within Python or rewritten in a more ef
 
 \subsection{Enhancing Usability}
 
-To make Brel more user-friendly, developing a graphical user interface (GUI) is advisable.
+To make Brel more user-friendly, 
+\textcolor{turkishrose}{developing a graphical user interface} (GUI) is advisable.
 Currently functioning as an API, Brel requires users to write Python code.
 A GUI would eliminate the need for coding, thus broadening Brel's accessibility.
 
@@ -174,9 +241,17 @@ A GUI would eliminate the need for coding, thus broadening Brel's accessibility.
 \subsection{Conducting a Usability Study}
 
 As of now, Brel has been publicly available for a few weeks with limited user engagement.
-A comprehensive usability study would provide a scientific assessment of its user-friendliness.
+A \textcolor{airforceblue}{comprehensive usability study} would provide a scientific assessment of its user-friendliness.
 Such a study would also identify Brel's strengths and weaknesses, enabling more focused improvements.
 
+\subsection{XBRL Software Certification}
+
+XBRL International offers a software certification program to ensure that XBRL software meets the required standards\cite{xbrl_certified_software}.
+Brel could be 
+\textcolor{airforceblue}{certified by XBRL International}, which would provide a guarantee to users that Brel meets the required standards for XBRL software.
+
+
+\pagebreak
 \section{Acknowledgements}
 
 % I would like to express my gratitude to my supervisor, Dr. Ghislain Fourny,
@@ -196,32 +271,34 @@ They have been invaluable in the development of Brel, and I am grateful to their
 % , and GitHub for publishing Copilot\footnote{https://github.com/features/copilot}.
 I would also like to acknowledge the usage of ChatGPT\footnote{\url{https://chat.openai.com/}} by OpenAI 
 and Copilot\footnote{\url{https://github.com/features/copilot}} by GitHub.
-I am not a writer, I am a programmer.
+% I am not a writer, I am a programmer.
 My writing skills do sometimes leave something to be desired, and ChatGPT has been a great help in improving the quality of my writing and expressing my thoughts in a more formal manner.
 ChatGPT does generate text with many logical errors, but when used correctly, it can provide an alternative perspective on a text that can be very helpful. 
-Even though this thesis was written with the help of ChatGPT, 
-none of the information in this thesis was generated by ChatGPT.
-ChatGPT was merely used for two purposes: to improve the quality of my writing, and to provide an alternative perspective on the text.
+% Even though this thesis was written with the help of ChatGPT, 
+% none of the information in this thesis was generated by ChatGPT.
+% ChatGPT was merely used for two purposes: to improve the quality of my writing, and to provide an alternative perspective on the text.
 % none of its actual content was generated by ChatGPT.
 
 GitHub Copilot has also been a great help for implementing Brel, 
 as it has helped me generate examples for libraries that I have never used before,
 and has helped me find the right functions to use in many cases.
-Similar to ChatGPT, GitHub Copilot does not necessarily generate correct code, 
-but it can speed up the mundane parts of programming significantly.
-Copilot was used for three purposes: to generate examples for libraries that I have never used before, 
-to speed up repetitive tasks in programming like creating getters and setters, 
+Additionally, Copilot has been a great help in speeding up repetitive tasks in programming.
+% Similar to ChatGPT, GitHub Copilot does not necessarily generate correct code, 
+% but it can speed up the mundane parts of programming significantly.
+% Copilot was used for three purposes: to generate examples for libraries that I have never used before, 
+% to speed up repetitive tasks in programming like creating getters and setters, 
 % and to provide insight into how to name certain methods and classes.
-and to give alternatives for how to name certain methods and classes.
+% and to give alternatives for how to name certain methods and classes.
 
 % I would also like to thank my friends who have supported me throughout my studies at ETH Zurich,
 % Apart from these tools, I would like to thank my friends for their support during my studies at ETH Zurich, 
 Apart from these tools, I would like to thank my friends and colleagues for their support during my studies at ETH Zurich,
 especially Pascal Strebel, who has been a great friend all throughout my ETH journey.
 I hope that we will continue to be friends for many years to come and that we will continue to support each other, no matter where life takes us.
+
 I would also like to thank my girlfriend Ebruli for taking my mind off of my studies when I needed it the most and
 for brightening my days. 
-Her baked goodies always kept my spirits high.
+Her beautiful smile and delicious homemade goodies always kept my spirits high.
 
 % I would like to thank my family for their unwavering support and encouragement.
 Special thanks to my family for their unwavering support and having my back.

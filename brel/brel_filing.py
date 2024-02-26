@@ -9,14 +9,17 @@ Filings can be loaded from a folder, a zip file, or one or multiple xml files.
 - If a zip file is given, then the zip file is extracted to a folder 
 and then all xml files in the folder are loaded.
 - If one or more xml files are given, then only those xml files are loaded.
+- A URI can also be given. In this case, the file is downloaded and cached in a folder.
+
+Note that Brel currently only supports XBRL filings in the form of XML files.
 
 Example usage:
 
 ```
 from brel import Filing
 
-# open the filing
-filing1 = Filing.open("my_filing.zip")
+# open apples 2023 Q3 10-Q filing
+filing1 = Filing.open("https://www.sec.gov/Archives/edgar/data/320193/000032019323000077/aapl-20230701_htm.xml")
 
 filing2 = Filing.open("my_folder/")
 
@@ -45,7 +48,7 @@ import os
 import zipfile
 from typing import Callable, TypeGuard, cast
 
-from brel import Component, Fact, FilingFilter, QName
+from brel import Component, Fact, QName
 from brel.characteristics import Aspect
 from brel.networks import INetwork
 from brel.parsers import IFilingParser, XMLFilingParser
@@ -111,6 +114,11 @@ class Filing:
 
             xml_files = list(map(prepend_path, xml_files))
 
+            if len(xml_files) == 0:
+                raise ValueError(
+                    f"No xml files found in folder {path}. Please provide a folder with at least one xml file."
+                )
+
             parser = XMLFilingParser(xml_files)
             return cls(parser)
         elif is_file and path.endswith(".xml"):
@@ -138,6 +146,11 @@ class Filing:
             xml_files = list(map(lambda x: dir_path + "/" + x, xml_files))
             return cls.open(*xml_files)
         elif is_uri:
+            if not path.endswith(".xml"):
+                raise NotImplementedError(
+                    "Brel currently only supports XBRL filings in the form of XML files"
+                )
+
             if DEBUG:
                 print(f"Opening uri {path}")
             # if the path is a uri, then download the file and place it in a folder
@@ -344,42 +357,6 @@ class Filing:
         :returns list[Fact]: the list of facts
         """
         return self.get_facts_by_concept_name(concept.get_name())
-
-    def __getitem__(
-        self, key: str | QName | Aspect | FilingFilter
-    ) -> list[Fact] | FilingFilter:
-        # if the key is a filter, filter the facts
-        if isinstance(key, FilingFilter):
-            return key.filter(self.__facts)
-
-        # if the key is an aspect, make a filter of that aspect and return the unappied filter
-        if isinstance(key, Aspect):
-            return FilingFilter.make_aspect_filter(self.__facts, key, self.__nsmap)
-
-        # if the key is a str, but looks like a QName, then turn it into a QName
-        if isinstance(key, str) and QName.is_str_qname(key, self.__nsmap):
-            key = QName.from_string(key, self.__nsmap)
-
-        # if the key is a qname, then it is an additional dimension
-        # make a filter of that aspect and return it unapplied
-        if isinstance(key, QName):
-            aspect = Aspect.from_QName(key)
-            return FilingFilter.make_aspect_filter(self.__facts, aspect, self.__nsmap)
-
-        # finally, if the key is one of the core aspects, then make a filter of that aspect and return it unapplied
-        aspect_names = {
-            "entity": Aspect.ENTITY,
-            "period": Aspect.PERIOD,
-            "unit": Aspect.UNIT,
-            "concept": Aspect.CONCEPT,
-        }
-
-        if key.lower() in aspect_names:
-            key = aspect_names[key]
-            return FilingFilter.make_aspect_filter(self.__facts, key, self.__nsmap)
-
-        # otherwise, raise an error
-        raise ValueError(f"Key {key} is not a valid key")
 
     def get_all_component_uris(self) -> list[str]:
         """

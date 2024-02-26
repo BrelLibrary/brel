@@ -19,6 +19,7 @@ For the sake of brevity, we will only look at a single network within the report
 Even though this evaluation only covers a single component within the report,
 it will give us a more intuitive understanding of Brel's correctness compared to the conformance suite.
 Brel also contains its own test suite, which is not covered in this thesis.
+This test suite is available in Brel's source code repository\cite{brel_source}.
 
 \subsection{Conformance suite}
 
@@ -35,7 +36,7 @@ Figure \ref{fig:conformance_suite} shows the results of running the conformance 
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=1\textwidth]{images/seattle_method_test_results.png}
+  \includegraphics[width=0.6\textwidth]{images/seattle_method_test_results.png}
     \caption{Conformance suite results}
     \label{fig:conformance_suite}
 \end{figure}
@@ -78,7 +79,7 @@ This report will be loaded directly from the EDGAR database by providing the URL
 % Furthermore, Brel employs the same network parsing algorithm for all networks, so the results of this evaluation will be representative of Brel's correctness.
 We will look at the \texttt{ComprehensiveIncomeStatement} component and all facts associated with the concepts within its presentation network.
 Its presentation network acts as a good sanity check, since the information in it is understandable by non-accountants.
-Furthermore, Brel employs the same network parsing algorithm for all networks, so the results of this evaluation will be representative of Brel's correctness.
+% Furthermore, Brel employs the same network parsing algorithm for all networks, so the results of this evaluation will be representative of Brel's correctness.
 
 % The following sections show the results of the evaluation.
 % The report is loaded directly from the EDGAR database by providing the URL of the report to Brel.
@@ -122,8 +123,8 @@ arc roles: ['.../parent-child'], arc name: link:presentationArc
     │  ├──[CONCEPT] Net change related to investments
     │  ├──[CONCEPT] Translation adjustments and other
     │  └──[CONCEPT] Other comprehensive income (loss)
-    └──[CONCEPT] Comprehensive Income (Loss), Net of Tax, Attributable to Parent
-    \end{lstlisting}
+    └──[CONCEPT] Comprehensive Income (Loss), Net of Tax, Attributable ...
+\end{lstlisting}
     \caption{Microsoft's 10K presentation network in Brel\cite{microsoft_edgar}}
     \label{fig:msft_income_statement_network}
 \end{figure}
@@ -148,6 +149,7 @@ whereas Brel displays only the report elements and their interconnections.
 Fortunately, the \texttt{viewer.py} tool can be employed to filter and display facts corresponding to the concepts shown in figure \ref{fig:msft_income_statement_network}.  
 The outcome of running the \texttt{viewer.py} script is presented in figure \ref{fig:msft_income_statement_facts},  
 although it should be noted that this output is truncated and uses a slightly modified viewer script that enables searching for multiple concepts at once.
+Additionally, duplicate facts have been omitted from the output.
 
 Additionally, it's crucial to recognize that XBRL reports may contain duplicate facts, as they can be reported in varying contexts.  
 While Arelle typically does not display these duplicates, Brel does, showcasing all instances of reported facts.
@@ -179,7 +181,7 @@ While Arelle typically does not display these duplicates, Brel does, showcasing 
 |                  us-gaap:ComprehensiveIncomeNetOfTax | from 2021-07-01 to 2022-06-30 | 0000789019 |  USD  | 66238000000 |
 |                  us-gaap:ComprehensiveIncomeNetOfTax | from 2022-07-01 to 2023-06-30 | 0000789019 |  USD  | 70696000000 |
 +------------------------------------------------------+-------------------------------+------------+-------+-------------+
-    \end{lstlisting}
+\end{lstlisting}
     \caption{Microsoft's 10K facts in Brel\cite{microsoft_edgar}}
     \label{fig:msft_income_statement_facts}
 \end{figure}

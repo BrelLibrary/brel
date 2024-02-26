@@ -8,7 +8,8 @@ This module tests the calculation validation functions.
 @date: 29 December 2023
 """
 
-from brel import QName, QNameNSMap, Fact, Context, ConceptCharacteristic
+from brel import QName, QNameNSMap, Fact, Context
+from brel.characteristics import ConceptCharacteristic
 from brel.networks import CalculationNetwork, CalculationNetworkNode
 from brel.reportelements import Concept
 from brel.utils import pprint_network, pprint_facts
@@ -48,9 +49,7 @@ concepts = [
 arc_role = "http://www.xbrl.org/2003/arcrole/summation-item"
 arc_name = QName.from_string("link:calculationLink", nsmap)
 link_role = "CONDENSEDCONSOLIDATEDSTATEMENTSOFINCOME"
-link_name = QName.from_string(
-    "us-gaap:CondensedConsolidatedStatementsOfIncome", nsmap
-)
+link_name = QName.from_string("us-gaap:CondensedConsolidatedStatementsOfIncome", nsmap)
 
 
 def create_node(concept: Concept, weight: int, order: int):
@@ -130,7 +129,7 @@ def test_calculation_validation_GD():
         fact_from_concept(concepts[9], "5"),
     ]
 
-    network = CalculationNetwork([nodes[0]], link_role, link_name)
+    network = CalculationNetwork([nodes[0]], link_role, link_name, False)
 
     if DEBUG:  # pragma: no cover
         pprint_network(network)
@@ -160,7 +159,7 @@ def test_calculation_validation_NG_balance():
     nodes[0]._add_child(nodes[1])
     nodes[0]._add_child(nodes[2])
 
-    network = CalculationNetwork([nodes[0]], link_role, link_name)
+    network = CalculationNetwork([nodes[0]], link_role, link_name, False)
 
     if DEBUG:  # pragma: no cover
         pprint_network(network)
@@ -186,7 +185,7 @@ def test_calculation_validation_NG_balance():
     nodes[0]._add_child(nodes[1])
     nodes[1]._add_child(nodes[2])
 
-    network = CalculationNetwork([nodes[0]], link_role, link_name)
+    network = CalculationNetwork([nodes[0]], link_role, link_name, False)
 
     if DEBUG:  # pragma: no cover
         pprint_network(network)
@@ -198,7 +197,7 @@ def test_calculation_validation_NG_balance():
 
 def test_calculation_validation_GD_empty_network():
     # check if the empty network is aggregation consistent
-    network = CalculationNetwork([], link_role, link_name)
+    network = CalculationNetwork([], link_role, link_name, False)
 
     if DEBUG:  # pragma: no cover
         pprint_network(network)
@@ -247,7 +246,7 @@ def test_calculation_validation_NG_aggregation():
         fact_from_concept(concepts[3], "70"),
     ]
 
-    network = CalculationNetwork([nodes[0]], link_role, link_name)
+    network = CalculationNetwork([nodes[0]], link_role, link_name, False)
 
     if DEBUG:  # pragma: no cover
         pprint_network(network)

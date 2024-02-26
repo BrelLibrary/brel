@@ -127,7 +127,9 @@ Dimensions define custom axes, along which facts are positioned.
 There are two types of dimensions: explicit and typed.
 In addition to inheriting methods from the \texttt{IReportElement} interface,
 the \texttt{Dimension} class offers two specific methods.
-The \texttt{is\_explicit} method returns a boolean indicating the nature of the dimension—whether it is explicit.
+The \texttt{is\_explicit} method returns a boolean indicating the nature of the dimension
+%  — whether it is explicit.
+as explicit or typed.
 The \texttt{get\_type} method discloses the dimension's type for typed dimensions and triggers an exception for explicit ones.
 
 % The \texttt{Dimension} class does not incorporate a \texttt{get\_members} method,
