@@ -4,7 +4,7 @@ from brel.characteristics import *
 
 def test_context_getters():
     # open ete filing
-    filing = brel.Filing.open("tests/end_to_end/ete_filing")
+    filing = brel.Filing.open("tests/end_to_end_tests/ete_filing")
 
     # get a ete:cash fact
     cash_fact = filing.get_facts_by_concept_name("ete:cash")[0]

@@ -22,7 +22,7 @@ def method_output_to_string(method) -> str:
 
 
 def test_print_fact():
-    filing = brel.Filing.open("tests/end_to_end/ete_filing")
+    filing = brel.Filing.open("tests/end_to_end_tests/ete_filing")
     fact = filing.get_facts_by_concept_name("ete:cash")[0]
     output = method_output_to_string(lambda: pprint_fact(fact))
 
@@ -36,7 +36,7 @@ def test_print_fact():
 
 
 def test_print_facts():
-    filing = brel.Filing.open("tests/end_to_end/ete_filing")
+    filing = brel.Filing.open("tests/end_to_end_tests/ete_filing")
     facts = filing.get_facts_by_concept_name("ete:cash")
     output = method_output_to_string(lambda: pprint_facts(facts))
 

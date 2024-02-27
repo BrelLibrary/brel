@@ -33,7 +33,7 @@ lint:             ## Run pep8, black, mypy linters.
 	$(ENV_PREFIX)mypy --ignore-missing-imports brel/
 
 .PHONY: test
-test: 
+test: lint		 ## Run tests.
 	$(ENV_PREFIX)pytest -v --cov-config .coveragerc --cov=brel -l --tb=short --maxfail=1 tests/
 	$(ENV_PREFIX)coverage xml
 	$(ENV_PREFIX)coverage html
@@ -96,8 +96,3 @@ serve-docs:       ## Serve the documentation.
 init:             ## Initialize the project based on an application template.
 	@./.github/init.sh
 
-
-# This project has been generated from rochacbruno/python-project-template
-# __author__ = 'rochacbruno'
-# __repo__ = https://github.com/rochacbruno/python-project-template
-# __sponsor__ = https://github.com/sponsors/rochacbruno/

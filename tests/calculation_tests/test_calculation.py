@@ -134,10 +134,10 @@ def test_calculation_validation_GD():
     if DEBUG:  # pragma: no cover
         pprint_network(network)
 
-        print(network.is_balance_consisent())
+        print(network.is_balance_consistent())
         print(network.is_aggregation_consistent(facts))
 
-    assert network.is_balance_consisent()
+    assert network.is_balance_consistent()
     assert network.is_aggregation_consistent(facts)
 
 
@@ -165,7 +165,7 @@ def test_calculation_validation_NG_balance():
         pprint_network(network)
 
     assert (
-        not network.is_balance_consisent()
+        not network.is_balance_consistent()
     ), "The edge Inventory, Net -> Valuation Reserves should have weight -1 since the former is debit and the latter is credit"
 
     # The following code creates the following calculation network:
@@ -191,7 +191,7 @@ def test_calculation_validation_NG_balance():
         pprint_network(network)
 
     assert (
-        not network.is_balance_consisent()
+        not network.is_balance_consistent()
     ), "The edge Assets -> Current Assets should have weight 1 since both are debit"
 
 

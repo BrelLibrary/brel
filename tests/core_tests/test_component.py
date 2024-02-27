@@ -10,7 +10,7 @@ def test_component_constructor_BD():
     uri = "http://foo/role/balance"
     info = "Balance Sheet"
 
-    filing = brel.Filing.open("tests/end_to_end/ete_filing")
+    filing = brel.Filing.open("tests/end_to_end_tests/ete_filing")
     balance_component = filing.get_component("http://foo/role/balance")
     pre_network = balance_component.get_presentation_network()
     calc_network = balance_component.get_calculation_network()
@@ -46,7 +46,7 @@ def test_component_constructor_BD():
 
 
 def test_component_getters():
-    filing = brel.Filing.open("tests/end_to_end/ete_filing")
+    filing = brel.Filing.open("tests/end_to_end_tests/ete_filing")
     balance_component = filing.get_component("http://foo/role/balance")
 
     # check if the getters return the expected networks
@@ -60,7 +60,7 @@ def test_component_getters():
         balance_component.get_info() == "Balance Sheet"
     ), f"Info is {balance_component.get_info()}, expected 'Balance Sheet'"
 
-    # check get_presentaion_network()
+    # check get_presentation_network()
     pre_network = balance_component.get_presentation_network()
     assert pre_network is not None, "Balance component has no presentation network"
 

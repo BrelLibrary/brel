@@ -22,7 +22,7 @@ def method_output_to_string(method) -> str:
 
 
 def test_print_network_roles():
-    filing = brel.Filing.open("tests/end_to_end/ete_filing")
+    filing = brel.Filing.open("tests/end_to_end_tests/ete_filing")
     network = filing.get_component("http://foo/role/balance").get_presentation_network()
 
     # redirect stdout to a string
@@ -40,7 +40,7 @@ def test_print_network_roles():
 
 
 def test_print_network_names():
-    filing = brel.Filing.open("tests/end_to_end/ete_filing")
+    filing = brel.Filing.open("tests/end_to_end_tests/ete_filing")
     network = filing.get_component("http://foo/role/balance").get_presentation_network()
 
     # redirect stdout to a string
@@ -64,7 +64,7 @@ def test_print_network_names():
 
 
 def test_print_network_order():
-    filing = brel.Filing.open("tests/end_to_end/ete_filing")
+    filing = brel.Filing.open("tests/end_to_end_tests/ete_filing")
     network = filing.get_component("http://foo/role/balance").get_presentation_network()
     printed_network = method_output_to_string(lambda: pprint_network(network))
 
@@ -76,7 +76,7 @@ def test_print_network_order():
 
 
 def test_print_network_elements():
-    filing = brel.Filing.open("tests/end_to_end/ete_filing")
+    filing = brel.Filing.open("tests/end_to_end_tests/ete_filing")
     network = filing.get_component("http://foo/role/balance").get_presentation_network()
     printed_network = method_output_to_string(lambda: pprint_network(network))
     # check that they are printed in the right order
@@ -125,7 +125,7 @@ def test_none_network():
 
 
 def test_resource_network():
-    filing = brel.Filing.open("tests/end_to_end/ete_filing")
+    filing = brel.Filing.open("tests/end_to_end_tests/ete_filing")
     label_network = next(
         (
             network
@@ -181,7 +181,7 @@ def test_resource_network():
 
 
 def test_print_calculation_network():
-    filing = brel.Filing.open("tests/end_to_end/ete_filing")
+    filing = brel.Filing.open("tests/end_to_end_tests/ete_filing")
     network = filing.get_component("http://foo/role/balance").get_calculation_network()
     printed_network = method_output_to_string(lambda: pprint_network(network))
 

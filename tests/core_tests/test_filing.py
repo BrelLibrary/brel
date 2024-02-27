@@ -10,7 +10,7 @@ def assert_list_of_type(lst, type_):
 
 
 def test_filing_getters():
-    filing = brel.Filing.open("tests/end_to_end/ete_filing")
+    filing = brel.Filing.open("tests/end_to_end_tests/ete_filing")
 
     # check get_all_facts(). it should return a list of facts
     facts = filing.get_all_facts()
@@ -114,7 +114,7 @@ def test_filing_getters():
 def test_filing_open():
     # check to open a folder not ending with '/'
     try:
-        filing = brel.Filing.open("tests/end_to_end/ete_filing")
+        filing = brel.Filing.open("tests/end_to_end_tests/ete_filing")
         assert (
             len(filing.get_errors()) == 0
         ), f"Expected no errors, got {filing.get_errors()}"
@@ -129,9 +129,9 @@ def test_filing_open():
         pass
 
     # try to pass all files in the ete folder to the open method
-    ete_files = os.listdir("tests/end_to_end/ete_filing")
+    ete_files = os.listdir("tests/end_to_end_tests/ete_filing")
     ete_files = [
-        os.path.join("tests/end_to_end/ete_filing", file) for file in ete_files
+        os.path.join("tests/end_to_end_tests/ete_filing", file) for file in ete_files
     ]
     try:
         filing = brel.Filing.open(*ete_files)
@@ -143,7 +143,7 @@ def test_filing_open():
 
     # open ete from a zip file
     try:
-        filing = brel.Filing.open("tests/end_to_end/ete_filing.zip")
+        filing = brel.Filing.open("tests/end_to_end_tests/ete_filing.zip")
         assert (
             len(filing.get_errors()) == 0
         ), f"Expected no errors, got {filing.get_errors()}"

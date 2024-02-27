@@ -39,7 +39,7 @@ class CalculationNetwork(INetwork):
         super().__init__(roots_copy, link_role, link_name, is_physical)
 
     # second class citizen
-    def is_balance_consisent(self) -> bool:
+    def is_balance_consistent(self) -> bool:
         """
         Returns true if the network is balance consistent.
         A network is balance consistent iff, for each parent-child relationship

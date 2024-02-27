@@ -3,7 +3,7 @@ from brel.networks import FootnoteNetwork
 import brel.utils
 
 # load ete filing
-filing = Filing.open("tests/end_to_end/ete_filing")
+filing = Filing.open("tests/end_to_end_tests/ete_filing")
 
 # get the balance component
 balance_component = filing.get_component("http://foo/role/balance")

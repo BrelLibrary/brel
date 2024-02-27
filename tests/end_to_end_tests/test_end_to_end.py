@@ -10,7 +10,7 @@ def test_end_to_end_report_elements():
     """
     Tests the report elements of the end-to-end filing
     """
-    filing = Filing.open("tests/end_to_end/ete_filing")
+    filing = Filing.open("tests/end_to_end_tests/ete_filing")
 
     report_elements = filing.get_all_report_elements()
 
@@ -59,7 +59,7 @@ def test_end_to_end_labels():
     """
     Tests the labels of the end-to-end filing
     """
-    filing = Filing.open("tests/end_to_end/ete_filing")
+    filing = Filing.open("tests/end_to_end_tests/ete_filing")
     report_elements = filing.get_all_report_elements()
 
     # go over all report elements and check that they have the correct type
@@ -85,7 +85,7 @@ def test_end_to_end_components():
     """
     Tests the components of the end-to-end filing
     """
-    filing = Filing.open("tests/end_to_end/ete_filing")
+    filing = Filing.open("tests/end_to_end_tests/ete_filing")
 
     # check the calculation networks
     components = filing.get_all_components()
@@ -137,7 +137,7 @@ def test_end_to_end_calculation():
     Tests the calculation network of the end-to-end filing
     """
 
-    filing = Filing.open("tests/end_to_end/ete_filing")
+    filing = Filing.open("tests/end_to_end_tests/ete_filing")
     components = filing.get_all_components()
     calculation_networks = [
         component.get_calculation_network()
@@ -155,7 +155,7 @@ def test_end_to_end_calculation():
 
     # check that the good network is balance consistent
     assert (
-        calculation_network_good.is_balance_consisent()
+        calculation_network_good.is_balance_consistent()
     ), "Good calculation network is not balance consistent"
 
     # check that the good network is aggregation consistent
@@ -166,7 +166,7 @@ def test_end_to_end_calculation():
 
     # check that the bad network is not balance consistent
     assert (
-        not calculation_network_bad.is_balance_consisent()
+        not calculation_network_bad.is_balance_consistent()
     ), "Bad calculation network is balance consistent"
 
     # check that the bad network is not aggregation consistent
