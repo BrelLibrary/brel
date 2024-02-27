@@ -162,9 +162,9 @@ first_10_facts = filing.get_all_facts()[:10]
 pprint(first_10_facts)
 </code></pre>
 <h2 id="example-2-loading-a-filing-with-a-date">Example 2: Loading a filing with a date</h2>
-<p>The following example loads the 10-K filing for Apple Inc. on the 30th of September, 2023 and prints the first 10 facts.</p>
+<p>The following example loads the 10-K filing for Apple Inc. on the 30th of September 2023 and prints the first 10 facts.</p>
 <p>The format of the date is "YYYY-MM-DD".
-Therefore the date "30th of September, 2023" is "2023-09-30".</p>
+Therefore, the date "30th of September 2023" is "2023-09-30".</p>
 <p><strong>Important</strong>: If Brel does not find the filing for the given date, it will raise a <code>ValueError</code>.
 Also, the date refers to the date on the report, not the date the report was filed.</p>
 <pre><code class="language-python">from brel.utils import open_edgar, pprint
