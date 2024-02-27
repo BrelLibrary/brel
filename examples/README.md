@@ -21,3 +21,8 @@ Gets a random selection of components from the filing and prints their presentat
 ## Example 5
 
 Lets the user select a component and prints its presentation, calculation and definition networks.
+
+## cli
+
+A simple command line interface to interact with the library.
+It can be used to load a filing and print the facts or components according to the user's input.
