@@ -24,6 +24,7 @@ from brel.characteristics import (
     ICharacteristic,
     PeriodCharacteristic,
     UnitCharacteristic,
+    EntityCharacteristic,
 )
 
 
@@ -60,13 +61,6 @@ class Fact:
         :returns str: The value of the fact as a string.
         """
         return self.__value
-
-    def get_value_as_qname(self) -> QName:
-        """
-        :returns: The value of the fact as a QName
-        """
-        # TODO: implement
-        raise NotImplementedError
 
     def get_value_as_int(self) -> int:
         """
@@ -156,6 +150,17 @@ class Fact:
             self.__context.get_characteristic(Aspect.PERIOD),
         )
         return period
+
+    def get_entity(self) -> EntityCharacteristic | None:
+        """
+        :returns EntityCharacteristic|None: The entity characteristic of the facts context. Returns None if the fact does not have an entity.
+        Equivalent to calling `fact.get_context().get_entity()`
+        """
+        entity: EntityCharacteristic = cast(
+            EntityCharacteristic,
+            self.__context.get_characteristic(Aspect.ENTITY),
+        )
+        return entity
 
     def get_aspects(self) -> list[Aspect]:
         """

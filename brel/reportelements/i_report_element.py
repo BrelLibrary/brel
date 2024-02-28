@@ -29,7 +29,7 @@ class IReportElement(ABC):
 
     # first class citizens
     @abstractmethod
-    def get_name(self) -> QName:
+    def get_name(self) -> QName:  # pragma: no cover
         """
         Get the name of the report element.
         :returns: QName containing the name of the report element
@@ -37,7 +37,7 @@ class IReportElement(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def get_labels(self) -> list[BrelLabel]:
+    def get_labels(self) -> list[BrelLabel]:  # pragma: no cover
         """
         Get all labels of the report element.
         :returns list[Label]: containing the labels of the report element
@@ -45,7 +45,7 @@ class IReportElement(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def _add_label(self, label: BrelLabel):
+    def _add_label(self, label: BrelLabel):  # pragma: no cover
         raise NotImplementedError
 
     # second class citizens
@@ -55,9 +55,7 @@ class IReportElement(ABC):
         :param label_role: the role of the label to check
         :returns bool: True if the report element has a label with the given role, False otherwise
         """
-        return any(
-            label.get_label_role() == label_role for label in self.get_labels()
-        )
+        return any(label.get_label_role() == label_role for label in self.get_labels())
 
     def has_label_with_language(self, language: str) -> bool:
         """
@@ -65,6 +63,4 @@ class IReportElement(ABC):
         :param language: the language of the label to check
         :returns bool: True if the report element has a label with the given language, False otherwise
         """
-        return any(
-            label.get_language() == language for label in self.get_labels()
-        )
+        return any(label.get_language() == language for label in self.get_labels())

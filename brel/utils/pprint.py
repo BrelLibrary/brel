@@ -10,6 +10,7 @@ Acts as a wrapper around the other pretty print functions and automatically sele
 
 ====================
 """
+
 from brel import Fact, Component
 from brel.networks import INetwork, INetworkNode
 from brel.utils import (
@@ -45,7 +46,7 @@ def pprint(to_print):
             for component in to_print:
                 pprint_component(component)
         else:
-            raise ValueError("Can only pretty print lists of facts.")
+            raise TypeError("Can only pretty print lists of facts.")
     elif isinstance(to_print, INetwork):
         pprint_network(to_print)
     elif isinstance(to_print, INetworkNode):
@@ -53,6 +54,6 @@ def pprint(to_print):
     elif isinstance(to_print, Component):
         pprint_component(to_print)
     else:
-        raise ValueError(
+        raise TypeError(
             f"Can only pretty print facts, lists of facts, components, networks and network nodes. Got {type(to_print)}"
         )

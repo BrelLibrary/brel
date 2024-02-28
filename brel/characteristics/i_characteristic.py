@@ -56,14 +56,14 @@ class ICharacteristic(ABC):
     """
 
     @abstractmethod
-    def get_value(self) -> Any:
+    def get_value(self) -> Any:  # pragma: no cover
         """
         :returns Any: the value of the characteristic.
         """
         raise NotImplementedError
 
     @abstractmethod
-    def get_aspect(self) -> Aspect:
+    def get_aspect(self) -> Aspect:  # pragma: no cover
         """
         :returns Aspect: the aspect of the characteristic.
         """

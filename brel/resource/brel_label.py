@@ -58,5 +58,5 @@ class BrelLabel(IResource):
     def get_title(self) -> str | None:
         return None
 
-    def get_content(self) -> dict:
-        return {None: self.__text}
+    def get_content(self) -> str:
+        return self.__text

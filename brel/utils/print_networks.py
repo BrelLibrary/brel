@@ -47,7 +47,7 @@ def __print_sub_network(node: INetworkNode, last=True, header="") -> None:
             label_role = resource.get_role()
             label_role_str = label_role.split("/")[-1]
             label_language = resource.get_language()
-            label_content = resource.get_content()[None]
+            label_content = resource.get_content()
             type_str = f"[{tag_lookup[BrelLabel]}] ({label_role_str} {label_language}) {label_content}"
         elif isinstance(resource, BrelReference):
             # type_str = f"[REFERENCE] {resource.get_content()}"
