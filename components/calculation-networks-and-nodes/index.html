@@ -51,6 +51,10 @@
                 <li class="toctree-l1"><a class="reference internal" href="../../Loading%20from%20EDGAR/">EDGAR</a>
                 </li>
               </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../changelog/">Changelog</a>
+                </li>
+              </ul>
               <p class="caption"><span class="caption-text">Brel Filings</span></p>
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../../brel-filings/filings/">Filings</a>
@@ -241,9 +245,9 @@ Calculation networks also contain helper functions for checking the consistency 
 </code></pre>
 <p>The class for representing a calculation network.
 A calculation network is a network of nodes that indicate which concepts are calculated from which other concepts.</p>
-<p><a id="brel.networks.calculation_network.CalculationNetwork.is_balance_consisent"></a></p>
-<h4 id="is_balance_consisent">is_balance_consisent</h4>
-<pre><code class="language-python">def is_balance_consisent() -&gt; bool
+<p><a id="brel.networks.calculation_network.CalculationNetwork.is_balance_consistent"></a></p>
+<h4 id="is_balance_consistent">is_balance_consistent</h4>
+<pre><code class="language-python">def is_balance_consistent() -&gt; bool
 </code></pre>
 <p>Returns true if the network is balance consistent.</p>
 <p>A network is balance consistent iff, for each parent-child relationship

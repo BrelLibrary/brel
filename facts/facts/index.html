@@ -51,6 +51,10 @@
                 <li class="toctree-l1"><a class="reference internal" href="../../Loading%20from%20EDGAR/">EDGAR</a>
                 </li>
               </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../changelog/">Changelog</a>
+                </li>
+              </ul>
               <p class="caption"><span class="caption-text">Brel Filings</span></p>
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../../brel-filings/filings/">Filings</a>
@@ -65,8 +69,6 @@
     <li class="toctree-l3"><a class="reference internal" href="#get_context">get_context</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#get_value_as_str">get_value_as_str</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#get_value_as_qname">get_value_as_qname</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#get_value_as_int">get_value_as_int</a>
     </li>
@@ -83,6 +85,8 @@
     <li class="toctree-l3"><a class="reference internal" href="#get_unit">get_unit</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#get_period">get_period</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_entity">get_entity</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#get_aspects">get_aspects</a>
     </li>
@@ -206,12 +210,6 @@ They closely resemble the facts in XBRL in the Open Information Model.</p>
 </code></pre>
 <p><strong>Returns</strong>:</p>
 <p><code>str</code>: The value of the fact as a string.</p>
-<p><a id="brel.brel_fact.Fact.get_value_as_qname"></a></p>
-<h4 id="get_value_as_qname">get_value_as_qname</h4>
-<pre><code class="language-python">def get_value_as_qname() -&gt; QName
-</code></pre>
-<p><strong>Returns</strong>:</p>
-<p>The value of the fact as a QName</p>
 <p><a id="brel.brel_fact.Fact.get_value_as_int"></a></p>
 <h4 id="get_value_as_int">get_value_as_int</h4>
 <pre><code class="language-python">def get_value_as_int() -&gt; int
@@ -275,6 +273,13 @@ Equivalent to calling <code>fact.get_context().get_unit()</code></p>
 <p><strong>Returns</strong>:</p>
 <p><code>PeriodCharacteristic|None</code>: The period characteristic of the facts context. Returns None if the fact does not have a period.
 Equivalent to calling <code>fact.get_context().get_period()</code></p>
+<p><a id="brel.brel_fact.Fact.get_entity"></a></p>
+<h4 id="get_entity">get_entity</h4>
+<pre><code class="language-python">def get_entity() -&gt; EntityCharacteristic | None
+</code></pre>
+<p><strong>Returns</strong>:</p>
+<p><code>EntityCharacteristic|None</code>: The entity characteristic of the facts context. Returns None if the fact does not have an entity.
+Equivalent to calling <code>fact.get_context().get_entity()</code></p>
 <p><a id="brel.brel_fact.Fact.get_aspects"></a></p>
 <h4 id="get_aspects">get_aspects</h4>
 <pre><code class="language-python">def get_aspects() -&gt; list[Aspect]

@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>EDGAR - Brel git repo</title>
+    <title>Changelog - Brel git repo</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "EDGAR";
-        var mkdocs_page_input_path = "Loading from EDGAR.md";
+        var mkdocs_page_name = "Changelog";
+        var mkdocs_page_input_path = "changelog.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -47,18 +47,14 @@
                 <li class="toctree-l1"><a class="reference internal" href="../examples/">Examples</a>
                 </li>
               </ul>
-              <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="./">EDGAR</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#example-1-loading-a-filing-and-printing-its-facts">Example 1: Loading a filing and printing its facts</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#example-2-loading-a-filing-with-a-date">Example 2: Loading a filing with a date</a>
-    </li>
-    </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Loading%20from%20EDGAR/">EDGAR</a>
                 </li>
               </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../changelog/">Changelog</a>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Changelog</a>
+    <ul class="current">
+    </ul>
                 </li>
               </ul>
               <p class="caption"><span class="caption-text">Brel Filings</span></p>
@@ -138,9 +134,9 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">EDGAR</li>
+      <li class="breadcrumb-item active">Changelog</li>
     <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/BrelLibrary/brel/edit/master/docs/Loading from EDGAR.md" class="icon icon-github"> Edit on GitHub</a>
+          <a href="https://github.com/BrelLibrary/brel/edit/master/docs/changelog.md" class="icon icon-github"> Edit on GitHub</a>
     </li>
   </ul>
   <hr/>
@@ -148,43 +144,53 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="loading-a-filing-from-edgar">Loading a filing from EDGAR</h1>
-<p>Brel provides a helper function to load filings from the <a href="https://www.sec.gov/edgar/searchedgar/cik.htm">SEC's EDGAR database</a>. This function allows you to load filings by specifying the company's CIK, the form type, and the date of the filing.</p>
-<p>The following steps are required to download a filing from EDGAR and load it into Brel:</p>
-<ol>
-<li>Search for the company's CIK on the <a href="https://www.sec.gov/edgar/searchedgar/cik.htm">SEC website</a>.</li>
-<li>Specify if you want to download the 10-K, 10-Q, or 8-K filings.</li>
-<li>(optional) Specify the date of the filing. If not specified, the most recent filing will be downloaded.</li>
-</ol>
-<h2 id="example-1-loading-a-filing-and-printing-its-facts">Example 1: Loading a filing and printing its facts</h2>
-<p>Filings can be directly loaded from EDGAR using the <code>brel.utils.open_edgar</code> function. The following example loads the 10-K filing for Apple Inc. in 2020 and prints the first 10 facts.</p>
-<pre><code class="language-python">from brel.utils import open_edgar, pprint
-
-# Load a filing from EDGAR. In this case, the CIK is 320193 and the form is 10-K
-filing = open_edgar(cik=&quot;320193&quot;, form=&quot;10-K&quot;)
-first_10_facts = filing.get_all_facts()[:10]
-pprint(first_10_facts)
-</code></pre>
-<h2 id="example-2-loading-a-filing-with-a-date">Example 2: Loading a filing with a date</h2>
-<p>The following example loads the 10-K filing for Apple Inc. on the 30th of September 2023 and prints the first 10 facts.</p>
-<p>The format of the date is "YYYY-MM-DD".
-Therefore, the date "30th of September 2023" is "2023-09-30".</p>
-<p><strong>Important</strong>: If Brel does not find the filing for the given date, it will raise a <code>ValueError</code>.
-Also, the date refers to the date on the report, not the date the report was filed.</p>
-<pre><code class="language-python">from brel.utils import open_edgar, pprint
-
-# Load a filing from EDGAR. 
-# - CIK is 320193
-# - form is 10-K
-# - date is the 30th of September, 2023.
-filing = open_edgar(cik=&quot;320193&quot;, form=&quot;10-K&quot;, date=&quot;2023-09-30&quot;)
-</code></pre>
+                <h1 id="version-081a0">Version 0.8.1.a0</h1>
+<p>Initial release of Brel. This release includes the following features:</p>
+<ul>
+<li>Loading an XBRL file from a local path.</li>
+<li>Support for XML XBRL format.</li>
+<li>Implementation of Brel API, a pythonic wrapper for XBRL</li>
+<li>Support for filings from the SEC's EDGAR database.</li>
+</ul>
+<h1 id="version-081a1">Version 0.8.1.a1</h1>
+<p>This release includes the following features:</p>
+<ul>
+<li>Support for the <code>open_edgar</code> function to load filings from the SEC's EDGAR database.</li>
+<li>Support for remote file loading from the SEC's EDGAR database.</li>
+<li>Improved performance of the <code>Filing.open</code> method.</li>
+<li>Added the <code>Filing.get_errors</code> method. Errors in the filing are now logged instead of raising an exception.</li>
+</ul>
+<p>Bugfixes:</p>
+<ul>
+<li>Fixed an issue where empty footnotes would raise an exception.</li>
+<li>Fixed an issue where calculation network weights were not being extracted correctly.</li>
+<li>Removed typos in two methods.</li>
+<li>Fixed renaming of namespaces normalization not working correctly.</li>
+<li>Patched bug where schemaLocations were not discovered by DTS resolver.</li>
+<li>Fixed pprint functions not properly displaying footnotes and references correctly.</li>
+</ul>
+<p>Internal changes:</p>
+<ul>
+<li>Removed all <code>from_xml</code> methods and moved them into parser modules.</li>
+<li>Added more dependency injection to the parser. Now QNames, namespaces, etc. are created using first order functions.</li>
+<li><code>Filing.open</code> is now strict with the input parameters.</li>
+<li>Removed lots of TODOs</li>
+<li>Added tons and tons of documentation.</li>
+<li>Added a lot of tests. Test coverage is now at 87%.</li>
+</ul>
+<h1 id="version-081a2">Version 0.8.1.a2</h1>
+<p>Bugfixes:</p>
+<ul>
+<li>Fixed linting issues.</li>
+<li>Fixed pointers to the github pages documentation.</li>
+<li>Added this changelog as a markdown file.</li>
+</ul>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../examples/" class="btn btn-neutral float-left" title="Examples"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../changelog/" class="btn btn-neutral float-right" title="Changelog">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../Loading%20from%20EDGAR/" class="btn btn-neutral float-left" title="EDGAR"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../brel-filings/filings/" class="btn btn-neutral float-right" title="Filings">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -211,10 +217,10 @@ filing = open_edgar(cik=&quot;320193&quot;, form=&quot;10-K&quot;, date=&quot;20
         </span>
     
     
-      <span><a href="../examples/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../Loading%20from%20EDGAR/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../changelog/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../brel-filings/filings/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
