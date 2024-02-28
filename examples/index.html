@@ -154,29 +154,38 @@
               
                 <h1 id="brel-examples">Brel Examples</h1>
 <p>This page contains examples of how to use Brel.</p>
-<p>Note: Brel does not contain any filings. You will have to download them yourself. You can find some example filings <a href="https://www.sec.gov/edgar/searchedgar/companysearch">here</a>.</p>
-<p>The following steps are required to download a filing and load it into Brel:</p>
-<ol>
-<li>Search for the filing on the SEC website.</li>
-<li>Under the "10-K (Annual Report) and 10-Q (Quarterly Report)" click on the "Filing" button.</li>
-<li>In the "Data Files" section, download all the ".xsd" and ".xml" files and place them in a folder (e.g. "path/to/filing").</li>
-<li>Start python and import Brel.</li>
-<li>Load the filing using <code>Filing.open("path/to/filing")</code>.</li>
-</ol>
+<!-- Note: Brel does not contain any filings. You will have to download them yourself. You can find some example filings [here](https://www.sec.gov/edgar/searchedgar/companysearch). -->
+
+<p>Note: Make sure you have a working internet connection to download filings from the SEC's EDGAR database.</p>
+<!-- The following steps are required to download a filing and load it into Brel: -->
+
+<!-- 1. Search for the filing on the SEC website.
+2. Under the "10-K (Annual Report) and 10-Q (Quarterly Report)" click on the "Filing" button.
+3. In the "Data Files" section, download all the ".xsd" and ".xml" files and place them in a folder (e.g. "path/to/filing").
+4. Start python and import Brel.
+5. Load the filing using `Filing.open("path/to/filing")`. -->
+
+<p>Brel provides a helper function to load filings from the <a href="https://www.sec.gov/edgar/searchedgar/cik.htm">SEC's EDGAR database</a>. This function allows you to load filings by specifying the company's CIK, the form type, and the date of the filing.</p>
 <h2 id="example-1-loading-a-filing-and-printing-its-facts">Example 1: Loading a filing and printing its facts</h2>
 <pre><code class="language-python">from brel import Filing, pprint
+from brel.utils import open_edgar
 
-# Load a filing from a file. In this case, the file is called &quot;filing.xml&quot;.
-filing = Filing.from_file(&quot;path/to/filing.xml&quot;)
+# Loads Apples 10-Q filing from Q4 2023
+filing = open_edgar(cik=&quot;320193&quot;, form=&quot;10-Q&quot;, date=&quot;2023-12-30&quot;)
 
-# Get all the facts in the filing. Take the first 10 facts.
+# Get all the facts in the filing. Take the first 3 facts.
 facts = filing.get_all_facts()
-first_10_facts = facts[:10]
+first_3_facts = facts[:3]
 
 # Print the facts.
-pprint(first_10_facts)
+pprint(first_3_facts)
 </code></pre>
+<p>Notes: 
+- The format of the date is "YYYY-MM-DD". If no date is specified, the most recent filing will be downloaded.
+- The date refers to the date on the report, not the date the report was filed.
+- <code>open_edgar</code> supports the following form types: "10-K", "10-Q", and "8-K". </p>
 <h2 id="example-2-loading-a-filing-and-printing-its-facts-where-the-concept-is-us-gaapassets">Example 2: Loading a filing and printing its facts where the concept is "us-gaap:Assets"</h2>
+<p>In case you have a filing on your local machine or you have an uri to a filing in XML format, you can load it using the <code>Filing.open</code> method.</p>
 <pre><code class="language-python">from brel import Filing, pprint
 
 # Load a filing from a file. In this case, the file is called &quot;filing.xml&quot;.
@@ -191,6 +200,7 @@ assets_facts = filing.get_facts_by_concept(assets_concept)
 # Print the facts.
 pprint(assets_facts)
 </code></pre>
+<p>Note: Brel currently only supports the XML format for filings. It will reject any other format.</p>
 <h2 id="example-3-loading-the-cover-page-of-a-filing-and-printing-its-presentation-network">Example 3: Loading the cover page of a filing and printing its presentation network</h2>
 <pre><code class="language-python">from brel import Filing, pprint
 
