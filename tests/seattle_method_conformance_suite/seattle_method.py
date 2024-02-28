@@ -191,12 +191,8 @@ plot_categories = [
 category_names = plot_categories
 df_dict = {
     "correct": [correct_per_category[category] for category in category_names],
-    "false positives": [
-        false_positives_per_category[category] for category in category_names
-    ],
-    "false negatives": [
-        false_negatives_per_category[category] for category in category_names
-    ],
+    "false positives": [false_positives_per_category[category] for category in category_names],
+    "false negatives": [false_negatives_per_category[category] for category in category_names],
 }
 
 df = pd.DataFrame(df_dict, index=category_names)

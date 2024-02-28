@@ -37,9 +37,7 @@ class QName:
     There is usually only one QNameNSMap object per report. It is created when the report is created and then passed to the QName constructor.
     """
 
-    def __init__(
-        self, uri: str, prefix: str, local_name: str, nsmap: "QNameNSMap"
-    ):
+    def __init__(self, uri: str, prefix: str, local_name: str, nsmap: "QNameNSMap"):
         """
         Creates a QName object.
         Note that this constructor changes the prefix if there is a prefix redirect in the #QNameNSMap.
@@ -125,10 +123,7 @@ class QName:
         """
 
         if isinstance(__value, QName):
-            result = (
-                self.__uri == __value.get_URL()
-                and self.__local_name == __value.get_local_name()
-            )
+            result = self.__uri == __value.get_URL() and self.__local_name == __value.get_local_name()
             # if not result and self.__prefix == __value.get_prefix() and self.__local_name == __value.get_local_name():
             #     print(f"WARNING: The two QNames {self} and {__value} are not equal, but they have the same prefix and local name")
             #     print(f"The first QName has the URL {self.__uri} and the second QName has the URL {__value.get_URL()}")
@@ -169,20 +164,11 @@ class QName:
         """
         # check if the string contains an URL or a prefix
         if "}" in qname_string and "{" not in qname_string:
-            raise ValueError(
-                f"Invalid QName string: {qname_string}."
-                + "The string contains a '}' but no '{'"
-            )
+            raise ValueError(f"Invalid QName string: {qname_string}." + "The string contains a '}' but no '{'")
         elif "}" not in qname_string and "{" in qname_string:
-            raise ValueError(
-                f"Invalid QName string: {qname_string}."
-                + "The string contains a '{' but no '}'"
-            )
+            raise ValueError(f"Invalid QName string: {qname_string}." + "The string contains a '{' but no '}'")
         elif (
-            "{" in qname_string
-            and "}" in qname_string
-            and qname_string.index("{") == 0
-            and qname_string.index("}") > 0
+            "{" in qname_string and "}" in qname_string and qname_string.index("{") == 0 and qname_string.index("}") > 0
         ):
             # the string contains an URL
             # extract the URL and the local name
@@ -194,9 +180,7 @@ class QName:
             # get the prefix from the namespace map
             prefix = nsmap.get_prefix(url)
             if prefix is None:
-                raise ValueError(
-                    f"Invalid QName string: {qname_string}. URL not found in namespace map"
-                )
+                raise ValueError(f"Invalid QName string: {qname_string}. URL not found in namespace map")
 
         elif ":" in qname_string:
             # raise DeprecationWarning("QName string contains a ':' but no '{' or '}'. This is deprecated. Use the format {URL}local_name instead")
@@ -210,9 +194,7 @@ class QName:
 
             nsmap_url = nsmap.get_url(prefix)
             if nsmap_url is None:
-                raise ValueError(
-                    f"Invalid QName string: {qname_string}. Prefix not found in namespace map"
-                )
+                raise ValueError(f"Invalid QName string: {qname_string}. Prefix not found in namespace map")
             else:
                 url = nsmap_url
 
@@ -220,9 +202,7 @@ class QName:
             raise ValueError(f"Invalid QName string: {qname_string}")
 
         if ":" in local_name:
-            raise ValueError(
-                f"Invalid QName string: {qname_string}. Local name contains a ':'"
-            )
+            raise ValueError(f"Invalid QName string: {qname_string}. Local name contains a ':'")
 
         # create the QName object
         return cls(url, prefix, local_name, nsmap)
@@ -302,18 +282,12 @@ class QNameNSMap:
 
         # check if the prefix is already in the namespace map
         if url in self.__url_to_prefix or prefix in self.__prefix_to_url:
-            if (
-                prefix in self.__prefix_to_url
-                and self.__prefix_to_url[prefix] != url
-            ):
+            if prefix in self.__prefix_to_url and self.__prefix_to_url[prefix] != url:
                 # the prefix is already in the namespace map, but it is mapped to a different URL
                 raise ValueError(
                     f"The prefix {prefix} is already mapped to {self.__prefix_to_url[prefix]}, but you are trying to map it to {url}"
                 )
-            elif (
-                url in self.__url_to_prefix
-                and self.__url_to_prefix[url] != prefix
-            ):
+            elif url in self.__url_to_prefix and self.__url_to_prefix[url] != prefix:
                 # the URL is already in the namespace map, but it is mapped to a different prefix
                 raise ValueError(
                     f"The URL {url} is already in the namespace map, but it is mapped to a different namespace.\nOld namespace: {self.__url_to_prefix[url]}\nNew namespace: {prefix}"
@@ -366,9 +340,7 @@ class QNameNSMap:
         """
 
         if rename_uri not in self.__url_to_prefix:
-            raise ValueError(
-                f"Invalid prefix rename: {rename_uri}. The URI does not exist in the namespace map"
-            )
+            raise ValueError(f"Invalid prefix rename: {rename_uri}. The URI does not exist in the namespace map")
         self.__url_to_prefix[rename_uri] = rename_prefix
         self.__prefix_to_url[rename_prefix] = rename_uri
 

@@ -83,9 +83,7 @@ class XMLFileManager(IFileManager):
         file_format = uri.split(".")[-1]
         supported_formats = ["xml", "xsd"]
         if file_format not in supported_formats:
-            raise ValueError(
-                f"File format {file_format} not supported. Supported formats are {supported_formats}."
-            )
+            raise ValueError(f"File format {file_format} not supported. Supported formats are {supported_formats}.")
 
         if not uri.startswith("http"):
             if "/" in uri:
@@ -131,9 +129,7 @@ class XMLFileManager(IFileManager):
         if schema_filename in self.__file_cache:
             schema_xml = self.__file_cache[schema_filename]
         else:
-            schema_xml = lxml.etree.parse(
-                self.cache_location + schema_filename, self.__parser
-            )
+            schema_xml = lxml.etree.parse(self.cache_location + schema_filename, self.__parser)
             self.__file_cache[schema_filename] = schema_xml
 
         return schema_xml
@@ -167,14 +163,10 @@ class XMLFileManager(IFileManager):
             if "sec.gov" in uri:
                 time.sleep(0.1)
         except ConnectionError:
-            raise Exception(
-                f"Could not connect to {uri}. Are you connected to the internet?"
-            )
+            raise Exception(f"Could not connect to {uri}. Are you connected to the internet?")
 
         if response.status_code != 200:
-            raise Exception(
-                f"Failed to download {uri}. The server responded with status code {response.status_code}"
-            )
+            raise Exception(f"Failed to download {uri}. The server responded with status code {response.status_code}")
         xsd_content = response.content
 
         # write the schema to the cache
@@ -244,14 +236,10 @@ class XMLFileManager(IFileManager):
         try:
             xsd_tree = lxml.etree.parse(BytesIO(xsd_content), parser=self.__parser)
         except lxml.etree.XMLSyntaxError:
-            raise ValueError(
-                f"Failed to parse {uri} as an XML file. The file is not a valid XML file."
-            )
+            raise ValueError(f"Failed to parse {uri} as an XML file. The file is not a valid XML file.")
 
         if not isinstance(xsd_tree, lxml.etree._ElementTree):
-            raise ValueError(
-                f"Failed to parse {uri} as an XML file. The file is not a valid XML file."
-            )
+            raise ValueError(f"Failed to parse {uri} as an XML file. The file is not a valid XML file.")
         # load it into the cache
         self.__file_cache[file_name] = xsd_tree
         # add it to the list of filenames
@@ -261,9 +249,7 @@ class XMLFileManager(IFileManager):
         reference_uris: set[str] = set()
         # find all hrefs in the file
         # TODO: maybe make namespace non-hardcoded
-        for href_elem in xsd_tree.findall(
-            ".//*[@xlink:href]", namespaces={"xlink": "http://www.w3.org/1999/xlink"}
-        ):
+        for href_elem in xsd_tree.findall(".//*[@xlink:href]", namespaces={"xlink": "http://www.w3.org/1999/xlink"}):
             # get the href attribute
             if not isinstance(href_elem, lxml.etree._Element):
                 continue

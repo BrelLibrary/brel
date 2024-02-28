@@ -91,14 +91,10 @@ class Component:
         )
 
         if len(presentation_networks) > 1:
-            raise ValueError(
-                f"Component '{uri}' has more than one presentation network."
-            )
+            raise ValueError(f"Component '{uri}' has more than one presentation network.")
 
         self.__presentation_network: PresentationNetwork | None = (
-            None
-            if len(presentation_networks) == 0
-            else cast(PresentationNetwork, presentation_networks[0])
+            None if len(presentation_networks) == 0 else cast(PresentationNetwork, presentation_networks[0])
         )
 
         calculation_networks = list(
@@ -109,14 +105,10 @@ class Component:
         )
 
         if len(calculation_networks) > 1:
-            raise ValueError(
-                f"Component '{uri}' has more than one calculation network."
-            )
+            raise ValueError(f"Component '{uri}' has more than one calculation network.")
 
         self.__calculation_network: CalculationNetwork | None = (
-            None
-            if len(calculation_networks) == 0
-            else cast(CalculationNetwork, calculation_networks[0])
+            None if len(calculation_networks) == 0 else cast(CalculationNetwork, calculation_networks[0])
         )
 
         definition_networks = list(
@@ -130,9 +122,7 @@ class Component:
             raise ValueError(f"Component '{uri}' has more than one definition network.")
 
         self.__definition_network: DefinitionNetwork | None = (
-            None
-            if len(definition_networks) == 0
-            else cast(DefinitionNetwork, definition_networks[0])
+            None if len(definition_networks) == 0 else cast(DefinitionNetwork, definition_networks[0])
         )
 
     # first class citizens

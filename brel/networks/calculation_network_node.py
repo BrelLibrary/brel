@@ -43,9 +43,7 @@ class CalculationNetworkNode(INetworkNode):
         order: float = 1,
     ):
         if not isinstance(report_element, Concept):
-            raise TypeError(
-                f"report_element must be of type Concept, but is of type {type(report_element)}"
-            )
+            raise TypeError(f"report_element must be of type Concept, but is of type {type(report_element)}")
 
         self.__report_element = report_element
         self.__children = children

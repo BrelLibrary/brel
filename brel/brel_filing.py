@@ -95,9 +95,7 @@ class Filing:
         is_uri = path.startswith("http")
 
         if DEBUG:  # pragma: no cover
-            print(
-                f"Path {path}, is file: {is_file}, is dir: {is_dir}, is uri: {is_uri}"
-            )
+            print(f"Path {path}, is file: {is_file}, is dir: {is_dir}, is uri: {is_uri}")
 
         if is_dir:
             if DEBUG:  # pragma: no cover
@@ -138,18 +136,14 @@ class Filing:
             with zipfile.ZipFile(path, "r") as zip_ref:
                 zip_ref.extractall(dir_path)
                 # get all file paths ending in xml
-                xml_files = list(
-                    filter(lambda x: x.endswith("xml"), zip_ref.namelist())
-                )
+                xml_files = list(filter(lambda x: x.endswith("xml"), zip_ref.namelist()))
             print(f"Finished extracting...")
 
             xml_files = list(map(lambda x: dir_path + "/" + x, xml_files))
             return cls.open(*xml_files)
         elif is_uri:
             if not path.endswith(".xml"):
-                raise NotImplementedError(
-                    "Brel currently only supports XBRL filings in the form of XML files"
-                )
+                raise NotImplementedError("Brel currently only supports XBRL filings in the form of XML files")
 
             if DEBUG:
                 print(f"Opening uri {path}")
@@ -209,9 +203,7 @@ class Filing:
         Get all [`INetwork`](../components/networks.md) objects in the filing, where network.is_physical() is True.
         :return list[INetwork]: a list of all physical networks in the filing.
         """
-        physical_networks = [
-            network for network in self.__networks if network.is_physical()
-        ]
+        physical_networks = [network for network in self.__networks if network.is_physical()]
         return physical_networks
 
     def get_errors(self) -> list[Exception]:
@@ -276,9 +268,7 @@ class Filing:
             list(filter(lambda x: isinstance(x, Member), self.__reportelems)),
         )
 
-    def get_report_element_by_name(
-        self, element_qname: QName | str
-    ) -> IReportElement | None:
+    def get_report_element_by_name(self, element_qname: QName | str) -> IReportElement | None:
         """
         :param element_qname: the name of the report element to get. This can be a QName or a string in the format "prefix:localname". For example, "us-gaap:Assets".
         :returns IReportElement|None: the report element with the given name. If no report element is found, then None is returned.
@@ -306,9 +296,7 @@ class Filing:
         def concept_matches(x: IReportElement) -> TypeGuard[Concept]:
             return isinstance(x, Concept) and x.get_name() == concept_qname
 
-        concept: Concept | None = next(
-            filter(concept_matches, self.__reportelems), None
-        )
+        concept: Concept | None = next(filter(concept_matches, self.__reportelems), None)
 
         return concept
 

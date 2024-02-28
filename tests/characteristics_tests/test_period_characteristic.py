@@ -19,9 +19,7 @@ def test_instant():
     assert instant.is_instant(), "Expected period to be an instant period"
 
     # check if the date is correct
-    assert instant.get_instant_period() == datetime.date(
-        2022, 9, 25
-    ), "Expected date to be 2022-09-25"
+    assert instant.get_instant_period() == datetime.date(2022, 9, 25), "Expected date to be 2022-09-25"
 
     # try to get start and end date from an instant period
     # this should raise a ValueError
@@ -68,13 +66,9 @@ def test_duration():
 
     # try to get start and end date from a duration period
     # check if the dates are correct
-    assert duration.get_start_period() == datetime.date(
-        2022, 9, 25
-    ), "Expected start date to be 2022-09-25"
+    assert duration.get_start_period() == datetime.date(2022, 9, 25), "Expected start date to be 2022-09-25"
 
-    assert duration.get_end_period() == datetime.date(
-        2023, 7, 1
-    ), "Expected end date to be 2023-07-01"
+    assert duration.get_end_period() == datetime.date(2023, 7, 1), "Expected end date to be 2023-07-01"
 
     # try to get instant date from a duration period
     # this should raise a ValueError
@@ -86,7 +80,6 @@ def test_duration():
 
 
 def test_period_eq():
-
     instant = PeriodCharacteristic._instant("2022-09-25")
     duration = PeriodCharacteristic._duration("2022-09-25", "2023-07-01")
 

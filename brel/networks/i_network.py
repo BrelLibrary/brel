@@ -84,9 +84,7 @@ class INetwork(ABC):
         Get all the arc roles that are used by nodes in the network
         :returns list[str]: list of all arc roles that are used by nodes in the network
         """
-        arc_role_set = set(
-            [node.get_arc_role() for node in self.get_all_nodes()]
-        )
+        arc_role_set = set([node.get_arc_role() for node in self.get_all_nodes()])
         return list(arc_role_set)
 
     def get_arc_name(self) -> QName | None:
@@ -109,9 +107,7 @@ class INetwork(ABC):
         """
         roots = self.get_roots()
         if len(roots) > 1:
-            raise ValueError(
-                f"Cannot call getRoot() for network with multiple roots"
-            )
+            raise ValueError(f"Cannot call getRoot() for network with multiple roots")
         return roots[0]
 
     def get_all_nodes(self) -> list[INetworkNode]:

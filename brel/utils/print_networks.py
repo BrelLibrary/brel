@@ -114,9 +114,7 @@ def pprint_network(network: INetwork | None):
     if network is None:
         return
 
-    print(
-        f"Network (link role: {network.get_link_role()}), link name: {network.get_link_name()}"
-    )
+    print(f"Network (link role: {network.get_link_role()}), link name: {network.get_link_name()}")
     print(f"arc roles: {network.get_arc_roles()}, arc name: {network.get_arc_name()}")
 
     for index, root in enumerate(network.get_roots()):

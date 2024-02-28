@@ -47,24 +47,18 @@ class FootnoteNetworkNode(INetworkNode):
     # First class citizens
     def get_report_element(self) -> IReportElement:
         if not isinstance(self.__points_to, IReportElement):
-            raise ValueError(
-                f"The FootnoteNetworkNode points to a resource. Use get_resource() instead"
-            )
+            raise ValueError(f"The FootnoteNetworkNode points to a resource. Use get_resource() instead")
 
         return self.__points_to
 
     def get_resource(self) -> IResource:
         if not isinstance(self.__points_to, IResource):
-            raise ValueError(
-                f"The FootnoteNetworkNode points to a report element. Use get_report_element() instead"
-            )
+            raise ValueError(f"The FootnoteNetworkNode points to a report element. Use get_report_element() instead")
         return self.__points_to
 
     def get_fact(self) -> Fact:
         if not isinstance(self.__points_to, Fact):
-            raise ValueError(
-                f"The FootnoteNetworkNode points to a report element. Use get_report_element() instead"
-            )
+            raise ValueError(f"The FootnoteNetworkNode points to a report element. Use get_report_element() instead")
         return self.__points_to
 
     def points_to(self) -> str:
@@ -75,9 +69,7 @@ class FootnoteNetworkNode(INetworkNode):
         elif isinstance(self.__points_to, Fact):
             return "fact"
         else:
-            raise ValueError(
-                f"The FootnoteNetworkNode points to an unknown type: {self.__points_to}"
-            )
+            raise ValueError(f"The FootnoteNetworkNode points to an unknown type: {self.__points_to}")
 
     def get_children(self) -> list[INetworkNode]:
         return cast(list[INetworkNode], self.__children)

@@ -16,7 +16,7 @@ Filings can be directly loaded from EDGAR using the `brel.utils.open_edgar` func
 from brel.utils import open_edgar, pprint
 
 # Load a filing from EDGAR. In this case, the CIK is 320193 and the form is 10-K
-filing = open_edgar(cik="320193", form="10-K", year=2020)
+filing = open_edgar(cik="320193", form="10-K")
 first_10_facts = filing.get_all_facts()[:10]
 pprint(first_10_facts)
 ```

@@ -34,10 +34,7 @@ class CalculationNetworkFactory(IXMLNetworkFactory):
     def __init__(self, qname_nsmap: QNameNSMap) -> None:
         super().__init__(qname_nsmap)
 
-    def create_network(
-        self, xml_link_element: lxml.etree._Element, roots: list[INetworkNode]
-    ) -> INetwork:
-
+    def create_network(self, xml_link_element: lxml.etree._Element, roots: list[INetworkNode]) -> INetwork:
         link_role = get_str(xml_link_element, self._clark("xlink", "role"), None)
         link_qname = self._make_qname(xml_link_element.tag)
 
@@ -61,7 +58,6 @@ class CalculationNetworkFactory(IXMLNetworkFactory):
         xml_arc: lxml.etree._Element | None,
         points_to: IReportElement | IResource | Fact,
     ) -> INetworkNode:
-
         label = get_str(xml_referenced_element, self._clark("xlink", "label"))
 
         if xml_arc is None:
@@ -82,9 +78,7 @@ class CalculationNetworkFactory(IXMLNetworkFactory):
             order = float(get_str(xml_arc, "order", "1.0"))
             arc_qname = self._make_qname(xml_arc.tag)
         else:
-            raise ValueError(
-                f"referenced element {xml_referenced_element} is not connected to arc {xml_arc}"
-            )
+            raise ValueError(f"referenced element {xml_referenced_element} is not connected to arc {xml_arc}")
 
         link_role = get_str(xml_link, self._clark("xlink", "role"))
         link_name = self._make_qname(xml_link.tag)
@@ -94,9 +88,7 @@ class CalculationNetworkFactory(IXMLNetworkFactory):
 
         # check if 'points_to' is a ReportElement
         if not isinstance(points_to, IReportElement):
-            raise TypeError(
-                f"points_to must be of type IReportElement, not {type(points_to)}"
-            )
+            raise TypeError(f"points_to must be of type IReportElement, not {type(points_to)}")
 
         # also, all calculation network nodes have to point to a concept
         if not isinstance(points_to, IReportElement):
@@ -113,9 +105,7 @@ class CalculationNetworkFactory(IXMLNetworkFactory):
             order,
         )
 
-    def update_report_elements(
-        self, report_elements: Mapping[QName, IReportElement], _: INetwork
-    ):
+    def update_report_elements(self, report_elements: Mapping[QName, IReportElement], _: INetwork):
         pass
 
     def is_physical(self) -> bool:

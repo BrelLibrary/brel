@@ -46,9 +46,7 @@ def parse_component_from_xml(
     nsmap = qname_nsmap.get_nsmap()
 
     if uri is None:
-        raise ValueError(
-            "The roleURI attribute is missing from the link:roleType element"
-        )
+        raise ValueError("The roleURI attribute is missing from the link:roleType element")
 
     # the info is in a child element of the xml_element called "definition"
     try:
@@ -61,28 +59,14 @@ def parse_component_from_xml(
         info = ""
 
     # check the usedOn elements
-    used_ons = [
-        used_on.text for used_on in xml_element.findall("link:usedOn", namespaces=nsmap)
-    ]
+    used_ons = [used_on.text for used_on in xml_element.findall("link:usedOn", namespaces=nsmap)]
 
-    if "link:presentationLink" not in used_ons and any(
-        map(lambda n: isinstance(n, PresentationNetwork), networks)
-    ):
-        raise ValueError(
-            f"Component {uri} has presentation networks, but no appropriate usedOn element"
-        )
-    if "link:calculationLink" not in used_ons and any(
-        map(lambda n: isinstance(n, CalculationNetwork), networks)
-    ):
-        raise ValueError(
-            f"Component {uri} has calculation networks, but no appropriate usedOn element"
-        )
-    if "link:definitionLink" not in used_ons and any(
-        map(lambda n: isinstance(n, DefinitionNetwork), networks)
-    ):
-        raise ValueError(
-            f"Component {uri} has definition networks, but no appropriate usedOn element"
-        )
+    if "link:presentationLink" not in used_ons and any(map(lambda n: isinstance(n, PresentationNetwork), networks)):
+        raise ValueError(f"Component {uri} has presentation networks, but no appropriate usedOn element")
+    if "link:calculationLink" not in used_ons and any(map(lambda n: isinstance(n, CalculationNetwork), networks)):
+        raise ValueError(f"Component {uri} has calculation networks, but no appropriate usedOn element")
+    if "link:definitionLink" not in used_ons and any(map(lambda n: isinstance(n, DefinitionNetwork), networks)):
+        raise ValueError(f"Component {uri} has definition networks, but no appropriate usedOn element")
 
     return Component(uri, info, list(networks))
 
@@ -131,11 +115,7 @@ def parse_components_xml(
             # NCName is defined in https://www.w3.org/TR/xml-names/#NT-NCName
             # NCNames are similar to python identifiers, except that they might contain '.' and '-' (not in the beginning)
             roleID_stripped = roleID.replace(".", "").replace("-", "")
-            if (
-                not roleID_stripped.isidentifier()
-                or roleID.startswith("-")
-                or roleID.startswith(".")
-            ):
+            if not roleID_stripped.isidentifier() or roleID.startswith("-") or roleID.startswith("."):
                 # raise ValueError(f"roleID {roleID} is not a valid NCName")
                 errors.append(ValueError(f"roleID {roleID} is not a valid NCName"))
                 continue

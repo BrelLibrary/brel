@@ -38,9 +38,7 @@ class UnitCharacteristic(ICharacteristic):
     Namely, if the concept characteristic's concept is a monetary concept, the unit's numerators and denominators must be defined in the iso4217 namespace.
     """
 
-    def __init__(
-        self, name: str, numerators: list[QName], denominators: list[QName]
-    ) -> None:
+    def __init__(self, name: str, numerators: list[QName], denominators: list[QName]) -> None:
         self.__name: str = name
         self.__numerators = numerators
         self.__denominators = denominators

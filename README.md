@@ -32,7 +32,7 @@ Brel stands for Business Report Extensible Library.
 
 ### Documentation
 
-The documentation of the Brel API is available on GitHub Pages [here](https://papedipoo.github.io/Brel/). Below we give a few examples to get you started.
+The documentation of the Brel API is available on GitHub Pages [here](https://brellibrary.github.io/brel/). Below we give a few examples to get you started.
 
 ## (Un)implemented features
 
