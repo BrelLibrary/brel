@@ -63,13 +63,28 @@ To use Brel, import the library and create a `Filing` using the `Filing.open` me
 from brel import Filing, pprint
 filing = Filing.open("path/to/filing.zip")
 
-# or
+# or 
 
-filing = Filing.open("path/to/filing.xml", "path/to/linkbase.xml")
+filing = Filing.open("https://uri.to.filing.xml")
 
 # or
 
 filing = Filing.open("path/to/filing/folder")
+```
+
+If you have a report from the SEC's EDGAR database, you can use the `open_edgar` function to load the filing. This function allows you to load filings by specifying the company's CIK, the form type, and the date of the filing.
+
+```python
+
+from brel import Filing, pprint
+from brel.utils import open_edgar
+
+# Loads Apples 10-Q filing from Q4 2023
+filing = open_edgar(cik="320193", form="10-Q", date="2023-12-30")
+
+# or 
+
+filing = open_edgar(cik="320193", form="10-Q")  # opens latest filing
 ```
 
 The `Filing` object provides access to everything in the filing, including the `Fact`s, `Component`s, 
