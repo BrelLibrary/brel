@@ -38,7 +38,7 @@ A rename has the following form:
 import json
 import re
 from collections import defaultdict
-from importlib.resources import path
+from importlib.resources import files
 
 DEBUG = False
 
@@ -47,11 +47,10 @@ DEBUG = False
 
 default_namespace_mappings: dict[str, str] = {}
 
-with path("brel.config", "nsconfig.json") as nsconfig_path:
-    with open(nsconfig_path, "r") as nsconfig_file:
-        nsconfig = json.load(nsconfig_file)
-        for prefix, re_uri in nsconfig["default_mappings"].items():
-            default_namespace_mappings[re_uri] = prefix
+nsconfig_text = files("brel.config").joinpath("nsconfig.json").read_text()
+nsconfig = json.loads(nsconfig_text)
+for prefix, re_uri in nsconfig["default_mappings"].items():
+    default_namespace_mappings[re_uri] = prefix
 
 
 # helper functions

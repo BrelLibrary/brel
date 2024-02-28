@@ -10,13 +10,12 @@ This module parses multiple etrees into a dict of networks.
 =================
 """
 
-
 import json
 import os
 import re
 from collections import defaultdict
 import time
-from importlib.resources import path
+from importlib.resources import files
 from typing import Any, cast, Callable, Mapping, Tuple, Iterable
 
 import lxml.etree
@@ -34,13 +33,11 @@ from brel.parsers.utils import combine_networks
 
 DEBUG = False
 
-
-with path("brel.config", "linkconfig.json") as config_path:
-    with open(config_path, "r") as f:
-        LINK_CONFIG = json.load(f)
-        STANDARD_LINK_NAMES: list[str] = LINK_CONFIG["standard_link_names"]
-        STANDARD_RESOURCE_ROLES: list[str] = LINK_CONFIG["standard_resource_roles"]
-        STANDARD_LINK_ROLES: list[str] = LINK_CONFIG["standard_link_roles"]
+link_config_content = files("brel.config").joinpath("linkconfig.json").read_text()
+LINK_CONFIG = json.loads(link_config_content)
+STANDARD_LINK_NAMES: list[str] = LINK_CONFIG["standard_link_names"]
+STANDARD_RESOURCE_ROLES: list[str] = LINK_CONFIG["standard_resource_roles"]
+STANDARD_LINK_ROLES: list[str] = LINK_CONFIG["standard_link_roles"]
 
 
 def parse_networks_from_xmls(
