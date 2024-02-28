@@ -41,3 +41,4 @@ Bugfixes:
 - Fixed linting issues.
 - Fixed pointers to the github pages documentation.
 - Added this changelog as a markdown file.
+- Updated the documentation to reflect the new changes that were missing.
