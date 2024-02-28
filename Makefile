@@ -87,8 +87,8 @@ docs:             ## Build the documentation.
 	@$(ENV_PREFIX)pydoc-markdown
 	@$(ENV_PREFIX)mkdocs build -f docs/mkdocs.yml -d ../site
 
-.PHONY: serve-docs
-serve-docs:       ## Serve the documentation.
+.PHONY: docs-deploy
+docs-deploy:       ## Serve the documentation.
 	make docs
 	@$(ENV_PREFIX)mkdocs gh-deploy -f docs/mkdocs.yml -d ../site
 
