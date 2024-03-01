@@ -10,7 +10,6 @@ This module contains the Hypercube class.
 =================
 """
 
-
 from brel import QName
 from brel.reportelements import IReportElement
 from brel.resource import BrelLabel
