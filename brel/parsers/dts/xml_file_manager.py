@@ -6,12 +6,12 @@ The XMLSchemaManager class is responsible for downloading and caching XBRL taxon
 
 - author: Robin Schmidiger
 - version: 0.7
-- date: 29 Januar 2024
+- date: 29 January 2024
 
 =================
 """
 
-DEBUG = False
+DEBUG = True
 
 import os
 import urllib
@@ -205,7 +205,8 @@ class XMLFileManager(IFileManager):
         # if the uri is not remote, then it is a local file path
         # make the file path absolute
         if not is_uri_remote:
-            uri = os.path.abspath(uri)
+            referencing_dir = os.path.dirname(referencing_uri)
+            uri = os.path.abspath(os.path.join(referencing_dir, uri))
 
         file_name = self.uri_to_filename(uri)
 
