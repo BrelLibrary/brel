@@ -100,7 +100,7 @@ def __print_sub_network(node: INetworkNode, last=True, header="") -> None:
     try:
         print(header + (ELBOW if last else TEE) + output_string)
     except UnicodeEncodeError:
-        print(header + (ELBOW if last else TEE) + output_string.encode("utf-8"))
+        print((header + (ELBOW if last else TEE) + output_string).encode("utf-8"))
     children = node.get_children()
     for index, child in enumerate(children):
         is_last_child = index == len(children) - 1
