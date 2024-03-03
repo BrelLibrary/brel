@@ -120,13 +120,11 @@ class Filing:
 
             parser = XMLFilingParser(xml_files)
             return cls(parser)
-        elif is_file and path.endswith(".xml"):
+        elif is_file and any(map(lambda x: x.endswith(".xml"), [path, *args])):
+            paths = [path, *args]
             if DEBUG:  # pragma: no cover
                 print(f"Opening file {path}")
-            xml_files = [path]
-            for arg in args:
-                if os.path.isfile(arg) and arg.endswith(".xml"):
-                    xml_files.append(arg)
+            xml_files = list(filter(lambda x: x.endswith(".xml"), paths))
             parser = XMLFilingParser(xml_files)
             return cls(parser)
         elif is_file and path.endswith(".zip"):

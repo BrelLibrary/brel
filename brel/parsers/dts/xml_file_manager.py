@@ -11,7 +11,7 @@ The XMLSchemaManager class is responsible for downloading and caching XBRL taxon
 =================
 """
 
-DEBUG = True
+DEBUG = False
 
 import os
 import urllib
