@@ -96,7 +96,9 @@ def __print_sub_network(node: INetworkNode, last=True, header="") -> None:
 
     output_string = weight_str + padding_str + output_string
 
-    print(header + (ELBOW if last else TEE) + output_string)
+    # encode with utf-8 to avoid encoding errors
+    # print(header + (ELBOW if last else TEE) + output_string)
+    print((header + (ELBOW if last else TEE) + output_string).encode("utf-8"))
     children = node.get_children()
     for index, child in enumerate(children):
         is_last_child = index == len(children) - 1
