@@ -141,7 +141,7 @@ Figure \ref{fig:viewer_3} shows the third part of the implementation of the view
 % It also automatically uses the labels of report elements if they are available.
 % The figure \ref{fig:viewer_4} shows the fourth and final part of the implementation of the viewer responsible for displaying the components in the report.
 % The viewer's components section should be implemented following a similar approach.  
-The viewer's components section is implemented in a similar manner.
+The viewer's components section is implemented similarly.
 Initially, it needs to retrieve all components in the report by using \texttt{report.get\_all\_components}.  
 Next, it filters those components whose URI contains the specified substring, utilizing \texttt{component.get\_uri} for this purpose.  
 Finally, \texttt{utils.pprint} is used to format the components in a human-readable manner.

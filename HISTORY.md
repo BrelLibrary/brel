@@ -65,3 +65,12 @@ Bugfixes:
 - Fixed pointers to the github pages documentation.
 - Added this changelog as a markdown file.
 - Updated the documentation to reflect the new changes that were missing.
+
+# Version 0.8.1.a3 (2024-03-04)
+
+Bugfixes:
+
+- Fixed a critical bug for windows where a file of the report might be loaded multiple times, resulting in duplicate elements.
+- Made all paths in the code OS-agnostic.
+- Updated the documentation to reflect the new changes that were missing.
+- Updated the test cases to reflect the new changes that were missing.
