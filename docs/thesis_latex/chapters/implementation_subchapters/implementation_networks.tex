@@ -170,7 +170,7 @@ Chapter \ref{chapter:api} introduced the diverse network types.
 For each network variant, Brel provides corresponding node and network classes, 
 all derived from the \texttt{INetwork} and \texttt{INetworkNode} interfaces.
 Brel employs the factory pattern to generate appropriate network and node instances for a given link.
-Each network type has its dedicated factory, which is utilized in the algorithm \ref{enum:network_parsing} to create the relevant network and node instances.
+Each network type has its dedicated factory, which is utilized by the previously mentioned algorithm to create the relevant network and node instances.
 
 
 % \subsection{Resolving Locators}
@@ -224,7 +224,7 @@ Whenever Brel encounters a locator during parsing, it interprets the locator by 
 
 % The value of a resource contains the actual resource.
 % For labels, the value is the text of the label.
-% For references, this is the dictionary that points to some exteral resource like an article in the SEC's Code of Federal Regulations.
+% For references, this is the dictionary that points to some external resource like an article in the SEC's Code of Federal Regulations.
 
 % Since resources have all the information that is needed to parse them, Brel does not need to resolve any references to parse them.
 % Therefore, parsing them is very straightforward.
@@ -232,26 +232,27 @@ Whenever Brel encounters a locator during parsing, it interprets the locator by 
 \subsection{Parsing Resources}
 
 Resources, the alternate type of element referable by arcs, do not point to other elements within the report.
-Instead, they directly encapsulate the value of the element they signify.
+% Instead, they directly encapsulate the value of the element they signify.
+Instead, they directly contain the value of the element they represent.
 
-The current XBRL 2.1 specification outlines three inherent resource types: label, reference, and footnote, though custom resources are feasible.
+The current XBRL 2.1 specification outlines three resource types: label, reference, and footnote.
 
 Resources comprise three components: a role, a label, and a value.
 
 The role is a URI defining the resource's type.
 For instance, the \texttt{terseLabel} role\footnote{\url{http://www.xbrl.org/2003/role/terseLabel}} 
-denotes a label resource offering a concise label for a concept,
+denotes a label resource offering a short label for a concept,
 while \texttt{footnote} role\footnote{\url{http://www.xbrl.org/2003/role/footnote}}
 indicates a footnote resource associated with a concept.
 
 The label functions as an identifier for the resource, utilized by arcs to reference the resource.
 This label should not be mistaken for a concept's human-readable label.
 
-The resource's value embodies the actual resource content.
+The resource's value contains the actual resource content.
 For labels, this means the label text itself.
 For references, it is typically a dictionary pointing to an external resource, like an article in the SEC's Code of Federal Regulations.
 
-Given that resources contain all necessary information for parsing, Brel does not need to resolve external references to analyze them.
+Given that resources contain all necessary information for parsing, Brel does not need to resolve external references.
 Hence, their parsing is straightforward.
 
 % \subsection{Implications of networks}
@@ -304,7 +305,8 @@ As previously noted in section \ref{enum:network_parsing}, networks can influenc
 Two widespread outcomes associated with all networks are labels and line items promotion.
 
 Labels serve to assign human-readable titles to report elements, generated via the label network \texttt{link:labelLink}.
-The intricacies of label links are elaborated in section \ref{sec:labelLink}.
+% The intricacies of label links are elaborated in section \ref{sec:labelLink}.
+Label links were discussed in section \ref{sec:labelLink}.
 Brel processes report elements before networks because many networks include locators pointing to report elements.
 Thus, when Brel interprets a label network, it is already aware of all report elements referenced in the network.
 
@@ -336,7 +338,7 @@ If an arc with the role \texttt{all} connects a hypercube to an abstract, Brel c
 
 This section concludes the discussion on the implementation of networks.
 Combined with the previous segments of this chapter, it encompasses the entirety of XBRL and Brel's parsing methodology.
-However, section \ref{sec:implementation_report_elements} made an assumption about taxonomies that is not always accurate.
+However, section \ref{sec:implementation_report_elements} made an assumption about taxonomies that does not always hold true.
 Each taxonomy can incorporate other taxonomies under a specific prefix-URI pair.
 The presumption was that there is a universal agreement on the prefix-URI pair for each taxonomy.
 This presumption does not always hold true.

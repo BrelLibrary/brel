@@ -292,10 +292,9 @@ To illustrate this process, the following figure depicts a flattening of the nam
 }
 \end{figure}
 
-In this representation, the namespace hierarchy is transformed into a flat structure
-\footnote{Technically, the namespace hierarchy is not entirely flat due to the presence of the root element.
+In this representation, the namespace hierarchy is transformed into a flat structure\footnote{Technically, the namespace hierarchy is not entirely flat due to the presence of the root element.
 However, since the root element does not contain any namespace bindings, it has no impact on the namespace hierarchy.}.
-All elements are positioned on the same level, and the sequence of elements is determined by the depth-first search algorithm.
+All elements are positioned on the same level, and the order of elements is determined by the depth-first search algorithm.
 
 Each child element inherits the namespace bindings from its parent.
 Therefore, \texttt{element2} and \texttt{element3} inherit the namespace bindings from \texttt{element1}.
@@ -348,7 +347,8 @@ It may have been noted by the attentive reader that the list of namespace bindin
 The first binding is \texttt{foo = "http://foo.com"}, while the second is \texttt{foo = "http://other-foo.com"}.
 
 Such a scenario is referred to as a collision.
-While Brel generally prohibits and resolves most collisions in namespace bindings, there are exceptions.
+% While Brel generally prohibits and resolves most collisions in namespace bindings, there are exceptions.
+% Brel resolves most collisions in namespace bindings, but there are exceptions.
 The subsequent section details the various types of collisions and Brel's approach to managing them.
 In Brel, three kinds of namespace collisions can occur:
 
@@ -609,7 +609,7 @@ Figure \ref{fig:namespace_uri_collision_example_renamed} depicts figure \ref{fig
 }
 \end{figure}
 
-Certain prefixes are deemed special and are always chosen as the preferred prefix, regardless of their length or alphabetical order.
+In Brel, certain prefixes are deemed special and are always chosen as the preferred prefix, regardless of their length or alphabetical order.
 These special prefixes need not be explicitly defined in the XBRL taxonomy.
 If a namespace binding corresponds to the same namespace URI as a special prefix, that special prefix will automatically be selected as the preferred one.
 

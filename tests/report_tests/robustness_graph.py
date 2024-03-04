@@ -3,8 +3,9 @@ import os
 import json
 import pandas as pd
 from collections import defaultdict
-from matplotlib import pyplot as plt
-import matplotlib
+
+# from matplotlib import pyplot as plt
+# import matplotlib
 
 
 def plot_robustness_graph(robustness_df, title, xlabel, ylabel, save_path):
@@ -12,17 +13,17 @@ def plot_robustness_graph(robustness_df, title, xlabel, ylabel, save_path):
     # the df has the columns "company", "outcome", and "count"
     # make the barplot sideways
     # stack the bars with the same x value
-    print(plt.style.available)
-    plt.style.use("seaborn-v0_8-darkgrid")
+    # # print(plt.style.available)
+    # # plt.style.use("seaborn-v0_8-darkgrid")
     # set figure size
-    robustness_df.plot(
-        kind="bar",
-        stacked=True,
-        color=["#2ca02c", "#ff7f0e", "#d62728"],
-        figsize=(10, 5),
-    )
+    # # robustness_df.plot(
+    # #     kind="bar",
+    # #     stacked=True,
+    # #     color=["#2ca02c", "#ff7f0e", "#d62728"],
+    # #     figsize=(10, 5),
+    # # )
     # rotate plot 90 degrees
-    plt.xticks(rotation=90)
+    # # plt.xticks(rotation=90)
 
     total_reports = (
         sum(robustness_df["success"])
@@ -30,55 +31,55 @@ def plot_robustness_graph(robustness_df, title, xlabel, ylabel, save_path):
         + sum(robustness_df["crashes"])
     )
 
-    plt.title(title + f" (Total reports: {total_reports})")
-    plt.xlabel(xlabel)
-    plt.ylabel(ylabel)
+    # # plt.title(title + f" (Total reports: {total_reports})")
+    # # plt.xlabel(xlabel)
+    # # plt.ylabel(ylabel)
     # move legend outside of plot
-    plt.legend(loc="center left", bbox_to_anchor=(1.0, 0.5))
+    # # plt.legend(loc="center left", bbox_to_anchor=(1.0, 0.5))
 
     # make the y ticks integers
-    plt.gca().yaxis.set_major_formatter(
-        matplotlib.ticker.StrMethodFormatter("{x:,.0f}")
-    )
+    # # plt.gca().yaxis.set_major_formatter(
+    # # matplotlib.ticker.StrMethodFormatter("{x:,.0f}")
+    # # )
 
-    plt.tight_layout()
-    plt.savefig(save_path)
+    # # plt.tight_layout()
+    # # plt.savefig(save_path)
     # plt.show()
 
     # make 2 subplots, each containing half of the names
-    robustness_df.iloc[: len(robustness_df) // 2].plot(
-        kind="bar",
-        stacked=True,
-        color=["#2ca02c", "#ff7f0e", "#d62728"],
-        figsize=(10, 5),
-    )
-    plt.xticks(rotation=90)
-    plt.title(title + f" (Total reports: {total_reports})")
-    plt.xlabel(xlabel)
-    plt.ylabel(ylabel)
-    plt.legend(loc="center left", bbox_to_anchor=(1.0, 0.5))
-    plt.gca().yaxis.set_major_formatter(
-        matplotlib.ticker.StrMethodFormatter("{x:,.0f}")
-    )
-    plt.tight_layout()
-    plt.savefig(save_path.replace(".png", "_1.png"))
+    # # robustness_df.iloc[: len(robustness_df) // 2].plot(
+    # # kind="bar",
+    # # stacked=True,
+    # # color=["#2ca02c", "#ff7f0e", "#d62728"],
+    # # figsize=(10, 5),
+    # # )
+    # # plt.xticks(rotation=90)
+    # # plt.title(title + f" (Total reports: {total_reports})")
+    # # plt.xlabel(xlabel)
+    # # plt.ylabel(ylabel)
+    # # plt.legend(loc="center left", bbox_to_anchor=(1.0, 0.5))
+    # # plt.gca().yaxis.set_major_formatter(
+    # # matplotlib.ticker.StrMethodFormatter("{x:,.0f}")
+    # # )
+    # # plt.tight_layout()
+    # # plt.savefig(save_path.replace(".png", "_1.png"))
 
-    robustness_df.iloc[len(robustness_df) // 2 :].plot(
-        kind="bar",
-        stacked=True,
-        color=["#2ca02c", "#ff7f0e", "#d62728"],
-        figsize=(10, 5),
-    )
-    plt.xticks(rotation=90)
+    # # robustness_df.iloc[len(robustness_df) // 2 :].plot(
+    # # kind="bar",
+    # # stacked=True,
+    # # color=["#2ca02c", "#ff7f0e", "#d62728"],
+    # # figsize=(10, 5),
+    # # )
+    # # plt.xticks(rotation=90)
     # plt.title(title + f" (Total reports: {total_reports})")
-    plt.xlabel(xlabel)
-    plt.ylabel(ylabel)
-    plt.legend(loc="center left", bbox_to_anchor=(1.0, 0.5))
-    plt.gca().yaxis.set_major_formatter(
-        matplotlib.ticker.StrMethodFormatter("{x:,.0f}")
-    )
-    plt.tight_layout()
-    plt.savefig(save_path.replace(".png", "_2.png"))
+    # # plt.xlabel(xlabel)
+    # # plt.ylabel(ylabel)
+    # # plt.legend(loc="center left", bbox_to_anchor=(1.0, 0.5))
+    # # plt.gca().yaxis.set_major_formatter(
+    # # matplotlib.ticker.StrMethodFormatter("{x:,.0f}")
+    # # )
+    # # plt.tight_layout()
+    # # plt.savefig(save_path.replace(".png", "_2.png"))
     # plt.show()
 
 

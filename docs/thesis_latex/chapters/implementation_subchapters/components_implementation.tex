@@ -45,7 +45,7 @@ The Inventory component has the following properties:
   Whenever a link uses a component, it must declare the component in the \texttt{usedOn} property.
   \footnote{The \texttt{usedOn} property is only required for standard extended links and standard resource elements.\cite{xbrl21_custom_roles}}
   Therefore, the \texttt{usedOn} property can be interpreted as a list of possible links that can use the component.
-  However, even though the Invenory component indicates the use of e.g. a presentation link, it does not mean that any presentation ;oml is defined for the component.
+  However, even though the Inventory component indicates the use of e.g. a presentation link, it does not mean that any presentation ;oml is defined for the component.
 \end{itemize}
 
 Most of the roles in XBRL will not be defined by the creators of the report, but rather by the creators of the XBRL taxonomy. 
@@ -65,7 +65,7 @@ The following UML diagram shows the class diagram of the \texttt{Component} clas
   \includegraphics[width=0.8\textwidth]{images/brel.brel_component.Component.png}
 \end{figure}
 
-% The \texttt{get\_info} method refers to the text of the definintion element in the XBRL taxonomy.
+% The \texttt{get\_info} method refers to the text of the definition element in the XBRL taxonomy.
 The \texttt{get\_info} method returns the text of the definition element if it exists, otherwise it returns \texttt{None}.
 This renaming was done to avoid confusion with the \texttt{get\_definition\_network} method that returns the definition network of the component.
 

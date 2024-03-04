@@ -59,10 +59,10 @@ def test_print_network_order():
     printed_network = method_output_to_string(lambda: pprint_network(network))
 
     # check that the words 'Balance', 'Assets', 'Cash' and 'Liabilities' are in the printed network
-    assert "Balance" in printed_network, f"Balance not in {printed_network}"
-    assert "Assets" in printed_network, f"Assets not in {printed_network}"
-    assert "Cash" in printed_network, f"Cash not in {printed_network}"
-    assert "Liabilities" in printed_network, f"Liabilities not in {printed_network}"
+    assert "balance" in printed_network, f"Balance not in {printed_network}"
+    assert "assets" in printed_network, f"Assets not in {printed_network}"
+    assert "cash" in printed_network, f"Cash not in {printed_network}"
+    assert "liabilities" in printed_network, f"Liabilities not in {printed_network}"
 
 
 def test_print_network_elements():
@@ -70,22 +70,22 @@ def test_print_network_elements():
     network = filing.get_component("http://foo/role/balance").get_presentation_network()
     printed_network = method_output_to_string(lambda: pprint_network(network))
     # check that they are printed in the right order
-    assert printed_network.index("Balance") < printed_network.index(
-        "Assets"
+    assert printed_network.index("balance") < printed_network.index(
+        "assets"
     ), f"Balance not before Assets in {printed_network}"
-    assert printed_network.index("Assets") < printed_network.index(
-        "Cash"
+    assert printed_network.index("assets") < printed_network.index(
+        "cash"
     ), f"Assets not before Cash in {printed_network}"
-    assert printed_network.index("Cash") < printed_network.index(
-        "Liabilities"
+    assert printed_network.index("cash") < printed_network.index(
+        "liabilities"
     ), f"Cash not before Liabilities in {printed_network}"
-    assert printed_network.index("Balance") < printed_network.index(
-        "Liabilities"
+    assert printed_network.index("balance") < printed_network.index(
+        "liabilities"
     ), f"Liabilities not before Balance in {printed_network}"
 
     # 'Cash' is the first child of 'Assets'. therefore there should be exactly one newline between 'Assets' and 'Cash'
     characters_between_assets_and_cash = printed_network[
-        printed_network.index("Assets") : printed_network.index("Cash")
+        printed_network.index("assets") : printed_network.index("cash")
     ]
     assert (
         characters_between_assets_and_cash.count("\n") == 1
@@ -95,11 +95,11 @@ def test_print_network_elements():
     # So "'Balance' -> '[ABSTRACT]'"", which is equivalent to "not 'Balance' or '[ABSTRACT]'"
     lines = printed_network.split("\n")
     assert all(
-        "Balance" not in line or "[ABSTRACT]" in line for line in lines
+        "balance_sheet" not in line or "[ABSTRACT]" in line for line in lines
     ), f"Balance not before [ABSTRACT] in {lines}"
 
     # 'Cash' is a concept. therefore '[CONCEPT]' should be printed in the same line
-    assert all("Cash" not in line or "[CONCEPT]" in line for line in lines), f"Cash not before [CONCEPT] in {lines}"
+    assert all("cash" not in line or "[CONCEPT]" in line for line in lines), f"Cash not before [CONCEPT] in {lines}"
 
 
 def test_none_network():

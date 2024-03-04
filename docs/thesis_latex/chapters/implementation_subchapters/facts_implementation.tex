@@ -80,15 +80,15 @@ The XML snippet fills in some of the missing information from the fact, namely:
     which is a child element of the \texttt{entity} element.
 \end{itemize}
 
-A observant reader might have noticed that the placement of dimensions in the context element is not consistent with the placement of both the entity and the period information of a fact.
+An observant reader might have noticed that the placement of dimensions in the context element is not consistent with the placement of both the entity and the period information of a fact.
 The main reason for this inconsistency is that the XBRL specification was not designed with hypercubes in mind.
 Hypercubes were added to the XBRL specification at a later point in time.
 
 A second oddity of facts in XBRL is that they are not self-contained. 
 Their definition is spread across multiple elements in the instance document.
-Most noticably, the context element is defined separately from the fact element.
+Most noticeably, the context element is defined separately from the fact element.
 Since different XBRL facts reference the same context element, the incentive behind this design decision is clear: Reducing redundancy.
-A XBRL instance document can contain thousands of facts, but only a handful of context elements.
+An XBRL instance document can contain thousands of facts, but only a handful of context elements.
 
 However, this design falls apart as soon as we consider the case of hypercubes.
 To illustrate the problem, consider the following numbers:

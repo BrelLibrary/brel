@@ -16,7 +16,8 @@ As such, we intend to assess Brel's robustness through the loading of 10K and 10
 from the top 50 US companies by market capitalization as of the date of this document\footnote{Date of document: 29 January 2024}.
 The companies selected for this evaluation are detailed in table \ref{table:companies}.
 This selection was made by shortening the list of the top 100 US companies by market capitalization\cite{largest_us_companies}.
-The focus on US companies is due to the SEC's requirement for all domestic companies to submit their financial statements in XBRL format\cite{sec_ixbrl}.
+The focus on US companies is due to the SEC's requirement for all domestic companies to submit their financial statements in XBRL XML format\cite{sec_ixbrl}.
+Other regulatory bodies, such as ESMA rarely provide XBRL reports in XML, which is the only format that Brel currently supports.
 
 % "Rank","Name","Symbol","market cap","price (USD)","country"
 % "1","Microsoft","MSFT","3009100644352","403.93","United States"
@@ -148,9 +149,14 @@ The findings from the robustness evaluation are depicted in figure \ref{fig:robu
 % Once Brel supports opening hypercubes, it will be able to load 100\% of the reports without logging any warnings or errors.
 % We can conclude that Brel is robust against real-world XBRL reports.
 Figure \ref{fig:robustness} presents the robustness assessment of Brel, 
-indicating the number of reports loaded successfully, those loaded with warnings or errors, 
-and instances where Brel encountered a failure. 
-Remarkably, Brel managed to process all 10K and 10Q reports without any failures. 
+with individual companies represented on the x-axis.
+% indicating the number of reports loaded successfully, those loaded with warnings or errors, 
+% and instances where Brel encountered a failure on the y-axis.
+% The individual companies are represented on the x-axis.
+The y-axis displays the cumulative number of reports loaded successfully, with warnings or errors, and those that caused Brel to crash.
+% , with the y-axis displaying their cumulative number success, warnings or errors, and failures.
+
+Remarkably, Brel managed to process all 10K and 10Q reports without any failures across 658 reports.
 Nonetheless, it encountered warnings or errors in 0.76\% of these reports, 
 specifically from companies like Procter \& Gamble and Qualcomm. 
 These issues arose from reports where dimensions referenced concepts rather than explicit members. 

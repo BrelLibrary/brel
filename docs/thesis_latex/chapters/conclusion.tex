@@ -15,6 +15,7 @@ This thesis introduces and implements a Python API for processing XBRL reports, 
 We have successfully demonstrated that this API covers XBRL and the Open Information Model (OIM),
 and facilitates straightforward extraction and analysis of data from XBRL reports.
 Moreover, we have shown that this API effectively conceals the XML structure underlying XBRL reports from the end user.
+Both the XBRL standard and Brel's API design were discussed in Chapters \ref{chapter:xbrl} and \ref{chapter:api}, respectively.
 
 % We have implemented said API in a Python package called \texttt{Brel}, 
 % which is available on the Python Package Index (PyPI) and can be installed using the command \texttt{pip install brel-xbrl}
@@ -40,14 +41,14 @@ Moreover, we have shown that this API effectively conceals the XML structure und
 This thesis aimed to answer three research questions, all of which have been answered in the previous chapters.
 
 \begin{enumerate}
-    \item The first question was whether it is possible to create a Python API that encompasses the OIM of the XBRL format.
+    \item The first question \ref{RQ1} was whether it is possible to create a Python API that encompasses the OIM of the XBRL format.
     We have shown that it is indeed possible to create such an API in Section \ref{sec:answer_research_question_1}
     by presenting the Brel API, which encompasses the OIM.
     % \item The second question was whether the non-OIM sections of the XBRL format can be managed similarly.
-    \item The second question asked whether the non-OIM sections of the XBRL format can be managed similarly.
+    \item The second question \ref{RQ2} asked whether the non-OIM sections of the XBRL format can be managed similarly.
     Section \ref{sec:answer_research_question_2} demonstrates that this is indeed possible
     by introducing the Brel API's representation of networks, resources, roles, and report elements.
-    \item The third question was how Brel can be implemented in a way that allows for XBRL reports in
+    \item The third question \ref{RQ3} was how Brel can be implemented in a way that allows for XBRL reports in
     formats such as CSV and JSON to be used as input in future versions.
     Section \ref{sec:answer_research_question_3} indicates that the Brel API's format-agnostic design
     and its XML parser's implementation in a separate module enable this capability.
@@ -84,10 +85,11 @@ which is accessible on the Python Package Index (PyPI)\footnote{Brel can be inst
 % XBRL's main purpose is to be computer-readable, and therefore have the potential to be used in automated processes.
 % The nature of these automated processes is limited by the fact that they cannot rely on the semantic layer of XBRL.
 % They have to check for logical errors in the reports themselves.
-Reflecting on our results, we conclude that the API is robust across various XBRL reports
-as indicated in Section \ref{sec:robustness},
-and adheres to the XBRL standard, inclusive of the OIM,
-as demonstrated in chapters \ref{chapter:xbrl} and \ref{chapter:api}.
+Reflecting on our results, we conclude that the API is robust and correct across various XBRL reports
+as indicated in Sections \ref{sec:correctness} and \ref{sec:robustness}.
+However, it is slower than Arelle, leaving room for optimization, as discussed in Section \ref{sec:performance}.
+% and adheres to the XBRL standard, inclusive of the OIM,
+% Additionally, the API complies with the XBRL standard, including the OIM, as demonstrated in chapters \ref{chapter:xbrl} and \ref{chapter:api}.
 
 \section{Limitations}
 
@@ -125,7 +127,7 @@ Nevertheless, native support for iXBRL in Brel would be beneficial.
 Currently, Brel only supports reading XBRL reports, and does not support writing or modifying them.
 This is a limitation, as it means that Brel cannot be used to create XBRL reports.
 Although Brel's primary focus is to read and analyze XBRL reports,
-support for writing and modifying XBRL reports would be a valuable addition.
+support for writing and modifying XBRL reports and taxonomies would be a valuable addition.
 
 Even though section \ref{sec:robustness} showed that Brel is robust against different XBRL reports.
 All of these reports shared a common source, the SEC.
@@ -152,8 +154,11 @@ Future developments for Brel can be categorized into two areas:
 \textcolor{airforceblue}{enhancing its current features}
 and 
 \textcolor{turkishrose}{expanding its functionalities}. 
-The improvements and extensions discussed here stem from Brel's limitations, 
+
+The improvements and extensions discussed here stem mostly from Brel's limitations, 
 as addressed in section \ref{sec:limitations}.
+However, some improvements are a result of Chapter \ref{chapter:results},
+which highlighted areas where Brel could be enhanced.
 
 % \subsection{Semantic layer}
 
@@ -193,8 +198,8 @@ Future versions of Brel could
 Presently, Brel is compatible only with the XML format outlined in the XBRL 2.1 specification \cite{xbrl21}.
 With the introduction of the OIM, XBRL has expanded to 
 \textcolor{turkishrose}{formats like CSV and JSON}.
-Currently, these formats are not supported by Brel, and their specifications are still under development\footnote{The OIM specifications contains a section for footnotes, which are a type of network.}.
-For instance, at this time, the CSV and JSON formats do not accommodate networks, an essential component of XBRL.
+Currently, these formats are not supported by Brel, and their specifications are still under development.
+For instance, at this time, the CSV and JSON formats do not accommodate networks\footnote{The OIM specifications contains a section for footnotes, which are a type of network.}, an essential component of XBRL.
 Considering the structural similarities between HTML and XML, it is feasible to incorporate iXBRL support into Brel by enhancing its existing architecture.
 
 \subsection{Report Writing and Modification}
@@ -254,7 +259,7 @@ Such a study would also identify Brel's strengths and weaknesses, enabling more 
 
 XBRL International offers a software certification program to ensure that XBRL software meets the required standards\cite{xbrl_certified_software}.
 Brel could be 
-\textcolor{airforceblue}{certified by XBRL International}, which would provide a guarantee to users that Brel meets the required standards for XBRL software.
+\textcolor{airforceblue}{certified by XBRL International}, which would provide a guarantee compliance with the XBRL standard.
 
 
 % \pagebreak

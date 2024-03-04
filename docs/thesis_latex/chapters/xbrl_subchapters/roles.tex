@@ -4,8 +4,9 @@
 Even though the networks introduced in the previous section \ref{sec:xbrl_networks} provide a good foundation for structuring XBRL reports, 
 they are not sufficient to create a comprehensive overview of the report whole report, only individual sections of it.
 Moreover, the roll-up consistency of calculation networks \ref{sec:roll_up_consistency} introduced the notion of having networks related to each other.
+To reiterate, roll-up consistency ensures that a presentation network and its calculation network share the same structure.
 With our current understanding of XBRL, there is no way to express this relationship.
-This is precisely the function of \texttt{Roles} in XBRL.
+This is precisely the function of \texttt{Roles} in XBRL\footnote{XBRL also calls them \texttt{RoleTypes}}.
 % This is where \texttt{Roles} come into play. 
 
 % Roles are a way to group networks together into a what is essentially a chapter of a report.
@@ -26,7 +27,9 @@ This is precisely the function of \texttt{Roles} in XBRL.
 % The concept of roll-up consistency within calculation networks \ref{sec:roll_up_consistency} hinted at the interconnection between networks, 
 % suggesting a need for a mechanism to express these relationships. This is precisely the function of \texttt{Roles} in XBRL.
 
-Roles serve to group networks, akin to chapters within a report, by assigning each network set a unique URI and, optionally, a label. 
+% Roles serve to group networks, akin to chapters within a report, by assigning each set of networks a unique URI and, optionally, a label. 
+Roles serve to group networks, akin to chapters within a report.
+They assign each group of networks a unique URI and, optionally, a label.
 This structuring allows for a segmented yet unified report presentation, where each section, such as the cover page, balance sheet, 
 and income statement, is encapsulated within a specific role. 
 Typically, a role encompasses a presentation network, a calculation network, and a definition network, 
@@ -34,10 +37,11 @@ with these networks forming the core components of a report section.
 Other network types, such as label and reference networks, are usually associated with the report as a whole rather than being confined to specific roles.
 
 The balance sheet section, for example, might solely consist of a presentation network, whereas the income statement could integrate a presentation network, 
-a calculation network, and possibly a definition network, reflecting the complexity and requirements of each report section.
+a calculation network, and possibly a definition network\footnote{True for EDGAR reports, but not necessarily for all XBRL reports}, reflecting the complexity and requirements of each report section.
 
-The implementation of roles within the XBRL XML syntax\cite{xbrl21_custom_roles} adopts a straightforward approach, 
-which will be explained through an example of a balance sheet role.
+% The implementation of roles within the XBRL XML syntax\cite{xbrl21_custom_roles} adopts a straightforward approach, 
+% which will be explained through an example of a balance sheet role.
+The implementation of roles within XBRL XML syntax\cite{xbrl21_custom_roles} will be explained through an example of a balance sheet role.
 
 \begin{figure}[H]
     \begin{lstlisting}[language=XML,basicstyle=\small\ttfamily]
@@ -74,12 +78,13 @@ which will be explained through an example of a balance sheet role.
 Figure \ref{fig:example_role_xbrl} showcases a role with certain attributes:
 
 \begin{itemize}
-    \item \texttt{roleURI} (required): The unique URI for the role. Other elements within the XBRL taxonomy utilize this URI to link to the role. It serves as the role's primary identifier.
-    \item \texttt{definition} (optional): An accessible explanation of the role's purpose.
+    \item \texttt{roleURI}: The unique URI for the role. Other elements within the XBRL taxonomy utilize this URI to link to the role. It serves as the role's primary identifier.
+    \item \texttt{definition}: An optional, human-readable explanation of the role's purpose.
     \item \texttt{usedOn}: Specifies the types of links the role is applicable for.
 \end{itemize}
 
-Associations between networks and the role do not reside within the role itself.
+% Associations between networks and the role do not reside within the role itself.
+The networks that are associated with the role are not defined in the role itself.
 Instead, link elements employing the role must specify it in the \texttt{role} attribute to establish the connection.
 
 A link element that includes a role necessitates the role's \texttt{usedOn} attribute to list the link's type.

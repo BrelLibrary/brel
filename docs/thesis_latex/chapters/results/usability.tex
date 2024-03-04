@@ -17,10 +17,19 @@ The CLI XBRL report viewer, coded in Python, will employ the Brel API for XBRL r
 It will have the capability to access XBRL reports both locally and via URLs.
 The viewer is available as an example in the Brel repository\cite{brel_source}.
 
+Brel is, first and foremost, a wrapper around the XBRL standard.
+Even though its main goal is not to visualize XBRL reports, 
+it still provides a handful of methods that enable visualization of XBRL reports in the console.
+% The viewer will use these methods to display the following information about an XBRL report:
+However, these methods were not covered in chapter \ref{chapter:api}, 
+since they were built on top of the core API and merely serve as convenience methods.
+Nonetheless, this section will give a brief explanation of how these methods are implemented.
+\pagebreak
+
 Regarding an XBRL report, the viewer will present various types of information:
 
 \begin{itemize}
-    \item The facts in the report, which can be filtered by concept and a dimension.\footnote{Filters for entity, period, and unit are not implemented since most reports have very few entities, periods, and units.}
+    \item The facts in the report, which can be filtered by concept and a dimension\footnote{Filters for entity, period, and unit are not implemented since most reports have very few entities, periods, and units.}.
     % For each fact, the viewer should display all characteristics of the fact in a easy-to-read manner.
     For each fact, the viewer displays all characteristics in a human-readable format.
     \item The components of a report together with their networks.
@@ -38,8 +47,7 @@ pip install brel-xbrl
 After installing Brel, we can start implementing the viewer.
 The viewer will be implemented in a single file called \texttt{viewer.py}.
 The first part of the implementation is shown in figure \ref{fig:viewer_1}.
-It shows the imports and the command-line interface (CLI) definition of the viewer.
-
+It shows the imports and the implementation of the CLI responsible for user input.
 \begin{figure}[H]
     \centering
     \lstinputlisting[
@@ -47,14 +55,17 @@ It shows the imports and the command-line interface (CLI) definition of the view
         basicstyle=\scriptsize\ttfamily,
         firstline=1, lastline = 8
     ]{../../examples/cli.py}
-    \caption{The implementation of the CLI XBRL report viewer responsible for the CLI.}
+    \caption{The implementation of the CLI XBRL report viewer responsible for user input.}
     \label{fig:viewer_1}
 \end{figure}
 
 
-The viewer is implemented as a command-line interface (CLI) using the \texttt{argparse} module.
-It has two subcommands: \texttt{facts} and \texttt{components}.
-The former subcommand is used to display the facts in an XBRL report, 
+% The viewer is implemented as a command-line interface (CLI) using the \texttt{argparse} module.
+The viewer uses the \texttt{argparse} module for user input. 
+% It has two subcommands: \texttt{facts} and \texttt{components}.
+The CLI has two subcommands: \texttt{facts} and \texttt{components}.
+% Users can utilize the former is used to display the facts in an XBRL report,
+Users can use the former to display the facts in an XBRL report, 
 % and the \texttt{components} subcommand is used to display the components of a report together with their networks.
 whereas the latter subcommand is used to display the components together with their networks.
 Both subcommands take a single argument, which acts as a filter for the facts and components that are displayed.
@@ -87,7 +98,7 @@ The following figure illustrates the viewer's second part, focusing on the repor
         firstline=11, lastline = 12
     ]{../../examples/cli.py}
     \label{fig:viewer_2}
-    \caption{The implementation of the CLI XBRL report viewer responsible for loading the report.}
+    \caption{The code responsible for loading the XBRL report.}
 \end{figure}
 
 % The facts portion of the viewer \ref{fig:viewer}, which ranges from lines 12 to 23, uses the Brel methods \texttt{report.get\_all\_facts}, 
@@ -96,7 +107,7 @@ The following figure illustrates the viewer's second part, focusing on the repor
 % For example, \texttt{fact.get\_concept} is an alias of \texttt{fact.get\_characteristic(Aspect.CONCEPT)}.
 % Furthermore, the \texttt{utils.pprint} method is a convenience method that pretty-prints most Brel objects in a human-readable manner.
 % It simply calls both \texttt{fact.get\_aspects} and \texttt{fact.get\_characteristic} for each fact and pretty-prints the result.
-The next section of the implementation deals with the facts portion of the viewer.
+The next section of the implementation outlines the facts portion of the viewer.
 First, it gets all facts in the report.
 Then, it filters the facts that either have the concept or dimension that matches the filter.
 Next, it pretty-prints the facts in a human-readable manner.
@@ -115,7 +126,7 @@ Figure \ref{fig:viewer_3} shows the third part of the implementation of the view
         basicstyle=\scriptsize\ttfamily,
         firstline=13, lastline = 21
     ]{../../examples/cli.py}
-    \caption{The implementation of the CLI XBRL report viewer responsible for displaying facts.}
+    \caption{The code responsible for displaying the facts in the XBRL report.}
     \label{fig:viewer_3}
 \end{figure}
 
@@ -135,7 +146,7 @@ Initially, it needs to retrieve all components in the report by using \texttt{re
 Next, it filters those components whose URI contains the specified substring, utilizing \texttt{component.get\_uri} for this purpose.  
 Finally, \texttt{utils.pprint} is used to format the components in a human-readable manner.
 The \texttt{utils.pprint} method is versatile, functioning with both fact lists and component lists.  
-For each network within a component, \texttt{utils.pprint} employs a Depth-First Search (DFS) algorithm,  
+For each network within a component, \texttt{utils.pprint} employs a depth-first search algorithm,  
 applying it to both \texttt{network.get\_roots} and \texttt{network\_node.get\_children} to format the network clearly and coherently.  
 This method also automatically incorporates the labels of report elements when available.  
 Figure \ref{fig:viewer_4} displays the final part of the viewer's implementation, focusing on presenting the report's components.
@@ -149,7 +160,7 @@ Figure \ref{fig:viewer_4} displays the final part of the viewer's implementation
         basicstyle=\scriptsize\ttfamily,
         firstline=22, lastline = 34
     ]{../../examples/cli.py}
-    \caption{The implementation of the CLI XBRL report viewer}
+    \caption{The code responsible for displaying the components in the XBRL report.}
     \label{fig:viewer_4}
 \end{figure}
 
@@ -178,7 +189,7 @@ The viewer can be used to display the facts and components of an XBRL report usi
 
 The following two examples illustrate how the viewer can be used to display the facts and components of an XBRL report.
 Each example will show both the command that is used to display the information and the output of the command.
-For both examples, we will use the Q3 2023 10-Q report of Apple Inc. (AAPL) that is available on the SEC's website\cite{aapl_10q_2023_q3}.
+For both examples, we will use the Q3 2023 10-Q report of Apple Inc. that is available on the SEC's website\cite{aapl_10q_2023_q3}.
 % For brevity, we have downloaded the report and saved in an archive called \texttt{report.zip}.
 To keep the commands simple, we will use the \texttt{report.zip} file that contains the report.
 However, the viewer can also load reports from URLs.
@@ -206,6 +217,10 @@ python viewer.py report.zip --facts us-gaap:Assets
 As shown in figure \ref{fig:aapl_assets}, the command returns the facts in the report that have the concept \texttt{us-gaap:Assets}.
 It clearly shows the concept, period, entity, unit, and value for both facts.
 Neither fact has additional dimensions.
+
+The \texttt{entity} column contains a QName that is a reference to the entity in the report.
+In this case, \texttt{0000320193} is the Central Index Key (CIK) of Apple Inc
+and \texttt{http://www.sec.gov/CIK} is the namespace of the CIK, which can be used to look up the entity in the report.
 
 \begin{figure}[H]
     \begin{lstlisting}[language=bash]

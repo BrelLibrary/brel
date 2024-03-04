@@ -25,7 +25,7 @@ The third area covers reviewing the \textcolor{turkishrose}{\textbf{requirements
 % the extension for dimensional reporting\cite{xbrl_dimensions}
 % and the specification for generic links\cite{xbrl_generic_links}, 
 % all of which will be covered in chapter \ref{chapter:xbrl}.
-As indicated in Section \ref{sec:introduction}, this thesis builds upon the 
+As indicated in Chapter \ref{sec:introduction}, this thesis builds upon the 
 % \XBRL standard
 \textcolor{airforceblue}{\textbf{XBRL standard}}\cite{xbrl} 
 originally created by Charles Hoffman\cite{xbrl}.
@@ -41,16 +41,6 @@ and the specification for \textcolor{airforceblue}{\textbf{generic links}}\cite{
 Chapter \ref{chapter:xbrl} will delve into these components in detail.
 % Besides the XBRL standard, Charles Hoffman also maintains a personal website\cite{seattle_method}
 % that contains a wealth of information about XBRL and good practices for working with it.
-In addition to the XBRL standard, Charles Hoffman manages a 
-\textcolor{airforceblue}{\textbf{personal website}}\cite{seattle_method}
-% personal website\cite{seattle_method},
-which offers information about XBRL and good practices for its utilization.
-The website also contains a test suite for XBRL processors, which is used to test Brel.
-
-% Whilst the XBRL 2.1 specification and the OIM overlap in numerous areas, the OIM does not encompass all the features of the XBRL 2.1 specification.
-% The OIM does not contain all the features of the XBRL 2.1 specification, but it is a lot easier to understand.
-% The OIM also covers some aspects of XBRL dimensions, but does not contain any features from XBRL generic links.
-% Additionally, the OIM addresses certain aspects of XBRL dimensions but does not incorporate any features from XBRL generic links.
 
 \section{The XBRL Book}
 % To properly understand the XBRL specification, one already needs to have a good understanding of both XML and XBRL.
@@ -62,6 +52,11 @@ Understanding the XBRL specification requires a good grasp of both XML and XBRL.
 To help newcomers, Dr. Ghislain Fourny authored ``\textcolor{airforceblue}{\textbf{The XBRL Book}}''\cite{fourny2023xbrl},
 which serves as a comprehensive guide to XBRL. This book covers all important aspects of the XBRL standard, including the relatively recent OIM, 
 making it an invaluable resource for those looking to learn about XBRL.
+
+% \pagebreak
+% add a 5 cm vertical space
+% \vspace{10cm}
+% \pagebreak
 
 \section{Arelle}
 % Arelle\cite{arelle}
@@ -80,19 +75,19 @@ The reader can think of Arelle as the "Excel for XBRL."
 % Unlike Brel, Arelle is a complete XBRL platform and not just a python library.
 % Think of Arelle as "Excel for XBRL".
 
-\section{Xule}
-% Xule\cite{xule} is a rule language for XBRL.
-% It is a declarative language that allows users to write rules for validating XBRL reports.
-% It is part of the Arelle project and is used by Arelle to validate reports.
-% Think of Xule as a domain-specific language for XBRL validation rules.
-% Even though Xule is not part of this thesis, Brel should be able to support Xule in the future.
-% Xule\cite{xule}
-\textcolor{tropicalrainforest}{\textbf{Xule}}\cite{xule} 
-serves as a rule language tailored for XBRL. 
-This declarative language empowers users to create rules for the validation of XBRL reports. 
-The Arelle project employs Xule to validate reports. 
-% Xule can be likened to a domain-specific language designed specifically for XBRL validation rules. 
-While Xule is not directly incorporated into this thesis, it is worth noting that Brel has the potential to offer support for Xule in the future.
+% \section{Xule}
+% % Xule\cite{xule} is a rule language for XBRL.
+% % It is a declarative language that allows users to write rules for validating XBRL reports.
+% % It is part of the Arelle project and is used by Arelle to validate reports.
+% % Think of Xule as a domain-specific language for XBRL validation rules.
+% % Even though Xule is not part of this thesis, Brel should be able to support Xule in the future.
+% % Xule\cite{xule}
+% \textcolor{tropicalrainforest}{\textbf{Xule}}\cite{xule} 
+% serves as a rule language tailored for XBRL. 
+% This declarative language empowers users to create rules for the validation of XBRL reports. 
+% The Arelle project employs Xule to validate reports. 
+% % Xule can be likened to a domain-specific language designed specifically for XBRL validation rules. 
+% While Xule is not directly incorporated into this thesis, it is worth noting that Brel has the potential to offer support for Xule in the future.
 
 
 \section{EDGAR}
@@ -110,6 +105,8 @@ operates a system referred to as
 \textcolor{tropicalrainforest}{\textbf{EDGAR}} \cite{sec_edgar}. 
 (Electronic Data Gathering, Analysis, and Retrieval) \cite{sec_edgar}. 
 This EDGAR system serves as a publicly accessible repository for XBRL reports submitted to the SEC\footnote{\url{https://www.sec.gov/edgar/search/}}.
+EDGAR also offers an online viewer for XBRL reports,
+which is useful for verifying their correctness.
 % To be accepted by EDGAR, filings must be in the XBRL format. 
 % The SEC offers public access to the filings stored within EDGAR\footnote{\url{https://www.sec.gov/edgar/search/}}.
 
@@ -151,10 +148,12 @@ It is noteworthy that the SEC offers this test suite at no cost, and it can be a
 % Brel employs the aforementioned test suite to evaluate its XBRL processor. 
 % Currently, Brel does not successfully pass all the tests contained within the suite, 
 % primarily due to its lack of support for certain features within the XBRL standard.
-Brel does not employ the aforementioned test suite to evaluate its XBRL processor.
+Brel does not fully employ the aforementioned test suite to evaluate its XBRL processor.
 % Since this suite contains test cases which are tailored to EDGAR specific features,
 % Most of the test cases in the suite cover features that are either specific to EDGAR or features that Brel does not support currently.
 The majority of the test cases within the suite focus on functionalities that are unique to EDGAR or on features that Brel presently does not support.
+% It is used for compliance testing.
+Therefore, it is currently used for complementary testing purposes.
 
 \section{ESMA Conformance Suite}
 % The European Securities and Markets Authority (ESMA) also maintains a test suite for XBRL processors\cite{esma_conformance_suite}.
@@ -174,3 +173,22 @@ One notable divergence is that the ESMA Conformance Suite is tailored to facilit
 As of the present, Brel does not possess the capability to support xHTML reports, 
 rendering the ESMA Conformance Suite irrelevant to the scope of this thesis. 
 Nonetheless, it is important to acknowledge that there are intentions for Brel to incorporate support for xHTML reports in the future.
+
+\section{Seattle Method}
+
+% In addition to the XBRL standard, Charles Hoffman manages a personal website.
+In addition to creating the XBRL standard, Charles Hoffman maintains a personal website. 
+% \textcolor{airforceblue}{\textbf{personal website}}\cite{seattle_method}
+% personal website\cite{seattle_method},
+% which offers information about XBRL and good practices for its utilization named the \textcolor{airforceblue}{\textbf{Seattle Method}}.
+% The website also contains a test suite for XBRL processors, which is used to test Brel.
+It offers information about XBRL and best practices for its utilization, known as the \textcolor{airforceblue}{\textbf{Seattle Method}}\cite{seattle_method}.
+% The website also contains a test suite for XBRL processors, which is used to test Brel.
+The website also contains a
+\textcolor{turkishrose}{\textbf{test suite for XBRL processors}}, which is used to evaluate Brel.
+
+% Whilst the XBRL 2.1 specification and the OIM overlap in numerous areas, the OIM does not encompass all the features of the XBRL 2.1 specification.
+% The OIM does not contain all the features of the XBRL 2.1 specification, but it is a lot easier to understand.
+% The OIM also covers some aspects of XBRL dimensions, but does not contain any features from XBRL generic links.
+% Additionally, the OIM addresses certain aspects of XBRL dimensions but does not incorporate any features from XBRL generic links.
+

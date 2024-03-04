@@ -77,13 +77,14 @@ The XBRL 2.1 specification defines six built in types of networks\cite{xbrl21_te
     \item \texttt{link:calculationLink}: This network shows the calculation relationships between concepts.
     For instance, as shown in Figure \ref{fig:example_visualization_network_xbrl}, 
     \texttt{Assets} results from adding \texttt{Current Assets} to \texttt{Non-Current Assets}.
-    \item \texttt{link:definitionLink}: This network outlines connections beyond those in other networks.
-    The \texttt{definitionLink} is detailed in Section \ref{sec:definitionLink}.
-    \item \texttt{link:labelLink}: A network that associates report elements with human-readable labels.
-    \item \texttt{link:referenceLink}: This network ties report elements to external references.
+    % \item \texttt{link:definitionLink}: This network outlines connections beyond those in other networks.
+    % The \texttt{definitionLink} is detailed in Section \ref{sec:definitionLink}.
+    \item \texttt{link:labelLink}: A network that associates concepts with human-readable labels.
+    \item \texttt{link:referenceLink}: This network ties concepts to external references.
     For instance, the concept \texttt{Total Shareholder Return Amount} might have an official definition in the SEC's Code of Federal Regulations (CFR).
-    The reference network would link the concept to the subparagraph \texttt{17 CFR 229.402(v)(2)(iv)}\cite{cfr_total_shareholder_return_amount}.
-    \item \texttt{link:footnoteLink}: This network associates report elements, facts, and other components with explanatory footnotes.
+    The reference network would link the concept to \texttt{17 CFR 229.402(v)(2)(iv)}\cite{cfr_total_shareholder_return_amount}.
+    \item \texttt{link:footnoteLink}: This network associates concepts, facts, and other components with explanatory footnotes.
+    \item \texttt{link:definitionLink}: This network outlines relationships that are not covered by other networks.
 \end{itemize}
 
 % XBRL refers to these built in networks as \texttt{standard extended links}. 
@@ -104,7 +105,8 @@ XBRL does permit both directed and undirected cycles within networks.
 Yet, networks within XBRL predominantly take the form of directed acyclic graphs (DAGs).
 
 Although labels will receive a more thorough examination in Section \ref{sec:labelLink}, they will be used throughout this chapter for the sake of readability.
-Labels assign human-readable descriptions to report elements. For instance, \texttt{us-gaap:CurrentAssets} may be labeled as "Current Assets" in English.
+Labels assign human-readable descriptions to concepts. For instance, \texttt{us-gaap:CurrentAssets} may be labeled as "Current Assets" in English.
+
 The following sections will delve into the conceptual implementation of networks within XBRL.
 
 % This approach is adopted to enhance the readability of the chapter.
@@ -436,6 +438,7 @@ Note, the calculation network includes arc weights, unlike the presentation netw
             .2 Liabilities (weight: -1).
         }
         \caption{Calculation network}
+        \label{fig:example_roll_up_consistency_calculation}
     \end{minipage}
     \begin{minipage}{0.8\textwidth}
         \dirtree{%
@@ -448,6 +451,7 @@ Note, the calculation network includes arc weights, unlike the presentation netw
             .2 Liabilities.
         }
         \caption{Presentation network}
+        \label{fig:example_roll_up_consistency_presentation}
     \end{minipage}
 \end{figure}
 
@@ -485,7 +489,7 @@ For aggregation consistency evaluation, it's essential to have the values of fac
 implying that this form of consistency compares a list of facts against a calculation network.
 
 A practical demonstration of aggregation consistency can be seen in the list of facts presented in Figure \ref{fig:example_facts_aggregation_consistency}, 
-relevant to the calculation network in Figure \ref{fig:example_roll_up_consistency}:
+relevant to the calculation network in Figure \ref{fig:example_roll_up_consistency_calculation}:
 
 % \begin{figure}[H]
 %     \caption{List of facts for the calculation network in figure \ref{fig:example_roll_up_consistency}}
@@ -690,7 +694,6 @@ The following XML snippet illustrates how Coca Cola\cite{ko2019q2} chooses to re
 \begin{figure}[H]
     \begin{lstlisting}[language=XML, basicstyle=\ttfamily\small]
 <link:label 
-    id="[...]" 
     xlink:label="lab_us-gaap_Revenues" 
     xlink:role="http://www.xbrl.org/2003/role/terseLabel" 
     xlink:type="resource" 
@@ -711,7 +714,7 @@ The label in figure \ref{fig:example_label_xml} has the role \texttt{http://www.
 which signifies that the label text is brief and succinct.
 % XBRL defines a few other roles of which the most important ones are:
 % XBRL defines several other roles, with the most significant ones including:
-The XBRL 2.1 specification/cite{xbrl21} outlines various roles, with the most notable ones including:
+The XBRL 2.1 specification\cite{xbrl21} outlines various roles, with the most notable ones including:
 
 \begin{figure}[H]
     \small

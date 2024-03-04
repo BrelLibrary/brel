@@ -22,7 +22,7 @@ Finally, Brel analyzes the components of the report.
 
 The rationale for this bottom-up method is the reliance of both networks and facts on report elements.
 Networks require report elements as their nodes may link to these elements.
-Similarly, facts need report elements because their attributes can be associated with concepts, dimensions, and members.
+Similarly, facts need report elements because their characteristics can be associated with concepts, dimensions, and members.
 It is common for both networks and facts to reference identical report elements.
 Hence, their corresponding Python classes should utilize the same instances of report elements.
 Adopting a bottom-up approach guarantees that all report elements are fully parsed prior to their utilization in networks and facts.
@@ -74,7 +74,7 @@ Roles are addressed in section \ref{sec:implementation_components}.
 This section focuses on report elements.
 
 In XBRL, a taxonomy can reference other taxonomies and assign them a namespace prefix.
-For the moment, it is assumed that different taxonomies concur on the namespace prefix and URI for a given taxonomy.
+For the moment, it is assumed that different taxonomies agree on the namespace prefix and URI for a given taxonomy.
 Brel validates this assumption through a procedure known as namespace normalization, discussed in section \ref{sec:qnames_implementation}.
 When there is consensus on a prefix and URI for a taxonomy, all report elements defined within inherit the same prefix and URI as part of their QName.
 

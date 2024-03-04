@@ -1,4 +1,4 @@
-import argparse, brel
+import argparse, brel, brel.utils
 
 # Parse the command line arguments
 parser = argparse.ArgumentParser()

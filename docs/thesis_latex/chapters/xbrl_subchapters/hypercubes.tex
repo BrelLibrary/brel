@@ -7,8 +7,10 @@
 % \footnote{Hypercubes are the reason why the OIM does not only cover the XBRL 2.1 core specification, but also the XBRL Dimensions 1.0 specification.}.
 A notable insight from examining XBRL report facts is their resemblance to a hypercube structure.
 The characteristics of a fact act as the hypercube's dimensions, with the fact's value representing the hypercube's value at those specific dimensions.
-Contrary to networks, hypercubes are included within the OIM
-\footnote{This inclusion of hypercubes extends the OIM's\cite{oim} scope beyond the XBRL 2.1 core specification\cite{xbrl21} to encompass the XBRL Dimensions 1.0 specification\cite{xbrl_dimensions} as well.}.
+% Contrary to networks, hypercubes are included within the OIM
+Hypercube are part of the OIM\footnote{This inclusion of hypercubes extends the OIM's\cite{oim} scope beyond the XBRL 2.1 core specification\cite{xbrl21} to encompass the XBRL Dimensions 1.0 specification\cite{xbrl_dimensions} as well.}.
+% How a list of facts can be seen as a hypercube is illustrated using an example.
+Using an example, we illustrate how a list of facts can be viewed as a hypercube.
 
 % \newfloatcommand{capbtabbox}{table}[][\FBwidth]
 
@@ -107,7 +109,7 @@ Each combination of dimensions corresponds to a fact, with the fact's value repr
 % The members of a dimension can also have even more child members themselves.
 % For example, the Subsidiary Foo Europe could have two subsidiaries: Foo Switzerland and Foo EU.
 
-Data structuring through hypercubes has become widely adopted in recent times.
+Data structuring through hypercubes has become widely adopted in recent years.
 However, when XBRL was initially developed, hypercubes were not as commonly used.
 The early versions of XBRL lacked hypercube support,
 which was later integrated into the XBRL framework in 2006.\cite{xbrl_dimensions}.
@@ -187,20 +189,20 @@ However, unlike explicit dimensions, typed dimensions do not include members but
 
 \subsection{Line Items and Hypercubes}
 
-Given our understanding of hypercubes, it's apparent that the entire report could be viewed as a large hypercube.
+Given our understanding of hypercubes, it's apparent that all facts of the entire report could be viewed as a large hypercube.
 Particularly with the addition of extra dimensions, it's likely that most facts will use just a fraction of the available dimensions.
 This scenario results in a highly dimensional hypercube, with many dimensions remaining unutilized.
-Analyzing the report based on this large hypercube would be inefficient.
+Analyzing the report based on this large, sparse hypercube would be inefficient.
 
 XBRL addresses this issue by introducing the \texttt{hypercube} report element.
-A hypercube is conceptually a smaller sub-cube of the overarching report hypercube.
+A hypercube report element is a smaller sub-cube of the overarching report hypercube.
 Hypercube report elements are typically defined on a role-specific basis within a definition network.
 They select a subset of the dimensions from the entire report hypercube,
 determined within the definition network, where “hypercube-dimension” arcs indicate the included dimensions.
 
 XBRL further introduces the \texttt{lineItems} report element.
 Line items pinpoint which concepts belong to the hypercube.
-Although a report might detail tens of thousands of concepts, only a select number are relevant for a given role.
+Although a report might define tens of thousands of concepts, only a select number are relevant for a given role.
 The line items report element identifies these relevant concepts by listing them as children within the definition network.
 
 % For a clearer understanding, think of lineItems in relation to concepts as dimensions are related to members.

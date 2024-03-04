@@ -15,6 +15,7 @@
 The second significant assumption made in section \ref{sec:implementation_general} is that all files pertaining to both the taxonomy set and the XBRL report are available locally on the user's computer. 
 However, this is often not the case. 
 Typically, only the XBRL report itself is stored locally. 
+% Typically
 The taxonomy files referenced within the XBRL report usually point to additional taxonomy files that are not locally stored. 
 As discussed in section \ref{sec:concepts}, taxonomies may include references to other taxonomies. 
 To successfully parse the XBRL report, Brel must identify and download the complete set of all linked taxonomy references, a process known as DTS caching.

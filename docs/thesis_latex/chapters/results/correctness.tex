@@ -2,9 +2,10 @@
 \label{sec:correctness}
 
 To evaluate Brel's correctness, we will use Charles Hoffman's XBRL conformance suite \cite{hoffman_conformance_suite}.
-The conformance suite contains a set of XBRL reports that are known to be correct.
-It checks for conformance to the XBRL specification from both a syntactic and a logical point of view.
-Brel will ignore the logical checks, as it only deals with the syntactic part of the XBRL specification.
+% The conformance suite contains a set of mock XBRL reports that are known to be either valid or invalid.
+It checks for conformance to the XBRL specification from both a syntactic and a semantic point of view.
+% Brel will ignore the logical checks, as it only deals with the syntactic part of the XBRL specification.
+Remember that Brel only interprets the syntactic part of the XBRL specification.
 
 We will not cover either the SEC's or the ESMA's conformance suites, 
 as they contain many test cases that are not relevant to Brel in its current state.
@@ -30,7 +31,8 @@ It checks for conformance to the XBRL specification from both a syntactic and a 
 
 Since Brel only deals with the syntactic part of the XBRL specification, 
 it will be unable to check the logical part of the conformance suite.
-Therefore, reports that are syntactically correct, but semantically incorrect, will be considered correct by Brel.
+Therefore, reports that are syntactically correct, but semantically incorrect, will be considered correct by Brel,
+resulting in false positives.
 
 Figure \ref{fig:conformance_suite} shows the results of running the conformance suite on Brel.
 
@@ -51,7 +53,8 @@ Of the 55 syntactic checks, Brel passes all of them.
 This is a good result, as it shows that Brel is able to parse XBRL reports correctly.
 However, it is important to note that the conformance suite is not exhaustive.
 Also, conformance suite test cases are not necessarily representative of real-world XBRL reports.
-They serve as a good starting point, but they are not enough to guarantee Brel's correctness.
+% They serve as a good starting point, but they are not enough to guarantee Brel's correctness.
+They serve as a good starting point, but they are not sufficient to guarantee Brel's correctness.
 
 \subsection{Hand-picked XBRL reports}
 
@@ -149,10 +152,11 @@ whereas Brel displays only the report elements and their interconnections.
 Fortunately, the \texttt{viewer.py} tool can be employed to filter and display facts corresponding to the concepts shown in figure \ref{fig:msft_income_statement_network}.  
 The outcome of running the \texttt{viewer.py} script is presented in figure \ref{fig:msft_income_statement_facts},  
 although it should be noted that this output is truncated and uses a slightly modified viewer script that enables searching for multiple concepts at once.
-Additionally, duplicate facts have been omitted from the output.
+% Additionally, duplicate facts have been omitted from the output.
+Both Brel and Arelle omit duplicate facts from their outputs, as XBRL reports may contain duplicate facts reported in varying contexts.
 
-Additionally, it's crucial to recognize that XBRL reports may contain duplicate facts, as they can be reported in varying contexts.  
-While Arelle typically does not display these duplicates, Brel does, showcasing all instances of reported facts.
+% Additionally, it's crucial to recognize that XBRL reports may contain duplicate facts, as they can be reported in varying contexts.  
+% While Arelle typically does not display these duplicates, Brel does, showcasing all instances of reported facts.
 
 % cSpell: disable
 \begin{figure}[H]
@@ -213,8 +217,9 @@ The distinction lies in the presentation of facts; Arelle displays them in a tab
 whereas Brel presents them in a table that depicts a hypercube.
 
 It can be concluded that Brel successfully extracts and structures information from Microsoft's comprehensive income statement in the 10K report.  
-This outcome indicates Brel's efficiency in parsing XBRL reports.  
+% This outcome indicates Brel's efficiency in parsing XBRL reports.  
+This outcome indicates Brel's proficiency in parsing XBRL reports.
 However, it is important to recognize that this assessment focuses solely on one component of the report.  
 It does not encompass the full breadth of Brel's functionalities or its overall correctness.  
 This analysis serves as a specific example of Brel's accuracy.  
-Combined with the results from the conformance suite, it offers a comprehensive understanding of Brel's accuracy.
+Combined with the results from the conformance suite, it offers a comprehensive understanding of Brel's correctness.

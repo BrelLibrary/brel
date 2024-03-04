@@ -65,16 +65,13 @@ def __print_sub_network(node: INetworkNode, last=True, header="") -> None:
         re = node.get_report_element()
         node_labels = re.get_labels()
 
+        node_as_str = ""
         if hasattr(re, "get_preferred_label_role"):
             label_role = getattr(re, "get_preferred_label_role")()
+            node_as_str = next(filter(lambda l: l.get_role() == label_role, node_labels)).get_content()
+            node_as_str = str(node_as_str)
         else:
-            label_role = BrelLabel.STANDARD_LABEL_ROLE
-
-        node_preferred_label = next(
-            filter(lambda label: label.get_label_role() == label_role, node_labels),
-            str(re.get_name()),
-        )
-        node_as_str = str(node_preferred_label)
+            node_as_str = str(re)
 
         type_str = ""
         if type(re) in tag_lookup:

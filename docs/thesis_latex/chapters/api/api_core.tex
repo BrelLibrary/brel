@@ -27,7 +27,7 @@ The UML diagram provided below illustrates the core components of Brel.
 % It will also reject any invalid arguments.
 The \texttt{Filing} class is designed to represent an individual XBRL filing.
 A key functionality of this class is the \texttt{Filing.open} method, which facilitates the loading of a filing from various sources such as a file, directory, or URL.
-This method accepts a single parameter that could be a path to a file or directory, or a URL, and intelligently determines the type of input to process the filing.
+% This method accepts a single parameter that could be a path to a file or directory, or a URL, and intelligently determines the type of input to process the filing.
 It also ensures the rejection of any inputs that are not valid.
 
 % The next two methods are \texttt{Filing.get\_all\_facts} and \texttt{Filing.get\_all\_components},
@@ -168,8 +168,7 @@ Aspects represent the dimensions of the hypercube, and their values represent th
 % The former returns a list of all aspects for which the context has a characteristic.
 % The latter returns the characteristic of the context for a given aspect, or \texttt{None} if the context lacks a characteristic for the aspect.
 The \texttt{Context} class represents a single context,
-maintaining a one-to-one relationship with facts.
-\footnote{Despite potentially multiple contexts sharing identical characteristics, they are treated as separate entities.}
+maintaining a one-to-one relationship with facts\footnote{Despite potentially multiple contexts sharing identical characteristics, they are treated as separate entities.}.
 This class provides two methods: \texttt{Context.get\_aspects} and \texttt{Context.get\_characteristic}.
 \texttt{Context.get\_aspects} yields a list of all aspects for which the context holds a characteristic.
 \texttt{Context.get\_characteristic} retrieves the context's characteristic for a specified aspect, or \texttt{None} if the aspect lacks a characteristic in the context.
@@ -223,7 +222,7 @@ Referring back to the example in section \ref{point:foo_net_income}, the "net in
 
 % Given the variety of report elements, the \texttt{IReportElement} interface includes a method to ascertain the type of the report element.
 % A more detailed discussion on report elements is scheduled in section \ref{sec:report_elements}, to be addressed later in this chapter.
-Given the diversity of report elements, the \texttt{IReportElement} interface includes a method for getting the type of the report element.
+% Given the diversity of report elements, the \texttt{IReportElement} interface includes a method for getting the type of the report element.
 A more detailed discussion on report elements is scheduled in section \ref{sec:api_report_elements} later in this chapter.
 % to be addressed later in this chapter.
 
