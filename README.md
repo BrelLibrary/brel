@@ -76,15 +76,15 @@ If you have a report from the SEC's EDGAR database, you can use the `open_edgar`
 
 ```python
 
-from brel import Filing, pprint
-from brel.utils import open_edgar
+from brel import Filing
+from brel.utils import open_edgar, pprint
 
 # Loads Apples 10-Q filing from Q4 2023
-filing = open_edgar(cik="320193", form="10-Q", date="2023-12-30")
+filing = open_edgar(cik="320193", filing_type="10-Q", date="2023-12-30")
 
 # or 
 
-filing = open_edgar(cik="320193", form="10-Q")  # opens latest filing
+filing = open_edgar(cik="320193", filing_type="10-Q")  # opens latest filing
 ```
 
 The `Filing` object provides access to everything in the filing, including the `Fact`s, `Component`s, 
@@ -92,7 +92,8 @@ The `Filing` object provides access to everything in the filing, including the `
 If you do not have a report, you could for example download all the files under "Data Files" of the [latest annual report (10-K) by Apple](https://www.sec.gov/Archives/edgar/data/320193/000032019323000106/0000320193-23-000106-index.htm) into a folder, and then pass this folder to Filing.open():
 
 ```python
-from brel import Filing, pprint
+from brel import Filing
+from brel.utils import pprint
 filing = Filing.open("path/to/aapl-20220924_htm.xml")
 ```
 	 
