@@ -33,9 +33,10 @@ Firstly, you need to install chocolatey, which can be found [here](chocolatey.or
 ```bash
 make test
 ```
-
 This command will run the linter, the tests and generate a coverage report.
 
+\
+\
 To deactivate the virtual environment, run the following command:
 
 ```bash

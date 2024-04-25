@@ -45,7 +45,9 @@ Once a filing is loaded, it can be queried for its facts, report elements, netwo
 """
 
 import os
+import pandas as pd
 import zipfile
+from pyspark import sql
 from typing import Callable, TypeGuard, cast
 
 from brel import Component, Fact, QName
@@ -360,3 +362,30 @@ class Filing:
             if component.get_URI() == uri:
                 return component
         return None
+
+    def generate_fact_table_pandas_df(self) -> pd.DataFrame:
+        """
+        Converts the filing to a pandas DataFrame.
+        :return pandas.DataFrame: the filing as a pandas DataFrame.
+        """
+        import pandas as pd
+
+        data = []
+        for fact in self.__facts:
+            d = fact.convert_to_dict()
+            data.append(d)
+
+        df = pd.DataFrame(data)
+        return df
+    
+    def generate_fact_table_spark_df(self) -> sql.DataFrame:
+        """
+        Converts the filing to a spark DataFrame. Also created a spark session if it does not exist.
+        :param spark: the spark session to use.
+        :return pyspark.sql.DataFrame: the filing as a spark DataFrame.
+        """
+        spark = sql.SparkSession.builder.getOrCreate()
+        df = self.generate_fact_table_pandas_df()
+        print(df[:10])
+        spark.parallelize()
+        return spark.createDataFrame(df)
