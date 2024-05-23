@@ -132,3 +132,15 @@ class INetwork(ABC):
 
         # return the nodes set as a list
         return list(nodes)
+
+    def convert_to_dict(self) -> dict:
+        """
+        Convert the network to a dictionary representation
+        :returns dict: representing the network
+        """
+        return {
+            "roots": [root.convert_to_dict() for root in self.get_roots()],
+            "link_role": self.get_link_role(),
+            "link_name": self.get_link_name().get(),
+            "is_physical": self.is_physical(),
+        }

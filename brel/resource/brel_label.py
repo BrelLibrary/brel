@@ -60,3 +60,10 @@ class BrelLabel(IResource):
 
     def get_content(self) -> str:
         return self.__text
+
+    def convert_to_dict(self) -> dict:
+        return {
+            "text": self.__text,
+            "language": self.__language,
+            "label_role": self.__label_role,
+        }

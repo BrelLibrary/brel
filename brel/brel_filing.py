@@ -389,3 +389,38 @@ class Filing:
         print(df[:10])
         spark.parallelize()
         return spark.createDataFrame(df)
+
+    def generate_components_as_pandas_df(self) -> pd.DataFrame:
+        """
+        Converts the components to a pandas DataFrame.
+        :return pandas.DataFrame: the components as a pandas DataFrame.
+        """
+        data = []
+        for component in self.__components:
+            d = component.convert_to_dict()
+            data.append(d)
+
+        df = pd.DataFrame(data)
+        return df
+    
+    def get_all_labels(self) -> list[str]:
+        """
+        :return list[str]: a list of all labels in the filing.
+        """
+        labels = []
+        for re in self.__reportelems:
+            if isinstance(re, IReportElement):
+                for label in re.get_labels():
+                    labeldict = label.convert_to_dict()
+                    labeldict["report_element"] = re.get_name()
+                    labels.append(labeldict)
+        return labels
+    
+    def generate_labels_as_pandas_df(self) -> pd.DataFrame:
+        """
+        Converts the labels to a pandas DataFrame.
+        :return pandas.DataFrame: the labels as a pandas DataFrame.
+        """
+        data = self.get_all_labels()
+        df = pd.DataFrame(data)
+        return df
