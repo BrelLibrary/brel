@@ -81,7 +81,7 @@ def open_edgar(cik: str, filing_type: str, date: str | None = None) -> Filing:
     :param date: The date of the filing in the format YYYY-MM-DD.
     :return: The path to the downloaded filing.
     """
-
+    
     # check that the date is in the correct format
     if date is not None:
         if not isinstance(date, str):

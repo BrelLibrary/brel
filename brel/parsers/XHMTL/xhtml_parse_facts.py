@@ -53,6 +53,7 @@ def parse_fact_from_ixbrl(
             f"Fact {fact_id} has concept {fact_concept_name} but should have concept {context_concept.get_value().get_name().get()}"
         )
 
+    # Check the format and apply the necessary formatting
     if fact_xml_element.tag == "ix:nonFraction" or fact_xml_element.tag == "{http://www.xbrl.org/2013/inlineXBRL}nonFraction":
         fact_format = fact_xml_element.get("format")
         fact_scale = fact_xml_element.get("scale")
@@ -85,6 +86,7 @@ def parse_fact_from_ixbrl(
         else:
             raise ValueError(f"Fact format {fact_format} not yet supported by XBRL")
     
+    # Aggregate the continuation facts
     try:
         if fact_xml_element.get("continuedAt"):
             cont = list(filter(lambda x: x.get("id") == fact_xml_element.get("continuedAt"), continuations))[0]
