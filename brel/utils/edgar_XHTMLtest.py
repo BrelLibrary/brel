@@ -5,7 +5,7 @@ If a date is provided, the function will download the filing for the given date.
 The module also provides a function for listing all filings for a given CIK and filing type.
 """
 
-from brel import Filing
+from brel import FilingFake
 import requests, json, os, datetime
 
 SUPPORTED_FILING_TYPES = ["10-K", "10-Q", "8-K"]
@@ -48,7 +48,7 @@ def __is_cached(cik: str) -> bool:
     return os.path.exists(os.path.join(edgar_cache_dir, f"{cik.zfill(10)}.json"))
 
 
-def open_edgar(cik: str, filing_type: str, date: str | None = None) -> Filing:
+def open_edgar_fake(cik: str, filing_type: str, date: str | None = None) -> FilingFake:
     """
     Download a filing from the SEC EDGAR database given the CIK and the filing type.
 
@@ -144,11 +144,10 @@ def open_edgar(cik: str, filing_type: str, date: str | None = None) -> Filing:
 
         if uri.endswith(".htm"):
             uri_dir = uri[: uri.rfind("/")]
-            uri = uri.replace(".htm", "_htm.xml")
             ping = session.get(uri, headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:127.0) Gecko/20100101 Firefox/127.0"})
             if ping.status_code != 200:
                 raise ValueError(
                     f"Failed to download filing from {uri}. Note that the Brel does not support .htm filings and that it cannot scrape EDGAR's website. We suggest that you search for the .xml filing on {uri_dir} and call brel.Filing.open(uri) with the correct URI."
                 )
         print(f"Opening {filing_type} filing of {metadata['name']} ({cik}) on {recent['reportDate'][right_i]}")
-        return Filing.open(uri)
+        return FilingFake.open(uri)

@@ -166,3 +166,18 @@ class Concept(IReportElement):
 
     def __str__(self) -> str:
         return self.__name.__str__()
+
+    def convert_to_dict(self) -> dict:
+        """
+        Convert the concept to a dictionary.
+        :returns dict: the concept as a dictionary
+        """
+        return {
+            "name": self.__name.get(),
+            "label": self.select_main_label().__str__(),
+            "report_element_type": "concept",
+            "period_type": self.__period_type,
+            "balance_type": self.__balance_type,
+            "nillable": self.__nillable,
+            "data_type": self.__data_type,
+        }

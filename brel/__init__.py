@@ -7,4 +7,6 @@ from .brel_component import Component
 
 from .brel_filing import Filing
 
+from .brel_filing_XHTMLtest import FilingFake
+
 # from brel.utils import *

@@ -37,9 +37,9 @@ Once a filing is loaded, it can be queried for its facts, report elements, netwo
 
 ====================
 
-- author: Robin Schmidiger
+- author: Shrey Mittal
 - version: 0.5
-- date: 29 January 2024
+- date: 20 August 2024
 
 ====================
 """
@@ -54,6 +54,7 @@ from brel import Component, Fact, QName
 from brel.characteristics import Aspect
 from brel.networks import INetwork
 from brel.parsers import IFilingParser, XMLFilingParser
+from brel.parsers.xhtml_filing_parser import XHTMLFilingParser
 from brel.reportelements import (
     Abstract,
     Concept,
@@ -67,13 +68,13 @@ from brel.reportelements import (
 DEBUG = False
 
 
-class Filing:
+class FilingFake:
     """
     Represents an XBRL filing in the Open Information Model.
     """
     
     @classmethod
-    def open(cls, path, *args) -> "Filing":
+    def open(cls, path, *args) -> "FilingFake":
         """
         Opens a #Filing when given a path. The path can point to one of the following:
         - a folder
@@ -108,26 +109,26 @@ class Filing:
                 print(f"Opening folder {path}")
 
             folder_filenames = os.listdir(path)
-            xml_files = list(filter(lambda x: x.endswith("xml"), folder_filenames))
+            xml_xhtml_files = list(filter(lambda x: x.endswith("xml") or x.endswith(".htm") or x.endswith(".html"), folder_filenames))
 
             def prepend_path(filename: str) -> str:
                 return os.path.join(path, filename)
 
-            xml_files = list(map(prepend_path, xml_files))
+            xml_xhtml_files = list(map(prepend_path, xml_xhtml_files))
 
-            if len(xml_files) == 0:
+            if len(xml_xhtml_files) == 0:
                 raise ValueError(
                     f"No xml files found in folder {path}. Please provide a folder with at least one xml file."
                 )
 
-            parser = XMLFilingParser(xml_files)
+            parser = XHTMLFilingParser(xml_xhtml_files)
             return cls(parser)
-        elif is_file and any(map(lambda x: x.endswith(".xml"), [path, *args])):
+        elif is_file and any(map(lambda x: x.endswith(".xml") or x.endswith(".htm") or x.endswith(".html"), [path, *args])):
             paths = [path, *args]
             if DEBUG:  # pragma: no cover
                 print(f"Opening file {path}")
-            xml_files = list(filter(lambda x: x.endswith(".xml"), paths))
-            parser = XMLFilingParser(xml_files)
+            xml_xhtml_files = list(filter(lambda x: x.endswith(".xml") or x.endswith(".htm") or x.endswith(".html"), paths))
+            parser = XHTMLFilingParser(xml_xhtml_files)
             return cls(parser)
         elif is_file and path.endswith(".zip"):
             if DEBUG:  # pragma: no cover
@@ -137,14 +138,15 @@ class Filing:
             with zipfile.ZipFile(path, "r") as zip_ref:
                 zip_ref.extractall(dir_path)
                 # get all file paths ending in xml
-                xml_files = list(filter(lambda x: x.endswith("xml"), zip_ref.namelist()))
+                xml_xhtml_files = list(filter(lambda x: x.endswith("xml") or x.endswith(".htm") or x.endswith(".html"), zip_ref.namelist()))
             print(f"Finished extracting...")
 
-            xml_files = list(map(lambda x: os.path.join(dir_path, x), xml_files))
-            return cls.open(*xml_files)
+            xml_xhtml_files = list(map(lambda x: os.path.join(dir_path, x), xml_xhtml_files))
+            parser = XHTMLFilingParser(xml_xhtml_files)
+            return cls.open(*xml_xhtml_files)
         elif is_uri:
-            if not path.endswith(".xml"):
-                raise NotImplementedError("Brel currently only supports XBRL filings in the form of XML files")
+            if not path.endswith(".xml") and not path.endswith(".htm") and not path.endswith(".html"):
+                raise NotImplementedError("Brel currently only supports XBRL filings in the form of XML and XHTML files")
 
             if DEBUG:
                 print(f"Opening uri {path}")
@@ -152,11 +154,11 @@ class Filing:
             # the folder is named after the last part of the uri without the extension
 
             # check if the uri points to an xml file
-            if not path.endswith(".xml"):
+            if not path.endswith(".xml") and not path.endswith(".htm") and not path.endswith(".html"):
                 raise ValueError(f"{path} is not a valid path")
 
             # open the file
-            parser = XMLFilingParser([path])
+            parser = XHTMLFilingParser([path])
             return cls(parser)
 
         else:

@@ -39,7 +39,6 @@ def check_duplicate_rolerefs(
     """
 
     nsmap = qname_nsmap.get_nsmap()
-
     xml_trees = file_manager.get_all_files()
 
     # check for duplicate rolerefs

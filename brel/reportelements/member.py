@@ -48,3 +48,14 @@ class Member(IReportElement):
 
     def __str__(self) -> str:
         return self.__name.__str__()
+
+    def convert_to_dict(self) -> dict:
+        """
+        Convert the member to a dictionary.
+        :returns dict: the member as a dictionary
+        """
+        return {
+            "name": self.__name.get(),
+            "label": self.select_main_label().__str__(),
+            "report_element_type": "member",
+        }

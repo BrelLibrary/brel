@@ -4,3 +4,5 @@ from brel.utils.print_component import pprint_component
 from brel.utils.edgar import open_edgar
 
 from brel.utils.pprint import pprint
+
+from brel.utils.edgar_XHTMLtest import open_edgar_fake

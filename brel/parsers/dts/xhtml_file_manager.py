@@ -1,12 +1,12 @@
 """
-This module contains the XMLSchemaManager class.
-The XMLSchemaManager class is responsible for downloading and caching XBRL taxonomies.
+This module contains the XHTMLSchemaManager class.
+The XHTMLSchemaManager class is responsible for downloading and caching iXBRL taxonomies.
 
 =================
 
-- author: Robin Schmidiger
+- author: Shrey Mittal
 - version: 0.7
-- date: 29 January 2024
+- date: 20 August 2024
 
 =================
 """
@@ -28,9 +28,9 @@ import time
 from brel.parsers.dts import IFileManager
 
 
-class XMLFileManager(IFileManager):
+class XHTMLFileManager(IFileManager):
     """
-    Class for downloading and caching XBRL files in the XML format.
+    Class for downloading and caching XBRL files in the XHTML format.
     """
 
     def __init__(
@@ -66,11 +66,20 @@ class XMLFileManager(IFileManager):
         # populate the cache
         if DEBUG:  # pragma: no cover
             print("Populating DTS cache...")
+        # if ixbrl_mode:
+        #     dts_filenames = list(filter(lambda x: x.endswith(".xml"), filenames))
+        #     for filename in dts_filenames:
+        #         self.__load_dts(filename)
+        #     non_dts_filenames = list(filter(lambda x: not x.endswith(".xml"), filenames))
+        #     for filename in non_dts_filenames:
+        #         self.__load_non_dts(filename)
+        # else:
         for filename in filenames:
             self.__load_dts(filename)
 
         if DEBUG:  # pragma: no cover
             print(f"filenames: {self.__filenames}")
+        
 
     def uri_to_filename(self, uri: str) -> str:
         """
@@ -85,8 +94,9 @@ class XMLFileManager(IFileManager):
         # taking the whole uri is not a good idea, because it is too long
         # taking only the last part is not a good idea, because it is not guaranteed to be unique
         file_format = uri.split(".")[-1]
-        supported_formats = ["xml", "xsd"]
+        supported_formats = ["xml", "xsd", "htm", "html"]
         if file_format not in supported_formats:
+            print(uri)
             raise ValueError(f"File format {file_format} not supported. Supported formats are {supported_formats}.")
 
         if not uri.startswith("http"):
@@ -196,7 +206,9 @@ class XMLFileManager(IFileManager):
         :param uri: The uri of the schema to download. Can be a url or a local file path.
         :param referencing_schema_url: The url of the schema that is referencing the schema to download.
         """
-
+        #### EDGE CASE####
+        if uri == "http://ubs.com/2023-12-31/BFM8T61CT2L1QCEMIK50-2023-12-31.xsd":
+            uri = "C:\\Users\\shrey\\Productivity\\ETHZ\\BFM8T61CT2L1QCEMIK50-2023-12-31-en\\2023-12-31\\BFM8T61CT2L1QCEMIK50-2023-12-31.xsd"
         is_uri_remote = uri.startswith("http") or referencing_uri.startswith("http")
 
         # if the uri is local and the referencing uri is remote, then build the absolute uri from the two
@@ -306,3 +318,116 @@ class XMLFileManager(IFileManager):
         for reference_uri in reference_uris:
             # load the schema
             self.__load_dts(reference_uri, referencing_uri=uri)
+
+
+    # def __load_non_dts(
+    #     self,
+    #     uri: str,
+    #     referencing_uri: str = ".",
+    # ):
+    #     """
+    #     Stores non-XML files in the cache and adds them to the list of filenames
+    #     Note: the referencing_schema_url is necessary to resolve relative paths
+    #     :param uri: [str] The uri of the schema to download. Can be a url or a local file path.
+    #     :param referencing_schema_url: [str] The url of the schema that is referencing the schema to download.
+    #     """
+
+    #     is_uri_remote = uri.startswith("http") or referencing_uri.startswith("http")
+
+    #     # if the uri is local and the referencing uri is remote, then build the absolute uri from the two
+    #     if referencing_uri.startswith("http") and not uri.startswith("http"):
+    #         uri = urllib.parse.urljoin(referencing_uri, uri)
+
+    #     # if the uri is not remote, then it is a local file path
+    #     # make the file path absolute
+    #     if not is_uri_remote:
+    #         referencing_dir = os.path.dirname(referencing_uri)
+    #         uri = os.path.abspath(os.path.join(referencing_dir, uri))
+
+    #     file_name = self.uri_to_filename(uri)
+
+    #     # check if the schema is already in the cache
+    #     if file_name in self.__filenames:
+    #         return
+
+    #     is_cached = file_name in os.listdir(self.cache_location)
+
+    #     if DEBUG:  # pragma: no cover
+    #         print(
+    #             f"[File Manager] uri: {uri}, file_name: {file_name}, is_cached: {is_cached}, is_uri_remote: {is_uri_remote}, referencing_uri: {referencing_uri}"
+    #         )
+
+    #     if is_cached:
+    #         # load the schema from the cache
+    #         with open(os.path.join(self.cache_location, file_name), "rb") as f:
+    #             xsd_content: bytes = f.read()
+
+    #     elif is_uri_remote:
+    #         # if the file is online, load it from the url
+    #         # if the uri is a local file path, but the referencing uri is online, then build the absolute uri from the two
+    #         xsd_content = self.__download_and_store(uri, file_name)
+    #     else:
+    #         # otherwise the file is local and we can load it directly
+    #         referencing_dir = os.path.dirname(referencing_uri)
+    #         uri = os.path.join(referencing_dir, uri)
+
+    #         if not os.path.isfile(uri):
+    #             raise ValueError(
+    #                 f"Could not find file {uri}, even though the XBRL report refers to it. The referencing file is {referencing_uri}"
+    #             )
+
+    #         with open(uri, "rb") as f:
+    #             xsd_content = f.read()
+
+    #     # parse the schema
+    #     if DEBUG:  # pragma: no cover
+    #         print(f"[File Manager] parsing {file_name}")
+            
+    #     # add it to the list of filenames
+    #     self.__filenames.append(file_name)
+        
+    #     reference_uris: set[str] = set()
+    #     # find all hrefs in the file
+    #     # TODO: maybe make namespace non-hardcoded
+    #     for href_elem in xsd_tree.findall(".//*[@xlink:href]", namespaces={"xlink": "http://www.w3.org/1999/xlink"}):
+    #         # get the href attribute
+    #         if not isinstance(href_elem, lxml.etree._Element):
+    #             continue
+
+    #         href = href_elem.get("{http://www.w3.org/1999/xlink}href", "")
+    #         href = cast(str, href)
+
+    #         # get the prefix under which the schema is loaded
+    #         if "#" in href:
+    #             href_uri, _ = href.split("#")
+    #         else:
+    #             href_uri = href
+
+    #         if href_uri != "":
+    #             reference_uris.add(href_uri)
+
+    #     # find all schemaLocations in the file
+    #     schemaLocation_elems = xsd_tree.xpath("//*[@schemaLocation]")
+    #     if not isinstance(schemaLocation_elems, list):
+    #         raise ValueError(
+    #             f"schemaLocation_elems is not a list of lxml.etree._Element. It is a {type(schemaLocation_elems)}"
+    #         )
+
+    #     for schemaLocation_elem in schemaLocation_elems:
+    #         if not isinstance(schemaLocation_elem, lxml.etree._Element):
+    #             continue
+    #         # get the schemaLocation attribute
+    #         schemaLocation = schemaLocation_elem.get("schemaLocation", "")
+
+    #         schemaLocation = cast(str, schemaLocation)
+    #         # split the schemaLocation by whitespace
+
+    #         if schemaLocation != "":
+    #             reference_uris.add(schemaLocation)
+
+    #     if DEBUG:  # pragma: no cover
+    #         print(f"[File Manager] uri {uri} references {reference_uris}")
+
+    #     for reference_uri in reference_uris:
+    #         # load the schema
+    #         self.__load_dts(reference_uri, referencing_uri=uri)
