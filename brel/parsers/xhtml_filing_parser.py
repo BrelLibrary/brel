@@ -36,6 +36,7 @@ from brel.reportelements.i_report_element import IReportElement
 
 DEBUG = False
 
+
 class XHTMLFilingParser(IFilingParser):
     def __init__(
         self,
@@ -55,7 +56,7 @@ class XHTMLFilingParser(IFilingParser):
         # Make cache_path work for windows, mac and linux
         # also make it hidden
         cache_path = os.path.join(os.path.expanduser("~"), ".brel", "dts_cache")
-        
+
         # load the DTS
         if DEBUG:  # pragma: no cover
             self.__print("Resolving DTS...")
@@ -116,7 +117,7 @@ class XHTMLFilingParser(IFilingParser):
             print("Note: Prefix redirects are not recommended.")
 
         return qname_nsmap
-    
+
     def __print(self, output: str):
         """
         Print a message with the prefix [XHTMLFilingParser].
@@ -124,10 +125,10 @@ class XHTMLFilingParser(IFilingParser):
         """
         if DEBUG:  # pragma: no cover
             print(self.__print_prefix, output)
-    
+
     def get_nsmap(self) -> QNameNSMap:
         return self.__nsmap
-    
+
     def parse_report_elements(
         self,
     ) -> Tuple[Mapping[QName, IReportElement], Iterable[Exception]]:
@@ -159,8 +160,10 @@ class XHTMLFilingParser(IFilingParser):
             self.__id_to_any[id] = report_elem
 
         return report_elements, errors
-    
-    def parse_facts(self, report_elements: Mapping[QName, IReportElement]) -> Tuple[Iterable[Fact], Iterable[Exception]]:
+
+    def parse_facts(
+        self, report_elements: Mapping[QName, IReportElement]
+    ) -> Tuple[Iterable[Fact], Iterable[Exception]]:
         """
         Parse the facts.
         :param report_elements: A lookup function that, given a QName, returns the associated report element.
@@ -170,7 +173,9 @@ class XHTMLFilingParser(IFilingParser):
         """
         errors: list[Exception] = []
         all_filenames = self.__file_manager.get_file_names()
-        xhtml_filenames = list(filter(lambda filename: filename.endswith(".htm") or filename.endswith("html"), all_filenames))
+        xhtml_filenames = list(
+            filter(lambda filename: filename.endswith(".htm") or filename.endswith("html"), all_filenames)
+        )
         xml_etrees = [self.__file_manager.get_file(filename) for filename in xhtml_filenames]
 
         facts, id_to_fact, facts_errors = parse_facts_xhtml(xml_etrees, report_elements, self.__nsmap)
@@ -183,7 +188,7 @@ class XHTMLFilingParser(IFilingParser):
             self.__id_to_any[id] = fact
 
         return facts, errors
-    
+
     def parse_networks(
         self, report_elements: Mapping[QName, IReportElement]
     ) -> Tuple[Mapping[str, Iterable[INetwork]], Iterable[Exception]]:
@@ -217,6 +222,6 @@ class XHTMLFilingParser(IFilingParser):
             networks,
             self.__nsmap,
         )
-    
+
     def get_filing_type(self) -> str:
         return self.__filing_type

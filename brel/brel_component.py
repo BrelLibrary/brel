@@ -209,8 +209,8 @@ class Component:
         return networks
 
     def convert_to_dict(self) -> dict:
-        """	
-        :returns dict: a dictionary representation of the component	
+        """
+        :returns dict: a dictionary representation of the component
         """
         return {
             "network_identifier": self.__uri,

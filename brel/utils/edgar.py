@@ -81,7 +81,7 @@ def open_edgar(cik: str, filing_type: str, date: str | None = None) -> Filing:
     :param date: The date of the filing in the format YYYY-MM-DD.
     :return: The path to the downloaded filing.
     """
-    
+
     # check that the date is in the correct format
     if date is not None:
         if not isinstance(date, str):
@@ -145,7 +145,12 @@ def open_edgar(cik: str, filing_type: str, date: str | None = None) -> Filing:
         if uri.endswith(".htm"):
             uri_dir = uri[: uri.rfind("/")]
             uri = uri.replace(".htm", "_htm.xml")
-            ping = session.get(uri, headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:127.0) Gecko/20100101 Firefox/127.0"})
+            ping = session.get(
+                uri,
+                headers={
+                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:127.0) Gecko/20100101 Firefox/127.0"
+                },
+            )
             if ping.status_code != 200:
                 raise ValueError(
                     f"Failed to download filing from {uri}. Note that the Brel does not support .htm filings and that it cannot scrape EDGAR's website. We suggest that you search for the .xml filing on {uri_dir} and call brel.Filing.open(uri) with the correct URI."

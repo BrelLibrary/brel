@@ -66,13 +66,12 @@ class XHTMLFileManager(IFileManager):
         # populate the cache
         if DEBUG:  # pragma: no cover
             print("Populating DTS cache...")
-        
+
         for filename in filenames:
             self.__load_dts(filename)
 
         if DEBUG:  # pragma: no cover
             print(f"filenames: {self.__filenames}")
-        
 
     def uri_to_filename(self, uri: str) -> str:
         """

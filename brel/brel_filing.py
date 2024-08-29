@@ -71,7 +71,7 @@ class Filing:
     """
     Represents an XBRL filing in the Open Information Model.
     """
-    
+
     @classmethod
     def open(cls, path, mode="xml", *args) -> "Filing":
         """
@@ -92,6 +92,7 @@ class Filing:
         :returns Filing: a #Filing object with the filing loaded.
         :raises ValueError: if the path is not a valid path.
         """
+
         def search_filetypes(mode: str, filename: str) -> bool:
             """
             Check if a file is of a correct type given the mode.
@@ -101,12 +102,12 @@ class Filing:
             """
             if mode == "xml":
                 return filename.endswith(".xml")
-            elif mode == "xhtml":   
+            elif mode == "xhtml":
                 return filename.endswith(".xml") or filename.endswith(".htm") or filename.endswith(".html")
             else:
                 # Make sure that only a supported mode is used
                 raise ValueError("Mode must be 'xml' or 'xhtml'")
-            
+
         def choose_file_manager(mode: str, files: list[str]) -> IFilingParser:
             """
             Return the correct file manager given the mode.
@@ -121,11 +122,11 @@ class Filing:
             else:
                 # Make sure that only a supported mode is used
                 raise ValueError("Mode must be 'xml' or 'xhtml'")
-        
+
         # Make sure that only a supported mode is used
         if mode != "xml" and mode != "xhtml":
             raise ValueError("Mode must be 'xml' or 'xhtml'")
-        
+
         # check if the path is a folder or a file
         is_uri = path.startswith("http")
         if not is_uri:
@@ -401,7 +402,7 @@ class Filing:
             if component.get_URI() == uri:
                 return component
         return None
-        
+
     def generate_fact_table_pandas_df(self) -> pd.DataFrame:
         """
         Converts the filing to a pandas DataFrame.
@@ -416,7 +417,7 @@ class Filing:
 
         df = pd.DataFrame(data)
         return df
-    
+
     def generate_fact_table_spark_df(self) -> tuple[sql.DataFrame, sql.SparkSession]:
         """
         Converts the filing to a spark DataFrame.
@@ -439,7 +440,7 @@ class Filing:
 
         df = pd.DataFrame(data)
         return df
-    
+
     def get_all_labels(self) -> list[dict[str, str]]:
         """
         :return list[dict[str, str]]: a list of all labels in the filing.
@@ -452,7 +453,7 @@ class Filing:
                     labeldict["report_element"] = re.get_name()
                     labels.append(labeldict)
         return labels
-    
+
     def generate_labels_as_pandas_df(self) -> pd.DataFrame:
         """
         Converts the labels to a pandas DataFrame.
@@ -461,7 +462,7 @@ class Filing:
         data = self.get_all_labels()
         df = pd.DataFrame(data)
         return df
-    
+
     def generate_report_elements_as_pandas_df(self) -> pd.DataFrame:
         """
         Converts the report elements to a pandas DataFrame.

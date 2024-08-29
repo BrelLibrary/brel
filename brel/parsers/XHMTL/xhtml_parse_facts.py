@@ -6,6 +6,7 @@ from brel.parsers.XML import parse_context_xml
 from brel.parsers.XML.characteristics import parse_unit_from_xml
 from brel.reportelements import Concept, IReportElement
 
+
 def parse_fact_from_ixbrl(
     continuations: list[lxml.etree._Element],
     fact_xml_element: lxml.etree._Element,
@@ -24,8 +25,8 @@ def parse_fact_from_ixbrl(
     fact_value = fact_xml_element.text
 
     if fact_value is None:
-        fact_value =  re.sub(r'\s+', ' ', " ".join(fact_xml_element.itertext()))
-        
+        fact_value = re.sub(r"\s+", " ", " ".join(fact_xml_element.itertext()))
+
         concept = context.get_concept().get_value()
         if not concept.is_nillable():
             raise ValueError(f"Fact {fact_id} has no value but the concept {concept.get_name()} is not nillable")
@@ -54,7 +55,10 @@ def parse_fact_from_ixbrl(
         )
 
     # Check the format and apply the necessary formatting
-    if fact_xml_element.tag == "ix:nonFraction" or fact_xml_element.tag == "{http://www.xbrl.org/2013/inlineXBRL}nonFraction":
+    if (
+        fact_xml_element.tag == "ix:nonFraction"
+        or fact_xml_element.tag == "{http://www.xbrl.org/2013/inlineXBRL}nonFraction"
+    ):
         fact_format = fact_xml_element.get("format")
         fact_scale = fact_xml_element.get("scale")
         if fact_format == "ixt:fixed-empty":
@@ -85,7 +89,7 @@ def parse_fact_from_ixbrl(
             fact_value = str(float(fact_value) * pow(10, int(fact_scale)))
         else:
             raise ValueError(f"Fact format {fact_format} not yet supported by XBRL")
-    
+
     # Aggregate the continuation facts
     try:
         if fact_xml_element.get("continuedAt"):
@@ -93,8 +97,9 @@ def parse_fact_from_ixbrl(
             fact_value += cont.text
     except:
         fact_value
-            
+
     return Fact(context, fact_value, fact_id)
+
 
 def parse_facts_xhtml(
     etrees: Iterable[lxml.etree._ElementTree],
@@ -149,13 +154,13 @@ def parse_facts_xhtml(
     for xbrl_instance in etrees:
         # get all xml elements in the instance that have a contextRef attribute
         ix_facts = xbrl_instance.xpath(
-            ".//ix:nonNumeric | .//ix:nonFraction | .//ix:fraction", # ix:continuation - add it to something, ix:exclude - remove all things in there
-            namespaces={'ix': 'http://www.xbrl.org/2013/inlineXBRL'}
-        ) # Throw error saying that the OIM forbids fractions. ix:hidden
+            ".//ix:nonNumeric | .//ix:nonFraction | .//ix:fraction",  # ix:continuation - add it to something, ix:exclude - remove all things in there
+            namespaces={"ix": "http://www.xbrl.org/2013/inlineXBRL"},
+        )  # Throw error saying that the OIM forbids fractions. ix:hidden
 
         continuations = xbrl_instance.xpath(
-            ".//ix:continuation", # ix:continuation - add it to something, ix:exclude - remove all things in there
-            namespaces={'ix': 'http://www.xbrl.org/2013/inlineXBRL'}
+            ".//ix:continuation",  # ix:continuation - add it to something, ix:exclude - remove all things in there
+            namespaces={"ix": "http://www.xbrl.org/2013/inlineXBRL"},
         )
 
         for ix_fact in ix_facts:
@@ -196,7 +201,9 @@ def parse_facts_xhtml(
             else:
                 # if the concept is in the cache, type check it
                 if not isinstance(concept_characteristic, ConceptCharacteristic):
-                    print(f"ConceptCharacteristic error: not an instance of ConceptCharacteristic. Please report this error to team.")
+                    print(
+                        f"ConceptCharacteristic error: not an instance of ConceptCharacteristic. Please report this error to team."
+                    )
                     errors.append(
                         ValueError(f"Concept {concept_name} is not a concept. It is a {type(concept_characteristic)}")
                     )
@@ -220,7 +227,9 @@ def parse_facts_xhtml(
                     # create the unit if it is not in the cache
                     # print(f"{{*}}unit[@id='{unit_id}']")
                     # unit_xml = xbrl_instance.find(f"{{*}}unit[@id='{unit_id}']")
-                    unit_xml = xbrl_instance.xpath(".//xbrli:unit", namespaces={"xbrli": "http://www.xbrl.org/2003/instance"})[0]
+                    unit_xml = xbrl_instance.xpath(
+                        ".//xbrli:unit", namespaces={"xbrli": "http://www.xbrl.org/2003/instance"}
+                    )[0]
                     if unit_xml is None:
                         raise ValueError(f"Unit {unit_id} not found in xbrl instance")
 
@@ -241,7 +250,9 @@ def parse_facts_xhtml(
                 else:
                     # if the unit is in the cache, type check it
                     if not isinstance(unit_characteristic, UnitCharacteristic):
-                        print(f"UnitCharacteristic error: not an instance of UnitCharacteristic. Please report this error to team.")
+                        print(
+                            f"UnitCharacteristic error: not an instance of UnitCharacteristic. Please report this error to team."
+                        )
                         errors.append(ValueError(f"Unit {unit_id} is not a unit. It is a {type(unit_characteristic)}"))
                         continue
 

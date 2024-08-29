@@ -47,7 +47,7 @@ class IReportElement(ABC):
     @abstractmethod
     def _add_label(self, label: BrelLabel):  # pragma: no cover
         raise NotImplementedError
-    
+
     @abstractmethod
     def convert_to_dict(self) -> dict:
         """
@@ -73,7 +73,7 @@ class IReportElement(ABC):
         :returns bool: True if the report element has a label with the given language, False otherwise
         """
         return any(label.get_language() == language for label in self.get_labels())
-    
+
     def select_main_label(self) -> BrelLabel:
         """
         Select the main label of the member.
