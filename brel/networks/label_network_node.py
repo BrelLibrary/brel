@@ -12,7 +12,7 @@ A label network node are references to either the report elements or the labels 
 ====================
 """
 
-from typing import cast
+from typing import cast, Union
 from brel import Fact, QName
 from brel.networks import INetworkNode
 from brel.reportelements import IReportElement
@@ -29,7 +29,7 @@ class LabelNetworkNode(INetworkNode):
 
     def __init__(
         self,
-        points_to: IReportElement | BrelLabel,
+        points_to: Union[IReportElement, BrelLabel],
         arc_role: str,
         arc_name: QName,
         link_role: str,
