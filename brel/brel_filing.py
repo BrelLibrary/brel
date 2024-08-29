@@ -440,7 +440,7 @@ class Filing:
         df = pd.DataFrame(data)
         return df
     
-    def get_all_labels(self) -> list[str]:
+    def get_all_labels(self) -> list[dict[str, str]]:
         """
         :return list[str]: a list of all labels in the filing.
         """
