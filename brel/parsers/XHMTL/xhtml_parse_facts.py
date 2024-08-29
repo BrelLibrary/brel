@@ -253,7 +253,7 @@ def parse_facts_xhtml(
             # This attribute is mandatory according to the XBRL specification
             context_id = ix_fact.get("contextRef")
             if context_id is None:
-                print(f"Context ID error {e}")
+                print(f"Context ID error: contextRef is None. Please report this error to team.")
                 errors.append(ValueError(f"Fact with id {fact_id} has no contextRef attribute"))
                 continue
 
@@ -262,7 +262,7 @@ def parse_facts_xhtml(
             context = xbrl_instance.xpath(".//xbrli:context", namespaces={"xbrli": "http://www.xbrl.org/2003/instance"})
             xml_context = list(filter(lambda x: x.get("id") == context_id, context))[0]
             if xml_context is None:
-                print(f"Context error {e}")
+                print(f"Context error: Context not found. Please report this error to team.")
                 errors.append(ValueError(f"Context {context_id} not found in xbrl instance"))
                 continue
 
