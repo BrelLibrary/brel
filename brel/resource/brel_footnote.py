@@ -11,7 +11,7 @@ This module contains the BrelFootnote class, which represents a footnote in XBRL
 """
 
 from brel.resource import IResource
-from typing import cast
+from typing import cast, Union
 
 
 class BrelFootnote(IResource):
@@ -36,7 +36,7 @@ class BrelFootnote(IResource):
     def get_label(self) -> str:
         return self.__label
 
-    def get_title(self) -> str | None:
+    def get_title(self) -> Union[str, None]:
         return None
 
     def get_content(self) -> str:

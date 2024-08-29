@@ -12,7 +12,7 @@ Since a node can have children, nodes can also be viewed as trees.
 ====================
 """
 
-from typing import cast
+from typing import cast, Union
 
 from brel import Fact, QName
 from brel.networks import INetworkNode
@@ -28,7 +28,7 @@ class FootnoteNetworkNode(INetworkNode):
 
     def __init__(
         self,
-        points_to: BrelFootnote | IReportElement | Fact,
+        points_to: Union[BrelFootnote, IReportElement, Fact],
         children: list["FootnoteNetworkNode"],
         arc_role: str,
         arc_name: QName,

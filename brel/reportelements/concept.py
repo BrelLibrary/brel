@@ -18,7 +18,7 @@ import lxml.etree
 from brel import QName
 from brel.reportelements import IReportElement
 from brel.resource import BrelLabel
-
+from typing import Union
 
 class Concept(IReportElement):
     """
@@ -41,14 +41,14 @@ class Concept(IReportElement):
         name: QName,
         labels: list[BrelLabel],
         period_type: str,
-        balance_type: str | None,
+        balance_type: Union[str, None],
         nillable: bool,
         data_type: str,
     ) -> None:
         self.__name: QName = name
         self.__labels: list[BrelLabel] = labels
         self.__period_type: str = period_type
-        self.__balance_type: str | None = balance_type
+        self.__balance_type: Union[str, None] = balance_type
         self.__nillable: bool = nillable
         self.__data_type: str = data_type
 
@@ -94,7 +94,7 @@ class Concept(IReportElement):
         """
         return self.__data_type
 
-    def get_balance_type(self) -> str | None:
+    def get_balance_type(self) -> Union[str, None]:
         """
         Get the balance type of the concept.
         :returns str|None: the balance type of the concept. None if the concept has no balance type.

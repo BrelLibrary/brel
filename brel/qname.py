@@ -13,6 +13,7 @@ The QNameNSMap class represents a namespace map.
 """
 
 import re
+from typing import Union
 from collections import defaultdict
 
 
@@ -319,7 +320,7 @@ class QNameNSMap:
             )
         self.__prefix_redirects[redirect_from] = redirect_to
 
-    def get_redirect(self, redirect_from: str) -> str | None:
+    def get_redirect(self, redirect_from: str) -> Union[str, None]:
         """
         Gets the redirect destination for a prefix redirect
         :param redirect_from: str containing the prefix that should be redirected
@@ -344,7 +345,7 @@ class QNameNSMap:
         self.__url_to_prefix[rename_uri] = rename_prefix
         self.__prefix_to_url[rename_prefix] = rename_uri
 
-    def get_prefix(self, url: str) -> str | None:
+    def get_prefix(self, url: str) -> Union[str, None]:
         """
         Gets the prefix for a URL
         :param url: str containing the URL.
@@ -355,7 +356,7 @@ class QNameNSMap:
         else:
             return None
 
-    def get_url(self, prefix: str) -> str | None:
+    def get_url(self, prefix: str) -> Union[str, None]:
         """
         Gets the URL for a prefix
         :param prefix: str containing the prefix
