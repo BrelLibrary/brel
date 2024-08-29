@@ -21,11 +21,11 @@ from typing import TypeGuard
 import lxml.etree
 
 from brel import QNameNSMap
-from brel.parsers.dts import XMLFileManager
+from brel.parsers.dts import XMLFileManager, XHTMLFileManager
 
 
 def check_duplicate_rolerefs(
-    file_manager: XMLFileManager,
+    file_manager: XMLFileManager | XHTMLFileManager,
     qname_nsmap: QNameNSMap,
 ) -> None:
     """
@@ -75,7 +75,7 @@ def check_duplicate_rolerefs(
 
 
 def check_duplicate_arcs(
-    file_manager: XMLFileManager,
+    file_manager: XMLFileManager | XHTMLFileManager,
     qname_nsmap: QNameNSMap,
 ) -> None:
     """

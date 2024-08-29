@@ -442,7 +442,7 @@ class Filing:
     
     def get_all_labels(self) -> list[dict[str, str]]:
         """
-        :return list[str]: a list of all labels in the filing.
+        :return list[dict[str, str]]: a list of all labels in the filing.
         """
         labels = []
         for re in self.__reportelems:

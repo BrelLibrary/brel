@@ -171,7 +171,7 @@ def parse_facts_xhtml(
             # get the concept name
             concept_name = ix_fact.get("name")
             if concept_name is None:
-                print(f"Concept name error {e}")
+                print(f"Concept name error: name is None. Please report this error to team.")
                 errors.append(ValueError(f"Fact with id {fact_id} has no tag"))
                 continue
 
@@ -182,12 +182,12 @@ def parse_facts_xhtml(
                 concept_qname = make_qname(concept_name)
                 concept = get_report_element(concept_qname)
                 if concept is None:
-                    print(f"Concept None error {e}")
+                    print(f"Concept None error: Concept is None.  Please report this error to team.")
                     errors.append(ValueError(f"Concept {concept_qname} not found in report elements"))
                     continue
 
                 if not isinstance(concept, Concept):
-                    print(f"Concept instance error {e}")
+                    print(f"Concept instance error: not an instance of Concept. Please report this error to team.")
                     errors.append(ValueError(f"Concept {concept_qname} is not a concept. It is a {type(concept)}"))
                     continue
 
@@ -196,7 +196,7 @@ def parse_facts_xhtml(
             else:
                 # if the concept is in the cache, type check it
                 if not isinstance(concept_characteristic, ConceptCharacteristic):
-                    print(f"ConceptCharacteristic error {e}")
+                    print(f"ConceptCharacteristic error: not an instance of ConceptCharacteristic. Please report this error to team.")
                     errors.append(
                         ValueError(f"Concept {concept_name} is not a concept. It is a {type(concept_characteristic)}")
                     )
@@ -241,7 +241,7 @@ def parse_facts_xhtml(
                 else:
                     # if the unit is in the cache, type check it
                     if not isinstance(unit_characteristic, UnitCharacteristic):
-                        print(f"UnitCharacteristic error {e}")
+                        print(f"UnitCharacteristic error: not an instance of UnitCharacteristic. Please report this error to team.")
                         errors.append(ValueError(f"Unit {unit_id} is not a unit. It is a {type(unit_characteristic)}"))
                         continue
 
