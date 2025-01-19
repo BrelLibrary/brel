@@ -2,7 +2,7 @@ import brel
 
 
 def test_qname_getters():
-    #report_uri = "https://www.sec.gov/Archives/edgar/data/320193/000032019323000077/aapl-20230701_htm.xml"
+    # report_uri = "https://www.sec.gov/Archives/edgar/data/320193/000032019323000077/aapl-20230701_htm.xml"
     report_uri = "tests/end_to_end_tests/facts_test.xml"
     filing = brel.Filing.open(report_uri)
 
@@ -34,7 +34,9 @@ def test_qname_getters():
     assert (
         str(fact.get_concept()) == "dei:DocumentQuarterlyReport"
     ), "Expected 'dei:DocumentQuarterlyReport' as fact concept is 'dei:DocumentQuarterlyReport'"
-    assert "320193" in str(fact.get_entity()), "Expected '320193' to be in fact entity string"
+    assert "320193" in str(
+        fact.get_entity()
+    ), "Expected '320193' to be in fact entity string"
 
     fact_str = str(fact)
     assert "concept" in fact_str, "Expected 'concept' to be in fact string"
@@ -44,7 +46,9 @@ def test_qname_getters():
 
     # check if parsing a false fact as bool works
     fact = filing.get_facts_by_concept_name("dei:AmendmentFlag")[0]
-    assert fact.get_value_as_str() == "false", "Expected 'false' as fact value is 'false'"
+    assert (
+        fact.get_value_as_str() == "false"
+    ), "Expected 'false' as fact value is 'false'"
     assert fact.get_value_as_bool() == False, "Expected False as fact value is 'false'"
 
     # check for an integer fact
@@ -52,8 +56,12 @@ def test_qname_getters():
 
     assert isinstance(fact.get_value_as_int(), int), "Expected int as fact value is int"
     assert fact.get_value_as_int() > 1000000, "Expected apples gross profit to be > 1M"
-    assert isinstance(fact.get_value_as_float(), float), "Expected float as fact value is float"
-    assert fact.get_value_as_float() > 1000000, "Expected apples gross profit to be > 1M"
+    assert isinstance(
+        fact.get_value_as_float(), float
+    ), "Expected float as fact value is float"
+    assert (
+        fact.get_value_as_float() > 1000000
+    ), "Expected apples gross profit to be > 1M"
     try:  # check if parsing a false fact as bool works
         fact.get_value_as_bool()
         assert False, "Expected ValueError as fact value is not a bool"

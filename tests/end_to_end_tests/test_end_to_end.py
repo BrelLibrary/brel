@@ -95,7 +95,9 @@ def test_end_to_end_components():
         if component.get_calculation_network() is not None
     ]
 
-    assert len(calculation_networks) == 2, f"Expected two calculation networks, got {len(calculation_networks)}"
+    assert (
+        len(calculation_networks) == 2
+    ), f"Expected two calculation networks, got {len(calculation_networks)}"
 
     # check if there are components with the uris "http://foo/role/balance" and "http://foo/role/hypercube"
     assert any(
@@ -117,11 +119,17 @@ def test_end_to_end_components():
 
     # check that the "http://foo/role/balance" component has a calculation network and a presentation network, but no definition network
     balance_component = filing.get_component("http://foo/role/balance")
-    assert balance_component.get_calculation_network() is not None, "Balance component has no calculation network"
+    assert (
+        balance_component.get_calculation_network() is not None
+    ), "Balance component has no calculation network"
 
-    assert balance_component.get_presentation_network() is not None, "Balance component has no presentation network"
+    assert (
+        balance_component.get_presentation_network() is not None
+    ), "Balance component has no presentation network"
 
-    assert balance_component.get_definition_network() is None, "Balance component has a definition network"
+    assert (
+        balance_component.get_definition_network() is None
+    ), "Balance component has a definition network"
 
 
 def test_end_to_end_calculation():
@@ -138,13 +146,17 @@ def test_end_to_end_calculation():
     ]
 
     # check that there are exactly 2 calculation networks
-    assert len(calculation_networks) == 2, f"Expected two calculation networks, got {len(calculation_networks)}"
+    assert (
+        len(calculation_networks) == 2
+    ), f"Expected two calculation networks, got {len(calculation_networks)}"
 
     calculation_network_good = cast(CalculationNetwork, calculation_networks[0])
     calculation_network_bad = cast(CalculationNetwork, calculation_networks[1])
 
     # check that the good network is balance consistent
-    assert calculation_network_good.is_balance_consistent(), "Good calculation network is not balance consistent"
+    assert (
+        calculation_network_good.is_balance_consistent()
+    ), "Good calculation network is not balance consistent"
 
     # check that the good network is aggregation consistent
     facts = filing.get_all_facts()
@@ -153,7 +165,9 @@ def test_end_to_end_calculation():
     ), "Good calculation network is not aggregation consistent"
 
     # check that the bad network is not balance consistent
-    assert not calculation_network_bad.is_balance_consistent(), "Bad calculation network is balance consistent"
+    assert (
+        not calculation_network_bad.is_balance_consistent()
+    ), "Bad calculation network is balance consistent"
 
     # check that the bad network is not aggregation consistent
     assert not calculation_network_bad.is_aggregation_consistent(

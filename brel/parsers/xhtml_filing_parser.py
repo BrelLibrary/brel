@@ -26,7 +26,10 @@ from brel.parsers.XML.networks.xml_networks_parser import parse_networks_from_xm
 from brel.parsers.XML.xml_component_parser import parse_components_xml
 from brel.parsers.XML.xml_namespace_normalizer import normalize_nsmap
 from brel.parsers.XML.xml_report_element_parser import parse_report_elements_xml
-from brel.parsers.XML.xml_sanity_checks import check_duplicate_arcs, check_duplicate_rolerefs
+from brel.parsers.XML.xml_sanity_checks import (
+    check_duplicate_arcs,
+    check_duplicate_rolerefs,
+)
 from brel.parsers.dts.xhtml_file_manager import XHTMLFileManager
 from brel.parsers.dts.xml_file_manager import XMLFileManager
 from brel.parsers.i_filing_parser import IFilingParser
@@ -43,7 +46,9 @@ class XHTMLFilingParser(IFilingParser):
         filepaths: list[str],
     ) -> None:
         if len(filepaths) < 1:
-            raise ValueError("No filepaths provided. Make sure to provide at least one filepath.")
+            raise ValueError(
+                "No filepaths provided. Make sure to provide at least one filepath."
+            )
 
         self.__filing_type = "XHTML"
         self.__parser = etree.XMLParser()
@@ -140,8 +145,14 @@ class XHTMLFilingParser(IFilingParser):
         """
         errors: list[Exception] = []
 
-        xsd_filenames = [filename for filename in self.__file_manager.get_file_names() if filename.endswith(".xsd")]
-        xsd_etrees = [self.__file_manager.get_file(filename) for filename in xsd_filenames]
+        xsd_filenames = [
+            filename
+            for filename in self.__file_manager.get_file_names()
+            if filename.endswith(".xsd")
+        ]
+        xsd_etrees = [
+            self.__file_manager.get_file(filename) for filename in xsd_filenames
+        ]
 
         (
             report_elements,
@@ -154,7 +165,9 @@ class XHTMLFilingParser(IFilingParser):
         for id, report_elem in id_to_report_elem.items():
             if id in self.__id_to_any.keys():
                 errors.append(
-                    ValueError(f"the id {id} is not unique. It is used by {self.__id_to_any[id]} and {report_elem}")
+                    ValueError(
+                        f"the id {id} is not unique. It is used by {self.__id_to_any[id]} and {report_elem}"
+                    )
                 )
 
             self.__id_to_any[id] = report_elem
@@ -174,16 +187,27 @@ class XHTMLFilingParser(IFilingParser):
         errors: list[Exception] = []
         all_filenames = self.__file_manager.get_file_names()
         xhtml_filenames = list(
-            filter(lambda filename: filename.endswith(".htm") or filename.endswith("html"), all_filenames)
+            filter(
+                lambda filename: filename.endswith(".htm") or filename.endswith("html"),
+                all_filenames,
+            )
         )
-        xml_etrees = [self.__file_manager.get_file(filename) for filename in xhtml_filenames]
+        xml_etrees = [
+            self.__file_manager.get_file(filename) for filename in xhtml_filenames
+        ]
 
-        facts, id_to_fact, facts_errors = parse_facts_xhtml(xml_etrees, report_elements, self.__nsmap)
+        facts, id_to_fact, facts_errors = parse_facts_xhtml(
+            xml_etrees, report_elements, self.__nsmap
+        )
         errors.extend(facts_errors)
 
         for id, fact in id_to_fact.items():
             if id in self.__id_to_any.keys():
-                errors.append(ValueError(f"the id {id} is not unique. It is used by {self.__id_to_any[id]} and {fact}"))
+                errors.append(
+                    ValueError(
+                        f"the id {id} is not unique. It is used by {self.__id_to_any[id]} and {fact}"
+                    )
+                )
 
             self.__id_to_any[id] = fact
 

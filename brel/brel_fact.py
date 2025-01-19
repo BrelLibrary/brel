@@ -135,7 +135,9 @@ class Fact:
         :returns UnitCharacteristic|None: The unit characteristic of the facts context. Returns None if the fact does not have a unit.
         Equivalent to calling `fact.get_context().get_unit()`
         """
-        unit: UnitCharacteristic = cast(UnitCharacteristic, self.__context.get_characteristic(Aspect.UNIT))
+        unit: UnitCharacteristic = cast(
+            UnitCharacteristic, self.__context.get_characteristic(Aspect.UNIT)
+        )
         return unit
 
     def get_period(self) -> PeriodCharacteristic | None:

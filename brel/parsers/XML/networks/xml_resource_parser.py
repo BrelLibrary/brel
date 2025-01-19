@@ -20,7 +20,9 @@ from typing import cast, Mapping
 from brel.parsers.utils.lxml_utils import get_str
 
 
-def parse_xml_resource(xml_element: lxml.etree._Element, prefix_to_uri: Mapping[str, str]) -> IResource:
+def parse_xml_resource(
+    xml_element: lxml.etree._Element, prefix_to_uri: Mapping[str, str]
+) -> IResource:
     """
     Create a BrelResource from an lxml.etree._Element.
     :param xml_element: the lxml.etree._Element from which the BrelResource is created

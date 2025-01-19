@@ -72,4 +72,7 @@ class ExplicitDimensionCharacteristic(ICharacteristic):
     def __eq__(self, __value: object) -> bool:
         if not isinstance(__value, ExplicitDimensionCharacteristic):
             return False
-        return self.get_member() == __value.get_member() and self.get_aspect() == __value.get_aspect()
+        return (
+            self.get_member() == __value.get_member()
+            and self.get_aspect() == __value.get_aspect()
+        )

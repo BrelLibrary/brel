@@ -30,7 +30,9 @@ def test_print_network_roles():
 
     # check if the printed network is as expected
     # check if the role uri is printed
-    assert "http://foo/role/balance" in printed_network, f"role: http://foo/role/balance not in {printed_network}"
+    assert (
+        "http://foo/role/balance" in printed_network
+    ), f"role: http://foo/role/balance not in {printed_network}"
     # check if 'http://www.xbrl.org/2003/arcrole/parent-child' is printed
     assert (
         "http://www.xbrl.org/2003/arcrole/parent-child" in printed_network
@@ -45,12 +47,20 @@ def test_print_network_names():
     printed_network = method_output_to_string(lambda: pprint_network(network))
 
     # check for the link name 'link:presentationLink'
-    assert "link:presentationLink" in printed_network, f"link:presentationLink not in {printed_network}"
+    assert (
+        "link:presentationLink" in printed_network
+    ), f"link:presentationLink not in {printed_network}"
     # check for 'link:presentationArc'
-    assert "link:presentationArc" in printed_network, f"link:presentationArc not in {printed_network}"
+    assert (
+        "link:presentationArc" in printed_network
+    ), f"link:presentationArc not in {printed_network}"
     # check that 'link:calculationLink' and 'link:calculationArc' are not in the printed network
-    assert "link:calculationLink" not in printed_network, f"link:calculationLink in {printed_network}"
-    assert "link:calculationArc" not in printed_network, f"link:calculationArc in {printed_network}"
+    assert (
+        "link:calculationLink" not in printed_network
+    ), f"link:calculationLink in {printed_network}"
+    assert (
+        "link:calculationArc" not in printed_network
+    ), f"link:calculationArc in {printed_network}"
 
 
 def test_print_network_order():
@@ -99,7 +109,9 @@ def test_print_network_elements():
     ), f"Balance not before [ABSTRACT] in {lines}"
 
     # 'Cash' is a concept. therefore '[CONCEPT]' should be printed in the same line
-    assert all("cash" not in line or "[CONCEPT]" in line for line in lines), f"Cash not before [CONCEPT] in {lines}"
+    assert all(
+        "cash" not in line or "[CONCEPT]" in line for line in lines
+    ), f"Cash not before [CONCEPT] in {lines}"
 
 
 def test_none_network():
@@ -107,7 +119,9 @@ def test_none_network():
     assert printed_network == "", f"Expected empty string, got {printed_network}"
 
     printed_network_node = method_output_to_string(lambda: pprint_network_node(None))
-    assert printed_network_node == "", f"Expected empty string, got {printed_network_node}"
+    assert (
+        printed_network_node == ""
+    ), f"Expected empty string, got {printed_network_node}"
 
 
 def test_resource_network():
@@ -121,7 +135,9 @@ def test_resource_network():
         None,
     )
 
-    assert isinstance(label_network, brel.networks.INetwork), f"No label network found. Found {type(label_network)}"
+    assert isinstance(
+        label_network, brel.networks.INetwork
+    ), f"No label network found. Found {type(label_network)}"
 
     assert label_network is not None, "No label network found"
 
@@ -177,4 +193,6 @@ def test_print_calculation_network():
         "http://www.xbrl.org/2003/arcrole/summation-item" in printed_network
     ), f"arcrole: http://www.xbrl.org/2003/arcrole/summation-item not in {printed_network}"
     # check if the arc name is calculationArc
-    assert "link:calculationArc" in printed_network, f"link:calculationArc not in {printed_network}"
+    assert (
+        "link:calculationArc" in printed_network
+    ), f"link:calculationArc not in {printed_network}"

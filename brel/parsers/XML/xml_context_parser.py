@@ -47,7 +47,9 @@ def parse_context_xml(
 
     # check if the supplied list of characteristics only contains units and concepts
     for characteristic in characteristics:
-        if not isinstance(characteristic, UnitCharacteristic) and not isinstance(characteristic, ConceptCharacteristic):
+        if not isinstance(characteristic, UnitCharacteristic) and not isinstance(
+            characteristic, ConceptCharacteristic
+        ):
             raise ValueError(
                 f"Context id {context_id} contains a characteristic that is not a unit or a concept. Please make sure that the list of characteristics only contains units and concepts."
             )
@@ -71,8 +73,12 @@ def parse_context_xml(
     for characteristic in characteristics:
         context._add_characteristic(characteristic)
 
-    context._add_characteristic(parse_period_from_xml(context_period, get_from_cache, add_to_cache))
-    context._add_characteristic(parse_entity_from_xml(context_entity, get_from_cache, add_to_cache))
+    context._add_characteristic(
+        parse_period_from_xml(context_period, get_from_cache, add_to_cache)
+    )
+    context._add_characteristic(
+        parse_entity_from_xml(context_entity, get_from_cache, add_to_cache)
+    )
 
     # add the dimensions. the dimensions are the children of context/entity/segment
     segment = context_entity.find("{*}segment", namespaces=None)

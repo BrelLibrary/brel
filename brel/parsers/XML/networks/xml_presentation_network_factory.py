@@ -34,7 +34,9 @@ class PresentationNetworkFactory(IXMLNetworkFactory):
     def __init__(self, qname_nsmap: QNameNSMap) -> None:
         super().__init__(qname_nsmap)
 
-    def create_network(self, xml_link_element: lxml.etree._Element, roots: list[INetworkNode]) -> INetwork:
+    def create_network(
+        self, xml_link_element: lxml.etree._Element, roots: list[INetworkNode]
+    ) -> INetwork:
         """
         Create a PresentationNetwork from an XML link element and a list of roots.
         :param xml_link_element: lxml.etree._Element containing the link element
@@ -86,7 +88,9 @@ class PresentationNetworkFactory(IXMLNetworkFactory):
             arc_qname = QName.from_string(xml_arc.tag, self.get_qname_nsmap())
         elif get_str(xml_arc, self._clark("xlink", "to"), None) == label:
             # the node is an inner node
-            preferred_label = get_str(xml_arc, "preferredLabel", BrelLabel.STANDARD_LABEL_ROLE)
+            preferred_label = get_str(
+                xml_arc, "preferredLabel", BrelLabel.STANDARD_LABEL_ROLE
+            )
 
             if preferred_label is None:
                 preferred_label_role = None
@@ -96,14 +100,18 @@ class PresentationNetworkFactory(IXMLNetworkFactory):
             order = float(get_str(xml_arc, "order", "1"))
             arc_qname = QName.from_string(xml_arc.tag, self.get_qname_nsmap())
         else:
-            raise ValueError(f"referenced element {xml_referenced_element} is not connected to arc {xml_arc}")
+            raise ValueError(
+                f"referenced element {xml_referenced_element} is not connected to arc {xml_arc}"
+            )
 
         link_role = get_str(xml_link, self._clark("xlink", "role"))
         link_name = self._make_qname(xml_link.tag)
 
         # check if 'points_to' is a ReportElement
         if not isinstance(points_to, IReportElement):
-            raise TypeError(f"points_to must be of type IReportElement, not {type(points_to)}")
+            raise TypeError(
+                f"points_to must be of type IReportElement, not {type(points_to)}"
+            )
 
         return PresentationNetworkNode(
             points_to,
@@ -116,7 +124,9 @@ class PresentationNetworkFactory(IXMLNetworkFactory):
             order,
         )
 
-    def update_report_elements(self, report_elements: Mapping[QName, IReportElement], network: INetwork):
+    def update_report_elements(
+        self, report_elements: Mapping[QName, IReportElement], network: INetwork
+    ):
         """
         Promote abstracts to line items
         :param report_elements: dict[QName, IReportElement] containing all report elements

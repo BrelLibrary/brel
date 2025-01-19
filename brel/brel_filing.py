@@ -103,7 +103,11 @@ class Filing:
             if mode == "xml":
                 return filename.endswith(".xml")
             elif mode == "xhtml":
-                return filename.endswith(".xml") or filename.endswith(".htm") or filename.endswith(".html")
+                return (
+                    filename.endswith(".xml")
+                    or filename.endswith(".htm")
+                    or filename.endswith(".html")
+                )
             else:
                 # Make sure that only a supported mode is used
                 raise ValueError("Mode must be 'xml' or 'xhtml'")
@@ -136,7 +140,9 @@ class Filing:
         is_dir = os.path.isdir(path)
 
         if DEBUG:  # pragma: no cover
-            print(f"Path {path}, is file: {is_file}, is dir: {is_dir}, is uri: {is_uri}")
+            print(
+                f"Path {path}, is file: {is_file}, is dir: {is_dir}, is uri: {is_uri}"
+            )
 
         if is_dir:
             if DEBUG:  # pragma: no cover
@@ -172,7 +178,9 @@ class Filing:
             with zipfile.ZipFile(path, "r") as zip_ref:
                 zip_ref.extractall(dir_path)
                 # get all file paths ending in xml
-                files = list(filter(lambda x: search_filetypes(mode, x), zip_ref.namelist()))
+                files = list(
+                    filter(lambda x: search_filetypes(mode, x), zip_ref.namelist())
+                )
             print(f"Finished extracting...")
 
             files = list(map(lambda x: os.path.join(dir_path, x), files))
@@ -184,7 +192,9 @@ class Filing:
                 return cls.open(files[0], mode, *files[1:])
         elif is_uri:
             if not search_filetypes(mode, path):
-                raise NotImplementedError("Brel currently only supports XBRL filings in the form of XML files")
+                raise NotImplementedError(
+                    "Brel currently only supports XBRL filings in the form of XML files"
+                )
 
             if DEBUG:
                 print(f"Opening uri {path}")
@@ -244,7 +254,9 @@ class Filing:
         Get all [`INetwork`](../components/networks.md) objects in the filing, where network.is_physical() is True.
         :return list[INetwork]: a list of all physical networks in the filing.
         """
-        physical_networks = [network for network in self.__networks if network.is_physical()]
+        physical_networks = [
+            network for network in self.__networks if network.is_physical()
+        ]
         return physical_networks
 
     def get_errors(self) -> list[Exception]:
@@ -309,7 +321,9 @@ class Filing:
             list(filter(lambda x: isinstance(x, Member), self.__reportelems)),
         )
 
-    def get_report_element_by_name(self, element_qname: QName | str) -> IReportElement | None:
+    def get_report_element_by_name(
+        self, element_qname: QName | str
+    ) -> IReportElement | None:
         """
         :param element_qname: the name of the report element to get. This can be a QName or a string in the format "prefix:localname". For example, "us-gaap:Assets".
         :returns IReportElement|None: the report element with the given name. If no report element is found, then None is returned.
@@ -337,7 +351,9 @@ class Filing:
         def concept_matches(x: IReportElement) -> TypeGuard[Concept]:
             return isinstance(x, Concept) and x.get_name() == concept_qname
 
-        concept: Concept | None = next(filter(concept_matches, self.__reportelems), None)
+        concept: Concept | None = next(
+            filter(concept_matches, self.__reportelems), None
+        )
 
         return concept
 
