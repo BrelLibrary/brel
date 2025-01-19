@@ -2,7 +2,8 @@ import brel
 
 
 def test_qname_getters():
-    report_uri = "https://www.sec.gov/Archives/edgar/data/320193/000032019323000077/aapl-20230701_htm.xml"
+    #report_uri = "https://www.sec.gov/Archives/edgar/data/320193/000032019323000077/aapl-20230701_htm.xml"
+    report_uri = "tests/end_to_end_tests/facts_test.xml"
     filing = brel.Filing.open(report_uri)
 
     # check if a fact with value = "true" is parsed correctly as a bool
