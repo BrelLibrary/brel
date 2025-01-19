@@ -80,14 +80,10 @@ def get_object_from_reference(
     elif referenced_element_type == "resource":
         to_element = parse_xml_resource(referenced_element, qname_nsmap.get_nsmap())
     else:
-        raise NotImplementedError(
-            f"the referenced element type {referenced_element_type} is not supported"
-        )
+        raise NotImplementedError(f"the referenced element type {referenced_element_type} is not supported")
 
     if to_element is None:
-        raise ValueError(
-            f"the referenced element {referenced_element} could not be found"
-        )
+        raise ValueError(f"the referenced element {referenced_element} could not be found")
 
     return to_element
 
@@ -132,9 +128,7 @@ def parse_xml_link(
     elif xml_link_element.tag == f"{{{nsmap['link']}}}footnoteLink":
         network_factories.append(FootnoteNetworkFactory(qname_nsmap))
     else:
-        raise NotImplementedError(
-            f"the link element {xml_link_element.tag} is not supported"
-        )
+        raise NotImplementedError(f"the link element {xml_link_element.tag} is not supported")
 
     for network_factory in network_factories:
         nodes_lookup: dict[str, list[INetworkNode]] = defaultdict(list)
@@ -146,18 +140,14 @@ def parse_xml_link(
         if DEBUG:  # pragma: no cover
             start_time = time.time()
 
-        for arc_element in xml_link_element.findall(
-            f".//*[@xlink:type='arc']", namespaces=nsmap
-        ):
+        for arc_element in xml_link_element.findall(f".//*[@xlink:type='arc']", namespaces=nsmap):
             arc_from = get_str(arc_element, f"{{{nsmap['xlink']}}}from")
             arc_to = get_str(arc_element, f"{{{nsmap['xlink']}}}to")
             arc_role = get_str(arc_element, f"{{{nsmap['xlink']}}}arcrole")
 
             if (arc_from, arc_to, arc_role) in edges:
                 # the edge already exists. The SEC XBRL Filing Manual says that this is an error.
-                raise ValueError(
-                    f"the arc element with from='{arc_from}' and to='{arc_to}' is a duplicate"
-                )
+                raise ValueError(f"the arc element with from='{arc_from}' and to='{arc_to}' is a duplicate")
 
             edges.add((arc_from, arc_to, arc_role))
             node_to_arcs[arc_from].append(arc_element)
@@ -192,20 +182,13 @@ def parse_xml_link(
             if network_factory.is_physical():
                 if len(arcs_to) == 0 and len(arcs_from) == 0:
                     # the node is not connected to any other node. The network only contains this node
-                    node = network_factory.create_node(
-                        xml_link_element, link_element, None, to_object
-                    )
+                    node = network_factory.create_node(xml_link_element, link_element, None, to_object)
                     roots.add(node)
                     nodes_lookup[label].append(node)
                 else:
-                    outgoing_role_types = set(
-                        get_str(arc, f"{{{nsmap['xlink']}}}arcrole")
-                        for arc in arcs_from
-                    )
+                    outgoing_role_types = set(get_str(arc, f"{{{nsmap['xlink']}}}arcrole") for arc in arcs_from)
 
-                    incoming_role_types = set(
-                        get_str(arc, f"{{{nsmap['xlink']}}}arcrole") for arc in arcs_to
-                    )
+                    incoming_role_types = set(get_str(arc, f"{{{nsmap['xlink']}}}arcrole") for arc in arcs_to)
 
                     for role_type in incoming_role_types.union(outgoing_role_types):
                         # sort node_arcs such that the arcs with xlink:to == label come first
@@ -215,18 +198,11 @@ def parse_xml_link(
                         )
 
                         arc = next(
-                            (
-                                arc
-                                for arc in node_arcs
-                                if get_str(arc, f"{{{nsmap['xlink']}}}arcrole")
-                                == role_type
-                            ),
+                            (arc for arc in node_arcs if get_str(arc, f"{{{nsmap['xlink']}}}arcrole") == role_type),
                             None,
                         )
 
-                        node = network_factory.create_node(
-                            xml_link_element, link_element, arc, to_object
-                        )
+                        node = network_factory.create_node(xml_link_element, link_element, arc, to_object)
 
                         if role_type not in incoming_role_types:
                             roots.add(node)
@@ -235,17 +211,13 @@ def parse_xml_link(
             else:
                 if len(arcs_to) == 0 and len(arcs_from) == 0:
                     # the node is not connected to any other node. The network only contains this node
-                    node = network_factory.create_node(
-                        xml_link_element, link_element, None, to_object
-                    )
+                    node = network_factory.create_node(xml_link_element, link_element, None, to_object)
                     roots.add(node)
                     nodes_lookup[label].append(node)
                 else:
                     arc = arcs_to[0] if len(arcs_to) > 0 else arcs_from[0]
 
-                    node = network_factory.create_node(
-                        xml_link_element, link_element, arc, to_object
-                    )
+                    node = network_factory.create_node(xml_link_element, link_element, arc, to_object)
 
                     if len(arcs_to) == 0:
                         roots.add(node)
@@ -262,12 +234,8 @@ def parse_xml_link(
             to_nodes = nodes_lookup[arc_to]
 
             if network_factory.is_physical():
-                from_nodes = list(
-                    filter(lambda node: node.get_arc_role() == arc_role, from_nodes)
-                )
-                to_nodes = list(
-                    filter(lambda node: node.get_arc_role() == arc_role, to_nodes)
-                )
+                from_nodes = list(filter(lambda node: node.get_arc_role() == arc_role, from_nodes))
+                to_nodes = list(filter(lambda node: node.get_arc_role() == arc_role, to_nodes))
 
             for from_node, to_node in itertools.product(from_nodes, to_nodes):
                 # Now we can link the nodes
@@ -289,16 +257,10 @@ def parse_xml_link(
             role_types = set(node.get_arc_role() for node in roots)
             # create a network for each role type. the roots of this network are the nodes with the same role type
             for role_type in role_types:
-                role_type_roots = [
-                    node for node in roots if node.get_arc_role() == role_type
-                ]
-                network = network_factory.create_network(
-                    xml_link_element, role_type_roots
-                )
+                role_type_roots = [node for node in roots if node.get_arc_role() == role_type]
+                network = network_factory.create_network(xml_link_element, role_type_roots)
                 # update the report elements
-                report_elements = network_factory.update_report_elements(
-                    report_elements, network
-                )
+                report_elements = network_factory.update_report_elements(report_elements, network)
                 # add the network to the networks list
                 networks.append(network)
         else:
@@ -306,9 +268,7 @@ def parse_xml_link(
             root_nodes = list(roots)
             network = network_factory.create_network(xml_link_element, root_nodes)
             # update the report elements
-            report_elements = network_factory.update_report_elements(
-                report_elements, network
-            )
+            report_elements = network_factory.update_report_elements(report_elements, network)
             # add the network to the networks list
             networks.append(network)
 

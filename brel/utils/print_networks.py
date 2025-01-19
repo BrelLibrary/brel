@@ -68,9 +68,7 @@ def __print_sub_network(node: INetworkNode, last=True, header="") -> None:
         node_as_str = ""
         if hasattr(re, "get_preferred_label_role"):
             label_role = getattr(re, "get_preferred_label_role")()
-            node_as_str = next(
-                filter(lambda l: l.get_role() == label_role, node_labels)
-            ).get_content()
+            node_as_str = next(filter(lambda l: l.get_role() == label_role, node_labels)).get_content()
             node_as_str = str(node_as_str)
         else:
             node_as_str = str(re)
@@ -117,9 +115,7 @@ def pprint_network(network: INetwork | None):
     if network is None:
         return
 
-    print(
-        f"Network (link role: {network.get_link_role()}), link name: {network.get_link_name()}"
-    )
+    print(f"Network (link role: {network.get_link_role()}), link name: {network.get_link_name()}")
     print(f"arc roles: {network.get_arc_roles()}, arc name: {network.get_arc_name()}")
 
     for index, root in enumerate(network.get_roots()):

@@ -96,11 +96,7 @@ class IFilingParser(ABC):
         filing_type = self.get_filing_type()
 
         # networks_flattened = list(networks.values())
-        networks_flattened = [
-            network
-            for component_networks in networks.values()
-            for network in component_networks
-        ]
+        networks_flattened = [network for component_networks in networks.values() for network in component_networks]
 
         parser_result = {
             "report elements": list(report_elements.values()),

@@ -58,66 +58,44 @@ def test_filing_getters():
 
     # check get_report_element_by_name(). it should return a report element
     report_element = filing.get_report_element_by_name("ete:cash")
-    assert isinstance(
-        report_element, brel.reportelements.Concept
-    ), f"Expected Concept, got {type(report_element)}"
+    assert isinstance(report_element, brel.reportelements.Concept), f"Expected Concept, got {type(report_element)}"
 
     # check get_concept_by_name(). it should return a concept
     concept = filing.get_concept_by_name("ete:cash")
-    assert isinstance(
-        concept, brel.reportelements.Concept
-    ), f"Expected Concept, got {type(concept)}"
+    assert isinstance(concept, brel.reportelements.Concept), f"Expected Concept, got {type(concept)}"
 
     # check the get_concept() method. it should return the concept from before
-    assert concept == filing.get_concept(
-        concept.get_name()
-    ), "Expected the same concept"
+    assert concept == filing.get_concept(concept.get_name()), "Expected the same concept"
 
     # check if get_all_reported_concepts contains the cash concept
-    assert (
-        concept in filing.get_all_reported_concepts()
-    ), "Expected the concept to be in the reported concepts"
+    assert concept in filing.get_all_reported_concepts(), "Expected the concept to be in the reported concepts"
 
     # check get_facts_by_concept_name(). all facts should have the cash concept
     facts = filing.get_facts_by_concept_name("ete:cash")
     assert_list_of_type(facts, brel.Fact)
-    assert all(
-        f.get_concept().get_value() == concept for f in facts
-    ), "Expected all facts to have the cash concept"
+    assert all(f.get_concept().get_value() == concept for f in facts), "Expected all facts to have the cash concept"
 
     # check get_facts_by_concept(). all facts should have the cash concept
     facts = filing.get_facts_by_concept(concept)
     assert_list_of_type(facts, brel.Fact)
-    assert all(
-        f.get_concept().get_value() == concept for f in facts
-    ), "Expected all facts to have the cash concept"
+    assert all(f.get_concept().get_value() == concept for f in facts), "Expected all facts to have the cash concept"
 
     # check if get_all_component_uris() contains the uris "http://foo/role/balance", "http://foo/role/hypercube" and "http://foo/role/bad-balance"
     uris = filing.get_all_component_uris()
-    assert (
-        "http://foo/role/balance" in uris
-    ), "Expected the uri 'http://foo/role/balance' to be in the list"
-    assert (
-        "http://foo/role/hypercube" in uris
-    ), "Expected the uri 'http://foo/role/hypercube' to be in the list"
-    assert (
-        "http://foo/role/bad-balance" in uris
-    ), "Expected the uri 'http://foo/role/bad-balance' to be in the list"
+    assert "http://foo/role/balance" in uris, "Expected the uri 'http://foo/role/balance' to be in the list"
+    assert "http://foo/role/hypercube" in uris, "Expected the uri 'http://foo/role/hypercube' to be in the list"
+    assert "http://foo/role/bad-balance" in uris, "Expected the uri 'http://foo/role/bad-balance' to be in the list"
 
     # check that the component get_component() has the same uri as the component from before
     component = filing.get_component("http://foo/role/balance")
-    assert component == filing.get_component(
-        component.get_URI()
-    ), "Expected the same component"
+    assert component == filing.get_component(component.get_URI()), "Expected the same component"
 
 
 def test_filing_open():
     # check to open a folder not ending with '/'
     try:
         filing = brel.Filing.open("tests/end_to_end_tests/ete_filing")
-        assert (
-            len(filing.get_errors()) == 0
-        ), f"Expected no errors, got {filing.get_errors()}"
+        assert len(filing.get_errors()) == 0, f"Expected no errors, got {filing.get_errors()}"
     except Exception as e:
         assert False, f"Expected no exception, got {e}"
 
@@ -130,25 +108,17 @@ def test_filing_open():
 
     # try to pass all files in the ete folder to the open method
     ete_files = os.listdir("tests/end_to_end_tests/ete_filing")
-    ete_files = [
-        os.path.join("tests/end_to_end_tests/ete_filing", file)
-        for file in ete_files
-        if file.endswith(".xml")
-    ]
+    ete_files = [os.path.join("tests/end_to_end_tests/ete_filing", file) for file in ete_files if file.endswith(".xml")]
     try:
         filing = brel.Filing.open(*ete_files)
-        assert (
-            len(filing.get_errors()) == 0
-        ), f"Expected no errors, got {filing.get_errors()}"
+        assert len(filing.get_errors()) == 0, f"Expected no errors, got {filing.get_errors()}"
     except Exception as e:
         assert False, f"Expected no exception, got {e}"
 
     # open ete from a zip file
     try:
         filing = brel.Filing.open("tests/end_to_end_tests/ete_filing.zip")
-        assert (
-            len(filing.get_errors()) == 0
-        ), f"Expected no errors, got {filing.get_errors()}"
+        assert len(filing.get_errors()) == 0, f"Expected no errors, got {filing.get_errors()}"
     except Exception as e:
         assert False, f"Expected no exception, got {e}"
 

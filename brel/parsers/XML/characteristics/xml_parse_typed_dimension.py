@@ -62,9 +62,7 @@ def parse_typed_dimension_from_xml(
     # Get the dimension attribute from the xml element
     dimension_axis = xml_element.get("dimension")
     if dimension_axis is None:
-        raise ValueError(
-            "Could not find dimension attribute in explicit dimension characteristic"
-        )
+        raise ValueError("Could not find dimension attribute in explicit dimension characteristic")
 
     # check cache for dimension aspect
     dimension_aspect = get_from_cache(f"aspect {dimension_axis}")
@@ -99,22 +97,16 @@ def parse_typed_dimension_from_xml(
         )
 
     # check cache
-    dimension_characteristic = get_from_cache(
-        f"typed dimension {dimension_axis} {dimension_value}"
-    )
+    dimension_characteristic = get_from_cache(f"typed dimension {dimension_axis} {dimension_value}")
     if dimension_characteristic is None:
         # create and add the characteristic
-        dimension_characteristic = TypedDimensionCharacteristic(
-            i_report_element, dimension_value, dimension_aspect
-        )
+        dimension_characteristic = TypedDimensionCharacteristic(i_report_element, dimension_value, dimension_aspect)
         add_to_cache(
             f"typed dimension {dimension_axis} {dimension_value}",
             dimension_characteristic,
         )
     else:
         if not isinstance(dimension_characteristic, TypedDimensionCharacteristic):
-            raise ValueError(
-                "Dimension characteristic is not a typed dimension characteristic"
-            )
+            raise ValueError("Dimension characteristic is not a typed dimension characteristic")
 
     return cast(TypedDimensionCharacteristic, dimension_characteristic)

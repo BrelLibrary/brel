@@ -42,12 +42,8 @@ def parse_unit_measure_from_xml(
 
     # according to the xbrl spec, if the concept type is 'monetaryItemType', the unit must be a ISO 4217 currency designation
     child_localname = child_qname.get_local_name()
-    if concept_type == "monetaryItemType" and (
-        "4217" not in child_localname or "ISO" not in child_localname.upper()
-    ):
-        raise ValueError(
-            f"The measure {child_qname} is not an ISO 4217 currency designation"
-        )
+    if concept_type == "monetaryItemType" and ("4217" not in child_localname or "ISO" not in child_localname.upper()):
+        raise ValueError(f"The measure {child_qname} is not an ISO 4217 currency designation")
 
     # according to the xbrl spec, if the concept type is 'sharesItemType', the unit must be the qname xbrli:shares
     if concept_type == "sharesItemType" and child_qname != make_qname("xbrli:shares"):
@@ -81,9 +77,7 @@ def parse_unit_from_xml(
     if unit_characteristic is not None:
         # If the type check succeeds, we can return the unit characteristic. Otherwise there is a cache collision.
         if not isinstance(unit_characteristic, UnitCharacteristic):
-            raise ValueError(
-                f"Unit {unit_id_str} is not a unit. It is a {type(unit_characteristic)}"
-            )
+            raise ValueError(f"Unit {unit_id_str} is not a unit. It is a {type(unit_characteristic)}")
         return cast(UnitCharacteristic, unit_characteristic)
 
     numerators: list[QName] = []
@@ -92,9 +86,7 @@ def parse_unit_from_xml(
     # get the child elements of the unit and check if its tag is 'measure' or 'divide'
     children = list(xml_element)
     if len(children) != 1:
-        raise ValueError(
-            f"The unit {unit_id_str} has {len(children)} children but should have 1 child"
-        )
+        raise ValueError(f"The unit {unit_id_str} has {len(children)} children but should have 1 child")
 
     child = children[0]
     child_tag = child.tag
@@ -107,24 +99,18 @@ def parse_unit_from_xml(
     elif "divide" in child_tag:
         num_and_denom = list(child)
         if len(num_and_denom) != 2:
-            raise ValueError(
-                f"The unit {unit_id_str} has {len(num_and_denom)} children but should have 2 children"
-            )
+            raise ValueError(f"The unit {unit_id_str} has {len(num_and_denom)} children but should have 2 children")
 
         for num_or_denom in num_and_denom:
             num_or_denom_tag = num_or_denom.tag
             if "unitNumerator" in num_or_denom_tag:
                 # get its text and parse it into a QName
-                child_qname = parse_unit_measure_from_xml(
-                    num_or_denom, concept, make_qname
-                )
+                child_qname = parse_unit_measure_from_xml(num_or_denom, concept, make_qname)
 
                 numerators.append(child_qname)
             elif "unitDenominator" in num_or_denom_tag:
                 # get its text and parse it into a QName
-                child_qname = parse_unit_measure_from_xml(
-                    num_or_denom, concept, make_qname
-                )
+                child_qname = parse_unit_measure_from_xml(num_or_denom, concept, make_qname)
 
                 denominators.append(child_qname)
             else:
@@ -137,9 +123,7 @@ def parse_unit_from_xml(
                 f"The unit {unit_id_str} has two children with the same tag: {num_and_denom[0].tag}. One should be 'unitNumerator' and the other 'unitDenominator'"
             )
     else:
-        raise ValueError(
-            f"The unit {unit_id_str} has child {child_tag} but should have child 'measure' or 'divide'"
-        )
+        raise ValueError(f"The unit {unit_id_str} has child {child_tag} but should have child 'measure' or 'divide'")
 
     # create the unit characteristic, add it to the cache and return it
     unit_characteristic = UnitCharacteristic(unit_id_str, numerators, denominators)

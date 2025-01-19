@@ -63,9 +63,7 @@ class LabelNetworkNode(INetworkNode):
         elif isinstance(self.__points_to, BrelLabel):
             return "resource"
         else:
-            raise ValueError(
-                "LabelNetworkNodes do not point to report elements or resources"
-            )
+            raise ValueError("LabelNetworkNodes do not point to report elements or resources")
 
     def get_children(self) -> list[INetworkNode]:
         return self.__children

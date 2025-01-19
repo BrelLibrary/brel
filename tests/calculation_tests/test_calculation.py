@@ -53,9 +53,7 @@ link_name = QName.from_string("us-gaap:CondensedConsolidatedStatementsOfIncome",
 
 
 def create_node(concept: Concept, weight: int, order: int):
-    return CalculationNetworkNode(
-        concept, [], arc_role, arc_name, link_role, link_name, weight, order
-    )
+    return CalculationNetworkNode(concept, [], arc_role, arc_name, link_role, link_name, weight, order)
 
 
 def fact_from_concept(concept: Concept, value: str):
@@ -202,15 +200,11 @@ def test_calculation_validation_GD_empty_network():
     if DEBUG:  # pragma: no cover
         pprint_network(network)
 
-    assert network.is_aggregation_consistent(
-        []
-    ), "The empty network should be aggregation consistent"
+    assert network.is_aggregation_consistent([]), "The empty network should be aggregation consistent"
 
     facts = []
 
-    assert network.is_aggregation_consistent(
-        facts
-    ), "The empty network should be aggregation consistent"
+    assert network.is_aggregation_consistent(facts), "The empty network should be aggregation consistent"
 
 
 def test_calculation_validation_NG_aggregation():
