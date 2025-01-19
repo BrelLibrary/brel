@@ -110,7 +110,7 @@ def test_filing_open():
     ete_files = os.listdir("tests/end_to_end_tests/ete_filing")
     ete_files = [os.path.join("tests/end_to_end_tests/ete_filing", file) for file in ete_files if file.endswith(".xml")]
     try:
-        filing = brel.Filing.open(*ete_files, mode="xml")
+        filing = brel.Filing.open(path=ete_files, mode="xml")
         assert len(filing.get_errors()) == 0, f"Expected no errors, got {filing.get_errors()}"
     except Exception as e:
         assert False, f"Expected no exception, got {e}"
