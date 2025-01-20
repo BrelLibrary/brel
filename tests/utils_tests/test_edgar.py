@@ -17,7 +17,7 @@ def test_edgar_aapl_date_GD():
         ), f"Expected Cupertino, but got {apple_city_facts[0].get_value()}"
     except ValueError as e:
         assert False, f"Failed to open filing: {e}"
-    except Exception as e: # BAD PRACTICE, REMOVE IF POSSIBLE
+    except Exception as e:  # BAD PRACTICE, REMOVE IF POSSIBLE
         uri = "https://www.sec.gov/Archives/edgar/data/0000320193/000032019324000006/aapl-20231230_htm.xml"
         assert True, f"Failed to download {uri}. The server responded with status code 403"
 
@@ -30,7 +30,7 @@ def test_edgar_aapl_GD():
         filing = open_edgar(aapl_cik, filing_type)
     except ValueError as e:
         assert False, f"Failed to open filing: {e}"
-    except Exception as e: # BAD PRACTICE, REMOVE IF POSSIBLE
+    except Exception as e:  # BAD PRACTICE, REMOVE IF POSSIBLE
         uri = "https://www.sec.gov/Archives/edgar/data/0000320193/000032019324000006/aapl-20231230_htm.xml"
         assert True, f"Failed to download {uri}. The server responded with status code 403"
 
@@ -47,7 +47,7 @@ def test_edgar_input_BD():
         ), "Failed to raise ValueError for incorrect date format. The date has to be in the format YYYY-MM-DD, but YYY-MM-DD was given."
     except ValueError as e:
         assert "date" in str(e).lower(), f"Expected ValueError for incorrect date format, but got {e}"
-    except Exception as e: # BAD PRACTICE, REMOVE IF POSSIBLE
+    except Exception as e:  # BAD PRACTICE, REMOVE IF POSSIBLE
         uri = "https://www.sec.gov/Archives/edgar/data/0000320193/000032019324000006/aapl-20231230_htm.xml"
         assert True, f"Failed to download {uri}. The server responded with status code 403"
 
@@ -60,7 +60,7 @@ def test_edgar_input_BD():
         ), "Failed to raise ValueError for incorrect date format. The date has to be in the format YYYY-MM-DD, but YYY-MM-DD was given."
     except ValueError as e:
         assert "date" in str(e).lower(), f"Expected ValueError for incorrect date format, but got {e}"
-    except Exception as e: # BAD PRACTICE, REMOVE IF POSSIBLE
+    except Exception as e:  # BAD PRACTICE, REMOVE IF POSSIBLE
         uri = "https://www.sec.gov/Archives/edgar/data/0000320193/000032019324000006/aapl-20231230_htm.xml"
         assert True, f"Failed to download {uri}. The server responded with status code 403"
 
@@ -74,7 +74,7 @@ def test_edgar_input_BD():
         ), "Failed to raise ValueError for incorrect cik format. The cik has to be a string with 10 digits, but 13 digits were given."
     except ValueError as e:
         assert "cik" in str(e).lower(), f"Expected ValueError for incorrect cik format, but got {e}"
-    except Exception as e: # BAD PRACTICE, REMOVE IF POSSIBLE
+    except Exception as e:  # BAD PRACTICE, REMOVE IF POSSIBLE
         uri = "https://www.sec.gov/Archives/edgar/data/0000320193/000032019324000006/aapl-20231230_htm.xml"
         assert True, f"Failed to download {uri}. The server responded with status code 403"
 
@@ -87,7 +87,7 @@ def test_edgar_input_BD():
         ), "Failed to raise ValueError for incorrect cik format. The cik has to be a string with 10 digits, but 10 was given."
     except ValueError as e:
         assert "cik" in str(e).lower(), f"Expected ValueError for incorrect cik format, but got {e}"
-    except Exception as e: # BAD PRACTICE, REMOVE IF POSSIBLE
+    except Exception as e:  # BAD PRACTICE, REMOVE IF POSSIBLE
         uri = "https://www.sec.gov/Archives/edgar/data/0000320193/000032019324000006/aapl-20231230_htm.xml"
         assert True, f"Failed to download {uri}. The server responded with status code 403"
 
@@ -101,7 +101,7 @@ def test_edgar_input_BD():
         ), "Failed to raise ValueError for incorrect filing type. The filing type has to be either 10-K or 10-Q, but 10-Z was given."
     except ValueError as e:
         assert "filing type" in str(e).lower(), f"Expected ValueError for incorrect filing type, but got {e}"
-    except Exception as e: # BAD PRACTICE, REMOVE IF POSSIBLE
+    except Exception as e:  # BAD PRACTICE, REMOVE IF POSSIBLE
         uri = "https://www.sec.gov/Archives/edgar/data/0000320193/000032019324000006/aapl-20231230_htm.xml"
         assert True, f"Failed to download {uri}. The server responded with status code 403"
 
@@ -115,6 +115,6 @@ def test_edgar_BD():
         assert False, "Failed to raise ValueError for incorrect cik. The cik does not exist, but 0000000000 was given."
     except ValueError as e:
         assert "cik" in str(e).lower(), f"Expected ValueError for incorrect cik, but got {e}"
-    except Exception as e: # BAD PRACTICE, REMOVE IF POSSIBLE
+    except Exception as e:  # BAD PRACTICE, REMOVE IF POSSIBLE
         uri = "https://www.sec.gov/Archives/edgar/data/0000320193/000032019324000006/aapl-20231230_htm.xml"
         assert True, f"Failed to download {uri}. The server responded with status code 403"
