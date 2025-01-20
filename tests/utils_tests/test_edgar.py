@@ -17,6 +17,9 @@ def test_edgar_aapl_date_GD():
         ), f"Expected Cupertino, but got {apple_city_facts[0].get_value()}"
     except ValueError as e:
         assert False, f"Failed to open filing: {e}"
+    except Exception as e:
+        uri = "https://www.sec.gov/Archives/edgar/data/0000320193/000032019324000006/aapl-20231230_htm.xml"
+        assert False, f"Failed to download {uri}. The server responded with status code 403"
 
 
 def test_edgar_aapl_GD():
