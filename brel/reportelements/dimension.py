@@ -82,3 +82,16 @@ class Dimension(IReportElement):
 
     def __str__(self) -> str:
         return self.__name.__str__()
+
+    def convert_to_dict(self) -> dict:
+        """
+        Convert the dimension to a dictionary.
+        :returns dict: the dimension as a dictionary
+        """
+        return {
+            "name": self.__name.get(),
+            "label": self.select_main_label().__str__(),
+            "report_element_type": "dimension",
+            "is_explicit": self.is_explicit(),
+            "dimension_type": self.__type.get() if self.__type is not None else None,
+        }

@@ -205,3 +205,15 @@ class Component:
         if self.__definition_network is not None:
             networks.append(self.__definition_network)
         return networks
+
+    def convert_to_dict(self) -> dict:
+        """
+        :returns dict: a dictionary representation of the component
+        """
+        return {
+            "network_identifier": self.__uri,
+            "info": self.__info,
+            "PresentationNetwork": True if self.__presentation_network is not None else False,
+            "CalculationNetwork": True if self.__calculation_network is not None else False,
+            "DefinitionNetwork": True if self.__definition_network is not None else False,
+        }

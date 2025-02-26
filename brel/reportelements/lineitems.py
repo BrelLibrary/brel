@@ -45,3 +45,14 @@ class LineItems(IReportElement):
         :returns str: the name of the line items as a string
         """
         return self.__name.__str__()
+
+    def convert_to_dict(self) -> dict:
+        """
+        Convert the line items to a dictionary.
+        :returns dict: the line items as a dictionary
+        """
+        return {
+            "name": self.__name.get(),
+            "label": self.select_main_label().__str__(),
+            "report_element_type": "line item",
+        }

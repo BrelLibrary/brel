@@ -39,3 +39,10 @@ class BrelReference(IResource):
 
     def get_content(self) -> dict:
         return self.__content
+
+    def convert_to_dict(self) -> dict:
+        return {
+            "role": self.get_role(),
+            "label": self.get_label(),
+            "content": self.get_content(),
+        }

@@ -10,7 +10,7 @@ def assert_list_of_type(lst, type_):
 
 
 def test_filing_getters():
-    filing = brel.Filing.open("tests/end_to_end_tests/ete_filing")
+    filing = brel.Filing.open("tests/end_to_end_tests/ete_filing", mode="xml")
 
     # check get_all_facts(). it should return a list of facts
     facts = filing.get_all_facts()
@@ -107,10 +107,10 @@ def test_filing_open():
         pass
 
     # try to pass all files in the ete folder to the open method
-    ete_files = os.listdir("tests/end_to_end_tests/ete_filing")
-    ete_files = [os.path.join("tests/end_to_end_tests/ete_filing", file) for file in ete_files if file.endswith(".xml")]
+    # ete_files = os.listdir("tests/end_to_end_tests/ete_filing")
+    # ete_files = [os.path.join("tests/end_to_end_tests/ete_filing", file) for file in ete_files if file.endswith(".xml")]
     try:
-        filing = brel.Filing.open(*ete_files)
+        filing = brel.Filing.open(path="tests/end_to_end_tests/ete_filing", mode="xml")
         assert len(filing.get_errors()) == 0, f"Expected no errors, got {filing.get_errors()}"
     except Exception as e:
         assert False, f"Expected no exception, got {e}"
@@ -124,7 +124,7 @@ def test_filing_open():
 
     # open an invalid path
     try:
-        filing = brel.Filing.open("invalid_path")
+        filing = brel.Filing.open("invalid_path", mode="xml")
         assert False, "Expected an exception when opening an invalid path"
     except Exception as e:
         pass

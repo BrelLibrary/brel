@@ -39,13 +39,13 @@ The documentation of the Brel API is available on GitHub Pages [here](https://br
 - [x] XBRL filings in XML format.
 - [x] XBRL filings in XML format as zip files.
 - [ ] XBRL filings in JSON format.
-- [ ] XBRL filings in Inline XBRL format.
+- [X] XBRL filings in Inline XBRL format.
 - [ ] XBRL filings in CSV format.
 - [x] Resolve the Discoverable Taxonomy Set (DTS).
 - [x] DTS caching.
-- [x] Parse XBRL facts as python objects.
-- [x] Parse XBRL networks as python objects.
-- [x] Parse XBRL roles as python objects.
+- [x] Parse XBRL facts as python objects or pandas dataframes.
+- [x] Parse XBRL networks as python objects or pandas dataframes.
+- [x] Parse XBRL roles as python objects or pandas dataframes.
 
 
 ## Installation
@@ -94,7 +94,14 @@ If you do not have a report, you could for example download all the files under 
 ```python
 from brel import Filing
 from brel.utils import pprint
+
+# Open the filing using the XML files in the folder
 filing = Filing.open("path/to/aapl-20220924_htm.xml")
+# or
+filing = Filing.open("path/to/aapl-20220924_htm.xml", mode="xml")
+
+# Open the filing using the Inline XBRL files in the folder
+filing = Filing.open("path/to/aapl-20220924_htm.htm")
 ```
 	 
 ### Facts
@@ -110,6 +117,15 @@ pprint(first_10_facts)
 ```
 
 since `Filing.get_all_facts()` returns a `list[Fact]`, we can iterate over it or use any standard list methods.
+
+We can fetch all facts as a pandas DataFrame as well:
+
+```python
+all_facts_df = filing.generate_fact_table_pandas_df()
+print(all_facts_df["id"])
+```
+
+Since the facts are stored as their primitive components in a Pandas DataFrame, you can use all the standard Pandas functions to manipulate the data.
 
 Assume you want to print all the facts in the filing where the Concept is "us-gaap:Assets".
 
@@ -206,4 +222,4 @@ Note: Network nodes can either point to Report Elements, Resources or Facts. Use
 
 Brel is available with an Apache License 2.0 license.
 
-© 2023-2024 Robin Schmidiger, Ghislain Fourny, Gustavo Alonso
+© 2023-2024 Robin Schmidiger, Ghislain Fourny, Gustavo Alonso, Shrey Mittal

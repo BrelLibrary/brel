@@ -45,3 +45,14 @@ class Hypercube(IReportElement):
         @return str: the name of the hypercube as a string
         """
         return self.__name.__str__()
+
+    def convert_to_dict(self) -> dict:
+        """
+        Convert the hypercube to a dictionary.
+        :returns dict: the hypercube as a dictionary
+        """
+        return {
+            "name": self.__name.get(),
+            "label": self.select_main_label().__str__(),
+            "report_element_type": "hypercube",
+        }

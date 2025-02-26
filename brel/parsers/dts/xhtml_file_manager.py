@@ -1,12 +1,12 @@
 """
-This module contains the XMLSchemaManager class.
-The XMLSchemaManager class is responsible for downloading and caching XBRL taxonomies.
+This module contains the XHTMLSchemaManager class.
+The XHTMLSchemaManager class is responsible for downloading and caching iXBRL taxonomies.
 
 =================
 
-- author: Robin Schmidiger
+- author: Shrey Mittal
 - version: 0.7
-- date: 29 January 2024
+- date: 20 August 2024
 
 =================
 """
@@ -28,9 +28,9 @@ import time
 from brel.parsers.dts import IFileManager
 
 
-class XMLFileManager(IFileManager):
+class XHTMLFileManager(IFileManager):
     """
-    Class for downloading and caching XBRL files in the XML format.
+    Class for downloading and caching XBRL files in the XHTML format.
     """
 
     def __init__(
@@ -66,6 +66,7 @@ class XMLFileManager(IFileManager):
         # populate the cache
         if DEBUG:  # pragma: no cover
             print("Populating DTS cache...")
+
         for filename in filenames:
             self.__load_dts(filename)
 
@@ -85,8 +86,9 @@ class XMLFileManager(IFileManager):
         # taking the whole uri is not a good idea, because it is too long
         # taking only the last part is not a good idea, because it is not guaranteed to be unique
         file_format = uri.split(".")[-1]
-        supported_formats = ["xml", "xsd"]
+        supported_formats = ["xml", "xsd", "htm", "html"]
         if file_format not in supported_formats:
+            print(uri)
             raise ValueError(f"File format {file_format} not supported. Supported formats are {supported_formats}.")
 
         if not uri.startswith("http"):
@@ -196,7 +198,9 @@ class XMLFileManager(IFileManager):
         :param uri: The uri of the schema to download. Can be a url or a local file path.
         :param referencing_schema_url: The url of the schema that is referencing the schema to download.
         """
-
+        #### EDGE CASE####
+        if uri == "http://ubs.com/2023-12-31/BFM8T61CT2L1QCEMIK50-2023-12-31.xsd":
+            uri = "C:\\Users\\shrey\\Productivity\\ETHZ\\BFM8T61CT2L1QCEMIK50-2023-12-31-en\\2023-12-31\\BFM8T61CT2L1QCEMIK50-2023-12-31.xsd"
         is_uri_remote = uri.startswith("http") or referencing_uri.startswith("http")
 
         # if the uri is local and the referencing uri is remote, then build the absolute uri from the two

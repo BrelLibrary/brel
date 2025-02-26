@@ -157,3 +157,18 @@ class INetworkNode(ABC):
         :param child: NetworkNode to be added as a child
         """
         raise NotImplementedError
+
+    def convert_to_dict(self) -> dict:
+        """
+        Converts this node to a dictionary
+        :returns dict: containing the information of this node
+        """
+        return {
+            "points_to": self.points_to(),
+            "arc_role": self.get_arc_role(),
+            "arc_name": self.get_arc_name().get(),
+            "link_role": self.get_link_role(),
+            "link_name": self.get_link_name().get(),
+            "order": self.get_order(),
+            "children": [child.convert_to_dict() for child in self.get_children()],
+        }

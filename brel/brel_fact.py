@@ -175,3 +175,16 @@ class Fact:
         Equivalent to calling `fact.get_context().get_characteristic(aspect)`
         """
         return self.__context.get_characteristic(aspect)
+
+    def convert_to_dict(self) -> dict[str, Any]:
+        """
+        :returns dict[str, Any]: The fact represented as a dictionary. The dictionary has the following keys:
+        - "id": The id of the fact. Returns None if the fact does not have an id.
+        - "value": The value of the fact.
+        - "context": The context of the fact represented as a dictionary.
+        """
+        dict_to_return = self.__context.convert_to_df_row()
+        dict_to_return["id"] = self.__id
+        dict_to_return["value"] = self.__value
+
+        return dict_to_return

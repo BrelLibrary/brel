@@ -45,13 +45,15 @@ Once a filing is loaded, it can be queried for its facts, report elements, netwo
 """
 
 import os
+import pandas as pd
 import zipfile
+from pyspark import sql
 from typing import Callable, TypeGuard, cast
 
 from brel import Component, Fact, QName
 from brel.characteristics import Aspect
 from brel.networks import INetwork
-from brel.parsers import IFilingParser, XMLFilingParser
+from brel.parsers import IFilingParser, XMLFilingParser, XHTMLFilingParser
 from brel.reportelements import (
     Abstract,
     Concept,
@@ -71,7 +73,7 @@ class Filing:
     """
 
     @classmethod
-    def open(cls, path, *args) -> "Filing":
+    def open(cls, path, mode="xml", *args) -> "Filing":
         """
         Opens a #Filing when given a path. The path can point to one of the following:
         - a folder
@@ -85,12 +87,47 @@ class Filing:
         - Depending on the size of the filing, loading can take **a couple of seconds**.
 
         :param path: the path to the filing. This can be a folder, an xml file, or a zip file.
+        :param mode: the mode to use when opening the filing. This can be "xml" or "xhtml".
         :param args: additional xml files to load. These are only used if the path is an xml file.
         :returns Filing: a #Filing object with the filing loaded.
         :raises ValueError: if the path is not a valid path.
         """
-        # check if the path is a folder or a file
 
+        def search_filetypes(mode: str, filename: str) -> bool:
+            """
+            Check if a file is of a correct type given the mode.
+            :param mode: the mode to use when checking the file type. This can be "xml" or "xhtml".
+            :param filename: the name of the file.
+            :return bool: True if the file is of the correct type given the mode, False otherwise.
+            """
+            if mode == "xml":
+                return filename.endswith(".xml")
+            elif mode == "xhtml":
+                return filename.endswith(".xml") or filename.endswith(".htm") or filename.endswith(".html")
+            else:
+                # Make sure that only a supported mode is used
+                raise ValueError("Mode must be 'xml' or 'xhtml'")
+
+        def choose_file_manager(mode: str, files: list[str]) -> IFilingParser:
+            """
+            Return the correct file manager given the mode.
+            :param mode: the mode to use when checking the file type. This can be "xml" or "xhtml".
+            :param files: the list of files.
+            :return IFilingParser: the correct file manager.
+            """
+            if mode == "xml":
+                return XMLFilingParser(files)
+            elif mode == "xhtml":
+                return XHTMLFilingParser(files)
+            else:
+                # Make sure that only a supported mode is used
+                raise ValueError("Mode must be 'xml' or 'xhtml'")
+
+        # Make sure that only a supported mode is used
+        if mode != "xml" and mode != "xhtml":
+            raise ValueError("Mode must be 'xml' or 'xhtml'")
+
+        # check if the path is a folder or a file
         is_uri = path.startswith("http")
         if not is_uri:
             path = os.path.abspath(path)
@@ -106,26 +143,26 @@ class Filing:
                 print(f"Opening folder {path}")
 
             folder_filenames = os.listdir(path)
-            xml_files = list(filter(lambda x: x.endswith("xml"), folder_filenames))
+            files = list(filter(lambda x: search_filetypes(mode, x), folder_filenames))
 
             def prepend_path(filename: str) -> str:
                 return os.path.join(path, filename)
 
-            xml_files = list(map(prepend_path, xml_files))
+            files = list(map(prepend_path, files))
 
-            if len(xml_files) == 0:
+            if len(files) == 0:
                 raise ValueError(
                     f"No xml files found in folder {path}. Please provide a folder with at least one xml file."
                 )
 
-            parser = XMLFilingParser(xml_files)
+            parser = choose_file_manager(mode, files)
             return cls(parser)
-        elif is_file and any(map(lambda x: x.endswith(".xml"), [path, *args])):
+        elif is_file and any(map(lambda x: search_filetypes(mode, x), [path, *args])):
             paths = [path, *args]
             if DEBUG:  # pragma: no cover
                 print(f"Opening file {path}")
-            xml_files = list(filter(lambda x: x.endswith(".xml"), paths))
-            parser = XMLFilingParser(xml_files)
+            files = list(filter(lambda x: search_filetypes(mode, x), paths))
+            parser = choose_file_manager(mode, files)
             return cls(parser)
         elif is_file and path.endswith(".zip"):
             if DEBUG:  # pragma: no cover
@@ -135,13 +172,18 @@ class Filing:
             with zipfile.ZipFile(path, "r") as zip_ref:
                 zip_ref.extractall(dir_path)
                 # get all file paths ending in xml
-                xml_files = list(filter(lambda x: x.endswith("xml"), zip_ref.namelist()))
+                files = list(filter(lambda x: search_filetypes(mode, x), zip_ref.namelist()))
             print(f"Finished extracting...")
 
-            xml_files = list(map(lambda x: os.path.join(dir_path, x), xml_files))
-            return cls.open(*xml_files)
+            files = list(map(lambda x: os.path.join(dir_path, x), files))
+            if len(files) == 0:
+                raise ValueError(
+                    f"No valid files found in zip file {path}. Please provide a zip file with at least one valid file."
+                )
+            else:
+                return cls.open(files[0], mode, *files[1:])
         elif is_uri:
-            if not path.endswith(".xml"):
+            if not search_filetypes(mode, path):
                 raise NotImplementedError("Brel currently only supports XBRL filings in the form of XML files")
 
             if DEBUG:
@@ -149,12 +191,12 @@ class Filing:
             # if the path is a uri, then download the file and place it in a folder
             # the folder is named after the last part of the uri without the extension
 
-            # check if the uri points to an xml file
-            if not path.endswith(".xml"):
+            # check if the uri points to an valid file
+            if not search_filetypes(mode, path):
                 raise ValueError(f"{path} is not a valid path")
 
             # open the file
-            parser = XMLFilingParser([path])
+            parser = choose_file_manager(mode, [path])
             return cls(parser)
 
         else:
@@ -360,3 +402,76 @@ class Filing:
             if component.get_URI() == uri:
                 return component
         return None
+
+    def generate_fact_table_pandas_df(self) -> pd.DataFrame:
+        """
+        Converts the filing to a pandas DataFrame.
+        :return pandas.DataFrame: the filing as a pandas DataFrame.
+        """
+        import pandas as pd
+
+        data = []
+        for fact in self.__facts:
+            d = fact.convert_to_dict()
+            data.append(d)
+
+        df = pd.DataFrame(data)
+        return df
+
+    def generate_fact_table_spark_df(self) -> tuple[sql.DataFrame, sql.SparkSession]:
+        """
+        Converts the filing to a spark DataFrame.
+        :return pyspark.sql.DataFrame: the filing as a spark DataFrame.
+        """
+        spark = sql.SparkSession.builder.getOrCreate()
+        df = self.generate_fact_table_pandas_df()
+        # spark.parallelize()
+        return spark.createDataFrame(df), spark
+
+    def generate_components_as_pandas_df(self) -> pd.DataFrame:
+        """
+        Converts the components to a pandas DataFrame.
+        :return pandas.DataFrame: the components as a pandas DataFrame.
+        """
+        data = []
+        for component in self.__components:
+            d = component.convert_to_dict()
+            data.append(d)
+
+        df = pd.DataFrame(data)
+        return df
+
+    def get_all_labels(self) -> list[dict[str, str]]:
+        """
+        :return list[dict[str, str]]: a list of all labels in the filing.
+        """
+        labels = []
+        for re in self.__reportelems:
+            if isinstance(re, IReportElement):
+                for label in re.get_labels():
+                    labeldict = label.convert_to_dict()
+                    labeldict["report_element"] = re.get_name()
+                    labels.append(labeldict)
+        return labels
+
+    def generate_labels_as_pandas_df(self) -> pd.DataFrame:
+        """
+        Converts the labels to a pandas DataFrame.
+        :return pandas.DataFrame: the labels as a pandas DataFrame.
+        """
+        data = self.get_all_labels()
+        df = pd.DataFrame(data)
+        return df
+
+    def generate_report_elements_as_pandas_df(self) -> pd.DataFrame:
+        """
+        Converts the report elements to a pandas DataFrame.
+        :return pandas.DataFrame: the report elements as a pandas DataFrame.
+        """
+        data = []
+        for re in self.__reportelems:
+            d = re.convert_to_dict()
+            data.append(d)
+
+        df = pd.DataFrame(data)
+        return df

@@ -174,3 +174,13 @@ class Context:
 
         # TODO: dont use the _id, compare the aspects instead
         return self._get_id() == __value._get_id()
+
+    def convert_to_df_row(self) -> dict:
+        """
+        Convert the context to a dictionary.
+        This is a convenience function.
+        The keys of the dictionary are the aspect names.
+        The values of the dictionary are the characteristic values.
+        :returns dict: The context as a dictionary.
+        """
+        return {aspect.get_name(): self.get_characteristic_as_str(aspect) for aspect in self.__aspects}
