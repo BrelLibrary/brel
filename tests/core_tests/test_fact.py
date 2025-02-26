@@ -2,7 +2,6 @@ import brel
 
 
 def test_qname_getters():
-    # report_uri = "https://www.sec.gov/Archives/edgar/data/320193/000032019323000077/aapl-20230701_htm.xml"
     report_uri = "https://raw.githubusercontent.com/BrelLibrary/testfilesmirror/refs/heads/main/aapl-20230701_htm.xml"
     filing = brel.Filing.open(report_uri)
 

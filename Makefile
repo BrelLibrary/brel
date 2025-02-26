@@ -21,6 +21,10 @@ install:          ## Install the project in dev mode.
 	@echo "Don't forget to run 'make virtualenv' if you got errors."
 	$(ENV_PREFIX)pip install -e .[test]
 
+.PHONY: remove
+remove:           ## Remove the project.
+	$(ENV_PREFIX)pip uninstall -y brel
+
 .PHONY: fmt
 fmt:              ## Format code using black & isort.
 	$(ENV_PREFIX)black -l 120 brel/
@@ -34,9 +38,11 @@ lint:             ## Run pep8, black, mypy linters.
 
 .PHONY: test
 test: lint		 ## Run tests.
+	make install
 	$(ENV_PREFIX)pytest -v --cov-config .coveragerc --cov=brel -l --tb=short --maxfail=1 tests/
 	$(ENV_PREFIX)coverage xml
 	$(ENV_PREFIX)coverage html
+	make remove
 
 .PHONY: watch
 watch:            ## Run tests on every change.

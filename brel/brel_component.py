@@ -48,8 +48,6 @@ pprint(calculation_network)
 """
 
 from typing import cast
-
-import pandas as pd
 from brel import Fact
 from brel.networks import (
     CalculationNetwork,
