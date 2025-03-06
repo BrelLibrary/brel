@@ -15,7 +15,7 @@ To print a fact to the console, use the `pprint` function in the `brel` module.
 ====================
 """
 
-from typing import Any, cast
+from typing import Any, cast, Union
 
 from brel import Context, QName
 from brel.characteristics import (
@@ -38,13 +38,13 @@ class Fact:
 
     """
 
-    def __init__(self, context: Context, value: str, id: str | None) -> None:
+    def __init__(self, context: Context, value: str, id: Union[str, None]) -> None:
         self.__id = id
         self.__context: Context = context
         self.__value: str = value
 
     # first class citizens
-    def _get_id(self) -> str | None:
+    def _get_id(self) -> Union[str, None]:
         """
         :returns str|None: The id of the fact. Returns None if the fact does not have an id.
         """
@@ -130,7 +130,7 @@ class Fact:
         )
         return concept
 
-    def get_unit(self) -> UnitCharacteristic | None:
+    def get_unit(self) -> Union[UnitCharacteristic, None]:
         """
         :returns UnitCharacteristic|None: The unit characteristic of the facts context. Returns None if the fact does not have a unit.
         Equivalent to calling `fact.get_context().get_unit()`
@@ -138,7 +138,7 @@ class Fact:
         unit: UnitCharacteristic = cast(UnitCharacteristic, self.__context.get_characteristic(Aspect.UNIT))
         return unit
 
-    def get_period(self) -> PeriodCharacteristic | None:
+    def get_period(self) -> Union[PeriodCharacteristic, None]:
         """
         :returns PeriodCharacteristic|None: The period characteristic of the facts context. Returns None if the fact does not have a period.
         Equivalent to calling `fact.get_context().get_period()`
@@ -149,7 +149,7 @@ class Fact:
         )
         return period
 
-    def get_entity(self) -> EntityCharacteristic | None:
+    def get_entity(self) -> Union[EntityCharacteristic, None]:
         """
         :returns EntityCharacteristic|None: The entity characteristic of the facts context. Returns None if the fact does not have an entity.
         Equivalent to calling `fact.get_context().get_entity()`
@@ -167,7 +167,7 @@ class Fact:
         """
         return self.__context.get_aspects()
 
-    def get_characteristic(self, aspect: Aspect) -> ICharacteristic | None:
+    def get_characteristic(self, aspect: Aspect) -> Union[ICharacteristic, None]:
         """
         Given an aspect, get the associated characteristic of the fact.
         :param aspect: The aspect for which the characteristic should be returned.

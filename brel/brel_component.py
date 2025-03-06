@@ -47,7 +47,7 @@ pprint(calculation_network)
 ====================
 """
 
-from typing import cast
+from typing import cast, Union
 from brel import Fact
 from brel.networks import (
     CalculationNetwork,
@@ -93,7 +93,7 @@ class Component:
         if len(presentation_networks) > 1:
             raise ValueError(f"Component '{uri}' has more than one presentation network.")
 
-        self.__presentation_network: PresentationNetwork | None = (
+        self.__presentation_network: Union[PresentationNetwork, None] = (
             None if len(presentation_networks) == 0 else cast(PresentationNetwork, presentation_networks[0])
         )
 
@@ -107,7 +107,7 @@ class Component:
         if len(calculation_networks) > 1:
             raise ValueError(f"Component '{uri}' has more than one calculation network.")
 
-        self.__calculation_network: CalculationNetwork | None = (
+        self.__calculation_network: Union[CalculationNetwork, None] = (
             None if len(calculation_networks) == 0 else cast(CalculationNetwork, calculation_networks[0])
         )
 
@@ -121,7 +121,7 @@ class Component:
         if len(definition_networks) > 1:
             raise ValueError(f"Component '{uri}' has more than one definition network.")
 
-        self.__definition_network: DefinitionNetwork | None = (
+        self.__definition_network: Union[DefinitionNetwork, None] = (
             None if len(definition_networks) == 0 else cast(DefinitionNetwork, definition_networks[0])
         )
 
@@ -138,21 +138,21 @@ class Component:
         """
         return self.__info
 
-    def get_presentation_network(self) -> PresentationNetwork | None:
+    def get_presentation_network(self) -> Union[PresentationNetwork, None]:
         """
         :returns PresentationNetwork: the presentation network of the component. None if the
         component has no presentation network or if the network is empty.
         """
         return self.__presentation_network
 
-    def get_calculation_network(self) -> CalculationNetwork | None:
+    def get_calculation_network(self) -> Union[CalculationNetwork, None]:
         """
         :returns CalculationNetwork: the calculation network of the component. None if the
         component has no calculation network or if the network is empty.
         """
         return self.__calculation_network
 
-    def get_definition_network(self) -> DefinitionNetwork | None:
+    def get_definition_network(self) -> Union[DefinitionNetwork, None]:
         """
         :returns DefinitionNetwork: the definition network of the component. None if the component
         has no definition network or if the network is empty.

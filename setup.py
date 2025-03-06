@@ -33,7 +33,7 @@ def read_requirements(path):
 setup(
     name="brel-xbrl",
     version=read("brel", "VERSION"),
-    python_requires=">=3.10",
+    python_requires=">=3.9",
     description="An XBRL parser for Python",
     url="https://github.com/BrelLibrary/brel/",
     long_description=read("README.md"),

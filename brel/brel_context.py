@@ -31,7 +31,7 @@ Read more about Aspects and Characteristics in
 ====================
 """
 
-from typing import cast
+from typing import cast, Union
 
 from brel.characteristics import (
     Aspect,
@@ -70,7 +70,7 @@ class Context:
         """
         return self.__aspects
 
-    def get_characteristic(self, aspect: Aspect) -> ICharacteristic | None:
+    def get_characteristic(self, aspect: Aspect) -> Union[ICharacteristic, None]:
         """
         Get the value of an aspect.
         :param aspect: The aspect to get the value of.
@@ -111,7 +111,7 @@ class Context:
         """
         return cast(ConceptCharacteristic, self.get_characteristic(Aspect.CONCEPT))
 
-    def get_period(self) -> PeriodCharacteristic | None:
+    def get_period(self) -> Union[PeriodCharacteristic, None]:
         """
         Get the period of the context.
         This function is equivalent to `get_characteristic(Aspect.PERIOD)`.
@@ -119,7 +119,7 @@ class Context:
         """
         return cast(PeriodCharacteristic, self.get_characteristic(Aspect.PERIOD))
 
-    def get_entity(self) -> EntityCharacteristic | None:
+    def get_entity(self) -> Union[EntityCharacteristic, None]:
         """
         Get the entity of the context.
         This function is equivalent to `get_characteristic(Aspect.ENTITY)`.
@@ -127,7 +127,7 @@ class Context:
         """
         return cast(EntityCharacteristic, self.get_characteristic(Aspect.ENTITY))
 
-    def get_unit(self) -> UnitCharacteristic | None:
+    def get_unit(self) -> Union[UnitCharacteristic, None]:
         """
         Get the unit of the context.
         This function is equivalent to `get_characteristic(Aspect.UNIT)`.

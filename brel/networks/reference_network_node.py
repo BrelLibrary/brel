@@ -10,7 +10,7 @@ Contains the class ReferenceNetworkNode, which represents a reference network no
 ====================
 """
 
-from typing import cast
+from typing import cast, Union
 
 from brel import Fact, QName
 from brel.networks import INetworkNode
@@ -26,7 +26,7 @@ class ReferenceNetworkNode(INetworkNode):
 
     def __init__(
         self,
-        points_to: BrelReference | IReportElement,
+        points_to: Union[BrelReference, IReportElement],
         children: list["ReferenceNetworkNode"],
         arc_role: str,
         arc_name: QName,

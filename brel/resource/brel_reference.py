@@ -11,7 +11,7 @@ This module contains the BrelReference class, which represents a reference in XB
 """
 
 from brel.resource import IResource
-
+from typing import Union
 
 class BrelReference(IResource):
     """
@@ -34,7 +34,7 @@ class BrelReference(IResource):
     def get_label(self) -> str:
         return self.__label
 
-    def get_title(self) -> str | None:
+    def get_title(self) -> Union[str, None]:
         return None
 
     def get_content(self) -> dict:

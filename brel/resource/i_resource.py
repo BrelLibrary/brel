@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-
+from typing import Union
 
 class IResource(ABC):
     @abstractmethod
@@ -11,7 +11,7 @@ class IResource(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def get_role(self) -> str | None:  # pragma: no cover
+    def get_role(self) -> Union[str, None]:  # pragma: no cover
         """
         Get the role of the resource
         :returns str|None: the role of the resource as a string
@@ -19,7 +19,7 @@ class IResource(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def get_title(self) -> str | None:  # pragma: no cover
+    def get_title(self) -> Union[str, None]:  # pragma: no cover
         """
         Get the title of the resource
         :returns str|None: the title of the resource as a string
@@ -27,7 +27,7 @@ class IResource(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def get_content(self) -> dict | list | str | None:  # pragma: no cover
+    def get_content(self) -> Union[dict, list, str, None]:  # pragma: no cover
         """
         Get the content of the resource
         :returns dict|list|str|None: the content of the resource.
