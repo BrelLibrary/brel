@@ -20,7 +20,7 @@ import lxml.etree
 from brel import Component, Fact, QName, QNameNSMap
 from brel.networks import INetwork
 from brel.parsers import IFilingParser
-from brel.parsers.dts import XMLFileManager
+from brel.parsers.dts import XMLRepository
 from brel.parsers.utils import get_all_nsmaps
 from brel.parsers.XML import (
     check_duplicate_arcs,
@@ -61,7 +61,7 @@ class XMLFilingParser(IFilingParser):
         # load the DTS
         if DEBUG:  # pragma: no cover
             self.__print("Resolving DTS...")
-        self.__file_manager = XMLFileManager(cache_path, filepaths, self.__parser)
+        self.__file_manager = XMLRepository(cache_path, filepaths, self.__parser)
 
         # normalize and bootstrap the QName nsmap
         if DEBUG:  # pragma: no cover
