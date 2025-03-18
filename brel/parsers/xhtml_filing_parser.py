@@ -48,7 +48,6 @@ class XHTMLFilingParser(IFilingParser):
             raise ValueError("No filepaths provided. Make sure to provide at least one filepath.")
 
         self.__filing_type = "XHTML"
-        self.__parser = etree.HTMLParser()
         self.__print_prefix = f"{'[XHTMLFilingParser]':<20}"
 
         # mapping from xhtml and xml ids to report elements, facts, and components
@@ -62,7 +61,7 @@ class XHTMLFilingParser(IFilingParser):
         # load the DTS
         if DEBUG:  # pragma: no cover
             self.__print("Resolving DTS...")
-        self.__file_manager = XMLRepository(cache_path, filepaths, self.__parser)
+        self.__file_manager = XMLRepository(cache_path, filepaths)
 
         # normalize and bootstrap the QName nsmap
         if DEBUG:  # pragma: no cover

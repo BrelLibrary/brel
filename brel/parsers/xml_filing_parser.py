@@ -20,7 +20,7 @@ import lxml.etree
 from brel import Component, Fact, QName, QNameNSMap
 from brel.networks import INetwork
 from brel.parsers import IFilingParser
-from brel.parsers.dts import XMLRepository
+from brel.parsers.dts.xml_repository import XMLRepository
 from brel.parsers.utils import get_all_nsmaps
 from brel.parsers.XML import (
     check_duplicate_arcs,
@@ -46,7 +46,6 @@ class XMLFilingParser(IFilingParser):
             raise ValueError("No filepaths provided. Make sure to provide at least one filepath.")
 
         self.__filing_type = "XML"
-        self.__parser = lxml.etree.XMLParser()
         self.__print_prefix = f"{'[XMLFilingParser]':<20}"
 
         # mapping from xml ids to report elements, facts, and components
@@ -61,7 +60,7 @@ class XMLFilingParser(IFilingParser):
         # load the DTS
         if DEBUG:  # pragma: no cover
             self.__print("Resolving DTS...")
-        self.__file_manager = XMLRepository(cache_path, filepaths, self.__parser)
+        self.__file_manager = XMLRepository(cache_path, filepaths)
 
         # normalize and bootstrap the QName nsmap
         if DEBUG:  # pragma: no cover

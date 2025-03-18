@@ -20,7 +20,7 @@ import time
 import urllib
 import re
 from brel.parsers.dts.file_utils import uri_to_filename
-from io import IOBase
+from typing import IO
 
 class FileRepository:
     def __init__(
@@ -41,13 +41,13 @@ class FileRepository:
         if clear_cache:
             self.fs.removetree("/")
 
-        self.__session = requests.Session()
-        self.__uris = set()
+        self.__session: requests.Session = requests.Session()
+        self.__uris: set[str] = set()
         
         for file_name in entrypoint_filepaths:
             self.__fetch_and_store_recursive(file_name)
     
-    def get_file(self, uri: str) -> IOBase:
+    def get_file(self, uri: str) -> IO[bytes]:
         """
         Retrieve a file from the file repository.
         This method checks if the given URI is present in the internal URI list.
