@@ -58,7 +58,9 @@ def parse_period_from_xml(
     else:
         start_date_elem = xml_element.find("{*}startDate", namespaces=None)
         if start_date_elem is None:
-            raise ValueError("Could not find startDate element in period characteristic")
+            raise ValueError(
+                "Could not find startDate element in period characteristic"
+            )
         start_date = start_date_elem.text
         if start_date is None:
             raise ValueError("The startDate element has no text")

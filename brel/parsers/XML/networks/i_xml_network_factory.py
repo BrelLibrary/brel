@@ -18,7 +18,9 @@ class IXMLNetworkFactory(ABC):
         return self.__qname_nsmap
 
     @abstractmethod
-    def create_network(self, xml_link: lxml.etree._Element, roots: list[INetworkNode]) -> INetwork:
+    def create_network(
+        self, xml_link: lxml.etree._Element, roots: list[INetworkNode]
+    ) -> INetwork:
         raise NotImplementedError
 
     @abstractmethod
@@ -32,7 +34,9 @@ class IXMLNetworkFactory(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def update_report_elements(self, report_elements: Mapping[QName, IReportElement], network: INetwork):
+    def update_report_elements(
+        self, report_elements: Mapping[QName, IReportElement], network: INetwork
+    ):
         raise NotImplementedError
 
     @abstractmethod

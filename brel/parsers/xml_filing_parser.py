@@ -43,7 +43,9 @@ class XMLFilingParser(IFilingParser):
         filepaths: list[str],
     ) -> None:
         if len(filepaths) < 1:
-            raise ValueError("No filepaths provided. Make sure to provide at least one filepath.")
+            raise ValueError(
+                "No filepaths provided. Make sure to provide at least one filepath."
+            )
 
         self.__filing_type = "XML"
         self.__print_prefix = f"{'[XMLFilingParser]':<20}"
@@ -139,8 +141,14 @@ class XMLFilingParser(IFilingParser):
         """
         errors: list[Exception] = []
 
-        xsd_filenames = [filename for filename in self.__file_manager.get_file_names() if filename.endswith(".xsd")]
-        xsd_etrees = [self.__file_manager.get_file(filename) for filename in xsd_filenames]
+        xsd_filenames = [
+            filename
+            for filename in self.__file_manager.get_file_names()
+            if filename.endswith(".xsd")
+        ]
+        xsd_etrees = [
+            self.__file_manager.get_file(filename) for filename in xsd_filenames
+        ]
 
         (
             report_elements,
@@ -153,7 +161,9 @@ class XMLFilingParser(IFilingParser):
         for id, report_elem in id_to_report_elem.items():
             if id in self.__id_to_any.keys():
                 errors.append(
-                    ValueError(f"the id {id} is not unique. It is used by {self.__id_to_any[id]} and {report_elem}")
+                    ValueError(
+                        f"the id {id} is not unique. It is used by {self.__id_to_any[id]} and {report_elem}"
+                    )
                 )
 
             self.__id_to_any[id] = report_elem
@@ -173,15 +183,25 @@ class XMLFilingParser(IFilingParser):
         errors: list[Exception] = []
 
         all_filenames = self.__file_manager.get_file_names()
-        xml_filenames = list(filter(lambda filename: filename.endswith(".xml"), all_filenames))
-        xml_etrees = [self.__file_manager.get_file(filename) for filename in xml_filenames]
+        xml_filenames = list(
+            filter(lambda filename: filename.endswith(".xml"), all_filenames)
+        )
+        xml_etrees = [
+            self.__file_manager.get_file(filename) for filename in xml_filenames
+        ]
 
-        facts, id_to_fact, facts_errors = parse_facts_xml(xml_etrees, report_elements, self.__nsmap)
+        facts, id_to_fact, facts_errors = parse_facts_xml(
+            xml_etrees, report_elements, self.__nsmap
+        )
         errors.extend(facts_errors)
 
         for id, fact in id_to_fact.items():
             if id in self.__id_to_any.keys():
-                errors.append(ValueError(f"the id {id} is not unique. It is used by {self.__id_to_any[id]} and {fact}"))
+                errors.append(
+                    ValueError(
+                        f"the id {id} is not unique. It is used by {self.__id_to_any[id]} and {fact}"
+                    )
+                )
 
             self.__id_to_any[id] = fact
 

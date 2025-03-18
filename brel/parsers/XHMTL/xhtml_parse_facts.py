@@ -29,7 +29,9 @@ def parse_fact_from_ixbrl(
 
         concept = context.get_concept().get_value()
         if not concept.is_nillable():
-            raise ValueError(f"Fact {fact_id} has no value but the concept {concept.get_name()} is not nillable")
+            raise ValueError(
+                f"Fact {fact_id} has no value but the concept {concept.get_name()} is not nillable"
+            )
 
         if fact_value is None:
             fact_value = ""
@@ -39,16 +41,29 @@ def parse_fact_from_ixbrl(
 
     # check if the fact has the correct context
     if fact_context_ref != context._get_id():
-        raise ValueError(f"Fact {fact_id} has context {fact_context_ref} but should have context {context._get_id()}")
+        raise ValueError(
+            f"Fact {fact_id} has context {fact_context_ref} but should have context {context._get_id()}"
+        )
 
     # check if the fact has the correct unit
     # Note that the unit_ref is only the local name of the unit whilst the context_unit is the full QName.
-    context_unit: UnitCharacteristic = cast(UnitCharacteristic, context.get_characteristic(Aspect.UNIT))
-    if context_unit and fact_unit_ref and context_unit and fact_unit_ref != context_unit.get_value():
-        raise ValueError(f"Fact {fact_id} has unit {fact_unit_ref} but should have unit {context_unit.get_value()}")
+    context_unit: UnitCharacteristic = cast(
+        UnitCharacteristic, context.get_characteristic(Aspect.UNIT)
+    )
+    if (
+        context_unit
+        and fact_unit_ref
+        and context_unit
+        and fact_unit_ref != context_unit.get_value()
+    ):
+        raise ValueError(
+            f"Fact {fact_id} has unit {fact_unit_ref} but should have unit {context_unit.get_value()}"
+        )
 
     # check if the fact has the correct concept
-    context_concept: ConceptCharacteristic = cast(ConceptCharacteristic, context.get_characteristic(Aspect.CONCEPT))
+    context_concept: ConceptCharacteristic = cast(
+        ConceptCharacteristic, context.get_characteristic(Aspect.CONCEPT)
+    )
     if fact_concept_name != context_concept.get_value().get_name().get():
         raise ValueError(
             f"Fact {fact_id} has concept {fact_concept_name} but should have concept {context_concept.get_value().get_name().get()}"
@@ -181,7 +196,9 @@ def parse_facts_xhtml(
             # get the concept name
             concept_name = ix_fact.get("name")
             if concept_name is None:
-                print(f"Concept name error: name is None. Please report this error to team.")
+                print(
+                    f"Concept name error: name is None. Please report this error to team."
+                )
                 errors.append(ValueError(f"Fact with id {fact_id} has no tag"))
                 continue
 
@@ -192,13 +209,25 @@ def parse_facts_xhtml(
                 concept_qname = make_qname(concept_name)
                 concept = get_report_element(concept_qname)
                 if concept is None:
-                    print(f"Concept None error: Concept is None.  Please report this error to team.")
-                    errors.append(ValueError(f"Concept {concept_qname} not found in report elements"))
+                    print(
+                        f"Concept None error: Concept is None.  Please report this error to team."
+                    )
+                    errors.append(
+                        ValueError(
+                            f"Concept {concept_qname} not found in report elements"
+                        )
+                    )
                     continue
 
                 if not isinstance(concept, Concept):
-                    print(f"Concept instance error: not an instance of Concept. Please report this error to team.")
-                    errors.append(ValueError(f"Concept {concept_qname} is not a concept. It is a {type(concept)}"))
+                    print(
+                        f"Concept instance error: not an instance of Concept. Please report this error to team."
+                    )
+                    errors.append(
+                        ValueError(
+                            f"Concept {concept_qname} is not a concept. It is a {type(concept)}"
+                        )
+                    )
                     continue
 
                 concept_characteristic = ConceptCharacteristic(concept)
@@ -210,11 +239,15 @@ def parse_facts_xhtml(
                         f"ConceptCharacteristic error: not an instance of ConceptCharacteristic. Please report this error to team."
                     )
                     errors.append(
-                        ValueError(f"Concept {concept_name} is not a concept. It is a {type(concept_characteristic)}")
+                        ValueError(
+                            f"Concept {concept_name} is not a concept. It is a {type(concept_characteristic)}"
+                        )
                     )
                     continue
 
-                concept_characteristic = cast(ConceptCharacteristic, concept_characteristic)
+                concept_characteristic = cast(
+                    ConceptCharacteristic, concept_characteristic
+                )
                 concept = concept_characteristic.get_value()
 
             # add the concept to the characteristic list
@@ -259,7 +292,11 @@ def parse_facts_xhtml(
                         print(
                             f"UnitCharacteristic error: not an instance of UnitCharacteristic. Please report this error to team."
                         )
-                        errors.append(ValueError(f"Unit {unit_id} is not a unit. It is a {type(unit_characteristic)}"))
+                        errors.append(
+                            ValueError(
+                                f"Unit {unit_id} is not a unit. It is a {type(unit_characteristic)}"
+                            )
+                        )
                         continue
 
                 characteristics.append(unit_characteristic)
@@ -270,8 +307,12 @@ def parse_facts_xhtml(
             # This attribute is mandatory according to the XBRL specification
             context_id = ix_fact.get("contextRef")
             if context_id is None:
-                print(f"Context ID error: contextRef is None. Please report this error to team.")
-                errors.append(ValueError(f"Fact with id {fact_id} has no contextRef attribute"))
+                print(
+                    f"Context ID error: contextRef is None. Please report this error to team."
+                )
+                errors.append(
+                    ValueError(f"Fact with id {fact_id} has no contextRef attribute")
+                )
                 continue
 
             # the context xml element has the tag context and the id is the context_id
@@ -282,8 +323,12 @@ def parse_facts_xhtml(
             )
             xml_context = list(filter(lambda x: x.get("id") == context_id, context))[0]
             if xml_context is None:
-                print(f"Context error: Context not found. Please report this error to team.")
-                errors.append(ValueError(f"Context {context_id} not found in xbrl instance"))
+                print(
+                    f"Context error: Context not found. Please report this error to team."
+                )
+                errors.append(
+                    ValueError(f"Context {context_id} not found in xbrl instance")
+                )
                 continue
 
             # then parse the context

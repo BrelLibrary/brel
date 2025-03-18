@@ -36,7 +36,9 @@ class FootnoteNetworkFactory(IXMLNetworkFactory):
     def __init__(self, qname_nsmap: QNameNSMap) -> None:
         super().__init__(qname_nsmap)
 
-    def create_network(self, xml_link: lxml.etree._Element, roots: list[INetworkNode]) -> INetwork:
+    def create_network(
+        self, xml_link: lxml.etree._Element, roots: list[INetworkNode]
+    ) -> INetwork:
         link_role = get_str(xml_link, self._clark("xlink", "role"))
         link_qname = self._make_qname(xml_link.tag)
 
@@ -75,17 +77,25 @@ class FootnoteNetworkFactory(IXMLNetworkFactory):
             order = float(xml_arc.attrib.get("order") or 1)
             arc_qname = self._make_qname(xml_arc.tag)
         else:
-            raise ValueError(f"referenced element {xml_referenced_element} is not connected to arc {xml_arc}")
+            raise ValueError(
+                f"referenced element {xml_referenced_element} is not connected to arc {xml_arc}"
+            )
 
         link_role = get_str(xml_link, self._clark("xlink", "role"))
         link_name = self._make_qname(xml_link.tag)
 
         if isinstance(points_to, IResource) and not isinstance(points_to, BrelFootnote):
-            raise ValueError(f"points_to must be of type BreelFootnote, not {type(points_to)}")
+            raise ValueError(
+                f"points_to must be of type BreelFootnote, not {type(points_to)}"
+            )
 
-        return FootnoteNetworkNode(points_to, [], arc_role, arc_qname, link_role, link_name, order)
+        return FootnoteNetworkNode(
+            points_to, [], arc_role, arc_qname, link_role, link_name, order
+        )
 
-    def update_report_elements(self, report_elements: Mapping[QName, IReportElement], network: INetwork):
+    def update_report_elements(
+        self, report_elements: Mapping[QName, IReportElement], network: INetwork
+    ):
         pass
 
     def is_physical(self) -> bool:

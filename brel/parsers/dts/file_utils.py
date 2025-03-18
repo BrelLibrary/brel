@@ -1,5 +1,6 @@
 import re
 
+
 def uri_to_filename(uri: str) -> str:
     """
     Converts a uri to a filename.
@@ -8,7 +9,7 @@ def uri_to_filename(uri: str) -> str:
     :returns str: the filename
     """
 
-    file_format_match = re.search(r'\.([a-zA-Z0-9]+)$', uri)
+    file_format_match = re.search(r"\.([a-zA-Z0-9]+)$", uri)
     file_format = "." + file_format_match.group(1) if file_format_match else ""
 
     if not uri.startswith("http"):

@@ -89,7 +89,9 @@ def open_edgar(cik: str, filing_type: str, date: str | None = None) -> Filing:
         try:
             datetime.datetime.strptime(date, "%Y-%m-%d")
         except ValueError:
-            raise ValueError("Incorrect date format. The date has to be in the format YYYY-MM-DD")
+            raise ValueError(
+                "Incorrect date format. The date has to be in the format YYYY-MM-DD"
+            )
 
     # check that the cik is a str that has at most 10 characters
     if not isinstance(cik, str) or len(cik) > 10:
@@ -109,7 +111,9 @@ def open_edgar(cik: str, filing_type: str, date: str | None = None) -> Filing:
         # if the file is older than 1 day, download it again
         if (
             datetime.datetime.now()
-            - datetime.datetime.fromtimestamp(os.path.getmtime(os.path.join(edgar_cache_dir, f"{cik.zfill(10)}.json")))
+            - datetime.datetime.fromtimestamp(
+                os.path.getmtime(os.path.join(edgar_cache_dir, f"{cik.zfill(10)}.json"))
+            )
         ).days > 1:
             if not __download_metadata_for_cik(cik):
                 raise ValueError(f"Failed to download metadata for CIK {cik}")
@@ -128,19 +132,21 @@ def open_edgar(cik: str, filing_type: str, date: str | None = None) -> Filing:
 
         right_is = [i for i in range(len(recent["form"])) if report_fits(i)]
 
-        right_is.sort(key=lambda i: int(recent["reportDate"][i].replace("-", "")), reverse=True)
+        right_is.sort(
+            key=lambda i: int(recent["reportDate"][i].replace("-", "")), reverse=True
+        )
 
         right_i = right_is[0] if len(right_is) > 0 else None
 
         if right_i is None:
-            raise ValueError(f"No filing found for CIK {cik}, filing type {filing_type}, and date {date}")
+            raise ValueError(
+                f"No filing found for CIK {cik}, filing type {filing_type}, and date {date}"
+            )
 
         accession_number = recent["accessionNumber"][right_i]
         primary_doc = recent["primaryDocument"][right_i]
 
-        uri = (
-            f"https://www.sec.gov/Archives/edgar/data/{cik.zfill(10)}/{accession_number.replace('-', '')}/{primary_doc}"
-        )
+        uri = f"https://www.sec.gov/Archives/edgar/data/{cik.zfill(10)}/{accession_number.replace('-', '')}/{primary_doc}"
 
         if uri.endswith(".htm"):
             uri_dir = uri[: uri.rfind("/")]
@@ -150,12 +156,14 @@ def open_edgar(cik: str, filing_type: str, date: str | None = None) -> Filing:
                 headers={
                     "User-Agent": "Robin Schmidiger rschmidiger64@gmail.com",
                     "Accept-Encoding": "gzip",
-                    "Host": "www.sec.gov"
+                    "Host": "www.sec.gov",
                 },
             )
             if ping.status_code != 200:
                 raise ValueError(
                     f"Failed to download filing from {uri}. Note that the Brel does not support .htm filings and that it cannot scrape EDGAR's website. We suggest that you search for the .xml filing on {uri_dir} and call brel.Filing.open(uri) with the correct URI."
                 )
-        print(f"Opening {filing_type} filing of {metadata['name']} ({cik}) on {recent['reportDate'][right_i]}")
+        print(
+            f"Opening {filing_type} filing of {metadata['name']} ({cik}) on {recent['reportDate'][right_i]}"
+        )
         return Filing.open(uri)

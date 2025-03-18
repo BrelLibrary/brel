@@ -16,7 +16,9 @@ def get_clark(prefix: str, local_name: str, prefix_to_url: Mapping[str, str]) ->
     return f"{{{url}}}{local_name}"
 
 
-def get_str(element: lxml.etree._Element, attribute: str, default: str | None = None) -> str:
+def get_str(
+    element: lxml.etree._Element, attribute: str, default: str | None = None
+) -> str:
     """
     Helper function for getting a string attribute from an element. Always returns a string.
     @param element: lxml.etree._Element to get the attribute from
@@ -48,7 +50,11 @@ def get_all_nsmaps(
         for xml_element in lxml_etree.iter():
             nsmap = xml_element.nsmap
             nsmap.update(
-                {key.replace("xmlns:", ""): value for key, value in xml_element.attrib.items() if key.startswith("xmlns:")}
+                {
+                    key.replace("xmlns:", ""): value
+                    for key, value in xml_element.attrib.items()
+                    if key.startswith("xmlns:")
+                }
             )
 
             nsmap.pop(None, None)
@@ -58,8 +64,8 @@ def get_all_nsmaps(
 
     return nsmaps
 
-def list_by_local_name(
 
+def list_by_local_name(
     lxml_etree: lxml.etree._ElementTree,
     local_name: str,
     direct_children_only: bool = False,
@@ -67,7 +73,7 @@ def list_by_local_name(
 ) -> list[lxml.etree._Element]:
     """
     Given an lxml etree object and a local name, return the first element with that local name."
-    
+
     :param lxml_etree: The lxml etree object to search within.
     :param local_name: The local name of the elements to find.
     :param direct_children_only: If True, only search direct children. Defaults to False.
@@ -79,7 +85,7 @@ def list_by_local_name(
         xpath_expression = f"./*[tag-like('{local_name}')]"
     else:
         xpath_expression = f".//*[tag-like('{local_name}')]"
-    
+
     elements = lxml_etree.xpath(xpath_expression)
     if not elements:
         if default is not None:
@@ -87,6 +93,7 @@ def list_by_local_name(
 
         raise ValueError(f"Could not find element with local name {local_name}")
     return elements
+
 
 def get_by_local_name(
     lxml_etree: lxml.etree._ElementTree,

@@ -19,7 +19,9 @@ def test_context_getters():
     # for all aspects, check if the get_characteristic(...).get_aspect() is the aspect
     for aspect in aspects:
         characteristic = cash_fact.get_characteristic(aspect)
-        assert characteristic.get_aspect() == aspect, f"Expected {aspect}, got {characteristic.get_aspect()}"
+        assert (
+            characteristic.get_aspect() == aspect
+        ), f"Expected {aspect}, got {characteristic.get_aspect()}"
 
     context = cash_fact.get_context()
 
@@ -33,26 +35,40 @@ def test_context_getters():
 
     # check if get_concept().get_aspect() is Aspect.CONCEPT
     concept = context.get_concept()
-    assert concept.get_aspect() == Aspect.CONCEPT, f"Expected Aspect.CONCEPT, got {concept.get_aspect()}"
+    assert (
+        concept.get_aspect() == Aspect.CONCEPT
+    ), f"Expected Aspect.CONCEPT, got {concept.get_aspect()}"
     # check if the concepts string is "ete:cash"
-    assert str(concept.get_value()) == "ete:cash", f"Expected 'ete:cash', got {concept.get_value()}"
+    assert (
+        str(concept.get_value()) == "ete:cash"
+    ), f"Expected 'ete:cash', got {concept.get_value()}"
 
     # check if get_period().get_aspect() is Aspect.PERIOD
     period = context.get_period()
     # check if the period string contains 2018 and 2024
-    assert period.get_aspect() == Aspect.PERIOD, f"Expected Aspect.PERIOD, got {period.get_aspect()}"
-    assert "2018" in str(period.get_value()), f"Expected '2018', got {period.get_value()}"
-    assert "2024" in str(period.get_value()), f"Expected '2024', got {period.get_value()}"
+    assert (
+        period.get_aspect() == Aspect.PERIOD
+    ), f"Expected Aspect.PERIOD, got {period.get_aspect()}"
+    assert "2018" in str(
+        period.get_value()
+    ), f"Expected '2018', got {period.get_value()}"
+    assert "2024" in str(
+        period.get_value()
+    ), f"Expected '2024', got {period.get_value()}"
 
     # check for the entity
     entity = context.get_entity()
-    assert entity.get_aspect() == Aspect.ENTITY, f"Expected Aspect.ENTITY, got {entity.get_aspect()}"
+    assert (
+        entity.get_aspect() == Aspect.ENTITY
+    ), f"Expected Aspect.ENTITY, got {entity.get_aspect()}"
     # check if the entity string contains 1234
     assert "1234" in entity.get_value(), f"Expected '1234', got {entity.get_value()}"
 
     # check if the unit is USD
     unit = context.get_unit()
-    assert unit.get_aspect() == Aspect.UNIT, f"Expected Aspect.UNIT, got {unit.get_aspect()}"
+    assert (
+        unit.get_aspect() == Aspect.UNIT
+    ), f"Expected Aspect.UNIT, got {unit.get_aspect()}"
     assert "USD" in unit.get_value(), f"Expected 'USD', got {unit.get_value()}"
 
     # check if _get_id() returns 'c-001'

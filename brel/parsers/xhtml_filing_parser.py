@@ -45,7 +45,9 @@ class XHTMLFilingParser(IFilingParser):
         filepaths: list[str],
     ) -> None:
         if len(filepaths) < 1:
-            raise ValueError("No filepaths provided. Make sure to provide at least one filepath.")
+            raise ValueError(
+                "No filepaths provided. Make sure to provide at least one filepath."
+            )
 
         self.__filing_type = "XHTML"
         self.__print_prefix = f"{'[XHTMLFilingParser]':<20}"
@@ -141,8 +143,14 @@ class XHTMLFilingParser(IFilingParser):
         """
         errors: list[Exception] = []
 
-        xsd_filenames = [filename for filename in self.__file_manager.get_file_names() if filename.endswith(".xsd")]
-        xsd_etrees = [self.__file_manager.get_file(filename) for filename in xsd_filenames]
+        xsd_filenames = [
+            filename
+            for filename in self.__file_manager.get_file_names()
+            if filename.endswith(".xsd")
+        ]
+        xsd_etrees = [
+            self.__file_manager.get_file(filename) for filename in xsd_filenames
+        ]
 
         (
             report_elements,
@@ -155,7 +163,9 @@ class XHTMLFilingParser(IFilingParser):
         for id, report_elem in id_to_report_elem.items():
             if id in self.__id_to_any.keys():
                 errors.append(
-                    ValueError(f"the id {id} is not unique. It is used by {self.__id_to_any[id]} and {report_elem}")
+                    ValueError(
+                        f"the id {id} is not unique. It is used by {self.__id_to_any[id]} and {report_elem}"
+                    )
                 )
 
             self.__id_to_any[id] = report_elem
@@ -180,14 +190,22 @@ class XHTMLFilingParser(IFilingParser):
                 all_filenames,
             )
         )
-        xml_etrees = [self.__file_manager.get_file(filename) for filename in xhtml_filenames]
+        xml_etrees = [
+            self.__file_manager.get_file(filename) for filename in xhtml_filenames
+        ]
 
-        facts, id_to_fact, facts_errors = parse_facts_xhtml(xml_etrees, report_elements, self.__nsmap)
+        facts, id_to_fact, facts_errors = parse_facts_xhtml(
+            xml_etrees, report_elements, self.__nsmap
+        )
         errors.extend(facts_errors)
 
         for id, fact in id_to_fact.items():
             if id in self.__id_to_any.keys():
-                errors.append(ValueError(f"the id {id} is not unique. It is used by {self.__id_to_any[id]} and {fact}"))
+                errors.append(
+                    ValueError(
+                        f"the id {id} is not unique. It is used by {self.__id_to_any[id]} and {fact}"
+                    )
+                )
 
             self.__id_to_any[id] = fact
 

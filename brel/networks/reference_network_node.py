@@ -63,7 +63,9 @@ class ReferenceNetworkNode(INetworkNode):
         elif isinstance(self.__points_to, IResource):
             return "resource"
         else:
-            raise ValueError("ReferenceNetworkNodes do not point to report elements or resources")
+            raise ValueError(
+                "ReferenceNetworkNodes do not point to report elements or resources"
+            )
 
     def get_children(self) -> list[INetworkNode]:
         return cast(list[INetworkNode], self.__children)

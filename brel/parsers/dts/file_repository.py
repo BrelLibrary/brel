@@ -22,6 +22,7 @@ import re
 from brel.parsers.dts.file_utils import uri_to_filename
 from typing import IO
 
+
 class FileRepository:
     def __init__(
         self,
@@ -43,10 +44,10 @@ class FileRepository:
 
         self.__session: requests.Session = requests.Session()
         self.__uris: set[str] = set()
-        
+
         for file_name in entrypoint_filepaths:
             self.__fetch_and_store_recursive(file_name)
-    
+
     def get_file(self, uri: str) -> IO[bytes]:
         """
         Retrieve a file from the file repository.
@@ -58,13 +59,13 @@ class FileRepository:
         Returns:
             file object: The file object opened in read-binary mode.
         """
-        
+
         if uri not in self.__uris:
             self.__fetch_and_store_recursive(uri)
 
         file_name = uri_to_filename(uri)
         return self.fs.open(file_name, "rb")
-    
+
     def get_uris(self) -> set[str]:
         """
         Retrieve the set of all reachable URIs in the repository.
@@ -72,7 +73,7 @@ class FileRepository:
         Returns:
             set[str]: A set containing URI strings.
         """
-        
+
         return self.__uris
 
     def __fetch_and_store_recursive(
@@ -99,12 +100,14 @@ class FileRepository:
                 fs.copy.copy_file(fs.osfs.OSFS("/"), local_path, self.fs, file_name)
 
             except FileNotFoundError:
-                raise fs.errors.ResourceNotFound(f"Local file '{local_path}' not found.")
+                raise fs.errors.ResourceNotFound(
+                    f"Local file '{local_path}' not found."
+                )
 
         with self.fs.open(file_name, "rb") as f:
             for reference_uri in self.__extract_references(f.read()):
                 self.__fetch_and_store_recursive(reference_uri, referencing_uri=uri)
-    
+
     def __fetch_and_store(self, uri: str, file_name: str) -> None:
         try:
             headers = {}
@@ -113,19 +116,20 @@ class FileRepository:
                 headers = {
                     "User-Agent": "Robin Schmidiger rschmidiger64@gmail.com",
                     "Accept-Encoding": "gzip",
-                    "Host": "www.sec.gov"
+                    "Host": "www.sec.gov",
                 }
                 time.sleep(0.1)
 
-            response = self.__session.get(uri, 
-                headers=headers,
-                timeout=10
-            )
+            response = self.__session.get(uri, headers=headers, timeout=10)
         except ConnectionError:
-            raise Exception(f"Could not connect to {uri}. Are you connected to the internet?")
+            raise Exception(
+                f"Could not connect to {uri}. Are you connected to the internet?"
+            )
 
         if response.status_code != 200:
-            raise Exception(f"Failed to download {uri}. The server responded with status code {response.status_code}")
+            raise Exception(
+                f"Failed to download {uri}. The server responded with status code {response.status_code}"
+            )
         xsd_content = response.content
 
         with self.fs.open(file_name, "wb") as f:
@@ -134,7 +138,7 @@ class FileRepository:
     def __extract_references(self, file_binary_content: bytes) -> set[str]:
         reference_uris: set[str] = set()
         combined_pattern = re.compile(r':href="([^"]+)"|schemaLocation="([^"]+)"')
-        xsd_content_str = file_binary_content.decode('utf-8', errors='ignore')
+        xsd_content_str = file_binary_content.decode("utf-8", errors="ignore")
         for match in combined_pattern.finditer(xsd_content_str):
             href = match.group(1)
 

@@ -18,6 +18,7 @@ from brel.parsers.dts.file_repository import FileRepository
 from brel.parsers.dts.i_file_manager import IFileManager
 from brel.parsers.utils.lxml_xpath_utils import add_xpath_functions
 
+
 class XMLRepository(IFileManager):
     def __init__(
         self,
@@ -28,13 +29,13 @@ class XMLRepository(IFileManager):
         self.__xml_etree_cache: dict[str, lxml.etree._ElementTree] = {}
         self.__parsers = {
             "xml": lambda file: lxml.etree.parse(file),
-            "html": lambda file: lxml.html.html5parser.parse(file)
+            "html": lambda file: lxml.html.html5parser.parse(file),
         }
         add_xpath_functions()
-    
+
     def get_format_type(self) -> type:
         return lxml.etree._ElementTree
-    
+
     def get_file(self, uri: str) -> lxml.etree:
         """
         Retrieves an XML file and parses it into an lxml.etree object.
@@ -57,9 +58,9 @@ class XMLRepository(IFileManager):
 
                 xml_etree = parser(file)
                 self.__xml_etree_cache[uri] = xml_etree
-                
+
                 return xml_etree
-    
+
     def get_all_files(self) -> list[lxml.etree._ElementTree]:
         """
         Retrieve all XML files from the file repository.
@@ -68,8 +69,7 @@ class XMLRepository(IFileManager):
             list[lxml.etree._ElementTree]: A list of parsed XML files as lxml ElementTree objects.
         """
         return [self.get_file(uri) for uri in self.__file_repository.get_uris()]
-        
-    
+
     def get_file_names(self) -> list[str]:
         """
         Retrieves a list of file names from the file repository.

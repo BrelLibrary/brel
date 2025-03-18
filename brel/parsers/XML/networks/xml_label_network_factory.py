@@ -34,7 +34,9 @@ class LabelNetworkFactory(IXMLNetworkFactory):
     def __init__(self, qname_nsmap: QNameNSMap) -> None:
         super().__init__(qname_nsmap)
 
-    def create_network(self, xml_link_element: lxml.etree._Element, roots: list[INetworkNode]) -> INetwork:
+    def create_network(
+        self, xml_link_element: lxml.etree._Element, roots: list[INetworkNode]
+    ) -> INetwork:
         link_role = get_str(xml_link_element, self._clark("xlink", "role"))
         link_qname = self._make_qname(xml_link_element.tag)
 
@@ -69,13 +71,19 @@ class LabelNetworkFactory(IXMLNetworkFactory):
             arc_role = get_str(xml_arc, self._clark("xlink", "arcrole"))
             arc_qname = self._make_qname(xml_arc.tag)
         else:
-            raise ValueError(f"referenced element {xml_referenced_element} is not connected to arc {xml_arc}")
+            raise ValueError(
+                f"referenced element {xml_referenced_element} is not connected to arc {xml_arc}"
+            )
 
         link_role = get_str(xml_link, self._clark("xlink", "role"))
         link_name = self._make_qname(xml_link.tag)
 
-        if not isinstance(points_to, BrelLabel) and not isinstance(points_to, IReportElement):
-            raise TypeError(f"'points_to' must be of type BrelLabel or IReportElement, not {type(points_to)}")
+        if not isinstance(points_to, BrelLabel) and not isinstance(
+            points_to, IReportElement
+        ):
+            raise TypeError(
+                f"'points_to' must be of type BrelLabel or IReportElement, not {type(points_to)}"
+            )
 
         return LabelNetworkNode(points_to, arc_role, arc_qname, link_role, link_name)
 
@@ -107,7 +115,9 @@ class LabelNetworkFactory(IXMLNetworkFactory):
 
                 label = label_node.get_resource()
                 if not isinstance(label, BrelLabel):
-                    raise TypeError(f"label {label} is not a BrelLabel. It is of type {type(label)}")
+                    raise TypeError(
+                        f"label {label} is not a BrelLabel. It is of type {type(label)}"
+                    )
 
                 report_element._add_label(label)
 
