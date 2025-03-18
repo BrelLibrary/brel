@@ -18,17 +18,11 @@ def test_explicit_dimension():
 
     assert characteristic.get_aspect() == aspect, "Expected aspect to be aspect"
     assert characteristic.get_value() == member, "Expected value to be member"
-    assert (
-        characteristic.get_dimension() == dimension
-    ), "Expected dimension to be dimension"
+    assert characteristic.get_dimension() == dimension, "Expected dimension to be dimension"
 
-    assert str(member) in str(
-        characteristic
-    ), "Expected member to be in characteristic string"
+    assert str(member) in str(characteristic), "Expected member to be in characteristic string"
 
-    assert (
-        characteristic == characteristic
-    ), "Expected characteristic to be equal to itself"
+    assert characteristic == characteristic, "Expected characteristic to be equal to itself"
     assert characteristic != "foo", "Expected characteristic to not be equal to 'foo'"
 
     member_name2 = QName("http://foo.com", "foo", "mem2", nsmap)
@@ -36,6 +30,4 @@ def test_explicit_dimension():
 
     characteristic2 = ExplicitDimensionCharacteristic(dimension, member2, aspect)
 
-    assert (
-        characteristic != characteristic2
-    ), "Expected characteristic to not be equal to characteristic2"
+    assert characteristic != characteristic2, "Expected characteristic to not be equal to characteristic2"
