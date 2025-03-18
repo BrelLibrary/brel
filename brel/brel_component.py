@@ -190,8 +190,7 @@ class Component:
         :param facts: the facts of the filing
         :returns bool: True if and only if the component is aggregation consistent against the given facts
         """
-        # TODO: implement
-        raise NotImplemented
+        raise NotImplementedError()
 
     def get_networks(self) -> list[INetwork]:
         """

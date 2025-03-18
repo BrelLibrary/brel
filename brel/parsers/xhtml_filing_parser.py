@@ -30,8 +30,7 @@ from brel.parsers.XML.xml_sanity_checks import (
     check_duplicate_arcs,
     check_duplicate_rolerefs,
 )
-from brel.parsers.dts.xhtml_file_manager import XHTMLFileManager
-from brel.parsers.dts.xml_file_manager import XMLFileManager
+from brel.parsers.dts.xml_repository import XMLRepository
 from brel.parsers.i_filing_parser import IFilingParser
 from brel.parsers.utils.lxml_utils import get_all_nsmaps
 from brel.qname import QName, QNameNSMap
@@ -49,7 +48,6 @@ class XHTMLFilingParser(IFilingParser):
             raise ValueError("No filepaths provided. Make sure to provide at least one filepath.")
 
         self.__filing_type = "XHTML"
-        self.__parser = etree.XMLParser()
         self.__print_prefix = f"{'[XHTMLFilingParser]':<20}"
 
         # mapping from xhtml and xml ids to report elements, facts, and components
@@ -63,7 +61,7 @@ class XHTMLFilingParser(IFilingParser):
         # load the DTS
         if DEBUG:  # pragma: no cover
             self.__print("Resolving DTS...")
-        self.__file_manager = XHTMLFileManager(cache_path, filepaths, self.__parser)
+        self.__file_manager = XMLRepository(cache_path, filepaths)
 
         # normalize and bootstrap the QName nsmap
         if DEBUG:  # pragma: no cover

@@ -17,7 +17,7 @@ from brel import QName, QNameNSMap
 from brel.parsers.utils import get_str
 from brel.reportelements import Dimension, IReportElement
 
-from ..dts import IFileManager
+from brel.parsers.dts.i_file_manager import IFileManager
 from .xml_report_element_factory import XMLReportElementFactory
 
 

@@ -16,6 +16,10 @@ from typing import Any
 
 class IFileManager(ABC):
     @abstractmethod
+    def get_format_type(self) -> type:
+        raise NotImplementedError
+
+    @abstractmethod
     def get_file(self, schema_uri: str) -> Any:
         raise NotImplementedError
 
