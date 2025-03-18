@@ -79,9 +79,7 @@ def get_default_prefix_from_uri(uri: str) -> str | None:
 
     if longest_match_url != "":
         if DEBUG:  # pragma: no cover
-            print(
-                f"Found default prefix {longest_match_prefix} for uri {longest_match_url}"
-            )
+            print(f"Found default prefix {longest_match_prefix} for uri {longest_match_url}")
         return longest_match_prefix
     else:
         return None
@@ -140,9 +138,7 @@ def are_urls_versions(urls: list[str]) -> bool:
 
         if url1 != url2:
             if DEBUG:  # pragma: no cover
-                print(
-                    f"Found incompatible urls {url1} and {url2} at positions {i} and {i+1}."
-                )
+                print(f"Found incompatible urls {url1} and {url2} at positions {i} and {i+1}.")
             return False
 
     if DEBUG:  # pragma: no cover
@@ -206,9 +202,7 @@ def get_best_prefix(prefixes: list[str]) -> str:
     return best_prefix
 
 
-def __component_to_nsmap(
-    urls: list[str], prefixes: list[str]
-) -> tuple[str, str, list[str]]:
+def __component_to_nsmap(urls: list[str], prefixes: list[str]) -> tuple[str, str, list[str]]:
     """
     given a list of urls and prefixes, picks a main prefix and a main url.
     Also generates a dictionary of redirects from the non-main prefixes to the main prefix.
@@ -218,14 +212,10 @@ def __component_to_nsmap(
     """
 
     if DEBUG:  # pragma: no cover
-        print(
-            f"Extracting namespace mappings from component with urls {urls} and prefixes {prefixes}."
-        )
+        print(f"Extracting namespace mappings from component with urls {urls} and prefixes {prefixes}.")
 
     if len(urls) < 1 or len(prefixes) < 1:
-        raise ValueError(
-            f"The component is too simple. It does not contain enough urls or prefixes: {urls+prefixes}"
-        )
+        raise ValueError(f"The component is too simple. It does not contain enough urls or prefixes: {urls+prefixes}")
 
     # get the main url
     if not are_urls_versions(urls):
@@ -242,9 +232,7 @@ def __component_to_nsmap(
         main_prefix = default_prefix
     elif default_prefix is not None and default_prefix not in prefixes:
         main_prefix = default_prefix
-        print(
-            f"Warning: the default prefix {default_prefix} is not in the prefixes list {prefixes}"
-        )
+        print(f"Warning: the default prefix {default_prefix} is not in the prefixes list {prefixes}")
     else:
         main_prefix = get_best_prefix(prefixes)
 
@@ -255,16 +243,12 @@ def __component_to_nsmap(
             redirects.append(prefix)
 
     if DEBUG:  # pragma: no cover
-        print(
-            f"Extracted namespace mappings: {main_prefix} -> {main_url} with redirects {redirects}"
-        )
+        print(f"Extracted namespace mappings: {main_prefix} -> {main_url} with redirects {redirects}")
 
     return main_prefix, main_url, redirects
 
 
-def normalize_nsmap(
-    namespace_mappings: list[dict[str, str]]
-) -> dict[str, dict[str, str]]:
+def normalize_nsmap(namespace_mappings: list[dict[str, str]]) -> dict[str, dict[str, str]]:
     """
     Given a list of namespace mappings, normalize the namespace mappings and returns the normalized namespace mapping and the redirects.
     A mapping is considered normalized if there is a 1:1 mapping between prefixes and urls.
@@ -276,9 +260,7 @@ def normalize_nsmap(
     :returns dict: A dictionary containing the normalized namespace mapping and the redirects.
     """
     # compute all components by grouping the urls by their unversioned uri
-    components: dict[str, tuple[set[str], set[str]]] = defaultdict(
-        lambda: (set(), set())
-    )
+    components: dict[str, tuple[set[str], set[str]]] = defaultdict(lambda: (set(), set()))
     for namespace_mapping in namespace_mappings:
         for prefix, uri in namespace_mapping.items():
             if prefix is not None:

@@ -100,9 +100,7 @@ class FileRepository:
                 fs.copy.copy_file(fs.osfs.OSFS("/"), local_path, self.fs, file_name)
 
             except FileNotFoundError:
-                raise fs.errors.ResourceNotFound(
-                    f"Local file '{local_path}' not found."
-                )
+                raise fs.errors.ResourceNotFound(f"Local file '{local_path}' not found.")
 
         with self.fs.open(file_name, "rb") as f:
             for reference_uri in self.__extract_references(f.read()):
@@ -122,14 +120,10 @@ class FileRepository:
 
             response = self.__session.get(uri, headers=headers, timeout=10)
         except ConnectionError:
-            raise Exception(
-                f"Could not connect to {uri}. Are you connected to the internet?"
-            )
+            raise Exception(f"Could not connect to {uri}. Are you connected to the internet?")
 
         if response.status_code != 200:
-            raise Exception(
-                f"Failed to download {uri}. The server responded with status code {response.status_code}"
-            )
+            raise Exception(f"Failed to download {uri}. The server responded with status code {response.status_code}")
         xsd_content = response.content
 
         with self.fs.open(file_name, "wb") as f:

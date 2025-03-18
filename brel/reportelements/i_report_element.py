@@ -85,9 +85,7 @@ class IReportElement(ABC):
             # raise ValueError("No labels available - cannot select main label!")
             return BrelLabel("NO_LABEL", "", "")
         elif self.has_label_with_language("en"):
-            return next(
-                (label for label in labels if label.get_language() == "en"), labels[0]
-            )
+            return next((label for label in labels if label.get_language() == "en"), labels[0])
         elif self.has_label_with_language("en-US"):
             return next(
                 (label for label in labels if label.get_language() == "en-US"),
@@ -99,9 +97,7 @@ class IReportElement(ABC):
                 labels[0],
             )
         elif self.has_label_with_language("EN"):
-            return next(
-                (label for label in labels if label.get_language() == "EN"), labels[0]
-            )
+            return next((label for label in labels if label.get_language() == "EN"), labels[0])
         elif self.has_label_with_language("EN-US"):
             return next(
                 (label for label in labels if label.get_language() == "EN-US"),

@@ -57,9 +57,7 @@ def parse_report_elements_xml(
                 continue
 
             try:
-                reportelem_qname = QName.from_string(
-                    f"{{{reportelem_url}}}{reportelem_name}", qname_nsmap
-                )
+                reportelem_qname = QName.from_string(f"{{{reportelem_url}}}{reportelem_name}", qname_nsmap)
             except Exception as e:
                 errors.append(e)
                 continue
@@ -67,9 +65,7 @@ def parse_report_elements_xml(
             # check cache
             if reportelem_qname not in report_elements.keys():
                 # create the report element
-                factory_result = XMLReportElementFactory.create(
-                    re_xml, reportelem_qname, []
-                )
+                factory_result = XMLReportElementFactory.create(re_xml, reportelem_qname, [])
                 if factory_result is None:
                     continue
 
@@ -112,14 +108,10 @@ def parse_report_elements_xml(
 
                         # get the element the ref is pointing to
                         # it is an xs:element with the id attr being the ref
-                        ref_xml = refschema.find(
-                            f".//*[@id='{ref_id}']", namespaces=None
-                        )
+                        ref_xml = refschema.find(f".//*[@id='{ref_id}']", namespaces=None)
                         if ref_xml is None:
                             errors.append(
-                                ValueError(
-                                    f"the schema {refschema} does not contain an element with the id {ref_id}"
-                                )
+                                ValueError(f"the schema {refschema} does not contain an element with the id {ref_id}")
                             )
                             continue
 

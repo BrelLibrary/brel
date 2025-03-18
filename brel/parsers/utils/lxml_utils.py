@@ -16,9 +16,7 @@ def get_clark(prefix: str, local_name: str, prefix_to_url: Mapping[str, str]) ->
     return f"{{{url}}}{local_name}"
 
 
-def get_str(
-    element: lxml.etree._Element, attribute: str, default: str | None = None
-) -> str:
+def get_str(element: lxml.etree._Element, attribute: str, default: str | None = None) -> str:
     """
     Helper function for getting a string attribute from an element. Always returns a string.
     @param element: lxml.etree._Element to get the attribute from

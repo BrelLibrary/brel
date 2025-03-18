@@ -59,9 +59,7 @@ class PeriodCharacteristic(ICharacteristic):
         if self.__start_date:
             return self.__start_date
         else:
-            raise ValueError(
-                "Period is an instant. use 'is_instant' to check if the period is an instant."
-            )
+            raise ValueError("Period is an instant. use 'is_instant' to check if the period is an instant.")
 
     def get_end_period(self) -> datetime.date:
         """
@@ -71,9 +69,7 @@ class PeriodCharacteristic(ICharacteristic):
         if self.__end_date:
             return self.__end_date
         else:
-            raise ValueError(
-                "Period is an instant. use 'is_instant' to check if the period is an instant."
-            )
+            raise ValueError("Period is an instant. use 'is_instant' to check if the period is an instant.")
 
     def get_instant_period(self) -> datetime.date:
         """
@@ -83,9 +79,7 @@ class PeriodCharacteristic(ICharacteristic):
         if self.__instant_date:
             return self.__instant_date
         else:
-            raise ValueError(
-                "Period is a duration. use 'is_instant' to check if the period is an instant."
-            )
+            raise ValueError("Period is a duration. use 'is_instant' to check if the period is an instant.")
 
     def get_value(self) -> "PeriodCharacteristic":
         """
@@ -164,8 +158,6 @@ class PeriodCharacteristic(ICharacteristic):
 
         # if period_instance.start_date > period_instance.end_date:
         if period_instance.__end_date < period_instance.__start_date:
-            raise ValueError(
-                f"Start date '{start_date}' is after end date '{end_date}'"
-            )
+            raise ValueError(f"Start date '{start_date}' is after end date '{end_date}'")
 
         return period_instance
