@@ -1,6 +1,5 @@
 from brel import Filing
 from brel.utils import pprint
-from random import sample
 
 
 def edit_distance(s1, s2):
@@ -37,9 +36,9 @@ def get_closest_match(target: str, candidates: list[str]) -> str:
     """
     Finds and returns the candidate with the smallest edit distance to the target
     Note: this function is case insensitive. For the candidates, only the last part of the URI is used.
-    @param target: str containing the target string
-    @param candidates: list[str] containing the candidates
-    @return: str containing the candidate with the smallest edit distance to the target
+    :param target: str containing the target string
+    :param candidates: list[str] containing the candidates
+    :returns str: the candidate with the smallest edit distance to the target
     """
     return min(
         candidates,
@@ -55,6 +54,12 @@ def example5():
         "MAKE SURE TO CHANGE THE PATH IN EXAMPLE1.PY TO THE PATH OF THE FILING YOU WANT TO USE"
     )
     filing = Filing.open("reports/report.zip")
+
+    if len(filing.get_errors()) > 0:
+        print("Errors occurred while opening the filing:")
+        for error in filing.get_errors():
+            print(error)
+        return
 
     # get all components
     components = filing.get_all_components()
@@ -79,22 +84,6 @@ def example5():
             continue
 
         print(f"[Size: {total_network_size}] {component.get_URI()}")
-
-    non_root_lineitems = []
-    for component in components:
-        defi_network = component.get_definition_network()
-        if defi_network is None:
-            continue
-
-        for node in defi_network.get_all_nodes():
-            if (
-                "LineItems"
-                in node.get_report_element().get_name().resolve()
-                # and node != defi_network.get_root()
-            ):
-                non_root_lineitems.append(node)
-
-    print("Non root lineitems:" + str(len(non_root_lineitems)))
 
     # read the user input
     print()

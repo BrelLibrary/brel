@@ -1,0 +1,39 @@
+digraph "classes_brel_networks" {
+rankdir=BT
+charset="utf-8"
+splines="ortho"
+
+"brel.networks.calculation_network.CalculationNetwork" [color="black", fontcolor="black", label=<{
+CalculationNetwork
+|
+...
+}>, shape="record", style="solid"];
+"brel.networks.i_network.INetwork" [color="red", fontcolor="black", label=<{
+INetwork
+|
+get_roots(): list[INetworkNode]<br ALIGN="LEFT"/>
+get_link_role(): str<br ALIGN="LEFT"/>
+get_link_name(): QName                                                                              
+<br ALIGN="LEFT"/>
+}>, shape="record", style="solid"];
+"brel.networks.definition_network.DefinitionNetwork" [color="black", fontcolor="black", label=<{DefinitionNetwork|...}>, shape="record", style="solid"];
+"brel.networks.footnote_network.FootnoteNetwork" [color="black", fontcolor="black", label=<{FootnoteNetwork|...}>, shape="record", style="solid"];
+"brel.networks.label_network.LabelNetwork" [color="black", fontcolor="black", label=<{LabelNetwork|...}>, shape="record", style="solid"];
+"brel.networks.presentation_network.PresentationNetwork" [color="black", fontcolor="black", label=<{PresentationNetwork|...}>, shape="record", style="solid"];
+"brel.networks.reference_network.ReferenceNetwork" [color="black", fontcolor="black", label=<{ReferenceNetwork|...}>, shape="record", style="solid"];
+
+"brel.networks.calculation_network.CalculationNetwork" -> "brel.networks.i_network.INetwork" [arrowhead="empty", arrowtail="none"];
+"brel.networks.definition_network.DefinitionNetwork" -> "brel.networks.i_network.INetwork" [arrowhead="empty", arrowtail="none"];
+"brel.networks.footnote_network.FootnoteNetwork" -> "brel.networks.i_network.INetwork" [arrowhead="empty", arrowtail="none"];
+"brel.networks.label_network.LabelNetwork" -> "brel.networks.i_network.INetwork" [arrowhead="empty", arrowtail="none"];
+"brel.networks.presentation_network.PresentationNetwork" -> "brel.networks.i_network.INetwork" [arrowhead="empty", arrowtail="none"];
+"brel.networks.reference_network.ReferenceNetwork" -> "brel.networks.i_network.INetwork" [arrowhead="empty", arrowtail="none"];
+
+// invisible edges for ordering
+// calculation -> definition
+"brel.networks.calculation_network.CalculationNetwork" -> "brel.networks.definition_network.DefinitionNetwork" [arrowhead="none", arrowtail="none", color="white", style="invis"];
+// footnote -> label
+"brel.networks.footnote_network.FootnoteNetwork" -> "brel.networks.label_network.LabelNetwork" [arrowhead="none", arrowtail="none", color="white", style="invis"];
+// presentation -> reference
+"brel.networks.presentation_network.PresentationNetwork" -> "brel.networks.reference_network.ReferenceNetwork" [arrowhead="none", arrowtail="none", color="white", style="invis"];
+}

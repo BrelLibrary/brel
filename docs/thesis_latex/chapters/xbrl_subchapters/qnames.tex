@@ -1,37 +1,58 @@
 \section{QNames}
 \label{sec:qnames}
 
-Although the motivation behind the XBRL processor Brel is to shield its user from the complexity of XML, 
-we keep one key aspect of XML in our API: QNames.
+% Although the motivation behind the XBRL processor Brel is to shield its user from the complexity of XML, 
+% we keep one key aspect of XML in our API: QNames.
 
-QNames are a way to uniquely identify an XML element or attribute. 
-They consist of three things: a namespace prefix, a namespace URI, and a local name.
-The prefix acts as a shorthand for the namespace URI.
+% QNames are a way to uniquely identify an XML element or attribute. 
+% They consist of three things: a namespace prefix, a namespace URI, and a local name.
+% The prefix acts as a shorthand for the namespace URI.
 
-For example the QName \texttt{us-gaap:Assets} identifies the element \texttt{Assets} in the namespace \texttt{us-gaap}.
+% For example the QName \texttt{us-gaap:Assets} identifies the element \texttt{Assets} in the namespace \texttt{us-gaap}.
 
-In this example, the namespace prefix \texttt{us-gaap} is a shorthand for the namespace URI \texttt{https://xbrl.fasb.org/us-gaap/2022/elts/us-gaap-2022.xsd}, 
-and together they form the namespace \texttt{us-gaap}.
+% In this example, the namespace prefix \texttt{us-gaap} is a shorthand for the namespace URI \texttt{https://xbrl.fasb.org/us-gaap/2022/elts/us-gaap-2022.xsd}, 
+% and together they form the namespace \texttt{us-gaap}.
 
-\begin{figure}[H]
-    \caption{The us-gaap:Assets QName}
-    \label{fig:qname_us_gaap_assets}
-    \begin{itemize}
-        \item Namespace prefix: \texttt{us-gaap}
-        \item Namespace URI: \texttt{https://xbrl.fasb.org/us-gaap/2022/elts/us-gaap-2022.xsd}
-        \item Local name: \texttt{Assets}
-    \end{itemize}
-\end{figure}
+Even though Brel aims to simplify the user's interaction by abstracting away the complexity of XML,
+it retains a crucial element of XML within its API: QNames.
 
-QNames are used in the XBRL taxonomy to identify concepts, facts and other elements. Since they provide a robust and easy way to identify elements,
-we decided to use them in our API as well. However, there is one important difference between our QNames and the QNames used in the XBRL taxonomy:
-Currently, most XBRL filings are based on XML, where namespace prefixes are defined on a per-element basis.
-Therefore, the mapping from namespace prefixes to namespace URIs depends on where the QName is used. 
+QNames serve as unique identifiers for XML elements or attributes,
+comprising three components: a namespace prefix, a namespace URI, and a local name.
+The prefix is a shorthand representation of the namespace URI, which we will refer to as a namespace binding.
 
-In our API, there is a fixed, global mapping from namespace prefixes to namespace URIs.
-The motivation behind this decision is that it makes the API easier to use.
-The how and why of this mapping will be explained in section \ref{sec:qnames_implementation}.
+For instance, the QName \texttt{us-gaap:Assets}, as defined by the Financial Accounting Standards Board (FASB)\cite{fasb},
+signifies the element \texttt{Assets} within the \texttt{us-gaap} namespace.
+% In this example, the namespace prefix \texttt{us-gaap} stands in for the URI \texttt{https://xbrl.fasb.org/us-gaap/2022/elts/us-gaap-2022.xsd}\cite{fasb}.
+In this example, the namespace prefix \texttt{us-gaap} is bound to the URI \texttt{https://xbrl.fasb.org/us-gaap/2022/elts/us-gaap-2022.xsd}\cite{fasb}.
 
+% \begin{figure}[H]
+%     % \caption{The us-gaap:Assets QName}
+%     \label{fig:qname_us_gaap_assets}
+%     \begin{itemize}
+%         \item Namespace prefix: \texttt{us-gaap}
+%         \item URI: \texttt{https://xbrl.fasb.org/us-gaap/2022/elts/us-gaap-2022.xsd}
+%         \item Local name: \texttt{Assets}
+%     \end{itemize}
+% \end{figure}
+
+% QNames are used in XBRL to identify concepts, facts and other elements. Since they provide a robust and easy way for identifying elements,
+Since QNames offer a robust and straightforward method for identifying elements,
+% we decided to use them in our API as well. 
+Brel employs them in its API.
+However, there is one important difference between QNames in Brel and QNames in XBRL:
+Currently, most XBRL filings are based on XML, where namespace bindings are defined on a per-element basis.
+% Therefore, the mapping from namespace prefixes to namespace URIs depends on where the QName is used. 
+% Therefore, the mapping of namespace prefixes forms a hierarchical structure, 
+% where the mapping from namespace prefixes to namespace URIs depends on the location of the QName.
+Therefore, the namespace bindings form a hierarchical structure,
+where the namespace binding of a QName depends on the location of the QName.
+
+% In our API, there is a fixed, global mapping from namespace prefixes to namespace URIs.
+% The motivation behind this decision is that it makes the API easier to use.
+% More details about this mapping will be explained in section \ref{sec:qnames_implementation}.
+Brel takes a different approach, employing a fixed, global mapping from namespace prefixes to namespace URIs.
+This decision was made to simplify the API.
+Further details about this mapping will be provided in section \ref{sec:qnames_implementation}.
 
 % Example of us-gaap and how it points to 2021 at one point and to 2022 at another point
 

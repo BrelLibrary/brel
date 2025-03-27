@@ -2,14 +2,20 @@
 This module contains the function to parse an EntityCharacteristic from an lxml.etree._Element.
 It parses XBRL in the XML syntax.
 
-@author: Robin Schmidiger
-@version: 0.1
-@date: 20 December 2023
+====================
+
+- author: Robin Schmidiger
+- version: 0.1
+- date: 20 December 2023
+
+====================
 """
 
-import lxml.etree
 from typing import Callable, cast
-from brel.characteristics import Aspect, ICharacteristic, EntityCharacteristic
+
+import lxml.etree
+
+from brel.characteristics import Aspect, EntityCharacteristic, ICharacteristic
 
 
 def parse_entity_from_xml(
@@ -31,15 +37,11 @@ def parse_entity_from_xml(
     identifier_element = xml_element.find("{*}identifier", namespaces=None)
 
     if identifier_element is None:
-        raise ValueError(
-            "Could not find identifier element in entity characteristic"
-        )
+        raise ValueError("Could not find identifier element in entity characteristic")
 
     # then check if there is a scheme attribute
     if "scheme" not in identifier_element.attrib:
-        raise ValueError(
-            "Could not find scheme attribute in identifier element"
-        )
+        raise ValueError("Could not find scheme attribute in identifier element")
 
     entity_id_elem = xml_element.find("{*}identifier", namespaces=None)
     # The identifier element is guaranteed according to the XBRL 2.1 specification to have a text element
@@ -53,9 +55,7 @@ def parse_entity_from_xml(
     if entity_characteristic is not None:
         # if the entity characteristic is already in the cache, typecheck it and return it
         if not isinstance(entity_characteristic, EntityCharacteristic):
-            raise ValueError(
-                "Entity characteristic is not an entity characteristic"
-            )
+            raise ValueError("Entity characteristic is not an entity characteristic")
         return cast(EntityCharacteristic, entity_characteristic)
     else:
         # if the entity characteristic is not in the cache, create it and add it to the cache

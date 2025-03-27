@@ -1,0 +1,70 @@
+% \section{Answering research question 3}
+% \label{sec:answer_research_question_3}
+
+% With the implementation of Brel complete for the XBRL XML syntax, we can now answer research question \ref{RQ3}:
+
+% \begin{displayquote}
+%     \textbf{RQ3:} How can the library be designed to support multiple formats in the future?
+% \end{displayquote}
+
+% The answer to this question is that the Brel API is designed to be almost format agnostic.
+% The first half of the Brel API is based on the OIM, which in itself is a logical data model.
+% This makes it inherently format agnostic.
+
+% The second half of the Brel API is based on the XBRL XML syntax.
+% However, the only methods that still expose the XBRL XML syntax are the methods
+% \texttt{get\_link\_role} and \texttt{get\_link\_name} in the \texttt{INetwork} interface 
+% as well as the \texttt{get\_arc\_role} and \texttt{get\_arc\_name} methods in the \texttt{INetworkNode} interface.
+% These methods return the XML attributes of the same name.
+% However, the main purpose of these methods is debugging.
+
+% The only real remnant of the XBRL XML syntax in the Brel API is the \texttt{QName} class.
+% However, Brel merely chooses to use the same data structure as QNames in XML, 
+% which is a combination of a prefix, a namespace URI and a local name.
+% The Brel API does not require QNames to be in the XML format.
+% In fact, both the JSON\cite{xbrl_json} and the CSV\cite{xbrl_csv} specifications of XBRL use QNames in the same format as the XML specification.
+% Therefore, the \texttt{QName} class is also format agnostic.
+
+% Since the Brel API is format agnostic, the only section of Brel that relies on the XBRL XML syntax is the parser.
+% Brel implements the parser as a separate module, which is called \texttt{brel.parser.XML}.
+% The parser module is the only module that needs to be changed in order to support other formats.
+% The rest of Brel can remain unchanged.
+
+\section{Addressing Research Question 3}
+\label{sec:answer_research_question_3}
+
+Now that Brel's implementation for the XBRL XML syntax is complete, we can address research question \ref{RQ3}:
+
+\begin{displayquote}
+    \textbf{RQ3:} How can the library be designed to accommodate multiple formats in the future?
+\end{displayquote}
+
+To make Brel compatible with multiple formats, the design of the Brel API need to be format-agnostic. 
+The design of the Brel API is largely format-independent. 
+% Its first segment is grounded in the OIM, which is inherently a logical data model, contributing to its format-agnostic nature.
+Its first segment is grounded in the OIM, which is a logical data model and thus inherently format-agnostic.
+The latter half of the Brel API, while based on the XBRL XML syntax, largely abstracts away the specifics of this format. 
+
+% The only exceptions are the \texttt{get\_link\_role} and \texttt{get\_link\_name} methods in the \texttt{INetwork} interface, 
+% as well as the \texttt{get\_arc\_role} and \texttt{get\_arc\_name} methods in the \texttt{INetworkNode} interface. 
+The only exceptions are the \texttt{get\_link\_role}, \texttt{get\_link\_name}, \texttt{get\_arc\_role}, and \texttt{get\_arc\_name} methods.
+These methods return attributes bearing the same names in XML, primarily serving debugging purposes.
+They are not essential to the API's functionality.
+% Therefore, the se Brel API is almost entirely format-agnostic, with the exception 
+Therefore, the second half of the Brel API is almost entirely format-agnostic, 
+% with the exception of debugging methods.
+except for these debugging methods.
+
+% The main aspect of the XBRL XML syntax within the Brel API is the \texttt{QName} class. 
+The primary aspect where Brel relies on the XBRL XML syntax is the \texttt{QName} class.
+This class mirrors the QName structure in XML, comprising a prefix, a namespace URI, and a local name. 
+% However, the API's use of QNames is not restricted to XML formatting. 
+However, even though QNames originate from XML, they have been adopted in other XBRL specifications.
+Notably, both the JSON\cite{xbrl_json} and CSV\cite{xbrl_csv} specifications of XBRL adopt QNames in a similar structure to the XML specification, 
+rendering the \texttt{QName} class format-neutral.
+
+Given the API's format-agnostic design, the aspect of Brel that relies on the XBRL XML syntax is exclusively the parser. 
+% Brel's parser is encapsulated in a distinct module, named \texttt{brel.parser.XML}. 
+The parser outlined in this chapter is encapsulated in a distinct module, named \texttt{brel.parser.XML}
+To support different formats, only this parser module needs modification, allowing the rest of Brel to remain as is.
+Thus, the Brel API is designed to be adaptable to future XBRL formats.

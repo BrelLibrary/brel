@@ -1,0 +1,68 @@
+digraph "classes_brel_filing" {
+rankdir=BT
+charset="utf-8"
+splines="ortho"
+
+
+"brel.reportelements.concept.Concept" [color="black", fontcolor="black", label=<{Concept|...}>, shape="record", style="solid"];
+
+"brel.characteristics.concept_characteristic.ConceptCharacteristic" [color="black", fontcolor="black", label=<{ConceptCharacteristic|...}>, shape="record", style="solid"];
+
+"brel.brel_context.Context" [color="black", fontcolor="black", label=<{Context|...}>, shape="record", style="solid"];
+"brel.reportelements.dimension.Dimension" [color="black", fontcolor="black", label=<{Dimension|...}>, shape="record", style="solid"];
+
+"brel.characteristics.explicit_dimension_characteristic.ExplicitDimensionCharacteristic" [color="black", fontcolor="black", label=<{ExplicitDimensionCharacteristic|...}>, shape="record", style="solid"];
+
+"brel.brel_fact.Fact" [color="black", fontcolor="black", label=<{Fact|...}>, shape="record", style="solid"];
+
+"brel.networks.i_network.INetwork" [color="black", fontcolor="black", label=<{INetwork|...}>, shape="record", style="solid"];
+
+"brel.networks.i_network_node.INetworkNode" [color="black", fontcolor="black", label=<{INetworkNode|...}>, shape="record", style="solid"];
+"brel.reportelements.member.Member" [color="black", fontcolor="black", label=<{Member|...}>, shape="record", style="solid"];
+"brel.characteristics.typed_dimension_characteristic.TypedDimensionCharacteristic" [color="black", fontcolor="black", label=<{TypedDimensionCharacteristic|...}>, shape="record", style="solid"];
+
+// inter cluster edges
+"brel.reportelements.concept.Concept" -> "brel.characteristics.concept_characteristic.ConceptCharacteristic" [arrowhead="odiamond", arrowtail="none",  style="solid"];
+"brel.reportelements.dimension.Dimension" -> "brel.characteristics.explicit_dimension_characteristic.ExplicitDimensionCharacteristic" [arrowhead="odiamond", arrowtail="none",  style="solid"];
+"brel.reportelements.dimension.Dimension" -> "brel.characteristics.typed_dimension_characteristic.TypedDimensionCharacteristic" [arrowhead="odiamond", arrowtail="none",  style="solid"];
+"brel.reportelements.member.Member" -> "brel.characteristics.explicit_dimension_characteristic.ExplicitDimensionCharacteristic" [arrowhead="odiamond", arrowtail="none",  style="solid"];
+
+// clusters
+subgraph cluster_non_OIM {
+        // add the edges with style="odiamond"
+        // lineitems -> inetworknode
+        // member -> inetworknode
+        // dimension -> inetworknode
+        // concept -> inetworknode
+        // hypercube -> inetworknode
+        // abstract -> inetworknode
+        "brel.reportelements.member.Member" -> "brel.networks.i_network_node.INetworkNode" [arrowhead="odiamond", arrowtail="none",  style="solid"];
+        "brel.reportelements.dimension.Dimension" -> "brel.networks.i_network_node.INetworkNode" [arrowhead="odiamond", arrowtail="none",  style="solid"];
+        "brel.reportelements.concept.Concept" -> "brel.networks.i_network_node.INetworkNode" [arrowhead="odiamond", arrowtail="none",  style="solid"];
+        "brel.networks.i_network_node.INetworkNode" -> "brel.networks.i_network.INetwork" [arrowhead="odiamond", arrowtail="none", style="solid"];
+        color=blue;
+        label="non-OIM";
+    }
+
+subgraph cluster_OIM {
+    // add the edges with style="odiamond"
+    // entity characteristic -> context
+    // period characteristic -> context
+    // unit characteristic -> context
+    // concept characteristic -> context
+    // explicit dimension characteristic -> context
+    // typed dimension characteristic -> context
+    "brel.characteristics.concept_characteristic.ConceptCharacteristic" -> "brel.brel_context.Context" [arrowhead="odiamond", arrowtail="none", style="solid"];
+    "brel.characteristics.explicit_dimension_characteristic.ExplicitDimensionCharacteristic" -> "brel.brel_context.Context" [arrowhead="odiamond", arrowtail="none", style="solid"];
+    "brel.characteristics.typed_dimension_characteristic.TypedDimensionCharacteristic" -> "brel.brel_context.Context" [arrowhead="odiamond", arrowtail="none", style="solid"];
+    "brel.brel_context.Context" -> "brel.brel_fact.Fact" [arrowhead="odiamond", arrowtail="none", style="solid"];
+    color=red;
+    label="OIM";
+}
+
+// invisible edges
+// inetwork -> typed dimension characteristic
+"brel.networks.i_network.INetwork" -> "brel.characteristics.typed_dimension_characteristic.TypedDimensionCharacteristic" [arrowhead="none", arrowtail="none", style="invis"];
+// inetwork -> concept characteristic
+"brel.networks.i_network.INetwork" -> "brel.characteristics.concept_characteristic.ConceptCharacteristic" [arrowhead="none", arrowtail="none", style="invis"];
+}

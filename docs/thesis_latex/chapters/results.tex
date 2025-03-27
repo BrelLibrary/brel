@@ -1,0 +1,65 @@
+\chapter{Results}
+\label{chapter:results}
+
+% After covering XBRL, the Brel API and its implementation, we can now evaluate Brel against the requirements that we defined in section \ref{sec:goals}.
+% We will evaluate Brel based on correctness first and performance second.
+% This chapter will also cover Brel's robustness and usability in a qualitative manner.
+
+% The usability of Brel will be evaluated by using it to implement a simple CLI XBRL report viewer.
+% It will cover every feature of the Brel API and serve as a proof of concept for the Brel API.
+
+% Even though Brel's performance is not part of the requirements set by this thesis,
+% it still serves as an important metric.
+% It will enable future versions of Brel to compare their performance against this initial version of Brel.
+
+% For testing Brel's correctness, we will use XBRL conformance suites.
+% Additionally, we will look at the at a hand-picked XBRL report and compare the structure that Brel extracts
+% from it against the results that the XBRL viewer Arelle produces.
+% This serves as a qualitative measure of correctness.
+
+% Robustness is a qualitative metric that is hard to measure.
+% We will evaluate Brel's robustness by loading the 8K and 10Q reports of the 30 largest US companies by market capitalization at the time of writing.
+% This will give us a good idea of how robust Brel is in practice.
+
+Following the discussion on XBRL, the Brel API, and its implementation, 
+we are now in a position to assess Brel in light of the objectives outlined in section \ref{sec:goals}. 
+The evaluation will prioritize usability, correctness, robustness and performance.
+% Additionally, this chapter will qualitatively discuss Brel's robustness and usability.
+
+The usability of Brel will be assessed through the development of a simple CLI tool for viewing XBRL reports. 
+This tool will demonstrate the capabilities of the Brel API and act as a practical example of its application.
+% It does not serve as a comprehensive study on Brel's usability.
+It does not serve as a comprehensive study on Brel's usability, but rather as a proof of concept for the Brel API
+and as a setup for both correctness and robustness testing.
+
+The assessment of Brel's correctness will involve the use of an XBRL conformance suite. 
+Furthermore, we will conduct an analysis of a selected component of an XBRL report, 
+comparing the structure Brel extracts with that produced by the XBRL viewer Arelle. 
+This comparison will offer a qualitative evaluation of Brel's accuracy.
+
+Robustness, being a qualitative metric, presents challenges in measurement. 
+However, by loading the 10K and 10Q reports of the 50 largest US companies by market capitalization as of the date of this analysis, 
+we can gain valuable insights into Brel's practical robustness.
+
+Although this thesis does not explicitly list Brel's performance as a requirement, 
+it remains a crucial aspect of the evaluation. 
+Assessing Brel's performance will provide a benchmark for future versions of the software, 
+facilitating performance comparisons over time.
+
+\input{chapters/results/usability.tex}
+
+\pagebreak
+\input{chapters/results/correctness.tex}
+
+\input{chapters/results/robustness.tex}
+
+\input{chapters/results/performance.tex}
+
+\section{Results Summary}
+Given the results of the evaluation, we can conclude that Brel is a robust and accurate tool for working with XBRL reports.
+% The Brel API is easy to use and provides a high-level interface for working with XBRL reports.
+Using a practical example, we demonstrated that the Brel API provides a high-level interface for working with XBRL reports.
+% The performance of Brel is satisfactory.
+Compared to Arelle, Brel is slower in loading and extracting data from XBRL reports.
+
+The next chapter will discuss the conclusions drawn from the results of the evaluation and the future work that can be done to improve Brel.

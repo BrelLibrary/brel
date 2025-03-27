@@ -21,9 +21,7 @@ class TypedDimensionCharacteristic(ICharacteristic):
     In Brel, the type of the value is omitted and the value is always a string.
     """
 
-    def __init__(
-        self, dimension: Dimension, value: str, aspect: Aspect
-    ) -> None:
+    def __init__(self, dimension: Dimension, value: str, aspect: Aspect) -> None:
         self.__dimension: Dimension = dimension
         self.__value: str = value
         self.__aspect: Aspect = aspect

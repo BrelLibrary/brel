@@ -1,0 +1,45 @@
+digraph "classes_brel_resources" {
+rankdir=BT
+charset="utf-8"
+splines="ortho"
+
+"brel.resource.footnote.BrelFootnote" [color="black", fontcolor="black", label=<{
+BrelFootnote
+|
+get_content(): str<br ALIGN="LEFT"/>
+get_role(): str<br ALIGN="LEFT"/>
+get_title(): str \| None<br ALIGN="LEFT"/>
+get_language(): str<br ALIGN="LEFT"/>
+}>, shape="record", style="solid"];
+
+"brel.resource.brel_label.BrelLabel" [color="black", fontcolor="black", label=<{
+BrelLabel
+|
+STANDARD_LABEL_ROLE : str<br ALIGN="LEFT"/>
+|
+get_content(): str<br ALIGN="LEFT"/>
+get_role(): str<br ALIGN="LEFT"/>
+get_title(): str \| None<br ALIGN="LEFT"/>
+get_language(): str<br ALIGN="LEFT"/>
+}>, shape="record", style="solid"];
+
+"brel.resource.brel_reference.BrelReference" [color="black", fontcolor="black", label=<{
+BrelReference
+|
+get_content(): dict<br ALIGN="LEFT"/>
+get_role(): str<br ALIGN="LEFT"/>
+get_title(): str \| None<br ALIGN="LEFT"/>
+}>, shape="record", style="solid"];
+
+"brel.resource.i_resource.IResource" [color="darkgoldenrod", fontcolor="black", label=<{
+IResource
+|
+<I>get_content</I>(): str \| dict<br ALIGN="LEFT"/>
+<I>get_role</I>(): str<br ALIGN="LEFT"/>
+<I>get_title</I>(): str \| None<br ALIGN="LEFT"/>
+}>, shape="record", style="solid"];
+
+"brel.resource.brel_label.BrelLabel" -> "brel.resource.i_resource.IResource" [arrowhead="empty", arrowtail="none"];
+"brel.resource.brel_reference.BrelReference" -> "brel.resource.i_resource.IResource" [arrowhead="empty", arrowtail="none"];
+"brel.resource.footnote.BrelFootnote" -> "brel.resource.i_resource.IResource" [arrowhead="empty", arrowtail="none"];
+}

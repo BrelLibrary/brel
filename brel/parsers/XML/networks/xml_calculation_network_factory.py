@@ -3,40 +3,40 @@ This module contains the CalculationNetworkFactory class.
 CalculationNetworkFactories are used to create CalculationNetworks from XML.
 They are used by the XML parsers for networks to build calculation networks.
 
-@author: Robin Schmidiger
-@version: 0.2
-@date: 04 January 2024
+====================
+
+- author: Robin Schmidiger
+- version: 0.4
+- date: 19 February 2024
+
+====================
 """
+
+from typing import cast, Mapping
 
 import lxml
 import lxml.etree
-from typing import cast
-from brel import QName, QNameNSMap, Fact
+
+from brel import Fact, QName, QNameNSMap
 from brel.networks import (
-    INetwork,
-    INetworkNode,
     CalculationNetwork,
     CalculationNetworkNode,
+    INetwork,
+    INetworkNode,
 )
+from brel.parsers.utils import get_str
+from brel.parsers.XML.networks import IXMLNetworkFactory
 from brel.reportelements import IReportElement
 from brel.resource import IResource
-from brel.parsers.XML.networks import IXMLNetworkFactory
-from brel.parsers.utils import get_str
 
 
 class CalculationNetworkFactory(IXMLNetworkFactory):
     def __init__(self, qname_nsmap: QNameNSMap) -> None:
         super().__init__(qname_nsmap)
 
-    def create_network(
-        self, xml_link_element: lxml.etree._Element, roots: list[INetworkNode]
-    ) -> INetwork:
-        nsmap = self.get_qname_nsmap().get_nsmap()
-
-        link_role = xml_link_element.get(f"{{{nsmap['xlink']}}}role", None)
-        link_qname = QName.from_string(
-            xml_link_element.tag, self.get_qname_nsmap()
-        )
+    def create_network(self, xml_link_element: lxml.etree._Element, roots: list[INetworkNode]) -> INetwork:
+        link_role = get_str(xml_link_element, self._clark("xlink", "role"), None)
+        link_qname = self._make_qname(xml_link_element.tag)
 
         if len(roots) == 0:
             raise ValueError("roots must not be empty")
@@ -49,7 +49,7 @@ class CalculationNetworkFactory(IXMLNetworkFactory):
 
         roots_cast = cast(list[CalculationNetworkNode], roots)
 
-        return CalculationNetwork(roots_cast, link_role, link_qname)
+        return CalculationNetwork(roots_cast, link_role, link_qname, self.is_physical())
 
     def create_node(
         self,
@@ -58,51 +58,41 @@ class CalculationNetworkFactory(IXMLNetworkFactory):
         xml_arc: lxml.etree._Element | None,
         points_to: IReportElement | IResource | Fact,
     ) -> INetworkNode:
-        nsmap = self.get_qname_nsmap().get_nsmap()
-
-        label = get_str(xml_referenced_element, f"{{{nsmap['xlink']}}}label")
+        label = get_str(xml_referenced_element, self._clark("xlink", "label"))
 
         if xml_arc is None:
             # the node is not connected to any other node
             weight = 0.0
             arc_role = "unknown"
             order: float = 1
-            arc_qname = QName.from_string(
-                "link:unknown", self.get_qname_nsmap()
-            )
-        elif xml_arc.get(f"{{{nsmap['xlink']}}}from", None) == label:
+            arc_qname = self._make_qname("link:unknown")
+        elif get_str(xml_arc, self._clark("xlink", "from"), None) == label:
             # the node is a root
             weight = 0.0
-            arc_role = get_str(xml_arc, "{" + nsmap["xlink"] + "}arcrole")
+            arc_role = get_str(xml_arc, self._clark("xlink", "arcrole"))
             order = 1
-            arc_qname = QName.from_string(xml_arc.tag, self.get_qname_nsmap())
-        elif xml_arc.get(f"{{{nsmap['xlink']}}}to", None) == label:
+            arc_qname = self._make_qname(xml_arc.tag)
+        elif get_str(xml_arc, self._clark("xlink", "to"), None) == label:
             weight = float(xml_arc.attrib.get("weight") or 0.0)
-            arc_role = get_str(xml_arc, "{" + nsmap["xlink"] + "}arcrole")
+            arc_role = get_str(xml_arc, self._clark("xlink", "arcrole"))
             order = float(get_str(xml_arc, "order", "1.0"))
-            arc_qname = QName.from_string(xml_arc.tag, self.get_qname_nsmap())
+            arc_qname = self._make_qname(xml_arc.tag)
         else:
-            raise ValueError(
-                f"referenced element {xml_referenced_element} is not connected to arc {xml_arc}"
-            )
+            raise ValueError(f"referenced element {xml_referenced_element} is not connected to arc {xml_arc}")
 
-        link_role = xml_link.attrib.get("{" + nsmap["xlink"] + "}role")
-        link_name = QName.from_string(xml_link.tag, self.get_qname_nsmap())
+        link_role = get_str(xml_link, self._clark("xlink", "role"))
+        link_name = self._make_qname(xml_link.tag)
 
-        link_role = get_str(xml_link, "{" + nsmap["xlink"] + "}role")
-        link_name = QName.from_string(xml_link.tag, self.get_qname_nsmap())
+        link_role = get_str(xml_link, self._clark("xlink", "role"))
+        link_name = self._make_qname(xml_link.tag)
 
         # check if 'points_to' is a ReportElement
         if not isinstance(points_to, IReportElement):
-            raise TypeError(
-                f"points_to must be of type IReportElement, not {type(points_to)}"
-            )
+            raise TypeError(f"points_to must be of type IReportElement, not {type(points_to)}")
 
         # also, all calculation network nodes have to point to a concept
         if not isinstance(points_to, IReportElement):
-            raise TypeError(
-                f"points_to must be of type Concept, not {type(points_to)}"
-            )
+            raise TypeError(f"points_to must be of type Concept, not {type(points_to)}")
 
         return CalculationNetworkNode(
             points_to,
@@ -115,16 +105,8 @@ class CalculationNetworkFactory(IXMLNetworkFactory):
             order,
         )
 
-    def update_report_elements(
-        self, report_elements: dict[QName, IReportElement], _: INetwork
-    ) -> dict[QName, IReportElement]:
-        """
-        Calculation networks do not change the report elements
-        @param report_elements: dict[QName, IReportElement] containing all report elements
-        @param network: INetwork containing the network. Must be a CalculationNetwork
-        @return: dict[QName, IReportElement] containing all report elements. same as the report_elements parameter
-        """
-        return report_elements
+    def update_report_elements(self, report_elements: Mapping[QName, IReportElement], _: INetwork):
+        pass
 
     def is_physical(self) -> bool:
-        return True
+        return False

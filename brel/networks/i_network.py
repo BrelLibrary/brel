@@ -22,11 +22,10 @@ They are all implemented in the same way as the calculation network and can be i
 ====================
 """
 
-from brel import QName
-from brel.reportelements import *
-from brel.networks import INetworkNode
-
 from abc import ABC, abstractmethod
+
+from brel import QName
+from brel.networks import INetworkNode
 
 
 class INetwork(ABC):
@@ -43,7 +42,7 @@ class INetwork(ABC):
         link_name: QName,
         is_physical: bool,
     ) -> None:
-        self.__roots = roots
+        self.__roots: list[INetworkNode] = roots
         self.__link_role = link_role
         self.__link_name = link_name
         self.__is_physical = is_physical
@@ -85,9 +84,7 @@ class INetwork(ABC):
         Get all the arc roles that are used by nodes in the network
         :returns list[str]: list of all arc roles that are used by nodes in the network
         """
-        arc_role_set = set(
-            [node.get_arc_role() for node in self.get_all_nodes()]
-        )
+        arc_role_set = set([node.get_arc_role() for node in self.get_all_nodes()])
         return list(arc_role_set)
 
     def get_arc_name(self) -> QName | None:
@@ -110,9 +107,7 @@ class INetwork(ABC):
         """
         roots = self.get_roots()
         if len(roots) > 1:
-            raise ValueError(
-                f"Cannot call getRoot() for network with multiple roots"
-            )
+            raise ValueError(f"Cannot call getRoot() for network with multiple roots")
         return roots[0]
 
     def get_all_nodes(self) -> list[INetworkNode]:
@@ -137,3 +132,15 @@ class INetwork(ABC):
 
         # return the nodes set as a list
         return list(nodes)
+
+    def convert_to_dict(self) -> dict:
+        """
+        Convert the network to a dictionary representation
+        :returns dict: representing the network
+        """
+        return {
+            "roots": [root.convert_to_dict() for root in self.get_roots()],
+            "link_role": self.get_link_role(),
+            "link_name": self.get_link_name().get(),
+            "is_physical": self.is_physical(),
+        }

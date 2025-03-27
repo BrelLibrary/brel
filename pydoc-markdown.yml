@@ -1,6 +1,6 @@
 loaders:
   - type: python
-    search_path: [ "/home/robin/Documents/Brel" ]
+    search_path: [ "/home/robin/Documents/brel" ]
     packages: [ brel ]
 processors:
   - type: filter
@@ -17,6 +17,14 @@ renderer:
     - title: Examples
       name: examples
       source: docs/examples.md
+    
+    - title: EDGAR
+      name: Loading from EDGAR
+      source: docs/edgar.md
+    
+    - title: Changelog
+      name: changelog
+      source: HISTORY.md
       
     - title: Brel Filings
       children:
@@ -79,10 +87,10 @@ renderer:
     - title: QNames
       children:
       - title: QNames and Namespace maps
-        contents: [ brel.qname.QName, brel.qname.QNameNSMap ]
+        contents: [ brel.qname.QName.*, brel.qname.QNameNSMap.* ]
       - title: Namespace normalization
         contents: [ brel.parsers.XML.xml_namespace_normalizer.normalize_nsmap ]
   mkdocs_config:
     site_name: Brel git repo
     theme: readthedocs
-    repo_url: https://github.com/PapediPoo/Brel
+    repo_url: https://github.com/BrelLibrary/brel

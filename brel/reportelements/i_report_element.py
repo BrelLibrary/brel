@@ -9,14 +9,16 @@ Depending on the kind of report element, there might be more information availab
 ====================
 
 - author: Robin Schmidiger
-- version: 0.1
-- date: 26 October 2023
+- version: 0.2
+- date: 21 January 2024
 
 ====================
 """
 
 from abc import ABC, abstractmethod
-from brel import QName, BrelLabel, BrelLabelRole
+
+from brel import QName
+from brel.resource import BrelLabel
 
 
 class IReportElement(ABC):
@@ -27,42 +29,84 @@ class IReportElement(ABC):
 
     # first class citizens
     @abstractmethod
-    def get_name(self) -> QName:
+    def get_name(self) -> QName:  # pragma: no cover
         """
         Get the name of the report element.
-        @return: QName containing the name of the report element
+        :returns: QName containing the name of the report element
         """
         raise NotImplementedError
 
     @abstractmethod
-    def get_labels(self) -> list[BrelLabel]:
+    def get_labels(self) -> list[BrelLabel]:  # pragma: no cover
         """
         Get all labels of the report element.
-        @return: list[Label] containing the labels of the report element
+        :returns list[Label]: containing the labels of the report element
         """
         raise NotImplementedError
 
     @abstractmethod
-    def _add_label(self, label: BrelLabel):
+    def _add_label(self, label: BrelLabel):  # pragma: no cover
+        raise NotImplementedError
+
+    @abstractmethod
+    def convert_to_dict(self) -> dict:
+        """
+        Convert the report element to a dictionary.
+        :returns dict: containing the report element
+        """
+        # abstract, concept, dimension, hypercube, line item, member
         raise NotImplementedError
 
     # second class citizens
-    def has_label_with_role(self, label_role: BrelLabelRole) -> bool:
+    def has_label_with_role(self, label_role: str) -> bool:
         """
         Check if the report element has a label with the given role.
-        @param label_role: the role of the label to check
-        @return: True if the report element has a label with the given role, False otherwise
+        :param label_role: the role of the label to check
+        :returns bool: True if the report element has a label with the given role, False otherwise
         """
-        return any(
-            label.get_role() == label_role.value for label in self.get_labels()
-        )
+        return any(label.get_label_role() == label_role for label in self.get_labels())
 
     def has_label_with_language(self, language: str) -> bool:
         """
         Check if the report element has a label with the given language.
-        @param language: the language of the label to check
-        @return: True if the report element has a label with the given language, False otherwise
+        :param language: the language of the label to check
+        :returns bool: True if the report element has a label with the given language, False otherwise
         """
-        return any(
-            label.get_language() == language for label in self.get_labels()
-        )
+        return any(label.get_language() == language for label in self.get_labels())
+
+    def select_main_label(self) -> BrelLabel:
+        """
+        Select the main label of the member.
+        The main label is either the first english label, or the first label in the list of labels.
+        :returns BrelLabel: the main label of the member
+        """
+        labels = self.get_labels()
+        if not labels:
+            # raise ValueError("No labels available - cannot select main label!")
+            return BrelLabel("NO_LABEL", "", "")
+        elif self.has_label_with_language("en"):
+            return next((label for label in labels if label.get_language() == "en"), labels[0])
+        elif self.has_label_with_language("en-US"):
+            return next(
+                (label for label in labels if label.get_language() == "en-US"),
+                labels[0],
+            )
+        elif self.has_label_with_language("en-GB"):
+            return next(
+                (label for label in labels if label.get_language() == "en-GB"),
+                labels[0],
+            )
+        elif self.has_label_with_language("EN"):
+            return next((label for label in labels if label.get_language() == "EN"), labels[0])
+        elif self.has_label_with_language("EN-US"):
+            return next(
+                (label for label in labels if label.get_language() == "EN-US"),
+                labels[0],
+            )
+        elif self.has_label_with_language("EN-GB"):
+            return next(
+                (label for label in labels if label.get_language() == "EN-GB"),
+                labels[0],
+            )
+        else:
+            return labels[0]

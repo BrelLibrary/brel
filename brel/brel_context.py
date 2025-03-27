@@ -31,15 +31,16 @@ Read more about Aspects and Characteristics in
 ====================
 """
 
-from brel.characteristics import Aspect
+from typing import cast
+
 from brel.characteristics import (
-    ICharacteristic,
+    Aspect,
     ConceptCharacteristic,
-    PeriodCharacteristic,
     EntityCharacteristic,
+    ICharacteristic,
+    PeriodCharacteristic,
     UnitCharacteristic,
 )
-from typing import cast
 
 
 class Context:
@@ -75,9 +76,7 @@ class Context:
         :param aspect: The aspect to get the value of.
         :returns Aspect|None: The value of the aspect. None if the aspect is not present in the context.
         """
-        return next(
-            (c for a, c in self.__characteristics.items() if a == aspect), None
-        )
+        return next((c for a, c in self.__characteristics.items() if a == aspect), None)
 
     # Second class citizens
     def has_characteristic(self, aspect: Aspect) -> bool:
@@ -86,9 +85,7 @@ class Context:
         :param aspect: The aspect to check for.
         :returns bool: True if the context has the aspect, False otherwise.
         """
-        return any(
-            aspect == context_aspect for context_aspect in self.__aspects
-        )
+        return any(aspect == context_aspect for context_aspect in self.__aspects)
 
     def get_characteristic_as_str(self, aspect: Aspect) -> str:
         """
@@ -105,60 +102,6 @@ class Context:
         else:
             return characteristic.get_value().__str__()
 
-    def get_characteristic_as_int(self, aspect: Aspect) -> int:
-        """
-        Get the value of an aspect as an int.
-        This is a convenience function.
-        If the aspect is not present in the context, 0 is returned.
-        :param aspect: The aspect to get the value of.
-        :returns int: The value of the aspect as an int.
-        :raises ValueError: If the aspect is present, but the value cannot be converted to an int.
-        """
-        if not self.has_characteristic(aspect):
-            return 0
-        try:
-            return int(self.get_characteristic_as_str(aspect))
-        except ValueError:
-            raise ValueError(
-                f"Aspect {aspect} is present, but the value {self.get_characteristic_as_str(aspect)} cannot be converted to an int"
-            )
-
-    def get_characteristic_as_float(self, aspect: Aspect) -> float:
-        """
-        Get the value of an aspect as a float.
-        This is a convenience function.
-        If the aspect is not present in the context, 0.0 is returned.
-        :param aspect: The aspect to get the value of.
-        :returns float: The value of the aspect as a float.
-        :raises ValueError: If the aspect is present, but the value cannot be converted to a float.
-        """
-        if not self.has_characteristic(aspect):
-            return 0.0
-        try:
-            return float(self.get_characteristic_as_str(aspect))
-        except ValueError:
-            raise ValueError(
-                f"Aspect {aspect} is present, but the value {self.get_characteristic_as_str(aspect)} cannot be converted to a float"
-            )
-
-    def get_characteristic_as_bool(self, aspect: Aspect) -> bool:
-        """
-        Get the value of an aspect as a bool.
-        This is a convenience function.
-        If the aspect is not present in the context, False is returned.
-        :param aspect: The aspect to get the value of.
-        :returns bool: The value of the aspect as a bool.
-        :raises ValueError: If the aspect is present, but the value cannot be converted to a bool.
-        """
-        if not self.has_characteristic(aspect):
-            return False
-        try:
-            return bool(self.get_characteristic_as_str(aspect))
-        except ValueError:
-            raise ValueError(
-                f"Aspect {aspect} is present, but the value {self.get_characteristic_as_str(aspect)} cannot be converted to a bool"
-            )
-
     def get_concept(self) -> ConceptCharacteristic:
         """
         Get the concept of the context.
@@ -166,9 +109,7 @@ class Context:
         It cannot return None, because the concept is a required aspect.
         :returns ConceptCharacteristic: The concept of the context.
         """
-        return cast(
-            ConceptCharacteristic, self.get_characteristic(Aspect.CONCEPT)
-        )
+        return cast(ConceptCharacteristic, self.get_characteristic(Aspect.CONCEPT))
 
     def get_period(self) -> PeriodCharacteristic | None:
         """
@@ -176,9 +117,7 @@ class Context:
         This function is equivalent to `get_characteristic(Aspect.PERIOD)`.
         :returns PeriodCharacteristic|None: The period of the context. None if the context does not have a period.
         """
-        return cast(
-            PeriodCharacteristic, self.get_characteristic(Aspect.PERIOD)
-        )
+        return cast(PeriodCharacteristic, self.get_characteristic(Aspect.PERIOD))
 
     def get_entity(self) -> EntityCharacteristic | None:
         """
@@ -186,9 +125,7 @@ class Context:
         This function is equivalent to `get_characteristic(Aspect.ENTITY)`.
         :returns EntityCharacteristic|None: The entity of the context. None if the context does not have an entity.
         """
-        return cast(
-            EntityCharacteristic, self.get_characteristic(Aspect.ENTITY)
-        )
+        return cast(EntityCharacteristic, self.get_characteristic(Aspect.ENTITY))
 
     def get_unit(self) -> UnitCharacteristic | None:
         """
@@ -228,7 +165,7 @@ class Context:
     def __str__(self) -> str:
         output = ""
         for aspect in self.__aspects:
-            output += f"{aspect} "
+            output += f"{str(self.get_characteristic_as_str(aspect))} "
         return output
 
     def __eq__(self, __value: object) -> bool:
@@ -237,3 +174,13 @@ class Context:
 
         # TODO: dont use the _id, compare the aspects instead
         return self._get_id() == __value._get_id()
+
+    def convert_to_df_row(self) -> dict:
+        """
+        Convert the context to a dictionary.
+        This is a convenience function.
+        The keys of the dictionary are the aspect names.
+        The values of the dictionary are the characteristic values.
+        :returns dict: The context as a dictionary.
+        """
+        return {aspect.get_name(): self.get_characteristic_as_str(aspect) for aspect in self.__aspects}

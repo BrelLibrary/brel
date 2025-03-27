@@ -1,4 +1,5 @@
 from .i_report_element import IReportElement
+
 from .abstract import Abstract
 from .concept import Concept
 from .dimension import Dimension

@@ -1,8 +1,8 @@
+from typing import cast
+
 from brel import QName
 from brel.networks import INetwork, INetworkNode, LabelNetworkNode
 from brel.reportelements import *
-
-from typing import cast
 
 
 class LabelNetwork(INetwork):
@@ -14,7 +14,11 @@ class LabelNetwork(INetwork):
     """
 
     def __init__(
-        self, roots: list[LabelNetworkNode], link_role: str, link_name: QName
+        self,
+        roots: list[LabelNetworkNode],
+        link_role: str,
+        link_name: QName,
+        is_physical: bool,
     ) -> None:
         roots_copy = [cast(INetworkNode, root) for root in roots]
-        super().__init__(roots_copy, link_role, link_name, True)
+        super().__init__(roots_copy, link_role, link_name, is_physical)

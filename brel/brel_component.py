@@ -41,17 +41,19 @@ pprint(calculation_network)
 ====================
 
 - author: Robin Schmidiger
-- version: 0.6
-- date: 07 January 2024
+- version: 0.7
+- date: 30 January 2024
 
 ====================
 """
 
+from typing import cast
 from brel import Fact
 from brel.networks import (
-    PresentationNetwork,
     CalculationNetwork,
     DefinitionNetwork,
+    PresentationNetwork,
+    INetwork,
 )
 
 
@@ -75,15 +77,53 @@ class Component:
         self,
         uri: str,
         info: str,
-        presentation_network: None | PresentationNetwork = None,
-        calculation_network: None | CalculationNetwork = None,
-        definition_network: None | DefinitionNetwork = None,
+        networks: list[INetwork],
     ) -> None:
         self.__uri = uri
         self.__info = info
-        self.__presentation_network = presentation_network
-        self.__calculation_network = calculation_network
-        self.__definition_network = definition_network
+
+        # Go through all networks and find the presentation, calculation and definition networks
+        presentation_networks = list(
+            filter(
+                lambda n: isinstance(n, PresentationNetwork) and not n.is_physical(),
+                networks,
+            )
+        )
+
+        if len(presentation_networks) > 1:
+            raise ValueError(f"Component '{uri}' has more than one presentation network.")
+
+        self.__presentation_network: PresentationNetwork | None = (
+            None if len(presentation_networks) == 0 else cast(PresentationNetwork, presentation_networks[0])
+        )
+
+        calculation_networks = list(
+            filter(
+                lambda n: isinstance(n, CalculationNetwork) and not n.is_physical(),
+                networks,
+            )
+        )
+
+        if len(calculation_networks) > 1:
+            raise ValueError(f"Component '{uri}' has more than one calculation network.")
+
+        self.__calculation_network: CalculationNetwork | None = (
+            None if len(calculation_networks) == 0 else cast(CalculationNetwork, calculation_networks[0])
+        )
+
+        definition_networks = list(
+            filter(
+                lambda n: isinstance(n, DefinitionNetwork) and not n.is_physical(),
+                networks,
+            )
+        )
+
+        if len(definition_networks) > 1:
+            raise ValueError(f"Component '{uri}' has more than one definition network.")
+
+        self.__definition_network: DefinitionNetwork | None = (
+            None if len(definition_networks) == 0 else cast(DefinitionNetwork, definition_networks[0])
+        )
 
     # first class citizens
     def get_URI(self) -> str:
@@ -136,7 +176,7 @@ class Component:
         """
         :returns bool: True if the component has a definition network, False otherwise
         """
-        return self.__info != ""
+        return self.__definition_network != None
 
     def __str__(self) -> str:
         """
@@ -152,3 +192,28 @@ class Component:
         """
         # TODO: implement
         raise NotImplemented
+
+    def get_networks(self) -> list[INetwork]:
+        """
+        :returns list[INetwork]: the networks of the component
+        """
+        networks: list[INetwork] = []
+        if self.__presentation_network is not None:
+            networks.append(self.__presentation_network)
+        if self.__calculation_network is not None:
+            networks.append(self.__calculation_network)
+        if self.__definition_network is not None:
+            networks.append(self.__definition_network)
+        return networks
+
+    def convert_to_dict(self) -> dict:
+        """
+        :returns dict: a dictionary representation of the component
+        """
+        return {
+            "network_identifier": self.__uri,
+            "info": self.__info,
+            "PresentationNetwork": True if self.__presentation_network is not None else False,
+            "CalculationNetwork": True if self.__calculation_network is not None else False,
+            "DefinitionNetwork": True if self.__definition_network is not None else False,
+        }

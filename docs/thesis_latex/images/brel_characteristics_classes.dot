@@ -1,0 +1,121 @@
+digraph "classes_brel_report_elements" {
+rankdir=BT
+charset="utf-8"
+splines="ortho"
+// Nodes
+"brel.characteristics.brel_aspect.Aspect" [color="black", fontcolor="black", label=<{
+Aspect
+|
+CONCEPT : Aspect<br ALIGN="LEFT"/>
+ENTITY : Aspect<br ALIGN="LEFT"/>
+PERIOD : Aspect<br ALIGN="LEFT"/>
+UNIT : Aspect<br ALIGN="LEFT"/>
+|
+get_name(): str<br ALIGN="LEFT"/>
+get_labels(): list[BrelLabel]<br ALIGN="LEFT"/>
+is_core(): bool<br ALIGN="LEFT"/>
+}>, shape="record", style="solid"];
+
+"brel.characteristics.concept_characteristic.ConceptCharacteristic" [color="black", fontcolor="black", label=<{
+ConceptCharacteristic
+|
+get_aspect(): Aspect<br ALIGN="LEFT"/>
+get_value(): Concept<br ALIGN="LEFT"/>
+}>, shape="record", style="solid"];
+"brel.characteristics.entity_characteristic.EntityCharacteristic" [color="black", fontcolor="black", label=<{
+EntityCharacteristic
+|
+get_aspect(): Aspect<br ALIGN="LEFT"/>
+get_value(): str<br ALIGN="LEFT"/>
+}>, shape="record", style="solid"];
+
+"brel.characteristics.explicit_dimension_characteristic.ExplicitDimensionCharacteristic" [color="black", fontcolor="black", label=<{
+ExplicitDimensionCharacteristic
+|
+get_aspect(): Aspect<br ALIGN="LEFT"/>
+get_dimension(): Dimension<br ALIGN="LEFT"/>
+get_value(): Member<br ALIGN="LEFT"/>
+}>, shape="record", style="solid"];
+
+"brel.characteristics.i_characteristic.ICharacteristic" [color="darkseagreen", fontcolor="black", label=<{
+ICharacteristic
+|
+get_aspect(): Aspect<br ALIGN="LEFT"/>
+get_value(): Any<br ALIGN="LEFT"/>                                                                                                                                              
+}>, shape="record", style="solid"];
+
+"brel.characteristics.period_characteristic.PeriodCharacteristic" [color="black", fontcolor="black", label=<{
+PeriodCharacteristic
+|
+get_aspect(): Aspect<br ALIGN="LEFT"/>
+get_end_period(): datetime.date<br ALIGN="LEFT"/>
+get_instant_period(): datetime.date<br ALIGN="LEFT"/>
+get_start_period(): datetime.date<br ALIGN="LEFT"/>
+get_value(): PeriodCharacteristic<br ALIGN="LEFT"/>
+is_instant(): bool<br ALIGN="LEFT"/>
+}>, shape="record", style="solid"];
+
+"brel.characteristics.typed_dimension_characteristic.TypedDimensionCharacteristic" [color="black", fontcolor="black", label=<{
+TypedDimensionCharacteristic
+|
+get_aspect(): Aspect<br ALIGN="LEFT"/>
+get_dimension(): Dimension<br ALIGN="LEFT"/>
+get_value(): str<br ALIGN="LEFT"/>
+}>, shape="record", style="solid"];
+
+"brel.characteristics.unit_characteristic.UnitCharacteristic" [color="black", fontcolor="black", label=<{
+UnitCharacteristic
+|
+get_aspect(): Aspect<br ALIGN="LEFT"/>
+get_denominators(): list[QName]<br ALIGN="LEFT"/>
+get_numerators(): list[QName]<br ALIGN="LEFT"/>
+get_value(): str<br ALIGN="LEFT"/>
+}>, shape="record", style="solid"];
+
+// Core aspect nodes
+"Aspect.CONCEPT" [color="black", fontcolor="black", label=<
+Aspect.CONCEPT
+>, shape="plaintext", style="solid"];
+
+"Aspect.ENTITY" [color="black", fontcolor="black", label=<
+Aspect.ENTITY
+>, shape="plaintext", style="solid"];
+
+"Aspect.PERIOD" [color="black", fontcolor="black", label=<
+Aspect.PERIOD
+>, shape="plaintext", style="solid"];
+
+"Aspect.UNIT" [color="black", fontcolor="black", label=<
+Aspect.UNIT
+>, shape="plaintext", style="solid"];
+
+// Edges
+"brel.characteristics.concept_characteristic.ConceptCharacteristic" -> "brel.characteristics.i_characteristic.ICharacteristic" [arrowhead="empty", arrowtail="none"];
+"brel.characteristics.entity_characteristic.EntityCharacteristic" -> "brel.characteristics.i_characteristic.ICharacteristic" [arrowhead="empty", arrowtail="none"];
+"brel.characteristics.explicit_dimension_characteristic.ExplicitDimensionCharacteristic" -> "brel.characteristics.i_characteristic.ICharacteristic" [arrowhead="empty", arrowtail="none"];
+"brel.characteristics.period_characteristic.PeriodCharacteristic" -> "brel.characteristics.i_characteristic.ICharacteristic" [arrowhead="empty", arrowtail="none"];
+"brel.characteristics.typed_dimension_characteristic.TypedDimensionCharacteristic" -> "brel.characteristics.i_characteristic.ICharacteristic" [arrowhead="empty", arrowtail="none"];
+"brel.characteristics.unit_characteristic.UnitCharacteristic" -> "brel.characteristics.i_characteristic.ICharacteristic" [arrowhead="empty", arrowtail="none"];
+
+"brel.characteristics.brel_aspect.Aspect" -> "brel.characteristics.explicit_dimension_characteristic.ExplicitDimensionCharacteristic" [arrowhead="odiamond", arrowtail="none", fontcolor="dimgrey", headlabel="n  ", taillabel="1  ", style="solid"];
+"brel.characteristics.brel_aspect.Aspect" -> "brel.characteristics.typed_dimension_characteristic.TypedDimensionCharacteristic" [arrowhead="odiamond", arrowtail="none", fontcolor="dimgrey", headlabel="n  ", taillabel="1  ", style="solid"];
+
+"Aspect.CONCEPT" -> "brel.characteristics.concept_characteristic.ConceptCharacteristic" [arrowhead="odiamond", arrowtail="none", fontcolor="dimgrey", headlabel="n  ", taillabel="1  ", style="solid"];
+"Aspect.ENTITY" -> "brel.characteristics.entity_characteristic.EntityCharacteristic" [arrowhead="odiamond", arrowtail="none", fontcolor="dimgrey", headlabel="n  ", taillabel="1  ", style="solid"];
+"Aspect.PERIOD" -> "brel.characteristics.period_characteristic.PeriodCharacteristic" [arrowhead="odiamond", arrowtail="none", fontcolor="dimgrey", headlabel="n  ", taillabel="1  ", style="solid"];
+"Aspect.UNIT" -> "brel.characteristics.unit_characteristic.UnitCharacteristic" [arrowhead="odiamond", arrowtail="none", fontcolor="dimgrey", headlabel="n  ", taillabel="1  ", style="solid"];
+
+// invisible edges for structuring the graph
+// aspect.entity -> aspect.unit
+// "Aspect.ENTITY" -> "Aspect.PERIOD" [arrowhead="empty", arrowtail="none", color="black", style="solid"];
+
+// concept characteristic -> typed dimension
+// "brel.characteristics.concept_characteristic.ConceptCharacteristic" -> "brel.characteristics.typed_dimension_characteristic.TypedDimensionCharacteristic" [arrowhead="empty", arrowtail="none", color="red", style=""];
+// concept characteristic -> entity aspect
+"brel.characteristics.concept_characteristic.ConceptCharacteristic" -> "Aspect.ENTITY" [arrowhead="empty", arrowtail="none", color="red", style="invis"];
+// period characteristic -> entity aspect
+// "brel.characteristics.period_characteristic.PeriodCharacteristic" -> "Aspect.ENTITY" [arrowhead="empty", arrowtail="none", color="red", style="invis"];
+// period characteristic -> unit aspect
+"brel.characteristics.period_characteristic.PeriodCharacteristic" -> "Aspect.UNIT" [arrowhead="empty", arrowtail="none", color="red", style="invis"];
+
+}

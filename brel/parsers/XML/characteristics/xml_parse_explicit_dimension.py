@@ -6,12 +6,17 @@ Contains the xml parser for parsing an explicit dimension characteristic from an
 :date: 19 December 2023
 """
 
-import lxml.etree
 from typing import Callable, cast
+
+import lxml.etree
+
 from brel import QName
-from brel.characteristics import Aspect, ICharacteristic
-from brel.reportelements import Dimension, Member, IReportElement
-from brel.characteristics import ExplicitDimensionCharacteristic
+from brel.characteristics import (
+    Aspect,
+    ExplicitDimensionCharacteristic,
+    ICharacteristic,
+)
+from brel.reportelements import Dimension, IReportElement, Member, Concept
 
 
 def parse_explicit_dimension_from_xml(
@@ -34,9 +39,7 @@ def parse_explicit_dimension_from_xml(
     # get the dimension attribute from the xml element
     dimension_axis = xml_element.get("dimension")
     if dimension_axis is None:
-        raise ValueError(
-            "Could not find dimension attribute in explicit dimension characteristic"
-        )
+        raise ValueError("Could not find dimension attribute in explicit dimension characteristic")
 
     # check cache for dimension aspect
     dimension_aspect = get_from_cache(f"aspect {dimension_axis}")
@@ -73,33 +76,24 @@ def parse_explicit_dimension_from_xml(
     member_qname = make_qname(dimension_value)
     member = get_report_element(member_qname)
     if member is None:
-        raise ValueError(
-            "Member not found in report elements. Please make sure that the member is in the report elements."
-        )
+        raise ValueError(f"Member {str(member_qname)} of dimension {str(dimension_qname)} not found in report elements")
     if not isinstance(member, Member):
+        # read this: https://www.xbrl.org/WGN/dimensions-use/WGN-2015-03-25/dimensions-use-WGN-2015-03-25.html#sec-open-hypercubes
         raise ValueError(
-            "Member not found in report elements. Please make sure that the member is in the report elements."
+            f"Member {str(member_qname)} of dimension {str(dimension_qname)} is a {type(member)} and not a member."
         )
 
     # check cache
-    dimension_characteristic = get_from_cache(
-        f"explicit dimension {dimension_axis} {dimension_value}"
-    )
+    dimension_characteristic = get_from_cache(f"explicit dimension {dimension_axis} {dimension_value}")
     if dimension_characteristic is None:
         # create and add the characteristic
-        dimension_characteristic = ExplicitDimensionCharacteristic(
-            report_element, member, dimension_aspect
-        )
+        dimension_characteristic = ExplicitDimensionCharacteristic(report_element, member, dimension_aspect)
         add_to_cache(
             f"explicit dimension {dimension_axis} {dimension_value}",
             dimension_characteristic,
         )
     else:
-        if not isinstance(
-            dimension_characteristic, ExplicitDimensionCharacteristic
-        ):
-            raise ValueError(
-                "Dimension characteristic is not an explicit dimension characteristic"
-            )
+        if not isinstance(dimension_characteristic, ExplicitDimensionCharacteristic):
+            raise ValueError("Dimension characteristic is not an explicit dimension characteristic")
 
     return cast(ExplicitDimensionCharacteristic, dimension_characteristic)

@@ -9,7 +9,6 @@ There are characteristics for the 5 core aspects.
 - [`PeriodCharacteristic`](./period-characteristic.md) for `Aspect.PERIOD`
 - [`EntityCharacteristic`](./entity-characteristic.md) for `Aspect.ENTITY`
 - [`UnitCharacteristic`](./unit-characteristic.md) for `Aspect.UNIT`
-- [`LanguageCharacteristic`](./language-characteristic.md) for `Aspect.LANGUAGE`
 
 There are also characteristics for custom aspects. Custom aspects can either be typed or explicit.
 A explicit aspect is an aspect where the characteristic value is one option from a list of options.
@@ -32,8 +31,8 @@ For example, consider the following facts:
 In this case value of the fact is the number of employees.
 The type aspect is the 'salary per month' aspect, is an integer.
 
-- [`ExplicitDimensionCharacteristic`](./explicit_dimension_characteristic.md) for explicit dimensions.
-- [`TypedDimensionCharacteristic`](./typed_dimension_characteristic.md) for typed dimensions.
+- [`ExplicitDimensionCharacteristic`](./explicit-dimension-characteristic.md) for explicit dimensions.
+- [`TypedDimensionCharacteristic`](./typed-dimension-characteristic.md) for typed dimensions.
 
 =================
 
@@ -45,8 +44,9 @@ The type aspect is the 'salary per month' aspect, is an integer.
 """
 
 from abc import ABC, abstractmethod
-from brel.characteristics import Aspect
 from typing import Any
+
+from brel.characteristics import Aspect
 
 
 class ICharacteristic(ABC):
@@ -56,14 +56,14 @@ class ICharacteristic(ABC):
     """
 
     @abstractmethod
-    def get_value(self) -> Any:
+    def get_value(self) -> Any:  # pragma: no cover
         """
         :returns Any: the value of the characteristic.
         """
         raise NotImplementedError
 
     @abstractmethod
-    def get_aspect(self) -> Aspect:
+    def get_aspect(self) -> Aspect:  # pragma: no cover
         """
         :returns Aspect: the aspect of the characteristic.
         """

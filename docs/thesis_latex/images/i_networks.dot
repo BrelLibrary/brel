@@ -1,0 +1,24 @@
+digraph "classes_brel_networks" {
+rankdir=BT
+charset="utf-8"
+
+# create uml boxes for the INetworkNode and INetwork interfaces
+"brel.networks.i_network.INetwork" [color="black", fontcolor="black", label=<{INetwork|<br ALIGN="LEFT"/>|get_all_nodes(): List[INetworkNode]<br ALIGN="LEFT"/>get_arc_name(): QName \| None<br ALIGN="LEFT"/>get_arc_roles(): List[str]<br ALIGN="LEFT"/>get_link_name(): QName<br ALIGN="LEFT"/>get_link_role(): str<br ALIGN="LEFT"/>get_root(): INetworkNode<br ALIGN="LEFT"/>get_roots(): list[INetworkNode]<br ALIGN="LEFT"/>is_physical(): bool<br ALIGN="LEFT"/>}>, shape="record", style="solid"];
+"brel.networks.i_network_node.INetworkNode" [color="black", fontcolor="black", label=<{INetworkNode|<br ALIGN="LEFT"/>|get_all_descendants(): list['INetworkNode']<br ALIGN="LEFT"/><I>get_arc_name</I>(): QName<br ALIGN="LEFT"/><I>get_arc_role</I>(): str<br ALIGN="LEFT"/><I>get_children</I>(): list['INetworkNode']<br ALIGN="LEFT"/><I>get_fact</I>(): Fact<br ALIGN="LEFT"/><I>get_link_name</I>(): QName<br ALIGN="LEFT"/><I>get_link_role</I>(): str<br ALIGN="LEFT"/><I>get_order</I>(): float<br ALIGN="LEFT"/><I>get_report_element</I>(): IReportElement<br ALIGN="LEFT"/><I>get_resource</I>(): IResource<br ALIGN="LEFT"/>is_leaf(): bool<br ALIGN="LEFT"/><I>points_to</I>(): str<br ALIGN="LEFT"/>}>, shape="record", style="solid"];
+
+# create abstractions for QName, IReportElement, IResource, and Fact
+"brel.qname.QName" [color="black", fontcolor="black", label=<{QName|<br ALIGN="LEFT"/>}>, shape="record", style="solid"];
+"brel.reports.i_report_element.IReportElement" [color="black", fontcolor="black", label=<{IReportElement|<br ALIGN="LEFT"/>}>, shape="record", style="solid"];
+"brel.resources.i_resource.IResource" [color="black", fontcolor="black", label=<{IResource|<br ALIGN="LEFT"/>}>, shape="record", style="solid"];
+"brel.facts.fact.Fact" [color="black", fontcolor="black", label=<{Fact|<br ALIGN="LEFT"/>}>, shape="record", style="solid"];
+
+# Add the inheritance relationships
+# the INetworkNode INetwork relationship is aggregation -> empty diamond
+# the other relationships are composition -> filled diamond
+"brel.networks.i_network.INetwork" -> "brel.networks.i_network_node.INetworkNode" [arrowhead="odiamond", arrowtail="none"]; 
+"brel.networks.i_network.INetwork" -> "brel.qname.QName" [arrowhead="diamond", arrowtail="none"];
+"brel.networks.i_network_node.INetworkNode" -> "brel.qname.QName" [arrowhead="diamond", arrowtail="none"];
+"brel.networks.i_network_node.INetworkNode" -> "brel.reports.i_report_element.IReportElement" [arrowhead="diamond", arrowtail="none"];
+"brel.networks.i_network_node.INetworkNode" -> "brel.resources.i_resource.IResource" [arrowhead="diamond", arrowtail="none"];
+"brel.networks.i_network_node.INetworkNode" -> "brel.facts.fact.Fact" [arrowhead="diamond", arrowtail="none"];
+}

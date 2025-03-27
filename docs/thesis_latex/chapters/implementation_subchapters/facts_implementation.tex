@@ -22,7 +22,7 @@ The following snippet shows an example of a fact in XBRL:
           unitRef="usd">
             121000000
         </us-gaap:ExtinguishmentOfDebtAmount>
-    \end{lstlisting}\footnote[1]{taken from COCA COLA CO's 2023 Q2 report}
+    \end{lstlisting}\footnote{Taken from COCA-COLA CO's 2023 Q2 report}
 \end{figure}
 
 
@@ -61,46 +61,46 @@ Going back to our example from above, the context element referenced by the fact
             </period>
         </context>
     \end{lstlisting}
-    \footnote[2]{taken from COCA COLA CO's 2023 Q2 report}
+    \footnote{Taken from COCA-COLA CO's 2023 Q2 report}
 \end{figure}
 
-The XML snippet fills in some of the missing information from the fact, namely:
+The XML snippet fills in some missing information from the fact, namely:
 
 \begin{itemize}
     \item The \textbf{entity} refers to \textit{who} is reporting. 
-    The entity XML element provides us with a identifier for the entity, as well as information about where the identifier comes from.
+    The entity XML element provides us with an identifier for the entity, as well as information about where the identifier comes from.
     In this case, the identifier is a Central Index Key (CIK) provided by the US Securities and Exchange Commission (SEC).
-    If we look up the identifier "0000021344" in the SEC's database, we can see that it corresponds to the Coca Cola Company.
+    If we look up the identifier "0000021344" in the SEC's database, we can see that it corresponds to the COCA-COLA Company.
     \item The \textbf{period} refers to \textit{when} the information is being reported.
     As described in chapter TODO, a period can either be a point in time or a duration.
-    In this case, the period is defined as a duration, starting on January 1, 2023 and ending on June 30, 2023.
+    In this case, the period is defined as a duration, starting on 1.1.2023 and ending on June 30, 2023.
     \item The \textbf{dimensions} refer to additional information about the fact.
     This information is only relevant if the fact is part of a hypercube.
     Dimensions are defined as child elements of the \texttt{segment} element, 
     which is a child element of the \texttt{entity} element.
 \end{itemize}
 
-A observant reader might have noticed that the placement of dimensions in the context element is not consistent with the placement of both the entity and the period information of a fact.
+An observant reader might have noticed that the placement of dimensions in the context element is not consistent with the placement of both the entity and the period information of a fact.
 The main reason for this inconsistency is that the XBRL specification was not designed with hypercubes in mind.
 Hypercubes were added to the XBRL specification at a later point in time.
 
 A second oddity of facts in XBRL is that they are not self-contained. 
 Their definition is spread across multiple elements in the instance document.
-Most noticably, the context element is defined separately from the fact element.
+Most noticeably, the context element is defined separately from the fact element.
 Since different XBRL facts reference the same context element, the incentive behind this design decision is clear: Reducing redundancy.
-A XBRL instance document can contain thousands of facts, but only a handful of context elements.
+An XBRL instance document can contain thousands of facts, but only a handful of context elements.
 
 However, this design falls apart as soon as we consider the case of hypercubes.
 To illustrate the problem, consider the following numbers:
 
-In their 2023 Q2 report, the Coca Cola Company 
+In their 2023 Q2 report, the COCA-COLA Company 
 
 \begin{enumerate}
-    \item reported 1658 facts.
-    \item defined 13 context elements without dimensions.
-    \item defined 397 context elements with dimensions.
-    \item used the same entity for all facts.
-    \item uesd around 15 different periods for all facts.
+    \item Reported 1658 facts.
+    \item Defined 13 context elements without dimensions.
+    \item Defined 397 context elements with dimensions.
+    \item Used the same entity for all facts.
+    \item Used around 15 different periods for all facts.
 \end{enumerate}
 
 So the vast majority of all contexts exist to provide information about the dimensions of a fact.
@@ -116,14 +116,14 @@ Going back to our example from above, the unit element referenced by the fact is
     <unit id="usd">
         <measure>iso4217:USD</measure>
     </unit>
-\end{lstlisting}\footnote[3]{taken from COCA COLA CO's 2023 Q2 report}
+\end{lstlisting}\footnote{Taken from COCA-COLA CO's 2023 Q2 report}
 
 This XML snippet connects our intuitive understanding of the unit "usd" with a formal definition of the unit.
 It does so by referencing the official ISO 4217 currency code for the US dollar.
 
 \subsection{Concepts in XBRL}
 
-As mentioned in chapter TODO, concepts are the fundamental building blocks of XBRL.
+As mentioned in chapter \ref*{chapter:xbrl}, concepts are the fundamental building blocks of XBRL.
 Each fact is associated with exactly one concept.
 Unlike units, periods, and contexts, concepts are not defined in the instance document.
 Instead, they are defined in the XBRL taxonomy, which is a collection of XML schema documents.
@@ -134,7 +134,7 @@ The following snippet shows the definition of the concept in the US GAAP taxonom
 
 \begin{lstlisting}[language=XML]
     <xs:element id="us-gaap_ExtinguishmentOfDebtAmount" name="ExtinguishmentOfDebtAmount" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:balance="debit" xbrli:periodType="duration"/>
-\end{lstlisting}\footnote[4]{taken from the US GAAP taxonomy}
+\end{lstlisting}\footnote{taken from the US GAAP taxonomy}
 
 The main purpose of this snippet is to provide a formal definition of the concept and to constrain the values that are allowed for the concept.
 In particular, it tells us that the concept is a monetary item, that it has a debit balance, and that it has a duration period type.

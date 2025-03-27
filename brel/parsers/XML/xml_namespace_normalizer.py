@@ -8,7 +8,7 @@ It all depends on the context in which the prefix is used. From a user perspecti
 When a user looks for e.g. us-gaap:Assets, he usually doesn't care if it is us-gaap's 2022 or 2023 version. 
 Also, if the filing calls the prefix us-gaap1 instead of us-gaap for some contexts, then the user will have to know this and use the correct prefix.
 
-Namespace normalizing turns the nested namespace mappings into a flat namespace mapping. It also generates redirects for the prefixes.
+Namespace normalizing turns the nested namespace mappings into a flat namespace mapping. It also generates redirects and renames for the prefixes.
 For the example above, it would generate the following mapping:
 
 - us-gaap -> us-gaap-2023-01-31
@@ -20,19 +20,25 @@ More precisely, it does the following:
 - For each group, it picks the main prefix and the latest version of the url.
 - For each non-main prefix, it generates a redirect to the main prefix.
 
+Renames are generated if two completely different urls are mapped to the same prefix.
+In that case, the name of the prefix is changed to a new prefix.
+A rename has the following form: 
+
+- old_url -> (old_prefix, new_prefix)
+
 ====================
 
 - author: Robin Schmidiger
-- version: 0.3
-- date: 06 January 2024
+- version: 0.4
+- date: 21 January 2024
 
 ====================
 """
 
-from collections import defaultdict
-import re
 import json
-from importlib.resources import path
+import re
+from collections import defaultdict
+from importlib.resources import files
 
 DEBUG = False
 
@@ -41,11 +47,10 @@ DEBUG = False
 
 default_namespace_mappings: dict[str, str] = {}
 
-with path("brel.config", "nsconfig.json") as nsconfig_path:
-    with open(nsconfig_path, "r") as nsconfig_file:
-        nsconfig = json.load(nsconfig_file)
-        for prefix, re_uri in nsconfig["default_mappings"].items():
-            default_namespace_mappings[re_uri] = prefix
+nsconfig_text = files("brel.config").joinpath("nsconfig.json").read_text()
+nsconfig = json.loads(nsconfig_text)
+for prefix, re_uri in nsconfig["default_mappings"].items():
+    default_namespace_mappings[re_uri] = prefix
 
 
 # helper functions
@@ -74,9 +79,7 @@ def get_default_prefix_from_uri(uri: str) -> str | None:
 
     if longest_match_url != "":
         if DEBUG:  # pragma: no cover
-            print(
-                f"Found default prefix {longest_match_prefix} for uri {longest_match_url}"
-            )
+            print(f"Found default prefix {longest_match_prefix} for uri {longest_match_url}")
         return longest_match_prefix
     else:
         return None
@@ -135,9 +138,7 @@ def are_urls_versions(urls: list[str]) -> bool:
 
         if url1 != url2:
             if DEBUG:  # pragma: no cover
-                print(
-                    f"Found incompatible urls {url1} and {url2} at positions {i} and {i+1}."
-                )
+                print(f"Found incompatible urls {url1} and {url2} at positions {i} and {i+1}.")
             return False
 
     if DEBUG:  # pragma: no cover
@@ -201,9 +202,7 @@ def get_best_prefix(prefixes: list[str]) -> str:
     return best_prefix
 
 
-def __component_to_nsmap(
-    urls: list[str], prefixes: list[str]
-) -> tuple[str, str, list[str]]:
+def __component_to_nsmap(urls: list[str], prefixes: list[str]) -> tuple[str, str, list[str]]:
     """
     given a list of urls and prefixes, picks a main prefix and a main url.
     Also generates a dictionary of redirects from the non-main prefixes to the main prefix.
@@ -213,14 +212,10 @@ def __component_to_nsmap(
     """
 
     if DEBUG:  # pragma: no cover
-        print(
-            f"Extracting namespace mappings from component with urls {urls} and prefixes {prefixes}."
-        )
+        print(f"Extracting namespace mappings from component with urls {urls} and prefixes {prefixes}.")
 
     if len(urls) < 1 or len(prefixes) < 1:
-        raise ValueError(
-            f"The component is too simple. It does not contain enough urls or prefixes: {urls+prefixes}"
-        )
+        raise ValueError(f"The component is too simple. It does not contain enough urls or prefixes: {urls+prefixes}")
 
     # get the main url
     if not are_urls_versions(urls):
@@ -237,9 +232,7 @@ def __component_to_nsmap(
         main_prefix = default_prefix
     elif default_prefix is not None and default_prefix not in prefixes:
         main_prefix = default_prefix
-        print(
-            f"Warning: the default prefix {default_prefix} is not in the prefixes list {prefixes}"
-        )
+        print(f"Warning: the default prefix {default_prefix} is not in the prefixes list {prefixes}")
     else:
         main_prefix = get_best_prefix(prefixes)
 
@@ -250,16 +243,12 @@ def __component_to_nsmap(
             redirects.append(prefix)
 
     if DEBUG:  # pragma: no cover
-        print(
-            f"Extracted namespace mappings: {main_prefix} -> {main_url} with redirects {redirects}"
-        )
+        print(f"Extracted namespace mappings: {main_prefix} -> {main_url} with redirects {redirects}")
 
     return main_prefix, main_url, redirects
 
 
-def normalize_nsmap(
-    namespace_mappings: list[dict[str, str]]
-) -> dict[str, dict[str, str]]:
+def normalize_nsmap(namespace_mappings: list[dict[str, str]]) -> dict[str, dict[str, str]]:
     """
     Given a list of namespace mappings, normalize the namespace mappings and returns the normalized namespace mapping and the redirects.
     A mapping is considered normalized if there is a 1:1 mapping between prefixes and urls.
@@ -271,9 +260,7 @@ def normalize_nsmap(
     :returns dict: A dictionary containing the normalized namespace mapping and the redirects.
     """
     # compute all components by grouping the urls by their unversioned uri
-    components: dict[str, tuple[set[str], set[str]]] = defaultdict(
-        lambda: (set(), set())
-    )
+    components: dict[str, tuple[set[str], set[str]]] = defaultdict(lambda: (set(), set()))
     for namespace_mapping in namespace_mappings:
         for prefix, uri in namespace_mapping.items():
             if prefix is not None:
@@ -284,9 +271,7 @@ def normalize_nsmap(
     if DEBUG:  # pragma: no cover
         print(f"Found components:")
         for uri_a_unversioned, (uris_a, prefixes_a) in components.items():
-            print(
-                f"{uri_a_unversioned} -> {uris_a} with prefixes {prefixes_a}"
-            )
+            print(f"{uri_a_unversioned} -> {uris_a} with prefixes {prefixes_a}")
 
     nsmap: dict[str, str] = {}
     redirects: dict[str, str] = {}
@@ -304,12 +289,11 @@ def normalize_nsmap(
         ) = __component_to_nsmap(urls, prefixes)
 
         # check if the component prefix is already in the nsmap
-        # if so, create an alternative prefix
+        # if so, create an alternative prefix and add it to renames
+        # the rename is of the form: component_url -> (old_component_prefix, new_component_prefix)
         if component_prefix in nsmap:
-            new_component_prefix = generate_alternative_prefixes(
-                component_prefix
-            )
-            renames[new_component_prefix] = component_prefix
+            new_component_prefix = generate_alternative_prefixes(component_prefix)
+            renames[component_url] = new_component_prefix
             component_prefix = new_component_prefix
 
         # add the component to the nsmap and the redirects
@@ -318,8 +302,6 @@ def normalize_nsmap(
             redirects[redirect] = component_prefix
 
     if DEBUG:  # pragma: no cover
-        print(
-            f"Normalized namespace mappings: {nsmap} with redirects {redirects}"
-        )
+        print(f"Normalized namespace mappings: {nsmap} with redirects {redirects}")
 
     return {"nsmap": nsmap, "redirects": redirects, "renames": renames}

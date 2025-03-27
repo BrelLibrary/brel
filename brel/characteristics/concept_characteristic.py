@@ -10,8 +10,6 @@ Contains the class for representing an XBRL concept characteristic
 =================
 """
 
-from brel import QName
-
 from brel.characteristics import Aspect, ICharacteristic
 from brel.reportelements import Concept
 
@@ -23,7 +21,7 @@ class ConceptCharacteristic(ICharacteristic):
 
     """
 
-    __concept_cache: dict[QName, "ConceptCharacteristic"] = {}
+    __concept_cache: dict = {}
 
     def __init__(self, concept: Concept) -> None:
         # check if the concept is actually a Concept instance

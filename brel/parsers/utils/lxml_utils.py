@@ -1,47 +1,22 @@
+from typing import cast, Mapping
+
 import lxml
 import lxml.etree
-from typing import cast
 
 
-def compute_connected_components(
-    edges: list[tuple[str, str]]
-) -> list[list[str]]:
+def get_clark(prefix: str, local_name: str, prefix_to_url: Mapping[str, str]) -> str:
     """
-    Given a list of edges, compute the connected components.
-    @param edges: The edges. These are tuples of the form (node1, node2).
-    @return: A list of connected components. Each connected component is a list of nodes.
+    Given a prefix, a local name and a prefix to URL mapping, return the clark notation.
+    :param prefix: The prefix.
+    :param local_name: The local name.
+    :param prefix_to_url: The prefix to URL mapping.
+    :returns str: The clark notation.
     """
-    unvisited: set[str] = set()
-    for edge in edges:
-        unvisited.add(edge[0])
-        unvisited.add(edge[1])
-
-    connected_components: list[list[str]] = []
-    while len(unvisited) > 0:
-        # pick a random element from unvisited
-        current_node = unvisited.pop()
-        # create a new connected component
-        connected_component: list[str] = []
-        working_set: list[str] = [current_node]
-        while len(working_set) > 0:
-            current_node = working_set.pop()
-            connected_component.append(current_node)
-            for edge in edges:
-                if edge[0] == current_node and edge[1] in unvisited:
-                    working_set.append(edge[1])
-                    unvisited.remove(edge[1])
-                elif edge[1] == current_node and edge[0] in unvisited:
-                    working_set.append(edge[0])
-                    unvisited.remove(edge[0])
-
-        connected_components.append(connected_component)
-
-    return connected_components
+    url = prefix_to_url[prefix]
+    return f"{{{url}}}{local_name}"
 
 
-def get_str(
-    element: lxml.etree._Element, attribute: str, default: str | None = None
-) -> str:
+def get_str(element: lxml.etree._Element, attribute: str, default: str | None = None) -> str:
     """
     Helper function for getting a string attribute from an element. Always returns a string.
     @param element: lxml.etree._Element to get the attribute from
@@ -56,13 +31,7 @@ def get_str(
         if default is not None:
             return default
 
-        raise ValueError(
-            f"{attribute} attribute not found on element {element}"
-        )
-    if not isinstance(value, str):
-        raise TypeError(
-            f"{attribute} attribute on element {element} is not a string"
-        )
+        raise ValueError(f"{attribute} attribute not found on element {element}")
     return value
 
 

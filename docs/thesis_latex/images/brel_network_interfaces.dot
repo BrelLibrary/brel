@@ -1,0 +1,72 @@
+digraph "classes_brel_filing" {
+rankdir=BT
+charset="utf-8"
+splines="ortho"
+
+
+"brel.networks.i_network.INetwork" [color="red", fontcolor="black", label=<{
+INetwork
+|
+get_roots(): list[INetworkNode]<br ALIGN="LEFT"/>
+get_link_role(): str<br ALIGN="LEFT"/>
+get_link_name(): QName<br ALIGN="LEFT"/>
+}>, shape="record", style="solid"];
+
+"brel.networks.i_network_node.INetworkNode" [color="black", fontcolor="black", label=<{
+INetworkNode
+|
+get_children(): list[INetworkNode]<br ALIGN="LEFT"/>
+points_to(): str<br ALIGN="LEFT"/>
+get_fact(): Fact<br ALIGN="LEFT"/>
+get_report_element(): IReportElement<br ALIGN="LEFT"/>
+get_resource(): IResource<br ALIGN="LEFT"/>
+get_arc_name(): QName<br ALIGN="LEFT"/>
+get_arc_role(): str<br ALIGN="LEFT"/>
+}>, shape="record", style="solid"];
+
+"brel.Fact" [color="black", fontcolor="black", label=<{
+Fact
+|
+...
+}>, shape="record", style="solid"];
+
+"brel.IReportElement" [color="dodgerblue", fontcolor="black", label=<{
+IReportElement
+|
+...
+}>, shape="record", style="solid"];
+
+"brel.IResource" [color="darkgoldenrod", fontcolor="black", label=<{
+IResource
+|
+...
+}>, shape="record", style="solid"];
+
+"brel.QName" [color="black", fontcolor="black", label=<{
+QName
+|
+...
+}>, shape="record", style="solid"];
+
+// Add edges network -> filing and network -> component
+// both edges are 1:n
+// "brel.networks.i_network.INetwork" -> "brel.brel_filing.Filing" [arrowhead="odiamond", arrowtail="none", fontcolor="green", label="1:n", style="solid"];
+// "brel.networks.i_network.INetwork" -> "brel.brel_component.Component" [arrowhead="odiamond", arrowtail="none", fontcolor="green", label="1:n", style="solid"];
+// inetworknode -> inetwork
+"brel.networks.i_network_node.INetworkNode" -> "brel.networks.i_network.INetwork" [arrowhead="odiamond", arrowtail="none", fontcolor="dimgrey", headlabel="1  ", taillabel="n  ", style="solid"];
+// inetworknode -> inetworknode
+"brel.networks.i_network_node.INetworkNode" -> "brel.networks.i_network_node.INetworkNode" [arrowhead="odiamond", arrowtail="none", fontcolor="dimgrey", headlabel="1  ", taillabel="n  ", style="solid"];
+
+// qname -> inetworknode and qname -> inetwork
+// empty labels for both
+"brel.QName" -> "brel.networks.i_network_node.INetworkNode" [arrowhead="odiamond", arrowtail="none", fontcolor="dimgrey", style="solid"];
+"brel.QName" -> "brel.networks.i_network.INetwork" [arrowhead="odiamond", arrowtail="none", fontcolor="dimgrey", style="solid"];
+
+// fact -> inetworknode and ireportelement -> inetworknode and iresource -> inetworknode
+// empty labels for all
+"brel.Fact" -> "brel.networks.i_network_node.INetworkNode" [arrowhead="odiamond", arrowtail="none", fontcolor="dimgrey", style="solid"];
+"brel.IReportElement" -> "brel.networks.i_network_node.INetworkNode" [arrowhead="odiamond", arrowtail="none", fontcolor="dimgrey", style="solid"];
+"brel.IResource" -> "brel.networks.i_network_node.INetworkNode" [arrowhead="odiamond", arrowtail="none", fontcolor="dimgrey", style="solid"];
+
+
+}

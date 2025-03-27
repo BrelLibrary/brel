@@ -21,23 +21,28 @@ install:          ## Install the project in dev mode.
 	@echo "Don't forget to run 'make virtualenv' if you got errors."
 	$(ENV_PREFIX)pip install -e .[test]
 
+.PHONY: remove
+remove:           ## Remove the project.
+	$(ENV_PREFIX)pip uninstall -y brel
+
 .PHONY: fmt
 fmt:              ## Format code using black & isort.
-	$(ENV_PREFIX)isort brel/
-	$(ENV_PREFIX)black -l 79 brel/
-	$(ENV_PREFIX)black -l 79 tests/
+	$(ENV_PREFIX)black -l 120 brel/
+	$(ENV_PREFIX)black -l 120 tests/
 
 .PHONY: lint
 lint:             ## Run pep8, black, mypy linters.
-	$(ENV_PREFIX)black -l 79 --check brel/
-	$(ENV_PREFIX)black -l 79 --check tests/
+	$(ENV_PREFIX)black -l 120 --check brel/
+	$(ENV_PREFIX)black -l 120 --check tests/
 	$(ENV_PREFIX)mypy --ignore-missing-imports brel/
 
 .PHONY: test
-test: lint        ## Run tests and generate coverage report.
+test: lint		 ## Run tests.
+	make install
 	$(ENV_PREFIX)pytest -v --cov-config .coveragerc --cov=brel -l --tb=short --maxfail=1 tests/
 	$(ENV_PREFIX)coverage xml
 	$(ENV_PREFIX)coverage html
+	make remove
 
 .PHONY: watch
 watch:            ## Run tests on every change.
@@ -86,19 +91,14 @@ release:          ## Create a new tag for release.
 docs:             ## Build the documentation.
 	@echo "building documentation ..."
 	@$(ENV_PREFIX)pydoc-markdown
-	@$(ENV_PREFIX)mkdocs build
+	@$(ENV_PREFIX)mkdocs build -f docs/mkdocs.yml -d ../site
 
-.PHONY: serve-docs
-serve-docs:       ## Serve the documentation.
+.PHONY: docs-deploy
+docs-deploy:       ## Serve the documentation.
 	make docs
-	@$(ENV_PREFIX)mkdocs gh-deploy
+	@$(ENV_PREFIX)mkdocs gh-deploy -f docs/mkdocs.yml -d ../site
 
 .PHONY: init
 init:             ## Initialize the project based on an application template.
 	@./.github/init.sh
 
-
-# This project has been generated from rochacbruno/python-project-template
-# __author__ = 'rochacbruno'
-# __repo__ = https://github.com/rochacbruno/python-project-template
-# __sponsor__ = https://github.com/sponsors/rochacbruno/

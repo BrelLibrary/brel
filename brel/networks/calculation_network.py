@@ -14,12 +14,12 @@ Calculation networks also contain helper functions for checking the consistency 
 
 DEBUG = False
 
-from brel import QName, Fact
-from brel.networks import INetwork, CalculationNetworkNode, INetworkNode
-from brel.characteristics import Aspect, ICharacteristic
-from brel.reportelements import *
+from typing import Iterable, cast
 
-from typing import cast, Iterable
+from brel import Fact, QName
+from brel.characteristics import Aspect, ICharacteristic
+from brel.networks import CalculationNetworkNode, INetwork, INetworkNode
+from brel.reportelements import *
 
 
 class CalculationNetwork(INetwork):
@@ -33,12 +33,13 @@ class CalculationNetwork(INetwork):
         roots: list[CalculationNetworkNode],
         link_role: str,
         link_name: QName,
+        is_physical: bool,
     ) -> None:
         roots_copy = [cast(INetworkNode, root) for root in roots]
-        super().__init__(roots_copy, link_role, link_name, True)
+        super().__init__(roots_copy, link_role, link_name, is_physical)
 
     # second class citizen
-    def is_balance_consisent(self) -> bool:
+    def is_balance_consistent(self) -> bool:
         """
         Returns true if the network is balance consistent.
         A network is balance consistent iff, for each parent-child relationship
@@ -98,6 +99,7 @@ class CalculationNetwork(INetwork):
 
         return True
 
+    # def is_aggregation_consistent(self, facts: list[Fact]) -> bool:
     def is_aggregation_consistent(self, facts: list[Fact]) -> bool:
         """
         A calculation network is aggregation consistent iff for concepts of nodes, the sum of the fact values of the children equals the fact value of the parent.
@@ -151,22 +153,16 @@ class CalculationNetwork(INetwork):
                         if node_aspect == Aspect.CONCEPT:
                             child_facts = list(
                                 filter(
-                                    lambda fact: fact.get_concept().get_value()
-                                    == child_concept,
+                                    lambda fact: fact.get_concept().get_value() == child_concept,
                                     child_facts,
                                 )
                             )
                         else:
                             # otherwise, get all facts with the same characteristic as the node fact
-                            node_characteristic = node_fact.get_characteristic(
-                                node_aspect
-                            )
+                            node_characteristic = node_fact.get_characteristic(node_aspect)
                             child_facts = list(
                                 filter(
-                                    lambda fact: fact.get_characteristic(
-                                        node_aspect
-                                    )
-                                    == node_characteristic,
+                                    lambda fact: fact.get_characteristic(node_aspect) == node_characteristic,
                                     child_facts,
                                 )
                             )
@@ -189,9 +185,7 @@ class CalculationNetwork(INetwork):
 
                     child_fact = all_child_facts[0]
 
-                    children_sum += (
-                        child_fact.get_value_as_float() * child.get_weight()
-                    )
+                    children_sum += child_fact.get_value_as_float() * child.get_weight()
 
                     if DEBUG:  # pragma: no cover
                         print(
@@ -201,9 +195,7 @@ class CalculationNetwork(INetwork):
 
                 if DEBUG:  # pragma: no cover
                     print()
-                    print(
-                        f"node concept: {concept}, node value: {node_value}, children sum: {children_sum}"
-                    )
+                    print(f"node concept: {concept}, node value: {node_value}, children sum: {children_sum}")
 
                 if node_value != children_sum:
                     return False

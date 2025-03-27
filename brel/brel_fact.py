@@ -15,17 +15,17 @@ To print a fact to the console, use the `pprint` function in the `brel` module.
 ====================
 """
 
-from typing import Any
+from typing import Any, cast
 
 from brel import Context, QName
 from brel.characteristics import (
-    ConceptCharacteristic,
-    UnitCharacteristic,
-    PeriodCharacteristic,
     Aspect,
+    ConceptCharacteristic,
     ICharacteristic,
+    PeriodCharacteristic,
+    UnitCharacteristic,
+    EntityCharacteristic,
 )
-from typing import cast
 
 
 class Fact:
@@ -61,13 +61,6 @@ class Fact:
         :returns str: The value of the fact as a string.
         """
         return self.__value
-
-    def get_value_as_qname(self) -> QName:
-        """
-        :returns: The value of the fact as a QName
-        """
-        # TODO: implement
-        raise NotImplementedError
 
     def get_value_as_int(self) -> int:
         """
@@ -107,7 +100,7 @@ class Fact:
                 f"Fact {self.__id} does not have a bool value. It has value {self.__value}, which does not resolve to a bool"
             )
 
-    def get_value(self) -> Any:
+    def get_value(self) -> str:
         """
         :returns Any: The value of the fact. The type of the value depends on the type of the fact.
         """
@@ -142,9 +135,7 @@ class Fact:
         :returns UnitCharacteristic|None: The unit characteristic of the facts context. Returns None if the fact does not have a unit.
         Equivalent to calling `fact.get_context().get_unit()`
         """
-        unit: UnitCharacteristic = cast(
-            UnitCharacteristic, self.__context.get_characteristic(Aspect.UNIT)
-        )
+        unit: UnitCharacteristic = cast(UnitCharacteristic, self.__context.get_characteristic(Aspect.UNIT))
         return unit
 
     def get_period(self) -> PeriodCharacteristic | None:
@@ -157,6 +148,17 @@ class Fact:
             self.__context.get_characteristic(Aspect.PERIOD),
         )
         return period
+
+    def get_entity(self) -> EntityCharacteristic | None:
+        """
+        :returns EntityCharacteristic|None: The entity characteristic of the facts context. Returns None if the fact does not have an entity.
+        Equivalent to calling `fact.get_context().get_entity()`
+        """
+        entity: EntityCharacteristic = cast(
+            EntityCharacteristic,
+            self.__context.get_characteristic(Aspect.ENTITY),
+        )
+        return entity
 
     def get_aspects(self) -> list[Aspect]:
         """
@@ -173,3 +175,16 @@ class Fact:
         Equivalent to calling `fact.get_context().get_characteristic(aspect)`
         """
         return self.__context.get_characteristic(aspect)
+
+    def convert_to_dict(self) -> dict[str, Any]:
+        """
+        :returns dict[str, Any]: The fact represented as a dictionary. The dictionary has the following keys:
+        - "id": The id of the fact. Returns None if the fact does not have an id.
+        - "value": The value of the fact.
+        - "context": The context of the fact represented as a dictionary.
+        """
+        dict_to_return = self.__context.convert_to_df_row()
+        dict_to_return["id"] = self.__id
+        dict_to_return["value"] = self.__value
+
+        return dict_to_return

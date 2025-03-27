@@ -11,18 +11,17 @@ For more on the methods inherited from the INetworkNode interface, see the [INet
 =================
 
 - author: Robin Schmidiger
-- version: 0.8
-- date: 29 December 2023
+- version: 0.9
+- date: 30 December 2023
 
 =================
 """
 
-from brel.networks import INetworkNode
-from brel.reportelements import IReportElement, Concept
-from brel import QName, Fact
-
 from typing import cast
 
+from brel import Fact, QName
+from brel.networks import INetworkNode
+from brel.reportelements import Concept, IReportElement
 from brel.resource import IResource
 
 
@@ -44,9 +43,7 @@ class CalculationNetworkNode(INetworkNode):
         order: float = 1,
     ):
         if not isinstance(report_element, Concept):
-            raise TypeError(
-                f"report_element must be of type Concept, but is of type {type(report_element)}"
-            )
+            raise TypeError(f"report_element must be of type Concept, but is of type {type(report_element)}")
 
         self.__report_element = report_element
         self.__children = children

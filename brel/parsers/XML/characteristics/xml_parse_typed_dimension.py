@@ -2,17 +2,26 @@
 This module contains the function to parse a typed dimension from an lxml.etree._Element.
 It parses XBRL in the XML syntax.
 
-@author: Robin Schmidiger
-@version: 0.1
-@date: 20 December 2023
+====================
+
+- author: Robin Schmidiger
+- version: 0.1
+- date: 20 December 2023
+
+====================
 """
 
-import lxml.etree
 from typing import Callable, cast
+
+import lxml.etree
+
 from brel import QName
-from brel.characteristics import Aspect, ICharacteristic
-from brel.reportelements import Dimension, Member, IReportElement
-from brel.characteristics import TypedDimensionCharacteristic
+from brel.characteristics import (
+    Aspect,
+    ICharacteristic,
+    TypedDimensionCharacteristic,
+)
+from brel.reportelements import Dimension, IReportElement, Member
 
 
 def parse_typed_dimension_from_xml(
@@ -53,9 +62,7 @@ def parse_typed_dimension_from_xml(
     # Get the dimension attribute from the xml element
     dimension_axis = xml_element.get("dimension")
     if dimension_axis is None:
-        raise ValueError(
-            "Could not find dimension attribute in explicit dimension characteristic"
-        )
+        raise ValueError("Could not find dimension attribute in explicit dimension characteristic")
 
     # check cache for dimension aspect
     dimension_aspect = get_from_cache(f"aspect {dimension_axis}")
@@ -80,9 +87,7 @@ def parse_typed_dimension_from_xml(
     # get the dimension value from the xml element
     children = list(xml_element)
     if len(children) != 1:
-        raise ValueError(
-            "Typed dimension characteristic has more than one child"
-        )
+        raise ValueError("Typed dimension characteristic has more than one child")
 
     value_element = children[0]
     dimension_value = value_element.text
@@ -92,24 +97,16 @@ def parse_typed_dimension_from_xml(
         )
 
     # check cache
-    dimension_characteristic = get_from_cache(
-        f"typed dimension {dimension_axis} {dimension_value}"
-    )
+    dimension_characteristic = get_from_cache(f"typed dimension {dimension_axis} {dimension_value}")
     if dimension_characteristic is None:
         # create and add the characteristic
-        dimension_characteristic = TypedDimensionCharacteristic(
-            i_report_element, dimension_value, dimension_aspect
-        )
+        dimension_characteristic = TypedDimensionCharacteristic(i_report_element, dimension_value, dimension_aspect)
         add_to_cache(
             f"typed dimension {dimension_axis} {dimension_value}",
             dimension_characteristic,
         )
     else:
-        if not isinstance(
-            dimension_characteristic, TypedDimensionCharacteristic
-        ):
-            raise ValueError(
-                "Dimension characteristic is not a typed dimension characteristic"
-            )
+        if not isinstance(dimension_characteristic, TypedDimensionCharacteristic):
+            raise ValueError("Dimension characteristic is not a typed dimension characteristic")
 
     return cast(TypedDimensionCharacteristic, dimension_characteristic)

@@ -5,14 +5,15 @@ Members are used to represent the possible values of an explicit dimension.
 ====================
 
 - author: Robin Schmidiger
-- version: 0.2
-- date: 06 December 2023
+- version: 0.3
+- date: 18 January 2023
 
 ====================
 """
 
-from brel import QName, BrelLabel
+from brel import QName
 from brel.reportelements import IReportElement
+from brel.resource import BrelLabel
 
 
 class Member(IReportElement):
@@ -47,3 +48,14 @@ class Member(IReportElement):
 
     def __str__(self) -> str:
         return self.__name.__str__()
+
+    def convert_to_dict(self) -> dict:
+        """
+        Convert the member to a dictionary.
+        :returns dict: the member as a dictionary
+        """
+        return {
+            "name": self.__name.get(),
+            "label": self.select_main_label().__str__(),
+            "report_element_type": "member",
+        }

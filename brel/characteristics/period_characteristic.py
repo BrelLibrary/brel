@@ -16,8 +16,9 @@ A duration consists of two `datetime.date` instances, a start date and an end da
 ====================
 """
 
-import dateutil.parser
 import datetime
+
+import dateutil.parser
 
 from brel.characteristics import Aspect, ICharacteristic
 
@@ -39,9 +40,9 @@ class PeriodCharacteristic(ICharacteristic):
 
     def __init__(self) -> None:
         self.__is_instant: bool = False
-        self.instant_date: datetime.date | None = None
-        self.start_date: datetime.date | None = None
-        self.end_date: datetime.date | None = None
+        self.__instant_date: datetime.date | None = None
+        self.__start_date: datetime.date | None = None
+        self.__end_date: datetime.date | None = None
 
     # first class citizens
     def is_instant(self) -> bool:
@@ -55,36 +56,30 @@ class PeriodCharacteristic(ICharacteristic):
         :returns datetime.date: the start date of the period as a `datetime.date` instance.
         :raises ValueError: if the period is an instant. Use 'is_instant' to check if the period is an instant.
         """
-        if self.start_date:
-            return self.start_date
+        if self.__start_date:
+            return self.__start_date
         else:
-            raise ValueError(
-                "Period is an instant. use 'is_instant' to check if the period is an instant."
-            )
+            raise ValueError("Period is an instant. use 'is_instant' to check if the period is an instant.")
 
     def get_end_period(self) -> datetime.date:
         """
         :returns datetime.date: the end date of the period as a `datetime.date` instance.
         :raises ValueError: if the period is an instant. Use 'is_instant' to check if the period is an instant.
         """
-        if self.end_date:
-            return self.end_date
+        if self.__end_date:
+            return self.__end_date
         else:
-            raise ValueError(
-                "Period is an instant. use 'is_instant' to check if the period is an instant."
-            )
+            raise ValueError("Period is an instant. use 'is_instant' to check if the period is an instant.")
 
     def get_instant_period(self) -> datetime.date:
         """
         :returns datetime.date: the instant date of the period as a `datetime.date` instance.
         :raises ValueError: if the period is a duration. Use 'is_instant' to check if the period is an instant.
         """
-        if self.instant_date:
-            return self.instant_date
+        if self.__instant_date:
+            return self.__instant_date
         else:
-            raise ValueError(
-                "Period is a duration. use 'is_instant' to check if the period is an instant."
-            )
+            raise ValueError("Period is a duration. use 'is_instant' to check if the period is an instant.")
 
     def get_value(self) -> "PeriodCharacteristic":
         """
@@ -100,9 +95,9 @@ class PeriodCharacteristic(ICharacteristic):
 
     def __str__(self) -> str:
         if self.__is_instant:
-            return f"on {self.instant_date}"
+            return f"on {self.__instant_date}"
         else:
-            return f"from {self.start_date} to {self.end_date}"
+            return f"from {self.__start_date} to {self.__end_date}"
 
     def __eq__(self, __value: object) -> bool:
         if not isinstance(__value, PeriodCharacteristic):
@@ -133,22 +128,16 @@ class PeriodCharacteristic(ICharacteristic):
         :raises ValueError: if the instant_date is not a valid date.
         """
         if not cls._is_date(instant_date):
-            raise ValueError(
-                f"Instant date '{instant_date}' is not a valid date."
-            )
+            raise ValueError(f"Instant date '{instant_date}' is not a valid date.")
 
         period_instance = cls()
-        period_instance.instant_date = dateutil.parser.parse(
-            instant_date
-        ).date()
+        period_instance.__instant_date = dateutil.parser.parse(instant_date).date()
         period_instance.__is_instant = True
 
         return period_instance
 
     @classmethod
-    def _duration(
-        cls, start_date: str, end_date: str
-    ) -> "PeriodCharacteristic":
+    def _duration(cls, start_date: str, end_date: str) -> "PeriodCharacteristic":
         """
         Create a duration Period.
         :param start_date: the start date of the duration
@@ -163,22 +152,12 @@ class PeriodCharacteristic(ICharacteristic):
             raise ValueError(f"End date '{end_date}' is not a valid date.")
 
         period_instance = cls()
-        period_instance.start_date = dateutil.parser.parse(start_date).date()
-        period_instance.end_date = dateutil.parser.parse(end_date).date()
+        period_instance.__start_date = dateutil.parser.parse(start_date).date()
+        period_instance.__end_date = dateutil.parser.parse(end_date).date()
         period_instance.__is_instant = False
 
-        if (
-            period_instance.start_date is None
-            or period_instance.end_date is None
-        ):
-            raise ValueError(
-                f"Start date '{start_date}' or end date '{end_date}' is None."
-            )
-
         # if period_instance.start_date > period_instance.end_date:
-        if period_instance.end_date < period_instance.start_date:
-            raise ValueError(
-                f"Start date '{start_date}' is after end date '{end_date}'"
-            )
+        if period_instance.__end_date < period_instance.__start_date:
+            raise ValueError(f"Start date '{start_date}' is after end date '{end_date}'")
 
         return period_instance

@@ -1,17 +1,21 @@
 """
 Contains the class ReferenceNetworkNode, which represents a reference network node in a reference network.
 
-@author: Robin Schmidiger
-@version: 0.2
-@date: 04 January 2024
+====================
+
+- author: Robin Schmidiger
+- version: 0.3
+- date: 30 January 2024
+
+====================
 """
 
-from brel.resource import BrelReference, IResource
+from typing import cast
+
+from brel import Fact, QName
 from brel.networks import INetworkNode
 from brel.reportelements import IReportElement
-from brel import Fact, QName
-
-from typing import cast
+from brel.resource import BrelReference, IResource
 
 
 class ReferenceNetworkNode(INetworkNode):
@@ -41,9 +45,8 @@ class ReferenceNetworkNode(INetworkNode):
     # First class citizens
     def get_report_element(self) -> IReportElement:
         if not isinstance(self.__points_to, IReportElement):
-            raise ValueError(
-                "ReferenceNetworkNodes do not point to report elements"
-            )
+            raise ValueError("ReferenceNetworkNodes do not point to report elements")
+
         return self.__points_to
 
     def get_resource(self) -> IResource:
@@ -60,9 +63,7 @@ class ReferenceNetworkNode(INetworkNode):
         elif isinstance(self.__points_to, IResource):
             return "resource"
         else:
-            raise ValueError(
-                "ReferenceNetworkNodes do not point to report elements or resources"
-            )
+            raise ValueError("ReferenceNetworkNodes do not point to report elements or resources")
 
     def get_children(self) -> list[INetworkNode]:
         return cast(list[INetworkNode], self.__children)
@@ -89,10 +90,3 @@ class ReferenceNetworkNode(INetworkNode):
 
         self.__children.append(child)
         self.__children.sort(key=lambda node: node.get_order())
-
-    def _set_report_element(self, report_element: IReportElement):
-        """
-        Set the report element of this node
-        @param report_element: IReportElement to be set as the report element
-        """
-        self.__points_to = report_element

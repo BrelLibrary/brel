@@ -15,8 +15,9 @@ For more information on concepts, see the [**XBRL 2.1 specification**](https://s
 import lxml
 import lxml.etree
 
-from brel import QName, BrelLabel
+from brel import QName
 from brel.reportelements import IReportElement
+from brel.resource import BrelLabel
 
 
 class Concept(IReportElement):
@@ -127,9 +128,7 @@ class Concept(IReportElement):
         # according to the XBRL 2.1 specification, the period type can be either instant or duration
         possible_period_types = ["instant", "duration"]
         if period_type not in possible_period_types:
-            raise Exception(
-                f"Concept {concept_qname}:Unknown period type: {period_type}"
-            )
+            raise Exception(f"Concept {concept_qname}:Unknown period type: {period_type}")
 
         # get the balance type of the concept
         balance_type = xml_element.get(f"{{{nsmap['xbrli']}}}balance", None)
@@ -137,9 +136,7 @@ class Concept(IReportElement):
         # The "None" is because the "balance" attribute is optional and only applies to monetary items.
         possible_balance_types = ["credit", "debit", None]
         if balance_type not in possible_balance_types:
-            raise Exception(
-                f"Concept {concept_qname}:Unknown balance type: {balance_type}"
-            )
+            raise Exception(f"Concept {concept_qname}:Unknown balance type: {balance_type}")
 
         # get if the concept is nillable
         xml_nillable = xml_element.get("nillable", None)
@@ -147,9 +144,7 @@ class Concept(IReportElement):
         # It is optional (thus the "None" in possible_nillable_values), and defaults to false.
         possible_nillable_values = ["true", "false", None]
         if xml_nillable not in possible_nillable_values:
-            raise Exception(
-                f"Concept {concept_qname}: Unknown nillable value: {xml_nillable}"
-            )
+            raise Exception(f"Concept {concept_qname}: Unknown nillable value: {xml_nillable}")
         else:
             nillable = xml_nillable == "true"
 
@@ -171,3 +166,18 @@ class Concept(IReportElement):
 
     def __str__(self) -> str:
         return self.__name.__str__()
+
+    def convert_to_dict(self) -> dict:
+        """
+        Convert the concept to a dictionary.
+        :returns dict: the concept as a dictionary
+        """
+        return {
+            "name": self.__name.get(),
+            "label": self.select_main_label().__str__(),
+            "report_element_type": "concept",
+            "period_type": self.__period_type,
+            "balance_type": self.__balance_type,
+            "nillable": self.__nillable,
+            "data_type": self.__data_type,
+        }
