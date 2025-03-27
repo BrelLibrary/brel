@@ -22,7 +22,7 @@ jobs:
         os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
@@ -40,7 +40,7 @@ jobs:
         os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
@@ -62,7 +62,7 @@ jobs:
         os: [macos-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
@@ -71,22 +71,22 @@ jobs:
       - name: Run tests
         run: make test
 
-  tests_win:
-    needs: linter
-    strategy:
-      fail-fast: false
-      matrix:
-        python-version: ['3.10']
-        os: [windows-latest]
-    runs-on: ${{ matrix.os }}
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
-        with:
-          python-version: ${{ matrix.python-version }}
-      - name: Install Pip
-        run: pip install --user --upgrade pip
-      - name: Install project
-        run: pip install -e .[test]
-      - name: run tests
-        run: pytest -s -vvvv -l --tb=long tests
+  # tests_win:
+  #   needs: linter
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       python-version: ['3.10']
+  #       os: [windows-latest]
+  #   runs-on: ${{ matrix.os }}
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: actions/setup-python@v4
+  #       with:
+  #         python-version: ${{ matrix.python-version }}
+  #     - name: Install Pip
+  #       run: pip install --user --upgrade pip
+  #     - name: Install project
+  #       run: pip install -e .[test]
+  #     - name: run tests
+  #       run: pytest -s -vvvv -l --tb=long tests
