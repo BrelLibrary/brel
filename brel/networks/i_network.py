@@ -23,6 +23,7 @@ They are all implemented in the same way as the calculation network and can be i
 """
 
 from abc import ABC, abstractmethod
+from typing import Union
 
 from brel import QName
 from brel.networks import INetworkNode
@@ -87,7 +88,7 @@ class INetwork(ABC):
         arc_role_set = set([node.get_arc_role() for node in self.get_all_nodes()])
         return list(arc_role_set)
 
-    def get_arc_name(self) -> QName | None:
+    def get_arc_name(self) -> Union[QName, None]:
         """
         Get the arc name of all the arcs in the network. All arcs in the network have the same arc name.
         :returns QName|None: The arc name of all the arcs in the network. Returns None if the network is empty.

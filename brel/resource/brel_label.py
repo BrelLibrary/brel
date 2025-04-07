@@ -11,7 +11,7 @@ This module contains the BrelLabel class, which represents a label in XBRL.
 """
 
 from enum import Enum
-from typing import cast
+from typing import cast, Union
 
 import lxml
 import lxml.etree
@@ -55,7 +55,7 @@ class BrelLabel(IResource):
     def get_role(self) -> str:
         return self.__label_role
 
-    def get_title(self) -> str | None:
+    def get_title(self) -> Union[str, None]:
         return None
 
     def get_content(self) -> str:
