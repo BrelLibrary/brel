@@ -42,7 +42,7 @@ DEBUG = False
 class XHTMLFilingParser(IFilingParser):
     def __init__(
         self,
-        filepaths: list[str],
+        xml_repository: XMLRepository,
     ) -> None:
         if len(filepaths) < 1:
             raise ValueError("No filepaths provided. Make sure to provide at least one filepath.")
@@ -61,7 +61,7 @@ class XHTMLFilingParser(IFilingParser):
         # load the DTS
         if DEBUG:  # pragma: no cover
             self.__print("Resolving DTS...")
-        self.__file_manager = XMLRepository(cache_path, filepaths)
+        self.__file_manager = xml_repository
 
         # normalize and bootstrap the QName nsmap
         if DEBUG:  # pragma: no cover

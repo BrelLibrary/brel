@@ -159,3 +159,10 @@ def test_end_to_end_calculation():
     assert not calculation_network_bad.is_aggregation_consistent(
         facts
     ), "Bad calculation network is aggregation consistent"
+
+
+if __name__ == "__main__":
+    test_end_to_end_report_elements()
+    test_end_to_end_labels()
+    test_end_to_end_components()
+    test_end_to_end_calculation()

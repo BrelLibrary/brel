@@ -53,7 +53,7 @@ from typing import Callable, TypeGuard, cast
 from brel import Component, Fact, QName
 from brel.characteristics import Aspect
 from brel.networks import INetwork
-from brel.parsers import IFilingParser, XMLFilingParser, XHTMLFilingParser
+from brel.parsers import IFilingParser, XHTMLFilingParser
 from brel.reportelements import (
     Abstract,
     Concept,
@@ -63,6 +63,7 @@ from brel.reportelements import (
     LineItems,
     Member,
 )
+from .parsers.factory import get_xml_filing_parser
 
 DEBUG = False
 
@@ -116,7 +117,7 @@ class Filing:
             :return IFilingParser: the correct file manager.
             """
             if mode == "xml":
-                return XMLFilingParser(files)
+                return get_xml_filing_parser(files)
             elif mode == "xhtml":
                 return XHTMLFilingParser(files)
             else:

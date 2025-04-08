@@ -5,32 +5,31 @@ The XMLSchemaManager class is responsible for downloading and caching XBRL taxon
 =================
 
 - author: Robin Schmidiger
-- version: 0.8
-- date: 06 March 2025
+- version: 0.9
+- date: 07 April 2025
 
 =================
 """
 
 import lxml
 import lxml.etree
-import lxml.html.html5parser
+from typing import Callable
 from brel.parsers.dts.file_repository import FileRepository
 from brel.parsers.dts.i_file_manager import IFileManager
 from brel.parsers.utils.lxml_xpath_utils import add_xpath_functions
+from brel.parsers.dts.parser_resolver import ParserResolver
 
 
 class XMLRepository(IFileManager):
     def __init__(
         self,
-        cache_location: str,
-        filenames: list[str],
+        file_repository: FileRepository,
+        parser_resolver: ParserResolver,
     ) -> None:
-        self.__file_repository = FileRepository(cache_location, filenames)
+        self.__file_repository = file_repository
+        self.__parser_resolver = parser_resolver
+
         self.__xml_etree_cache: dict[str, lxml.etree._ElementTree] = {}
-        self.__parsers = {
-            "xml": lambda file: lxml.etree.parse(file),
-            "html": lambda file: lxml.html.html5parser.parse(file),
-        }
         add_xpath_functions()
 
     def get_format_type(self) -> type:
@@ -53,9 +52,7 @@ class XMLRepository(IFileManager):
             return self.__xml_etree_cache[uri]
         else:
             with self.__file_repository.get_file(uri) as file:
-                filetype = uri.split(".")[-1]
-                parser = self.__parsers.get(filetype, self.__parsers["xml"])
-
+                parser = self.__parser_resolver.get_parser(uri)
                 xml_etree = parser(file)
                 self.__xml_etree_cache[uri] = xml_etree
 

@@ -5,8 +5,8 @@ It downloads and caches files from the internet and the local file system.
 =================
 
 - author: Robin Schmidiger
-- version: 0.1
-- date: 6 March 2025
+- version: 0.2
+- date: 7 April 2025
 
 =================
 """
@@ -26,6 +26,7 @@ from typing import IO
 class FileRepository:
     def __init__(
         self,
+        session: requests.Session,
         cache_location: str,
         entrypoint_filepaths: list[str],
         clear_cache: bool = True,
@@ -38,11 +39,14 @@ class FileRepository:
         Returns:
             None
         """
+        if len(entrypoint_filepaths) < 1:
+            raise ValueError("No filepaths provided. Make sure to provide at least one filepath.")
+
         self.fs = fs.open_fs(cache_location, create=True)
         if clear_cache:
             self.fs.removetree("/")
 
-        self.__session: requests.Session = requests.Session()
+        self.__session = session
         self.__uris: set[str] = set()
 
         for file_name in entrypoint_filepaths:

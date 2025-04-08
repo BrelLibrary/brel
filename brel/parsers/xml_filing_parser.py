@@ -40,11 +40,8 @@ DEBUG = False
 class XMLFilingParser(IFilingParser):
     def __init__(
         self,
-        filepaths: list[str],
+        xml_repository: XMLRepository,
     ) -> None:
-        if len(filepaths) < 1:
-            raise ValueError("No filepaths provided. Make sure to provide at least one filepath.")
-
         self.__filing_type = "XML"
         self.__print_prefix = f"{'[XMLFilingParser]':<20}"
 
@@ -52,15 +49,10 @@ class XMLFilingParser(IFilingParser):
         # handy for resolving hrefs
         self.__id_to_any: dict[str, Any] = {}
 
-        # Make cache_path work for windows, mac and linux
-        # also make it hidden
-        cache_path = os.path.join(os.path.expanduser("~"), ".brel", "dts_cache")
-        # cache_path = os.path.join(os.getcwd(), "dts_cache")
-
         # load the DTS
         if DEBUG:  # pragma: no cover
             self.__print("Resolving DTS...")
-        self.__file_manager = XMLRepository(cache_path, filepaths)
+        self.__file_manager = xml_repository
 
         # normalize and bootstrap the QName nsmap
         if DEBUG:  # pragma: no cover

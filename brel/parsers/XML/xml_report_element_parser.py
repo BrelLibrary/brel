@@ -19,13 +19,17 @@ from brel.reportelements import Dimension, IReportElement
 
 from brel.parsers.dts.i_file_manager import IFileManager
 from .xml_report_element_factory import XMLReportElementFactory
+from brel.data.report_element.report_element_repository import ReportElementRepository
 
 
 def parse_report_elements_xml(
+    report_element_repository: ReportElementRepository,
     file_manager: IFileManager,
     etrees: list[lxml.etree._ElementTree],
     qname_nsmap: QNameNSMap,
 ) -> tuple[dict[QName, IReportElement], dict[str, IReportElement], list[Exception]]:
+    # todo use repositories
+    # todo replace nsmap with repository
     """
     Parse the concepts.
     :param file_manager: The file manager that contains the xbrl instance and the schemas.
@@ -36,7 +40,6 @@ def parse_report_elements_xml(
     - A list of exceptions that occurred during parsing.
     """
 
-    report_elements: dict[QName, IReportElement] = {}
     id_to_report_element: dict[str, IReportElement] = {}
     errors: list[Exception] = []
 
@@ -63,7 +66,7 @@ def parse_report_elements_xml(
                 continue
 
             # check cache
-            if reportelem_qname not in report_elements.keys():
+            if report_element_repository.has_report_element(reportelem_qname):
                 # create the report element
                 factory_result = XMLReportElementFactory.create(re_xml, reportelem_qname, [])
                 if factory_result is None:
@@ -71,7 +74,7 @@ def parse_report_elements_xml(
 
                 elem_id, reportelem = factory_result
 
-                report_elements[reportelem_qname] = reportelem
+                report_element_repository.set_report_element(reportelem_qname, reportelem)
                 if elem_id is not None:
                     id_to_report_element[elem_id] = reportelem
 
