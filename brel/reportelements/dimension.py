@@ -27,8 +27,9 @@ class Dimension(IReportElement):
     If you want to make a dimension typed, you have to call `make_typed(dim_type: QName)` on it.
     """
 
-    def __init__(self, name: QName, labels: list[BrelLabel]) -> None:
+    def __init__(self, name: QName, id: str | None, labels: list[BrelLabel]) -> None:
         self.__name = name
+        self.__id = id
         self.__labels = labels
         self.__type: QName | None = None
 
@@ -38,6 +39,13 @@ class Dimension(IReportElement):
         :returns QName: the name of the dimension as a QName
         """
         return self.__name
+
+    def get_id(self) -> str | None:
+        """
+        Get the ID of the dimension.
+        :returns str: the ID of the dimension
+        """
+        return self.__id
 
     def get_labels(self) -> list[BrelLabel]:
         """

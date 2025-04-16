@@ -6,29 +6,28 @@ It only parses the syntactic context, therefore the Unit and Concept characteris
 ====================
 
 - author: Robin Schmidiger
-- version: 0.1
-- date: 19 December 2023
+- version: 0.2
+- date: 13 April 2025
 
 ====================
 """
 
-from typing import Callable, cast
 
 import lxml.etree
 
-from brel import Context, QName
+from brel import Context
 from brel.characteristics import *
 from brel.parsers.XML.characteristics import *
+from brel.parsers.utils.lxml_utils import get_str_attribute
 from brel.reportelements import *
+from brel.contexts.filing_context import FilingContext
+from brel.parsers.utils.error_utils import error_on_none
 
 
 def parse_context_xml(
-    xml_element: lxml.etree._Element,
+    filing_context: FilingContext,
+    xml_element: lxml.etree._Element,  # type: ignore
     characteristics: list[UnitCharacteristic | ConceptCharacteristic],
-    make_qname: Callable[[str], QName],
-    get_report_element: Callable[[QName], IReportElement | None],
-    get_from_cache: Callable[[str], ICharacteristic | Aspect | None],
-    add_to_cache: Callable[[str, ICharacteristic | Aspect], None],
 ) -> "Context":
     """
     Creates a Context from an lxml.etree._Element.
@@ -41,68 +40,49 @@ def parse_context_xml(
     :raises ValueError: if the XML element is malformed
     """
 
-    context_id = xml_element.get("id")
-    if context_id is None:
-        raise ValueError("Could not find id attribute in context")
+    context_id = get_str_attribute(xml_element, "id")
 
-    # check if the supplied list of characteristics only contains units and concepts
-    for characteristic in characteristics:
-        if not isinstance(characteristic, UnitCharacteristic) and not isinstance(characteristic, ConceptCharacteristic):
-            raise ValueError(
-                f"Context id {context_id} contains a characteristic that is not a unit or a concept. Please make sure that the list of characteristics only contains units and concepts."
-            )
+    context_period = error_on_none(
+        xml_element.find("{*}period", namespaces=None),
+        f"Could not find period element in {xml_element}",
+    )
 
-    context_period = xml_element.find("{*}period", namespaces=None)
-    context_entity = xml_element.find("{*}entity", namespaces=None)
+    context_entity = error_on_none(
+        xml_element.find("{*}entity", namespaces=None),
+        f"Could not find entity element in {xml_element}",
+    )
 
-    if context_period is None:
-        raise ValueError(
-            f"Context id {context_id!r} does not contain a period. Please make sure that the context contains a period."
-        )
-
-    if context_entity is None:
-        raise ValueError(
-            f"Context id {context_id!r} does not contain an entity. Please make sure that the context contains an entity."
-        )
-
-    context = Context(context_id)
+    fact_context = Context(context_id)
 
     # add the characteristics provided by the user. these are the unit and concept
     for characteristic in characteristics:
-        context._add_characteristic(characteristic)
+        fact_context._add_characteristic(characteristic)
 
-    context._add_characteristic(parse_period_from_xml(context_period, get_from_cache, add_to_cache))
-    context._add_characteristic(parse_entity_from_xml(context_entity, get_from_cache, add_to_cache))
+    fact_context._add_characteristic(
+        parse_period_from_xml(filing_context, context_period)
+    )
+    fact_context._add_characteristic(
+        parse_entity_from_xml(filing_context, context_entity)
+    )
 
     # add the dimensions. the dimensions are the children of context/entity/segment
     segment = context_entity.find("{*}segment", namespaces=None)
 
     if segment is not None:
         for xml_dimension in segment:
-            # if it is an explicit dimension, the tag is xbrli:explicitMember
             if "explicitMember" in xml_dimension.tag:
                 explicit_dimension_characteristic = parse_explicit_dimension_from_xml(
-                    xml_dimension,
-                    get_report_element,
-                    make_qname,
-                    get_from_cache,
-                    add_to_cache,
+                    filing_context, xml_dimension
                 )
-                context._add_characteristic(explicit_dimension_characteristic)
-            # if it is a typed dimension, the tag is xbrli:typedMember
+                fact_context._add_characteristic(explicit_dimension_characteristic)
             elif "typedMember" in xml_dimension.tag:
                 typed_dimension_characteristic = parse_typed_dimension_from_xml(
-                    xml_dimension,
-                    get_report_element,
-                    make_qname,
-                    get_from_cache,
-                    add_to_cache,
+                    filing_context, xml_dimension
                 )
-                context._add_characteristic(typed_dimension_characteristic)
-
+                fact_context._add_characteristic(typed_dimension_characteristic)
             else:
                 raise ValueError(
                     f"Unknown dimension type {xml_dimension.tag}. Please make sure that the dimension is either an explicitMember or a typedMember. {xml_dimension.tag}"
                 )
 
-    return context
+    return fact_context

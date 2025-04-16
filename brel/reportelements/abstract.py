@@ -23,8 +23,9 @@ class Abstract(IReportElement):
     The Abstract class implements the IReportElement interface.
     """
 
-    def __init__(self, qname: QName, labels: list[BrelLabel]) -> None:
+    def __init__(self, qname: QName, id: str | None, labels: list[BrelLabel]) -> None:
         self.__qname = qname
+        self.__id = id
         self.__labels = labels
 
     def get_name(self) -> QName:
@@ -33,6 +34,13 @@ class Abstract(IReportElement):
         :returns QName: containing the name of the abstract element
         """
         return self.__qname
+
+    def get_id(self) -> str | None:
+        """
+        Get the id of the abstract element.
+        :returns str: containing the id of the abstract element
+        """
+        return self.__id
 
     def get_labels(self) -> list[BrelLabel]:
         """

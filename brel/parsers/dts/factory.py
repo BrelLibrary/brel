@@ -9,7 +9,7 @@ from brel.parsers.dts.xml_repository import XMLRepository
 from brel.parsers.dts.parser_resolver import ParserResolver
 
 
-def get_file_repository(entrypoint_filepaths: list[str]) -> FileRepository:
+def create_file_repository(entrypoint_filepaths: list[str]) -> FileRepository:
     session = Session()
     cache_location = os.path.join(os.path.expanduser("~"), ".brel", "dts_cache")
     clear_cache = False
@@ -17,14 +17,16 @@ def get_file_repository(entrypoint_filepaths: list[str]) -> FileRepository:
 
 
 @cache
-def get_parser_resolver() -> ParserResolver:
+def create_parser_resolver() -> ParserResolver:
     return ParserResolver(
         lambda file: lxml.etree.parse(file),
         lambda file: lxml.html.html5parser.parse(file),
     )
 
 
-def get_xml_repository(entrypoint_filepaths: list[str]) -> XMLRepository:
-    file_repository = get_file_repository(entrypoint_filepaths)
-    parser_resolver = get_parser_resolver()
-    return XMLRepository(file_repository=file_repository, parser_resolver=parser_resolver)
+def create_xml_repository(entrypoint_filepaths: list[str]) -> XMLRepository:
+    file_repository = create_file_repository(entrypoint_filepaths)
+    parser_resolver = create_parser_resolver()
+    return XMLRepository(
+        file_repository=file_repository, parser_resolver=parser_resolver
+    )

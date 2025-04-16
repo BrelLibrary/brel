@@ -16,8 +16,9 @@ from brel.resource import BrelLabel
 
 
 class Hypercube(IReportElement):
-    def __init__(self, name: QName, labels: list[BrelLabel]):
+    def __init__(self, name: QName, id: str | None, labels: list[BrelLabel]):
         self.__name = name
+        self.__id = id
         self.__labels = labels
 
     def get_name(self) -> QName:
@@ -25,6 +26,12 @@ class Hypercube(IReportElement):
         @return QName: the name of the hypercube as a QName
         """
         return self.__name
+
+    def get_id(self) -> str | None:
+        """
+        @return str: the id of the hypercube
+        """
+        return self.__id
 
     def get_labels(self) -> list[BrelLabel]:
         """
@@ -46,7 +53,7 @@ class Hypercube(IReportElement):
         """
         return self.__name.__str__()
 
-    def convert_to_dict(self) -> dict:
+    def convert_to_dict(self) -> dict[str, str]:
         """
         Convert the hypercube to a dictionary.
         :returns dict: the hypercube as a dictionary

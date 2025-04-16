@@ -53,7 +53,7 @@ class Context:
     Dimensions are custom aspects, so they can be present multiple times as long as they represent different dimensions.
     """
 
-    def __init__(self, context_id) -> None:
+    def __init__(self, context_id: str) -> None:
         self.__id: str = context_id
 
         # aspects are the axis, characteristics are the values per axis
@@ -175,7 +175,7 @@ class Context:
         # TODO: dont use the _id, compare the aspects instead
         return self._get_id() == __value._get_id()
 
-    def convert_to_df_row(self) -> dict:
+    def convert_to_df_row(self) -> dict[str, str]:
         """
         Convert the context to a dictionary.
         This is a convenience function.
@@ -183,4 +183,7 @@ class Context:
         The values of the dictionary are the characteristic values.
         :returns dict: The context as a dictionary.
         """
-        return {aspect.get_name(): self.get_characteristic_as_str(aspect) for aspect in self.__aspects}
+        return {
+            aspect.get_name(): self.get_characteristic_as_str(aspect)
+            for aspect in self.__aspects
+        }

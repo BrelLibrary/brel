@@ -2,12 +2,12 @@ from abc import ABC, abstractmethod
 
 import lxml
 import lxml.etree
-from typing import Mapping, Iterable, Tuple
 
 from brel import Fact, QName, QNameNSMap
 from brel.networks import INetwork, INetworkNode
 from brel.reportelements import IReportElement
 from brel.resource import IResource
+from brel.data.report_element.report_element_repository import ReportElementRepository
 
 
 class IXMLNetworkFactory(ABC):
@@ -18,7 +18,9 @@ class IXMLNetworkFactory(ABC):
         return self.__qname_nsmap
 
     @abstractmethod
-    def create_network(self, xml_link: lxml.etree._Element, roots: list[INetworkNode]) -> INetwork:
+    def create_network(
+        self, xml_link: lxml.etree._Element, roots: list[INetworkNode]
+    ) -> INetwork:
         raise NotImplementedError
 
     @abstractmethod
@@ -31,9 +33,10 @@ class IXMLNetworkFactory(ABC):
     ) -> INetworkNode:
         raise NotImplementedError
 
-    @abstractmethod
-    def update_report_elements(self, report_elements: Mapping[QName, IReportElement], network: INetwork):
-        raise NotImplementedError
+    def update_report_elements(
+        self, report_element_repository: ReportElementRepository, network: INetwork
+    ) -> None:
+        pass
 
     @abstractmethod
     def is_physical(self) -> bool:
@@ -47,7 +50,7 @@ class IXMLNetworkFactory(ABC):
         :param local_name: The local name.
         :returns str: The clark notation.
         """
-        url = self.__qname_nsmap.get_nsmap()[prefix]
+        url = self.__qname_nsmap.as_dict()[prefix]
         return f"{{{url}}}{local_name}"
 
     def _make_qname(self, qname_str: str) -> QName:

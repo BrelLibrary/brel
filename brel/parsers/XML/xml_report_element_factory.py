@@ -4,8 +4,8 @@ This module contains the XMLReportElementFactory class. It is responsible for cr
 ====================
 
 - author: Robin Schmidiger
-- version: 0.4
-- date: 30 January 2024
+- version: 0.5
+- date: 16 April 2025
 
 ====================
 """
@@ -26,7 +26,7 @@ class XMLReportElementFactory:
         xml_element: lxml.etree._Element,
         report_element_name: QName,
         labels: list[BrelLabel],
-    ) -> Tuple[str | None, IReportElement] | None:
+    ) -> IReportElement | None:
         """
         Creates a report element from an lxml.etree._Element.
         The kind of report element created depends on the structure of the lxml.etree._Element.
@@ -49,22 +49,24 @@ class XMLReportElementFactory:
         report_element: None | IReportElement = None
 
         if is_domain_item_type:
-            report_element = Member(report_element_name, labels)
+            report_element = Member(report_element_name, id, labels)
         # if not is_abstract and is_item:
         elif not is_abstract and is_item:
-            report_element = Concept._from_xml(xml_element, report_element_name, labels)
+            report_element = Concept._from_xml(
+                xml_element, id, report_element_name, labels
+            )
         elif is_abstract and is_hypercube_item:
-            report_element = Hypercube(report_element_name, labels)
+            report_element = Hypercube(report_element_name, id, labels)
         elif is_abstract and is_dimension_item:
-            report_element = Dimension(report_element_name, labels)
+            report_element = Dimension(report_element_name, id, labels)
         # elif is_abstract and is_domain_item_type and is_item:
         # report_element = Member(report_element_name, labels)
         elif is_abstract and is_line_items:
-            report_element = LineItems(report_element_name, labels)
+            report_element = LineItems(report_element_name, id, labels)
         elif is_abstract:
-            report_element = Abstract(report_element_name, labels)
+            report_element = Abstract(report_element_name, id, labels)
         else:
             return None
 
         report_element = cast(IReportElement, report_element)
-        return id, report_element
+        return report_element

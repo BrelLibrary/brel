@@ -5,39 +5,33 @@ It parses XBRL in the XML syntax.
 ====================
 
 - author: Robin Schmidiger
-- version: 0.1
-- date: 20 December 2023
+- version: 0.2
+- date: 13 April 2025
 
 ====================
 """
 
-from typing import Callable, cast
 
 import lxml.etree
 
-from brel import QName
 from brel.characteristics import (
     Aspect,
-    ICharacteristic,
     TypedDimensionCharacteristic,
 )
-from brel.reportelements import Dimension, IReportElement, Member
+from brel.contexts.filing_context import FilingContext
+from brel.parsers.utils.iterable_utils import get_first
+from brel.parsers.utils.error_utils import error_on_none
+from brel.parsers.utils.lxml_utils import get_str_attribute
+from brel.qname import QName
+from brel.reportelements import Dimension
 
 
 def parse_typed_dimension_from_xml(
-    xml_element: lxml.etree._Element,
-    get_report_element: Callable[[QName], IReportElement | None],
-    make_qname: Callable[[str], QName],
-    get_from_cache: Callable[[str], ICharacteristic | Aspect | None],
-    add_to_cache: Callable[[str, ICharacteristic | Aspect], None],
+    filing_context: FilingContext, xml_element: lxml.etree._Element  # type: ignore
 ) -> TypedDimensionCharacteristic:
     """
     Create a Dimension from an lxml.etree._Element.
     :param xml_element: the xml subtree from which the Dimension is created
-    :param get_report_element: the function to get the report element from the report elements
-    :param make_qname: the function to make a QName from a string
-    :param get_characteristic: the function to get a characteristic from the characteristics cache
-    :param add_characteristic: the function to add a characteristic to the characteristics cache
     :returns ExplicitDimensionCharacteristic: the explicit dimension characteristic created from the lxml.etree._Element
     :raises ValueError: if the XML element is malformed
     """
@@ -58,55 +52,34 @@ def parse_typed_dimension_from_xml(
     From the dimension attribute, we know which dimension we are dealing with.
     From the value of the domain element, we know which member we are dealing with.
     """
+    aspect_repository = filing_context.get_aspect_repository()
+    report_element_repository = filing_context.get_report_element_repository()
+    characteristic_repository = filing_context.get_characteristic_repository()
+    nsmap = filing_context.get_nsmap()
 
-    # Get the dimension attribute from the xml element
-    dimension_axis = xml_element.get("dimension")
-    if dimension_axis is None:
-        raise ValueError("Could not find dimension attribute in explicit dimension characteristic")
+    dimension_axis = get_str_attribute(xml_element, "dimension")
 
-    # check cache for dimension aspect
-    dimension_aspect = get_from_cache(f"aspect {dimension_axis}")
-    dimension_qname: QName = make_qname(dimension_axis)
-    if dimension_aspect is None:
-        dimension_aspect = Aspect.from_QName(dimension_qname)
-        add_to_cache(f"aspect {dimension_axis}", dimension_aspect)
-    else:
-        dimension_aspect = cast(Aspect, dimension_aspect)
+    if not aspect_repository.has(dimension_axis):
+        aspect_repository.upsert(Aspect.from_str(dimension_axis))
+    dimension_aspect = aspect_repository.get(dimension_axis)
 
-    # get the report element from the report elements
-    i_report_element = get_report_element(dimension_qname)
-    if i_report_element is None:
-        raise ValueError(
-            "Dimension not found in report elements. Please make sure that the dimension is in the report elements."
+    i_report_element = report_element_repository.get_typed_by_qname(
+        QName.from_string(dimension_axis, nsmap), Dimension
+    )
+
+    value_element = get_first(
+        xml_element, "Typed dimension characteristic has more than one child"
+    )
+    dimension_value = error_on_none(
+        value_element.text,
+        f"Dimension value not found in xml element. Please make sure that the dimension value is in the xml element. {xml_element}",
+    )
+
+    dimension_id = f"{dimension_axis} {dimension_value}"
+    if not characteristic_repository.has(dimension_id, TypedDimensionCharacteristic):
+        dimension_characteristic = TypedDimensionCharacteristic(
+            i_report_element, dimension_value, dimension_aspect
         )
-    if not isinstance(i_report_element, Dimension):
-        raise ValueError(
-            "Dimension not found in report elements. Please make sure that the dimension is in the report elements."
-        )
+        characteristic_repository.upsert(dimension_id, dimension_characteristic)
 
-    # get the dimension value from the xml element
-    children = list(xml_element)
-    if len(children) != 1:
-        raise ValueError("Typed dimension characteristic has more than one child")
-
-    value_element = children[0]
-    dimension_value = value_element.text
-    if dimension_value is None:
-        raise ValueError(
-            "Dimension value not found in xml element. Please make sure that the dimension value is in the xml element. {xml_dimension}"
-        )
-
-    # check cache
-    dimension_characteristic = get_from_cache(f"typed dimension {dimension_axis} {dimension_value}")
-    if dimension_characteristic is None:
-        # create and add the characteristic
-        dimension_characteristic = TypedDimensionCharacteristic(i_report_element, dimension_value, dimension_aspect)
-        add_to_cache(
-            f"typed dimension {dimension_axis} {dimension_value}",
-            dimension_characteristic,
-        )
-    else:
-        if not isinstance(dimension_characteristic, TypedDimensionCharacteristic):
-            raise ValueError("Dimension characteristic is not a typed dimension characteristic")
-
-    return cast(TypedDimensionCharacteristic, dimension_characteristic)
+    return characteristic_repository.get(dimension_id, TypedDimensionCharacteristic)

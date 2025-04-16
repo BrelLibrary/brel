@@ -35,7 +35,7 @@ class XMLRepository(IFileManager):
     def get_format_type(self) -> type:
         return lxml.etree._ElementTree
 
-    def get_file(self, uri: str) -> lxml.etree:
+    def get_file(self, uri: str) -> lxml.etree._ElementTree:
         """
         Retrieves an XML file and parses it into an lxml.etree object.
 

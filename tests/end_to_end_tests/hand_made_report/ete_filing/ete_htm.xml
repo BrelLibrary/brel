@@ -25,7 +25,7 @@
         <xbrli:entity>
             <xbrli:identifier scheme="http://www.sec.gov/CIK">1234</xbrli:identifier>
             <xbrli:segment>
-                <xbrldi:explicitMember dimension="ete:additional_explicit_dimension">ete:foo</xbrldi:explicitMember>
+                <xbrldi:explicitMember dimension="ete:additional_explicit_dimension">ete:foo_member</xbrldi:explicitMember>
             </xbrli:segment>
         </xbrli:entity>
         <xbrli:period>
@@ -36,7 +36,7 @@
         <xbrli:entity>
             <xbrli:identifier scheme="http://www.sec.gov/CIK">1234</xbrli:identifier>
             <xbrli:segment>
-                <xbrldi:explicitMember dimension="ete:additional_explicit_dimension">ete:bar</xbrldi:explicitMember>
+                <xbrldi:explicitMember dimension="ete:additional_explicit_dimension">ete:bar_member</xbrldi:explicitMember>
             </xbrli:segment>
         </xbrli:entity>
         <xbrli:period>
@@ -93,7 +93,8 @@
     <ete:additional_paid_in_capital contextRef="c-002" unitRef="USD">0</ete:additional_paid_in_capital>
     <ete:retained_earnings contextRef="c-002" unitRef="USD">50</ete:retained_earnings>
 
-
+    <!-- Facts for testing the additional explicit dimension -->
+    <ete:concept1 id="f-013" contextRef="c-003" unitRef="USD">100</ete:concept1>
 
     <link:footnoteLink xlink:type="extended" xlink:role="http://www.xbrl.org/2003/role/link">
         <link:loc xlink:href="#f-001" xlink:label="total_balance_loc" xlink:type="locator"></link:loc>

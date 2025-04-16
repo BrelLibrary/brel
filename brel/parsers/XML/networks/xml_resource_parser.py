@@ -5,8 +5,8 @@ Currently, the module can parse BrelLabel, BrelFootnote and BrelReference resour
 =================
 
 - author: Robin Schmidiger
-- version: 0.1
-- date: 19 February 2024
+- version: 0.2
+- date: 5 April 2025
 
 =================
 """
@@ -17,10 +17,12 @@ import lxml.etree
 from brel import QNameNSMap, QName
 from brel.resource import IResource, BrelFootnote, BrelLabel, BrelReference
 from typing import cast, Mapping
-from brel.parsers.utils.lxml_utils import get_str
+from brel.parsers.utils.lxml_utils import get_str_attribute
 
 
-def parse_xml_resource(xml_element: lxml.etree._Element, prefix_to_uri: Mapping[str, str]) -> IResource:
+def parse_xml_resource(
+    xml_element: lxml.etree._Element, prefix_to_uri: Mapping[str, str]
+) -> IResource:
     """
     Create a BrelResource from an lxml.etree._Element.
     :param xml_element: the lxml.etree._Element from which the BrelResource is created
@@ -55,8 +57,8 @@ def parse_xml_resource(xml_element: lxml.etree._Element, prefix_to_uri: Mapping[
         raise ValueError("The xlink:type is not resource")
 
     # get the label, role and tag
-    label = get_str(xml_element, clark("xlink", "label"))
-    role = get_str(xml_element, clark("xlink", "role"))
+    label = get_str_attribute(xml_element, clark("xlink", "label"))
+    role = get_str_attribute(xml_element, clark("xlink", "role"))
     tag = xml_element.tag
 
     # create the resource

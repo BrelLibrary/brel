@@ -6,8 +6,8 @@ This module is usedc by the XML network parser to build physical definition netw
 ====================
 
 - author: Robin Schmidiger
-- version: 0.5
-- date: 30 January 2024
+- version: 0.6
+- date: 16 April 2025
 
 ====================
 """
@@ -24,18 +24,21 @@ from brel.networks import (
     INetwork,
     INetworkNode,
 )
-from brel.parsers.utils import get_str
+from brel.parsers.utils import get_str_attribute
 from brel.parsers.XML.networks import IXMLNetworkFactory
 from brel.reportelements import *
 from brel.resource import IResource
+from brel.data.report_element.report_element_repository import ReportElementRepository
 
 
 class PhysicalDefinitionNetworkFactory(IXMLNetworkFactory):
     def __init__(self, qname_nsmap: QNameNSMap) -> None:
         super().__init__(qname_nsmap)
 
-    def create_network(self, xml_link: lxml.etree._Element, roots: list[INetworkNode]) -> INetwork:
-        link_role = get_str(xml_link, self._clark("xlink", "role"))
+    def create_network(
+        self, xml_link: lxml.etree._Element, roots: list[INetworkNode]
+    ) -> INetwork:
+        link_role = get_str_attribute(xml_link, self._clark("xlink", "role"))
         link_qname = self._make_qname(xml_link.tag)
 
         if len(roots) == 0:
@@ -56,53 +59,61 @@ class PhysicalDefinitionNetworkFactory(IXMLNetworkFactory):
         xml_arc: lxml.etree._Element | None,
         points_to: IReportElement | IResource | Fact,
     ) -> INetworkNode:
-        label = get_str(xml_referenced_element, self._clark("xlink", "label"))
+        label = get_str_attribute(xml_referenced_element, self._clark("xlink", "label"))
 
         if xml_arc is None:
             # the node is not connected to any other node
             arc_role = "unknown"
             order = 0.0
             arc_qname = self._make_qname("link:unknown")
-        elif get_str(xml_arc, self._clark("xlink", "from"), None) == label:
+        elif get_str_attribute(xml_arc, self._clark("xlink", "from"), None) == label:
             # the node is a root
-            arc_role = get_str(xml_arc, self._clark("xlink", "arcrole"))
+            arc_role = get_str_attribute(xml_arc, self._clark("xlink", "arcrole"))
             order = 0.0
             arc_qname = self._make_qname(xml_arc.tag)
-        elif get_str(xml_arc, self._clark("xlink", "to"), None) == label:
+        elif get_str_attribute(xml_arc, self._clark("xlink", "to"), None) == label:
             # the node is an inner node
-            arc_role = get_str(xml_arc, self._clark("xlink", "arcrole"))
+            arc_role = get_str_attribute(xml_arc, self._clark("xlink", "arcrole"))
             order = float(xml_arc.attrib.get("order") or 0.0)
             arc_qname = self._make_qname(xml_arc.tag)
         else:
-            raise ValueError(f"referenced element {xml_referenced_element} is not connected to arc {xml_arc}")
+            raise ValueError(
+                f"referenced element {xml_referenced_element} is not connected to arc {xml_arc}"
+            )
 
-        link_role = get_str(xml_link, self._clark("xlink", "role"))
+        link_role = get_str_attribute(xml_link, self._clark("xlink", "role"))
         link_name = self._make_qname(xml_link.tag)
 
         # check if 'points_to' is a ReportElement
         if not isinstance(points_to, IReportElement):
-            raise TypeError(f"points_to must be of type IReportElement, not {type(points_to)}")
+            raise TypeError(
+                f"points_to must be of type IReportElement, not {type(points_to)}"
+            )
 
-        return DefinitionNetworkNode(points_to, [], arc_role, arc_qname, link_role, link_name, order)
+        return DefinitionNetworkNode(
+            points_to, [], arc_role, arc_qname, link_role, link_name, order
+        )
 
     def update_report_elements(
-        self, report_elements: Mapping[QName, IReportElement], network: INetwork
-    ) -> Mapping[QName, IReportElement]:
+        self, report_element_repository: ReportElementRepository, network: INetwork
+    ):
         """
         Definition networks do not change the report elements
         :param report_elements: Mapping[QName, IReportElement] containing all report elements
         :param network: INetwork containing the network. Must be a DefinitionNetwork
         :return: Mapping[QName, IReportElement] containing all report elements. Some report elements might differ in type from the report_elements parameter
         """
-        return report_elements
+        pass
 
     def is_physical(self) -> bool:
         return True
 
 
 class LogicalDefinitionNetworkFactory(IXMLNetworkFactory):
-    def create_network(self, xml_link: lxml.etree._Element, roots: list[INetworkNode]) -> INetwork:
-        link_role = get_str(xml_link, self._clark("xlink", "role"))
+    def create_network(
+        self, xml_link: lxml.etree._Element, roots: list[INetworkNode]
+    ) -> INetwork:
+        link_role = get_str_attribute(xml_link, self._clark("xlink", "role"))
         link_qname = self._make_qname(xml_link.tag)
 
         if len(roots) == 0:
@@ -123,35 +134,38 @@ class LogicalDefinitionNetworkFactory(IXMLNetworkFactory):
         xml_arc: lxml.etree._Element | None,
         points_to: IReportElement | IResource | Fact,
     ) -> INetworkNode:
-        label = get_str(xml_referenced_element, self._clark("xlink", "label"))
+        label = get_str_attribute(xml_referenced_element, self._clark("xlink", "label"))
 
         if xml_arc is None:
             # the node is not connected to any other node
             arc_role = "unknown"
             order = 0
             arc_qname = QName.from_string("link:unknown", self.get_qname_nsmap())
-        elif get_str(xml_arc, self._clark("xlink", "from"), None) == label:
-            arc_role = get_str(xml_arc, self._clark("xlink", "arcrole"))
+        elif get_str_attribute(xml_arc, self._clark("xlink", "from"), None) == label:
+            arc_role = get_str_attribute(xml_arc, self._clark("xlink", "arcrole"))
             order = 0
             arc_qname = self._make_qname(xml_arc.tag)
-        elif get_str(xml_arc, self._clark("xlink", "to"), None) == label:
-            arc_role = get_str(xml_arc, self._clark("xlink", "arcrole"))
+        elif get_str_attribute(xml_arc, self._clark("xlink", "to"), None) == label:
+            arc_role = get_str_attribute(xml_arc, self._clark("xlink", "arcrole"))
             order = float(xml_arc.attrib.get("order") or 0.0).__round__()
             arc_qname = self._make_qname(xml_arc.tag)
         else:
-            raise ValueError(f"referenced element {xml_referenced_element} is not connected to arc {xml_arc}")
+            raise ValueError(
+                f"referenced element {xml_referenced_element} is not connected to arc {xml_arc}"
+            )
 
-        link_role = get_str(xml_link, self._clark("xlink", "role"))
+        link_role = get_str_attribute(xml_link, self._clark("xlink", "role"))
         link_name = self._make_qname(xml_link.tag)
 
         # check if 'points_to' is a ReportElement
         if not isinstance(points_to, IReportElement):
-            raise TypeError(f"points_to must be of type IReportElement, not {type(points_to)}")
+            raise TypeError(
+                f"points_to must be of type IReportElement, not {type(points_to)}"
+            )
 
-        return DefinitionNetworkNode(points_to, [], arc_role, arc_qname, link_role, link_name, order)
-
-    def update_report_elements(self, report_elements: Mapping[QName, IReportElement], network: INetwork):
-        pass
+        return DefinitionNetworkNode(
+            points_to, [], arc_role, arc_qname, link_role, link_name, order
+        )
 
     def is_physical(self) -> bool:
         return False

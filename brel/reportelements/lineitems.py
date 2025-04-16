@@ -16,8 +16,9 @@ from brel.resource import BrelLabel
 
 
 class LineItems(IReportElement):
-    def __init__(self, name: QName, labels: list[BrelLabel]):
+    def __init__(self, name: QName, id: str | None, labels: list[BrelLabel]):
         self.__name = name
+        self.__id = id
         self.__labels = labels
 
     def get_name(self) -> QName:
@@ -25,6 +26,12 @@ class LineItems(IReportElement):
         :returns QName: the name of the line items as a QName
         """
         return self.__name
+
+    def get_id(self) -> str | None:
+        """
+        :returns str: the id of the line items
+        """
+        return self.__id
 
     def get_labels(self) -> list[BrelLabel]:
         """

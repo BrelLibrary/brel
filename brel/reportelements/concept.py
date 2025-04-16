@@ -39,6 +39,7 @@ class Concept(IReportElement):
     def __init__(
         self,
         name: QName,
+        id: str | None,
         labels: list[BrelLabel],
         period_type: str,
         balance_type: str | None,
@@ -46,6 +47,7 @@ class Concept(IReportElement):
         data_type: str,
     ) -> None:
         self.__name: QName = name
+        self.__id: str | None = id
         self.__labels: list[BrelLabel] = labels
         self.__period_type: str = period_type
         self.__balance_type: str | None = balance_type
@@ -65,6 +67,13 @@ class Concept(IReportElement):
         :returns QName: the QName of the concept
         """
         return self.__name
+
+    def get_id(self) -> str | None:
+        """
+        Get the id of the concept.
+        :returns str|None: the id of the concept
+        """
+        return self.__id
 
     def get_labels(self) -> list[BrelLabel]:
         """
@@ -112,6 +121,7 @@ class Concept(IReportElement):
     def _from_xml(
         cls,
         xml_element: lxml.etree._Element,
+        id: str | None,
         concept_qname: QName,
         labels: list[BrelLabel],
     ) -> "Concept":
@@ -128,7 +138,9 @@ class Concept(IReportElement):
         # according to the XBRL 2.1 specification, the period type can be either instant or duration
         possible_period_types = ["instant", "duration"]
         if period_type not in possible_period_types:
-            raise Exception(f"Concept {concept_qname}:Unknown period type: {period_type}")
+            raise Exception(
+                f"Concept {concept_qname}:Unknown period type: {period_type}"
+            )
 
         # get the balance type of the concept
         balance_type = xml_element.get(f"{{{nsmap['xbrli']}}}balance", None)
@@ -136,7 +148,9 @@ class Concept(IReportElement):
         # The "None" is because the "balance" attribute is optional and only applies to monetary items.
         possible_balance_types = ["credit", "debit", None]
         if balance_type not in possible_balance_types:
-            raise Exception(f"Concept {concept_qname}:Unknown balance type: {balance_type}")
+            raise Exception(
+                f"Concept {concept_qname}:Unknown balance type: {balance_type}"
+            )
 
         # get if the concept is nillable
         xml_nillable = xml_element.get("nillable", None)
@@ -144,7 +158,9 @@ class Concept(IReportElement):
         # It is optional (thus the "None" in possible_nillable_values), and defaults to false.
         possible_nillable_values = ["true", "false", None]
         if xml_nillable not in possible_nillable_values:
-            raise Exception(f"Concept {concept_qname}: Unknown nillable value: {xml_nillable}")
+            raise Exception(
+                f"Concept {concept_qname}: Unknown nillable value: {xml_nillable}"
+            )
         else:
             nillable = xml_nillable == "true"
 
@@ -157,6 +173,7 @@ class Concept(IReportElement):
 
         return cls(
             concept_qname,
+            id,
             labels,
             period_type,
             balance_type,

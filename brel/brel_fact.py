@@ -17,7 +17,7 @@ To print a fact to the console, use the `pprint` function in the `brel` module.
 
 from typing import Any, cast
 
-from brel import Context, QName
+from brel import Context
 from brel.characteristics import (
     Aspect,
     ConceptCharacteristic,
@@ -44,7 +44,14 @@ class Fact:
         self.__value: str = value
 
     # first class citizens
+    # TODO think about this. is the id attribute an implementation detail?
     def _get_id(self) -> str | None:
+        """
+        :returns str|None: The id of the fact. Returns None if the fact does not have an id.
+        """
+        return self.__id
+
+    def get_id(self) -> str | None:
         """
         :returns str|None: The id of the fact. Returns None if the fact does not have an id.
         """
@@ -135,7 +142,9 @@ class Fact:
         :returns UnitCharacteristic|None: The unit characteristic of the facts context. Returns None if the fact does not have a unit.
         Equivalent to calling `fact.get_context().get_unit()`
         """
-        unit: UnitCharacteristic = cast(UnitCharacteristic, self.__context.get_characteristic(Aspect.UNIT))
+        unit: UnitCharacteristic = cast(
+            UnitCharacteristic, self.__context.get_characteristic(Aspect.UNIT)
+        )
         return unit
 
     def get_period(self) -> PeriodCharacteristic | None:
@@ -184,7 +193,7 @@ class Fact:
         - "context": The context of the fact represented as a dictionary.
         """
         dict_to_return = self.__context.convert_to_df_row()
-        dict_to_return["id"] = self.__id
+        dict_to_return["id"] = self.__id if self.__id else ""
         dict_to_return["value"] = self.__value
 
         return dict_to_return

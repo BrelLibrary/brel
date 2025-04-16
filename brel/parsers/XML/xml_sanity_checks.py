@@ -38,7 +38,7 @@ def check_duplicate_rolerefs(
     :raises ValueError: if there are duplicate rolerefs
     """
 
-    nsmap = qname_nsmap.get_nsmap()
+    nsmap = qname_nsmap.as_dict()
     xml_trees = file_manager.get_all_files()
 
     # check for duplicate rolerefs
@@ -88,7 +88,7 @@ def check_duplicate_arcs(
     :raises ValueError: if there are duplicate arcs
     """
 
-    nsmap = qname_nsmap.get_nsmap()
+    nsmap = qname_nsmap.as_dict()
 
     xml_trees = file_manager.get_all_files()
 
@@ -96,7 +96,9 @@ def check_duplicate_arcs(
     # find all elements with an @xlink:type='extended' attribute and put their parents into a set
     extended_links: set[lxml.etree._Element] = set()
     for xml_tree in xml_trees:
-        extended_links.update(xml_tree.findall(".//*[@xlink:type='extended']", namespaces=nsmap))
+        extended_links.update(
+            xml_tree.findall(".//*[@xlink:type='extended']", namespaces=nsmap)
+        )
 
     # for each link, get all arcs and check if there are duplicates
     for extended_link in extended_links:

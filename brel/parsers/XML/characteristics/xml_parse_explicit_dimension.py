@@ -1,99 +1,71 @@
 """
 Contains the xml parser for parsing an explicit dimension characteristic from an lxml.etree._Element.
 
+====================
+
 :author: Robin Schmidiger
-:version: 0.4
-:date: 19 December 2023
+:version: 0.5
+:date: 13 April 2025
+
+====================
 """
 
-from typing import Callable, cast
 
 import lxml.etree
 
-from brel import QName
 from brel.characteristics import (
     Aspect,
     ExplicitDimensionCharacteristic,
-    ICharacteristic,
 )
-from brel.reportelements import Dimension, IReportElement, Member, Concept
+from brel.parsers.utils.lxml_utils import get_str_attribute
+from brel.qname import QName
+from brel.reportelements import Dimension, Member
+from brel.contexts.filing_context import FilingContext
+from brel.data.report_element.report_element_repository import ReportElementRepository
+from brel.data.characteristic.characteristic_repository import CharacteristicRepository
+from brel.parsers.utils.error_utils import error_on_none
 
 
 def parse_explicit_dimension_from_xml(
-    xml_element: lxml.etree._Element,
-    get_report_element: Callable[[QName], IReportElement | None],
-    make_qname: Callable[[str], QName],
-    get_from_cache: Callable[[str], ICharacteristic | Aspect | None],
-    add_to_cache: Callable[[str, ICharacteristic | Aspect], None],
+    filing_context: FilingContext,
+    xml_element: lxml.etree._Element,  # type: ignore
 ) -> ExplicitDimensionCharacteristic:
     """
-    Create a Dimension from an lxml.etree._Element.
+    Create a Dimension from an lxml.etree._Element, return it and add it to the characteristic repository.
     :param xml_element: the xml subtree from which the Dimension is created
-    :param get_report_element: the function to get the report element from the report elements
-    :param make_qname: the function to make a QName from a string
-    :param get_from_cache: the function to get a characteristic from the characteristics cache
-    :param add_to_cache: the function to add a characteristic to the characteristics cache
     :returns ExplicitDimensionCharacteristic: the explicit dimension characteristic created from the lxml.etree._Element
     :raises ValueError: if the XML element is malformed
     """
-    # get the dimension attribute from the xml element
-    dimension_axis = xml_element.get("dimension")
-    if dimension_axis is None:
-        raise ValueError("Could not find dimension attribute in explicit dimension characteristic")
+    report_element_repository: ReportElementRepository = (
+        filing_context.get_report_element_repository()
+    )
+    characteristic_repository: CharacteristicRepository = (
+        filing_context.get_characteristic_repository()
+    )
+    aspect_repository = filing_context.get_aspect_repository()
 
-    # check cache for dimension aspect
-    dimension_aspect = get_from_cache(f"aspect {dimension_axis}")
-    dimension_qname: QName = make_qname(dimension_axis)
-    if dimension_aspect is None:
-        dimension_aspect = Aspect.from_QName(dimension_qname)
-        add_to_cache(f"aspect {dimension_axis}", dimension_aspect)
-    else:
-        if not isinstance(dimension_aspect, Aspect):
-            raise ValueError("Dimension aspect is not a BrelAspect")
-        dimension_aspect = cast(Aspect, dimension_aspect)
+    aspect_id = get_str_attribute(xml_element, "dimension")
+    if not characteristic_repository.has(aspect_id, ExplicitDimensionCharacteristic):
+        aspect_repository.upsert(Aspect.from_str(aspect_id))
 
-    # get the dimension from the report elements
-    report_element = get_report_element(dimension_qname)
-    if report_element is None:
-        raise ValueError(
-            "Dimension not found in report elements. Please make sure that the dimension is in the report elements."
-        )
-    if not isinstance(report_element, Dimension):
-        raise ValueError(
-            "Dimension not found in report elements. Please make sure that the dimension is in the report elements."
-        )
+    aspect = aspect_repository.get(aspect_id)
 
-    # get the dimension value from the xml element
-    dimension_value = xml_element.text
-    if dimension_value is None:
-        raise ValueError(
-            "Dimension value not found in xml element. Please make sure that the dimension value is in the xml element. {xml_dimension}"
-        )
-    if not isinstance(dimension_value, str):
-        raise ValueError("Dimension value is not a string")
+    member_id = error_on_none(
+        xml_element.text, f"Dimension value not found in xml element {xml_element}"
+    )
 
-    # get the corresponding member from the report elements
-    member_qname = make_qname(dimension_value)
-    member = get_report_element(member_qname)
-    if member is None:
-        raise ValueError(f"Member {str(member_qname)} of dimension {str(dimension_qname)} not found in report elements")
-    if not isinstance(member, Member):
-        # read this: https://www.xbrl.org/WGN/dimensions-use/WGN-2015-03-25/dimensions-use-WGN-2015-03-25.html#sec-open-hypercubes
-        raise ValueError(
-            f"Member {str(member_qname)} of dimension {str(dimension_qname)} is a {type(member)} and not a member."
+    dimension = report_element_repository.get_typed_by_qname(
+        QName.from_string(aspect_id, filing_context.get_nsmap()), Dimension
+    )
+    member = report_element_repository.get_typed_by_qname(
+        QName.from_string(member_id, filing_context.get_nsmap()), Member
+    )
+
+    dimension_id = f"{aspect_id} {member_id}"
+    if not characteristic_repository.has(dimension_id, ExplicitDimensionCharacteristic):
+        characteristic_repository.upsert(
+            dimension_id,
+            ExplicitDimensionCharacteristic(dimension, member, aspect),
         )
 
-    # check cache
-    dimension_characteristic = get_from_cache(f"explicit dimension {dimension_axis} {dimension_value}")
-    if dimension_characteristic is None:
-        # create and add the characteristic
-        dimension_characteristic = ExplicitDimensionCharacteristic(report_element, member, dimension_aspect)
-        add_to_cache(
-            f"explicit dimension {dimension_axis} {dimension_value}",
-            dimension_characteristic,
-        )
-    else:
-        if not isinstance(dimension_characteristic, ExplicitDimensionCharacteristic):
-            raise ValueError("Dimension characteristic is not an explicit dimension characteristic")
-
-    return cast(ExplicitDimensionCharacteristic, dimension_characteristic)
+    return characteristic_repository.get(dimension_id, ExplicitDimensionCharacteristic)

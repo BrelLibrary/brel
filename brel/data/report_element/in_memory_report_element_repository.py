@@ -1,40 +1,46 @@
+"""
+====================
+
+- author: Robin Schmidiger
+- version: 0.1
+- date: 10 April 2025
+
+====================
+"""
+
 from brel.data.report_element.report_element_repository import ReportElementRepository
 from brel.reportelements.i_report_element import IReportElement
-from brel.reportelements.abstract import Abstract
-from brel.reportelements.concept import Concept
-from brel.reportelements.dimension import Dimension
-from brel.reportelements.hypercube import Hypercube
-from brel.reportelements.lineitems import LineItems
-from brel.reportelements.member import Member
 from brel.qname import QName
 
 
 class InMemoryReportElementRepository(ReportElementRepository):
-    def __init__(self):
-        self.__elements: dict[QName, IReportElement] = {}
+    def __init__(self) -> None:
+        self.__elements_by_qname: dict[QName, IReportElement] = {}
+        self.__elemenets_by_id: dict[str, IReportElement] = {}
 
-    def has_report_element(self, qname: QName) -> bool:
-        """
-        Check if the report element exists in the repository.
-        :param qname: The QName of the report element.
-        :return: True if the report element exists, False otherwise.
-        """
-        return qname in self.__elements
+    def has_qname(self, qname: QName) -> bool:
+        return qname in self.__elements_by_qname
 
-    def get_report_element(self, qname: QName) -> IReportElement:
-        """
-        Get the report element by its QName.
-        :param qname: The QName of the report element.
-        :return: The report element.
-        """
-        if not self.has_report_element(qname):
-            raise KeyError(f"Report element with QName {qname} not found in repository.")
-        return self.__elements[qname]
+    def has_id(self, id: str) -> bool:
+        return id in self.__elemenets_by_id
 
-    def set_report_element(self, qname: QName, report_element: IReportElement) -> None:
-        """
-        Set the report element by its QName.
-        :param qname: The QName of the report element.
-        :param report_element: The report element to set.
-        """
-        self.__elements[qname] = report_element
+    def get_by_qname(self, qname: QName) -> IReportElement:
+        if not self.has_qname(qname):
+            raise KeyError(
+                f"Report element with QName {qname} not found in repository."
+            )
+        return self.__elements_by_qname[qname]
+
+    def get_by_id(self, id: str) -> IReportElement:
+        if not self.has_id(id):
+            raise KeyError(f"Report element with ID {id} not found in repository.")
+        return self.__elemenets_by_id[id]
+
+    def upsert(self, report_element: IReportElement) -> None:
+        self.__elements_by_qname[report_element.get_name()] = report_element
+        report_element_id = report_element.get_id()
+        if report_element_id is not None:
+            self.__elemenets_by_id[report_element_id] = report_element
+
+    def get_all(self) -> list[IReportElement]:
+        return list(self.__elements_by_qname.values())

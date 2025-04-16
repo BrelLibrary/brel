@@ -59,7 +59,9 @@ def load_idpts():
         uri = "https://www.sec.gov/files/edgar/efm-68-1-240129.zip"
         response = requests.get(uri, headers={"User-Agent": "Mozilla/5.0"})
         if response.status_code != 200:
-            raise Exception(f"Could not download the interactive data test suite from {uri}.")
+            raise Exception(
+                f"Could not download the interactive data test suite from {uri}."
+            )
         # unzip the file into the folder "interactive_data_test_suite" relative to current_dir
         with open("idpts.zip", "wb") as file:
             file.write(response.content)
@@ -89,10 +91,14 @@ def run_idpts():
     idpts_testcases_folder = "tests/interactive_data_test_suite/conf/"
     idpts_testcases_filename = "testcases.xml"
 
-    testcases_etree = lxml.etree.parse(idpts_testcases_folder + idpts_testcases_filename)
+    testcases_etree = lxml.etree.parse(
+        idpts_testcases_folder + idpts_testcases_filename
+    )
     testcase_elements = testcases_etree.xpath("//testcase")
 
-    testcase_filenames = [testcase_element.get("uri") for testcase_element in testcase_elements]
+    testcase_filenames = [
+        testcase_element.get("uri") for testcase_element in testcase_elements
+    ]
 
     testcase_filenames = list(filter(filter_testcase_files, testcase_filenames))
 
@@ -129,7 +135,9 @@ def run_idpts():
             data = variation.find("{*}data")
 
             instance_filename = data.find("{*}instance").text
-            linkbase_filenames = [linkbase.text for linkbase in data.findall("{*}linkbase")]
+            linkbase_filenames = [
+                linkbase.text for linkbase in data.findall("{*}linkbase")
+            ]
 
             # skip the testcase if any of the instance of a linkbase is not xml
             if not instance_filename.endswith(".xml"):
@@ -146,7 +154,10 @@ def run_idpts():
                 return path_prefix + filename
 
             instance_filename = prepend_path_prefix(instance_filename)
-            linkbase_filenames = [prepend_path_prefix(linkbase_filename) for linkbase_filename in linkbase_filenames]
+            linkbase_filenames = [
+                prepend_path_prefix(linkbase_filename)
+                for linkbase_filename in linkbase_filenames
+            ]
 
             # get the expected results
             result = variation.find("{*}result")
@@ -156,14 +167,16 @@ def run_idpts():
             text_exception: Exception | None = None
 
             try:
-                filing = Filing.open(instance_filename, *linkbase_filenames)
+                filing = Filing.open(instance_filename)
                 print(f"> No exception raised.")
             except Exception as e:
                 # print(f"Exception: {e}")
                 print(f"> Exception raised: {e}")
                 text_exception = e
 
-            if (expected_result == "error" or expected_result == "invalid") and text_exception is None:
+            if (
+                expected_result == "error" or expected_result == "invalid"
+            ) and text_exception is None:
                 print(
                     f"[bold red][!!! FAIL !!!][/bold red]",
                     f"expected error, but none was raised.",

@@ -5,8 +5,8 @@ It parses XBRL in the XML syntax.
 ====================
 
 - author: Robin Schmidiger
-- version: 0.5
-- date: 05 February 2024
+- version: 0.6
+- date: 16 April 2025
 
 ====================
 """
@@ -14,22 +14,21 @@ It parses XBRL in the XML syntax.
 import lxml.etree
 
 from brel import QName, QNameNSMap
-from brel.parsers.utils import get_str
-from brel.reportelements import Dimension, IReportElement
+from brel.parsers.utils import get_str_attribute
+from brel.parsers.utils.error_utils import error_on_none
+from brel.reportelements import Dimension
 
 from brel.parsers.dts.i_file_manager import IFileManager
 from .xml_report_element_factory import XMLReportElementFactory
 from brel.data.report_element.report_element_repository import ReportElementRepository
+from brel.contexts.filing_context import FilingContext
 
 
 def parse_report_elements_xml(
-    report_element_repository: ReportElementRepository,
+    context: FilingContext,
     file_manager: IFileManager,
-    etrees: list[lxml.etree._ElementTree],
-    qname_nsmap: QNameNSMap,
-) -> tuple[dict[QName, IReportElement], dict[str, IReportElement], list[Exception]]:
-    # todo use repositories
-    # todo replace nsmap with repository
+    etrees: list[lxml.etree._ElementTree],  # type: ignore
+) -> None:
     """
     Parse the concepts.
     :param file_manager: The file manager that contains the xbrl instance and the schemas.
@@ -40,99 +39,63 @@ def parse_report_elements_xml(
     - A list of exceptions that occurred during parsing.
     """
 
-    id_to_report_element: dict[str, IReportElement] = {}
-    errors: list[Exception] = []
+    error_repository = context.get_error_repository()
+    report_element_repository = context.get_report_element_repository()
+    qname_nsmap = context.get_nsmap()
 
     for etree in etrees:
-        try:
-            reportelem_url = get_str(etree.getroot(), "targetNamespace")
-        except Exception as e:
-            errors.append(e)
-            continue
+        re_xmls = error_repository.upsert_on_error(
+            lambda: etree.findall(".//{*}schemaLocation", namespaces=None)
+        )
 
-        # get all the concept xml elements in the schema that have an attribute name
+        target_namespace_url = get_str_attribute(etree.getroot(), "targetNamespace")
+
         re_xmls = etree.findall(".//{*}element[@name]", namespaces=None)
         for re_xml in re_xmls:
-            try:
-                reportelem_name = get_str(re_xml, "name")
-            except Exception as e:
-                errors.append(e)
-                continue
+            error_repository.upsert_on_error(
+                lambda: parse_report_element(
+                    report_element_repository=report_element_repository,
+                    file_manager=file_manager,
+                    qname_nsmap=qname_nsmap,
+                    report_element_xml=re_xml,
+                    target_namespace_url=target_namespace_url,
+                )
+            )
 
-            try:
-                reportelem_qname = QName.from_string(f"{{{reportelem_url}}}{reportelem_name}", qname_nsmap)
-            except Exception as e:
-                errors.append(e)
-                continue
 
-            # check cache
-            if report_element_repository.has_report_element(reportelem_qname):
-                # create the report element
-                factory_result = XMLReportElementFactory.create(re_xml, reportelem_qname, [])
-                if factory_result is None:
-                    continue
+def parse_report_element(
+    report_element_repository: ReportElementRepository,
+    file_manager: IFileManager,
+    qname_nsmap: QNameNSMap,
+    report_element_xml: lxml.etree._Element,  # type: ignore
+    target_namespace_url: str,
+):
+    qname_tag = get_str_attribute(report_element_xml, "name")
+    qname = QName.from_string(f"{{{target_namespace_url}}}{qname_tag}", qname_nsmap)
+    report_element = XMLReportElementFactory.create(report_element_xml, qname, [])
+    if report_element and not report_element_repository.has_qname(qname):
+        report_element_repository.upsert(report_element)
 
-                elem_id, reportelem = factory_result
+        # TODO schmidi fix this. looks hacky
+        if isinstance(report_element, Dimension):
+            xbrldt_prefix = report_element_xml.nsmap["xbrldt"]
+            typed_domain_ref = f"{{{xbrldt_prefix}}}typedDomainRef"
 
-                report_element_repository.set_report_element(reportelem_qname, reportelem)
-                if elem_id is not None:
-                    id_to_report_element[elem_id] = reportelem
+            if typed_domain_ref in report_element_xml.attrib:
+                ref_full = get_str_attribute(report_element_xml, typed_domain_ref)
+                ref_schema_name, ref_id = ref_full.split("#")
 
-                # if the report element is a dimension, then check if there is a typedDomainRef
-                if isinstance(reportelem, Dimension):
-                    # get the prefix binding for the xbrldt namespace in the context of the schema
-                    # Note: I cannot get this via QName.get_nsmap() because there might be multiple schemas with different prefix bindings for the xbrldt namespace
-                    xbrldt_prefix = etree.getroot().nsmap["xbrldt"]
-                    typed_domain_ref = f"{{{xbrldt_prefix}}}typedDomainRef"
+                refschema = (
+                    file_manager.get_file(ref_schema_name)
+                    if ref_schema_name
+                    else report_element_xml
+                )
+                ref_xml = error_on_none(
+                    refschema.find(f".//*[@id='{ref_id}']", namespaces=None),
+                    f"Could not find reference {ref_id} in {ref_schema_name}",
+                )
 
-                    # check if the xml element has a xbrldt:typedDomainRef attributeq
-                    if typed_domain_ref in re_xml.attrib:
-                        # get the prefix binding for the xbrldt namespace in the context of the schema
+                ref_type = get_str_attribute(ref_xml, "type")
+                ref_type_qname = QName.from_string(ref_type, qname_nsmap)
 
-                        # ref_full = re_xml.get(typed_domain_ref)
-                        try:
-                            ref_full = get_str(re_xml, typed_domain_ref)
-                        except Exception as e:
-                            errors.append(e)
-                            continue
-
-                        # get the schema and the element id
-                        ref_schema_name, ref_id = ref_full.split("#")
-
-                        # get the right schema
-                        try:
-                            if ref_schema_name == "":
-                                refschema = etree
-                            else:
-                                refschema = file_manager.get_file(ref_schema_name)
-                        except Exception as e:
-                            errors.append(e)
-                            continue
-
-                        # get the element the ref is pointing to
-                        # it is an xs:element with the id attr being the ref
-                        ref_xml = refschema.find(f".//*[@id='{ref_id}']", namespaces=None)
-                        if ref_xml is None:
-                            errors.append(
-                                ValueError(f"the schema {refschema} does not contain an element with the id {ref_id}")
-                            )
-                            continue
-
-                        # get the type of ref_xml
-                        try:
-                            ref_type = get_str(ref_xml, "type")
-                        except Exception as e:
-                            errors.append(e)
-                            continue
-
-                        # convert to QName
-                        try:
-                            ref_type_qname = QName.from_string(ref_type, qname_nsmap)
-                        except Exception as e:
-                            errors.append(e)
-                            continue
-
-                        # set the type of the dimension
-                        reportelem.make_typed(ref_type_qname)
-
-    return report_elements, id_to_report_element, errors
+                report_element.make_typed(ref_type_qname)

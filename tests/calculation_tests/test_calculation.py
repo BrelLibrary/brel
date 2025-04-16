@@ -34,16 +34,16 @@ qnames = [
 ]
 
 concepts = [
-    Concept(qnames[0], [], "duration", "debit", False, "monetaryItemType"),
-    Concept(qnames[1], [], "duration", "debit", False, "monetaryItemType"),
-    Concept(qnames[2], [], "duration", "debit", False, "monetaryItemType"),
-    Concept(qnames[3], [], "duration", "debit", False, "monetaryItemType"),
-    Concept(qnames[4], [], "duration", "debit", False, "monetaryItemType"),
-    Concept(qnames[5], [], "duration", "credit", False, "monetaryItemType"),
-    Concept(qnames[6], [], "duration", "credit", False, "monetaryItemType"),
-    Concept(qnames[7], [], "duration", "debit", False, "monetaryItemType"),
-    Concept(qnames[8], [], "duration", "debit", False, "monetaryItemType"),
-    Concept(qnames[9], [], "duration", "debit", False, "monetaryItemType"),
+    Concept(qnames[0], None, [], "duration", "debit", False, "monetaryItemType"),
+    Concept(qnames[1], None, [], "duration", "debit", False, "monetaryItemType"),
+    Concept(qnames[2], None, [], "duration", "debit", False, "monetaryItemType"),
+    Concept(qnames[3], None, [], "duration", "debit", False, "monetaryItemType"),
+    Concept(qnames[4], None, [], "duration", "debit", False, "monetaryItemType"),
+    Concept(qnames[5], None, [], "duration", "credit", False, "monetaryItemType"),
+    Concept(qnames[6], None, [], "duration", "credit", False, "monetaryItemType"),
+    Concept(qnames[7], None, [], "duration", "debit", False, "monetaryItemType"),
+    Concept(qnames[8], None, [], "duration", "debit", False, "monetaryItemType"),
+    Concept(qnames[9], None, [], "duration", "debit", False, "monetaryItemType"),
 ]
 
 arc_role = "http://www.xbrl.org/2003/arcrole/summation-item"
@@ -53,7 +53,9 @@ link_name = QName.from_string("us-gaap:CondensedConsolidatedStatementsOfIncome",
 
 
 def create_node(concept: Concept, weight: int, order: int):
-    return CalculationNetworkNode(concept, [], arc_role, arc_name, link_role, link_name, weight, order)
+    return CalculationNetworkNode(
+        concept, [], arc_role, arc_name, link_role, link_name, weight, order
+    )
 
 
 def fact_from_concept(concept: Concept, value: str):
@@ -200,11 +202,15 @@ def test_calculation_validation_GD_empty_network():
     if DEBUG:  # pragma: no cover
         pprint_network(network)
 
-    assert network.is_aggregation_consistent([]), "The empty network should be aggregation consistent"
+    assert network.is_aggregation_consistent(
+        []
+    ), "The empty network should be aggregation consistent"
 
     facts = []
 
-    assert network.is_aggregation_consistent(facts), "The empty network should be aggregation consistent"
+    assert network.is_aggregation_consistent(
+        facts
+    ), "The empty network should be aggregation consistent"
 
 
 def test_calculation_validation_NG_aggregation():

@@ -27,13 +27,13 @@ remove:           ## Remove the project.
 
 .PHONY: fmt
 fmt:              ## Format code using black & isort.
-	$(ENV_PREFIX)black -l 120 brel/
-	$(ENV_PREFIX)black -l 120 tests/
+	$(ENV_PREFIX)black brel/
+	$(ENV_PREFIX)black tests/
 
 .PHONY: lint
 lint:             ## Run pep8, black, mypy linters.
-	$(ENV_PREFIX)black -l 120 --check brel/
-	$(ENV_PREFIX)black -l 120 --check tests/
+	$(ENV_PREFIX)black --check brel/
+	$(ENV_PREFIX)black --check tests/
 	$(ENV_PREFIX)mypy --ignore-missing-imports brel/
 
 .PHONY: test
