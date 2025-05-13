@@ -22,7 +22,7 @@ from brel.contexts.filing_context import FilingContext
 from brel.parsers.utils.iterable_utils import get_first
 from brel.parsers.utils.error_utils import error_on_none
 from brel.parsers.utils.lxml_utils import get_str_attribute
-from brel.qname import QName
+from brel.qnames.qname_utils import qname_from_str
 from brel.reportelements import Dimension
 
 
@@ -55,16 +55,16 @@ def parse_typed_dimension_from_xml(
     aspect_repository = filing_context.get_aspect_repository()
     report_element_repository = filing_context.get_report_element_repository()
     characteristic_repository = filing_context.get_characteristic_repository()
-    nsmap = filing_context.get_nsmap()
 
     dimension_axis = get_str_attribute(xml_element, "dimension")
 
     if not aspect_repository.has(dimension_axis):
-        aspect_repository.upsert(Aspect.from_str(dimension_axis))
+        aspect_repository.upsert(Aspect(dimension_axis, []))
     dimension_aspect = aspect_repository.get(dimension_axis)
 
     i_report_element = report_element_repository.get_typed_by_qname(
-        QName.from_string(dimension_axis, nsmap), Dimension
+        qname_from_str(dimension_axis, xml_element),
+        Dimension,
     )
 
     value_element = get_first(

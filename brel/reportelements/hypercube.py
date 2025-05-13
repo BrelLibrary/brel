@@ -10,6 +10,7 @@ This module contains the Hypercube class.
 =================
 """
 
+from typing import Dict
 from brel import QName
 from brel.reportelements import IReportElement
 from brel.resource import BrelLabel
@@ -53,13 +54,13 @@ class Hypercube(IReportElement):
         """
         return self.__name.__str__()
 
-    def convert_to_dict(self) -> dict[str, str]:
+    def convert_to_dict(self) -> Dict[str, str]:
         """
         Convert the hypercube to a dictionary.
         :returns dict: the hypercube as a dictionary
         """
         return {
-            "name": self.__name.get(),
+            "name": self.__name.prefix_local_name_notation(),
             "label": self.select_main_label().__str__(),
             "report_element_type": "hypercube",
         }

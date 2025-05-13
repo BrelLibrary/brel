@@ -37,7 +37,7 @@ class FilingParser(ABC):
         return self.__context
 
     @final
-    def parse(self) -> None:
+    def parse(self) -> FilingContext:
         """
         Parse the filing.
         """
@@ -45,6 +45,7 @@ class FilingParser(ABC):
         self.parse_facts()
         self.parse_networks()
         self.parse_components()
+        return self.get_context()
 
     @abstractmethod
     def get_filing_type(self) -> str:

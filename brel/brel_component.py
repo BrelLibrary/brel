@@ -47,7 +47,7 @@ pprint(calculation_network)
 ====================
 """
 
-from typing import cast
+from typing import Any, Dict, cast
 from brel import Fact
 from brel.networks import (
     CalculationNetwork,
@@ -215,7 +215,7 @@ class Component:
             networks.append(self.__definition_network)
         return networks
 
-    def convert_to_dict(self) -> dict:
+    def convert_to_dict(self) -> Dict[str, Any]:
         """
         :returns dict: a dictionary representation of the component
         """

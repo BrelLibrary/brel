@@ -2,15 +2,15 @@
 ====================
 
 - author: Robin Schmidiger
-- version: 0.1
-- date: 10 April 2025
+- version: 0.2
+- date: 13 May 2025
 
 ====================
 """
 from abc import abstractmethod, ABC
 
 from brel.characteristics.brel_aspect import Aspect
-from brel.qname import QName
+from brel.qnames.qname import QName
 
 
 class AspectRepository(ABC):
@@ -19,7 +19,7 @@ class AspectRepository(ABC):
         raise NotImplementedError()
 
     def get_by_qname(self, qname: QName) -> Aspect:
-        return self.get(qname.get())
+        return self.get(qname.prefix_local_name_notation())
 
     @abstractmethod
     def has(self, name: str) -> bool:

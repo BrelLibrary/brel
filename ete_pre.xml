@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<link:linkbase xmlns:ete="http://ete/2024" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xbrldt="http://xbrl.org/2005/xbrldt" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd">
+    <link:roleRef roleURI="http://foo/role/balance" xlink:href="ete.xsd#Balance" xlink:type="simple"></link:roleRef>
+    <link:presentationLink xlink:type="extended" xlink:role="http://foo/role/balance">
+        <link:loc xlink:href="ete.xsd#ete_abstract_balance_sheet" xlink:label="ete_abstract_balance_sheet" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="ete.xsd#ete_abstract_assets" xlink:label="ete_abstract_assets" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="ete.xsd#ete_cash" xlink:label="ete_cash" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="ete.xsd#ete_receivables" xlink:label="ete_receivables" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="ete.xsd#ete_abstract_liabilities" xlink:label="ete_abstract_liabilities" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="ete.xsd#ete_accounts_payable" xlink:label="ete_accounts_payable" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="ete.xsd#ete_line_of_credit" xlink:label="ete_line_of_credit" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="ete.xsd#ete_long_term_debt" xlink:label="ete_long_term_debt" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="ete.xsd#ete_abstract_equity" xlink:label="ete_abstract_equity" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="ete.xsd#ete_common_stock" xlink:label="ete_common_stock" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="ete.xsd#ete_additional_paid_in_capital" xlink:label="ete_additional_paid_in_capital" xlink:type="locator"></link:loc>
+        <link:loc xlink:href="ete.xsd#ete_retained_earnings" xlink:label="ete_retained_earnings" xlink:type="locator"></link:loc>
+
+        <link:presentationArc xlink:type="arc" order="1.0" use="optional" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ete_abstract_balance_sheet" xlink:to="ete_abstract_assets" preferredLabel="http://www.xbrl.org/2003/role/label"></link:presentationArc>
+        <link:presentationArc xlink:type="arc" order="1.0" use="optional" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ete_abstract_assets" xlink:to="ete_cash" preferredLabel="http://www.xbrl.org/2003/role/label"></link:presentationArc>
+        <link:presentationArc xlink:type="arc" order="2.0" use="optional" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ete_abstract_assets" xlink:to="ete_receivables" preferredLabel="http://www.xbrl.org/2003/role/label"></link:presentationArc>
+        <link:presentationArc xlink:type="arc" order="2.0" use="optional" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ete_abstract_balance_sheet" xlink:to="ete_abstract_liabilities" preferredLabel="http://www.xbrl.org/2003/role/label"></link:presentationArc>
+        <link:presentationArc xlink:type="arc" order="1.0" use="optional" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ete_abstract_liabilities" xlink:to="ete_accounts_payable" preferredLabel="http://www.xbrl.org/2003/role/label"></link:presentationArc>
+        <link:presentationArc xlink:type="arc" order="2.0" use="optional" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ete_abstract_liabilities" xlink:to="ete_line_of_credit" preferredLabel="http://www.xbrl.org/2003/role/label"></link:presentationArc>
+        <link:presentationArc xlink:type="arc" order="3.0" use="optional" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ete_abstract_liabilities" xlink:to="ete_long_term_debt" preferredLabel="http://www.xbrl.org/2003/role/label"></link:presentationArc>
+        <link:presentationArc xlink:type="arc" order="3.0" use="optional" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ete_abstract_balance_sheet" xlink:to="ete_abstract_equity" preferredLabel="http://www.xbrl.org/2003/role/label"></link:presentationArc>
+        <link:presentationArc xlink:type="arc" order="1.0" use="optional" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ete_abstract_equity" xlink:to="ete_common_stock" preferredLabel="http://www.xbrl.org/2003/role/label"></link:presentationArc>
+        <link:presentationArc xlink:type="arc" order="2.0" use="optional" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ete_abstract_equity" xlink:to="ete_additional_paid_in_capital" preferredLabel="http://www.xbrl.org/2003/role/label"></link:presentationArc>
+        <link:presentationArc xlink:type="arc" order="3.0" use="optional" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ete_abstract_equity" xlink:to="ete_retained_earnings" preferredLabel="http://www.xbrl.org/2003/role/label"></link:presentationArc>
+    </link:presentationLink>
+
+</link:linkbase>

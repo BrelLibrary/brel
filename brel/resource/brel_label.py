@@ -10,13 +10,6 @@ This module contains the BrelLabel class, which represents a label in XBRL.
 =================
 """
 
-from enum import Enum
-from typing import cast
-
-import lxml
-import lxml.etree
-
-from brel import QName, QNameNSMap
 from brel.resource import IResource
 
 

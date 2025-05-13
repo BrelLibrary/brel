@@ -18,7 +18,7 @@ from brel.characteristics import (
     ExplicitDimensionCharacteristic,
 )
 from brel.parsers.utils.lxml_utils import get_str_attribute
-from brel.qname import QName
+from brel.qnames.qname_utils import qname_from_str
 from brel.reportelements import Dimension, Member
 from brel.contexts.filing_context import FilingContext
 from brel.data.report_element.report_element_repository import ReportElementRepository
@@ -46,7 +46,7 @@ def parse_explicit_dimension_from_xml(
 
     aspect_id = get_str_attribute(xml_element, "dimension")
     if not characteristic_repository.has(aspect_id, ExplicitDimensionCharacteristic):
-        aspect_repository.upsert(Aspect.from_str(aspect_id))
+        aspect_repository.upsert(Aspect(aspect_id, []))
 
     aspect = aspect_repository.get(aspect_id)
 
@@ -55,10 +55,10 @@ def parse_explicit_dimension_from_xml(
     )
 
     dimension = report_element_repository.get_typed_by_qname(
-        QName.from_string(aspect_id, filing_context.get_nsmap()), Dimension
+        qname_from_str(aspect_id, xml_element), Dimension
     )
     member = report_element_repository.get_typed_by_qname(
-        QName.from_string(member_id, filing_context.get_nsmap()), Member
+        qname_from_str(member_id, xml_element), Member
     )
 
     dimension_id = f"{aspect_id} {member_id}"

@@ -10,6 +10,7 @@ This module contains the LineItems class.
 =================
 """
 
+from typing import Dict, Any
 from brel import QName
 from brel.reportelements import IReportElement
 from brel.resource import BrelLabel
@@ -53,13 +54,13 @@ class LineItems(IReportElement):
         """
         return self.__name.__str__()
 
-    def convert_to_dict(self) -> dict:
+    def convert_to_dict(self) -> Dict[str, Any]:
         """
         Convert the line items to a dictionary.
         :returns dict: the line items as a dictionary
         """
         return {
-            "name": self.__name.get(),
+            "name": self.__name.prefix_local_name_notation(),
             "label": self.select_main_label().__str__(),
             "report_element_type": "line item",
         }

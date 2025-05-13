@@ -1,3 +1,13 @@
+"""
+====================
+
+- author: Robin Schmidiger
+- version: 0.1
+- date: 13 May 2025
+
+====================
+"""
+
 import re
 
 

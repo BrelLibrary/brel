@@ -2,8 +2,8 @@
 ====================
 
 - author: Robin Schmidiger
-- version: 0.1
-- date: 10 April 2025
+- version: 0.3
+- date: 8 May 2025
 
 ====================
 """
@@ -12,20 +12,33 @@ from typing import Any, Dict, Callable
 from brel.data.aspect.aspect_repository import AspectRepository
 from brel.data.factory import (
     create_aspect_repository,
+    create_file_repository,
+    create_namespace_repository,
     create_report_element_repository,
     create_error_repository,
     create_component_repository,
     create_network_repository,
     create_fact_repository,
     create_characteristic_repository,
+    create_xml_repository,
 )
+from brel.data.file.file_repository import FileRepository
+from brel.data.namespace.namespace_repository import NamespaceRepository
 from brel.data.report_element.report_element_repository import ReportElementRepository
 from brel.data.errors.error_repository import ErrorRepository
 from brel.data.fact.fact_repository import FactRepository
 from brel.data.characteristic.characteristic_repository import CharacteristicRepository
 from brel.data.network.network_repository import NetworkRepository
 from brel.data.component.component_repository import ComponentRepository
-from brel.qname import QNameNSMap
+from brel.data.xml.xml_repository import XMLRepository
+from brel.services.factory import (
+    create_file_service,
+    create_report_element_service,
+    create_xml_service,
+)
+from brel.services.file.file_service import FileService
+from brel.services.report_element.report_element_service import ReportElementService
+from brel.services.xml.xml_service import XMLService
 
 
 class FilingContext:
@@ -68,6 +81,35 @@ class FilingContext:
             "aspect_repository", lambda: create_aspect_repository()
         )
 
-    def get_nsmap(self) -> QNameNSMap:
-        # TODO schmidi: rework NSMap
-        return self.__lazy_cache("nsmap", lambda: QNameNSMap())
+    def get_namespace_repository(self) -> NamespaceRepository:
+        return self.__lazy_cache(
+            "namespace_repository", lambda: create_namespace_repository()
+        )
+
+    def get_file_repository(self) -> FileRepository:
+        return self.__lazy_cache("file_repository", lambda: create_file_repository())
+
+    def get_file_service(self) -> FileService:
+        return self.__lazy_cache(
+            "file_service",
+            lambda: create_file_service(self.get_file_repository()),
+        )
+
+    def get_xml_repository(self) -> XMLRepository:
+        return self.__lazy_cache("xml_repository", lambda: create_xml_repository())
+
+    def get_xml_service(self) -> XMLService:
+        return self.__lazy_cache(
+            "xml_service",
+            lambda: create_xml_service(
+                self.get_file_service(), self.get_xml_repository()
+            ),
+        )
+
+    def get_report_element_service(self) -> ReportElementService:
+        return self.__lazy_cache(
+            "report_element_service",
+            lambda: create_report_element_service(
+                self.get_report_element_repository(), self.get_namespace_repository()
+            ),
+        )

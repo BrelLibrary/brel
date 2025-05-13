@@ -13,6 +13,7 @@ The already existing dimensions are the core aspects of a fact, namely the perio
 ====================
 """
 
+from typing import Any, Dict
 from brel import QName
 from brel.reportelements import IReportElement
 from brel.resource import BrelLabel
@@ -91,15 +92,17 @@ class Dimension(IReportElement):
     def __str__(self) -> str:
         return self.__name.__str__()
 
-    def convert_to_dict(self) -> dict:
+    def convert_to_dict(self) -> Dict[str, Any]:
         """
         Convert the dimension to a dictionary.
         :returns dict: the dimension as a dictionary
         """
         return {
-            "name": self.__name.get(),
+            "name": self.__name.prefix_local_name_notation(),
             "label": self.select_main_label().__str__(),
             "report_element_type": "dimension",
             "is_explicit": self.is_explicit(),
-            "dimension_type": self.__type.get() if self.__type is not None else None,
+            "dimension_type": self.__type.prefix_local_name_notation()
+            if self.__type is not None
+            else None,
         }

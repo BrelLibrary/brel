@@ -12,6 +12,7 @@ For more information on concepts, see the [**XBRL 2.1 specification**](https://s
 ====================
 """
 
+from typing import Any, Dict
 import lxml
 import lxml.etree
 
@@ -184,13 +185,13 @@ class Concept(IReportElement):
     def __str__(self) -> str:
         return self.__name.__str__()
 
-    def convert_to_dict(self) -> dict:
+    def convert_to_dict(self) -> Dict[str, Any]:
         """
         Convert the concept to a dictionary.
         :returns dict: the concept as a dictionary
         """
         return {
-            "name": self.__name.get(),
+            "name": self.__name.prefix_local_name_notation(),
             "label": self.select_main_label().__str__(),
             "report_element_type": "concept",
             "period_type": self.__period_type,

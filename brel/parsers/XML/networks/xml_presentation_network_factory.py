@@ -12,29 +12,26 @@ This module is used by the XML network parser to build presentation networks.
 ====================
 """
 
-from typing import cast, Mapping
+from typing import cast
 
 import lxml
 import lxml.etree
 
-from brel import Fact, QName, QNameNSMap
+from brel.brel_fact import Fact
 from brel.networks import (
     INetwork,
     INetworkNode,
     PresentationNetwork,
     PresentationNetworkNode,
 )
+from brel.parsers.utils.lxml_utils import get_str_attribute
+from brel.qnames.qname_utils import qname_from_str, to_namespace_localname_notation
 from brel.reportelements import IReportElement
-from brel.parsers.utils import get_str_attribute, get_clark
 from brel.parsers.XML.networks import IXMLNetworkFactory
 from brel.resource import BrelLabel, IResource
-from brel.data.report_element.report_element_repository import ReportElementRepository
 
 
 class PresentationNetworkFactory(IXMLNetworkFactory):
-    def __init__(self, qname_nsmap: QNameNSMap) -> None:
-        super().__init__(qname_nsmap)
-
     def create_network(
         self, xml_link_element: lxml.etree._Element, roots: list[INetworkNode]
     ) -> INetwork:
@@ -49,11 +46,10 @@ class PresentationNetworkFactory(IXMLNetworkFactory):
 
         roots_cast = cast(list[PresentationNetworkNode], roots)
 
-        link_role = get_str_attribute(xml_link_element, self._clark("xlink", "role"))
-        link_name = self._make_qname(xml_link_element.tag)
-
-        if link_role is None:
-            raise ValueError("link_role must not be None")
+        link_role = get_str_attribute(
+            xml_link_element, to_namespace_localname_notation("xlink", "role")
+        )
+        link_name = qname_from_str(xml_link_element.tag, xml_link_element)
 
         return PresentationNetwork(roots_cast, link_role, link_name, self.is_physical())
 
@@ -73,40 +69,55 @@ class PresentationNetworkFactory(IXMLNetworkFactory):
         :returns PresentationNetworkNode: The PresentationNetworkNode
         """
 
-        label = get_str_attribute(xml_referenced_element, self._clark("xlink", "label"))
+        label = get_str_attribute(
+            xml_referenced_element, to_namespace_localname_notation("xlink", "label")
+        )
 
         if xml_arc is None:
             # the node is not connected to any other node
             preferred_label_role = None
             arc_role = "unknown"
             order: float = 1
-            arc_qname = self._make_qname("link:unknown")
-        elif get_str_attribute(xml_arc, self._clark("xlink", "from"), None) == label:
+            arc_qname = qname_from_str("link:unknown", xml_referenced_element)
+        elif (
+            get_str_attribute(
+                xml_arc, to_namespace_localname_notation("xlink", "from"), None
+            )
+            == label
+        ):
             # the node is a root
             preferred_label_role = None
-            arc_role = get_str_attribute(xml_arc, self._clark("xlink", "arcrole"))
+            arc_role = get_str_attribute(
+                xml_arc, to_namespace_localname_notation("xlink", "arcrole")
+            )
             order = 1
-            arc_qname = QName.from_string(xml_arc.tag, self.get_qname_nsmap())
-        elif get_str_attribute(xml_arc, self._clark("xlink", "to"), None) == label:
+            arc_qname = qname_from_str(xml_arc.tag, xml_arc)
+        elif (
+            get_str_attribute(
+                xml_arc, to_namespace_localname_notation("xlink", "to"), None
+            )
+            == label
+        ):
             # the node is an inner node
             preferred_label = get_str_attribute(
                 xml_arc, "preferredLabel", BrelLabel.STANDARD_LABEL_ROLE
             )
 
-            if preferred_label is None:
-                preferred_label_role = None
-            else:
-                preferred_label_role = preferred_label
-            arc_role = get_str_attribute(xml_arc, self._clark("xlink", "arcrole"))
+            preferred_label_role = preferred_label
+            arc_role = get_str_attribute(
+                xml_arc, to_namespace_localname_notation("xlink", "arcrole")
+            )
             order = float(get_str_attribute(xml_arc, "order", "1"))
-            arc_qname = QName.from_string(xml_arc.tag, self.get_qname_nsmap())
+            arc_qname = qname_from_str(xml_arc.tag, xml_arc)
         else:
             raise ValueError(
                 f"referenced element {xml_referenced_element} is not connected to arc {xml_arc}"
             )
 
-        link_role = get_str_attribute(xml_link, self._clark("xlink", "role"))
-        link_name = self._make_qname(xml_link.tag)
+        link_role = get_str_attribute(
+            xml_link, to_namespace_localname_notation("xlink", "role")
+        )
+        link_name = qname_from_str(xml_link.tag, xml_link)
 
         # check if 'points_to' is a ReportElement
         if not isinstance(points_to, IReportElement):

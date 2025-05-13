@@ -11,19 +11,19 @@ It parses XBRL in the XML syntax.
 ====================
 """
 
-from typing import Iterable
 
 import lxml
 import lxml.etree
 
-from brel import Context, Fact, QName
+from brel import Context, Fact
 from brel.characteristics import *
-from brel.parsers.XML import parse_context_xml
 from brel.parsers.XML.characteristics import parse_unit_from_xml
+from brel.parsers.XML.xml_context_parser import parse_context_xml
 from brel.parsers.utils.error_utils import error_on_none
+from brel.qnames.qname_utils import qname_from_str
 from brel.reportelements import Concept
 from brel.contexts.filing_context import FilingContext
-from brel.parsers.utils.lxml_utils import get_str_attribute, get_str_tag
+from brel.parsers.utils.lxml_utils import find_elements, get_str_attribute, get_str_tag
 
 
 def parse_fact_from_xml(
@@ -64,10 +64,10 @@ def parse_fact_from_xml(
         )
 
     context_concept = context.get_concept()
-    if fact_concept_name != context_concept.get_value().get_name().resolve():
+    if fact_concept_name != context_concept.get_value().get_name().clark_notation():
         error_repository.upsert(
             ValueError(
-                f"Fact {fact_id} has concept {fact_concept_name} but should have concept {context_concept.get_value().get_name().resolve()}"
+                f"Fact {fact_id} has concept {fact_concept_name} but should have concept {context_concept.get_value().get_name().clark_notation()}"
             )
         )
 
@@ -76,7 +76,6 @@ def parse_fact_from_xml(
 
 def parse_facts_xml(
     context: FilingContext,
-    etrees: Iterable[lxml.etree._ElementTree],  # type: ignore
 ) -> None:
     """
     Parse the facts.
@@ -85,15 +84,13 @@ def parse_facts_xml(
 
     report_element_repository = context.get_report_element_repository()
     characteristics_repository = context.get_characteristic_repository()
-    nsmap = context.get_nsmap()
+    xml_service = context.get_xml_service()
 
-    for xbrl_instance in etrees:
-        xml_facts = xbrl_instance.findall(".//*[@contextRef]", namespaces=None)
-
-        for xml_fact in xml_facts:
+    for xbrl_instance in xml_service.get_all_etrees():
+        for xml_fact in find_elements(xbrl_instance, ".//*[@contextRef]"):
             fact_characteristics: list[UnitCharacteristic | ConceptCharacteristic] = []
 
-            # ======== PARSE THE UNIT ========
+            # ======== PARSE THE CONCEPT ========
             concept_name = get_str_tag(xml_fact)
 
             concept_characteristic = characteristics_repository.get_or_create(
@@ -101,7 +98,7 @@ def parse_facts_xml(
                 ConceptCharacteristic,
                 lambda: ConceptCharacteristic(
                     report_element_repository.get_typed_by_qname(
-                        QName.from_string(concept_name, nsmap),
+                        qname_from_str(concept_name, xml_fact),
                         Concept,
                     )
                 ),
@@ -123,7 +120,6 @@ def parse_facts_xml(
                     lambda: parse_unit_from_xml(
                         context,
                         unit_xml,
-                        concept_characteristic.get_value(),
                     ),
                 )
                 fact_characteristics.append(unit_characteristic)

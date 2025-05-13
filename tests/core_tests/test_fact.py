@@ -1,3 +1,13 @@
+"""
+====================
+
+- author: Robin Schmidiger
+- version: 0.1
+- date: 12 May 2025
+
+====================
+"""
+
 import brel
 
 
@@ -7,10 +17,10 @@ def test_qname_getters():
 
     # check if a fact with value = "true" is parsed correctly as a bool
     fact = filing.get_facts_by_concept_name("dei:DocumentQuarterlyReport")[0]
-    assert fact._get_id() == "f-2", "Expected fact id to be 'f-2'"
+    assert fact._get_id() == "f-2", "Expected fact id to be 'f-2'"  # type: ignore
 
     context = fact.get_context()
-    assert context._get_id() == "c-1", "Expected context id to be 'c-1'"
+    assert context._get_id() == "c-1", "Expected context id to be 'c-1'"  # type: ignore
 
     assert fact.get_value_as_str() == "true", "Expected 'true' as fact value is 'true'"
     assert fact.get_value_as_bool() == True, "Expected True as fact value is 'true'"
@@ -66,3 +76,7 @@ def test_qname_getters():
         assert False, "Expected ValueError as fact value is not a bool"
     except ValueError:
         pass
+
+
+if __name__ == "__main__":
+    test_qname_getters()

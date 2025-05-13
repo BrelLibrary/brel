@@ -1,14 +1,23 @@
+"""
+====================
+
+- author: Robin Schmidiger
+- version: 0.1
+- date: 12 May 2025
+
+====================
+"""
+
+
 from brel.characteristics import TypedDimensionCharacteristic, Aspect
 from brel.reportelements import Dimension
-from brel import QName, QNameNSMap
+from brel import QName
 from brel.resource.brel_label import BrelLabel
 
 
 def test_type_dimension():
-    nsmap = QNameNSMap()
-
-    dimension_name = QName("http://foo.com", "foo", "dim", nsmap)
-    type_qname = QName("http://foo.com", "foo", "type", nsmap)
+    dimension_name = QName("http://foo.com", "foo", "dim")
+    type_qname = QName("http://foo.com", "foo", "type")
     labels: list[BrelLabel] = []
     dimension = Dimension(dimension_name, "foo_dim", labels)
     dimension.make_typed(type_qname)

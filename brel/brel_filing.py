@@ -38,19 +38,22 @@ Once a filing is loaded, it can be queried for its facts, report elements, netwo
 ====================
 
 - author: Robin Schmidiger
-- version: 0.6
-- date: 15 April 2025
+- version: 0.7
+- date: 12 May 2025
 
 ====================
 """
 
 import pandas as pd
 from pyspark import sql
-from typing import Any, TypeGuard, cast
+from typing import Any, cast
 
 from brel import Component, Fact, QName
 from brel.networks import INetwork
+from brel.parsers.filing_parser_factory import FilingParserFactory
 from brel.parsers.path_loaders.factory import create_path_loader_resolver
+from brel.parsers.utils.iterable_utils import exactly_one
+from brel.qnames.qname_search_params import QNameSearchParams
 from brel.reportelements import (
     Abstract,
     Concept,
@@ -60,7 +63,6 @@ from brel.reportelements import (
     LineItems,
     Member,
 )
-from .parsers.factory import create_xml_filing_parser
 from brel.contexts.filing_context import FilingContext
 
 
@@ -79,13 +81,8 @@ class Filing:
         except ValueError:
             raise ValueError(f"Path {path} is not a valid path")
 
-        context = FilingContext()
-
-        # TODO schmidi: add resolver for picking either xml parser or xhtml parser
-        parser = create_xml_filing_parser(
-            context=context, entrypoint_filepaths=file_paths
-        )
-        parser.parse()
+        parser = FilingParserFactory().create_parser(file_paths)
+        context = parser.parse()
         return cls(context)
 
     def __init__(self, context: FilingContext) -> None:
@@ -213,16 +210,15 @@ class Filing:
         :raises ValueError: if the QName string is not a valid QName or if the prefix is not found.
         """
         if isinstance(element_qname, str):
-            element_qname = QName.from_string(element_qname, self.__context.get_nsmap())
-
-        def name_matches(x: IReportElement) -> TypeGuard[IReportElement]:
-            return x.get_name() == element_qname
-
-        re: IReportElement | None = next(
-            filter(name_matches, self.get_all_report_elements()), None
-        )
-
-        return re
+            search_params = QNameSearchParams.from_string(element_qname)
+            return exactly_one(
+                self.__context.get_report_element_service().get_fuzzy(search_params),
+                f"Report element with name {element_qname} not found in filing",
+            )
+        else:
+            return self.__context.get_report_element_repository().get_by_qname(
+                element_qname
+            )
 
     def get_concept_by_name(self, concept_qname: QName | str) -> Concept:
         """
@@ -231,19 +227,17 @@ class Filing:
         :raises ValueError: if the QName string is not a valid QName or if the prefix is not found.
         """
         if isinstance(concept_qname, str):
-            concept_qname = QName.from_string(concept_qname, self.__context.get_nsmap())
-
-        def concept_matches(x: IReportElement) -> TypeGuard[Concept]:
-            return isinstance(x, Concept) and x.get_name() == concept_qname
-
-        concept: Concept | None = next(
-            filter(concept_matches, self.get_all_report_elements()), None
-        )
-
-        if concept is None:
-            raise ValueError(f"Concept with name {concept_qname} not found in filing")
+            search_params = QNameSearchParams.from_string(concept_qname)
+            return exactly_one(
+                self.__context.get_report_element_service().get_fuzzy_typed(
+                    search_params, Concept
+                ),
+                f"Concept with name {concept_qname} not found in filing",
+            )
         else:
-            return concept
+            return self.__context.get_report_element_repository().get_typed_by_qname(
+                concept_qname, Concept
+            )
 
     def get_concept(self, concept_qname: QName | str) -> Concept:
         """
@@ -272,16 +266,23 @@ class Filing:
         :raises ValueError: if the QName string but is not a valid QName or if the prefix is not found.
         """
         if isinstance(concept_name, str):
-            concept_name = QName.from_string(concept_name, self.__context.get_nsmap())
+            search_params = QNameSearchParams.from_string(concept_name)
+            concept = exactly_one(
+                self.__context.get_report_element_service().get_fuzzy_typed(
+                    search_params, Concept
+                ),
+                f"Concept with name {concept_name} not found in filing",
+            )
+        else:
+            concept = self.__context.get_report_element_repository().get_typed_by_qname(
+                concept_name, Concept
+            )
 
-        filtered_facts: list[Fact] = []
-        for fact in self.get_all_facts():
-            concept = fact.get_concept().get_value()
-
-            if concept.get_name() == concept_name:
-                filtered_facts.append(fact)
-
-        return filtered_facts
+        return [
+            fact
+            for fact in self.get_all_facts()
+            if fact.get_concept().get_value() == concept
+        ]
 
     def get_facts_by_concept(self, concept: Concept) -> list[Fact]:
         """

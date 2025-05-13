@@ -16,13 +16,14 @@ They are all implemented in the same way as the calculation network and can be i
 ====================
 
 - author: Robin Schmidiger
-- version: 0.6
-- date: 07 January 2024
+- version: 0.7
+- date: 12 May 2025
 
 ====================
 """
 
-from abc import ABC, abstractmethod
+from abc import ABC
+from typing import Any, Dict, Set
 
 from brel import QName
 from brel.networks import INetworkNode
@@ -117,7 +118,7 @@ class INetwork(ABC):
         """
 
         # create a set to store all nodes in
-        nodes = set()
+        nodes: Set[INetworkNode] = set()
 
         # recursive function to add all children of a node to the nodes set
         def add_children(node: INetworkNode) -> None:
@@ -133,7 +134,7 @@ class INetwork(ABC):
         # return the nodes set as a list
         return list(nodes)
 
-    def convert_to_dict(self) -> dict:
+    def convert_to_dict(self) -> Dict[str, Any]:
         """
         Convert the network to a dictionary representation
         :returns dict: representing the network
@@ -141,6 +142,6 @@ class INetwork(ABC):
         return {
             "roots": [root.convert_to_dict() for root in self.get_roots()],
             "link_role": self.get_link_role(),
-            "link_name": self.get_link_name().get(),
+            "link_name": self.get_link_name().prefix_local_name_notation(),
             "is_physical": self.is_physical(),
         }

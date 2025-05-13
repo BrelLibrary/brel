@@ -10,6 +10,7 @@ This module contains the Abstract class. An abstract a kind of report element th
 ====================
 """
 
+from typing import Any, Dict
 from brel import QName
 from brel.reportelements import IReportElement
 from brel.resource import BrelLabel
@@ -59,13 +60,13 @@ class Abstract(IReportElement):
     def __str__(self) -> str:
         return self.__qname.__str__()
 
-    def convert_to_dict(self) -> dict:
+    def convert_to_dict(self) -> Dict[str, Any]:
         """
         Convert the abstract element to a dictionary.
         :returns dict: the abstract element as a dictionary
         """
         return {
-            "name": self.__qname.get(),
+            "name": self.__qname.prefix_local_name_notation(),
             "label": self.select_main_label().__str__(),
             "report_element_type": "abstract",
         }

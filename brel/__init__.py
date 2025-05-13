@@ -1,4 +1,4 @@
-from .qname import QName, QNameNSMap
+from brel.qnames.qname import QName
 
 from .brel_context import Context
 from .brel_fact import Fact

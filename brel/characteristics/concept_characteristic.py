@@ -1,13 +1,11 @@
 """
-Contains the class for representing an XBRL concept characteristic
-
-=================
+====================
 
 - author: Robin Schmidiger
-- version: 0.2
-- date: 19 December 2023
+- version: 0.3
+- date: 12 May 2025
 
-=================
+====================
 """
 
 from brel.characteristics import Aspect, ICharacteristic
@@ -21,15 +19,8 @@ class ConceptCharacteristic(ICharacteristic):
 
     """
 
-    __concept_cache: dict = {}
-
     def __init__(self, concept: Concept) -> None:
-        # check if the concept is actually a Concept instance
-        if not isinstance(concept, Concept):
-            raise ValueError(f"concept is not a Concept instance: {concept}")
-
         self.__concept: Concept = concept
-        self.__concept_cache[concept.get_name()] = self
 
     def __str__(self) -> str:
         return str(self.__concept.get_name())

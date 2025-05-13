@@ -1,19 +1,35 @@
-from typing import cast, Iterable
-import lxml.etree
-from brel import Context, Fact, QName
+"""
+====================
+
+- author: Robin Schmidiger
+- version: 0.1
+- date: 13 May 2025
+
+====================
+"""
+
+from typing import cast
+from lxml.etree import _Element  # type: ignore
+from brel import Context, Fact
 from brel.characteristics import *
 from brel.contexts.filing_context import FilingContext
-from brel.parsers.XML import parse_context_xml
 from brel.parsers.XML.characteristics import parse_unit_from_xml
+from brel.parsers.XML.xml_context_parser import parse_context_xml
 from brel.parsers.utils.error_utils import error_on_none
-from brel.parsers.utils.lxml_utils import get_str_attribute
+from brel.parsers.utils.lxml_utils import (
+    find_elements,
+    get_str_attribute,
+    get_str_attribute_optional,
+)
+from brel.parsers.utils.optional_utils import get_or_raise
+from brel.qnames.qname_utils import qname_from_str
 from brel.reportelements import Concept
 
 
 def parse_fact_from_ixbrl(
     filing_context: FilingContext,
-    continuations: list[lxml.etree._Element],
-    fact_xml_element: lxml.etree._Element,
+    continuations: list[_Element],
+    fact_xml_element: _Element,
     context: Context,
 ) -> None:
     """
@@ -23,19 +39,18 @@ def parse_fact_from_ixbrl(
     :param context: The context of the fact. Note that new characteristics will be added to the context.
     :returns: The newly created Fact.
     """
-    # TODO schmidi cleanup more
 
-    fact_id = fact_xml_element.get("id")
-    fact_concept_name = fact_xml_element.get("name")
-    fact_value: str = fact_xml_element.text if fact_xml_element.text is not None else ""
+    fact_id = get_str_attribute(fact_xml_element, "id")
+    fact_concept_name = get_str_attribute(fact_xml_element, "name")
+    fact_value: str = fact_xml_element.text or ""
 
-    fact_unit_ref = fact_xml_element.get("unitRef", default=None)
+    fact_unit_ref = get_str_attribute_optional(fact_xml_element, "unitRef")
 
-    # check if the fact has the correct unit
-    # Note that the unit_ref is only the local name of the unit whilst the context_unit is the full QName.
-    context_unit: UnitCharacteristic = cast(
-        UnitCharacteristic, context.get_characteristic(Aspect.UNIT)
+    context_unit = get_or_raise(
+        context.get_characteristic(Aspect.UNIT),
+        Exception("Fact has no unit characteristic"),
     )
+
     if (
         context_unit
         and fact_unit_ref
@@ -50,9 +65,9 @@ def parse_fact_from_ixbrl(
     context_concept: ConceptCharacteristic = cast(
         ConceptCharacteristic, context.get_characteristic(Aspect.CONCEPT)
     )
-    if fact_concept_name != context_concept.get_value().get_name().get():
+    if fact_concept_name != context_concept.get_value().get_name().clark_notation():
         raise ValueError(
-            f"Fact {fact_id} has concept {fact_concept_name} but should have concept {context_concept.get_value().get_name().get()}"
+            f"Fact {fact_id} has concept {fact_concept_name} but should have concept {context_concept.get_value().get_name().clark_notation()}"
         )
 
     # Check the format and apply the necessary formatting
@@ -60,7 +75,7 @@ def parse_fact_from_ixbrl(
         fact_xml_element.tag == "ix:nonFraction"
         or fact_xml_element.tag == "{http://www.xbrl.org/2013/inlineXBRL}nonFraction"
     ):
-        fact_format = fact_xml_element.get("format")
+        fact_format = get_str_attribute(fact_xml_element, "format")
         fact_scale = get_str_attribute(fact_xml_element, "scale")
         if fact_format == "ixt:fixed-empty":
             fact_value = ""
@@ -109,9 +124,7 @@ def parse_fact_from_ixbrl(
     fact_repository.upsert(fact)
 
 
-def parse_facts_xhtml(
-    filing_context: FilingContext, etrees: Iterable[lxml.etree._ElementTree]  # type: ignore
-) -> None:
+def parse_facts_xhtml(filing_context: FilingContext) -> None:
     """
     Parse the facts.
     :param etrees: The xbrl instance xml trees
@@ -119,17 +132,27 @@ def parse_facts_xhtml(
 
     report_element_repository = filing_context.get_report_element_repository()
     characteristics_repository = filing_context.get_characteristic_repository()
-    nsmap = filing_context.get_nsmap()
+    xml_service = filing_context.get_xml_service()
+
+    etrees = xml_service.get_all_etrees()
 
     for xbrl_instance in etrees:
-        ix_facts = xbrl_instance.findall(
-            ".//ix:nonNumeric | .//ix:nonFraction | .//ix:fraction",  # ix:continuation - add it to something, ix:exclude - remove all things in there
-            namespaces={"ix": "http://www.xbrl.org/2013/inlineXBRL"},
+        # ix_facts = xbrl_instance.findall(
+        #     ".//ix:nonNumeric | .//ix:nonFraction | .//ix:fraction",  # ix:continuation - add it to something, ix:exclude - remove all things in there
+        #     namespaces={"ix": "http://www.xbrl.org/2013/inlineXBRL"},
+        # )
+        ix_facts = find_elements(
+            xbrl_instance,
+            ".//ix:nonNumeric | .//ix:nonFraction | .//ix:fraction",
         )
 
-        continuations = xbrl_instance.findall(
-            ".//ix:continuation",  # ix:continuation - add it to something, ix:exclude - remove all things in there
-            namespaces={"ix": "http://www.xbrl.org/2013/inlineXBRL"},
+        # continuations = xbrl_instance.findall(
+        #     ".//ix:continuation",  # ix:continuation - add it to something, ix:exclude - remove all things in there
+        #     namespaces={"ix": "http://www.xbrl.org/2013/inlineXBRL"},
+        # )
+        continuations = find_elements(
+            xbrl_instance,
+            ".//ix:continuation",
         )
 
         for ix_fact in ix_facts:
@@ -143,14 +166,15 @@ def parse_facts_xhtml(
                 ConceptCharacteristic,
                 lambda: ConceptCharacteristic(
                     report_element_repository.get_typed_by_qname(
-                        QName.from_string(concept_name, nsmap), Concept
+                        qname_from_str(concept_name, ix_fact),
+                        Concept,
                     )
                 ),
             )
             characteristics.append(concept_characteristic)
 
             # ======== PARSE THE UNIT ========
-            unit_id = ix_fact.get("unitRef")
+            unit_id = get_str_attribute_optional(ix_fact, "unitRef")
 
             if unit_id:
                 unit_xml = error_on_none(
@@ -164,7 +188,6 @@ def parse_facts_xhtml(
                     lambda: parse_unit_from_xml(
                         filing_context,
                         unit_xml,
-                        concept_characteristic.get_value(),
                     ),
                 )
                 characteristics.append(unit_characteristic)

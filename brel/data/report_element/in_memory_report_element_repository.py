@@ -10,7 +10,7 @@
 
 from brel.data.report_element.report_element_repository import ReportElementRepository
 from brel.reportelements.i_report_element import IReportElement
-from brel.qname import QName
+from brel.qnames.qname import QName
 
 
 class InMemoryReportElementRepository(ReportElementRepository):

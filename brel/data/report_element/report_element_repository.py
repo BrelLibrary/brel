@@ -2,14 +2,14 @@
 ====================
 
 - author: Robin Schmidiger
-- version: 0.1
-- date: 15 April 2025
+- version: 0.2
+- date: 13 May 2025
 
 ====================
 """
 
 from brel.reportelements.i_report_element import IReportElement
-from brel.qname import QName
+from brel.qnames.qname import QName
 from abc import ABC, abstractmethod
 
 
@@ -79,3 +79,15 @@ class ReportElementRepository(ABC):
             return True
         except ValueError:
             return False
+
+    def get_all_typed[T: IReportElement](self, report_element_type: type[T]) -> list[T]:
+        """
+        Get all report elements of a specific type.
+        :param type: The type of the report element.
+        :return: A list of report elements of the specified type.
+        """
+        return [
+            element
+            for element in self.get_all()
+            if isinstance(element, report_element_type)
+        ]

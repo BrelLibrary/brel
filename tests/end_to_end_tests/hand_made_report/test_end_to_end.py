@@ -12,7 +12,7 @@ def test_end_to_end_labels():
     report_elements = filing.get_all_report_elements()
 
     for report_element in report_elements:
-        re_prefix = report_element.get_name().get_prefix().lower()
+        re_prefix = report_element.get_name().prefix.lower()
 
         if re_prefix != "ete":
             continue

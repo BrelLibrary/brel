@@ -1,5 +1,22 @@
+"""
+====================
+
+- author: Robin Schmidiger
+- version: 0.1
+- date: 123May 2025
+
+====================
+"""
+
+import os
 from brel.data.aspect.aspect_repository import AspectRepository
 from brel.data.aspect.in_memory_aspect_repository import InMemoryAspectRepository
+from brel.data.file.file_repository import FileRepository
+from brel.data.file.pyfs_file_repository import PyFsFileRepository
+from brel.data.namespace.in_memory_namespace_repository import (
+    InMemoryNamespaceRepository,
+)
+from brel.data.namespace.namespace_repository import NamespaceRepository
 from brel.data.report_element.in_memory_report_element_repository import (
     InMemoryReportElementRepository,
 )
@@ -18,6 +35,7 @@ from brel.data.component.component_repository import ComponentRepository
 from brel.data.component.in_memory_component_repository import (
     InMemoryComponentRepository,
 )
+from brel.data.xml.xml_repository import XMLRepository
 
 
 def create_report_element_repository() -> ReportElementRepository:
@@ -46,3 +64,16 @@ def create_fact_repository() -> FactRepository:
 
 def create_aspect_repository() -> AspectRepository:
     return InMemoryAspectRepository()
+
+
+def create_namespace_repository() -> NamespaceRepository:
+    return InMemoryNamespaceRepository()
+
+
+def create_file_repository() -> FileRepository:
+    cache_location = os.path.join(os.path.expanduser("~"), ".brel", "dts_cache")
+    return PyFsFileRepository(cache_location, clear_cache=False)
+
+
+def create_xml_repository() -> XMLRepository:
+    return XMLRepository()

@@ -30,7 +30,7 @@ def test_end_to_end_fact_f013():
     assert fact_dimension is not None
     fact_dimension_value = fact_dimension.get_value()
     assert isinstance(fact_dimension_value, Member)
-    assert fact_dimension_value.get_name().get_local_name() == "foo_member"
+    assert fact_dimension_value.get_name().local_name == "foo_member"
 
 
 def test_end_to_end_calculation():

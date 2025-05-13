@@ -1,16 +1,25 @@
+"""
+====================
+
+- author: Robin Schmidiger
+- version: 0.1
+- date: 12 May 2025
+
+====================
+"""
+
 from brel.characteristics import ExplicitDimensionCharacteristic, Aspect
 from brel.reportelements import Dimension, Member
-from brel import QName, QNameNSMap
+from brel import QName
 from brel.resource.brel_label import BrelLabel
 
 
 def test_explicit_dimension():
-    nsmap = QNameNSMap()
-    dimension_name = QName("http://foo.com", "foo", "dim", nsmap)
+    dimension_name = QName("http://foo.com", "foo", "dim")
     labels: list[BrelLabel] = []
     dimension = Dimension(dimension_name, "foo_dim", labels)
 
-    member_name = QName("http://foo.com", "foo", "mem", nsmap)
+    member_name = QName("http://foo.com", "foo", "mem")
     member = Member(member_name, "foo_mem", labels)
 
     aspect = Aspect(str(dimension_name), labels)
@@ -32,7 +41,7 @@ def test_explicit_dimension():
     ), "Expected characteristic to be equal to itself"
     assert characteristic != "foo", "Expected characteristic to not be equal to 'foo'"
 
-    member_name2 = QName("http://foo.com", "foo", "mem2", nsmap)
+    member_name2 = QName("http://foo.com", "foo", "mem2")
     member2 = Member(member_name2, "foo_mem2", labels)
 
     characteristic2 = ExplicitDimensionCharacteristic(dimension, member2, aspect)

@@ -11,9 +11,7 @@ def test_end_to_end_report_element_types():
     filing = Filing.open("tests/end_to_end_tests/hand_made_report/ete_filing")
 
     report_elements = [
-        re
-        for re in filing.get_all_report_elements()
-        if re.get_name().get_prefix() == "ete"
+        re for re in filing.get_all_report_elements() if re.get_name().prefix == "ete"
     ]
 
     for report_element in report_elements:
@@ -24,8 +22,8 @@ def test_end_to_end_report_element_types():
 
     # go over all report elements and check that they have the correct type
     for report_element in report_elements:
-        re_local_name = report_element.get_name().get_local_name().lower()
-        re_prefix = report_element.get_name().get_prefix().lower()
+        re_local_name = report_element.get_name().local_name.lower()
+        re_prefix = report_element.get_name().prefix.lower()
 
         if re_prefix != "ete":
             continue
@@ -61,7 +59,7 @@ def test_end_to_end_report_element_counts():
     concepts = [
         concept
         for concept in filing.get_all_concepts()
-        if concept.get_name().get_prefix() == "ete"
+        if concept.get_name().prefix == "ete"
     ]
     assert len(concepts) == 15, f"Expected 15 concepts, got {len(concepts)}"
 
@@ -69,7 +67,7 @@ def test_end_to_end_report_element_counts():
     abstracts = [
         abstract
         for abstract in filing.get_all_abstracts()
-        if abstract.get_name().get_prefix() == "ete"
+        if abstract.get_name().prefix == "ete"
     ]
     assert len(abstracts) == 4, f"Expected 4 abstracts, got {len(abstracts)}"
 
@@ -77,7 +75,7 @@ def test_end_to_end_report_element_counts():
     line_items = [
         line_item
         for line_item in filing.get_all_line_items()
-        if line_item.get_name().get_prefix() == "ete"
+        if line_item.get_name().prefix == "ete"
     ]
     assert len(line_items) == 1, f"Expected 1 line item, got {len(line_items)}"
 
@@ -85,7 +83,7 @@ def test_end_to_end_report_element_counts():
     hypercubes = [
         hypercube
         for hypercube in filing.get_all_hypercubes()
-        if hypercube.get_name().get_prefix() == "ete"
+        if hypercube.get_name().prefix == "ete"
     ]
     assert len(hypercubes) == 1, f"Expected 1 hypercube, got {len(hypercubes)}"
 
@@ -93,7 +91,7 @@ def test_end_to_end_report_element_counts():
     dimensions = [
         dimension
         for dimension in filing.get_all_dimensions()
-        if dimension.get_name().get_prefix() == "ete"
+        if dimension.get_name().prefix == "ete"
     ]
     assert len(dimensions) == 1, f"Expected 1 dimension, got {len(dimensions)}"
 
@@ -101,7 +99,7 @@ def test_end_to_end_report_element_counts():
     members = [
         member
         for member in filing.get_all_members()
-        if member.get_name().get_prefix() == "ete"
+        if member.get_name().prefix == "ete"
     ]
     assert len(members) == 2, f"Expected 2 member, got {len(members)}"
 
@@ -113,8 +111,8 @@ def test_end_to_end_concept_cash():
     filing = Filing.open("tests/end_to_end_tests/hand_made_report/ete_filing")
     concept = filing.get_concept("ete:cash")
 
-    assert concept.get_name().get_local_name() == "cash"
-    assert concept.get_name().get_prefix() == "ete"
+    assert concept.get_name().local_name == "cash"
+    assert concept.get_name().prefix == "ete"
     assert concept.get_period_type() == "duration"
     assert concept.get_balance_type() == "debit"
     assert concept.get_data_type() == "xbrli:monetaryItemType"
