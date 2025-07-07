@@ -13,6 +13,7 @@ from brel.data.aspect.aspect_repository import AspectRepository
 from brel.data.factory import (
     create_aspect_repository,
     create_file_repository,
+    create_href_repository,
     create_namespace_repository,
     create_report_element_repository,
     create_error_repository,
@@ -23,6 +24,7 @@ from brel.data.factory import (
     create_xml_repository,
 )
 from brel.data.file.file_repository import FileRepository
+from brel.data.href.href_repository import HrefRepository
 from brel.data.namespace.namespace_repository import NamespaceRepository
 from brel.data.report_element.report_element_repository import ReportElementRepository
 from brel.data.errors.error_repository import ErrorRepository
@@ -113,3 +115,6 @@ class FilingContext:
                 self.get_report_element_repository(), self.get_namespace_repository()
             ),
         )
+
+    def get_href_repository(self) -> HrefRepository:
+        return self.__lazy_cache("href_repository", lambda: create_href_repository())

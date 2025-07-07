@@ -14,13 +14,11 @@ import json
 from collections import defaultdict
 from importlib.resources import files
 from lxml.etree import _Element  # type: ignore
-from brel.networks import *
+from brel.networks import INetwork
 from brel.parsers.XML.networks import parse_xml_link
 from brel.parsers.utils.lxml_utils import find_elements, get_str_attribute
 from brel.parsers.utils.network_utils import combine_networks
 from brel.qnames.qname_utils import qname_from_str
-from brel.reportelements import *
-from brel.resource import *
 
 from brel.contexts.filing_context import FilingContext
 from brel.data.errors.error_repository import ErrorRepository
@@ -41,14 +39,9 @@ def parse_networks_from_xmls(
     context: FilingContext,
 ) -> None:
     """
-    Parse the networks from a list of xml trees.
-    :param xml_trees: The xml trees to parse the networks from.
-    :param qname_nsmap: The QNameNSMap to use for parsing.
-    :param id_to_any: A mapping from xml ids to report elements, facts, and components.
-    :param report_elements: The report elements to use for parsing.
-    :return:
-    - Mapping[str, list[INetwork]]: A mapping from link role to a list of networks.
-    - list[Exception]: A list of exceptions that occurred during parsing.
+    Parse networks from the XML trees available in the filing context.
+
+    :param context: The FilingContext
     """
 
     error_repository: ErrorRepository = context.get_error_repository()

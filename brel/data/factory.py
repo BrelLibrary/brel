@@ -13,6 +13,8 @@ from brel.data.aspect.aspect_repository import AspectRepository
 from brel.data.aspect.in_memory_aspect_repository import InMemoryAspectRepository
 from brel.data.file.file_repository import FileRepository
 from brel.data.file.pyfs_file_repository import PyFsFileRepository
+from brel.data.href.href_repository import HrefRepository
+from brel.data.href.in_memory_href_repository import InMemoryHrefRepository
 from brel.data.namespace.in_memory_namespace_repository import (
     InMemoryNamespaceRepository,
 )
@@ -77,3 +79,7 @@ def create_file_repository() -> FileRepository:
 
 def create_xml_repository() -> XMLRepository:
     return XMLRepository()
+
+
+def create_href_repository() -> HrefRepository:
+    return InMemoryHrefRepository()
