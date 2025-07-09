@@ -75,6 +75,7 @@ def parse_report_element(
     )
     report_element = XMLReportElementFactory.create(report_element_xml, qname, [])
     if report_element and not report_element_repository.has_qname(qname):
+        # TODO schmidi upsert fact into href repo
         report_element_repository.upsert(report_element)
 
         if isinstance(report_element, Dimension):

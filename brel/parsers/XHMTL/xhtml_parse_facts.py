@@ -121,6 +121,7 @@ def parse_fact_from_ixbrl(
 
     fact = Fact(context, fact_value, fact_id)  # type: ignore
     fact_repository = filing_context.get_fact_repository()
+    # TODO schmidi upsert fact into href repo
     fact_repository.upsert(fact)
 
 

@@ -71,6 +71,7 @@ def parse_fact_from_xml(
             )
         )
 
+    # TODO schmidi upsert fact into href repo
     fact_repository.upsert(Fact(context, fact_value, fact_id))
 
 
