@@ -10,7 +10,9 @@
 
 
 from brel.contexts.filing_context import FilingContext
+from brel.parsers.XHMTL.networks.xhtml_footnote_network_elements import XHTMLFootnoteNetworkElements
 from brel.parsers.XHMTL.xhtml_parse_facts import parse_facts_xhtml
+from brel.parsers.XHMTL.networks.xhtml_parse_footnote_network import parse_footnote_networks_xhtml
 from brel.parsers.XML.networks.xml_networks_parser import parse_networks_from_xmls
 from brel.parsers.XML.xml_component_parser import parse_components_xml
 from brel.parsers.XML.xml_report_element_parser import parse_report_elements_xml
@@ -24,9 +26,10 @@ class XHTMLFilingParser(FilingParser):
         context: FilingContext,
     ) -> None:
         super().__init__(context=context)
+        self.__footnote_network_elements: XHTMLFootnoteNetworkElements = None
         self.__filing_type = "XHTML"
         self.__create_nsmap()
-
+        
     def __create_nsmap(self) -> None:
         namespace_repository = self.get_context().get_namespace_repository()
         xml_service = self.get_context().get_xml_service()
@@ -43,9 +46,10 @@ class XHTMLFilingParser(FilingParser):
         parse_report_elements_xml(self.get_context())
 
     def parse_facts(self) -> None:
-        parse_facts_xhtml(self.get_context())
+        self.__footnote_network_elements = parse_facts_xhtml(self.get_context())
 
     def parse_networks(self) -> None:
+        parse_footnote_networks_xhtml(self.get_context(), self.__footnote_network_elements)
         parse_networks_from_xmls(self.get_context())
 
     def parse_components(self) -> None:

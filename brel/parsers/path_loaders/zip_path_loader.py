@@ -10,7 +10,6 @@
 
 from brel.parsers.path_loaders.path_loader import PathLoader
 
-
 class ZipPathLoader(PathLoader):
     def is_loader_for(self, path: str) -> bool:
         return path.endswith(".zip")
@@ -20,4 +19,5 @@ class ZipPathLoader(PathLoader):
 
         with zipfile.ZipFile(path, "r") as zip_ref:
             file_list = zip_ref.namelist()
+            # More extensions?
             return [file for file in file_list if file.endswith((".xml", ".xhtml"))]

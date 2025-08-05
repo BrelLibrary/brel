@@ -39,7 +39,7 @@ lint:             ## Run pep8, black, mypy linters.
 .PHONY: test
 test: lint		 ## Run tests.
 	make install
-	$(ENV_PREFIX)pytest -v --cov-config .coveragerc --cov=brel -l --tb=short --maxfail=1 tests/
+	$(ENV_PREFIX)pytest -v --cov-config .coveragerc --cov=brel -l --tb=short
 	$(ENV_PREFIX)coverage xml
 	$(ENV_PREFIX)coverage html
 	make remove

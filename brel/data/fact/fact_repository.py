@@ -9,12 +9,17 @@
 """
 
 from abc import ABC, abstractmethod
+from typing import Optional
 from brel.brel_fact import Fact
 
 
 class FactRepository(ABC):
     @abstractmethod
     def get_by_id(self, id: str) -> Fact:
+        pass
+
+    @abstractmethod
+    def get_by_id_optional(self, id: str) -> Optional[Fact]:
         pass
 
     @abstractmethod

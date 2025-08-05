@@ -8,7 +8,7 @@
 ====================
 """
 
-from typing import Mapping, cast
+from typing import Mapping, Optional, cast
 from brel.qnames.qname import QName
 import lxml.etree
 from lxml.etree import _Element, _ElementTree  # type: ignore
@@ -76,14 +76,22 @@ def get_str_attribute_optional(element: _Element, attribute: str | QName) -> str
     return element.attrib.get(attribute)
 
 
-def get_str_tag(element: _Element) -> str:  # type: ignore
+def get_clark_notation_tag(element: _Element) -> str:  # type: ignore
     """
-    Helper function for getting the tag of an element as a string.
+    Helper function for getting the tag of an element as a string in Clark Notation.
     :param element: lxml.etree.Element to get the tag from
     :returns: str containing the tag of the element
     """
     return element.tag
 
+def get_prefix_localname_tag(element: _Element) -> str:
+    """
+    Helper function for getting the tag of an element as a string in prefix:localname notation.
+    Uses the namespaces available in the passed element.
+    :param element: lxml.etree.Element to get the tag from
+    :returns: str containing the tag of the element
+    """
+    return qname_from_str(element.tag, element).prefix_local_name_notation()
 
 def find_elements(
     element: _ElementTree | _Element,  # type: ignore
@@ -161,3 +169,19 @@ def get_all_nsmaps(
             nsmaps.append(nsmap_typecasted)
 
     return nsmaps
+
+def get_elem_lang_recursive(xml_element: _Element | None) -> Optional[str]:
+    """
+    Recursively traverse the given lxml element up the tree, returning the first xml:lang attribute found.
+    If no xml:lang attribute is found, return None.
+    :param xml_element: The lxml element to start the search from
+    :return: The value of the first xml:lang attribute found, or None if not found
+    """
+
+    if xml_element is None:
+        return None
+
+    if has_str_attribute(xml_element, "xml:lang"):
+        return get_str_attribute(xml_element, "xml:lang")
+    
+    return get_elem_lang_recursive(xml_element.getparent())

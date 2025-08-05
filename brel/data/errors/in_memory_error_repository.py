@@ -9,16 +9,17 @@
 """
 
 from brel.data.errors.error_repository import ErrorRepository
+from brel.errors.error_instance import ErrorInstance
 
 
 class InMemoryErrorRepository(ErrorRepository):
     def __init__(self) -> None:
-        self.errors: list[Exception] = []
+        self.errors: list[ErrorInstance] = []
 
-    def upsert(self, error: Exception) -> None:
+    def upsert(self, error: ErrorInstance) -> None:
         self.errors.append(error)
 
-    def get_all(self) -> list[Exception]:
+    def get_all(self) -> list[ErrorInstance]:
         return self.errors
 
     def clear(self) -> None:

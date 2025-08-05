@@ -7,12 +7,11 @@
 
 ====================
 """
-
+import os
 
 from brel.brel_component import Component
 from brel.brel_filing import Filing
 from brel.parsers.utils.optional_utils import get_or_raise
-
 
 def test_component_constructor_BD():
     """
@@ -20,8 +19,10 @@ def test_component_constructor_BD():
     """
     uri = "http://foo/role/balance"
     info = "Balance Sheet"
+    path_to_filing = os.path.join('.', 'tests', 'end_to_end_tests', 
+    'hand_made_report', 'ete_filing')
 
-    filing = Filing.open("tests/end_to_end_tests/hand_made_report/ete_filing")
+    filing = Filing.open(path_to_filing)
     balance_component = filing.get_component("http://foo/role/balance")
     pre_network = get_or_raise(balance_component.get_presentation_network())
     calc_network = get_or_raise(balance_component.get_calculation_network())

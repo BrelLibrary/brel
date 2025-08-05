@@ -11,6 +11,8 @@
 import os
 from brel.data.aspect.aspect_repository import AspectRepository
 from brel.data.aspect.in_memory_aspect_repository import InMemoryAspectRepository
+from brel.data.context.context_repository import ContextRepository
+from brel.data.context.in_memory_context_repository import InMemoryContextRepository
 from brel.data.file.file_repository import FileRepository
 from brel.data.file.pyfs_file_repository import PyFsFileRepository
 from brel.data.namespace.in_memory_namespace_repository import (
@@ -65,6 +67,8 @@ def create_fact_repository() -> FactRepository:
 def create_aspect_repository() -> AspectRepository:
     return InMemoryAspectRepository()
 
+def create_context_repository() -> ContextRepository:
+    return InMemoryContextRepository()
 
 def create_namespace_repository() -> NamespaceRepository:
     return InMemoryNamespaceRepository()

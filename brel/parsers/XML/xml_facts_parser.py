@@ -10,8 +10,6 @@ It parses XBRL in the XML syntax.
 
 ====================
 """
-
-
 import lxml
 import lxml.etree
 
@@ -23,8 +21,7 @@ from brel.parsers.utils.error_utils import error_on_none
 from brel.qnames.qname_utils import qname_from_str
 from brel.reportelements import Concept
 from brel.contexts.filing_context import FilingContext
-from brel.parsers.utils.lxml_utils import find_elements, get_str_attribute, get_str_tag
-
+from brel.parsers.utils.lxml_utils import find_elements, get_str_attribute, get_clark_notation_tag
 
 def parse_fact_from_xml(
     filingContext: FilingContext,
@@ -91,7 +88,7 @@ def parse_facts_xml(
             fact_characteristics: list[UnitCharacteristic | ConceptCharacteristic] = []
 
             # ======== PARSE THE CONCEPT ========
-            concept_name = get_str_tag(xml_fact)
+            concept_name = get_clark_notation_tag(xml_fact)
 
             concept_characteristic = characteristics_repository.get_or_create(
                 concept_name,

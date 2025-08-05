@@ -27,6 +27,7 @@ from typing import Any, Dict, Set
 
 from brel import QName
 from brel.networks import INetworkNode
+from brel.parsers.utils.url_utils import is_valid_uri
 
 
 class INetwork(ABC):

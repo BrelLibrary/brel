@@ -31,7 +31,7 @@ from brel.parsers.XML.networks import (
     ReferenceNetworkFactory,
     parse_xml_resource,
 )
-from brel.parsers.utils.lxml_utils import find_elements, get_str_attribute, get_str_tag
+from brel.parsers.utils.lxml_utils import find_elements, get_str_attribute, get_clark_notation_tag
 from brel.reportelements import *
 from brel.resource import *
 from brel.contexts.filing_context import FilingContext
@@ -77,19 +77,19 @@ def parse_xml_link(
     networks: list[INetwork] = []
     network_factories: list[IXMLNetworkFactory] = []
 
-    if "presentationLink" in get_str_tag(xml_link_element):
+    if "presentationLink" in get_clark_notation_tag(xml_link_element):
         network_factories.append(PresentationNetworkFactory())
-    elif "calculationLink" in get_str_tag(xml_link_element):
+    elif "calculationLink" in get_clark_notation_tag(xml_link_element):
         network_factories.append(CalculationNetworkFactory())
-    elif "definitionLink" in get_str_tag(xml_link_element):
+    elif "definitionLink" in get_clark_notation_tag(xml_link_element):
         # for definition networks we need to create both a physical and a logical network
         network_factories.append(PhysicalDefinitionNetworkFactory())
         network_factories.append(LogicalDefinitionNetworkFactory())
-    elif "labelLink" in get_str_tag(xml_link_element):
+    elif "labelLink" in get_clark_notation_tag(xml_link_element):
         network_factories.append(LabelNetworkFactory())
-    elif "referenceLink" in get_str_tag(xml_link_element):
+    elif "referenceLink" in get_clark_notation_tag(xml_link_element):
         network_factories.append(ReferenceNetworkFactory())
-    elif "footnoteLink" in get_str_tag(xml_link_element):
+    elif "footnoteLink" in get_clark_notation_tag(xml_link_element):
         network_factories.append(FootnoteNetworkFactory())
     else:
         raise NotImplementedError(

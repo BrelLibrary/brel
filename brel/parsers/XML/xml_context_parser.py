@@ -17,6 +17,8 @@ import lxml.etree
 
 from brel import Context
 from brel.characteristics import *
+from brel.errors.error_code import ErrorCode
+from brel.errors.error_instance import ErrorInstance
 from brel.parsers.XML.characteristics import *
 from brel.parsers.utils.lxml_utils import get_str_attribute
 from brel.reportelements import *
@@ -42,16 +44,23 @@ def parse_context_xml(
 
     context_id = get_str_attribute(xml_element, "id")
 
-    context_period = error_on_none(
-        xml_element.find("{*}period", namespaces=None),
-        f"Could not find period element in {xml_element}",
-    )
+    context_period = xml_element.find("{*}period", namespaces=None)
 
-    context_entity = error_on_none(
-        xml_element.find("{*}entity", namespaces=None),
-        f"Could not find entity element in {xml_element}",
-    )
-
+    if context_period is None:
+        error = ErrorInstance.create_error_instance(
+            ErrorCode.MISSING_CONTEXT_PERIOD,
+            xml_element
+        )
+        filing_context.get_error_repository().upsert(error)
+    
+    context_entity = xml_element.find("{*}entity", namespaces=None)
+    if context_entity is None:
+        error = ErrorInstance.create_error_instance(
+            ErrorCode.MISSING_CONTEXT_ENTITY,
+            xml_element
+        )
+        filing_context.get_error_repository().upsert(error)
+    
     fact_context = Context(context_id)
 
     # add the characteristics provided by the user. these are the unit and concept
@@ -81,8 +90,11 @@ def parse_context_xml(
                 )
                 fact_context._add_characteristic(typed_dimension_characteristic)
             else:
-                raise ValueError(
-                    f"Unknown dimension type {xml_dimension.tag}. Please make sure that the dimension is either an explicitMember or a typedMember. {xml_dimension.tag}"
+                error = ErrorInstance.create_error_instance(
+                    ErrorCode.UNKNOWN_DIMENSION_TYPE,
+                    xml_dimension
                 )
+                
+                filing_context.get_error_repository().upsert(error)
 
     return fact_context

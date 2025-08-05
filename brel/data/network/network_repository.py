@@ -9,14 +9,14 @@
 """
 
 from abc import ABC, abstractmethod
-from typing import List
+from typing import List, Type
 from brel.networks.i_network import INetwork
 
 
 # TODO: not finalized yet. role is probably not just a string, upsert might be an update/insert instead, there should be a getter that does not return a whole list, just a single network
 class NetworkRepository(ABC):
     @abstractmethod
-    def get(self, role: str) -> List[INetwork]:
+    def get(self, role: Type[INetwork]) -> List[INetwork]:
         pass
 
     @abstractmethod
@@ -24,5 +24,9 @@ class NetworkRepository(ABC):
         pass
 
     @abstractmethod
-    def upsert(self, role: str, network: INetwork) -> None:
+    def remove_networks_by_type(self, network_type: Type[INetwork]) -> list[INetwork]:
+        pass
+
+    @abstractmethod
+    def upsert(self, network: INetwork) -> None:
         pass

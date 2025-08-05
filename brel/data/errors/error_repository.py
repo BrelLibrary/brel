@@ -11,14 +11,17 @@
 from abc import ABC, abstractmethod
 from typing import Callable, final
 
+from brel.errors.error_instance import ErrorInstance
+from brel.errors.severity import Severity
+
 
 class ErrorRepository(ABC):
     @abstractmethod
-    def upsert(self, error: Exception) -> None:
+    def upsert(self, error: ErrorInstance) -> None:
         pass
 
     @abstractmethod
-    def get_all(self) -> list[Exception]:
+    def get_all(self) -> list[ErrorInstance]:
         pass
 
     @abstractmethod
@@ -26,17 +29,17 @@ class ErrorRepository(ABC):
         pass
 
     @final
-    def upsert_on_error[T](self, expression: Callable[[], T]) -> T | None:
+    def upsert_on_error[T](self, expression: Callable[[], T], error: ErrorInstance) -> T | None:
         try:
             return expression()
-        except Exception as e:
-            self.upsert(e)
+        except Exception:
+            self.upsert(error)
             return None
 
     @final
-    def upsert_if(self, condition: bool, error: Exception) -> None:
+    def upsert_if(self, condition: bool, error: ErrorInstance) -> None:
         if condition:
             self.upsert(error)
 
-    def get_by_type(self, error_type: type[Exception]) -> list[Exception]:
-        return [error for error in self.get_all() if isinstance(error, error_type)]
+    def get_by_severity(self, severity: Severity) -> list[ErrorInstance]:
+        return [error for error in self.get_all() if error.severity == severity]

@@ -103,4 +103,4 @@ def parse_networks_from_xmls(
 
     for role, network_list in combined_networks.items():
         for network in network_list:
-            network_repository.upsert(role, network)
+            network_repository.upsert(network)

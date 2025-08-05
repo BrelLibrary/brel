@@ -10,6 +10,7 @@
 
 from typing import Any, Dict, Callable
 from brel.data.aspect.aspect_repository import AspectRepository
+from brel.data.context.context_repository import ContextRepository
 from brel.data.factory import (
     create_aspect_repository,
     create_file_repository,
@@ -21,6 +22,7 @@ from brel.data.factory import (
     create_fact_repository,
     create_characteristic_repository,
     create_xml_repository,
+    create_context_repository,
 )
 from brel.data.file.file_repository import FileRepository
 from brel.data.namespace.namespace_repository import NamespaceRepository
@@ -74,6 +76,11 @@ class FilingContext:
     def get_component_repository(self) -> ComponentRepository:
         return self.__lazy_cache(
             "component_repository", lambda: create_component_repository()
+        )
+
+    def get_context_repository(self) -> ContextRepository:
+        return self.__lazy_cache(
+            "context_repository", lambda: create_context_repository()
         )
 
     def get_aspect_repository(self) -> AspectRepository:

@@ -18,5 +18,6 @@ class FootnoteNetwork(INetwork):
         link_name: QName,
         is_physical: bool,
     ) -> None:
+        
         roots_copy = [cast(INetworkNode, root) for root in roots]
         super().__init__(roots_copy, link_role, link_name, is_physical)
