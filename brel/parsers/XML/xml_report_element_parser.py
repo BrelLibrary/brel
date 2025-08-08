@@ -13,6 +13,7 @@ It parses XBRL in the XML syntax.
 
 import lxml.etree
 
+from brel.data.errors.error_repository import ErrorRepository
 from brel.parsers.XML.xml_report_element_factory import XMLReportElementFactory
 from brel.parsers.utils.error_utils import error_on_none
 from brel.parsers.utils.lxml_utils import (
@@ -43,22 +44,19 @@ def parse_report_elements_xml(
         if not has_str_attribute(etree.getroot(), "targetNamespace"):
             continue
 
-        re_xmls = error_repository.upsert_on_error(
-            lambda: find_elements(etree, ".//xsi:schemaLocation"),
-        )
+        re_xmls = find_elements(etree, ".//xsi:schemaLocation")
 
         target_namespace_url = get_str_attribute(etree.getroot(), "targetNamespace")
 
         re_xmls = find_elements(etree, ".//xs:element[@name] | .//xsd:element[@name]")
         for re_xml in re_xmls:
-            error_repository.upsert_on_error(
-                lambda: parse_report_element(
-                    report_element_repository=report_element_repository,
-                    xml_service=xml_service,
-                    current_etree=etree,
-                    report_element_xml=re_xml,
-                    target_namespace_url=target_namespace_url,
-                )
+            parse_report_element(
+                report_element_repository=report_element_repository,
+                xml_service=xml_service,
+                current_etree=etree,
+                report_element_xml=re_xml,
+                target_namespace_url=target_namespace_url,
+                error_repository=error_repository,
             )
 
 
@@ -68,6 +66,7 @@ def parse_report_element(
     current_etree: lxml.etree._ElementTree,  # type: ignore
     report_element_xml: lxml.etree._Element,  # type: ignore
     target_namespace_url: str,
+    error_repository: ErrorRepository,
 ):
     qname_tag = get_str_attribute(report_element_xml, "name")
     qname = qname_from_str(

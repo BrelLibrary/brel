@@ -10,6 +10,7 @@
 
 from brel.parsers.path_loaders.path_loader import PathLoader
 
+
 class ZipPathLoader(PathLoader):
     def is_loader_for(self, path: str) -> bool:
         return path.endswith(".zip")

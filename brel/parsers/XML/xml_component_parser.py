@@ -41,7 +41,7 @@ def parse_component_from_xml(
     info = (info_element.text or "") if info_element is not None else ""
 
     used_ons = [used_on.text for used_on in find_elements(xml_element, "link:usedOn")]
-    networks_in_component = network_repository.get(role_uri)
+    networks_in_component = network_repository.get_by_linkrole(role_uri)
 
     if "link:presentationLink" not in used_ons and any(
         map(lambda n: isinstance(n, PresentationNetwork), networks_in_component)
@@ -74,8 +74,4 @@ def parse_components_xml(
 
     for schema in xml_service.get_all_etrees():
         for roletype in find_elements(schema, ".//link:roleType"):
-            error_repository.upsert_on_error(
-                lambda: component_repository.upsert(
-                    parse_component_from_xml(context, roletype)
-                )
-            )
+            component_repository.upsert(parse_component_from_xml(context, roletype))

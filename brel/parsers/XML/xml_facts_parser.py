@@ -15,13 +15,20 @@ import lxml.etree
 
 from brel import Context, Fact
 from brel.characteristics import *
+from brel.errors.error_code import ErrorCode
+from brel.errors.error_instance import ErrorInstance
 from brel.parsers.XML.characteristics import parse_unit_from_xml
 from brel.parsers.XML.xml_context_parser import parse_context_xml
 from brel.parsers.utils.error_utils import error_on_none
 from brel.qnames.qname_utils import qname_from_str
 from brel.reportelements import Concept
 from brel.contexts.filing_context import FilingContext
-from brel.parsers.utils.lxml_utils import find_elements, get_str_attribute, get_clark_notation_tag
+from brel.parsers.utils.lxml_utils import (
+    find_elements,
+    get_str_attribute,
+    get_clark_notation_tag,
+)
+
 
 def parse_fact_from_xml(
     filingContext: FilingContext,
@@ -45,8 +52,10 @@ def parse_fact_from_xml(
     if fact_value is None:
         error_repository.upsert_if(
             context.get_concept().get_value().is_nillable(),
-            ValueError(
-                f"Fact {fact_id} has no value but the concept {fact_concept_name} is not nillable"
+            ErrorInstance.create_error_instance(
+                ErrorCode.MISSING_FACT_VALUE,
+                fact_xml_element,
+                concept=fact_concept_name,
             ),
         )
         fact_value = ""
@@ -55,16 +64,22 @@ def parse_fact_from_xml(
     context_unit = context.get_unit()
     if context_unit and fact_unit_ref and fact_unit_ref != context_unit.get_value():
         error_repository.upsert(
-            ValueError(
-                f"Fact {fact_id} has unit {fact_unit_ref} but should have unit {context_unit.get_value()}"
+            ErrorInstance.create_error_instance(
+                ErrorCode.FACT_UNIT_MISMATCH,
+                fact_xml_element,
+                fact_unit=fact_unit_ref,
+                context_unit=context_unit.get_value(),
             )
         )
 
     context_concept = context.get_concept()
     if fact_concept_name != context_concept.get_value().get_name().clark_notation():
         error_repository.upsert(
-            ValueError(
-                f"Fact {fact_id} has concept {fact_concept_name} but should have concept {context_concept.get_value().get_name().clark_notation()}"
+            ErrorInstance.create_error_instance(
+                ErrorCode.FACT_CONCEPT_MISMATCH,
+                fact_xml_element,
+                fact_concept=fact_concept_name,
+                context_concept=context_concept.get_value().get_name().clark_notation(),
             )
         )
 
@@ -111,13 +126,15 @@ def parse_facts_xml(
                     f"Could not find unit {unit_id} in xbrl instance {xbrl_instance}",
                 )
 
-                unit_characteristic = characteristics_repository.get_or_create(
-                    unit_id,
-                    UnitCharacteristic,
-                    lambda: parse_unit_from_xml(
-                        context,
-                        unit_xml,
-                    ),
+                if not characteristics_repository.has(unit_id, UnitCharacteristic):
+                    new_unit = parse_unit_from_xml(context, unit_xml)
+                    if not new_unit:
+                        continue
+
+                    characteristics_repository.upsert(unit_id, new_unit)
+
+                unit_characteristic = characteristics_repository.get(
+                    unit_id, UnitCharacteristic
                 )
                 fact_characteristics.append(unit_characteristic)
 
@@ -132,4 +149,8 @@ def parse_facts_xml(
             )
 
             fact_context = parse_context_xml(context, xml_context, fact_characteristics)
+
+            if not fact_context:
+                continue
+
             parse_fact_from_xml(context, xml_fact, fact_context)

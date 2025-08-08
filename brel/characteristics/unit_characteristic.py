@@ -73,7 +73,7 @@ class UnitCharacteristic(ICharacteristic):
 
     def get_name(self) -> str:
         return self.__name
-    
+
     # second class citizens
     def __str__(self) -> str:
         return self.get_value()

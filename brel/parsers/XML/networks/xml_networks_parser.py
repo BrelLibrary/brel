@@ -77,9 +77,7 @@ def parse_networks_from_xmls(
     for link_xml in link_xmls:
         link_role = get_str_attribute(link_xml, qname_from_str("xlink:role", link_xml))
 
-        link_networks = error_repository.upsert_on_error(
-            lambda: parse_xml_link(context, link_xml)
-        )
+        link_networks = parse_xml_link(context, link_xml)
         if link_networks is None:
             continue
 

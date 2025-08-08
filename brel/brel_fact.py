@@ -36,10 +36,17 @@ class Fact:
     - The context is the context of the fact. It is a Context object.
     - The id is the id of the fact. It is a string and is optional.
     - The precision is the precision of the fact. Only used when it is a numerical fact. Only one of precision and decimals can be set.
-    - The decimals is the decimals of the fact. Only used when it is a numerical fact. Only one of precision and decimals can be set. 
+    - The decimals is the decimals of the fact. Only used when it is a numerical fact. Only one of precision and decimals can be set.
     """
 
-    def __init__(self, context: Context, value: str, id: str | None, decimals: int | None = None, precision: int | None = None) -> None:
+    def __init__(
+        self,
+        context: Context,
+        value: str,
+        id: str | None,
+        decimals: float | None = None,
+        precision: float | None = None,
+    ) -> None:
         if precision is not None and decimals is not None:
             raise ValueError("Only one of precision and decimals can be set.")
 
@@ -48,8 +55,6 @@ class Fact:
         self.__id = id
         self.__context: Context = context
         self.__value: str = value
-        self.__decimals: int | None = None
-        self.__precision: int | None = None
 
     # first class citizens
     # TODO think about this. is the id attribute an implementation detail?
@@ -120,11 +125,11 @@ class Fact:
         :returns Any: The value of the fact. The type of the value depends on the type of the fact.
         """
         return self.__value
-    
-    def get_precision(self) -> int | None:
+
+    def get_precision(self) -> float | None:
         return self.__precision
-    
-    def get_decimals(self) -> int | None:
+
+    def get_decimals(self) -> float | None:
         return self.__decimals
 
     def __str__(self) -> str:

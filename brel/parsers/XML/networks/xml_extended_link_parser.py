@@ -31,7 +31,11 @@ from brel.parsers.XML.networks import (
     ReferenceNetworkFactory,
     parse_xml_resource,
 )
-from brel.parsers.utils.lxml_utils import find_elements, get_str_attribute, get_clark_notation_tag
+from brel.parsers.utils.lxml_utils import (
+    find_elements,
+    get_str_attribute,
+    get_clark_notation_tag,
+)
 from brel.reportelements import *
 from brel.resource import *
 from brel.contexts.filing_context import FilingContext

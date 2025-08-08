@@ -85,7 +85,7 @@ def filter_testcase_by_name(testcase_name: str) -> bool:
     return True
 
 
-def run_idpts():
+def run_idpts() -> None:
     load_idpts()
 
     idpts_testcases_folder = "tests/interactive_data_test_suite/conf/"

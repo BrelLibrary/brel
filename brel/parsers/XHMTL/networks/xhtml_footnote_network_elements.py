@@ -1,9 +1,10 @@
 from lxml.etree import _Element
 from typing import Dict, List, Set
 
+
 class XHTMLFootnoteNetworkElements:
     def __init__(
-        self, 
+        self,
         footnote_elements: List[_Element],
         continuation_chains: Dict[_Element, List[_Element]],
         relationship_elements: List[_Element],

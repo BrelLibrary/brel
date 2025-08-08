@@ -11,6 +11,7 @@ This module contains the function for parsing an xml subtree into a Unit charact
 """
 
 
+from typing import Optional
 from lxml.etree import _Element  # type: ignore
 
 from brel import QName
@@ -28,24 +29,29 @@ from brel.data.characteristic.characteristic_repository import CharacteristicRep
 def parse_unit_measure_from_xml(
     xml_element: _Element,  # type: ignore
     filing_context: FilingContext,
-) -> QName:
+) -> Optional[QName]:
     child_text = xml_element.text
-    
+
     if child_text is None:
         error = ErrorInstance.create_error_instance(
-            ErrorCode.MISSING_UNIT_MEASURE,
-            xml_element
+            ErrorCode.XML_MISSING_UNIT_MEASURE, xml_element
         )
-        
+
         filing_context.get_error_repository().upsert(error)
+        return None
     else:
-        return qname_from_str(child_text, xml_element)
+        qname_or_error = qname_from_str(child_text, xml_element)
+        if isinstance(qname_or_error, ErrorInstance):
+            filing_context.get_error_repository().upsert(qname_or_error)
+            return None
+
+        return qname_or_error
 
 
 def parse_unit_from_xml(
     filing_context: FilingContext,
     xml_element: _Element,
-) -> UnitCharacteristic:
+) -> Optional[UnitCharacteristic]:
     characteristic_repository: CharacteristicRepository = (
         filing_context.get_characteristic_repository()
     )
@@ -55,9 +61,7 @@ def parse_unit_from_xml(
 
     if characteristic_repository.has(unit_id, UnitCharacteristic):
         error = ErrorInstance.create_error_instance(
-            ErrorCode.IXBRL_DUPLICATE_ELEMENT_ID,
-            xml_element,
-            id=unit_id
+            ErrorCode.IXBRL_DUPLICATE_ELEMENT_ID, xml_element, id=unit_id
         )
         error_repository.upsert(error)
 
@@ -71,7 +75,7 @@ def parse_unit_from_xml(
             ErrorCode.XML_UNIT_ELEMENT_WITHOUT_ONE_CHILD,
             xml_element,
             id=unit_id,
-            child_count=len(children)
+            child_count=str(len(children)),
         )
 
         error_repository.upsert(error)
@@ -80,7 +84,9 @@ def parse_unit_from_xml(
         child_tag = child.tag
         if "measure" in child_tag:
             # get its text and parse it into a QName
-            child_qname = parse_unit_measure_from_xml(child)
+            child_qname = parse_unit_measure_from_xml(child, filing_context)
+            if not child_qname:
+                return None
 
             numerators.append(child_qname)
 
@@ -88,51 +94,55 @@ def parse_unit_from_xml(
             num_and_denom = list(child)
             if len(num_and_denom) != 2:
                 error = ErrorInstance.create_error_instance(
-                    ErrorCode.XML_UNIT_ELEMENT_WITHOUT_TWO_CHILDREN,
+                    ErrorCode.XML_DIVIDE_ELEMENT_WITHOUT_TWO_CHILDREN,
                     xml_element,
                     id=unit_id,
-                    child_count=len(num_and_denom)
+                    child_count=str(len(num_and_denom)),
                 )
 
                 error_repository.upsert(error)
 
             for num_or_denom in num_and_denom:
                 num_or_denom_tag = num_or_denom.tag
-                if "unitNumerator" in num_or_denom_tag:
-                    # get its text and parse it into a QName
-                    child_qname = parse_unit_measure_from_xml(num_or_denom)
 
-                    numerators.append(child_qname)
-                elif "unitDenominator" in num_or_denom_tag:
-                    # get its text and parse it into a QName
-                    child_qname = parse_unit_measure_from_xml(num_or_denom)
-
-                    denominators.append(child_qname)
-                else:
+                if (
+                    "unitNumerator" not in num_or_denom_tag
+                    and "unitDenominator" not in num_or_denom_tag
+                ):
                     error = ErrorInstance.create_error_instance(
-                        ErrorCode.XML_UNIT_ELEMENT_WITH_INVALID_CHILDREN,
+                        ErrorCode.XML_INVALID_DIVIDE_ELEMENT_CHILDREN,
                         xml_element,
                         id=unit_id,
-                        child_tag=num_or_denom_tag
+                        child_tag=num_or_denom_tag,
                     )
 
                     error_repository.upsert(error)
 
+                child_qname = parse_unit_measure_from_xml(num_or_denom, filing_context)
+
+                if not child_qname:
+                    return None
+
+                if "unitNumerator" in num_or_denom_tag:
+                    numerators.append(child_qname)
+                elif "unitDenominator" in num_or_denom_tag:
+                    denominators.append(child_qname)
+
             if num_and_denom[0].tag == num_and_denom[1].tag:
                 error = ErrorInstance.create_error_instance(
-                    ErrorCode.XML_UNIT_ELEMENT_WITH_DUPLICATE_CHILDREN,
+                    ErrorCode.XML_DUPLICATE_DIVIDE_ELEMENT_CHILDREN,
                     xml_element,
                     id=unit_id,
-                    tag=num_and_denom[0].tag
+                    tag=num_and_denom[0].tag,
                 )
 
                 error_repository.upsert(error)
         else:
             error = ErrorInstance.create_error_instance(
-                ErrorCode.XML_UNIT_ELEMENT_WITH_INVALID_CHILDREN,
+                ErrorCode.XML_INVALID_UNIT_ELEMENT_CHILDREN,
                 xml_element,
                 id=unit_id,
-                child_tag=child_tag
+                child_tag=child_tag,
             )
 
             error_repository.upsert(error)

@@ -18,9 +18,17 @@ class InMemoryNetworkRepository(NetworkRepository):
     def __init__(self) -> None:
         self.__networks: dict[Type[INetwork], list[INetwork]] = defaultdict(list)
 
-    def get(self, role: Type[INetwork]) -> list[INetwork]:
-        return self.__networks[role]
-    
+    def get_by_type(self, type: Type[INetwork]) -> list[INetwork]:
+        return self.__networks[type]
+
+    def get_by_linkrole(self, linkrole: str) -> list[INetwork]:
+        return [
+            network
+            for networks in self.__networks.values()
+            for network in networks
+            if network.get_link_role() == linkrole
+        ]
+
     def get_all(self) -> list[INetwork]:
         return [
             network for networks in self.__networks.values() for network in networks

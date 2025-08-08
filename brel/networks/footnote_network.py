@@ -1,4 +1,4 @@
-from typing import cast
+from typing import Optional, cast
 
 from brel import QName
 from brel.networks import FootnoteNetworkNode, INetwork, INetworkNode
@@ -18,6 +18,5 @@ class FootnoteNetwork(INetwork):
         link_name: QName,
         is_physical: bool,
     ) -> None:
-        
         roots_copy = [cast(INetworkNode, root) for root in roots]
         super().__init__(roots_copy, link_role, link_name, is_physical)

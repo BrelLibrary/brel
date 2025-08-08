@@ -13,6 +13,7 @@ It only parses the syntactic context, therefore the Unit and Concept characteris
 """
 
 
+from typing import Optional
 import lxml.etree
 
 from brel import Context
@@ -30,7 +31,7 @@ def parse_context_xml(
     filing_context: FilingContext,
     xml_element: lxml.etree._Element,  # type: ignore
     characteristics: list[UnitCharacteristic | ConceptCharacteristic],
-) -> "Context":
+) -> Optional[Context]:
     """
     Creates a Context from an lxml.etree._Element.
     :param xml_element: lxml.etree._Element. The lxml.etree._Element to create the Context from.
@@ -48,19 +49,19 @@ def parse_context_xml(
 
     if context_period is None:
         error = ErrorInstance.create_error_instance(
-            ErrorCode.MISSING_CONTEXT_PERIOD,
-            xml_element
+            ErrorCode.MISSING_CONTEXT_PERIOD, xml_element
         )
         filing_context.get_error_repository().upsert(error)
-    
+        return None
+
     context_entity = xml_element.find("{*}entity", namespaces=None)
     if context_entity is None:
         error = ErrorInstance.create_error_instance(
-            ErrorCode.MISSING_CONTEXT_ENTITY,
-            xml_element
+            ErrorCode.MISSING_CONTEXT_ENTITY, xml_element
         )
         filing_context.get_error_repository().upsert(error)
-    
+        return None
+
     fact_context = Context(context_id)
 
     # add the characteristics provided by the user. these are the unit and concept
@@ -91,10 +92,9 @@ def parse_context_xml(
                 fact_context._add_characteristic(typed_dimension_characteristic)
             else:
                 error = ErrorInstance.create_error_instance(
-                    ErrorCode.UNKNOWN_DIMENSION_TYPE,
-                    xml_dimension
+                    ErrorCode.INVALID_DIMENSION_TYPE, xml_dimension
                 )
-                
+
                 filing_context.get_error_repository().upsert(error)
 
     return fact_context

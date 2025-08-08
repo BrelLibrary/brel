@@ -26,7 +26,7 @@ class InMemoryFactRepository(FactRepository):
             return self.get_by_id(id)
         except KeyError:
             return None
-    
+
     def has_id(self, id: str) -> bool:
         return id in self.__facts_by_id
 

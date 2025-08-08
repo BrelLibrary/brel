@@ -16,15 +16,15 @@ from brel.networks.i_network import INetwork
 # TODO: not finalized yet. role is probably not just a string, upsert might be an update/insert instead, there should be a getter that does not return a whole list, just a single network
 class NetworkRepository(ABC):
     @abstractmethod
-    def get(self, role: Type[INetwork]) -> List[INetwork]:
+    def get_by_type(self, role: Type[INetwork]) -> List[INetwork]:
+        pass
+
+    @abstractmethod
+    def get_by_linkrole(self, linkrole: str) -> list[INetwork]:
         pass
 
     @abstractmethod
     def get_all(self) -> List[INetwork]:
-        pass
-
-    @abstractmethod
-    def remove_networks_by_type(self, network_type: Type[INetwork]) -> list[INetwork]:
         pass
 
     @abstractmethod

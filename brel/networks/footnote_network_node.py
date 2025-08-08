@@ -12,7 +12,7 @@ Since a node can have children, nodes can also be viewed as trees.
 ====================
 """
 
-from typing import cast
+from typing import Optional, cast
 
 from brel import Fact, QName
 from brel.networks import INetworkNode

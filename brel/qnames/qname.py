@@ -43,3 +43,17 @@ class QName:
         :returns str: containing the clark notation of the qualified name
         """
         return self.prefix_local_name_notation()
+
+
+# Needed as footnote networks are part of the instance, which does not always include a linkbase (e.g. IXBRL, JSON, CSV syntax)
+FOOTNOTE_NETWORK_LINKNAME = QName(
+    uri="http://www.xbrl.org/2003/linkbase",
+    prefix="link",
+    local_name="footnoteLink",
+)
+
+FOOTNOTE_NETWORK_ARCNAME = QName(
+    uri="http://www.xbrl.org/2003/linkbase",
+    prefix="link",
+    local_name="footnoteArc",
+)

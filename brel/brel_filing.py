@@ -49,6 +49,7 @@ from pyspark import sql
 from typing import Any, cast
 
 from brel import Component, Fact, QName
+from brel.errors.error_instance import ErrorInstance
 from brel.networks import INetwork
 from brel.parsers.filing_parser_factory import FilingParserFactory
 from brel.parsers.path_loaders.factory import create_path_loader_resolver
@@ -119,7 +120,7 @@ class Filing:
             if network.is_physical()
         ]
 
-    def get_errors(self) -> list[Exception]:
+    def get_errors(self) -> list[ErrorInstance]:
         """
         :return list[Exception]: a list of all errors that occurred during parsing.
         """

@@ -67,8 +67,10 @@ def create_fact_repository() -> FactRepository:
 def create_aspect_repository() -> AspectRepository:
     return InMemoryAspectRepository()
 
+
 def create_context_repository() -> ContextRepository:
     return InMemoryContextRepository()
+
 
 def create_namespace_repository() -> NamespaceRepository:
     return InMemoryNamespaceRepository()

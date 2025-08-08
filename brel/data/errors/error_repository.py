@@ -29,7 +29,9 @@ class ErrorRepository(ABC):
         pass
 
     @final
-    def upsert_on_error[T](self, expression: Callable[[], T], error: ErrorInstance) -> T | None:
+    def upsert_on_error[
+        T
+    ](self, expression: Callable[[], T], error: ErrorInstance) -> T | None:
         try:
             return expression()
         except Exception:
@@ -42,4 +44,4 @@ class ErrorRepository(ABC):
             self.upsert(error)
 
     def get_by_severity(self, severity: Severity) -> list[ErrorInstance]:
-        return [error for error in self.get_all() if error.severity == severity]
+        return [error for error in self.get_all() if error.get_severity() == severity]

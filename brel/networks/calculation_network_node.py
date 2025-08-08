@@ -55,7 +55,7 @@ class CalculationNetworkNode(INetworkNode):
         self.__link_name = link_name
         self.__order = order
         self.__weight = weight
-    
+
     # First class citizens
     def get_report_element(self) -> IReportElement:
         """

@@ -1,4 +1,5 @@
-from brel import Filing, Aspect
+from brel import Filing
+from brel.characteristics.brel_aspect import Aspect
 from brel.utils import pprint
 
 

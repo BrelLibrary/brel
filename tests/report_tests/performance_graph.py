@@ -3,9 +3,7 @@ import os
 import json
 import pandas as pd
 from collections import defaultdict
-from matplotlib import pyplot as plt
-import matplotlib
-
+import matplotlib.pyplot as plt
 
 def load_results_dataframe():
     current_dir = os.path.dirname(__file__)

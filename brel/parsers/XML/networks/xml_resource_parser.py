@@ -18,6 +18,7 @@ from brel.parsers.utils.lxml_utils import (
     get_clark_notation_tag,
 )
 
+
 def parse_xml_resource(xml_element: _Element) -> IResource:
     if get_str_attribute(xml_element, "xlink:type") != "resource":
         raise ValueError("The xlink:type is not resource")
@@ -27,11 +28,13 @@ def parse_xml_resource(xml_element: _Element) -> IResource:
     tag = get_clark_notation_tag(xml_element)
 
     if "label" in tag:
-        lang = get_elem_lang_recursive(xml_element)
+        # TODO: raise error when lang is not found
+        lang = str(get_elem_lang_recursive(xml_element))
         text = xml_element.text if xml_element.text else ""
         return BrelLabel(text, label, lang, role)
     elif "footnote" in tag:
-        lang = get_elem_lang_recursive(xml_element)
+        # TODO: raise error when lang is not found
+        lang = str(get_elem_lang_recursive(xml_element))
         text = xml_element.text or "".join(child.__str__() for child in xml_element)
         return BrelFootnote(text, label, lang, role)
     elif "reference" in tag:

@@ -17,6 +17,7 @@ from brel.characteristics import (
     Aspect,
     ExplicitDimensionCharacteristic,
 )
+from brel.errors.error_instance import ErrorInstance
 from brel.parsers.utils.lxml_utils import get_str_attribute
 from brel.qnames.qname_utils import qname_from_str
 from brel.reportelements import Dimension, Member
@@ -43,6 +44,7 @@ def parse_explicit_dimension_from_xml(
         filing_context.get_characteristic_repository()
     )
     aspect_repository = filing_context.get_aspect_repository()
+    error_repository = filing_context.get_error_repository()
 
     aspect_id = get_str_attribute(xml_element, "dimension")
     if not characteristic_repository.has(aspect_id, ExplicitDimensionCharacteristic):
@@ -54,12 +56,11 @@ def parse_explicit_dimension_from_xml(
         xml_element.text, f"Dimension value not found in xml element {xml_element}"
     )
 
-    dimension = report_element_repository.get_typed_by_qname(
-        qname_from_str(aspect_id, xml_element), Dimension
-    )
-    member = report_element_repository.get_typed_by_qname(
-        qname_from_str(member_id, xml_element), Member
-    )
+    dimension_qname = qname_from_str(aspect_id, xml_element)
+    dimension = report_element_repository.get_typed_by_qname(dimension_qname, Dimension)
+
+    member_qname = qname_from_str(member_id, xml_element)
+    member = report_element_repository.get_typed_by_qname(member_qname, Member)
 
     dimension_id = f"{aspect_id} {member_id}"
     if not characteristic_repository.has(dimension_id, ExplicitDimensionCharacteristic):

@@ -84,6 +84,7 @@ def get_clark_notation_tag(element: _Element) -> str:  # type: ignore
     """
     return element.tag
 
+
 def get_prefix_localname_tag(element: _Element) -> str:
     """
     Helper function for getting the tag of an element as a string in prefix:localname notation.
@@ -92,6 +93,7 @@ def get_prefix_localname_tag(element: _Element) -> str:
     :returns: str containing the tag of the element
     """
     return qname_from_str(element.tag, element).prefix_local_name_notation()
+
 
 def find_elements(
     element: _ElementTree | _Element,  # type: ignore
@@ -170,6 +172,7 @@ def get_all_nsmaps(
 
     return nsmaps
 
+
 def get_elem_lang_recursive(xml_element: _Element | None) -> Optional[str]:
     """
     Recursively traverse the given lxml element up the tree, returning the first xml:lang attribute found.
@@ -183,5 +186,5 @@ def get_elem_lang_recursive(xml_element: _Element | None) -> Optional[str]:
 
     if has_str_attribute(xml_element, "xml:lang"):
         return get_str_attribute(xml_element, "xml:lang")
-    
+
     return get_elem_lang_recursive(xml_element.getparent())
