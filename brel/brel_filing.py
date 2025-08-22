@@ -44,6 +44,7 @@ Once a filing is loaded, it can be queried for its facts, report elements, netwo
 ====================
 """
 
+import os
 import pandas as pd
 from pyspark import sql
 from typing import Any, cast
@@ -384,3 +385,9 @@ class Filing:
 
         df = pd.DataFrame(data)
         return df
+
+if __name__ == "__main__":
+    print(os.getcwd())
+    filing = Filing.open("..\\Coca-Cola-10Q")
+
+#    C:\Users\USER\Desktop\brel\brel\brel_filing.py

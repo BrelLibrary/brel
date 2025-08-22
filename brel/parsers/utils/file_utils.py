@@ -23,10 +23,11 @@ def uri_to_filename(uri: str) -> str:
     file_format = "." + file_format_match.group(1) if file_format_match else ""
 
     if not uri.startswith("http"):
-        if "/" in uri:
-            return uri.split("/")[-1]
+        posix_uri = uri.replace("\\", "/")
+        if "/" in posix_uri:
+            return posix_uri.split("/")[-1]
         else:
-            return uri
+            return posix_uri
 
     uri = uri.replace("." + file_format, "")
 

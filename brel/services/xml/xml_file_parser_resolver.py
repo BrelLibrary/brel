@@ -22,6 +22,8 @@ class XMLFileParserResolver:
             ".xml": xml_parser,
             ".xsd": xml_parser,
             ".xhtml": xhtml_parser,
+            ".htm": xhtml_parser,
+            ".html": xhtml_parser,
         }
 
     def get_parser(self, file_name: str) -> Callable[[IO[bytes]], _ElementTree]:
