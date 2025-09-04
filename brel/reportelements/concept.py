@@ -132,7 +132,7 @@ class Concept(IReportElement):
         :param concept_qname: QName. The QName of the concept.
         :returns Concept: The Concept created from the lxml.etree._Element.
         """
-        nsmap = xml_element.nsmap
+        nsmap = {"xbrli": "http://www.xbrl.org/2003/instance"}
 
         # get the period type of the concept
         period_type = xml_element.get(f"{{{nsmap['xbrli']}}}periodType", None)

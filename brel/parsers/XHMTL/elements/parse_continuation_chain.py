@@ -81,11 +81,6 @@ def create_continuation_chains(
                         f"The continuation chain must not contain any element which is a descendant of any other element in the same continuation chain"
                     )
 
-        if len(continuations) == 0:
-            raise ValueError(
-                f"Fact or footnote with id '{get_str_attribute_optional(element, 'id')}' has no ix:continuation elements."
-            )
-
     if len(continuation_elements) != len(used_continuation_ids):
         raise ValueError(
             f"Found {len(continuation_elements)} ix:continuation elements but only {len(used_continuation_ids)} were used."

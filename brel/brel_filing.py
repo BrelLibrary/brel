@@ -385,9 +385,3 @@ class Filing:
 
         df = pd.DataFrame(data)
         return df
-
-if __name__ == "__main__":
-    print(os.getcwd())
-    filing = Filing.open("..\\Coca-Cola-10Q")
-
-#    C:\Users\USER\Desktop\brel\brel\brel_filing.py

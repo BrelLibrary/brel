@@ -8,10 +8,10 @@
 ====================
 """
 
-from typing import Mapping, Optional, cast
+from typing import Dict, Mapping, Optional, cast
 from brel.qnames.qname import QName
 import lxml.etree
-from lxml.etree import _Element, _ElementTree  # type: ignore
+from lxml.etree import _Element, _ElementTree, XPath  # type: ignore
 
 from brel.qnames.qname_utils import (
     is_namespace_localname_notation,
@@ -98,6 +98,7 @@ def get_prefix_localname_tag(element: _Element) -> str:
 def find_elements(
     element: _ElementTree | _Element,  # type: ignore
     xpath_query: str | QName,
+    namespaces: Optional[Dict[str, str]] = None,
 ) -> list[_Element]:
     if isinstance(xpath_query, QName):
         xpath_query = xpath_query.prefix_local_name_notation()
@@ -105,13 +106,13 @@ def find_elements(
     if isinstance(element, _ElementTree):
         element = element.getroot()
 
-    nsmap: Mapping[str, str] = {k: v for k, v in element.nsmap.items() if k is not None}
+    if not namespaces:
+        namespaces = {k: v for k, v in element.nsmap.items() if k is not None}
+
     try:
+        find = XPath(xpath_query, namespaces=namespaces)
         # return element.findall(xpath_query, namespaces=nsmap)
-        result = element.xpath(
-            xpath_query,
-            namespaces=nsmap,
-        )
+        result = find(element)
         if not isinstance(result, list):
             raise TypeError("XPath query did not return a list")
         if not all(isinstance(e, _Element) for e in result):

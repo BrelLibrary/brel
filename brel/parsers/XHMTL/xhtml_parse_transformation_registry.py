@@ -755,11 +755,11 @@ def validate_date_fact_value(
     if is_full_date and "day" not in date_parts:
         raise ValueError(f"Day should be present in full date")
 
-    iso8601_formatted_string = f"{date_parts['year'] if not is_recurring else '2020'}-{date_parts['month']}-{date_parts['day'] if not is_full_date else '01'}"
+    iso8601_formatted_string = f"{date_parts['year'] if not is_recurring else '2020'}-{date_parts['month']}-{date_parts['day'] if is_full_date else '01'}"
 
     try:
         datetime.date.fromisoformat(iso8601_formatted_string)
-    except Exception as exc:
+    except Exception:
         raise ValueError(f"Date {iso8601_formatted_string} is not a valid date.")
 
     if "era" in date_parts:
@@ -801,7 +801,8 @@ def parse_literal_fact_value(fact_value: str, fact_format: str) -> str:
     elif fact_format == "ixt:fixed-zero":
         fact_value = "0"
     else:
-        raise ValueError(f"Fact format {fact_format} not yet supported by XBRL")
+        # TODO: Handle non-existing literal format
+        return fact_value
 
     return fact_value
 
@@ -837,8 +838,9 @@ def normalize_digits_in_string(string: str) -> str:
 
 def match_regex_numerical_fact_value(fact_value: str, fact_format: str) -> re.Match:
     number_format_regex = number_format_to_regex.get(fact_format)
+
     if not number_format_regex:
-        raise ValueError(f"Unsupported number format: {fact_format}")
+        raise ValueError(f"Unexpected numerical format: {fact_format}")
 
     match = re.match(number_format_regex, fact_value)
     if not match:
@@ -929,13 +931,17 @@ def parse_numerical_fact_value(
     :return: The parsed and scaled numerical value as a string.
     :raises ValueError: If the format is not supported.
     """
-    fact_format = legacy_to_current_formats.get(fact_format, fact_format)
-
-    if not fact_format.startswith("ixt:num") and not fact_format == "ixt:fixed-zero":
-        raise ValueError(f"Fact format {fact_format} is not a numerical format")
-
     if fact_format == "ixt:fixed-zero":
         return "0"
+
+    fact_format = legacy_to_current_formats.get(fact_format, fact_format)
+
+    if not "num" in fact_format:
+        raise ValueError(f"Fact format {fact_format} is not a numerical format")
+
+    if fact_format not in number_format_to_regex:
+        # TODO: Error Handling
+        return fact_value
 
     fact_value = fact_value.strip()
     match = match_regex_numerical_fact_value(fact_value, fact_format)

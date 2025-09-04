@@ -46,5 +46,5 @@ def create_xml_service(
 def create_xml_file_parser_resolver() -> XMLFileParserResolver:
     return XMLFileParserResolver(
         lambda content: parse_xml(content),
-        lambda content: html5parser.parse(content),
+        lambda content: parse_xml(content),
     )

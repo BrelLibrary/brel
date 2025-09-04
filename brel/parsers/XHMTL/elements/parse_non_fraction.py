@@ -20,12 +20,12 @@ def parse_decimals_or_precision(
         try:
             value = float(int(str_value))
         except ValueError:
-            if value == "INF":
+            if str_value == "INF":
                 value = float("inf")
-
-            raise ValueError(
-                f"{'Decimals' if is_decimals else 'Precision'} should be an integer or 'INF'. Got {str_value} instead."
-            )
+            else:
+                raise ValueError(
+                    f"{'Decimals' if is_decimals else 'Precision'} should be an integer or 'INF'. Got {str_value} instead."
+                )
 
         return value
 
@@ -35,7 +35,7 @@ def parse_decimals_or_precision(
 def validate_descendant_non_fraction_rules(element: _Element) -> None:
     parent = element.getparent()
 
-    if not parent:
+    if parent is None:
         return
 
     parent_tag = get_prefix_localname_tag(parent)
@@ -161,7 +161,9 @@ def parse_non_fraction_fact_element(
         )
 
     fact_value = fact_element.text or ""
-    if has_text:
+    if xsi_nil == "true":
+        fact_value = ""
+    elif has_text:
         fact_value = process_non_fraction_value(fact_value, format, scale, sign)
     else:
         if len(element_children) > 1:

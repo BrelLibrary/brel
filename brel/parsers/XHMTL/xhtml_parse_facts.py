@@ -53,6 +53,7 @@ from brel.parsers.utils.lxml_utils import (
 from brel.parsers.utils.optional_utils import get_or_raise
 from urllib.parse import urlparse
 
+from brel.qnames.qname_utils import qname_from_str
 from brel.reportelements.concept import Concept
 
 
@@ -64,8 +65,12 @@ def parse_headers(
     hidden_elements, resources_elements, references_elements = [], [], []
     for xbrl_instance in etrees:
         check_no_header_element_in_head(xbrl_instance, error_repository)
-        headers = find_elements(xbrl_instance, ".//ix:header")
-        if not headers:
+        headers = find_elements(
+            xbrl_instance,
+            ".//ix:header",
+            namespaces={"ix": "http://www.xbrl.org/2013/inlineXBRL"},
+        )
+        if len(headers) == 0:
             continue
 
         has_headers = True
@@ -175,6 +180,7 @@ def parse_facts(
 ) -> None:
     context_repository = filing_context.get_context_repository()
     characteristics_repository = filing_context.get_characteristic_repository()
+    report_element_repository = filing_context.get_report_element_repository()
     fact_repository = filing_context.get_fact_repository()
     error_repository = filing_context.get_error_repository()
 
@@ -192,11 +198,15 @@ def parse_facts(
             error_repository.upsert(error)
             return
 
-        concept_characteristic = characteristics_repository.get(
-            concept_name, ConceptCharacteristic
-        )
-
-        characteristics.append(concept_characteristic)
+        concept_qname = qname_from_str(concept_name, fact_element)
+        report_element = report_element_repository.get_by_qname(concept_qname)
+        if type(report_element) != Concept:
+            # TODO: Deal with error handling
+            pass
+        else:
+            concept_characteristic = ConceptCharacteristic(report_element)
+            characteristics_repository.upsert(concept_name, concept_characteristic)
+            characteristics.append(concept_characteristic)
 
         unit_id = get_str_attribute_optional(fact_element, "unitRef")
 

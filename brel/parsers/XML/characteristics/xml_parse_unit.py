@@ -118,7 +118,8 @@ def parse_unit_from_xml(
 
                     error_repository.upsert(error)
 
-                child_qname = parse_unit_measure_from_xml(num_or_denom, filing_context)
+                measure_child = num_or_denom[0]
+                child_qname = parse_unit_measure_from_xml(measure_child, filing_context)
 
                 if not child_qname:
                     return None

@@ -73,5 +73,9 @@ def parse_components_xml(
     component_repository: ComponentRepository = context.get_component_repository()
 
     for schema in xml_service.get_all_etrees():
-        for roletype in find_elements(schema, ".//link:roleType"):
+        for roletype in find_elements(
+            schema,
+            ".//link:roleType",
+            namespaces={"link": "http://www.xbrl.org/2003/linkbase"},
+        ):
             component_repository.upsert(parse_component_from_xml(context, roletype))

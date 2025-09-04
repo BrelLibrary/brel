@@ -31,16 +31,30 @@ class FolderPathLoader(PathLoader):
         :param path: The directory path to load files from.
         :returns: A list of file paths in the directory that are either .xml or .xhtml files.
         """
-        files_and_folders = [os.path.join(path, dir_item) for dir_item in os.listdir(path)]
-        
-        files = [file_or_folder for file_or_folder in files_and_folders if os.path.isfile(file_or_folder)]
-        filtered_files = [file for file in files if file.endswith((".xml", ".xhtml", ".htm", "html", ".xsd"))]
-        
-        folders = [file_or_folder for file_or_folder in files_and_folders if os.path.isdir(file_or_folder)]
+        files_and_folders = [
+            os.path.join(path, dir_item) for dir_item in os.listdir(path)
+        ]
+
+        files = [
+            file_or_folder
+            for file_or_folder in files_and_folders
+            if os.path.isfile(file_or_folder)
+        ]
+        filtered_files = [
+            file
+            for file in files
+            if file.endswith((".xml", ".xhtml", ".htm", "html", ".xsd"))
+        ]
+
+        folders = [
+            file_or_folder
+            for file_or_folder in files_and_folders
+            if os.path.isdir(file_or_folder)
+        ]
         subdir_file_lists = [self.load(folder) for folder in folders]
-        
+
         all_files = filtered_files
         for subdir_file_list in subdir_file_lists:
             all_files.extend(subdir_file_list)
-                 
+
         return all_files

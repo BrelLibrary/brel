@@ -44,11 +44,13 @@ def parse_report_elements_xml(
         if not has_str_attribute(etree.getroot(), "targetNamespace"):
             continue
 
-        re_xmls = find_elements(etree, ".//xsi:schemaLocation")
-
         target_namespace_url = get_str_attribute(etree.getroot(), "targetNamespace")
 
-        re_xmls = find_elements(etree, ".//xs:element[@name] | .//xsd:element[@name]")
+        re_xmls = find_elements(
+            etree,
+            ".//xs:element[@name]",
+            namespaces={"xs": "http://www.w3.org/2001/XMLSchema"},
+        )
         for re_xml in re_xmls:
             parse_report_element(
                 report_element_repository=report_element_repository,

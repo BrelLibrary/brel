@@ -40,8 +40,17 @@ class XMLService:
 
         """
         is_uri_remote = uri.startswith("http") or referencing_uri.startswith("http")
+        if not is_uri_remote:
+            referencing_splitting_char = "\\" if "\\" in referencing_uri else "/"
+            uri_splitting_char = "\\" if "\\" in uri else "/"
 
-        uri = urllib.parse.urljoin(referencing_uri, uri)
+            uri = uri_splitting_char.join(
+                referencing_uri.split(referencing_splitting_char)[:-1]
+                + uri.split(uri_splitting_char)
+            )
+        else:
+            uri = urllib.parse.urljoin(referencing_uri, uri)
+
         if self.__xml_repository.has_etree(uri):
             return
 
@@ -77,7 +86,6 @@ class XMLService:
 
         for match in reference_pattern.finditer(content.decode("utf-8")):
             href = match.group(1)
-
             if href:
                 if "#" in href:
                     href_uri, _ = href.split("#")
@@ -87,9 +95,11 @@ class XMLService:
                 if href_uri:
                     reference_uris.add(href_uri)
 
-                schema_location = match.group(2)
-                if schema_location:
-                    reference_uris.add(schema_location)
+            schema_location = match.group(2)
+            if schema_location:
+                # get only last part, as there can be 2 links, only the second of which is relevant in our case.
+                schema_location = schema_location.split()[-1]
+                reference_uris.add(schema_location)
 
         return reference_uris
 

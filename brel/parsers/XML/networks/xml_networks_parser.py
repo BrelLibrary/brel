@@ -63,7 +63,14 @@ def parse_networks_from_xmls(
     link_xmls: list[_Element] = [
         element
         for xml_tree in xml_service.get_all_etrees()
-        for element in find_elements(xml_tree, ".//link:*[@xlink:type='extended']")
+        for element in find_elements(
+            xml_tree,
+            ".//link:*[@xlink:type='extended']",
+            namespaces={
+                "link": "http://www.xbrl.org/2003/linkbase",
+                "xlink": "http://www.w3.org/1999/xlink",
+            },
+        )
     ]
 
     link_xmls.sort(

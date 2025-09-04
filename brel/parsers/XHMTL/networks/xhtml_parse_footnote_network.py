@@ -77,11 +77,11 @@ def parse_relationship(
     fact_repository: FactRepository,
     taken_ids: Set[str],
 ) -> Tuple[Set[str], Set[str], str, str, float]:
-    fromRefs = get_str_attribute_optional(relationship_element, "fromRef")
+    fromRefs = get_str_attribute_optional(relationship_element, "fromRefs")
     if not fromRefs:
         raise ValueError("All ix:relationship elements must have a fromRef attribute.")
 
-    toRefs = get_str_attribute_optional(relationship_element, "toRef")
+    toRefs = get_str_attribute_optional(relationship_element, "toRefs")
     if not toRefs:
         raise ValueError("All ix:relationship elements must have a toRef attribute.")
 
