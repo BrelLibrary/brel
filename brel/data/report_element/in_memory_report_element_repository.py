@@ -29,11 +29,13 @@ class InMemoryReportElementRepository(ReportElementRepository):
             raise KeyError(
                 f"Report element with QName {qname} not found in repository."
             )
+
         return self.__elements_by_qname[qname]
 
     def get_by_id(self, id: str) -> IReportElement:
         if not self.has_id(id):
             raise KeyError(f"Report element with ID {id} not found in repository.")
+
         return self.__elements_by_id[id]
 
     def upsert(self, report_element: IReportElement) -> None:

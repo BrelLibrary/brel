@@ -47,7 +47,7 @@ pprint(calculation_network)
 ====================
 """
 
-from typing import Any, Dict, cast
+from typing import Any, Dict, Optional, cast
 from brel import Fact
 from brel.networks import (
     CalculationNetwork,
@@ -77,63 +77,17 @@ class Component:
         self,
         uri: str,
         info: str,
-        networks: list[INetwork],
+        presentation_network: Optional[PresentationNetwork] = None,
+        calculation_network: Optional[CalculationNetwork] = None,
+        definition_network: Optional[DefinitionNetwork] = None,
     ) -> None:
-        self.__uri = uri
-        self.__info = info
-
-        # Go through all networks and find the presentation, calculation and definition networks
-        presentation_networks = list(
-            filter(
-                lambda n: isinstance(n, PresentationNetwork) and not n.is_physical(),
-                networks,
-            )
-        )
-
-        if len(presentation_networks) > 1:
-            raise ValueError(
-                f"Component '{uri}' has more than one presentation network."
-            )
-
-        self.__presentation_network: PresentationNetwork | None = (
-            None
-            if len(presentation_networks) == 0
-            else cast(PresentationNetwork, presentation_networks[0])
-        )
-
-        calculation_networks = list(
-            filter(
-                lambda n: isinstance(n, CalculationNetwork) and not n.is_physical(),
-                networks,
-            )
-        )
-
-        if len(calculation_networks) > 1:
-            raise ValueError(
-                f"Component '{uri}' has more than one calculation network."
-            )
-
-        self.__calculation_network: CalculationNetwork | None = (
-            None
-            if len(calculation_networks) == 0
-            else cast(CalculationNetwork, calculation_networks[0])
-        )
-
-        definition_networks = list(
-            filter(
-                lambda n: isinstance(n, DefinitionNetwork) and not n.is_physical(),
-                networks,
-            )
-        )
-
-        if len(definition_networks) > 1:
-            raise ValueError(f"Component '{uri}' has more than one definition network.")
-
-        self.__definition_network: DefinitionNetwork | None = (
-            None
-            if len(definition_networks) == 0
-            else cast(DefinitionNetwork, definition_networks[0])
-        )
+        self.__uri: str = uri
+        self.__info: str = info
+        self.__presentation_network: Optional[
+            PresentationNetwork
+        ] = presentation_network
+        self.__calculation_network: Optional[CalculationNetwork] = calculation_network
+        self.__definition_network: Optional[DefinitionNetwork] = definition_network
 
     # first class citizens
     def get_URI(self) -> str:

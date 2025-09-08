@@ -10,6 +10,7 @@ It parses XBRL in the XML syntax.
 
 ====================
 """
+from typing import cast
 import lxml
 import lxml.etree
 
@@ -136,7 +137,10 @@ def parse_facts_xml(
                 unit_characteristic = characteristics_repository.get(
                     unit_id, UnitCharacteristic
                 )
-                fact_characteristics.append(unit_characteristic)
+
+                fact_characteristics.append(
+                    cast(UnitCharacteristic, unit_characteristic)
+                )
 
             # ======== PARSE THE CONTEXT ========
             context_id = get_str_attribute(xml_fact, "contextRef")

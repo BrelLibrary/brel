@@ -42,16 +42,11 @@ from brel.parsers.XML.xml_context_parser import parse_context_xml
 from brel.parsers.XHMTL.xhtml_parse_transformation_registry import (
     parse_numerical_fact_value,
 )
-from brel.parsers.utils.error_utils import error_on_none
 from brel.parsers.utils.lxml_utils import (
-    find_element,
     find_elements,
     get_prefix_localname_tag,
-    get_str_attribute,
     get_str_attribute_optional,
 )
-from brel.parsers.utils.optional_utils import get_or_raise
-from urllib.parse import urlparse
 
 from brel.qnames.qname_utils import qname_from_str
 from brel.reportelements.concept import Concept
@@ -122,7 +117,12 @@ def parse_contexts(
         if not context:
             continue
 
-        context_repository.insert_context(context)
+        successfully_added = context_repository.insert_context(context)
+        if not successfully_added:
+            error = ErrorInstance.create_error_instance(
+                ErrorCode.IXBRL_DUPLICATE_ELEMENT_ID, context_element, id=id
+            )
+            error_repository.upsert(error)
 
 
 def parse_units(
@@ -186,6 +186,7 @@ def parse_facts(
 
     for fact_element in fact_elements:
         element_tag = get_prefix_localname_tag(fact_element)
+        fact_id = get_str_attribute_optional(fact_element, "id")
         characteristics: List[UnitCharacteristic | ConceptCharacteristic] = []
 
         concept_name = get_str_attribute_optional(fact_element, "name")
@@ -193,16 +194,24 @@ def parse_facts(
             error = ErrorInstance.create_error_instance(
                 ErrorCode.IXBRL_FACT_WITHOUT_CONCEPT_NAME,
                 fact_element,
-                fact_id=str(get_str_attribute_optional(fact_element, "id")),
+                fact_id=str(fact_id),
             )
             error_repository.upsert(error)
-            return
+            continue
 
         concept_qname = qname_from_str(concept_name, fact_element)
-        report_element = report_element_repository.get_by_qname(concept_qname)
-        if type(report_element) != Concept:
-            # TODO: Deal with error handling
-            pass
+        try:
+            report_element = report_element_repository.get_typed_by_qname(
+                concept_qname, Concept
+            )
+        except ValueError:
+            error = ErrorInstance.create_error_instance(
+                ErrorCode.IXBRL_FACT_INVALID_CONCEPT,
+                fact_element,
+                concept_name=concept_name,
+                fact_id=str(fact_id),
+            )
+
         else:
             concept_characteristic = ConceptCharacteristic(report_element)
             characteristics_repository.upsert(concept_name, concept_characteristic)
@@ -211,13 +220,27 @@ def parse_facts(
         unit_id = get_str_attribute_optional(fact_element, "unitRef")
 
         if unit_id:
-            unit_characteristic = characteristics_repository.get(
-                unit_id, UnitCharacteristic
-            )
-            characteristics.append(unit_characteristic)
+            try:
+                unit_characteristic = characteristics_repository.get(
+                    unit_id, UnitCharacteristic
+                )
+                characteristics.append(unit_characteristic)
+            except ValueError:
+                error_repository.upsert(
+                    ErrorInstance.create_error_instance(
+                        ErrorCode.IXBRL_INVALID_FACT_UNIT_ID,
+                        fact_element,
+                        unit_id=unit_id,
+                        fact_id=str(fact_id),
+                    )
+                )
         elif not unit_id and element_tag == "ix:nonFraction":
-            raise ValueError(
-                f"The numeric fact {fact_element.get('id')} needs to have a unitRef attribute"
+            error_repository.upsert(
+                ErrorInstance.create_error_instance(
+                    ErrorCode.IXBRL_NON_FRACTION_WITHOUT_UNIT,
+                    fact_element,
+                    fact_id=str(fact_id),
+                )
             )
 
         context_id = get_str_attribute_optional(fact_element, "contextRef")
@@ -226,13 +249,22 @@ def parse_facts(
             error = ErrorInstance.create_error_instance(
                 ErrorCode.IXBRL_FACT_WITHOUT_CONTEXT,
                 fact_element,
-                fact_id=str(get_str_attribute_optional(fact_element, "id")),
+                fact_id=str(fact_id),
             )
 
             error_repository.upsert(error)
-            return
+            continue
 
         context = context_repository.get_context_copy(context_id)
+        if not context:
+            error = ErrorInstance.create_error_instance(
+                ErrorCode.IXBRL_INVALID_FACT_CONTEXT_ID,
+                fact_element,
+                context_id=context_id,
+            )
+
+            error_repository.upsert(error)
+            continue
 
         for characteristic in characteristics:
             context._add_characteristic(characteristic)
@@ -240,12 +272,15 @@ def parse_facts(
         if element_tag == "ix:nonNumeric":
             continuation_chain = continuation_chains.get(fact_element) or []
             fact = parse_non_numeric_fact_element(
-                fact_element, context, continuation_chain, taken_ids
+                fact_element, context, continuation_chain, filing_context, taken_ids
             )
         elif element_tag == "ix:nonFraction":
-            fact = parse_non_fraction_fact_element(fact_element, context, taken_ids)
+            fact = parse_non_fraction_fact_element(
+                fact_element, context, filing_context, taken_ids
+            )
 
-        fact_repository.upsert(fact)
+        if fact is not None:
+            fact_repository.upsert(fact)
 
 
 def parse_facts_xhtml(filing_context: FilingContext) -> XHTMLFootnoteNetworkElements:
@@ -254,6 +289,7 @@ def parse_facts_xhtml(filing_context: FilingContext) -> XHTMLFootnoteNetworkElem
     :param etrees: The xbrl instance xml trees
     """
     xml_service = filing_context.get_xml_service()
+    error_repository = filing_context.get_error_repository()
 
     etrees: list[_Element] = [
         tree.getroot()
@@ -265,9 +301,10 @@ def parse_facts_xhtml(filing_context: FilingContext) -> XHTMLFootnoteNetworkElem
     ]
 
     hidden_elements, resources_elements, references_elements = parse_headers(
-        etrees, filing_context.get_error_repository()
+        etrees, error_repository
     )
 
+    # TODO: Move taken_ids to filing context
     taken_ids: Set[str] = set()
     parse_references_elements(references_elements, taken_ids, filing_context)
 
@@ -287,7 +324,11 @@ def parse_facts_xhtml(filing_context: FilingContext) -> XHTMLFootnoteNetworkElem
         etrees
     )
     continuation_chains = create_continuation_chains(
-        fact_elements, footnote_elements, continuation_elements, taken_ids
+        fact_elements,
+        footnote_elements,
+        continuation_elements,
+        error_repository,
+        taken_ids,
     )
     parse_facts(fact_elements, continuation_chains, filing_context, taken_ids)
 

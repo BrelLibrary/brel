@@ -8,6 +8,7 @@
 ====================
 """
 
+from copy import deepcopy
 from typing import Dict, Mapping, Optional, cast
 from brel.qnames.qname import QName
 import lxml.etree
@@ -189,3 +190,13 @@ def get_elem_lang_recursive(xml_element: _Element | None) -> Optional[str]:
         return get_str_attribute(xml_element, "xml:lang")
 
     return get_elem_lang_recursive(xml_element.getparent())
+
+
+def clone_element_without_children(element: _Element) -> _Element:
+    new_element = deepcopy(element)
+
+    children = [child for child in element]
+    for child in children:
+        element.remove(child)
+
+    return new_element

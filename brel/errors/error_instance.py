@@ -29,7 +29,7 @@ class ErrorInstance:
         cls,
         error_code: ErrorCode,
         error_context: Optional[etree._Element] = None,
-        **kwargs: str,
+        **kwargs: Optional[str],
     ) -> Self:
         error_template = error_registry.get(error_code)
 

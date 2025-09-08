@@ -5,6 +5,9 @@ from lxml.etree import _Element
 from lxml import etree
 from brel.brel_context import Context
 from brel.brel_fact import Fact
+from brel.contexts.filing_context import FilingContext
+from brel.errors.error_code import ErrorCode
+from brel.errors.error_instance import ErrorInstance
 from brel.parsers.XHMTL.elements.parse_continuation_chain import (
     extract_relevant_content_from_continuation_chain,
 )
@@ -70,25 +73,39 @@ def parse_non_numeric_fact_element(
     fact_element: _Element,
     context: Context,
     continuation_chain: list[_Element],
+    filing_context: FilingContext,
     taken_ids=Set[str],
 ) -> Fact:
+    error_repository = filing_context.get_error_repository()
+
     id = get_str_attribute_optional(fact_element, "id")
 
     if id is not None:
         if id in taken_ids:
-            raise ValueError(f"ID '{id}' has already been used.")
+            error_repository.upsert(
+                ErrorInstance.create_error_instance(
+                    ErrorCode.IXBRL_DUPLICATE_ELEMENT_ID, fact_element, id=id
+                )
+            )
 
         taken_ids.add(id)
 
     escape = get_str_attribute_optional(fact_element, "escape")
 
     if escape and escape not in ["true", "false"]:
-        raise ValueError(
-            f"Fact with id '{get_str_attribute_optional(fact_element, 'id')}' has an escape attribute with value '{escape}', which is not 'true' or 'false'."
+        error_repository.upsert(
+            ErrorInstance.create_error_instance(
+                ErrorCode.IXBRL_INVALID_NON_NUMERIC_FACT_ESCAPE_ATTRIBUTE_VALUE,
+                fact_element,
+                value=escape,
+            )
         )
 
+        # Assume escaping, since the attribute is present
+        escape = "true"
+
     relevant_content = extract_relevant_content_from_continuation_chain(
-        fact_element, continuation_chain
+        [fact_element] + continuation_chain
     )
 
     fact_value = None
@@ -101,10 +118,3 @@ def parse_non_numeric_fact_element(
     parsed_value = parse_non_numerical_fact_value(fact_value, format)
 
     return Fact(context, parsed_value, id)
-
-
-if __name__ == "__main__":
-    data = '<ix:nonNumeric id="1" xmlns:ix="http://www.xbrl.org/2003/instance" escape="false">abcd &amp; <ix:exclude><ix:nonFraction>22</ix:nonFraction>44</ix:exclude> <ix:nonNumeric>This should still &lt; b &gt;be there as <xml:b>text</xml:b></ix:nonNumeric> 33 <xml:c> abb </xml:c> ccc <ix:exclude> ciao </ix:exclude> abeee</ix:nonNumeric>'
-    root = etree.fromstring(data)
-    fact = parse_non_numeric_fact_element(root, Context("1"), [])
-    print(fact.get_value())

@@ -47,9 +47,6 @@ class Fact:
         decimals: float | None = None,
         precision: float | None = None,
     ) -> None:
-        if precision is not None and decimals is not None:
-            raise ValueError("Only one of precision and decimals can be set.")
-
         self.__precision = precision
         self.__decimals = decimals
         self.__id = id

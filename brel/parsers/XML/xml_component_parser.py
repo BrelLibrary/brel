@@ -17,6 +17,8 @@ import lxml
 import lxml.etree
 
 from brel import Component
+from brel.errors.error_code import ErrorCode
+from brel.errors.error_instance import ErrorInstance
 from brel.networks import (
     CalculationNetwork,
     DefinitionNetwork,
@@ -34,6 +36,7 @@ def parse_component_from_xml(
     xml_element: lxml.etree._Element,  # type: ignore
 ) -> Component:
     network_repository: NetworkRepository = context.get_network_repository()
+    error_repository: ErrorRepository = context.get_error_repository()
 
     role_uri = get_str_attribute(xml_element, "roleURI")
 
@@ -46,30 +49,96 @@ def parse_component_from_xml(
     if "link:presentationLink" not in used_ons and any(
         map(lambda n: isinstance(n, PresentationNetwork), networks_in_component)
     ):
-        raise ValueError(
-            f"Component {role_uri} has presentation networks, but no appropriate usedOn element"
+        error_repository.upsert(
+            ErrorInstance.create_error_instance(
+                ErrorCode.PRESENTATION_NETWORK_IN_COMPONENT_WITHOUT_USEDON_ELEMENT,
+                xml_element,
+                linkrole_uri=role_uri,
+            )
         )
+
     if "link:calculationLink" not in used_ons and any(
         map(lambda n: isinstance(n, CalculationNetwork), networks_in_component)
     ):
-        raise ValueError(
-            f"Component {role_uri} has calculation networks, but no appropriate usedOn element"
+        error_repository.upsert(
+            ErrorInstance.create_error_instance(
+                ErrorCode.CALCULATION_NETWORK_IN_COMPONENT_WITHOUT_USEDON_ELEMENT,
+                xml_element,
+                linkrole_uri=role_uri,
+            )
         )
+
     if "link:definitionLink" not in used_ons and any(
         map(lambda n: isinstance(n, DefinitionNetwork), networks_in_component)
     ):
-        raise ValueError(
-            f"Component {role_uri} has definition networks, but no appropriate usedOn element"
+        error_repository.upsert(
+            ErrorInstance.create_error_instance(
+                ErrorCode.DEFINITION_NETWORK_IN_COMPONENT_WITHOUT_USEDON_ELEMENT,
+                xml_element,
+                linkrole_uri=role_uri,
+            )
         )
 
-    return Component(role_uri, info, networks_in_component)
+    presentation_networks = [
+        network
+        for network in networks_in_component
+        if isinstance(network, PresentationNetwork)
+    ]
+    calculation_networks = [
+        network
+        for network in networks_in_component
+        if isinstance(network, CalculationNetwork)
+    ]
+    definition_networks = [
+        network
+        for network in networks_in_component
+        if isinstance(network, DefinitionNetwork)
+    ]
+
+    if len(presentation_networks) > 1:
+        error_repository.upsert(
+            ErrorInstance.create_error_instance(
+                ErrorCode.MULTIPLE_PRESENTATION_NETWORKS_IN_COMPONENT,
+                xml_element,
+                linkrole_uri=role_uri,
+            )
+        )
+    if len(calculation_networks) > 1:
+        error_repository.upsert(
+            ErrorInstance.create_error_instance(
+                ErrorCode.MULTIPLE_CALCULATION_NETWORKS_IN_COMPONENT,
+                xml_element,
+                linkrole_uri=role_uri,
+            )
+        )
+    if len(definition_networks) > 1:
+        error_repository.upsert(
+            ErrorInstance.create_error_instance(
+                ErrorCode.MULTIPLE_DEFINITION_NETWORKS_IN_COMPONENT,
+                xml_element,
+                linkrole_uri=role_uri,
+            )
+        )
+
+    presentation_network = (
+        presentation_networks[0] if len(presentation_networks) >= 1 else None
+    )
+    calculation_network = (
+        calculation_networks[0] if len(calculation_networks) >= 1 else None
+    )
+    definition_network = (
+        definition_networks[0] if len(definition_networks) >= 1 else None
+    )
+
+    return Component(
+        role_uri, info, presentation_network, calculation_network, definition_network
+    )
 
 
 def parse_components_xml(
     context: FilingContext,
 ) -> None:
     xml_service = context.get_xml_service()
-    error_repository: ErrorRepository = context.get_error_repository()
     component_repository: ComponentRepository = context.get_component_repository()
 
     for schema in xml_service.get_all_etrees():

@@ -68,12 +68,13 @@ def parse_context_xml(
     for characteristic in characteristics:
         fact_context._add_characteristic(characteristic)
 
-    fact_context._add_characteristic(
-        parse_period_from_xml(filing_context, context_period)
-    )
-    fact_context._add_characteristic(
-        parse_entity_from_xml(filing_context, context_entity)
-    )
+    period = parse_period_from_xml(filing_context, context_period)
+    if period is not None:
+        fact_context._add_characteristic(period)
+
+    entity = parse_entity_from_xml(filing_context, context_entity)
+    if entity is not None:
+        fact_context._add_characteristic(entity)
 
     # add the dimensions. the dimensions are the children of context/entity/segment
     segment = context_entity.find("{*}segment", namespaces=None)
@@ -84,6 +85,10 @@ def parse_context_xml(
                 explicit_dimension_characteristic = parse_explicit_dimension_from_xml(
                     filing_context, xml_dimension
                 )
+
+                if explicit_dimension_characteristic is None:
+                    continue
+
                 fact_context._add_characteristic(explicit_dimension_characteristic)
             elif "typedMember" in xml_dimension.tag:
                 typed_dimension_characteristic = parse_typed_dimension_from_xml(

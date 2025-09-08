@@ -1,13 +1,16 @@
 from collections import defaultdict
 import itertools
-from typing import Dict, List, Set, Tuple
+from typing import Dict, List, Optional, Set, Tuple
 from brel.brel_context import Context
 from lxml.etree import _Element
 from lxml import etree
 
 from brel.brel_fact import Fact
 from brel.contexts.filing_context import FilingContext
+from brel.data.errors.error_repository import ErrorRepository
 from brel.data.fact.fact_repository import FactRepository
+from brel.errors.error_code import ErrorCode
+from brel.errors.error_instance import ErrorInstance
 from brel.networks.footnote_network import FootnoteNetwork
 from brel.networks.footnote_network_node import FootnoteNetworkNode
 from brel.parsers.XHMTL.elements.parse_continuation_chain import (
@@ -26,29 +29,59 @@ from brel.resource.brel_footnote import BrelFootnote
 
 
 def parse_footnote(
-    footnote_element: _Element, continuation_chain: List[_Element], taken_ids: Set[str]
-) -> Tuple[str, BrelFootnote]:
+    footnote_element: _Element,
+    continuation_chain: List[_Element],
+    error_repository: ErrorRepository,
+    taken_ids: Set[str],
+) -> Optional[Tuple[str, BrelFootnote]]:
     id = get_str_attribute_optional(footnote_element, "id")
     if not id:
-        raise ValueError("All ix:footnote elements must have an id attribute.")
+        error_repository.upsert(
+            ErrorInstance.create_error_instance(
+                ErrorCode.IXBRL_FOOTNOTE_WITHOUT_ID, footnote_element
+            )
+        )
+        return None
+
     if id in taken_ids:
-        raise ValueError(f"ID '{id}' has already been used.")
+        error_repository.upsert(
+            ErrorInstance.create_error_instance(
+                ErrorCode.IXBRL_DUPLICATE_ELEMENT_ID, footnote_element, id=id
+            )
+        )
+
     taken_ids.add(id)
 
     role = get_str_attribute_optional(footnote_element, "footnoteRole")
     if role is None:
         role = "http://www.xbrl.org/2003/role/footnote"
     elif not is_valid_uri(role):
-        raise ValueError(
-            f"Footnote with id '{id}' must have a valid URI for its footnoteRole. Got '{role}'."
+        error_repository.upsert(
+            ErrorInstance.create_error_instance(
+                ErrorCode.IXBRL_INVALID_FOOTNOTE_ROLE,
+                footnote_element,
+                id=id,
+                role=role,
+            )
         )
 
+        # Assuming default role
+        role = "http://www.xbrl.org/2003/role/footnote"
+
     language = get_elem_lang_recursive(footnote_element)
+
     if not language:
-        raise ValueError(f"Footnote with id '{id}' does not have a language in scope.")
+        error_repository.upsert(
+            ErrorInstance.create_error_instance(
+                ErrorCode.IXBRL_FOOTNOTE_WITHOUT_LANGUAGE, footnote_element, id=id
+            )
+        )
+
+        # Assuming English Language
+        language = "en"
 
     relevant_content = extract_relevant_content_from_continuation_chain(
-        footnote_element, continuation_chain
+        [footnote_element] + continuation_chain
     )
     content_text = etree.tostring(relevant_content).decode()
 
@@ -59,74 +92,142 @@ def parse_footnote(
 def parse_footnotes(
     footnote_elements: List[_Element],
     continuation_chains: Dict[_Element, List[_Element]],
+    error_repository: ErrorRepository,
     taken_ids: Set[str],
 ) -> Dict[str, BrelFootnote]:
     footnotes: Dict[str, BrelFootnote] = {}
 
     for footnote_element in footnote_elements:
         continuation_chain = continuation_chains.get(footnote_element) or []
-        id, footnote = parse_footnote(footnote_element, continuation_chain, taken_ids)
-        footnotes[id] = footnote
+        id_and_footnote = parse_footnote(
+            footnote_element, continuation_chain, error_repository, taken_ids
+        )
+
+        if id_and_footnote:
+            id, footnote = id_and_footnote
+            footnotes[id] = footnote
 
     return footnotes
 
 
-def parse_relationship(
-    relationship_element: _Element,
-    footnotes: Dict[str, BrelFootnote],
-    fact_repository: FactRepository,
-    taken_ids: Set[str],
-) -> Tuple[Set[str], Set[str], str, str, float]:
+def parse_relationship_from_and_to_refs(
+    relationship_element: _Element, error_repository: ErrorRepository
+) -> Tuple[Set[str], Set[str]]:
     fromRefs = get_str_attribute_optional(relationship_element, "fromRefs")
     if not fromRefs:
-        raise ValueError("All ix:relationship elements must have a fromRef attribute.")
+        error_repository.upsert(
+            ErrorInstance.create_error_instance(
+                ErrorCode.IXBRL_RELATIONSHIP_WITHOUT_FROMREFS,
+                relationship_element,
+            )
+        )
+        fromRefs = ""
 
     toRefs = get_str_attribute_optional(relationship_element, "toRefs")
     if not toRefs:
-        raise ValueError("All ix:relationship elements must have a toRef attribute.")
+        error_repository.upsert(
+            ErrorInstance.create_error_instance(
+                ErrorCode.IXBRL_RELATIONSHIP_WITHOUT_TOREFS,
+                relationship_element,
+            )
+        )
+        toRefs = ""
 
     fromIds, toIds = set(fromRefs.split()), set(toRefs.split())
 
+    return fromIds, toIds
+
+
+def validate_relationship_from_and_to_refs(
+    relationship_element: _Element,
+    fromIds: Set[str],
+    toIds: Set[str],
+    footnotes: Dict[str, BrelFootnote],
+    fact_repository: FactRepository,
+    error_repository: ErrorRepository,
+) -> None:
     # Check if any token is repeated in both fromRefs and toRefs - this is illegal
     if any([fromId in toIds for fromId in fromIds]):
-        raise ValueError("A token in fromRefs is repeated in toRefs.")
-
-    # Check if any token in fromRefs is not a valid fact
-    if any([fact_repository.get_by_id_optional(fromId) is None for fromId in fromIds]):
-        raise ValueError("All tokens in fromRefs should be valid facts.")
-
-    # Check if any token in toRefs is not a valid fact or footnote
-    if any(
-        [
-            fact_repository.get_by_id_optional(toId) is None and toId not in footnotes
-            for toId in toIds
-        ]
-    ):
-        raise ValueError("All tokens in toRefs should be valid facts or footnotes.")
-
-    # Check if all tokens in toRefs are only footnotes or only facts
-    if any([toId in footnotes for toId in toIds]) and not all(
-        [toId in footnotes for toId in toIds]
-    ):
-        raise ValueError(
-            "Only footnotes or only facts should be referenced in toRefs. A mix of both was found."
+        error_repository.upsert(
+            ErrorInstance.create_error_instance(
+                ErrorCode.IXBRL_RELATIONSHIP_REPEATED_ID,
+                relationship_element,
+            )
         )
 
+    # Check if any token in fromRefs is not a valid fact
+    invalid_from_ids = [
+        fromId
+        for fromId in fromIds
+        if fact_repository.get_by_id_optional(fromId) is None
+    ]
+
+    if invalid_from_ids:
+        error_repository.upsert(
+            ErrorInstance.create_error_instance(
+                ErrorCode.IXBRL_RELATIONSHIP_INVALID_FACT_ID_IN_FROMREFS,
+                relationship_element,
+                invalid_ids=str(invalid_from_ids),
+            )
+        )
+
+    # Check if any token in toRefs is not a valid fact or footnote
+    invalid_to_ids = [
+        toId
+        for toId in toIds
+        if fact_repository.get_by_id_optional(toId) is None and toId not in footnotes
+    ]
+    if invalid_to_ids:
+        error_repository.upsert(
+            ErrorInstance.create_error_instance(
+                ErrorCode.IXBRL_RELATIONSHIP_INVALID_FACT_OR_FOOTNOTE_ID_IN_TOREFS,
+                relationship_element,
+                invalid_ids=str(invalid_to_ids),
+            )
+        )
+
+    # Check if all tokens in toRefs are only footnotes or only facts
+    are_footnotes = [toId in footnotes for toId in toIds]
+    if any(are_footnotes) and not all(are_footnotes):
+        error_repository.upsert(
+            ErrorInstance.create_error_instance(
+                ErrorCode.IXBRL_RELATIONSHIP_MIXED_FACT_AND_FOOTNOTES_IN_TOREFS,
+                relationship_element,
+            )
+        )
+
+
+def parse_relationship_attributes(
+    relationship_element: _Element, error_repository: ErrorRepository
+) -> Tuple[str, str, float]:
     arcrole = get_str_attribute_optional(relationship_element, "arcrole")
     if not arcrole:
         arcrole = "http://www.xbrl.org/2003/arcrole/fact-footnote"
     elif not is_valid_uri(arcrole):
-        raise ValueError(
-            f"Relationship with fromRefs '{fromRefs}' and toRefs '{toRefs}' must have a valid URI for its arcrole. Got '{arcrole}'."
+        error_repository.upsert(
+            ErrorInstance.create_error_instance(
+                ErrorCode.IXBRL_RELATIONSHIP_INVALID_ARCROLE,
+                relationship_element,
+                arcrole=arcrole,
+            )
         )
+
+        # Assume default arcrole
+        arcrole = "http://www.xbrl.org/2003/arcrole/fact-footnote"
 
     linkrole = get_str_attribute_optional(relationship_element, "linkRole")
     if not linkrole:
         linkrole = "http://www.xbrl.org/2003/role/link"
     elif not is_valid_uri(linkrole):
-        raise ValueError(
-            f"Relationship with fromRefs '{fromRefs}' and toRefs '{toRefs}' must have a valid URI for its linkRole. Got '{linkrole}'."
+        error_repository.upsert(
+            ErrorInstance.create_error_instance(
+                ErrorCode.IXBRL_RELATIONSHIP_INVALID_LINKROLE,
+                relationship_element,
+                linkrole=linkrole,
+            )
         )
+        # Assume default linkrole
+        linkrole = "http://www.xbrl.org/2003/role/link"
 
     order_str = get_str_attribute_optional(relationship_element, "order")
 
@@ -134,11 +235,42 @@ def parse_relationship(
         try:
             order = float(order_str)
         except ValueError:
-            raise ValueError(
-                f"Relationship with fromRefs '{fromRefs}' and toRefs '{toRefs}' must have a valid floating-point value for its order. Got '{order}'."
+            error_repository.upsert(
+                ErrorInstance.create_error_instance(
+                    ErrorCode.IXBRL_RELATIONSHIP_INVALID_ORDER,
+                    relationship_element,
+                    order=order_str,
+                )
             )
-    else:
+
+    if not order:
         order = 1.0
+
+    return (arcrole, linkrole, order)
+
+
+def parse_relationship(
+    relationship_element: _Element,
+    footnotes: Dict[str, BrelFootnote],
+    fact_repository: FactRepository,
+    error_repository: ErrorRepository,
+) -> Optional[Tuple[Set[str], Set[str], str, str, float]]:
+    fromIds, toIds = parse_relationship_from_and_to_refs(
+        relationship_element, error_repository
+    )
+
+    validate_relationship_from_and_to_refs(
+        relationship_element,
+        fromIds,
+        toIds,
+        footnotes,
+        fact_repository,
+        error_repository,
+    )
+
+    arcrole, linkrole, order = parse_relationship_attributes(
+        relationship_element, error_repository
+    )
 
     return (fromIds, toIds, arcrole, linkrole, order)
 
@@ -247,52 +379,79 @@ def parse_relationships(
     relationship_elements: List[_Element],
     footnotes: Dict[str, BrelFootnote],
     fact_repository: FactRepository,
-    taken_ids: Set[str],
+    error_repository: ErrorRepository,
 ) -> List[FootnoteNetwork]:
     arcs = []
 
     for relationship_element in relationship_elements:
-        arcs.append(
-            parse_relationship(
-                relationship_element, footnotes, fact_repository, taken_ids
-            )
+        relationship = parse_relationship(
+            relationship_element, footnotes, fact_repository, error_repository
         )
+
+        if relationship:
+            arcs.append(relationship)
 
     footnote_networks = build_footnote_networks(arcs, footnotes, fact_repository)
     return footnote_networks
 
 
-def parse_role_reference(role_ref_element: _Element) -> None:
+def parse_role_reference(
+    role_ref_element: _Element, error_repository: ErrorRepository
+) -> None:
     link_type = get_str_attribute_optional(role_ref_element, "xlink:linktype")
     if link_type != "simple":
-        raise ValueError(
-            f"All (arc)role references must have linktype 'simple'. Got '{link_type}'."
+        error_repository.upsert(
+            ErrorInstance.create_error_instance(
+                ErrorCode.ROLEREF_INVALID_LINKTYPE, role_ref_element, linktype=link_type
+            )
         )
-
     href = get_str_attribute_optional(role_ref_element, "xlink:href")
     if not href:
-        raise ValueError("All (arc)role references must have an href attribute.")
+        error_repository.upsert(
+            ErrorInstance.create_error_instance(
+                ErrorCode.ROLEREF_MISSING_HREF_ATTRIBUTE,
+                role_ref_element,
+            )
+        )
     elif not is_valid_uri(href):
-        raise ValueError(f"xlink:href can only take valid URI values. Got '{href}'.")
+        error_repository.upsert(
+            ErrorInstance.create_error_instance(
+                ErrorCode.ROLEREF_INVALID_HREF_ATTRIBUTE, role_ref_element, href=href
+            )
+        )
 
     role_uri = get_str_attribute_optional(role_ref_element, "roleURI")
     if not role_uri:
-        raise ValueError("All (arc)role references must have a roleURI attribute.")
+        error_repository.upsert(
+            ErrorInstance.create_error_instance(
+                ErrorCode.ROLEREF_MISSING_ROLE_URI_ATTRIBUTE, role_ref_element
+            )
+        )
     elif not is_valid_uri(role_uri):
-        raise ValueError(f"roleURI can only take valid URI values. Got '{role_uri}'.")
+        error_repository.upsert(
+            ErrorInstance.create_error_instance(
+                ErrorCode.ROLEREF_INVALID_ROLE_URI_ATTRIBUTE,
+                role_ref_element,
+                role_uri=role_uri,
+            )
+        )
 
     role = get_str_attribute_optional(role_ref_element, "xlink:role")
     if role != None and role == "":
-        raise ValueError(
-            "If the xlink:role attribute is present in an (arc)role reference, it must not be empty."
+        error_repository.upsert(
+            ErrorInstance.create_error_instance(
+                ErrorCode.ROLEREF_EMPTY_ROLE_ATTRIBUTE, role_ref_element
+            )
         )
 
 
 def parse_role_references(
-    role_ref_elements: List[_Element], arcrole_ref_elements: List[_Element]
+    role_ref_elements: List[_Element],
+    arcrole_ref_elements: List[_Element],
+    error_repository: ErrorRepository,
 ) -> None:
     for role_ref_element in role_ref_elements + arcrole_ref_elements:
-        parse_role_reference(role_ref_element)
+        parse_role_reference(role_ref_element, error_repository)
 
 
 def parse_footnote_networks_xhtml(
@@ -300,13 +459,18 @@ def parse_footnote_networks_xhtml(
     footnote_network_elements: xhtml_footnote_network_elements.XHTMLFootnoteNetworkElements,
 ) -> None:
     fact_repository = context.get_fact_repository()
+    error_repository = context.get_error_repository()
+
     parse_role_references(
         footnote_network_elements.role_ref_elements,
         footnote_network_elements.arcrole_ref_elements,
+        error_repository,
     )
+
     footnotes = parse_footnotes(
         footnote_network_elements.footnote_elements,
         footnote_network_elements.continuation_chains,
+        error_repository,
         footnote_network_elements.taken_ids,
     )
 
@@ -314,7 +478,7 @@ def parse_footnote_networks_xhtml(
         footnote_network_elements.relationship_elements,
         footnotes,
         fact_repository,
-        footnote_network_elements.taken_ids,
+        error_repository,
     )
 
     network_repository = context.get_network_repository()

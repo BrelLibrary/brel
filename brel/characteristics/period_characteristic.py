@@ -17,6 +17,7 @@ A duration consists of two `datetime.date` instances, a start date and an end da
 """
 
 import datetime
+from typing import Optional
 
 import dateutil.parser
 
@@ -113,12 +114,15 @@ class PeriodCharacteristic(ICharacteristic):
 
     # Internal methods
     @staticmethod
-    def _is_date(date: str) -> bool:
+    def _is_date(date: Optional[str]) -> bool:
         """
         Checks if a string is a valid date.
         :param date: the string to check
         :returns bool: True if the string is a valid date, False otherwise
         """
+        if not date:
+            return False
+
         try:
             dateutil.parser.parse(date)
             return True
