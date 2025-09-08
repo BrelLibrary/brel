@@ -44,13 +44,13 @@ jobs:
           make install 
           make lint
 
-  tests_linux:
+  tests:
     needs: linter
     strategy:
       fail-fast: false
       matrix:
         python-version: ['3.12']
-        os: [ubuntu-latest]
+        os: [ubuntu-latest, macos-latest, windows-latest]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
@@ -61,28 +61,28 @@ jobs:
         run: |
           make install
           make test
-      - name: "Upload coverage to Codecov"
-        uses: codecov/codecov-action@v5
+      # - name: "Upload coverage to Codecov"
+      #   uses: codecov/codecov-action@v5
         # with:
         #   fail_ci_if_error: true
 
-  tests_mac:
-    needs: linter
-    strategy:
-      fail-fast: false
-      matrix:
-        python-version: ['3.12']
-        os: [macos-latest]
-    runs-on: ${{ matrix.os }}
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v4
-        with:
-          python-version: ${{ matrix.python-version }}
-      - name: Run tests
-        run: | 
-          make install
-          make test
+  # tests_mac:
+  #   needs: linter
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       python-version: ['3.12']
+  #       os: [macos-latest]
+  #   runs-on: ${{ matrix.os }}
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: actions/setup-python@v4
+  #       with:
+  #         python-version: ${{ matrix.python-version }}
+  #     - name: Run tests
+  #       run: | 
+  #         make install
+  #         make test
 
   # tests_win:
   #   needs: linter
