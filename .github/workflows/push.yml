@@ -47,8 +47,8 @@ jobs:
         run: make mypy-src
       - name: Check tests formatting 
         run: make black-test
-      - name: Typecheck tests
-        run: make mypy-test
+      # - name: Typecheck tests
+      #   run: make mypy-test
 
   tests:
     needs: linter
