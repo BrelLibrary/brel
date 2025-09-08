@@ -40,8 +40,9 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - name: Run linter
-        run: make install
-        run: make lint
+        run: |
+          make install 
+          make lint
 
   tests_linux:
     needs: linter
@@ -57,8 +58,9 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - name: Run tests
-        run: make install
-        run: make test
+        run: |
+          make install
+          make test
       - name: "Upload coverage to Codecov"
         uses: codecov/codecov-action@v5
         # with:
@@ -78,8 +80,9 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - name: Run tests
-        run: make install
-        run: make test
+        run: | 
+          make install
+          make test
 
   # tests_win:
   #   needs: linter
