@@ -61,8 +61,7 @@ def load_idpts():
         response = requests.get(uri, headers={"User-Agent": "Mozilla/5.0"})
         if response.status_code != 200:
             raise Exception(
-                f"Could not download the interactive data test suite from {uri}. \n" +
-                response.content
+                f"Could not download the interactive data test suite from {uri}. \n"
             )
         # unzip the file into the folder "interactive_data_test_suite" relative to current_dir
         with open("idpts.zip", "wb") as file:
@@ -94,15 +93,15 @@ def run_idpts() -> None:
     idpts_testcases_filename = "testcases.xml"
 
     testcases_etree = cast(
-        lxml.etree._ElementTree, 
-        lxml.etree.parse(idpts_testcases_folder + idpts_testcases_filename)
+        lxml.etree._ElementTree,
+        lxml.etree.parse(idpts_testcases_folder + idpts_testcases_filename),
     )
 
     testcase_elements = testcases_etree.findall("//testcase")
 
     testcase_filenames = cast(
-        List[str], 
-        [testcase_element.get("uri") for testcase_element in testcase_elements]
+        List[str],
+        [testcase_element.get("uri") for testcase_element in testcase_elements],
     )
 
     testcase_filenames = list(filter(filter_testcase_files, testcase_filenames))
@@ -114,7 +113,7 @@ def run_idpts() -> None:
     for testcase_filename in testcase_filenames:
         testcase_etree = cast(
             lxml.etree._ElementTree,
-            lxml.etree.parse(idpts_testcases_folder + testcase_filename)
+            lxml.etree.parse(idpts_testcases_folder + testcase_filename),
         )
 
         testcase_elem = testcase_etree.getroot()
@@ -145,18 +144,19 @@ def run_idpts() -> None:
 
             if not data:
                 continue
-            
+
             instance = data.find("{*}instance")
             if not instance:
                 continue
-            
+
             instance_filename = instance.text
 
             if not instance_filename:
                 continue
 
             linkbase_filenames = [
-                linkbase.text for linkbase in data.findall("{*}linkbase")
+                linkbase.text
+                for linkbase in data.findall("{*}linkbase")
                 if linkbase.text
             ]
 

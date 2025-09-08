@@ -81,6 +81,13 @@ test-dev:		 ## Run tests.
 test:
 	$(ENV_PREFIX)pytest -v --cov-config .coveragerc --cov=brel -l --tb=short --maxfail=1
 
+.PHONY: ci
+ci:
+	make install
+	make lint
+	make test
+	make remove
+
 .PHONY: watch
 watch:            ## Run tests on every change.
 	ls **/**.py | entr $(ENV_PREFIX)pytest -s -vvv -l --tb=long --maxfail=1 tests/

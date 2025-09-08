@@ -13,6 +13,7 @@ from brel.brel_component import Component
 from brel.brel_filing import Filing
 from brel.parsers.utils.optional_utils import get_or_raise
 
+
 def test_component_getters():
     filing = Filing.open("tests/end_to_end_tests/hand_made_report/ete_filing")
     balance_component = filing.get_component("http://foo/role/balance")

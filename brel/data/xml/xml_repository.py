@@ -24,7 +24,7 @@ class XMLRepository:
     def normalize_uri(self, uri: str) -> str:
         if uri.startswith("http"):
             return uri
-        
+
         return uri.replace("\\", "/")
 
     def has_etree(self, uri: str) -> bool:

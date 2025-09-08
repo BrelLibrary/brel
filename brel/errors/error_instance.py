@@ -73,7 +73,13 @@ class ErrorInstance:
         return self.__hint
 
     def get_full_error_code(self):
-        return self.__severity.value + "-" + str(self.__area.value) + "-" + self.__numeric_code
+        return (
+            self.__severity.value
+            + "-"
+            + str(self.__area.value)
+            + "-"
+            + self.__numeric_code
+        )
 
     def __str__(self):
         return self.get_full_error_code() + ": " + self.get_message()
