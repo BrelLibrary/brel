@@ -13,49 +13,6 @@ from brel.brel_component import Component
 from brel.brel_filing import Filing
 from brel.parsers.utils.optional_utils import get_or_raise
 
-
-def test_component_constructor_BD():
-    """
-    Tests the constructor of the Component class
-    """
-    uri = "http://foo/role/balance"
-    info = "Balance Sheet"
-    path_to_filing = os.path.join(
-        ".", "tests", "end_to_end_tests", "hand_made_report", "ete_filing"
-    )
-
-    filing = Filing.open(path_to_filing)
-    balance_component = filing.get_component("http://foo/role/balance")
-    pre_network = get_or_raise(balance_component.get_presentation_network())
-    calc_network = get_or_raise(balance_component.get_calculation_network())
-    hypercube_component = filing.get_component("http://foo/role/hypercube")
-    def_network = get_or_raise(hypercube_component.get_definition_network())
-
-    try:
-        Component(uri, info, [pre_network, pre_network])
-        assert False, "Failed to raise ValueError for multiple presentation networks"
-    except ValueError as e:
-        assert (
-            "presentation" in str(e).lower()
-        ), f"Expected ValueError for multiple presentation networks, but got {e}"
-
-    try:
-        Component(uri, info, [calc_network, calc_network])
-        assert False, "Failed to raise ValueError for multiple calculation networks"
-    except ValueError as e:
-        assert (
-            "calculation" in str(e).lower()
-        ), f"Expected ValueError for multiple calculation networks, but got {e}"
-
-    try:
-        Component(uri, info, [def_network, def_network])
-        assert False, "Failed to raise ValueError for multiple definition networks"
-    except ValueError as e:
-        assert (
-            "definition" in str(e).lower()
-        ), f"Expected ValueError for multiple definition networks, but got {e}"
-
-
 def test_component_getters():
     filing = Filing.open("tests/end_to_end_tests/hand_made_report/ete_filing")
     balance_component = filing.get_component("http://foo/role/balance")

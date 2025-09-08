@@ -59,24 +59,17 @@ class XMLService:
         if self.__file_service.has_file(uri):
             with self.__file_service.get_file(uri) as file:
                 self.__xml_repository.add_etree(uri, parser(file))
-            with self.__file_service.get_file(uri) as file:
-                for reference_uri in self.__extract_references(file.read()):
-                    self.add_etree_recursive(reference_uri, referencing_uri=uri)
-
         elif is_uri_remote:
             with self.__file_service.download_and_add_file(uri) as file:
                 self.__xml_repository.add_etree(uri, parser(file))
-            with self.__file_service.download_and_add_file(uri) as file:
-                for reference_uri in self.__extract_references(file.read()):
-                    self.add_etree_recursive(reference_uri, referencing_uri=uri)
-
         else:
             local_filepath = urllib.parse.urlparse(uri).path
             with self.__file_service.copy_and_add_file(local_filepath) as file:
                 self.__xml_repository.add_etree(uri, parser(file))
-            with self.__file_service.copy_and_add_file(local_filepath) as file:
-                for reference_uri in self.__extract_references(file.read()):
-                    self.add_etree_recursive(reference_uri, referencing_uri=uri)
+
+        with self.__file_service.get_file(uri) as file:
+            for reference_uri in self.__extract_references(file.read()):
+                self.add_etree_recursive(reference_uri, referencing_uri=uri)
 
     def __extract_references(self, content: bytes) -> set[str]:
         reference_uris: set[str] = set()

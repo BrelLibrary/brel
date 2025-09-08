@@ -71,13 +71,15 @@ lint:
 	make lint-src
 	make lint-test
 
-.PHONY: test
-test:		 ## Run tests.
-	make install
+.PHONY: test-dev
+test-dev:		 ## Run tests.
 	$(ENV_PREFIX)pytest -v --cov-config .coveragerc --cov=brel -l --tb=short
 	$(ENV_PREFIX)coverage xml
 	$(ENV_PREFIX)coverage html
-	make remove
+
+.PHONY: test
+test:
+	$(ENV_PREFIX)pytest -v --cov-config .coveragerc --cov=brel -l --tb=short --maxfail=1
 
 .PHONY: watch
 watch:            ## Run tests on every change.

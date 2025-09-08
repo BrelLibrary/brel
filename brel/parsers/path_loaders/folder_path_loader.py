@@ -25,14 +25,17 @@ class FolderPathLoader(PathLoader):
         return os.path.isdir(path)
 
     def load(self, path: str) -> list[str]:
-        """
+        """ 
         Loads all files from the specified directory recursively.
 
         :param path: The directory path to load files from.
         :returns: A list of file paths in the directory that are either .xml or .xhtml files.
         """
+        splitting_char = '/' if '/' in path else '\\'
+
+        path_parts = path.split(splitting_char)
         files_and_folders = [
-            os.path.join(path, dir_item) for dir_item in os.listdir(path)
+           '/'.join(path_parts + [dir_item]) for dir_item in os.listdir(path)
         ]
 
         files = [

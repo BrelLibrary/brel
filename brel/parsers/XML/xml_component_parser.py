@@ -93,6 +93,7 @@ def parse_component_from_xml(
         network
         for network in networks_in_component
         if isinstance(network, DefinitionNetwork)
+        and not network.is_physical()
     ]
 
     if len(presentation_networks) > 1:
