@@ -30,11 +30,46 @@ fmt:              ## Format code using black & isort.
 	$(ENV_PREFIX)black brel/
 	$(ENV_PREFIX)black tests/
 
-.PHONY: lint
-lint:             ## Run pep8, black, mypy linters.
+.PHONY: black-src
+black-src:
 	$(ENV_PREFIX)black --check brel/
+
+.PHONY: black-test
+black-test:
 	$(ENV_PREFIX)black --check tests/
+
+.PHONY: black
+black:         ## Run pep8, black, mypy linters.
+	make black-src
+	make black-test
+
+.PHONY: mypy-src
+mypy-src:
 	$(ENV_PREFIX)mypy --ignore-missing-imports brel/
+
+.PHONY: mypy-test
+mypy-test:
+	$(ENV_PREFIX)mypy --ignore-missing-imports tests/
+
+.PHONY: mypy
+mypy:
+	make mypy-src
+	make mypy-test
+
+.PHONY: lint-src
+lint-src:
+	make black-src
+	make mypy-src
+
+.PHONY: lint-test
+lint-test:
+	make black-test
+	make mypy-test
+
+.PHONY: lint
+lint:
+	make lint-src
+	make lint-test
 
 .PHONY: test
 test:		 ## Run tests.
