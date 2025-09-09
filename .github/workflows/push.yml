@@ -66,6 +66,7 @@ jobs:
       - name: Run tests
         run: |
           make install
+          pwd
           ls
           make test-ci
       # - name: "Upload coverage to Codecov"

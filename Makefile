@@ -79,13 +79,13 @@ test-dev:		 ## Run tests.
 
 .PHONY: test-ci
 test-ci:
-	cd .. && $(ENV_PREFIX)pytest --cov=brel --tb=line --maxfail=1
+	cd .. && $(ENV_PREFIX)pytest --tb=line --maxfail=1
 
 .PHONY: ci
 ci:
 	make install
 	make lint
-	make test
+	make test-ci
 	make remove
 
 .PHONY: watch
