@@ -77,9 +77,9 @@ test-dev:		 ## Run tests.
 	$(ENV_PREFIX)coverage xml
 	$(ENV_PREFIX)coverage html
 
-.PHONY: test
-test:
-	$(ENV_PREFIX)pytest --cov=brel --tb=line --maxfail=1
+.PHONY: test-ci
+test-ci:
+	PYTHONPATH=.. $(ENV_PREFIX)pytest --cov=brel --tb=line --maxfail=1
 
 .PHONY: ci
 ci:
