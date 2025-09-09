@@ -71,15 +71,15 @@ lint:
 	make lint-src
 	make lint-test
 
-.PHONY: test-dev
-test-dev:		 ## Run tests.
+.PHONY: test
+test:		 ## Run tests.
 	$(ENV_PREFIX)pytest -v --cov=brel -l --tb=short
 	$(ENV_PREFIX)coverage xml
 	$(ENV_PREFIX)coverage html
 
 .PHONY: test-ci
 test-ci:
-	cd .. && $(ENV_PREFIX)pytest --tb=line --maxfail=1
+	$(ENV_PREFIX)pytest --tb=line --maxfail=1
 
 .PHONY: ci
 ci:
