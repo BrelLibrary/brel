@@ -79,7 +79,7 @@ test-dev:		 ## Run tests.
 
 .PHONY: test-ci
 test-ci:
-	PYTHONPATH=.. $(ENV_PREFIX)pytest --cov=brel --tb=line --maxfail=1
+	cd.. && $(ENV_PREFIX)pytest --cov=brel --tb=line --maxfail=1
 
 .PHONY: ci
 ci:
