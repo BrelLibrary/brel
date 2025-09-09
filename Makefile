@@ -79,7 +79,7 @@ test:		 ## Run tests.
 
 .PHONY: test-ci
 test-ci:
-	$(ENV_PREFIX)pytest --tb=line --maxfail=1
+	$(ENV_PREFIX)pytest --cov=brel --tb=line --disable-warnings --maxfail=1
 
 .PHONY: ci
 ci:
