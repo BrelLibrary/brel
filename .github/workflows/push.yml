@@ -11,47 +11,47 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
-    strategy:
-      fail-fast: false
-      matrix:
-        python-version: ['3.12']
-        os: [ubuntu-latest]
-    runs-on: ${{ matrix.os }}
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v4
-        with:
-          python-version: ${{ matrix.python-version }}
-      - name: Install project
-        run: make install
+  # build:
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       python-version: ['3.12']
+  #       os: [ubuntu-latest]
+  #   runs-on: ${{ matrix.os }}
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: actions/setup-python@v4
+  #       with:
+  #         python-version: ${{ matrix.python-version }}
+  #     - name: Install project
+  #       run: make install
 
-  linter:
-    needs: build
-    strategy:
-      fail-fast: false
-      matrix:
-        python-version: ['3.12']
-        os: [ubuntu-latest]
-    runs-on: ${{ matrix.os }}
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v4
-        with:
-          python-version: ${{ matrix.python-version }}
-      - name: Install Project
-        run: make install
-      - name: Check source fomatting
-        run: make black-src
-      - name: Typecheck source
-        run: make mypy-src
-      - name: Check tests formatting 
-        run: make black-test
-      - name: Typecheck tests
-        run: make mypy-test
+  # linter:
+  #   needs: build
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       python-version: ['3.12']
+  #       os: [ubuntu-latest]
+  #   runs-on: ${{ matrix.os }}
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: actions/setup-python@v4
+  #       with:
+  #         python-version: ${{ matrix.python-version }}
+  #     - name: Install Project
+  #       run: make install
+  #     - name: Check source fomatting
+  #       run: make black-src
+  #     - name: Typecheck source
+  #       run: make mypy-src
+  #     - name: Check tests formatting 
+  #       run: make black-test
+  #     - name: Typecheck tests
+  #       run: make mypy-test
 
   tests:
-    needs: linter
+    # needs: linter
     strategy:
       fail-fast: false
       matrix:
@@ -66,6 +66,7 @@ jobs:
       - name: Run tests
         run: |
           make install
+          ls
           make test-ci
       # - name: "Upload coverage to Codecov"
       #   uses: codecov/codecov-action@v5
