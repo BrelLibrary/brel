@@ -67,10 +67,10 @@ jobs:
         run: |
           make install
           make test-ci
-      - name: "Upload coverage to Codecov"
-        uses: codecov/codecov-action@v5
-        with:
-          fail_ci_if_error: false
+      # - name: "Upload coverage to Codecov"
+      #   uses: codecov/codecov-action@v5
+      #   with:
+      #     fail_ci_if_error: false
 
   # tests_mac:
   #   needs: linter
