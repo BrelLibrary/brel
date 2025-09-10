@@ -195,8 +195,8 @@ def get_elem_lang_recursive(xml_element: _Element | None) -> Optional[str]:
 def clone_element_without_children(element: _Element) -> _Element:
     new_element = deepcopy(element)
 
-    children = [child for child in element]
+    children = [child for child in new_element]
     for child in children:
-        element.remove(child)
+        new_element.remove(child)
 
     return new_element

@@ -1,10 +1,11 @@
-from typing import Optional, Self
+from typing import Optional, Self, cast
 from lxml import etree
 
 from brel.errors.area import Area
 from brel.errors.error_code import ErrorCode
 from brel.errors.error_registry import error_registry
 from brel.errors.severity import Severity
+from brel.qnames.qname import QName
 
 
 class ErrorInstance:
@@ -16,6 +17,7 @@ class ErrorInstance:
         message: str,
         context: Optional[etree._Element],
         hint: Optional[str],
+        xbrl_error_code: Optional[QName],
     ) -> None:
         self.__severity = severity
         self.__area = area
@@ -23,6 +25,7 @@ class ErrorInstance:
         self.__message = message
         self.__context = context
         self.__hint = hint
+        self.__xbrl_error_code = xbrl_error_code
 
     @classmethod
     def create_error_instance(
@@ -44,12 +47,17 @@ class ErrorInstance:
             )
 
         error = cls(
-            severity=Severity(error_template["severity"]),
-            area=Area(error_template["area"]),
-            numeric_code=str(error_template["numeric_code"]),
+            severity=cast(Severity, error_template["severity"]),
+            area=cast(Area, error_template["area"]),
+            numeric_code=cast(str, error_template["numeric_code"]),
             message=formatted_message,
             context=error_context,
-            hint=str(error_template["hint"]) if "hint" in error_template else None,
+            hint=cast(str, error_template["hint"])
+            if "hint" in error_template
+            else None,
+            xbrl_error_code=cast(QName, error_template["xbrl_error_code"])
+            if "xbrl_error_code" in error_template
+            else None,
         )
 
         return error
@@ -72,13 +80,23 @@ class ErrorInstance:
     def get_hint(self):
         return self.__hint
 
+    def get_xbrl_error_code(self):
+        return self.__xbrl_error_code
+
     def get_full_error_code(self):
+        xbrl_error_code_string = (
+            f" [{self.get_xbrl_error_code().clark_notation()}]"
+            if self.get_xbrl_error_code()
+            else ""
+        )
+
         return (
             self.__severity.value
             + "-"
             + str(self.__area.value)
             + "-"
             + self.__numeric_code
+            + xbrl_error_code_string
         )
 
     def __str__(self):

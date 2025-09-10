@@ -23,6 +23,7 @@ from brel.data.factory import (
     create_characteristic_repository,
     create_xml_repository,
     create_context_repository,
+    create_uri_rewrite_repository,
 )
 from brel.data.file.file_repository import FileRepository
 from brel.data.namespace.namespace_repository import NamespaceRepository
@@ -93,6 +94,11 @@ class FilingContext:
             "namespace_repository", lambda: create_namespace_repository()
         )
 
+    def get_uri_rewrite_repository(self):
+        return self.__lazy_cache(
+            "uri_rewrite_repository", lambda: create_uri_rewrite_repository()
+        )
+
     def get_file_repository(self) -> FileRepository:
         return self.__lazy_cache("file_repository", lambda: create_file_repository())
 
@@ -109,7 +115,9 @@ class FilingContext:
         return self.__lazy_cache(
             "xml_service",
             lambda: create_xml_service(
-                self.get_file_service(), self.get_xml_repository()
+                self.get_file_service(),
+                self.get_xml_repository(),
+                self.get_uri_rewrite_repository(),
             ),
         )
 

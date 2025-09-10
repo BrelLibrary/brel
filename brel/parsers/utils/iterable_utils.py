@@ -20,7 +20,7 @@ def get_first[T](collection: Iterable[T], error_message: str) -> T:
     :raises ValueError: If the collection is empty.
     """
     # TODO schmidi: pass ValueError instead of error_message
-    if not collection:
+    if collection is None:
         raise ValueError(error_message)
     return next(iter(collection))
 

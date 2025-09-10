@@ -204,13 +204,16 @@ def parse_facts(
             report_element = report_element_repository.get_typed_by_qname(
                 concept_qname, Concept
             )
-        except ValueError:
+        except Exception:
             error = ErrorInstance.create_error_instance(
                 ErrorCode.IXBRL_FACT_INVALID_CONCEPT,
                 fact_element,
                 concept_name=concept_name,
                 fact_id=str(fact_id),
             )
+
+            error_repository.upsert(error)
+            continue
 
         else:
             concept_characteristic = ConceptCharacteristic(report_element)

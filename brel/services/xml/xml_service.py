@@ -13,6 +13,7 @@ import urllib.parse
 from lxml.etree import _ElementTree  # type: ignore
 import urllib
 
+from brel.data.uri_rewrite.uri_rewrite_repository import URIRewriteRepository
 from brel.data.xml.xml_repository import XMLRepository
 from brel.services.file.file_service import FileService
 from brel.services.xml.xml_file_parser_resolver import XMLFileParserResolver
@@ -23,9 +24,11 @@ class XMLService:
         self,
         file_service: FileService,
         xml_repository: XMLRepository,
+        uri_rewrite_repository: URIRewriteRepository,
         parser_resolver: XMLFileParserResolver,
     ) -> None:
         self.__file_service = file_service
+        self.__uri_rewrite_repository = uri_rewrite_repository
         self.__xml_repository = xml_repository
         self.__parser_resolver = parser_resolver
 
@@ -37,7 +40,6 @@ class XMLService:
         :param uri: The URI of the XML file to add.
         :param referencing_uri: The URI of the file that references this XML file.
         the referencing_uri is useful if a remote file references local files (e.g. http://example.com/file.xml has a reference to other_file.xml)
-
         """
         is_uri_remote = uri.startswith("http") or referencing_uri.startswith("http")
         if not is_uri_remote:
@@ -50,6 +52,9 @@ class XMLService:
             )
         else:
             uri = urllib.parse.urljoin(referencing_uri, uri)
+
+        uri = self.__uri_rewrite_repository.rewrite(uri)
+        is_uri_remote = uri.startswith("http") or referencing_uri.startswith("http")
 
         if self.__xml_repository.has_etree(uri):
             return

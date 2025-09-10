@@ -37,6 +37,10 @@ from brel.data.component.component_repository import ComponentRepository
 from brel.data.component.in_memory_component_repository import (
     InMemoryComponentRepository,
 )
+from brel.data.uri_rewrite.in_memory_uri_rewrite_repository import (
+    InMemoryURIRewriteRepository,
+)
+from brel.data.uri_rewrite.uri_rewrite_repository import URIRewriteRepository
 from brel.data.xml.xml_repository import XMLRepository
 
 
@@ -83,3 +87,7 @@ def create_file_repository() -> FileRepository:
 
 def create_xml_repository() -> XMLRepository:
     return XMLRepository()
+
+
+def create_uri_rewrite_repository() -> URIRewriteRepository:
+    return InMemoryURIRewriteRepository()

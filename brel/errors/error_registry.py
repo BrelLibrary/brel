@@ -3,9 +3,11 @@ from typing import Any, Dict, Optional, Union
 from brel.errors.area import Area
 from brel.errors.error_code import ErrorCode
 from brel.errors.severity import Severity
+from brel.qnames.qname import QName
 
+error_namespaces = {"tpe": "http://xbrl.org/2016/taxonomy-package/errors"}
 
-error_registry: Dict[ErrorCode, Dict[str, Union[Severity, Area, str]]] = {
+error_registry: Dict[ErrorCode, Dict[str, Union[Severity, Area, str, QName]]] = {
     ErrorCode.MISSING_CONTEXT_PERIOD: {
         "severity": Severity.ERROR,
         "area": Area.GENERAL_INSTANCE,
@@ -538,6 +540,33 @@ error_registry: Dict[ErrorCode, Dict[str, Union[Severity, Area, str]]] = {
         "numeric_code": "105",
         "message": "If the xlink:role attribute is present in a link:(arc)roleRef element, it must not be empty.",
         "hint": "Either remove or fill in the xlink:role attribute.",
+    },
+    # Taxonomy package
+    ErrorCode.INVALID_CATALOG_ROOT_NODE: {
+        "severity": Severity.ERROR,
+        "area": Area.TAXONOMY_PACKAGE,
+        "numeric_code": "000",
+        "message": "The root node of the catalog should be a <{{urn:oasis:names:tc:entity:xmlns:xml:catalog}}catalog> element.",
+        "hint": "Check the root node of the catalog and its namespace.",
+        "xbrl_error_code": QName(error_namespaces["tpe"], "tpe", "invalidCatalogFile"),
+    },
+    ErrorCode.REWRITE_URI_MISSING_ATTRIBUTE: {
+        "severity": Severity.ERROR,
+        "area": Area.TAXONOMY_PACKAGE,
+        "numeric_code": "001",
+        "message": "The rewriteURI element is missing either a 'uriStaratString' or a 'rewritePrefix' attribute.",
+        "hint": "Check the attributes of the rewriteURI element.",
+        "xbrl_error_code": QName(error_namespaces["tpe"], "tpe", "invalidCatalogFile"),
+    },
+    ErrorCode.MULTIPLE_REWRITE_URIS_FOR_START_STRING: {
+        "severity": Severity.ERROR,
+        "area": Area.TAXONOMY_PACKAGE,
+        "numeric_code": "002",
+        "message": "The catalog contains multiple rewriteURI elements with equivalent 'uriStartString' URIs: {uri}",
+        "hint": "Check the rewriteURI elements for typos or duplication.",
+        "xbrl_error_code": QName(
+            error_namespaces["tpe"], "tpe", "multipleRewriteURIsForStartString"
+        ),
     },
     # Validation
     ErrorCode.MULTIPLE_PRESENTATION_NETWORKS_IN_COMPONENT: {

@@ -123,7 +123,7 @@ class Filing:
 
     def get_errors(self) -> list[ErrorInstance]:
         """
-        :return list[Exception]: a list of all errors that occurred during parsing.
+        :returns list[Exception]: a list of all errors that occurred during parsing.
         """
         return self.__context.get_error_repository().get_all()
 

@@ -14,6 +14,7 @@ from requests import Session
 from brel.data.file.file_repository import FileRepository
 from brel.data.namespace.namespace_repository import NamespaceRepository
 from brel.data.report_element.report_element_repository import ReportElementRepository
+from brel.data.uri_rewrite.uri_rewrite_repository import URIRewriteRepository
 from brel.data.xml.xml_repository import XMLRepository
 from brel.services.file.file_service import FileService
 from brel.services.report_element.report_element_service import ReportElementService
@@ -38,9 +39,12 @@ def create_file_service(
 def create_xml_service(
     file_service: FileService,
     xml_repository: XMLRepository,
+    uri_rewrite_repository: URIRewriteRepository,
 ) -> XMLService:
     parser_resolver = create_xml_file_parser_resolver()
-    return XMLService(file_service, xml_repository, parser_resolver)
+    return XMLService(
+        file_service, xml_repository, uri_rewrite_repository, parser_resolver
+    )
 
 
 def create_xml_file_parser_resolver() -> XMLFileParserResolver:
