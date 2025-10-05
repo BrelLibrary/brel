@@ -16,7 +16,7 @@ class InMemoryErrorRepository(ErrorRepository):
     def __init__(self) -> None:
         self.errors: list[ErrorInstance] = []
 
-    def upsert(self, error: ErrorInstance) -> None:
+    def insert_premade(self, error: ErrorInstance) -> None:
         self.errors.append(error)
 
     def get_all(self) -> list[ErrorInstance]:

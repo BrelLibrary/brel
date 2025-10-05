@@ -5,7 +5,7 @@ from lxml.etree import _Element
 
 from brel.data.errors.error_repository import ErrorRepository
 from brel.errors.error_code import ErrorCode
-from brel.errors.error_instance import ErrorInstance
+
 from brel.parsers.utils.lxml_utils import (
     clone_element_without_children,
     get_prefix_localname_tag,
@@ -13,7 +13,6 @@ from brel.parsers.utils.lxml_utils import (
     get_str_attribute_optional,
     has_str_attribute,
 )
-from brel.qnames.qname_utils import qname_from_str
 
 
 def build_continuation_element_index(
@@ -25,22 +24,17 @@ def build_continuation_element_index(
     for continuation_element in continuation_elements:
         id = get_str_attribute_optional(continuation_element, "id")
         if id is None:
-            error_repository.upsert(
-                ErrorInstance.create_error_instance(
-                    ErrorCode.IXBRL_CONTINUATION_WITHOUT_ID,
-                    continuation_element,
-                )
+            error_repository.insert(
+                ErrorCode.IXBRL_CONTINUATION_WITHOUT_ID, continuation_element
             )
 
             continue
 
         if id in taken_ids:
-            error_repository.upsert(
-                ErrorInstance.create_error_instance(
-                    ErrorCode.IXBRL_DUPLICATE_ELEMENT_ID,
-                    continuation_element,
-                    id=id,
-                )
+            error_repository.insert(
+                ErrorCode.IXBRL_DUPLICATE_ELEMENT_ID,
+                continuation_element,
+                id=id,
             )
 
         taken_ids.add(id)
@@ -79,24 +73,20 @@ def create_continuation_chains(
         continuation_chain = []
         while continued_at != None:
             if continued_at in used_continuation_ids:
-                error_repository.upsert(
-                    ErrorInstance.create_error_instance(
-                        ErrorCode.IXBRL_REUSED_CONTINUATION,
-                        element,
-                        id=continued_at,
-                        element_id=get_str_attribute_optional(element, "id"),
-                    )
+                error_repository.insert(
+                    ErrorCode.IXBRL_REUSED_CONTINUATION,
+                    element,
+                    id=continued_at,
+                    element_id=get_str_attribute_optional(element, "id"),
                 )
 
             continuation = continuation_element_index.get(continued_at)
             if continuation is None:
-                error_repository.upsert(
-                    ErrorInstance.create_error_instance(
-                        ErrorCode.IXBRL_INVALID_CONTINUATION_ID,
-                        element,
-                        id=continued_at,
-                        element_id=get_str_attribute_optional(element, "id"),
-                    )
+                error_repository.insert(
+                    ErrorCode.IXBRL_INVALID_CONTINUATION_ID,
+                    element,
+                    id=continued_at,
+                    element_id=get_str_attribute_optional(element, "id"),
                 )
 
                 break
@@ -112,25 +102,21 @@ def create_continuation_chains(
         for element in whole_fact_elements:
             for descendant in element.iterdescendants("{*}continuation", element.tag):
                 if descendant in whole_fact_elements:
-                    error_repository.upsert(
-                        ErrorInstance.create_error_instance(
-                            ErrorCode.IXBRL_INVALID_DESCENDANT_IN_CONTINUATION_CHAIN,
-                            descendant,
-                            descendant_id=get_str_attribute_optional(descendant, "id"),
-                            parent_id=get_str_attribute_optional(element, "id"),
-                        )
+                    error_repository.insert(
+                        ErrorCode.IXBRL_INVALID_DESCENDANT_IN_CONTINUATION_CHAIN,
+                        descendant,
+                        descendant_id=get_str_attribute_optional(descendant, "id"),
+                        parent_id=get_str_attribute_optional(element, "id"),
                     )
 
     unused_continuation_elements = list(
         set(continuation_element_index.keys()) - used_continuation_ids
     )
     if len(unused_continuation_elements) > 0:
-        error_repository.upsert(
-            ErrorInstance.create_error_instance(
-                ErrorCode.IXBRL_UNUSED_CONTINUATION_ELEMENTS,
-                continuation_element_index.get(unused_continuation_elements[0]),
-                element_ids=str(unused_continuation_elements),
-            )
+        error_repository.insert(
+            ErrorCode.IXBRL_UNUSED_CONTINUATION_ELEMENTS,
+            continuation_element_index.get(unused_continuation_elements[0]),
+            element_ids=str(unused_continuation_elements),
         )
 
     return continuation_chains

@@ -7,11 +7,7 @@
 
 ====================
 """
-import os
-
-from brel.brel_component import Component
 from brel.brel_filing import Filing
-from brel.parsers.utils.optional_utils import get_or_raise
 
 
 def test_component_getters():

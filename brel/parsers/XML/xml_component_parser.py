@@ -18,7 +18,7 @@ import lxml.etree
 
 from brel import Component
 from brel.errors.error_code import ErrorCode
-from brel.errors.error_instance import ErrorInstance
+
 from brel.networks import (
     CalculationNetwork,
     DefinitionNetwork,
@@ -49,34 +49,28 @@ def parse_component_from_xml(
     if "link:presentationLink" not in used_ons and any(
         map(lambda n: isinstance(n, PresentationNetwork), networks_in_component)
     ):
-        error_repository.upsert(
-            ErrorInstance.create_error_instance(
-                ErrorCode.PRESENTATION_NETWORK_IN_COMPONENT_WITHOUT_USEDON_ELEMENT,
-                xml_element,
-                linkrole_uri=role_uri,
-            )
+        error_repository.insert(
+            ErrorCode.PRESENTATION_NETWORK_IN_COMPONENT_WITHOUT_USEDON_ELEMENT,
+            xml_element,
+            linkrole_uri=role_uri,
         )
 
     if "link:calculationLink" not in used_ons and any(
         map(lambda n: isinstance(n, CalculationNetwork), networks_in_component)
     ):
-        error_repository.upsert(
-            ErrorInstance.create_error_instance(
-                ErrorCode.CALCULATION_NETWORK_IN_COMPONENT_WITHOUT_USEDON_ELEMENT,
-                xml_element,
-                linkrole_uri=role_uri,
-            )
+        error_repository.insert(
+            ErrorCode.CALCULATION_NETWORK_IN_COMPONENT_WITHOUT_USEDON_ELEMENT,
+            xml_element,
+            linkrole_uri=role_uri,
         )
 
     if "link:definitionLink" not in used_ons and any(
         map(lambda n: isinstance(n, DefinitionNetwork), networks_in_component)
     ):
-        error_repository.upsert(
-            ErrorInstance.create_error_instance(
-                ErrorCode.DEFINITION_NETWORK_IN_COMPONENT_WITHOUT_USEDON_ELEMENT,
-                xml_element,
-                linkrole_uri=role_uri,
-            )
+        error_repository.insert(
+            ErrorCode.DEFINITION_NETWORK_IN_COMPONENT_WITHOUT_USEDON_ELEMENT,
+            xml_element,
+            linkrole_uri=role_uri,
         )
 
     presentation_networks = [
@@ -96,28 +90,22 @@ def parse_component_from_xml(
     ]
 
     if len(presentation_networks) > 1:
-        error_repository.upsert(
-            ErrorInstance.create_error_instance(
-                ErrorCode.MULTIPLE_PRESENTATION_NETWORKS_IN_COMPONENT,
-                xml_element,
-                linkrole_uri=role_uri,
-            )
+        error_repository.insert(
+            ErrorCode.MULTIPLE_PRESENTATION_NETWORKS_IN_COMPONENT,
+            xml_element,
+            linkrole_uri=role_uri,
         )
     if len(calculation_networks) > 1:
-        error_repository.upsert(
-            ErrorInstance.create_error_instance(
-                ErrorCode.MULTIPLE_CALCULATION_NETWORKS_IN_COMPONENT,
-                xml_element,
-                linkrole_uri=role_uri,
-            )
+        error_repository.insert(
+            ErrorCode.MULTIPLE_CALCULATION_NETWORKS_IN_COMPONENT,
+            xml_element,
+            linkrole_uri=role_uri,
         )
     if len(definition_networks) > 1:
-        error_repository.upsert(
-            ErrorInstance.create_error_instance(
-                ErrorCode.MULTIPLE_DEFINITION_NETWORKS_IN_COMPONENT,
-                xml_element,
-                linkrole_uri=role_uri,
-            )
+        error_repository.insert(
+            ErrorCode.MULTIPLE_DEFINITION_NETWORKS_IN_COMPONENT,
+            xml_element,
+            linkrole_uri=role_uri,
         )
 
     presentation_network = (

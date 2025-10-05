@@ -38,8 +38,9 @@ class FilingParserFactory:
         elif all(
             file.endswith(".xml")
             or file.endswith(".xsd")
-            or file.endswith(".html")
             or file.endswith(".htm")
+            or file.endswith(".html")
+            or file.endswith(".xhtml")
             for file in files
         ):
             return create_xhtml_filing_parser(context)

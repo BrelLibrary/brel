@@ -3,7 +3,7 @@ from brel.brel_context import Context
 from brel.brel_fact import Fact
 from brel.data.errors.error_repository import ErrorRepository
 from brel.errors.error_code import ErrorCode
-from brel.errors.error_instance import ErrorInstance
+
 from brel.parsers.XHMTL.xhtml_parse_transformation_registry import (
     parse_numerical_fact_value,
 )
@@ -20,20 +20,20 @@ from brel.contexts.filing_context import FilingContext
 def parse_decimals_or_precision(
     str_value: str | None, is_decimals: bool
 ) -> float | None:
-    if str_value != None:
-        try:
-            value = float(int(str_value))
-        except ValueError:
-            if str_value == "INF":
-                value = float("inf")
-            else:
-                raise ValueError(
-                    f"{'Decimals' if is_decimals else 'Precision'} should be an integer or 'INF'. Got {str_value} instead."
-                )
+    if str_value is None:
+        return None
 
-        return value
+    try:
+        value = float(int(str_value))
+    except ValueError:
+        if str_value == "INF":
+            value = float("inf")
+        else:
+            raise ValueError(
+                f"{'Decimals' if is_decimals else 'Precision'} should be an integer or 'INF'. Got {str_value} instead."
+            )
 
-    return None
+    return value
 
 
 def validate_descendant_non_fraction_rules(
@@ -52,11 +52,8 @@ def validate_descendant_non_fraction_rules(
 
     xsi_nil = get_str_attribute_optional(element, "xsi:nil")
     if xsi_nil == "true":
-        error_repository.upsert(
-            ErrorInstance.create_error_instance(
-                ErrorCode.IXBRL_NIL_ATTRIBUTE_IN_NON_FRACTION_CHILD,
-                element,
-            )
+        error_repository.insert(
+            ErrorCode.IXBRL_NIL_ATTRIBUTE_IN_NON_FRACTION_CHILD, element
         )
 
     parent_format = get_str_attribute_optional(parent, "format")
@@ -72,17 +69,15 @@ def validate_descendant_non_fraction_rules(
         or this_scale != parent_scale
         or this_unit != parent_unit
     ):
-        error_repository.upsert(
-            ErrorInstance.create_error_instance(
-                ErrorCode.IXBRL_DIFFERING_FORMAT_SCALE_OR_UNIT_FOR_NON_FRACTION_CHILD,
-                parent,
-                this_format=this_format,
-                this_scale=this_scale,
-                this_unit=this_unit,
-                parent_format=parent_format,
-                parent_scale=parent_scale,
-                parent_unit=parent_unit,
-            )
+        error_repository.insert(
+            ErrorCode.IXBRL_DIFFERING_FORMAT_SCALE_OR_UNIT_FOR_NON_FRACTION_CHILD,
+            parent,
+            this_format=this_format,
+            this_scale=this_scale,
+            this_unit=this_unit,
+            parent_format=parent_format,
+            parent_scale=parent_scale,
+            parent_unit=parent_unit,
         )
 
 
@@ -94,10 +89,8 @@ def process_non_fraction_value(
     sign = get_str_attribute_optional(fact_element, "sign")
 
     if sign and sign != "-":
-        error_repository.upsert(
-            ErrorInstance.create_error_instance(
-                ErrorCode.IXBRL_INVALID_SIGN_ATTRIBUTE_VALUE, fact_element, sign=sign
-            )
+        error_repository.insert(
+            ErrorCode.IXBRL_INVALID_SIGN_ATTRIBUTE_VALUE, fact_element, sign=sign
         )
 
         sign = None  # Ignore sign
@@ -112,23 +105,19 @@ def process_non_fraction_value(
         try:
             value = float(fact_value)
         except:
-            error_repository.upsert(
-                ErrorInstance.create_error_instance(
-                    ErrorCode.IXBRL_NON_NUMERICAL_NON_FRACTION_FACT_VALUE,
-                    fact_element,
-                    value=fact_value,
-                )
+            error_repository.insert(
+                ErrorCode.IXBRL_NON_NUMERICAL_NON_FRACTION_FACT_VALUE,
+                fact_element,
+                value=fact_value,
             )
 
             return ""
 
         if value < 0:
-            error_repository.upsert(
-                ErrorInstance.create_error_instance(
-                    ErrorCode.IXBRL_NEGATIVE_NON_FRACTION_FACT_VALUE,
-                    fact_element,
-                    value=fact_value,
-                )
+            error_repository.insert(
+                ErrorCode.IXBRL_NEGATIVE_NON_FRACTION_FACT_VALUE,
+                fact_element,
+                value=fact_value,
             )
 
             return ""
@@ -138,7 +127,9 @@ def process_non_fraction_value(
     if not scale:
         scale = "0"
 
-    parsed_value = parse_numerical_fact_value(fact_value, format, scale)
+    parsed_value = parse_numerical_fact_value(
+        fact_value, format, scale, fact_element, error_repository
+    )
 
     if sign == "-":
         parsed_value = "-" + parsed_value
@@ -156,10 +147,8 @@ def parse_non_fraction_fact_element(
     id = get_str_attribute_optional(fact_element, "id")
 
     if id is not None and id in taken_ids:
-        error_repository.upsert(
-            ErrorInstance.create_error_instance(
-                ErrorCode.IXBRL_DUPLICATE_ELEMENT_ID, fact_element, id=id
-            )
+        error_repository.insert(
+            ErrorCode.IXBRL_DUPLICATE_ELEMENT_ID, fact_element, id=id
         )
 
     if id is not None:
@@ -172,24 +161,20 @@ def parse_non_fraction_fact_element(
     try:
         decimals = parse_decimals_or_precision(decimals_str, True)
     except ValueError:
-        error_repository.upsert(
-            ErrorInstance.create_error_instance(
-                ErrorCode.INVALID_DECIMALS_ATTRIBUTE_VALUE,
-                fact_element,
-                decimals=decimals_str,
-            )
+        error_repository.insert(
+            ErrorCode.INVALID_DECIMALS_ATTRIBUTE_VALUE,
+            fact_element,
+            decimals=decimals_str,
         )
 
     precision: Optional[float] = None
     try:
         precision = parse_decimals_or_precision(precision_str, False)
     except ValueError:
-        error_repository.upsert(
-            ErrorInstance.create_error_instance(
-                ErrorCode.INVALID_PRECISION_ATTRIBUTE_VALUE,
-                fact_element,
-                precision=precision_str,
-            )
+        error_repository.insert(
+            ErrorCode.INVALID_PRECISION_ATTRIBUTE_VALUE,
+            fact_element,
+            precision=precision_str,
         )
     xsi_nil = get_str_attribute_optional(fact_element, "xsi:nil")
 
@@ -201,12 +186,10 @@ def parse_non_fraction_fact_element(
         or decimals != None
         and xsi_nil != None
     ):
-        error_repository.upsert(
-            ErrorInstance.create_error_instance(
-                ErrorCode.IXBRL_MUTUALLY_EXCLUSIVE_ATTRIBUTES_IN_NON_FRACTION,
-                fact_element,
-                id=id,
-            )
+        error_repository.insert(
+            ErrorCode.IXBRL_MUTUALLY_EXCLUSIVE_ATTRIBUTES_IN_NON_FRACTION,
+            fact_element,
+            id=id,
         )
 
     element_text = fact_element.text
@@ -216,25 +199,17 @@ def parse_non_fraction_fact_element(
     has_children = len(element_children) > 0
 
     if has_text and has_children:
-        error_repository.upsert(
-            ErrorInstance.create_error_instance(
-                ErrorCode.IXBRL_BOTH_TEXT_AND_CHILDREN_IN_NON_FRACTION, fact_element
-            )
+        error_repository.insert(
+            ErrorCode.IXBRL_BOTH_TEXT_AND_CHILDREN_IN_NON_FRACTION, fact_element
         )
 
     if xsi_nil == "true" and (has_text or has_children):
-        error_repository.upsert(
-            ErrorInstance.create_error_instance(
-                ErrorCode.IXBRL_TEXT_OR_CHILDREN_WITH_NIL, fact_element
-            )
-        )
+        error_repository.insert(ErrorCode.IXBRL_TEXT_OR_CHILDREN_WITH_NIL, fact_element)
 
     if (not xsi_nil or xsi_nil == "false") and not has_text and not has_children:
-        error_repository.upsert(
-            ErrorInstance.create_error_instance(
-                ErrorCode.IXBRL_NO_TEXT_OR_CHILDREN_WITH_ABSENT_NIL_ATTRIBUTE,
-                fact_element,
-            )
+        error_repository.insert(
+            ErrorCode.IXBRL_NO_TEXT_OR_CHILDREN_WITH_ABSENT_NIL_ATTRIBUTE,
+            fact_element,
         )
 
         # Assume xsi_nil, since fact is missing.
@@ -249,20 +224,16 @@ def parse_non_fraction_fact_element(
         fact_value = process_non_fraction_value(fact_element, error_repository)
     else:
         if len(element_children) > 1:
-            error_repository.upsert(
-                ErrorInstance.create_error_instance(
-                    ErrorCode.IXBRL_MULTIPLE_NON_FRACTION_CHILDREN, fact_element
-                )
+            error_repository.insert(
+                ErrorCode.IXBRL_MULTIPLE_NON_FRACTION_CHILDREN, fact_element
             )
 
         child_tag = get_prefix_localname_tag(element_children[0])
         if child_tag != "ix:nonFraction":
-            error_repository.upsert(
-                ErrorInstance.create_error_instance(
-                    ErrorCode.IXBRL_INVALID_NON_FRACTION_CHILD,
-                    fact_element,
-                    child_tag=child_tag,
-                )
+            error_repository.insert(
+                ErrorCode.IXBRL_INVALID_NON_FRACTION_CHILD,
+                fact_element,
+                child_tag=child_tag,
             )
 
         # Input whole element as fact value

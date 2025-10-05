@@ -12,11 +12,12 @@ This module is usedc by the XML network parser to build physical label networks.
 ====================
 """
 
-from typing import cast
+from typing import Optional, cast
 
 from lxml.etree import _Element  # type: ignore
 
 from brel.brel_fact import Fact
+from brel.data.errors.error_repository import ErrorRepository
 from brel.networks import (
     INetwork,
     INetworkNode,
@@ -56,7 +57,8 @@ class LabelNetworkFactory(IXMLNetworkFactory):
         xml_referenced_element: _Element,
         xml_arc: _Element | None,
         points_to: IReportElement | IResource | Fact,
-    ) -> INetworkNode:
+        error_repository: ErrorRepository,
+    ) -> Optional[INetworkNode]:
         label = get_str_attribute(xml_referenced_element, "xlink:label")
 
         if xml_arc is None:

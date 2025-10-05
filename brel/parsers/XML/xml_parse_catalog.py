@@ -1,7 +1,7 @@
 from lxml.etree import _ElementTree, _Element
 from brel.contexts.filing_context import FilingContext
 from brel.errors.error_code import ErrorCode
-from brel.errors.error_instance import ErrorInstance
+
 from brel.parsers.utils.lxml_utils import get_str_attribute_optional
 
 OASIS_NAMESPACE = "urn:oasis:names:tc:entity:xmlns:xml:catalog"
@@ -18,11 +18,7 @@ def parse_catalog_xml(
     catalog_filepath_pieces = catalog_filepath.split("/")
 
     if root_node.tag != f"{{{OASIS_NAMESPACE}}}catalog":
-        error_repository.upsert(
-            ErrorInstance.create_error_instance(
-                ErrorCode.INVALID_CATALOG_ROOT_NODE, root_node
-            )
-        )
+        error_repository.insert(ErrorCode.INVALID_CATALOG_ROOT_NODE, root_node)
 
     for child in root_node.findall(
         "./er:rewriteURI", namespaces={"er": OASIS_NAMESPACE}
@@ -31,21 +27,15 @@ def parse_catalog_xml(
         replacement_string = child.get("rewritePrefix")
 
         if not original_string or not replacement_string:
-            error_repository.upsert(
-                ErrorInstance.create_error_instance(
-                    ErrorCode.REWRITE_URI_MISSING_ATTRIBUTE, child
-                )
-            )
+            error_repository.insert(ErrorCode.REWRITE_URI_MISSING_ATTRIBUTE, child)
 
             continue
 
         if original_string in original_strings:
-            error_repository.upsert(
-                ErrorInstance.create_error_instance(
-                    ErrorCode.MULTIPLE_REWRITE_URIS_FOR_START_STRING,
-                    child,
-                    uri=original_string,
-                )
+            error_repository.insert(
+                ErrorCode.MULTIPLE_REWRITE_URIS_FOR_START_STRING,
+                child,
+                uri=original_string,
             )
 
         original_strings.add(original_string)

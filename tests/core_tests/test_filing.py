@@ -13,7 +13,7 @@ from typing import List, Type
 from brel.brel_component import Component
 from brel.brel_fact import Fact
 from brel.brel_filing import Filing
-from brel.errors.error_instance import ErrorInstance
+
 from brel.networks.i_network import INetwork
 from brel.reportelements.abstract import Abstract
 from brel.reportelements.concept import Concept

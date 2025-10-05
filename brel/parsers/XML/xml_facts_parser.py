@@ -51,37 +51,32 @@ def parse_fact_from_xml(
     fact_value = fact_xml_element.text
 
     if fact_value is None:
-        error_repository.upsert_if(
-            context.get_concept().get_value().is_nillable(),
-            ErrorInstance.create_error_instance(
+        if not context.get_concept().get_value().is_nillable():
+            error_repository.insert(
                 ErrorCode.MISSING_FACT_VALUE,
                 fact_xml_element,
                 concept=fact_concept_name,
-            ),
-        )
+            )
+
         fact_value = ""
 
     fact_unit_ref = fact_xml_element.get("unitRef")
     context_unit = context.get_unit()
     if context_unit and fact_unit_ref and fact_unit_ref != context_unit.get_value():
-        error_repository.upsert(
-            ErrorInstance.create_error_instance(
-                ErrorCode.FACT_UNIT_MISMATCH,
-                fact_xml_element,
-                fact_unit=fact_unit_ref,
-                context_unit=context_unit.get_value(),
-            )
+        error_repository.insert(
+            ErrorCode.FACT_UNIT_MISMATCH,
+            fact_xml_element,
+            fact_unit=fact_unit_ref,
+            context_unit=context_unit.get_value(),
         )
 
     context_concept = context.get_concept()
     if fact_concept_name != context_concept.get_value().get_name().clark_notation():
-        error_repository.upsert(
-            ErrorInstance.create_error_instance(
-                ErrorCode.FACT_CONCEPT_MISMATCH,
-                fact_xml_element,
-                fact_concept=fact_concept_name,
-                context_concept=context_concept.get_value().get_name().clark_notation(),
-            )
+        error_repository.insert(
+            ErrorCode.FACT_CONCEPT_MISMATCH,
+            fact_xml_element,
+            fact_concept=fact_concept_name,
+            context_concept=context_concept.get_value().get_name().clark_notation(),
         )
 
     fact_repository.upsert(Fact(context, fact_value, fact_id))
@@ -94,9 +89,10 @@ def parse_facts_xml(
     Parse the facts.
     :param etrees: The xbrl instance xml trees
     """
-
     report_element_repository = context.get_report_element_repository()
     characteristics_repository = context.get_characteristic_repository()
+    error_repository = context.get_error_repository()
+
     xml_service = context.get_xml_service()
 
     for xbrl_instance in xml_service.get_all_etrees():
@@ -105,6 +101,16 @@ def parse_facts_xml(
 
             # ======== PARSE THE CONCEPT ========
             concept_name = get_clark_notation_tag(xml_fact)
+
+            if not report_element_repository.has_typed_qname(
+                qname_from_str(concept_name, xml_fact), Concept
+            ):
+                error_repository.insert(
+                    ErrorCode.XML_FACT_INVALID_CONCEPT,
+                    xml_fact,
+                    concept_name=concept_name,
+                )
+                continue
 
             concept_characteristic = characteristics_repository.get_or_create(
                 concept_name,
@@ -122,10 +128,16 @@ def parse_facts_xml(
             unit_id = xml_fact.get("unitRef")
 
             if unit_id:
-                unit_xml = error_on_none(
-                    xbrl_instance.find(f"{{*}}unit[@id='{unit_id}']"),
-                    f"Could not find unit {unit_id} in xbrl instance {xbrl_instance}",
-                )
+                unit_xml = xbrl_instance.find(f"{{*}}unit[@id='{unit_id}']")
+
+                if unit_xml is None:
+                    error_repository.insert(
+                        ErrorCode.XML_INVALID_FACT_UNIT_ID,
+                        xml_fact,
+                        unit_id=unit_id,
+                    )
+
+                    continue
 
                 if not characteristics_repository.has(unit_id, UnitCharacteristic):
                     new_unit = parse_unit_from_xml(context, unit_xml)
@@ -145,12 +157,17 @@ def parse_facts_xml(
             # ======== PARSE THE CONTEXT ========
             context_id = get_str_attribute(xml_fact, "contextRef")
 
-            xml_context = error_on_none(
-                xbrl_instance.find(
-                    f"{{*}}context[@id='{context_id}']", namespaces=None
-                ),
-                f"Could not find context {context_id} in xbrl instance {xbrl_instance}",
+            xml_context = xbrl_instance.find(
+                f"{{*}}context[@id='{context_id}']", namespaces=None
             )
+
+            if xml_context is None:
+                error_repository.insert(
+                    ErrorCode.XML_INVALID_FACT_CONTEXT_ID,
+                    xml_fact,
+                    context_id=context_id,
+                )
+                continue
 
             fact_context = parse_context_xml(context, xml_context, fact_characteristics)
 

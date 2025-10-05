@@ -9,7 +9,7 @@
 """
 
 from copy import deepcopy
-from typing import Dict, Mapping, Optional, cast
+from typing import Dict, List, Mapping, Optional, cast
 from brel.qnames.qname import QName
 import lxml.etree
 from lxml.etree import _Element, _ElementTree, XPath  # type: ignore
@@ -52,7 +52,7 @@ def get_str_attribute(
     elif is_namespace_localname_notation(attribute):
         attribute = qname_from_str(attribute, element).clark_notation()
 
-    value = element.attrib.get(attribute)
+    value = element.get(attribute)
     if value is None:
         if default is not None:
             return default
@@ -112,13 +112,8 @@ def find_elements(
 
     try:
         find = XPath(xpath_query, namespaces=namespaces)
-        # return element.findall(xpath_query, namespaces=nsmap)
         result = find(element)
-        if not isinstance(result, list):
-            raise TypeError("XPath query did not return a list")
-        if not all(isinstance(e, _Element) for e in result):
-            raise TypeError("XPath query returned a non-element")
-        return result  # type: ignore
+        return cast(List[_Element], result)
     except lxml.etree.XPathEvalError:
         return []
 
@@ -135,16 +130,6 @@ def find_element(
 
     nsmap: Mapping[str, str] = {k: v for k, v in element.nsmap.items() if k is not None}
     return element.find(xpath_query, namespaces=nsmap)
-
-
-def get_element(
-    element: _ElementTree | _Element,  # type: ignore
-    xpath_query: str | QName,
-) -> _Element:
-    found_element = find_element(element, xpath_query)
-    if found_element is None:
-        raise ValueError(f"Element not found for xpath {xpath_query}")
-    return found_element
 
 
 def get_all_nsmaps(

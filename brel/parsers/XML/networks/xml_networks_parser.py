@@ -14,9 +14,14 @@ import json
 from collections import defaultdict
 from importlib.resources import files
 from lxml.etree import _Element  # type: ignore
+from brel.errors.error_code import ErrorCode
 from brel.networks import *
 from brel.parsers.XML.networks import parse_xml_link
-from brel.parsers.utils.lxml_utils import find_elements, get_str_attribute
+from brel.parsers.utils.lxml_utils import (
+    find_elements,
+    get_str_attribute,
+    get_str_attribute_optional,
+)
 from brel.parsers.utils.network_utils import combine_networks
 from brel.qnames.qname_utils import qname_from_str
 from brel.reportelements import *
@@ -75,14 +80,19 @@ def parse_networks_from_xmls(
 
     link_xmls.sort(
         key=lambda link: is_standard_role(
-            get_str_attribute(link, qname_from_str("xlink:role", link))
+            get_str_attribute(link, qname_from_str("xlink:role", link), "")
         ),
         reverse=True,
     )
 
     # First pass: parse networks
     for link_xml in link_xmls:
-        link_role = get_str_attribute(link_xml, qname_from_str("xlink:role", link_xml))
+        link_role = get_str_attribute_optional(
+            link_xml, qname_from_str("xlink:role", link_xml)
+        )
+        if link_role is None:
+            error_repository.insert(ErrorCode.MISSING_LINK_ROLE, link_xml)
+            continue
 
         link_networks = parse_xml_link(context, link_xml)
         if link_networks is None:

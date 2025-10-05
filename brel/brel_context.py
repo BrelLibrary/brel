@@ -184,6 +184,7 @@ class Context:
         :returns dict: The context as a dictionary.
         """
         return {
+            # TODO: Look into this
             aspect.get_name(): self.get_characteristic_as_str(aspect)
             for aspect in self.__aspects
         }

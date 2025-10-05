@@ -7,7 +7,7 @@ from brel.brel_context import Context
 from brel.brel_fact import Fact
 from brel.contexts.filing_context import FilingContext
 from brel.errors.error_code import ErrorCode
-from brel.errors.error_instance import ErrorInstance
+
 from brel.parsers.XHMTL.elements.parse_continuation_chain import (
     extract_relevant_content_from_continuation_chain,
 )
@@ -82,10 +82,8 @@ def parse_non_numeric_fact_element(
 
     if id is not None:
         if id in taken_ids:
-            error_repository.upsert(
-                ErrorInstance.create_error_instance(
-                    ErrorCode.IXBRL_DUPLICATE_ELEMENT_ID, fact_element, id=id
-                )
+            error_repository.insert(
+                ErrorCode.IXBRL_DUPLICATE_ELEMENT_ID, fact_element, id=id
             )
 
         taken_ids.add(id)
@@ -93,12 +91,10 @@ def parse_non_numeric_fact_element(
     escape = get_str_attribute_optional(fact_element, "escape")
 
     if escape and escape not in ["true", "false"]:
-        error_repository.upsert(
-            ErrorInstance.create_error_instance(
-                ErrorCode.IXBRL_INVALID_NON_NUMERIC_FACT_ESCAPE_ATTRIBUTE_VALUE,
-                fact_element,
-                value=escape,
-            )
+        error_repository.insert(
+            ErrorCode.IXBRL_INVALID_NON_NUMERIC_FACT_ESCAPE_ATTRIBUTE_VALUE,
+            fact_element,
+            value=escape,
         )
 
         # Assume escaping, since the attribute is present
@@ -115,6 +111,8 @@ def parse_non_numeric_fact_element(
         fact_value = extract_text_content(relevant_content)
 
     format = get_str_attribute_optional(fact_element, "format")
-    parsed_value = parse_non_numerical_fact_value(fact_value, format)
+    parsed_value = parse_non_numerical_fact_value(
+        fact_value, format, fact_element, error_repository
+    )
 
     return Fact(context, parsed_value, id)

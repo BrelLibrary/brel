@@ -10,12 +10,13 @@ This module contains the XMLReportElementFactory class. It is responsible for cr
 ====================
 """
 
-from typing import cast, Tuple
+from typing import cast
 
 import lxml
 import lxml.etree
 
 from brel import QName
+from brel.data.errors.error_repository import ErrorRepository
 from brel.reportelements import *
 from brel.resource import BrelLabel
 
@@ -26,6 +27,7 @@ class XMLReportElementFactory:
         xml_element: lxml.etree._Element,
         report_element_name: QName,
         labels: list[BrelLabel],
+        error_repository: ErrorRepository,
     ) -> IReportElement | None:
         """
         Creates a report element from an lxml.etree._Element.
@@ -53,7 +55,7 @@ class XMLReportElementFactory:
         # if not is_abstract and is_item:
         elif not is_abstract and is_item:
             report_element = Concept._from_xml(
-                xml_element, id, report_element_name, labels
+                xml_element, id, report_element_name, labels, error_repository
             )
         elif is_abstract and is_hypercube_item:
             report_element = Hypercube(report_element_name, id, labels)
@@ -68,5 +70,4 @@ class XMLReportElementFactory:
         else:
             return None
 
-        report_element = cast(IReportElement, report_element)
         return report_element

@@ -3,7 +3,7 @@ from lxml.etree import _Element
 
 from brel.contexts.filing_context import FilingContext
 from brel.errors.error_code import ErrorCode
-from brel.errors.error_instance import ErrorInstance
+
 from brel.parsers.utils.lxml_utils import get_prefix_localname_tag
 
 
@@ -30,13 +30,11 @@ def parse_resources_elements(elements: List[_Element], context: FilingContext):
             elif child_tag == "xbrli:unit":
                 unit_elements.append(child)
             else:
-                error = ErrorInstance.create_error_instance(
+                context.get_error_repository().insert(
                     ErrorCode.IXBRL_INVALID_RESOURCES_CHILD,
                     element,
                     child_tag=child_tag,
                 )
-
-                context.get_error_repository().upsert(error)
 
     return (
         relationship_elements,

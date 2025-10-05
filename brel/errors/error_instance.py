@@ -1,13 +1,12 @@
-from typing import Optional, Self, cast
+from typing import Callable, Optional, Self, cast, final
 from lxml import etree
 
 from brel.errors.area import Area
-from brel.errors.error_code import ErrorCode
-from brel.errors.error_registry import error_registry
 from brel.errors.severity import Severity
 from brel.qnames.qname import QName
 
 
+@final
 class ErrorInstance:
     def __init__(
         self,
@@ -15,52 +14,27 @@ class ErrorInstance:
         area: Area,
         numeric_code: str,
         message: str,
-        context: Optional[etree._Element],
-        hint: Optional[str],
-        xbrl_error_code: Optional[QName],
+        hint: Optional[str] = None,
+        xbrl_error_code: Optional[QName] = None,
     ) -> None:
         self.__severity = severity
         self.__area = area
         self.__numeric_code = numeric_code
         self.__message = message
-        self.__context = context
         self.__hint = hint
         self.__xbrl_error_code = xbrl_error_code
+        self.__context: Optional[etree._Element] = None
 
-    @classmethod
-    def create_error_instance(
-        cls,
-        error_code: ErrorCode,
-        error_context: Optional[etree._Element] = None,
-        **kwargs: Optional[str],
-    ) -> Self:
-        error_template = error_registry.get(error_code)
-
-        if not error_template:
-            raise ValueError(f"Error code {error_code} is not valid.")
-
+    def update_message(self, **kwargs: Optional[str]):
         try:
-            formatted_message = str(error_template["message"]).format(**kwargs)
+            self.__message = self.__message.format(**kwargs)
         except KeyError:
             raise ValueError(
-                f"You have not provided the required arguments for the error {str(error_code)}"
+                f"You have not provided the required arguments for the error {str(self.get_full_error_code())}"
             )
 
-        error = cls(
-            severity=cast(Severity, error_template["severity"]),
-            area=cast(Area, error_template["area"]),
-            numeric_code=cast(str, error_template["numeric_code"]),
-            message=formatted_message,
-            context=error_context,
-            hint=cast(str, error_template["hint"])
-            if "hint" in error_template
-            else None,
-            xbrl_error_code=cast(QName, error_template["xbrl_error_code"])
-            if "xbrl_error_code" in error_template
-            else None,
-        )
-
-        return error
+    def set_context(self, context: etree._Element):
+        self.__context = context
 
     def get_severity(self):
         return self.__severity

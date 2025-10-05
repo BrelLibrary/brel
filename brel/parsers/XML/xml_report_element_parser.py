@@ -14,11 +14,12 @@ It parses XBRL in the XML syntax.
 import lxml.etree
 
 from brel.data.errors.error_repository import ErrorRepository
+from brel.errors.error_code import ErrorCode
 from brel.parsers.XML.xml_report_element_factory import XMLReportElementFactory
-from brel.parsers.utils.error_utils import error_on_none
 from brel.parsers.utils.lxml_utils import (
     find_elements,
     get_str_attribute,
+    get_str_attribute_optional,
     has_str_attribute,
 )
 from brel.qnames.qname_utils import (
@@ -74,7 +75,9 @@ def parse_report_element(
     qname = qname_from_str(
         to_clark_notation(target_namespace_url, qname_tag), report_element_xml
     )
-    report_element = XMLReportElementFactory.create(report_element_xml, qname, [])
+    report_element = XMLReportElementFactory.create(
+        report_element_xml, qname, [], error_repository
+    )
     if report_element and not report_element_repository.has_qname(qname):
         report_element_repository.upsert(report_element)
 
@@ -89,13 +92,18 @@ def parse_report_element(
                 ref_schema_name, ref_id = ref_full.split("#")
                 refschema = (
                     xml_service.get_etree(ref_schema_name)
-                    if ref_schema_name
+                    if ref_schema_name and ref_schema_name != "."
                     else current_etree
                 )
-                ref_xml = error_on_none(
-                    refschema.find(f".//*[@id='{ref_id}']", namespaces=None),
-                    f"Could not find reference {ref_id} in {ref_schema_name}",
-                )
+                ref_xml = refschema.find(f".//*[@id='{ref_id}']")
+                if ref_xml is None:
+                    error_repository.insert(
+                        ErrorCode.REFERENCED_SCHEMA_ELEMENT_NOT_FOUND,
+                        report_element_xml,
+                        ref_id=ref_id,
+                        ref_schema_name=ref_schema_name,
+                    )
+                    return
                 ref_type = get_str_attribute(ref_xml, "type")
                 ref_type_qname = qname_from_str(ref_type, ref_xml)
                 report_element.make_typed(ref_type_qname)

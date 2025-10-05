@@ -16,10 +16,9 @@ from lxml import etree
 from brel import Context, Fact
 from brel.data.errors.error_repository import ErrorRepository
 from brel.errors.error_code import ErrorCode
-from brel.errors.error_registry import error_registry
 from brel.characteristics import *
 from brel.contexts.filing_context import FilingContext
-from brel.errors.error_instance import ErrorInstance
+
 from brel.parsers.XHMTL.elements.parse_continuation_chain import (
     create_continuation_chains,
 )
@@ -39,9 +38,6 @@ from brel.parsers.XHMTL.networks.xhtml_footnote_network_elements import (
 )
 from brel.parsers.XML.characteristics import parse_unit_from_xml
 from brel.parsers.XML.xml_context_parser import parse_context_xml
-from brel.parsers.XHMTL.xhtml_parse_transformation_registry import (
-    parse_numerical_fact_value,
-)
 from brel.parsers.utils.lxml_utils import (
     find_elements,
     get_prefix_localname_tag,
@@ -76,14 +72,10 @@ def parse_headers(
             references_elements += references
 
     if not has_headers:
-        error = ErrorInstance.create_error_instance(ErrorCode.IXBRL_NO_HEADER_ELEMENTS)
-        error_repository.upsert(error)
+        error_repository.insert(ErrorCode.IXBRL_NO_HEADER_ELEMENTS)
 
     if not resources_elements:
-        error = ErrorInstance.create_error_instance(
-            ErrorCode.IXBRL_NO_RESOURCES_ELEMENTS
-        )
-        error_repository.upsert(error)
+        error_repository.insert(ErrorCode.IXBRL_NO_RESOURCES_ELEMENTS)
 
     return hidden_elements, resources_elements, references_elements
 
@@ -98,18 +90,13 @@ def parse_contexts(
         id = get_str_attribute_optional(context_element, "id")
 
         if id is None:
-            error = ErrorInstance.create_error_instance(
-                ErrorCode.IXBRL_CONTEXT_WITHOUT_ID, context_element
-            )
-
-            error_repository.upsert(error)
+            error_repository.insert(ErrorCode.IXBRL_CONTEXT_WITHOUT_ID, context_element)
             id = str(id)
 
         if id in taken_ids:
-            error = ErrorInstance.create_error_instance(
+            error_repository.insert(
                 ErrorCode.IXBRL_DUPLICATE_ELEMENT_ID, context_element, id=id
             )
-            error_repository.upsert(error)
 
         taken_ids.add(id)
 
@@ -119,33 +106,26 @@ def parse_contexts(
 
         successfully_added = context_repository.insert_context(context)
         if not successfully_added:
-            error = ErrorInstance.create_error_instance(
+            error_repository.insert(
                 ErrorCode.IXBRL_DUPLICATE_ELEMENT_ID, context_element, id=id
             )
-            error_repository.upsert(error)
 
 
 def parse_units(
     unit_elements: list[_Element], filing_context: FilingContext, taken_ids: Set[str]
 ) -> None:
     characteristic_repository = filing_context.get_characteristic_repository()
-
+    error_repository = filing_context.get_error_repository()
     for unit_element in unit_elements:
         id = get_str_attribute_optional(unit_element, "id")
 
         if id is None:
-            error = ErrorInstance.create_error_instance(
-                ErrorCode.IXBRL_UNIT_WITHOUT_ID, unit_element
-            )
-
-            filing_context.get_error_repository().upsert(error)
+            error_repository.insert(ErrorCode.IXBRL_UNIT_WITHOUT_ID, unit_element)
 
         if id in taken_ids:
-            error = ErrorInstance.create_error_instance(
+            error_repository.insert(
                 ErrorCode.IXBRL_DUPLICATE_ELEMENT_ID, unit_element, id=id
             )
-
-            filing_context.get_error_repository().upsert(error)
 
         taken_ids.add(str(id))
 
@@ -191,12 +171,11 @@ def parse_facts(
 
         concept_name = get_str_attribute_optional(fact_element, "name")
         if concept_name is None:
-            error = ErrorInstance.create_error_instance(
+            error_repository.insert(
                 ErrorCode.IXBRL_FACT_WITHOUT_CONCEPT_NAME,
                 fact_element,
                 fact_id=str(fact_id),
             )
-            error_repository.upsert(error)
             continue
 
         concept_qname = qname_from_str(concept_name, fact_element)
@@ -205,14 +184,12 @@ def parse_facts(
                 concept_qname, Concept
             )
         except Exception:
-            error = ErrorInstance.create_error_instance(
+            error_repository.insert(
                 ErrorCode.IXBRL_FACT_INVALID_CONCEPT,
                 fact_element,
                 concept_name=concept_name,
                 fact_id=str(fact_id),
             )
-
-            error_repository.upsert(error)
             continue
 
         else:
@@ -229,44 +206,36 @@ def parse_facts(
                 )
                 characteristics.append(unit_characteristic)
             except ValueError:
-                error_repository.upsert(
-                    ErrorInstance.create_error_instance(
-                        ErrorCode.IXBRL_INVALID_FACT_UNIT_ID,
-                        fact_element,
-                        unit_id=unit_id,
-                        fact_id=str(fact_id),
-                    )
-                )
-        elif not unit_id and element_tag == "ix:nonFraction":
-            error_repository.upsert(
-                ErrorInstance.create_error_instance(
-                    ErrorCode.IXBRL_NON_FRACTION_WITHOUT_UNIT,
+                error_repository.insert(
+                    ErrorCode.IXBRL_INVALID_FACT_UNIT_ID,
                     fact_element,
+                    unit_id=unit_id,
                     fact_id=str(fact_id),
                 )
+        elif not unit_id and element_tag == "ix:nonFraction":
+            error_repository.insert(
+                ErrorCode.IXBRL_NON_FRACTION_WITHOUT_UNIT,
+                fact_element,
+                fact_id=str(fact_id),
             )
 
         context_id = get_str_attribute_optional(fact_element, "contextRef")
 
         if context_id is None:
-            error = ErrorInstance.create_error_instance(
+            error_repository.insert(
                 ErrorCode.IXBRL_FACT_WITHOUT_CONTEXT,
                 fact_element,
                 fact_id=str(fact_id),
             )
-
-            error_repository.upsert(error)
             continue
 
         context = context_repository.get_context_copy(context_id)
         if not context:
-            error = ErrorInstance.create_error_instance(
+            error_repository.insert(
                 ErrorCode.IXBRL_INVALID_FACT_CONTEXT_ID,
                 fact_element,
                 context_id=context_id,
             )
-
-            error_repository.upsert(error)
             continue
 
         for characteristic in characteristics:

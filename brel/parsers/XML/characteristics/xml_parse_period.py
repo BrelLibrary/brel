@@ -18,7 +18,6 @@ import lxml.etree
 from brel.characteristics import PeriodCharacteristic
 from brel.contexts.filing_context import FilingContext
 from brel.errors.error_code import ErrorCode
-from brel.errors.error_instance import ErrorInstance
 
 
 def get_context_date_from_xml(
@@ -28,10 +27,8 @@ def get_context_date_from_xml(
     date = xml_element.text
 
     if not PeriodCharacteristic._is_date(date):
-        filing_context.get_error_repository().upsert(
-            ErrorInstance.create_error_instance(
-                ErrorCode.INVALID_CONTEXT_PERIOD_DATE, xml_element, date=date
-            )
+        filing_context.get_error_repository().insert(
+            ErrorCode.INVALID_CONTEXT_PERIOD_DATE, xml_element, date=date
         )
 
         return None
@@ -52,17 +49,18 @@ def parse_instant_period_from_xml(
     """
     characteristic_repository = filing_context.get_characteristic_repository()
     instant_date = get_context_date_from_xml(filing_context, xml_element)
+
     if instant_date is None:
         return None
 
     if characteristic_repository.has(instant_date, PeriodCharacteristic):
         return characteristic_repository.get(instant_date, PeriodCharacteristic)
-    else:
-        # if the period characteristic is not in the cache, create it and add it to the cache
-        period_characteristic = PeriodCharacteristic._instant(instant_date)
-        # add_to_cache(f"period {instant_date}", period_characteristic)
-        characteristic_repository.upsert(instant_date, period_characteristic)
-        return period_characteristic
+
+    # if the period characteristic is not in the cache, create it and add it to the cache
+    period_characteristic = PeriodCharacteristic._instant(instant_date)
+    # add_to_cache(f"period {instant_date}", period_characteristic)
+    characteristic_repository.upsert(instant_date, period_characteristic)
+    return period_characteristic
 
 
 def parse_duration_period_from_xml(
@@ -88,25 +86,20 @@ def parse_duration_period_from_xml(
     period_id = f"period {start_date} {end_date}"
     if characteristic_repository.has(period_id, PeriodCharacteristic):
         return characteristic_repository.get(period_id, PeriodCharacteristic)
-    else:
-        # if the period characteristic is not in the cache, create it and add it to the cache
-        try:
-            period_characteristic = PeriodCharacteristic._duration(start_date, end_date)
-        except ValueError:
-            filing_context.get_error_repository().upsert(
-                ErrorInstance.create_error_instance(
-                    ErrorCode.DURATION_PERIOD_START_AFTER_END,
-                    start_date_elem,
-                    start_date=start_date,
-                    end_date=end_date,
-                )
-            )
 
-            return None
-
-        # add_to_cache(f"period {start_date} {end_date}", period_characteristic)
+    try:
+        period_characteristic = PeriodCharacteristic._duration(start_date, end_date)
         characteristic_repository.upsert(period_id, period_characteristic)
         return period_characteristic
+    except ValueError:
+        filing_context.get_error_repository().insert(
+            ErrorCode.DURATION_PERIOD_START_AFTER_END,
+            start_date_elem,
+            start_date=start_date,
+            end_date=end_date,
+        )
+
+        return None
 
 
 def parse_period_from_xml(
@@ -120,7 +113,6 @@ def parse_period_from_xml(
     :param get_from_cache: the function to get a characteristic from the characteristics cache
     :param add_to_cache: the function to add a characteristic to the characteristics cache
     :returns: the PeriodCharacteristic created from the lxml.etree._Element
-    :raises ValueError: if the XML element is malformed
     """
     error_repository = filing_context.get_error_repository()
 
@@ -130,20 +122,16 @@ def parse_period_from_xml(
     else:
         start_date_elem = xml_element.find("./{*}startDate", namespaces=None)
         if start_date_elem is None:
-            error_repository.upsert(
-                ErrorInstance.create_error_instance(
-                    ErrorCode.DURATION_PERIOD_MISSING_START_DATE, xml_element
-                )
+            error_repository.insert(
+                ErrorCode.DURATION_PERIOD_MISSING_START_DATE, xml_element
             )
 
             return None
 
         end_date_elem = xml_element.find("./{*}endDate", namespaces=None)
         if end_date_elem is None:
-            error_repository.upsert(
-                ErrorInstance.create_error_instance(
-                    ErrorCode.DURATION_PERIOD_MISSING_END_DATE, xml_element
-                )
+            error_repository.insert(
+                ErrorCode.DURATION_PERIOD_MISSING_END_DATE, xml_element
             )
 
             return None

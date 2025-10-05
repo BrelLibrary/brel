@@ -1,7 +1,7 @@
 from typing import List, Tuple
 from brel.data.errors.error_repository import ErrorRepository
 from brel.errors.error_code import ErrorCode
-from brel.errors.error_instance import ErrorInstance
+
 from brel.parsers.utils.lxml_utils import (
     find_element,
     find_elements,
@@ -16,11 +16,9 @@ def check_no_header_element_in_head(
     head_elements = find_elements(etree, ".//head")
     for head_element in head_elements:
         if find_element(head_element, ".//ix:header"):
-            error = ErrorInstance.create_error_instance(
+            error_repository.insert(
                 ErrorCode.IXBRL_HEADER_ELEMENT_IN_HEAD, head_element
             )
-
-            error_repository.upsert(error)
 
 
 def parse_header(
@@ -37,29 +35,24 @@ def parse_header(
         elif tag == "ix:references":
             references_elements.append(child)
         else:
-            error = ErrorInstance.create_error_instance(
+            error_repository.insert(
                 ErrorCode.IXBRL_INVALID_HEADER_CHILD,
                 header_element,
                 child_tag=tag,
             )
-            error_repository.upsert(error)
 
     if len(hidden_elements) > 1:
-        error = ErrorInstance.create_error_instance(
+        error_repository.insert(
             ErrorCode.IXBRL_MORE_THAN_ONE_HIDDEN_HEADER_CHILD,
             header_element,
             count=str(len(hidden_elements)),
         )
 
-        error_repository.upsert(error)
-
     if len(resources_elements) > 1:
-        error = ErrorInstance.create_error_instance(
+        error_repository.insert(
             ErrorCode.IXBRL_MORE_THAN_ONE_RESOURCES_HEADER_CHILD,
             header_element,
             count=str(len(resources_elements)),
         )
-
-        error_repository.upsert(error)
 
     return hidden_elements, resources_elements, references_elements

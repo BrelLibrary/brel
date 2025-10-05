@@ -53,7 +53,7 @@ class PresentationNetworkNode(INetworkNode):
             preferred_label_role
         ):
             raise ValueError(
-                f"report element {report_element} does not have a label with role {preferred_label_role}"
+                f"Report element {report_element} does not have a label with role {preferred_label_role}"
             )
 
     # First class citizens

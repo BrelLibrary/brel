@@ -11,6 +11,7 @@
 from lxml.etree import parse as parse_xml
 from lxml.html import html5parser
 from requests import Session
+from brel.data.errors.error_repository import ErrorRepository
 from brel.data.file.file_repository import FileRepository
 from brel.data.namespace.namespace_repository import NamespaceRepository
 from brel.data.report_element.report_element_repository import ReportElementRepository
@@ -31,9 +32,10 @@ def create_report_element_service(
 
 def create_file_service(
     file_repository: FileRepository,
+    error_repository: ErrorRepository,
 ) -> FileService:
     session = Session()
-    return FileService(file_repository, session)
+    return FileService(file_repository, error_repository, session)
 
 
 def create_xml_service(

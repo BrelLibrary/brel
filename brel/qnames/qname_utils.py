@@ -10,10 +10,6 @@
 
 import lxml.etree
 import re
-
-from brel.errors.error_code import ErrorCode
-from brel.errors.error_instance import ErrorInstance
-from brel.parsers.utils.optional_utils import get_or_raise
 from brel.qnames.qname import QName
 
 

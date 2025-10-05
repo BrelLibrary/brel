@@ -18,7 +18,7 @@ from brel.characteristics import (
     ExplicitDimensionCharacteristic,
 )
 from brel.errors.error_code import ErrorCode
-from brel.errors.error_instance import ErrorInstance
+
 from brel.parsers.utils.lxml_utils import get_str_attribute
 from brel.qnames.qname_utils import qname_from_str
 from brel.reportelements import Dimension, Member
@@ -52,33 +52,32 @@ def parse_explicit_dimension_from_xml(
         aspect_repository.upsert(Aspect(aspect_id, []))
 
     aspect = aspect_repository.get(aspect_id)
-
-    member_id = error_on_none(
-        xml_element.text, f"Dimension value not found in xml element {xml_element}"
-    )
-
     dimension_qname = qname_from_str(aspect_id, xml_element)
     if not report_element_repository.has_typed_qname(dimension_qname, Dimension):
-        error_repository.upsert(
-            ErrorInstance.create_error_instance(
-                ErrorCode.INVALID_DIMENSION_ATTRIBUTE_VALUE,
-                xml_element,
-                dimension=aspect_id,
-            )
+        error_repository.insert(
+            ErrorCode.INVALID_EXPLICIT_DIMENSION_VALUE,
+            xml_element,
+            dimension=dimension_qname.get_local_name(),
         )
         return None
 
     dimension = report_element_repository.get_typed_by_qname(dimension_qname, Dimension)
+    member_id = xml_element.text
+    if not member_id:
+        error_repository.insert(
+            ErrorCode.MISSING_EXPLICIT_DIMENSION_MEMBER,
+            xml_element,
+            dimension=dimension_qname.get_local_name(),
+        )
+        return None
 
     member_qname = qname_from_str(member_id, xml_element)
     if not report_element_repository.has_typed_qname(member_qname, Member):
-        error_repository.upsert(
-            ErrorInstance.create_error_instance(
-                ErrorCode.INVALID_DIMENSION_MEMBER,
-                xml_element,
-                member=member_id,
-                dimension=aspect_id,
-            )
+        error_repository.insert(
+            ErrorCode.INVALID_EXPLICIT_DIMENSION_MEMBER,
+            xml_element,
+            member=member_id,
+            dimension=aspect_id,
         )
         return None
 

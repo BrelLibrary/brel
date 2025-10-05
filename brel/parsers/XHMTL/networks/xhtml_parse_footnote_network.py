@@ -10,7 +10,7 @@ from brel.contexts.filing_context import FilingContext
 from brel.data.errors.error_repository import ErrorRepository
 from brel.data.fact.fact_repository import FactRepository
 from brel.errors.error_code import ErrorCode
-from brel.errors.error_instance import ErrorInstance
+
 from brel.networks.footnote_network import FootnoteNetwork
 from brel.networks.footnote_network_node import FootnoteNetworkNode
 from brel.parsers.XHMTL.elements.parse_continuation_chain import (
@@ -19,12 +19,10 @@ from brel.parsers.XHMTL.elements.parse_continuation_chain import (
 from brel.parsers.XHMTL.networks import xhtml_footnote_network_elements
 from brel.parsers.utils.lxml_utils import (
     get_elem_lang_recursive,
-    get_str_attribute,
     get_str_attribute_optional,
 )
 from brel.parsers.utils.url_utils import is_valid_uri
 import brel.qnames.qname as qname
-from brel.qnames.qname_utils import qname_from_str
 from brel.resource.brel_footnote import BrelFootnote
 
 
@@ -36,18 +34,12 @@ def parse_footnote(
 ) -> Optional[Tuple[str, BrelFootnote]]:
     id = get_str_attribute_optional(footnote_element, "id")
     if not id:
-        error_repository.upsert(
-            ErrorInstance.create_error_instance(
-                ErrorCode.IXBRL_FOOTNOTE_WITHOUT_ID, footnote_element
-            )
-        )
+        error_repository.insert(ErrorCode.IXBRL_FOOTNOTE_WITHOUT_ID, footnote_element)
         return None
 
     if id in taken_ids:
-        error_repository.upsert(
-            ErrorInstance.create_error_instance(
-                ErrorCode.IXBRL_DUPLICATE_ELEMENT_ID, footnote_element, id=id
-            )
+        error_repository.insert(
+            ErrorCode.IXBRL_DUPLICATE_ELEMENT_ID, footnote_element, id=id
         )
 
     taken_ids.add(id)
@@ -56,13 +48,11 @@ def parse_footnote(
     if role is None:
         role = "http://www.xbrl.org/2003/role/footnote"
     elif not is_valid_uri(role):
-        error_repository.upsert(
-            ErrorInstance.create_error_instance(
-                ErrorCode.IXBRL_INVALID_FOOTNOTE_ROLE,
-                footnote_element,
-                id=id,
-                role=role,
-            )
+        error_repository.insert(
+            ErrorCode.IXBRL_INVALID_FOOTNOTE_ROLE,
+            footnote_element,
+            id=id,
+            role=role,
         )
 
         # Assuming default role
@@ -71,10 +61,8 @@ def parse_footnote(
     language = get_elem_lang_recursive(footnote_element)
 
     if not language:
-        error_repository.upsert(
-            ErrorInstance.create_error_instance(
-                ErrorCode.IXBRL_FOOTNOTE_WITHOUT_LANGUAGE, footnote_element, id=id
-            )
+        error_repository.insert(
+            ErrorCode.IXBRL_FOOTNOTE_WITHOUT_LANGUAGE, footnote_element, id=id
         )
 
         # Assuming English Language
@@ -115,21 +103,17 @@ def parse_relationship_from_and_to_refs(
 ) -> Tuple[Set[str], Set[str]]:
     fromRefs = get_str_attribute_optional(relationship_element, "fromRefs")
     if not fromRefs:
-        error_repository.upsert(
-            ErrorInstance.create_error_instance(
-                ErrorCode.IXBRL_RELATIONSHIP_WITHOUT_FROMREFS,
-                relationship_element,
-            )
+        error_repository.insert(
+            ErrorCode.IXBRL_RELATIONSHIP_WITHOUT_FROMREFS,
+            relationship_element,
         )
         fromRefs = ""
 
     toRefs = get_str_attribute_optional(relationship_element, "toRefs")
     if not toRefs:
-        error_repository.upsert(
-            ErrorInstance.create_error_instance(
-                ErrorCode.IXBRL_RELATIONSHIP_WITHOUT_TOREFS,
-                relationship_element,
-            )
+        error_repository.insert(
+            ErrorCode.IXBRL_RELATIONSHIP_WITHOUT_TOREFS,
+            relationship_element,
         )
         toRefs = ""
 
@@ -148,11 +132,9 @@ def validate_relationship_from_and_to_refs(
 ) -> None:
     # Check if any token is repeated in both fromRefs and toRefs - this is illegal
     if any([fromId in toIds for fromId in fromIds]):
-        error_repository.upsert(
-            ErrorInstance.create_error_instance(
-                ErrorCode.IXBRL_RELATIONSHIP_REPEATED_ID,
-                relationship_element,
-            )
+        error_repository.insert(
+            ErrorCode.IXBRL_RELATIONSHIP_REPEATED_ID,
+            relationship_element,
         )
 
     # Check if any token in fromRefs is not a valid fact
@@ -163,12 +145,10 @@ def validate_relationship_from_and_to_refs(
     ]
 
     if invalid_from_ids:
-        error_repository.upsert(
-            ErrorInstance.create_error_instance(
-                ErrorCode.IXBRL_RELATIONSHIP_INVALID_FACT_ID_IN_FROMREFS,
-                relationship_element,
-                invalid_ids=str(invalid_from_ids),
-            )
+        error_repository.insert(
+            ErrorCode.IXBRL_RELATIONSHIP_INVALID_FACT_ID_IN_FROMREFS,
+            relationship_element,
+            invalid_ids=str(invalid_from_ids),
         )
 
     # Check if any token in toRefs is not a valid fact or footnote
@@ -178,22 +158,18 @@ def validate_relationship_from_and_to_refs(
         if fact_repository.get_by_id_optional(toId) is None and toId not in footnotes
     ]
     if invalid_to_ids:
-        error_repository.upsert(
-            ErrorInstance.create_error_instance(
-                ErrorCode.IXBRL_RELATIONSHIP_INVALID_FACT_OR_FOOTNOTE_ID_IN_TOREFS,
-                relationship_element,
-                invalid_ids=str(invalid_to_ids),
-            )
+        error_repository.insert(
+            ErrorCode.IXBRL_RELATIONSHIP_INVALID_FACT_OR_FOOTNOTE_ID_IN_TOREFS,
+            relationship_element,
+            invalid_ids=str(invalid_to_ids),
         )
 
     # Check if all tokens in toRefs are only footnotes or only facts
     are_footnotes = [toId in footnotes for toId in toIds]
     if any(are_footnotes) and not all(are_footnotes):
-        error_repository.upsert(
-            ErrorInstance.create_error_instance(
-                ErrorCode.IXBRL_RELATIONSHIP_MIXED_FACT_AND_FOOTNOTES_IN_TOREFS,
-                relationship_element,
-            )
+        error_repository.insert(
+            ErrorCode.IXBRL_RELATIONSHIP_MIXED_FACT_AND_FOOTNOTES_IN_TOREFS,
+            relationship_element,
         )
 
 
@@ -204,12 +180,10 @@ def parse_relationship_attributes(
     if not arcrole:
         arcrole = "http://www.xbrl.org/2003/arcrole/fact-footnote"
     elif not is_valid_uri(arcrole):
-        error_repository.upsert(
-            ErrorInstance.create_error_instance(
-                ErrorCode.IXBRL_RELATIONSHIP_INVALID_ARCROLE,
-                relationship_element,
-                arcrole=arcrole,
-            )
+        error_repository.insert(
+            ErrorCode.IXBRL_RELATIONSHIP_INVALID_ARCROLE,
+            relationship_element,
+            arcrole=arcrole,
         )
 
         # Assume default arcrole
@@ -219,12 +193,10 @@ def parse_relationship_attributes(
     if not linkrole:
         linkrole = "http://www.xbrl.org/2003/role/link"
     elif not is_valid_uri(linkrole):
-        error_repository.upsert(
-            ErrorInstance.create_error_instance(
-                ErrorCode.IXBRL_RELATIONSHIP_INVALID_LINKROLE,
-                relationship_element,
-                linkrole=linkrole,
-            )
+        error_repository.insert(
+            ErrorCode.IXBRL_RELATIONSHIP_INVALID_LINKROLE,
+            relationship_element,
+            linkrole=linkrole,
         )
         # Assume default linkrole
         linkrole = "http://www.xbrl.org/2003/role/link"
@@ -235,12 +207,10 @@ def parse_relationship_attributes(
         try:
             order = float(order_str)
         except ValueError:
-            error_repository.upsert(
-                ErrorInstance.create_error_instance(
-                    ErrorCode.IXBRL_RELATIONSHIP_INVALID_ORDER,
-                    relationship_element,
-                    order=order_str,
-                )
+            error_repository.insert(
+                ErrorCode.IXBRL_RELATIONSHIP_INVALID_ORDER,
+                relationship_element,
+                order=order_str,
             )
 
     if not order:
@@ -313,6 +283,11 @@ def create_footnote_network_nodes(
                     if to_id in footnotes
                     else fact_repository.get_by_id(to_id)
                 )
+
+                if not to_object:
+                    # Error
+                    continue
+
                 id_to_node[to_id] = FootnoteNetworkNode(
                     to_object,
                     [],
@@ -400,48 +375,36 @@ def parse_role_reference(
 ) -> None:
     link_type = get_str_attribute_optional(role_ref_element, "xlink:linktype")
     if link_type != "simple":
-        error_repository.upsert(
-            ErrorInstance.create_error_instance(
-                ErrorCode.ROLEREF_INVALID_LINKTYPE, role_ref_element, linktype=link_type
-            )
+        error_repository.insert(
+            ErrorCode.ROLEREF_INVALID_LINKTYPE, role_ref_element, linktype=link_type
         )
     href = get_str_attribute_optional(role_ref_element, "xlink:href")
     if not href:
-        error_repository.upsert(
-            ErrorInstance.create_error_instance(
-                ErrorCode.ROLEREF_MISSING_HREF_ATTRIBUTE,
-                role_ref_element,
-            )
+        error_repository.insert(
+            ErrorCode.ROLEREF_MISSING_HREF_ATTRIBUTE,
+            role_ref_element,
         )
     elif not is_valid_uri(href):
-        error_repository.upsert(
-            ErrorInstance.create_error_instance(
-                ErrorCode.ROLEREF_INVALID_HREF_ATTRIBUTE, role_ref_element, href=href
-            )
+        error_repository.insert(
+            ErrorCode.ROLEREF_INVALID_HREF_ATTRIBUTE, role_ref_element, href=href
         )
 
     role_uri = get_str_attribute_optional(role_ref_element, "roleURI")
     if not role_uri:
-        error_repository.upsert(
-            ErrorInstance.create_error_instance(
-                ErrorCode.ROLEREF_MISSING_ROLE_URI_ATTRIBUTE, role_ref_element
-            )
+        error_repository.insert(
+            ErrorCode.ROLEREF_MISSING_ROLE_URI_ATTRIBUTE, role_ref_element
         )
     elif not is_valid_uri(role_uri):
-        error_repository.upsert(
-            ErrorInstance.create_error_instance(
-                ErrorCode.ROLEREF_INVALID_ROLE_URI_ATTRIBUTE,
-                role_ref_element,
-                role_uri=role_uri,
-            )
+        error_repository.insert(
+            ErrorCode.ROLEREF_INVALID_ROLE_URI_ATTRIBUTE,
+            role_ref_element,
+            role_uri=role_uri,
         )
 
     role = get_str_attribute_optional(role_ref_element, "xlink:role")
     if role != None and role == "":
-        error_repository.upsert(
-            ErrorInstance.create_error_instance(
-                ErrorCode.ROLEREF_EMPTY_ROLE_ATTRIBUTE, role_ref_element
-            )
+        error_repository.insert(
+            ErrorCode.ROLEREF_EMPTY_ROLE_ATTRIBUTE, role_ref_element
         )
 
 

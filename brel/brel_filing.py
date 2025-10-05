@@ -47,9 +47,10 @@ Once a filing is loaded, it can be queried for its facts, report elements, netwo
 import os
 import pandas as pd
 from pyspark import sql
-from typing import Any, cast
+from typing import Any, List, Optional, cast
 
 from brel import Component, Fact, QName
+
 from brel.errors.error_instance import ErrorInstance
 from brel.networks import INetwork
 from brel.parsers.filing_parser_factory import FilingParserFactory
@@ -66,6 +67,7 @@ from brel.reportelements import (
     Member,
 )
 from brel.contexts.filing_context import FilingContext
+from brel.config.brel_config import BrelConfig
 
 
 class Filing:
@@ -89,6 +91,38 @@ class Filing:
 
     def __init__(self, context: FilingContext) -> None:
         self.__context = context
+        self.__preferred_filing_languages: List[str] = []
+
+    def get_preferred_languages(
+        self, function_languages: Optional[str | list[str]] = None
+    ) -> List[str]:
+        if function_languages is None:
+            function_languages = []
+        elif isinstance(function_languages, str):
+            function_languages = [function_languages]
+
+        available_filing_languages = self.__context.get_available_filing_languages()
+        preferred_filing_languages = self.__preferred_filing_languages
+        sys_language = [BrelConfig.get_system_language()] if BrelConfig.get_system_language() else []
+        library_languages = BrelConfig.get_preferred_library_languages()
+
+        all_languages = (
+            function_languages
+            + preferred_filing_languages
+            + library_languages
+            + sys_language
+            + available_filing_languages
+        )
+
+        existing_language_set = set()
+        all_languages_deduplicated = []
+        for language in all_languages:
+            if language not in existing_language_set:
+                existing_language_set.add(language)
+                all_languages_deduplicated.append(language)
+
+        # Throwing errors or cascading on non-available languages
+        return all_languages_deduplicated
 
     # first class citizens
     def get_all_facts(self) -> list[Fact]:
@@ -97,7 +131,7 @@ class Filing:
         """
         return self.__context.get_fact_repository().get_all()
 
-    def get_all_report_elements(self) -> list[IReportElement]:
+    def get_all_report_elements(self) -> List[IReportElement]:
         """
         :return list[IReportElement]: a list of all [`IReportElement`](../report-elements/report-elements.md) objects in the filing.
         """
@@ -247,7 +281,7 @@ class Filing:
         """
         return self.get_concept_by_name(concept_qname)
 
-    def get_all_reported_concepts(self) -> list[Concept]:
+    def get_all_reported_concepts(self) -> List[Concept]:
         """
         Returns all concepts that have at least one fact reporting against them.
         :returns list[Concept]: The list of concepts
@@ -260,7 +294,7 @@ class Filing:
 
         return reported_concepts
 
-    def get_facts_by_concept_name(self, concept_name: QName | str) -> list[Fact]:
+    def get_facts_by_concept_name(self, concept_name: QName | str) -> List[Fact]:
         """
         Returns all facts that are associated with the concept with name concept_name.
         :param concept_name: The name of the concept to get facts for. This can be a QName or a string in the format "prefix:localname". For example, "us-gaap:Assets".
@@ -286,7 +320,7 @@ class Filing:
             if fact.get_concept().get_value() == concept
         ]
 
-    def get_facts_by_concept(self, concept: Concept) -> list[Fact]:
+    def get_facts_by_concept(self, concept: Concept) -> List[Fact]:
         """
         Returns all facts that are associated with a concept.
         :param concept: the concept to get facts for.
@@ -294,7 +328,7 @@ class Filing:
         """
         return self.get_facts_by_concept_name(concept.get_name())
 
-    def get_all_component_uris(self) -> list[str]:
+    def get_all_component_uris(self) -> List[str]:
         """
         :return list[str]: a list of all component URIs in the filing.
         """
@@ -351,7 +385,7 @@ class Filing:
         df = pd.DataFrame(data)
         return df
 
-    def get_all_labels(self) -> list[dict[str, str]]:
+    def get_all_labels(self) -> List[dict[str, str]]:
         """
         :return list[dict[str, str]]: a list of all labels in the filing.
         """
@@ -373,11 +407,14 @@ class Filing:
         df = pd.DataFrame(data)
         return df
 
-    def generate_report_elements_as_pandas_df(self) -> pd.DataFrame:
+    def generate_report_elements_as_pandas_df(
+        self, languages: Optional[str | list[str]] = None
+    ) -> pd.DataFrame:
         """
         Converts the report elements to a pandas DataFrame.
         :return pandas.DataFrame: the report elements as a pandas DataFrame.
         """
+        language_priority = self.get_preferred_languages(languages)
         data = []
         for re in self.get_all_report_elements():
             d = re.convert_to_dict()

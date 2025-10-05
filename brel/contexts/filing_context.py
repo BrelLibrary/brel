@@ -8,7 +8,7 @@
 ====================
 """
 
-from typing import Any, Dict, Callable
+from typing import Any, Dict, Callable, List
 from brel.data.aspect.aspect_repository import AspectRepository
 from brel.data.context.context_repository import ContextRepository
 from brel.data.factory import (
@@ -105,7 +105,9 @@ class FilingContext:
     def get_file_service(self) -> FileService:
         return self.__lazy_cache(
             "file_service",
-            lambda: create_file_service(self.get_file_repository()),
+            lambda: create_file_service(
+                self.get_file_repository(), self.get_error_repository()
+            ),
         )
 
     def get_xml_repository(self) -> XMLRepository:
@@ -127,4 +129,10 @@ class FilingContext:
             lambda: create_report_element_service(
                 self.get_report_element_repository(), self.get_namespace_repository()
             ),
+        )
+
+    def get_available_filing_languages(self) -> List[str]:
+        return self.__lazy_cache(
+            "available_filing_languages",
+            lambda: self.get_xml_service().get_available_filing_languages(),
         )

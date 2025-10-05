@@ -109,7 +109,7 @@ class INetwork(ABC):
         """
         roots = self.get_roots()
         if len(roots) > 1:
-            raise ValueError(f"Cannot call getRoot() for network with multiple roots")
+            raise ValueError(f"Cannot call get_root() for network with multiple roots")
         return roots[0]
 
     def get_all_nodes(self) -> list[INetworkNode]:

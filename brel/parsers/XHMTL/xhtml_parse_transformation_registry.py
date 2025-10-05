@@ -1,7 +1,13 @@
+from optparse import Option
 from typing import Optional
 from convertdate import indian_civil
 import datetime
 import re
+from lxml.etree import _Element
+
+from brel.data.errors.error_repository import ErrorRepository
+from brel.errors.error_code import ErrorCode
+
 
 number_format_to_regex = {
     "ixt:num-comma-decimal-apos": r"^([\.\'`´’′  0-9]*)(,[  0-9]+)?$",
@@ -596,16 +602,30 @@ legacy_to_current_formats = {
 }
 
 
-def match_regex_date_fact_value(fact_value: str, fact_format: str) -> re.Match:
+def match_regex_date_fact_value(
+    fact_value: str,
+    fact_format: str,
+    element: _Element,
+    error_repository: ErrorRepository,
+) -> Optional[re.Match]:
     regex_pattern = date_format_to_regex.get(fact_format)
     if not regex_pattern:
-        raise ValueError(f"Unexpected date format: {fact_format}")
+        error_repository.insert(
+            ErrorCode.UNSUPPORTED_DATE_FORMAT, element, format=fact_format
+        )
+
+        return None
 
     match = re.search(regex_pattern, fact_value)
     if not match:
-        raise ValueError(
-            f"Date {fact_value} does not match the expected format {fact_format}"
+        error_repository.insert(
+            ErrorCode.DATE_DOES_NOT_MATCH_EXPECTED_FORMAT,
+            element,
+            date=fact_value,
+            format=fact_format,
         )
+
+        return None
 
     return match
 
@@ -742,45 +762,82 @@ def check_japanese_imperial_date_valid(date_parts: dict[str, str]) -> bool:
 
 
 def validate_date_fact_value(
-    date_parts: dict[str, str], is_recurring=False, is_full_date=False
+    date_parts: dict[str, str],
+    fact_value: str,
+    element: _Element,
+    error_repository: ErrorRepository,
+    is_recurring=False,
+    is_full_date=False,
 ) -> None:
     if is_recurring:
         if "year" in date_parts:
-            raise ValueError(f"Year should not be present in recurring date")
+            error_repository.insert(
+                ErrorCode.YEAR_PRESENT_IN_RECURRING_DATE, element, date=fact_value
+            )
         if "month" not in date_parts or "day" not in date_parts:
-            raise ValueError(f"Month and day should be present in recurring date")
+            error_repository.insert(
+                ErrorCode.MONTH_OR_DAY_NOT_PRESENT_IN_RECURRING_DATE,
+                element,
+                date=fact_value,
+            )
     elif "year" not in date_parts or "month" not in date_parts:
-        raise ValueError(f"Year and month should be present in non-recurring date")
+        error_repository.insert(
+            ErrorCode.YEAR_OR_MONTH_NOT_PRESENT_IN_NON_RECURRING_DATE,
+            element,
+            date=fact_value,
+        )
 
     if is_full_date and "day" not in date_parts:
-        raise ValueError(f"Day should be present in full date")
+        error_repository.insert(
+            ErrorCode.DAY_NOT_PRESENT_IN_FULL_DATE, element, date=fact_value
+        )
 
     iso8601_formatted_string = f"{date_parts['year'] if not is_recurring else '2020'}-{date_parts['month']}-{date_parts['day'] if is_full_date else '01'}"
 
     try:
         datetime.date.fromisoformat(iso8601_formatted_string)
     except Exception:
-        raise ValueError(f"Date {iso8601_formatted_string} is not a valid date.")
+        error_repository.insert(
+            ErrorCode.INVALID_GREGORIAN_DATE, element, date=fact_value
+        )
 
     if "era" in date_parts:
         if not check_japanese_imperial_date_valid(date_parts):
-            raise ValueError(
-                f"Date {iso8601_formatted_string} is not a valid date for japanese imperial era {date_parts['era']}."
+            error_repository.insert(
+                ErrorCode.INVALID_JAPANESE_IMPERIAL_DATE, element, date=fact_value
             )
 
 
-def parse_date_fact_value(fact_value: str, fact_format: str) -> str:
+def parse_date_fact_value(
+    fact_value: str,
+    fact_format: str,
+    element: _Element,
+    error_repository: ErrorRepository,
+) -> str:
     fact_value = fact_value.strip()
     is_full_date = "day" in fact_format and "year" in fact_format
     is_recurring = "day" in fact_format and "year" not in fact_format
 
-    match = match_regex_date_fact_value(fact_value, fact_format)
+    match = match_regex_date_fact_value(
+        fact_value, fact_format, element, error_repository
+    )
+
+    # No match found
+    if not match:
+        return fact_value
+
     date_parts = parse_date_match(
         match, fact_format, is_recurring=is_recurring, is_full_date=is_full_date
     )
     date_parts = normalize_date_parts(date_parts, fact_format)
+
     validate_date_fact_value(
-        date_parts, is_recurring=is_recurring, is_full_date=is_full_date
+        date_parts,
+        is_recurring=is_recurring,
+        is_full_date=is_full_date,
+        fact_value=fact_value,
+        element=element,
+        error_repository=error_repository,
     )
 
     if is_full_date:
@@ -791,7 +848,12 @@ def parse_date_fact_value(fact_value: str, fact_format: str) -> str:
         return f"{date_parts['year']}-{date_parts['month']}"
 
 
-def parse_literal_fact_value(fact_value: str, fact_format: str) -> str:
+def parse_literal_fact_value(
+    fact_value: str,
+    fact_format: str,
+    element: _Element,
+    error_repository: ErrorRepository,
+) -> str:
     if fact_format == "ixt:fixed-empty":
         fact_value = ""
     elif fact_format == "ixt:fixed-false":
@@ -801,7 +863,10 @@ def parse_literal_fact_value(fact_value: str, fact_format: str) -> str:
     elif fact_format == "ixt:fixed-zero":
         fact_value = "0"
     else:
-        # TODO: Handle non-existing literal format
+        error_repository.insert(
+            ErrorCode.UNSUPPORTED_LITERAL_FACT_FORMAT, element, format=fact_format
+        )
+
         return fact_value
 
     return fact_value
@@ -836,17 +901,31 @@ def normalize_digits_in_string(string: str) -> str:
     return "".join(digits_map.get(c, c) for c in string)
 
 
-def match_regex_numerical_fact_value(fact_value: str, fact_format: str) -> re.Match:
+def match_regex_numerical_fact_value(
+    fact_value: str,
+    fact_format: str,
+    element: _Element,
+    error_repository: ErrorRepository,
+) -> Optional[re.Match]:
     number_format_regex = number_format_to_regex.get(fact_format)
 
     if not number_format_regex:
-        raise ValueError(f"Unexpected numerical format: {fact_format}")
+        error_repository.insert(
+            ErrorCode.UNSUPPORTED_NON_FRACTION_FACT_FORMAT, element, format=fact_format
+        )
+
+        return None
 
     match = re.match(number_format_regex, fact_value)
     if not match:
-        raise ValueError(
-            "Fact value {fact_value} does not match the expected format: {fact_format}"
+        error_repository.insert(
+            ErrorCode.NUMBER_DOES_NOT_MATCH_EXPECTED_FORMAT,
+            element,
+            number=fact_value,
+            format=fact_format,
         )
+
+        return None
 
     return match
 
@@ -879,7 +958,12 @@ def process_number_part(number_part: str) -> str:
     return number_part
 
 
-def process_numerical_fact_value(match: re.Match, fact_scale: str) -> str:
+def process_numerical_fact_value(
+    match: re.Match,
+    fact_scale: str,
+    element: _Element,
+    error_repository: ErrorRepository,
+) -> str:
     # Parse whole and decimal parts
     whole_part = process_number_part(match.group(1))
     decimal_part = process_number_part(match.group(2))
@@ -888,8 +972,10 @@ def process_numerical_fact_value(match: re.Match, fact_scale: str) -> str:
     scale = 0
     try:
         scale = int(fact_scale)
-    except ValueError:
-        raise ValueError(f"Invalid scale: {fact_scale}")
+    except Exception:
+        error_repository.insert(
+            ErrorCode.INVALID_SCALE_ATTRIBUTE_VALUE, element, scale=fact_scale
+        )
 
     whole_part, decimal_part = apply_scale(whole_part, decimal_part, scale)
     fact_value = whole_part + "." + decimal_part
@@ -916,7 +1002,11 @@ def normalize_numerical_fact_value(fact_value: str) -> str:
 
 
 def parse_numerical_fact_value(
-    fact_value: str, fact_format: str, fact_scale: str
+    fact_value: str,
+    fact_format: str,
+    fact_scale: str,
+    element: _Element,
+    error_repository: ErrorRepository,
 ) -> str:
     """
     Parses and converts a numerical fact value from a string based on the specified format and scale.
@@ -936,44 +1026,61 @@ def parse_numerical_fact_value(
 
     fact_format = legacy_to_current_formats.get(fact_format, fact_format)
 
-    if not "num" in fact_format:
-        raise ValueError(f"Fact format {fact_format} is not a numerical format")
+    fact_value = fact_value.strip()
+    match = match_regex_numerical_fact_value(
+        fact_value, fact_format, element, error_repository
+    )
 
-    if fact_format not in number_format_to_regex:
-        # TODO: Error Handling
+    if not match:
         return fact_value
 
-    fact_value = fact_value.strip()
-    match = match_regex_numerical_fact_value(fact_value, fact_format)
-    fact_value = process_numerical_fact_value(match, fact_scale)
+    fact_value = process_numerical_fact_value(
+        match, fact_scale, element, error_repository
+    )
     fact_value = normalize_numerical_fact_value(fact_value)
 
     return fact_value
 
 
-def parse_non_numerical_fact_value(fact_value: str, fact_format: Optional[str]) -> str:
+def parse_non_numerical_fact_value(
+    fact_value: str,
+    fact_format: Optional[str],
+    element: _Element,
+    error_repository: ErrorRepository,
+) -> str:
     if not fact_format:
         return fact_value
 
     fact_format = legacy_to_current_formats.get(fact_format, fact_format)
 
     if fact_format.startswith("ixt:num") or fact_format == "ixt:fixed-zero":
-        raise ValueError(f"Fact format {fact_format} is not a non-numerical format")
+        error_repository.insert(
+            ErrorCode.UNSUPPORTED_NON_NUMERIC_FACT_FORMAT,
+            element,
+            format=fact_format,
+        )
+
+        return fact_value
 
     if fact_format.startswith("ixt:date"):
         # Special handling of legacy format
         if fact_format == "ixt:datedaymonthyearin":
-            try:
-                fact_value = parse_date_fact_value(
-                    fact_value, "ixt:date-day-month-year"
-                )
-            except:
-                fact_value = parse_date_fact_value(
-                    fact_value, "ixt:date-day-monthname-year-hi"
-                )
+            fact_value_option_1 = parse_date_fact_value(
+                fact_value, "ixt:date-day-month-year", element, error_repository
+            )
+
+            fact_value_option_2 = parse_date_fact_value(
+                fact_value, "ixt:date-day-monthname-year-hi", element, error_repository
+            )
+
+            fact_value = fact_value_option_1 or fact_value_option_2
         else:
-            fact_value = parse_date_fact_value(fact_value, fact_format)
+            fact_value = parse_date_fact_value(
+                fact_value, fact_format, element, error_repository
+            )
     else:
-        fact_value = parse_literal_fact_value(fact_value, fact_format)
+        fact_value = parse_literal_fact_value(
+            fact_value, fact_format, element, error_repository
+        )
 
     return fact_value

@@ -19,12 +19,11 @@ import lxml.etree
 from brel import Context
 from brel.characteristics import *
 from brel.errors.error_code import ErrorCode
-from brel.errors.error_instance import ErrorInstance
+
 from brel.parsers.XML.characteristics import *
 from brel.parsers.utils.lxml_utils import get_str_attribute
 from brel.reportelements import *
 from brel.contexts.filing_context import FilingContext
-from brel.parsers.utils.error_utils import error_on_none
 
 
 def parse_context_xml(
@@ -40,26 +39,19 @@ def parse_context_xml(
     :param qname_nsmap: QNameNSMap. The QNameNSMap to use for the context.
     :param characteristics_cache: dict[str, ICharacteristic]. The characteristics cache to use for the context.
     :returns Context: The context created from the lxml.etree._Element.
-    :raises ValueError: if the XML element is malformed
     """
-
+    error_repository = filing_context.get_error_repository()
     context_id = get_str_attribute(xml_element, "id")
 
     context_period = xml_element.find("{*}period", namespaces=None)
 
     if context_period is None:
-        error = ErrorInstance.create_error_instance(
-            ErrorCode.MISSING_CONTEXT_PERIOD, xml_element
-        )
-        filing_context.get_error_repository().upsert(error)
+        error_repository.insert(ErrorCode.MISSING_CONTEXT_PERIOD, xml_element)
         return None
 
     context_entity = xml_element.find("{*}entity", namespaces=None)
     if context_entity is None:
-        error = ErrorInstance.create_error_instance(
-            ErrorCode.MISSING_CONTEXT_ENTITY, xml_element
-        )
-        filing_context.get_error_repository().upsert(error)
+        error_repository.insert(ErrorCode.MISSING_CONTEXT_ENTITY, xml_element)
         return None
 
     fact_context = Context(context_id)
@@ -94,12 +86,12 @@ def parse_context_xml(
                 typed_dimension_characteristic = parse_typed_dimension_from_xml(
                     filing_context, xml_dimension
                 )
+
+                if typed_dimension_characteristic is None:
+                    continue
+
                 fact_context._add_characteristic(typed_dimension_characteristic)
             else:
-                error = ErrorInstance.create_error_instance(
-                    ErrorCode.INVALID_DIMENSION_TYPE, xml_dimension
-                )
-
-                filing_context.get_error_repository().upsert(error)
+                error_repository.insert(ErrorCode.INVALID_DIMENSION_TYPE, xml_dimension)
 
     return fact_context

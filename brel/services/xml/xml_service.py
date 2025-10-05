@@ -9,12 +9,14 @@
 """
 
 import re
+from typing import List, Set
 import urllib.parse
 from lxml.etree import _ElementTree  # type: ignore
 import urllib
 
 from brel.data.uri_rewrite.uri_rewrite_repository import URIRewriteRepository
 from brel.data.xml.xml_repository import XMLRepository
+from brel.parsers.utils.lxml_utils import get_str_attribute
 from brel.services.file.file_service import FileService
 from brel.services.xml.xml_file_parser_resolver import XMLFileParserResolver
 
@@ -106,3 +108,19 @@ class XMLService:
 
     def get_all_etrees(self) -> list[_ElementTree]:
         return self.__xml_repository.get_all_etrees()
+
+    def get_available_filing_languages(self) -> List[str]:
+        all_languages: Set[str] = set()
+        for tree in self.get_all_etrees():
+            elements_with_lang = tree.findall(
+                "//*[@xml:lang]", {"xml": "http://www.w3.org/XML/1998/namespace"}
+            )
+
+            tree_languages = set(
+                get_str_attribute(element_with_lang, "xml:lang")
+                for element_with_lang in elements_with_lang
+            )
+
+            all_languages = all_languages.union(tree_languages)
+
+        return list(all_languages)
