@@ -110,7 +110,7 @@ class TranslationService:
         self,
         labels: List[BrelLabel],
         languages: str | List[str],
-        default_label: str | BrelLabel= "NO_LABEL",
+        default_label: str | BrelLabel = "NO_LABEL",
     ) -> str:
         """
         Select the first label with the given language.
@@ -119,10 +119,10 @@ class TranslationService:
         """
         if isinstance(languages, str):
             languages = [languages]
-        
+
         if isinstance(default_label, str):
             default_label = BrelLabel(default_label, "", "")
-        
+
         for language in languages:
             label = self.get_label_with_language(labels, language, default_label)
             if label is not None:
