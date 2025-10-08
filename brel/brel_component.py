@@ -47,7 +47,7 @@ pprint(calculation_network)
 ====================
 """
 
-from typing import Any, Dict, Optional, cast
+from typing import Any, Dict, List, Optional, cast
 from brel import Fact
 from brel.networks import (
     CalculationNetwork,
@@ -55,6 +55,7 @@ from brel.networks import (
     PresentationNetwork,
     INetwork,
 )
+from brel.services.translation.translation_service import TranslationService
 
 
 class Component:
@@ -169,20 +170,60 @@ class Component:
             networks.append(self.__definition_network)
         return networks
 
-    def convert_to_dict(self) -> Dict[str, Any]:
+    def convert_to_dict(
+        self,
+        languages: Optional[List[str]] = None,
+        translation_service: Optional[TranslationService] = None,
+    ) -> Dict[str, Any]:
         """
         :returns dict: a dictionary representation of the component
         """
+
+        if not languages or not translation_service:
+            return {
+                "network-identifier": self.__uri,
+                "info": self.__info,
+                "presentation-network": True
+                if self.__presentation_network is not None
+                else False,
+                "calculation-network": True
+                if self.__calculation_network is not None
+                else False,
+                "definintion-network": True
+                if self.__definition_network is not None
+                else False,
+            }
+
+        network_identifier_literal = translation_service.get(
+            "literal:network-identifier", languages
+        )
+        info_literal = translation_service.get("literal:info", languages)
+
+        presentation_network_literal = translation_service.get(
+            "literal:presentation-network", languages
+        )
+        presentation_network = translation_service.get(
+            "boolean:" + str(self.__presentation_network is not None).lower(), languages
+        )
+
+        calculation_network_literal = translation_service.get(
+            "literal:calculation-network", languages
+        )
+        calculation_network = translation_service.get(
+            "boolean:" + str(self.__calculation_network is not None).lower(), languages
+        )
+
+        definition_network_literal = translation_service.get(
+            "literal:definition-network", languages
+        )
+        defintion_network = translation_service.get(
+            "boolean:" + str(self.__definition_network is not None).lower(), languages
+        )
+
         return {
-            "network_identifier": self.__uri,
-            "info": self.__info,
-            "PresentationNetwork": True
-            if self.__presentation_network is not None
-            else False,
-            "CalculationNetwork": True
-            if self.__calculation_network is not None
-            else False,
-            "DefinitionNetwork": True
-            if self.__definition_network is not None
-            else False,
+            network_identifier_literal: self.__uri,
+            info_literal: self.__info,
+            presentation_network_literal: presentation_network,
+            calculation_network_literal: calculation_network,
+            definition_network_literal: defintion_network,
         }

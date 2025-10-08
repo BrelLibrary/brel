@@ -21,6 +21,7 @@ from brel.data.factory import (
     create_network_repository,
     create_fact_repository,
     create_characteristic_repository,
+    create_translation_service,
     create_xml_repository,
     create_context_repository,
     create_uri_rewrite_repository,
@@ -41,6 +42,7 @@ from brel.services.factory import (
 )
 from brel.services.file.file_service import FileService
 from brel.services.report_element.report_element_service import ReportElementService
+from brel.services.translation.translation_service import TranslationService
 from brel.services.xml.xml_service import XMLService
 
 
@@ -135,4 +137,9 @@ class FilingContext:
         return self.__lazy_cache(
             "available_filing_languages",
             lambda: self.get_xml_service().get_available_filing_languages(),
+        )
+
+    def get_translation_service(self) -> TranslationService:
+        return self.__lazy_cache(
+            "translation_service", lambda: create_translation_service()
         )

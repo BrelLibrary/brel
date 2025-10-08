@@ -12,7 +12,7 @@ For more information on concepts, see the [**XBRL 2.1 specification**](https://s
 ====================
 """
 
-from typing import Any, Dict, Optional
+from typing import Any, Dict, List, Optional
 import lxml
 import lxml.etree
 
@@ -21,6 +21,7 @@ from brel.data.errors.error_repository import ErrorRepository
 from brel.errors.error_code import ErrorCode
 from brel.reportelements import IReportElement
 from brel.resource import BrelLabel
+from brel.services.translation.translation_service import TranslationService
 
 
 class Concept(IReportElement):
@@ -207,17 +208,69 @@ class Concept(IReportElement):
     def __str__(self) -> str:
         return self.__name.__str__()
 
-    def convert_to_dict(self) -> Dict[str, Any]:
+    def convert_to_dict(
+        self,
+        languages: Optional[List[str]] = None,
+        translation_service: Optional[TranslationService] = None,
+    ) -> Dict[str, Any]:
         """
         Convert the concept to a dictionary.
         :returns dict: the concept as a dictionary
         """
+        if not languages or not translation_service:
+            return {
+                "name": self.__name.prefix_local_name_notation(),
+                "label": self.select_main_label().__str__(),
+                "report-element-type": "concept",
+                "period-type": self.__period_type,
+                "balance-type": self.__balance_type,
+                "nillable": self.__nillable,
+                "data-type": self.__data_type,
+            }
+        name_literal = translation_service.get("literal:name", languages)
+
+        label_literal = translation_service.get("literal:label", languages)
+        label = translation_service.get_from_labels(
+            self.get_labels(), languages, self.select_main_label().__str__()
+        )
+
+        report_element_type_literal = translation_service.get(
+            "literal:report-element-type",
+            languages,
+        )
+        concept_literal = translation_service.get("report-element:concept", languages)
+
+        period_type_literal = translation_service.get("literal:period-type", languages)
+        period_type = translation_service.get(
+            "period-type:" + self.__period_type, languages
+        )
+
+        balance_type_literal = translation_service.get(
+            "literal:balance-type", languages
+        )
+        if self.__balance_type is not None:
+            balance_type = translation_service.get(
+                "balance-type:" + self.__balance_type, languages
+            )
+        else:
+            balance_type = translation_service.get("literal:none", languages)
+
+        nillable_literal = translation_service.get("literal:nillable", languages)
+        nillable = translation_service.get(
+            "boolean:" + str(self.__nillable).lower(), languages
+        )
+
+        data_type_literal = translation_service.get("literal:data-type", languages)
+        data_type = translation_service.get(
+            "data-type:" + self.__data_type.split(":")[-1], languages
+        )
+
         return {
-            "name": self.__name.prefix_local_name_notation(),
-            "label": self.select_main_label().__str__(),
-            "report_element_type": "concept",
-            "period_type": self.__period_type,
-            "balance_type": self.__balance_type,
-            "nillable": self.__nillable,
-            "data_type": self.__data_type,
+            name_literal: self.__name.prefix_local_name_notation(),
+            label_literal: label,
+            report_element_type_literal: concept_literal,
+            period_type_literal: period_type,
+            balance_type_literal: balance_type,
+            nillable_literal: nillable,
+            data_type_literal: data_type,
         }

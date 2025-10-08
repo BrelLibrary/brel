@@ -47,7 +47,7 @@ Once a filing is loaded, it can be queried for its facts, report elements, netwo
 import os
 import pandas as pd
 from pyspark import sql
-from typing import Any, List, Optional, cast
+from typing import Any, List, Optional, Unpack, cast
 
 from brel import Component, Fact, QName
 
@@ -68,6 +68,7 @@ from brel.reportelements import (
 )
 from brel.contexts.filing_context import FilingContext
 from brel.config.brel_config import BrelConfig
+from brel.services.translation.output_params import OutputParams
 
 
 class Filing:
@@ -91,28 +92,49 @@ class Filing:
 
     def __init__(self, context: FilingContext) -> None:
         self.__context = context
-        self.__preferred_filing_languages: List[str] = []
+        self.__output_params = OutputParams()
 
     def get_preferred_languages(
-        self, function_languages: Optional[str | list[str]] = None
+        self,
+        function_languages: Optional[str | list[str]],
+        allow_report_language: bool,
+        allow_system_language: bool,
+        allow_default: bool,
     ) -> List[str]:
         if function_languages is None:
             function_languages = []
         elif isinstance(function_languages, str):
             function_languages = [function_languages]
 
-        available_filing_languages = self.__context.get_available_filing_languages()
-        preferred_filing_languages = self.__preferred_filing_languages
-        sys_language = [BrelConfig.get_system_language()] if BrelConfig.get_system_language() else []
-        library_languages = BrelConfig.get_preferred_library_languages()
+        preferred_filing_languages = self.__output_params.get("languages") or []
+        if isinstance(preferred_filing_languages, str):
+            preferred_filing_languages = [preferred_filing_languages]
+
+        library_languages = BrelConfig.get_preferred_library_languages() or []
+        if isinstance(library_languages, str):
+            library_languages = [library_languages]
+
+        sys_language = BrelConfig.get_system_language()
+        sys_language_list = (
+            [sys_language] if sys_language and allow_system_language else []
+        )
+
+        available_filing_languages = (
+            self.__context.get_available_filing_languages()
+            if allow_report_language
+            else []
+        )
 
         all_languages = (
             function_languages
             + preferred_filing_languages
             + library_languages
-            + sys_language
+            + sys_language_list
             + available_filing_languages
         )
+
+        if allow_default:
+            all_languages.append("")
 
         existing_language_set = set()
         all_languages_deduplicated = []
@@ -121,7 +143,6 @@ class Filing:
                 existing_language_set.add(language)
                 all_languages_deduplicated.append(language)
 
-        # Throwing errors or cascading on non-available languages
         return all_languages_deduplicated
 
     # first class citizens
@@ -347,20 +368,14 @@ class Filing:
         else:
             return component
 
-    def generate_fact_table_pandas_df(self) -> pd.DataFrame:
+    def generate_fact_table_pandas_df(
+        self, **kwargs: Unpack[OutputParams]
+    ) -> pd.DataFrame:
         """
         Converts the filing to a pandas DataFrame.
         :return pandas.DataFrame: the filing as a pandas DataFrame.
         """
-        import pandas as pd
-
-        data: list[dict[str, Any]] = []
-        for fact in self.get_all_facts():
-            d = fact.convert_to_dict()
-            data.append(d)
-
-        df = pd.DataFrame(data)
-        return df
+        return self.__generate_pandas_df_from_elements(self.get_all_facts(), **kwargs)
 
     def generate_fact_table_spark_df(self) -> tuple[sql.DataFrame, sql.SparkSession]:
         """
@@ -372,18 +387,16 @@ class Filing:
         # spark.parallelize()
         return spark.createDataFrame(df), spark
 
-    def generate_components_as_pandas_df(self) -> pd.DataFrame:
+    def generate_components_as_pandas_df(
+        self, **kwargs: Unpack[OutputParams]
+    ) -> pd.DataFrame:
         """
         Converts the components to a pandas DataFrame.
         :return pandas.DataFrame: the components as a pandas DataFrame.
         """
-        data: list[dict[str, Any]] = []
-        for component in self.get_all_components():
-            d = component.convert_to_dict()
-            data.append(d)
-
-        df = pd.DataFrame(data)
-        return df
+        return self.__generate_pandas_df_from_elements(
+            self.get_all_components(), **kwargs
+        )
 
     def get_all_labels(self) -> List[dict[str, str]]:
         """
@@ -408,17 +421,107 @@ class Filing:
         return df
 
     def generate_report_elements_as_pandas_df(
-        self, languages: Optional[str | list[str]] = None
+        self, **kwargs: Unpack[OutputParams]
     ) -> pd.DataFrame:
         """
         Converts the report elements to a pandas DataFrame.
         :return pandas.DataFrame: the report elements as a pandas DataFrame.
         """
-        language_priority = self.get_preferred_languages(languages)
+        return self.__generate_pandas_df_from_elements(
+            self.get_all_report_elements(), **kwargs
+        )
+
+    def __generate_pandas_df_from_elements(
+        self,
+        elements: List[IReportElement] | List[Component] | List[Fact],
+        **kwargs: Unpack[OutputParams],
+    ) -> pd.DataFrame:
+        output_params = self.__infer_output_params(**kwargs)
         data = []
-        for re in self.get_all_report_elements():
-            d = re.convert_to_dict()
-            data.append(d)
+
+        translation_service = self.__context.get_translation_service()
+        translation_service.set_match_locale(output_params["match_locale"])
+
+        if output_params["allow_mixed"]:
+            for element in elements:
+                languages = output_params["languages"]
+                languages_list = (
+                    languages if isinstance(languages, list) else [languages]
+                )
+
+                d = element.convert_to_dict(languages_list, translation_service)
+                data.append(d)
+        else:
+            for language in output_params["languages"]:
+                for element in elements:
+                    try:
+                        d = element.convert_to_dict([language], translation_service)
+                        data.append(d)
+                    except:
+                        data = []
+                        break
 
         df = pd.DataFrame(data)
         return df
+
+    def get_preferred_output_parameter(
+        self, passed_value: Optional[bool], parameter_name: str
+    ) -> bool:
+        if passed_value is not None:
+            return passed_value
+
+        filing_value = cast(bool, self.__output_params.get(parameter_name))
+        if filing_value is not None:
+            return filing_value
+
+        config_value = BrelConfig.get_boolean_output_parameter_by_name(parameter_name)
+        if config_value is not None:
+            return config_value
+
+        return False
+
+    def __infer_output_params(self, **kwargs: Unpack[OutputParams]) -> OutputParams:
+        allow_default = self.get_preferred_output_parameter(
+            kwargs.get("allow_default"), "allow_default"
+        )
+
+        allow_system_language = self.get_preferred_output_parameter(
+            kwargs.get("allow_system_language"), "allow_system_language"
+        )
+
+        allow_report_language = self.get_preferred_output_parameter(
+            kwargs.get("allow_report_language"), "allow_report_language"
+        )
+
+        match_locale = self.get_preferred_output_parameter(
+            kwargs.get("match_locale"), "match_locale"
+        )
+
+        allow_mixed = self.get_preferred_output_parameter(
+            kwargs.get("allow_mixed"), "allow_mixed"
+        )
+
+        languages = self.get_preferred_languages(
+            kwargs.get("languages"),
+            allow_system_language,
+            allow_report_language,
+            allow_default,
+        )
+
+        return OutputParams(
+            {
+                "languages": languages,
+                "allow_default": allow_default,
+                "allow_system_language": allow_system_language,
+                "allow_report_language": allow_report_language,
+                "match_locale": match_locale,
+                "allow_mixed": allow_mixed,
+            }
+        )
+
+    def set_filing_output_params(self, **kwargs: Unpack[OutputParams]) -> None:
+        self.__output_params = kwargs
+
+    @classmethod
+    def set_global_output_params(self, **kwargs: Unpack[OutputParams]) -> None:
+        BrelConfig.set_library_output_parameters(**kwargs)

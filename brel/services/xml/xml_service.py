@@ -9,7 +9,7 @@
 """
 
 import re
-from typing import List, Set
+from typing import List, Optional, Set
 import urllib.parse
 from lxml.etree import _ElementTree  # type: ignore
 import urllib
@@ -33,6 +33,7 @@ class XMLService:
         self.__uri_rewrite_repository = uri_rewrite_repository
         self.__xml_repository = xml_repository
         self.__parser_resolver = parser_resolver
+        self.__available_filing_languages: Optional[List[str]] = None
 
     def add_etree_recursive(self, uri: str, referencing_uri: str = ".") -> None:
         """
@@ -110,17 +111,20 @@ class XMLService:
         return self.__xml_repository.get_all_etrees()
 
     def get_available_filing_languages(self) -> List[str]:
-        all_languages: Set[str] = set()
-        for tree in self.get_all_etrees():
-            elements_with_lang = tree.findall(
-                "//*[@xml:lang]", {"xml": "http://www.w3.org/XML/1998/namespace"}
-            )
+        if self.__available_filing_languages is None:
+            all_languages: Set[str] = set()
+            for tree in self.get_all_etrees():
+                elements_with_lang = tree.findall(
+                    "//*[@xml:lang]", {"xml": "http://www.w3.org/XML/1998/namespace"}
+                )
 
-            tree_languages = set(
-                get_str_attribute(element_with_lang, "xml:lang")
-                for element_with_lang in elements_with_lang
-            )
+                tree_languages = set(
+                    get_str_attribute(element_with_lang, "xml:lang")
+                    for element_with_lang in elements_with_lang
+                )
 
-            all_languages = all_languages.union(tree_languages)
+                all_languages = all_languages.union(tree_languages)
 
-        return list(all_languages)
+            self.__available_filing_languages = list(all_languages)
+
+        return self.__available_filing_languages

@@ -17,11 +17,12 @@ A duration consists of two `datetime.date` instances, a start date and an end da
 """
 
 import datetime
-from typing import Optional
+from typing import List, Optional
 
 import dateutil.parser
 
 from brel.characteristics import Aspect, ICharacteristic
+from brel.services.translation.translation_service import TranslationService
 
 
 class PeriodCharacteristic(ICharacteristic):
@@ -102,9 +103,9 @@ class PeriodCharacteristic(ICharacteristic):
 
     def __str__(self) -> str:
         if self.__is_instant:
-            return f"on {self.__instant_date}"
+            return f"{self.__instant_date}"
         else:
-            return f"from {self.__start_date} to {self.__end_date}"
+            return f"{self.__start_date} - {self.__end_date}"
 
     def __eq__(self, __value: object) -> bool:
         if not isinstance(__value, PeriodCharacteristic):

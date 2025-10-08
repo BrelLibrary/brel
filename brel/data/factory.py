@@ -42,6 +42,7 @@ from brel.data.uri_rewrite.in_memory_uri_rewrite_repository import (
 )
 from brel.data.uri_rewrite.uri_rewrite_repository import URIRewriteRepository
 from brel.data.xml.xml_repository import XMLRepository
+from brel.services.translation.translation_service import TranslationService
 
 
 def create_report_element_repository() -> ReportElementRepository:
@@ -91,3 +92,9 @@ def create_xml_repository() -> XMLRepository:
 
 def create_uri_rewrite_repository() -> URIRewriteRepository:
     return InMemoryURIRewriteRepository()
+
+
+def create_translation_service() -> TranslationService:
+    translation_service = TranslationService()
+    translation_service.load_from_csv()
+    return translation_service

@@ -15,7 +15,7 @@ To print a fact to the console, use the `pprint` function in the `brel` module.
 ====================
 """
 
-from typing import Any, cast
+from typing import Any, List, Optional, cast
 
 from brel import Context
 from brel.characteristics import (
@@ -26,6 +26,7 @@ from brel.characteristics import (
     UnitCharacteristic,
     EntityCharacteristic,
 )
+from brel.services.translation.translation_service import TranslationService
 
 
 class Fact:
@@ -201,15 +202,35 @@ class Fact:
         """
         return self.__context.get_characteristic(aspect)
 
-    def convert_to_dict(self) -> dict[str, Any]:
+    def convert_to_dict(
+        self,
+        languages: Optional[List[str]] = None,
+        translation_service: Optional[TranslationService] = None,
+    ) -> dict[str, Any]:
         """
         :returns dict[str, Any]: The fact represented as a dictionary. The dictionary has the following keys:
         - "id": The id of the fact. Returns None if the fact does not have an id.
         - "value": The value of the fact.
         - "context": The context of the fact represented as a dictionary.
         """
-        dict_to_return = self.__context.convert_to_df_row()
-        dict_to_return["id"] = self.__id if self.__id else ""
-        dict_to_return["value"] = self.__value
+        dict_to_return = self.__context.convert_to_df_row(
+            languages, translation_service
+        )
+
+        if not languages or not translation_service:
+            dict_to_return["id"] = self.__id if self.__id else ""
+            dict_to_return["value"] = self.__value
+        else:
+            id_literal = translation_service.get("literal:id", languages)
+            value_literal = translation_service.get("literal:value", languages)
+
+            if self.__id:
+                dict_to_return[id_literal] = self.__id
+            else:
+                dict_to_return[id_literal] = translation_service.get(
+                    "literal:none", languages
+                )
+
+            dict_to_return[value_literal] = self.__value
 
         return dict_to_return
