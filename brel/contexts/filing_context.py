@@ -21,6 +21,7 @@ from brel.data.factory import (
     create_network_repository,
     create_fact_repository,
     create_characteristic_repository,
+    create_table_linkbase_repository,
     create_translation_service,
     create_xml_repository,
     create_context_repository,
@@ -34,6 +35,7 @@ from brel.data.fact.fact_repository import FactRepository
 from brel.data.characteristic.characteristic_repository import CharacteristicRepository
 from brel.data.network.network_repository import NetworkRepository
 from brel.data.component.component_repository import ComponentRepository
+from brel.data.table_linkbase.table_linkbase_repository import TableLinkbaseRepository
 from brel.data.xml.xml_repository import XMLRepository
 from brel.services.factory import (
     create_file_service,
@@ -142,4 +144,9 @@ class FilingContext:
     def get_translation_service(self) -> TranslationService:
         return self.__lazy_cache(
             "translation_service", lambda: create_translation_service()
+        )
+
+    def get_table_linkbase_repository(self) -> TableLinkbaseRepository:
+        return self.__lazy_cache(
+            "table_linkbase_repository", lambda: create_table_linkbase_repository()
         )

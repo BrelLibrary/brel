@@ -13,6 +13,7 @@ Acts as a wrapper around the other pretty print functions and automatically sele
 
 from brel import Fact, Component
 from brel.networks import INetwork, INetworkNode
+from brel.table_linkbases.definition_model.table import Table
 from brel.utils import (
     pprint_fact,
     pprint_facts,
@@ -20,6 +21,7 @@ from brel.utils import (
     pprint_network_node,
     pprint_component,
 )
+from brel.utils.print_table import pprint_definition_table
 
 
 def pprint(to_print):
@@ -53,6 +55,8 @@ def pprint(to_print):
         pprint_network_node(to_print)
     elif isinstance(to_print, Component):
         pprint_component(to_print)
+    elif isinstance(to_print, Table):
+        pprint_definition_table(to_print)
     else:
         raise TypeError(
             f"Can only pretty print facts, lists of facts, components, networks and network nodes. Got {type(to_print)}"

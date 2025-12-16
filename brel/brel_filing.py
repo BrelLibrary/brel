@@ -51,7 +51,9 @@ from typing import Any, List, Optional, Unpack, cast
 
 from brel import Component, Fact, QName
 
+from brel.errors.area import Area
 from brel.errors.error_instance import ErrorInstance
+from brel.errors.severity import Severity
 from brel.networks import INetwork
 from brel.parsers.filing_parser_factory import FilingParserFactory
 from brel.parsers.path_loaders.factory import create_path_loader_resolver
@@ -176,11 +178,48 @@ class Filing:
             if network.is_physical()
         ]
 
-    def get_errors(self) -> list[ErrorInstance]:
+    def has_any_errors(self) -> bool:
+        return len(self.__context.get_error_repository().get_all()) > 0
+
+    def get_all_errors(self) -> list[ErrorInstance]:
         """
-        :returns list[Exception]: a list of all errors that occurred during parsing.
+        :returns list[Exception]: a list of all errors (any severity) that occurred during parsing.
         """
         return self.__context.get_error_repository().get_all()
+
+    def get_errors_by_area(self, area: Area) -> list[ErrorInstance]:
+        """
+        :param Area area: the area of the errors to return
+        :returns list[Exception]: a list of all errors with the specified area that occurred during parsing.
+        """
+        all_errors = self.__context.get_error_repository().get_all()
+        area_errors = [error for error in all_errors if error.get_area() == area]
+        return area_errors
+
+    def get_errors_by_severity(self, severity: Severity) -> List[ErrorInstance]:
+        """
+        :param Severity severity: the severity of the errors to return
+        :returns list[Exception]: a list of all errors with the specified severity that occurred during parsing.
+        """
+        return self.__context.get_error_repository().get_by_severity(severity)
+
+    def get_errors(self) -> List[ErrorInstance]:
+        """
+        :returns list[Exception]: a list of all errors (severity = ERROR) that occurred during parsing.
+        """
+        return self.get_errors_by_severity(Severity.ERROR)
+
+    def get_warnings(self) -> List[ErrorInstance]:
+        """
+        :returns list[Exception]: a list of all warnings (severity = WARNING) that occurred during parsing.
+        """
+        return self.get_errors_by_severity(Severity.WARNING)
+
+    def get_infos(self) -> List[ErrorInstance]:
+        """
+        :returns list[Exception]: a list of all infos (severity = INFO) that occurred during parsing.
+        """
+        return self.get_errors_by_severity(Severity.INFO)
 
     # second class citizens
     def get_all_concepts(self) -> list[Concept]:

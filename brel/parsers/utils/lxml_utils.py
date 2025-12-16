@@ -15,6 +15,7 @@ import lxml.etree
 from lxml.etree import _Element, _ElementTree, XPath  # type: ignore
 
 from brel.qnames.qname_utils import (
+    is_clark_notation,
     is_namespace_localname_notation,
     qname_from_str,
 )

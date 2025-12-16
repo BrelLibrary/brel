@@ -17,6 +17,9 @@ from lxml.etree import _Element  # type: ignore
 from brel.errors.error_code import ErrorCode
 from brel.networks import *
 from brel.parsers.XML.networks import parse_xml_link
+from brel.parsers.XML.table_linkbase.xml_table_linkbase_parser import (
+    parse_table_linkbase_from_xml,
+)
 from brel.parsers.utils.lxml_utils import (
     find_elements,
     get_str_attribute,
@@ -119,3 +122,5 @@ def parse_networks_from_xmls(
     for role, network_list in combined_networks.items():
         for network in network_list:
             network_repository.upsert(network)
+
+    parse_table_linkbase_from_xml(context)

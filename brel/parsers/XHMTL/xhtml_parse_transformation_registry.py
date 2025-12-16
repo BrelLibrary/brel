@@ -1019,7 +1019,6 @@ def parse_numerical_fact_value(
     :param fact_format: The format of the numerical fact, indicating how the value is formatted.
     :param fact_scale: The scale to apply to the numerical value, represented as a power of 10.
     :return: The parsed and scaled numerical value as a string.
-    :raises ValueError: If the format is not supported.
     """
     if fact_format == "ixt:fixed-zero":
         return "0"

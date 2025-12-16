@@ -47,13 +47,11 @@ class TranslationService:
         requested_language = requested_language.lower()
         available_language = available_language.lower()
 
-        if self.__match_locale:
-            return available_language == requested_language
-        else:
+        if not self.__match_locale:
             requested_language = requested_language.split("-")[0]
             available_language = available_language.split("-")[0]
 
-            return requested_language == available_language
+        return requested_language == available_language
 
     def get_single(self, qname: QName, language: str) -> str:
         """
