@@ -14,11 +14,12 @@ https://www.xbrl.org/specification/gnl/rec-2009-06-22/gnl-rec-2009-06-22.html
 
 import itertools
 from collections import defaultdict
-from typing import Iterable
+from typing import Iterable, Optional
 
 import lxml.etree
 
 from brel.brel_fact import Fact
+from brel.errors.error_code import ErrorCode
 from brel.networks import *
 from brel.parsers.XML.networks import (
     CalculationNetworkFactory,
@@ -31,7 +32,11 @@ from brel.parsers.XML.networks import (
     ReferenceNetworkFactory,
     parse_xml_resource,
 )
-from brel.parsers.utils.lxml_utils import find_elements, get_str_attribute, get_str_tag
+from brel.parsers.utils.lxml_utils import (
+    find_elements,
+    get_str_attribute,
+    get_clark_notation_tag,
+)
 from brel.reportelements import *
 from brel.resource import *
 from brel.contexts.filing_context import FilingContext
@@ -40,9 +45,10 @@ from brel.contexts.filing_context import FilingContext
 def get_object_from_reference(
     referenced_element: lxml.etree._Element,  # type: ignore
     filing_context: FilingContext,
-) -> IResource | IReportElement | Fact:
+) -> Optional[IResource | IReportElement | Fact]:
     report_element_repository = filing_context.get_report_element_repository()
     fact_repository = filing_context.get_fact_repository()
+    error_repository = filing_context.get_error_repository()
 
     referenced_element_type = get_str_attribute(referenced_element, "xlink:type")
 
@@ -58,14 +64,23 @@ def get_object_from_reference(
         elif fact_repository.has_id(elem_id):
             locator_target_element = fact_repository.get_by_id(elem_id)
         else:
-            raise ValueError(f"the referenced element {elem_id} could not be found")
+            error_repository.insert(
+                ErrorCode.XML_REFERENCED_LOCATOR_ELEMENT_NOT_FOUND,
+                referenced_element,
+                elem_id=elem_id,
+            )
 
+            return None
     elif referenced_element_type == "resource":
-        locator_target_element = parse_xml_resource(referenced_element)
+        locator_target_element = parse_xml_resource(referenced_element, filing_context)
     else:
-        raise NotImplementedError(
-            f"the referenced element type {referenced_element_type} is not supported"
+        error_repository.insert(
+            ErrorCode.XML_UNSUPPORTED_REFERENCED_ELEMENT_TYPE,
+            referenced_element,
+            type=referenced_element_type,
         )
+
+        return None
 
     return locator_target_element
 
@@ -74,26 +89,29 @@ def parse_xml_link(
     context: FilingContext,
     xml_link_element: lxml.etree._Element,  # type: ignore
 ) -> Iterable[INetwork]:
+    error_repository = context.get_error_repository()
     networks: list[INetwork] = []
     network_factories: list[IXMLNetworkFactory] = []
 
-    if "presentationLink" in get_str_tag(xml_link_element):
+    if "presentationLink" in get_clark_notation_tag(xml_link_element):
         network_factories.append(PresentationNetworkFactory())
-    elif "calculationLink" in get_str_tag(xml_link_element):
+    elif "calculationLink" in get_clark_notation_tag(xml_link_element):
         network_factories.append(CalculationNetworkFactory())
-    elif "definitionLink" in get_str_tag(xml_link_element):
+    elif "definitionLink" in get_clark_notation_tag(xml_link_element):
         # for definition networks we need to create both a physical and a logical network
         network_factories.append(PhysicalDefinitionNetworkFactory())
         network_factories.append(LogicalDefinitionNetworkFactory())
-    elif "labelLink" in get_str_tag(xml_link_element):
+    elif "labelLink" in get_clark_notation_tag(xml_link_element):
         network_factories.append(LabelNetworkFactory())
-    elif "referenceLink" in get_str_tag(xml_link_element):
+    elif "referenceLink" in get_clark_notation_tag(xml_link_element):
         network_factories.append(ReferenceNetworkFactory())
-    elif "footnoteLink" in get_str_tag(xml_link_element):
+    elif "footnoteLink" in get_clark_notation_tag(xml_link_element):
         network_factories.append(FootnoteNetworkFactory())
     else:
-        raise NotImplementedError(
-            f"the link element {xml_link_element.tag} is not supported"
+        error_repository.insert(
+            ErrorCode.UNSUPPORTED_LINK_TYPE,
+            xml_link_element,
+            type=get_clark_notation_tag(xml_link_element),
         )
 
     for network_factory in network_factories:
@@ -108,10 +126,13 @@ def parse_xml_link(
             arc_role = get_str_attribute(arc_element, "xlink:arcrole")
 
             if (arc_from, arc_to, arc_role) in edges:
-                # the edge already exists. The SEC XBRL Filing Manual says that this is an error.
-                raise ValueError(
-                    f"the arc element with from='{arc_from}' and to='{arc_to}' is a duplicate"
+                error_repository.insert(
+                    ErrorCode.DUPLICATE_LINKBASE_ARC,
+                    arc_element,
+                    arc_from=arc_from,
+                    arc_to=arc_to,
                 )
+                continue
 
             edges.add((arc_from, arc_to, arc_role))
             node_to_arcs[arc_from].append(arc_element)
@@ -120,15 +141,14 @@ def parse_xml_link(
         for link_element in find_elements(
             xml_link_element, ".//*[@xlink:type='resource' or @xlink:type='locator']"
         ):
-            if not isinstance(link_element, lxml.etree._Element):  # type: ignore
-                raise TypeError(
-                    f"the xpath query did not return a list of lxml.etree._Element."
-                )
-
             label = get_str_attribute(link_element, "xlink:label")
-            to_object: IResource | IReportElement | Fact = get_object_from_reference(
-                link_element, context
-            )
+            to_object: Optional[
+                IResource | IReportElement | Fact
+            ] = get_object_from_reference(link_element, context)
+
+            if not to_object:
+                continue
+
             node_arcs = node_to_arcs[label]
             arcs_to = list(
                 filter(
@@ -146,8 +166,16 @@ def parse_xml_link(
             if network_factory.is_physical():
                 if len(arcs_to) == 0 and len(arcs_from) == 0:
                     node = network_factory.create_node(
-                        xml_link_element, link_element, None, to_object
+                        xml_link_element,
+                        link_element,
+                        None,
+                        to_object,
+                        error_repository,
                     )
+
+                    if node is None:
+                        continue
+
                     roots.add(node)
                     nodes_lookup[label].append(node)
                 else:
@@ -175,8 +203,15 @@ def parse_xml_link(
                         )
 
                         node = network_factory.create_node(
-                            xml_link_element, link_element, arc, to_object
+                            xml_link_element,
+                            link_element,
+                            arc,
+                            to_object,
+                            error_repository,
                         )
+
+                        if node is None:
+                            continue
 
                         if role_type not in incoming_role_types:
                             roots.add(node)
@@ -185,16 +220,27 @@ def parse_xml_link(
             else:
                 if len(arcs_to) == 0 and len(arcs_from) == 0:
                     node = network_factory.create_node(
-                        xml_link_element, link_element, None, to_object
+                        xml_link_element,
+                        link_element,
+                        None,
+                        to_object,
+                        error_repository,
                     )
+
+                    if node is None:
+                        continue
+
                     roots.add(node)
                     nodes_lookup[label].append(node)
                 else:
                     arc = arcs_to[0] if len(arcs_to) > 0 else arcs_from[0]
 
                     node = network_factory.create_node(
-                        xml_link_element, link_element, arc, to_object
+                        xml_link_element, link_element, arc, to_object, error_repository
                     )
+
+                    if node is None:
+                        continue
 
                     if len(arcs_to) == 0:
                         roots.add(node)

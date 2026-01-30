@@ -11,10 +11,11 @@ Members are used to represent the possible values of an explicit dimension.
 ====================
 """
 
-from typing import Any, Dict
+from typing import Any, Dict, List, Optional
 from brel import QName
 from brel.reportelements import IReportElement
 from brel.resource import BrelLabel
+from brel.services.translation.translation_service import TranslationService
 
 
 class Member(IReportElement):
@@ -57,13 +58,35 @@ class Member(IReportElement):
     def __str__(self) -> str:
         return self.__name.__str__()
 
-    def convert_to_dict(self) -> Dict[str, Any]:
+    def convert_to_dict(
+        self,
+        languages: Optional[List[str]] = None,
+        translation_service: Optional[TranslationService] = None,
+    ) -> Dict[str, Any]:
         """
         Convert the member to a dictionary.
         :returns dict: the member as a dictionary
         """
+        if not languages or not translation_service:
+            return {
+                "name": self.__name.prefix_local_name_notation(),
+                "label": self.select_main_label().__str__(),
+                "report-element-type": "member",
+            }
+
+        name_literal = translation_service.get("literal:name", languages)
+        label_literal = translation_service.get("literal:label", languages)
+        report_element_type_literal = translation_service.get(
+            "literal:report-element-type", languages
+        )
+        member_literal = translation_service.get("report-element:member", languages)
+
+        label = translation_service.get_from_labels(
+            self.get_labels(), languages, self.select_main_label().__str__()
+        )
+
         return {
-            "name": self.__name.prefix_local_name_notation(),
-            "label": self.select_main_label().__str__(),
-            "report_element_type": "member",
+            name_literal: self.__name.prefix_local_name_notation(),
+            label_literal: label,
+            report_element_type_literal: member_literal,
         }

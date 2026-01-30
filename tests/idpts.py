@@ -15,6 +15,7 @@ This module runs the interactive data test suite created by the SEC.
 # pylint: disable=missing-function-docstring
 
 
+from typing import List, cast
 import lxml
 import lxml.etree
 from rich import print
@@ -60,7 +61,7 @@ def load_idpts():
         response = requests.get(uri, headers={"User-Agent": "Mozilla/5.0"})
         if response.status_code != 200:
             raise Exception(
-                f"Could not download the interactive data test suite from {uri}."
+                f"Could not download the interactive data test suite from {uri}. \n"
             )
         # unzip the file into the folder "interactive_data_test_suite" relative to current_dir
         with open("idpts.zip", "wb") as file:
@@ -85,20 +86,23 @@ def filter_testcase_by_name(testcase_name: str) -> bool:
     return True
 
 
-def run_idpts():
+def run_idpts() -> None:
     load_idpts()
 
     idpts_testcases_folder = "tests/interactive_data_test_suite/conf/"
     idpts_testcases_filename = "testcases.xml"
 
-    testcases_etree = lxml.etree.parse(
-        idpts_testcases_folder + idpts_testcases_filename
+    testcases_etree = cast(
+        lxml.etree._ElementTree,
+        lxml.etree.parse(idpts_testcases_folder + idpts_testcases_filename),
     )
-    testcase_elements = testcases_etree.xpath("//testcase")
 
-    testcase_filenames = [
-        testcase_element.get("uri") for testcase_element in testcase_elements
-    ]
+    testcase_elements = testcases_etree.findall("//testcase")
+
+    testcase_filenames = cast(
+        List[str],
+        [testcase_element.get("uri") for testcase_element in testcase_elements],
+    )
 
     testcase_filenames = list(filter(filter_testcase_files, testcase_filenames))
 
@@ -107,7 +111,11 @@ def run_idpts():
         print(f"> {testcase_filename}")
 
     for testcase_filename in testcase_filenames:
-        testcase_etree = lxml.etree.parse(idpts_testcases_folder + testcase_filename)
+        testcase_etree = cast(
+            lxml.etree._ElementTree,
+            lxml.etree.parse(idpts_testcases_folder + testcase_filename),
+        )
+
         testcase_elem = testcase_etree.getroot()
 
         # creator = testcase_elem.find("{*}creator")
@@ -134,9 +142,22 @@ def run_idpts():
             # get filenames relevant for this variation
             data = variation.find("{*}data")
 
-            instance_filename = data.find("{*}instance").text
+            if not data:
+                continue
+
+            instance = data.find("{*}instance")
+            if not instance:
+                continue
+
+            instance_filename = instance.text
+
+            if not instance_filename:
+                continue
+
             linkbase_filenames = [
-                linkbase.text for linkbase in data.findall("{*}linkbase")
+                linkbase.text
+                for linkbase in data.findall("{*}linkbase")
+                if linkbase.text
             ]
 
             # skip the testcase if any of the instance of a linkbase is not xml
@@ -150,7 +171,7 @@ def run_idpts():
 
             path_prefix = idpts_testcases_folder + testcase_folder + "/"
 
-            def prepend_path_prefix(filename):
+            def prepend_path_prefix(filename: str) -> str:
                 return path_prefix + filename
 
             instance_filename = prepend_path_prefix(instance_filename)
@@ -161,13 +182,17 @@ def run_idpts():
 
             # get the expected results
             result = variation.find("{*}result")
+
+            if not result:
+                continue
+
             expected_result = result.get("expected", "error")
 
             # run the test
             text_exception: Exception | None = None
 
             try:
-                filing = Filing.open(instance_filename)
+                _ = Filing.open(instance_filename)
                 print(f"> No exception raised.")
             except Exception as e:
                 # print(f"Exception: {e}")

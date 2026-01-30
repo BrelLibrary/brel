@@ -10,8 +10,6 @@
 
 import lxml.etree
 import re
-
-from brel.parsers.utils.optional_utils import get_or_raise
 from brel.qnames.qname import QName
 
 
@@ -22,9 +20,9 @@ def qname_from_str(
     """
     Converts a string to a QName object.
     :param qname_str: The string to convert. It can be in the format "{namespace}local_name" or "namespace:local_name".
-    :param referencing_element: The lxml.etree._Element to use as the base for the QName.
+    :param referencing_element: The lxml.etree._Element to use as the base for the QName. If any error occurs, during
+    the conversion, it will be returned.
     :returns: The QName object.
-    :raises ValueError: If the string is not in the correct format or if the namespace URI is not found.
     """
     if is_clark_notation(qname_str):
         return qname_from_clark_notation(qname_str, referencing_element)
@@ -56,21 +54,23 @@ def qname_from_clark_notation(clark_str: str, referencing_element: lxml.etree._E
     expression = r"^\{([^\}]+)\}([^\{]+)$"
     match = re.match(expression, clark_str)
 
-    if match:
-        uri = match.group(1)
-        local_name = match.group(2)
-        inverted_nsmap = {v: k for k, v in referencing_element.nsmap.items()}
-        inverted_nsmap["http://www.w3.org/XML/1998/namespace"] = "xml"
-        prefix = inverted_nsmap.get(uri, None)
-
-        if prefix is None:
-            raise ValueError(
-                f"Namespace URI {uri} not found in the element's namespace map."
-            )
-
-        return QName(uri, prefix, local_name)
-    else:
+    if not match:
         raise ValueError(f"String '{clark_str}' is not in the correct QName format.")
+
+    uri = match.group(1)
+    local_name = match.group(2)
+    inverted_nsmap = {v: k for k, v in referencing_element.nsmap.items()}
+    inverted_nsmap["http://www.w3.org/XML/1998/namespace"] = "xml"
+    prefix = inverted_nsmap.get(uri, None)
+
+    # if prefix is None:
+    #     return ErrorInstance.create_error_instance(
+    #         ErrorCode.QNAME_NAMESPACE_NOT_IN_ELEMENT_SCOPE,
+    #         referencing_element,
+    #         namespace=uri,
+    #     )
+
+    return QName(uri, str(prefix), local_name)
 
 
 def to_clark_notation(url: str, local_name: str) -> str:
@@ -108,23 +108,26 @@ def qname_from_namespace_localname_notation(
     expression = r"^([^\:]+)\:([^\:]+)$"
     match = re.match(expression, namespace_localname_notation)
 
-    if match:
+    if not match:
+        raise ValueError(
+            f"String '{namespace_localname_notation}' is not in the correct namespace:local_name format."
+        )
+
+    else:
         prefix = match.group(1)
         local_name = match.group(2)
         nsmap = referencing_element.nsmap
         nsmap["xml"] = "http://www.w3.org/XML/1998/namespace"
         uri = nsmap.get(prefix, None)
 
-        if uri is None:
-            raise ValueError(
-                f"Namespace prefix '{prefix}' not found in the element's namespace map."
-            )
+        # if uri is None:
+        #     return ErrorInstance.create_error_instance(
+        #         ErrorCode.QNAME_NAMESPACE_NOT_IN_ELEMENT_SCOPE,
+        #         referencing_element,
+        #         namespace=prefix,
+        #     )
 
-        return QName(uri, prefix, local_name)
-    else:
-        raise ValueError(
-            f"String '{namespace_localname_notation}' is not in the correct namespace:local_name format."
-        )
+        return QName(str(uri), prefix, local_name)
 
 
 def to_namespace_localname_notation(namespace: str, local_name: str) -> str:
@@ -139,7 +142,7 @@ def to_namespace_localname_notation(namespace: str, local_name: str) -> str:
 
 def qname_from_local_name_only(
     local_name: str,
-    referencing_element: lxml.etree._Element,  # type: ignore
+    referencing_element: lxml.etree._Element,
 ) -> QName:
     """
     Converts a string in the format "local_name" to a QName object.
@@ -147,10 +150,12 @@ def qname_from_local_name_only(
     :param referencing_element: The lxml.etree._Element to use as the base for the QName.
     :returns: The QName object.
     """
-    uri = get_or_raise(
-        referencing_element.nsmap.get(None),
-        ValueError(
-            f"{local_name} is not a valid QName since has neither prefix nor a default namespace"
-        ),
-    )
-    return QName(uri, "", local_name)
+    uri = referencing_element.nsmap.get(None)
+    # if not uri:
+    #     return ErrorInstance.create_error_instance(
+    #         ErrorCode.QNAME_MISSING_NAMESPACE,
+    #         referencing_element,
+    #         local_name={local_name}
+    #     )
+
+    return QName(str(uri), "", local_name)

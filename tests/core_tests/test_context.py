@@ -11,7 +11,6 @@
 
 from brel.brel_filing import Filing
 from brel.characteristics.brel_aspect import Aspect
-from brel.parsers.utils.optional_utils import get_or_raise
 
 
 def test_context_getters():
@@ -26,9 +25,9 @@ def test_context_getters():
     assert Aspect.UNIT in aspects, f"Aspect.UNIT not in {aspects}"
 
     for aspect in aspects:
-        characteristic = get_or_raise(cash_fact.get_characteristic(aspect))
+        characteristic = cash_fact.get_characteristic(aspect)
         assert (
-            characteristic.get_aspect() == aspect
+            characteristic and characteristic.get_aspect() == aspect
         ), f"Expected {aspect}, got {characteristic.get_aspect()}"
 
     context = cash_fact.get_context()
@@ -37,15 +36,15 @@ def test_context_getters():
 
     concept = context.get_concept()
     assert (
-        concept.get_aspect() == Aspect.CONCEPT
+        concept and concept.get_aspect() == Aspect.CONCEPT
     ), f"Expected Aspect.CONCEPT, got {concept.get_aspect()}"
     assert (
         str(concept.get_value()) == "ete:cash"
     ), f"Expected 'ete:cash', got {concept.get_value()}"
 
-    period = get_or_raise(context.get_period())
+    period = context.get_period()
     assert (
-        period.get_aspect() == Aspect.PERIOD
+        period and period.get_aspect() == Aspect.PERIOD
     ), f"Expected Aspect.PERIOD, got {period.get_aspect()}"
     assert "2018" in str(
         period.get_value()
@@ -54,15 +53,15 @@ def test_context_getters():
         period.get_value()
     ), f"Expected '2024', got {period.get_value()}"
 
-    entity = get_or_raise(context.get_entity())
+    entity = context.get_entity()
     assert (
-        entity.get_aspect() == Aspect.ENTITY
+        entity and entity.get_aspect() == Aspect.ENTITY
     ), f"Expected Aspect.ENTITY, got {entity.get_aspect()}"
     assert "1234" in entity.get_value(), f"Expected '1234', got {entity.get_value()}"
 
-    unit = get_or_raise(context.get_unit())
+    unit = context.get_unit()
     assert (
-        unit.get_aspect() == Aspect.UNIT
+        unit and unit.get_aspect() == Aspect.UNIT
     ), f"Expected Aspect.UNIT, got {unit.get_aspect()}"
     assert "USD" in unit.get_value(), f"Expected 'USD', got {unit.get_value()}"
 

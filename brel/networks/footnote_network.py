@@ -1,4 +1,4 @@
-from typing import cast
+from typing import Optional, cast
 
 from brel import QName
 from brel.networks import FootnoteNetworkNode, INetwork, INetworkNode

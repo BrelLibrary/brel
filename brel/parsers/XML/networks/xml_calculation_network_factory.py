@@ -12,11 +12,12 @@ They are used by the XML parsers for networks to build calculation networks.
 ====================
 """
 
-from typing import cast
+from typing import Optional, cast
 
 from lxml.etree import _Element  # type: ignore
 
 from brel.brel_fact import Fact
+from brel.data.errors.error_repository import ErrorRepository
 from brel.networks import (
     CalculationNetwork,
     CalculationNetworkNode,
@@ -30,6 +31,7 @@ from brel.qnames.qname_utils import (
     to_namespace_localname_notation,
 )
 from brel.reportelements import IReportElement
+from brel.reportelements.concept import Concept
 from brel.resource import IResource
 
 
@@ -56,7 +58,8 @@ class CalculationNetworkFactory(IXMLNetworkFactory):
         xml_referenced_element: _Element,
         xml_arc: _Element | None,
         points_to: IReportElement | IResource | Fact,
-    ) -> INetworkNode:
+        error_repository: ErrorRepository,
+    ) -> Optional[INetworkNode]:
         label = get_str_attribute(xml_referenced_element, "xlink:label")
 
         if xml_arc is None:
@@ -87,10 +90,8 @@ class CalculationNetworkFactory(IXMLNetworkFactory):
         link_role = get_str_attribute(xml_link, "xlink:role")
         link_name = qname_from_str(xml_link.tag, xml_link)
 
-        if not isinstance(points_to, IReportElement):
-            raise TypeError(
-                f"points_to must be of type IReportElement, not {type(points_to)}"
-            )
+        if not isinstance(points_to, Concept):
+            raise TypeError(f"points_to must be of type Concept, not {type(points_to)}")
 
         return CalculationNetworkNode(
             points_to,

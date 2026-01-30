@@ -27,6 +27,7 @@ from typing import Any, Dict, Set
 
 from brel import QName
 from brel.networks import INetworkNode
+from brel.parsers.utils.url_utils import is_valid_uri
 
 
 class INetwork(ABC):
@@ -108,7 +109,7 @@ class INetwork(ABC):
         """
         roots = self.get_roots()
         if len(roots) > 1:
-            raise ValueError(f"Cannot call getRoot() for network with multiple roots")
+            raise ValueError(f"Cannot call get_root() for network with multiple roots")
         return roots[0]
 
     def get_all_nodes(self) -> list[INetworkNode]:

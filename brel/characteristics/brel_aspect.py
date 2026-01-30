@@ -16,6 +16,7 @@ Custom aspects are all other aspects that are not core aspects.
 ====================
 """
 
+from typing import List, Optional
 from brel.resource import BrelLabel
 
 
@@ -73,6 +74,56 @@ class Aspect:
         Get the labels of the aspect.
         """
         return self.__labels
+
+    def has_label_with_language(self, language: str) -> bool:
+        """
+        Check if the aspect has a label with the given language.
+        """
+        return any(label.get_language() == language for label in self.__labels)
+
+    def select_main_label(self) -> BrelLabel:
+        """
+        Select the main label of the aspect.
+        """
+        """
+        Select the main label of the member.
+        The main label is either the first english label, or the first label in the list of labels.
+        :returns BrelLabel: the main label of the member
+        """
+        labels = self.get_labels()
+        if not labels:
+            # raise ValueError("No labels available - cannot select main label!")
+            return BrelLabel("NO_LABEL", "", "")
+        elif self.has_label_with_language("en"):
+            return next(
+                (label for label in labels if label.get_language() == "en"), labels[0]
+            )
+        elif self.has_label_with_language("en-US"):
+            return next(
+                (label for label in labels if label.get_language() == "en-US"),
+                labels[0],
+            )
+        elif self.has_label_with_language("en-GB"):
+            return next(
+                (label for label in labels if label.get_language() == "en-GB"),
+                labels[0],
+            )
+        elif self.has_label_with_language("EN"):
+            return next(
+                (label for label in labels if label.get_language() == "EN"), labels[0]
+            )
+        elif self.has_label_with_language("EN-US"):
+            return next(
+                (label for label in labels if label.get_language() == "EN-US"),
+                labels[0],
+            )
+        elif self.has_label_with_language("EN-GB"):
+            return next(
+                (label for label in labels if label.get_language() == "EN-GB"),
+                labels[0],
+            )
+        else:
+            return labels[0]
 
     def __hash__(self) -> int:
         return hash(self.__name)

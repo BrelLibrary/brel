@@ -8,6 +8,7 @@
 ====================
 """
 
+from typing import Optional
 from brel.data.fact.fact_repository import FactRepository
 from brel.brel_fact import Fact
 
@@ -19,6 +20,12 @@ class InMemoryFactRepository(FactRepository):
 
     def get_by_id(self, id: str) -> Fact:
         return self.__facts_by_id[id]
+
+    def get_by_id_optional(self, id: str) -> Optional[Fact]:
+        try:
+            return self.get_by_id(id)
+        except KeyError:
+            return None
 
     def has_id(self, id: str) -> bool:
         return id in self.__facts_by_id

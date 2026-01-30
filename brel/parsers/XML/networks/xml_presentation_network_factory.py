@@ -12,12 +12,13 @@ This module is used by the XML network parser to build presentation networks.
 ====================
 """
 
-from typing import cast
+from typing import Optional, cast
 
 import lxml
 import lxml.etree
 
 from brel.brel_fact import Fact
+from brel.data.errors.error_repository import ErrorRepository
 from brel.networks import (
     INetwork,
     INetworkNode,
@@ -59,7 +60,8 @@ class PresentationNetworkFactory(IXMLNetworkFactory):
         xml_referenced_element: lxml.etree._Element,
         xml_arc: lxml.etree._Element | None,
         points_to: IReportElement | IResource | Fact,
-    ) -> INetworkNode:
+        error_repository: ErrorRepository,
+    ) -> Optional[INetworkNode]:
         """
         Create a PresentationNetworkNode from an XML link, an XML referenced element, an XML arc, and a points_to object.
         :param xml_link: lxml.etree._Element containing the link element

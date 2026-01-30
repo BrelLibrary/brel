@@ -11,12 +11,13 @@ ReferenceNetworkFactories are used to create ReferenceNetworks from XML.
 ====================
 """
 
-from typing import cast
+from typing import Optional, cast
 
 import lxml
 import lxml.etree
 
 from brel.brel_fact import Fact
+from brel.data.errors.error_repository import ErrorRepository
 from brel.networks import (
     INetwork,
     INetworkNode,
@@ -55,7 +56,8 @@ class ReferenceNetworkFactory(IXMLNetworkFactory):
         xml_referenced_element: lxml.etree._Element,
         xml_arc: lxml.etree._Element | None,
         points_to: IReportElement | IResource | Fact,
-    ) -> INetworkNode:
+        error_repository: ErrorRepository,
+    ) -> Optional[INetworkNode]:
         label = get_str_attribute(
             xml_referenced_element, to_namespace_localname_notation("xlink", "label")
         )

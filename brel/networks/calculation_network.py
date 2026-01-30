@@ -173,11 +173,12 @@ class CalculationNetwork(INetwork):
 
                     # there should only be one child fact left
                     all_child_facts = list(child_facts)
-                    parent_characteristics = [
-                        str(node_fact.get_characteristic(aspect))
+                    parent_characteristics = {
+                        aspect.get_name(): str(node_fact.get_characteristic(aspect))
                         for aspect in node_fact.get_aspects()
                         if aspect != Aspect.CONCEPT
-                    ]
+                    }
+
                     if len(all_child_facts) == 0:
                         raise ValueError(
                             f"Could not find a fact for concept {child_concept} with characteristics {parent_characteristics}"

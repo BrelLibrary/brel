@@ -31,7 +31,7 @@ Read more about Aspects and Characteristics in
 ====================
 """
 
-from typing import cast
+from typing import Dict, List, Optional, cast
 
 from brel.characteristics import (
     Aspect,
@@ -41,6 +41,7 @@ from brel.characteristics import (
     PeriodCharacteristic,
     UnitCharacteristic,
 )
+from brel.services.translation.translation_service import TranslationService
 
 
 class Context:
@@ -87,7 +88,12 @@ class Context:
         """
         return any(aspect == context_aspect for context_aspect in self.__aspects)
 
-    def get_characteristic_as_str(self, aspect: Aspect) -> str:
+    def get_characteristic_as_str(
+        self,
+        aspect: Aspect,
+        languages: Optional[List[str]] = None,
+        translation_service: Optional[TranslationService] = None,
+    ) -> str:
         """
         Get the value of an aspect as a string.
         This is a convenience function.
@@ -97,10 +103,17 @@ class Context:
         :returns str: The value of the aspect as a string.
         """
         characteristic = self.get_characteristic(aspect)
-        if characteristic is None:
-            return ""
-        else:
+
+        if not languages or not translation_service:
+            if characteristic is None:
+                return ""
+
             return characteristic.get_value().__str__()
+
+        if characteristic is None:
+            return translation_service.get("literal:none", languages)
+
+        return characteristic.get_localized_value_string(languages, translation_service)
 
     def get_concept(self) -> ConceptCharacteristic:
         """
@@ -175,7 +188,11 @@ class Context:
         # TODO: dont use the _id, compare the aspects instead
         return self._get_id() == __value._get_id()
 
-    def convert_to_df_row(self) -> dict[str, str]:
+    def convert_to_df_row(
+        self,
+        languages: Optional[List[str]] = None,
+        translation_service: Optional[TranslationService] = None,
+    ) -> dict[str, str]:
         """
         Convert the context to a dictionary.
         This is a convenience function.
@@ -183,7 +200,20 @@ class Context:
         The values of the dictionary are the characteristic values.
         :returns dict: The context as a dictionary.
         """
-        return {
-            aspect.get_name(): self.get_characteristic_as_str(aspect)
-            for aspect in self.__aspects
-        }
+        if not languages or not translation_service:
+            return {
+                aspect.get_name(): self.get_characteristic_as_str(aspect)
+                for aspect in self.__aspects
+            }
+
+        dict_to_return: Dict[str, str] = {}
+        for aspect in self.__aspects:
+            key = translation_service.get_from_labels(
+                aspect.get_labels(), languages, aspect.get_name()
+            )
+            value = self.get_characteristic_as_str(
+                aspect, languages, translation_service
+            )
+            dict_to_return[key] = value
+
+        return dict_to_return

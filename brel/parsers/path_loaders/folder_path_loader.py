@@ -26,14 +26,38 @@ class FolderPathLoader(PathLoader):
 
     def load(self, path: str) -> list[str]:
         """
-        Loads all files from the specified directory.
+        Loads all files from the specified directory recursively.
 
         :param path: The directory path to load files from.
         :returns: A list of file paths in the directory that are either .xml or .xhtml files.
         """
-        return [
-            os.path.join(path, file)
-            for file in os.listdir(path)
-            if os.path.isfile(os.path.join(path, file))
-            and file.endswith((".xml", ".xhtml"))
+        splitting_char = "/" if "/" in path else "\\"
+
+        path_parts = path.split(splitting_char)
+        files_and_folders = [
+            "/".join(path_parts + [dir_item]) for dir_item in os.listdir(path)
         ]
+
+        files = [
+            file_or_folder
+            for file_or_folder in files_and_folders
+            if os.path.isfile(file_or_folder)
+        ]
+        filtered_files = [
+            file
+            for file in files
+            if file.endswith((".xml", ".xhtml", ".htm", "html", ".xsd"))
+        ]
+
+        folders = [
+            file_or_folder
+            for file_or_folder in files_and_folders
+            if os.path.isdir(file_or_folder)
+        ]
+        subdir_file_lists = [self.load(folder) for folder in folders]
+
+        all_files = filtered_files
+        for subdir_file_list in subdir_file_lists:
+            all_files.extend(subdir_file_list)
+
+        return all_files

@@ -8,8 +8,10 @@
 ====================
 """
 
+from typing import List
 from brel.characteristics import Aspect, ICharacteristic
 from brel.reportelements import Concept
+from brel.services.translation.translation_service import TranslationService
 
 
 class ConceptCharacteristic(ICharacteristic):
@@ -30,6 +32,15 @@ class ConceptCharacteristic(ICharacteristic):
         :returns Concept: the concept of the characteristic
         """
         return self.__concept
+
+    def get_localized_value_string(
+        self, languages: List[str], translation_service: TranslationService
+    ) -> str:
+        return translation_service.get_from_labels(
+            self.__concept.get_labels(),
+            languages,
+            self.__concept.get_name().get_local_name(),
+        )
 
     def get_aspect(self) -> Aspect:
         """

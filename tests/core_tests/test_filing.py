@@ -13,6 +13,8 @@ from typing import List, Type
 from brel.brel_component import Component
 from brel.brel_fact import Fact
 from brel.brel_filing import Filing
+
+from brel.errors.error_instance import ErrorInstance
 from brel.networks.i_network import INetwork
 from brel.reportelements.abstract import Abstract
 from brel.reportelements.concept import Concept
@@ -49,7 +51,7 @@ def test_filing_getters():
 
     # check get_errors(). it should return a list of errors
     errors = filing.get_errors()
-    assert_list_of_type(errors, Exception)
+    assert_list_of_type(errors, ErrorInstance)
 
     # check get_all_abstracts(). it should return a list of abstracts
     abstracts = filing.get_all_abstracts()
@@ -130,6 +132,8 @@ def test_filing_getters():
 def test_filing_open():
     try:
         filing = Filing.open("tests/end_to_end_tests/hand_made_report/ete_filing")
+        for error in filing.get_errors():
+            print(error)
         assert (
             len(filing.get_errors()) == 0
         ), f"Expected no errors, got {filing.get_errors()}"

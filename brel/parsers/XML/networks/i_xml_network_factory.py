@@ -9,10 +9,12 @@
 """
 
 from abc import ABC, abstractmethod
+from typing import Optional
 
 from lxml.etree import _Element  # type: ignore
 
 from brel.brel_fact import Fact
+from brel.data.errors.error_repository import ErrorRepository
 from brel.networks import INetwork, INetworkNode
 from brel.reportelements import IReportElement
 from brel.resource import IResource
@@ -31,7 +33,8 @@ class IXMLNetworkFactory(ABC):
         xml_referenced_element: _Element,
         xml_arc: _Element | None,
         points_to: IReportElement | IResource | Fact,
-    ) -> INetworkNode:
+        error_repository: ErrorRepository,
+    ) -> Optional[INetworkNode]:
         raise NotImplementedError
 
     def update_report_elements(
