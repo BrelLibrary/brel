@@ -222,4 +222,4 @@ Note: Network nodes can either point to Report Elements, Resources or Facts. Use
 
 Brel is available with an Apache License 2.0 license.
 
-© 2023-2024 Robin Schmidiger, Ghislain Fourny, Gustavo Alonso, Shrey Mittal
+© 2023-2026 Robin Schmidiger, Ghislain Fourny, Gustavo Alonso, Shrey Mittal, Bozhidar Andonov
