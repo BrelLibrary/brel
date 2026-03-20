@@ -38,7 +38,7 @@ setup(
     url="https://github.com/BrelLibrary/brel/",
     long_description=read("README.md"),
     long_description_content_type="text/markdown",
-    author="PapediPoo, ghislainfourny",
+    author="PapediPoo, shreymittal1000, ghislainfourny",
     packages=find_packages(exclude=["tests", ".github"]),
     package_data={"": ["*.json"]},
     install_requires=[
