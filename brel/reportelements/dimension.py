@@ -13,9 +13,11 @@ The already existing dimensions are the core aspects of a fact, namely the perio
 ====================
 """
 
+from typing import Any, Dict, List, Optional
 from brel import QName
 from brel.reportelements import IReportElement
 from brel.resource import BrelLabel
+from brel.services.translation.translation_service import TranslationService
 
 
 class Dimension(IReportElement):
@@ -27,8 +29,9 @@ class Dimension(IReportElement):
     If you want to make a dimension typed, you have to call `make_typed(dim_type: QName)` on it.
     """
 
-    def __init__(self, name: QName, labels: list[BrelLabel]) -> None:
+    def __init__(self, name: QName, id: str | None, labels: list[BrelLabel]) -> None:
         self.__name = name
+        self.__id = id
         self.__labels = labels
         self.__type: QName | None = None
 
@@ -38,6 +41,13 @@ class Dimension(IReportElement):
         :returns QName: the name of the dimension as a QName
         """
         return self.__name
+
+    def get_id(self) -> str | None:
+        """
+        Get the ID of the dimension.
+        :returns str: the ID of the dimension
+        """
+        return self.__id
 
     def get_labels(self) -> list[BrelLabel]:
         """
@@ -83,15 +93,59 @@ class Dimension(IReportElement):
     def __str__(self) -> str:
         return self.__name.__str__()
 
-    def convert_to_dict(self) -> dict:
+    def convert_to_dict(
+        self,
+        languages: Optional[List[str]] = None,
+        translation_service: Optional[TranslationService] = None,
+    ) -> Dict[str, Any]:
         """
         Convert the dimension to a dictionary.
         :returns dict: the dimension as a dictionary
         """
+        if not languages or not translation_service:
+            return {
+                "name": self.__name.prefix_local_name_notation(),
+                "label": self.select_main_label().__str__(),
+                "report-element-type": "dimension",
+                "is-explicit": self.is_explicit(),
+                "dimension_type": self.__type.prefix_local_name_notation()
+                if self.__type is not None
+                else None,
+            }
+
+        name_literal = translation_service.get("literal:name", languages)
+
+        label_literal = translation_service.get("literal:label", languages)
+        label = translation_service.get_from_labels(
+            self.get_labels(), languages, self.select_main_label().__str__()
+        )
+
+        report_element_type_literal = translation_service.get(
+            "literal:report-element-type", languages
+        )
+        dimension_literal = translation_service.get(
+            "report-element:dimension", languages
+        )
+
+        is_explitic_literal = translation_service.get("literal:is-explicit", languages)
+        is_explicit = translation_service.get(
+            "boolean:" + str(self.is_explicit()).lower(), languages
+        )
+        dimension_type_literal = translation_service.get(
+            "literal:dimension-type", languages
+        )
+
+        if self.__type is not None:
+            dimension_type = translation_service.get(
+                "data-type:" + self.__type.get_local_name(), languages
+            )
+        else:
+            dimension_type = translation_service.get("literal:none", languages)
+
         return {
-            "name": self.__name.get(),
-            "label": self.select_main_label().__str__(),
-            "report_element_type": "dimension",
-            "is_explicit": self.is_explicit(),
-            "dimension_type": self.__type.get() if self.__type is not None else None,
+            name_literal: self.__name.prefix_local_name_notation(),
+            label_literal: label,
+            report_element_type_literal: dimension_literal,
+            is_explitic_literal: is_explicit,
+            dimension_type_literal: dimension_type,
         }

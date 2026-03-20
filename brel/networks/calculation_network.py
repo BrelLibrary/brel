@@ -153,27 +153,32 @@ class CalculationNetwork(INetwork):
                         if node_aspect == Aspect.CONCEPT:
                             child_facts = list(
                                 filter(
-                                    lambda fact: fact.get_concept().get_value() == child_concept,
+                                    lambda fact: fact.get_concept().get_value()
+                                    == child_concept,
                                     child_facts,
                                 )
                             )
                         else:
                             # otherwise, get all facts with the same characteristic as the node fact
-                            node_characteristic = node_fact.get_characteristic(node_aspect)
+                            node_characteristic = node_fact.get_characteristic(
+                                node_aspect
+                            )
                             child_facts = list(
                                 filter(
-                                    lambda fact: fact.get_characteristic(node_aspect) == node_characteristic,
+                                    lambda fact: fact.get_characteristic(node_aspect)
+                                    == node_characteristic,
                                     child_facts,
                                 )
                             )
 
                     # there should only be one child fact left
                     all_child_facts = list(child_facts)
-                    parent_characteristics = [
-                        str(node_fact.get_characteristic(aspect))
+                    parent_characteristics = {
+                        aspect.get_name(): str(node_fact.get_characteristic(aspect))
                         for aspect in node_fact.get_aspects()
                         if aspect != Aspect.CONCEPT
-                    ]
+                    }
+
                     if len(all_child_facts) == 0:
                         raise ValueError(
                             f"Could not find a fact for concept {child_concept} with characteristics {parent_characteristics}"
@@ -195,7 +200,9 @@ class CalculationNetwork(INetwork):
 
                 if DEBUG:  # pragma: no cover
                     print()
-                    print(f"node concept: {concept}, node value: {node_value}, children sum: {children_sum}")
+                    print(
+                        f"node concept: {concept}, node value: {node_value}, children sum: {children_sum}"
+                    )
 
                 if node_value != children_sum:
                     return False

@@ -47,7 +47,7 @@ pprint(calculation_network)
 ====================
 """
 
-from typing import cast
+from typing import Any, Dict, List, Optional, cast
 from brel import Fact
 from brel.networks import (
     CalculationNetwork,
@@ -55,6 +55,7 @@ from brel.networks import (
     PresentationNetwork,
     INetwork,
 )
+from brel.services.translation.translation_service import TranslationService
 
 
 class Component:
@@ -77,53 +78,17 @@ class Component:
         self,
         uri: str,
         info: str,
-        networks: list[INetwork],
+        presentation_network: Optional[PresentationNetwork] = None,
+        calculation_network: Optional[CalculationNetwork] = None,
+        definition_network: Optional[DefinitionNetwork] = None,
     ) -> None:
-        self.__uri = uri
-        self.__info = info
-
-        # Go through all networks and find the presentation, calculation and definition networks
-        presentation_networks = list(
-            filter(
-                lambda n: isinstance(n, PresentationNetwork) and not n.is_physical(),
-                networks,
-            )
-        )
-
-        if len(presentation_networks) > 1:
-            raise ValueError(f"Component '{uri}' has more than one presentation network.")
-
-        self.__presentation_network: PresentationNetwork | None = (
-            None if len(presentation_networks) == 0 else cast(PresentationNetwork, presentation_networks[0])
-        )
-
-        calculation_networks = list(
-            filter(
-                lambda n: isinstance(n, CalculationNetwork) and not n.is_physical(),
-                networks,
-            )
-        )
-
-        if len(calculation_networks) > 1:
-            raise ValueError(f"Component '{uri}' has more than one calculation network.")
-
-        self.__calculation_network: CalculationNetwork | None = (
-            None if len(calculation_networks) == 0 else cast(CalculationNetwork, calculation_networks[0])
-        )
-
-        definition_networks = list(
-            filter(
-                lambda n: isinstance(n, DefinitionNetwork) and not n.is_physical(),
-                networks,
-            )
-        )
-
-        if len(definition_networks) > 1:
-            raise ValueError(f"Component '{uri}' has more than one definition network.")
-
-        self.__definition_network: DefinitionNetwork | None = (
-            None if len(definition_networks) == 0 else cast(DefinitionNetwork, definition_networks[0])
-        )
+        self.__uri: str = uri
+        self.__info: str = info
+        self.__presentation_network: Optional[
+            PresentationNetwork
+        ] = presentation_network
+        self.__calculation_network: Optional[CalculationNetwork] = calculation_network
+        self.__definition_network: Optional[DefinitionNetwork] = definition_network
 
     # first class citizens
     def get_URI(self) -> str:
@@ -190,8 +155,7 @@ class Component:
         :param facts: the facts of the filing
         :returns bool: True if and only if the component is aggregation consistent against the given facts
         """
-        # TODO: implement
-        raise NotImplemented
+        raise NotImplementedError()
 
     def get_networks(self) -> list[INetwork]:
         """
@@ -206,14 +170,60 @@ class Component:
             networks.append(self.__definition_network)
         return networks
 
-    def convert_to_dict(self) -> dict:
+    def convert_to_dict(
+        self,
+        languages: Optional[List[str]] = None,
+        translation_service: Optional[TranslationService] = None,
+    ) -> Dict[str, Any]:
         """
         :returns dict: a dictionary representation of the component
         """
+
+        if not languages or not translation_service:
+            return {
+                "network-identifier": self.__uri,
+                "info": self.__info,
+                "presentation-network": True
+                if self.__presentation_network is not None
+                else False,
+                "calculation-network": True
+                if self.__calculation_network is not None
+                else False,
+                "definintion-network": True
+                if self.__definition_network is not None
+                else False,
+            }
+
+        network_identifier_literal = translation_service.get(
+            "literal:network-identifier", languages
+        )
+        info_literal = translation_service.get("literal:info", languages)
+
+        presentation_network_literal = translation_service.get(
+            "literal:presentation-network", languages
+        )
+        presentation_network = translation_service.get(
+            "boolean:" + str(self.__presentation_network is not None).lower(), languages
+        )
+
+        calculation_network_literal = translation_service.get(
+            "literal:calculation-network", languages
+        )
+        calculation_network = translation_service.get(
+            "boolean:" + str(self.__calculation_network is not None).lower(), languages
+        )
+
+        definition_network_literal = translation_service.get(
+            "literal:definition-network", languages
+        )
+        defintion_network = translation_service.get(
+            "boolean:" + str(self.__definition_network is not None).lower(), languages
+        )
+
         return {
-            "network_identifier": self.__uri,
-            "info": self.__info,
-            "PresentationNetwork": True if self.__presentation_network is not None else False,
-            "CalculationNetwork": True if self.__calculation_network is not None else False,
-            "DefinitionNetwork": True if self.__definition_network is not None else False,
+            network_identifier_literal: self.__uri,
+            info_literal: self.__info,
+            presentation_network_literal: presentation_network,
+            calculation_network_literal: calculation_network,
+            definition_network_literal: defintion_network,
         }

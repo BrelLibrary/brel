@@ -14,8 +14,10 @@ However, the UnitCharacteristic can also handle more complex units consisting of
 ====================
 """
 
+from typing import List
 from brel import QName
 from brel.characteristics import Aspect, ICharacteristic
+from brel.services.translation.translation_service import TranslationService
 
 
 class UnitCharacteristic(ICharacteristic):
@@ -38,7 +40,9 @@ class UnitCharacteristic(ICharacteristic):
     Namely, if the concept characteristic's concept is a monetary concept, the unit's numerators and denominators must be defined in the iso4217 namespace.
     """
 
-    def __init__(self, name: str, numerators: list[QName], denominators: list[QName]) -> None:
+    def __init__(
+        self, name: str, numerators: list[QName], denominators: list[QName]
+    ) -> None:
         self.__name: str = name
         self.__numerators = numerators
         self.__denominators = denominators
@@ -67,6 +71,14 @@ class UnitCharacteristic(ICharacteristic):
         info: this is different from the numerators/denominators of the unit. It is the name of the unit.
         :returns str: the name of the unit
         """
+        return self.__name
+
+    def get_localized_value_string(
+        self, languages: List[str], translation_service: TranslationService
+    ) -> str:
+        return translation_service.get("unit:" + self.__name, languages)
+
+    def get_name(self) -> str:
         return self.__name
 
     # second class citizens

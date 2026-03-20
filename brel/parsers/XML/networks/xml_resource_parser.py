@@ -1,89 +1,66 @@
 """
-This module is responsible for parsing an XML element into an appropriate Brel resource.
-Currently, the module can parse BrelLabel, BrelFootnote and BrelReference resources.
-
 =================
 
 - author: Robin Schmidiger
-- version: 0.1
-- date: 19 February 2024
+- version: 0.3
+- date: 9 May 2025
 
 =================
 """
 
-import lxml
-import lxml.etree
+import re
+from typing import Optional
+from lxml.etree import _Element  # type: ignore
 
-from brel import QNameNSMap, QName
+from brel.contexts.filing_context import FilingContext
+from brel.errors.error_code import ErrorCode
 from brel.resource import IResource, BrelFootnote, BrelLabel, BrelReference
-from typing import cast, Mapping
-from brel.parsers.utils.lxml_utils import get_str
+from brel.parsers.utils.lxml_utils import (
+    get_elem_lang_recursive,
+    get_str_attribute,
+    get_clark_notation_tag,
+)
 
 
-def parse_xml_resource(xml_element: lxml.etree._Element, prefix_to_uri: Mapping[str, str]) -> IResource:
-    """
-    Create a BrelResource from an lxml.etree._Element.
-    :param xml_element: the lxml.etree._Element from which the BrelResource is created
-    :param prefix_to_uri: the mapping from prefix to uri
-    :returns: the BrelResource created from the lxml.etree._Element
-    :raises ValueError: if the XML element is malformed
-    """
+def parse_xml_resource(
+    xml_element: _Element, filing_context: FilingContext
+) -> Optional[IResource]:
+    error_repository = filing_context.get_error_repository()
 
-    def clark(prefix: str, local_name: str) -> str:
-        """
-        Create a clark notation from a prefix and a local name.
-        lxml uses clark notation to represent qnames.
-        """
-        return f"{{{prefix_to_uri[prefix]}}}{local_name}"
-
-    def get_lang_recursive(xml_element: lxml.etree._Element) -> str:
-        """
-        Get the language of an xml element.
-        If the language is not found, check the parent.
-        """
-        lang = xml_element.attrib.get(clark("xml", "lang"))
-        if lang is not None:
-            return lang
-
-        parent = xml_element.getparent()
-        if parent is not None:
-            return get_lang_recursive(parent)
-        raise ValueError(f"Could not find the language for the label {xml_element}")
-
-    # first check if xlink:type == "resource"
-    if xml_element.attrib.get(clark("xlink", "type")) != "resource":
+    if get_str_attribute(xml_element, "xlink:type") != "resource":
         raise ValueError("The xlink:type is not resource")
 
-    # get the label, role and tag
-    label = get_str(xml_element, clark("xlink", "label"))
-    role = get_str(xml_element, clark("xlink", "role"))
-    tag = xml_element.tag
+    label = get_str_attribute(xml_element, "xlink:label")
+    role = get_str_attribute(xml_element, "xlink:role")
+    tag = get_clark_notation_tag(xml_element)
 
-    # create the resource
     if "label" in tag:
-        lang = get_lang_recursive(xml_element)
-        text = xml_element.text
-        if text is None:
-            text = ""
+        lang = get_elem_lang_recursive(xml_element)
+
+        if lang is None:
+            error_repository.insert(ErrorCode.MISSING_LABEL_LANGUAGE, xml_element)
+            return None
+
+        text = xml_element.text if xml_element.text else ""
         return BrelLabel(text, label, lang, role)
     elif "footnote" in tag:
-        lang = get_lang_recursive(xml_element)
-        text = xml_element.text
-        if text is None:
-            text = ""
-            for child in xml_element:
-                text += lxml.etree.tostring(child, encoding="unicode")
+        lang = get_elem_lang_recursive(xml_element)
+
+        if lang is None:
+            error_repository.insert(
+                ErrorCode.XML_MISSING_FOOTNOTE_LANGUAGE, xml_element
+            )
+            return None
+
+        text = xml_element.text or "".join(child.__str__() for child in xml_element)
         return BrelFootnote(text, label, lang, role)
     elif "reference" in tag:
-        # the children of a resource form a dict
-        # turn the xml children into a dict. strip the namespace from the tag
-        content: dict = {}
-        for child in xml_element:
-            child_tag = str(child.tag)
-            if "}" in child_tag:
-                child_tag = child_tag.split("}", 1)[1]
-            content[child_tag] = child.text
-
+        content = {
+            re.sub(r"^\{.*\}", "", child.tag): child.text for child in xml_element
+        }
         return BrelReference(content, label, role)
     else:
-        raise ValueError(f"Unknown tag {tag}")
+        error_repository.insert(
+            ErrorCode.XML_UNSUPPORTED_RESOURCE_TAG, xml_element, tag=tag
+        )
+        return None

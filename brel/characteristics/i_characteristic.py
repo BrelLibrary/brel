@@ -44,9 +44,10 @@ The type aspect is the 'salary per month' aspect, is an integer.
 """
 
 from abc import ABC, abstractmethod
-from typing import Any
+from typing import Any, List
 
 from brel.characteristics import Aspect
+from brel.services.translation.translation_service import TranslationService
 
 
 class ICharacteristic(ABC):
@@ -61,6 +62,11 @@ class ICharacteristic(ABC):
         :returns Any: the value of the characteristic.
         """
         raise NotImplementedError
+
+    def get_localized_value_string(
+        self, languages: List[str], translation_service: TranslationService
+    ) -> str:
+        return str(self.get_value())
 
     @abstractmethod
     def get_aspect(self) -> Aspect:  # pragma: no cover

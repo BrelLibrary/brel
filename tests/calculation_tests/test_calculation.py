@@ -1,14 +1,14 @@
 """
-This module tests the calculation validation functions.
-# TODO: Add more validation tests
-# TODO: Add parsing tests
+====================
 
-@author: Robin Schmidiger
-@version: 0.1
-@date: 29 December 2023
+- author: Robin Schmidiger
+- version: 0.2
+- date: 7 May 2025
+
+====================
 """
 
-from brel import QName, QNameNSMap, Fact, Context
+from brel import QName, Fact, Context
 from brel.characteristics import ConceptCharacteristic
 from brel.networks import CalculationNetwork, CalculationNetworkNode
 from brel.reportelements import Concept
@@ -16,44 +16,46 @@ from brel.utils import pprint_network, pprint_facts
 
 DEBUG = False
 
-nsmap = QNameNSMap()
-nsmap.add_to_nsmap("https://xbrl.fasb.org/us-gaap/2023", "us-gaap")
-nsmap.add_to_nsmap("http://www.xbrl.org/2003/linkbase", "link")
-
 qnames = [
-    QName.from_string("us-gaap:Assets", nsmap),
-    QName.from_string("us-gaap:CurrentAssets", nsmap),
-    QName.from_string("us-gaap:CashAndCashEquivalentsAtCarryingValue", nsmap),
-    QName.from_string("us-gaap:InventoryNet", nsmap),
-    QName.from_string("us-gaap:RawMaterialsAndSupplies", nsmap),
-    QName.from_string("us-gaap:ValuationReserves", nsmap),
-    QName.from_string("us-gaap:LIFOReserve", nsmap),
-    QName.from_string("us-gaap:NoncurrentAssets", nsmap),
-    QName.from_string("us-gaap:InventoryNoncurrent", nsmap),
-    QName.from_string("us-gaap:PropertyPlantAndEquipmentNet", nsmap),
+    QName("", "us-gaap", "Assets"),
+    QName("", "us-gaap", "CurrentAssets"),
+    QName("", "us-gaap", "CashAndCashEquivalentsAtCarryingValue"),
+    QName("", "us-gaap", "InventoryNet"),
+    QName("", "us-gaap", "RawMaterialsAndSupplies"),
+    QName("", "us-gaap", "ValuationReserves"),
+    QName("", "us-gaap", "LIFOReserve"),
+    QName("", "us-gaap", "NoncurrentAssets"),
+    QName("", "us-gaap", "InventoryNoncurrent"),
+    QName("", "us-gaap", "PropertyPlantAndEquipmentNet"),
 ]
 
 concepts = [
-    Concept(qnames[0], [], "duration", "debit", False, "monetaryItemType"),
-    Concept(qnames[1], [], "duration", "debit", False, "monetaryItemType"),
-    Concept(qnames[2], [], "duration", "debit", False, "monetaryItemType"),
-    Concept(qnames[3], [], "duration", "debit", False, "monetaryItemType"),
-    Concept(qnames[4], [], "duration", "debit", False, "monetaryItemType"),
-    Concept(qnames[5], [], "duration", "credit", False, "monetaryItemType"),
-    Concept(qnames[6], [], "duration", "credit", False, "monetaryItemType"),
-    Concept(qnames[7], [], "duration", "debit", False, "monetaryItemType"),
-    Concept(qnames[8], [], "duration", "debit", False, "monetaryItemType"),
-    Concept(qnames[9], [], "duration", "debit", False, "monetaryItemType"),
+    Concept(qnames[0], None, [], "duration", "debit", False, "monetaryItemType"),
+    Concept(qnames[1], None, [], "duration", "debit", False, "monetaryItemType"),
+    Concept(qnames[2], None, [], "duration", "debit", False, "monetaryItemType"),
+    Concept(qnames[3], None, [], "duration", "debit", False, "monetaryItemType"),
+    Concept(qnames[4], None, [], "duration", "debit", False, "monetaryItemType"),
+    Concept(qnames[5], None, [], "duration", "credit", False, "monetaryItemType"),
+    Concept(qnames[6], None, [], "duration", "credit", False, "monetaryItemType"),
+    Concept(qnames[7], None, [], "duration", "debit", False, "monetaryItemType"),
+    Concept(qnames[8], None, [], "duration", "debit", False, "monetaryItemType"),
+    Concept(qnames[9], None, [], "duration", "debit", False, "monetaryItemType"),
 ]
 
 arc_role = "http://www.xbrl.org/2003/arcrole/summation-item"
-arc_name = QName.from_string("link:calculationLink", nsmap)
+arc_name = QName("http://www.xbrl.org/2003/linkbase", "link", "calculationLink")
 link_role = "CONDENSEDCONSOLIDATEDSTATEMENTSOFINCOME"
-link_name = QName.from_string("us-gaap:CondensedConsolidatedStatementsOfIncome", nsmap)
+link_name = QName(
+    "https://xbrl.fasb.org/us-gaap/2023",
+    "us-gaap",
+    "CondensedConsolidatedStatementsOfIncome",
+)
 
 
 def create_node(concept: Concept, weight: int, order: int):
-    return CalculationNetworkNode(concept, [], arc_role, arc_name, link_role, link_name, weight, order)
+    return CalculationNetworkNode(
+        concept, [], arc_role, arc_name, link_role, link_name, weight, order
+    )
 
 
 def fact_from_concept(concept: Concept, value: str):
@@ -200,11 +202,15 @@ def test_calculation_validation_GD_empty_network():
     if DEBUG:  # pragma: no cover
         pprint_network(network)
 
-    assert network.is_aggregation_consistent([]), "The empty network should be aggregation consistent"
+    assert network.is_aggregation_consistent(
+        []
+    ), "The empty network should be aggregation consistent"
 
     facts = []
 
-    assert network.is_aggregation_consistent(facts), "The empty network should be aggregation consistent"
+    assert network.is_aggregation_consistent(
+        facts
+    ), "The empty network should be aggregation consistent"
 
 
 def test_calculation_validation_NG_aggregation():

@@ -4,81 +4,62 @@ This module contains the function for parsing an xml subtree into a Unit charact
 ====================
 
 - author: Robin Schmidiger
-- version: 0.3
-- date: 07 January 2024
+- version: 0.5
+- date: 12 May 2025
 
 ====================
 """
 
-from typing import Callable, cast
 
-import lxml.etree
+from typing import Optional
+from lxml.etree import _Element  # type: ignore
 
-from brel import QName, QNameNSMap
-from brel.characteristics import Aspect, ICharacteristic, UnitCharacteristic
-from brel.reportelements import Concept
+from brel import QName
+from brel.characteristics import UnitCharacteristic
+from brel.data.errors.error_repository import ErrorRepository
+from brel.errors.error_code import ErrorCode
+
+from brel.parsers.utils.lxml_utils import get_str_attribute, get_str_attribute_optional
+from brel.qnames.qname_utils import qname_from_str
+from brel.contexts.filing_context import FilingContext
+from brel.data.characteristic.characteristic_repository import CharacteristicRepository
 
 
 def parse_unit_measure_from_xml(
-    xml_element: lxml.etree._Element,
-    concept: Concept,
-    make_qname: Callable[[str], QName],
-) -> QName:
-    """
-    Create a Unit measure from an xml subtree.
-    :param xml_element: the xml subtree from which the Unit measure is created
-    :param concept: the concept of the unit. What units are allowed is defined by the concept.
-    :param make_qname: the function to make a QName from a string
-    """
+    xml_element: _Element,  # type: ignore
+    filing_context: FilingContext,
+) -> Optional[QName]:
     child_text = xml_element.text
+    error_repository = filing_context.get_error_repository()
     if child_text is None:
-        raise ValueError(f"The measure {xml_element} has no text")
-    if ":" not in child_text:
-        child_text = f"xbrli:{child_text}"
-    child_qname = make_qname(child_text)
+        error_repository.insert(ErrorCode.XML_MISSING_UNIT_MEASURE, xml_element)
+        return None
+    else:
+        qname = qname_from_str(child_text, xml_element)
+        return qname
 
-    # get the type of the concept
-    concept_type = concept.get_data_type()
+        # if isinstance(qname_or_error, ErrorInstance):
+        #     error_repository.insert(qname_or_error)
+        #     return None
 
-    # according to the xbrl spec, if the concept type is 'monetaryItemType', the unit must be a ISO 4217 currency designation
-    child_localname = child_qname.get_local_name()
-    if concept_type == "monetaryItemType" and ("4217" not in child_localname or "ISO" not in child_localname.upper()):
-        raise ValueError(f"The measure {child_qname} is not an ISO 4217 currency designation")
-
-    # according to the xbrl spec, if the concept type is 'sharesItemType', the unit must be the qname xbrli:shares
-    if concept_type == "sharesItemType" and child_qname != make_qname("xbrli:shares"):
-        raise ValueError(f"The measure {child_qname} is not xbrli:shares")
-
-    return child_qname
+        # return qname_or_error
 
 
 def parse_unit_from_xml(
-    xml_element: lxml.etree._Element,
-    concept: Concept,
-    make_qname: Callable[[str], QName],
-    get_from_cache: Callable[[str], ICharacteristic | Aspect | None],
-    add_to_cache: Callable[[str, ICharacteristic | Aspect], None],
-) -> UnitCharacteristic:
-    """
-    Create a Unit from an xml subtree.
-    :param xml_element: the xml subtree from which the Unit is created
-    :param concept: the concept of the unit. What units are allowed is defined by the concept.
-    :param make_qname: the function to make a QName from a string
-    :param get_characteristic: the function to get a characteristic from the characteristics cache
-    :param add_characteristic: the function to add a characteristic to the characteristics cache
-    """
-    # Check if the xml element has an id attribute. This is mandatory according to the XBRL specification.
-    unit_id_str = xml_element.get("id", None)
-    if unit_id_str is None:
-        raise ValueError(f"The unit {xml_element} does not have an id attribute")
+    filing_context: FilingContext,
+    xml_element: _Element,
+) -> Optional[UnitCharacteristic]:
+    characteristic_repository: CharacteristicRepository = (
+        filing_context.get_characteristic_repository()
+    )
+    error_repository: ErrorRepository = filing_context.get_error_repository()
 
-    # check the cache for the unit. If it is already in the cache, return it.
-    unit_characteristic = get_from_cache(f"unit {unit_id_str}")
-    if unit_characteristic is not None:
-        # If the type check succeeds, we can return the unit characteristic. Otherwise there is a cache collision.
-        if not isinstance(unit_characteristic, UnitCharacteristic):
-            raise ValueError(f"Unit {unit_id_str} is not a unit. It is a {type(unit_characteristic)}")
-        return cast(UnitCharacteristic, unit_characteristic)
+    unit_id = get_str_attribute(xml_element, "id")
+
+    if characteristic_repository.has(unit_id, UnitCharacteristic):
+        error_repository.insert(
+            ErrorCode.IXBRL_DUPLICATE_ELEMENT_ID, xml_element, id=unit_id
+        )
 
     numerators: list[QName] = []
     denominators: list[QName] = []
@@ -86,46 +67,73 @@ def parse_unit_from_xml(
     # get the child elements of the unit and check if its tag is 'measure' or 'divide'
     children = list(xml_element)
     if len(children) != 1:
-        raise ValueError(f"The unit {unit_id_str} has {len(children)} children but should have 1 child")
+        error_repository.insert(
+            ErrorCode.XML_UNIT_ELEMENT_WITHOUT_ONE_CHILD,
+            xml_element,
+            id=unit_id,
+            child_count=str(len(children)),
+        )
+    else:
+        child = children[0]
+        child_tag = child.tag
+        if "measure" in child_tag:
+            # get its text and parse it into a QName
+            child_qname = parse_unit_measure_from_xml(child, filing_context)
+            if not child_qname:
+                return None
 
-    child = children[0]
-    child_tag = child.tag
-    if "measure" in child_tag:
-        # get its text and parse it into a QName
-        child_qname = parse_unit_measure_from_xml(child, concept, make_qname)
+            numerators.append(child_qname)
 
-        numerators.append(child_qname)
-
-    elif "divide" in child_tag:
-        num_and_denom = list(child)
-        if len(num_and_denom) != 2:
-            raise ValueError(f"The unit {unit_id_str} has {len(num_and_denom)} children but should have 2 children")
-
-        for num_or_denom in num_and_denom:
-            num_or_denom_tag = num_or_denom.tag
-            if "unitNumerator" in num_or_denom_tag:
-                # get its text and parse it into a QName
-                child_qname = parse_unit_measure_from_xml(num_or_denom, concept, make_qname)
-
-                numerators.append(child_qname)
-            elif "unitDenominator" in num_or_denom_tag:
-                # get its text and parse it into a QName
-                child_qname = parse_unit_measure_from_xml(num_or_denom, concept, make_qname)
-
-                denominators.append(child_qname)
-            else:
-                raise ValueError(
-                    f"The unit {unit_id_str} has child {num_or_denom_tag} but should have children 'unitNumerator' and 'unitDenominator'"
+        elif "divide" in child_tag:
+            num_and_denom = list(child)
+            if len(num_and_denom) != 2:
+                error_repository.insert(
+                    ErrorCode.XML_DIVIDE_ELEMENT_WITHOUT_TWO_CHILDREN,
+                    xml_element,
+                    id=unit_id,
+                    child_count=str(len(num_and_denom)),
                 )
 
-        if num_and_denom[0].tag == num_and_denom[1].tag:
-            raise ValueError(
-                f"The unit {unit_id_str} has two children with the same tag: {num_and_denom[0].tag}. One should be 'unitNumerator' and the other 'unitDenominator'"
+            for num_or_denom in num_and_denom:
+                num_or_denom_tag = num_or_denom.tag
+
+                if (
+                    "unitNumerator" not in num_or_denom_tag
+                    and "unitDenominator" not in num_or_denom_tag
+                ):
+                    error_repository.insert(
+                        ErrorCode.XML_INVALID_DIVIDE_ELEMENT_CHILDREN,
+                        xml_element,
+                        id=unit_id,
+                        child_tag=num_or_denom_tag,
+                    )
+
+                measure_child = num_or_denom[0]
+                child_qname = parse_unit_measure_from_xml(measure_child, filing_context)
+
+                if not child_qname:
+                    return None
+
+                if "unitNumerator" in num_or_denom_tag:
+                    numerators.append(child_qname)
+                elif "unitDenominator" in num_or_denom_tag:
+                    denominators.append(child_qname)
+
+            if num_and_denom[0].tag == num_and_denom[1].tag:
+                error_repository.insert(
+                    ErrorCode.XML_DUPLICATE_DIVIDE_ELEMENT_CHILDREN,
+                    xml_element,
+                    id=unit_id,
+                    tag=num_and_denom[0].tag,
+                )
+        else:
+            error_repository.insert(
+                ErrorCode.XML_INVALID_UNIT_ELEMENT_CHILDREN,
+                xml_element,
+                id=unit_id,
+                child_tag=child_tag,
             )
-    else:
-        raise ValueError(f"The unit {unit_id_str} has child {child_tag} but should have child 'measure' or 'divide'")
 
     # create the unit characteristic, add it to the cache and return it
-    unit_characteristic = UnitCharacteristic(unit_id_str, numerators, denominators)
-    add_to_cache(f"unit {unit_id_str}", unit_characteristic)
+    unit_characteristic = UnitCharacteristic(unit_id, numerators, denominators)
     return unit_characteristic

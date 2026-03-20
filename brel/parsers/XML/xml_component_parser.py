@@ -5,129 +5,134 @@ It does not parse the networks, but it links components to networks.
 =================
 
 - author: Robin Schmidiger
-- version: 0.7
-- date: 31 January 2024
+- version: 0.8
+- date: 15 April 2025
 
 =================
 """
 
-from typing import Callable, Mapping, Iterable, Tuple
+from typing import Iterable
 
 import lxml
 import lxml.etree
 
-from brel import Component, QName, QNameNSMap
+from brel import Component
+from brel.errors.error_code import ErrorCode
+
 from brel.networks import (
     CalculationNetwork,
     DefinitionNetwork,
-    INetwork,
     PresentationNetwork,
 )
-from brel.reportelements import IReportElement
-from brel.parsers.utils import get_str
+from brel.contexts.filing_context import FilingContext
+from brel.data.errors.error_repository import ErrorRepository
+from brel.data.component.component_repository import ComponentRepository
+from brel.data.network.network_repository import NetworkRepository
+from brel.parsers.utils.lxml_utils import find_element, find_elements, get_str_attribute
 
 
 def parse_component_from_xml(
-    xml_element: lxml.etree._Element,
-    qname_nsmap: QNameNSMap,
-    networks: Iterable[INetwork],
+    context: FilingContext,
+    xml_element: lxml.etree._Element,  # type: ignore
 ) -> Component:
-    """
-    Creates a single Component from an lxml.etree._Element.
-    :param xml_element: The lxml.etree._Element to create the Component from.
-    :param qname_nsmap: The QNameNSMap
-    :param presentation_network: The presentation network of the component. None if the component has no presentation network or if the network is empty.
-    :param calculation_network: The calculation network of the component. None if the component has no calculation network or if the network is empty.
-    :param definition_network: The definition network of the component. None if the component has no definition network or if the network is empty.
-    :returns: The newly created Component.
-    """
+    network_repository: NetworkRepository = context.get_network_repository()
+    error_repository: ErrorRepository = context.get_error_repository()
 
-    uri = xml_element.get("roleURI", None)
-    nsmap = qname_nsmap.get_nsmap()
+    role_uri = get_str_attribute(xml_element, "roleURI")
 
-    if uri is None:
-        raise ValueError("The roleURI attribute is missing from the link:roleType element")
+    info_element = find_element(xml_element, "link:definition")
+    info = (info_element.text or "") if info_element is not None else ""
 
-    # the info is in a child element of the xml_element called "definition"
-    try:
-        info_element = xml_element.find("link:definition", namespaces=nsmap)
-        if info_element is None:
-            info = ""
-        else:
-            info = info_element.text or ""
-    except AttributeError:
-        info = ""
+    used_ons = [used_on.text for used_on in find_elements(xml_element, "link:usedOn")]
+    networks_in_component = network_repository.get_by_linkrole(role_uri)
 
-    # check the usedOn elements
-    used_ons = [used_on.text for used_on in xml_element.findall("link:usedOn", namespaces=nsmap)]
+    if "link:presentationLink" not in used_ons and any(
+        map(lambda n: isinstance(n, PresentationNetwork), networks_in_component)
+    ):
+        error_repository.insert(
+            ErrorCode.PRESENTATION_NETWORK_IN_COMPONENT_WITHOUT_USEDON_ELEMENT,
+            xml_element,
+            linkrole_uri=role_uri,
+        )
 
-    if "link:presentationLink" not in used_ons and any(map(lambda n: isinstance(n, PresentationNetwork), networks)):
-        raise ValueError(f"Component {uri} has presentation networks, but no appropriate usedOn element")
-    if "link:calculationLink" not in used_ons and any(map(lambda n: isinstance(n, CalculationNetwork), networks)):
-        raise ValueError(f"Component {uri} has calculation networks, but no appropriate usedOn element")
-    if "link:definitionLink" not in used_ons and any(map(lambda n: isinstance(n, DefinitionNetwork), networks)):
-        raise ValueError(f"Component {uri} has definition networks, but no appropriate usedOn element")
+    if "link:calculationLink" not in used_ons and any(
+        map(lambda n: isinstance(n, CalculationNetwork), networks_in_component)
+    ):
+        error_repository.insert(
+            ErrorCode.CALCULATION_NETWORK_IN_COMPONENT_WITHOUT_USEDON_ELEMENT,
+            xml_element,
+            linkrole_uri=role_uri,
+        )
 
-    return Component(uri, info, list(networks))
+    if "link:definitionLink" not in used_ons and any(
+        map(lambda n: isinstance(n, DefinitionNetwork), networks_in_component)
+    ):
+        error_repository.insert(
+            ErrorCode.DEFINITION_NETWORK_IN_COMPONENT_WITHOUT_USEDON_ELEMENT,
+            xml_element,
+            linkrole_uri=role_uri,
+        )
+
+    presentation_networks = [
+        network
+        for network in networks_in_component
+        if isinstance(network, PresentationNetwork)
+    ]
+    calculation_networks = [
+        network
+        for network in networks_in_component
+        if isinstance(network, CalculationNetwork)
+    ]
+    definition_networks = [
+        network
+        for network in networks_in_component
+        if isinstance(network, DefinitionNetwork) and not network.is_physical()
+    ]
+
+    if len(presentation_networks) > 1:
+        error_repository.insert(
+            ErrorCode.MULTIPLE_PRESENTATION_NETWORKS_IN_COMPONENT,
+            xml_element,
+            linkrole_uri=role_uri,
+        )
+    if len(calculation_networks) > 1:
+        error_repository.insert(
+            ErrorCode.MULTIPLE_CALCULATION_NETWORKS_IN_COMPONENT,
+            xml_element,
+            linkrole_uri=role_uri,
+        )
+    if len(definition_networks) > 1:
+        error_repository.insert(
+            ErrorCode.MULTIPLE_DEFINITION_NETWORKS_IN_COMPONENT,
+            xml_element,
+            linkrole_uri=role_uri,
+        )
+
+    presentation_network = (
+        presentation_networks[0] if len(presentation_networks) >= 1 else None
+    )
+    calculation_network = (
+        calculation_networks[0] if len(calculation_networks) >= 1 else None
+    )
+    definition_network = (
+        definition_networks[0] if len(definition_networks) >= 1 else None
+    )
+
+    return Component(
+        role_uri, info, presentation_network, calculation_network, definition_network
+    )
 
 
 def parse_components_xml(
-    schemas: Iterable[lxml.etree._ElementTree],
-    networks: Mapping[str, Iterable[INetwork]],
-    qname_nsmap: QNameNSMap,
-) -> Tuple[list[Component], list[Exception]]:
-    """
-    Parse the components.
-    :param schemas: The xbrl schema xml trees
-    :param networks: The networks as a dictionary of roleURI -> list of networks. Networks that belong to the default role have roleID None.
-    :param qname_nsmap: The QNameNSMap
-    :returns:
-    - list[Component]: All the components in the filing.
-    - list[Exception]: All the exceptions that occurred during parsing.
-    """
-    nsmap = qname_nsmap.get_nsmap()
+    context: FilingContext,
+) -> None:
+    xml_service = context.get_xml_service()
+    component_repository: ComponentRepository = context.get_component_repository()
 
-    components: list[Component] = []
-    errors: list[Exception] = []
-
-    # Iterate over all files that may contain components. Components are defined in the schemas
-    for schema in schemas:
-        # get all roleTypes in the schema. They correspond to the components
-        roletypes = schema.findall(".//link:roleType", namespaces=nsmap)
-        for roletype in roletypes:
-            # Read the component information from the roleType xml element
-            # roleURI = roletype.get("roleURI")
-            # roleID = roletype.get("id")
-
-            # if roleURI is None:
-            #     raise ValueError(f"roleURI for role {roleID} is None")
-
-            # if roleID is None:
-            #     raise ValueError(f"roleID for role {roleURI} is None")
-            try:
-                roleURI = get_str(roletype, "roleURI")
-                roleID = get_str(roletype, "id")
-            except Exception as e:
-                errors.append(e)
-                continue
-
-            # check if the role id is a valid NCName
-            # NCName is defined in https://www.w3.org/TR/xml-names/#NT-NCName
-            # NCNames are similar to python identifiers, except that they might contain '.' and '-' (not in the beginning)
-            roleID_stripped = roleID.replace(".", "").replace("-", "")
-            if not roleID_stripped.isidentifier() or roleID.startswith("-") or roleID.startswith("."):
-                # raise ValueError(f"roleID {roleID} is not a valid NCName")
-                errors.append(ValueError(f"roleID {roleID} is not a valid NCName"))
-                continue
-
-            try:
-                component = parse_component_from_xml(
-                    roletype,
-                    qname_nsmap,
-                    networks[roleURI],
-                )
-                components.append(component)
-            except Exception as e:
-                errors.append(e)
-
-    return components, errors
+    for schema in xml_service.get_all_etrees():
+        for roletype in find_elements(
+            schema,
+            ".//link:roleType",
+            namespaces={"link": "http://www.xbrl.org/2003/linkbase"},
+        ):
+            component_repository.upsert(parse_component_from_xml(context, roletype))

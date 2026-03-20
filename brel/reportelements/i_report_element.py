@@ -16,9 +16,11 @@ Depending on the kind of report element, there might be more information availab
 """
 
 from abc import ABC, abstractmethod
+from typing import Any, Dict, List, Optional
 
 from brel import QName
 from brel.resource import BrelLabel
+from brel.services.translation.translation_service import TranslationService
 
 
 class IReportElement(ABC):
@@ -37,6 +39,14 @@ class IReportElement(ABC):
         raise NotImplementedError
 
     @abstractmethod
+    def get_id(self) -> str | None:  # pragma: no cover
+        """
+        Get the id of the report element.
+        :returns: str containing the id of the report element
+        """
+        raise NotImplementedError
+
+    @abstractmethod
     def get_labels(self) -> list[BrelLabel]:  # pragma: no cover
         """
         Get all labels of the report element.
@@ -49,7 +59,11 @@ class IReportElement(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def convert_to_dict(self) -> dict:
+    def convert_to_dict(
+        self,
+        languages: Optional[List[str]] = None,
+        translation_service: Optional[TranslationService] = None,
+    ) -> Dict[str, Any]:
         """
         Convert the report element to a dictionary.
         :returns dict: containing the report element
@@ -85,7 +99,9 @@ class IReportElement(ABC):
             # raise ValueError("No labels available - cannot select main label!")
             return BrelLabel("NO_LABEL", "", "")
         elif self.has_label_with_language("en"):
-            return next((label for label in labels if label.get_language() == "en"), labels[0])
+            return next(
+                (label for label in labels if label.get_language() == "en"), labels[0]
+            )
         elif self.has_label_with_language("en-US"):
             return next(
                 (label for label in labels if label.get_language() == "en-US"),
@@ -97,7 +113,9 @@ class IReportElement(ABC):
                 labels[0],
             )
         elif self.has_label_with_language("EN"):
-            return next((label for label in labels if label.get_language() == "EN"), labels[0])
+            return next(
+                (label for label in labels if label.get_language() == "EN"), labels[0]
+            )
         elif self.has_label_with_language("EN-US"):
             return next(
                 (label for label in labels if label.get_language() == "EN-US"),

@@ -27,7 +27,7 @@ def test_pprint_objects():
     Test if the pprint function works for different objects
     """
 
-    f = brel.Filing.open("tests/end_to_end_tests/ete_filing")
+    f = brel.Filing.open("tests/end_to_end_tests/hand_made_report/ete_filing")
     fact = f.get_all_facts()[0]
 
     # test if pprint works for a fact
@@ -63,7 +63,7 @@ def test_pprint_lists():
     Test if the pprint function works for lists of different objects
     """
 
-    f = brel.Filing.open("tests/end_to_end_tests/ete_filing")
+    f = brel.Filing.open("tests/end_to_end_tests/hand_made_report/ete_filing")
 
     # test if pprint works for a list of facts
     facts = f.get_all_facts()

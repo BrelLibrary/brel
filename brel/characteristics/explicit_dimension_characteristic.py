@@ -11,8 +11,10 @@ Explicit members are a wrapper for a dimension- and a member report element.
 ====================
 """
 
+from typing import List
 from brel.characteristics import Aspect, ICharacteristic
 from brel.reportelements import Dimension, Member
+from brel.services.translation.translation_service import TranslationService
 
 
 class ExplicitDimensionCharacteristic(ICharacteristic):
@@ -48,6 +50,14 @@ class ExplicitDimensionCharacteristic(ICharacteristic):
         """
         return self.__member
 
+    def get_localized_value_string(
+        self, languages: List[str], translation_service: TranslationService
+    ) -> str:
+        member = self.get_member()
+        return translation_service.get_from_labels(
+            member.get_labels(), languages, member.get_name().get_local_name()
+        )
+
     def get_dimension(self) -> Dimension:
         """
         returns the name/dimension/axis of the explicit dimension characteristic.
@@ -72,4 +82,7 @@ class ExplicitDimensionCharacteristic(ICharacteristic):
     def __eq__(self, __value: object) -> bool:
         if not isinstance(__value, ExplicitDimensionCharacteristic):
             return False
-        return self.get_member() == __value.get_member() and self.get_aspect() == __value.get_aspect()
+        return (
+            self.get_member() == __value.get_member()
+            and self.get_aspect() == __value.get_aspect()
+        )

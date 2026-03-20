@@ -10,14 +10,17 @@ This module contains the LineItems class.
 =================
 """
 
+from typing import Dict, Any, List, Optional
 from brel import QName
 from brel.reportelements import IReportElement
 from brel.resource import BrelLabel
+from brel.services.translation.translation_service import TranslationService
 
 
 class LineItems(IReportElement):
-    def __init__(self, name: QName, labels: list[BrelLabel]):
+    def __init__(self, name: QName, id: str | None, labels: list[BrelLabel]):
         self.__name = name
+        self.__id = id
         self.__labels = labels
 
     def get_name(self) -> QName:
@@ -25,6 +28,12 @@ class LineItems(IReportElement):
         :returns QName: the name of the line items as a QName
         """
         return self.__name
+
+    def get_id(self) -> str | None:
+        """
+        :returns str: the id of the line items
+        """
+        return self.__id
 
     def get_labels(self) -> list[BrelLabel]:
         """
@@ -46,13 +55,37 @@ class LineItems(IReportElement):
         """
         return self.__name.__str__()
 
-    def convert_to_dict(self) -> dict:
+    def convert_to_dict(
+        self,
+        languages: Optional[List[str]] = None,
+        translation_service: Optional[TranslationService] = None,
+    ) -> Dict[str, Any]:
         """
         Convert the line items to a dictionary.
         :returns dict: the line items as a dictionary
         """
+        if not languages or not translation_service:
+            return {
+                "name": self.__name.prefix_local_name_notation(),
+                "label": self.select_main_label().__str__(),
+                "report-element-type": "line item",
+            }
+
+        name_literal = translation_service.get("literal:name", languages)
+        label_literal = translation_service.get("literal:label", languages)
+        report_element_type_literal = translation_service.get(
+            "literal:report-element-type", languages
+        )
+        line_items_literal = translation_service.get(
+            "report-element:line-items", languages
+        )
+
+        label = translation_service.get_from_labels(
+            self.get_labels(), languages, self.select_main_label().__str__()
+        )
+
         return {
-            "name": self.__name.get(),
-            "label": self.select_main_label().__str__(),
-            "report_element_type": "line item",
+            name_literal: self.__name.prefix_local_name_notation(),
+            label_literal: label,
+            report_element_type_literal: line_items_literal,
         }

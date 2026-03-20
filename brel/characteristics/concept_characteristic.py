@@ -1,17 +1,17 @@
 """
-Contains the class for representing an XBRL concept characteristic
-
-=================
+====================
 
 - author: Robin Schmidiger
-- version: 0.2
-- date: 19 December 2023
+- version: 0.3
+- date: 12 May 2025
 
-=================
+====================
 """
 
+from typing import List
 from brel.characteristics import Aspect, ICharacteristic
 from brel.reportelements import Concept
+from brel.services.translation.translation_service import TranslationService
 
 
 class ConceptCharacteristic(ICharacteristic):
@@ -21,15 +21,8 @@ class ConceptCharacteristic(ICharacteristic):
 
     """
 
-    __concept_cache: dict = {}
-
     def __init__(self, concept: Concept) -> None:
-        # check if the concept is actually a Concept instance
-        if not isinstance(concept, Concept):
-            raise ValueError(f"concept is not a Concept instance: {concept}")
-
         self.__concept: Concept = concept
-        self.__concept_cache[concept.get_name()] = self
 
     def __str__(self) -> str:
         return str(self.__concept.get_name())
@@ -39,6 +32,15 @@ class ConceptCharacteristic(ICharacteristic):
         :returns Concept: the concept of the characteristic
         """
         return self.__concept
+
+    def get_localized_value_string(
+        self, languages: List[str], translation_service: TranslationService
+    ) -> str:
+        return translation_service.get_from_labels(
+            self.__concept.get_labels(),
+            languages,
+            self.__concept.get_name().get_local_name(),
+        )
 
     def get_aspect(self) -> Aspect:
         """

@@ -13,6 +13,7 @@ The network node interface also contains some utility methods for working with n
 """
 
 from abc import ABC, abstractmethod
+from typing import Any, Dict
 
 from brel import Fact, QName
 from brel.reportelements import IReportElement
@@ -158,7 +159,7 @@ class INetworkNode(ABC):
         """
         raise NotImplementedError
 
-    def convert_to_dict(self) -> dict:
+    def convert_to_dict(self) -> Dict[str, Any]:
         """
         Converts this node to a dictionary
         :returns dict: containing the information of this node
@@ -166,9 +167,9 @@ class INetworkNode(ABC):
         return {
             "points_to": self.points_to(),
             "arc_role": self.get_arc_role(),
-            "arc_name": self.get_arc_name().get(),
+            "arc_name": self.get_arc_name().prefix_local_name_notation(),
             "link_role": self.get_link_role(),
-            "link_name": self.get_link_name().get(),
+            "link_name": self.get_link_name().prefix_local_name_notation(),
             "order": self.get_order(),
             "children": [child.convert_to_dict() for child in self.get_children()],
         }

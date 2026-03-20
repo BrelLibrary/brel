@@ -1,32 +1,59 @@
-from typing import cast, Mapping
+"""
+====================
 
-import lxml
+- author: Robin Schmidiger
+- version: 0.1
+- date: 13 May 2025
+
+====================
+"""
+
+from copy import deepcopy
+from typing import Dict, List, Mapping, Optional, cast
+from brel.qnames.qname import QName
 import lxml.etree
+from lxml.etree import _Element, _ElementTree, XPath  # type: ignore
+
+from brel.qnames.qname_utils import (
+    is_clark_notation,
+    is_namespace_localname_notation,
+    qname_from_str,
+)
 
 
-def get_clark(prefix: str, local_name: str, prefix_to_url: Mapping[str, str]) -> str:
+def has_str_attribute(element: _Element, attribute: str | QName) -> bool:
     """
-    Given a prefix, a local name and a prefix to URL mapping, return the clark notation.
-    :param prefix: The prefix.
-    :param local_name: The local name.
-    :param prefix_to_url: The prefix to URL mapping.
-    :returns str: The clark notation.
+    Helper function for checking if an element has a string attribute.
+    :param element: lxml.etree.Element to check
+    :param attribute: str containing the name of the attribute
+    :returns: bool indicating if the attribute is present
     """
-    url = prefix_to_url[prefix]
-    return f"{{{url}}}{local_name}"
+    if isinstance(attribute, QName):
+        attribute = attribute.clark_notation()
+    elif is_namespace_localname_notation(attribute):
+        attribute = qname_from_str(attribute, element).clark_notation()
+
+    return attribute in element.attrib
 
 
-def get_str(element: lxml.etree._Element, attribute: str, default: str | None = None) -> str:
+def get_str_attribute(
+    element: _Element, attribute: str | QName, default: str | None = None
+) -> str:
     """
     Helper function for getting a string attribute from an element. Always returns a string.
-    @param element: lxml.etree._Element to get the attribute from
-    @param attribute: str containing the name of the attribute
-    @param default: str containing the default value to return if the attribute is not found
-    @return: str containing the value of the attribute
-    @raises ValueError: if the attribute is not found and no default value is provided
-    @raises TypeError: if the attribute is not a string
+    :param element: lxml.etree.Element to get the attribute from
+    :param attribute: str containing the name of the attribute
+    :param default: str containing the default value to return if the attribute is not found
+    :return: str containing the value of the attribute
+    :raises: if the attribute is not found and no default value is provided
+    :raises: if the attribute is not a string
     """
-    value = element.attrib.get(attribute)
+    if isinstance(attribute, QName):
+        attribute = attribute.clark_notation()
+    elif is_namespace_localname_notation(attribute):
+        attribute = qname_from_str(attribute, element).clark_notation()
+
+    value = element.get(attribute)
     if value is None:
         if default is not None:
             return default
@@ -35,23 +62,127 @@ def get_str(element: lxml.etree._Element, attribute: str, default: str | None = 
     return value
 
 
+def get_str_attribute_optional(element: _Element, attribute: str | QName) -> str | None:
+    """
+    Helper function for getting a string attribute from an element. Returns None if the attribute is not found.
+    :param element: lxml.etree.Element to get the attribute from
+    :param attribute: str containing the name of the attribute
+    :return: str containing the value of the attribute
+    :raises: if the attribute is not a string
+    """
+    if isinstance(attribute, QName):
+        attribute = attribute.clark_notation()
+    elif is_namespace_localname_notation(attribute):
+        attribute = qname_from_str(attribute, element).clark_notation()
+
+    return element.attrib.get(attribute)
+
+
+def get_clark_notation_tag(element: _Element) -> str:  # type: ignore
+    """
+    Helper function for getting the tag of an element as a string in Clark Notation.
+    :param element: lxml.etree.Element to get the tag from
+    :returns: str containing the tag of the element
+    """
+    return element.tag
+
+
+def get_prefix_localname_tag(element: _Element) -> str:
+    """
+    Helper function for getting the tag of an element as a string in prefix:localname notation.
+    Uses the namespaces available in the passed element.
+    :param element: lxml.etree.Element to get the tag from
+    :returns: str containing the tag of the element
+    """
+    return qname_from_str(element.tag, element).prefix_local_name_notation()
+
+
+def find_elements(
+    element: _ElementTree | _Element,  # type: ignore
+    xpath_query: str | QName,
+    namespaces: Optional[Dict[str, str]] = None,
+) -> list[_Element]:
+    if isinstance(xpath_query, QName):
+        xpath_query = xpath_query.prefix_local_name_notation()
+
+    if isinstance(element, _ElementTree):
+        element = element.getroot()
+
+    if not namespaces:
+        namespaces = {k: v for k, v in element.nsmap.items() if k is not None}
+
+    try:
+        find = XPath(xpath_query, namespaces=namespaces)
+        result = find(element)
+        return cast(List[_Element], result)
+    except lxml.etree.XPathEvalError:
+        return []
+
+
+def find_element(
+    element: _ElementTree | _Element,  # type: ignore
+    xpath_query: str | QName,
+) -> _Element | None:
+    if isinstance(xpath_query, QName):
+        xpath_query = xpath_query.prefix_local_name_notation()
+
+    if isinstance(element, _ElementTree):
+        element = element.getroot()
+
+    nsmap: Mapping[str, str] = {k: v for k, v in element.nsmap.items() if k is not None}
+    return element.find(xpath_query, namespaces=nsmap)
+
+
 def get_all_nsmaps(
-    lxml_etrees: list[lxml.etree._ElementTree],
+    lxml_etrees: list[lxml.etree._ElementTree],  # type: ignore
 ) -> list[dict[str, str]]:
     """
     Given a list of lxml etree objects, get all the namespace mappings.
-    @param lxml_etrees: A list of lxml etree objects.
-    @return: A list of namespace mappings.
+    :param lxml_etrees: A list of lxml etree objects.
+    :returns: A list of namespace mappings.
     """
     nsmaps: list[dict[str, str]] = []
     for lxml_etree in lxml_etrees:
-        for xml_element in lxml_etree.iter():
-            nsmap = xml_element.nsmap
-            # remove the None key
+        for xmlElement in lxml_etree.iter():
+            nsmap: dict[str | None, str] = xmlElement.nsmap
+            nsmap.update(
+                {
+                    str(key.replace("xmlns:", "")): str(value)  # type: ignore
+                    for key, value in xmlElement.attrib.items()
+                    if key.startswith("xmlns:")  # type: ignore
+                }
+            )
+
             nsmap.pop(None, None)
 
-            # create a copy of the nsmap
             nsmap_typecasted = cast(dict[str, str], nsmap)
             nsmaps.append(nsmap_typecasted)
 
     return nsmaps
+
+
+def get_elem_lang_recursive(xml_element: _Element | None) -> Optional[str]:
+    """
+    Recursively traverse the given lxml element up the tree, returning the first xml:lang attribute found.
+    If no xml:lang attribute is found, return None.
+    :param xml_element: The lxml element to start the search from
+    :return: The value of the first xml:lang attribute found, or None if not found
+    """
+
+    if xml_element is None:
+        return None
+
+    if has_str_attribute(xml_element, "xml:lang"):
+        return get_str_attribute(xml_element, "xml:lang")
+
+    return get_elem_lang_recursive(xml_element.getparent())
+
+
+def clone_element_without_children(element: _Element) -> _Element:
+    new_element = deepcopy(element)
+
+    children = [child for child in new_element]
+    for child in children:
+        new_element.remove(child)
+
+    return new_element

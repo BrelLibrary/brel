@@ -1,4 +1,5 @@
-from brel import Filing, Component, pprint
+from brel import Filing, Component
+from brel.utils import pprint
 
 
 def example4():

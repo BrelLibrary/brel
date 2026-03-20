@@ -15,9 +15,9 @@ To print a fact to the console, use the `pprint` function in the `brel` module.
 ====================
 """
 
-from typing import Any, cast
+from typing import Any, List, Optional, cast
 
-from brel import Context, QName
+from brel import Context
 from brel.characteristics import (
     Aspect,
     ConceptCharacteristic,
@@ -26,25 +26,43 @@ from brel.characteristics import (
     UnitCharacteristic,
     EntityCharacteristic,
 )
+from brel.services.translation.translation_service import TranslationService
 
 
 class Fact:
     """
-    The Fact class consists of a value, a context and an id.
+    The Fact class consists of a value, a context, id, and the precision and decimals of the fact.
 
     - The value is the value of the fact. It is a string.
     - The context is the context of the fact. It is a Context object.
     - The id is the id of the fact. It is a string and is optional.
-
+    - The precision is the precision of the fact. Only used when it is a numerical fact. Only one of precision and decimals can be set.
+    - The decimals is the decimals of the fact. Only used when it is a numerical fact. Only one of precision and decimals can be set.
     """
 
-    def __init__(self, context: Context, value: str, id: str | None) -> None:
+    def __init__(
+        self,
+        context: Context,
+        value: str,
+        id: str | None,
+        decimals: float | None = None,
+        precision: float | None = None,
+    ) -> None:
+        self.__precision = precision
+        self.__decimals = decimals
         self.__id = id
         self.__context: Context = context
         self.__value: str = value
 
     # first class citizens
+    # TODO think about this. is the id attribute an implementation detail?
     def _get_id(self) -> str | None:
+        """
+        :returns str|None: The id of the fact. Returns None if the fact does not have an id.
+        """
+        return self.__id
+
+    def get_id(self) -> str | None:
         """
         :returns str|None: The id of the fact. Returns None if the fact does not have an id.
         """
@@ -106,6 +124,12 @@ class Fact:
         """
         return self.__value
 
+    def get_precision(self) -> float | None:
+        return self.__precision
+
+    def get_decimals(self) -> float | None:
+        return self.__decimals
+
     def __str__(self) -> str:
         """
         :returns str: The fact represented as a string.
@@ -135,7 +159,9 @@ class Fact:
         :returns UnitCharacteristic|None: The unit characteristic of the facts context. Returns None if the fact does not have a unit.
         Equivalent to calling `fact.get_context().get_unit()`
         """
-        unit: UnitCharacteristic = cast(UnitCharacteristic, self.__context.get_characteristic(Aspect.UNIT))
+        unit: UnitCharacteristic = cast(
+            UnitCharacteristic, self.__context.get_characteristic(Aspect.UNIT)
+        )
         return unit
 
     def get_period(self) -> PeriodCharacteristic | None:
@@ -176,15 +202,35 @@ class Fact:
         """
         return self.__context.get_characteristic(aspect)
 
-    def convert_to_dict(self) -> dict[str, Any]:
+    def convert_to_dict(
+        self,
+        languages: Optional[List[str]] = None,
+        translation_service: Optional[TranslationService] = None,
+    ) -> dict[str, Any]:
         """
         :returns dict[str, Any]: The fact represented as a dictionary. The dictionary has the following keys:
         - "id": The id of the fact. Returns None if the fact does not have an id.
         - "value": The value of the fact.
         - "context": The context of the fact represented as a dictionary.
         """
-        dict_to_return = self.__context.convert_to_df_row()
-        dict_to_return["id"] = self.__id
-        dict_to_return["value"] = self.__value
+        dict_to_return = self.__context.convert_to_df_row(
+            languages, translation_service
+        )
+
+        if not languages or not translation_service:
+            dict_to_return["id"] = self.__id if self.__id else ""
+            dict_to_return["value"] = self.__value
+        else:
+            id_literal = translation_service.get("literal:id", languages)
+            value_literal = translation_service.get("literal:value", languages)
+
+            if self.__id:
+                dict_to_return[id_literal] = self.__id
+            else:
+                dict_to_return[id_literal] = translation_service.get(
+                    "literal:none", languages
+                )
+
+            dict_to_return[value_literal] = self.__value
 
         return dict_to_return

@@ -1,59 +1,47 @@
+"""
+====================
+
+- author: Robin Schmidiger
+- version: 0.1
+- date: 13 May 2025
+
+====================
+"""
+
 from abc import ABC, abstractmethod
+from typing import Optional
 
-import lxml
-import lxml.etree
-from typing import Mapping, Iterable, Tuple
+from lxml.etree import _Element  # type: ignore
 
-from brel import Fact, QName, QNameNSMap
+from brel.brel_fact import Fact
+from brel.data.errors.error_repository import ErrorRepository
 from brel.networks import INetwork, INetworkNode
 from brel.reportelements import IReportElement
 from brel.resource import IResource
+from brel.data.report_element.report_element_repository import ReportElementRepository
 
 
 class IXMLNetworkFactory(ABC):
-    def __init__(self, qname_nsmap: QNameNSMap) -> None:
-        self.__qname_nsmap = qname_nsmap
-
-    def get_qname_nsmap(self) -> QNameNSMap:
-        return self.__qname_nsmap
-
     @abstractmethod
-    def create_network(self, xml_link: lxml.etree._Element, roots: list[INetworkNode]) -> INetwork:
+    def create_network(self, xml_link: _Element, roots: list[INetworkNode]) -> INetwork:
         raise NotImplementedError
 
     @abstractmethod
     def create_node(
         self,
-        xml_link: lxml.etree._Element,
-        xml_referenced_element: lxml.etree._Element,
-        xml_arc: lxml.etree._Element | None,
+        xml_link: _Element,
+        xml_referenced_element: _Element,
+        xml_arc: _Element | None,
         points_to: IReportElement | IResource | Fact,
-    ) -> INetworkNode:
+        error_repository: ErrorRepository,
+    ) -> Optional[INetworkNode]:
         raise NotImplementedError
 
-    @abstractmethod
-    def update_report_elements(self, report_elements: Mapping[QName, IReportElement], network: INetwork):
-        raise NotImplementedError
+    def update_report_elements(
+        self, report_element_repository: ReportElementRepository, network: INetwork
+    ) -> None:
+        pass
 
     @abstractmethod
     def is_physical(self) -> bool:
         raise NotImplementedError
-
-    # helper methods
-    def _clark(self, prefix: str, local_name: str) -> str:
-        """
-        Given a prefix, a local name, and a prefix to URL mapping, return the clark notation.
-        :param prefix: The prefix.
-        :param local_name: The local name.
-        :returns str: The clark notation.
-        """
-        url = self.__qname_nsmap.get_nsmap()[prefix]
-        return f"{{{url}}}{local_name}"
-
-    def _make_qname(self, qname_str: str) -> QName:
-        """
-        Given a string in clark notation, return a QName object.
-        :param qname_str: The clark notation.
-        :returns QName: The QName object.
-        """
-        return QName.from_string(qname_str, self.__qname_nsmap)
