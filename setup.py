@@ -177,7 +177,7 @@ setup(
             "pyyaml_env_tag==0.1",
             "requests==2.31.0",
             "rich==13.7.1",
-            "setuptools==75.8.2",
+            "setuptools==81.0.0",
             "six==1.16.0",
             "tomli==2.0.1",
             "tomli_w==1.0.0",
