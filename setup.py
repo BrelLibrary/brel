@@ -41,7 +41,7 @@ setup(
     author="PapediPoo, shreymittal1000, ghislainfourny",
     packages=find_packages(exclude=["tests", ".github"]),
     package_data={"": ["*.json"]},
-    intall_requires=[
+    install_requires=[
         "appdirs==1.4.4",
         "black==23.12.1",
         "certifi==2023.11.17",
