@@ -79,7 +79,7 @@ class Fact:
     def get_value_as_int(self) -> int:
         """[DEPRECATED] Use int() instead."""
         return int(self)
-    
+
     def __int__(self) -> int:
         """
         :returns int: The value of the fact as an int
@@ -216,16 +216,14 @@ class Fact:
         """
         return self.__context.get_characteristic(aspect)
 
-    def __iter__(
-        self
-    ):
+    def __iter__(self):
         return iter(self.convert_to_dict().items())
-        
+
     def convert_to_dict(
         self,
         languages: Optional[List[str]] = None,
         translation_service: Optional[TranslationService] = None,
-        ) -> dict[str, Any]:
+    ) -> dict[str, Any]:
         """
         :returns dict[str, Any]: The fact represented as a dictionary. The dictionary has the following keys:
         - "id": The id of the fact. Returns None if the fact does not have an id.

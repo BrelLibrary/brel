@@ -38,9 +38,9 @@ class ReportElementRepository(ABC):
     def get_all(self) -> list[IReportElement]:
         pass
 
-    def get_typed_by_qname[
-        T: IReportElement
-    ](self, qname: QName, report_element_type: type[T]) -> T:
+    def get_typed_by_qname[T: IReportElement](
+        self, qname: QName, report_element_type: type[T]
+    ) -> T:
         report_element = self.get_by_qname(qname)
         if not isinstance(report_element, report_element_type):
             raise ValueError(
@@ -48,9 +48,9 @@ class ReportElementRepository(ABC):
             )
         return report_element
 
-    def get_typed_by_id[
-        T: IReportElement
-    ](self, id: str, report_element_type: type[T]) -> T:
+    def get_typed_by_id[T: IReportElement](
+        self, id: str, report_element_type: type[T]
+    ) -> T:
         report_element = self.get_by_id(id)
         if not isinstance(report_element, report_element_type):
             raise ValueError(

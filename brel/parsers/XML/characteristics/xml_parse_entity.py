@@ -11,7 +11,6 @@ It parses XBRL in the XML syntax.
 ====================
 """
 
-
 from typing import Optional
 import lxml.etree
 

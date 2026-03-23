@@ -26,9 +26,9 @@ class CharacteristicRepository(ABC):
     def upsert(self, id: str, characteristic: ICharacteristic) -> None:
         pass
 
-    def get_or_create[
-        T: ICharacteristic
-    ](self, id: str, characteristic_type: Type[T], factory: Callable[[], T]) -> T:
+    def get_or_create[T: ICharacteristic](
+        self, id: str, characteristic_type: Type[T], factory: Callable[[], T]
+    ) -> T:
         if not self.has(id, characteristic_type):
             characteristic = factory()
             self.upsert(id, characteristic)

@@ -20,7 +20,7 @@ In the example above, the aspects are Entity, Period, Concept and Unit.
 Characteristics are aspect-value pairs.
 So for example, the characteristic of the Entity aspect would be "Foo Corporation".
 
-Read more about Aspects and Characteristics in 
+Read more about Aspects and Characteristics in
 
 ====================
 

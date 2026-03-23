@@ -6,7 +6,7 @@ This module contains the Filing class.
 Filings can be loaded from a folder, a zip file, or one or multiple xml files.
 
 - If a folder is given, then all xml files in the folder are loaded.
-- If a zip file is given, then the zip file is extracted to a folder 
+- If a zip file is given, then the zip file is extracted to a folder
 and then all xml files in the folder are loaded.
 - If one or more xml files are given, then only those xml files are loaded.
 - A URI can also be given. In this case, the file is downloaded and cached in a folder.

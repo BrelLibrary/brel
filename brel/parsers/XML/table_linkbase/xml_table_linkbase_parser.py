@@ -680,9 +680,9 @@ def parse_table_linkbase_element(
         # TODO: error
         pass
 
-    def add_unique_to_dict[
-        T
-    ](id: Optional[str], element: Optional[T], dict: Dict[str, T]):
+    def add_unique_to_dict[T](
+        id: Optional[str], element: Optional[T], dict: Dict[str, T]
+    ):
         if not element:
             return
 

@@ -24,9 +24,11 @@ class ReportElementService:
         self.__namespace_repository = namespace_repository
         self.__report_element_repository = report_element_repository
 
-    def get_fuzzy_typed[
-        T: IReportElement
-    ](self, search_params: QNameSearchParams, report_element_type: type[T],) -> list[T]:
+    def get_fuzzy_typed[T: IReportElement](
+        self,
+        search_params: QNameSearchParams,
+        report_element_type: type[T],
+    ) -> list[T]:
         uri_candidates: set[str] = set()
         if search_params.uri:
             uri_candidates.add(search_params.uri)

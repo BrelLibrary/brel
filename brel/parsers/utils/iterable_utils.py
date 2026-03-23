@@ -25,9 +25,7 @@ def get_first[T](collection: Iterable[T], error_message: str) -> T:
     return next(iter(collection))
 
 
-def exactly_one[
-    T
-](
+def exactly_one[T](
     collection: Iterable[T],
     error_message: str = "Collection must contain exactly one element",
 ) -> T:

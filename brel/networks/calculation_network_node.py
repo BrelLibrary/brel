@@ -6,7 +6,7 @@ Note: the balance consistency check is not implemented here, but in the Calculat
 CalculationNetworkNodes implement the INetworkNode interface, but they add the methods `get_concept()` and `get_weight()`.
 
 Note that this documentation omits the methods inherited from the INetworkNode interface.
-For more on the methods inherited from the INetworkNode interface, see the [INetworkNode documentation](./network-nodes.md). 
+For more on the methods inherited from the INetworkNode interface, see the [INetworkNode documentation](./network-nodes.md).
 
 =================
 

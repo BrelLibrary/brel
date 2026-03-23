@@ -10,6 +10,7 @@ It parses XBRL in the XML syntax.
 
 ====================
 """
+
 from typing import cast
 import lxml
 import lxml.etree

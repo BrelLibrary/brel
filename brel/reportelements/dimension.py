@@ -108,9 +108,11 @@ class Dimension(IReportElement):
                 "label": self.select_main_label().__str__(),
                 "report-element-type": "dimension",
                 "is-explicit": self.is_explicit(),
-                "dimension_type": self.__type.prefix_local_name_notation()
-                if self.__type is not None
-                else None,
+                "dimension_type": (
+                    self.__type.prefix_local_name_notation()
+                    if self.__type is not None
+                    else None
+                ),
             }
 
         name_literal = translation_service.get("literal:name", languages)

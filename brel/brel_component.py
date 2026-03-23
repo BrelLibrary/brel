@@ -2,7 +2,7 @@
 This module contains the Component class.
 Components are used to define the presentation, calculation and definition networks of a filing.
 
-Intuitively, they function as the chapters of a report or filing. Note that XBRL sometimes calls 
+Intuitively, they function as the chapters of a report or filing. Note that XBRL sometimes calls
 components 'roles'.
 
 Given a report, you can get all the components using the `Filing.get_all_components()` method.
@@ -19,14 +19,14 @@ my_component_name = all_component_URIs[0]
 my_component = filing.get_component(my_component_name)
 ```
 
-Components act as wrappers for the [`Network`s](#.networks/index.md) of a filing. 
+Components act as wrappers for the [`Network`s](#.networks/index.md) of a filing.
 The most notable kind of networks are the presentation, calculation and definition networks.
 
-- get the [`PresentationNetwork`](#./networks/presentation_network.md) using the 
+- get the [`PresentationNetwork`](#./networks/presentation_network.md) using the
 `Component.get_presentation_network()` method.
-- get the [`CalculationNetwork`](#./networks/calculation_network.md) using the 
+- get the [`CalculationNetwork`](#./networks/calculation_network.md) using the
 `Component.get_calculation_network()` method.
-- get the [`DefinitionNetwork`](#./networks/definition_network.md) using the 
+- get the [`DefinitionNetwork`](#./networks/definition_network.md) using the
 `Component.get_definition_network()` method.
 
 You can print them using the `pprint_network` function in the `brel` module:
@@ -84,9 +84,9 @@ class Component:
     ) -> None:
         self.__uri: str = uri
         self.__info: str = info
-        self.__presentation_network: Optional[
-            PresentationNetwork
-        ] = presentation_network
+        self.__presentation_network: Optional[PresentationNetwork] = (
+            presentation_network
+        )
         self.__calculation_network: Optional[CalculationNetwork] = calculation_network
         self.__definition_network: Optional[DefinitionNetwork] = definition_network
 
@@ -183,15 +183,15 @@ class Component:
             return {
                 "network-identifier": self.__uri,
                 "info": self.__info,
-                "presentation-network": True
-                if self.__presentation_network is not None
-                else False,
-                "calculation-network": True
-                if self.__calculation_network is not None
-                else False,
-                "definintion-network": True
-                if self.__definition_network is not None
-                else False,
+                "presentation-network": (
+                    True if self.__presentation_network is not None else False
+                ),
+                "calculation-network": (
+                    True if self.__calculation_network is not None else False
+                ),
+                "definintion-network": (
+                    True if self.__definition_network is not None else False
+                ),
             }
 
         network_identifier_literal = translation_service.get(

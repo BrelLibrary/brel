@@ -12,7 +12,6 @@ It only parses the syntactic context, therefore the Unit and Concept characteris
 ====================
 """
 
-
 from typing import Optional
 import lxml.etree
 

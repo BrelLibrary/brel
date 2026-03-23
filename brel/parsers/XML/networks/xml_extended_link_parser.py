@@ -142,9 +142,9 @@ def parse_xml_link(
             xml_link_element, ".//*[@xlink:type='resource' or @xlink:type='locator']"
         ):
             label = get_str_attribute(link_element, "xlink:label")
-            to_object: Optional[
-                IResource | IReportElement | Fact
-            ] = get_object_from_reference(link_element, context)
+            to_object: Optional[IResource | IReportElement | Fact] = (
+                get_object_from_reference(link_element, context)
+            )
 
             if not to_object:
                 continue
