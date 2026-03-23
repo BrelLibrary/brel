@@ -54,21 +54,25 @@ class Fact:
         self.__context: Context = context
         self.__value: str = value
 
-    # first class citizens
-    # TODO think about this. is the id attribute an implementation detail?
     def _get_id(self) -> str | None:
-        """
-        :returns str|None: The id of the fact. Returns None if the fact does not have an id.
-        """
-        return self.__id
+        """[DEPRECATED] Use id() instead."""
+        return self.id()
 
     def get_id(self) -> str | None:
+        """[DEPRECATED] Use id() instead."""
+        return self.id()
+
+    def id(self) -> str | None:
         """
         :returns str|None: The id of the fact. Returns None if the fact does not have an id.
         """
         return self.__id
 
     def get_context(self) -> Context:
+        """[DEPRECATED] Use context() instead."""
+        return self.context()
+
+    def context(self) -> Context:
         """
         :returns Context: The context of the fact as a Context object.
         """
@@ -81,6 +85,10 @@ class Fact:
         return self.__value
 
     def get_value_as_int(self) -> int:
+        """[DEPRECATED] Use int() instead."""
+        return int(self)
+    
+    def __int__(self) -> int:
         """
         :returns int: The value of the fact as an int
         :raises ValueError: If the value of the fact does not resolve to an int
@@ -93,6 +101,10 @@ class Fact:
             )
 
     def get_value_as_float(self) -> float:
+        """[DEPRECATED] Use float() instead."""
+        return
+
+    def __float__(self) -> float:
         """
         :returns float: The value of the fact as a float
         :raises ValueError: If the value of the fact does not resolve to a float
@@ -105,6 +117,10 @@ class Fact:
             )
 
     def get_value_as_bool(self) -> bool:
+        """[DEPRECATED] Use bool() instead."""
+        return bool
+
+    def __bool__(self) -> bool:
         """
         :returns bool: The value of the fact as a bool
         :raises ValueError: If the value of the fact does not resolve to a bool
@@ -125,9 +141,23 @@ class Fact:
         return self.__value
 
     def get_precision(self) -> float | None:
+        """[DEPRECATED] Use precision() instead."""
+        return self.__precision
+
+    def precision(self) -> float | None:
+        """
+        :returns Any: The precision of the fact. Only applies to numeric facts.
+        """
         return self.__precision
 
     def get_decimals(self) -> float | None:
+        """[DEPRECATED] Use decimals() instead."""
+        return self.__decimals
+
+    def decimals(self) -> float | None:
+        """
+        :returns Any: The decimals property of the fact. Only applies to numeric facts.
+        """
         return self.__decimals
 
     def __str__(self) -> str:
@@ -202,11 +232,24 @@ class Fact:
         """
         return self.__context.get_characteristic(aspect)
 
+    def __iter__(
+        self
+    ):
+        return iter(self.convert_to_dict().items())
+        
     def convert_to_dict(
         self,
         languages: Optional[List[str]] = None,
         translation_service: Optional[TranslationService] = None,
-    ) -> dict[str, Any]:
+        ) -> dict[str, Any]:
+        """[DEPRECATED] Use as_dict() instead."""
+        return self.as_dict(languages, translation_service)
+
+    def as_dict(
+        self,
+        languages: Optional[List[str]] = None,
+        translation_service: Optional[TranslationService] = None,
+        ) -> dict[str, Any]:
         """
         :returns dict[str, Any]: The fact represented as a dictionary. The dictionary has the following keys:
         - "id": The id of the fact. Returns None if the fact does not have an id.
