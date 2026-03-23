@@ -55,24 +55,16 @@ class Fact:
         self.__value: str = value
 
     def _get_id(self) -> str | None:
-        """[DEPRECATED] Use id() instead."""
+        """[DEPRECATED] Use get_id() instead."""
         return self.id()
 
     def get_id(self) -> str | None:
-        """[DEPRECATED] Use id() instead."""
-        return self.id()
-
-    def id(self) -> str | None:
         """
         :returns str|None: The id of the fact. Returns None if the fact does not have an id.
         """
         return self.__id
 
     def get_context(self) -> Context:
-        """[DEPRECATED] Use context() instead."""
-        return self.context()
-
-    def context(self) -> Context:
         """
         :returns Context: The context of the fact as a Context object.
         """
@@ -141,20 +133,12 @@ class Fact:
         return self.__value
 
     def get_precision(self) -> float | None:
-        """[DEPRECATED] Use precision() instead."""
-        return self.__precision
-
-    def precision(self) -> float | None:
         """
         :returns Any: The precision of the fact. Only applies to numeric facts.
         """
         return self.__precision
 
     def get_decimals(self) -> float | None:
-        """[DEPRECATED] Use decimals() instead."""
-        return self.__decimals
-
-    def decimals(self) -> float | None:
         """
         :returns Any: The decimals property of the fact. Only applies to numeric facts.
         """
@@ -238,14 +222,6 @@ class Fact:
         return iter(self.convert_to_dict().items())
         
     def convert_to_dict(
-        self,
-        languages: Optional[List[str]] = None,
-        translation_service: Optional[TranslationService] = None,
-        ) -> dict[str, Any]:
-        """[DEPRECATED] Use as_dict() instead."""
-        return self.as_dict(languages, translation_service)
-
-    def as_dict(
         self,
         languages: Optional[List[str]] = None,
         translation_service: Optional[TranslationService] = None,
