@@ -84,9 +84,9 @@ class Component:
     ) -> None:
         self.__uri: str = uri
         self.__info: str = info
-        self.__presentation_network: Optional[PresentationNetwork] = (
-            presentation_network
-        )
+        self.__presentation_network: Optional[
+            PresentationNetwork
+        ] = presentation_network
         self.__calculation_network: Optional[CalculationNetwork] = calculation_network
         self.__definition_network: Optional[DefinitionNetwork] = definition_network
 

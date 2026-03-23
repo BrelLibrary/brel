@@ -9,10 +9,9 @@
 """
 
 
-def error_on_none[T](
-    value: T | None,
-    error_message: str,
-) -> T:
+def error_on_none[
+    T
+](value: T | None, error_message: str,) -> T:
     """
     Raise a ValueError if the value is None.
     :param value: The value to check.
