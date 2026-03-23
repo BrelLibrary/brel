@@ -56,7 +56,7 @@ class Fact:
 
     def _get_id(self) -> str | None:
         """[DEPRECATED] Use get_id() instead."""
-        return self.id()
+        return self.get_id()
 
     def get_id(self) -> str | None:
         """
@@ -94,7 +94,7 @@ class Fact:
 
     def get_value_as_float(self) -> float:
         """[DEPRECATED] Use float() instead."""
-        return
+        return float(self)
 
     def __float__(self) -> float:
         """
@@ -110,7 +110,7 @@ class Fact:
 
     def get_value_as_bool(self) -> bool:
         """[DEPRECATED] Use bool() instead."""
-        return bool
+        return bool(self)
 
     def __bool__(self) -> bool:
         """
