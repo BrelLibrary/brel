@@ -8,7 +8,6 @@
 ====================
 """
 
-
 from brel.contexts.filing_context import FilingContext
 from brel.parsers.XHMTL.networks.xhtml_footnote_network_elements import (
     XHTMLFootnoteNetworkElements,
