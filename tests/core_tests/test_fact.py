@@ -21,7 +21,7 @@ def test_qname_getters():
     assert fact.get_id() == "f-2", "Expected fact id to be 'f-2'"  # type: ignore
 
     context = fact.get_context()
-    assert context.get_id() == "c-1", "Expected context id to be 'c-1'"  # type: ignore
+    assert context._get_id() == "c-1", "Expected context id to be 'c-1'"  # type: ignore
 
     assert str(fact) == "true", "Expected 'true' as fact value is 'true'"
     assert bool(fact) == True, "Expected True as fact value is 'true'"
