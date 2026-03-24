@@ -222,9 +222,9 @@ class Filing:
         return self.get_errors_by_severity(Severity.INFO)
 
     # second class citizens
-    def get_all_dimensionless_facts(self) -> list[Fact]:
+    def get_all_core_facts(self) -> list[Fact]:
         """
-        :return list[Fact]: a list of all [`Fact`](../facts/facts.md) objects in the filing that have no dimensions.
+        :return list[Fact]: a list of all [`Fact`](../facts/facts.md) objects in the filing that have no non-core dimensions.
         """
         return [fact for fact in self.get_all_facts() if not fact.has_dimensions()]
 
@@ -418,7 +418,7 @@ class Filing:
         """
         return self.__generate_pandas_df_from_elements(self.get_all_facts(), **kwargs)
 
-    def generate_dimensionless_fact_table_pandas_df(
+    def generate_core_fact_table_pandas_df(
         self, **kwargs: Unpack[OutputParams]
     ) -> pd.DataFrame:
         """
@@ -426,7 +426,7 @@ class Filing:
         :return pandas.DataFrame: the filing as a pandas DataFrame.
         """
         return self.__generate_pandas_df_from_elements(
-            self.get_all_dimensionless_facts(), **kwargs
+            self.get_all_core_facts(), **kwargs
         )
 
     def generate_fact_table_spark_df(self) -> tuple[sql.DataFrame, sql.SparkSession]:
@@ -439,7 +439,7 @@ class Filing:
         # spark.parallelize()
         return spark.createDataFrame(df), spark
 
-    def generate_dimensionless_fact_table_spark_df(
+    def generate_core_fact_table_spark_df(
         self,
     ) -> tuple[sql.DataFrame, sql.SparkSession]:
         """
@@ -447,7 +447,7 @@ class Filing:
         :return pyspark.sql.DataFrame: the filing as a spark DataFrame.
         """
         spark = sql.SparkSession.builder.getOrCreate()
-        df = self.generate_dimensionless_fact_table_pandas_df()
+        df = self.generate_core_fact_table_pandas_df()
         # spark.parallelize()
         return spark.createDataFrame(df), spark
 

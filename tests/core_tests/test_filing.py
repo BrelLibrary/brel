@@ -38,12 +38,12 @@ def test_filing_getters():
     assert_list_of_type(facts, Fact)
     assert len(facts) == 13, f"Expected 13 facts, got {len(facts)}"
 
-    # check get_all_dimensionless_facts(). it should return a list of dimensionless facts
-    dimensionless_facts = filing.get_all_dimensionless_facts()
-    assert_list_of_type(dimensionless_facts, Fact)
+    # check get_all_core_facts(). it should return a list of core facts
+    core_facts = filing.get_all_core_facts()
+    assert_list_of_type(core_facts, Fact)
     assert (
-        len(dimensionless_facts) == 12
-    ), f"Expected 12 dimensionless facts, got {len(dimensionless_facts)}"
+        len(core_facts) == 12
+    ), f"Expected 12 core facts, got {len(core_facts)}"
 
     # check if get_all_report_elements(). it should return a list of report elements
     report_elements = filing.get_all_report_elements()
