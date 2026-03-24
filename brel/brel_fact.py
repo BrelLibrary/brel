@@ -22,6 +22,7 @@ from brel.reportelements import Concept
 from brel.characteristics import (
     Aspect,
     ICharacteristic,
+    ConceptCharacteristic,
     PeriodCharacteristic,
     UnitCharacteristic,
     EntityCharacteristic,
@@ -161,9 +162,12 @@ class Fact:
         :returns Concept: The concept of the facts context.
         Equivalent to calling `fact.get_context().get_concept().get_value()`
         """
+        concept_characteristic = cast(
+            ConceptCharacteristic, self.__context.get_characteristic(Aspect.CONCEPT)
+        )
         concept: Concept = cast(
             Concept,
-            self.__context.get_characteristic(Aspect.CONCEPT).get_value(),
+            concept_characteristic.get_value(),
         )
         return concept
 
