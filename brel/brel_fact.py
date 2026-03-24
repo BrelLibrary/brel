@@ -15,7 +15,6 @@ To print a fact to the console, use the `pprint` function in the `brel` module.
 ====================
 """
 
-import traceback
 from typing import Any, List, Optional, cast
 
 from brel import Context
