@@ -15,6 +15,7 @@ To print a fact to the console, use the `pprint` function in the `brel` module.
 ====================
 """
 
+import traceback
 from typing import Any, List, Optional, cast
 
 from brel import Context
@@ -117,6 +118,8 @@ class Fact:
         :returns bool: The value of the fact as a bool
         :raises ValueError: If the value of the fact does not resolve to a bool
         """
+        print("Bool cast called!")
+        traceback.print_stack()
         if self.__value.upper() == "TRUE":
             return True
         elif self.__value.upper() == "FALSE":
