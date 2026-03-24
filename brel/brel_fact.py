@@ -255,9 +255,9 @@ class Fact:
 
         return dict_to_return
 
-    def has_dimensions(self) -> bool:
+    def is_core(self) -> bool:
         """
-        Check if the fact has (user-defined) dimensions.
-        :returns bool: True if the fact has dimensions, False otherwise.
+        Check if the fact has (user-defined) non-core dimensions.
+        :returns bool: True if the fact has non-core dimensions, False otherwise.
         """
-        return self.get_context().has_dimensions()
+        return not self.get_context().has_noncore_dimensions()

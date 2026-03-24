@@ -226,7 +226,7 @@ class Filing:
         """
         :return list[Fact]: a list of all [`Fact`](../facts/facts.md) objects in the filing that have no non-core dimensions.
         """
-        return [fact for fact in self.get_all_facts() if not fact.has_dimensions()]
+        return [fact for fact in self.get_all_facts() if fact.is_core()]
 
     def get_all_concepts(self) -> list[Concept]:
         """

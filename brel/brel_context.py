@@ -148,7 +148,7 @@ class Context:
         """
         return cast(UnitCharacteristic, self.get_characteristic(Aspect.UNIT))
 
-    def has_dimensions(self) -> bool:
+    def has_noncore_dimensions(self) -> bool:
         """
         Check if the context has (user-defined) dimensions.
         :returns bool: True if the context has dimensions, False otherwise.
