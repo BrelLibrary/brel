@@ -71,9 +71,7 @@ class Fact:
         return self.__context
 
     def get_value_as_str(self) -> str:
-        """
-        :returns str: The value of the fact as a string.
-        """
+        """[DEPRECATED] Use str() instead."""
         return self.__value
 
     def get_value_as_int(self) -> int:
@@ -141,27 +139,21 @@ class Fact:
 
     def get_precision(self) -> float | None:
         """
-        :returns Any: The precision of the fact. Only applies to numeric facts.
+        :returns float: The precision of the fact. Only applies to numeric facts.
         """
         return self.__precision
 
     def get_decimals(self) -> float | None:
         """
-        :returns Any: The decimals property of the fact. Only applies to numeric facts.
+        :returns float: The decimals property of the fact. Only applies to numeric facts.
         """
         return self.__decimals
 
     def __str__(self) -> str:
         """
-        :returns str: The fact represented as a string.
+        :returns str: The fact value as a string.
         """
-        output = ""
-        for aspect in self.__context.get_aspects():
-            aspect_name = aspect.get_name()
-            aspect_value = self.__context.get_characteristic(aspect)
-            output += f"{aspect_name}: {aspect_value}, "
-        output += f"value: {self.__value}"
-        return output
+        return self.__value
 
     # 2nd class citizens
     def get_concept(self) -> ConceptCharacteristic:
