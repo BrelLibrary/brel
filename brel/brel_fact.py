@@ -18,10 +18,11 @@ To print a fact to the console, use the `pprint` function in the `brel` module.
 from typing import Any, List, Optional, cast
 
 from brel import Context
+from brel.reportelements import Concept
 from brel.characteristics import (
     Aspect,
-    ConceptCharacteristic,
     ICharacteristic,
+    ConceptCharacteristic,
     PeriodCharacteristic,
     UnitCharacteristic,
     EntityCharacteristic,
@@ -128,11 +129,11 @@ class Fact:
         """
         :returns Any: The value of the fact. The type of the value depends on the type of the fact.
         """
-        if self.get_concept().get_value().is_integer():
+        if self.get_concept().is_integer():
             return int(self)
-        elif self.get_concept().get_value().is_numeric():
+        elif self.get_concept().is_numeric():
             return float(self)
-        elif self.get_concept().get_value().is_boolean():
+        elif self.get_concept().is_boolean():
             return bool(self)
         else:
             return self.__value
@@ -156,14 +157,17 @@ class Fact:
         return self.__value
 
     # 2nd class citizens
-    def get_concept(self) -> ConceptCharacteristic:
+    def get_concept(self) -> Concept:
         """
-        :returns ConceptCharacteristic: The concept characteristic of the facts context.
-        Equivalent to calling `fact.get_context().get_concept()`
+        :returns Concept: The concept of the facts context.
+        Equivalent to calling `fact.get_context().get_concept().get_value()`
         """
-        concept: ConceptCharacteristic = cast(
-            ConceptCharacteristic,
-            self.__context.get_characteristic(Aspect.CONCEPT),
+        concept_characteristic = cast(
+            ConceptCharacteristic, self.__context.get_characteristic(Aspect.CONCEPT)
+        )
+        concept: Concept = cast(
+            Concept,
+            concept_characteristic.get_value(),
         )
         return concept
 

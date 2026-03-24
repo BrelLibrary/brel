@@ -129,7 +129,7 @@ class CalculationNetwork(INetwork):
             concept = node.get_concept()
             node_facts = list(
                 filter(
-                    lambda fact: fact.get_concept().get_value() == concept,
+                    lambda fact: fact.get_concept() == concept,
                     facts,
                 )
             )
@@ -153,8 +153,7 @@ class CalculationNetwork(INetwork):
                         if node_aspect == Aspect.CONCEPT:
                             child_facts = list(
                                 filter(
-                                    lambda fact: fact.get_concept().get_value()
-                                    == child_concept,
+                                    lambda fact: fact.get_concept() == child_concept,
                                     child_facts,
                                 )
                             )

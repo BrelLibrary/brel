@@ -143,7 +143,7 @@ You could also use python's built-in `filter` function:
     
 ```python
 assets_facts = list(
-    filter(lambda fact: fact.get_concept().get_value() == assets_concept, all_facts)
+    filter(lambda fact: fact.get_concept() == assets_concept, all_facts)
 )
 # or
 

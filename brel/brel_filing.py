@@ -348,7 +348,7 @@ class Filing:
         """
         reported_concepts: list[Concept] = []
         for fact in self.get_all_facts():
-            concept = fact.get_concept().get_value()
+            concept = fact.get_concept()
             if concept not in reported_concepts:
                 reported_concepts.append(concept)
 
@@ -374,11 +374,7 @@ class Filing:
                 concept_name, Concept
             )
 
-        return [
-            fact
-            for fact in self.get_all_facts()
-            if fact.get_concept().get_value() == concept
-        ]
+        return [fact for fact in self.get_all_facts() if fact.get_concept() == concept]
 
     def get_facts_by_concept(self, concept: Concept) -> List[Fact]:
         """

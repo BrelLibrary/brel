@@ -101,14 +101,14 @@ def test_filing_getters():
     facts = filing.get_facts_by_concept_name("ete:cash")
     assert_list_of_type(facts, Fact)
     assert all(
-        f.get_concept().get_value() == concept for f in facts
+        f.get_concept() == concept for f in facts
     ), "Expected all facts to have the cash concept"
 
     # check get_facts_by_concept(). all facts should have the cash concept
     facts = filing.get_facts_by_concept(concept)
     assert_list_of_type(facts, Fact)
     assert all(
-        f.get_concept().get_value() == concept for f in facts
+        f.get_concept() == concept for f in facts
     ), "Expected all facts to have the cash concept"
 
     # check if get_all_component_uris() contains the uris "http://foo/role/balance", "http://foo/role/hypercube" and "http://foo/role/bad-balance"
