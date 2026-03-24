@@ -39,8 +39,8 @@ def test_qname_getters():
 
     assert fact.get_unit() == None, "Expected None as fact unit is not defined"
     assert (
-        str(fact.get_period()) == "2022-09-25 - 2023-07-01"
-    ), "Expected '2022-09-25 - 2023-07-01' as fact unit is 'from 2022-09-25 to 2023-07-01'"
+        str(fact.get_period()) == "2022-09-25/2023-07-01"
+    ), "Expected '2022-09-25/2023-07-01' as fact unit is 'from 2022-09-25 to 2023-07-01'"
     assert (
         str(fact.get_concept()) == "dei:DocumentQuarterlyReport"
     ), "Expected 'dei:DocumentQuarterlyReport' as fact concept is 'dei:DocumentQuarterlyReport'"
