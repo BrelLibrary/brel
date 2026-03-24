@@ -36,6 +36,12 @@ def test_filing_getters():
     # check get_all_facts(). it should return a list of facts
     facts = filing.get_all_facts()
     assert_list_of_type(facts, Fact)
+    assert len(facts) == 13, f"Expected 13 facts, got {len(facts)}"
+
+    # check get_all_core_facts(). it should return a list of core facts
+    core_facts = filing.get_all_core_facts()
+    assert_list_of_type(core_facts, Fact)
+    assert len(core_facts) == 12, f"Expected 12 core facts, got {len(core_facts)}"
 
     # check if get_all_report_elements(). it should return a list of report elements
     report_elements = filing.get_all_report_elements()
