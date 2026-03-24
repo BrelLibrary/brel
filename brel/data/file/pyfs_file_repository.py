@@ -1,5 +1,5 @@
 """
-This module is responsible for abstracting the file system. 
+This module is responsible for abstracting the file system.
 It downloads and caches files from the internet and the local file system.
 
 =================
@@ -38,4 +38,5 @@ class PyFsFileRepository(FileRepository):
         return self.fs.open(file_name, "rb")
 
     def has_file(self, uri: str) -> bool:
-        return self.fs.exists(uri_to_filename(uri))
+        file_name = uri_to_filename(uri)
+        return self.fs.exists(file_name)

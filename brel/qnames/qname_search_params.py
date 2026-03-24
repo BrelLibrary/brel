@@ -38,6 +38,7 @@ class QNameSearchParams:
             raise ValueError(
                 f"Invalid Clark notation: {clark_notation}. Expected format: prefix:local_name"
             )
+
         prefix = match.group("prefix")
         local_name = match.group("local_name")
         uri = None

@@ -13,12 +13,13 @@ At the time of writing, footnote nodes are the only nodes that can point to fact
 ====================
 """
 
-from typing import cast, Mapping
+from typing import Optional, cast, Mapping
 
 import lxml
 import lxml.etree
 
 from brel.brel_fact import Fact
+from brel.data.errors.error_repository import ErrorRepository
 from brel.networks import (
     FootnoteNetwork,
     FootnoteNetworkNode,
@@ -59,7 +60,8 @@ class FootnoteNetworkFactory(IXMLNetworkFactory):
         xml_referenced_element: lxml.etree._Element,
         xml_arc: lxml.etree._Element | None,
         points_to: IReportElement | IResource | Fact,
-    ) -> INetworkNode:
+        error_repository: ErrorRepository,
+    ) -> Optional[INetworkNode]:
         label = get_str_attribute(
             xml_referenced_element, to_namespace_localname_notation("xlink", "label")
         )

@@ -8,17 +8,24 @@
 ====================
 """
 
-
 import time
 from io import BytesIO
 from typing import IO
 from requests import Session
+from brel.data.errors.error_repository import ErrorRepository
 from brel.data.file.file_repository import FileRepository
+from brel.errors.error_code import ErrorCode
 
 
 class FileService:
-    def __init__(self, file_repository: FileRepository, session: Session) -> None:
+    def __init__(
+        self,
+        file_repository: FileRepository,
+        error_repository: ErrorRepository,
+        session: Session,
+    ) -> None:
         self.__file_repository = file_repository
+        self.__error_repository = error_repository
         self.__session = session
 
     def add_file(self, uri: str, file: IO[bytes]) -> None:
@@ -42,9 +49,17 @@ class FileService:
             time.sleep(0.1)
 
         response = self.__session.get(uri, headers=headers, timeout=10)
-        response.raise_for_status()
-        file = BytesIO(response.content)
-        self.add_file(uri, file)
+        try:
+            response.raise_for_status()
+            file = BytesIO(response.content)
+            self.add_file(uri, file)
+        except:
+            self.__error_repository.insert(
+                ErrorCode.UNAVAILABLE_REMOTE_FILE,
+                uri=uri,
+                status_code=str(response.status_code),
+            )
+
         return self.get_file(uri)
 
     def copy_and_add_file(self, local_path: str) -> IO[bytes]:

@@ -11,6 +11,8 @@
 import os
 from brel.data.aspect.aspect_repository import AspectRepository
 from brel.data.aspect.in_memory_aspect_repository import InMemoryAspectRepository
+from brel.data.context.context_repository import ContextRepository
+from brel.data.context.in_memory_context_repository import InMemoryContextRepository
 from brel.data.file.file_repository import FileRepository
 from brel.data.file.pyfs_file_repository import PyFsFileRepository
 from brel.data.namespace.in_memory_namespace_repository import (
@@ -35,7 +37,15 @@ from brel.data.component.component_repository import ComponentRepository
 from brel.data.component.in_memory_component_repository import (
     InMemoryComponentRepository,
 )
+from brel.data.table_linkbase.in_memory_table_linkbase_repository import (
+    InMemoryTableLinkbaseRepository,
+)
+from brel.data.uri_rewrite.in_memory_uri_rewrite_repository import (
+    InMemoryURIRewriteRepository,
+)
+from brel.data.uri_rewrite.uri_rewrite_repository import URIRewriteRepository
 from brel.data.xml.xml_repository import XMLRepository
+from brel.services.translation.translation_service import TranslationService
 
 
 def create_report_element_repository() -> ReportElementRepository:
@@ -66,6 +76,10 @@ def create_aspect_repository() -> AspectRepository:
     return InMemoryAspectRepository()
 
 
+def create_context_repository() -> ContextRepository:
+    return InMemoryContextRepository()
+
+
 def create_namespace_repository() -> NamespaceRepository:
     return InMemoryNamespaceRepository()
 
@@ -77,3 +91,17 @@ def create_file_repository() -> FileRepository:
 
 def create_xml_repository() -> XMLRepository:
     return XMLRepository()
+
+
+def create_table_linkbase_repository():
+    return InMemoryTableLinkbaseRepository()
+
+
+def create_uri_rewrite_repository() -> URIRewriteRepository:
+    return InMemoryURIRewriteRepository()
+
+
+def create_translation_service() -> TranslationService:
+    translation_service = TranslationService()
+    translation_service.load_from_csv()
+    return translation_service

@@ -6,7 +6,7 @@ This module contains the Filing class.
 Filings can be loaded from a folder, a zip file, or one or multiple xml files.
 
 - If a folder is given, then all xml files in the folder are loaded.
-- If a zip file is given, then the zip file is extracted to a folder 
+- If a zip file is given, then the zip file is extracted to a folder
 and then all xml files in the folder are loaded.
 - If one or more xml files are given, then only those xml files are loaded.
 - A URI can also be given. In this case, the file is downloaded and cached in a folder.
@@ -44,11 +44,16 @@ Once a filing is loaded, it can be queried for its facts, report elements, netwo
 ====================
 """
 
+import os
 import pandas as pd
 from pyspark import sql
-from typing import Any, cast
+from typing import Any, List, Optional, Unpack, cast
 
 from brel import Component, Fact, QName
+
+from brel.errors.area import Area
+from brel.errors.error_instance import ErrorInstance
+from brel.errors.severity import Severity
 from brel.networks import INetwork
 from brel.parsers.filing_parser_factory import FilingParserFactory
 from brel.parsers.path_loaders.factory import create_path_loader_resolver
@@ -64,6 +69,8 @@ from brel.reportelements import (
     Member,
 )
 from brel.contexts.filing_context import FilingContext
+from brel.config.brel_config import BrelConfig
+from brel.services.translation.output_params import OutputParams
 
 
 class Filing:
@@ -87,6 +94,58 @@ class Filing:
 
     def __init__(self, context: FilingContext) -> None:
         self.__context = context
+        self.__output_params = OutputParams()
+
+    def get_preferred_languages(
+        self,
+        function_languages: Optional[str | list[str]],
+        allow_report_language: bool,
+        allow_system_language: bool,
+        allow_default: bool,
+    ) -> List[str]:
+        if function_languages is None:
+            function_languages = []
+        elif isinstance(function_languages, str):
+            function_languages = [function_languages]
+
+        preferred_filing_languages = self.__output_params.get("languages") or []
+        if isinstance(preferred_filing_languages, str):
+            preferred_filing_languages = [preferred_filing_languages]
+
+        library_languages = BrelConfig.get_preferred_library_languages() or []
+        if isinstance(library_languages, str):
+            library_languages = [library_languages]
+
+        sys_language = BrelConfig.get_system_language()
+        sys_language_list = (
+            [sys_language] if sys_language and allow_system_language else []
+        )
+
+        available_filing_languages = (
+            self.__context.get_available_filing_languages()
+            if allow_report_language
+            else []
+        )
+
+        all_languages = (
+            function_languages
+            + preferred_filing_languages
+            + library_languages
+            + sys_language_list
+            + available_filing_languages
+        )
+
+        if allow_default:
+            all_languages.append("")
+
+        existing_language_set = set()
+        all_languages_deduplicated = []
+        for language in all_languages:
+            if language not in existing_language_set:
+                existing_language_set.add(language)
+                all_languages_deduplicated.append(language)
+
+        return all_languages_deduplicated
 
     # first class citizens
     def get_all_facts(self) -> list[Fact]:
@@ -95,7 +154,7 @@ class Filing:
         """
         return self.__context.get_fact_repository().get_all()
 
-    def get_all_report_elements(self) -> list[IReportElement]:
+    def get_all_report_elements(self) -> List[IReportElement]:
         """
         :return list[IReportElement]: a list of all [`IReportElement`](../report-elements/report-elements.md) objects in the filing.
         """
@@ -119,13 +178,56 @@ class Filing:
             if network.is_physical()
         ]
 
-    def get_errors(self) -> list[Exception]:
+    def has_any_errors(self) -> bool:
+        return len(self.__context.get_error_repository().get_all()) > 0
+
+    def get_all_errors(self) -> list[ErrorInstance]:
         """
-        :return list[Exception]: a list of all errors that occurred during parsing.
+        :returns list[Exception]: a list of all errors (any severity) that occurred during parsing.
         """
         return self.__context.get_error_repository().get_all()
 
+    def get_errors_by_area(self, area: Area) -> list[ErrorInstance]:
+        """
+        :param Area area: the area of the errors to return
+        :returns list[Exception]: a list of all errors with the specified area that occurred during parsing.
+        """
+        all_errors = self.__context.get_error_repository().get_all()
+        area_errors = [error for error in all_errors if error.get_area() == area]
+        return area_errors
+
+    def get_errors_by_severity(self, severity: Severity) -> List[ErrorInstance]:
+        """
+        :param Severity severity: the severity of the errors to return
+        :returns list[Exception]: a list of all errors with the specified severity that occurred during parsing.
+        """
+        return self.__context.get_error_repository().get_by_severity(severity)
+
+    def get_errors(self) -> List[ErrorInstance]:
+        """
+        :returns list[Exception]: a list of all errors (severity = ERROR) that occurred during parsing.
+        """
+        return self.get_errors_by_severity(Severity.ERROR)
+
+    def get_warnings(self) -> List[ErrorInstance]:
+        """
+        :returns list[Exception]: a list of all warnings (severity = WARNING) that occurred during parsing.
+        """
+        return self.get_errors_by_severity(Severity.WARNING)
+
+    def get_infos(self) -> List[ErrorInstance]:
+        """
+        :returns list[Exception]: a list of all infos (severity = INFO) that occurred during parsing.
+        """
+        return self.get_errors_by_severity(Severity.INFO)
+
     # second class citizens
+    def get_all_core_facts(self) -> list[Fact]:
+        """
+        :return list[Fact]: a list of all [`Fact`](../facts/facts.md) objects in the filing that have no non-core dimensions.
+        """
+        return [fact for fact in self.get_all_facts() if fact.is_core()]
+
     def get_all_concepts(self) -> list[Concept]:
         """
         :returns list[Concept]: a list of all concepts in the filing.
@@ -245,20 +347,20 @@ class Filing:
         """
         return self.get_concept_by_name(concept_qname)
 
-    def get_all_reported_concepts(self) -> list[Concept]:
+    def get_all_reported_concepts(self) -> List[Concept]:
         """
         Returns all concepts that have at least one fact reporting against them.
         :returns list[Concept]: The list of concepts
         """
         reported_concepts: list[Concept] = []
         for fact in self.get_all_facts():
-            concept = fact.get_concept().get_value()
+            concept = fact.get_concept()
             if concept not in reported_concepts:
                 reported_concepts.append(concept)
 
         return reported_concepts
 
-    def get_facts_by_concept_name(self, concept_name: QName | str) -> list[Fact]:
+    def get_facts_by_concept_name(self, concept_name: QName | str) -> List[Fact]:
         """
         Returns all facts that are associated with the concept with name concept_name.
         :param concept_name: The name of the concept to get facts for. This can be a QName or a string in the format "prefix:localname". For example, "us-gaap:Assets".
@@ -278,13 +380,9 @@ class Filing:
                 concept_name, Concept
             )
 
-        return [
-            fact
-            for fact in self.get_all_facts()
-            if fact.get_concept().get_value() == concept
-        ]
+        return [fact for fact in self.get_all_facts() if fact.get_concept() == concept]
 
-    def get_facts_by_concept(self, concept: Concept) -> list[Fact]:
+    def get_facts_by_concept(self, concept: Concept) -> List[Fact]:
         """
         Returns all facts that are associated with a concept.
         :param concept: the concept to get facts for.
@@ -292,7 +390,7 @@ class Filing:
         """
         return self.get_facts_by_concept_name(concept.get_name())
 
-    def get_all_component_uris(self) -> list[str]:
+    def get_all_component_uris(self) -> List[str]:
         """
         :return list[str]: a list of all component URIs in the filing.
         """
@@ -311,20 +409,25 @@ class Filing:
         else:
             return component
 
-    def generate_fact_table_pandas_df(self) -> pd.DataFrame:
+    def generate_fact_table_pandas_df(
+        self, **kwargs: Unpack[OutputParams]
+    ) -> pd.DataFrame:
         """
         Converts the filing to a pandas DataFrame.
         :return pandas.DataFrame: the filing as a pandas DataFrame.
         """
-        import pandas as pd
+        return self.__generate_pandas_df_from_elements(self.get_all_facts(), **kwargs)
 
-        data: list[dict[str, Any]] = []
-        for fact in self.get_all_facts():
-            d = fact.convert_to_dict()
-            data.append(d)
-
-        df = pd.DataFrame(data)
-        return df
+    def generate_core_fact_table_pandas_df(
+        self, **kwargs: Unpack[OutputParams]
+    ) -> pd.DataFrame:
+        """
+        Converts the filing to a pandas DataFrame.
+        :return pandas.DataFrame: the filing as a pandas DataFrame.
+        """
+        return self.__generate_pandas_df_from_elements(
+            self.get_all_core_facts(), **kwargs
+        )
 
     def generate_fact_table_spark_df(self) -> tuple[sql.DataFrame, sql.SparkSession]:
         """
@@ -336,20 +439,30 @@ class Filing:
         # spark.parallelize()
         return spark.createDataFrame(df), spark
 
-    def generate_components_as_pandas_df(self) -> pd.DataFrame:
+    def generate_core_fact_table_spark_df(
+        self,
+    ) -> tuple[sql.DataFrame, sql.SparkSession]:
+        """
+        Converts the filing to a spark DataFrame.
+        :return pyspark.sql.DataFrame: the filing as a spark DataFrame.
+        """
+        spark = sql.SparkSession.builder.getOrCreate()
+        df = self.generate_core_fact_table_pandas_df()
+        # spark.parallelize()
+        return spark.createDataFrame(df), spark
+
+    def generate_components_as_pandas_df(
+        self, **kwargs: Unpack[OutputParams]
+    ) -> pd.DataFrame:
         """
         Converts the components to a pandas DataFrame.
         :return pandas.DataFrame: the components as a pandas DataFrame.
         """
-        data: list[dict[str, Any]] = []
-        for component in self.get_all_components():
-            d = component.convert_to_dict()
-            data.append(d)
+        return self.__generate_pandas_df_from_elements(
+            self.get_all_components(), **kwargs
+        )
 
-        df = pd.DataFrame(data)
-        return df
-
-    def get_all_labels(self) -> list[dict[str, str]]:
+    def get_all_labels(self) -> List[dict[str, str]]:
         """
         :return list[dict[str, str]]: a list of all labels in the filing.
         """
@@ -371,15 +484,108 @@ class Filing:
         df = pd.DataFrame(data)
         return df
 
-    def generate_report_elements_as_pandas_df(self) -> pd.DataFrame:
+    def generate_report_elements_as_pandas_df(
+        self, **kwargs: Unpack[OutputParams]
+    ) -> pd.DataFrame:
         """
         Converts the report elements to a pandas DataFrame.
         :return pandas.DataFrame: the report elements as a pandas DataFrame.
         """
+        return self.__generate_pandas_df_from_elements(
+            self.get_all_report_elements(), **kwargs
+        )
+
+    def __generate_pandas_df_from_elements(
+        self,
+        elements: List[IReportElement] | List[Component] | List[Fact],
+        **kwargs: Unpack[OutputParams],
+    ) -> pd.DataFrame:
+        output_params = self.__infer_output_params(**kwargs)
         data = []
-        for re in self.get_all_report_elements():
-            d = re.convert_to_dict()
-            data.append(d)
+
+        translation_service = self.__context.get_translation_service()
+        translation_service.set_match_locale(output_params["match_locale"])
+
+        if output_params["allow_mixed"]:
+            for element in elements:
+                languages = output_params["languages"]
+                languages_list = (
+                    languages if isinstance(languages, list) else [languages]
+                )
+
+                d = element.convert_to_dict(languages_list, translation_service)
+                data.append(d)
+        else:
+            for language in output_params["languages"]:
+                for element in elements:
+                    try:
+                        d = element.convert_to_dict([language], translation_service)
+                        data.append(d)
+                    except:
+                        data = []
+                        break
 
         df = pd.DataFrame(data)
         return df
+
+    def get_preferred_output_parameter(
+        self, passed_value: Optional[bool], parameter_name: str
+    ) -> bool:
+        if passed_value is not None:
+            return passed_value
+
+        filing_value = cast(bool, self.__output_params.get(parameter_name))
+        if filing_value is not None:
+            return filing_value
+
+        config_value = BrelConfig.get_boolean_output_parameter_by_name(parameter_name)
+        if config_value is not None:
+            return config_value
+
+        return False
+
+    def __infer_output_params(self, **kwargs: Unpack[OutputParams]) -> OutputParams:
+        allow_default = self.get_preferred_output_parameter(
+            kwargs.get("allow_default"), "allow_default"
+        )
+
+        allow_system_language = self.get_preferred_output_parameter(
+            kwargs.get("allow_system_language"), "allow_system_language"
+        )
+
+        allow_report_language = self.get_preferred_output_parameter(
+            kwargs.get("allow_report_language"), "allow_report_language"
+        )
+
+        match_locale = self.get_preferred_output_parameter(
+            kwargs.get("match_locale"), "match_locale"
+        )
+
+        allow_mixed = self.get_preferred_output_parameter(
+            kwargs.get("allow_mixed"), "allow_mixed"
+        )
+
+        languages = self.get_preferred_languages(
+            kwargs.get("languages"),
+            allow_system_language,
+            allow_report_language,
+            allow_default,
+        )
+
+        return OutputParams(
+            {
+                "languages": languages,
+                "allow_default": allow_default,
+                "allow_system_language": allow_system_language,
+                "allow_report_language": allow_report_language,
+                "match_locale": match_locale,
+                "allow_mixed": allow_mixed,
+            }
+        )
+
+    def set_filing_output_params(self, **kwargs: Unpack[OutputParams]) -> None:
+        self.__output_params = kwargs
+
+    @classmethod
+    def set_global_output_params(self, **kwargs: Unpack[OutputParams]) -> None:
+        BrelConfig.set_library_output_parameters(**kwargs)

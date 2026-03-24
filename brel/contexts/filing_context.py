@@ -8,8 +8,9 @@
 ====================
 """
 
-from typing import Any, Dict, Callable
+from typing import Any, Dict, Callable, List
 from brel.data.aspect.aspect_repository import AspectRepository
+from brel.data.context.context_repository import ContextRepository
 from brel.data.factory import (
     create_aspect_repository,
     create_file_repository,
@@ -20,7 +21,11 @@ from brel.data.factory import (
     create_network_repository,
     create_fact_repository,
     create_characteristic_repository,
+    create_table_linkbase_repository,
+    create_translation_service,
     create_xml_repository,
+    create_context_repository,
+    create_uri_rewrite_repository,
 )
 from brel.data.file.file_repository import FileRepository
 from brel.data.namespace.namespace_repository import NamespaceRepository
@@ -30,6 +35,7 @@ from brel.data.fact.fact_repository import FactRepository
 from brel.data.characteristic.characteristic_repository import CharacteristicRepository
 from brel.data.network.network_repository import NetworkRepository
 from brel.data.component.component_repository import ComponentRepository
+from brel.data.table_linkbase.table_linkbase_repository import TableLinkbaseRepository
 from brel.data.xml.xml_repository import XMLRepository
 from brel.services.factory import (
     create_file_service,
@@ -38,6 +44,7 @@ from brel.services.factory import (
 )
 from brel.services.file.file_service import FileService
 from brel.services.report_element.report_element_service import ReportElementService
+from brel.services.translation.translation_service import TranslationService
 from brel.services.xml.xml_service import XMLService
 
 
@@ -76,6 +83,11 @@ class FilingContext:
             "component_repository", lambda: create_component_repository()
         )
 
+    def get_context_repository(self) -> ContextRepository:
+        return self.__lazy_cache(
+            "context_repository", lambda: create_context_repository()
+        )
+
     def get_aspect_repository(self) -> AspectRepository:
         return self.__lazy_cache(
             "aspect_repository", lambda: create_aspect_repository()
@@ -86,13 +98,20 @@ class FilingContext:
             "namespace_repository", lambda: create_namespace_repository()
         )
 
+    def get_uri_rewrite_repository(self):
+        return self.__lazy_cache(
+            "uri_rewrite_repository", lambda: create_uri_rewrite_repository()
+        )
+
     def get_file_repository(self) -> FileRepository:
         return self.__lazy_cache("file_repository", lambda: create_file_repository())
 
     def get_file_service(self) -> FileService:
         return self.__lazy_cache(
             "file_service",
-            lambda: create_file_service(self.get_file_repository()),
+            lambda: create_file_service(
+                self.get_file_repository(), self.get_error_repository()
+            ),
         )
 
     def get_xml_repository(self) -> XMLRepository:
@@ -102,7 +121,9 @@ class FilingContext:
         return self.__lazy_cache(
             "xml_service",
             lambda: create_xml_service(
-                self.get_file_service(), self.get_xml_repository()
+                self.get_file_service(),
+                self.get_xml_repository(),
+                self.get_uri_rewrite_repository(),
             ),
         )
 
@@ -112,4 +133,20 @@ class FilingContext:
             lambda: create_report_element_service(
                 self.get_report_element_repository(), self.get_namespace_repository()
             ),
+        )
+
+    def get_available_filing_languages(self) -> List[str]:
+        return self.__lazy_cache(
+            "available_filing_languages",
+            lambda: self.get_xml_service().get_available_filing_languages(),
+        )
+
+    def get_translation_service(self) -> TranslationService:
+        return self.__lazy_cache(
+            "translation_service", lambda: create_translation_service()
+        )
+
+    def get_table_linkbase_repository(self) -> TableLinkbaseRepository:
+        return self.__lazy_cache(
+            "table_linkbase_repository", lambda: create_table_linkbase_repository()
         )

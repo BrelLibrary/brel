@@ -13,6 +13,8 @@ from typing import List, Type
 from brel.brel_component import Component
 from brel.brel_fact import Fact
 from brel.brel_filing import Filing
+
+from brel.errors.error_instance import ErrorInstance
 from brel.networks.i_network import INetwork
 from brel.reportelements.abstract import Abstract
 from brel.reportelements.concept import Concept
@@ -34,6 +36,12 @@ def test_filing_getters():
     # check get_all_facts(). it should return a list of facts
     facts = filing.get_all_facts()
     assert_list_of_type(facts, Fact)
+    assert len(facts) == 13, f"Expected 13 facts, got {len(facts)}"
+
+    # check get_all_core_facts(). it should return a list of core facts
+    core_facts = filing.get_all_core_facts()
+    assert_list_of_type(core_facts, Fact)
+    assert len(core_facts) == 12, f"Expected 12 core facts, got {len(core_facts)}"
 
     # check if get_all_report_elements(). it should return a list of report elements
     report_elements = filing.get_all_report_elements()
@@ -49,7 +57,7 @@ def test_filing_getters():
 
     # check get_errors(). it should return a list of errors
     errors = filing.get_errors()
-    assert_list_of_type(errors, Exception)
+    assert_list_of_type(errors, ErrorInstance)
 
     # check get_all_abstracts(). it should return a list of abstracts
     abstracts = filing.get_all_abstracts()
@@ -99,14 +107,14 @@ def test_filing_getters():
     facts = filing.get_facts_by_concept_name("ete:cash")
     assert_list_of_type(facts, Fact)
     assert all(
-        f.get_concept().get_value() == concept for f in facts
+        f.get_concept() == concept for f in facts
     ), "Expected all facts to have the cash concept"
 
     # check get_facts_by_concept(). all facts should have the cash concept
     facts = filing.get_facts_by_concept(concept)
     assert_list_of_type(facts, Fact)
     assert all(
-        f.get_concept().get_value() == concept for f in facts
+        f.get_concept() == concept for f in facts
     ), "Expected all facts to have the cash concept"
 
     # check if get_all_component_uris() contains the uris "http://foo/role/balance", "http://foo/role/hypercube" and "http://foo/role/bad-balance"
@@ -130,6 +138,8 @@ def test_filing_getters():
 def test_filing_open():
     try:
         filing = Filing.open("tests/end_to_end_tests/hand_made_report/ete_filing")
+        for error in filing.get_errors():
+            print(error)
         assert (
             len(filing.get_errors()) == 0
         ), f"Expected no errors, got {filing.get_errors()}"

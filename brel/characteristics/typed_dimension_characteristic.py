@@ -10,8 +10,10 @@ This module contains the class for  the typed dimension characteristic in Brel.
 ====================
 """
 
+from typing import List
 from brel.characteristics import Aspect, ICharacteristic
 from brel.reportelements import Dimension, Member
+from brel.services.translation.translation_service import TranslationService
 
 
 class TypedDimensionCharacteristic(ICharacteristic):

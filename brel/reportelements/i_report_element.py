@@ -16,9 +16,11 @@ Depending on the kind of report element, there might be more information availab
 """
 
 from abc import ABC, abstractmethod
+from typing import Any, Dict, List, Optional
 
 from brel import QName
 from brel.resource import BrelLabel
+from brel.services.translation.translation_service import TranslationService
 
 
 class IReportElement(ABC):
@@ -57,7 +59,11 @@ class IReportElement(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def convert_to_dict(self) -> dict:
+    def convert_to_dict(
+        self,
+        languages: Optional[List[str]] = None,
+        translation_service: Optional[TranslationService] = None,
+    ) -> Dict[str, Any]:
         """
         Convert the report element to a dictionary.
         :returns dict: containing the report element

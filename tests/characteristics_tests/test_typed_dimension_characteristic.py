@@ -15,7 +15,7 @@ from brel import QName
 from brel.resource.brel_label import BrelLabel
 
 
-def test_type_dimension():
+def test_type_dimension() -> None:
     dimension_name = QName("http://foo.com", "foo", "dim")
     type_qname = QName("http://foo.com", "foo", "type")
     labels: list[BrelLabel] = []

@@ -8,12 +8,14 @@
 ====================
 """
 
-from typing import Mapping, cast
+from copy import deepcopy
+from typing import Dict, List, Mapping, Optional, cast
 from brel.qnames.qname import QName
 import lxml.etree
-from lxml.etree import _Element, _ElementTree  # type: ignore
+from lxml.etree import _Element, _ElementTree, XPath  # type: ignore
 
 from brel.qnames.qname_utils import (
+    is_clark_notation,
     is_namespace_localname_notation,
     qname_from_str,
 )
@@ -51,7 +53,7 @@ def get_str_attribute(
     elif is_namespace_localname_notation(attribute):
         attribute = qname_from_str(attribute, element).clark_notation()
 
-    value = element.attrib.get(attribute)
+    value = element.get(attribute)
     if value is None:
         if default is not None:
             return default
@@ -76,18 +78,29 @@ def get_str_attribute_optional(element: _Element, attribute: str | QName) -> str
     return element.attrib.get(attribute)
 
 
-def get_str_tag(element: _Element) -> str:  # type: ignore
+def get_clark_notation_tag(element: _Element) -> str:  # type: ignore
     """
-    Helper function for getting the tag of an element as a string.
+    Helper function for getting the tag of an element as a string in Clark Notation.
     :param element: lxml.etree.Element to get the tag from
     :returns: str containing the tag of the element
     """
     return element.tag
 
 
+def get_prefix_localname_tag(element: _Element) -> str:
+    """
+    Helper function for getting the tag of an element as a string in prefix:localname notation.
+    Uses the namespaces available in the passed element.
+    :param element: lxml.etree.Element to get the tag from
+    :returns: str containing the tag of the element
+    """
+    return qname_from_str(element.tag, element).prefix_local_name_notation()
+
+
 def find_elements(
     element: _ElementTree | _Element,  # type: ignore
     xpath_query: str | QName,
+    namespaces: Optional[Dict[str, str]] = None,
 ) -> list[_Element]:
     if isinstance(xpath_query, QName):
         xpath_query = xpath_query.prefix_local_name_notation()
@@ -95,18 +108,13 @@ def find_elements(
     if isinstance(element, _ElementTree):
         element = element.getroot()
 
-    nsmap: Mapping[str, str] = {k: v for k, v in element.nsmap.items() if k is not None}
+    if not namespaces:
+        namespaces = {k: v for k, v in element.nsmap.items() if k is not None}
+
     try:
-        # return element.findall(xpath_query, namespaces=nsmap)
-        result = element.xpath(
-            xpath_query,
-            namespaces=nsmap,
-        )
-        if not isinstance(result, list):
-            raise TypeError("XPath query did not return a list")
-        if not all(isinstance(e, _Element) for e in result):
-            raise TypeError("XPath query returned a non-element")
-        return result  # type: ignore
+        find = XPath(xpath_query, namespaces=namespaces)
+        result = find(element)
+        return cast(List[_Element], result)
     except lxml.etree.XPathEvalError:
         return []
 
@@ -123,16 +131,6 @@ def find_element(
 
     nsmap: Mapping[str, str] = {k: v for k, v in element.nsmap.items() if k is not None}
     return element.find(xpath_query, namespaces=nsmap)
-
-
-def get_element(
-    element: _ElementTree | _Element,  # type: ignore
-    xpath_query: str | QName,
-) -> _Element:
-    found_element = find_element(element, xpath_query)
-    if found_element is None:
-        raise ValueError(f"Element not found for xpath {xpath_query}")
-    return found_element
 
 
 def get_all_nsmaps(
@@ -161,3 +159,30 @@ def get_all_nsmaps(
             nsmaps.append(nsmap_typecasted)
 
     return nsmaps
+
+
+def get_elem_lang_recursive(xml_element: _Element | None) -> Optional[str]:
+    """
+    Recursively traverse the given lxml element up the tree, returning the first xml:lang attribute found.
+    If no xml:lang attribute is found, return None.
+    :param xml_element: The lxml element to start the search from
+    :return: The value of the first xml:lang attribute found, or None if not found
+    """
+
+    if xml_element is None:
+        return None
+
+    if has_str_attribute(xml_element, "xml:lang"):
+        return get_str_attribute(xml_element, "xml:lang")
+
+    return get_elem_lang_recursive(xml_element.getparent())
+
+
+def clone_element_without_children(element: _Element) -> _Element:
+    new_element = deepcopy(element)
+
+    children = [child for child in new_element]
+    for child in children:
+        new_element.remove(child)
+
+    return new_element

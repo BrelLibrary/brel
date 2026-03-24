@@ -12,23 +12,24 @@ It only parses the syntactic context, therefore the Unit and Concept characteris
 ====================
 """
 
-
+from typing import Optional
 import lxml.etree
 
 from brel import Context
 from brel.characteristics import *
+from brel.errors.error_code import ErrorCode
+
 from brel.parsers.XML.characteristics import *
 from brel.parsers.utils.lxml_utils import get_str_attribute
 from brel.reportelements import *
 from brel.contexts.filing_context import FilingContext
-from brel.parsers.utils.error_utils import error_on_none
 
 
 def parse_context_xml(
     filing_context: FilingContext,
     xml_element: lxml.etree._Element,  # type: ignore
     characteristics: list[UnitCharacteristic | ConceptCharacteristic],
-) -> "Context":
+) -> Optional[Context]:
     """
     Creates a Context from an lxml.etree._Element.
     :param xml_element: lxml.etree._Element. The lxml.etree._Element to create the Context from.
@@ -37,20 +38,20 @@ def parse_context_xml(
     :param qname_nsmap: QNameNSMap. The QNameNSMap to use for the context.
     :param characteristics_cache: dict[str, ICharacteristic]. The characteristics cache to use for the context.
     :returns Context: The context created from the lxml.etree._Element.
-    :raises ValueError: if the XML element is malformed
     """
-
+    error_repository = filing_context.get_error_repository()
     context_id = get_str_attribute(xml_element, "id")
 
-    context_period = error_on_none(
-        xml_element.find("{*}period", namespaces=None),
-        f"Could not find period element in {xml_element}",
-    )
+    context_period = xml_element.find("{*}period", namespaces=None)
 
-    context_entity = error_on_none(
-        xml_element.find("{*}entity", namespaces=None),
-        f"Could not find entity element in {xml_element}",
-    )
+    if context_period is None:
+        error_repository.insert(ErrorCode.MISSING_CONTEXT_PERIOD, xml_element)
+        return None
+
+    context_entity = xml_element.find("{*}entity", namespaces=None)
+    if context_entity is None:
+        error_repository.insert(ErrorCode.MISSING_CONTEXT_ENTITY, xml_element)
+        return None
 
     fact_context = Context(context_id)
 
@@ -58,12 +59,13 @@ def parse_context_xml(
     for characteristic in characteristics:
         fact_context._add_characteristic(characteristic)
 
-    fact_context._add_characteristic(
-        parse_period_from_xml(filing_context, context_period)
-    )
-    fact_context._add_characteristic(
-        parse_entity_from_xml(filing_context, context_entity)
-    )
+    period = parse_period_from_xml(filing_context, context_period)
+    if period is not None:
+        fact_context._add_characteristic(period)
+
+    entity = parse_entity_from_xml(filing_context, context_entity)
+    if entity is not None:
+        fact_context._add_characteristic(entity)
 
     # add the dimensions. the dimensions are the children of context/entity/segment
     segment = context_entity.find("{*}segment", namespaces=None)
@@ -74,15 +76,21 @@ def parse_context_xml(
                 explicit_dimension_characteristic = parse_explicit_dimension_from_xml(
                     filing_context, xml_dimension
                 )
+
+                if explicit_dimension_characteristic is None:
+                    continue
+
                 fact_context._add_characteristic(explicit_dimension_characteristic)
             elif "typedMember" in xml_dimension.tag:
                 typed_dimension_characteristic = parse_typed_dimension_from_xml(
                     filing_context, xml_dimension
                 )
+
+                if typed_dimension_characteristic is None:
+                    continue
+
                 fact_context._add_characteristic(typed_dimension_characteristic)
             else:
-                raise ValueError(
-                    f"Unknown dimension type {xml_dimension.tag}. Please make sure that the dimension is either an explicitMember or a typedMember. {xml_dimension.tag}"
-                )
+                error_repository.insert(ErrorCode.INVALID_DIMENSION_TYPE, xml_dimension)
 
     return fact_context

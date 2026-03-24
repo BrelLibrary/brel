@@ -10,10 +10,11 @@ This module contains the Abstract class. An abstract a kind of report element th
 ====================
 """
 
-from typing import Any, Dict
+from typing import Any, Dict, List, Optional
 from brel import QName
 from brel.reportelements import IReportElement
 from brel.resource import BrelLabel
+from brel.services.translation.translation_service import TranslationService
 
 
 class Abstract(IReportElement):
@@ -60,13 +61,35 @@ class Abstract(IReportElement):
     def __str__(self) -> str:
         return self.__qname.__str__()
 
-    def convert_to_dict(self) -> Dict[str, Any]:
+    def convert_to_dict(
+        self,
+        languages: Optional[List[str]] = None,
+        translation_service: Optional[TranslationService] = None,
+    ) -> Dict[str, Any]:
         """
         Convert the abstract element to a dictionary.
         :returns dict: the abstract element as a dictionary
         """
+        if not languages or not translation_service:
+            return {
+                "name": self.__qname.prefix_local_name_notation(),
+                "label": self.select_main_label().__str__(),
+                "report-element-type": "abstract",
+            }
+
+        name_literal = translation_service.get("literal:name", languages)
+        label_literal = translation_service.get("literal:label", languages)
+        report_element_type_literal = translation_service.get(
+            "literal:report-element-type", languages
+        )
+        abstract_literal = translation_service.get("report-element:abstract", languages)
+
+        label = translation_service.get_from_labels(
+            self.get_labels(), languages, self.select_main_label().__str__()
+        )
+
         return {
-            "name": self.__qname.prefix_local_name_notation(),
-            "label": self.select_main_label().__str__(),
-            "report_element_type": "abstract",
+            name_literal: self.__qname.prefix_local_name_notation(),
+            label_literal: label,
+            report_element_type_literal: abstract_literal,
         }

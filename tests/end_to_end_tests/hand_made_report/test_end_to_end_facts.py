@@ -20,7 +20,7 @@ def test_end_to_end_fact_f013():
     fact_dimension = fact.get_characteristic(dimension_aspect)
 
     # check that the concept is ete:balance, the period is duration and the entity is 1234
-    assert fact_concept.get_value() == filing.get_concept("ete:concept1")
+    assert fact_concept == filing.get_concept("ete:concept1")
     assert fact_period is not None
     assert fact_period.is_instant() is True
     assert fact_period.get_instant_period() == date(2024, 5, 3)

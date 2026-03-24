@@ -64,7 +64,7 @@ class ReportElementRepository(ABC):
         try:
             self.get_typed_by_qname(qname, report_element_type)
             return True
-        except ValueError:
+        except Exception:
             return False
 
     def has_typed_id(self, id: str, report_element_type: type[IReportElement]) -> bool:
@@ -77,7 +77,7 @@ class ReportElementRepository(ABC):
         try:
             self.get_typed_by_id(id, report_element_type)
             return True
-        except ValueError:
+        except Exception:
             return False
 
     def get_all_typed[T: IReportElement](self, report_element_type: type[T]) -> list[T]:

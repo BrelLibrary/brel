@@ -8,7 +8,7 @@
 ====================
 """
 
-from typing import Tuple, Dict, Type
+from typing import Optional, Tuple, Dict, Type
 
 from brel.characteristics.i_characteristic import ICharacteristic
 from brel.data.characteristic.characteristic_repository import CharacteristicRepository

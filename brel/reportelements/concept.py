@@ -12,13 +12,132 @@ For more information on concepts, see the [**XBRL 2.1 specification**](https://s
 ====================
 """
 
-from typing import Any, Dict
+from typing import Any, Dict, List, Optional
 import lxml
 import lxml.etree
 
 from brel import QName
+from brel.data.errors.error_repository import ErrorRepository
+from brel.errors.error_code import ErrorCode
 from brel.reportelements import IReportElement
 from brel.resource import BrelLabel
+from brel.services.translation.translation_service import TranslationService
+
+textual_types = [
+    "domainItemType",
+    "escapedItemType",
+    "xmlNodesItemType",
+    "xmlItemType",
+    "textBlockItemType",
+    "guidanceItemType",
+    "noLangTokenItemType",
+    "noLangStringItemType",
+    "prefixedContentItemType",
+    "prefixedContentType",
+    "SQNameItemType",
+    "SQNameType",
+    "gYearListItemType",
+    "dateTimeItemType",
+    "fractionItemType",
+    "stringItemType",
+    "booleanItemType",
+    "hexBinaryItemType",
+    "base64BinaryItemType",
+    "anyURIItemType",
+    "QNameItemType",
+    "durationItemType",
+    "dateTimeItemType",
+    "timeItemType",
+    "dateItemType",
+    "gYearMonthItemType",
+    "gYearItemType",
+    "gMonthDayItemType",
+    "gDayItemType",
+    "gMonthItemType",
+    "normalizedStringItemType",
+    "tokenItemType",
+    "languageItemType",
+    "NameItemType",
+    "NCNameItemType",
+    "financialInstrumentGlobalIdentifierItemType",
+]
+
+numeric_types = [
+    "percentItemType",
+    "perShareItemType",
+    "areaItemType",
+    "volumeItemType",
+    "massItemType",
+    "weightItemType",
+    "energyItemType",
+    "powerItemType",
+    "lengthItemType",
+    "memoryItemType",
+    "noDecimalsMonetaryItemType",
+    "nonNegativeMonetaryItemType",
+    "nonNegativeNoDecimalsMonetaryItemType",
+    "insolationItemType",
+    "temperatureItemType",
+    "pressureItemType",
+    "frequencyItemType",
+    "irradianceItemType",
+    "speedItemType",
+    "planeAngleItemType",
+    "voltageItemType",
+    "electricCurrentItemType",
+    "forceItemType",
+    "electricChargeItemType",
+    "flowItemType",
+    "massFlowItemType",
+    "monetaryPerLengthItemType",
+    "monetaryPerAreaItemType",
+    "monetaryPerVolumeItemType",
+    "monetaryPerDurationItemType",
+    "monetaryPerEnergyItemType",
+    "monetaryPerMassItemType",
+    "ghgEmissionsItemType",
+    "energyPerMonetaryItemType",
+    "ghgEmissionsPerMonetaryItemType",
+    "volumePerMonetaryItemType",
+    "decimalItemType",
+    "floatItemType",
+    "doubleItemType",
+    "integerItemType",
+    "nonPositiveIntegerItemType",
+    "negativeIntegerItemType",
+    "longItemType",
+    "intItemType",
+    "shortItemType",
+    "byteItemType",
+    "nonNegativeIntegerItemType",
+    "unsignedLongItemType",
+    "unsignedIntItemType",
+    "unsignedShortItemType",
+    "unsignedByteItemType",
+    "positiveIntegerItemType",
+    "monetaryItemType",
+    "sharesItemType",
+    "pureItemType",
+    "perUnitItemType",
+]
+
+integer_types = [
+    "noDecimalsMonetaryItemType",
+    "nonNegativeNoDecimalsMonetaryItemType",
+    "integerItemType",
+    "nonPositiveIntegerItemType",
+    "negativeIntegerItemType",
+    "longItemType",
+    "intItemType",
+    "shortItemType",
+    "byteItemType",
+    "nonNegativeIntegerItemType",
+    "unsignedLongItemType",
+    "unsignedIntItemType",
+    "unsignedShortItemType",
+    "unsignedByteItemType",
+    "positiveIntegerItemType",
+]
 
 
 class Concept(IReportElement):
@@ -104,6 +223,34 @@ class Concept(IReportElement):
         """
         return self.__data_type
 
+    def is_textual(self) -> bool:
+        """
+        Check if the concept is of a textual type.
+        :returns bool: True 'IFF' the concept is of a textual type, False otherwise
+        """
+        return self.__data_type.split(":")[-1] in textual_types
+
+    def is_numeric(self) -> bool:
+        """
+        Check if the concept is of a numeric type.
+        :returns bool: True 'IFF' the concept is of a numeric type, False otherwise
+        """
+        return self.__data_type.split(":")[-1] in numeric_types
+
+    def is_integer(self) -> bool:
+        """
+        Check if the concept is of an integer type.
+        :returns bool: True 'IFF' the concept is of an integer type, False otherwise
+        """
+        return self.__data_type.split(":")[-1] in integer_types
+
+    def is_boolean(self) -> bool:
+        """
+        Check if the concept is of a boolean type.
+        :returns bool: True 'IFF' the concept is of a boolean type, False otherwise
+        """
+        return self.__data_type.split(":")[-1] == "booleanItemType"
+
     def get_balance_type(self) -> str | None:
         """
         Get the balance type of the concept.
@@ -125,23 +272,29 @@ class Concept(IReportElement):
         id: str | None,
         concept_qname: QName,
         labels: list[BrelLabel],
-    ) -> "Concept":
+        error_repository: ErrorRepository,
+    ) -> Optional["Concept"]:
         """
         Create a Concept from an lxml.etree._Element.
         :param xml_element: lxml.etree._Element. The lxml.etree._Element to create the Concept from.
         :param concept_qname: QName. The QName of the concept.
         :returns Concept: The Concept created from the lxml.etree._Element.
         """
-        nsmap = xml_element.nsmap
+        nsmap = {"xbrli": "http://www.xbrl.org/2003/instance"}
 
         # get the period type of the concept
         period_type = xml_element.get(f"{{{nsmap['xbrli']}}}periodType", None)
         # according to the XBRL 2.1 specification, the period type can be either instant or duration
         possible_period_types = ["instant", "duration"]
         if period_type not in possible_period_types:
-            raise Exception(
-                f"Concept {concept_qname}:Unknown period type: {period_type}"
+            error_repository.insert(
+                ErrorCode.INVALID_CONCEPT_PERIOD_TYPE,
+                xml_element,
+                concept_name=concept_qname.get_local_name(),
+                period_type=period_type,
             )
+
+            return None
 
         # get the balance type of the concept
         balance_type = xml_element.get(f"{{{nsmap['xbrli']}}}balance", None)
@@ -149,9 +302,14 @@ class Concept(IReportElement):
         # The "None" is because the "balance" attribute is optional and only applies to monetary items.
         possible_balance_types = ["credit", "debit", None]
         if balance_type not in possible_balance_types:
-            raise Exception(
-                f"Concept {concept_qname}:Unknown balance type: {balance_type}"
+            error_repository.insert(
+                ErrorCode.INVALID_CONCEPT_BALANCE_TYPE,
+                xml_element,
+                concept_name=concept_qname.get_local_name(),
+                balance_type=balance_type,
             )
+
+            return None
 
         # get if the concept is nillable
         xml_nillable = xml_element.get("nillable", None)
@@ -159,18 +317,27 @@ class Concept(IReportElement):
         # It is optional (thus the "None" in possible_nillable_values), and defaults to false.
         possible_nillable_values = ["true", "false", None]
         if xml_nillable not in possible_nillable_values:
-            raise Exception(
-                f"Concept {concept_qname}: Unknown nillable value: {xml_nillable}"
+            error_repository.insert(
+                ErrorCode.INVALID_CONCEPT_NILLABLE_VALUE,
+                xml_element,
+                concept_name=concept_qname.get_local_name(),
+                nillable_value=xml_nillable,
             )
+
+            return None
         else:
             nillable = xml_nillable == "true"
 
         # get the data type of the concept
         data_type = xml_element.get("type", None)
         if data_type is None:
-            raise Exception(
-                f"Concept {concept_qname}:No data type found for concept. every (non-abstract) concept must have a data type"
+            error_repository.insert(
+                ErrorCode.MISSING_CONCEPT_DATA_TYPE,
+                xml_element,
+                concept_name=concept_qname.get_local_name(),
             )
+
+            return None
 
         return cls(
             concept_qname,
@@ -185,17 +352,69 @@ class Concept(IReportElement):
     def __str__(self) -> str:
         return self.__name.__str__()
 
-    def convert_to_dict(self) -> Dict[str, Any]:
+    def convert_to_dict(
+        self,
+        languages: Optional[List[str]] = None,
+        translation_service: Optional[TranslationService] = None,
+    ) -> Dict[str, Any]:
         """
         Convert the concept to a dictionary.
         :returns dict: the concept as a dictionary
         """
+        if not languages or not translation_service:
+            return {
+                "name": self.__name.prefix_local_name_notation(),
+                "label": self.select_main_label().__str__(),
+                "report-element-type": "concept",
+                "period-type": self.__period_type,
+                "balance-type": self.__balance_type,
+                "nillable": self.__nillable,
+                "data-type": self.__data_type,
+            }
+        name_literal = translation_service.get("literal:name", languages)
+
+        label_literal = translation_service.get("literal:label", languages)
+        label = translation_service.get_from_labels(
+            self.get_labels(), languages, self.select_main_label().__str__()
+        )
+
+        report_element_type_literal = translation_service.get(
+            "literal:report-element-type",
+            languages,
+        )
+        concept_literal = translation_service.get("report-element:concept", languages)
+
+        period_type_literal = translation_service.get("literal:period-type", languages)
+        period_type = translation_service.get(
+            "period-type:" + self.__period_type, languages
+        )
+
+        balance_type_literal = translation_service.get(
+            "literal:balance-type", languages
+        )
+        if self.__balance_type is not None:
+            balance_type = translation_service.get(
+                "balance-type:" + self.__balance_type, languages
+            )
+        else:
+            balance_type = translation_service.get("literal:none", languages)
+
+        nillable_literal = translation_service.get("literal:nillable", languages)
+        nillable = translation_service.get(
+            "boolean:" + str(self.__nillable).lower(), languages
+        )
+
+        data_type_literal = translation_service.get("literal:data-type", languages)
+        data_type = translation_service.get(
+            "data-type:" + self.__data_type.split(":")[-1], languages
+        )
+
         return {
-            "name": self.__name.prefix_local_name_notation(),
-            "label": self.select_main_label().__str__(),
-            "report_element_type": "concept",
-            "period_type": self.__period_type,
-            "balance_type": self.__balance_type,
-            "nillable": self.__nillable,
-            "data_type": self.__data_type,
+            name_literal: self.__name.prefix_local_name_notation(),
+            label_literal: label,
+            report_element_type_literal: concept_literal,
+            period_type_literal: period_type,
+            balance_type_literal: balance_type,
+            nillable_literal: nillable,
+            data_type_literal: data_type,
         }
