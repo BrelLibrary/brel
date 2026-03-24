@@ -9,6 +9,7 @@
 """
 
 import brel
+import json
 
 
 def test_qname_getters():
@@ -17,12 +18,12 @@ def test_qname_getters():
 
     # check if a fact with value = "true" is parsed correctly as a bool
     fact = filing.get_facts_by_concept_name("dei:DocumentQuarterlyReport")[0]
-    assert fact._get_id() == "f-2", "Expected fact id to be 'f-2'"  # type: ignore
+    assert fact.get_id() == "f-2", "Expected fact id to be 'f-2'"  # type: ignore
 
     context = fact.get_context()
     assert context._get_id() == "c-1", "Expected context id to be 'c-1'"  # type: ignore
 
-    assert fact.get_value_as_str() == "true", "Expected 'true' as fact value is 'true'"
+    assert str(fact) == "true", "Expected 'true' as fact value is 'true'"
     assert bool(fact) == True, "Expected True as fact value is 'true'"
     try:
         int(fact)
@@ -47,17 +48,15 @@ def test_qname_getters():
         fact.get_entity()
     ), "Expected '320193' to be in fact entity string"
 
-    fact_str = str(fact)
-    assert "concept" in fact_str, "Expected 'concept' to be in fact string"
-    assert "period" in fact_str, "Expected 'period' to be in fact string"
-    assert "entity" in fact_str, "Expected 'entity' to be in fact string"
-    assert "unit" not in fact_str, "Expected 'unit' not to be in fact string"
+    fact_str = json.dumps(dict(fact))
+    assert "concept" in fact_str, "Expected 'concept' to be in fact dict"
+    assert "period" in fact_str, "Expected 'period' to be in fact dict"
+    assert "entity" in fact_str, "Expected 'entity' to be in fact dict"
+    assert "unit" not in fact_str, "Expected 'unit' not to be in fact dict"
 
     # check if parsing a false fact as bool works
     fact = filing.get_facts_by_concept_name("dei:AmendmentFlag")[0]
-    assert (
-        fact.get_value_as_str() == "false"
-    ), "Expected 'false' as fact value is 'false'"
+    assert str(fact) == "false", "Expected 'false' as fact value is 'false'"
     assert bool(fact) == False, "Expected False as fact value is 'false'"
 
     # check for an integer fact
