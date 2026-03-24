@@ -23,15 +23,15 @@ def test_qname_getters():
     assert context._get_id() == "c-1", "Expected context id to be 'c-1'"  # type: ignore
 
     assert fact.get_value_as_str() == "true", "Expected 'true' as fact value is 'true'"
-    assert fact.get_value_as_bool() == True, "Expected True as fact value is 'true'"
+    assert bool(fact) == True, "Expected True as fact value is 'true'"
     try:
-        fact.get_value_as_int()
+        int(fact)
         assert False, "Expected ValueError as fact value is not an integer"
     except ValueError:
         pass
 
     try:
-        fact.get_value_as_float()
+        float(fact)
         assert False, "Expected ValueError as fact value is not a float"
     except ValueError:
         pass
@@ -58,21 +58,21 @@ def test_qname_getters():
     assert (
         fact.get_value_as_str() == "false"
     ), "Expected 'false' as fact value is 'false'"
-    assert fact.get_value_as_bool() == False, "Expected False as fact value is 'false'"
+    assert bool(fact) == False, "Expected False as fact value is 'false'"
 
     # check for an integer fact
     fact = filing.get_facts_by_concept_name("us-gaap:GrossProfit")[0]
 
-    assert isinstance(fact.get_value_as_int(), int), "Expected int as fact value is int"
-    assert fact.get_value_as_int() > 1000000, "Expected apples gross profit to be > 1M"
+    assert isinstance(int(fact), int), "Expected int as fact value is int"
+    assert int(fact) > 1000000, "Expected apples gross profit to be > 1M"
     assert isinstance(
-        fact.get_value_as_float(), float
+        float(fact), float
     ), "Expected float as fact value is float"
     assert (
-        fact.get_value_as_float() > 1000000
+        float(fact) > 1000000
     ), "Expected apples gross profit to be > 1M"
     try:  # check if parsing a false fact as bool works
-        fact.get_value_as_bool()
+        bool(fact)
         assert False, "Expected ValueError as fact value is not a bool"
     except ValueError:
         pass
