@@ -118,17 +118,13 @@ class Fact:
         :returns bool: The value of the fact as a bool
         :raises ValueError: If the value of the fact does not resolve to a bool
         """
-        print("Bool cast called!")
-        traceback.print_stack()
-        stack_str = "".join(traceback.format_stack())
-        print(stack_str)
         if self.__value.upper() == "TRUE":
             return True
         elif self.__value.upper() == "FALSE":
             return False
         else:
             raise ValueError(
-                f"Fact {self.__id} does not have a bool value. It has value {self.__value}, which does not resolve to a bool. Stacktrace: {stack_str}"
+                f"Fact {self.__id} does not have a bool value. It has value {self.__value}, which does not resolve to a bool."
             )
 
     def get_value(self) -> str:
