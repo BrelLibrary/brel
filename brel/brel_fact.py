@@ -254,3 +254,10 @@ class Fact:
             dict_to_return[value_literal] = self.__value
 
         return dict_to_return
+
+    def has_dimensions(self) -> bool:
+        """
+        Check if the fact has (user-defined) dimensions.
+        :returns bool: True if the fact has dimensions, False otherwise.
+        """
+        return self.get_context().has_dimensions()

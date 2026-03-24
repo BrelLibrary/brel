@@ -53,11 +53,13 @@ def test_qname_getters():
     assert "period" in fact_str, "Expected 'period' to be in fact dict"
     assert "entity" in fact_str, "Expected 'entity' to be in fact dict"
     assert "unit" not in fact_str, "Expected 'unit' not to be in fact dict"
+    assert not fact.has_dimensions(), "Expected False as fact has no dimensions."
 
     # check if parsing a false fact as bool works
     fact = filing.get_facts_by_concept_name("dei:AmendmentFlag")[0]
     assert str(fact) == "false", "Expected 'false' as fact value is 'false'"
     assert bool(fact) == False, "Expected False as fact value is 'false'"
+    assert not fact.has_dimensions(), "Expected False as fact has no dimensions."
 
     # check for an integer fact
     fact = filing.get_facts_by_concept_name("us-gaap:GrossProfit")[0]
@@ -66,6 +68,7 @@ def test_qname_getters():
     assert int(fact) > 1000000, "Expected apples gross profit to be > 1M"
     assert isinstance(fact.get_value(), float), "Expected float as fact value is float"
     assert float(fact) > 1000000, "Expected apples gross profit to be > 1M"
+    assert not fact.has_dimensions(), "Expected False as fact has no dimensions."
     try:  # check if parsing a false fact as bool works
         bool(fact)
         assert False, "Expected ValueError as fact value is not a bool"
