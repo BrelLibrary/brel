@@ -15,6 +15,7 @@ To print a fact to the console, use the `pprint` function in the `brel` module.
 ====================
 """
 
+import traceback
 from typing import Any, List, Optional, cast
 
 from brel import Context
@@ -123,7 +124,7 @@ class Fact:
             return False
         else:
             raise ValueError(
-                f"Fact {self.__id} does not have a bool value. It has value {self.__value}, which does not resolve to a bool"
+                f"Fact {self.__id} does not have a bool value. It has value {self.__value}, which does not resolve to a bool."
             )
 
     def get_value(self) -> Any:

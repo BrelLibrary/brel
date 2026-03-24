@@ -146,7 +146,7 @@ def parse_xml_link(
                 IResource | IReportElement | Fact
             ] = get_object_from_reference(link_element, context)
 
-            if not to_object:
+            if to_object is None:
                 continue
 
             node_arcs = node_to_arcs[label]
