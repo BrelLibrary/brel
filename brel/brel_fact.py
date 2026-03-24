@@ -126,11 +126,18 @@ class Fact:
                 f"Fact {self.__id} does not have a bool value. It has value {self.__value}, which does not resolve to a bool."
             )
 
-    def get_value(self) -> str:
+    def get_value(self) -> Any:
         """
         :returns Any: The value of the fact. The type of the value depends on the type of the fact.
         """
-        return self.__value
+        if self.get_concept().get_value().is_integer():
+            return int(self)
+        elif self.get_concept().get_value().is_numeric():
+            return float(self)
+        elif self.get_concept().get_value().is_boolean():
+            return bool(self)
+        else:
+            return self.__value
 
     def get_precision(self) -> float | None:
         """

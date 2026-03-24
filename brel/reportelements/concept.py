@@ -23,6 +23,122 @@ from brel.reportelements import IReportElement
 from brel.resource import BrelLabel
 from brel.services.translation.translation_service import TranslationService
 
+textual_types = [
+    "domainItemType",
+    "escapedItemType",
+    "xmlNodesItemType",
+    "xmlItemType",
+    "textBlockItemType",
+    "guidanceItemType",
+    "noLangTokenItemType",
+    "noLangStringItemType",
+    "prefixedContentItemType",
+    "prefixedContentType",
+    "SQNameItemType",
+    "SQNameType",
+    "gYearListItemType",
+    "dateTimeItemType",
+    "fractionItemType",
+    "stringItemType",
+    "booleanItemType",
+    "hexBinaryItemType",
+    "base64BinaryItemType",
+    "anyURIItemType",
+    "QNameItemType",
+    "durationItemType",
+    "dateTimeItemType",
+    "timeItemType",
+    "dateItemType",
+    "gYearMonthItemType",
+    "gYearItemType",
+    "gMonthDayItemType",
+    "gDayItemType",
+    "gMonthItemType",
+    "normalizedStringItemType",
+    "tokenItemType",
+    "languageItemType",
+    "NameItemType",
+    "NCNameItemType",
+    "financialInstrumentGlobalIdentifierItemType",
+]
+
+numeric_types = [
+    "percentItemType",
+    "perShareItemType",
+    "areaItemType",
+    "volumeItemType",
+    "massItemType",
+    "weightItemType",
+    "energyItemType",
+    "powerItemType",
+    "lengthItemType",
+    "memoryItemType",
+    "noDecimalsMonetaryItemType",
+    "nonNegativeMonetaryItemType",
+    "nonNegativeNoDecimalsMonetaryItemType",
+    "insolationItemType",
+    "temperatureItemType",
+    "pressureItemType",
+    "frequencyItemType",
+    "irradianceItemType",
+    "speedItemType",
+    "planeAngleItemType",
+    "voltageItemType",
+    "electricCurrentItemType",
+    "forceItemType",
+    "electricChargeItemType",
+    "flowItemType",
+    "massFlowItemType",
+    "monetaryPerLengthItemType",
+    "monetaryPerAreaItemType",
+    "monetaryPerVolumeItemType",
+    "monetaryPerDurationItemType",
+    "monetaryPerEnergyItemType",
+    "monetaryPerMassItemType",
+    "ghgEmissionsItemType",
+    "energyPerMonetaryItemType",
+    "ghgEmissionsPerMonetaryItemType",
+    "volumePerMonetaryItemType",
+    "decimalItemType",
+    "floatItemType",
+    "doubleItemType",
+    "integerItemType",
+    "nonPositiveIntegerItemType",
+    "negativeIntegerItemType",
+    "longItemType",
+    "intItemType",
+    "shortItemType",
+    "byteItemType",
+    "nonNegativeIntegerItemType",
+    "unsignedLongItemType",
+    "unsignedIntItemType",
+    "unsignedShortItemType",
+    "unsignedByteItemType",
+    "positiveIntegerItemType",
+    "monetaryItemType",
+    "sharesItemType",
+    "pureItemType",
+    "perUnitItemType",
+]
+
+integer_types = [
+    "noDecimalsMonetaryItemType",
+    "nonNegativeNoDecimalsMonetaryItemType",
+    "integerItemType",
+    "nonPositiveIntegerItemType",
+    "negativeIntegerItemType",
+    "longItemType",
+    "intItemType",
+    "shortItemType",
+    "byteItemType",
+    "nonNegativeIntegerItemType",
+    "unsignedLongItemType",
+    "unsignedIntItemType",
+    "unsignedShortItemType",
+    "unsignedByteItemType",
+    "positiveIntegerItemType",
+]
+
 
 class Concept(IReportElement):
     """
@@ -106,6 +222,34 @@ class Concept(IReportElement):
         :returns str: the data type of the concept
         """
         return self.__data_type
+
+    def is_textual(self) -> bool:
+        """
+        Check if the concept is of a textual type.
+        :returns bool: True 'IFF' the concept is of a textual type, False otherwise
+        """
+        return self.__data_type.split(":")[-1] in textual_types
+
+    def is_numeric(self) -> bool:
+        """
+        Check if the concept is of a numeric type.
+        :returns bool: True 'IFF' the concept is of a numeric type, False otherwise
+        """
+        return self.__data_type.split(":")[-1] in numeric_types
+
+    def is_integer(self) -> bool:
+        """
+        Check if the concept is of an integer type.
+        :returns bool: True 'IFF' the concept is of an integer type, False otherwise
+        """
+        return self.__data_type.split(":")[-1] in integer_types
+
+    def is_boolean(self) -> bool:
+        """
+        Check if the concept is of a boolean type.
+        :returns bool: True 'IFF' the concept is of a boolean type, False otherwise
+        """
+        return self.__data_type.split(":")[-1] == "booleanItemType"
 
     def get_balance_type(self) -> str | None:
         """
