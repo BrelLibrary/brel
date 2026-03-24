@@ -65,12 +65,8 @@ def test_qname_getters():
 
     assert isinstance(int(fact), int), "Expected int as fact value is int"
     assert int(fact) > 1000000, "Expected apples gross profit to be > 1M"
-    assert isinstance(
-        float(fact), float
-    ), "Expected float as fact value is float"
-    assert (
-        float(fact) > 1000000
-    ), "Expected apples gross profit to be > 1M"
+    assert isinstance(float(fact), float), "Expected float as fact value is float"
+    assert float(fact) > 1000000, "Expected apples gross profit to be > 1M"
     try:  # check if parsing a false fact as bool works
         bool(fact)
         assert False, "Expected ValueError as fact value is not a bool"
