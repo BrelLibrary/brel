@@ -105,7 +105,7 @@ class PeriodCharacteristic(ICharacteristic):
         if self.__is_instant:
             return f"{self.__instant_date}"
         else:
-            return f"{self.__start_date} - {self.__end_date}"
+            return f"{self.__start_date}/{self.__end_date}"
 
     def __eq__(self, __value: object) -> bool:
         if not isinstance(__value, PeriodCharacteristic):
