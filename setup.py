@@ -43,7 +43,7 @@ setup(
     package_data={"": ["*.json"]},
     install_requires=[
         "appdirs>=1.4.4",
-        "black>=23.12.1",
+        "black==23.12.1",
         "certifi>=2023.11.17",
         "charset-normalizer>=3.3.2",
         "click>=8.1.7",

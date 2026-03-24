@@ -11,7 +11,6 @@ It is responsible for taking a list of filepaths to XBRL files and parsing them 
 ====================
 """
 
-
 from brel.parsers.XML.xml_component_parser import parse_components_xml
 from brel.parsers.XML.xml_facts_parser import parse_facts_xml
 from brel.parsers.XML.xml_report_element_parser import parse_report_elements_xml
