@@ -120,7 +120,7 @@ class Fact:
         """
         print("Bool cast called!")
         traceback.print_stack()
-        stack_str = ''.join(traceback.format_stack())
+        stack_str = "".join(traceback.format_stack())
         print(stack_str)
         if self.__value.upper() == "TRUE":
             return True
