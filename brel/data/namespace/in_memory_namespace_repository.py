@@ -8,7 +8,6 @@
 ====================
 """
 
-
 from collections import defaultdict
 from brel.data.namespace.namespace_repository import NamespaceRepository
 

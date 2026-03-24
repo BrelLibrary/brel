@@ -1,5 +1,5 @@
 """
-This module is responsible for abstracting the file system. 
+This module is responsible for abstracting the file system.
 It downloads and caches files from the internet and the local file system.
 
 =================

@@ -8,7 +8,6 @@ from lxml.etree import _Element
 from brel.data.errors.error_repository import ErrorRepository
 from brel.errors.error_code import ErrorCode
 
-
 number_format_to_regex = {
     "ixt:num-comma-decimal-apos": r"^([\.\'`´’′  0-9]*)(,[  0-9]+)?$",
     "ixt:num-dot-decimal-apos": r"^([,\'`´’′  0-9]*)(\.[  0-9]+)?$",
@@ -663,7 +662,7 @@ def convert_japanese_imperial_date_to_gregorian(
 
 
 def convert_national_indian_date_to_gregorian(
-    date_parts: dict[str, str]
+    date_parts: dict[str, str],
 ) -> dict[str, str]:
     if len("year") == 2:
         date_parts["year"] = "19" + date_parts["year"]

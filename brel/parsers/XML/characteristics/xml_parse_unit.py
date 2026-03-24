@@ -10,7 +10,6 @@ This module contains the function for parsing an xml subtree into a Unit charact
 ====================
 """
 
-
 from typing import Optional
 from lxml.etree import _Element  # type: ignore
 

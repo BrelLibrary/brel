@@ -20,7 +20,7 @@ In the example above, the aspects are Entity, Period, Concept and Unit.
 Characteristics are aspect-value pairs.
 So for example, the characteristic of the Entity aspect would be "Foo Corporation".
 
-Read more about Aspects and Characteristics in 
+Read more about Aspects and Characteristics in
 
 ====================
 
@@ -147,6 +147,13 @@ class Context:
         :returns UnitCharacteristic|None: The unit of the context. None if the context does not have a unit.
         """
         return cast(UnitCharacteristic, self.get_characteristic(Aspect.UNIT))
+
+    def has_noncore_dimensions(self) -> bool:
+        """
+        Check if the context has (user-defined) dimensions.
+        :returns bool: True if the context has dimensions, False otherwise.
+        """
+        return any(not aspect.is_core() for aspect in self.__aspects)
 
     # Internal methods
     def _add_characteristic(self, characteristic: ICharacteristic) -> None:

@@ -6,7 +6,7 @@ This module contains the Filing class.
 Filings can be loaded from a folder, a zip file, or one or multiple xml files.
 
 - If a folder is given, then all xml files in the folder are loaded.
-- If a zip file is given, then the zip file is extracted to a folder 
+- If a zip file is given, then the zip file is extracted to a folder
 and then all xml files in the folder are loaded.
 - If one or more xml files are given, then only those xml files are loaded.
 - A URI can also be given. In this case, the file is downloaded and cached in a folder.
@@ -222,6 +222,12 @@ class Filing:
         return self.get_errors_by_severity(Severity.INFO)
 
     # second class citizens
+    def get_all_core_facts(self) -> list[Fact]:
+        """
+        :return list[Fact]: a list of all [`Fact`](../facts/facts.md) objects in the filing that have no non-core dimensions.
+        """
+        return [fact for fact in self.get_all_facts() if fact.is_core()]
+
     def get_all_concepts(self) -> list[Concept]:
         """
         :returns list[Concept]: a list of all concepts in the filing.
@@ -348,7 +354,7 @@ class Filing:
         """
         reported_concepts: list[Concept] = []
         for fact in self.get_all_facts():
-            concept = fact.get_concept().get_value()
+            concept = fact.get_concept()
             if concept not in reported_concepts:
                 reported_concepts.append(concept)
 
@@ -374,11 +380,7 @@ class Filing:
                 concept_name, Concept
             )
 
-        return [
-            fact
-            for fact in self.get_all_facts()
-            if fact.get_concept().get_value() == concept
-        ]
+        return [fact for fact in self.get_all_facts() if fact.get_concept() == concept]
 
     def get_facts_by_concept(self, concept: Concept) -> List[Fact]:
         """
@@ -416,6 +418,17 @@ class Filing:
         """
         return self.__generate_pandas_df_from_elements(self.get_all_facts(), **kwargs)
 
+    def generate_core_fact_table_pandas_df(
+        self, **kwargs: Unpack[OutputParams]
+    ) -> pd.DataFrame:
+        """
+        Converts the filing to a pandas DataFrame.
+        :return pandas.DataFrame: the filing as a pandas DataFrame.
+        """
+        return self.__generate_pandas_df_from_elements(
+            self.get_all_core_facts(), **kwargs
+        )
+
     def generate_fact_table_spark_df(self) -> tuple[sql.DataFrame, sql.SparkSession]:
         """
         Converts the filing to a spark DataFrame.
@@ -423,6 +436,18 @@ class Filing:
         """
         spark = sql.SparkSession.builder.getOrCreate()
         df = self.generate_fact_table_pandas_df()
+        # spark.parallelize()
+        return spark.createDataFrame(df), spark
+
+    def generate_core_fact_table_spark_df(
+        self,
+    ) -> tuple[sql.DataFrame, sql.SparkSession]:
+        """
+        Converts the filing to a spark DataFrame.
+        :return pyspark.sql.DataFrame: the filing as a spark DataFrame.
+        """
+        spark = sql.SparkSession.builder.getOrCreate()
+        df = self.generate_core_fact_table_pandas_df()
         # spark.parallelize()
         return spark.createDataFrame(df), spark
 

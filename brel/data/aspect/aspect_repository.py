@@ -7,6 +7,7 @@
 
 ====================
 """
+
 from abc import abstractmethod, ABC
 
 from brel.characteristics.brel_aspect import Aspect

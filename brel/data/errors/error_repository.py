@@ -7,6 +7,7 @@
 
 ====================
 """
+
 from lxml import etree
 from abc import ABC, abstractmethod
 from typing import Callable, Optional, final

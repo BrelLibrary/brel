@@ -129,13 +129,13 @@ class CalculationNetwork(INetwork):
             concept = node.get_concept()
             node_facts = list(
                 filter(
-                    lambda fact: fact.get_concept().get_value() == concept,
+                    lambda fact: fact.get_concept() == concept,
                     facts,
                 )
             )
 
             for node_fact in node_facts:
-                node_value = node_fact.get_value_as_float()
+                node_value = float(node_fact)
 
                 if DEBUG:  # pragma: no cover
                     print(f"{node_fact._get_id()}: {node_value} = ", end=" ")
@@ -153,8 +153,7 @@ class CalculationNetwork(INetwork):
                         if node_aspect == Aspect.CONCEPT:
                             child_facts = list(
                                 filter(
-                                    lambda fact: fact.get_concept().get_value()
-                                    == child_concept,
+                                    lambda fact: fact.get_concept() == child_concept,
                                     child_facts,
                                 )
                             )
@@ -190,11 +189,11 @@ class CalculationNetwork(INetwork):
 
                     child_fact = all_child_facts[0]
 
-                    children_sum += child_fact.get_value_as_float() * child.get_weight()
+                    children_sum += float(child_fact) * child.get_weight()
 
                     if DEBUG:  # pragma: no cover
                         print(
-                            f"+ {child_fact._get_id()}: {child_fact.get_value_as_float()} * {child.get_weight()}",
+                            f"+ {child_fact._get_id()}: {float(child_fact)} * {child.get_weight()}",
                             end=" ",
                         )
 

@@ -18,10 +18,11 @@ To print a fact to the console, use the `pprint` function in the `brel` module.
 from typing import Any, List, Optional, cast
 
 from brel import Context
+from brel.reportelements import Concept
 from brel.characteristics import (
     Aspect,
-    ConceptCharacteristic,
     ICharacteristic,
+    ConceptCharacteristic,
     PeriodCharacteristic,
     UnitCharacteristic,
     EntityCharacteristic,
@@ -54,13 +55,9 @@ class Fact:
         self.__context: Context = context
         self.__value: str = value
 
-    # first class citizens
-    # TODO think about this. is the id attribute an implementation detail?
     def _get_id(self) -> str | None:
-        """
-        :returns str|None: The id of the fact. Returns None if the fact does not have an id.
-        """
-        return self.__id
+        """[DEPRECATED] Use get_id() instead."""
+        return self.get_id()
 
     def get_id(self) -> str | None:
         """
@@ -75,12 +72,14 @@ class Fact:
         return self.__context
 
     def get_value_as_str(self) -> str:
-        """
-        :returns str: The value of the fact as a string.
-        """
+        """[DEPRECATED] Use str() instead."""
         return self.__value
 
     def get_value_as_int(self) -> int:
+        """[DEPRECATED] Use int() instead."""
+        return int(self)
+
+    def __int__(self) -> int:
         """
         :returns int: The value of the fact as an int
         :raises ValueError: If the value of the fact does not resolve to an int
@@ -93,6 +92,10 @@ class Fact:
             )
 
     def get_value_as_float(self) -> float:
+        """[DEPRECATED] Use float() instead."""
+        return float(self)
+
+    def __float__(self) -> float:
         """
         :returns float: The value of the fact as a float
         :raises ValueError: If the value of the fact does not resolve to a float
@@ -105,6 +108,10 @@ class Fact:
             )
 
     def get_value_as_bool(self) -> bool:
+        """[DEPRECATED] Use bool() instead."""
+        return bool(self)
+
+    def __bool__(self) -> bool:
         """
         :returns bool: The value of the fact as a bool
         :raises ValueError: If the value of the fact does not resolve to a bool
@@ -115,42 +122,52 @@ class Fact:
             return False
         else:
             raise ValueError(
-                f"Fact {self.__id} does not have a bool value. It has value {self.__value}, which does not resolve to a bool"
+                f"Fact {self.__id} does not have a bool value. It has value {self.__value}, which does not resolve to a bool."
             )
 
-    def get_value(self) -> str:
+    def get_value(self) -> Any:
         """
         :returns Any: The value of the fact. The type of the value depends on the type of the fact.
         """
-        return self.__value
+        if self.get_concept().is_integer():
+            return int(self)
+        elif self.get_concept().is_numeric():
+            return float(self)
+        elif self.get_concept().is_boolean():
+            return bool(self)
+        else:
+            return self.__value
 
     def get_precision(self) -> float | None:
+        """
+        :returns float: The precision of the fact. Only applies to numeric facts.
+        """
         return self.__precision
 
     def get_decimals(self) -> float | None:
+        """
+        :returns float: The decimals property of the fact. Only applies to numeric facts.
+        """
         return self.__decimals
 
     def __str__(self) -> str:
         """
-        :returns str: The fact represented as a string.
+        :returns str: The fact value as a string.
         """
-        output = ""
-        for aspect in self.__context.get_aspects():
-            aspect_name = aspect.get_name()
-            aspect_value = self.__context.get_characteristic(aspect)
-            output += f"{aspect_name}: {aspect_value}, "
-        output += f"value: {self.__value}"
-        return output
+        return self.__value
 
     # 2nd class citizens
-    def get_concept(self) -> ConceptCharacteristic:
+    def get_concept(self) -> Concept:
         """
-        :returns ConceptCharacteristic: The concept characteristic of the facts context.
-        Equivalent to calling `fact.get_context().get_concept()`
+        :returns Concept: The concept of the facts context.
+        Equivalent to calling `fact.get_context().get_concept().get_value()`
         """
-        concept: ConceptCharacteristic = cast(
-            ConceptCharacteristic,
-            self.__context.get_characteristic(Aspect.CONCEPT),
+        concept_characteristic = cast(
+            ConceptCharacteristic, self.__context.get_characteristic(Aspect.CONCEPT)
+        )
+        concept: Concept = cast(
+            Concept,
+            concept_characteristic.get_value(),
         )
         return concept
 
@@ -202,6 +219,9 @@ class Fact:
         """
         return self.__context.get_characteristic(aspect)
 
+    def __iter__(self):
+        return iter(self.convert_to_dict().items())
+
     def convert_to_dict(
         self,
         languages: Optional[List[str]] = None,
@@ -234,3 +254,10 @@ class Fact:
             dict_to_return[value_literal] = self.__value
 
         return dict_to_return
+
+    def is_core(self) -> bool:
+        """
+        Check if the fact has (user-defined) non-core dimensions.
+        :returns bool: True if the fact has non-core dimensions, False otherwise.
+        """
+        return not self.get_context().has_noncore_dimensions()

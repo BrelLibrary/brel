@@ -7,6 +7,7 @@
 
 ====================
 """
+
 from brel.characteristics.brel_aspect import Aspect
 from brel.data.aspect.aspect_repository import AspectRepository
 

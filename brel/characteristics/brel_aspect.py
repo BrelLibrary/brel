@@ -141,24 +141,28 @@ class Aspect:
 # initialize the core aspects
 concept_labels = [
     BrelLabel("Concept [Axis]", "concept", "en-US"),
+    BrelLabel("Concept [Axe]", "concept", "fr-FR"),
     BrelLabel("Konzept [Achse]", "concept", "de-DE"),
     BrelLabel("Concepto [Eje]", "concept", "es-ES"),
 ]
 
 period_labels = [
     BrelLabel("Period [Axis]", "period", "en-US"),
+    BrelLabel("Période [Axe]", "period", "fr-FR"),
     BrelLabel("Periode [Achse]", "period", "de-DE"),
     BrelLabel("Periodo [Eje]", "period", "es-ES"),
 ]
 
 entity_labels = [
     BrelLabel("Entity [Axis]", "entity", "en-US"),
+    BrelLabel("Entité [Axe]", "entity", "fr-FR"),
     BrelLabel("Organisation [Achse]", "entity", "de-DE"),
     BrelLabel("Entidad [Eje]", "entity", "es-ES"),
 ]
 
 unit_labels = [
     BrelLabel("Unit [Axis]", "unit", "en-US"),
+    BrelLabel("Unité [Axe]", "unit", "fr-FR"),
     BrelLabel("Einheit [Achse]", "unit", "de-DE"),
     BrelLabel("Unidad [Eje]", "unit", "es-ES"),
 ]
